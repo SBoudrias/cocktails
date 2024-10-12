@@ -19,11 +19,10 @@ const results = [
   },
 ];
 
-const anchors = [72, 72 + 119, globalThis.innerHeight * 0.9];
-
 export default function Search() {
   const router = useRouter();
   const ref = useRef<FloatingPanelRef>(null);
+  const anchors = [72, 72 + 119, (globalThis.innerHeight ?? 1000) * 0.9];
 
   return (
     <FloatingPanel anchors={anchors} ref={ref}>
