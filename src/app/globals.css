@@ -4,6 +4,7 @@
 
 html,
 body {
+  min-height: 100vh;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -12,6 +13,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  color: var(--adm-color-text);
+  background-color: var(--adm-color-background-body);
+}
+
+label,
+h1,
+h2,
+.ant-form-text,
+.ant-divider-inner-text,
+a {
+  color: rgb(var(--foreground-rgb)) !important;
 }
 
 * {
@@ -23,4 +36,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
 }
