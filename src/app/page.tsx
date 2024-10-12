@@ -1,7 +1,9 @@
-'use client';
-
-import { NavBar } from 'antd-mobile';
+import AppHeader from '@/components/AppHeader';
 
 export default function Home() {
-  return <NavBar back={null}>Cocktail Index</NavBar>;
+  return <AppHeader title="Cocktail Index" />;
 }
+
+export const metadata = {
+  title: 'Cocktail Index',
+};

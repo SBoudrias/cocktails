@@ -1,9 +1,6 @@
-'use client';
-
+import AppHeader from '@/components/AppHeader';
 import IngredientList from '@/components/IngredientList';
 import { Recipe } from '@/types/Recipe';
-import { NavBar } from 'antd-mobile';
-import { useRouter } from 'next/navigation';
 
 const recipe: Recipe = {
   name: 'Mai Tai',
@@ -44,19 +41,16 @@ const recipe: Recipe = {
 };
 
 export default function RecipePage() {
-  const router = useRouter();
-
   return (
     <>
-      <NavBar onBack={() => router.back()}>{recipe.name}</NavBar>
+      <AppHeader title={recipe.name} />
       <IngredientList ingredients={recipe.ingredients} />
-      {/* <List header="Ingredients">
-        {recipe.ingredients.map((ingredient) => (
-          <List.Item key={ingredient.name}>
-            {ingredient.quantity.amount} {ingredient.quantity.unit} {ingredient.name}
-          </List.Item>
-        ))}
-      </List> */}
     </>
   );
+}
+
+export async function generateMetadata() {
+  return {
+    title: `Cocktail Index | ${recipe.name}`,
+  };
 }

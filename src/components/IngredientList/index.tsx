@@ -1,3 +1,5 @@
+'use client';
+
 import { List, Space } from 'antd-mobile';
 import { Ingredient } from '@/types/Ingredient';
 import sortIngredients from './sortIngredients';
