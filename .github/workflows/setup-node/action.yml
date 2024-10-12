@@ -1,7 +1,7 @@
 name: setup-node
-description: "Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧"
+description: 'Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧'
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Setup Node.js ⚙️
       uses: actions/setup-node@v4
