@@ -19,7 +19,7 @@ const results = [
   },
 ];
 
-const anchors = [72, 72 + 119, window.innerHeight * 0.9];
+const anchors = [72, 72 + 119, globalThis.innerHeight * 0.9];
 
 export default function Search() {
   const router = useRouter();
