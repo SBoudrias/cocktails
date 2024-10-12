@@ -3,7 +3,6 @@ import localFont from 'next/font/local';
 import { Providers } from './providers';
 import './globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
-import AppHeader from '@/components/AppHeader';
 import Search from '@/components/Search';
 
 const geistSans = localFont({
@@ -32,7 +31,6 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AntdRegistry>
           <Providers>
-            <AppHeader />
             {children}
             <Search />
           </Providers>

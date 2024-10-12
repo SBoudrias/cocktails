@@ -1,0 +1,8 @@
+.quantity {
+  font-size: 1em;
+}
+
+.unit {
+  font-size: 0.8em;
+  color: var(--adm-color-weak);
+}
