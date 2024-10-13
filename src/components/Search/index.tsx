@@ -33,7 +33,7 @@ export default function Search() {
           <SearchBar
             placeholder="Search for a recipe or an ingredient"
             showCancelButton
-            onFocus={() => {
+            onChange={() => {
               ref.current?.setHeight(anchors[2]);
             }}
             onBlur={() => {
