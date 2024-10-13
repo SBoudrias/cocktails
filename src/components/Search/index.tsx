@@ -21,23 +21,23 @@ const results = [
 
 export default function Search() {
   const router = useRouter();
-  const ref = useRef<FloatingPanelRef>(null);
-  const anchors = [72, 72 + 119, (globalThis.innerHeight ?? 1000) * 0.9];
+  const panelRef = useRef<FloatingPanelRef>(null);
+  const anchors = [72, 72 + 119, (globalThis.innerHeight ?? 1000) - 45];
 
   return (
     <>
       {/* Spacing div to ensure there's no content hidden by the floating panel */}
       <div style={{ height: anchors[0] }}></div>
-      <FloatingPanel anchors={anchors} ref={ref}>
+      <FloatingPanel anchors={anchors} ref={panelRef}>
         <Space block className={styles.search}>
           <SearchBar
             placeholder="Search for a recipe or an ingredient"
             showCancelButton
-            onChange={() => {
-              ref.current?.setHeight(anchors[2]);
+            onFocus={() => {
+              panelRef.current?.setHeight(anchors[2], { immediate: true });
             }}
             onBlur={() => {
-              ref.current?.setHeight(anchors[0]);
+              panelRef.current?.setHeight(anchors[0]);
             }}
           />
         </Space>
