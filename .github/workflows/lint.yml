@@ -17,3 +17,6 @@ jobs:
 
       - name: Prettier 💅
         run: npm run check-code
+
+      - name: JSON Schema 💽
+        run: npm run check-data

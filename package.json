@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "check-code": "prettier --check .",
+    "check-data": "tools/validate-data.js",
     "prepare": "husky"
   },
   "dependencies": {
@@ -23,6 +24,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "ajv": "^8.17.1",
+    "ajv-cli": "^5.0.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",

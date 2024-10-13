@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tropical Itch",
+  "ingredients": [
+    {
+      "name": "Fresh lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ]
+}

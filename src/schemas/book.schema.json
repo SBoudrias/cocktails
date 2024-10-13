@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///schemas/book.schema.json",
+  "title": "Book",
+  "description": "A book in the catalog",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "The title of the book",
+      "type": "string"
+    }
+  },
+  "required": ["title"]
+}

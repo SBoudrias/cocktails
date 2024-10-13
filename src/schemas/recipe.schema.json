@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///schemas/recipe.schema.json",
+  "title": "Recipe",
+  "description": "A cocktail recipe",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "ingredients": {
+      "type": "array",
+      "items": {
+        "$ref": "./ingredient.schema.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": ["name", "ingredients"]
+}

@@ -1,0 +1,4 @@
+{
+  "$schema": "../../../schemas/book.schema.json",
+  "title": "Tropical Standard"
+}
