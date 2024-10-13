@@ -11,8 +11,7 @@
     },
     "link": {
       "description": "Link to book website or publisher",
-      "type": "string",
-      "format": "uri"
+      "type": "string"
     }
   },
   "required": ["title", "link"]
