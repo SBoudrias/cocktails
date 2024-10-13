@@ -1,4 +1,5 @@
 {
   "$schema": "../../../schemas/book.schema.json",
-  "title": "Tropical Standard"
+  "title": "Tropical Standard",
+  "link": "https://www.tropicalstandard.com/"
 }

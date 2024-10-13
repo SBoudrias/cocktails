@@ -3,6 +3,7 @@ export type Book = {
   title: string;
   author: string;
   page: number;
+  link: string;
   edition?: string;
 };
 

@@ -8,7 +8,12 @@
     "title": {
       "description": "The title of the book",
       "type": "string"
+    },
+    "link": {
+      "description": "Link to book website or publisher",
+      "type": "string",
+      "format": "uri"
     }
   },
-  "required": ["title"]
+  "required": ["title", "link"]
 }
