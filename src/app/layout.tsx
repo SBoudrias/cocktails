@@ -18,8 +18,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sboudrias.github.io/cocktails/'),
-  manifest: new URL('https://sboudrias.github.io/cocktails/manifest.webmanifest'),
+  manifest: `/cocktails/manifest.webmanifest`,
   title: 'Cocktail Index',
 };
 
