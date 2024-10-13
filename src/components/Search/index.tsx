@@ -25,31 +25,35 @@ export default function Search() {
   const anchors = [72, 72 + 119, (globalThis.innerHeight ?? 1000) * 0.9];
 
   return (
-    <FloatingPanel anchors={anchors} ref={ref}>
-      <Space block className={styles.search}>
-        <SearchBar
-          placeholder="Search for a recipe or an ingredient"
-          showCancelButton
-          onFocus={() => {
-            ref.current?.setHeight(anchors[2]);
-          }}
-          onBlur={() => {
-            ref.current?.setHeight(anchors[0]);
-          }}
-        />
-      </Space>
+    <>
+      {/* Spacing div to ensure there's no content hidden by the floating panel */}
+      <div style={{ height: anchors[0] }}></div>
+      <FloatingPanel anchors={anchors} ref={ref}>
+        <Space block className={styles.search}>
+          <SearchBar
+            placeholder="Search for a recipe or an ingredient"
+            showCancelButton
+            onFocus={() => {
+              ref.current?.setHeight(anchors[2]);
+            }}
+            onBlur={() => {
+              ref.current?.setHeight(anchors[0]);
+            }}
+          />
+        </Space>
 
-      <List header="Results">
-        {results.map((item) => (
-          <List.Item
-            prefix={item.icon}
-            key={item.name}
-            onClick={() => router.push(item.href)}
-          >
-            {item.name}
-          </List.Item>
-        ))}
-      </List>
-    </FloatingPanel>
+        <List header="Results">
+          {results.map((item) => (
+            <List.Item
+              prefix={item.icon}
+              key={item.name}
+              onClick={() => router.push(item.href)}
+            >
+              {item.name}
+            </List.Item>
+          ))}
+        </List>
+      </FloatingPanel>
+    </>
   );
 }
