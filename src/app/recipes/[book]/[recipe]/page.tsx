@@ -8,47 +8,6 @@ import { Recipe } from '@/types/Recipe';
 
 type Params = { book: string; recipe: string };
 
-const maiTaiRecipe: Recipe = {
-  name: 'Mai Tai',
-  slug: 'mai-tai',
-  ingredients: [
-    {
-      name: 'Rum',
-      type: 'spirit',
-      quantity: {
-        amount: 2,
-        unit: 'oz',
-      },
-    },
-    {
-      name: 'Fresh lime juice',
-      type: 'juice',
-      quantity: {
-        amount: 0.75,
-        unit: 'oz',
-      },
-    },
-    {
-      name: 'Orgeat syrup',
-      type: 'syrup',
-      quantity: {
-        amount: 0.5,
-        unit: 'oz',
-      },
-    },
-    {
-      name: 'Orange curaçao',
-      type: 'liqueur',
-      quantity: {
-        amount: 0.5,
-        unit: 'oz',
-      },
-    },
-  ],
-};
-
-const recipes: Recipe[] = [maiTaiRecipe];
-
 async function getRecipe(book: string, recipe: string): Promise<Recipe> {
   try {
     const file = await fs.readFile(
@@ -57,7 +16,12 @@ async function getRecipe(book: string, recipe: string): Promise<Recipe> {
     );
     return JSON.parse(file);
   } catch (err) {
-    notFound();
+    if (err instanceof Error) {
+      if ('code' in err && err.code === 'ENOENT') {
+        notFound();
+      }
+    }
+    throw err;
   }
 }
 

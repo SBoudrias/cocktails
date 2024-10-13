@@ -1,5 +1,3 @@
-type Type = 'book' | 'article' | 'video';
-
 export type Book = {
   type: 'book';
   title: string;
