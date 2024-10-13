@@ -38,6 +38,6 @@
   },
   "lint-staged": {
     "*": "npx prettier --write --ignore-unknown",
-    "*.m?[jt]sx?": "npx eslint --fix"
+    "*.m?[jt]sx?": "npm run lint --fix"
   }
 }

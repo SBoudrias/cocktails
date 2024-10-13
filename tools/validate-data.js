@@ -1,4 +1,4 @@
-#!/usr/bin/env node --no-warnings
+#!/usr/bin/env -S node --no-warnings
 
 // @ts-check
 import Ajv from 'ajv/dist/2020.js';
