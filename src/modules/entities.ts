@@ -9,7 +9,7 @@ async function fileExists(filepath: string): Promise<boolean> {
   );
 }
 
-async function readJSONFile(filepath: string): Promise<any> {
+async function readJSONFile<T>(filepath: string): Promise<T | undefined> {
   if (await fileExists(filepath)) {
     const content = await fs.readFile(filepath, 'utf-8');
     return JSON.parse(content);

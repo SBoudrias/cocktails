@@ -1,7 +1,7 @@
 'use client';
 
 import { Book } from '@/types/Source';
-import { Card, List, Avatar, Button } from 'antd-mobile';
+import { List, Button } from 'antd-mobile';
 
 export default function RecipeSources({ book }: { book: Book }) {
   console.log(book);
