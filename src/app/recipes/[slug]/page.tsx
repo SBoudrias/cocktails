@@ -1,9 +1,13 @@
+import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
 import IngredientList from '@/components/IngredientList';
 import { Recipe } from '@/types/Recipe';
 
-const recipe: Recipe = {
+type Params = { slug: string };
+
+const maiTaiRecipe: Recipe = {
   name: 'Mai Tai',
+  slug: 'mai-tai',
   ingredients: [
     {
       name: 'Rum',
@@ -40,17 +44,37 @@ const recipe: Recipe = {
   ],
 };
 
-export default function RecipePage() {
+const recipes: Recipe[] = [maiTaiRecipe];
+
+async function getRecipe(slug: string): Promise<Recipe> {
+  const recipe = recipes.find((recipe) => recipe.slug === slug);
+
+  if (!recipe) {
+    notFound();
+  }
+
+  return recipe;
+}
+
+export async function generateStaticParams(): Promise<Params[]> {
+  return [{ slug: 'mai-tai' }];
+}
+
+export async function generateMetadata({ params }: { params: Params }) {
+  const recipe = await getRecipe(params.slug);
+
+  return {
+    title: `Cocktail Index | ${recipe.name}`,
+  };
+}
+
+export default async function RecipePage({ params }: { params: Params }) {
+  const recipe = await getRecipe(params.slug);
+
   return (
     <>
       <AppHeader title={recipe.name} />
       <IngredientList ingredients={recipe.ingredients} />
     </>
   );
-}
-
-export async function generateMetadata() {
-  return {
-    title: `Cocktail Index | ${recipe.name}`,
-  };
 }

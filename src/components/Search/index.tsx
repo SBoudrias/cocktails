@@ -15,7 +15,7 @@ const results = [
   {
     icon: <SoundOutline />,
     name: 'Mai tai',
-    href: '/recipes',
+    href: '/recipes/mai-tai',
   },
 ];
 
