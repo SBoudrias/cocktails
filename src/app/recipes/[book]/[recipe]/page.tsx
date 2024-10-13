@@ -1,9 +1,12 @@
+import fg from 'fast-glob';
+import path from 'node:path';
+import fs from 'node:fs/promises';
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
 import IngredientList from '@/components/IngredientList';
 import { Recipe } from '@/types/Recipe';
 
-type Params = { slug: string };
+type Params = { book: string; recipe: string };
 
 const maiTaiRecipe: Recipe = {
   name: 'Mai Tai',
@@ -46,22 +49,27 @@ const maiTaiRecipe: Recipe = {
 
 const recipes: Recipe[] = [maiTaiRecipe];
 
-async function getRecipe(slug: string): Promise<Recipe> {
-  const recipe = recipes.find((recipe) => recipe.slug === slug);
-
-  if (!recipe) {
+async function getRecipe(book: string, recipe: string): Promise<Recipe> {
+  try {
+    const file = await fs.readFile(
+      `src/data/books/${book}/recipes/${recipe}.json`,
+      'utf-8',
+    );
+    return JSON.parse(file);
+  } catch (err) {
     notFound();
   }
-
-  return recipe;
 }
 
 export async function generateStaticParams(): Promise<Params[]> {
-  return [{ slug: 'mai-tai' }];
+  return fg.sync('src/data/books/*/recipes/*.json').map((entry) => {
+    const parts = entry.split('/');
+    return { book: parts[3], recipe: path.basename(parts[5], '.json') };
+  });
 }
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const recipe = await getRecipe(params.slug);
+  const recipe = await getRecipe(params.book, params.recipe);
 
   return {
     title: `Cocktail Index | ${recipe.name}`,
@@ -69,7 +77,7 @@ export async function generateMetadata({ params }: { params: Params }) {
 }
 
 export default async function RecipePage({ params }: { params: Params }) {
-  const recipe = await getRecipe(params.slug);
+  const recipe = await getRecipe(params.book, params.recipe);
 
   return (
     <>

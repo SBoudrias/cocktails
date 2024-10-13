@@ -9,7 +9,17 @@
       "type": "string"
     },
     "type": {
-      "enum": ["spirit", "juice", "syrup", "liqueur"]
+      "enum": [
+        "spirit",
+        "juice",
+        "syrup",
+        "liqueur",
+        "bitter",
+        "puree",
+        "sugar",
+        "water",
+        "other"
+      ]
     },
     "categories": {
       "type": "array",

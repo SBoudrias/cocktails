@@ -3,10 +3,75 @@
   "name": "Tropical Itch",
   "ingredients": [
     {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Almond extract",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Mango purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Fresh lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cassia Cinnamon Bark Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pear Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Saint James blanc",
+      "type": "spirit",
+      "categories": ["lightly-aged agricole rhum", "agricole rhum"],
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

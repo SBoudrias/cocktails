@@ -14,8 +14,8 @@ import styles from './style.module.css';
 const results = [
   {
     icon: <SoundOutline />,
-    name: 'Mai tai',
-    href: '/recipes/mai-tai',
+    name: 'Tropical Itch',
+    href: '/recipes/tropical-standard/tropical-itch',
   },
 ];
 
