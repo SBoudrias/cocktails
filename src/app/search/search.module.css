@@ -1,0 +1,10 @@
+.searchBar {
+  padding: 0 12px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+
+.searchBar :last-child {
+  flex: 1;
+}

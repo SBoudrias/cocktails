@@ -2,9 +2,12 @@
 
 import { Recipe } from '@/types/Recipe';
 import { Book } from '@/types/Source';
-import { ErrorBlock, IndexBar, List, SearchBar, SearchBarRef } from 'antd-mobile';
+import { ErrorBlock, IndexBar, List, SearchBar, SearchBarRef, Space } from 'antd-mobile';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import styles from './search.module.css';
+import Link from 'next/link';
+import { LeftOutline } from 'antd-mobile-icons';
 
 export default function Search({ books, recipes }: { books: Book[]; recipes: Recipe[] }) {
   const router = useRouter();
@@ -70,7 +73,10 @@ export default function Search({ books, recipes }: { books: Book[]; recipes: Rec
 
   return (
     <>
-      <div style={{ padding: '12px' }}>
+      <Space className={styles.searchBar} style={{ width: '100%', '--gap': '8px' }}>
+        <Link href="/">
+          <LeftOutline fontSize="24px" />
+        </Link>
         <SearchBar
           placeholder="Search for a recipe or an ingredient"
           showCancelButton
@@ -78,7 +84,7 @@ export default function Search({ books, recipes }: { books: Book[]; recipes: Rec
           value={searchTerm}
           ref={searchRef}
         />
-      </div>
+      </Space>
       {content || <ErrorBlock status="empty" />}
     </>
   );
