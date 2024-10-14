@@ -21,7 +21,15 @@ const INGREDIENT_PRIORITIES: Record<IngredientType, number> = {
   other: 1,
 };
 
-const sortCompare = (a: number, b: number) => Math.max(1, Math.min(-1, a - b));
+const sortCompare = (a: number, b: number) => {
+  if (a === b) {
+    return 0;
+  }
+  if (a < b) {
+    return -1;
+  }
+  return 1;
+};
 
 /**
  * Sorts the ingredients true to the Death & Co's method.
