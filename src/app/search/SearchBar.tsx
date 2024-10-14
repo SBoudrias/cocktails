@@ -4,6 +4,7 @@ import { Recipe } from '@/types/Recipe';
 import { ErrorBlock, IndexBar, List, SearchBar, SearchBarRef, Space } from 'antd-mobile';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import uFuzzy from '@leeoniya/ufuzzy';
 import styles from './search.module.css';
 import Link from 'next/link';
 import { LeftOutline } from 'antd-mobile-icons';
@@ -17,11 +18,27 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
     searchRef.current?.focus();
   }, []);
 
+  const haystack = useMemo(
+    () =>
+      recipes.map((recipe) => {
+        return `${recipe.name} ${recipe.ingredients.map((ingredient) => `${ingredient.name} ${ingredient.categories?.join(' ')}`).join(' ')}`;
+      }),
+    [recipes],
+  );
+
   const searchMatches = useMemo(() => {
     if (searchTerm.trim().length === 0) return [];
 
-    return recipes.filter((recipe) => recipe.name.includes(searchTerm));
-  }, [searchTerm, recipes]);
+    const uf = new uFuzzy();
+    const [matchIndexes] = uf.search(haystack, searchTerm, 0, 1e3);
+
+    if (Array.isArray(matchIndexes) && matchIndexes.length > 0) {
+      return matchIndexes.map((index) => recipes[index]);
+    }
+
+    // No matches found
+    return [];
+  }, [haystack, searchTerm]);
 
   let content;
   if (searchMatches.length > 0) {
