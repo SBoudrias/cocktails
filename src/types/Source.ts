@@ -1,23 +1,28 @@
-export type Book = {
-  type: 'book';
+type SourceType = 'book' | 'video' | 'article';
+
+type SourceBase = {
+  type: SourceType;
   title: string;
+  slug: string;
+};
+
+export type Book = SourceBase & {
+  type: 'book';
   author: string;
   page: number;
   link: string;
   edition?: string;
 };
 
-export type Video = {
+export type Video = SourceBase & {
   type: 'video';
   platform: { name: 'youtube'; id: string } | 'other';
-  title: string;
   author: string;
   link: string;
 };
 
-export type Article = {
+export type Article = SourceBase & {
   type: 'article';
-  title: string;
   link: string;
 };
 

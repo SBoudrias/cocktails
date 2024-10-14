@@ -9,7 +9,7 @@ export default function AppHeader({ title }: { title: string }) {
   const isHome = pathname === '/';
 
   return (
-    <NavBar back={isHome ? null : undefined} onBack={() => router.push('/')}>
+    <NavBar back={isHome ? null : undefined} onBack={() => router.back()}>
       {title}
     </NavBar>
   );
