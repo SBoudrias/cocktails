@@ -40,12 +40,13 @@ export async function getRecipe(
 
 export async function getBook(book: string): Promise<Book | undefined> {
   const filepath = `src/data/books/${book}/source.json`;
-  const data = await readJSONFile<Omit<Book, 'slug'>>(filepath);
+  const data = await readJSONFile<Omit<Book, 'slug' | 'type'>>(filepath);
 
   if (!data) return undefined;
 
   return {
     ...data,
+    type: 'book',
     slug: book,
   };
 }

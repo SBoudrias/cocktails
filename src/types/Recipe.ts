@@ -1,6 +1,5 @@
 import { Ingredient } from './Ingredient';
-
-type SourceType = 'book';
+import { SourceType } from './Source';
 
 export type Recipe = {
   name: string;

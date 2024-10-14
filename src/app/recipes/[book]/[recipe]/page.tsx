@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   }
 
   return {
-    title: `Cocktail Index | ${recipe.name} from ${book.title}`,
+    title: `Cocktail Index | ${recipe.name} from ${book.name}`,
   };
 }
 

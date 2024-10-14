@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/youtube-channel.schema.json",
+  "name": "Make and Drink",
+  "link": "https://www.youtube.com/@makeanddrink"
+}
