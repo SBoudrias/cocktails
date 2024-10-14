@@ -1,18 +1,17 @@
 'use client';
 
-import { Book } from '@/types/Source';
+import { Source } from '@/types/Source';
 import { List, Button } from 'antd-mobile';
 
-export default function RecipeSources({ book }: { book: Book }) {
-  console.log(book);
+export default function RecipeSources({ source }: { source: Source }) {
   const clickBook = () => {
-    window.open(book.link, '_blank')?.focus();
+    window.open(source.link, '_blank')?.focus();
   };
 
   return (
     <List header="Sources" mode="card" style={{ marginTop: '24px' }}>
       <List.Item extra={<Button onClick={clickBook}>More</Button>}>
-        {book.title}
+        {source.name}
       </List.Item>
     </List>
   );

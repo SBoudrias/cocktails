@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 };
 
 export default async function SearchPage() {
-  const { books, recipes } = await getAllData();
+  const { recipes } = await getAllData();
 
   return (
     <>
-      <Search books={books} recipes={recipes} />
+      <Search recipes={recipes} />
     </>
   );
 }

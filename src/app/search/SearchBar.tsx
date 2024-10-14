@@ -1,7 +1,6 @@
 'use client';
 
 import { Recipe } from '@/types/Recipe';
-import { Book } from '@/types/Source';
 import { ErrorBlock, IndexBar, List, SearchBar, SearchBarRef, Space } from 'antd-mobile';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -9,7 +8,7 @@ import styles from './search.module.css';
 import Link from 'next/link';
 import { LeftOutline } from 'antd-mobile-icons';
 
-export default function Search({ books, recipes }: { books: Book[]; recipes: Recipe[] }) {
+export default function Search({ recipes }: { recipes: Recipe[] }) {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const searchRef = useRef<SearchBarRef>(null);
@@ -22,7 +21,7 @@ export default function Search({ books, recipes }: { books: Book[]; recipes: Rec
     if (searchTerm.trim().length === 0) return [];
 
     return recipes.filter((recipe) => recipe.name.includes(searchTerm));
-  }, [searchTerm, books, recipes]);
+  }, [searchTerm, recipes]);
 
   let content;
   if (searchMatches.length > 0) {
@@ -57,7 +56,9 @@ export default function Search({ books, recipes }: { books: Book[]; recipes: Rec
                   <List.Item
                     key={recipe.slug}
                     onClick={() =>
-                      router.push(`/recipes/${recipe.source.slug}/${recipe.slug}`)
+                      router.push(
+                        `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`,
+                      )
                     }
                   >
                     {recipe.name}
