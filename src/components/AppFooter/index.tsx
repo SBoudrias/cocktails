@@ -12,6 +12,7 @@ export default function AppFooter() {
           href: 'https://github.com/SBoudrias/cocktails/',
         },
       ]}
+      style={{ marginTop: '12px' }}
     />
   );
 }

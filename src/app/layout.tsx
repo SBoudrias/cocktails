@@ -4,6 +4,7 @@ import { Providers } from './providers';
 import './globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import FullscreenHelper from '@/components/FullscreenHelper';
+import AppFooter from '@/components/AppFooter';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -40,7 +41,10 @@ export default function RootLayout({
     <html lang="en" data-prefers-color-scheme="dark">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AntdRegistry>
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+            <AppFooter />
+          </Providers>
         </AntdRegistry>
         <FullscreenHelper />
       </body>

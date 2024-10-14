@@ -2,7 +2,6 @@ import fg from 'fast-glob';
 import path from 'node:path';
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
-import AppFooter from '@/components/AppFooter';
 import IngredientList from '@/components/IngredientList';
 import { getBook, getRecipe } from '@/modules/entities';
 import RecipeSources from '@/components/RecipeSources';
@@ -40,7 +39,6 @@ export default async function RecipePage({ params }: { params: Params }) {
       <AppHeader title={recipe.name} />
       <IngredientList ingredients={recipe.ingredients} />
       <RecipeSources book={book} />
-      <AppFooter />
     </>
   );
 }
