@@ -6,7 +6,7 @@ import style from './style.module.css';
 
 export default function Video({ id }: { id: string }) {
   return (
-    <Card title="Video" style={{ margin: '24px 12px' }}>
+    <Card title="Video">
       <YouTube className={style.player} videoId={id} />
     </Card>
   );

@@ -43,3 +43,7 @@ a {
     color-scheme: dark;
   }
 }
+
+svg {
+  vertical-align: text-top;
+}

@@ -12,7 +12,11 @@
     "link": {
       "description": "Link to book website or publisher",
       "type": "string"
+    },
+    "description": {
+      "description": "Description of the book content",
+      "type": "string"
     }
   },
-  "required": ["name", "link"]
+  "required": ["name", "link", "description"]
 }

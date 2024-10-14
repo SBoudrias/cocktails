@@ -12,7 +12,11 @@
     "link": {
       "description": "Link to the channel homepage",
       "type": "string"
+    },
+    "description": {
+      "description": "Description of the channel content",
+      "type": "string"
     }
   },
-  "required": ["name", "link"]
+  "required": ["name", "link", "description"]
 }

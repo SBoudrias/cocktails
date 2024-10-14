@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/youtube-channel.schema.json",
   "name": "Make and Drink",
-  "link": "https://www.youtube.com/@makeanddrink"
+  "link": "https://www.youtube.com/@makeanddrink",
+  "description": "The channel mainly focuses on tropical, exotic, tiki, and rum cocktails through their historical recipes and stories as well as exploring modern adaptations, ingredients, and techniques."
 }
