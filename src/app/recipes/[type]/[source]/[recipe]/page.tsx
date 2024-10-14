@@ -6,6 +6,7 @@ import IngredientList from '@/components/IngredientList';
 import { getBook, getRecipe, getYoutubeChannel } from '@/modules/entities';
 import RecipeSources from '@/components/RecipeSources';
 import { SourceType } from '@/types/Source';
+import Video from '@/components/Video';
 
 type Params = { type: SourceType; source: string; recipe: string };
 
@@ -62,6 +63,11 @@ export default async function RecipePage({ params }: { params: Params }) {
     <>
       <AppHeader title={recipe.name} />
       <IngredientList ingredients={recipe.ingredients} />
+      {recipe.refs.map((ref) => {
+        if (ref.type === 'youtube') {
+          return <Video key={ref.videoId} id={ref.videoId} />;
+        }
+      })}
       <RecipeSources source={source} />
     </>
   );

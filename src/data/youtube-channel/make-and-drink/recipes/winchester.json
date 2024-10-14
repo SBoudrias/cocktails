@@ -77,5 +77,11 @@
         "unit": "oz"
       }
     }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "O0PUAFURZPw"
+    }
   ]
 }

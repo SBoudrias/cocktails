@@ -36,11 +36,12 @@ export async function getRecipe(
     source.slug,
     `recipes/${recipe}.json`,
   );
-  const data = await readJSONFile<Omit<Recipe, 'source' | 'slug'>>(filepath);
+  const data = await readJSONFile<Omit<Recipe, 'source' | 'slug' | 'refs'>>(filepath);
 
   if (!data) return undefined;
 
   return {
+    refs: [],
     ...data,
     slug: recipe,
     source,
