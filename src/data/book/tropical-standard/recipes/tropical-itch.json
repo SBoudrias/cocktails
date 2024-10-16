@@ -69,7 +69,6 @@
     {
       "name": "Saint James blanc",
       "type": "spirit",
-      "categories": ["Lightly-aged agricole rhum", "Agricole rhum"],
       "quantity": {
         "amount": 1,
         "unit": "oz"

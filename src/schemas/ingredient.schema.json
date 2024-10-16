@@ -26,19 +26,7 @@
       "items": {
         "type": "string"
       }
-    },
-    "quantity": {
-      "type": "object",
-      "properties": {
-        "amount": {
-          "type": "number"
-        },
-        "unit": {
-          "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop"]
-        }
-      },
-      "required": ["amount", "unit"]
     }
   },
-  "required": ["name", "type", "quantity"]
+  "required": ["name", "type"]
 }

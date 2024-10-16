@@ -11,7 +11,28 @@
     "ingredients": {
       "type": "array",
       "items": {
-        "$ref": "./ingredient.schema.json"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "./ingredient.schema.json#/properties/type"
+          },
+          "quantity": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number"
+              },
+              "unit": {
+                "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop"]
+              }
+            },
+            "required": ["amount", "unit"]
+          }
+        },
+        "required": ["name", "type", "quantity"]
       },
       "minItems": 1,
       "uniqueItems": true

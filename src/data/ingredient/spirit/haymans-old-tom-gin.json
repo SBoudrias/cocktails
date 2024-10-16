@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Hayman's Old Tom Gin",
+  "type": "spirit",
+  "categories": ["Old Tom Gin", "Gin"]
+}
