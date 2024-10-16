@@ -5,6 +5,7 @@ import './globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import FullscreenHelper from '@/components/FullscreenHelper';
 import AppFooter from '@/components/AppFooter';
+import 'core-js/modules/es.object.group-by.js';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',

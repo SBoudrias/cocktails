@@ -17,6 +17,7 @@
     "@leeoniya/ufuzzy": "^1.0.14",
     "antd-mobile": "^5.37.1",
     "antd-mobile-icons": "^0.3.0",
+    "core-js": "^3.38.1",
     "fast-glob": "^3.3.2",
     "next": "14.2.15",
     "react": "^18",

@@ -38,7 +38,7 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
 
     // No matches found
     return [];
-  }, [haystack, searchTerm]);
+  }, [haystack, recipes, searchTerm]);
 
   let content;
   if (searchMatches.length > 0) {
