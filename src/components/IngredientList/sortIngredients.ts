@@ -1,4 +1,4 @@
-import { Ingredient, IngredientType, Unit } from '@/types/Ingredient';
+import { RecipeIngredient, IngredientType, Unit } from '@/types/Ingredient';
 
 const UNIT_PRIORITIES: Record<Unit, number> = {
   drop: 0,
@@ -34,7 +34,7 @@ const sortCompare = (a: number, b: number) => {
 /**
  * Sorts the ingredients true to the Death & Co's method.
  */
-export default function sortIngredients(ingredients: Ingredient[]) {
+export default function sortIngredients(ingredients: RecipeIngredient[]) {
   // TODO: should convert units in case they're misaligned.
 
   return ingredients.sort((a, b) => {
