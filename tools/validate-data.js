@@ -4,6 +4,9 @@
 import Ajv from 'ajv/dist/2020.js';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import slugify from '@sindresorhus/slugify';
+
+let exitCode = 0;
 
 function fileExists(filepath) {
   return fs.access(filepath).then(
@@ -12,7 +15,7 @@ function fileExists(filepath) {
   );
 }
 
-let exitCode = 0;
+const SCHEMAS = {};
 
 const ajv = new Ajv();
 console.log('╭ 📝 Registering schemas');
@@ -20,6 +23,8 @@ for await (const schemaFile of fs.glob('src/schemas/*.schema.json')) {
   const schema = JSON.parse(await fs.readFile(schemaFile, 'utf-8'));
   console.log('├', schema.$id);
   ajv.addSchema(schema, schema.$id);
+
+  SCHEMAS[path.basename(schema.$id).replace(/\.schema\.json$/, '')] = schema.$id;
 }
 console.log('╰ Done!');
 
@@ -37,6 +42,19 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
 
     exitCode = 1;
     continue;
+  }
+
+  // Enforce filename should be the name of the data.
+  const basename = path.basename(sourceFile, '.json');
+  if (basename !== 'source') {
+    const expectedName = slugify(data.name);
+    if (basename !== expectedName) {
+      const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);
+      console.log(
+        `├ 🔄 Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`,
+      );
+      await fs.rename(sourceFile, newPath);
+    }
   }
 
   const isValid = validate(data);
