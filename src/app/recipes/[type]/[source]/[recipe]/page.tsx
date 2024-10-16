@@ -27,21 +27,22 @@ export async function generateStaticParams(): Promise<Params[]> {
 }
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const source =
-    params.type === 'book'
-      ? await getBook(params.source)
-      : await getYoutubeChannel(params.source);
-  const recipe = await getRecipe(
-    { type: params.type, slug: params.source },
-    params.recipe,
-  );
-  if (!source || !recipe) {
+  try {
+    const source =
+      params.type === 'book'
+        ? await getBook(params.source)
+        : await getYoutubeChannel(params.source);
+    const recipe = await getRecipe(
+      { type: params.type, slug: params.source },
+      params.recipe,
+    );
+
+    return {
+      title: `Cocktail Index | ${recipe.name} from ${source.name}`,
+    };
+  } catch {
     notFound();
   }
-
-  return {
-    title: `Cocktail Index | ${recipe.name} from ${source.name}`,
-  };
 }
 
 export default async function RecipePage({ params }: { params: Params }) {
@@ -54,9 +55,6 @@ export default async function RecipePage({ params }: { params: Params }) {
     { type: params.type, slug: params.source },
     params.recipe,
   );
-  if (!source || !recipe) {
-    notFound();
-  }
 
   return (
     <>

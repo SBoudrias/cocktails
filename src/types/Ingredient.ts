@@ -10,10 +10,14 @@ export type IngredientType =
   | 'other';
 export type Unit = 'oz' | 'ml' | 'dash' | 'tsp' | 'tbsp' | 'drop';
 
-export type Ingredient = {
+export type BaseIngredient = {
   name: string;
+  slug: string;
   type: IngredientType;
   categories?: string[];
+};
+
+export type RecipeIngredient = BaseIngredient & {
   quantity: {
     amount: number;
     unit: Unit;

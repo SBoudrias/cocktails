@@ -1,9 +1,12 @@
 import fs from 'node:fs/promises';
 import { Recipe } from '@/types/Recipe';
 import { SourceType, Book, YoutubeChannel, Source } from '@/types/Source';
+import { BaseIngredient } from '@/types/Ingredient';
 import path from 'node:path';
+import slugify from '@sindresorhus/slugify';
 
 const DATA_ROOT = 'src/data';
+const INGREDIENT_ROOT = 'src/data/ingredient';
 const BOOK_ROOT = 'src/data/book';
 const YOUTUBE_CHANNEL_ROOT = 'src/data/youtube-channel';
 
@@ -23,13 +26,34 @@ async function readJSONFile<T>(filepath: string): Promise<T | undefined> {
   return undefined;
 }
 
+const ingredientCache = new Map<string, BaseIngredient>();
+export async function getIngredient(type: string, slug: string): Promise<BaseIngredient> {
+  const key = `${type}/${slug}`;
+  if (ingredientCache.has(key)) {
+    return ingredientCache.get(key)!;
+  }
+
+  const filepath = path.join(INGREDIENT_ROOT, type, `${slug}.json`);
+  const data = await readJSONFile<Omit<BaseIngredient, 'slug'>>(filepath);
+
+  if (!data) throw new Error(`Ingredient not found: ${filepath}`);
+
+  const ingredient = {
+    ...data,
+    slug,
+  };
+  ingredientCache.set(key, ingredient);
+
+  return ingredient;
+}
+
 export async function getRecipe(
   source: {
     type: SourceType;
     slug: string;
   },
   recipe: string,
-): Promise<Recipe | undefined> {
+): Promise<Recipe> {
   const filepath = path.join(
     DATA_ROOT,
     source.type,
@@ -38,21 +62,29 @@ export async function getRecipe(
   );
   const data = await readJSONFile<Omit<Recipe, 'source' | 'slug' | 'refs'>>(filepath);
 
-  if (!data) return undefined;
+  if (!data) throw new Error(`Recipe not found: ${filepath}`);
 
   return {
     refs: [],
     ...data,
     slug: recipe,
+    ingredients: await Promise.all(
+      data.ingredients.map(async (ingredient) => {
+        return {
+          ...(await getIngredient(ingredient.type, slugify(ingredient.name))),
+          ...ingredient,
+        };
+      }),
+    ),
     source,
   };
 }
 
-export async function getBook(book: string): Promise<Book | undefined> {
+export async function getBook(book: string): Promise<Book> {
   const filepath = path.join(BOOK_ROOT, book, 'source.json');
   const data = await readJSONFile<Omit<Book, 'slug' | 'type'>>(filepath);
 
-  if (!data) return undefined;
+  if (!data) throw new Error(`Book not found: ${filepath}`);
 
   return {
     ...data,
@@ -61,13 +93,11 @@ export async function getBook(book: string): Promise<Book | undefined> {
   };
 }
 
-export async function getYoutubeChannel(
-  slug: string,
-): Promise<YoutubeChannel | undefined> {
+export async function getYoutubeChannel(slug: string): Promise<YoutubeChannel> {
   const filepath = path.join(YOUTUBE_CHANNEL_ROOT, slug, 'source.json');
   const data = await readJSONFile<Omit<YoutubeChannel, 'slug' | 'type'>>(filepath);
 
-  if (!data) return undefined;
+  if (!data) throw new Error(`Youtube channel not found: ${filepath}`);
 
   return {
     ...data,

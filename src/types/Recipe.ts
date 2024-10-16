@@ -1,4 +1,4 @@
-import { Ingredient } from './Ingredient';
+import { RecipeIngredient } from './Ingredient';
 import { SourceType } from './Source';
 
 type Ref = {
@@ -9,7 +9,7 @@ type Ref = {
 export type Recipe = {
   name: string;
   slug: string;
-  ingredients: Ingredient[];
+  ingredients: RecipeIngredient[];
   source: {
     type: SourceType;
     slug: string;
