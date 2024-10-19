@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "check-code": "prettier --check .",
-    "check-data": "tools/validate-data.js",
+    "check-data": "tools/check-data.js",
     "prepare": "husky"
   },
   "dependencies": {

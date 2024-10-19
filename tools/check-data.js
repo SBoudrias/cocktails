@@ -89,6 +89,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
             {
               $schema: '../../../schemas/ingredient.schema.json',
               ...ingredient,
+              quantity: undefined,
             },
             null,
             2,
