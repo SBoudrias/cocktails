@@ -21,7 +21,7 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
   const haystack = useMemo(
     () =>
       recipes.map((recipe) => {
-        return `${recipe.name} ${recipe.ingredients.map((ingredient) => `${ingredient.name} ${ingredient.categories?.join(' ')}`).join(' ')}`;
+        return `${recipe.name} ${recipe.ingredients.map((ingredient) => `${ingredient.name} ${ingredient.categories?.join(' ')}`).join(' ')}`.toLowerCase();
       }),
     [recipes],
   );
@@ -30,7 +30,7 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
     if (searchTerm.trim().length === 0) return [];
 
     const uf = new uFuzzy();
-    const [matchIndexes] = uf.search(haystack, searchTerm, 0, 1e3);
+    const [matchIndexes] = uf.search(haystack, searchTerm.toLowerCase(), 0, 1e3);
 
     if (Array.isArray(matchIndexes) && matchIndexes.length > 0) {
       return matchIndexes.map((index) => recipes[index]);
@@ -57,8 +57,12 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
   } else if (searchTerm.trim().length > 0) {
     content = <ErrorBlock status="empty" />;
   } else {
+    const firstLetterRegExp = /^(the |a )?([a-z])/i;
     const groups = Object.entries(
-      Object.groupBy(recipes, (recipe) => recipe.name[0].toUpperCase()),
+      Object.groupBy(recipes, (recipe) => {
+        const matches = recipe.name.match(firstLetterRegExp) ?? [];
+        return matches[2]?.toUpperCase() ?? '#';
+      }),
     ).sort(([a], [b]) => a.localeCompare(b));
 
     content = (
