@@ -1,10 +1,6 @@
 import { RecipeIngredient } from './Ingredient';
 import { SourceType } from './Source';
-
-type Ref = {
-  type: 'youtube';
-  videoId: string;
-};
+import { Ref } from './Ref';
 
 export type Recipe = {
   name: string;

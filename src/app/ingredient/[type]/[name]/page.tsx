@@ -2,6 +2,7 @@ import fg from 'fast-glob';
 import path from 'node:path';
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
+import IngredientDetails from '@/components/IngredientDetails';
 import { getIngredient } from '@/modules/entities';
 
 type Params = { type: string; name: string };
@@ -35,6 +36,7 @@ export default async function IngredientPage({ params }: { params: Params }) {
   return (
     <>
       <AppHeader title={ingredient.name} />
+      <IngredientDetails ingredient={ingredient} />
     </>
   );
 }

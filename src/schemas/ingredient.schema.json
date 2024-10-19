@@ -21,6 +21,9 @@
         "other"
       ]
     },
+    "description": {
+      "type": "string"
+    },
     "categories": {
       "type": "array",
       "items": {

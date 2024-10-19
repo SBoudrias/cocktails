@@ -1,3 +1,5 @@
+import { Ref } from './Ref';
+
 export type IngredientType =
   | 'spirit'
   | 'juice'
@@ -14,7 +16,9 @@ export type BaseIngredient = {
   name: string;
   slug: string;
   type: IngredientType;
+  description?: string;
   categories?: string[];
+  refs?: Ref[];
 };
 
 export type RecipeIngredient = BaseIngredient & {
