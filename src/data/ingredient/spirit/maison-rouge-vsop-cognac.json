@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Maison Rouge VSOP Cognac",
+  "type": "spirit",
+  "categories": ["cognac", "brandy"]
+}
