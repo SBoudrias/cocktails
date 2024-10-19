@@ -59,7 +59,7 @@ export default async function RecipePage({ params }: { params: Params }) {
   return (
     <>
       <AppHeader title={recipe.name} />
-      <IngredientList ingredients={recipe.ingredients} />
+      <IngredientList recipe={recipe} />
       <RecipeSources source={source} recipe={recipe} />
     </>
   );

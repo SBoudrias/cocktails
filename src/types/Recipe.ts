@@ -6,6 +6,7 @@ export type Recipe = {
   name: string;
   slug: string;
   ingredients: RecipeIngredient[];
+  instructions?: string[];
   source: {
     type: SourceType;
     slug: string;

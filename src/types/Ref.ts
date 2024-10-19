@@ -6,4 +6,5 @@
 export type Ref = {
   type: 'youtube';
   videoId: string;
+  start?: number;
 };

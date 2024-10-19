@@ -37,6 +37,12 @@
       "minItems": 1,
       "uniqueItems": true
     },
+    "instructions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "refs": {
       "type": "array",
       "items": {
@@ -45,12 +51,16 @@
             "type": "object",
             "properties": {
               "type": {
-                "enum": ["youtube"]
+                "const": "youtube"
               },
               "videoId": {
                 "type": "string"
+              },
+              "start": {
+                "type": "number"
               }
-            }
+            },
+            "required": ["type", "videoId"]
           }
         ]
       }

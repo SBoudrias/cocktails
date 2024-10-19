@@ -35,10 +35,15 @@
       }
     }
   ],
+  "instructions": [
+    "Shake ingredients excluding the Sambuca",
+    "Set Sambuca aflame, then drop into glass"
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "i67-17-CZCQ"
+      "videoId": "i67-17-CZCQ",
+      "start": 125
     }
   ]
 }

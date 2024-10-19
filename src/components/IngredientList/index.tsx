@@ -6,6 +6,7 @@ import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
 import Quantity from '@/components/Quantity';
 import { useRouter } from 'next/navigation';
+import { Recipe } from '@/types/Recipe';
 
 function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
   const router = useRouter();
@@ -30,16 +31,23 @@ function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
   );
 }
 
-export default function IngredientList({
-  ingredients,
-}: {
-  ingredients: RecipeIngredient[];
-}) {
+export default function IngredientList({ recipe }: { recipe: Recipe }) {
   return (
-    <List header="Ingredients">
-      {sortIngredients(ingredients).map((ingredient) => (
-        <IngredientLine key={ingredient.name} ingredient={ingredient} />
-      ))}
-    </List>
+    <>
+      <List header="Ingredients">
+        {sortIngredients(recipe.ingredients).map((ingredient) => (
+          <IngredientLine key={ingredient.name} ingredient={ingredient} />
+        ))}
+      </List>
+      {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
+        <List header="Instructions">
+          {recipe.instructions.map((instruction, index) => (
+            <List.Item key={index}>
+              {index + 1}. {instruction}
+            </List.Item>
+          ))}
+        </List>
+      )}
+    </>
   );
 }

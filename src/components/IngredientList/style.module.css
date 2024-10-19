@@ -1,8 +1,10 @@
 .name {
   font-size: 1em;
+  text-transform: capitalize;
 }
 
 .category {
   font-size: 0.8em;
   color: var(--adm-color-weak);
+  text-transform: capitalize;
 }

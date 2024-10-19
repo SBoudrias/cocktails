@@ -60,7 +60,13 @@ export default function RecipeSources({
     <Space direction="vertical" style={{ '--gap': '12px', margin: '24px 12px' }}>
       {recipe.refs.map((ref) => {
         if (ref.type === 'youtube') {
-          return <Video key={ref.videoId} id={ref.videoId} />;
+          return (
+            <Video
+              key={ref.videoId}
+              id={ref.videoId}
+              opts={{ playerVars: { start: ref.start } }}
+            />
+          );
         }
       })}
       {attribution}
