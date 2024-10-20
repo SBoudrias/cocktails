@@ -10,6 +10,10 @@ const INGREDIENT_ROOT = 'src/data/ingredient';
 const BOOK_ROOT = 'src/data/book';
 const YOUTUBE_CHANNEL_ROOT = 'src/data/youtube-channel';
 
+function getRecipeSourcePath(root: string, slug: string): string {
+  return path.join(root, slug, '_source.json');
+}
+
 async function fileExists(filepath: string): Promise<boolean> {
   return fs.access(filepath).then(
     () => true,
@@ -81,7 +85,7 @@ export async function getRecipe(
 }
 
 export async function getBook(book: string): Promise<Book> {
-  const filepath = path.join(BOOK_ROOT, book, 'source.json');
+  const filepath = getRecipeSourcePath(BOOK_ROOT, book);
   const data = await readJSONFile<Omit<Book, 'slug' | 'type'>>(filepath);
 
   if (!data) throw new Error(`Book not found: ${filepath}`);
@@ -94,7 +98,7 @@ export async function getBook(book: string): Promise<Book> {
 }
 
 export async function getYoutubeChannel(slug: string): Promise<YoutubeChannel> {
-  const filepath = path.join(YOUTUBE_CHANNEL_ROOT, slug, 'source.json');
+  const filepath = getRecipeSourcePath(YOUTUBE_CHANNEL_ROOT, slug);
   const data = await readJSONFile<Omit<YoutubeChannel, 'slug' | 'type'>>(filepath);
 
   if (!data) throw new Error(`Youtube channel not found: ${filepath}`);

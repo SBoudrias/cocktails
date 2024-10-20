@@ -59,7 +59,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   }
 
   // Enforce filename should be the name of the data.
-  if (basename !== 'source') {
+  if (basename !== '_source') {
     const expectedName = slugify(data.name);
     if (basename !== expectedName) {
       const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);
