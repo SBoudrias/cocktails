@@ -6,7 +6,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 
-let exitCode = 0;
+const ROOT = path.join(import.meta.dirname, '..');
+const APP_ROOT = path.join(ROOT, 'src');
 
 function fileExists(filepath) {
   return fs.access(filepath).then(
@@ -15,7 +16,17 @@ function fileExists(filepath) {
   );
 }
 
-const SCHEMAS = {};
+let exitCode = 0;
+function fail(message) {
+  console.error(`├ ❌ ${message}`);
+  exitCode = 1;
+}
+function pass(message) {
+  console.log(`├ ✅ ${message}`);
+}
+function change(message) {
+  console.log(`├ 🔄 ${message}`);
+}
 
 const ajv = new Ajv();
 console.log('╭ 📝 Registering schemas');
@@ -23,39 +34,38 @@ for await (const schemaFile of fs.glob('src/schemas/*.schema.json')) {
   const schema = JSON.parse(await fs.readFile(schemaFile, 'utf-8'));
   console.log('├', schema.$id);
   ajv.addSchema(schema, schema.$id);
-
-  SCHEMAS[path.basename(schema.$id).replace(/\.schema\.json$/, '')] = schema.$id;
 }
 console.log('╰ Done!\n');
 
 console.log('╭ 🔍 Validating data files...');
 for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   const data = JSON.parse(await fs.readFile(sourceFile, 'utf-8'));
-  const validate = data.$schema
-    ? ajv.getSchema(`file:///schemas/${path.basename(data.$schema)}`)
-    : undefined;
-
-  if (!validate) {
-    console.error(
-      `├ ❌ Schema not found for ${sourceFile} at ${data.$schema ?? 'undefined'}`,
-    );
-
-    exitCode = 1;
+  if (!data.$schema) {
+    fail(`$schema not defined in ${sourceFile}`);
     continue;
   }
 
-  const dirname = path.basename(path.dirname(sourceFile));
+  const schemaPath = path.relative(
+    APP_ROOT,
+    path.resolve(path.dirname(sourceFile), data.$schema),
+  );
+  const validate = ajv.getSchema(`file:///${schemaPath}`);
+
+  if (!validate) {
+    fail(`Schema not found for ${sourceFile} at ${data.$schema ?? 'undefined'}`);
+    continue;
+  }
+
+  const dirname = path.basename(path.dirname(path.dirname(path.dirname(sourceFile))));
   const basename = path.basename(sourceFile, '.json');
 
   const isValid = validate(data);
 
   if (isValid) {
-    console.log(`├ ✅ Validation passed for ${sourceFile}`);
+    pass(`Validation passed for ${sourceFile}`);
   } else {
-    console.error(`├ ❌ Validation failed for ${sourceFile}`);
+    fail(`Validation failed for ${sourceFile}`);
     console.error(validate.errors);
-
-    exitCode = 1;
   }
 
   // Enforce filename should be the name of the data.
@@ -63,14 +73,12 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     const expectedName = slugify(data.name);
     if (basename !== expectedName) {
       const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);
-      console.log(
-        `├ 🔄 Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`,
-      );
+      change(`Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`);
       await fs.rename(sourceFile, newPath);
     }
   }
 
-  if (dirname === 'recipes') {
+  if (basename !== '_source' && dirname === 'recipes') {
     // Make sure there's an ingredient file per recipe
     for (const ingredient of data.ingredients) {
       const ingredientPath = path.join(
@@ -79,21 +87,24 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
         `${slugify(ingredient.name)}.json`,
       );
       if (!(await fileExists(ingredientPath))) {
-        console.error(`├ ❌ Ingredient file not found ${ingredientPath}`);
-        exitCode = 1;
+        fail(`Ingredient file not found ${ingredientPath}`);
 
         await fs.mkdir(path.dirname(ingredientPath), { recursive: true });
+
         await fs.writeFile(
           ingredientPath,
           JSON.stringify(
             {
-              $schema: '../../../schemas/ingredient.schema.json',
+              $schema: path.relative(
+                path.dirname(ingredientPath),
+                path.resolve(APP_ROOT, 'schemas/ingredient.schema.json'),
+              ),
               ...ingredient,
               quantity: undefined,
             },
             null,
             2,
-          ),
+          ) + '\n',
         );
       }
     }
