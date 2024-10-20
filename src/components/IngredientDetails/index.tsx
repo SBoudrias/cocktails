@@ -10,7 +10,7 @@ export default function IngredientDetails({
 }) {
   const listFormatter = new Intl.ListFormat('en', {
     style: 'long',
-    type: 'conjunction',
+    type: 'disjunction',
   });
 
   return (
@@ -21,10 +21,12 @@ export default function IngredientDetails({
           <List.Item>
             Substitute with another <b>{ingredient.categories[0]}</b>.
           </List.Item>
-          <List.Item>
-            If unavailable, you can try substituting with{' '}
-            {listFormatter.format(ingredient.categories.slice(1))}.
-          </List.Item>
+          {ingredient.categories.length > 1 && (
+            <List.Item>
+              If unavailable, you can try substituting with{' '}
+              {listFormatter.format(ingredient.categories.slice(1))}.
+            </List.Item>
+          )}
         </List>
       )}
     </>
