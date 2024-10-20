@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Tropical Itch",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
       "name": "Saline",

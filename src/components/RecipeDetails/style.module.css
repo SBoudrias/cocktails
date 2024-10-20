@@ -1,0 +1,21 @@
+.name {
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+.category {
+  font-size: 0.8em;
+  color: var(--adm-color-weak);
+  text-transform: capitalize;
+}
+
+.badge {
+  border-radius: 50%;
+  border: 1px solid var(--adm-color-primary);
+  width: 70px;
+  height: 70px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+}

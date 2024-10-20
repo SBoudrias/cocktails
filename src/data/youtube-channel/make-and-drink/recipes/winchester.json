@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Winchester",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
       "name": "Angostura bitters",

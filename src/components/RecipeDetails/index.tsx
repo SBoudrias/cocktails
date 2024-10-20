@@ -1,6 +1,6 @@
 'use client';
 
-import { List, Space } from 'antd-mobile';
+import { List, Space, Grid } from 'antd-mobile';
 import { RecipeIngredient } from '@/types/Ingredient';
 import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
@@ -31,9 +31,20 @@ function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
   );
 }
 
-export default function IngredientList({ recipe }: { recipe: Recipe }) {
+export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
   return (
     <>
+      <Grid columns={3} gap={12} style={{ padding: '0 12px', textAlign: 'center' }}>
+        <Grid.Item>
+          <div className={styles.badge}>{recipe.preparation}</div>
+        </Grid.Item>
+        <Grid.Item>
+          <div className={styles.badge}>{recipe.served_on}</div>
+        </Grid.Item>
+        <Grid.Item>
+          <div className={styles.badge}>{recipe.glassware}</div>
+        </Grid.Item>
+      </Grid>
       <List header="Ingredients">
         {sortIngredients(recipe.ingredients).map((ingredient) => (
           <IngredientLine key={ingredient.name} ingredient={ingredient} />

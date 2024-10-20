@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "The Wicked Word",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
   "ingredients": [
     {
       "name": "Maison Rouge VSOP Cognac",

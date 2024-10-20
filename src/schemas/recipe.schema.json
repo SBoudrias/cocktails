@@ -37,6 +37,30 @@
       "minItems": 1,
       "uniqueItems": true
     },
+    "preparation": {
+      "enum": ["shaken", "stirred", "blended", "flash blended", "swizzled"]
+    },
+    "served_on": {
+      "enum": ["big rock", "up", "crushed ice", "blended", "ice cubes"]
+    },
+    "glassware": {
+      "enum": [
+        "rocks",
+        "collins",
+        "highball",
+        "snifter",
+        "coupe",
+        "martini",
+        "nick & nora",
+        "irish",
+        "hurricane",
+        "julep",
+        "mule",
+        "tiki",
+        "punch",
+        "flute"
+      ]
+    },
     "instructions": {
       "type": "array",
       "items": {
@@ -66,5 +90,5 @@
       }
     }
   },
-  "required": ["name", "ingredients"]
+  "required": ["name", "ingredients", "preparation", "served_on", "glassware"]
 }
