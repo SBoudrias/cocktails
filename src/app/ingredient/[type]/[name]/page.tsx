@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
 import IngredientDetails from '@/components/IngredientDetails';
-import { getIngredient, getIngredientPageParams } from '@/modules/entities';
+import { getIngredient } from '@/modules/entities';
+import { getIngredientPageParams } from '@/modules/params';
 
 type Params = { type: string; name: string };
 

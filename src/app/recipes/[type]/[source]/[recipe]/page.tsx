@@ -1,12 +1,8 @@
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
 import RecipeDetails from '@/components/RecipeDetails';
-import {
-  getRecipePageParams,
-  getBook,
-  getRecipe,
-  getYoutubeChannel,
-} from '@/modules/entities';
+import { getBook, getRecipe, getYoutubeChannel } from '@/modules/entities';
+import { getRecipePageParams } from '@/modules/params';
 import RecipeSources from '@/components/RecipeSources';
 import { SourceType } from '@/types/Source';
 

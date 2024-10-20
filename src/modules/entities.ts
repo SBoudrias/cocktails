@@ -4,12 +4,12 @@ import { SourceType, Book, YoutubeChannel, Source } from '@/types/Source';
 import { BaseIngredient } from '@/types/Ingredient';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
-
-const DATA_ROOT = 'src/data';
-const INGREDIENT_ROOT = path.join(DATA_ROOT, 'ingredients');
-const RECIPE_ROOT = path.join(DATA_ROOT, 'recipes');
-const BOOK_ROOT = path.join(RECIPE_ROOT, 'book');
-const YOUTUBE_CHANNEL_ROOT = path.join(RECIPE_ROOT, 'youtube-channel');
+import {
+  INGREDIENT_ROOT,
+  RECIPE_ROOT,
+  BOOK_ROOT,
+  YOUTUBE_CHANNEL_ROOT,
+} from './constants';
 
 function getRecipeSourcePath(root: string, slug: string): string {
   return path.join(root, slug, '_source.json');
@@ -148,51 +148,4 @@ export async function getAllData(): Promise<{
   }
 
   return { sources, recipes };
-}
-
-export async function getRecipePageParams(): Promise<
-  {
-    type: SourceType;
-    source: string;
-    recipe: string;
-  }[]
-> {
-  const params = [];
-
-  for await (const type of await fs.readdir(RECIPE_ROOT)) {
-    for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, type))) {
-      for await (const dataFilePath of await fs.readdir(
-        path.join(RECIPE_ROOT, type, sourceSlug),
-      )) {
-        if (dataFilePath === '_source.json') continue;
-
-        const recipeSlug = path.basename(dataFilePath, '.json');
-        params.push({
-          type: type as SourceType,
-          source: sourceSlug,
-          recipe: recipeSlug,
-        });
-      }
-    }
-  }
-
-  return params;
-}
-
-export async function getIngredientPageParams(): Promise<
-  { type: string; name: string }[]
-> {
-  const params = [];
-
-  for await (const type of await fs.readdir(INGREDIENT_ROOT)) {
-    for await (const dataFilePath of await fs.readdir(path.join(INGREDIENT_ROOT, type))) {
-      const ingredientSlug = path.basename(dataFilePath, '.json');
-      params.push({
-        type: type as SourceType,
-        name: ingredientSlug,
-      });
-    }
-  }
-
-  return params;
 }
