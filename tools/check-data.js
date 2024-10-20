@@ -74,7 +74,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     // Make sure there's an ingredient file per recipe
     for (const ingredient of data.ingredients) {
       const ingredientPath = path.join(
-        'src/data/ingredient',
+        'src/data/ingredients',
         ingredient.type,
         `${slugify(ingredient.name)}.json`,
       );

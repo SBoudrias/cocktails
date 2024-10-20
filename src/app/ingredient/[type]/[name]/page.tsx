@@ -8,7 +8,7 @@ import { getIngredient } from '@/modules/entities';
 type Params = { type: string; name: string };
 
 export async function generateStaticParams(): Promise<Params[]> {
-  return fg.sync('src/data/ingredient/*/*.json').map((entry): Params => {
+  return fg.sync('src/data/ingredients/*/*.json').map((entry): Params => {
     const parts = entry.split('/');
     return { type: parts[3], name: path.basename(parts[4], '.json') };
   });

@@ -6,9 +6,10 @@ import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 
 const DATA_ROOT = 'src/data';
-const INGREDIENT_ROOT = 'src/data/ingredient';
-const BOOK_ROOT = 'src/data/book';
-const YOUTUBE_CHANNEL_ROOT = 'src/data/youtube-channel';
+const INGREDIENT_ROOT = path.join(DATA_ROOT, 'ingredients');
+const RECIPE_ROOT = path.join(DATA_ROOT, 'recipes');
+const BOOK_ROOT = path.join(RECIPE_ROOT, 'book');
+const YOUTUBE_CHANNEL_ROOT = path.join(RECIPE_ROOT, 'youtube-channel');
 
 function getRecipeSourcePath(root: string, slug: string): string {
   return path.join(root, slug, '_source.json');
@@ -58,12 +59,7 @@ export async function getRecipe(
   },
   recipe: string,
 ): Promise<Recipe> {
-  const filepath = path.join(
-    DATA_ROOT,
-    source.type,
-    source.slug,
-    `recipes/${recipe}.json`,
-  );
+  const filepath = path.join(RECIPE_ROOT, source.type, source.slug, `${recipe}.json`);
   const data = await readJSONFile<Omit<Recipe, 'source' | 'slug' | 'refs'>>(filepath);
 
   if (!data) throw new Error(`Recipe not found: ${filepath}`);
@@ -119,12 +115,11 @@ export async function getAllData(): Promise<{
 
   for await (const slug of await fs.readdir(BOOK_ROOT)) {
     const book = await getBook(slug);
-    if (!book) continue;
     sources.push(book);
 
-    for await (const recipeSlug of await fs.readdir(
-      path.join(BOOK_ROOT, slug, 'recipes'),
-    )) {
+    for await (const recipeSlug of await fs.readdir(path.join(BOOK_ROOT, slug))) {
+      if (recipeSlug === '_source.json') continue;
+
       const recipe = await getRecipe(
         { type: 'book', slug },
         path.basename(recipeSlug, '.json'),
@@ -136,12 +131,13 @@ export async function getAllData(): Promise<{
 
   for await (const slug of await fs.readdir(YOUTUBE_CHANNEL_ROOT)) {
     const channel = await getYoutubeChannel(slug);
-    if (!channel) continue;
     sources.push(channel);
 
     for await (const recipeSlug of await fs.readdir(
-      path.join(YOUTUBE_CHANNEL_ROOT, slug, 'recipes'),
+      path.join(YOUTUBE_CHANNEL_ROOT, slug),
     )) {
+      if (recipeSlug === '_source.json') continue;
+
       const recipe = await getRecipe(
         { type: 'youtube-channel', slug },
         path.basename(recipeSlug, '.json'),
@@ -151,6 +147,34 @@ export async function getAllData(): Promise<{
     }
   }
 
-  console.log(sources, recipes);
   return { sources, recipes };
 }
+
+export const getRecipePageParams = async (): Promise<
+  {
+    type: SourceType;
+    source: string;
+    recipe: string;
+  }[]
+> => {
+  const params = [];
+
+  for await (const type of await fs.readdir(RECIPE_ROOT)) {
+    for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, type))) {
+      for await (const dataFilePath of await fs.readdir(
+        path.join(RECIPE_ROOT, type, sourceSlug),
+      )) {
+        if (dataFilePath === '_source.json') continue;
+
+        const recipeSlug = path.basename(dataFilePath, '.json');
+        params.push({
+          type: type as SourceType,
+          source: sourceSlug,
+          recipe: recipeSlug,
+        });
+      }
+    }
+  }
+
+  return params;
+};
