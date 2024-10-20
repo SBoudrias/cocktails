@@ -150,13 +150,13 @@ export async function getAllData(): Promise<{
   return { sources, recipes };
 }
 
-export const getRecipePageParams = async (): Promise<
+export async function getRecipePageParams(): Promise<
   {
     type: SourceType;
     source: string;
     recipe: string;
   }[]
-> => {
+> {
   const params = [];
 
   for await (const type of await fs.readdir(RECIPE_ROOT)) {
@@ -177,4 +177,22 @@ export const getRecipePageParams = async (): Promise<
   }
 
   return params;
-};
+}
+
+export async function getIngredientPageParams(): Promise<
+  { type: string; name: string }[]
+> {
+  const params = [];
+
+  for await (const type of await fs.readdir(INGREDIENT_ROOT)) {
+    for await (const dataFilePath of await fs.readdir(path.join(INGREDIENT_ROOT, type))) {
+      const ingredientSlug = path.basename(dataFilePath, '.json');
+      params.push({
+        type: type as SourceType,
+        name: ingredientSlug,
+      });
+    }
+  }
+
+  return params;
+}

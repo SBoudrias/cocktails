@@ -1,17 +1,12 @@
-import fg from 'fast-glob';
-import path from 'node:path';
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
 import IngredientDetails from '@/components/IngredientDetails';
-import { getIngredient } from '@/modules/entities';
+import { getIngredient, getIngredientPageParams } from '@/modules/entities';
 
 type Params = { type: string; name: string };
 
 export async function generateStaticParams(): Promise<Params[]> {
-  return fg.sync('src/data/ingredients/*/*.json').map((entry): Params => {
-    const parts = entry.split('/');
-    return { type: parts[3], name: path.basename(parts[4], '.json') };
-  });
+  return getIngredientPageParams();
 }
 
 export async function generateMetadata({ params }: { params: Params }) {
