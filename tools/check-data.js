@@ -16,6 +16,11 @@ function fileExists(filepath) {
   );
 }
 
+async function writeJSON(filepath, data) {
+  await fs.mkdir(path.dirname(filepath), { recursive: true });
+  await fs.writeFile(filepath, JSON.stringify(data, null, 2) + '\n');
+}
+
 let exitCode = 0;
 function fail(message) {
   console.error(`├ ❌ ${message}`);
@@ -64,9 +69,8 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     console.error(validate.errors);
   }
 
-  const basename = path.basename(sourceFile, '.json');
-
   // Enforce filename should be the name of the data.
+  const basename = path.basename(sourceFile, '.json');
   if (basename !== '_source') {
     const expectedName = slugify(data.name);
     if (basename !== expectedName) {
@@ -76,8 +80,8 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     }
   }
 
+  // Make sure all ingredients of recipe have their metadata files
   if (schemaPath === 'schemas/recipe.schema.json') {
-    // Make sure all ingredients of recipe have their metadata files
     for (const ingredient of data.ingredients) {
       const ingredientPath = path.join(
         'src/data/ingredients',
@@ -87,50 +91,32 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
       if (!(await fileExists(ingredientPath))) {
         fail(`Ingredient file not found ${ingredientPath}`);
 
-        await fs.mkdir(path.dirname(ingredientPath), { recursive: true });
-
-        await fs.writeFile(
-          ingredientPath,
-          JSON.stringify(
-            {
-              $schema: path.relative(
-                path.dirname(ingredientPath),
-                path.resolve(APP_ROOT, 'schemas/ingredient.schema.json'),
-              ),
-              ...ingredient,
-              quantity: undefined,
-            },
-            null,
-            2,
-          ) + '\n',
-        );
+        await writeJSON(ingredientPath, {
+          $schema: path.relative(
+            path.dirname(ingredientPath),
+            path.resolve(APP_ROOT, 'schemas/ingredient.schema.json'),
+          ),
+          ...ingredient,
+          quantity: undefined,
+        });
       }
     }
   }
 
+  // Make sure there's all categories have their metadata files
   if (schemaPath === 'schemas/ingredient.schema.json') {
-    // Make sure there's all categories have their metadata files
     for (const category of data.categories ?? []) {
       const categoryPath = path.join('src/data/categories', `${slugify(category)}.json`);
       if (!(await fileExists(categoryPath))) {
         fail(`Category file not found ${categoryPath}`);
 
-        await fs.mkdir(path.dirname(categoryPath), { recursive: true });
-
-        await fs.writeFile(
-          categoryPath,
-          JSON.stringify(
-            {
-              $schema: path.relative(
-                path.dirname(categoryPath),
-                path.resolve(APP_ROOT, 'schemas/category.schema.json'),
-              ),
-              name: category,
-            },
-            null,
-            2,
-          ) + '\n',
-        );
+        await writeJSON(categoryPath, {
+          $schema: path.relative(
+            path.dirname(categoryPath),
+            path.resolve(APP_ROOT, 'schemas/category.schema.json'),
+          ),
+          name: category,
+        });
       }
     }
   }
