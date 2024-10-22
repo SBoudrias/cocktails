@@ -5,6 +5,7 @@
   "description": "A book in the catalog",
   "type": "object",
   "properties": {
+    "$schema": { "type": "string" },
     "name": {
       "description": "The title of the book",
       "type": "string"
@@ -18,5 +19,6 @@
       "type": "string"
     }
   },
-  "required": ["name", "link", "description"]
+  "required": ["name", "link", "description"],
+  "additionalProperties": false
 }

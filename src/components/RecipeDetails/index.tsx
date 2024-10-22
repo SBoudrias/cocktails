@@ -16,6 +16,12 @@ function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
     const label = ingredient.categories[0]!;
     category = <div className={styles.category}>{label}</div>;
   }
+
+  let brix;
+  if ('brix' in ingredient) {
+    brix = <div className={styles.category}>{ingredient.brix} Brix</div>;
+  }
+
   return (
     <List.Item
       onClick={() => router.push(`/ingredient/${ingredient.type}/${ingredient.slug}`)}
@@ -25,6 +31,7 @@ function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
         <div>
           <div className={styles.name}>{ingredient.name}</div>
           {category}
+          {brix}
         </div>
       </Space>
     </List.Item>

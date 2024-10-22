@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Falernum",
+      "name": "Falernum (Tropical Standard)",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
@@ -56,6 +56,7 @@
     {
       "name": "Cassia Cinnamon Bark Syrup",
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

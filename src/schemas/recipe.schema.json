@@ -5,34 +5,54 @@
   "description": "A cocktail recipe",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string"
-    },
+    "$schema": { "type": "string" },
+    "name": { "type": "string" },
     "ingredients": {
       "type": "array",
       "items": {
         "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "./ingredient.schema.json#/properties/type"
-          },
-          "quantity": {
+        "oneOf": [
+          {
             "type": "object",
             "properties": {
-              "amount": {
-                "type": "number"
-              },
-              "unit": {
-                "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop"]
+              "name": { "type": "string" },
+              "type": { "const": "syrup" },
+              "brix": { "type": "number" },
+              "quantity": {
+                "type": "object",
+                "properties": {
+                  "amount": { "type": "number" },
+                  "unit": { "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop"] }
+                },
+                "required": ["amount", "unit"],
+                "additionalProperties": false
               }
             },
-            "required": ["amount", "unit"]
+            "required": ["name", "type", "brix", "quantity"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "type": {
+                "$ref": "./ingredient.schema.json#/properties/type",
+                "not": { "const": "syrup" }
+              },
+              "quantity": {
+                "type": "object",
+                "properties": {
+                  "amount": { "type": "number" },
+                  "unit": { "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop"] }
+                },
+                "required": ["amount", "unit"],
+                "additionalProperties": false
+              }
+            },
+            "required": ["name", "type", "quantity"],
+            "additionalProperties": false
           }
-        },
-        "required": ["name", "type", "quantity"]
+        ]
       },
       "minItems": 1,
       "uniqueItems": true
@@ -74,21 +94,17 @@
           {
             "type": "object",
             "properties": {
-              "type": {
-                "const": "youtube"
-              },
-              "videoId": {
-                "type": "string"
-              },
-              "start": {
-                "type": "number"
-              }
+              "type": { "const": "youtube" },
+              "videoId": { "type": "string" },
+              "start": { "type": "number" }
             },
-            "required": ["type", "videoId"]
+            "required": ["type", "videoId"],
+            "additionalProperties": false
           }
         ]
       }
     }
   },
-  "required": ["name", "ingredients", "preparation", "served_on", "glassware"]
+  "required": ["name", "ingredients", "preparation", "served_on", "glassware"],
+  "additionalProperties": false
 }

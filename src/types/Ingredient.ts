@@ -16,6 +16,7 @@ export type BaseIngredient = {
   name: string;
   slug: string;
   type: IngredientType;
+  brix?: number;
   description?: string;
   categories?: string[];
   refs?: Ref[];

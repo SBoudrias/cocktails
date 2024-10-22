@@ -5,9 +5,8 @@
   "description": "A single ingredient in a recipe",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string"
-    },
+    "$schema": { "type": "string" },
+    "name": { "type": "string" },
     "type": {
       "enum": [
         "spirit",
@@ -21,15 +20,12 @@
         "other"
       ]
     },
-    "description": {
-      "type": "string"
-    },
+    "description": { "type": "string" },
     "categories": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string" }
     }
   },
-  "required": ["name", "type"]
+  "required": ["name", "type"],
+  "additionalProperties": false
 }

@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Cassia Cinnamon Bark Syrup",
-  "type": "syrup"
+  "type": "syrup",
+  "categories": ["Cinnamon syrup"]
 }
