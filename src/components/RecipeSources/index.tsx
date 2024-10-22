@@ -31,6 +31,7 @@ export default function RecipeSources({
               />
             </a>
           }
+          style={{ margin: 12 }}
         >
           {source.description}
         </Card>
@@ -49,6 +50,7 @@ export default function RecipeSources({
               <FiExternalLink style={{ fontSize: '18px' }} title="View on Youtube" />
             </a>
           }
+          style={{ margin: 12 }}
         >
           {source.description}
         </Card>
@@ -57,7 +59,7 @@ export default function RecipeSources({
   }
 
   return (
-    <Space direction="vertical" style={{ '--gap': '12px', margin: '24px 12px' }}>
+    <>
       {recipe.refs.map((ref) => {
         if (ref.type === 'youtube') {
           return (
@@ -70,6 +72,6 @@ export default function RecipeSources({
         }
       })}
       {attribution}
-    </Space>
+    </>
   );
 }

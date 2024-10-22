@@ -17,7 +17,7 @@ function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
     Array.isArray(ingredient.categories) &&
     ingredient.categories[0] != null
   ) {
-    const label = ingredient.categories[0]!;
+    const label = ingredient.categories[0]!.name;
     category = <div className={styles.category}>{label}</div>;
   }
 

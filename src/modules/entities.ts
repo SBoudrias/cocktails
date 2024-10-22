@@ -2,10 +2,12 @@ import fs from 'node:fs/promises';
 import { Recipe } from '@/types/Recipe';
 import { SourceType, Book, YoutubeChannel, Source } from '@/types/Source';
 import { BaseIngredient } from '@/types/Ingredient';
+import { Category } from '@/types/Category';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import {
   INGREDIENT_ROOT,
+  CATEGORY_ROOT,
   RECIPE_ROOT,
   BOOK_ROOT,
   YOUTUBE_CHANNEL_ROOT,
@@ -39,13 +41,20 @@ export async function getIngredient(type: string, slug: string): Promise<BaseIng
   }
 
   const filepath = path.join(INGREDIENT_ROOT, type, `${slug}.json`);
-  const data = await readJSONFile<Omit<BaseIngredient, 'slug'>>(filepath);
+  const data = await readJSONFile<
+    Omit<BaseIngredient, 'slug' | 'categories'> & { categories?: string[] }
+  >(filepath);
 
   if (!data) throw new Error(`Ingredient not found: ${filepath}`);
+
+  const categories = await Promise.all(
+    (data.categories ?? []).map((category) => getCategory(slugify(category))),
+  );
 
   const ingredient = {
     ...data,
     slug,
+    categories,
   };
   ingredientCache.set(key, ingredient);
 
@@ -77,6 +86,18 @@ export async function getRecipe(
       }),
     ),
     source,
+  };
+}
+
+export async function getCategory(category: string): Promise<Category> {
+  const filepath = path.join(CATEGORY_ROOT, `${category}.json`);
+  const data = await readJSONFile<Omit<Category, 'slug'>>(filepath);
+
+  if (!data) throw new Error(`Category not found: ${filepath}`);
+
+  return {
+    ...data,
+    slug: category,
   };
 }
 

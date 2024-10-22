@@ -12,7 +12,7 @@ export default function Video({
   opts?: React.ComponentProps<typeof YouTube>['opts'];
 }) {
   return (
-    <Card title="Video">
+    <Card title="Video" style={{ margin: 12 }}>
       <YouTube className={style.player} videoId={id} opts={opts} />
     </Card>
   );

@@ -1,3 +1,4 @@
+import { Category } from './Category';
 import { Ref } from './Ref';
 
 export type IngredientType =
@@ -18,7 +19,7 @@ export type BaseIngredient = {
   type: IngredientType;
   brix?: number;
   description?: string;
-  categories?: string[];
+  categories: Category[];
   refs?: Ref[];
 };
 
