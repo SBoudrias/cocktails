@@ -2,7 +2,7 @@
 
 import { Recipe } from '@/types/Recipe';
 import { Source } from '@/types/Source';
-import { Card, Space } from 'antd-mobile';
+import { Card } from 'antd-mobile';
 import { FiBook, FiYoutube, FiExternalLink } from 'react-icons/fi';
 import Video from '@/components/Video';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { BaseIngredient } from '@/types/Ingredient';
-import { Card, List, Space } from 'antd-mobile';
+import { Card, List } from 'antd-mobile';
 import Video from '@/components/Video';
 
 export default function IngredientDetails({
