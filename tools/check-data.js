@@ -56,17 +56,15 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     continue;
   }
 
-  const dirname = path.basename(path.dirname(path.dirname(path.dirname(sourceFile))));
-  const basename = path.basename(sourceFile, '.json');
-
   const isValid = validate(data);
-
   if (isValid) {
     pass(`Validation passed for ${sourceFile}`);
   } else {
     fail(`Validation failed for ${sourceFile}`);
     console.error(validate.errors);
   }
+
+  const basename = path.basename(sourceFile, '.json');
 
   // Enforce filename should be the name of the data.
   if (basename !== '_source') {
@@ -78,8 +76,8 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     }
   }
 
-  if (basename !== '_source' && dirname === 'recipes') {
-    // Make sure there's an ingredient file per recipe
+  if (schemaPath === 'schemas/recipe.schema.json') {
+    // Make sure all ingredients of recipe have their metadata files
     for (const ingredient of data.ingredients) {
       const ingredientPath = path.join(
         'src/data/ingredients',
@@ -101,6 +99,33 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
               ),
               ...ingredient,
               quantity: undefined,
+            },
+            null,
+            2,
+          ) + '\n',
+        );
+      }
+    }
+  }
+
+  if (schemaPath === 'schemas/ingredient.schema.json') {
+    // Make sure there's all categories have their metadata files
+    for (const category of data.categories ?? []) {
+      const categoryPath = path.join('src/data/categories', `${slugify(category)}.json`);
+      if (!(await fileExists(categoryPath))) {
+        fail(`Category file not found ${categoryPath}`);
+
+        await fs.mkdir(path.dirname(categoryPath), { recursive: true });
+
+        await fs.writeFile(
+          categoryPath,
+          JSON.stringify(
+            {
+              $schema: path.relative(
+                path.dirname(categoryPath),
+                path.resolve(APP_ROOT, 'schemas/category.schema.json'),
+              ),
+              name: category,
             },
             null,
             2,
