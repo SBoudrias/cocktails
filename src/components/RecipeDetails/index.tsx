@@ -12,7 +12,11 @@ function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
   const router = useRouter();
 
   let category;
-  if (Array.isArray(ingredient.categories) && ingredient.categories[0] != null) {
+  if (
+    ingredient.type !== 'syrup' &&
+    Array.isArray(ingredient.categories) &&
+    ingredient.categories[0] != null
+  ) {
     const label = ingredient.categories[0]!;
     category = <div className={styles.category}>{label}</div>;
   }
