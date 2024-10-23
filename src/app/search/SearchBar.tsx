@@ -33,7 +33,9 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
     const [matchIndexes] = uf.search(haystack, searchTerm.toLowerCase(), 0, 1e3);
 
     if (Array.isArray(matchIndexes) && matchIndexes.length > 0) {
-      return matchIndexes.map((index) => recipes[index]);
+      return matchIndexes
+        .map((index) => recipes[index])
+        .filter((recipe) => recipe != null);
     }
 
     // No matches found
