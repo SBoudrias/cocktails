@@ -18,7 +18,7 @@ export default function IngredientDetails({
   let descriptionCard;
   if (ingredient.description) {
     descriptionCard = <Card style={{ margin: 12 }}>{ingredient.description}</Card>;
-  } else if (topCategory.description) {
+  } else if (topCategory?.description) {
     descriptionCard = (
       <Card style={{ margin: 12 }} title={topCategory.name}>
         {topCategory.description}
@@ -31,7 +31,7 @@ export default function IngredientDetails({
   return (
     <>
       {descriptionCard}
-      {ingredient.categories.length > 0 && (
+      {topCategory && (
         <List mode="card" header="Substitutions">
           <List.Item>
             Substitute with another <b>{topCategory.name}</b>.
