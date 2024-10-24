@@ -29,7 +29,7 @@ export default function Quantity({ amount, unit }: { amount: number; unit: Unit 
   if (unitType[unit] === 'imperial' && amount % 1 !== 0) {
     const base = Math.floor(amount);
     const fraction = amount - base;
-    if (fraction in displayFraction) {
+    if (displayFraction[fraction] != null) {
       displayAmount =
         base > 0 ? `${base} ${displayFraction[fraction]}` : displayFraction[fraction];
     }
