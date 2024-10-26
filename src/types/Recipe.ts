@@ -14,7 +14,7 @@ export type Recipe = {
   preparation: 'shaken' | 'stirred' | 'blended' | 'flash blended' | 'swizzled';
   served_on: 'big rock' | 'up' | 'crushed ice' | 'blended' | 'ice cubes';
   glassware:
-    | 'rocks'
+    | 'old fashioned'
     | 'collins'
     | 'highball'
     | 'snifter'

@@ -65,7 +65,7 @@
     },
     "glassware": {
       "enum": [
-        "rocks",
+        "old fashioned",
         "collins",
         "highball",
         "snifter",
