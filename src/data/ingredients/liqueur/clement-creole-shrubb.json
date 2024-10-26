@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Clément Créole Shrubb",
+  "type": "liqueur",
+  "categories": ["Orange Curaçao"]
+}

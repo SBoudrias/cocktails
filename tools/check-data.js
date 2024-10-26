@@ -98,6 +98,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
           ),
           ...ingredient,
           quantity: undefined,
+          brix: undefined,
         });
       }
     }

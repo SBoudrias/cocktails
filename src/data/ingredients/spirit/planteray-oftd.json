@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Planteray OFTD",
+  "type": "spirit",
+  "categories": ["Overproof Dark Rum"]
+}

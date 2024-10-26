@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Smith & Cross",
+  "type": "spirit",
+  "categories": ["Navy Strength Jamaican Rum", "Jamaican Rum"]
+}
