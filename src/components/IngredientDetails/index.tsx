@@ -6,8 +6,10 @@ import Video from '@/components/Video';
 
 export default function IngredientDetails({
   ingredient,
+  substitutes,
 }: {
   ingredient: BaseIngredient;
+  substitutes: BaseIngredient[];
 }) {
   const listFormatter = new Intl.ListFormat('en', {
     style: 'long',
@@ -32,7 +34,7 @@ export default function IngredientDetails({
     <>
       {descriptionCard}
       {topCategory && (
-        <List mode="card" header="Substitutions">
+        <List mode="card" header="Substitution">
           <List.Item>
             Substitute with another <b>{topCategory.name}</b>.
           </List.Item>
@@ -56,6 +58,13 @@ export default function IngredientDetails({
             );
           }
         })}
+      {substitutes.length > 0 && (
+        <List mode="card" header={`Other ${topCategory?.name}`}>
+          {substitutes.slice(0, 10).map((substitute) => (
+            <List.Item key={substitute.slug}>{substitute.name}</List.Item>
+          ))}
+        </List>
+      )}
     </>
   );
 }

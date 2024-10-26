@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
 import IngredientDetails from '@/components/IngredientDetails';
-import { getIngredient } from '@/modules/entities';
+import { getIngredient, getSubstitutesForIngredient } from '@/modules/ingredients';
 import { getIngredientPageParams } from '@/modules/params';
 
 type Params = { type: string; name: string };
@@ -24,15 +24,12 @@ export async function generateMetadata({ params }: { params: Params }) {
 
 export default async function IngredientPage({ params }: { params: Params }) {
   const ingredient = await getIngredient(params.type, params.name);
-
-  // TODO: Add description + videos about ingredient
-  // TODO: Add list of recipes that use this ingredient
-  // TODO: Add substitution information
+  const substitutes = await getSubstitutesForIngredient(ingredient);
 
   return (
     <>
       <AppHeader title={ingredient.name} />
-      <IngredientDetails ingredient={ingredient} />
+      <IngredientDetails ingredient={ingredient} substitutes={substitutes} />
     </>
   );
 }

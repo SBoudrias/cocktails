@@ -1,64 +1,14 @@
 import fs from 'node:fs/promises';
 import { Recipe } from '@/types/Recipe';
 import { SourceType, Book, YoutubeChannel, Source } from '@/types/Source';
-import { BaseIngredient } from '@/types/Ingredient';
-import { Category } from '@/types/Category';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
-import {
-  INGREDIENT_ROOT,
-  CATEGORY_ROOT,
-  RECIPE_ROOT,
-  BOOK_ROOT,
-  YOUTUBE_CHANNEL_ROOT,
-} from './constants';
+import { readJSONFile } from './fs';
+import { RECIPE_ROOT, BOOK_ROOT, YOUTUBE_CHANNEL_ROOT } from './constants';
+import { getIngredient } from './ingredients';
 
 function getRecipeSourcePath(root: string, slug: string): string {
   return path.join(root, slug, '_source.json');
-}
-
-async function fileExists(filepath: string): Promise<boolean> {
-  return fs.access(filepath).then(
-    () => true,
-    () => false,
-  );
-}
-
-async function readJSONFile<T>(filepath: string): Promise<T | undefined> {
-  if (await fileExists(filepath)) {
-    const content = await fs.readFile(filepath, 'utf-8');
-    return JSON.parse(content);
-  }
-
-  return undefined;
-}
-
-const ingredientCache = new Map<string, BaseIngredient>();
-export async function getIngredient(type: string, slug: string): Promise<BaseIngredient> {
-  const key = `${type}/${slug}`;
-  if (ingredientCache.has(key)) {
-    return ingredientCache.get(key)!;
-  }
-
-  const filepath = path.join(INGREDIENT_ROOT, type, `${slug}.json`);
-  const data = await readJSONFile<
-    Omit<BaseIngredient, 'slug' | 'categories'> & { categories?: string[] }
-  >(filepath);
-
-  if (!data) throw new Error(`Ingredient not found: ${filepath}`);
-
-  const categories = await Promise.all(
-    (data.categories ?? []).map((category) => getCategory(slugify(category))),
-  );
-
-  const ingredient = {
-    ...data,
-    slug,
-    categories,
-  };
-  ingredientCache.set(key, ingredient);
-
-  return ingredient;
 }
 
 export async function getRecipe(
@@ -87,18 +37,6 @@ export async function getRecipe(
       }),
     ),
     source,
-  };
-}
-
-export async function getCategory(category: string): Promise<Category> {
-  const filepath = path.join(CATEGORY_ROOT, `${category}.json`);
-  const data = await readJSONFile<Omit<Category, 'slug'>>(filepath);
-
-  if (!data) throw new Error(`Category not found: ${filepath}`);
-
-  return {
-    ...data,
-    slug: category,
   };
 }
 

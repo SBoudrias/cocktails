@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Planteray Xaymaca",
   "type": "spirit",
-  "categories": ["Jamaican Rum"]
+  "categories": ["Lightly-aged Jamaican Rum", "Jamaican Rum"]
 }
