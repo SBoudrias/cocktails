@@ -1,6 +1,9 @@
+'use client';
+
 import { Space } from 'antd-mobile';
 import styles from './style.module.css';
 import { Unit } from '@/types/Ingredient';
+import { convertQuantityToMl } from '@/modules/conversion';
 
 const displayFraction: Record<number, string> = {
   0.125: '⅛',
@@ -25,7 +28,16 @@ const unitType: Record<Unit, 'imperial' | 'metric' | 'other'> = {
   drop: 'other',
 };
 
-export default function Quantity({ amount, unit }: { amount: number; unit: Unit }) {
+export default function Quantity({
+  preferredUnit,
+  quantity,
+}: {
+  preferredUnit: Unit;
+  quantity: { amount: number; unit: Unit };
+}) {
+  const { amount, unit } =
+    preferredUnit === 'ml' ? convertQuantityToMl(quantity) : quantity;
+
   let displayAmount: number | string = amount;
   // Display with a fraction
   if (unitType[unit] === 'imperial' && amount % 1 !== 0) {

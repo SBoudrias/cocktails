@@ -7,8 +7,16 @@ import styles from './style.module.css';
 import Quantity from '@/components/Quantity';
 import { useRouter } from 'next/navigation';
 import { Recipe } from '@/types/Recipe';
+import UnitSelector, { type Unit } from '../Quantity/Selector';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
-function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
+function IngredientLine({
+  ingredient,
+  preferredUnit,
+}: {
+  ingredient: RecipeIngredient;
+  preferredUnit: Unit;
+}) {
   const router = useRouter();
 
   let category;
@@ -31,7 +39,7 @@ function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
       onClick={() => router.push(`/ingredient/${ingredient.type}/${ingredient.slug}`)}
     >
       <Space align="baseline" style={{ '--gap': '4px' }}>
-        <Quantity amount={ingredient.quantity.amount} unit={ingredient.quantity.unit} />
+        <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />
         <div>
           <div className={styles.name}>{ingredient.name}</div>
           {category}
@@ -43,6 +51,8 @@ function IngredientLine({ ingredient }: { ingredient: RecipeIngredient }) {
 }
 
 export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
+  const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
+
   return (
     <>
       <Grid columns={3} gap={12} style={{ padding: '0 12px', textAlign: 'center' }}>
@@ -58,9 +68,14 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
       </Grid>
       <List header="Ingredients">
         {sortIngredients(recipe.ingredients).map((ingredient) => (
-          <IngredientLine key={ingredient.name} ingredient={ingredient} />
+          <IngredientLine
+            key={ingredient.name}
+            ingredient={ingredient}
+            preferredUnit={preferredUnit}
+          />
         ))}
       </List>
+      <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
       {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
         <List header="Instructions">
           {recipe.instructions.map((instruction, index) => (
