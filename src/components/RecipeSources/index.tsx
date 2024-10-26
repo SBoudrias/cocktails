@@ -6,51 +6,42 @@ import { Card, List, Space } from 'antd-mobile';
 import { FiBook, FiYoutube, FiExternalLink } from 'react-icons/fi';
 import Video from '@/components/Video';
 
+function AttributionName({ attribution }: { attribution: Attribution }) {
+  if (attribution.url) {
+    return (
+      <a href={attribution.url} target="_blank" rel="noreferrer">
+        <Space>
+          <b>{attribution.source}</b>
+          <FiExternalLink style={{ fontSize: '18px' }} />
+        </Space>
+      </a>
+    );
+  }
+
+  return <b>{attribution.source}</b>;
+}
+
 function AttributionLine({ attribution }: { attribution: Attribution }) {
   switch (attribution.relation) {
     case 'recipe author':
       return (
         <List.Item>
           <span>Original recipe by&nbsp;</span>
-          <a href={attribution.url} target="_blank" rel="noreferrer">
-            <Space>
-              <b>{attribution.source}</b>
-              <FiExternalLink
-                style={{ fontSize: '18px' }}
-                title="View on publisher website"
-              />
-            </Space>
-          </a>
+          <AttributionName attribution={attribution} />
         </List.Item>
       );
     case 'adapted by':
       return (
         <List.Item>
           <span>Adapted by&nbsp;</span>
-          <a href={attribution.url} target="_blank" rel="noreferrer">
-            <Space>
-              <b>{attribution.source}</b>
-              <FiExternalLink
-                style={{ fontSize: '18px' }}
-                title="View on publisher website"
-              />
-            </Space>
-          </a>
+          <AttributionName attribution={attribution} />
         </List.Item>
       );
     case 'bar':
       return (
         <List.Item>
           <span>Bar:&nbsp;</span>
-          <a href={attribution.url} target="_blank" rel="noreferrer">
-            <Space>
-              <b>{attribution.source}</b>
-              <FiExternalLink
-                style={{ fontSize: '18px' }}
-                title="View on publisher website"
-              />
-            </Space>
-          </a>
+          <AttributionName attribution={attribution} />
         </List.Item>
       );
   }

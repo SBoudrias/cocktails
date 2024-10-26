@@ -80,6 +80,12 @@
       }
     }
   ],
+  "attributions": [
+    {
+      "source": "Brian Miller",
+      "relation": "recipe author"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

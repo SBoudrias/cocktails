@@ -5,7 +5,7 @@ import { Ref } from './Ref';
 export type Attribution = {
   source: string;
   relation: 'recipe author' | 'adapted by' | 'bar';
-  url: string;
+  url?: string;
 };
 
 export type Recipe = {

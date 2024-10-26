@@ -96,7 +96,7 @@
           "relation": { "enum": ["recipe author", "adapted by", "bar"] },
           "url": { "type": "string" }
         },
-        "required": ["source", "relation", "url"],
+        "required": ["source", "relation"],
         "additionalProperties": false
       }
     },
