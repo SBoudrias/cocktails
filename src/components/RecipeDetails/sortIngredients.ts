@@ -1,3 +1,4 @@
+import { convertQuantityToMl } from '@/modules/conversion';
 import { RecipeIngredient, IngredientType, Unit } from '@/types/Ingredient';
 
 const UNIT_PRIORITIES: Record<Unit, number> = {
@@ -48,7 +49,11 @@ export default function sortIngredients(ingredients: RecipeIngredient[]) {
 
     // Same value ingredients, sort by quantity
     if (INGREDIENT_PRIORITIES[a.type] === INGREDIENT_PRIORITIES[b.type]) {
-      return sortCompare(a.quantity.amount, b.quantity.amount);
+      // Quantities could use different units, so compare them on a baseline of ml.
+      return sortCompare(
+        convertQuantityToMl(a.quantity).amount,
+        convertQuantityToMl(b.quantity).amount,
+      );
     }
 
     // Otherwise lowest value first; ex: juices & syrup first.
