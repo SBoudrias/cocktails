@@ -87,6 +87,19 @@
         "type": "string"
       }
     },
+    "attributions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": { "type": "string" },
+          "relation": { "enum": ["recipe author", "adapted by", "bar"] },
+          "url": { "type": "string" }
+        },
+        "required": ["source", "relation", "url"],
+        "additionalProperties": false
+      }
+    },
     "refs": {
       "type": "array",
       "items": {

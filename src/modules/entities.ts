@@ -69,14 +69,15 @@ export async function getRecipe(
   recipe: string,
 ): Promise<Recipe> {
   const filepath = path.join(RECIPE_ROOT, source.type, source.slug, `${recipe}.json`);
-  const data = await readJSONFile<Omit<Recipe, 'source' | 'slug' | 'refs'>>(filepath);
+  const data = await readJSONFile<Omit<Recipe, 'source' | 'slug'>>(filepath);
 
   if (!data) throw new Error(`Recipe not found: ${filepath}`);
 
   return {
-    refs: [],
     ...data,
     slug: recipe,
+    refs: data.refs ?? [],
+    attributions: data.attributions ?? [],
     ingredients: await Promise.all(
       data.ingredients.map(async (ingredient) => {
         return {

@@ -72,6 +72,13 @@
       }
     }
   ],
+  "attributions": [
+    {
+      "source": "Kevin Crossman",
+      "relation": "recipe author",
+      "url": "https://ultimatemaitai.com/about/recipes/"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

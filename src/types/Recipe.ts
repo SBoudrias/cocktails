@@ -2,6 +2,12 @@ import { RecipeIngredient } from './Ingredient';
 import { SourceType } from './Source';
 import { Ref } from './Ref';
 
+export type Attribution = {
+  source: string;
+  relation: 'recipe author' | 'adapted by' | 'bar';
+  url: string;
+};
+
 export type Recipe = {
   name: string;
   slug: string;
@@ -28,5 +34,6 @@ export type Recipe = {
     type: SourceType;
     slug: string;
   };
+  attributions: Attribution[];
   refs: Ref[];
 };
