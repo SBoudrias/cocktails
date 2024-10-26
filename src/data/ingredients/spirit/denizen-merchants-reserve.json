@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Planteray OFTD",
+  "name": "Denizen Merchants Reserve",
   "type": "spirit",
-  "categories": ["Black blended Overproof Rum"]
+  "categories": ["Blended Aged Rum"]
 }

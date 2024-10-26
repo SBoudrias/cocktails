@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Planteray OFTD",
+  "name": "Coruba",
   "type": "spirit",
-  "categories": ["Black blended Overproof Rum"]
+  "categories": ["Dark Jamaican Rum", "Dark Rum"]
 }
