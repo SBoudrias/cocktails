@@ -2,14 +2,16 @@ import { Category } from './Category';
 import { Ref } from './Ref';
 
 export type IngredientType =
-  | 'spirit'
-  | 'juice'
-  | 'syrup'
-  | 'liqueur'
   | 'bitter'
+  | 'category'
+  | 'juice'
+  | 'liqueur'
   | 'puree'
+  | 'soda'
+  | 'spice'
+  | 'spirit'
   | 'sugar'
-  | 'water'
+  | 'syrup'
   | 'other';
 export type Unit = 'oz' | 'ml' | 'dash' | 'tsp' | 'tbsp' | 'drop';
 

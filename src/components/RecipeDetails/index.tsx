@@ -36,7 +36,11 @@ function IngredientLine({
 
   return (
     <List.Item
-      onClick={() => router.push(`/ingredient/${ingredient.type}/${ingredient.slug}`)}
+      onClick={
+        ingredient.type === 'category'
+          ? () => router.push(`/category/${ingredient.slug}`)
+          : () => router.push(`/ingredient/${ingredient.type}/${ingredient.slug}`)
+      }
     >
       <Space align="baseline" style={{ '--gap': '4px' }}>
         <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />

@@ -68,6 +68,13 @@ export const getIngredientPerCategories = memo(
   },
 );
 
+export const getIngredientsForCategory = async (
+  categorySlug: string,
+): Promise<BaseIngredient[]> => {
+  const ingredientsByCategories = await getIngredientPerCategories();
+  return ingredientsByCategories[categorySlug] ?? [];
+};
+
 export const getSubstitutesForIngredient = memo(
   async (ingredient: BaseIngredient): Promise<BaseIngredient[]> => {
     const ingredientsByCategories = await getIngredientPerCategories();

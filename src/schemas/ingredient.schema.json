@@ -9,14 +9,16 @@
     "name": { "type": "string" },
     "type": {
       "enum": [
-        "spirit",
-        "juice",
-        "syrup",
-        "liqueur",
         "bitter",
+        "category",
+        "juice",
+        "liqueur",
         "puree",
+        "soda",
+        "spice",
+        "spirit",
         "sugar",
-        "water",
+        "syrup",
         "other"
       ]
     },

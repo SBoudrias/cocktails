@@ -3,6 +3,7 @@
 import { BaseIngredient } from '@/types/Ingredient';
 import { Card, List } from 'antd-mobile';
 import Video from '@/components/Video';
+import { useRouter } from 'next/navigation';
 
 export default function IngredientDetails({
   ingredient,
@@ -11,6 +12,7 @@ export default function IngredientDetails({
   ingredient: BaseIngredient;
   substitutes: BaseIngredient[];
 }) {
+  const router = useRouter();
   const listFormatter = new Intl.ListFormat('en', {
     style: 'long',
     type: 'disjunction',
@@ -58,11 +60,14 @@ export default function IngredientDetails({
             );
           }
         })}
-      {substitutes.length > 0 && (
-        <List mode="card" header={`Other ${topCategory?.name}`}>
+      {substitutes.length > 0 && topCategory != null && (
+        <List mode="card" header={`Other ${topCategory.name}`}>
           {substitutes.slice(0, 10).map((substitute) => (
             <List.Item key={substitute.slug}>{substitute.name}</List.Item>
           ))}
+          <List.Item onClick={() => router.push(`/category/${topCategory.slug}`)}>
+            Learn more
+          </List.Item>
         </List>
       )}
     </>
