@@ -26,6 +26,7 @@ const unitType: Record<Unit, 'imperial' | 'metric' | 'other'> = {
   ml: 'metric',
   dash: 'other',
   drop: 'other',
+  unit: 'other',
 };
 
 export default function Quantity({
@@ -52,7 +53,7 @@ export default function Quantity({
   return (
     <Space align="baseline" style={{ '--gap': '2px', fontSize: '1.2em' }}>
       <span className={styles.quantity}>{displayAmount}</span>
-      <span className={styles.unit}>{unit}</span>
+      {unit !== 'unit' && <span className={styles.unit}>{unit}</span>}
     </Space>
   );
 }
