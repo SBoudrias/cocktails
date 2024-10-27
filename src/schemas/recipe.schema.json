@@ -113,6 +113,16 @@
             },
             "required": ["type", "videoId"],
             "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": { "const": "book" },
+              "title": { "type": "string" },
+              "page": { "type": "number" }
+            },
+            "required": ["type", "title", "page"],
+            "additionalProperties": false
           }
         ]
       }
