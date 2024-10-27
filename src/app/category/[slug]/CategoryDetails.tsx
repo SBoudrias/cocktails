@@ -15,12 +15,8 @@ function CategoryList({ categories }: { categories: string[] }) {
   return (
     <Space wrap>
       {categories.map((category) => (
-        <div>
-          <Link
-            href={`/category/${slugify(category)}`}
-            key={category}
-            className={styles.category}
-          >
+        <div key={category}>
+          <Link href={`/category/${slugify(category)}`} className={styles.category}>
             {category}&nbsp;
             <FaTag />
           </Link>
