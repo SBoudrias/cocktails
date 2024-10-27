@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Navy Strength Jamaican Rum"
+  "name": "Navy Strength Jamaican Rum",
+  "parents": ["Jamaican Rum"]
 }

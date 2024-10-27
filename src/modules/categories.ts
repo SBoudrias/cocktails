@@ -13,6 +13,7 @@ export const getCategory = memo(async (category: string): Promise<Category> => {
   return {
     ...data,
     refs: data.refs ?? [],
+    parents: data.parents ?? [],
     slug: category,
   };
 });

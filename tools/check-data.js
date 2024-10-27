@@ -121,6 +121,24 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
       }
     }
   }
+
+  // Make sure there's all parent categories have their metadata files
+  if (schemaPath === 'schemas/category.schema.json') {
+    for (const category of data.parents ?? []) {
+      const categoryPath = path.join('src/data/categories', `${slugify(category)}.json`);
+      if (!(await fileExists(categoryPath))) {
+        fail(`Category file not found ${categoryPath}`);
+
+        await writeJSON(categoryPath, {
+          $schema: path.relative(
+            path.dirname(categoryPath),
+            path.resolve(APP_ROOT, 'schemas/category.schema.json'),
+          ),
+          name: category,
+        });
+      }
+    }
+  }
 }
 console.log('╰ Done!');
 

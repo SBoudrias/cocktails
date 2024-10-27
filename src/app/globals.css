@@ -47,3 +47,8 @@ a {
 svg {
   vertical-align: text-top;
 }
+
+p {
+  font-size: var(--adm-font-size-6);
+  line-height: 1.6;
+}

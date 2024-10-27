@@ -3,9 +3,32 @@
 
 import { BaseIngredient } from '@/types/Ingredient';
 import { Category } from '@/types/Category';
-import { Card, List } from 'antd-mobile';
+import { Card, List, Space } from 'antd-mobile';
 import Video from '@/components/Video';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { FaTag } from 'react-icons/fa';
+import slugify from '@sindresorhus/slugify';
+import styles from './category.module.css';
+
+function CategoryList({ categories }: { categories: string[] }) {
+  return (
+    <Space wrap>
+      {categories.map((category) => (
+        <div>
+          <Link
+            href={`/category/${slugify(category)}`}
+            key={category}
+            className={styles.category}
+          >
+            {category}&nbsp;
+            <FaTag />
+          </Link>
+        </div>
+      ))}
+    </Space>
+  );
+}
 
 export default function CategoryDetails({
   category,
@@ -18,7 +41,17 @@ export default function CategoryDetails({
 
   return (
     <>
-      {category.description && <Card style={{ margin: 12 }}>{category.description}</Card>}
+      {(category.description || category.parents.length > 0) && (
+        <Card style={{ margin: 12 }}>
+          {category.description && <p>{category.description}</p>}
+          {category.parents.length > 0 && (
+            <p>
+              <b>{category.name}</b> is a subset of{' '}
+              <CategoryList categories={category.parents} />
+            </p>
+          )}
+        </Card>
+      )}
       {category.refs.length > 0 &&
         category.refs.map((ref) => {
           if (ref.type === 'youtube') {

@@ -1,9 +1,12 @@
 'use client';
 
 import { BaseIngredient } from '@/types/Ingredient';
-import { Card, List } from 'antd-mobile';
+import { Button, Card, List } from 'antd-mobile';
 import Video from '@/components/Video';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { FaTag } from 'react-icons/fa';
+import styles from './styles.module.css';
 
 export default function IngredientDetails({
   ingredient,
@@ -24,8 +27,21 @@ export default function IngredientDetails({
     descriptionCard = <Card style={{ margin: 12 }}>{ingredient.description}</Card>;
   } else if (topCategory?.description) {
     descriptionCard = (
-      <Card style={{ margin: 12 }} title={topCategory.name}>
-        {topCategory.description}
+      <Card
+        style={{ margin: 12 }}
+        title={
+          <>
+            <FaTag />
+            &nbsp;{topCategory.name}
+          </>
+        }
+      >
+        <p>{topCategory.description}</p>
+        <div className={styles.footer}>
+          <Link href={`/category/${topCategory.slug}`}>
+            <Button color="primary">Learn more</Button>
+          </Link>
+        </div>
       </Card>
     );
   }
