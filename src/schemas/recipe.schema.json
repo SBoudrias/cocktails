@@ -22,7 +22,7 @@
                 "type": "object",
                 "properties": {
                   "amount": { "type": "number" },
-                  "unit": { "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop"] }
+                  "unit": { "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop", "unit"] }
                 },
                 "required": ["amount", "unit"],
                 "additionalProperties": false
@@ -43,7 +43,7 @@
                 "type": "object",
                 "properties": {
                   "amount": { "type": "number" },
-                  "unit": { "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop"] }
+                  "unit": { "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop", "unit"] }
                 },
                 "required": ["amount", "unit"],
                 "additionalProperties": false
@@ -78,7 +78,8 @@
         "mule",
         "tiki",
         "punch",
-        "flute"
+        "flute",
+        "footed pilsner"
       ]
     },
     "instructions": {

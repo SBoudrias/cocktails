@@ -4,6 +4,7 @@ import { Ref } from './Ref';
 export type IngredientType =
   | 'bitter'
   | 'category'
+  | 'fruit'
   | 'juice'
   | 'liqueur'
   | 'puree'
@@ -13,7 +14,7 @@ export type IngredientType =
   | 'sugar'
   | 'syrup'
   | 'other';
-export type Unit = 'oz' | 'ml' | 'dash' | 'tsp' | 'tbsp' | 'drop';
+export type Unit = 'oz' | 'ml' | 'dash' | 'tsp' | 'tbsp' | 'drop' | 'unit';
 
 export type BaseIngredient = {
   name: string;
