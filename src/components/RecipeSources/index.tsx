@@ -4,7 +4,7 @@ import { Attribution, Recipe } from '@/types/Recipe';
 import { Button, Card, List, Space } from 'antd-mobile';
 import { FiBook, FiYoutube, FiExternalLink } from 'react-icons/fi';
 import Video from '@/components/Video';
-import { BookRef } from '@/types/Ref';
+import { BookRef, YoutubeRef } from '@/types/Ref';
 
 function AttributionName({ attribution }: { attribution: Attribution }) {
   if (attribution.url) {
@@ -49,22 +49,22 @@ function AttributionLine({ attribution }: { attribution: Attribution }) {
 
 export default function RecipeSources({ recipe }: { recipe: Recipe }) {
   let sourceBlock;
-  switch (recipe.source.type) {
-    case 'book':
-      const ref = recipe.refs.find(
-        (ref): ref is BookRef => ref.type === 'book' && ref.title === recipe.source.slug,
-      );
-      sourceBlock = (
-        <Card
-          title={
-            <>
-              <FiBook style={{ fontSize: '18px' }} /> {recipe.source.name}
-            </>
-          }
-          extra={ref ? `page ${ref.page}` : undefined}
-          style={{ margin: 12 }}
-        >
-          {recipe.source.description}
+  if (recipe.source.type === 'book') {
+    const ref = recipe.refs.find(
+      (ref): ref is BookRef => ref.type === 'book' && ref.title === recipe.source.slug,
+    );
+    sourceBlock = (
+      <Card
+        title={
+          <>
+            <FiBook style={{ fontSize: '18px' }} /> {recipe.source.name}
+          </>
+        }
+        extra={ref ? `page ${ref.page}` : undefined}
+        style={{ margin: 12 }}
+      >
+        <Space block direction="vertical">
+          <div>{recipe.source.description}</div>
           <Space block justify="end">
             <a href={recipe.source.link} target="_blank" rel="noreferrer">
               <Button>
@@ -75,28 +75,31 @@ export default function RecipeSources({ recipe }: { recipe: Recipe }) {
               </Button>
             </a>
           </Space>
-        </Card>
-      );
-      break;
-    case 'youtube-channel':
-      sourceBlock = (
-        <Card
-          title={
-            <>
-              <FiYoutube style={{ fontSize: '18px' }} /> {recipe.source.name}
-            </>
-          }
-          extra={
-            <a href={recipe.source.link} target="_blank" rel="noreferrer">
-              <FiExternalLink style={{ fontSize: '18px' }} title="View on Youtube" />
-            </a>
-          }
-          style={{ margin: 12 }}
-        >
-          {recipe.source.description}
-        </Card>
-      );
-      break;
+        </Space>
+      </Card>
+    );
+  } else if (recipe.source.type === 'youtube-channel') {
+    const ref = recipe.refs.find((ref): ref is YoutubeRef => ref.type === 'youtube');
+    sourceBlock = (
+      <Card
+        title={
+          <>
+            <FiYoutube style={{ fontSize: '18px' }} /> {recipe.source.name}
+          </>
+        }
+        extra={
+          <a href={recipe.source.link} target="_blank" rel="noreferrer">
+            <FiExternalLink style={{ fontSize: '18px' }} title="View on Youtube" />
+          </a>
+        }
+        style={{ margin: 12 }}
+      >
+        <Space block direction="vertical">
+          {ref && <Video id={ref.videoId} opts={{ playerVars: { start: ref.start } }} />}
+          <div>{recipe.source.description}</div>
+        </Space>
+      </Card>
+    );
   }
 
   let attributionBlock;
@@ -112,17 +115,16 @@ export default function RecipeSources({ recipe }: { recipe: Recipe }) {
 
   return (
     <>
-      {recipe.refs.map((ref) => {
-        if (ref.type === 'youtube') {
-          return (
-            <Video
-              key={ref.videoId}
-              id={ref.videoId}
-              opts={{ playerVars: { start: ref.start } }}
-            />
-          );
-        }
-      })}
+      {recipe.source.type !== 'youtube-channel' &&
+        recipe.refs.map((ref) => {
+          if (ref.type === 'youtube') {
+            return (
+              <Card key={ref.videoId} title="Video">
+                <Video id={ref.videoId} opts={{ playerVars: { start: ref.start } }} />
+              </Card>
+            );
+          }
+        })}
       {sourceBlock}
       {attributionBlock}
     </>
