@@ -1,9 +1,10 @@
 'use client';
 
 import { Attribution, Recipe } from '@/types/Recipe';
-import { Card, List, Space } from 'antd-mobile';
+import { Button, Card, List, Space } from 'antd-mobile';
 import { FiBook, FiYoutube, FiExternalLink } from 'react-icons/fi';
 import Video from '@/components/Video';
+import { BookRef } from '@/types/Ref';
 
 function AttributionName({ attribution }: { attribution: Attribution }) {
   if (attribution.url) {
@@ -50,6 +51,9 @@ export default function RecipeSources({ recipe }: { recipe: Recipe }) {
   let sourceBlock;
   switch (recipe.source.type) {
     case 'book':
+      const ref = recipe.refs.find(
+        (ref): ref is BookRef => ref.type === 'book' && ref.title === recipe.source.slug,
+      );
       sourceBlock = (
         <Card
           title={
@@ -57,17 +61,20 @@ export default function RecipeSources({ recipe }: { recipe: Recipe }) {
               <FiBook style={{ fontSize: '18px' }} /> {recipe.source.name}
             </>
           }
-          extra={
-            <a href={recipe.source.link} target="_blank" rel="noreferrer">
-              <FiExternalLink
-                style={{ fontSize: '18px' }}
-                title="View on publisher website"
-              />
-            </a>
-          }
+          extra={ref ? `page ${ref.page}` : undefined}
           style={{ margin: 12 }}
         >
           {recipe.source.description}
+          <Space block justify="end">
+            <a href={recipe.source.link} target="_blank" rel="noreferrer">
+              <Button>
+                <Space>
+                  <span>Learn more</span>
+                  <FiExternalLink title="View on publisher website" />
+                </Space>
+              </Button>
+            </a>
+          </Space>
         </Card>
       );
       break;
