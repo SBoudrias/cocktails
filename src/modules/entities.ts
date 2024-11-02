@@ -1,75 +1,10 @@
 import fs from 'node:fs/promises';
 import { Recipe } from '@/types/Recipe';
-import { SourceType, Book, YoutubeChannel, Source } from '@/types/Source';
+import { Source } from '@/types/Source';
 import path from 'node:path';
-import slugify from '@sindresorhus/slugify';
-import { readJSONFile } from './fs';
-import { RECIPE_ROOT, BOOK_ROOT, YOUTUBE_CHANNEL_ROOT } from './constants';
-import { getIngredient } from './ingredients';
-import { getCategory } from './categories';
-
-function getRecipeSourcePath(root: string, slug: string): string {
-  return path.join(root, slug, '_source.json');
-}
-
-export async function getRecipe(
-  source: {
-    type: SourceType;
-    slug: string;
-  },
-  recipe: string,
-): Promise<Recipe> {
-  const filepath = path.join(RECIPE_ROOT, source.type, source.slug, `${recipe}.json`);
-  const data = await readJSONFile<Omit<Recipe, 'source' | 'slug'>>(filepath);
-
-  if (!data) throw new Error(`Recipe not found: ${filepath}`);
-
-  return {
-    ...data,
-    slug: recipe,
-    refs: data.refs ?? [],
-    attributions: data.attributions ?? [],
-    ingredients: await Promise.all(
-      data.ingredients.map(async (ingredient) => {
-        const ingredientData =
-          ingredient.type === 'category'
-            ? await getCategory(slugify(ingredient.name))
-            : await getIngredient(ingredient.type, slugify(ingredient.name));
-        return {
-          ...ingredientData,
-          ...ingredient,
-        };
-      }),
-    ),
-    source,
-  };
-}
-
-export async function getBook(book: string): Promise<Book> {
-  const filepath = getRecipeSourcePath(BOOK_ROOT, book);
-  const data = await readJSONFile<Omit<Book, 'slug' | 'type'>>(filepath);
-
-  if (!data) throw new Error(`Book not found: ${filepath}`);
-
-  return {
-    ...data,
-    type: 'book',
-    slug: book,
-  };
-}
-
-export async function getYoutubeChannel(slug: string): Promise<YoutubeChannel> {
-  const filepath = getRecipeSourcePath(YOUTUBE_CHANNEL_ROOT, slug);
-  const data = await readJSONFile<Omit<YoutubeChannel, 'slug' | 'type'>>(filepath);
-
-  if (!data) throw new Error(`Youtube channel not found: ${filepath}`);
-
-  return {
-    ...data,
-    type: 'youtube-channel',
-    slug: slug,
-  };
-}
+import { BOOK_ROOT, YOUTUBE_CHANNEL_ROOT } from './constants';
+import { getRecipe } from './recipes';
+import { getBook, getYoutubeChannel } from './sources';
 
 export async function getAllData(): Promise<{
   sources: Source[];

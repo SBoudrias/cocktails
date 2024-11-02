@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "tsc --noEmit && next lint",
     "check-code": "prettier --check .",
     "check-data": "tools/check-data.js",
     "prepare": "husky"

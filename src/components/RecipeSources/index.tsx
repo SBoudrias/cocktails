@@ -1,7 +1,6 @@
 'use client';
 
 import { Attribution, Recipe } from '@/types/Recipe';
-import { Source } from '@/types/Source';
 import { Card, List, Space } from 'antd-mobile';
 import { FiBook, FiYoutube, FiExternalLink } from 'react-icons/fi';
 import Video from '@/components/Video';
@@ -47,25 +46,19 @@ function AttributionLine({ attribution }: { attribution: Attribution }) {
   }
 }
 
-export default function RecipeSources({
-  source,
-  recipe,
-}: {
-  source: Source;
-  recipe: Recipe;
-}) {
+export default function RecipeSources({ recipe }: { recipe: Recipe }) {
   let sourceBlock;
-  switch (source.type) {
+  switch (recipe.source.type) {
     case 'book':
       sourceBlock = (
         <Card
           title={
             <>
-              <FiBook style={{ fontSize: '18px' }} /> {source.name}
+              <FiBook style={{ fontSize: '18px' }} /> {recipe.source.name}
             </>
           }
           extra={
-            <a href={source.link} target="_blank" rel="noreferrer">
+            <a href={recipe.source.link} target="_blank" rel="noreferrer">
               <FiExternalLink
                 style={{ fontSize: '18px' }}
                 title="View on publisher website"
@@ -74,7 +67,7 @@ export default function RecipeSources({
           }
           style={{ margin: 12 }}
         >
-          {source.description}
+          {recipe.source.description}
         </Card>
       );
       break;
@@ -83,17 +76,17 @@ export default function RecipeSources({
         <Card
           title={
             <>
-              <FiYoutube style={{ fontSize: '18px' }} /> {source.name}
+              <FiYoutube style={{ fontSize: '18px' }} /> {recipe.source.name}
             </>
           }
           extra={
-            <a href={source.link} target="_blank" rel="noreferrer">
+            <a href={recipe.source.link} target="_blank" rel="noreferrer">
               <FiExternalLink style={{ fontSize: '18px' }} title="View on Youtube" />
             </a>
           }
           style={{ margin: 12 }}
         >
-          {source.description}
+          {recipe.source.description}
         </Card>
       );
       break;

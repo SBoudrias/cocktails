@@ -1,5 +1,5 @@
 import { RecipeIngredient } from './Ingredient';
-import { SourceType } from './Source';
+import { Source } from './Source';
 import { Ref } from './Ref';
 
 export type Attribution = {
@@ -31,10 +31,7 @@ export type Recipe = {
     | 'footer pilsner';
   ingredients: RecipeIngredient[];
   instructions?: string[];
-  source: {
-    type: SourceType;
-    slug: string;
-  };
+  source: Source;
   attributions: Attribution[];
   refs: Ref[];
 };

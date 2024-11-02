@@ -8,3 +8,14 @@
 .searchBar :last-child {
   flex: 1;
 }
+
+.recipeName {
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+.recipeSource {
+  font-size: 0.8em;
+  color: var(--adm-color-weak);
+  text-transform: capitalize;
+}

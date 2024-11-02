@@ -10,14 +10,32 @@ import Link from 'next/link';
 import { LeftOutline } from 'antd-mobile-icons';
 import { getRecipeUrl } from '@/modules/url';
 
-export default function Search({ recipes }: { recipes: Recipe[] }) {
+function RecipeLine({ recipe, isUnique }: { recipe: Recipe; isUnique: boolean }) {
   const router = useRouter();
+
+  return (
+    <List.Item onClick={() => router.push(getRecipeUrl(recipe))}>
+      <Space align="baseline">
+        <div className={styles.recipeName}>{recipe.name}</div>
+        {!isUnique && <div className={styles.recipeSource}>{recipe.source.name}</div>}
+      </Space>
+    </List.Item>
+  );
+}
+
+export default function Search({ recipes }: { recipes: Recipe[] }) {
   const [searchTerm, setSearchTerm] = useState('');
   const searchRef = useRef<SearchBarRef>(null);
 
   useEffect(() => {
     searchRef.current?.focus();
   }, []);
+
+  const nameIsUnique = useMemo(() => {
+    // Normalize names to lower case to avoid case sensitivity
+    const store = Object.groupBy(recipes, (recipe) => recipe.name.toLowerCase());
+    return (name: string) => store[name.toLowerCase()]?.length === 1;
+  }, [recipes]);
 
   const haystack = useMemo(
     () =>
@@ -48,12 +66,11 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
     content = (
       <List>
         {searchMatches.map((recipe) => (
-          <List.Item
+          <RecipeLine
             key={getRecipeUrl(recipe)}
-            onClick={() => router.push(getRecipeUrl(recipe))}
-          >
-            {recipe.name}
-          </List.Item>
+            recipe={recipe}
+            isUnique={nameIsUnique(recipe.name)}
+          />
         ))}
       </List>
     );
@@ -77,12 +94,11 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
             <IndexBar.Panel index={letter} title={letter} key={letter}>
               <List>
                 {recipes.map((recipe) => (
-                  <List.Item
+                  <RecipeLine
                     key={getRecipeUrl(recipe)}
-                    onClick={() => router.push(getRecipeUrl(recipe))}
-                  >
-                    {recipe.name}
-                  </List.Item>
+                    recipe={recipe}
+                    isUnique={nameIsUnique(recipe.name)}
+                  />
                 ))}
               </List>
             </IndexBar.Panel>
