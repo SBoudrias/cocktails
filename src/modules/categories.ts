@@ -3,17 +3,22 @@ import memo from 'lodash/memoize';
 import { Category } from '@/types/Category';
 import { CATEGORY_ROOT } from './constants';
 import { readJSONFile } from './fs';
+import slugify from '@sindresorhus/slugify';
 
 export const getCategory = memo(async (category: string): Promise<Category> => {
   const filepath = path.join(CATEGORY_ROOT, `${category}.json`);
-  const data = await readJSONFile<Omit<Category, 'slug'>>(filepath);
+  const data = await readJSONFile<
+    Omit<Category, 'slug' | 'parents'> & { parents?: string[] }
+  >(filepath);
 
   if (!data) throw new Error(`Category not found: ${filepath}`);
 
   return {
     ...data,
     refs: data.refs ?? [],
-    parents: data.parents ?? [],
+    parents: await Promise.all(
+      (data.parents ?? []).map((name) => getCategory(slugify(name))),
+    ),
     slug: category,
   };
 });

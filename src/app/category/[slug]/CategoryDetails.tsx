@@ -1,5 +1,4 @@
 'use client';
-'use client';
 
 import { BaseIngredient } from '@/types/Ingredient';
 import { Category } from '@/types/Category';
@@ -8,16 +7,16 @@ import Video from '@/components/Video';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { FaTag } from 'react-icons/fa';
-import slugify from '@sindresorhus/slugify';
 import styles from './category.module.css';
+import { getCategoryUrl, getIngredientUrl } from '@/modules/url';
 
-function CategoryList({ categories }: { categories: string[] }) {
+function CategoryList({ categories }: { categories: Category[] }) {
   return (
     <Space wrap>
       {categories.map((category) => (
         <div key={category}>
-          <Link href={`/category/${slugify(category)}`} className={styles.category}>
-            {category}&nbsp;
+          <Link href={getCategoryUrl(category)} className={styles.category}>
+            {category.name}&nbsp;
             <FaTag />
           </Link>
         </div>
@@ -65,9 +64,7 @@ export default function CategoryDetails({
           {ingredients.map((ingredient) => (
             <List.Item
               key={ingredient.slug}
-              onClick={() =>
-                router.push(`/ingredient/${ingredient.type}/${ingredient.slug}`)
-              }
+              onClick={() => router.push(getIngredientUrl(ingredient))}
             >
               {ingredient.name}
             </List.Item>

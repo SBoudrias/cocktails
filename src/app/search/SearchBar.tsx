@@ -8,6 +8,7 @@ import uFuzzy from '@leeoniya/ufuzzy';
 import styles from './search.module.css';
 import Link from 'next/link';
 import { LeftOutline } from 'antd-mobile-icons';
+import { getRecipeUrl } from '@/modules/url';
 
 export default function Search({ recipes }: { recipes: Recipe[] }) {
   const router = useRouter();
@@ -47,14 +48,7 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
     content = (
       <List>
         {searchMatches.map((recipe) => (
-          <List.Item
-            key={recipe.slug}
-            onClick={() =>
-              router.push(
-                `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`,
-              )
-            }
-          >
+          <List.Item key={recipe.slug} onClick={() => router.push(getRecipeUrl(recipe))}>
             {recipe.name}
           </List.Item>
         ))}
@@ -82,11 +76,7 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
                 {recipes.map((recipe) => (
                   <List.Item
                     key={recipe.slug}
-                    onClick={() =>
-                      router.push(
-                        `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`,
-                      )
-                    }
+                    onClick={() => router.push(getRecipeUrl(recipe))}
                   >
                     {recipe.name}
                   </List.Item>

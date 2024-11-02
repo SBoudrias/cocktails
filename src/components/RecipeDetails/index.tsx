@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { Recipe } from '@/types/Recipe';
 import UnitSelector, { type Unit } from '../Quantity/Selector';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import { getIngredientUrl } from '@/modules/url';
 
 function IngredientLine({
   ingredient,
@@ -35,13 +36,7 @@ function IngredientLine({
   }
 
   return (
-    <List.Item
-      onClick={
-        ingredient.type === 'category'
-          ? () => router.push(`/category/${ingredient.slug}`)
-          : () => router.push(`/ingredient/${ingredient.type}/${ingredient.slug}`)
-      }
-    >
+    <List.Item onClick={() => router.push(getIngredientUrl(ingredient))}>
       <Space align="baseline" style={{ '--gap': '4px' }}>
         <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />
         <div>

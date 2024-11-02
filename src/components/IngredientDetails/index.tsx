@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { FaTag } from 'react-icons/fa';
 import styles from './styles.module.css';
+import { getCategoryUrl } from '@/modules/url';
 
 export default function IngredientDetails({
   ingredient,
@@ -38,7 +39,7 @@ export default function IngredientDetails({
       >
         <p>{topCategory.description}</p>
         <div className={styles.footer}>
-          <Link href={`/category/${topCategory.slug}`}>
+          <Link href={getCategoryUrl(topCategory)}>
             <Button color="primary">Learn more</Button>
           </Link>
         </div>
@@ -81,7 +82,7 @@ export default function IngredientDetails({
           {substitutes.slice(0, 10).map((substitute) => (
             <List.Item key={substitute.slug}>{substitute.name}</List.Item>
           ))}
-          <List.Item onClick={() => router.push(`/category/${topCategory.slug}`)}>
+          <List.Item onClick={() => router.push(getCategoryUrl(topCategory))}>
             Learn more
           </List.Item>
         </List>

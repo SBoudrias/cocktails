@@ -4,6 +4,6 @@ export type Category = {
   name: string;
   slug: string;
   description?: string;
-  parents: string[];
+  parents: Category[];
   refs: Ref[];
 };
