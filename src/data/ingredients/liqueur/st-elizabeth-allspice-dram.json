@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "St-Elizabeth Allspice Dram",
+  "type": "liqueur"
+}

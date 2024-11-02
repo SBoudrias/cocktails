@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Kingston palaka",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Li Hing Mui powder",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Drambruie",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended aged jamaican rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 204,
+      "title": "smugglers-cove"
+    }
+  ]
+}

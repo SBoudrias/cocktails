@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Bumboat",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "brix": 66,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rye whiskey",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended lightly aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Almond extract",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Bittermens' elemakule tiki bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Black blended overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 252,
+      "title": "smugglers-cove"
+    }
+  ]
+}

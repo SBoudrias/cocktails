@@ -6,6 +6,7 @@ import slugify from '@sindresorhus/slugify';
 import { readJSONFile } from './fs';
 import { RECIPE_ROOT, BOOK_ROOT, YOUTUBE_CHANNEL_ROOT } from './constants';
 import { getIngredient } from './ingredients';
+import { getCategory } from './categories';
 
 function getRecipeSourcePath(root: string, slug: string): string {
   return path.join(root, slug, '_source.json');
@@ -30,8 +31,12 @@ export async function getRecipe(
     attributions: data.attributions ?? [],
     ingredients: await Promise.all(
       data.ingredients.map(async (ingredient) => {
+        const ingredientData =
+          ingredient.type === 'category'
+            ? await getCategory(slugify(ingredient.name))
+            : await getIngredient(ingredient.type, slugify(ingredient.name));
         return {
-          ...(await getIngredient(ingredient.type, slugify(ingredient.name))),
+          ...ingredientData,
           ...ingredient,
         };
       }),

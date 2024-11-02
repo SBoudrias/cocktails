@@ -5,6 +5,7 @@ import Ajv from 'ajv/dist/2020.js';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
+import { type } from 'node:os';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
@@ -83,23 +84,44 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   // Make sure all ingredients of recipe have their metadata files
   if (schemaPath === 'schemas/recipe.schema.json') {
     for (const ingredient of data.ingredients) {
-      const ingredientPath = path.join(
-        'src/data/ingredients',
-        ingredient.type,
-        `${slugify(ingredient.name)}.json`,
-      );
-      if (!(await fileExists(ingredientPath))) {
-        fail(`Ingredient file not found ${ingredientPath}`);
+      if (ingredient.type === 'category') {
+        const categoryPath = path.join(
+          'src/data/categories',
+          `${slugify(ingredient.name)}.json`,
+        );
+        if (!(await fileExists(categoryPath))) {
+          fail(`Ingredient file not found ${categoryPath}`);
 
-        await writeJSON(ingredientPath, {
-          $schema: path.relative(
-            path.dirname(ingredientPath),
-            path.resolve(APP_ROOT, 'schemas/ingredient.schema.json'),
-          ),
-          ...ingredient,
-          quantity: undefined,
-          brix: undefined,
-        });
+          await writeJSON(categoryPath, {
+            $schema: path.relative(
+              path.dirname(categoryPath),
+              path.resolve(APP_ROOT, 'schemas/category.schema.json'),
+            ),
+            ...ingredient,
+            type: undefined,
+            quantity: undefined,
+            brix: undefined,
+          });
+        }
+      } else {
+        const ingredientPath = path.join(
+          'src/data/ingredients',
+          ingredient.type,
+          `${slugify(ingredient.name)}.json`,
+        );
+        if (!(await fileExists(ingredientPath))) {
+          fail(`Ingredient file not found ${ingredientPath}`);
+
+          await writeJSON(ingredientPath, {
+            $schema: path.relative(
+              path.dirname(ingredientPath),
+              path.resolve(APP_ROOT, 'schemas/ingredient.schema.json'),
+            ),
+            ...ingredient,
+            quantity: undefined,
+            brix: undefined,
+          });
+        }
       }
     }
   }

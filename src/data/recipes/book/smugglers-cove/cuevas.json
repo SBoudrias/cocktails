@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cuevas",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Cinnamon syrup",
+      "brix": 66,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Punt e Mes",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tawny Port",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bittermens 'Elemakule Tiki bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 118,
+      "title": "smugglers-cove"
+    }
+  ]
+}

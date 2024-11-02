@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Batida de Maracuja e coco",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut milk",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aged Cachaça",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweetened condensed milk",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 175,
+      "title": "smugglers-cove"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mexican el diablo",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Lime wedge",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cassis",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blanco tequila",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger ale",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 43,
+      "title": "smugglers-cove"
+    }
+  ]
+}

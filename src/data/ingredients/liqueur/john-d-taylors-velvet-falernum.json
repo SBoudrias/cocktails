@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "John D. Taylor's Velvet Falernum",
+  "type": "liqueur"
+}

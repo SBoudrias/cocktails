@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Corn and oil",
+  "preparation": "stirred",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended aged barbados rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 180,
+      "title": "smugglers-cove"
+    }
+  ]
+}

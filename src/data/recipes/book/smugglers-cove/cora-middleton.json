@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cora middleton",
+  "preparation": "flash blended",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Egg white",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Blended aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "brix": 66,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Small hand foods raspberry gum syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 174,
+      "title": "smugglers-cove"
+    }
+  ]
+}

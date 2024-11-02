@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Broker's London dry gin",
+  "type": "spirit"
+}

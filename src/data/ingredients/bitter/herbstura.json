@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Herbstura",
+  "type": "bitter",
+  "description": "Herbstura is a mix of 1:1 Herbsaint and Angostura bitters. Herbsaint can be replaced by other absinth or pastis."
+}

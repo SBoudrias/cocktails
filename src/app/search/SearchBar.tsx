@@ -49,7 +49,11 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
         {searchMatches.map((recipe) => (
           <List.Item
             key={recipe.slug}
-            onClick={() => router.push(`/recipes/${recipe.source.slug}/${recipe.slug}`)}
+            onClick={() =>
+              router.push(
+                `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`,
+              )
+            }
           >
             {recipe.name}
           </List.Item>

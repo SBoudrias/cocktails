@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Roselita",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "brix": 50,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "SC Hibiscus liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mathilde poire",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 120,
+      "title": "smugglers-cove"
+    }
+  ]
+}

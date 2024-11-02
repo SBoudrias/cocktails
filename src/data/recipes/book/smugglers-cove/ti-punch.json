@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Ti' punch",
+  "preparation": "swizzled",
+  "served_on": "up",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Cane syrup",
+      "brix": 66,
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Rhum agricole blanc",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime chunk",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 179,
+      "title": "smugglers-cove"
+    }
+  ]
+}

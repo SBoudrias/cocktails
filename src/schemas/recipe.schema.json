@@ -22,13 +22,15 @@
                 "type": "object",
                 "properties": {
                   "amount": { "type": "number" },
-                  "unit": { "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop", "unit"] }
+                  "unit": {
+                    "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop", "pinch", "unit"]
+                  }
                 },
                 "required": ["amount", "unit"],
                 "additionalProperties": false
               }
             },
-            "required": ["name", "type", "brix", "quantity"],
+            "required": ["name", "type", "quantity"],
             "additionalProperties": false
           },
           {
@@ -43,7 +45,9 @@
                 "type": "object",
                 "properties": {
                   "amount": { "type": "number" },
-                  "unit": { "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop", "unit"] }
+                  "unit": {
+                    "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop", "pinch", "unit"]
+                  }
                 },
                 "required": ["amount", "unit"],
                 "additionalProperties": false
@@ -94,7 +98,7 @@
         "type": "object",
         "properties": {
           "source": { "type": "string" },
-          "relation": { "enum": ["recipe author", "adapted by", "bar"] },
+          "relation": { "enum": ["book", "recipe author", "adapted by", "bar"] },
           "url": { "type": "string" }
         },
         "required": ["source", "relation"],

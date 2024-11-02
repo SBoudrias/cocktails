@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Richard sealebach",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "R.L. Seale 10 year rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 7,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 7,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "wine",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 209,
+      "title": "smugglers-cove"
+    }
+  ]
+}

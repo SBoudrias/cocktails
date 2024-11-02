@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Chadburn",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Tawny Port",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mathilde poire",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 201,
+      "title": "smugglers-cove"
+    }
+  ]
+}
