@@ -15,7 +15,7 @@ export default function AppHeader({ title }: { title: string }) {
       back={isHome ? null : undefined}
       onBack={() => router.back()}
       right={
-        <Link href="/search">
+        <Link href="/">
           <SearchOutline fontSize={24} />
         </Link>
       }

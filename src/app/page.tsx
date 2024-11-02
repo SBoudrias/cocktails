@@ -1,9 +1,17 @@
-import AppHeader from '@/components/AppHeader';
+import { Metadata } from 'next';
+import Search from './SearchBar';
+import { getAllData } from '@/modules/entities';
 
-export default function Home() {
-  return <AppHeader title="Cocktail Index" />;
-}
-
-export const metadata = {
-  title: 'Cocktail Index',
+export const metadata: Metadata = {
+  title: 'Cocktail Index | Search',
 };
+
+export default async function SearchPage() {
+  const { recipes } = await getAllData();
+
+  return (
+    <>
+      <Search recipes={recipes} />
+    </>
+  );
+}

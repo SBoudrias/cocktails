@@ -6,8 +6,6 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import uFuzzy from '@leeoniya/ufuzzy';
 import styles from './search.module.css';
-import Link from 'next/link';
-import { LeftOutline } from 'antd-mobile-icons';
 import { getRecipeUrl } from '@/modules/url';
 
 function RecipeLine({ recipe, isUnique }: { recipe: Recipe; isUnique: boolean }) {
@@ -111,9 +109,6 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
   return (
     <>
       <Space className={styles.searchBar} style={{ width: '100%', '--gap': '8px' }}>
-        <Link href="/">
-          <LeftOutline fontSize="24px" />
-        </Link>
         <SearchBar
           placeholder="Search for a recipe or an ingredient"
           showCancelButton
