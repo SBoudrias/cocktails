@@ -6,6 +6,7 @@ import './globals.css';
 import FullscreenHelper from '@/components/FullscreenHelper';
 import AppFooter from '@/components/AppFooter';
 import 'core-js/modules/es.object.group-by.js';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
+            <CssBaseline />
             {children}
             <AppFooter />
           </ThemeProvider>
