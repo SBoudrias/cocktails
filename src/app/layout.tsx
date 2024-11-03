@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Providers } from './providers';
 import './globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
@@ -49,6 +50,7 @@ export default function RootLayout({
         </AntdRegistry>
         <FullscreenHelper />
       </body>
+      <GoogleAnalytics gaId="G-XSDN5REM9F" />
     </html>
   );
 }
