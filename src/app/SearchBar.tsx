@@ -1,33 +1,109 @@
 'use client';
 
 import { Recipe } from '@/types/Recipe';
-import { ErrorBlock, IndexBar, List, SearchBar, SearchBarRef, Space } from 'antd-mobile';
-import { useRouter } from 'next/navigation';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import uFuzzy from '@leeoniya/ufuzzy';
-import styles from './search.module.css';
 import { getRecipeUrl } from '@/modules/url';
+import {
+  AppBar,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  InputBase,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  Stack,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+import { styled, alpha } from '@mui/material/styles';
+import Link from 'next/link';
+import SearchIcon from '@mui/icons-material/Search';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-function RecipeLine({ recipe, isUnique }: { recipe: Recipe; isUnique: boolean }) {
-  const router = useRouter();
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  width: '100%',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+  },
+}));
+
+function SearchBar({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  const [hasFocus, setHasFocus] = useState(false);
 
   return (
-    <List.Item onClick={() => router.push(getRecipeUrl(recipe))}>
-      <Space align="baseline">
-        <div className={styles.recipeName}>{recipe.name}</div>
-        {!isUnique && <div className={styles.recipeSource}>{recipe.source.name}</div>}
-      </Space>
-    </List.Item>
+    <Stack direction="row" spacing={1} sx={{ flexGrow: 1 }}>
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+          placeholder="Search…"
+          inputProps={{ 'aria-label': 'search' }}
+          value={value}
+          onChange={(e) => onChange(e.currentTarget.value)}
+          onFocus={() => setHasFocus(true)}
+          onBlur={() => setHasFocus(false)}
+        />
+      </Search>
+      {(hasFocus || value) && <Button onClick={() => onChange('')}>Cancel</Button>}
+    </Stack>
   );
 }
 
-export default function Search({ recipes }: { recipes: Recipe[] }) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const searchRef = useRef<SearchBarRef>(null);
+function RecipeLine({ recipe, isUnique }: { recipe: Recipe; isUnique: boolean }) {
+  return (
+    <Link href={getRecipeUrl(recipe)}>
+      <ListItem divider secondaryAction={<ChevronRightIcon />}>
+        <ListItemText
+          primary={recipe.name}
+          secondary={isUnique ? undefined : recipe.source.name}
+        />
+      </ListItem>
+    </Link>
+  );
+}
 
-  useEffect(() => {
-    searchRef.current?.focus();
-  }, []);
+export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
+  const [searchTerm, setSearchTerm] = useState('');
 
   const nameIsUnique = useMemo(() => {
     // Normalize names to lower case to avoid case sensitivity
@@ -72,9 +148,7 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
         ))}
       </List>
     );
-  } else if (searchTerm.trim().length > 0) {
-    content = <ErrorBlock status="empty" />;
-  } else {
+  } else if (searchTerm.trim().length === 0) {
     const firstLetterRegExp = /^(the |a )?([a-z])/i;
     const groups = Object.entries(
       Object.groupBy(recipes, (recipe) => {
@@ -84,13 +158,14 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
     ).sort(([a], [b]) => a.localeCompare(b));
 
     content = (
-      <IndexBar>
+      <List>
         {groups.map(([letter, recipes]) => {
           if (!recipes) return;
 
           return (
-            <IndexBar.Panel index={letter} title={letter} key={letter}>
-              <List>
+            <li key={letter}>
+              <ul>
+                <ListSubheader>{letter}</ListSubheader>
                 {recipes.map((recipe) => (
                   <RecipeLine
                     key={getRecipeUrl(recipe)}
@@ -98,26 +173,33 @@ export default function Search({ recipes }: { recipes: Recipe[] }) {
                     isUnique={nameIsUnique(recipe.name)}
                   />
                 ))}
-              </List>
-            </IndexBar.Panel>
+              </ul>
+            </li>
           );
         })}
-      </IndexBar>
+      </List>
+    );
+  } else {
+    content = (
+      <Card sx={{ m: 2 }}>
+        <CardHeader title="No results found" />
+        <CardContent>
+          <Typography variant="body2">
+            No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
+          </Typography>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
     <>
-      <Space className={styles.searchBar} style={{ width: '100%', '--gap': '8px' }}>
-        <SearchBar
-          placeholder="Search for a recipe or an ingredient"
-          showCancelButton
-          onChange={setSearchTerm}
-          value={searchTerm}
-          ref={searchRef}
-        />
-      </Space>
-      {content || <ErrorBlock status="empty" />}
+      <AppBar position="relative" color="transparent">
+        <Toolbar>
+          <SearchBar onChange={setSearchTerm} value={searchTerm} />
+        </Toolbar>
+      </AppBar>
+      {content}
     </>
   );
 }

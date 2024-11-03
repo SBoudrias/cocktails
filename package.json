@@ -14,7 +14,13 @@
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.1",
+    "@emotion/cache": "^11.13.1",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@leeoniya/ufuzzy": "^1.0.14",
+    "@mui/icons-material": "^6.1.6",
+    "@mui/material": "^6.1.6",
+    "@mui/material-nextjs": "^6.1.6",
     "@next/third-parties": "15.0.2",
     "@sindresorhus/slugify": "^2.2.1",
     "antd-mobile": "^5.37.1",
