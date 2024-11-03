@@ -194,11 +194,12 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
 
   return (
     <>
-      <AppBar position="relative" color="transparent">
+      <AppBar>
         <Toolbar>
           <SearchBar onChange={setSearchTerm} value={searchTerm} />
         </Toolbar>
       </AppBar>
+      <Toolbar />
       {content}
     </>
   );

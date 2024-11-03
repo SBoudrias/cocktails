@@ -10,38 +10,41 @@ export default function AppHeader({ title }: { title: string }) {
   const isHome = pathname === '/';
 
   return (
-    <AppBar position="relative" color="transparent">
-      <Toolbar>
-        {!isHome && (
+    <>
+      <AppBar>
+        <Toolbar>
+          {!isHome && (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="Go back"
+              onClick={() => router.back()}
+            >
+              <ChevronLeft />
+            </IconButton>
+          )}
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            textAlign="center"
+            sx={{ flexGrow: 1, flexShrink: 1 }}
+          >
+            {title}
+          </Typography>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="Go back"
-            onClick={() => router.back()}
+            href="/"
           >
-            <ChevronLeft />
+            <Search />
           </IconButton>
-        )}
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          textAlign="center"
-          sx={{ flexGrow: 1, flexShrink: 1 }}
-        >
-          {title}
-        </Typography>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="Go back"
-          href="/"
-        >
-          <Search />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </>
   );
 }
