@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit && next lint",
@@ -15,28 +15,28 @@
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.1",
     "@leeoniya/ufuzzy": "^1.0.14",
-    "@next/third-parties": "^15.0.2",
+    "@next/third-parties": "15.0.2",
     "@sindresorhus/slugify": "^2.2.1",
     "antd-mobile": "^5.37.1",
     "antd-mobile-icons": "^0.3.0",
     "core-js": "^3.38.1",
     "fast-glob": "^3.3.2",
     "lodash": "^4.17.21",
-    "next": "14.2.15",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "15.0.2",
+    "react": "19.0.0-rc-02c0e824-20241028",
+    "react-dom": "19.0.0-rc-02c0e824-20241028",
     "react-icons": "^5.3.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.12",
     "@types/node": "^22.7.5",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "ajv": "^8.17.1",
     "ajv-cli": "^5.0.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
-    "eslint-config-next": "14.2.15",
+    "eslint-config-next": "15.0.2",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
@@ -46,5 +46,9 @@
   "lint-staged": {
     "*": "npx prettier --write --ignore-unknown",
     "*.m?[jt]sx?": "npm run lint --fix"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }

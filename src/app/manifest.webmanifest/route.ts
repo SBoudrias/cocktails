@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+
 export function GET() {
   const manifest: MetadataRoute.Manifest = {
     name: 'Cocktail Index',

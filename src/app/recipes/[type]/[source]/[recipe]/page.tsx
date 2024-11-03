@@ -12,12 +12,11 @@ export async function generateStaticParams(): Promise<Params[]> {
   return getRecipePageParams();
 }
 
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({ params }: { params: Promise<Params> }) {
+  const { type, source, recipe: recipeSlug } = await params;
+
   try {
-    const recipe = await getRecipe(
-      { type: params.type, slug: params.source },
-      params.recipe,
-    );
+    const recipe = await getRecipe({ type: type, slug: source }, recipeSlug);
 
     return {
       title: `Cocktail Index | ${recipe.name} from ${recipe.source.name}`,
@@ -27,11 +26,9 @@ export async function generateMetadata({ params }: { params: Params }) {
   }
 }
 
-export default async function RecipePage({ params }: { params: Params }) {
-  const recipe = await getRecipe(
-    { type: params.type, slug: params.source },
-    params.recipe,
-  );
+export default async function RecipePage({ params }: { params: Promise<Params> }) {
+  const { type, source, recipe: recipeSlug } = await params;
+  const recipe = await getRecipe({ type: type, slug: source }, recipeSlug);
 
   return (
     <>

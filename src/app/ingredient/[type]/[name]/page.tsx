@@ -10,9 +10,11 @@ export async function generateStaticParams(): Promise<Params[]> {
   return getIngredientPageParams();
 }
 
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({ params }: { params: Promise<Params> }) {
+  const { type, name } = await params;
+
   try {
-    const ingredient = await getIngredient(params.type, params.name);
+    const ingredient = await getIngredient(type, name);
 
     return {
       title: `Cocktail Index | Learn about ${ingredient}`,
@@ -22,8 +24,10 @@ export async function generateMetadata({ params }: { params: Params }) {
   }
 }
 
-export default async function IngredientPage({ params }: { params: Params }) {
-  const ingredient = await getIngredient(params.type, params.name);
+export default async function IngredientPage({ params }: { params: Promise<Params> }) {
+  const { type, name } = await params;
+
+  const ingredient = await getIngredient(type, name);
   const substitutes = await getSubstitutesForIngredient(ingredient);
 
   return (

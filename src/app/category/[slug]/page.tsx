@@ -22,9 +22,11 @@ export async function generateStaticParams(): Promise<Params[]> {
   return params;
 }
 
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+
   try {
-    const category = await getCategory(params.slug);
+    const category = await getCategory(slug);
 
     return {
       title: `Cocktail Index | Learn about ${category.name}`,
@@ -34,9 +36,11 @@ export async function generateMetadata({ params }: { params: Params }) {
   }
 }
 
-export default async function IngredientPage({ params }: { params: Params }) {
-  const category = await getCategory(params.slug);
-  const ingredients = await getIngredientsForCategory(params.slug);
+export default async function IngredientPage({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+
+  const category = await getCategory(slug);
+  const ingredients = await getIngredientsForCategory(slug);
 
   return (
     <>
