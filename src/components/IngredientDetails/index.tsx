@@ -68,13 +68,7 @@ export default function IngredientDetails({
       {refs.length > 0 &&
         refs.map((ref) => {
           if (ref.type === 'youtube') {
-            return (
-              <Video
-                key={ref.videoId}
-                id={ref.videoId}
-                opts={{ playerVars: { start: ref.start } }}
-              />
-            );
+            return <Video key={ref.videoId} id={ref.videoId} start={ref.start} />;
           }
         })}
       {substitutes.length > 0 && topCategory != null && (

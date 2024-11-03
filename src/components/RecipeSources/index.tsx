@@ -95,7 +95,7 @@ export default function RecipeSources({ recipe }: { recipe: Recipe }) {
         style={{ margin: 12 }}
       >
         <Space block direction="vertical">
-          {ref && <Video id={ref.videoId} opts={{ playerVars: { start: ref.start } }} />}
+          {ref && <Video id={ref.videoId} start={ref.start} />}
           <div>{recipe.source.description}</div>
         </Space>
       </Card>
@@ -120,7 +120,7 @@ export default function RecipeSources({ recipe }: { recipe: Recipe }) {
           if (ref.type === 'youtube') {
             return (
               <Card key={ref.videoId} title="Video">
-                <Video id={ref.videoId} opts={{ playerVars: { start: ref.start } }} />
+                <Video id={ref.videoId} start={ref.start} />
               </Card>
             );
           }

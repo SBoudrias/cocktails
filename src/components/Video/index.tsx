@@ -1,14 +1,19 @@
 'use client';
 
-import YouTube from 'react-youtube';
+import { YouTubeEmbed } from '@next/third-parties/google';
 import style from './style.module.css';
 
-export default function Video({
-  id,
-  opts,
-}: {
-  id: string;
-  opts?: React.ComponentProps<typeof YouTube>['opts'];
-}) {
-  return <YouTube className={style.player} videoId={id} opts={opts} />;
+export default function Video({ id, start }: { id: string; start?: number }) {
+  const searchParams = new URLSearchParams();
+  if (start) {
+    searchParams.set('start', start.toString());
+  }
+
+  return (
+    <div className={style.wrapper}>
+      <div className={style.player}>
+        <YouTubeEmbed videoid={id} params={searchParams.toString()} />
+      </div>
+    </div>
+  );
 }

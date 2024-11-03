@@ -50,13 +50,7 @@ export default function CategoryDetails({
       {category.refs.length > 0 &&
         category.refs.map((ref) => {
           if (ref.type === 'youtube') {
-            return (
-              <Video
-                key={ref.videoId}
-                id={ref.videoId}
-                opts={{ playerVars: { start: ref.start } }}
-              />
-            );
+            return <Video key={ref.videoId} id={ref.videoId} start={ref.start} />;
           }
         })}
       {ingredients.length > 0 && (
