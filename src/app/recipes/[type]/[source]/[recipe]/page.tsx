@@ -5,6 +5,7 @@ import { getRecipe } from '@/modules/recipes';
 import { getRecipePageParams } from '@/modules/params';
 import RecipeSources from '@/components/RecipeSources';
 import { SourceType } from '@/types/Source';
+import { Box } from '@mui/material';
 
 type Params = { type: SourceType; source: string; recipe: string };
 
@@ -33,8 +34,10 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
   return (
     <>
       <AppHeader title={recipe.name} />
-      <RecipeDetails recipe={recipe} />
-      <RecipeSources recipe={recipe} />
+      <Box component="main">
+        <RecipeDetails recipe={recipe} />
+        <RecipeSources recipe={recipe} />
+      </Box>
     </>
   );
 }

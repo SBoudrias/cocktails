@@ -1,6 +1,6 @@
 'use client';
 
-import { List, Space, Grid } from 'antd-mobile';
+import { List, Space } from 'antd-mobile';
 import { RecipeIngredient } from '@/types/Ingredient';
 import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
@@ -10,6 +10,7 @@ import { Recipe } from '@/types/Recipe';
 import UnitSelector, { type Unit } from '../Quantity/Selector';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { getIngredientUrl } from '@/modules/url';
+import { Grid2 } from '@mui/material';
 
 function IngredientLine({
   ingredient,
@@ -54,17 +55,17 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
 
   return (
     <>
-      <Grid columns={3} gap={12} style={{ padding: '0 12px', textAlign: 'center' }}>
-        <Grid.Item>
+      <Grid2 container columns={3} sx={{ textAlign: 'center', my: 1 }}>
+        <Grid2 size={1}>
           <div className={styles.badge}>{recipe.preparation}</div>
-        </Grid.Item>
-        <Grid.Item>
+        </Grid2>
+        <Grid2 size={1}>
           <div className={styles.badge}>{recipe.served_on}</div>
-        </Grid.Item>
-        <Grid.Item>
+        </Grid2>
+        <Grid2 size={1}>
           <div className={styles.badge}>{recipe.glassware}</div>
-        </Grid.Item>
-      </Grid>
+        </Grid2>
+      </Grid2>
       <List header="Ingredients">
         {sortIngredients(recipe.ingredients).map((ingredient) => (
           <IngredientLine

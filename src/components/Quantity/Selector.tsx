@@ -1,13 +1,8 @@
 'use client';
 
-import { Selector } from 'antd-mobile';
+import { ToggleButtonGroup, ToggleButton, Toolbar } from '@mui/material';
 
 export type Unit = 'oz' | 'ml';
-
-const options: { value: Unit; label: string }[] = [
-  { value: 'oz', label: 'oz' },
-  { value: 'ml', label: 'ml' },
-];
 
 export default function UnitSelector({
   value,
@@ -17,11 +12,17 @@ export default function UnitSelector({
   onChange: (unit: Unit) => void;
 }) {
   return (
-    <Selector
-      options={options}
-      value={[value]}
-      onChange={(values) => onChange(values[0] ?? value)}
-      style={{ margin: '12px' }}
-    />
+    <Toolbar>
+      <ToggleButtonGroup
+        value={value}
+        onChange={(_, newVal) => onChange(newVal === 'oz' ? 'oz' : 'ml')}
+        size="small"
+        aria-label="Preferred measurement unit"
+        exclusive
+      >
+        <ToggleButton value="oz">oz</ToggleButton>
+        <ToggleButton value="ml">ml</ToggleButton>
+      </ToggleButtonGroup>
+    </Toolbar>
   );
 }
