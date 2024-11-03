@@ -1,8 +1,7 @@
 'use client';
 
-import { NavBar } from 'antd-mobile';
-import { SearchOutline } from 'antd-mobile-icons';
-import Link from 'next/link';
+import { ChevronLeft, Search } from '@mui/icons-material';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { useRouter, usePathname } from 'next/navigation';
 
 export default function AppHeader({ title }: { title: string }) {
@@ -11,16 +10,38 @@ export default function AppHeader({ title }: { title: string }) {
   const isHome = pathname === '/';
 
   return (
-    <NavBar
-      back={isHome ? null : undefined}
-      onBack={() => router.back()}
-      right={
-        <Link href="/">
-          <SearchOutline fontSize={24} />
-        </Link>
-      }
-    >
-      {title}
-    </NavBar>
+    <AppBar position="relative" color="transparent">
+      <Toolbar>
+        {!isHome && (
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="Go back"
+            onClick={() => router.back()}
+          >
+            <ChevronLeft />
+          </IconButton>
+        )}
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          textAlign="center"
+          sx={{ flexGrow: 1, flexShrink: 1 }}
+        >
+          {title}
+        </Typography>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="Go back"
+          href="/"
+        >
+          <Search />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 }
