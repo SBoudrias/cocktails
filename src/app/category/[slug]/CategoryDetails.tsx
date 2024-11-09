@@ -2,18 +2,26 @@
 
 import { BaseIngredient } from '@/types/Ingredient';
 import { Category } from '@/types/Category';
-import { Card, List } from 'antd-mobile';
 import Video from '@/components/Video';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { FaTag } from 'react-icons/fa';
 import styles from './category.module.css';
 import { getCategoryUrl, getIngredientUrl } from '@/modules/url';
-import { Stack } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 function CategoryList({ categories }: { categories: Category[] }) {
   return (
-    <Stack direction="row" alignItems="baseline" sx={{ flexWrap: 'wrap' }}>
+    <Stack direction="row" alignItems="baseline" spacing={1} sx={{ flexWrap: 'wrap' }}>
       {categories.map((category) => (
         <div key={category.slug}>
           <Link href={getCategoryUrl(category)} className={styles.category}>
@@ -33,18 +41,20 @@ export default function CategoryDetails({
   category: Category;
   ingredients: BaseIngredient[];
 }) {
-  const router = useRouter();
-
   return (
     <>
       {(category.description || category.parents.length > 0) && (
-        <Card style={{ margin: 12 }}>
-          {category.description && <p>{category.description}</p>}
+        <Card sx={{ m: 2 }}>
+          {category.description && (
+            <CardContent>
+              <Typography variant="body2">{category.description}</Typography>
+            </CardContent>
+          )}
           {category.parents.length > 0 && (
-            <p>
+            <CardContent>
               <b>{category.name}</b> is a subset of{' '}
               <CategoryList categories={category.parents} />
-            </p>
+            </CardContent>
           )}
         </Card>
       )}
@@ -55,14 +65,14 @@ export default function CategoryDetails({
           }
         })}
       {ingredients.length > 0 && (
-        <List mode="card" header={`Examples of ${category.name}`}>
+        <List>
+          <ListSubheader>Examples of {category.name}</ListSubheader>
           {ingredients.map((ingredient) => (
-            <List.Item
-              key={ingredient.slug}
-              onClick={() => router.push(getIngredientUrl(ingredient))}
-            >
-              {ingredient.name}
-            </List.Item>
+            <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
+              <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                <ListItemText primary={ingredient.name} />
+              </ListItem>
+            </Link>
           ))}
         </List>
       )}
