@@ -78,14 +78,9 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
           {sortIngredients(recipe.ingredients).map((ingredient) => (
             <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
               <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                <ListItemText
-                  primary={
-                    <IngredientLine
-                      ingredient={ingredient}
-                      preferredUnit={preferredUnit}
-                    />
-                  }
-                />
+                <ListItemText>
+                  <IngredientLine ingredient={ingredient} preferredUnit={preferredUnit} />
+                </ListItemText>
               </ListItem>
             </Link>
           ))}
@@ -98,7 +93,9 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
           <Paper square>
             {recipe.instructions.map((instruction, index) => (
               <ListItem divider key={index}>
-                <ListItemText primary={`${index + 1}. ${instruction}`} />
+                <ListItemText>
+                  {index + 1}. {instruction}
+                </ListItemText>
               </ListItem>
             ))}
           </Paper>

@@ -72,7 +72,7 @@ export default function CategoryDetails({
             {ingredients.map((ingredient) => (
               <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                  <ListItemText primary={ingredient.name} />
+                  <ListItemText>{ingredient.name}</ListItemText>
                 </ListItem>
               </Link>
             ))}

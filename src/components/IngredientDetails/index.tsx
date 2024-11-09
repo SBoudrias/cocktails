@@ -1,13 +1,23 @@
 'use client';
 
 import { BaseIngredient } from '@/types/Ingredient';
-import { Button, Card, List } from 'antd-mobile';
 import Video from '@/components/Video';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { FaTag } from 'react-icons/fa';
-import styles from './styles.module.css';
-import { getCategoryUrl } from '@/modules/url';
+import { getCategoryUrl, getIngredientUrl } from '@/modules/url';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  Paper,
+} from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 export default function IngredientDetails({
   ingredient,
@@ -16,7 +26,6 @@ export default function IngredientDetails({
   ingredient: BaseIngredient;
   substitutes: BaseIngredient[];
 }) {
-  const router = useRouter();
   const listFormatter = new Intl.ListFormat('en', {
     style: 'long',
     type: 'disjunction',
@@ -25,24 +34,27 @@ export default function IngredientDetails({
 
   let descriptionCard;
   if (ingredient.description) {
-    descriptionCard = <Card style={{ margin: 12 }}>{ingredient.description}</Card>;
+    descriptionCard = (
+      <Card sx={{ m: 2 }}>
+        <CardContent>{ingredient.description}</CardContent>
+      </Card>
+    );
   } else if (topCategory?.description) {
     descriptionCard = (
-      <Card
-        style={{ margin: 12 }}
-        title={
-          <>
-            <FaTag />
-            &nbsp;{topCategory.name}
-          </>
-        }
-      >
-        <p>{topCategory.description}</p>
-        <div className={styles.footer}>
-          <Link href={getCategoryUrl(topCategory)}>
-            <Button color="primary">Learn more</Button>
-          </Link>
-        </div>
+      <Card sx={{ m: 2 }}>
+        <CardHeader
+          title={
+            <>
+              <FaTag />
+              &nbsp;{topCategory.name}
+            </>
+          }
+          titleTypographyProps={{ variant: 'h6' }}
+        />
+        <CardContent>{topCategory.description}</CardContent>
+        <CardActions sx={{ justifyContent: 'end' }}>
+          <Button href={getCategoryUrl(topCategory)}>Learn more</Button>
+        </CardActions>
       </Card>
     );
   }
@@ -53,16 +65,26 @@ export default function IngredientDetails({
     <>
       {descriptionCard}
       {topCategory && (
-        <List mode="card" header="Substitution">
-          <List.Item>
-            Substitute with another <b>{topCategory.name}</b>.
-          </List.Item>
-          {ingredient.categories.length > 1 && (
-            <List.Item>
-              If unavailable, you can try substituting with{' '}
-              {listFormatter.format(ingredient.categories.slice(1).map((c) => c.name))}.
-            </List.Item>
-          )}
+        <List>
+          <ListSubheader>Substitutions</ListSubheader>
+          <Paper square>
+            <ListItem divider>
+              <ListItemText>
+                Substitute with another <b>{topCategory.name}</b>.
+              </ListItemText>
+            </ListItem>
+            {ingredient.categories.length > 1 && (
+              <ListItem divider>
+                <ListItemText>
+                  If unavailable, you can try substituting with{' '}
+                  {listFormatter.format(
+                    ingredient.categories.slice(1).map((c) => c.name),
+                  )}
+                  .
+                </ListItemText>
+              </ListItem>
+            )}
+          </Paper>
         </List>
       )}
       {refs.length > 0 &&
@@ -72,13 +94,22 @@ export default function IngredientDetails({
           }
         })}
       {substitutes.length > 0 && topCategory != null && (
-        <List mode="card" header={`Other ${topCategory.name}`}>
-          {substitutes.slice(0, 10).map((substitute) => (
-            <List.Item key={substitute.slug}>{substitute.name}</List.Item>
-          ))}
-          <List.Item onClick={() => router.push(getCategoryUrl(topCategory))}>
-            Learn more
-          </List.Item>
+        <List>
+          <ListSubheader>Other {topCategory.name}</ListSubheader>
+          <Paper square>
+            {substitutes.slice(0, 10).map((substitute) => (
+              <Link href={getIngredientUrl(substitute)} key={substitute.slug}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText>{substitute.name}</ListItemText>
+                </ListItem>
+              </Link>
+            ))}
+            <Link href={getCategoryUrl(topCategory)}>
+              <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                <ListItemText>Learn more</ListItemText>
+              </ListItem>
+            </Link>
+          </Paper>
         </List>
       )}
     </>
