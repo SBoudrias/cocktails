@@ -1,6 +1,6 @@
 'use client';
 
-import { List, Space } from 'antd-mobile';
+import { List } from 'antd-mobile';
 import { RecipeIngredient } from '@/types/Ingredient';
 import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
@@ -10,7 +10,7 @@ import { Recipe } from '@/types/Recipe';
 import UnitSelector, { type Unit } from '../Quantity/Selector';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { getIngredientUrl } from '@/modules/url';
-import { Grid2 } from '@mui/material';
+import { Grid2, Stack } from '@mui/material';
 
 function IngredientLine({
   ingredient,
@@ -38,14 +38,14 @@ function IngredientLine({
 
   return (
     <List.Item onClick={() => router.push(getIngredientUrl(ingredient))}>
-      <Space align="baseline" style={{ '--gap': '4px' }}>
+      <Stack direction="row" spacing={0.5} alignItems="baseline">
         <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />
         <div>
           <div className={styles.name}>{ingredient.name}</div>
           {category}
           {brix}
         </div>
-      </Space>
+      </Stack>
     </List.Item>
   );
 }

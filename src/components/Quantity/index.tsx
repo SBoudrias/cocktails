@@ -1,9 +1,9 @@
 'use client';
 
-import { Space } from 'antd-mobile';
 import styles from './style.module.css';
 import { Unit } from '@/types/Ingredient';
 import { convertQuantityToMl } from '@/modules/conversion';
+import { Stack } from '@mui/material';
 
 const displayFraction: Record<number, string> = {
   0.125: '⅛',
@@ -51,9 +51,9 @@ export default function Quantity({
   }
 
   return (
-    <Space align="baseline" style={{ '--gap': '2px', fontSize: '1.2em' }}>
+    <Stack direction="row" spacing={0.5} alignItems="baseline">
       <span className={styles.quantity}>{displayAmount}</span>
       {unit !== 'unit' && <span className={styles.unit}>{unit}</span>}
-    </Space>
+    </Stack>
   );
 }

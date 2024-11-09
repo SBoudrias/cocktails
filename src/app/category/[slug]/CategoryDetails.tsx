@@ -2,17 +2,18 @@
 
 import { BaseIngredient } from '@/types/Ingredient';
 import { Category } from '@/types/Category';
-import { Card, List, Space } from 'antd-mobile';
+import { Card, List } from 'antd-mobile';
 import Video from '@/components/Video';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { FaTag } from 'react-icons/fa';
 import styles from './category.module.css';
 import { getCategoryUrl, getIngredientUrl } from '@/modules/url';
+import { Stack } from '@mui/material';
 
 function CategoryList({ categories }: { categories: Category[] }) {
   return (
-    <Space wrap>
+    <Stack direction="row" alignItems="baseline" sx={{ flexWrap: 'wrap' }}>
       {categories.map((category) => (
         <div key={category.slug}>
           <Link href={getCategoryUrl(category)} className={styles.category}>
@@ -21,7 +22,7 @@ function CategoryList({ categories }: { categories: Category[] }) {
           </Link>
         </div>
       ))}
-    </Space>
+    </Stack>
   );
 }
 
