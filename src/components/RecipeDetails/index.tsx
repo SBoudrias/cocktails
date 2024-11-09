@@ -4,7 +4,6 @@ import { RecipeIngredient } from '@/types/Ingredient';
 import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
 import Quantity from '@/components/Quantity';
-import { useRouter } from 'next/navigation';
 import { Recipe } from '@/types/Recipe';
 import UnitSelector, { type Unit } from '../Quantity/Selector';
 import useLocalStorage from '@/hooks/useLocalStorage';
@@ -56,7 +55,6 @@ function IngredientLine({
 }
 
 export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
-  const router = useRouter();
   const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
 
   return (
