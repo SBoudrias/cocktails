@@ -41,7 +41,7 @@ export default function Quantity({
 
   let displayAmount: number | string = amount;
   // Display with a fraction
-  if (unitType[unit] === 'imperial' && amount % 1 !== 0) {
+  if (unit === 'unit' || (unitType[unit] === 'imperial' && amount % 1 !== 0)) {
     const base = Math.floor(amount);
     const fraction = amount - base;
     if (displayFraction[fraction] != null) {
