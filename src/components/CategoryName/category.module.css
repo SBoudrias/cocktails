@@ -1,0 +1,4 @@
+.category {
+  display: inline-block;
+  border-bottom: 1px dashed var(--mui-palette-divider);
+}
