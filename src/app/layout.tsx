@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Roboto } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import './globals.css';
 import FullscreenHelper from '@/components/FullscreenHelper';
 import AppFooter from '@/components/AppFooter';
@@ -43,7 +44,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            {children}
+            <NuqsAdapter>{children}</NuqsAdapter>
             <AppFooter />
           </ThemeProvider>
         </AppRouterCacheProvider>

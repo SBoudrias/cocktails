@@ -24,6 +24,7 @@ import { styled, alpha } from '@mui/material/styles';
 import Link from 'next/link';
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useQueryState } from 'nuqs';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -85,7 +86,7 @@ function SearchBar({
           onBlur={() => setHasFocus(false)}
         />
       </Search>
-      {(hasFocus || value) && <Button onClick={() => onChange('')}>Cancel</Button>}
+      {(hasFocus || value) && <Button onClick={() => onChange('')}>Clear</Button>}
     </Stack>
   );
 }
@@ -104,7 +105,7 @@ function RecipeLine({ recipe, isUnique }: { recipe: Recipe; isUnique: boolean })
 }
 
 export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const nameIsUnique = useMemo(() => {
     // Normalize names to lower case to avoid case sensitivity
@@ -121,7 +122,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
   );
 
   const searchMatches = useMemo(() => {
-    if (searchTerm.trim().length === 0) return [];
+    if (!searchTerm || searchTerm.trim().length === 0) return [];
 
     const uf = new uFuzzy();
     const [matchIndexes] = uf.search(haystack, searchTerm.toLowerCase(), 0, 1e3);
@@ -151,7 +152,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
         </Paper>
       </List>
     );
-  } else if (searchTerm.trim().length === 0) {
+  } else if (!searchTerm || searchTerm.trim().length === 0) {
     const firstLetterRegExp = /^(the |a )?([a-z])/i;
     const groups = Object.entries(
       Object.groupBy(recipes, (recipe) => {
@@ -201,7 +202,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
     <>
       <AppBar>
         <Toolbar>
-          <SearchBar onChange={setSearchTerm} value={searchTerm} />
+          <SearchBar onChange={setSearchTerm} value={searchTerm ?? ''} />
         </Toolbar>
       </AppBar>
       <Toolbar />
