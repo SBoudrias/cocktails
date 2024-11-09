@@ -3,7 +3,7 @@
 import { BaseIngredient } from '@/types/Ingredient';
 import Video from '@/components/Video';
 import Link from 'next/link';
-import { FaTag } from 'react-icons/fa';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { getCategoryUrl, getIngredientUrl } from '@/modules/url';
 import {
   Button,
@@ -45,7 +45,7 @@ export default function IngredientDetails({
         <CardHeader
           title={
             <>
-              <FaTag />
+              <LocalOfferIcon />
               &nbsp;{topCategory.name}
             </>
           }

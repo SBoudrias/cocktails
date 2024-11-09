@@ -5,7 +5,7 @@ import { Category } from '@/types/Category';
 import Video from '@/components/Video';
 import Link from 'next/link';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { FaTag } from 'react-icons/fa';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import styles from './category.module.css';
 import { getCategoryUrl, getIngredientUrl } from '@/modules/url';
 import {
@@ -27,7 +27,7 @@ function CategoryList({ categories }: { categories: Category[] }) {
         <div key={category.slug}>
           <Link href={getCategoryUrl(category)} className={styles.category}>
             {category.name}&nbsp;
-            <FaTag />
+            <LocalOfferIcon />
           </Link>
         </div>
       ))}
