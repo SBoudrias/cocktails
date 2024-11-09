@@ -15,6 +15,7 @@ import {
   ListItem,
   ListItemText,
   ListSubheader,
+  Paper,
   Stack,
   Toolbar,
   Typography,
@@ -139,13 +140,15 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
   if (searchMatches.length > 0) {
     content = (
       <List>
-        {searchMatches.map((recipe) => (
-          <RecipeLine
-            key={getRecipeUrl(recipe)}
-            recipe={recipe}
-            isUnique={nameIsUnique(recipe.name)}
-          />
-        ))}
+        <Paper square>
+          {searchMatches.map((recipe) => (
+            <RecipeLine
+              key={getRecipeUrl(recipe)}
+              recipe={recipe}
+              isUnique={nameIsUnique(recipe.name)}
+            />
+          ))}
+        </Paper>
       </List>
     );
   } else if (searchTerm.trim().length === 0) {
@@ -166,13 +169,15 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
             <li key={letter}>
               <ul>
                 <ListSubheader>{letter}</ListSubheader>
-                {recipes.map((recipe) => (
-                  <RecipeLine
-                    key={getRecipeUrl(recipe)}
-                    recipe={recipe}
-                    isUnique={nameIsUnique(recipe.name)}
-                  />
-                ))}
+                <Paper square>
+                  {recipes.map((recipe) => (
+                    <RecipeLine
+                      key={getRecipeUrl(recipe)}
+                      recipe={recipe}
+                      isUnique={nameIsUnique(recipe.name)}
+                    />
+                  ))}
+                </Paper>
               </ul>
             </li>
           );

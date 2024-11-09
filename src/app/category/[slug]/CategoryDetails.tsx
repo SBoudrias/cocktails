@@ -15,6 +15,7 @@ import {
   ListItem,
   ListItemText,
   ListSubheader,
+  Paper,
   Stack,
   Typography,
 } from '@mui/material';
@@ -67,13 +68,15 @@ export default function CategoryDetails({
       {ingredients.length > 0 && (
         <List>
           <ListSubheader>Examples of {category.name}</ListSubheader>
-          {ingredients.map((ingredient) => (
-            <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
-              <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                <ListItemText primary={ingredient.name} />
-              </ListItem>
-            </Link>
-          ))}
+          <Paper square>
+            {ingredients.map((ingredient) => (
+              <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary={ingredient.name} />
+                </ListItem>
+              </Link>
+            ))}
+          </Paper>
         </List>
       )}
     </>

@@ -1,6 +1,5 @@
 'use client';
 
-import { List } from 'antd-mobile';
 import { RecipeIngredient } from '@/types/Ingredient';
 import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
@@ -10,7 +9,17 @@ import { Recipe } from '@/types/Recipe';
 import UnitSelector, { type Unit } from '../Quantity/Selector';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { getIngredientUrl } from '@/modules/url';
-import { Grid2, Stack } from '@mui/material';
+import {
+  Grid2,
+  Stack,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  Paper,
+} from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Link from 'next/link';
 
 function IngredientLine({
   ingredient,
@@ -19,8 +28,6 @@ function IngredientLine({
   ingredient: RecipeIngredient;
   preferredUnit: Unit;
 }) {
-  const router = useRouter();
-
   let category;
   if (
     ingredient.type !== 'syrup' &&
@@ -37,20 +44,19 @@ function IngredientLine({
   }
 
   return (
-    <List.Item onClick={() => router.push(getIngredientUrl(ingredient))}>
-      <Stack direction="row" spacing={0.5} alignItems="baseline">
-        <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />
-        <div>
-          <div className={styles.name}>{ingredient.name}</div>
-          {category}
-          {brix}
-        </div>
-      </Stack>
-    </List.Item>
+    <Stack direction="row" spacing={0.5} alignItems="baseline">
+      <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />
+      <div>
+        <div className={styles.name}>{ingredient.name}</div>
+        {category}
+        {brix}
+      </div>
+    </Stack>
   );
 }
 
 export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
+  const router = useRouter();
   const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
 
   return (
@@ -66,23 +72,36 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
           <div className={styles.badge}>{recipe.glassware}</div>
         </Grid2>
       </Grid2>
-      <List header="Ingredients">
-        {sortIngredients(recipe.ingredients).map((ingredient) => (
-          <IngredientLine
-            key={ingredient.name}
-            ingredient={ingredient}
-            preferredUnit={preferredUnit}
-          />
-        ))}
+      <List>
+        <ListSubheader>Ingredients</ListSubheader>
+        <Paper square>
+          {sortIngredients(recipe.ingredients).map((ingredient) => (
+            <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
+              <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                <ListItemText
+                  primary={
+                    <IngredientLine
+                      ingredient={ingredient}
+                      preferredUnit={preferredUnit}
+                    />
+                  }
+                />
+              </ListItem>
+            </Link>
+          ))}
+        </Paper>
       </List>
       <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
       {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
-        <List header="Instructions">
-          {recipe.instructions.map((instruction, index) => (
-            <List.Item key={index}>
-              {index + 1}. {instruction}
-            </List.Item>
-          ))}
+        <List>
+          <ListSubheader>Instructions</ListSubheader>
+          <Paper square>
+            {recipe.instructions.map((instruction, index) => (
+              <ListItem divider key={index}>
+                <ListItemText primary={`${index + 1}. ${instruction}`} />
+              </ListItem>
+            ))}
+          </Paper>
         </List>
       )}
     </>
