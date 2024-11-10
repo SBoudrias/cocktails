@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SEO auto-generated files (next-sitemap)
+src/public/robots.txt
+src/public/sitemap.xml
+src/public/sitemap-*.xml
