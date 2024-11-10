@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
     const ingredient = await getIngredient(type, name);
 
     return {
-      title: `Cocktail Index | Learn about ${ingredient}`,
+      title: `Cocktail Index | Learn about ${ingredient.name}`,
     };
   } catch {
     notFound();
