@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Pierre Ferrand Dry Curaçao",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Orange curaçao"]
 }

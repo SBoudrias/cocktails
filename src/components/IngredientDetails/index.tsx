@@ -96,7 +96,7 @@ export default function IngredientDetails({
         })}
       {substitutes.length > 0 && topCategory != null && (
         <List>
-          <ListSubheader>Other {topCategory.name}</ListSubheader>
+          <ListSubheader>Some substitution option</ListSubheader>
           <Paper square>
             {substitutes.slice(0, 10).map((substitute) => {
               if (ingredientHasData(substitute)) {

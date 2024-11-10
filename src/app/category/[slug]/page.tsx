@@ -19,7 +19,6 @@ import {
   ListSubheader,
   Paper,
   Stack,
-  Typography,
 } from '@mui/material';
 import { ingredientHasData } from '@/modules/hasData';
 
@@ -56,21 +55,17 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const { slug } = await params;
 
   const category = await getCategory(slug);
-  const ingredients = await getIngredientsForCategory(slug);
+  const [members, substitutes] = await getIngredientsForCategory(category);
 
   return (
     <>
       <AppHeader title={category.name} />
       {(category.description || category.parents.length > 0) && (
         <Card sx={{ m: 2 }}>
-          {category.description && (
-            <CardContent>
-              <Typography variant="body2">{category.description}</Typography>
-            </CardContent>
-          )}
+          {category.description && <CardContent>{category.description}</CardContent>}
           {category.parents.length > 0 && (
             <CardContent>
-              <b>{category.name}</b> is a subset of{' '}
+              <b>{category.name}</b> is a subset of
               <Stack
                 direction="row"
                 alignItems="baseline"
@@ -91,11 +86,35 @@ export default async function IngredientPage({ params }: { params: Promise<Param
             return <Video key={ref.videoId} id={ref.videoId} start={ref.start} />;
           }
         })}
-      {ingredients.length > 0 && (
+      {members.length > 0 && (
         <List>
           <ListSubheader>Examples of {category.name}</ListSubheader>
           <Paper square>
-            {ingredients.map((ingredient) => {
+            {members.map((ingredient) => {
+              if (ingredientHasData(ingredient)) {
+                return (
+                  <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
+                    <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                      <ListItemText>{ingredient.name}</ListItemText>
+                    </ListItem>
+                  </Link>
+                );
+              }
+
+              return (
+                <ListItem key={ingredient.slug} divider>
+                  <ListItemText>{ingredient.name}</ListItemText>
+                </ListItem>
+              );
+            })}
+          </Paper>
+        </List>
+      )}
+      {substitutes.length > 0 && (
+        <List>
+          <ListSubheader>Potential substitutes for {category.name}</ListSubheader>
+          <Paper square>
+            {substitutes.map((ingredient) => {
               if (ingredientHasData(ingredient)) {
                 return (
                   <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>

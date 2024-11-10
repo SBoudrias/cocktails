@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Grand Marnier",
   "type": "liqueur",
-  "categories": ["Orange liqueur", "Orange Curaçao", "Triple Sec"]
+  "categories": ["Orange liqueur"]
 }

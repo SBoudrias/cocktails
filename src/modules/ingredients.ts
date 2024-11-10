@@ -8,6 +8,7 @@ import { INGREDIENT_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import { getCategory } from './categories';
 import { Ref } from '@/types/Ref';
+import { Category } from '@/types/Category';
 
 export const getIngredient = memo(
   async (type: string, slug: string): Promise<BaseIngredient> => {
@@ -74,10 +75,17 @@ export const getIngredientPerCategories = memo(
 );
 
 export const getIngredientsForCategory = async (
-  categorySlug: string,
-): Promise<BaseIngredient[]> => {
+  category: Category,
+): Promise<[BaseIngredient[], BaseIngredient[]]> => {
   const ingredientsByCategories = await getIngredientPerCategories();
-  return ingredientsByCategories[categorySlug] ?? [];
+
+  const members = ingredientsByCategories[category.slug] ?? [];
+  // TODO: Expand the parents into their children, and remove the members
+  const substitutes = category.parents.flatMap(
+    (parent) => ingredientsByCategories[parent.slug] ?? [],
+  );
+
+  return [members, substitutes];
 };
 
 export const getSubstitutesForIngredient = memo(

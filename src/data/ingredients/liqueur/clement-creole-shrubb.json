@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Clément Créole Shrubb",
   "type": "liqueur",
-  "categories": ["Orange Curaçao", "Orange Liqueur", "Triple Sec"]
+  "categories": ["Orange shrubb"]
 }
