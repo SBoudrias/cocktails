@@ -1,4 +1,4 @@
-import { RecipeIngredient } from '@/types/Ingredient';
+import { QuantityDetails } from '@/types/Recipe';
 
 const IMPERIAL_TO_ML = {
   tsp: 5,
@@ -10,9 +10,7 @@ function shouldConvertUnit(unit: string): unit is keyof typeof IMPERIAL_TO_ML {
   return unit in IMPERIAL_TO_ML;
 }
 
-export function convertQuantityToMl(
-  quantity: RecipeIngredient['quantity'],
-): RecipeIngredient['quantity'] {
+export function convertQuantityToMl(quantity: QuantityDetails): QuantityDetails {
   const unit: string = quantity.unit;
   if (shouldConvertUnit(unit)) {
     return {

@@ -25,6 +25,7 @@ import Link from 'next/link';
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useQueryState } from 'nuqs';
+import { Category } from '@/types/Category';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -112,7 +113,15 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
   const haystack = useMemo(
     () =>
       recipes.map((recipe) => {
-        return `${recipe.name} ${recipe.ingredients.map((ingredient) => `${ingredient.name} ${ingredient.categories?.join(' ')}`).join(' ')}`.toLowerCase();
+        return `${recipe.name} ${recipe.ingredients
+          .map((ingredient) => {
+            const relatedCategories: Category[] = [
+              ...('categories' in ingredient ? ingredient.categories : []),
+              ...('parents' in ingredient ? ingredient.parents : []),
+            ];
+            return `${ingredient.name} ${relatedCategories.join(' ')}`;
+          })
+          .join(' ')}`.toLowerCase();
       }),
     [recipes],
   );

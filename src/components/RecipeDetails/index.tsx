@@ -1,6 +1,5 @@
 'use client';
 
-import { RecipeIngredient } from '@/types/Ingredient';
 import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
 import Quantity from '@/components/Quantity';
@@ -24,13 +23,13 @@ function IngredientLine({
   ingredient,
   preferredUnit,
 }: {
-  ingredient: RecipeIngredient;
+  ingredient: Recipe['ingredients'][number];
   preferredUnit: Unit;
 }) {
   let category;
   if (
     ingredient.type !== 'syrup' &&
-    Array.isArray(ingredient.categories) &&
+    'categories' in ingredient &&
     ingredient.categories[0] != null
   ) {
     const label = ingredient.categories[0]!.name;

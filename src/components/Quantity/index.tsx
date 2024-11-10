@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './style.module.css';
-import { Unit } from '@/types/Ingredient';
+import { Unit } from '@/types/Recipe';
 import { convertQuantityToMl } from '@/modules/conversion';
 import { Stack } from '@mui/material';
 

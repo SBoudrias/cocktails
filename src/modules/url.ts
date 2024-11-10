@@ -1,4 +1,4 @@
-import { BaseIngredient } from '@/types/Ingredient';
+import { RecipeIngredient } from '@/types/Recipe';
 import { Recipe } from '@/types/Recipe';
 
 export function getRecipeUrl(recipe: Recipe) {
@@ -9,7 +9,7 @@ export function getCategoryUrl(category: { slug: string }) {
   return `/category/${category.slug}`;
 }
 
-export function getIngredientUrl(ingredient: BaseIngredient) {
+export function getIngredientUrl(ingredient: Omit<RecipeIngredient, 'quantity'>) {
   if (ingredient.type === 'category') return getCategoryUrl(ingredient);
 
   return `/ingredient/${ingredient.type}/${ingredient.slug}`;

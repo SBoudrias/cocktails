@@ -1,5 +1,6 @@
 import { convertQuantityToMl } from '@/modules/conversion';
-import { RecipeIngredient, IngredientType, Unit } from '@/types/Ingredient';
+import { IngredientType } from '@/types/Ingredient';
+import { Recipe, Unit } from '@/types/Recipe';
 
 const UNIT_PRIORITIES: Record<Unit, number> = {
   unit: 0,
@@ -11,7 +12,7 @@ const UNIT_PRIORITIES: Record<Unit, number> = {
   ml: 2,
 };
 
-const INGREDIENT_PRIORITIES: Record<IngredientType, number> = {
+const INGREDIENT_PRIORITIES: Record<IngredientType | 'category', number> = {
   fruit: 0,
   juice: 1,
   syrup: 1,
@@ -39,7 +40,7 @@ const sortCompare = (a: number, b: number) => {
 /**
  * Sorts the ingredients true to the Death & Co's method.
  */
-export default function sortIngredients(ingredients: RecipeIngredient[]) {
+export default function sortIngredients(ingredients: Recipe['ingredients']) {
   return ingredients.sort((a, b) => {
     // Drop/Dash will go first. Too easy to spill!
     if (UNIT_PRIORITIES[a.quantity.unit] !== UNIT_PRIORITIES[b.quantity.unit]) {
