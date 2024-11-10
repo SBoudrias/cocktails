@@ -18,6 +18,7 @@ import {
   Paper,
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { ingredientHasData } from '@/modules/hasData';
 
 export default function IngredientDetails({
   ingredient,
@@ -97,13 +98,23 @@ export default function IngredientDetails({
         <List>
           <ListSubheader>Other {topCategory.name}</ListSubheader>
           <Paper square>
-            {substitutes.slice(0, 10).map((substitute) => (
-              <Link href={getIngredientUrl(substitute)} key={substitute.slug}>
-                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+            {substitutes.slice(0, 10).map((substitute) => {
+              if (ingredientHasData(substitute)) {
+                return (
+                  <Link key={substitute.slug} href={getIngredientUrl(substitute)}>
+                    <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                      <ListItemText>{substitute.name}</ListItemText>
+                    </ListItem>
+                  </Link>
+                );
+              }
+
+              return (
+                <ListItem key={substitute.slug} divider>
                   <ListItemText>{substitute.name}</ListItemText>
                 </ListItem>
-              </Link>
-            ))}
+              );
+            })}
             <Link href={getCategoryUrl(topCategory)}>
               <ListItem divider secondaryAction={<ChevronRightIcon />}>
                 <ListItemText>Learn more</ListItemText>

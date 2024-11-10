@@ -21,6 +21,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import { ingredientHasData } from '@/modules/hasData';
 
 type Params = { slug: string };
 
@@ -94,13 +95,23 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <List>
           <ListSubheader>Examples of {category.name}</ListSubheader>
           <Paper square>
-            {ingredients.map((ingredient) => (
-              <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
-                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+            {ingredients.map((ingredient) => {
+              if (ingredientHasData(ingredient)) {
+                return (
+                  <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
+                    <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                      <ListItemText>{ingredient.name}</ListItemText>
+                    </ListItem>
+                  </Link>
+                );
+              }
+
+              return (
+                <ListItem key={ingredient.slug} divider>
                   <ListItemText>{ingredient.name}</ListItemText>
                 </ListItem>
-              </Link>
-            ))}
+              );
+            })}
           </Paper>
         </List>
       )}

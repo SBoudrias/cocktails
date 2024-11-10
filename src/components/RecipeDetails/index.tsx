@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
+import { ingredientHasData } from '@/modules/hasData';
 
 function IngredientLine({
   ingredient,
@@ -72,15 +73,30 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
       <List>
         <ListSubheader>Ingredients</ListSubheader>
         <Paper square>
-          {sortIngredients(recipe.ingredients).map((ingredient) => (
-            <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
-              <ListItem divider secondaryAction={<ChevronRightIcon />}>
+          {sortIngredients(recipe.ingredients).map((ingredient) => {
+            if (ingredientHasData(ingredient)) {
+              return (
+                <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
+                  <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                    <ListItemText>
+                      <IngredientLine
+                        ingredient={ingredient}
+                        preferredUnit={preferredUnit}
+                      />
+                    </ListItemText>
+                  </ListItem>
+                </Link>
+              );
+            }
+
+            return (
+              <ListItem key={ingredient.slug} divider>
                 <ListItemText>
                   <IngredientLine ingredient={ingredient} preferredUnit={preferredUnit} />
                 </ListItemText>
               </ListItem>
-            </Link>
-          ))}
+            );
+          })}
         </Paper>
       </List>
       <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
