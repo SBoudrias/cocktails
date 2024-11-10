@@ -10,6 +10,7 @@ import 'core-js/modules/es.object.group-by.js';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
+import { Box } from '@mui/material';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -44,8 +45,12 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <NuqsAdapter>{children}</NuqsAdapter>
-            <AppFooter />
+            <NuqsAdapter>
+              <Box sx={{ maxWidth: 600, mx: 'auto' }}>
+                {children}
+                <AppFooter />
+              </Box>
+            </NuqsAdapter>
           </ThemeProvider>
         </AppRouterCacheProvider>
         <FullscreenHelper />
