@@ -36,6 +36,6 @@ yarn-error.log*
 next-env.d.ts
 
 # SEO auto-generated files (next-sitemap)
-src/public/robots.txt
-src/public/sitemap.xml
-src/public/sitemap-*.xml
+public/robots.txt
+public/sitemap.xml
+public/sitemap-*.xml

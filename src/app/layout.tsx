@@ -41,6 +41,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-prefers-color-scheme="dark">
+      <head>
+        <link
+          rel="sitemap"
+          type="application/xml"
+          title="Sitemap"
+          href="/cocktails/sitemap.xml"
+        />
+      </head>
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
