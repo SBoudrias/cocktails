@@ -23,7 +23,7 @@ export type BaseIngredient = {
   brix?: number;
   description?: string;
   categories: Category[];
-  refs?: Ref[];
+  refs: Ref[];
 };
 
 export type RecipeIngredient = BaseIngredient & {

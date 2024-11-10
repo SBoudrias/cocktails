@@ -7,12 +7,16 @@ import { BaseIngredient } from '@/types/Ingredient';
 import { INGREDIENT_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import { getCategory } from './categories';
+import { Ref } from '@/types/Ref';
 
 export const getIngredient = memo(
   async (type: string, slug: string): Promise<BaseIngredient> => {
     const filepath = path.join(INGREDIENT_ROOT, type, `${slug}.json`);
     const data = await readJSONFile<
-      Omit<BaseIngredient, 'slug' | 'categories'> & { categories?: string[] }
+      Omit<BaseIngredient, 'slug' | 'categories'> & {
+        categories?: string[];
+        refs?: Ref[];
+      }
     >(filepath);
 
     if (!data) throw new Error(`Ingredient not found: ${filepath}`);
@@ -25,6 +29,7 @@ export const getIngredient = memo(
       ...data,
       slug,
       categories,
+      refs: data.refs ?? [],
     };
 
     return ingredient;
