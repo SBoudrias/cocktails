@@ -3,6 +3,7 @@
 import { Recipe } from '@/types/Recipe';
 import { useMemo, useState } from 'react';
 import uFuzzy from '@leeoniya/ufuzzy';
+import transliterate from '@sindresorhus/transliterate';
 import { getRecipeUrl } from '@/modules/url';
 import {
   AppBar,
@@ -113,15 +114,17 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
   const haystack = useMemo(
     () =>
       recipes.map((recipe) => {
-        return `${recipe.name} ${recipe.ingredients
-          .map((ingredient) => {
-            const relatedCategories: Category[] = [
-              ...('categories' in ingredient ? ingredient.categories : []),
-              ...('parents' in ingredient ? ingredient.parents : []),
-            ];
-            return `${ingredient.name} ${relatedCategories.join(' ')}`;
-          })
-          .join(' ')}`.toLowerCase();
+        return transliterate(
+          `${recipe.name} ${recipe.ingredients
+            .map((ingredient) => {
+              const relatedCategories: Category[] = [
+                ...('categories' in ingredient ? ingredient.categories : []),
+                ...('parents' in ingredient ? ingredient.parents : []),
+              ];
+              return `${ingredient.name} ${relatedCategories.join(' ')}`;
+            })
+            .join(' ')}`,
+        ).toLowerCase();
       }),
     [recipes],
   );
@@ -130,7 +133,12 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
     if (!searchTerm || searchTerm.trim().length === 0) return [];
 
     const uf = new uFuzzy();
-    const [matchIndexes] = uf.search(haystack, searchTerm.toLowerCase(), 0, 1e3);
+    const [matchIndexes] = uf.search(
+      haystack,
+      transliterate(searchTerm).toLowerCase(),
+      0,
+      1e3,
+    );
 
     if (Array.isArray(matchIndexes) && matchIndexes.length > 0) {
       return matchIndexes
