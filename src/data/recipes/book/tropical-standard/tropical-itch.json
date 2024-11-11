@@ -64,7 +64,7 @@
     },
     {
       "name": "Pear Brandy",
-      "type": "spirit",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
