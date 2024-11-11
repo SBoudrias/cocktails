@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Stiegl-Radler grapefruit beer",
-  "type": "soda"
+  "type": "beer"
 }

@@ -20,11 +20,13 @@ const INGREDIENT_PRIORITIES: Record<IngredientType | 'category', number> = {
   spirit: 3,
   category: 3,
   puree: 1,
-  sugar: 1,
+  tincture: 2,
   bitter: 2,
   other: 2,
   soda: 4,
+  beer: 4,
   spice: 4,
+  wine: 4,
 };
 
 const sortCompare = (a: number, b: number) => {

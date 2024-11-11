@@ -9,6 +9,7 @@
     "name": { "type": "string" },
     "type": {
       "enum": [
+        "beer",
         "bitter",
         "category",
         "fruit",
@@ -18,7 +19,6 @@
         "soda",
         "spice",
         "spirit",
-        "sugar",
         "syrup",
         "tincture",
         "wine",
