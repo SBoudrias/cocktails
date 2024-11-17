@@ -1,4 +1,10 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Black blended rum"
+  "name": "Black Blended Rum",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "sTM6xzUOxOM"
+    }
+  ]
 }
