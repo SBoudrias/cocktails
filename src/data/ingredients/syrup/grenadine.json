@@ -1,5 +1,11 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Grenadine",
-  "type": "syrup"
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "DP7oukgK_1w"
+    }
+  ]
 }

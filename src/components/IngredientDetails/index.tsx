@@ -60,7 +60,10 @@ export default function IngredientDetails({
     );
   }
 
-  const refs = ingredient.categories.flatMap((c) => c.refs ?? []);
+  const refs = [
+    ...ingredient.refs,
+    ...ingredient.categories.flatMap((c) => c.refs ?? []),
+  ];
 
   return (
     <>
