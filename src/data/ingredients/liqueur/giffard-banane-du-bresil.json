@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Giffard banane du Brésil",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Banana liqueur"]
 }

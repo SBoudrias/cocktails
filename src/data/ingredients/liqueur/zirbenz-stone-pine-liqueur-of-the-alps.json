@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Zirbenz Stone Pine Liqueur of the Alps",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Stone pine liqueur"]
 }

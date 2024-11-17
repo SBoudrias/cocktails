@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Amaro di Angostura",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Amaro"]
 }

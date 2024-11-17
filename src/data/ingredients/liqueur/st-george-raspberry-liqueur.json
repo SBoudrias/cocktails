@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "St. George Raspberry liqueur",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Raspberry liqueur"]
 }

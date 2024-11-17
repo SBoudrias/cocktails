@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "Whisky (Scotch)",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "yqniYWLN6PE"
+    }
+  ]
+}

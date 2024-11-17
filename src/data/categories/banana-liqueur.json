@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "Banana liqueur",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0D1rcq4_XKw"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Mathilde poire",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Pear liqueur"]
 }
