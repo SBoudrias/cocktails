@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Orgeat",
-  "type": "syrup"
+  "type": "syrup",
+  "categories": ["Orgeat"]
 }
