@@ -6,7 +6,7 @@ import uniqBy from 'lodash/uniqBy';
 import { BaseIngredient } from '@/types/Ingredient';
 import { INGREDIENT_ROOT } from './constants';
 import { readJSONFile } from './fs';
-import { getCategory } from './categories';
+import { getCategoriesPerParent, getCategory } from './categories';
 import { Ref } from '@/types/Ref';
 import { Category } from '@/types/Category';
 
@@ -78,12 +78,17 @@ export const getIngredientsForCategory = async (
   category: Category,
 ): Promise<[BaseIngredient[], BaseIngredient[]]> => {
   const ingredientsByCategories = await getIngredientPerCategories();
+  const categoriesByParent = await getCategoriesPerParent();
 
-  const members = ingredientsByCategories[category.slug] ?? [];
-  // TODO: Expand the parents into their children, and remove the members
-  const substitutes = category.parents.flatMap(
-    (parent) => ingredientsByCategories[parent.slug] ?? [],
+  // Expand the category into its children
+  const members = [category, ...(categoriesByParent[category.slug] ?? [])].flatMap(
+    ({ slug }) => ingredientsByCategories[slug] ?? [],
   );
+
+  // Expand the parent categories into their children
+  const substitutes = category.parents
+    .flatMap((parent) => [parent, ...(categoriesByParent[parent.slug] ?? [])])
+    .flatMap((parent) => ingredientsByCategories[parent.slug] ?? []);
 
   return [members, substitutes];
 };
@@ -92,12 +97,12 @@ export const getSubstitutesForIngredient = memo(
   async (ingredient: BaseIngredient): Promise<BaseIngredient[]> => {
     const ingredientsByCategories = await getIngredientPerCategories();
 
-    const preferredCategory = ingredient.categories[0];
-    if (!preferredCategory) return [];
+    const substitutions = ingredient.categories
+      .flatMap(({ slug }) => {
+        return ingredientsByCategories[slug] ?? [];
+      })
+      .filter(({ slug }) => slug !== ingredient.slug);
 
-    const substitutions = (ingredientsByCategories[preferredCategory.slug] ?? []).filter(
-      ({ slug }) => slug !== ingredient.slug,
-    );
     return uniqBy(substitutions, 'slug');
   },
   (ingredient) => ingredient.slug,
