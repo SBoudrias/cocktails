@@ -31,7 +31,7 @@
       "items": { "type": "string" }
     },
     "refs": {
-      "$ref": "./ingredient.schema.json#/properties/refs"
+      "$ref": "./recipe.schema.json#/properties/refs"
     }
   },
   "required": ["name", "type"],
