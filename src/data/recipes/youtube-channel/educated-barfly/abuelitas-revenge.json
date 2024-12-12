@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Abuelita's Revenge",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Firewater Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mezcal",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coffee Liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ancho Reyes Chile Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Abuelita’s Hot Chocolate",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Let the hot chocolate rest until cold.",
+    "Top with milk foam: 2 oz whole milk, 1 tbsp powdered sugar, 1-2 Dashes of vanilla extract. Wip until frothy."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "nzydMhulR-s"
+    }
+  ]
+}
