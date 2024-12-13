@@ -1,4 +1,10 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Allspice Dram"
+  "name": "Allspice Dram",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jnpUrm6MveQ"
+    }
+  ]
 }

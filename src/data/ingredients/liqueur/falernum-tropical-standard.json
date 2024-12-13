@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Falernum (Tropical Standard)",
   "type": "liqueur",
-  "categories": ["Falernum liqueur", "Falernum syrup"]
+  "categories": ["Falernum liqueur", "Falernum syrup"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "hJ2Q4OS5n3k"
+    }
+  ]
 }

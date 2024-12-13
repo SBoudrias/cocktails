@@ -1,4 +1,10 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Spiced Rum"
+  "name": "Spiced Rum",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "VSeO0v1Wa2E"
+    }
+  ]
 }
