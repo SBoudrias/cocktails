@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { ingredientHasData } from '@/modules/hasData';
+import { uniqBy } from 'lodash';
 
 export default function IngredientDetails({
   ingredient,
@@ -60,10 +61,10 @@ export default function IngredientDetails({
     );
   }
 
-  const refs = [
-    ...ingredient.refs,
-    ...ingredient.categories.flatMap((c) => c.refs ?? []),
-  ];
+  const refs = uniqBy(
+    [...ingredient.refs, ...ingredient.categories.flatMap((c) => c.refs ?? [])],
+    'videoId',
+  );
 
   return (
     <>
