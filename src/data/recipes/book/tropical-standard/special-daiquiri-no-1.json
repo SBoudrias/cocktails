@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tropical Itch",
+  "name": "Special Daiquiri No.1",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "highball",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Saline",
@@ -14,34 +14,26 @@
       }
     },
     {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Mango purée",
+      "name": "Passion fruit purée",
       "type": "puree",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -54,27 +46,26 @@
       }
     },
     {
-      "name": "Cassia Cinnamon Bark syrup",
-      "type": "syrup",
-      "brix": 50,
+      "name": "Denizen Aged White",
+      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Brandy (Pear)",
-      "type": "category",
+      "name": "Two James Doctor Bird rum",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Saint James blanc",
+      "name": "Appleton 8",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     }
@@ -83,7 +74,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 39
+      "page": 43
     }
   ]
 }

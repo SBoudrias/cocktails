@@ -1,23 +1,15 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tropical Itch",
+  "name": "Red Sky at Night",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "highball",
+  "glassware": "old fashioned",
   "ingredients": [
     {
       "name": "Saline",
       "type": "other",
       "quantity": {
         "amount": 5,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 6,
         "unit": "drop"
       }
     },
@@ -30,51 +22,51 @@
       }
     },
     {
-      "name": "Mango purée",
+      "name": "Passion fruit purée",
       "type": "puree",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cassia Cinnamon Bark syrup",
-      "type": "syrup",
-      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Brandy (Pear)",
-      "type": "category",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+
+    {
+      "name": "egg white",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Saint James blanc",
+      "name": "grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 2,
         "unit": "oz"
       }
     }
@@ -83,7 +75,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 39
+      "page": 261
     }
   ]
 }

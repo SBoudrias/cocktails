@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tropical Itch",
+  "name": "Blue Leilani",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "highball",
+  "glassware": "hurricane",
   "ingredients": [
     {
       "name": "Saline",
@@ -14,67 +14,60 @@
       }
     },
     {
-      "name": "Almond extract",
-      "type": "other",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
+        "amount": 0.25,
         "unit": "dash"
       }
     },
     {
-      "name": "Mango purée",
-      "type": "puree",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cassia Cinnamon Bark syrup",
+      "name": "cane syrup",
       "type": "syrup",
-      "brix": 50,
+      "brix": 66,
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "lime punch syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Brandy (Pear)",
-      "type": "category",
+      "name": "Giffard Blue Curaçao",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Saint James blanc",
+      "name": "Denizen Aged White",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "preparation": "coconut oil-washed",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     }
@@ -83,7 +76,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 39
+      "page": 252
     }
   ]
 }

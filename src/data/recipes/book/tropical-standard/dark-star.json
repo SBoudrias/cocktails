@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tropical Itch",
-  "preparation": "flash blended",
+  "name": "Dark Star",
+  "preparation": "blended",
   "served_on": "crushed ice",
-  "glassware": "highball",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Saline",
@@ -14,31 +14,23 @@
       }
     },
     {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Angostura bitters",
+      "name": "Dave Arnold's chocolate bitters",
       "type": "bitter",
       "quantity": {
-        "amount": 2,
+        "amount": 3,
         "unit": "dash"
       }
     },
     {
-      "name": "Mango purée",
-      "type": "puree",
+      "name": "sugar mix",
+      "type": "other",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "tbsp"
       }
     },
     {
-      "name": "Lime juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -46,36 +38,28 @@
       }
     },
     {
-      "name": "Falernum (Tropical Standard)",
+      "name": "Tempus Fugit Crème de Cacao",
       "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cassia Cinnamon Bark syrup",
-      "type": "syrup",
-      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Brandy (Pear)",
+      "name": "Rum",
+      "preparation": "cacao nib-infused",
       "type": "category",
       "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Saint James blanc",
-      "type": "spirit",
+      "name": "xanthan gum",
+      "type": "other",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
+        "amount": 0.25,
+        "unit": "tsp"
       }
     }
   ],
@@ -83,7 +67,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 39
+      "page": 98
     }
   ]
 }

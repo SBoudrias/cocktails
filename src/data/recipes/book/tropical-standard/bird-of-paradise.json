@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai Tai",
+  "name": "Bird of Paradise",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Saline",
@@ -14,48 +14,23 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Latitude 29 Orgeat",
+      "name": "Raspberry syrup",
       "type": "syrup",
-      "brix": 66,
       "quantity": {
-        "amount": 0.625,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Grand Marnier",
-      "type": "liqueur",
+      "name": "cream syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Clément Créole Shrubb",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "La Favorite Rhum Agricole Vieux",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Coruba",
+      "name": "St. George Raspberry Brandy",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -63,8 +38,24 @@
       }
     },
     {
-      "name": "Denizen Merchants Reserve",
+      "name": "Cadenhead's Old Raj Red Label Gin",
       "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "soda water",
+      "type": "other",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
@@ -75,11 +66,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
+      "page": 199
     }
   ]
 }

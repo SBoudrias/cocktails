@@ -1,8 +1,8 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai Tai",
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
+  "name": "Improved Rum Cocktail",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
   "glassware": "old fashioned",
   "ingredients": [
     {
@@ -14,44 +14,36 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "orange bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
+        "amount": 3,
+        "unit": "drop"
       }
     },
     {
-      "name": "Latitude 29 Orgeat",
+      "name": "passionfruit cordial",
       "type": "syrup",
-      "brix": 66,
       "quantity": {
-        "amount": 0.625,
+        "amount": 0.375,
         "unit": "oz"
       }
     },
     {
-      "name": "Grand Marnier",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Clément Créole Shrubb",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "La Favorite Rhum Agricole Vieux",
+      "name": "St. George Absinthe Verte",
       "type": "spirit",
       "quantity": {
         "amount": 0.25,
-        "unit": "oz"
+        "unit": "tsp"
+      }
+    },
+
+    {
+      "name": "Tempus Fugit Crème de Noyaux",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
       }
     },
     {
@@ -62,11 +54,20 @@
         "unit": "oz"
       }
     },
+
     {
-      "name": "Denizen Merchants Reserve",
+      "name": "Two James Doctor Bird rum",
       "type": "spirit",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Chairman's Reserve Legacy Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }
@@ -75,11 +76,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
+      "page": 227
     }
   ]
 }

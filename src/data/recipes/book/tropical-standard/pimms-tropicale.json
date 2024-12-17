@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai Tai",
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "name": "Pimm's Tropicale",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Saline",
@@ -14,48 +14,47 @@
       }
     },
     {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.125,
         "unit": "oz"
       }
     },
     {
-      "name": "Latitude 29 Orgeat",
-      "type": "syrup",
-      "brix": 66,
-      "quantity": {
-        "amount": 0.625,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Grand Marnier",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Clément Créole Shrubb",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "La Favorite Rhum Agricole Vieux",
-      "type": "spirit",
+      "name": "cucumber juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Coruba",
+      "name": "lemon punch syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime punch syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Chairman's Reserve Rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -63,10 +62,18 @@
       }
     },
     {
-      "name": "Denizen Merchants Reserve",
-      "type": "spirit",
+      "name": "Pimm's No.1",
+      "type": "liqueur",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "soda water",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }
@@ -75,11 +82,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
+      "page": 212
     }
   ]
 }

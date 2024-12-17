@@ -1,23 +1,15 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tropical Itch",
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "highball",
+  "name": "Bay of Pigs",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
     {
       "name": "Saline",
       "type": "other",
       "quantity": {
-        "amount": 5,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 6,
+        "amount": 3,
         "unit": "drop"
       }
     },
@@ -30,51 +22,42 @@
       }
     },
     {
-      "name": "Mango purée",
-      "type": "puree",
+      "name": "Tomr's Tonic syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 0.5,
+        "unit": "tsp"
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
+      "name": "lime cordial",
+      "type": "syrup",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Cassia Cinnamon Bark syrup",
+      "name": "grog concentrate syrup",
       "type": "syrup",
-      "brix": 50,
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Brandy (Pear)",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Saint James blanc",
+      "name": "Don Q Cristal Rum",
       "type": "spirit",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Chairman's Reserve Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }
@@ -83,7 +66,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 39
+      "page": 133
     }
   ]
 }

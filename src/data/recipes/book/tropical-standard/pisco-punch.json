@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai Tai",
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "name": "Pisco Punch",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Saline",
@@ -17,56 +17,47 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Latitude 29 Orgeat",
+      "name": "pineapple gum syrup",
       "type": "syrup",
-      "brix": 66,
       "quantity": {
-        "amount": 0.625,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Grand Marnier",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Clément Créole Shrubb",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "La Favorite Rhum Agricole Vieux",
+      "name": "Vieux Pontarlier Absinthe",
       "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "spray"
+      }
+    },
+    {
+      "name": "makrut lime leaf tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Coruba",
+      "name": "Macchu Pisco",
       "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Denizen Merchants Reserve",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
+        "amount": 2,
         "unit": "oz"
       }
     }
@@ -75,11 +66,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
+      "page": 198
     }
   ]
 }

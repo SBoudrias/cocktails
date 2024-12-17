@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tropical Itch",
+  "name": "Ray's Mystique",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "highball",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Saline",
@@ -14,23 +14,15 @@
       }
     },
     {
-      "name": "Almond extract",
-      "type": "other",
+      "name": "Bittermens Orange Cream Citrate Bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 6,
         "unit": "drop"
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Mango purée",
+      "name": "Passion fruit purée",
       "type": "puree",
       "quantity": {
         "amount": 0.75,
@@ -45,36 +37,45 @@
         "unit": "oz"
       }
     },
+
     {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
+      "name": "vanilla-sandalwood syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Cassia Cinnamon Bark syrup",
+      "name": "pineapple gum syrup",
       "type": "syrup",
-      "brix": 50,
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
+
     {
-      "name": "Brandy (Pear)",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Saint James blanc",
+      "name": "Fords Gin",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "soda water",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coruba",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     }
@@ -83,7 +84,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 39
+      "page": 239
     }
   ]
 }

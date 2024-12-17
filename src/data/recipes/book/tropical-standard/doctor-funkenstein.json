@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Donn's Demon",
+  "name": "Doctor Funkenstein",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "collins",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
       "name": "Saline",
@@ -14,81 +14,65 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Passion fruit purée",
+      "type": "puree",
       "quantity": {
-        "amount": 3,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Pineapple juice",
-      "preparation": "Acid-adjusted",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Red Fassionola",
-      "type": "syrup",
+      "name": "Guava purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.5,
-        "unit": "tsp"
+        "unit": "oz"
       }
     },
 
     {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Grapefruit punch syrup",
+      "name": "cane syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "grenadine",
       "type": "syrup",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "St. George Absinthe Verte",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Luxardo Maraschino Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Coruba",
-      "type": "spirit",
-      "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Two James Doctor Bird rum",
+      "name": "Vieux Pontarlier Absinthe",
       "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.375,
         "unit": "oz"
       }
     },
     {
-      "name": "Chairman's Reserve Rum",
+      "name": "Denizen Merchant's Reserve",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -96,7 +80,7 @@
       }
     },
     {
-      "name": "Hamilton 151 Demerara rum",
+      "name": "Barbancourt 5 Star",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -108,11 +92,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 265
-    },
-    {
-      "type": "youtube",
-      "videoId": "YkgV9Uy5t-g"
+      "page": 267
     }
   ]
 }

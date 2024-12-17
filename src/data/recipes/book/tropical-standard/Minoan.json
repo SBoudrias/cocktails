@@ -1,72 +1,72 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai Tai",
+  "name": "Minoan",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Saline",
+      "name": "olive brine",
       "type": "other",
       "quantity": {
-        "amount": 5,
-        "unit": "drop"
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Latitude 29 Orgeat",
+      "name": "cane syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
-        "amount": 0.625,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Grand Marnier",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "tsp"
       }
     },
     {
-      "name": "Clément Créole Shrubb",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "La Favorite Rhum Agricole Vieux",
-      "type": "spirit",
+      "name": "olive oil",
+      "type": "other",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Coruba",
-      "type": "spirit",
+      "name": "egg white",
+      "type": "other",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Denizen Merchants Reserve",
+      "name": "Lime punch syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hidalgo \"La Gitana\" Manzanilla Sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Paranubes Oaxaca Aguardiente de Caña",
       "type": "spirit",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     }
@@ -75,11 +75,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
+      "page": 159
     }
   ]
 }

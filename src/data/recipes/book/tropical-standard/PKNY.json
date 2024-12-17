@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Donn's Demon",
+  "name": "PKNY",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "collins",
+  "glassware": "snifter",
   "ingredients": [
     {
       "name": "Saline",
@@ -22,52 +22,35 @@
       }
     },
     {
-      "name": "Pineapple juice",
+      "name": "Orange juice",
       "preparation": "Acid-adjusted",
       "type": "juice",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Red Fassionola",
-      "type": "syrup",
-      "quantity": {
         "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-
-    {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Grapefruit punch syrup",
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coconut mix",
       "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
     {
-      "name": "St. George Absinthe Verte",
+      "name": "Smith & Cross",
       "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Luxardo Maraschino Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -75,23 +58,7 @@
       "name": "Coruba",
       "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Two James Doctor Bird rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Chairman's Reserve Rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -99,7 +66,7 @@
       "name": "Hamilton 151 Demerara rum",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     }
@@ -108,11 +75,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 265
-    },
-    {
-      "type": "youtube",
-      "videoId": "YkgV9Uy5t-g"
+      "page": 174
     }
   ]
 }

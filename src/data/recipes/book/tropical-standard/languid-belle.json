@@ -1,15 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Donn's Demon",
+  "name": "Languid Belle",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "collins",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
       "name": "Saline",
       "type": "other",
       "quantity": {
         "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "almond extract",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
         "unit": "drop"
       }
     },
@@ -22,36 +30,34 @@
       }
     },
     {
-      "name": "Pineapple juice",
-      "preparation": "Acid-adjusted",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Red Fassionola",
+      "name": "grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "tsp"
       }
     },
-
     {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
+      "name": "Ginger syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
-      "name": "Grapefruit punch syrup",
+      "name": "sarsaparilla syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -59,20 +65,12 @@
       "name": "St. George Absinthe Verte",
       "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "tsp"
       }
     },
     {
-      "name": "Luxardo Maraschino Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Coruba",
+      "name": "Panamá-Pacific 9 Year Rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -80,26 +78,18 @@
       }
     },
     {
-      "name": "Two James Doctor Bird rum",
+      "name": "Barbancourt 5 Star",
       "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     },
     {
-      "name": "Chairman's Reserve Rum",
-      "type": "spirit",
+      "name": "soda water",
+      "type": "other",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Hamilton 151 Demerara rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
+        "amount": 2,
         "unit": "oz"
       }
     }
@@ -108,11 +98,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 265
-    },
-    {
-      "type": "youtube",
-      "videoId": "YkgV9Uy5t-g"
+      "page": 202
     }
   ]
 }

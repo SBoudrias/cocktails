@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai Tai",
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "name": "Sunset Suite",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Saline",
@@ -17,45 +17,36 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Latitude 29 Orgeat",
+      "name": "cassia cinnamon bark syrup",
       "type": "syrup",
-      "brix": 66,
       "quantity": {
-        "amount": 0.625,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Grand Marnier",
+      "name": "Emilio Hidalgo \"Morenita\" Cream Sherry",
       "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Clément Créole Shrubb",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "La Favorite Rhum Agricole Vieux",
-      "type": "spirit",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Coruba",
+      "name": "Krogstad Aquavit",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Santa Teresa 1796 Rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -63,10 +54,18 @@
       }
     },
     {
-      "name": "Denizen Merchants Reserve",
+      "name": "Clément  VSOP Rhum Agricole Vieux",
       "type": "spirit",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pinot Noir",
+      "type": "category",
+      "quantity": {
+        "amount": 0.375,
         "unit": "oz"
       }
     }
@@ -75,11 +74,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
+      "page": 63
     }
   ]
 }

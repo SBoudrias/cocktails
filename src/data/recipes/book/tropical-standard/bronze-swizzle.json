@@ -1,23 +1,15 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tropical Itch",
+  "name": "Bronze Swizzle",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "highball",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Saline",
       "type": "other",
       "quantity": {
         "amount": 5,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 6,
         "unit": "drop"
       }
     },
@@ -30,18 +22,27 @@
       }
     },
     {
-      "name": "Mango purée",
-      "type": "puree",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Demerara syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+
+    {
+      "name": "lime punch syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -49,32 +50,24 @@
       "name": "Falernum (Tropical Standard)",
       "type": "liqueur",
       "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cassia Cinnamon Bark syrup",
-      "type": "syrup",
-      "brix": 50,
-      "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
+
     {
-      "name": "Brandy (Pear)",
-      "type": "category",
+      "name": "Letherbee Bësk Liqueur",
+      "type": "liqueur",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Saint James blanc",
+      "name": "La Favorite Rhum Agricole Vieux",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
@@ -83,7 +76,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 39
+      "page": 231
     }
   ]
 }

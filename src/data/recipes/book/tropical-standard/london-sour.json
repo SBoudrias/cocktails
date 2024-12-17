@@ -1,10 +1,26 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tropical Itch",
-  "preparation": "flash blended",
+  "name": "London Sour",
+  "preparation": "shaken",
   "served_on": "crushed ice",
-  "glassware": "highball",
+  "glassware": "old fashioned",
   "ingredients": [
+    {
+      "name": "lemon wedge",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "orange wedge",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
     {
       "name": "Saline",
       "type": "other",
@@ -14,15 +30,7 @@
       }
     },
     {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Angostura bitters",
+      "name": "Peychaud's Bitters",
       "type": "bitter",
       "quantity": {
         "amount": 2,
@@ -30,15 +38,15 @@
       }
     },
     {
-      "name": "Mango purée",
-      "type": "puree",
+      "name": "Orange juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -46,35 +54,26 @@
       }
     },
     {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
+      "name": "orgeat",
+      "type": "syrup",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Cassia Cinnamon Bark syrup",
-      "type": "syrup",
-      "brix": 50,
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Brandy (Pear)",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Saint James blanc",
+      "name": "Talisker 10 Year Old Single Malt Scotch Whisky",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Compass Box Artist Blend Scotch Whisky",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }
@@ -83,7 +82,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 39
+      "page": 73
     }
   ]
 }

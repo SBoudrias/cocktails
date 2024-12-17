@@ -1,8 +1,8 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai Tai",
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
+  "name": "Swamp Fire",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
   "glassware": "old fashioned",
   "ingredients": [
     {
@@ -14,7 +14,31 @@
       }
     },
     {
+      "name": "cilantro tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
       "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -22,40 +46,32 @@
       }
     },
     {
-      "name": "Latitude 29 Orgeat",
+      "name": "lime punch syrup",
       "type": "syrup",
-      "brix": 66,
       "quantity": {
-        "amount": 0.625,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Grand Marnier",
+      "name": "Green Chartreuse",
       "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Clément Créole Shrubb",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "La Favorite Rhum Agricole Vieux",
-      "type": "spirit",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Coruba",
+      "name": "Tequila Blanco",
+      "preparation": "jalapeño-infused",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pueblo Viejo Blanco Tequila",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -63,10 +79,10 @@
       }
     },
     {
-      "name": "Denizen Merchants Reserve",
+      "name": "St. George Green Chile Vodka",
       "type": "spirit",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     }
@@ -75,11 +91,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
+      "page": 155
     }
   ]
 }

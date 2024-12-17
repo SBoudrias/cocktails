@@ -1,56 +1,47 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai Tai",
-  "preparation": "flash blended",
+  "name": "Frosty Buck",
+  "preparation": "blended",
   "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "glassware": "goblet",
   "ingredients": [
     {
       "name": "Saline",
       "type": "other",
       "quantity": {
-        "amount": 5,
+        "amount": 3,
         "unit": "drop"
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "cardamom tincture",
+      "type": "tincture",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
-      "name": "Latitude 29 Orgeat",
+      "name": "lime cordial",
       "type": "syrup",
-      "brix": 66,
       "quantity": {
-        "amount": 0.625,
+        "amount": 0.375,
         "unit": "oz"
       }
     },
     {
-      "name": "Grand Marnier",
-      "type": "liqueur",
+      "name": "Ginger syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
-        "unit": "tsp"
+        "amount": 0.375,
+        "unit": "oz"
       }
     },
     {
-      "name": "Clément Créole Shrubb",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "La Favorite Rhum Agricole Vieux",
+      "name": "Mount Gay Black Barrel",
       "type": "spirit",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -58,15 +49,23 @@
       "name": "Coruba",
       "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Denizen Merchants Reserve",
-      "type": "spirit",
+      "name": "water",
+      "type": "other",
       "quantity": {
-        "amount": 1.5,
+        "amount": 3.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.375,
         "unit": "oz"
       }
     }
@@ -75,11 +74,7 @@
     {
       "type": "book",
       "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
+      "page": 112
     }
   ]
 }
