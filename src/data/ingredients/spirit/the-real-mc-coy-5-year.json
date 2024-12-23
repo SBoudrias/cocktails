@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "The Real McCoy 5 year",
+  "type": "spirit",
+  "categories": ["Blended aged rum (Barbados)"]
+}

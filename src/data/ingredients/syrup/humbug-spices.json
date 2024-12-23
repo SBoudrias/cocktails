@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Humbug spices",
+  "type": "syrup",
+  "description": "A combination of 2 parts Amaro Averna, 2 parts cinnamon syrup and 1 part allspice dram."
+}
