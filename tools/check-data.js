@@ -45,7 +45,14 @@ console.log('╰ Done!\n');
 
 console.log('╭ 🔍 Validating data files...');
 for await (const sourceFile of fs.glob('src/data/**/*.json')) {
-  const data = JSON.parse(await fs.readFile(sourceFile, 'utf-8'));
+  let data;
+  try {
+    data = JSON.parse(await fs.readFile(sourceFile, 'utf-8'));
+  } catch (error) {
+    fail(`Invalid JSON in ${sourceFile} ${error.message}`);
+    continue;
+  }
+
   if (!data.$schema) {
     fail(`$schema not defined in ${sourceFile}`);
     continue;

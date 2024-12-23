@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Column still lightly aged"
+  "name": "Overproof Rum",
+  "parents": ["Rum"]
 }

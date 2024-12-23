@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Black Blended Rum",
+  "parents": ["Rum"],
   "refs": [
     {
       "type": "youtube",

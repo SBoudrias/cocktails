@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Whisky (Scotch)",
+  "parents": ["Whiskey"],
   "refs": [
     {
       "type": "youtube",
