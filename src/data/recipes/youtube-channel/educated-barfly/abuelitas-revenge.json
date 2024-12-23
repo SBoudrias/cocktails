@@ -2,8 +2,8 @@
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Abuelita's Revenge",
   "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "nick & nora",
+  "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
       "name": "Firewater Bitters",
