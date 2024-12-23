@@ -38,7 +38,8 @@ export type Recipe = {
     | 'tiki'
     | 'punch'
     | 'flute'
-    | 'footer pilsner';
+    | 'footer pilsner'
+    | 'goblet';
   ingredients: (RecipeIngredient & { quantity: QuantityDetails })[];
   instructions?: string[];
   source: Source;
