@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Blandy's 5 year Verdelho Madeira",
+  "type": "wine",
+  "categories": ["Madeira wine"]
+}

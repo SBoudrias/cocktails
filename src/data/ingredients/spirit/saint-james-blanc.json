@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Saint James blanc",
   "type": "spirit",
-  "categories": ["Lightly-aged Rhum agricole blanc", "Rhum agricole blanc"]
+  "categories": ["Rhum agricole blanc"]
 }
