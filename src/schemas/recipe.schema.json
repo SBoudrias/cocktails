@@ -23,7 +23,17 @@
                 "properties": {
                   "amount": { "type": "number" },
                   "unit": {
-                    "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop", "pinch", "unit"]
+                    "enum": [
+                      "oz",
+                      "ml",
+                      "dash",
+                      "tsp",
+                      "tbsp",
+                      "drop",
+                      "pinch",
+                      "unit",
+                      "bottle"
+                    ]
                   }
                 },
                 "required": ["amount", "unit"],
@@ -46,7 +56,17 @@
                 "properties": {
                   "amount": { "type": "number" },
                   "unit": {
-                    "enum": ["oz", "ml", "dash", "tsp", "tbsp", "drop", "pinch", "unit"]
+                    "enum": [
+                      "oz",
+                      "ml",
+                      "dash",
+                      "tsp",
+                      "tbsp",
+                      "drop",
+                      "pinch",
+                      "unit",
+                      "bottle"
+                    ]
                   }
                 },
                 "required": ["amount", "unit"],
