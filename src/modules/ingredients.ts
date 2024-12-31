@@ -90,7 +90,7 @@ export const getIngredientsForCategory = async (
     .flatMap((parent) => [parent, ...(categoriesByParent[parent.slug] ?? [])])
     .flatMap((parent) => ingredientsByCategories[parent.slug] ?? []);
 
-  return [members, substitutes];
+  return [uniqBy(members, 'slug'), uniqBy(substitutes, 'slug')];
 };
 
 export const getSubstitutesForIngredient = memo(
