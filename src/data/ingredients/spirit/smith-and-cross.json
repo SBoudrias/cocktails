@@ -2,5 +2,9 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Smith & Cross",
   "type": "spirit",
-  "categories": ["Navy Strength Jamaican Rum", "Jamaican Rum"]
+  "categories": [
+    "Pot still lightly aged overproof rum",
+    "Navy Strength Jamaican Rum",
+    "Jamaican Rum"
+  ]
 }

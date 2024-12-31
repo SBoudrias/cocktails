@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Pot still lightly aged overproof rum",
-  "parents": ["Pot still lightly aged rum", "Overproof Rum"],
+  "name": "Pot still unaged overproof rum",
+  "parents": ["Pot still unaged rum", "Overproof Rum"],
   "refs": [
     {
       "type": "youtube",
