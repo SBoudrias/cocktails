@@ -1,5 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Cane coffey still aged rum",
-  "parents": ["Rum"]
+  "parents": ["Rhum Agricole Vieux"]
 }

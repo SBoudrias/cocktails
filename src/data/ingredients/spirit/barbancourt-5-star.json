@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Chairman's Reserve rum",
+  "name": "Barbancourt 5 Star",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Cane coffey still aged rum"]
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Chairman's Reserve rum",
+  "name": "Lemon Hart 151",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Black blended Overproof Rum"]
 }

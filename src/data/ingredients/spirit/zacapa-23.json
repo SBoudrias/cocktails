@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Chairman's Reserve rum",
+  "name": "Zacapa 23",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Column still aged rum"]
 }

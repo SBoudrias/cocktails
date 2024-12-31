@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Chairman's Reserve rum",
+  "name": "Novo Fogo Gold",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Aged Cachaça"]
 }

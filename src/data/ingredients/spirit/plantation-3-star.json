@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Chairman's Reserve rum",
+  "name": "Plantation 3 Star",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Blended Lightly-aged Rum"]
 }

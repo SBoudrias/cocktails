@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Chairman's Reserve rum",
+  "name": "Avua Amburana",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Aged Cachaça"]
 }

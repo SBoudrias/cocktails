@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Chairman's Reserve rum",
+  "name": "Mount Gay Eclipse",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Blended Lightly-aged Rum"]
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Chairman's Reserve rum",
+  "name": "Ron Matusalem 15",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Column still aged rum"]
 }
