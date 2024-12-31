@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Wray & Nephew white overproof",
+  "name": "Worthy Park Overproof",
   "type": "spirit",
   "categories": ["Pot still unaged rum", "Jamaican overproof rum"]
 }

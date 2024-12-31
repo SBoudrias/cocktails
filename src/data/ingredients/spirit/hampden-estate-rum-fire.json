@@ -2,5 +2,9 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hampden estate Rum Fire",
   "type": "spirit",
-  "categories": ["Pot still lightly aged overproof rum", "Jamaican overproof rum"]
+  "categories": [
+    "Pot still unaged rum",
+    "Pot still lightly aged overproof rum",
+    "Jamaican overproof rum"
+  ]
 }
