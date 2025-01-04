@@ -21,5 +21,5 @@ export function getSourceUrl(source: Source) {
 }
 
 export function getSearchUrl() {
-  return `/`;
+  return `/search`;
 }
