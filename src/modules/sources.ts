@@ -4,6 +4,7 @@ import path from 'node:path';
 import memo from 'lodash/memoize';
 import { readJSONFile } from './fs';
 import { BOOK_ROOT, RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT } from './constants';
+import { match } from 'ts-pattern';
 
 function getRecipeSourcePath(root: string, slug: string): string {
   return path.join(root, slug, '_source.json');
@@ -35,12 +36,11 @@ export const getYoutubeChannel = memo(async (slug: string): Promise<YoutubeChann
   };
 });
 
-export const getSource = async (type: string, slug: string): Promise<Source> => {
-  if (type === 'book') {
-    return getBook(slug);
-  } else {
-    return getYoutubeChannel(slug);
-  }
+export const getSource = async (type: Source['type'], slug: string): Promise<Source> => {
+  return match(type)
+    .with('book', () => getBook(slug))
+    .with('youtube-channel', () => getYoutubeChannel(slug))
+    .exhaustive();
 };
 
 export const getAllSources = memo(async () => {
@@ -48,7 +48,7 @@ export const getAllSources = memo(async () => {
 
   for await (const sourceType of await fs.readdir(RECIPE_ROOT)) {
     for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, sourceType))) {
-      sources.push(getSource(sourceType, sourceSlug));
+      sources.push(getSource(sourceType as Source['type'], sourceSlug));
     }
   }
 

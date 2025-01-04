@@ -4,10 +4,10 @@ import RecipeDetails from '@/components/RecipeDetails';
 import { getRecipe } from '@/modules/recipes';
 import { getRecipePageParams } from '@/modules/params';
 import RecipeSources from '@/components/RecipeSources';
-import { SourceType } from '@/types/Source';
 import { Box } from '@mui/material';
+import { Source } from '@/types/Source';
 
-type Params = { type: SourceType; source: string; recipe: string };
+type Params = { type: Source['type']; source: string; recipe: string };
 
 export async function generateStaticParams(): Promise<Params[]> {
   return getRecipePageParams();

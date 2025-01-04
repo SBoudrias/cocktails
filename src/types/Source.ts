@@ -1,19 +1,15 @@
-export type SourceType = 'book' | 'youtube-channel';
-
-type SourceBase = {
-  type: SourceType;
+export type Book = {
+  type: 'book';
   name: string;
   slug: string;
-};
-
-export type Book = SourceBase & {
-  type: 'book';
   link: string;
   description: string;
 };
 
-export type YoutubeChannel = SourceBase & {
+export type YoutubeChannel = {
   type: 'youtube-channel';
+  name: string;
+  slug: string;
   link: string;
   description: string;
 };

@@ -1,19 +1,20 @@
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import { Recipe } from '@/types/Recipe';
-import { Source, SourceType } from '@/types/Source';
+import { Source } from '@/types/Source';
 import slugify from '@sindresorhus/slugify';
 import memo from 'lodash/memoize';
 import { readJSONFile } from './fs';
 import { RECIPE_ROOT } from './constants';
 import { getIngredient } from './ingredients';
 import { getCategory } from './categories';
-import { getBook, getYoutubeChannel } from './sources';
+import { getSource } from './sources';
+import { match } from 'ts-pattern';
 
 export const getRecipe = memo(
   async (
     source: {
-      type: SourceType;
+      type: Source['type'];
       slug: string;
     },
     recipe: string,
@@ -23,10 +24,7 @@ export const getRecipe = memo(
 
     if (!data) throw new Error(`Recipe not found: ${filepath}`);
 
-    const sourceData =
-      source.type === 'book'
-        ? await getBook(source.slug)
-        : await getYoutubeChannel(source.slug);
+    const sourceData = await getSource(source.type, source.slug);
 
     return {
       ...data,
@@ -35,10 +33,10 @@ export const getRecipe = memo(
       attributions: data.attributions ?? [],
       ingredients: await Promise.all(
         data.ingredients.map(async (ingredient) => {
-          const ingredientData =
-            ingredient.type === 'category'
-              ? await getCategory(slugify(ingredient.name))
-              : await getIngredient(ingredient.type, slugify(ingredient.name));
+          const ingredientData = await match(ingredient)
+            .with({ type: 'category' }, ({ name }) => getCategory(slugify(name)))
+            .otherwise(({ type, name }) => getIngredient(type, slugify(name)));
+
           return {
             ...ingredientData,
             ...ingredient,
@@ -62,7 +60,7 @@ export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
         const recipeSlug = path.basename(recipeFilename, '.json');
 
         ingredients.push(
-          getRecipe({ type: sourceType as SourceType, slug: sourceSlug }, recipeSlug),
+          getRecipe({ type: sourceType as Source['type'], slug: sourceSlug }, recipeSlug),
         );
       }
     }

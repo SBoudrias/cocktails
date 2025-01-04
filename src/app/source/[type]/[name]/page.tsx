@@ -9,8 +9,9 @@ import { getSource } from '@/modules/sources';
 import { getSourcePageParams } from '@/modules/params';
 import { getRecipesFromSource } from '@/modules/recipes';
 import SourceAboutCard from '@/components/SourceAboutCard';
+import { Source } from '@/types/Source';
 
-type Params = { type: string; name: string };
+type Params = { type: Source['type']; name: string };
 
 export async function generateStaticParams(): Promise<Params[]> {
   return getSourcePageParams();

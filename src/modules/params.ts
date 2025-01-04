@@ -1,11 +1,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { SourceType } from '@/types/Source';
+import { Source } from '@/types/Source';
 import { INGREDIENT_ROOT, RECIPE_ROOT } from './constants';
 
 export async function getRecipePageParams(): Promise<
   {
-    type: SourceType;
+    type: Source['type'];
     source: string;
     recipe: string;
   }[]
@@ -21,7 +21,7 @@ export async function getRecipePageParams(): Promise<
 
         const recipeSlug = path.basename(dataFilePath, '.json');
         params.push({
-          type: type as SourceType,
+          type: type as Source['type'],
           source: sourceSlug,
           recipe: recipeSlug,
         });
@@ -41,7 +41,7 @@ export async function getIngredientPageParams(): Promise<
     for await (const dataFilePath of await fs.readdir(path.join(INGREDIENT_ROOT, type))) {
       const ingredientSlug = path.basename(dataFilePath, '.json');
       params.push({
-        type: type as SourceType,
+        type: type as Source['type'],
         name: ingredientSlug,
       });
     }
@@ -50,13 +50,15 @@ export async function getIngredientPageParams(): Promise<
   return params;
 }
 
-export async function getSourcePageParams(): Promise<{ type: string; name: string }[]> {
+export async function getSourcePageParams(): Promise<
+  { type: Source['type']; name: string }[]
+> {
   const params = [];
 
   for await (const type of await fs.readdir(RECIPE_ROOT)) {
     for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, type))) {
       params.push({
-        type: type as SourceType,
+        type: type as Source['type'],
         name: sourceSlug,
       });
     }
