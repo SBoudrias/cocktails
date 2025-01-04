@@ -72,7 +72,7 @@ function SearchBar({
 }) {
   return (
     <Stack direction="row" sx={{ flexGrow: 1 }}>
-      <IconButton size="large" edge="start" color="inherit" aria-label="Go back" href="/">
+      <IconButton size="large" edge="start" aria-label="Go back" href="/">
         <ChevronLeft />
       </IconButton>
       <Search>
