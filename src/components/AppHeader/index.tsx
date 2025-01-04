@@ -1,5 +1,6 @@
 'use client';
 
+import { getSearchUrl } from '@/modules/url';
 import { ChevronLeft, Search } from '@mui/icons-material';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { useRouter, usePathname } from 'next/navigation';
@@ -38,7 +39,7 @@ export default function AppHeader({ title }: { title: string }) {
             edge="start"
             color="inherit"
             aria-label="Go back"
-            href="/"
+            href={getSearchUrl()}
           >
             <Search />
           </IconButton>

@@ -14,3 +14,7 @@ export function getIngredientUrl(ingredient: Omit<RecipeIngredient, 'quantity'>)
 
   return `/ingredient/${ingredient.type}/${ingredient.slug}`;
 }
+
+export function getSearchUrl() {
+  return `/`;
+}
