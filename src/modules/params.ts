@@ -49,3 +49,18 @@ export async function getIngredientPageParams(): Promise<
 
   return params;
 }
+
+export async function getSourcePageParams(): Promise<{ type: string; name: string }[]> {
+  const params = [];
+
+  for await (const type of await fs.readdir(RECIPE_ROOT)) {
+    for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, type))) {
+      params.push({
+        type: type as SourceType,
+        name: sourceSlug,
+      });
+    }
+  }
+
+  return params;
+}
