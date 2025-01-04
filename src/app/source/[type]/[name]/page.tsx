@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import { getSource } from '@/modules/sources';
 import { getSourcePageParams } from '@/modules/params';
 import { getRecipesFromSource } from '@/modules/recipes';
+import SourceAboutCard from '@/components/SourceAboutCard';
 
 type Params = { type: string; name: string };
 
@@ -38,6 +39,7 @@ export default async function SourcePage({ params }: { params: Promise<Params> }
   return (
     <Suspense>
       <AppHeader title={source.name} />
+      <SourceAboutCard source={source} sx={{ m: 2 }} />
       <List>
         <ListSubheader>All recipes</ListSubheader>
         <Paper square>
