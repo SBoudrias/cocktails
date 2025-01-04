@@ -1,7 +1,7 @@
 'use client';
 
 import { Recipe } from '@/types/Recipe';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import uFuzzy from '@leeoniya/ufuzzy';
 import transliterate from '@sindresorhus/transliterate';
 import { getRecipeUrl } from '@/modules/url';
@@ -11,6 +11,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  IconButton,
   InputBase,
   List,
   ListItem,
@@ -24,7 +25,8 @@ import {
 import { styled, alpha } from '@mui/material/styles';
 import Link from 'next/link';
 import SearchIcon from '@mui/icons-material/Search';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronRight from '@mui/icons-material/ChevronRight';
+import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import { useQueryState } from 'nuqs';
 import { Category } from '@/types/Category';
 
@@ -51,6 +53,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   width: '100%',
+  height: '100%',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -65,12 +68,13 @@ function SearchBar({
   onChange,
 }: {
   value: string;
-  onChange: (value: string) => void;
+  onChange: (value: string | null) => void;
 }) {
-  const [hasFocus, setHasFocus] = useState(false);
-
   return (
-    <Stack direction="row" spacing={1} sx={{ flexGrow: 1 }}>
+    <Stack direction="row" sx={{ flexGrow: 1 }}>
+      <IconButton size="large" edge="start" color="inherit" aria-label="Go back" href="/">
+        <ChevronLeft />
+      </IconButton>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
@@ -80,11 +84,9 @@ function SearchBar({
           inputProps={{ 'aria-label': 'search' }}
           value={value}
           onChange={(e) => onChange(e.currentTarget.value)}
-          onFocus={() => setHasFocus(true)}
-          onBlur={() => setHasFocus(false)}
         />
       </Search>
-      {(hasFocus || value) && <Button onClick={() => onChange('')}>Clear</Button>}
+      <Button onClick={() => onChange(null)}>Clear</Button>
     </Stack>
   );
 }
@@ -92,7 +94,7 @@ function SearchBar({
 function RecipeLine({ recipe, isUnique }: { recipe: Recipe; isUnique: boolean }) {
   return (
     <Link href={getRecipeUrl(recipe)}>
-      <ListItem divider secondaryAction={<ChevronRightIcon />}>
+      <ListItem divider secondaryAction={<ChevronRight />}>
         <ListItemText
           primary={recipe.name}
           secondary={isUnique ? undefined : recipe.source.name}
