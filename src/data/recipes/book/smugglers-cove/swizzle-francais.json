@@ -15,15 +15,15 @@
     },
     {
       "name": "Cane syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "St-Elizabeth Allspice Dram",
+      "name": "St. Elizabeth allspice Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,

@@ -39,7 +39,7 @@
     },
     {
       "name": "Champagne",
-      "type": "wine",
+      "type": "category",
       "quantity": {
         "amount": 4,
         "unit": "oz"

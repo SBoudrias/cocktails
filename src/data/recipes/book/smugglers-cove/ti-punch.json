@@ -7,8 +7,8 @@
   "ingredients": [
     {
       "name": "Cane syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 1,
         "unit": "tsp"
