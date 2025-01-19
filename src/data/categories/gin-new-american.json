@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "London Dry Gin",
+  "name": "Gin (New American)",
   "parents": ["Gin"],
   "refs": [
     {
