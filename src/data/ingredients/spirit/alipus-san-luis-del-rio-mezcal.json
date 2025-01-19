@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Alipús San Luis Del Rio Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

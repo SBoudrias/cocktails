@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Hamilton Demerara 86 Rum",
+  "type": "spirit",
+  "categories": ["Black Blended Rum (Demerara)"]
+}

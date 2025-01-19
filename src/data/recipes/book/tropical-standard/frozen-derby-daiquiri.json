@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frozen Derby Daiquiri",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "preparation": "Acid-adjusted",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Denizen Aged White",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 190
+    }
+  ]
+}

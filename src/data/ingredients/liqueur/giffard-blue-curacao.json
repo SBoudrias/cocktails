@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Giffard Blue Curaçao",
+  "type": "liqueur",
+  "categories": ["Blue Curaçao"]
+}

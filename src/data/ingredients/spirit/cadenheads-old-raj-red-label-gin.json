@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cadenhead's Old Raj Red Label Gin",
+  "type": "spirit",
+  "categories": ["London Dry Gin"]
+}

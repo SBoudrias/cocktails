@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "El Presidente",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "orange bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Hamilton White Stache",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Comoz Blanc Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 136
+    }
+  ]
+}

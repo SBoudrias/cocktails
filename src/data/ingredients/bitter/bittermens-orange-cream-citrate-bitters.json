@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bittermens Orange Cream Citrate bitters",
+  "type": "bitter"
+}

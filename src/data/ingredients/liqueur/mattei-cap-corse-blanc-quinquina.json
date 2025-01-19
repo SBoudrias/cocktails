@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mattei Cap Corse Blanc Quinquina",
+  "type": "liqueur",
+  "categories": ["Quinquina"]
+}

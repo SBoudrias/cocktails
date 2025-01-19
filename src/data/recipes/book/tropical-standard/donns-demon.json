@@ -22,7 +22,8 @@
       }
     },
     {
-      "name": "pineapple juice acid adjusted to lime",
+      "name": "Pineapple juice",
+      "preparation": "Acid-adjusted",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -34,9 +35,10 @@
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
-        "unit": "oz"
+        "unit": "tsp"
       }
     },
+
     {
       "name": "Falernum (Tropical Standard)",
       "type": "liqueur",
@@ -54,8 +56,8 @@
       }
     },
     {
-      "name": "Absinthe",
-      "type": "category",
+      "name": "St. George Absinthe Verte",
+      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "tsp"
@@ -86,7 +88,7 @@
       }
     },
     {
-      "name": "Chairman's Reserve rum",
+      "name": "Chairman's Reserve Rum",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -103,6 +105,11 @@
     }
   ],
   "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 265
+    },
     {
       "type": "youtube",
       "videoId": "YkgV9Uy5t-g"

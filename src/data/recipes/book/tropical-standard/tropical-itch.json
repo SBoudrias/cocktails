@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Cassia Cinnamon Bark Syrup",
+      "name": "Cassia Cinnamon Bark syrup",
       "type": "syrup",
       "brix": 50,
       "quantity": {
@@ -77,6 +77,13 @@
         "amount": 1,
         "unit": "oz"
       }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 39
     }
   ]
 }

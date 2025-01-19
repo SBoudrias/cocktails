@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "El Diablo",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "cardamom tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Raspberry syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Clear Creek Crème de Cassis",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siete Leguas Blanco Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "soda water",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 81
+    }
+  ]
+}

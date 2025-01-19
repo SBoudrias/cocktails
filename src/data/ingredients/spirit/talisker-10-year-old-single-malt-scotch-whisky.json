@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Talisker 10 Year Old Single Malt Scotch Whisky",
+  "type": "spirit",
+  "categories": ["Whisky (Islay Scotch)"]
+}

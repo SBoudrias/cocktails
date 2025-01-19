@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Bewitched Blossom",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "goblet",
+  "ingredients": [
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sriracha sauce",
+      "type": "other",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "honey syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 8",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 160
+    }
+  ]
+}

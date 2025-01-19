@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Ron Navazos Palazzi Oloroso Cask Strength Rum",
+  "type": "spirit",
+  "categories": ["Aged rum"]
+}

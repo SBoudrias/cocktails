@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Dolin Dry Vermouth",
+  "type": "liqueur",
+  "categories": ["Dry vermouth"]
+}

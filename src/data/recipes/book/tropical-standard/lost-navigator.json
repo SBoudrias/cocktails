@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Lost Navigator",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "goblet",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "cardamom tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "vanilla-sandalwood syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "cassia cinnamon bark syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Santa Teresa 1796 Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 161
+    }
+  ]
+}

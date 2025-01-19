@@ -73,6 +73,11 @@
   ],
   "refs": [
     {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 71
+    },
+    {
       "type": "youtube",
       "videoId": "InodlJAkSO8"
     }

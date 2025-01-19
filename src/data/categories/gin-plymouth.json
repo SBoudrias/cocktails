@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "Gin (Plymouth)",
+  "parents": ["Gin"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "6SlljhQsjDY"
+    }
+  ]
+}

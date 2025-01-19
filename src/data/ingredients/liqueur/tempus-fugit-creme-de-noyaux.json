@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tempus Fugit Crème de Noyaux",
+  "type": "liqueur",
+  "categories": ["Amaretto"]
+}
