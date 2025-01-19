@@ -27,7 +27,6 @@ import Link from 'next/link';
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
-import { visuallyHidden } from '@mui/utils';
 import { useQueryState } from 'nuqs';
 import { Category } from '@/types/Category';
 
@@ -75,36 +74,31 @@ function SearchBar({
 
   return (
     <Toolbar>
-      <form
-        action=""
-        method="get"
-        onSubmit={(e) => {
-          e.preventDefault();
-          searchInputRef.current?.blur();
-        }}
-        style={{ flexGrow: 1, flexShrink: 1 }}
-      >
-        <Stack direction="row" sx={{ flexGrow: 1 }}>
-          <IconButton size="large" edge="start" aria-label="Go back" href="/">
-            <ChevronLeft />
-          </IconButton>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              ref={searchInputRef}
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-              value={value}
-              onChange={(e) => onChange(e.currentTarget.value)}
-              autoFocus
-            />
-          </Search>
-          <Button onClick={() => onChange(null)}>Clear</Button>
-          <Button type="submit" sx={visuallyHidden} />
-        </Stack>
-      </form>
+      <Stack direction="row" sx={{ flexGrow: 1 }}>
+        <IconButton size="large" edge="start" aria-label="Go back" href="/">
+          <ChevronLeft />
+        </IconButton>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            ref={searchInputRef}
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+            value={value}
+            onChange={(e) => onChange(e.currentTarget.value)}
+            type="search"
+            autoFocus
+            onKeyUp={(e) => {
+              if (e.code === 'Enter') {
+                e.currentTarget.blur();
+              }
+            }}
+          />
+        </Search>
+        <Button onClick={() => onChange(null)}>Clear</Button>
+      </Stack>
     </Toolbar>
   );
 }
