@@ -104,10 +104,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
               path.dirname(categoryPath),
               path.resolve(APP_ROOT, 'schemas/category.schema.json'),
             ),
-            ...ingredient,
-            type: undefined,
-            quantity: undefined,
-            brix: undefined,
+            name: ingredient.name,
           });
         }
       } else {
@@ -124,9 +121,8 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
               path.dirname(ingredientPath),
               path.resolve(APP_ROOT, 'schemas/ingredient.schema.json'),
             ),
-            ...ingredient,
-            quantity: undefined,
-            brix: undefined,
+            name: ingredient.name,
+            type: ingredient.type,
           });
         }
       }
