@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Maison Rouge VSOP Cognac",
+  "name": "Macchu Pisco",
   "type": "spirit",
-  "categories": ["Cognac"]
+  "categories": ["Peruvian pisco"]
 }

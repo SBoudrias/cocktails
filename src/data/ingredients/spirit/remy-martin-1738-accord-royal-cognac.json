@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Maison Rouge VSOP Cognac",
+  "name": "Rémy Martin 1738 Accord Royal Cognac",
   "type": "spirit",
   "categories": ["Cognac"]
 }
