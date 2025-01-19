@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "Whisky (Blended Scotch)",
+  "parents": ["Whisky (Scotch)"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "yqniYWLN6PE"
+    }
+  ]
+}
