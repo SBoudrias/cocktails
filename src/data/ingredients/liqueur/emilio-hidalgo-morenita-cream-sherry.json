@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Emilio Hidalgo \"Morenita\" Cream Sherry",
+  "type": "liqueur",
+  "categories": ["Sherry (Cream)"]
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Kalani Coconut Liqueur",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Coconut Liqueur"]
 }

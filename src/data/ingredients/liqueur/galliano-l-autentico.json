@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Galliano L'Autentico",
+  "type": "liqueur"
+}

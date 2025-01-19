@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Clear Creek Crème de Cassis",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Crème de Cassis"]
 }

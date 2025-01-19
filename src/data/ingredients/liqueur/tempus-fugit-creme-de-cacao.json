@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Tempus Fugit Crème de Cacao",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Crème de Cacao"]
 }

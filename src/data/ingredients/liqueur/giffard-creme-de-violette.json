@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Giffard Crème de Violette",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Crème de Violette"]
 }

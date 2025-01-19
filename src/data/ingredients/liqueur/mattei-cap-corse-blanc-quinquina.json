@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Mattei Cap Corse Blanc Quinquina",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Quinquina"]
 }

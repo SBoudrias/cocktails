@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Hidalgo \"La Gitana\" Manzanilla Sherry",
+  "type": "liqueur",
+  "categories": ["Sherry (Manzanilla)"]
+}

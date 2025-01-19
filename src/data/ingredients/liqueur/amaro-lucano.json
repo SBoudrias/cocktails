@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Amaro Lucano",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Amaro"]
 }

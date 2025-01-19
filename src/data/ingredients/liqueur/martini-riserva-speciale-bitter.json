@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Martini Riserva Speciale Bitter",
+  "type": "liqueur",
+  "categories": ["Italian bitter apéritif"]
+}

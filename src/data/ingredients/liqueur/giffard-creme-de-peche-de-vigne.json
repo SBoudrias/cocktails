@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Giffard Crème de Pêche de Vigne",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Peach liqueur"]
 }

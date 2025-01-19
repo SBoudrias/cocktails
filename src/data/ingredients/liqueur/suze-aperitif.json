@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Suze Apéritif",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Gentian liqueur"]
 }

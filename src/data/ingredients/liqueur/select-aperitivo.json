@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet-Branca",
+  "name": "Select Aperitivo",
   "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
+  "categories": ["Italian bitter apéritif"]
 }
