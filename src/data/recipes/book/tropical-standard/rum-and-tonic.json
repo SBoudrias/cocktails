@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Rum adn Tonic",
+  "name": "Rum and Tonic",
   "preparation": "shaken",
   "served_on": "ice cubes",
   "glassware": "highball",
