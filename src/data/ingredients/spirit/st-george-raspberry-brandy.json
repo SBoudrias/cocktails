@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "St. George Raspberry Brandy",
+  "type": "spirit",
+  "categories": ["Brandy (Raspberry)"]
+}
