@@ -75,7 +75,8 @@
                 },
                 "required": ["amount", "unit"],
                 "additionalProperties": false
-              }
+              },
+              "preparation": { "type": "string" }
             },
             "required": ["name", "type", "quantity"],
             "additionalProperties": false

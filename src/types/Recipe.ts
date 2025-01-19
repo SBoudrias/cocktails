@@ -40,7 +40,7 @@ export type Recipe = {
     | 'flute'
     | 'footer pilsner'
     | 'goblet';
-  ingredients: (RecipeIngredient & { quantity: QuantityDetails })[];
+  ingredients: (RecipeIngredient & { quantity: QuantityDetails; preparation?: string })[];
   instructions?: string[];
   source: Source;
   attributions: Attribution[];
