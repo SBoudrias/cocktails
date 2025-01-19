@@ -89,8 +89,8 @@
       }
     },
     {
-      "name": "soda water",
-      "type": "other",
+      "name": "Seltzer",
+      "type": "soda",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
