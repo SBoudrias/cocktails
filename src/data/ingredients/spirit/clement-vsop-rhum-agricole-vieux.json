@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Clément  VSOP Rhum Agricole Vieux",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Vieux"]
+}
