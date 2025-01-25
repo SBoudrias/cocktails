@@ -1,4 +1,10 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Coffee liqueur"
+  "name": "Coffee liqueur",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "m_NL0mECQHk"
+    }
+  ]
 }

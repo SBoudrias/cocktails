@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Kahlua Original coffee liqueur",
+  "type": "liqueur",
+  "categories": ["Coffee liqueur"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "m_NL0mECQHk"
+    }
+  ]
+}
