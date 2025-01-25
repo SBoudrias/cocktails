@@ -1,4 +1,4 @@
-name: lint
+name: CI
 on: push
 
 jobs:
@@ -13,10 +13,10 @@ jobs:
         uses: ./.github/workflows/setup-node
 
       - name: Lint ✅
-        run: npm run lint
+        run: yarn lint
 
       - name: Prettier 💅
-        run: npm run check-code
+        run: yarn check-code
 
       - name: JSON Schema 💽
-        run: npm run check-data
+        run: yarn check-data
