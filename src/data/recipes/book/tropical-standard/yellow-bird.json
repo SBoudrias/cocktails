@@ -67,6 +67,11 @@
       "type": "book",
       "title": "tropical-standard",
       "page": 61
+    },
+    {
+      "type": "youtube",
+      "videoId": "VH105KbRFbQ",
+      "start": 420
     }
   ]
 }
