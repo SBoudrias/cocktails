@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Penang Afrididi",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": { "amount": 6, "unit": "drop" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "orange juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Column still lightly aged rum",
+      "type": "category",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    },
+    {
+      "name": "Blended aged rum",
+      "type": "category",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "aQq0eLv4Emo"
+    }
+  ]
+}
