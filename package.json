@@ -45,16 +45,17 @@
     "eslint-config-next": "15.0.2",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
+    "nano-staged": "^0.8.0",
     "prettier": "^3.3.3",
     "typescript": "^5"
   },
-  "lint-staged": {
-    "*": "npx prettier --write --ignore-unknown",
-    "*.m?[jt]sx?": "npm run lint --fix"
+  "nano-staged": {
+    "*": "yarn prettier --write --ignore-unknown",
+    "*.m?[jt]sx?": "yarn lint --fix"
   },
   "overrides": {
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
-  }
+  },
+  "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
 }
