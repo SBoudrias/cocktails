@@ -14,7 +14,7 @@ export function ingredientHasData(ingredient: RecipeIngredient) {
   return (
     ingredient.description ||
     ingredient.refs.length > 0 ||
-    relatedCategories.length > 1 ||
-    relatedCategories.some(categoryHasData)
+    ingredient.type === 'category' ||
+    relatedCategories.length > 0
   );
 }
