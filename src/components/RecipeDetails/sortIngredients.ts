@@ -4,7 +4,7 @@ import { Recipe, Unit } from '@/types/Recipe';
 
 const UNIT_PRIORITIES: Record<Unit, number> = {
   spray: 0,
-  unit: 1,
+  unit: 0,
   drop: 1,
   dash: 2,
   gram: 3,
