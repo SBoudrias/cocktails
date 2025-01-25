@@ -9,6 +9,7 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "tsc --noEmit && next lint",
+    "test": "vitest",
     "check-code": "prettier --check .",
     "check-data": "tools/check-data.js",
     "prepare": "husky"
@@ -34,10 +35,14 @@
     "ts-pattern": "^5.6.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
     "@types/lodash": "^4.17.12",
     "@types/node": "^22.7.5",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^3.0.4",
     "ajv": "^8.17.1",
     "ajv-cli": "^5.0.0",
     "autoprefixer": "^10.4.20",
@@ -45,9 +50,13 @@
     "eslint-config-next": "15.0.2",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.6",
+    "jsdom": "^26.0.0",
     "nano-staged": "^0.8.0",
     "prettier": "^3.3.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^6.0.11",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.4"
   },
   "nano-staged": {
     "*": "yarn prettier --write --ignore-unknown",

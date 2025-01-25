@@ -24,8 +24,12 @@ const unitType: Record<Unit, 'imperial' | 'metric' | 'other'> = {
   tsp: 'imperial',
   tbsp: 'imperial',
   ml: 'metric',
+  bottle: 'other',
   dash: 'other',
   drop: 'other',
+  gram: 'other',
+  pinch: 'other',
+  spray: 'other',
   unit: 'other',
 };
 
