@@ -3,17 +3,17 @@ import { IngredientType } from '@/types/Ingredient';
 import { Recipe, Unit } from '@/types/Recipe';
 
 const UNIT_PRIORITIES: Record<Unit, number> = {
-  unit: 0,
-  drop: 0,
-  gram: 0,
   spray: 0,
-  dash: 1,
-  tsp: 2,
-  tbsp: 2,
-  oz: 2,
-  ml: 2,
-  pinch: 3,
-  bottle: 3,
+  unit: 1,
+  drop: 1,
+  dash: 2,
+  gram: 3,
+  tsp: 4,
+  tbsp: 4,
+  oz: 4,
+  ml: 4,
+  pinch: 5,
+  bottle: 5,
 };
 
 const INGREDIENT_PRIORITIES: Record<IngredientType | 'category', number> = {
