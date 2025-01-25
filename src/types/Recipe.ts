@@ -3,7 +3,18 @@ import { Ref } from './Ref';
 import { BaseIngredient } from './Ingredient';
 import { Category } from './Category';
 
-export type Unit = 'oz' | 'ml' | 'dash' | 'tsp' | 'tbsp' | 'drop' | 'unit';
+export type Unit =
+  | 'oz'
+  | 'ml'
+  | 'dash'
+  | 'tsp'
+  | 'tbsp'
+  | 'drop'
+  | 'pinch'
+  | 'spray'
+  | 'unit'
+  | 'gram'
+  | 'bottle';
 
 export type Attribution = {
   source: string;

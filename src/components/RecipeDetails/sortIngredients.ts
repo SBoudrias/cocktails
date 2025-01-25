@@ -5,11 +5,15 @@ import { Recipe, Unit } from '@/types/Recipe';
 const UNIT_PRIORITIES: Record<Unit, number> = {
   unit: 0,
   drop: 0,
+  gram: 0,
+  spray: 0,
   dash: 1,
   tsp: 2,
   tbsp: 2,
   oz: 2,
   ml: 2,
+  pinch: 3,
+  bottle: 3,
 };
 
 const INGREDIENT_PRIORITIES: Record<IngredientType | 'category', number> = {
@@ -42,8 +46,10 @@ const sortCompare = (a: number, b: number) => {
 /**
  * Sorts the ingredients true to the Death & Co's method.
  */
-export default function sortIngredients(ingredients: Recipe['ingredients']) {
-  return ingredients.sort((a, b) => {
+export default function sortIngredients<
+  T extends Pick<Recipe['ingredients'][number], 'quantity' | 'type'>,
+>(ingredients: readonly T[]): T[] {
+  return ingredients.toSorted((a, b) => {
     // Drop/Dash will go first. Too easy to spill!
     if (UNIT_PRIORITIES[a.quantity.unit] !== UNIT_PRIORITIES[b.quantity.unit]) {
       return sortCompare(
