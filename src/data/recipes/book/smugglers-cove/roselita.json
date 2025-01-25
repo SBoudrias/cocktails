@@ -68,6 +68,11 @@
       "type": "book",
       "page": 120,
       "title": "smugglers-cove"
+    },
+    {
+      "type": "youtube",
+      "videoId": "gIIod50BWDo",
+      "start": 269
     }
   ]
 }
