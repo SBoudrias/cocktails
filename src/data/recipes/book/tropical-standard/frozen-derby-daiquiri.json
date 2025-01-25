@@ -40,7 +40,7 @@
     },
     {
       "name": "xanthan gum",
-      "type": "other",
+      "type": "emulsifier",
       "quantity": {
         "amount": 0.25,
         "unit": "tsp"

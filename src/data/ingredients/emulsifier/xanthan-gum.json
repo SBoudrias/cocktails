@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Egg",
-  "type": "other"
+  "name": "xanthan gum",
+  "type": "emulsifier"
 }

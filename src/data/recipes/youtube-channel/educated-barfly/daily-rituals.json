@@ -54,8 +54,8 @@
       }
     },
     {
-      "name": "Egg White",
-      "type": "other",
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
         "amount": 1,
         "unit": "unit"

@@ -39,8 +39,8 @@
     },
 
     {
-      "name": "egg white",
-      "type": "other",
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

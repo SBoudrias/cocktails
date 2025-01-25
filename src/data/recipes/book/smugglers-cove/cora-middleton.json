@@ -7,7 +7,7 @@
   "ingredients": [
     {
       "name": "Egg white",
-      "type": "other",
+      "type": "emulsifier",
       "quantity": {
         "amount": 2,
         "unit": "tsp"

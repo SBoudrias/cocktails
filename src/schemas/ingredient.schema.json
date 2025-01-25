@@ -11,6 +11,7 @@
       "enum": [
         "beer",
         "bitter",
+        "emulsifier",
         "category",
         "fruit",
         "juice",

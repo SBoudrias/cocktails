@@ -31,6 +31,7 @@ const INGREDIENT_PRIORITIES: Record<IngredientType | 'category', number> = {
   beer: 4,
   spice: 4,
   wine: 4,
+  emulsifier: 5,
 };
 
 const sortCompare = (a: number, b: number) => {

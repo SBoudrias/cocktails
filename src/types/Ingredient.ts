@@ -5,6 +5,7 @@ import { Ref } from './Ref';
 export type IngredientType =
   | 'beer'
   | 'bitter'
+  | 'emulsifier'
   | 'fruit'
   | 'juice'
   | 'liqueur'
