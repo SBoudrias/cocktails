@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Doc Parks' Gold Fassionola",
+  "type": "syrup",
+  "description": "½ cup passion fruit puree, ¾ cup white peach puree, ¾ cup water, 3 cups sugar"
+}

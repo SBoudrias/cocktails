@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Planteray Original Dark",
+  "type": "spirit",
+  "categories": ["Black Blended Rum"]
+}
