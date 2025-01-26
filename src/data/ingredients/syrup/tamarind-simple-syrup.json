@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tamarind simple syrup",
+  "type": "syrup",
+  "description": "2 cups sugar + 1 cup water + 3 tbsp Tamarind Concentrate"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bacardi Superior",
+  "type": "spirit",
+  "categories": ["Column still lightly aged rum"]
+}

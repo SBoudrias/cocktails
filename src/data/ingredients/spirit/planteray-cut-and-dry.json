@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Planteray Cut & Dry",
+  "type": "spirit",
+  "categories": ["Coconut Rum"]
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "Coconut Rum",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "6Rhp6G1bYdo"
+    }
+  ]
+}

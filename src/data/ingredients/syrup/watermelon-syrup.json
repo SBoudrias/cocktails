@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "watermelon syrup",
+  "type": "syrup",
+  "description": "Vacuum seal: 1 part watermelon + 1 part sugar"
+}
