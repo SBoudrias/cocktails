@@ -50,7 +50,7 @@
       "name": "Orange juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -59,7 +59,7 @@
       "name": "grapefruit juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
