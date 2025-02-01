@@ -10,6 +10,12 @@ function getRecipeSourcePath(root: string, slug: string): string {
   return path.join(root, slug, '_source.json');
 }
 
+function getRecipeAmount(root: string, slug: string): Promise<number> {
+  const folderPath = path.join(root, slug);
+  // length - 1 because of the _source.json file
+  return fs.readdir(folderPath).then((files) => files.length - 1);
+}
+
 export const getBook = memo(async (book: string): Promise<Book> => {
   const filepath = getRecipeSourcePath(BOOK_ROOT, book);
   const data = await readJSONFile<Omit<Book, 'slug' | 'type'>>(filepath);
@@ -20,6 +26,7 @@ export const getBook = memo(async (book: string): Promise<Book> => {
     ...data,
     type: 'book',
     slug: book,
+    recipeAmount: await getRecipeAmount(BOOK_ROOT, book),
   };
 });
 
@@ -33,6 +40,7 @@ export const getYoutubeChannel = memo(async (slug: string): Promise<YoutubeChann
     ...data,
     type: 'youtube-channel',
     slug: slug,
+    recipeAmount: await getRecipeAmount(YOUTUBE_CHANNEL_ROOT, slug),
   };
 });
 

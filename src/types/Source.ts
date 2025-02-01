@@ -4,6 +4,7 @@ export type Book = {
   slug: string;
   link: string;
   description: string;
+  recipeAmount: number;
 };
 
 export type YoutubeChannel = {
@@ -12,6 +13,7 @@ export type YoutubeChannel = {
   slug: string;
   link: string;
   description: string;
+  recipeAmount: number;
 };
 
 export type Source = Book | YoutubeChannel;

@@ -1,15 +1,41 @@
 import { Metadata } from 'next';
 import AppHeader from '@/components/AppHeader';
 import { Suspense } from 'react';
-import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
 import { getSearchUrl, getSourceUrl } from '@/modules/url';
 import { getAllSources } from '@/modules/sources';
+import { Source } from '@/types/Source';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index',
 };
+
+function SourceListItem({ source }: { source: Source }) {
+  return (
+    <Link href={getSourceUrl(source)} key={source.name}>
+      <ListItem divider secondaryAction={<ChevronRightIcon />}>
+        <ListItemText>
+          <Stack direction="row" justifyContent="space-between">
+            <span>{source.name}</span>
+            <Typography color="textSecondary" component="span">
+              {source.recipeAmount}
+            </Typography>
+          </Stack>
+        </ListItemText>
+      </ListItem>
+    </Link>
+  );
+}
 
 export default async function HomePage() {
   const sources = await getAllSources();
@@ -35,11 +61,7 @@ export default async function HomePage() {
             <ListSubheader>By Books</ListSubheader>
             <Paper square>
               {books.map((source) => (
-                <Link href={getSourceUrl(source)} key={source.name}>
-                  <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                    <ListItemText primary={source.name} />
-                  </ListItem>
-                </Link>
+                <SourceListItem source={source} key={source.name} />
               ))}
             </Paper>
           </ul>
@@ -49,11 +71,7 @@ export default async function HomePage() {
             <ListSubheader>By Youtube Channels</ListSubheader>
             <Paper square>
               {ytChannels.map((source) => (
-                <Link href={getSourceUrl(source)} key={source.name}>
-                  <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                    <ListItemText primary={source.name} />
-                  </ListItem>
-                </Link>
+                <SourceListItem source={source} key={source.name} />
               ))}
             </Paper>
           </ul>
