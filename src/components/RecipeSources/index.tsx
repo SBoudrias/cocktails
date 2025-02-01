@@ -25,7 +25,10 @@ function RecipeAttributionCard({ recipe }: { recipe: Recipe }) {
   return (
     <Card sx={{ m: 2 }}>
       <CardHeader title="Recipe sources" />
-      <CardContent>
+      <CardContent
+        // Reduce padding given the table already includes a lot of whitespace
+        sx={{ px: 1, py: 0, ':last-child': { pb: 0 } }}
+      >
         <Table>
           <TableBody>
             {recipe.attributions.map((attribution) => (
