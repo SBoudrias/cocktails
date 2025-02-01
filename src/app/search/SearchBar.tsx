@@ -99,7 +99,7 @@ function SearchBar({
         </Search>
         <Button
           type="reset"
-          onClick={(e) => {
+          onClick={() => {
             onChange(null);
             searchInputRef.current?.querySelector('input')?.focus();
           }}
