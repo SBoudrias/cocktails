@@ -5,7 +5,6 @@ import Ajv from 'ajv/dist/2020.js';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
-import { type } from 'node:os';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
