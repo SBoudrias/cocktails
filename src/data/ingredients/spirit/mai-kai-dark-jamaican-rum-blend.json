@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mai-Kai dark Jamaican rum blend",
+  "type": "spirit",
+  "description": "1 part Wray & Nephew White Overproof +1 part Appleton Signature + 4 parts Coruba",
+  "categories": ["Black Blended Rum (Jamaica)"]
+}

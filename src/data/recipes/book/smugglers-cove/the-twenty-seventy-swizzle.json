@@ -40,16 +40,16 @@
       }
     },
     {
-      "name": "Column still aged rum",
-      "type": "category",
+      "name": "Angostura 1919 rum",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Black blended overproof rum",
-      "type": "category",
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"

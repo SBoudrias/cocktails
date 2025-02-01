@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Don Q Gold Rum",
+  "name": "Don Q White Rum",
   "type": "spirit",
-  "categories": ["Column still aged rum"]
+  "categories": ["Column still lightly aged rum"]
 }

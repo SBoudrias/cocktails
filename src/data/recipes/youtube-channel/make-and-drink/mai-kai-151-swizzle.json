@@ -1,0 +1,91 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mai-Kai 151 Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "brix": 66,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mai-Kai dark Jamaican rum blend",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "source": "Mai-Kai",
+      "relation": "bar"
+    },
+    {
+      "source": "The Atomic Grog",
+      "relation": "adapted by",
+      "url": "https://www.slammie.com/atomicgrog/blog/2011/08/03/mai-kai-cocktail-review-robust-flavors-and-potency-are-hallmark-of-151-swizzle/"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "EaFb_6zlM6U"
+    }
+  ]
+}

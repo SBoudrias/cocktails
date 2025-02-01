@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Don Q Gold Rum",
+  "name": "Angostura 1919 rum",
   "type": "spirit",
   "categories": ["Column still aged rum"]
 }

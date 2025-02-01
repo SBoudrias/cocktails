@@ -1,0 +1,132 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Black Magic",
+  "preparation": "flash blended",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "honey syrup",
+      "brix": 66,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coffee",
+      "preparation": "freshly brewed and chilled",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 12 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Don Q Gold Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Goslings Black Seal Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "source": "Mai-Kai",
+      "relation": "bar"
+    },
+    {
+      "source": "The Atomic Grog",
+      "relation": "adapted by",
+      "url": "https://www.slammie.com/atomicgrog/blog/2012/04/04/mai-kai-cocktail-review-the-black-magic-emerges-from-the-shadows-as-a-true-classic/"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "iKip_xCPNWU"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Don Q Gold Rum",
+  "name": "Goslings Black Seal Rum",
   "type": "spirit",
-  "categories": ["Column still aged rum"]
+  "categories": ["Black Blended Rum"]
 }
