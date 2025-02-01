@@ -1,15 +1,17 @@
 'use client';
 
-import { Recipe } from '@/types/Recipe';
 import {
   Card,
   CardContent,
   CardHeader,
+  Link,
   Table,
   TableBody,
   TableCell,
   TableRow,
 } from '@mui/material';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import { Recipe } from '@/types/Recipe';
 import Video from '@/components/Video';
 import SourceAboutCard from '../SourceAboutCard';
 
@@ -22,6 +24,7 @@ const attributionRelationLabels = {
 function RecipeAttributionCard({ recipe }: { recipe: Recipe }) {
   return (
     <Card sx={{ m: 2 }}>
+      <CardHeader title="Recipe sources" />
       <CardContent>
         <Table>
           <TableBody>
@@ -33,7 +36,16 @@ function RecipeAttributionCard({ recipe }: { recipe: Recipe }) {
                 <TableCell component="th">
                   {attributionRelationLabels[attribution.relation]}
                 </TableCell>
-                <TableCell>{attribution.source}</TableCell>
+                <TableCell>
+                  {attribution.url ? (
+                    <Link href={attribution.url} target="_blank" rel="noopener nofollow">
+                      {attribution.source}
+                      <ArrowOutwardIcon sx={{ fontSize: 'medium' }} />
+                    </Link>
+                  ) : (
+                    attribution.source
+                  )}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
