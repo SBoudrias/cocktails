@@ -11,6 +11,7 @@ const UNIT_PRIORITIES: Record<RecipeIngredient['quantity']['unit'], number> = {
   tbsp: 4,
   oz: 4,
   ml: 4,
+  cup: 5,
   pinch: 5,
   bottle: 5,
   part: 5,

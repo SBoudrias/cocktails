@@ -4,18 +4,10 @@ import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
 import Quantity from '@/components/Quantity';
 import { Recipe } from '@/types/Recipe';
-import UnitSelector, { type Unit } from '../Quantity/Selector';
+import UnitSelector, { type Unit } from '@/components/Quantity/Selector';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { getIngredientUrl } from '@/modules/url';
-import {
-  Grid2,
-  Stack,
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Paper,
-} from '@mui/material';
+import { Stack, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
 import { ingredientHasData } from '@/modules/hasData';
@@ -57,11 +49,11 @@ function IngredientLine({
   );
 }
 
-export const IngredientList = ({
+export default function IngredientList({
   ingredients,
 }: {
   ingredients: Recipe['ingredients'];
-}) => {
+}) {
   const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
 
   return (
@@ -96,39 +88,6 @@ export const IngredientList = ({
         </Paper>
       </List>
       <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
-    </>
-  );
-};
-
-export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
-  return (
-    <>
-      <Grid2 container columns={3} sx={{ textAlign: 'center', my: 1 }}>
-        <Grid2 size={1}>
-          <div className={styles.badge}>{recipe.preparation}</div>
-        </Grid2>
-        <Grid2 size={1}>
-          <div className={styles.badge}>{recipe.served_on}</div>
-        </Grid2>
-        <Grid2 size={1}>
-          <div className={styles.badge}>{recipe.glassware}</div>
-        </Grid2>
-      </Grid2>
-      <IngredientList ingredients={recipe.ingredients} />
-      {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
-        <List>
-          <ListSubheader>Instructions</ListSubheader>
-          <Paper square>
-            {recipe.instructions.map((instruction, index) => (
-              <ListItem divider key={index}>
-                <ListItemText>
-                  {index + 1}. {instruction}
-                </ListItemText>
-              </ListItem>
-            ))}
-          </Paper>
-        </List>
-      )}
     </>
   );
 }

@@ -1,14 +1,3 @@
-.name {
-  font-size: 1em;
-  text-transform: capitalize;
-}
-
-.category {
-  font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
-  text-transform: capitalize;
-}
-
 .badge {
   border-radius: 50%;
   border: 1px solid var(--mui-palette-primary-dark);

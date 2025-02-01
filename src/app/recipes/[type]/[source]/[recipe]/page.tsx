@@ -1,12 +1,14 @@
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
-import RecipeDetails from '@/components/RecipeDetails';
 import { getRecipe } from '@/modules/recipes';
 import { getRecipePageParams } from '@/modules/params';
 import RecipeSources from '@/components/RecipeSources';
 import { Box, Button, Card, CardContent, Stack } from '@mui/material';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import { Source } from '@/types/Source';
+import styles from './style.module.css';
+import { Grid2, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import IngredientList from '@/components/IngredientList';
 
 type Params = { type: Source['type']; source: string; recipe: string };
 
@@ -38,7 +40,32 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
     <>
       <AppHeader title={recipe.name} />
       <Box component="main">
-        <RecipeDetails recipe={recipe} />
+        <Grid2 container columns={3} sx={{ textAlign: 'center', my: 1 }}>
+          <Grid2 size={1}>
+            <div className={styles.badge}>{recipe.preparation}</div>
+          </Grid2>
+          <Grid2 size={1}>
+            <div className={styles.badge}>{recipe.served_on}</div>
+          </Grid2>
+          <Grid2 size={1}>
+            <div className={styles.badge}>{recipe.glassware}</div>
+          </Grid2>
+        </Grid2>
+        <IngredientList ingredients={recipe.ingredients} />
+        {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
+          <List>
+            <ListSubheader>Instructions</ListSubheader>
+            <Paper square>
+              {recipe.instructions.map((instruction, index) => (
+                <ListItem divider key={index}>
+                  <ListItemText>
+                    {index + 1}. {instruction}
+                  </ListItemText>
+                </ListItem>
+              ))}
+            </Paper>
+          </List>
+        )}
         <RecipeSources recipe={recipe} />
         <Card sx={{ m: 2 }}>
           <CardContent>
