@@ -29,6 +29,15 @@ const theme = createTheme({
         LinkComponent: LinkBehaviour,
       },
     },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          ':last-child': {
+            paddingBottom: 16,
+          },
+        },
+      },
+    },
   },
 });
 
