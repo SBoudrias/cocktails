@@ -35,6 +35,18 @@ const theme = createTheme({
           ':last-child': {
             paddingBottom: 16,
           },
+          '+ .MuiCardActions-root': {
+            paddingTop: 0,
+          },
+        },
+      },
+    },
+    MuiCardHeader: {
+      styleOverrides: {
+        root: {
+          '+ .MuiCardContent-root': {
+            paddingTop: 0,
+          },
         },
       },
     },
