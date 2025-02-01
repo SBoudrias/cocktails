@@ -9,7 +9,7 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "tsc --noEmit && next lint",
-    "test": "vitest",
+    "test": "vitest --run",
     "check-code": "prettier --check .",
     "check-data": "tools/check-data.js",
     "prepare": "husky"
