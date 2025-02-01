@@ -44,13 +44,16 @@ export const getSource = async (type: Source['type'], slug: string): Promise<Sou
 };
 
 export const getAllSources = memo(async () => {
-  const sources: Promise<Source>[] = [];
+  const sourcePromises: Promise<Source>[] = [];
 
   for await (const sourceType of await fs.readdir(RECIPE_ROOT)) {
     for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, sourceType))) {
-      sources.push(getSource(sourceType as Source['type'], sourceSlug));
+      sourcePromises.push(getSource(sourceType as Source['type'], sourceSlug));
     }
   }
 
-  return await Promise.all(sources);
+  const sources = await Promise.all(sourcePromises);
+  sources.sort((a, b) => a.name.localeCompare(b.name));
+
+  return sources;
 });
