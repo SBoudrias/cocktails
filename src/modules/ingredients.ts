@@ -3,18 +3,19 @@ import fs from 'node:fs/promises';
 import slugify from '@sindresorhus/slugify';
 import memo from 'lodash/memoize';
 import uniqBy from 'lodash/uniqBy';
-import { BaseIngredient } from '@/types/Ingredient';
+import { RootIngredient } from '@/types/Ingredient';
 import { INGREDIENT_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import { getCategoriesPerParent, getCategory } from './categories';
 import { Ref } from '@/types/Ref';
 import { Category } from '@/types/Category';
+import { match } from 'ts-pattern';
 
 export const getIngredient = memo(
-  async (type: string, slug: string): Promise<BaseIngredient> => {
+  async (type: string, slug: string): Promise<RootIngredient> => {
     const filepath = path.join(INGREDIENT_ROOT, type, `${slug}.json`);
     const data = await readJSONFile<
-      Omit<BaseIngredient, 'slug' | 'categories'> & {
+      Omit<RootIngredient, 'slug' | 'categories'> & {
         categories?: string[];
         refs?: Ref[];
       }
@@ -25,12 +26,25 @@ export const getIngredient = memo(
     const categories = await Promise.all(
       (data.categories ?? []).map((category) => getCategory(slugify(category))),
     );
+    const ingredients = await Promise.all(
+      (data.ingredients ?? []).map(async (ingredient) => {
+        const ingredientData = await match(ingredient)
+          .with({ type: 'category' }, ({ name }) => getCategory(slugify(name)))
+          .otherwise(({ type, name }) => getIngredient(type, slugify(name)));
+
+        return {
+          ...ingredient,
+          ...ingredientData,
+        };
+      }),
+    );
 
     const ingredient = {
       ...data,
       slug,
       categories,
       refs: data.refs ?? [],
+      ingredients,
     };
 
     return ingredient;
@@ -38,8 +52,8 @@ export const getIngredient = memo(
   (...args) => args.join('/'),
 );
 
-export const getAllIngredients = memo(async (): Promise<BaseIngredient[]> => {
-  const ingredients: BaseIngredient[] = [];
+export const getAllIngredients = memo(async (): Promise<RootIngredient[]> => {
+  const ingredients: RootIngredient[] = [];
 
   for await (const type of await fs.readdir(INGREDIENT_ROOT)) {
     for await (const file of await fs.readdir(path.join(INGREDIENT_ROOT, type))) {
@@ -52,8 +66,8 @@ export const getAllIngredients = memo(async (): Promise<BaseIngredient[]> => {
 });
 
 export const getIngredientPerCategories = memo(
-  async (): Promise<Record<string, BaseIngredient[]>> => {
-    const ingredientsByCategoriesMap: Record<string, BaseIngredient[]> = {};
+  async (): Promise<Record<string, RootIngredient[]>> => {
+    const ingredientsByCategoriesMap: Record<string, RootIngredient[]> = {};
 
     const ingredients = await getAllIngredients();
     ingredients.forEach((ingredient) => {
@@ -76,7 +90,7 @@ export const getIngredientPerCategories = memo(
 
 export const getIngredientsForCategory = async (
   category: Category,
-): Promise<[BaseIngredient[], BaseIngredient[]]> => {
+): Promise<[RootIngredient[], RootIngredient[]]> => {
   const ingredientsByCategories = await getIngredientPerCategories();
   const categoriesByParent = await getCategoriesPerParent();
 
@@ -94,7 +108,7 @@ export const getIngredientsForCategory = async (
 };
 
 export const getSubstitutesForIngredient = memo(
-  async (ingredient: BaseIngredient): Promise<BaseIngredient[]> => {
+  async (ingredient: RootIngredient): Promise<RootIngredient[]> => {
     const ingredientsByCategories = await getIngredientPerCategories();
 
     const substitutions = ingredient.categories

@@ -57,26 +57,19 @@ function IngredientLine({
   );
 }
 
-export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
+export const IngredientList = ({
+  ingredients,
+}: {
+  ingredients: Recipe['ingredients'];
+}) => {
   const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
 
   return (
     <>
-      <Grid2 container columns={3} sx={{ textAlign: 'center', my: 1 }}>
-        <Grid2 size={1}>
-          <div className={styles.badge}>{recipe.preparation}</div>
-        </Grid2>
-        <Grid2 size={1}>
-          <div className={styles.badge}>{recipe.served_on}</div>
-        </Grid2>
-        <Grid2 size={1}>
-          <div className={styles.badge}>{recipe.glassware}</div>
-        </Grid2>
-      </Grid2>
       <List>
         <ListSubheader>Ingredients</ListSubheader>
         <Paper square>
-          {sortIngredients(recipe.ingredients).map((ingredient) => {
+          {sortIngredients(ingredients).map((ingredient) => {
             if (ingredientHasData(ingredient)) {
               return (
                 <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
@@ -103,6 +96,25 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
         </Paper>
       </List>
       <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
+    </>
+  );
+};
+
+export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
+  return (
+    <>
+      <Grid2 container columns={3} sx={{ textAlign: 'center', my: 1 }}>
+        <Grid2 size={1}>
+          <div className={styles.badge}>{recipe.preparation}</div>
+        </Grid2>
+        <Grid2 size={1}>
+          <div className={styles.badge}>{recipe.served_on}</div>
+        </Grid2>
+        <Grid2 size={1}>
+          <div className={styles.badge}>{recipe.glassware}</div>
+        </Grid2>
+      </Grid2>
+      <IngredientList ingredients={recipe.ingredients} />
       {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
         <List>
           <ListSubheader>Instructions</ListSubheader>

@@ -33,6 +33,9 @@
     },
     "refs": {
       "$ref": "./recipe.schema.json#/properties/refs"
+    },
+    "ingredients": {
+      "$ref": "./recipe.schema.json#/properties/ingredients"
     }
   },
   "required": ["name", "type"],

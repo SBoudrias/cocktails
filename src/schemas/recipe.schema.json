@@ -29,12 +29,14 @@
                       "dash",
                       "tsp",
                       "tbsp",
+                      "cup",
                       "drop",
                       "pinch",
                       "spray",
                       "unit",
                       "gram",
-                      "bottle"
+                      "bottle",
+                      "part"
                     ]
                   }
                 },
@@ -64,12 +66,14 @@
                       "dash",
                       "tsp",
                       "tbsp",
+                      "cup",
                       "drop",
                       "pinch",
                       "spray",
                       "unit",
                       "gram",
-                      "bottle"
+                      "bottle",
+                      "part"
                     ]
                   }
                 },
@@ -154,6 +158,16 @@
               "page": { "type": "number" }
             },
             "required": ["type", "title", "page"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": { "const": "website" },
+              "name": { "type": "string" },
+              "url": { "type": "string" }
+            },
+            "required": ["type", "name", "url"],
             "additionalProperties": false
           }
         ]

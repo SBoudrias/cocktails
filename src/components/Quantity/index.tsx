@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './style.module.css';
-import { Unit } from '@/types/Recipe';
+import { RecipeIngredient } from '@/types/Ingredient';
 import { convertQuantityToMl } from '@/modules/conversion';
 import { Stack } from '@mui/material';
 
@@ -19,10 +19,14 @@ const displayFraction: Record<number, string> = {
   0.75: '¾',
 };
 
-const unitType: Record<Unit, 'imperial' | 'metric' | 'other'> = {
+const unitType: Record<
+  RecipeIngredient['quantity']['unit'],
+  'imperial' | 'metric' | 'other'
+> = {
   oz: 'imperial',
   tsp: 'imperial',
   tbsp: 'imperial',
+  cup: 'imperial',
   ml: 'metric',
   bottle: 'other',
   dash: 'other',
@@ -31,14 +35,15 @@ const unitType: Record<Unit, 'imperial' | 'metric' | 'other'> = {
   pinch: 'other',
   spray: 'other',
   unit: 'other',
+  part: 'other',
 };
 
 export default function Quantity({
   preferredUnit,
   quantity,
 }: {
-  preferredUnit: Unit;
-  quantity: { amount: number; unit: Unit };
+  preferredUnit: RecipeIngredient['quantity']['unit'];
+  quantity: RecipeIngredient['quantity'];
 }) {
   const { amount, unit } =
     preferredUnit === 'ml' ? convertQuantityToMl(quantity) : quantity;

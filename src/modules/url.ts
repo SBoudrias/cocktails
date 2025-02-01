@@ -1,4 +1,4 @@
-import { RecipeIngredient } from '@/types/Recipe';
+import { RecipeIngredient } from '@/types/Ingredient';
 import { Recipe } from '@/types/Recipe';
 import { Source } from '@/types/Source';
 

@@ -15,4 +15,10 @@ export type BookRef = {
   page: number;
 };
 
-export type Ref = YoutubeRef | BookRef;
+export type WebsiteRef = {
+  type: 'website';
+  name: string;
+  url: string;
+};
+
+export type Ref = YoutubeRef | BookRef | WebsiteRef;

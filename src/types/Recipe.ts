@@ -1,33 +1,12 @@
 import { Source } from './Source';
 import { Ref } from './Ref';
-import { BaseIngredient } from './Ingredient';
-import { Category } from './Category';
-
-export type Unit =
-  | 'oz'
-  | 'ml'
-  | 'dash'
-  | 'tsp'
-  | 'tbsp'
-  | 'drop'
-  | 'pinch'
-  | 'spray'
-  | 'unit'
-  | 'gram'
-  | 'bottle';
+import { RecipeIngredient } from './Ingredient';
 
 export type Attribution = {
   source: string;
   relation: 'recipe author' | 'adapted by' | 'bar';
   url?: string;
 };
-
-export type QuantityDetails = {
-  amount: number;
-  unit: Unit;
-};
-
-export type RecipeIngredient = BaseIngredient | (Category & { type: 'category' });
 
 export type Recipe = {
   name: string;
@@ -51,7 +30,7 @@ export type Recipe = {
     | 'flute'
     | 'footer pilsner'
     | 'goblet';
-  ingredients: (RecipeIngredient & { quantity: QuantityDetails; preparation?: string })[];
+  ingredients: RecipeIngredient[];
   instructions?: string[];
   source: Source;
   attributions: Attribution[];

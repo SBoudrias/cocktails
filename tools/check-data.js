@@ -87,9 +87,14 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     }
   }
 
-  // Make sure all ingredients of recipe have their metadata files
-  if (schemaPath === 'schemas/recipe.schema.json') {
-    for (const ingredient of data.ingredients) {
+  if (
+    schemaPath === 'schemas/recipe.schema.json' ||
+    schemaPath === 'schemas/ingredient.schema.json'
+  ) {
+    const { ingredients = [], categories = [] } = data;
+
+    // Make sure all ingredients listed somewhere have a metadata file
+    for (const ingredient of ingredients) {
       if (ingredient.type === 'category') {
         const categoryPath = path.join(
           'src/data/categories',
@@ -126,11 +131,9 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
         }
       }
     }
-  }
 
-  // Make sure there's all categories have their metadata files
-  if (schemaPath === 'schemas/ingredient.schema.json') {
-    for (const category of data.categories ?? []) {
+    // Make sure all categories have a metadata file
+    for (const category of categories) {
       const categoryPath = path.join('src/data/categories', `${slugify(category)}.json`);
       if (!(await fileExists(categoryPath))) {
         fail(`Category file not found ${categoryPath}`);
@@ -164,6 +167,6 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     }
   }
 }
-console.log('╰ Done!');
+console.log(exitCode > 0 ? '╰ Validation failed! ❌' : '╰ Done!');
 
 process.exit(exitCode);

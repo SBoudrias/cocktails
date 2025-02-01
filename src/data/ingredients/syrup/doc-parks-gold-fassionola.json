@@ -2,5 +2,45 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Doc Parks' Gold Fassionola",
   "type": "syrup",
-  "description": "½ cup passion fruit puree, ¾ cup white peach puree, ¾ cup water, 3 cups sugar"
+  "ingredients": [
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "White peach purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "cup"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wciFLpzB8zc",
+      "start": 166
+    }
+  ]
 }

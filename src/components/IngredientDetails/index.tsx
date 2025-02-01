@@ -1,6 +1,6 @@
 'use client';
 
-import { BaseIngredient } from '@/types/Ingredient';
+import { RootIngredient } from '@/types/Ingredient';
 import Video from '@/components/Video';
 import Link from 'next/link';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
@@ -20,13 +20,14 @@ import {
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { ingredientHasData } from '@/modules/hasData';
 import { uniqBy } from 'lodash';
+import { IngredientList } from '../RecipeDetails';
 
 export default function IngredientDetails({
   ingredient,
   substitutes,
 }: {
-  ingredient: BaseIngredient;
-  substitutes: BaseIngredient[];
+  ingredient: RootIngredient;
+  substitutes: RootIngredient[];
 }) {
   const listFormatter = new Intl.ListFormat('en', {
     style: 'long',
@@ -51,7 +52,7 @@ export default function IngredientDetails({
               &nbsp;{topCategory.name}
             </>
           }
-          titleTypographyProps={{ variant: 'h6' }}
+          slotProps={{ title: 'h6' }}
         />
         <CardContent>{topCategory.description}</CardContent>
         <CardActions sx={{ justifyContent: 'end' }}>
@@ -69,6 +70,9 @@ export default function IngredientDetails({
   return (
     <>
       {descriptionCard}
+      {ingredient.ingredients.length > 0 && (
+        <IngredientList ingredients={ingredient.ingredients} />
+      )}
       {topCategory && (
         <List>
           <ListSubheader>Substitutions</ListSubheader>

@@ -2,6 +2,39 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Mai-Kai dark Jamaican rum blend",
   "type": "spirit",
-  "description": "1 part Wray & Nephew White Overproof +1 part Appleton Signature + 4 parts Coruba",
-  "categories": ["Black Blended Rum (Jamaica)"]
+  "description": "The Mai-Kai famously used the now defunct Kohala Bay dark jamaican rum. This blend from the Atomic Grog is a close approximation.",
+  "categories": ["Black Blended Rum (Jamaica)"],
+  "ingredients": [
+    {
+      "name": "Wray & Nephew White Overproof",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Coruba",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "part"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "website",
+      "name": "The Atomic Grog",
+      "url": "https://www.slammie.com/atomicgrog/blog/2012/05/08/rums-of-the-mai-kai-legendary-lemon-hart-returns-to-the-promised-land/"
+    }
+  ]
 }
