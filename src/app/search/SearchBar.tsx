@@ -97,7 +97,15 @@ function SearchBar({
             }}
           />
         </Search>
-        <Button onClick={() => onChange(null)}>Clear</Button>
+        <Button
+          type="reset"
+          onClick={(e) => {
+            onChange(null);
+            searchInputRef.current?.querySelector('input')?.focus();
+          }}
+        >
+          Clear
+        </Button>
       </Stack>
     </Toolbar>
   );
