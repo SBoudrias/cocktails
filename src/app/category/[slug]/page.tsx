@@ -22,6 +22,7 @@ import {
 } from '@mui/material';
 import { ingredientHasData } from '@/modules/hasData';
 import FixBugCard from '@/components/FixBugCard';
+import VideoListCard from '@/components/VideoListCard';
 
 type Params = { slug: string };
 
@@ -58,11 +59,15 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const category = await getCategory(slug);
   const [members, substitutes] = await getIngredientsForCategory(category);
 
+  const videos = category.refs.filter((ref) => ref.type === 'youtube');
+  const firstVideo = videos.shift();
+
   return (
     <>
       <AppHeader title={category.name} />
+      {firstVideo && <Video id={firstVideo.videoId} start={firstVideo.start} />}
       {(category.description || category.parents.length > 0) && (
-        <Card sx={{ m: 2 }}>
+        <Card sx={{ m: 1 }}>
           {category.description && <CardContent>{category.description}</CardContent>}
           {category.parents.length > 0 && (
             <CardContent>
@@ -81,12 +86,6 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           )}
         </Card>
       )}
-      {category.refs.length > 0 &&
-        category.refs.map((ref) => {
-          if (ref.type === 'youtube') {
-            return <Video key={ref.videoId} id={ref.videoId} start={ref.start} />;
-          }
-        })}
       {members.length > 0 && (
         <List>
           <ListSubheader>Examples of {category.name}</ListSubheader>
@@ -135,9 +134,12 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           </Paper>
         </List>
       )}
+      {videos.length > 0 && (
+        <VideoListCard title="Other videos" refs={videos} sx={{ m: 1 }} />
+      )}
       <FixBugCard
         fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${slug}.json`}
-        sx={{ m: 2 }}
+        sx={{ m: 1 }}
       />
     </>
   );

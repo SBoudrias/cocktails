@@ -19,11 +19,11 @@ export default function SourceAboutCard({
       const ref = refs.find(
         (ref): ref is BookRef => ref.type === 'book' && ref.title === source.slug,
       );
-      return <BookAboutCard source={source} ref={ref} sx={sx} />;
+      return <BookAboutCard source={source} page={ref?.page} sx={sx} />;
     })
     .with({ type: 'youtube-channel' }, (source) => {
       const ref = refs.find((ref): ref is YoutubeRef => ref.type === 'youtube');
-      return <YoutubeAboutCard source={source} ref={ref} sx={sx} />;
+      return <YoutubeAboutCard source={source} videoRef={ref} sx={sx} />;
     })
     .exhaustive();
 }

@@ -15,11 +15,11 @@ import { YoutubeChannel } from '@/types/Source';
 
 export default function YoutubeAboutCard({
   source,
-  ref,
+  videoRef,
   sx,
 }: {
   source: YoutubeChannel;
-  ref?: YoutubeRef;
+  videoRef?: YoutubeRef;
   sx?: SxProps;
 }) {
   return (
@@ -32,9 +32,13 @@ export default function YoutubeAboutCard({
           </>
         }
       />
+      {videoRef && (
+        <CardContent>
+          <Video id={videoRef.videoId} start={videoRef.start} />
+        </CardContent>
+      )}
       <CardContent>
-        {ref && <Video id={ref.videoId} start={ref.start} />}
-        <Typography variant="body2" sx={{ color: 'text.secondary', mt: ref ? 1 : 0 }}>
+        <Typography variant="body2" color="text.secondary">
           {source.description}
         </Typography>
       </CardContent>

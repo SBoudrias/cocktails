@@ -23,6 +23,7 @@ import { ingredientHasData } from '@/modules/hasData';
 import { uniqBy } from 'lodash';
 import IngredientList from '@/components/IngredientList';
 import FixBugCard from '@/components/FixBugCard';
+import VideoListCard from '@/components/VideoListCard';
 
 type Params = { type: string; slug: string };
 
@@ -59,13 +60,13 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   let descriptionCard;
   if (ingredient.description) {
     descriptionCard = (
-      <Card sx={{ m: 2 }}>
+      <Card sx={{ m: 1 }}>
         <CardContent>{ingredient.description}</CardContent>
       </Card>
     );
   } else if (topCategory?.description) {
     descriptionCard = (
-      <Card sx={{ m: 2 }}>
+      <Card sx={{ m: 1 }}>
         <CardHeader
           title={
             <>
@@ -83,14 +84,20 @@ export default async function IngredientPage({ params }: { params: Promise<Param
     );
   }
 
-  const refs = uniqBy(
-    [...ingredient.refs, ...ingredient.categories.flatMap((c) => c.refs ?? [])],
+  const allRefs = [
+    ...ingredient.refs,
+    ...ingredient.categories.flatMap((c) => c.refs ?? []),
+  ];
+  const videos = uniqBy(
+    allRefs.filter((ref) => ref.type === 'youtube'),
     'videoId',
   );
+  const firstVideo = videos.shift();
 
   return (
     <>
       <AppHeader title={ingredient.name} />
+      {firstVideo && <Video id={firstVideo.videoId} start={firstVideo.start} />}
       {descriptionCard}
       {ingredient.ingredients.length > 0 && (
         <IngredientList ingredients={ingredient.ingredients} />
@@ -118,12 +125,6 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           </Paper>
         </List>
       )}
-      {refs.length > 0 &&
-        refs.map((ref) => {
-          if (ref.type === 'youtube') {
-            return <Video key={ref.videoId} id={ref.videoId} start={ref.start} />;
-          }
-        })}
       {substitutes.length > 0 && topCategory != null && (
         <List>
           <ListSubheader>Some substitution option</ListSubheader>
@@ -153,9 +154,12 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           </Paper>
         </List>
       )}
+      {videos.length > 0 && (
+        <VideoListCard title="Other videos" refs={videos} sx={{ m: 1 }} />
+      )}
       <FixBugCard
         fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${type}/${slug}.json`}
-        sx={{ m: 2 }}
+        sx={{ m: 1 }}
       />
     </>
   );

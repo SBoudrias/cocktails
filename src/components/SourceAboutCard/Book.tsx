@@ -14,11 +14,11 @@ import { Book } from '@/types/Source';
 
 export default function BookAboutCard({
   source,
-  ref,
+  page,
   sx,
 }: {
   source: Book;
-  ref?: BookRef;
+  page?: number;
   sx?: SxProps;
 }) {
   return (
@@ -30,7 +30,7 @@ export default function BookAboutCard({
             &nbsp;{source.name}
           </>
         }
-        subheader={ref ? `page ${ref.page}` : undefined}
+        subheader={page ? `page ${page}` : undefined}
       />
       <CardContent>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>

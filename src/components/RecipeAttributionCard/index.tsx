@@ -1,10 +1,9 @@
-'use client';
-
 import {
   Card,
   CardContent,
   CardHeader,
   Link,
+  SxProps,
   Table,
   TableBody,
   TableCell,
@@ -12,8 +11,6 @@ import {
 } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { Recipe } from '@/types/Recipe';
-import Video from '@/components/Video';
-import SourceAboutCard from '../SourceAboutCard';
 
 const attributionRelationLabels = {
   'recipe author': 'Original recipe by',
@@ -21,9 +18,15 @@ const attributionRelationLabels = {
   bar: 'Bar',
 };
 
-function RecipeAttributionCard({ recipe }: { recipe: Recipe }) {
+export default function RecipeAttributionCard({
+  recipe,
+  sx,
+}: {
+  recipe: Recipe;
+  sx?: SxProps;
+}) {
   return (
-    <Card sx={{ m: 2 }}>
+    <Card sx={sx}>
       <CardHeader title="Recipe sources" />
       <CardContent
         // Reduce padding given the table already includes a lot of whitespace
@@ -55,27 +58,5 @@ function RecipeAttributionCard({ recipe }: { recipe: Recipe }) {
         </Table>
       </CardContent>
     </Card>
-  );
-}
-
-export default function RecipeSources({ recipe }: { recipe: Recipe }) {
-  return (
-    <>
-      {recipe.source.type !== 'youtube-channel' &&
-        recipe.refs.map((ref) => {
-          if (ref.type === 'youtube') {
-            return (
-              <Card key={ref.videoId} sx={{ m: 2 }}>
-                <CardHeader title="Video" />
-                <CardContent>
-                  <Video id={ref.videoId} start={ref.start} />
-                </CardContent>
-              </Card>
-            );
-          }
-        })}
-      <SourceAboutCard source={recipe.source} refs={recipe.refs} sx={{ m: 2 }} />
-      {recipe.attributions.length > 0 && <RecipeAttributionCard recipe={recipe} />}
-    </>
   );
 }
