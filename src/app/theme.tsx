@@ -38,6 +38,9 @@ const theme = createTheme({
           '+ .MuiCardActions-root': {
             paddingTop: 0,
           },
+          '+ .MuiCardContent-root': {
+            paddingTop: 0,
+          },
         },
       },
     },
