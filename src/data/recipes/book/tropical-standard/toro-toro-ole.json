@@ -67,7 +67,7 @@
       "name": "Bénédictine",
       "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
