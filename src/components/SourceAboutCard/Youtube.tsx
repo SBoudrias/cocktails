@@ -43,8 +43,13 @@ export default function YoutubeAboutCard({
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: 'end' }}>
-        <Button href={source.link} target="_blank" rel="noreferrer" color="inherit">
-          View on Youtube
+        <Button
+          href={source.link}
+          target="_blank"
+          rel="noreferrer noopener"
+          color="inherit"
+        >
+          Go to channel
           <ArrowOutwardIcon />
         </Button>
       </CardActions>

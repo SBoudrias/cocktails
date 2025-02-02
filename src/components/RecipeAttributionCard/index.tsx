@@ -27,7 +27,7 @@ export default function RecipeAttributionCard({
 }) {
   return (
     <Card sx={sx}>
-      <CardHeader title="Recipe sources" />
+      <CardHeader title="Attributions" />
       <CardContent
         // Reduce padding given the table already includes a lot of whitespace
         sx={{ px: 1, py: 0, ':last-child': { pb: 0 } }}
