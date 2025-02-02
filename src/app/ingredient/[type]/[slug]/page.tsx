@@ -17,6 +17,7 @@ import {
   ListItemText,
   ListSubheader,
   Paper,
+  Stack,
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { ingredientHasData } from '@/modules/hasData';
@@ -24,6 +25,7 @@ import { uniqBy } from 'lodash';
 import IngredientList from '@/components/IngredientList';
 import FixBugCard from '@/components/FixBugCard';
 import VideoListCard from '@/components/VideoListCard';
+import CategoryName from '@/components/CategoryName';
 
 type Params = { type: string; slug: string };
 
@@ -58,13 +60,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const topCategory = ingredient.categories[0];
 
   let descriptionCard;
-  if (ingredient.description) {
-    descriptionCard = (
-      <Card sx={{ m: 1 }}>
-        <CardContent>{ingredient.description}</CardContent>
-      </Card>
-    );
-  } else if (topCategory?.description) {
+  if (!ingredient.description && topCategory?.description) {
     descriptionCard = (
       <Card sx={{ m: 1 }}>
         <CardHeader
@@ -80,6 +76,28 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <CardActions sx={{ justifyContent: 'end' }}>
           <Button href={getCategoryUrl(topCategory)}>Learn more</Button>
         </CardActions>
+      </Card>
+    );
+  } else {
+    descriptionCard = (
+      <Card sx={{ m: 1 }}>
+        {ingredient.description && <CardContent>{ingredient.description}</CardContent>}
+        {ingredient.categories.length > 0 && (
+          <CardContent>
+            <b>{ingredient.name}</b>{' '}
+            {ingredient.categories.length === 1 ? 'category is' : 'categories are'}:
+            <Stack
+              direction="row"
+              alignItems="baseline"
+              spacing={1}
+              sx={{ flexWrap: 'wrap' }}
+            >
+              {ingredient.categories.map((category) => (
+                <CategoryName key={category.slug} category={category} />
+              ))}
+            </Stack>
+          </CardContent>
+        )}
       </Card>
     );
   }
@@ -102,30 +120,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       {ingredient.ingredients.length > 0 && (
         <IngredientList ingredients={ingredient.ingredients} />
       )}
-      {topCategory && (
-        <List>
-          <ListSubheader>Substitutions</ListSubheader>
-          <Paper square>
-            <ListItem divider>
-              <ListItemText>
-                Substitute with another <b>{topCategory.name}</b>.
-              </ListItemText>
-            </ListItem>
-            {ingredient.categories.length > 1 && (
-              <ListItem divider>
-                <ListItemText>
-                  If unavailable, you can try substituting with{' '}
-                  {listFormatter.format(
-                    ingredient.categories.slice(1).map((c) => c.name),
-                  )}
-                  .
-                </ListItemText>
-              </ListItem>
-            )}
-          </Paper>
-        </List>
-      )}
-      {substitutes.length > 0 && topCategory != null && (
+      {substitutes.length > 0 && (
         <List>
           <ListSubheader>Some substitution option</ListSubheader>
           <Paper square>
@@ -146,11 +141,6 @@ export default async function IngredientPage({ params }: { params: Promise<Param
                 </ListItem>
               );
             })}
-            <Link href={getCategoryUrl(topCategory)}>
-              <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                <ListItemText>Learn more</ListItemText>
-              </ListItem>
-            </Link>
           </Paper>
         </List>
       )}
