@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, Stack, SxProps } from '@mui/material';
+import { Card, CardContent, CardHeader, SxProps } from '@mui/material';
 import Video from '@/components/Video';
 import { YoutubeRef } from '@/types/Ref';
 

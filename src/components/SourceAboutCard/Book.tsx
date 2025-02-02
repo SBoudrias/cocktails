@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import BookIcon from '@mui/icons-material/Book';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { BookRef } from '@/types/Ref';
 import { Book } from '@/types/Source';
 
 export default function BookAboutCard({

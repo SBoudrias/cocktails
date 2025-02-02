@@ -53,10 +53,6 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const ingredient = await getIngredient(type, slug);
   const substitutes = await getSubstitutesForIngredient(ingredient);
 
-  const listFormatter = new Intl.ListFormat('en', {
-    style: 'long',
-    type: 'disjunction',
-  });
   const topCategory = ingredient.categories[0];
 
   let descriptionCard;
