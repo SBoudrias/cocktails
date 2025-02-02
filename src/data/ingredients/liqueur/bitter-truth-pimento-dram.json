@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bitter Truth Pimento Dram",
+  "type": "liqueur",
+  "categories": ["Allspice Dram"]
+}
