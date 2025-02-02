@@ -21,6 +21,7 @@ import {
   Stack,
 } from '@mui/material';
 import { ingredientHasData } from '@/modules/hasData';
+import FixBugCard from '@/components/FixBugCard';
 
 type Params = { slug: string };
 
@@ -134,6 +135,10 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           </Paper>
         </List>
       )}
+      <FixBugCard
+        fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${slug}.json`}
+        sx={{ m: 2 }}
+      />
     </>
   );
 }

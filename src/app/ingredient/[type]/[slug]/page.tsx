@@ -22,18 +22,19 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { ingredientHasData } from '@/modules/hasData';
 import { uniqBy } from 'lodash';
 import IngredientList from '@/components/IngredientList';
+import FixBugCard from '@/components/FixBugCard';
 
-type Params = { type: string; name: string };
+type Params = { type: string; slug: string };
 
 export async function generateStaticParams(): Promise<Params[]> {
   return getIngredientPageParams();
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }) {
-  const { type, name } = await params;
+  const { type, slug } = await params;
 
   try {
-    const ingredient = await getIngredient(type, name);
+    const ingredient = await getIngredient(type, slug);
 
     return {
       title: `Cocktail Index | Learn about ${ingredient.name}`,
@@ -44,9 +45,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 }
 
 export default async function IngredientPage({ params }: { params: Promise<Params> }) {
-  const { type, name } = await params;
+  const { type, slug } = await params;
 
-  const ingredient = await getIngredient(type, name);
+  const ingredient = await getIngredient(type, slug);
   const substitutes = await getSubstitutesForIngredient(ingredient);
 
   const listFormatter = new Intl.ListFormat('en', {
@@ -152,6 +153,10 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           </Paper>
         </List>
       )}
+      <FixBugCard
+        fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${type}/${slug}.json`}
+        sx={{ m: 2 }}
+      />
     </>
   );
 }

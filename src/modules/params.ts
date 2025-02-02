@@ -33,7 +33,7 @@ export async function getRecipePageParams(): Promise<
 }
 
 export async function getIngredientPageParams(): Promise<
-  { type: string; name: string }[]
+  { type: string; slug: string }[]
 > {
   const params = [];
 
@@ -42,7 +42,7 @@ export async function getIngredientPageParams(): Promise<
       const ingredientSlug = path.basename(dataFilePath, '.json');
       params.push({
         type: type as Source['type'],
-        name: ingredientSlug,
+        slug: ingredientSlug,
       });
     }
   }
