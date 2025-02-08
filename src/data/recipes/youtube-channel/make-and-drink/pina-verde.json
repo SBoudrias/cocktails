@@ -1,36 +1,36 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Chartreuse swizzle",
-  "preparation": "swizzled",
+  "name": "Pina Verde",
+  "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "collins",
+  "glassware": "hurricane",
   "ingredients": [
-    {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Lime juice",
       "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Green Chartreuse",
+      "name": "cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "green chartreuse",
       "type": "liqueur",
       "quantity": {
         "amount": 1.5,
@@ -38,16 +38,13 @@
       }
     }
   ],
+  "attributions": [
+    {
+      "source": "Erick Castro",
+      "relation": "recipe author"
+    }
+  ],
   "refs": [
-    {
-      "type": "book",
-      "page": 120,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "qGH2Rv9FuHE"
-    },
     {
       "type": "youtube",
       "videoId": "NkFmoezXbII"
