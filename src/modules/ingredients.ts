@@ -11,6 +11,10 @@ import { Ref } from '@/types/Ref';
 import { Category } from '@/types/Category';
 import { match } from 'ts-pattern';
 
+function toAlphaSort(arr: RootIngredient[]) {
+  return arr.toSorted((a, b) => a.name.localeCompare(b.name));
+}
+
 export const getIngredient = memo(
   async (type: string, slug: string): Promise<RootIngredient> => {
     const filepath = path.join(INGREDIENT_ROOT, type, `${slug}.json`);
@@ -62,7 +66,7 @@ export const getAllIngredients = memo(async (): Promise<RootIngredient[]> => {
     }
   }
 
-  return ingredients;
+  return toAlphaSort(ingredients);
 });
 
 export const getIngredientPerCategories = memo(
@@ -82,7 +86,7 @@ export const getIngredientPerCategories = memo(
     return Object.fromEntries(
       Object.entries(ingredientsByCategoriesMap).map(([key, value]) => [
         key,
-        uniqBy(value, 'slug'),
+        toAlphaSort(uniqBy(value, 'slug')),
       ]),
     );
   },
@@ -93,18 +97,52 @@ export const getIngredientsForCategory = async (
 ): Promise<[RootIngredient[], RootIngredient[]]> => {
   const ingredientsByCategories = await getIngredientPerCategories();
   const categoriesByParent = await getCategoriesPerParent();
+  const bottleSlugs = new Set<string>();
 
-  // Expand the category into its children
-  const members = [category, ...(categoriesByParent[category.slug] ?? [])].flatMap(
-    ({ slug }) => ingredientsByCategories[slug] ?? [],
-  );
+  // Members are all bottles from the main category and related child categories.
+  const members = [
+    // Main category
+    category,
+    // Child categories
+    ...(categoriesByParent[category.slug] ?? []),
+  ]
+    .flatMap((category) => ingredientsByCategories[category.slug] ?? [])
+    .filter(({ slug }) => {
+      const isUnique = !bottleSlugs.has(slug);
+      bottleSlugs.add(slug);
+      return isUnique;
+    });
 
-  // Expand the parent categories into their children
-  const substitutes = category.parents
-    .flatMap((parent) => [parent, ...(categoriesByParent[parent.slug] ?? [])])
-    .flatMap((parent) => ingredientsByCategories[parent.slug] ?? []);
+  // Add ingredients from the parent categories.
+  const substitutes: RootIngredient[] = category.parents
+    .flatMap((parent) => ingredientsByCategories[parent.slug] ?? [])
+    .filter(({ slug }) => {
+      const isUnique = !bottleSlugs.has(slug);
+      bottleSlugs.add(slug);
+      return isUnique;
+    });
 
-  return [uniqBy(members, 'slug'), uniqBy(substitutes, 'slug')];
+  if (substitutes.length < 5) {
+    const siblingCategories = category.parents.flatMap(
+      (parent) => categoriesByParent[parent.slug] ?? [],
+    );
+
+    for (const category of siblingCategories) {
+      if (substitutes.length >= 5) break;
+
+      const categoryMembers = ingredientsByCategories[category.slug] ?? [];
+      for (const bottle of categoryMembers) {
+        if (substitutes.length >= 5) break;
+
+        if (!bottleSlugs.has(bottle.slug)) {
+          substitutes.push(bottle);
+        }
+        bottleSlugs.add(bottle.slug);
+      }
+    }
+  }
+
+  return [toAlphaSort(members), toAlphaSort(substitutes)];
 };
 
 export const getSubstitutesForIngredient = memo(
@@ -117,7 +155,7 @@ export const getSubstitutesForIngredient = memo(
       })
       .filter(({ slug }) => slug !== ingredient.slug);
 
-    return uniqBy(substitutions, 'slug');
+    return toAlphaSort(uniqBy(substitutions, 'slug'));
   },
   (ingredient) => ingredient.slug,
 );

@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   }
 }
 
-export default async function IngredientPage({ params }: { params: Promise<Params> }) {
+export default async function CategoryPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
 
   const category = await getCategory(slug);
