@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Old Fashioned",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Colonel E.H. Taylor Small Batch Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orange peel",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass over a big rock.",
+    "Garnish with an orange slice and cocktail cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "pdcrJ5V7YKM",
+      "start": 154
+    }
+  ]
+}

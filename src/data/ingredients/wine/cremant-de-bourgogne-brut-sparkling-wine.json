@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Crémant de Bourgogne Brut sparkling wine",
+  "type": "wine",
+  "categories": ["Sparkling wine"]
+}

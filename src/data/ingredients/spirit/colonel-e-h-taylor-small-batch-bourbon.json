@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Colonel E.H. Taylor Small Batch Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

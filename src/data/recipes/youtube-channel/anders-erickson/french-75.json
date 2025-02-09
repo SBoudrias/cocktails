@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "French 75",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Plymouth gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crémant de Bourgogne Brut sparkling wine",
+      "type": "wine",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake gin, lemon juice, and simple syrup with ice.",
+    "Strain into a flute glass.",
+    "Top with champagne."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Viz7yWfcmdo"
+    }
+  ]
+}
