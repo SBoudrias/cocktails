@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Toronto Cocktail",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Union Horse Distilling Co. Reunion Straight Rye Whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass.",
+    "Garnish with flamed orange zest."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "fQfVijUec0A"
+    }
+  ]
+}
