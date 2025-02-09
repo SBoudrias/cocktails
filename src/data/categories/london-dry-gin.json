@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "London Dry Gin",
-  "parents": ["Gin"],
+  "parents": ["Dry Gin"],
   "refs": [
     {
       "type": "youtube",

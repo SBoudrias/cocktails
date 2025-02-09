@@ -11,7 +11,7 @@ export type Attribution = {
 export type Recipe = {
   name: string;
   slug: string;
-  preparation: 'shaken' | 'stirred' | 'blended' | 'flash blended' | 'swizzled';
+  preparation: 'built' | 'shaken' | 'stirred' | 'blended' | 'flash blended' | 'swizzled';
   served_on: 'big rock' | 'up' | 'crushed ice' | 'blended' | 'ice cubes';
   glassware:
     | 'old fashioned'

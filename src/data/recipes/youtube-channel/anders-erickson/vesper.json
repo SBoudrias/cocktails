@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Vesper",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "The Botanist Islay Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Union Horse Distilling Co. Rider Vodka",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Americano",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a martini glass.",
+    "Garnish with a lemon twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "VBSjE-P_C58"
+    }
+  ]
+}

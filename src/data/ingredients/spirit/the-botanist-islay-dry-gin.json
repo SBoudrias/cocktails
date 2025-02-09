@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "The Botanist Islay Dry Gin",
+  "type": "spirit",
+  "categories": ["Dry Gin"]
+}

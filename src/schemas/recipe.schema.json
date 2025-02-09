@@ -91,7 +91,15 @@
       "uniqueItems": true
     },
     "preparation": {
-      "enum": ["shaken", "stirred", "blended", "flash blended", "swizzled", "other"]
+      "enum": [
+        "built",
+        "shaken",
+        "stirred",
+        "blended",
+        "flash blended",
+        "swizzled",
+        "other"
+      ]
     },
     "served_on": {
       "enum": ["big rock", "up", "crushed ice", "blended", "ice cubes"]

@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mezcal Margarita",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a rocks glass over ice.",
+    "Garnish with a lime wheel and coarsely ground salt."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "VBSjE-P_C58"
+    }
+  ]
+}
