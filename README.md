@@ -43,3 +43,12 @@ Here's a few common conventions:
 1. Use `tsp` when a recipe call for a barspoon.
 2. When a recipe list multiple options (A or B), pick one.
 3. Favour using `oz` or other imperial metrics in the recipe file (not `ml`.)
+
+### Syrups & Brix
+
+Do not use "rich" or "semi-rich" in syrup names. Instead, define the brix level of the specific syrup.
+
+- Rich: 66 brix
+- Semi Rich: 60 brix
+
+Add the brix level of a syrup when known. That way users will be able to adjust to match own home bar syrup concentration.
