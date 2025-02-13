@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Vieux Carré",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge V.S.O.P. Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peychaud's Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Angostura Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass over a big rock.",
+    "Garnish with a lemon twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "cDCdcwuM8yA"
+    }
+  ]
+}
