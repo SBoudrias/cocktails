@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Licor 43 Horchata",
+  "type": "liqueur",
+  "categories": ["Horchata"]
+}

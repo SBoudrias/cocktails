@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Journeyman Distillery Bilberry Black Hearts Gin",
+  "type": "spirit",
+  "categories": ["Gin (New American)"]
+}
