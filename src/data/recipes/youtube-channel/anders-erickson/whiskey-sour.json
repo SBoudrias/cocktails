@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Whiskey Sour",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Buffalo Trace Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake all ingredients without ice.",
+    "Add ice and shake again.",
+    "Strain into a coupe glass.",
+    "Garnish with 3 drops of Angostura Aromatic Bitters and lemon oil."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "bxTRtiS06W0"
+    }
+  ]
+}
