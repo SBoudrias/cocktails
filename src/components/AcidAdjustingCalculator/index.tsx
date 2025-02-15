@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  Button,
   Card,
   CardContent,
   CardHeader,
@@ -65,7 +66,11 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
           <span>Mix & dilute into juice:</span>
           <TextField
             label="Citric Acid"
-            value={isNaN(citricAcid) ? '' : `${citricAcid} grams`}
+            value={
+              isNaN(citricAcid)
+                ? ''
+                : `${citricAcid.toLocaleString('en', { maximumFractionDigits: 2 })} grams`
+            }
             slotProps={{
               input: {
                 readOnly: true,
@@ -74,13 +79,29 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
           />
           <TextField
             label="Malic Acid"
-            value={isNaN(malicAcid) ? '' : `${malicAcid} grams`}
+            value={
+              isNaN(malicAcid)
+                ? ''
+                : `${malicAcid.toLocaleString('en', { maximumFractionDigits: 2 })} grams`
+            }
             slotProps={{
               input: {
                 readOnly: true,
               },
             }}
           />
+          <Stack direction="row" spacing={1} justifyContent="flex-end">
+            <Button
+              color="secondary"
+              onClick={() => {
+                setTargetAcidity(LIME_ACIDITY);
+                setAcidAmount(defaultAcidity);
+                setWeight(100);
+              }}
+            >
+              Reset to defaults
+            </Button>
+          </Stack>
         </Stack>
       </CardContent>
     </>
@@ -98,33 +119,50 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
   return (
     <>
       <CardContent>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <TextField
-            label="Target %"
-            value={targetAcidityValue}
-            type="number"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setTargetAcidity(event.target.value);
-            }}
-          />
-          <span>-</span>
-          <TextField
-            label="Juice %"
-            value={acidAmountValue}
-            type="number"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setAcidAmount(event.target.value);
-            }}
-          />
-          <span>=</span>
-          <TextField
-            value={isNaN(diff) ? '' : `${diff}ml`}
-            slotProps={{
-              input: {
-                readOnly: true,
-              },
-            }}
-          />
+        <Stack spacing={2}>
+          <Stack direction="row" spacing={1} alignItems="center">
+            <TextField
+              label="Target %"
+              value={targetAcidityValue}
+              type="number"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setTargetAcidity(event.target.value);
+              }}
+            />
+            <span>-</span>
+            <TextField
+              label="Juice %"
+              value={acidAmountValue}
+              type="number"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setAcidAmount(event.target.value);
+              }}
+            />
+            <span>=</span>
+            <TextField
+              value={
+                isNaN(diff)
+                  ? ''
+                  : `${diff.toLocaleString('en', { maximumFractionDigits: 2 })} ml`
+              }
+              slotProps={{
+                input: {
+                  readOnly: true,
+                },
+              }}
+            />
+          </Stack>
+          <Stack direction="row" spacing={1} justifyContent="flex-end">
+            <Button
+              color="secondary"
+              onClick={() => {
+                setTargetAcidity(LIME_ACIDITY);
+                setAcidAmount(defaultAcidity);
+              }}
+            >
+              Reset to defaults
+            </Button>
+          </Stack>
         </Stack>
       </CardContent>
       <CardContent>
