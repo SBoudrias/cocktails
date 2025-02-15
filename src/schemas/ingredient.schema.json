@@ -3,41 +3,66 @@
   "$id": "file:///schemas/ingredient.schema.json",
   "title": "Ingredient",
   "description": "A single ingredient in a recipe",
-  "type": "object",
-  "properties": {
-    "$schema": { "type": "string" },
-    "name": { "type": "string" },
-    "type": {
-      "enum": [
-        "beer",
-        "bitter",
-        "emulsifier",
-        "category",
-        "fruit",
-        "juice",
-        "liqueur",
-        "puree",
-        "soda",
-        "spice",
-        "spirit",
-        "syrup",
-        "tincture",
-        "wine",
-        "other"
-      ]
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "$schema": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "const": "juice" },
+        "description": { "type": "string" },
+        "acidity": { "type": "number" },
+        "categories": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "refs": {
+          "$ref": "./recipe.schema.json#/properties/refs"
+        },
+        "ingredients": {
+          "$ref": "./recipe.schema.json#/properties/ingredients"
+        }
+      },
+      "required": ["name", "type"],
+      "additionalProperties": false
     },
-    "description": { "type": "string" },
-    "categories": {
-      "type": "array",
-      "items": { "type": "string" }
-    },
-    "refs": {
-      "$ref": "./recipe.schema.json#/properties/refs"
-    },
-    "ingredients": {
-      "$ref": "./recipe.schema.json#/properties/ingredients"
+    {
+      "type": "object",
+      "properties": {
+        "$schema": { "type": "string" },
+        "name": { "type": "string" },
+        "type": {
+          "enum": [
+            "beer",
+            "bitter",
+            "emulsifier",
+            "category",
+            "fruit",
+            "liqueur",
+            "puree",
+            "soda",
+            "spice",
+            "spirit",
+            "syrup",
+            "tincture",
+            "wine",
+            "other"
+          ]
+        },
+        "description": { "type": "string" },
+        "categories": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "refs": {
+          "$ref": "./recipe.schema.json#/properties/refs"
+        },
+        "ingredients": {
+          "$ref": "./recipe.schema.json#/properties/ingredients"
+        }
+      },
+      "required": ["name", "type"],
+      "additionalProperties": false
     }
-  },
-  "required": ["name", "type"],
-  "additionalProperties": false
+  ]
 }

@@ -52,8 +52,22 @@
             "properties": {
               "name": { "type": "string" },
               "type": {
-                "$ref": "./ingredient.schema.json#/properties/type",
-                "not": { "const": "syrup" }
+                "enum": [
+                  "beer",
+                  "bitter",
+                  "emulsifier",
+                  "category",
+                  "fruit",
+                  "juice",
+                  "liqueur",
+                  "puree",
+                  "soda",
+                  "spice",
+                  "spirit",
+                  "tincture",
+                  "wine",
+                  "other"
+                ]
               },
               "quantity": {
                 "type": "object",

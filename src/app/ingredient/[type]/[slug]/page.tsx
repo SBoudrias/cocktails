@@ -26,6 +26,7 @@ import IngredientList from '@/components/IngredientList';
 import FixBugCard from '@/components/FixBugCard';
 import VideoListCard from '@/components/VideoListCard';
 import CategoryName from '@/components/CategoryName';
+import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
 
 type Params = { type: string; slug: string };
 
@@ -116,6 +117,11 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       {ingredient.ingredients.length > 0 && (
         <IngredientList ingredients={ingredient.ingredients} />
       )}
+      {ingredient.type === 'juice' &&
+        'acidity' in ingredient &&
+        ingredient.acidity != null && (
+          <AcidAdjustingCalculator defaultAcidity={ingredient.acidity} sx={{ m: 1 }} />
+        )}
       {substitutes.length > 0 && (
         <List>
           <ListSubheader>Some substitution option</ListSubheader>

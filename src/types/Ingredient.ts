@@ -42,19 +42,24 @@ export type BaseIngredient = {
   name: string;
   slug: string;
   type: IngredientType;
-  brix?: number;
   description?: string;
   categories: Category[];
   refs: Ref[];
 };
 
-type CategoryIngredient = Category & { type: 'category' };
-
-export type RecipeIngredient = (BaseIngredient | CategoryIngredient) & {
-  quantity: QuantityDetails;
-  preparation?: string;
+type Juice = BaseIngredient & {
+  type: 'juice';
+  acidity?: number;
 };
 
-export type RootIngredient = BaseIngredient & {
+type CategoryIngredient = Category & { type: 'category' };
+
+export type RootIngredient = (BaseIngredient | Juice) & {
   ingredients: RecipeIngredient[];
+};
+
+export type RecipeIngredient = (RootIngredient | CategoryIngredient) & {
+  quantity: QuantityDetails;
+  preparation?: string;
+  brix?: number;
 };

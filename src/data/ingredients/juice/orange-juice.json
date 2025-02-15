@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Orange juice",
-  "type": "juice"
+  "type": "juice",
+  "acidity": 0.8
 }

@@ -11,11 +11,17 @@ export function ingredientHasData(ingredient: RootIngredient | RecipeIngredient)
     ...('parents' in ingredient ? ingredient.parents : []),
   ];
 
+  const canBeAcidAdjusted =
+    'acidity' in ingredient &&
+    'preparation' in ingredient &&
+    ingredient.preparation?.toLowerCase().includes('acid-adjusted');
+
   return (
     ingredient.description ||
     ingredient.refs.length > 0 ||
     ('ingredients' in ingredient && ingredient.ingredients.length > 0) ||
     ingredient.type === 'category' ||
-    relatedCategories.length > 0
+    relatedCategories.length > 0 ||
+    canBeAcidAdjusted
   );
 }
