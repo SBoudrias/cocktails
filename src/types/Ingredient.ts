@@ -54,12 +54,12 @@ type Juice = BaseIngredient & {
 
 type CategoryIngredient = Category & { type: 'category' };
 
-export type RecipeIngredient = (BaseIngredient | CategoryIngredient) & {
+export type RootIngredient = (BaseIngredient | Juice) & {
+  ingredients: RecipeIngredient[];
+};
+
+export type RecipeIngredient = (RootIngredient | CategoryIngredient) & {
   quantity: QuantityDetails;
   preparation?: string;
   brix?: number;
-};
-
-export type RootIngredient = (BaseIngredient | Juice) & {
-  ingredients: RecipeIngredient[];
 };
