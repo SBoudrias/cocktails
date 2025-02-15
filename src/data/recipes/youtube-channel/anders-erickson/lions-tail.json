@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "Fresh lime juice",
+      "name": "lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Rich Demerara syrup",
+      "name": "Demerara syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
@@ -39,7 +39,7 @@
       }
     },
     {
-      "name": "Angostura Aromatic Bitters",
+      "name": "Angostura Bitters",
       "type": "bitter",
       "quantity": {
         "amount": 2,
