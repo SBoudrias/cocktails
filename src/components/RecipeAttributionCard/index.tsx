@@ -13,9 +13,10 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { Recipe } from '@/types/Recipe';
 
 const attributionRelationLabels = {
-  'recipe author': 'Original recipe by',
+  'recipe author': 'Created by',
   'adapted by': 'Adapted by',
-  bar: 'Bar',
+  bar: 'Served at',
+  book: 'Documented by',
 };
 
 export default function RecipeAttributionCard({

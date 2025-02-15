@@ -4,7 +4,7 @@ import { RecipeIngredient } from './Ingredient';
 
 export type Attribution = {
   source: string;
-  relation: 'recipe author' | 'adapted by' | 'bar';
+  relation: 'recipe author' | 'adapted by' | 'bar' | 'book';
   url?: string;
 };
 
