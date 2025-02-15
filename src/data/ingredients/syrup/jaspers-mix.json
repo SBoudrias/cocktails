@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Jasper's Mix",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Angostura Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tbsp"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "sRTGCquUgMs"
+    }
+  ]
+}
