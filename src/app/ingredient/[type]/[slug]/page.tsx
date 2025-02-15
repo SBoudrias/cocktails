@@ -120,7 +120,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       {ingredient.type === 'juice' &&
         'acidity' in ingredient &&
         ingredient.acidity != null && (
-          <AcidAdjustingCalculator defaultAcidity={ingredient.acidity} />
+          <AcidAdjustingCalculator defaultAcidity={ingredient.acidity} sx={{ m: 1 }} />
         )}
       {substitutes.length > 0 && (
         <List>

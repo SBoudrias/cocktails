@@ -6,6 +6,7 @@ import {
   CardContent,
   CardHeader,
   Stack,
+  SxProps,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
@@ -174,13 +175,15 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
 
 export default function AcidAdjustingCalculator({
   defaultAcidity,
+  sx,
 }: {
   defaultAcidity: number;
+  sx?: SxProps;
 }) {
   const [type, setType] = useState<'lime' | 'acid-adjuster'>('acid-adjuster');
 
   return (
-    <Card>
+    <Card sx={sx}>
       <CardHeader
         title="Acid Adjusting"
         action={
