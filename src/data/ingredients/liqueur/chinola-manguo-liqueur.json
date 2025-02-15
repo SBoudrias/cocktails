@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Chinola Manguo Liqueur",
+  "type": "liqueur",
+  "categories": ["Manguo Liqueur"]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Caipirinha",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Novo Fogo Silver",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime wedge",
+      "type": "fruit",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tbsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle lime and sugar in an old fashioned glass.",
+    "Fill the glass with ice cubes.",
+    "Add cachaça and stir well."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "xnXFbjQSu-k"
+    }
+  ]
+}
