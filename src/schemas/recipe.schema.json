@@ -18,6 +18,7 @@
               "name": { "type": "string" },
               "type": { "const": "syrup" },
               "brix": { "type": "number" },
+              "preparation": { "type": "string" },
               "quantity": {
                 "type": "object",
                 "properties": {
@@ -69,6 +70,7 @@
                   "other"
                 ]
               },
+              "preparation": { "type": "string" },
               "quantity": {
                 "type": "object",
                 "properties": {
@@ -93,8 +95,7 @@
                 },
                 "required": ["amount", "unit"],
                 "additionalProperties": false
-              },
-              "preparation": { "type": "string" }
+              }
             },
             "required": ["name", "type", "quantity"],
             "additionalProperties": false

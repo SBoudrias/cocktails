@@ -143,9 +143,11 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
                 ...('categories' in ingredient ? ingredient.categories : []),
                 ...('parents' in ingredient ? ingredient.parents : []),
               ];
-              return `${ingredient.name} ${relatedCategories.join(' ')}`;
+              return `${ingredient.preparation ?? ''} ${ingredient.name} ${relatedCategories.join(' ')}`;
             })
-            .join(' ')}`,
+            .join(
+              ' ',
+            )} ${recipe.attributions.map((attribution) => attribution.source).join(' ')}`,
         ).toLowerCase();
       }),
     [recipes],
