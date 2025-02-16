@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Talisker 10",
+  "type": "spirit",
+  "categories": ["Whisky (Scotch)"]
+}
