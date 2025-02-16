@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Zero to Hero Mocktail",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Zero to Hero Cordial",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Matcha Tea",
+      "preparation": "float",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NyRkoGaPehA"
+    }
+  ]
+}

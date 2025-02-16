@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Zero to Hero Low ABV",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Juniper essence",
+      "type": "tincture",
+      "quantity": {
+        "amount": 2,
+        "unit": "spray"
+      }
+    },
+    {
+      "name": "Noilly Prat Extra Dry Vermouth",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Zero to Hero Cordial",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Matcha Tea",
+      "preparation": "float",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NyRkoGaPehA"
+    }
+  ]
+}

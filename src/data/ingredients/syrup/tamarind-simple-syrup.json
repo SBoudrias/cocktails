@@ -2,5 +2,30 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Tamarind simple syrup",
   "type": "syrup",
-  "description": "2 cups sugar + 1 cup water + 3 tbsp Tamarind Concentrate"
+  "ingredients": [
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "water",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Tamarind Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "tbsp"
+      }
+    }
+  ]
 }
