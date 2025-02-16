@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Clairin Communal",
+      "name": "Clairin Sajous",
       "type": "spirit",
       "quantity": {
         "amount": 2,
@@ -63,6 +63,11 @@
     }
   ],
   "refs": [
+    {
+      "type": "book",
+      "page": 23,
+      "title": "tiki-modern-tropical-cocktails"
+    },
     {
       "type": "youtube",
       "videoId": "fB6y8hjdTTU"

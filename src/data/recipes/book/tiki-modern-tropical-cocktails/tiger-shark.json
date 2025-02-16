@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tiger Shark",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Whiskey (Bourbon)",
+      "preparation": "Coconut Fat-Washed",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemongrass Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a shaker with ice.",
+    "Shake well and strain into a double old fashioned glass.",
+    "Garnish with a lime wheel."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 61,
+      "title": "tiki-modern-tropical-cocktails"
+    },
+    {
+      "type": "youtube",
+      "videoId": "B0ngXSHev6E"
+    }
+  ]
+}

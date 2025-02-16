@@ -64,6 +64,11 @@
   ],
   "refs": [
     {
+      "type": "book",
+      "page": 101,
+      "title": "tiki-modern-tropical-cocktails"
+    },
+    {
       "type": "youtube",
       "videoId": "dkG-C_AtTVM"
     }
