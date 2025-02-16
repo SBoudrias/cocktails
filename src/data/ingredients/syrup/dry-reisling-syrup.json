@@ -3,6 +3,24 @@
   "name": "Dry Reisling syrup",
   "type": "syrup",
   "description": "Combine: 1 cup Dry Reisling (white wine), 1 ½ cups sugar",
+  "ingredients": [
+    {
+      "name": "Dry Reisling",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "cup"
+      }
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

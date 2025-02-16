@@ -2,5 +2,22 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "watermelon syrup",
   "type": "syrup",
-  "description": "Vacuum seal: 1 part watermelon + 1 part sugar"
+  "ingredients": [
+    {
+      "name": "watermelon",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ]
 }

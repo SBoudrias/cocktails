@@ -40,7 +40,7 @@
     },
     {
       "name": "Herbsaint",
-      "type": "liqueur",
+      "type": "spirit",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
