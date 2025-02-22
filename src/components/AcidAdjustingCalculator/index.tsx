@@ -12,7 +12,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from '@mui/material';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Video from '@/components/Video';
 import { useSearchParams } from 'next/navigation';
 
@@ -232,32 +232,34 @@ export default function AcidAdjustingCalculator({
   const [type, setType] = useState<'lime' | 'acid-adjuster'>('acid-adjuster');
 
   return (
-    <Card sx={sx}>
-      <CardHeader
-        title="Acid Adjusting"
-        action={
-          <ToggleButtonGroup
-            value={type}
-            onChange={(_, newVal) =>
-              setType(newVal === 'lime' ? 'lime' : 'acid-adjuster')
-            }
-            size="small"
-            aria-label="Preferred acid-adjusting technique"
-            exclusive
-          >
-            <ToggleButton value="acid-adjuster">Acid Adjuster</ToggleButton>
-            <ToggleButton value="lime">Lime</ToggleButton>
-          </ToggleButtonGroup>
-        }
-        sx={{
-          pb: 3,
-        }}
-      />
-      {type === 'lime' ? (
-        <ClassicalCalculator defaultAcidity={defaultAcidity} />
-      ) : (
-        <AcidAdjusterCalculator defaultAcidity={defaultAcidity} />
-      )}
-    </Card>
+    <Suspense>
+      <Card sx={sx}>
+        <CardHeader
+          title="Acid Adjusting"
+          action={
+            <ToggleButtonGroup
+              value={type}
+              onChange={(_, newVal) =>
+                setType(newVal === 'lime' ? 'lime' : 'acid-adjuster')
+              }
+              size="small"
+              aria-label="Preferred acid-adjusting technique"
+              exclusive
+            >
+              <ToggleButton value="acid-adjuster">Acid Adjuster</ToggleButton>
+              <ToggleButton value="lime">Lime</ToggleButton>
+            </ToggleButtonGroup>
+          }
+          sx={{
+            pb: 3,
+          }}
+        />
+        {type === 'lime' ? (
+          <ClassicalCalculator defaultAcidity={defaultAcidity} />
+        ) : (
+          <AcidAdjusterCalculator defaultAcidity={defaultAcidity} />
+        )}
+      </Card>
+    </Suspense>
   );
 }
