@@ -5,6 +5,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  InputAdornment,
   Stack,
   SxProps,
   TextField,
@@ -40,27 +41,42 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
         <Stack spacing={2}>
           <Stack direction="row" spacing={1} alignItems="center">
             <TextField
-              label="Target %"
+              label="Target acidity"
               value={targetAcidityValue}
               type="number"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setTargetAcidity(event.target.value);
               }}
+              slotProps={{
+                input: {
+                  endAdornment: <InputAdornment position="end">%</InputAdornment>,
+                },
+              }}
             />
             <TextField
-              label="Juice %"
+              label="Juice acidity"
               value={acidAmountValue}
               type="number"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setAcidAmount(event.target.value);
               }}
+              slotProps={{
+                input: {
+                  endAdornment: <InputAdornment position="end">%</InputAdornment>,
+                },
+              }}
             />
             <TextField
-              label="Juice weight (grams)"
+              label="Juice weight"
               value={weightValue}
               type="number"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setWeight(event.target.value);
+              }}
+              slotProps={{
+                input: {
+                  endAdornment: <InputAdornment position="end">grams</InputAdornment>,
+                },
               }}
             />
           </Stack>
@@ -70,11 +86,12 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
             value={
               isNaN(citricAcid)
                 ? ''
-                : `${citricAcid.toLocaleString('en', { maximumFractionDigits: 2 })} grams`
+                : `${citricAcid.toLocaleString('en', { maximumFractionDigits: 2 })}`
             }
             slotProps={{
               input: {
                 readOnly: true,
+                endAdornment: <InputAdornment position="end">grams</InputAdornment>,
               },
             }}
           />
@@ -83,11 +100,12 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
             value={
               isNaN(malicAcid)
                 ? ''
-                : `${malicAcid.toLocaleString('en', { maximumFractionDigits: 2 })} grams`
+                : `${malicAcid.toLocaleString('en', { maximumFractionDigits: 2 })}`
             }
             slotProps={{
               input: {
                 readOnly: true,
+                endAdornment: <InputAdornment position="end">grams</InputAdornment>,
               },
             }}
           />
@@ -110,12 +128,14 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
 }
 
 function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) {
+  const [juiceAmountValue, setJuiceAmount] = useState<string | number>(1);
   const [targetAcidityValue, setTargetAcidity] = useState<string | number>(LIME_ACIDITY);
   const [acidAmountValue, setAcidAmount] = useState<string | number>(defaultAcidity);
 
+  const juiceAmount = parseFloat(juiceAmountValue as string);
   const targetAcidity = parseFloat(targetAcidityValue as string);
   const acidAmount = parseFloat(acidAmountValue as string);
-  const diff = targetAcidity - acidAmount;
+  const diff = juiceAmount * (targetAcidity - acidAmount);
 
   return (
     <>
@@ -123,36 +143,58 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
         <Stack spacing={2}>
           <Stack direction="row" spacing={1} alignItems="center">
             <TextField
-              label="Target %"
+              label="Juice amount"
+              value={juiceAmountValue}
+              type="number"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setJuiceAmount(event.target.value);
+              }}
+              slotProps={{
+                input: {
+                  endAdornment: <InputAdornment position="end">oz</InputAdornment>,
+                },
+              }}
+            />
+            <TextField
+              label="Target acidity"
               value={targetAcidityValue}
               type="number"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setTargetAcidity(event.target.value);
               }}
+              slotProps={{
+                input: {
+                  endAdornment: <InputAdornment position="end">%</InputAdornment>,
+                },
+              }}
             />
-            <span>-</span>
             <TextField
-              label="Juice %"
+              label="Juice acidity"
               value={acidAmountValue}
               type="number"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setAcidAmount(event.target.value);
               }}
-            />
-            <span>=</span>
-            <TextField
-              value={
-                isNaN(diff)
-                  ? ''
-                  : `${diff.toLocaleString('en', { maximumFractionDigits: 2 })} ml`
-              }
               slotProps={{
                 input: {
-                  readOnly: true,
+                  endAdornment: <InputAdornment position="end">%</InputAdornment>,
                 },
               }}
             />
           </Stack>
+          <TextField
+            value={
+              isNaN(diff)
+                ? ''
+                : `${diff.toLocaleString('en', { maximumFractionDigits: 2 })}`
+            }
+            slotProps={{
+              input: {
+                readOnly: true,
+                endAdornment: <InputAdornment position="end">ml</InputAdornment>,
+              },
+            }}
+          />
           <Stack direction="row" spacing={1} justifyContent="flex-end">
             <Button
               color="secondary"
