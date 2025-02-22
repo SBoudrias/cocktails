@@ -6,8 +6,8 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "chocolate bitters",
-      "type": "bitter",
+      "name": "Chocolate Bitters",
+      "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "dash"

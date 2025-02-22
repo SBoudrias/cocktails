@@ -6,7 +6,7 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Talisker 10",
+      "name": "Talisker 10 Year Old Single Malt Scotch Whisky",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Drambuie",
+      "name": "Drambruie",
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,

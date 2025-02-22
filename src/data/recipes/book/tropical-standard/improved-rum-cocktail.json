@@ -14,8 +14,8 @@
       }
     },
     {
-      "name": "orange bitters",
-      "type": "bitter",
+      "name": "Orange bitters",
+      "type": "category",
       "quantity": {
         "amount": 3,
         "unit": "drop"

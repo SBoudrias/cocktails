@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bittermens Hopped Grapefruit Bitters",
-  "type": "bitter"
+  "type": "bitter",
+  "categories": ["Grapefruit Bitters"]
 }

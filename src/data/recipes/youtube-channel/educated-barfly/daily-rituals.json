@@ -7,7 +7,7 @@
   "ingredients": [
     {
       "name": "Chocolate Bitters",
-      "type": "bitter",
+      "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "dash"

@@ -64,7 +64,7 @@
     },
     {
       "name": "Orange bitters",
-      "type": "bitter",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "dash"
