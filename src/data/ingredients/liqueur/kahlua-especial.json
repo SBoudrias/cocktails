@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Kahlua Especial",
+  "type": "liqueur",
+  "categories": ["Coffee Liqueur"]
+}
