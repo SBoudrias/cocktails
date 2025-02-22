@@ -189,6 +189,7 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
             />
           </Stack>
           <TextField
+            label="Acid adjuster to add"
             value={
               isNaN(diff)
                 ? ''
