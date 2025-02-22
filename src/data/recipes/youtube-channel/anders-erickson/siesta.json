@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "Lime juice",
+      "name": "lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Grapefruit juice",
+      "name": "grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Simple syrup",
+      "name": "simple syrup",
       "type": "syrup",
       "brix": 60,
       "quantity": {
@@ -47,15 +47,11 @@
       }
     }
   ],
-  "instructions": [
-    "Shake all ingredients with ice.",
-    "Strain into a coupe glass.",
-    "Garnish with expressed grapefruit oil and peel or a lime wheel."
-  ],
+  "instructions": ["Expressed grapefruit oil & peel for garnish (or lime wheel)"],
   "attributions": [
     {
-      "relation": "recipe author",
-      "source": "Katie Stipe"
+      "source": "Katie Stipe",
+      "relation": "recipe author"
     }
   ],
   "refs": [

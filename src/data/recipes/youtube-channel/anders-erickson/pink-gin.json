@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pink Gin",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Plymouth gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": ["Express lemon oil on top"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "PLi_quAjz8g"
+    }
+  ]
+}
