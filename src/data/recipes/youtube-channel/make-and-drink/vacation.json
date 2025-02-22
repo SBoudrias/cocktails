@@ -1,28 +1,21 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "The Banana Afterlife",
+  "name": "Vacation",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "snifter",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "preparation": "Vanilla infused",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Passionola",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -33,23 +26,31 @@
       "name": "pineapple juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Banana liqueur",
-      "type": "category",
+      "name": "tropical fruit syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Tanduay Gold Rum",
+      "name": "Appleton Signature",
       "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -57,15 +58,15 @@
       "name": "Hampden estate Rum Fire",
       "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Denizen Vatted Rum",
+      "name": "Paranubes Oaxaca Aguardiente de Caña",
       "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     }
@@ -79,7 +80,7 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "Vj_c2Lt6-1U"
+      "videoId": "i9790lVvSMc"
     }
   ]
 }

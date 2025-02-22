@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "The Black Magic",
+  "name": "Black Magic",
   "preparation": "flash blended",
   "served_on": "up",
   "glassware": "coupe",

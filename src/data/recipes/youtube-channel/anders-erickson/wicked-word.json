@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "The Wicked Word",
+  "name": "Wicked Word",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "nick & nora",

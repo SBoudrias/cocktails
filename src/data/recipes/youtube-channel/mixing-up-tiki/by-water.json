@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "The ByWater",
+  "name": "ByWater",
   "preparation": "stirred",
   "served_on": "up",
   "glassware": "nick & nora",

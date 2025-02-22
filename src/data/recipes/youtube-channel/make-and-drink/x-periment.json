@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "The X-Periment",
+  "name": "X-Periment",
   "preparation": "shaken",
   "served_on": "ice cubes",
   "glassware": "highball",

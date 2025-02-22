@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "The Privateer",
+  "name": "Privateer",
   "preparation": "shaken",
   "served_on": "crushed ice",
   "glassware": "old fashioned",

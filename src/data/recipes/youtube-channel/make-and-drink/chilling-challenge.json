@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "The Chilling Challenge",
+  "name": "Chilling Challenge",
   "preparation": "flash blended",
   "served_on": "crushed ice",
   "glassware": "old fashioned",

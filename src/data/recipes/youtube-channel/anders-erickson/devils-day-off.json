@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "The Devil's Day Off",
+  "name": "Devil's Day Off",
   "preparation": "shaken",
   "served_on": "ice cubes",
   "glassware": "collins",
