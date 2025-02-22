@@ -63,8 +63,13 @@ export default function IngredientList({
         <Paper square>
           {sortIngredients(ingredients).map((ingredient) => {
             if (ingredientHasData(ingredient)) {
+              let href = getIngredientUrl(ingredient);
+              if (ingredient.type === 'juice') {
+                href += `?${new URLSearchParams({ juiceAmount: String(ingredient.quantity.amount) })}`;
+              }
+
               return (
-                <Link key={ingredient.slug} href={getIngredientUrl(ingredient)}>
+                <Link key={ingredient.slug} href={href}>
                   <ListItem divider secondaryAction={<ChevronRightIcon />}>
                     <ListItemText>
                       <IngredientLine

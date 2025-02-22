@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import Video from '@/components/Video';
+import { useSearchParams } from 'next/navigation';
 
 const LIME_ACIDITY = 6;
 
@@ -128,7 +129,12 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
 }
 
 function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) {
-  const [juiceAmountValue, setJuiceAmount] = useState<string | number>(1);
+  const searchParams = useSearchParams();
+  const defaultJuiceAmount = parseFloat(searchParams.get('juiceAmount') as string);
+
+  const [juiceAmountValue, setJuiceAmount] = useState<string | number>(
+    isNaN(defaultJuiceAmount) ? 1 : defaultJuiceAmount,
+  );
   const [targetAcidityValue, setTargetAcidity] = useState<string | number>(LIME_ACIDITY);
   const [acidAmountValue, setAcidAmount] = useState<string | number>(defaultAcidity);
 
