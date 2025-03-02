@@ -7,9 +7,15 @@ import memo from 'lodash/memoize';
 import { readJSONFile } from './fs';
 import { RECIPE_ROOT } from './constants';
 import { getIngredient } from './ingredients';
-import { getCategory } from './categories';
+import { getCategory, getChildCategories } from './categories';
 import { getSource } from './sources';
 import { match } from 'ts-pattern';
+import { Category } from '@/types/Category';
+import { uniqBy } from 'lodash';
+
+function toAlphaSort<I extends { name: string }>(arr: I[]) {
+  return arr.toSorted((a, b) => a.name.localeCompare(b.name));
+}
 
 export const getRecipe = memo(
   async (
@@ -87,4 +93,24 @@ export const getRecipesFromSource = memo(
     const recipesPerSource = await getRecipesPerSource();
     return recipesPerSource[source.type]?.[source.slug] ?? [];
   },
+);
+
+export const getRecipeByCategory = memo(
+  async (category: Category): Promise<Recipe[]> => {
+    const recipes = await getAllRecipes();
+    const childCategories = await getChildCategories(category);
+    const categorySlugs = [category.slug, ...childCategories.map((c) => c.slug)];
+
+    const relatedRecipes = recipes.filter((recipe) => {
+      return recipe.ingredients.some((ingredient) => {
+        if (ingredient.type === 'category') {
+          return ingredient.slug === category.slug;
+        }
+        return ingredient.categories.some((c) => categorySlugs.includes(c.slug));
+      });
+    });
+
+    return toAlphaSort(uniqBy(relatedRecipes, 'slug'));
+  },
+  (category) => category.slug,
 );

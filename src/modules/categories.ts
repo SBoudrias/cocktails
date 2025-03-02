@@ -53,3 +53,11 @@ export const getCategoriesPerParent = memo(
     return categoriesMap;
   },
 );
+
+export const getChildCategories = memo(
+  async (parent: Category): Promise<Category[]> => {
+    const categoriesPerParent = await getCategoriesPerParent();
+    return categoriesPerParent[parent.slug] ?? [];
+  },
+  (category) => category.slug,
+);

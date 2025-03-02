@@ -23,6 +23,8 @@ import {
 import { ingredientHasData } from '@/modules/hasData';
 import FixBugCard from '@/components/FixBugCard';
 import VideoListCard from '@/components/VideoListCard';
+import { getRecipeByCategory } from '@/modules/recipes';
+import RecipeList from '@/components/RecipeList';
 
 type Params = { slug: string };
 
@@ -58,6 +60,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
 
   const category = await getCategory(slug);
   const [members, substitutes] = await getIngredientsForCategory(category);
+  const relatedRecipes = await getRecipeByCategory(category);
 
   const videos = category.refs.filter((ref) => ref.type === 'youtube');
   const firstVideo = videos.shift();
@@ -136,6 +139,9 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       )}
       {videos.length > 0 && (
         <VideoListCard title="Other videos" refs={videos} sx={{ m: 1 }} />
+      )}
+      {relatedRecipes.length > 0 && (
+        <RecipeList recipes={relatedRecipes} header={`Recipes using ${category.name}`} />
       )}
       <FixBugCard
         fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${slug}.json`}
