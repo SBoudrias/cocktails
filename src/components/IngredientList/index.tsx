@@ -10,7 +10,6 @@ import { getIngredientUrl } from '@/modules/url';
 import { Stack, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
-import { ingredientHasData } from '@/modules/hasData';
 
 function IngredientLine({
   ingredient,
@@ -62,32 +61,22 @@ export default function IngredientList({
         <ListSubheader>Ingredients</ListSubheader>
         <Paper square>
           {sortIngredients(ingredients).map((ingredient) => {
-            if (ingredientHasData(ingredient)) {
-              let href = getIngredientUrl(ingredient);
-              if (ingredient.type === 'juice') {
-                href += `?${new URLSearchParams({ juiceAmount: String(ingredient.quantity.amount) })}`;
-              }
-
-              return (
-                <Link key={ingredient.slug} href={href}>
-                  <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                    <ListItemText>
-                      <IngredientLine
-                        ingredient={ingredient}
-                        preferredUnit={preferredUnit}
-                      />
-                    </ListItemText>
-                  </ListItem>
-                </Link>
-              );
+            let href = getIngredientUrl(ingredient);
+            if (ingredient.type === 'juice') {
+              href += `?${new URLSearchParams({ juiceAmount: String(ingredient.quantity.amount) })}`;
             }
 
             return (
-              <ListItem key={ingredient.slug} divider>
-                <ListItemText>
-                  <IngredientLine ingredient={ingredient} preferredUnit={preferredUnit} />
-                </ListItemText>
-              </ListItem>
+              <Link key={ingredient.slug} href={href}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText>
+                    <IngredientLine
+                      ingredient={ingredient}
+                      preferredUnit={preferredUnit}
+                    />
+                  </ListItemText>
+                </ListItem>
+              </Link>
             );
           })}
         </Paper>
