@@ -13,7 +13,7 @@ import { match } from 'ts-pattern';
 import { Recipe } from '@/types/Recipe';
 import { getAllRecipes } from './recipes';
 
-function toAlphaSort(arr: RootIngredient[]) {
+function toAlphaSort<I extends { name: string }>(arr: I[]) {
   return arr.toSorted((a, b) => a.name.localeCompare(b.name));
 }
 
@@ -165,18 +165,11 @@ export const getSubstitutesForIngredient = memo(
 export const getRecipesForIngredient = memo(
   async (ingredient: RootIngredient): Promise<Recipe[]> => {
     const allRecipes = await getAllRecipes();
-    return allRecipes.filter((recipe) =>
+    const relatedRecipes = allRecipes.filter((recipe) =>
       recipe.ingredients.some((i) => i.slug === ingredient.slug),
     );
-    // const ingredientsByCategories = await getIngredientPerCategories();
 
-    // const substitutions = ingredient.categories
-    //   .flatMap(({ slug }) => {
-    //     return ingredientsByCategories[slug] ?? [];
-    //   })
-    //   .filter(({ slug }) => slug !== ingredient.slug);
-
-    // return toAlphaSort(uniqBy(substitutions, 'slug'));
+    return toAlphaSort(relatedRecipes);
   },
   (ingredient) => ingredient.slug,
 );
