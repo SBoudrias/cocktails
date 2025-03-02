@@ -10,6 +10,8 @@ import { getCategoriesPerParent, getCategory } from './categories';
 import { Ref } from '@/types/Ref';
 import { Category } from '@/types/Category';
 import { match } from 'ts-pattern';
+import { Recipe } from '@/types/Recipe';
+import { getAllRecipes } from './recipes';
 
 function toAlphaSort(arr: RootIngredient[]) {
   return arr.toSorted((a, b) => a.name.localeCompare(b.name));
@@ -156,6 +158,25 @@ export const getSubstitutesForIngredient = memo(
       .filter(({ slug }) => slug !== ingredient.slug);
 
     return toAlphaSort(uniqBy(substitutions, 'slug'));
+  },
+  (ingredient) => ingredient.slug,
+);
+
+export const getRecipesForIngredient = memo(
+  async (ingredient: RootIngredient): Promise<Recipe[]> => {
+    const allRecipes = await getAllRecipes();
+    return allRecipes.filter((recipe) =>
+      recipe.ingredients.some((i) => i.slug === ingredient.slug),
+    );
+    // const ingredientsByCategories = await getIngredientPerCategories();
+
+    // const substitutions = ingredient.categories
+    //   .flatMap(({ slug }) => {
+    //     return ingredientsByCategories[slug] ?? [];
+    //   })
+    //   .filter(({ slug }) => slug !== ingredient.slug);
+
+    // return toAlphaSort(uniqBy(substitutions, 'slug'));
   },
   (ingredient) => ingredient.slug,
 );

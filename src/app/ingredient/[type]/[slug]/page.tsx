@@ -1,6 +1,10 @@
 import { notFound } from 'next/navigation';
 import AppHeader from '@/components/AppHeader';
-import { getIngredient, getSubstitutesForIngredient } from '@/modules/ingredients';
+import {
+  getIngredient,
+  getRecipesForIngredient,
+  getSubstitutesForIngredient,
+} from '@/modules/ingredients';
 import { getIngredientPageParams } from '@/modules/params';
 import Video from '@/components/Video';
 import Link from 'next/link';
@@ -27,6 +31,7 @@ import FixBugCard from '@/components/FixBugCard';
 import VideoListCard from '@/components/VideoListCard';
 import CategoryName from '@/components/CategoryName';
 import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
+import RecipeList from '@/components/RecipeList';
 
 type Params = { type: string; slug: string };
 
@@ -53,6 +58,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
 
   const ingredient = await getIngredient(type, slug);
   const substitutes = await getSubstitutesForIngredient(ingredient);
+  const relatedRecipes = await getRecipesForIngredient(ingredient);
 
   const topCategory = ingredient.categories[0];
 
@@ -145,6 +151,12 @@ export default async function IngredientPage({ params }: { params: Promise<Param
             })}
           </Paper>
         </List>
+      )}
+      {relatedRecipes.length > 0 && (
+        <RecipeList
+          recipes={relatedRecipes}
+          header={`Recipes calling for ${ingredient.name}`}
+        />
       )}
       {videos.length > 0 && (
         <VideoListCard title="Other videos" refs={videos} sx={{ m: 1 }} />

@@ -4,7 +4,6 @@ import { Recipe } from '@/types/Recipe';
 import { useMemo, useRef } from 'react';
 import uFuzzy from '@leeoniya/ufuzzy';
 import transliterate from '@sindresorhus/transliterate';
-import { getRecipeUrl } from '@/modules/url';
 import {
   AppBar,
   Button,
@@ -14,21 +13,16 @@ import {
   IconButton,
   InputBase,
   List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Paper,
   Stack,
   Toolbar,
   Typography,
 } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
-import Link from 'next/link';
 import SearchIcon from '@mui/icons-material/Search';
-import ChevronRight from '@mui/icons-material/ChevronRight';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import { useQueryState } from 'nuqs';
 import { Category } from '@/types/Category';
+import RecipeList from '@/components/RecipeList';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -111,19 +105,6 @@ function SearchBar({
   );
 }
 
-function RecipeLine({ recipe, isUnique }: { recipe: Recipe; isUnique: boolean }) {
-  return (
-    <Link href={getRecipeUrl(recipe)}>
-      <ListItem divider secondaryAction={<ChevronRight />}>
-        <ListItemText
-          primary={recipe.name}
-          secondary={isUnique ? undefined : recipe.source.name}
-        />
-      </ListItem>
-    </Link>
-  );
-}
-
 export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
@@ -176,19 +157,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
 
   let content;
   if (searchMatches.length > 0) {
-    content = (
-      <List>
-        <Paper square>
-          {searchMatches.map((recipe) => (
-            <RecipeLine
-              key={getRecipeUrl(recipe)}
-              recipe={recipe}
-              isUnique={nameIsUnique(recipe.name)}
-            />
-          ))}
-        </Paper>
-      </List>
-    );
+    content = <RecipeList recipes={searchMatches} isNameUniqueFn={nameIsUnique} />;
   } else if (!searchTerm || searchTerm.trim().length === 0) {
     const firstLetterRegExp = /^(the |a )?([a-z])/i;
     const groups = Object.entries(
@@ -205,18 +174,11 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
 
           return (
             <li key={letter}>
-              <ul>
-                <ListSubheader>{letter}</ListSubheader>
-                <Paper square>
-                  {recipes.map((recipe) => (
-                    <RecipeLine
-                      key={getRecipeUrl(recipe)}
-                      recipe={recipe}
-                      isUnique={nameIsUnique(recipe.name)}
-                    />
-                  ))}
-                </Paper>
-              </ul>
+              <RecipeList
+                recipes={recipes}
+                header={letter}
+                isNameUniqueFn={nameIsUnique}
+              />
             </li>
           );
         })}
