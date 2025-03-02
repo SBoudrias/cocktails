@@ -60,7 +60,7 @@ export default function Quantity({
   }
 
   return (
-    <Stack direction="row" spacing={0.5} alignItems="baseline">
+    <Stack direction="row" spacing={0.5} alignItems="baseline" flexShrink={0}>
       <span className={styles.quantity}>{displayAmount}</span>
       {unit !== 'unit' && <span className={styles.unit}>{unit}</span>}
     </Stack>
