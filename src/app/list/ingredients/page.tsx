@@ -36,10 +36,7 @@ export default async function IngredientListPage() {
                 {ingredients.map((ingredient) => (
                   <Link href={getIngredientUrl(ingredient)} key={ingredient.slug}>
                     <ListItem divider secondaryAction={<ChevronRight />}>
-                      <ListItemText
-                        primary={ingredient.name}
-                        sx={{ textTransform: 'capitalize' }}
-                      />
+                      <ListItemText primary={ingredient.name} />
                     </ListItem>
                   </Link>
                 ))}
