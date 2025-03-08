@@ -12,7 +12,12 @@ import {
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
-import { getSearchUrl, getSourceUrl } from '@/modules/url';
+import {
+  getBottleListUrl,
+  getIngredientListUrl,
+  getSearchUrl,
+  getSourceUrl,
+} from '@/modules/url';
 import { getAllSources } from '@/modules/sources';
 import { Source } from '@/types/Source';
 
@@ -53,6 +58,16 @@ export default async function HomePage() {
           <Link href={getSearchUrl()}>
             <ListItem divider secondaryAction={<ChevronRightIcon />}>
               <ListItemText primary="All Recipes" />
+            </ListItem>
+          </Link>
+          <Link href={getIngredientListUrl()}>
+            <ListItem divider secondaryAction={<ChevronRightIcon />}>
+              <ListItemText primary="All Ingredients" />
+            </ListItem>
+          </Link>
+          <Link href={getBottleListUrl()}>
+            <ListItem divider secondaryAction={<ChevronRightIcon />}>
+              <ListItemText primary="All Bottles" />
             </ListItem>
           </Link>
         </Paper>

@@ -23,3 +23,11 @@ export function getSourceUrl(source: Source) {
 export function getSearchUrl() {
   return `/search`;
 }
+
+export function getBottleListUrl() {
+  return '/list/bottles';
+}
+
+export function getIngredientListUrl() {
+  return '/list/ingredients';
+}

@@ -6,4 +6,5 @@ export type Category = {
   description?: string;
   parents: Category[];
   refs: Ref[];
+  type: 'category';
 };
