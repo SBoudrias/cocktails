@@ -53,6 +53,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiListSubheader: {
+      styleOverrides: {
+        root: {
+          lineHeight: '1.4rem',
+          paddingTop: 16,
+          paddingBottom: 16,
+        },
+      },
+    },
   },
 });
 
