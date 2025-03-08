@@ -23,6 +23,7 @@ import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import { useQueryState } from 'nuqs';
 import { Category } from '@/types/Category';
 import RecipeList from '@/components/RecipeList';
+import groupByFirstLetter from '@/modules/groupByFirstLetter';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -159,13 +160,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
   if (searchMatches.length > 0) {
     content = <RecipeList recipes={searchMatches} isNameUniqueFn={nameIsUnique} />;
   } else if (!searchTerm || searchTerm.trim().length === 0) {
-    const firstLetterRegExp = /^(the |a )?([a-z])/i;
-    const groups = Object.entries(
-      Object.groupBy(recipes, (recipe) => {
-        const matches = recipe.name.match(firstLetterRegExp) ?? [];
-        return matches[2]?.toUpperCase() ?? '#';
-      }),
-    ).sort(([a], [b]) => a.localeCompare(b));
+    const groups = groupByFirstLetter(recipes);
 
     content = (
       <List>
