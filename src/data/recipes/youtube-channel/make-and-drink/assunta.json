@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Assunta",
+  "ingredients": [
+    {
+      "name": "Mezcal",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lazzaroni Amaretto",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger Beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "instructions": [
+    "Add mezcal, lime juice, and amaretto to a shaker",
+    "Add ice and shake until well-chilled",
+    "Strain into a collins glass filled with ice",
+    "Top with ginger beer"
+  ],
+  "attributions": [
+    {
+      "source": "Simon Sebbah",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Saint Theo's",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "BCt6BLN6n_A"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Whiskey Barrel-Aged Bitters",
+  "type": "bitter"
+}

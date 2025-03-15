@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "El Dorado Versailles Single Still",
+  "type": "spirit",
+  "categories": ["Aged Rum"]
+}
