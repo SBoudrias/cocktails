@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Midori Colada",
+  "ingredients": [
+    {
+      "name": "Midori melon liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Unaged Cachaça",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut Milk",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Xanthan Gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
+  "instructions": [
+    "Add all ingredients to a blender",
+    "Add ice and blend until smooth",
+    "Pour into a hurricane glass"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "TGZ7Xtlkdrc"
+    }
+  ]
+}
