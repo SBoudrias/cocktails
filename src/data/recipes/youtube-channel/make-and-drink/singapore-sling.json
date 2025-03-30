@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Singapore Sling",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Tanqueray London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Cherry Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Dry Curacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Scrappy's Aromatic Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "source": "Raffles Hotel",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "poDDp193gkc"
+    }
+  ]
+}
