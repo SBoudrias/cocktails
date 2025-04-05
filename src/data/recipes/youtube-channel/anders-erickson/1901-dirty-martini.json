@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "1901 Dirty Martini",
+  "ingredients": [
+    {
+      "name": "olive",
+      "type": "other",
+      "preparation": "muddled",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "olive brine",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "instructions": [
+    "Muddle 2 olives in mixing glass",
+    "Add remaining ingredients and stir with ice",
+    "Strain into chilled glass",
+    "Garnish with an olive"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "cwunL1zBgnI",
+      "start": 528
+    }
+  ]
+}

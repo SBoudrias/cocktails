@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Anders' Dirty Martini",
+  "ingredients": [
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "olive brine",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Scrappy's Celery Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Valdespino \"Ynocente\" Fino Sherry",
+      "type": "liqueur",
+      "preparation": "glass rinse",
+      "quantity": {
+        "amount": 1,
+        "unit": "spray"
+      }
+    }
+  ],
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "instructions": [
+    "Rinse chilled glass with Fino Sherry",
+    "Combine remaining ingredients in mixing glass and stir with ice",
+    "Strain into the rinsed glass",
+    "Garnish with an olive"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "cwunL1zBgnI",
+      "start": 805
+    }
+  ]
+}
