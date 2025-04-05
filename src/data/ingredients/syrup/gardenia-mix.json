@@ -1,5 +1,11 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "gardenia mix",
-  "type": "syrup"
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "q8JNgxG-tpk"
+    }
+  ]
 }
