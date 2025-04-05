@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Donn's Cold Brew Coffee Grog",
+  "ingredients": [
+    {
+      "name": "saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "half and half",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gardenia Mix 2.0",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "7GZoSg9VK_M"
+    }
+  ],
+  "attributions": [
+    {
+      "source": "Make & Drink",
+      "relation": "recipe author"
+    }
+  ]
+}
