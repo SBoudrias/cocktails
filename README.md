@@ -34,15 +34,17 @@ Each recipe file should start by defining it's schema:
 }
 ```
 
-The format of recipes is defined in `src/schemas/recipe.schema.json`. Not all fields are required (like `instructions` or `attributions`.) If you're not sure, put TODO as value and I'll fix them manually. Please do check if the ingredients are already defined inside `src/data/ingredients/**` and when possible reuse the defined names.
+The format of recipes is defined in `src/schemas/recipe.schema.json`. Not all fields are required (like `instructions` or `attributions`.) If you're not sure, put TODO as value and I'll fix them manually. Please do check if the ingredients are already defined inside `src/data/ingredients/**` and reuse the defined names when possible.
 
 You can validate the new files are valid by running `yarn check-data`.
 
 Here's a few common conventions:
 
 1. Use `tsp` when a recipe call for a barspoon.
-2. When a recipe list multiple options (A or B), pick one.
-3. Favour using `oz` or other imperial metrics in the recipe file (not `ml`.)
+2. When an ingredient listed is generic use "category" as its type. Only use spirit, liqueur, etc when a specific bottle/brand is called for.
+3. When a recipe list multiple options (A or B), pick one.
+4. Prefer using `oz` or other imperial metrics in the recipe file (not `ml`.)
+5. Only document garnishes in the `instructions` section
 
 ### Syrups & Brix
 
