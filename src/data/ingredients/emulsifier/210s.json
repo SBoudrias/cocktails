@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "210s",
-  "type": "other"
+  "type": "emulsifier"
 }

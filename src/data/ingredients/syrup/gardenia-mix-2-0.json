@@ -46,7 +46,7 @@
     },
     {
       "name": "210s",
-      "type": "other",
+      "type": "emulsifier",
       "quantity": {
         "amount": 1,
         "unit": "gram"

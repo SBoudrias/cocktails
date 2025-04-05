@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Banana Diver",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "allspice dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Brown Butter Gardenia Mix",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 86 Demerara Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara Rum",
+      "type": "spirit",
+      "preparation": "float",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "instructions": [
+    "Add all ingredients except Hamilton 151 to a shaker with ice",
+    "Shake until well chilled",
+    "Strain in a Pearl Diver glass filled with crushed ice",
+    "Float Hamilton 151 on top"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ZKSKkgcYZI0"
+    }
+  ]
+}
