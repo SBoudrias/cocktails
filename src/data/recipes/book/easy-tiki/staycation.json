@@ -62,6 +62,11 @@
   ],
   "refs": [
     {
+      "type": "book",
+      "page": 115,
+      "title": "easy-tiki"
+    },
+    {
       "type": "youtube",
       "videoId": "p2xacBfTkTk"
     }
