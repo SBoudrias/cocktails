@@ -70,6 +70,11 @@ export default async function HomePage() {
               <ListItemText primary="All Bottles" />
             </ListItem>
           </Link>
+          <Link href="/calculators">
+            <ListItem divider secondaryAction={<ChevronRightIcon />}>
+              <ListItemText primary="Calculators" />
+            </ListItem>
+          </Link>
         </Paper>
         <li>
           <ul>
