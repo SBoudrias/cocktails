@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Kamaʻāina",
+  "ingredients": [
+    {
+      "name": "Lemon Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Triple Sec",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "7 Up",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "London Dry Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "attributions": [
+    {
+      "source": "Trader Vic's Bartenders Guide",
+      "relation": "book"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "WeRX4n5CrNg"
+    }
+  ]
+}
