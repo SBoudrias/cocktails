@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mr. Bali Hai",
+  "ingredients": [
+    {
+      "name": "Pineapple Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Mûre",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "attributions": [
+    {
+      "source": "Bali Hai in San Diego",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NLmyDSU3Vec"
+    }
+  ]
+}
