@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Charlie Chaplin",
+  "ingredients": [
+    {
+      "name": "Plymouth Sloe Gin",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Abricot du Roussillon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "instructions": [
+    "Add all ingredients to a shaker with ice",
+    "Shake well and strain into a coupe glass",
+    "Garnish with a dehydrated lime wheel"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "VqVJ10en-Uc"
+    }
+  ]
+}
