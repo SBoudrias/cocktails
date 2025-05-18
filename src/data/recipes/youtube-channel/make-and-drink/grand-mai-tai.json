@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Grand Mai Tai",
+  "ingredients": [
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Curacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bacardi 8",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Myers's Original Dark Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "instructions": [
+    "Add all ingredients except Myers's Original Dark Rum to a shaker with ice",
+    "Shake vigorously until well-chilled",
+    "Strain into a collins glass filled with crushed ice",
+    "Float Myers's Original Dark Rum on top"
+  ],
+  "attributions": [
+    {
+      "source": "Disneyland Resort",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "HPaOkuu1KXg"
+    }
+  ]
+}

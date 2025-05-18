@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Swizzled Monk",
+  "ingredients": [
+    {
+      "name": "Lemon Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "instructions": [
+    "Add all ingredients to a collins glass filled with crushed ice",
+    "Swizzle until well-chilled and frost forms on the outside of the mug"
+  ],
+  "attributions": [
+    {
+      "source": "Disneyland Resort",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "HPaOkuu1KXg"
+    }
+  ]
+}
