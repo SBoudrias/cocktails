@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Bourbon Lift",
+  "ingredients": [
+    {
+      "name": "Woodford Reserve Double Oaked Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St. George NOLA coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orgeat",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "highball",
+  "instructions": [
+    "Add all ingredients to a shaker with ice and shake vigorously.",
+    "Strain into a highball glass.",
+    "Top with seltzer."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "zCDgzuTYKBU",
+      "start": 395
+    }
+  ]
+}
