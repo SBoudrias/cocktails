@@ -47,3 +47,4 @@ public/sitemap-*.xml
 # Aider files & cache
 .aider*
 !.aider.conf.yml
+.cursor
