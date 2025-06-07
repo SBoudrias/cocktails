@@ -21,8 +21,15 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
   const currentBrix = parseFloat(currentBrixValue as string) || 0;
   const targetBrix = parseFloat(targetBrixValue as string);
 
+  const isTargetBrixValid = !isNaN(targetBrix) && targetBrix < 100;
+  const isCurrentBrixValid =
+    !isNaN(currentBrix) && currentBrix < targetBrix && currentBrix < 100;
+
   // Formula: sugar_weight = (juice_weight * (target_brix - current_brix)) / (100 - target_brix)
-  const sugarWeight = (juiceWeight * (targetBrix - currentBrix)) / (100 - targetBrix);
+  const sugarWeight =
+    isTargetBrixValid && isCurrentBrixValid
+      ? (juiceWeight * (targetBrix - currentBrix)) / (100 - targetBrix)
+      : NaN;
 
   return (
     <Suspense>
@@ -30,7 +37,7 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
         <CardHeader title="Sugar Adjusting" />
         <CardContent>
           <Stack spacing={2}>
-            <Stack direction="row" spacing={1} alignItems="center">
+            <Stack direction="row" spacing={1} alignItems="top">
               <TextField
                 label="Juice weight"
                 value={juiceWeightValue}
@@ -51,6 +58,14 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   setCurrentBrix(event.target.value);
                 }}
+                error={!isCurrentBrixValid}
+                helperText={
+                  !isCurrentBrixValid
+                    ? currentBrix >= 100
+                      ? 'Must be less than 100'
+                      : 'Must be lower than target Brix'
+                    : ''
+                }
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">brix</InputAdornment>,
@@ -64,6 +79,8 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   setTargetBrix(event.target.value);
                 }}
+                error={!isTargetBrixValid}
+                helperText={!isTargetBrixValid ? 'Must be less than 100' : ''}
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">brix</InputAdornment>,
