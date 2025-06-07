@@ -9,6 +9,7 @@ import {
   Stack,
   SxProps,
   TextField,
+  Typography,
 } from '@mui/material';
 import { Suspense, useState } from 'react';
 
@@ -114,6 +115,17 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
                 Reset to defaults
               </Button>
             </Stack>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+              Note: Use a refractometer to measure the current Brix level of your juice.
+              Place a few drops of juice on the refractometer&apos;s prism, close the
+              cover, and read the Brix value through the eyepiece.
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+              Degrees Brix (symbol °Bx) is a measure of the dissolved solids in a liquid.
+              It is commonly used to measure dissolved sugar content of a solution. One
+              degree Brix is 1 gram of sucrose solute dissolved in 100 grams of solution
+              and represents the strength of the solution as percentage by mass.
+            </Typography>
           </Stack>
         </CardContent>
       </Card>
