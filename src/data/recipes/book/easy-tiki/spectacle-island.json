@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Spectacle Island",
+  "ingredients": [
+    {
+      "name": "Neisson Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Thomas Tew dark rum",
+      "type": "spirit",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Saveiro 'Vento do Oeste' Madeira",
+      "type": "wine",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "green Chartreuse",
+      "type": "liqueur",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    }
+  ],
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "instructions": [
+    "Combine all the ingredients in a tiki mug.",
+    "Add crushed ice until the mug is full and swizzle with a swizzle stick or barspoon.",
+    "Add more crushed ice to top the mug.",
+    "Garnish with a mint sprig, upside-down rum-soaked lime shell (if using), and freshly grated nutmeg.",
+    "Set the lime shell aflame with a long match or kitchen lighter just before serving."
+  ],
+  "attributions": [
+    { "source": "Chantal Tseng", "relation": "recipe author" },
+    { "source": "Petworth Citizen & Reading Room, Washington, DC", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 123 }]
+}

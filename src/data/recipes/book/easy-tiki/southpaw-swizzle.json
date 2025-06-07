@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Southpaw Swizzle",
+  "ingredients": [
+    {
+      "name": "Sherry (Manzanilla)",
+      "type": "category",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Rhum Agricole Blanc",
+      "type": "category",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "honey syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "coconut water",
+      "type": "other",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    }
+  ],
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "instructions": [
+    "Combine the sherry, Martinique rum, honey syrup, lime juice, and coconut water in a tall swizzle glass.",
+    "Add crushed ice and swizzle until the glass begins to frost.",
+    "Top with the Jamaican rum, then garnish with toasted coconut chips and a lime wheel."
+  ],
+  "attributions": [
+    { "source": "Abigail Gullo", "relation": "recipe author" },
+    { "source": "Ben Paris, Seattle", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 116 }]
+}

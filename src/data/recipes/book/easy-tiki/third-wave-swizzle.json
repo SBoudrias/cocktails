@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Third Wave Swizzle",
+  "ingredients": [
+    {
+      "name": "gin",
+      "type": "category",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "honey syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "ginger syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    }
+  ],
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "instructions": [
+    "Combine all the ingredients in a tall swizzle glass.",
+    "Add crushed ice until the glass is full.",
+    "Swizzle the drink with a swizzle stick or barspoon until the glass frosts.",
+    "Garnish with a lemon twist and a grated coffee bean."
+  ],
+  "attributions": [
+    { "source": "Ryan Lotz", "relation": "recipe author" },
+    { "source": "Shore Leave, Boston", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 111 }]
+}

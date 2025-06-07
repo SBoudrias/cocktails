@@ -30,7 +30,7 @@
       "name": "orgeat",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -58,15 +58,15 @@
       "relation": "recipe author"
     },
     {
-      "source": "Dram",
+      "source": "Dram, Brooklyn",
       "relation": "bar"
     }
   ],
   "refs": [
     {
       "type": "book",
-      "page": 130,
-      "title": "easy-tiki"
+      "title": "easy-tiki",
+      "page": 130
     }
   ]
 }

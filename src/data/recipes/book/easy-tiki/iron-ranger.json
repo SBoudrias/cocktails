@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Iron Ranger",
+  "ingredients": [
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "John D. Taylor's velvet falernum",
+      "type": "liqueur",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "simple syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": { "amount": 2, "unit": "dash" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add 1 large ice cube and shake until it melts.",
+    "Pour into a hurricane glass and top with crushed ice.",
+    "Garnish with freshly grated cinnamon, a cinnamon stick, and a mint sprig."
+  ],
+  "attributions": [
+    { "source": "Erick Castro", "relation": "recipe author" },
+    { "source": "Polite Provisions, San Diego", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 104 }]
+}

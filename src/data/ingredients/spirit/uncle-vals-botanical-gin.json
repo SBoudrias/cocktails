@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Uncle Val's Botanical gin",
+  "type": "spirit",
+  "categories": ["Gin (New American)"]
+}

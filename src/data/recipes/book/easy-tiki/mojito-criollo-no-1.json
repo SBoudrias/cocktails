@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mojito Criollo No. 1",
+  "ingredients": [
+    {
+      "name": "mint leaves",
+      "type": "other",
+      "quantity": { "amount": 10, "unit": "unit" }
+    },
+    {
+      "name": "Column still lightly aged rum",
+      "type": "category",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": { "amount": 2, "unit": "tsp" }
+    },
+    {
+      "name": "seltzer",
+      "type": "soda",
+      "quantity": { "amount": 3, "unit": "oz" }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "crushed ice",
+  "glassware": "highball",
+  "instructions": [
+    "Put the mint leaves in a highball glass and muddle slightly.",
+    "Add the rum, lime juice, sugar, and sparkling water and fill the glass with crushed ice.",
+    "Stir with a barspoon to combine.",
+    "Garnish with a mint sprig."
+  ],
+  "attributions": [
+    { "source": "Pablo Moix", "relation": "recipe author" },
+    { "source": "Dama, Los Angeles", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 105 }]
+}

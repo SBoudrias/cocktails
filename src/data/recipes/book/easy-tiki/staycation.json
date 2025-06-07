@@ -38,16 +38,16 @@
       }
     },
     {
-      "name": "Whiskey (Rye)",
-      "type": "category",
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Blended Aged Rum (Demerara)",
-      "type": "category",
+      "name": "Hamilton 86 Demerara Rum",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -55,10 +55,8 @@
     }
   ],
   "attributions": [
-    {
-      "source": "Devin Kennedy",
-      "relation": "recipe author"
-    }
+    { "source": "Devin Kennedy", "relation": "recipe author" },
+    { "source": "Pouring Ribbons, New York", "relation": "bar" }
   ],
   "refs": [
     {
