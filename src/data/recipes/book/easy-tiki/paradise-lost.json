@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Paradise Lost",
+  "ingredients": [
+    {
+      "name": "vodka",
+      "type": "category",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "coconut water",
+      "type": "other",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Sherry (Fino)",
+      "type": "category",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "orgeat",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add ice and shake until chilled, about 10 seconds.",
+    "Strain into a Pilsner glass filled with crushed ice.",
+    "Garnish with 2 dashes aromatic bitters and a mint bouquet."
+  ],
+  "attributions": [
+    { "source": "Kirk Estopinal", "relation": "recipe author" },
+    { "source": "Cane & Table, New Orleans", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "easy-tiki", "page": 96 }]
+}
