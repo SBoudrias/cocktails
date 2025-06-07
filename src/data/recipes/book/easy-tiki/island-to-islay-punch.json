@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Island to Islay Punch",
+  "ingredients": [
+    {
+      "name": "Mount Gay Eclipse",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "Bruichladdich Port Charlotte",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "passion fruit juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "cinnamon syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Bittermens 'Elemakule Tiki Bitters",
+      "type": "bitter",
+      "quantity": { "amount": 2, "unit": "dash" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "collins",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add ice and shake until chilled, about 10 seconds.",
+    "Pour into a Collins glass and garnish with freshly grated nutmeg."
+  ],
+  "attributions": [
+    {
+      "source": "Taylor Rae Adorno",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Ghost Donkey, New York",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 147
+    }
+  ]
+}

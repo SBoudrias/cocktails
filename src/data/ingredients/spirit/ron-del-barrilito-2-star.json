@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Ron del Barrilito 2 Star",
+  "type": "spirit",
+  "categories": ["Column still lightly aged rum"]
+}

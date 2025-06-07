@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Caribe Daiquiri",
+  "ingredients": [
+    {
+      "name": "Ron del Barrilito 2 Star",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "superfine sugar",
+      "type": "other",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add ice and shake until chilled, about 10 seconds.",
+    "Strain into a coupe or cocktail glass and garnish with a lime wedge."
+  ],
+  "attributions": [
+    {
+      "source": "Pablo Moix",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Dama, Los Angeles",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 136
+    }
+  ]
+}

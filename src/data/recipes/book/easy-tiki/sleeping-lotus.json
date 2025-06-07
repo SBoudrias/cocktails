@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Sleeping Lotus",
+  "ingredients": [
+    {
+      "name": "London Dry Gin",
+      "type": "category",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "orgeat",
+      "type": "syrup",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "orange bitters",
+      "type": "category",
+      "quantity": { "amount": 2, "unit": "dash" }
+    },
+    {
+      "name": "mint leaves",
+      "type": "other",
+      "quantity": { "amount": 10, "unit": "unit" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add ice and shake until chilled, about 10 seconds.",
+    "Strain into a Zombie or Collins glass filled with crushed ice and stir to incorporate.",
+    "Top with more crushed ice. Garnish with an edible orchid and a mint sprig."
+  ],
+  "attributions": [
+    {
+      "source": "Sierra Kirk",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Hale Pele, Portland, Oregon",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 145
+    }
+  ]
+}
