@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
 
 export const metadata: Metadata = {
-    title: 'Cocktail Index | Acid Adjusting',
+  title: 'Cocktail Index | Acid Adjusting',
 };
 
 export default async function CalculatorsPage() {
