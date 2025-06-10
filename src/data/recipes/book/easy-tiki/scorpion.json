@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Scorpion",
+  "ingredients": [
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 2.25, "unit": "oz" }
+    },
+    {
+      "name": "orange juice",
+      "type": "juice",
+      "quantity": { "amount": 3, "unit": "oz" }
+    },
+    {
+      "name": "orgeat",
+      "type": "syrup",
+      "quantity": { "amount": 2.25, "unit": "oz" }
+    },
+    {
+      "name": "Cognac",
+      "type": "category",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "Planteray 3 Star",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "Ron del Barrilito 3 Star",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "oz" }
+    }
+  ],
+  "preparation": "blended",
+  "served_on": "crushed ice",
+  "glassware": "punch",
+  "instructions": [
+    "Combine all the ingredients in a blender with 1 cup cubed ice.",
+    "Blend for 10 seconds and then pour into a Scorpion Bowl or other large vessel.",
+    "Garnish with a rum-soaked lime shell and lime and orange half-wheels, then set the lime shell aflame with a long match or kitchen lighter just before serving."
+  ],
+  "attributions": [{ "source": "Jane Danger", "relation": "recipe author" }],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 76 }]
+}

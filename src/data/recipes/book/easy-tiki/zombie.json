@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Zombie",
+  "ingredients": [
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Don Q 151",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "cinnamon syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "grapefruit juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "instructions": [
+    "Shake all ingredients with ice until chilled, about 10 seconds.",
+    "Pour into a tall glass, adding more ice to fill if necessary.",
+    "Garnish with a mint sprig."
+  ],
+  "attributions": [
+    { "source": "Jeff 'Beachbum' Berry", "relation": "recipe author" },
+    { "source": "Latitude 29, New Orleans", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 62 }]
+}

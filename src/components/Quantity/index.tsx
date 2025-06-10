@@ -11,6 +11,7 @@ const displayFraction: Record<number, string> = {
   0.25: '¼',
   0.3: '⅓',
   0.33: '⅓',
+  0.375: '⅜',
   0.5: '½',
   0.62: '⅝',
   0.625: '⅝',

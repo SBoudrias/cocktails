@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pearl Diver",
+  "ingredients": [
+    {
+      "name": "Denizen Aged White",
+      "type": "spirit",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "Rhine Hall Mango Brandy",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Gardenia Mix",
+      "type": "syrup",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "simple syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "instructions": [
+    "Shake all ingredients with a few small pieces of ice until they melt.",
+    "Pour into a Pearl Diver glass or a glass of your choice.",
+    "Top with crushed ice.",
+    "Garnish with a mango leaf, an edible orchid, and freshly grated nutmeg."
+  ],
+  "attributions": [
+    { "source": "Gaby Mlynarczyk", "relation": "recipe author" },
+    { "source": "Accomplice Bar, Los Angeles", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 71 }]
+}

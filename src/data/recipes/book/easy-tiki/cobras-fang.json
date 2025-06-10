@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cobra's Fang",
+  "ingredients": [
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "orange juice",
+      "type": "juice",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    },
+    {
+      "name": "passion fruit syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "grenadine",
+      "type": "syrup",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Kronan Swedish Punsch",
+      "type": "liqueur",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "dash" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "instructions": [
+    "Shake all ingredients with ice until chilled, about 10 seconds.",
+    "Strain into a snifter glass and top with crushed ice.",
+    "Garnish with a mint sprig and an orange twist."
+  ],
+  "attributions": [
+    { "source": "Patrick Gartner", "relation": "recipe author" },
+    { "source": "Donna, Brooklyn", "relation": "bar" }
+  ],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 68 }]
+}

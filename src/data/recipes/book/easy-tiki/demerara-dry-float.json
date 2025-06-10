@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Demerara Dry Float",
+  "ingredients": [
+    {
+      "name": "El Dorado 3 Year",
+      "type": "spirit",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Banks 5 Island Rum",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "passion fruit syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": { "amount": 0.375, "unit": "oz" }
+    },
+    {
+      "name": "Lemon Hart 151",
+      "preparation": "floated",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "instructions": [
+    "Shake all ingredients except the overproof rum with 1 large cracked ice cube until it melts.",
+    "Pour into a tumbler and top with more cracked ice and the overproof rum.",
+    "Garnish with a rum-soaked lime shell and light it with a long match or kitchen lighter just before serving."
+  ],
+  "attributions": [{ "source": "Jane Danger", "relation": "recipe author" }],
+  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 67 }]
+}
