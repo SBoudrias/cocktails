@@ -46,6 +46,7 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   setJuiceWeight(event.target.value);
                 }}
+                fullWidth
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">grams</InputAdornment>,
@@ -67,6 +68,7 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
                       : 'Must be lower than target Brix'
                     : ''
                 }
+                fullWidth
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">brix</InputAdornment>,
@@ -82,6 +84,7 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
                 }}
                 error={!isTargetBrixValid}
                 helperText={!isTargetBrixValid ? 'Must be less than 100' : ''}
+                fullWidth
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">brix</InputAdornment>,
@@ -96,6 +99,7 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
                   ? ''
                   : `${sugarWeight.toLocaleString('en', { maximumFractionDigits: 2 })}`
               }
+              fullWidth
               slotProps={{
                 input: {
                   readOnly: true,

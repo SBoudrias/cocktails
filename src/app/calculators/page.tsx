@@ -21,8 +21,13 @@ export default async function CalculatorsPage() {
             </ListItem>
           </Link>
           <Link href={'/calculators/brix'}>
-            <ListItem secondaryAction={<ChevronRightIcon />}>
+            <ListItem divider secondaryAction={<ChevronRightIcon />}>
               <ListItemText primary="Sugar Adjusting (Brix calculator)" />
+            </ListItem>
+          </Link>
+          <Link href={'/calculators/saline'}>
+            <ListItem divider secondaryAction={<ChevronRightIcon />}>
+              <ListItemText primary="Saline Solution Calculator" />
             </ListItem>
           </Link>
         </Paper>

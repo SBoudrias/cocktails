@@ -48,6 +48,7 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setTargetAcidity(event.target.value);
               }}
+              fullWidth
               slotProps={{
                 input: {
                   endAdornment: <InputAdornment position="end">%</InputAdornment>,
@@ -61,6 +62,7 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setAcidAmount(event.target.value);
               }}
+              fullWidth
               slotProps={{
                 input: {
                   endAdornment: <InputAdornment position="end">%</InputAdornment>,
@@ -74,6 +76,7 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setWeight(event.target.value);
               }}
+              fullWidth
               slotProps={{
                 input: {
                   endAdornment: <InputAdornment position="end">grams</InputAdornment>,
@@ -89,6 +92,7 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
                 ? ''
                 : `${citricAcid.toLocaleString('en', { maximumFractionDigits: 2 })}`
             }
+            fullWidth
             slotProps={{
               input: {
                 readOnly: true,
@@ -103,6 +107,7 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
                 ? ''
                 : `${malicAcid.toLocaleString('en', { maximumFractionDigits: 2 })}`
             }
+            fullWidth
             slotProps={{
               input: {
                 readOnly: true,
