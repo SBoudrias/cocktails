@@ -42,16 +42,16 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
         <Stack spacing={2}>
           <Stack direction="row" spacing={1} alignItems="center">
             <TextField
-              label="Target acidity"
-              value={targetAcidityValue}
+              label="Juice weight"
+              value={weightValue}
               type="number"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setTargetAcidity(event.target.value);
+                setWeight(event.target.value);
               }}
               fullWidth
               slotProps={{
                 input: {
-                  endAdornment: <InputAdornment position="end">%</InputAdornment>,
+                  endAdornment: <InputAdornment position="end">grams</InputAdornment>,
                 },
               }}
             />
@@ -70,16 +70,16 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
               }}
             />
             <TextField
-              label="Juice weight"
-              value={weightValue}
+              label="Target acidity"
+              value={targetAcidityValue}
               type="number"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setWeight(event.target.value);
+                setTargetAcidity(event.target.value);
               }}
               fullWidth
               slotProps={{
                 input: {
-                  endAdornment: <InputAdornment position="end">grams</InputAdornment>,
+                  endAdornment: <InputAdornment position="end">%</InputAdornment>,
                 },
               }}
             />
@@ -160,22 +160,10 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setJuiceAmount(event.target.value);
               }}
+              fullWidth
               slotProps={{
                 input: {
                   endAdornment: <InputAdornment position="end">oz</InputAdornment>,
-                },
-              }}
-            />
-            <TextField
-              label="Target acidity"
-              value={targetAcidityValue}
-              type="number"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setTargetAcidity(event.target.value);
-              }}
-              slotProps={{
-                input: {
-                  endAdornment: <InputAdornment position="end">%</InputAdornment>,
                 },
               }}
             />
@@ -186,6 +174,21 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setAcidAmount(event.target.value);
               }}
+              fullWidth
+              slotProps={{
+                input: {
+                  endAdornment: <InputAdornment position="end">%</InputAdornment>,
+                },
+              }}
+            />
+            <TextField
+              label="Target acidity"
+              value={targetAcidityValue}
+              type="number"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setTargetAcidity(event.target.value);
+              }}
+              fullWidth
               slotProps={{
                 input: {
                   endAdornment: <InputAdornment position="end">%</InputAdornment>,
@@ -200,6 +203,7 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
                 ? ''
                 : `${diff.toLocaleString('en', { maximumFractionDigits: 2 })}`
             }
+            fullWidth
             slotProps={{
               input: {
                 readOnly: true,
@@ -234,7 +238,7 @@ export default function AcidAdjustingCalculator({
   defaultAcidity: number;
   sx?: SxProps;
 }) {
-  const [type, setType] = useState<'lime' | 'acid-adjuster'>('acid-adjuster');
+  const [type, setType] = useState<'powder' | 'acid-adjuster'>('acid-adjuster');
 
   return (
     <Suspense>
@@ -245,21 +249,21 @@ export default function AcidAdjustingCalculator({
             <ToggleButtonGroup
               value={type}
               onChange={(_, newVal) =>
-                setType(newVal === 'lime' ? 'lime' : 'acid-adjuster')
+                setType(newVal === 'powder' ? 'powder' : 'acid-adjuster')
               }
               size="small"
               aria-label="Preferred acid-adjusting technique"
               exclusive
             >
-              <ToggleButton value="acid-adjuster">Acid Adjuster</ToggleButton>
-              <ToggleButton value="lime">Lime</ToggleButton>
+              <ToggleButton value="acid-adjuster">Solution</ToggleButton>
+              <ToggleButton value="powder">Powder</ToggleButton>
             </ToggleButtonGroup>
           }
           sx={{
             pb: 3,
           }}
         />
-        {type === 'lime' ? (
+        {type === 'powder' ? (
           <ClassicalCalculator defaultAcidity={defaultAcidity} />
         ) : (
           <AcidAdjusterCalculator defaultAcidity={defaultAcidity} />
