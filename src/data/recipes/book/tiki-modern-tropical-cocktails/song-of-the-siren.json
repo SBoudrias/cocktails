@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Song of the Siren",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Rhum J.M Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "preparation": "espadín",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Braulio",
+      "preparation": "float",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all but Braulio in a shaker with cubed ice",
+    "Shake and pour into a hurricane or pilsner glass lined with a banana leaf",
+    "Top with pebbled ice and float amaro on top",
+    "Garnish with freshly grated nutmeg"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tiki-modern-tropical-cocktails",
+      "page": 106
+    }
+  ]
+}

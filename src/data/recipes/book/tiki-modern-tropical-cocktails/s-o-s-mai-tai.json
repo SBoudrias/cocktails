@@ -3,7 +3,7 @@
   "name": "S.O.S Mai Tai",
   "preparation": "shaken",
   "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "lime juice",
@@ -22,24 +22,24 @@
       }
     },
     {
-      "name": "Orange curaçao",
-      "type": "category",
+      "name": "Clément Créole Shrubb",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Rhum Agricole Blanc",
-      "type": "category",
+      "name": "La Favorite Coeur de Canne",
+      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Pot still lightly aged rum",
-      "type": "category",
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
@@ -47,6 +47,10 @@
     }
   ],
   "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Ean Bancroft"
+    },
     {
       "relation": "bar",
       "source": "The S.O.S. Tiki Bar"
@@ -62,5 +66,11 @@
       "type": "youtube",
       "videoId": "Ce8IHqiUVHU"
     }
+  ],
+  "instructions": [
+    "Combine all ingredients in a shaker and add a handful of ice",
+    "Shake vigorously and pour all contents into a Collins glass and top with fresh pebbled ice",
+    "Garnish with a flaming lime shell",
+    "Note: For added excitement, sprinkle ground cinnamon from a shaker or sifter over the flame to create impressive fire sparkles. Be mindful of your surroundings, as the sparks can jump as much as 18 to 24 inches above the drink. Use common safety measures that come into play when working with open flames - tie any hair back, roll up your sleeves, and make sure you're in a well ventilated area with a fire extinguisher handy."
   ]
 }

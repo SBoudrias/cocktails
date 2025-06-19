@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Flor de Caña 7 Year",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}

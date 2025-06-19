@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Amargo-Vallet Angostura",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}

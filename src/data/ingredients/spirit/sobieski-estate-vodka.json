@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Flor de Cana 4 years",
+  "name": "Sobieski Estate Vodka",
   "type": "spirit",
-  "categories": ["Blended Lightly-aged Rum"]
+  "categories": ["Vodka"]
 }
