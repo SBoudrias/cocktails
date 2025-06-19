@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Old Grand-Dad 114 Proof Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}
