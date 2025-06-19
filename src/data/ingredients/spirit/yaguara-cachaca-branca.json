@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Yaguara Cachaça Branca",
+  "type": "spirit",
+  "categories": ["Unaged Cachaça"]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Sunset Kid",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Cazadores Reposado Tequila",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Fernet Menta",
+      "type": "liqueur",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Cinnamon Syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Blood Orange Purée",
+      "type": "puree",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Angostura Bitters",
+      "type": "bitter",
+      "quantity": { "amount": 2, "unit": "dash" }
+    }
+  ],
+  "instructions": [
+    "Combine all in a shaker with cubed ice.",
+    "Shake and strain into a chilled footed pilsner glass over pebbled ice.",
+    "Garnish with a dehydrated blood orange wheel and 2 to 3 pineapple leaves."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 56
+    }
+  ]
+}

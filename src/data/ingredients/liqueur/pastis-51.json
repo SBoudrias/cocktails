@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Pastis 51",
+  "type": "liqueur",
+  "categories": ["Pastis"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "La Favorite Coeur d'Ambre",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Vieux"]
+}

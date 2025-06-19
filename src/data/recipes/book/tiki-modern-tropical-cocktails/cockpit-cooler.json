@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cockpit Cooler",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "oz" }
+    },
+    {
+      "name": "Hamilton Pimento Dram",
+      "type": "liqueur",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "Toasted Coconut Syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Carrot Juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Soursop Juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a shaker with cubed ice.",
+    "Shake and strain into a chilled footed pilsner glass or julep cup lined with a banana leaf over cubed ice.",
+    "Top with pebbled ice and garnish with freshly grated nutmeg and a paper umbrella."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 73
+    }
+  ]
+}

@@ -1,30 +1,30 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tiger Shark",
+  "name": "Tigershark",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Whiskey (Bourbon)",
-      "preparation": "Coconut Fat-Washed",
-      "type": "category",
+      "name": "Four Roses Bourbon",
+      "type": "spirit",
+      "preparation": "coconut oil-washed",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
     },
     {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
+      "name": "Lemongrass Syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Lemongrass Syrup",
-      "type": "syrup",
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -48,15 +48,16 @@
     }
   ],
   "instructions": [
-    "Combine all ingredients in a shaker with ice.",
-    "Shake well and strain into a double old fashioned glass.",
-    "Garnish with a lime wheel."
+    "Combine all ingredients in a shaker with light ice.",
+    "Flash blend with a stand or wand mixer for 10 seconds to chill and aerate.",
+    "Strain into a snifter glass over pebbled ice.",
+    "Garnish with an edible flower and dehydrated lime wheel."
   ],
   "refs": [
     {
       "type": "book",
-      "page": 61,
-      "title": "tiki-modern-tropical-cocktails"
+      "title": "tiki-modern-tropical-cocktails",
+      "page": 61
     },
     {
       "type": "youtube",

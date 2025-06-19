@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Message in a Bottle",
+  "ingredients": [
+    {
+      "name": "Diplomatico Planas",
+      "preparation": "kaffir lime leaf–infused",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Rhum J.M Blanc",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Ginger Syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lychee Juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "instructions": [
+    "Combine all in a shaker with cubed ice.",
+    "Shake and strain into a snifter over crushed ice.",
+    "Serve with bamboo straws and garnish with a banana leaf, pineapple spear, or kaffir lime leaf.",
+    "For Kaffir Lime Leaf–Infused Rum: Combine 1 fresh kaffir lime leaf and 12 1/2 ounces (375 milliliters) aged white rum in a glass or nonporous, nonreactive container. Let steep at room temperature for 2 hours. Drain and discard leaf before use. Decant into a clean bottle and store refrigerated indefinitely."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 53
+    }
+  ]
+}
