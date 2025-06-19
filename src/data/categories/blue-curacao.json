@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Blue Curaçao"
+  "name": "Blue Curaçao",
+  "parents": ["Orange Curaçao"]
 }

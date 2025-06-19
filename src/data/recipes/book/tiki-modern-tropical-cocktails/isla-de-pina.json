@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Isla de Piña",
+  "ingredients": [
+    {
+      "name": "Diplomatico Planas",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Caribbean Pineapple",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Pimento Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "flash blended",
+  "served_on": "up",
+  "glassware": "coupe",
+  "instructions": [
+    "Combine all ingredients in a shaker with scant crushed ice",
+    "Flash blend with a stand or wand mixer for 5 to 10 seconds",
+    "Fine strain into a chilled coupe",
+    "Garnish with 2 to 3 pineapple leaves affixed to the glass with miniature clothespin"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 49
+    }
+  ]
+}
