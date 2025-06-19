@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Bombo",
+  "ingredients": [
+    {
+      "name": "Plantation O.F.T.D. Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "rocks",
+  "instructions": [
+    "In a chilled rocks glass, combine the syrup and rum",
+    "Add a large ice cube and stir to chill",
+    "Garnish with freshly grated nutmeg"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 9
+    }
+  ]
+}
