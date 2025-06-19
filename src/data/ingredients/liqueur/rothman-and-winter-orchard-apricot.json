@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Rothman & Winter Apricot Liqueur",
+  "name": "Rothman & Winter Orchard Apricot",
   "type": "liqueur",
   "categories": ["Apricot liqueur"]
 }

@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Navy Grog",
+  "ingredients": [
+    {
+      "name": "Denizen Aged White",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bounty Dark Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "instructions": [
+    "Combine all ingredients in a shaker with cubed ice",
+    "Shake and strain into a chilled rocks glass over an ice cone",
+    "Garnish with a lime shell and miniature British flag"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 32
+    }
+  ]
+}
