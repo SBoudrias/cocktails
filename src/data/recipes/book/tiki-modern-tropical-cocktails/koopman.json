@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Koopman",
+  "ingredients": [
+    {
+      "name": "Captive Spirits Bourbon Barreled Big Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 17,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemongrass syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "tangerine juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 17,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Earl Grey tea",
+      "type": "other",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "instructions": [
+    "Combine all ingredients and stir to mix",
+    "Keep at least 4 hours or up to overnight in a covered container in the refrigerator",
+    "Stir before serving",
+    "If utilizing a punch bowl, pour over a large block of ice to slow dilution",
+    "Garnish with citrus wedges, citrus wheels, and freshly grated nutmeg"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 148
+    }
+  ]
+}

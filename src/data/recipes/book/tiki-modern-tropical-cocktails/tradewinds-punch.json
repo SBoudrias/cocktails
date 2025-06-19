@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tradewinds punch",
+  "ingredients": [
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 17,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mount Gay Black Barrel",
+      "type": "spirit",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Clément Créole Shrubb",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 6.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "blood orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "instructions": [
+    "Combine all ingredients and stir to mix",
+    "Keep at least 4 hours or up to overnight in a covered container in the refrigerator",
+    "Stir before serving",
+    "If utilizing a punch bowl, pour over a large block of ice to slow dilution",
+    "Garnish with dehydrated blood orange wheels"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 152
+    }
+  ]
+}

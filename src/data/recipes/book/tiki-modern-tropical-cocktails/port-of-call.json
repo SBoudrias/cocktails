@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Port of Call",
+  "ingredients": [
+    {
+      "name": "Planteray OFTD",
+      "type": "spirit",
+      "quantity": {
+        "amount": 10,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Pimento Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "tangerine juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 6.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 10,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3.33,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "instructions": [
+    "Combine all ingredients and stir to mix",
+    "Keep at least 4 hours or up to overnight in a covered container in the refrigerator",
+    "Stir before serving",
+    "If utilizing a punch bowl, pour over a large block of ice to slow dilution",
+    "Garnish with freshly grated lime zest and freshly grated nutmeg"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 153
+    }
+  ]
+}

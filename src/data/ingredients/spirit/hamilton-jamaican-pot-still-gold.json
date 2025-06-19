@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Hamilton Jamaican Pot Still Gold",
+  "type": "spirit",
+  "categories": ["Blended Aged Rum (Jamaica)", "Jamaican Rum"]
+}

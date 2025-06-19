@@ -63,7 +63,7 @@
       "type": "object",
       "properties": {
         "technique": { "const": "temperature" },
-        "method": { "enum": ["chilled", "hot", "frozen", "roasted"] }
+        "method": { "enum": ["chilled", "hot", "boiling", "frozen", "roasted"] }
       },
       "required": ["technique", "method"],
       "additionalProperties": false

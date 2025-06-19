@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Rios Del Miel",
+  "ingredients": [
+    {
+      "name": "Yaguara Cachaça Prata",
+      "type": "spirit",
+      "quantity": {
+        "amount": 25.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "BarSol Pisco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Yuzu Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 4.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "coriander seeds",
+      "type": "spice",
+      "quantity": {
+        "amount": 20,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "star anise",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Sencha tea",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "water",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "boiling"
+      },
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 34,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "instructions": [
+    "With a peeler, remove peel from the lemons. Juice the peeled lemons and reserve the liquid; discard the squeezed-out solids.",
+    "Combine the lemon peels, pineapple, spices, and sugar in a large bowl or nonporous, nonreactive container, and muddle.",
+    "Pour in the brewed green tea and stir to mix. Add boiling water and immediately cover.",
+    "Let sit overnight, then strain the mixture into a clean container, discarding the solids.",
+    "Add the cachaça, pisco, falernum, and yuzu liqueur.",
+    "Bring the milk to a boil. Add the hot milk and reserved lemon juice to the strained rum mixture—the milk will curdle and the solids will coagulate.",
+    "Strain the liquid a little at a time through a fine mesh strainer or chinois lined with cheesecloth, replacing the cheesecloth if it becomes too thickly layered with milk solids.",
+    "Pour into a clean container, cover, and refrigerate again overnight to give any remaining milk solids time to settle.",
+    "Strain again through a fine mesh strainer or chinois lined with cheesecloth, then transfer punch to a clean bottle and store in the refrigerator for up to 3 months.",
+    "Stir before serving. If utilizing a punch bowl, pour over a large block of ice to slow dilution.",
+    "Garnish with edible flowers and citrus wheels."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 154
+    }
+  ]
+}

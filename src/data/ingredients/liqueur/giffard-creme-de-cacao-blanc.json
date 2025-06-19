@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Giffard Crème de Cacao Blanc",
+  "type": "liqueur",
+  "categories": ["Crème de Cacao"]
+}
