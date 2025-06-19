@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet Menta",
+  "name": "Giffard Ginger of the Indies",
   "type": "liqueur",
-  "categories": ["Amaro"]
+  "categories": ["Ginger liqueur"]
 }

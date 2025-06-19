@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "toasted coconut-honey syrup",
+  "type": "syrup"
+}

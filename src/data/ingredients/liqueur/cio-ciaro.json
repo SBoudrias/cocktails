@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet Menta",
+  "name": "CioCiaro",
   "type": "liqueur",
   "categories": ["Amaro"]
 }

@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Ancho Reyes Chile Liqueur",
-  "type": "liqueur"
+  "name": "banana milk",
+  "type": "other"
 }

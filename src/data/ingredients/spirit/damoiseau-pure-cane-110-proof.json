@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Damoiseau Pure Cane 110 Proof",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Blanc"]
+}

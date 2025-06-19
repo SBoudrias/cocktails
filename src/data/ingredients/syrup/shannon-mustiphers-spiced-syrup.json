@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Shannon Mustipher's spiced syrup",
+  "type": "syrup"
+}

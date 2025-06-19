@@ -9,7 +9,7 @@
       "name": "grapefruit juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.66,
         "unit": "oz"
       }
     },
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "St-Elizabeth Allspice Dram",
+      "name": "Hamilton Pimento Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
@@ -46,16 +46,16 @@
       }
     },
     {
-      "name": "Pot still lightly aged rum",
-      "type": "category",
+      "name": "Two James Doctor Bird rum",
+      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Rhum Agricole Blanc",
-      "type": "category",
+      "name": "Neisson Rhum Agricole Blanc",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"

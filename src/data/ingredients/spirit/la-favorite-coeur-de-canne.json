@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "La Favorite Coeur de Canne",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Blanc"]
+}

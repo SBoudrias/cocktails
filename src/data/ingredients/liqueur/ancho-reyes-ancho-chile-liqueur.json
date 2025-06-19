@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fernet Menta",
+  "name": "Ancho Reyes Ancho Chile Liqueur",
   "type": "liqueur",
-  "categories": ["Amaro"]
+  "categories": ["Chile Liqueur"]
 }
