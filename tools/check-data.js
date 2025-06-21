@@ -69,9 +69,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   }
 
   const isValid = validate(data);
-  if (isValid) {
-    pass(`Validation passed for ${sourceFile}`);
-  } else {
+  if (!isValid) {
     fail(`Validation failed for ${sourceFile}`);
     console.error(validate.errors);
   }
@@ -167,6 +165,6 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     }
   }
 }
-console.log(exitCode > 0 ? '╰ Validation failed! ❌' : '╰ Done!');
+console.log(exitCode > 0 ? '╰ ❌ Validation failed!' : '╰ ✅ Done!');
 
 process.exit(exitCode);
