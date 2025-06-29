@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Clover Club",
+  "ingredients": [
+    {
+      "name": "Raspberries",
+      "type": "fruit",
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "instructions": [
+    "Add raspberries and simple syrup to shaker tin",
+    "Muddle raspberries",
+    "Add remaining ingredients",
+    "Dry shake without ice",
+    "Add ice and shake again until well chilled",
+    "Double strain into a chilled coupe glass",
+    "Express lemon oil over the drink",
+    "Garnish with a raspberry"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "MkLZovhDN_k"
+    }
+  ]
+}
