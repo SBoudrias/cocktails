@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Rongorongo",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Stiggins' Fancy pineapple rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray OFTD",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vTukpJSpWIE"
+    }
+  ],
+  "attributions": [
+    {
+      "source": "Steven Liles",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Smuggler's cove",
+      "relation": "bar"
+    }
+  ]
+}
