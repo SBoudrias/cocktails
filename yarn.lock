@@ -2590,7 +2590,6 @@ __metadata:
     core-js: "npm:^3.40.0"
     eslint: "npm:^9.21.0"
     eslint-config-next: "npm:15.1.7"
-    eslint-config-prettier: "npm:^10.0.1"
     husky: "npm:^9.1.7"
     jsdom: "npm:^26.0.0"
     lodash: "npm:^4.17.21"
@@ -3245,17 +3244,6 @@ __metadata:
     typescript:
       optional: true
   checksum: 10c0/de949da02e58962eb215fc98ec56cce0a6afeaada550c7213a99466bbb391b58c2d9412d55e9d2756a7b12b7cde60b7d8157337d6dd3f74f131e41404deb0091
-  languageName: node
-  linkType: hard
-
-"eslint-config-prettier@npm:^10.0.1":
-  version: 10.0.1
-  resolution: "eslint-config-prettier@npm:10.0.1"
-  peerDependencies:
-    eslint: ">=7.0.0"
-  bin:
-    eslint-config-prettier: build/bin/cli.js
-  checksum: 10c0/e2434931669d211663c0493f2c1640a670a02ba4503a68f056a7eda133f383acbbb983a4a7bd0ad6cb3b2bc4d5731c3be8b32fe28e35087a76fea45f7061ae70
   languageName: node
   linkType: hard
 
