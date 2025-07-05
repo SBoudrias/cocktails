@@ -17,8 +17,8 @@
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.25,
-        "unit": "dash"
+        "amount": 0.5,
+        "unit": "oz"
       }
     },
     {
