@@ -73,6 +73,7 @@
     },
     {
       "name": "Coruba",
+      "preparation": "float",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
