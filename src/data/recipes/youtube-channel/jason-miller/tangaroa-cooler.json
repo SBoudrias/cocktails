@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tangaroa Cooler",
+  "ingredients": [
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum Liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "tamarind simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orange bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a shaker with ice",
+    "Shake until well-chilled",
+    "Pour into a glass filled with crushed ice"
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "attributions": [
+    {
+      "source": "Trader Sam's",
+      "relation": "bar"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "EIJikM7QXTQ"
+    }
+  ]
+}

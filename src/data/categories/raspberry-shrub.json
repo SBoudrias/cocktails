@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "raspberry shrub",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "TFwPE5F5jrk"
+    }
+  ]
+}

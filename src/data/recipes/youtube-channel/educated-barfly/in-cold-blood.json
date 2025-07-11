@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "In Cold Blood",
+  "ingredients": [
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Carpano Antica Formula Vermouth",
+      "type": "liqueur",
+      "preparation": "",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a mixing glass with ice",
+    "Stir until well-chilled",
+    "Strain into a chilled old fashioned glass over a big rock",
+    "Garnish with a lemon twist"
+  ],
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "GZITiAIYars"
+    }
+  ]
+}
