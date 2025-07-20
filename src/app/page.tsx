@@ -13,6 +13,8 @@ import {
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
 import {
+  getAuthorListUrl,
+  getBarListUrl,
   getBottleListUrl,
   getIngredientListUrl,
   getSearchUrl,
@@ -60,16 +62,6 @@ export default async function HomePage() {
               <ListItemText primary="All Recipes" />
             </ListItem>
           </Link>
-          <Link href={getIngredientListUrl()}>
-            <ListItem divider secondaryAction={<ChevronRightIcon />}>
-              <ListItemText primary="All Ingredients" />
-            </ListItem>
-          </Link>
-          <Link href={getBottleListUrl()}>
-            <ListItem divider secondaryAction={<ChevronRightIcon />}>
-              <ListItemText primary="All Bottles" />
-            </ListItem>
-          </Link>
           <Link href="/calculators">
             <ListItem divider secondaryAction={<ChevronRightIcon />}>
               <ListItemText primary="Calculators" />
@@ -93,6 +85,33 @@ export default async function HomePage() {
               {ytChannels.map((source) => (
                 <SourceListItem source={source} key={source.name} />
               ))}
+            </Paper>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <ListSubheader>Other lists</ListSubheader>
+            <Paper square>
+              <Link href={getAuthorListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="By Authors" />
+                </ListItem>
+              </Link>
+              <Link href={getBarListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="By Bars" />
+                </ListItem>
+              </Link>
+              <Link href={getIngredientListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="All Ingredients" />
+                </ListItem>
+              </Link>
+              <Link href={getBottleListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="All Bottles" />
+                </ListItem>
+              </Link>
             </Paper>
           </ul>
         </li>
