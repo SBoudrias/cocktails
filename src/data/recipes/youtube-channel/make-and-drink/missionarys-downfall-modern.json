@@ -1,0 +1,92 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Missionary's Downfall (Modern)",
+  "ingredients": [
+    {
+      "name": "pineapple juice",
+      "preparation": "Acid-adjusted",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peach liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "RinQuinQuin Peach Aperitif",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Probitas Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple chunks",
+      "type": "fruit",
+      "quantity": {
+        "amount": 60,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "coupe",
+  "instructions": [
+    "Add all ingredients to a blender",
+    "Add 170 grams of crushed ice",
+    "Blend until smooth",
+    "Pour into a chilled coupe glass"
+  ],
+  "attributions": [
+    {
+      "source": "Garret Richard",
+      "relation": "recipe author"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jEHxVunOS1o"
+    }
+  ]
+}

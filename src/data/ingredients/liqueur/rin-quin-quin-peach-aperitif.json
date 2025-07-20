@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "RinQuinQuin Peach Aperitif",
+  "type": "liqueur",
+  "categories": ["Peach Aperitif"]
+}
