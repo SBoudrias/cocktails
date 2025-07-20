@@ -4,6 +4,8 @@ import { Suspense } from 'react';
 import {
   List,
   ListItem,
+  ListItemButton,
+  ListItemIcon,
   ListItemText,
   ListSubheader,
   Paper,
@@ -11,6 +13,10 @@ import {
   Typography,
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CalculatorIcon from '@mui/icons-material/Calculate';
+import SearchIcon from '@mui/icons-material/Search';
+import BookIcon from '@mui/icons-material/Book';
+import YoutubeIcon from '@mui/icons-material/YouTube';
 import Link from 'next/link';
 import {
   getAuthorListUrl,
@@ -58,19 +64,51 @@ export default async function HomePage() {
       <List sx={{ mt: 2 }}>
         <Paper square>
           <Link href={getSearchUrl()}>
-            <ListItem divider secondaryAction={<ChevronRightIcon />}>
-              <ListItemText primary="All Recipes" />
-            </ListItem>
-          </Link>
-          <Link href="/calculators">
-            <ListItem divider secondaryAction={<ChevronRightIcon />}>
-              <ListItemText primary="Calculators" />
+            <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SearchIcon />
+                </ListItemIcon>
+                <ListItemText primary="All Recipes" />
+              </ListItemButton>
             </ListItem>
           </Link>
         </Paper>
         <li>
           <ul>
-            <ListSubheader>By Books</ListSubheader>
+            <ListSubheader>
+              <Stack direction="row" alignItems="center" gap={1}>
+                <CalculatorIcon />
+                Calculators
+              </Stack>
+            </ListSubheader>
+            <Paper square>
+              <Link href={'/calculators/acid-adjusting'}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Acid Adjusting" />
+                </ListItem>
+              </Link>
+              <Link href={'/calculators/brix'}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Sugar Adjusting (Brix calculator)" />
+                </ListItem>
+              </Link>
+              <Link href={'/calculators/saline'}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Saline Solution Calculator" />
+                </ListItem>
+              </Link>
+            </Paper>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <ListSubheader>
+              <Stack direction="row" alignItems="center" gap={1}>
+                <BookIcon />
+                By Books
+              </Stack>
+            </ListSubheader>
             <Paper square>
               {books.map((source) => (
                 <SourceListItem source={source} key={source.name} />
@@ -80,7 +118,12 @@ export default async function HomePage() {
         </li>
         <li>
           <ul>
-            <ListSubheader>By Youtube Channels</ListSubheader>
+            <ListSubheader>
+              <Stack direction="row" alignItems="center" gap={1}>
+                <YoutubeIcon />
+                By Youtube Channels
+              </Stack>
+            </ListSubheader>
             <Paper square>
               {ytChannels.map((source) => (
                 <SourceListItem source={source} key={source.name} />
