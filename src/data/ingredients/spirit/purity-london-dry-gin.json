@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Purity London Dry Gin",
+  "type": "spirit",
+  "categories": ["London Dry Gin"]
+}
