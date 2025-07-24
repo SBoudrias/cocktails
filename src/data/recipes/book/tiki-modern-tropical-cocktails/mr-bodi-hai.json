@@ -68,11 +68,25 @@
     "Top with crushed ice",
     "Garnish with a pineapple round and leaves"
   ],
+  "attributions": [
+    {
+      "source": "Nathan Hazard",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Coconut Club, Los Angeles",
+      "relation": "bar"
+    }
+  ],
   "refs": [
     {
       "type": "book",
       "title": "Tiki: Modern Tropical Cocktails",
       "page": 102
+    },
+    {
+      "type": "youtube",
+      "videoId": "QeSCU4Ct5sY"
     }
   ]
 }
