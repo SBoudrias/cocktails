@@ -55,7 +55,7 @@ export const getRecipe = memo(
 );
 
 export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
-  const ingredients: Promise<Recipe>[] = [];
+  const recipes: Promise<Recipe>[] = [];
 
   for await (const sourceType of await fs.readdir(RECIPE_ROOT)) {
     for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, sourceType))) {
@@ -65,14 +65,15 @@ export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
         if (recipeFilename === '_source.json') continue;
         const recipeSlug = path.basename(recipeFilename, '.json');
 
-        ingredients.push(
+        recipes.push(
           getRecipe({ type: sourceType as Source['type'], slug: sourceSlug }, recipeSlug),
         );
       }
     }
   }
 
-  return await Promise.all(ingredients);
+  const allRecipes = await Promise.all(recipes);
+  return toAlphaSort(allRecipes);
 });
 
 export const getRecipesPerSource = async (): Promise<{

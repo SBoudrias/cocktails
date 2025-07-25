@@ -84,9 +84,6 @@ export default async function AuthorRecipesPage({ params }: Props) {
     ),
   );
 
-  // Sort recipes alphabetically
-  const sortedRecipes = authorRecipes.sort((a, b) => a.name.localeCompare(b.name));
-
   if (authorRecipes.length === 0) {
     notFound();
   }
@@ -96,7 +93,7 @@ export default async function AuthorRecipesPage({ params }: Props) {
       <AppHeader title={`Recipes by ${authorName}`} />
       <List sx={{ mt: 2 }}>
         <Paper square>
-          {sortedRecipes.map((recipe) => {
+          {authorRecipes.map((recipe) => {
             // Get the attribution if the recipe was adapted by someone else
             const adaptedBy = recipe.attributions.find(
               (attribution) =>
