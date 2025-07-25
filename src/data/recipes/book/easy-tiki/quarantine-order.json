@@ -5,37 +5,58 @@
     {
       "name": "Appleton Signature",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Rum-Bar Gold",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "grapefruit juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "cinnamon syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "passion fruit syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Angostura bitters",
       "type": "bitter",
-      "quantity": { "amount": 5, "unit": "dash" }
+      "quantity": {
+        "amount": 5,
+        "unit": "dash"
+      }
     }
   ],
   "preparation": "shaken",
@@ -48,8 +69,21 @@
     "Garnish with a mint sprig and a cherry speared through a lime wheel."
   ],
   "attributions": [
-    { "source": "William Prestwood", "relation": "recipe author" },
-    { "source": "Pagan Idol, San Francisco", "relation": "bar" }
+    {
+      "source": "William Prestwood",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Pagan Idol",
+      "relation": "bar",
+      "location": "San Francisco"
+    }
   ],
-  "refs": [{ "type": "book", "title": "easy-tiki", "page": 95 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "easy-tiki",
+      "page": 95
+    }
+  ]
 }

@@ -5,27 +5,42 @@
     {
       "name": "Blended Aged Rum (Demerara)",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "hibiscus honey syrup",
       "type": "syrup",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "grapefruit juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "seltzer",
       "type": "soda",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -43,8 +58,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Llama Inn, Brooklyn",
-      "relation": "bar"
+      "source": "Llama Inn",
+      "relation": "bar",
+      "location": "Brooklyn"
     }
   ],
   "refs": [

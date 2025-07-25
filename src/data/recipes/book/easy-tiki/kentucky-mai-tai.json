@@ -5,32 +5,50 @@
     {
       "name": "Evan Williams Black Label",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Nuestra Soledad Espadin Joven Mezcal",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Cynar",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Giffard Crème de Pêche de Vigne",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "orgeat",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -49,8 +67,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Pali Society, Los Angeles",
-      "relation": "bar"
+      "source": "Pali Society",
+      "relation": "bar",
+      "location": "Los Angeles"
     }
   ],
   "refs": [

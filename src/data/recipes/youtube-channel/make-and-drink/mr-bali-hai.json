@@ -56,8 +56,9 @@
   "glassware": "tiki",
   "attributions": [
     {
-      "source": "Bali Hai in San Diego",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Bali Hai",
+      "location": "San Diego, CA"
     }
   ],
   "refs": [

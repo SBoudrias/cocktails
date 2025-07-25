@@ -74,8 +74,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Coconut Club, Los Angeles",
-      "relation": "bar"
+      "source": "Coconut Club",
+      "relation": "bar",
+      "location": "Los Angeles"
     }
   ],
   "refs": [

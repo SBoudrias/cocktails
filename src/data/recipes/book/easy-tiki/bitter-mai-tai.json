@@ -58,8 +58,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Dram, Brooklyn",
-      "relation": "bar"
+      "source": "Dram",
+      "relation": "bar",
+      "location": "Brooklyn"
     }
   ],
   "refs": [

@@ -2,11 +2,28 @@ import { Source } from './Source';
 import { Ref } from './Ref';
 import { RecipeIngredient } from './Ingredient';
 
-export type Attribution = {
+type BarAttribution = {
+  relation: 'bar';
   source: string;
-  relation: 'recipe author' | 'adapted by' | 'bar' | 'book';
+  location?: string;
   url?: string;
 };
+
+type BookAttribution = {
+  relation: 'book';
+  source: string;
+  page?: number;
+  url?: string;
+};
+
+export type Attribution =
+  | BarAttribution
+  | BookAttribution
+  | {
+      relation: 'recipe author' | 'adapted by';
+      source: string;
+      url?: string;
+    };
 
 export type Recipe = {
   name: string;

@@ -5,28 +5,43 @@
     {
       "name": "Denizen Merchants Reserve",
       "type": "spirit",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "orange curaçao",
       "type": "category",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Demerara Syrup",
       "type": "syrup",
       "brix": 66,
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     },
     {
       "name": "orgeat",
       "type": "syrup",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -39,8 +54,21 @@
     "Garnish with an upside-down lime shell and a mint sprig."
   ],
   "attributions": [
-    { "source": "Martin Cate", "relation": "recipe author" },
-    { "source": "Smuggler's Cove, San Francisco", "relation": "bar" }
+    {
+      "source": "Martin Cate",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Smuggler's Cove",
+      "relation": "bar",
+      "location": "San Francisco"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 77 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 77
+    }
+  ]
 }

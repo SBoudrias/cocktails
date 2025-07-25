@@ -5,27 +5,42 @@
     {
       "name": "Planteray Stiggins' Fancy pineapple rum",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Rhum Clément Mahina Coco",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "coconut soda",
       "type": "soda",
-      "quantity": { "amount": 1, "unit": "unit" }
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
     }
   ],
   "preparation": "swizzled",
@@ -39,8 +54,21 @@
     "Garnish with a pineapple wedge and a cocktail umbrella."
   ],
   "attributions": [
-    { "source": "David Perez", "relation": "recipe author" },
-    { "source": "Lei Low, Houston", "relation": "bar" }
+    {
+      "source": "David Perez",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Lei Low",
+      "relation": "bar",
+      "location": "Houston"
+    }
   ],
-  "refs": [{ "type": "book", "title": "easy-tiki", "page": 97 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "easy-tiki",
+      "page": 97
+    }
+  ]
 }

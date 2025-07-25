@@ -5,27 +5,42 @@
     {
       "name": "Planteray OFTD",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "cinnamon syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "grapefruit juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Bittermens Xocolatl Mole Bitters",
       "type": "bitter",
-      "quantity": { "amount": 2, "unit": "dash" }
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
     }
   ],
   "preparation": "shaken",
@@ -42,8 +57,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Shore Leave, Boston",
-      "relation": "bar"
+      "source": "Shore Leave",
+      "relation": "bar",
+      "location": "Boston"
     }
   ],
   "refs": [

@@ -5,27 +5,42 @@
     {
       "name": "London Dry Gin",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "orgeat",
       "type": "syrup",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "orange bitters",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "dash" }
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
     },
     {
       "name": "mint leaves",
       "type": "other",
-      "quantity": { "amount": 10, "unit": "unit" }
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
     }
   ],
   "preparation": "shaken",
@@ -43,8 +58,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Hale Pele, Portland, Oregon",
-      "relation": "bar"
+      "source": "Hale Pele, Portland",
+      "relation": "bar",
+      "location": "Oregon"
     }
   ],
   "refs": [

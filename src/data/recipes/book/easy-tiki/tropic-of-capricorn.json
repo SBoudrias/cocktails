@@ -6,27 +6,42 @@
       "name": "Blended Aged Rum (Demerara)",
       "type": "category",
       "preparation": "green tea-infused",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "Tempus Fugit crème de banane",
       "type": "liqueur",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "cane syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Fernet-Branca",
       "type": "liqueur",
-      "quantity": { "amount": 1, "unit": "tsp" }
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
     }
   ],
   "preparation": "shaken",
@@ -43,8 +58,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Nitecap, New York",
-      "relation": "bar"
+      "source": "Nitecap",
+      "relation": "bar",
+      "location": "New York"
     }
   ],
   "refs": [

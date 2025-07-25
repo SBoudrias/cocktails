@@ -5,32 +5,50 @@
     {
       "name": "Denizen Aged White",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Smith & Cross",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "tsp" }
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
     },
     {
       "name": "Rhine Hall Mango Brandy",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Gardenia Mix",
       "type": "syrup",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "simple syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -43,8 +61,21 @@
     "Garnish with a mango leaf, an edible orchid, and freshly grated nutmeg."
   ],
   "attributions": [
-    { "source": "Gaby Mlynarczyk", "relation": "recipe author" },
-    { "source": "Accomplice Bar, Los Angeles", "relation": "bar" }
+    {
+      "source": "Gaby Mlynarczyk",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Accomplice Bar",
+      "relation": "bar",
+      "location": "Los Angeles"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 71 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 71
+    }
+  ]
 }

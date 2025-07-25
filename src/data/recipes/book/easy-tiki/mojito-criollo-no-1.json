@@ -5,27 +5,42 @@
     {
       "name": "mint leaves",
       "type": "other",
-      "quantity": { "amount": 10, "unit": "unit" }
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
     },
     {
       "name": "Column still lightly aged rum",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "sugar",
       "type": "other",
-      "quantity": { "amount": 2, "unit": "tsp" }
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
     },
     {
       "name": "seltzer",
       "type": "soda",
-      "quantity": { "amount": 3, "unit": "oz" }
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "built",
@@ -38,8 +53,21 @@
     "Garnish with a mint sprig."
   ],
   "attributions": [
-    { "source": "Pablo Moix", "relation": "recipe author" },
-    { "source": "Dama, Los Angeles", "relation": "bar" }
+    {
+      "source": "Pablo Moix",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Dama",
+      "relation": "bar",
+      "location": "Los Angeles"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 105 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 105
+    }
+  ]
 }

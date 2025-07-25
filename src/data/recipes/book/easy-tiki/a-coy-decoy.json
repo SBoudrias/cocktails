@@ -5,32 +5,50 @@
     {
       "name": "Fords gin",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Uncle Val's Botanical gin",
       "type": "spirit",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Giffard crème de pamplemousse rose",
       "type": "liqueur",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Bittermens Boston Bittahs",
       "type": "bitter",
-      "quantity": { "amount": 4, "unit": "drop" }
+      "quantity": {
+        "amount": 4,
+        "unit": "drop"
+      }
     }
   ],
   "preparation": "shaken",
@@ -43,8 +61,21 @@
     "Variation: Combine all the ingredients in a drink mixer with 1 cup crushed ice. Buzz for 3 seconds. Pour into a Zombie glass, top with crushed ice, and garnish as directed."
   ],
   "attributions": [
-    { "source": "Chris Coy", "relation": "recipe author" },
-    { "source": "The Inferno Room, Indianapolis", "relation": "bar" }
+    {
+      "source": "Chris Coy",
+      "relation": "recipe author"
+    },
+    {
+      "source": "The Inferno Room",
+      "relation": "bar",
+      "location": "Indianapolis"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 129 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 129
+    }
+  ]
 }

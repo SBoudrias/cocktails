@@ -5,32 +5,50 @@
     {
       "name": "Mizu Saga Barley shochu",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Giffard crème de pêche de vigne",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "honey",
       "type": "other",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "green shiso leaves",
       "type": "other",
-      "quantity": { "amount": 5, "unit": "unit" }
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
     }
   ],
   "preparation": "blended",
@@ -44,8 +62,21 @@
     "Garnish with a pineapple wedge and a cocktail umbrella."
   ],
   "attributions": [
-    { "source": "Brian Evans", "relation": "recipe author" },
-    { "source": "Sunday in Brooklyn, Brooklyn", "relation": "bar" }
+    {
+      "source": "Brian Evans",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Sunday in Brooklyn",
+      "relation": "bar",
+      "location": "Brooklyn"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 122 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 122
+    }
+  ]
 }

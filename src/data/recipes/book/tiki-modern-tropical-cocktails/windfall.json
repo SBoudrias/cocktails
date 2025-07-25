@@ -84,8 +84,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Yola Mezcal, New York",
-      "relation": "bar"
+      "source": "Yola Mezcal",
+      "relation": "bar",
+      "location": "New York"
     }
   ]
 }

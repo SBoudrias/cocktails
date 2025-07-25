@@ -5,27 +5,42 @@
     {
       "name": "gin",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "honey syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Cold-brewed Coffee Concentrate",
       "type": "other",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "ginger syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "swizzled",
@@ -38,8 +53,21 @@
     "Garnish with a lemon twist and a grated coffee bean."
   ],
   "attributions": [
-    { "source": "Ryan Lotz", "relation": "recipe author" },
-    { "source": "Shore Leave, Boston", "relation": "bar" }
+    {
+      "source": "Ryan Lotz",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Shore Leave",
+      "relation": "bar",
+      "location": "Boston"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 111 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 111
+    }
+  ]
 }

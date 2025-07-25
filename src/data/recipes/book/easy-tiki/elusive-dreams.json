@@ -5,32 +5,50 @@
     {
       "name": "Planteray Stiggins' Fancy pineapple rum",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Planteray 3 Star",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "cinnamon syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Giffard banane du Brésil",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -43,8 +61,21 @@
     "Garnish with a pineapple wedge and an edible orchid."
   ],
   "attributions": [
-    { "source": "Demi Natoli", "relation": "recipe author" },
-    { "source": "Patterson House, Nashville", "relation": "bar" }
+    {
+      "source": "Demi Natoli",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Patterson House",
+      "relation": "bar",
+      "location": "Nashville"
+    }
   ],
-  "refs": [{ "type": "book", "title": "easy-tiki", "page": 98 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "easy-tiki",
+      "page": 98
+    }
+  ]
 }

@@ -61,12 +61,13 @@
   ],
   "attributions": [
     {
-      "source": "Jason Littrell",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Jason Littrell"
     },
     {
-      "source": "Death & Co",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Death & Co.",
+      "location": "New York"
     }
   ],
   "refs": [

@@ -5,22 +5,34 @@
     {
       "name": "Ron del Barrilito 2 Star",
       "type": "spirit",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "superfine sugar",
       "type": "other",
-      "quantity": { "amount": 1, "unit": "tsp" }
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
     }
   ],
   "preparation": "shaken",
@@ -37,8 +49,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Dama, Los Angeles",
-      "relation": "bar"
+      "source": "Dama",
+      "relation": "bar",
+      "location": "Los Angeles"
     }
   ],
   "refs": [

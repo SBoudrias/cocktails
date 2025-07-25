@@ -5,32 +5,50 @@
     {
       "name": "Batavia Arrack van Oosten",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Planteray OFTD",
       "type": "spirit",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Sherry (Manzanilla)",
       "type": "category",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "St-Germain elderflower liqueur",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "ginger syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -48,8 +66,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Otis, Brooklyn",
-      "relation": "bar"
+      "source": "Otis",
+      "relation": "bar",
+      "location": "Brooklyn"
     }
   ],
   "refs": [

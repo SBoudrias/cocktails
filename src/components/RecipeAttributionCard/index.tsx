@@ -35,26 +35,37 @@ export default function RecipeAttributionCard({
       >
         <Table>
           <TableBody>
-            {recipe.attributions.map((attribution) => (
-              <TableRow
-                key={attribution.source}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th">
-                  {attributionRelationLabels[attribution.relation]}
-                </TableCell>
-                <TableCell>
-                  {attribution.url ? (
-                    <Link href={attribution.url} target="_blank" rel="noopener nofollow">
-                      {attribution.source}
-                      <ArrowOutwardIcon sx={{ fontSize: 'medium' }} />
-                    </Link>
-                  ) : (
-                    attribution.source
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
+            {recipe.attributions.map((attribution) => {
+              let name = attribution.source;
+              if (attribution.relation === 'bar' && attribution.location) {
+                name += `, ${attribution.location}`;
+              }
+
+              return (
+                <TableRow
+                  key={attribution.source}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th">
+                    {attributionRelationLabels[attribution.relation]}
+                  </TableCell>
+                  <TableCell>
+                    {attribution.url ? (
+                      <Link
+                        href={attribution.url}
+                        target="_blank"
+                        rel="noopener nofollow"
+                      >
+                        {name}
+                        <ArrowOutwardIcon sx={{ fontSize: 'medium' }} />
+                      </Link>
+                    ) : (
+                      name
+                    )}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </CardContent>

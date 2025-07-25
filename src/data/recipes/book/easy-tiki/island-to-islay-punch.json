@@ -5,32 +5,50 @@
     {
       "name": "Mount Gay Eclipse",
       "type": "spirit",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "Bruichladdich Port Charlotte",
       "type": "spirit",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "passion fruit juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "cinnamon syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Bittermens 'Elemakule Tiki Bitters",
       "type": "bitter",
-      "quantity": { "amount": 2, "unit": "dash" }
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
     }
   ],
   "preparation": "shaken",
@@ -47,8 +65,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Ghost Donkey, New York",
-      "relation": "bar"
+      "source": "Ghost Donkey",
+      "relation": "bar",
+      "location": "New York"
     }
   ],
   "refs": [

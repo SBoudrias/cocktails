@@ -5,27 +5,42 @@
     {
       "name": "tequila",
       "type": "category",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "passion fruit syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "salt",
       "type": "other",
-      "quantity": { "amount": 1, "unit": "pinch" }
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
     }
   ],
   "preparation": "shaken",
@@ -39,8 +54,21 @@
     "Note: If serving in a tiki mug, singe the rosemary once it's been placed vertically in the glass; if serving in a coupe, singe the rosemary before placing it on the surface of the cocktail."
   ],
   "attributions": [
-    { "source": "Chris Vanderginst", "relation": "recipe author" },
-    { "source": "Mutiny Bar, Detroit", "relation": "bar" }
+    {
+      "source": "Chris Vanderginst",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Mutiny Bar",
+      "relation": "bar",
+      "location": "Detroit"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 110 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 110
+    }
+  ]
 }

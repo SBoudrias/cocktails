@@ -5,22 +5,34 @@
     {
       "name": "Neisson Élevé Sous Bois",
       "type": "spirit",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "cinnamon syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "grapefruit juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -32,8 +44,21 @@
     "Garnish with a grapefruit peel, cinnamon stick, edible orchid, and mint."
   ],
   "attributions": [
-    { "source": "Paul McGee", "relation": "recipe author" },
-    { "source": "Lost Lake, Chicago", "relation": "bar" }
+    {
+      "source": "Paul McGee",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Lost Lake",
+      "relation": "bar",
+      "location": "Chicago"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 61 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 61
+    }
+  ]
 }

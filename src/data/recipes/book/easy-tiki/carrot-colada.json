@@ -5,32 +5,50 @@
     {
       "name": "London dry gin",
       "type": "category",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Amaro Montenegro",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "marjoram and pink peppercorn syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "carrot juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Cream of coconut",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -43,8 +61,21 @@
     "Add crushed ice to fill the glass and garnish with carrot ribbons and edible flowers."
   ],
   "attributions": [
-    { "source": "Christine Wiseman", "relation": "recipe author" },
-    { "source": "Broken Shaker, Los Angeles", "relation": "bar" }
+    {
+      "source": "Christine Wiseman",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Broken Shaker",
+      "relation": "bar",
+      "location": "Los Angeles"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 124 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 124
+    }
+  ]
 }

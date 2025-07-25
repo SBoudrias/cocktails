@@ -45,6 +45,6 @@ export function getAuthorRecipesUrl(author: string) {
   return `/list/authors/${slugify(author)}`;
 }
 
-export function getBarRecipesUrl(bar: string) {
-  return `/list/bars/${slugify(bar)}`;
+export function getBarRecipesUrl(bar: { name: string; location?: string }) {
+  return `/list/bars/${slugify(`${bar.name} ${bar.location ?? ''}`)}`;
 }

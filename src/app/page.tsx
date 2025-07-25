@@ -36,15 +36,18 @@ export const metadata: Metadata = {
 function SourceListItem({ source }: { source: Source }) {
   return (
     <Link href={getSourceUrl(source)} key={source.name}>
-      <ListItem divider secondaryAction={<ChevronRightIcon />}>
-        <ListItemText>
-          <Stack direction="row" justifyContent="space-between">
-            <span>{source.name}</span>
+      <ListItem
+        divider
+        secondaryAction={
+          <Stack direction="row" spacing={1}>
             <Typography color="textSecondary" component="span">
               {source.recipeAmount}
             </Typography>
+            <ChevronRightIcon />
           </Stack>
-        </ListItemText>
+        }
+      >
+        <ListItemText primary={source.name} />
       </ListItem>
     </Link>
   );

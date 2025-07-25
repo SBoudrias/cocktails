@@ -5,22 +5,34 @@
     {
       "name": "Whiskey (Bourbon)",
       "type": "category",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "orange juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "orgeat",
       "type": "syrup",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -33,8 +45,21 @@
     "Garnish with tied spiral-cut orange and lemon twists."
   ],
   "attributions": [
-    { "source": "Jeff 'Beachbum' Berry", "relation": "recipe author" },
-    { "source": "Latitude 29, New Orleans", "relation": "bar" }
+    {
+      "source": "Jeff 'Beachbum' Berry",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Latitude 29",
+      "relation": "bar",
+      "location": "New Orleans"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 88 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 88
+    }
+  ]
 }

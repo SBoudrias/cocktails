@@ -5,32 +5,50 @@
     {
       "name": "mint leaves",
       "type": "other",
-      "quantity": { "amount": 10, "unit": "unit" }
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
     },
     {
       "name": "Blended Lightly-aged Rum",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "G.E. Massenez Crème de Pêche",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "honey syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -42,8 +60,21 @@
     "Garnish with mint sprigs."
   ],
   "attributions": [
-    { "source": "Jelani Johnson", "relation": "recipe author" },
-    { "source": "Clover Club, Brooklyn", "relation": "bar" }
+    {
+      "source": "Jelani Johnson",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Clover Club",
+      "relation": "bar",
+      "location": "Brooklyn"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 65 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 65
+    }
+  ]
 }

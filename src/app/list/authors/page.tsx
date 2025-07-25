@@ -3,7 +3,15 @@ import Link from 'next/link';
 import AppHeader from '@/components/AppHeader';
 import { Suspense } from 'react';
 import { getAllRecipes } from '@/modules/recipes';
-import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { getAuthorRecipesUrl } from '@/modules/url';
 import { ChevronRight } from '@mui/icons-material';
 import groupByFirstLetter from '@/modules/groupByFirstLetter';
@@ -57,11 +65,18 @@ export default async function AuthorListPage() {
                 <Paper square>
                   {authors.map((author) => (
                     <Link href={getAuthorRecipesUrl(author.name)} key={author.name}>
-                      <ListItem divider secondaryAction={<ChevronRight />}>
-                        <ListItemText
-                          primary={author.name}
-                          secondary={`${author.recipeCount} recipe${author.recipeCount !== 1 ? 's' : ''}`}
-                        />
+                      <ListItem
+                        divider
+                        secondaryAction={
+                          <Stack direction="row" spacing={1}>
+                            <Typography color="textSecondary">
+                              {author.recipeCount}
+                            </Typography>
+                            <ChevronRight />
+                          </Stack>
+                        }
+                      >
+                        <ListItemText primary={author.name} />
                       </ListItem>
                     </Link>
                   ))}

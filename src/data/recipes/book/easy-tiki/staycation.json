@@ -55,8 +55,15 @@
     }
   ],
   "attributions": [
-    { "source": "Devin Kennedy", "relation": "recipe author" },
-    { "source": "Pouring Ribbons, New York", "relation": "bar" }
+    {
+      "source": "Devin Kennedy",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Pouring Ribbons",
+      "relation": "bar",
+      "location": "New York"
+    }
   ],
   "refs": [
     {

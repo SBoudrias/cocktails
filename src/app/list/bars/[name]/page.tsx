@@ -11,15 +11,29 @@ import slugify from '@sindresorhus/slugify';
 import { Recipe } from '@/types/Recipe';
 
 // Helper function to find the actual bar name from the slug
-function findBarNameFromSlug(slug: string, recipes: Recipe[]): string | null {
+function findBarNameFromSlug(
+  slug: string,
+  recipes: Recipe[],
+): { name: string; location?: string } | null {
   for (const recipe of recipes) {
     for (const attribution of recipe.attributions) {
-      if (attribution.relation === 'bar' && slugify(attribution.source) === slug) {
-        return attribution.source;
+      if (
+        attribution.relation === 'bar' &&
+        slugify(attribution.source + (attribution.location ?? '')) === slug
+      ) {
+        return {
+          name: attribution.source,
+          location: attribution.location,
+        };
       }
     }
   }
+
   return null;
+}
+
+function formatBarName(bar: { name: string; location?: string }) {
+  return `${bar.name}${bar.location ? `, ${bar.location}` : ''}`;
 }
 
 type Props = {
@@ -29,16 +43,16 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { name } = await params;
   const allRecipes = await getAllRecipes();
-  const barName = findBarNameFromSlug(name, allRecipes);
+  const bar = findBarNameFromSlug(name, allRecipes);
 
-  if (!barName) {
+  if (!bar) {
     return {
       title: 'Bar Not Found',
     };
   }
 
   return {
-    title: `Cocktail Index | Recipes from ${barName}`,
+    title: `Cocktail Index | Recipes from ${formatBarName(bar)}`,
   };
 }
 
@@ -49,8 +63,8 @@ export async function generateStaticParams() {
   allRecipes.forEach((recipe) => {
     recipe.attributions
       .filter((attribution) => attribution.relation === 'bar')
-      .forEach((attribution) => {
-        params.add(slugify(attribution.source));
+      .forEach((bar) => {
+        params.add(slugify(`${bar.source} ${bar.location ?? ''}`));
       });
   });
 
@@ -60,16 +74,19 @@ export async function generateStaticParams() {
 export default async function BarRecipesPage({ params }: Props) {
   const { name } = await params;
   const allRecipes = await getAllRecipes();
-  const barName = findBarNameFromSlug(name, allRecipes);
+  const bar = findBarNameFromSlug(name, allRecipes);
 
-  if (!barName) {
+  if (!bar) {
     notFound();
   }
 
   // Filter recipes by bar
   const barRecipes = allRecipes.filter((recipe) =>
     recipe.attributions.some(
-      (attribution) => attribution.relation === 'bar' && attribution.source === barName,
+      (attribution) =>
+        attribution.relation === 'bar' &&
+        attribution.source === bar.name &&
+        attribution.location === bar.location,
     ),
   );
 
@@ -79,7 +96,7 @@ export default async function BarRecipesPage({ params }: Props) {
 
   return (
     <Suspense>
-      <AppHeader title={`Recipes from ${barName}`} />
+      <AppHeader title={`Recipes from ${formatBarName(bar)}`} />
       <List sx={{ mt: 2 }}>
         <Paper square>
           {barRecipes.map((recipe) => (

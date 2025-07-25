@@ -5,32 +5,50 @@
     {
       "name": "Wild Turkey 101",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Clear Creek Pear Brandy",
       "type": "spirit",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "cinnamon syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Fernet-Branca",
       "type": "liqueur",
-      "quantity": { "amount": 1, "unit": "tsp" }
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
     }
   ],
   "preparation": "shaken",
@@ -44,12 +62,13 @@
   ],
   "attributions": [
     {
-      "source": "Sean Quinn",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Sean Quinn"
     },
     {
-      "source": "Death & Co., Denver",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Death & Co.",
+      "location": "Denver"
     }
   ],
   "refs": [

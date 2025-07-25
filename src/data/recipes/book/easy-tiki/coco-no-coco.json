@@ -5,22 +5,34 @@
     {
       "name": "El Dorado 12 year",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "orgeat",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "heavy whipping cream",
       "type": "other",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -33,8 +45,21 @@
     "Garnish with freshly grated nutmeg, grated cinnamon, and a tonka bean, if desired."
   ],
   "attributions": [
-    { "source": "Ezra Star", "relation": "recipe author" },
-    { "source": "Drink, Boston", "relation": "bar" }
+    {
+      "source": "Ezra Star",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Drink",
+      "relation": "bar",
+      "location": "Boston"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 118 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 118
+    }
+  ]
 }

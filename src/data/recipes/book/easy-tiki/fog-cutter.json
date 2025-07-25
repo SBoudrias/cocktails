@@ -5,32 +5,50 @@
     {
       "name": "Neisson Élevé Sous Bois",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Cognac",
       "type": "category",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "London Dry Gin",
       "type": "category",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "orgeat",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Sherry (Amontillado)",
       "type": "category",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -44,8 +62,21 @@
     "Garnish with the floret, a mint bouquet, edible orchid, and swizzle stick."
   ],
   "attributions": [
-    { "source": "Paul McGee", "relation": "recipe author" },
-    { "source": "Lost Lake, Chicago", "relation": "bar" }
+    {
+      "source": "Paul McGee",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Lost Lake",
+      "relation": "bar",
+      "location": "Chicago"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 79 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 79
+    }
+  ]
 }

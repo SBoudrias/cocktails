@@ -5,22 +5,34 @@
     {
       "name": "Whiskey (Bourbon)",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "orgeat",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "simple syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -33,8 +45,21 @@
     "Garnish with an orchid and a flag."
   ],
   "attributions": [
-    { "source": "Jelani Johnson", "relation": "recipe author" },
-    { "source": "Clover Club, Brooklyn", "relation": "bar" }
+    {
+      "source": "Jelani Johnson",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Clover Club",
+      "relation": "bar",
+      "location": "Brooklyn"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 86 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 86
+    }
+  ]
 }

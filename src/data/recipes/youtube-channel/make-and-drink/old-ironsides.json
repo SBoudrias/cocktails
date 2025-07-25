@@ -53,12 +53,13 @@
   ],
   "attributions": [
     {
-      "source": "Brian Miller",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Miller"
     },
     {
-      "source": "Death & Co",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Death & Co.",
+      "location": "New York"
     }
   ],
   "refs": [

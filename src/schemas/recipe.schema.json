@@ -150,13 +150,40 @@
       "type": "array",
       "items": {
         "type": "object",
-        "properties": {
-          "source": { "type": "string" },
-          "relation": { "enum": ["book", "recipe author", "adapted by", "bar"] },
-          "url": { "type": "string" }
-        },
-        "required": ["source", "relation"],
-        "additionalProperties": false
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "relation": { "enum": ["recipe author", "adapted by"] },
+              "source": { "type": "string" },
+              "url": { "type": "string" }
+            },
+            "required": ["source", "relation"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "relation": { "const": "bar" },
+              "source": { "type": "string" },
+              "location": { "type": "string" },
+              "url": { "type": "string" }
+            },
+            "required": ["source", "relation"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "relation": { "const": "book" },
+              "source": { "type": "string" },
+              "page": { "type": "number" },
+              "url": { "type": "string" }
+            },
+            "required": ["source", "relation"],
+            "additionalProperties": false
+          }
+        ]
       }
     },
     "refs": {

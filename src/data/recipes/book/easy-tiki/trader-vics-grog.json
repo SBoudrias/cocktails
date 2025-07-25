@@ -5,27 +5,42 @@
     {
       "name": "Planteray OFTD",
       "type": "spirit",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "passion fruit syrup",
       "type": "syrup",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Angostura bitters",
       "type": "bitter",
-      "quantity": { "amount": 3, "unit": "dash" }
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
     }
   ],
   "preparation": "shaken",
@@ -37,8 +52,21 @@
     "Garnish with maraschino cherries on a cocktail spear and a mint sprig."
   ],
   "attributions": [
-    { "source": "Martin Cate", "relation": "recipe author" },
-    { "source": "Smuggler's Cove, San Francisco", "relation": "bar" }
+    {
+      "source": "Martin Cate",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Smuggler's Cove",
+      "relation": "bar",
+      "location": "San Francisco"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 74 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 74
+    }
+  ]
 }

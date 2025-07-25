@@ -5,22 +5,34 @@
     {
       "name": "Sherry (Amontillado)",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Cream of coconut",
       "type": "syrup",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -34,8 +46,21 @@
     "Garnish with a pineapple wedge, pineapple fronds, and Angostura bitters, if desired."
   ],
   "attributions": [
-    { "source": "Ran Duan", "relation": "recipe author" },
-    { "source": "Baldwin Bar, Boston", "relation": "bar" }
+    {
+      "source": "Ran Duan",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Baldwin Bar",
+      "relation": "bar",
+      "location": "Boston"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 109 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 109
+    }
+  ]
 }

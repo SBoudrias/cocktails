@@ -5,22 +5,34 @@
     {
       "name": "Jamaican overproof rum",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "Giffard Banane du Brésil",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Orgeat Works Ltd macadamia nut syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -38,8 +50,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "False Idol, San Diego",
-      "relation": "bar"
+      "source": "False Idol",
+      "relation": "bar",
+      "location": "San Diego"
     }
   ],
   "refs": [

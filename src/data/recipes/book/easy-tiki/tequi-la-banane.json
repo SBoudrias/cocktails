@@ -5,27 +5,42 @@
     {
       "name": "La Gritona reposado tequila",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "orgeat",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Giffard Banane du Brésil",
       "type": "liqueur",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     },
     {
       "name": "Giffard crème de fruit de la passion",
       "type": "liqueur",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",
@@ -38,8 +53,21 @@
     "Garnish with shaved almonds."
   ],
   "attributions": [
-    { "source": "Orlando Franklin McCray", "relation": "recipe author" },
-    { "source": "Nightmoves, New York", "relation": "bar" }
+    {
+      "source": "Orlando Franklin McCray",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Nightmoves",
+      "relation": "bar",
+      "location": "New York"
+    }
   ],
-  "refs": [{ "type": "book", "title": "Easy Tiki", "page": 127 }]
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 127
+    }
+  ]
 }
