@@ -96,13 +96,25 @@ export default async function AuthorRecipesPage({ params }: Props) {
       <AppHeader title={`Recipes by ${authorName}`} />
       <List sx={{ mt: 2 }}>
         <Paper square>
-          {sortedRecipes.map((recipe) => (
-            <Link href={getRecipeUrl(recipe)} key={recipe.slug}>
-              <ListItem divider secondaryAction={<ChevronRight />}>
-                <ListItemText primary={recipe.name} />
-              </ListItem>
-            </Link>
-          ))}
+          {sortedRecipes.map((recipe) => {
+            // Get the attribution if the recipe was adapted by someone else
+            const adaptedBy = recipe.attributions.find(
+              (attribution) =>
+                attribution.relation === 'adapted by' &&
+                attribution.source !== authorName,
+            );
+
+            return (
+              <Link href={getRecipeUrl(recipe)} key={recipe.slug}>
+                <ListItem divider secondaryAction={<ChevronRight />}>
+                  <ListItemText
+                    primary={recipe.name}
+                    secondary={adaptedBy ? `Adapted by ${adaptedBy.source}` : undefined}
+                  />
+                </ListItem>
+              </Link>
+            );
+          })}
         </Paper>
       </List>
     </Suspense>
