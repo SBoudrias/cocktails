@@ -44,17 +44,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const allRecipes = await getAllRecipes();
-  const params = new Set<{ name: string }>();
+  const params = new Set<string>();
 
   allRecipes.forEach((recipe) => {
     recipe.attributions
       .filter((attribution) => attribution.relation === 'bar')
       .forEach((attribution) => {
-        params.add({ name: slugify(attribution.source) });
+        params.add(slugify(attribution.source));
       });
   });
 
-  return Array.from(params);
+  return Array.from(params).map((name) => ({ name }));
 }
 
 export default async function BarRecipesPage({ params }: Props) {
