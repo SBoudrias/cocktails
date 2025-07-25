@@ -15,7 +15,8 @@ function findAuthorNameFromSlug(slug: string, recipes: Recipe[]): string | null 
   for (const recipe of recipes) {
     for (const attribution of recipe.attributions) {
       if (
-        attribution.relation === 'recipe author' &&
+        (attribution.relation === 'recipe author' ||
+          attribution.relation === 'adapted by') &&
         slugify(attribution.source) === slug
       ) {
         return attribution.source;
@@ -47,17 +48,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const allRecipes = await getAllRecipes();
-  const params = new Set<{ name: string }>();
+  const params = new Set<string>();
 
   allRecipes.forEach((recipe) => {
     recipe.attributions
-      .filter((attribution) => attribution.relation === 'recipe author')
+      .filter(
+        (attribution) =>
+          attribution.relation === 'recipe author' ||
+          attribution.relation === 'adapted by',
+      )
       .forEach((attribution) => {
-        params.add({ name: slugify(attribution.source) });
+        params.add(slugify(attribution.source));
       });
   });
 
-  return Array.from(params);
+  return Array.from(params).map((name) => ({ name }));
 }
 
 export default async function AuthorRecipesPage({ params }: Props) {
@@ -73,7 +78,9 @@ export default async function AuthorRecipesPage({ params }: Props) {
   const authorRecipes = allRecipes.filter((recipe) =>
     recipe.attributions.some(
       (attribution) =>
-        attribution.relation === 'recipe author' && attribution.source === authorName,
+        (attribution.relation === 'recipe author' ||
+          attribution.relation === 'adapted by') &&
+        attribution.source === authorName,
     ),
   );
 

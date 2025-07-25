@@ -20,10 +20,18 @@ export default async function AuthorListPage() {
 
   allRecipes.forEach((recipe) => {
     recipe.attributions
-      .filter((attribution) => attribution.relation === 'recipe author')
+      .filter(
+        (attribution) =>
+          attribution.relation === 'recipe author' ||
+          attribution.relation === 'adapted by',
+      )
       .forEach((attribution) => {
         const authorName = attribution.source;
-        const author = authorsMap.get(authorName) || { name: authorName, recipeCount: 0 };
+        const author = authorsMap.get(authorName) || {
+          name: authorName,
+          recipeCount: 0,
+        };
+
         author.recipeCount += 1;
         authorsMap.set(authorName, author);
       });
