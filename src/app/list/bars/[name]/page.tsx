@@ -73,9 +73,6 @@ export default async function BarRecipesPage({ params }: Props) {
     ),
   );
 
-  // Sort recipes alphabetically
-  const sortedRecipes = barRecipes.sort((a, b) => a.name.localeCompare(b.name));
-
   if (barRecipes.length === 0) {
     notFound();
   }
@@ -85,7 +82,7 @@ export default async function BarRecipesPage({ params }: Props) {
       <AppHeader title={`Recipes from ${barName}`} />
       <List sx={{ mt: 2 }}>
         <Paper square>
-          {sortedRecipes.map((recipe) => (
+          {barRecipes.map((recipe) => (
             <Link href={getRecipeUrl(recipe)} key={recipe.slug}>
               <ListItem divider secondaryAction={<ChevronRight />}>
                 <ListItemText primary={recipe.name} />
