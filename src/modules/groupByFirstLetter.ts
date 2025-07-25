@@ -1,18 +1,26 @@
 export default function groupByFirstLetter<T extends { name: string }>(
   entities: T[],
 ): [string, T[] | undefined][] {
-  const firstLetterRegExp = /^(the |a )?([a-z])/i;
-  const ingredientGroups = Object.entries(
+  const articleRegExp = /^(the |an |a )?(\w+)/i;
+  const groups = Object.entries(
     Object.groupBy(entities, (entity) => {
-      const matches = entity.name.match(firstLetterRegExp) ?? [];
-      return matches[2]?.toUpperCase() ?? '#';
+      const matches = entity.name.match(articleRegExp) ?? [];
+      return matches[2]?.slice(0, 1).toUpperCase() ?? '#';
     }),
   )
+    // Sort by first letter
     .sort(([a], [b]) => a.localeCompare(b))
-    // Sort sub-lists
-    .map(([letter, ingredients]): [string, T[] | undefined] => {
-      return [letter, ingredients?.sort((a, b) => a.name.localeCompare(b.name))];
+    // Sort sub-lists by name
+    .map(([letter, entities]): [string, T[] | undefined] => {
+      return [
+        letter,
+        entities?.sort((a, b) => {
+          const [, , aName = a.name] = a.name.match(articleRegExp) ?? [];
+          const [, , bName = b.name] = b.name.match(articleRegExp) ?? [];
+          return aName.localeCompare(bName);
+        }),
+      ];
     });
 
-  return ingredientGroups;
+  return groups;
 }
