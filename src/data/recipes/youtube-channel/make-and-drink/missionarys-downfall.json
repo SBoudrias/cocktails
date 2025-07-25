@@ -53,8 +53,12 @@
   ],
   "attributions": [
     {
-      "source": "Danielle Dalla Polla",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Don the Beachcomber"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Danielle Dalla Polla"
     }
   ],
   "refs": [

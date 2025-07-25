@@ -62,12 +62,16 @@
   ],
   "attributions": [
     {
-      "source": "Scotty Schuder",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Don the Beachcomber"
     },
     {
-      "source": "Dirty Dick",
+      "relation": "adapted by",
+      "source": "Scotty Schuder"
+    },
+    {
       "relation": "bar",
+      "source": "Dirty Dick",
       "location": "Paris"
     }
   ],
