@@ -32,7 +32,6 @@
     {
       "name": "banana milk",
       "type": "other",
-      "preparation": "recipe follows",
       "quantity": {
         "amount": 1,
         "unit": "oz"

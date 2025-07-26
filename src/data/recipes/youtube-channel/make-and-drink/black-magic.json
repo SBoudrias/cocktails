@@ -72,7 +72,7 @@
     },
     {
       "name": "coffee",
-      "preparation": "freshly brewed and chilled",
+      "preparation": "chilled",
       "type": "other",
       "quantity": {
         "amount": 0.75,

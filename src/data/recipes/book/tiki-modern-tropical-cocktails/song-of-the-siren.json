@@ -16,7 +16,6 @@
     {
       "name": "Del Maguey Vida Mezcal",
       "type": "spirit",
-      "preparation": "espadín",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
