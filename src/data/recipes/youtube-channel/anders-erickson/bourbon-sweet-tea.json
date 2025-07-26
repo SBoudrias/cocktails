@@ -45,7 +45,6 @@
     },
     {
       "name": "black tea",
-      "preparation": "chilled",
       "type": "other",
       "quantity": {
         "amount": 4,

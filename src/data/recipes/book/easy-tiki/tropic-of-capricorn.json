@@ -5,7 +5,10 @@
     {
       "name": "Blended Aged Rum (Demerara)",
       "type": "category",
-      "preparation": "green tea-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "green tea"
+      },
       "quantity": {
         "amount": 2,
         "unit": "oz"

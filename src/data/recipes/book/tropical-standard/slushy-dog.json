@@ -23,7 +23,9 @@
     },
     {
       "name": "grapefruit juice",
-      "preparation": "Acid-adjusted",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "type": "juice",
       "quantity": {
         "amount": 1,

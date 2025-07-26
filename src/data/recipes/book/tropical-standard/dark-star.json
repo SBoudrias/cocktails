@@ -47,7 +47,10 @@
     },
     {
       "name": "Rum",
-      "preparation": "cacao nib-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cacao nibs"
+      },
       "type": "category",
       "quantity": {
         "amount": 1.5,

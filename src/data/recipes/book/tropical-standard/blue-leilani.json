@@ -64,7 +64,10 @@
     },
     {
       "name": "Plymouth Gin",
-      "preparation": "coconut oil-washed",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "coconut oil"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 0.75,

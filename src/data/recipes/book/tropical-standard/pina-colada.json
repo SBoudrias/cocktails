@@ -22,8 +22,17 @@
       }
     },
     {
-      "name": "Pineapple chunks",
-      "preparation": "Frozen",
+      "name": "pineapple",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "chunked"
+        },
+        {
+          "technique": "temperature",
+          "method": "frozen"
+        }
+      ],
       "type": "fruit",
       "quantity": {
         "amount": 60,
@@ -32,7 +41,9 @@
     },
     {
       "name": "Pineapple juice",
-      "preparation": "Acid-adjusted",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "type": "juice",
       "quantity": {
         "amount": 0.5,

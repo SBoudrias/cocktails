@@ -12,7 +12,10 @@
     },
     {
       "name": "Paranubes Oaxaca Aguardiente de Caña",
-      "preparation": "anise-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "anise"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 1,

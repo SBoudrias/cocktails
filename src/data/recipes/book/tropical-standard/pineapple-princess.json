@@ -47,7 +47,10 @@
     },
     {
       "name": "Barbancourt 5 Star",
-      "preparation": "Milk-washed oolong",
+      "technique": {
+        "technique": "milk-wash",
+        "milk_type": "oolong tea milk"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 2,

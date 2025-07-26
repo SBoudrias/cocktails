@@ -47,7 +47,10 @@
     },
     {
       "name": "Rittenhouse Rye",
-      "preparation": "pineapple-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "pineapple"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 2.25,

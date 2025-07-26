@@ -31,7 +31,11 @@
       }
     },
     {
-      "name": "Orange peel",
+      "name": "orange",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 1,

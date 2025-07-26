@@ -44,7 +44,10 @@
     },
     {
       "name": "Lemon Hart 151",
-      "preparation": "floated",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 0.5,

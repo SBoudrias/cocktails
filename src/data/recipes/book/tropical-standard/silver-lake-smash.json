@@ -6,7 +6,11 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "lemon quarter",
+      "name": "lemon",
+      "technique": {
+        "technique": "cut",
+        "type": "sectioned"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 5,

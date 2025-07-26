@@ -15,7 +15,10 @@
     },
     {
       "name": "banana",
-      "preparation": "very ripe",
+      "technique": {
+        "technique": "maturity",
+        "state": "ripe"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 60,

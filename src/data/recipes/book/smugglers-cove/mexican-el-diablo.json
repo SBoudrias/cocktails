@@ -6,7 +6,11 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Lime wedge",
+      "name": "lime",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 1,

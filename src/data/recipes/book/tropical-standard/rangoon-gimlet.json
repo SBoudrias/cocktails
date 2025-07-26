@@ -6,7 +6,11 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "lime wedge",
+      "name": "lime",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 1,

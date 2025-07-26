@@ -72,7 +72,10 @@
     },
     {
       "name": "coffee",
-      "preparation": "chilled",
+      "technique": {
+        "technique": "temperature",
+        "method": "chilled"
+      },
       "type": "other",
       "quantity": {
         "amount": 0.75,
