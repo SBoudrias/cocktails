@@ -8,7 +8,10 @@
     {
       "name": "Four Roses Bourbon",
       "type": "spirit",
-      "preparation": "coconut oil-washed",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "coconut oil"
+      },
       "quantity": {
         "amount": 2,
         "unit": "oz"

@@ -7,7 +7,10 @@
   "ingredients": [
     {
       "name": "Angostura bitters",
-      "preparation": "Vanilla infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "vanilla"
+      },
       "type": "bitter",
       "quantity": {
         "amount": 1,

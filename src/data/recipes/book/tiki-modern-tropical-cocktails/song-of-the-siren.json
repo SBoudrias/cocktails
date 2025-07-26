@@ -47,7 +47,10 @@
     },
     {
       "name": "Braulio",
-      "preparation": "float",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,

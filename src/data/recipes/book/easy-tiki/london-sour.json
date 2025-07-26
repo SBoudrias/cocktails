@@ -3,13 +3,21 @@
   "name": "London Sour",
   "ingredients": [
     {
-      "name": "orange wedge",
+      "name": "orange",
       "type": "fruit",
       "quantity": {
         "amount": 1,
         "unit": "unit"
       },
-      "preparation": "muddled"
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "wedged"
+        },
+        {
+          "technique": "muddled"
+        }
+      ]
     },
     {
       "name": "Del Maguey Vida Mezcal",

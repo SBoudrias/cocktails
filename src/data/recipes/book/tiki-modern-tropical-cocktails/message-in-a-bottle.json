@@ -4,7 +4,10 @@
   "ingredients": [
     {
       "name": "Diplomatico Planas",
-      "preparation": "kaffir lime leaf–infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "kaffir lime leaf"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 1,

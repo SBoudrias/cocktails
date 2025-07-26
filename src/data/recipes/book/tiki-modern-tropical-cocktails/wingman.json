@@ -7,7 +7,10 @@
   "ingredients": [
     {
       "name": "Hampden Estate Rum Fire",
-      "preparation": "brown butter-washed",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "brown butter"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 2,
@@ -24,7 +27,10 @@
     },
     {
       "name": "Falernum liqueur",
-      "preparation": "Kaffir lime leaf–infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "kaffir lime leaf"
+      },
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -33,7 +39,10 @@
     },
     {
       "name": "Pineapple Cider",
-      "preparation": "Top with",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
       "type": "category",
       "quantity": {
         "amount": 4,

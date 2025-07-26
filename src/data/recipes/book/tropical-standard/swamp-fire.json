@@ -63,7 +63,10 @@
     },
     {
       "name": "Tequila Blanco",
-      "preparation": "jalapeño-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "jalapeño"
+      },
       "type": "category",
       "quantity": {
         "amount": 0.25,

@@ -6,7 +6,11 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "lemon wedge",
+      "name": "lemon",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 1,
@@ -14,7 +18,11 @@
       }
     },
     {
-      "name": "orange wedge",
+      "name": "orange",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 1,

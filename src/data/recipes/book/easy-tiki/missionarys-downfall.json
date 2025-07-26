@@ -35,13 +35,17 @@
       }
     },
     {
-      "name": "pineapple chunks",
+      "name": "pineapple",
       "type": "fruit",
       "quantity": {
         "amount": 5,
         "unit": "unit"
       },
-      "preparation": "1-inch"
+      "technique": {
+        "technique": "cut",
+        "type": "chunked",
+        "size": "1-inch"
+      }
     },
     {
       "name": "mint leaves",

@@ -7,7 +7,9 @@
   "ingredients": [
     {
       "name": "mint leaves",
-      "preparation": "muddled",
+      "technique": {
+        "technique": "muddled"
+      },
       "type": "other",
       "quantity": {
         "amount": 5,
