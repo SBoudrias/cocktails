@@ -37,7 +37,6 @@
         "unit": "oz"
       }
     },
-
     {
       "name": "Red Fassionola",
       "type": "syrup",
@@ -54,7 +53,6 @@
         "unit": "oz"
       }
     },
-
     {
       "name": "limoncello",
       "type": "category",
@@ -79,7 +77,6 @@
         "unit": "oz"
       }
     },
-
     {
       "name": "Hine Rare VSOP Cognac",
       "type": "spirit",

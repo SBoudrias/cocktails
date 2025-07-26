@@ -37,7 +37,6 @@
         "unit": "oz"
       }
     },
-
     {
       "name": "Lime juice",
       "type": "juice",
@@ -54,7 +53,6 @@
         "unit": "oz"
       }
     },
-
     {
       "name": "grapefruit juice",
       "type": "juice",

@@ -8,32 +8,50 @@
     {
       "name": "Campo de Encanto Pisco",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Marie Brizard Yuzu Liqueur",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Giffard Fleur de Sureau Sauvage",
       "type": "liqueur",
-      "quantity": { "amount": 0.125, "unit": "oz" }
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
     },
     {
       "name": "Grapefruit Juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Honey Syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Angostura Bitters",
       "type": "bitter",
-      "quantity": { "amount": 2, "unit": "dash" }
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
     }
   ],
   "instructions": [

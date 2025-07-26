@@ -5,34 +5,52 @@
     {
       "name": "Mint Leaves",
       "type": "other",
-      "quantity": { "amount": 10, "unit": "unit" }
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
     },
     {
       "name": "Cucumber",
       "type": "fruit",
-      "quantity": { "amount": 2, "unit": "unit" },
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      },
       "preparation": "slices"
     },
     {
       "name": "Lime Juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Iichiko Mugi Shochu",
       "preparation": "avocado oil–washed",
       "type": "spirit",
-      "quantity": { "amount": 3, "unit": "oz" }
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
     },
     {
       "name": "Green Tea Syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Aloe Vera Juice",
       "type": "juice",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     }
   ],
   "preparation": "shaken",

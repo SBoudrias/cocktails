@@ -9,24 +9,36 @@
       "name": "Hampden Estate Rum Fire",
       "preparation": "brown butter-washed",
       "type": "spirit",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     },
     {
       "name": "Campari",
       "type": "liqueur",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Falernum liqueur",
       "preparation": "Kaffir lime leaf–infused",
       "type": "category",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Pineapple Cider",
       "preparation": "Top with",
       "type": "category",
-      "quantity": { "amount": 4, "unit": "oz" }
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
     }
   ],
   "instructions": [

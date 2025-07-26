@@ -5,27 +5,42 @@
     {
       "name": "Novo Fogo Silver",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Two James Doctor Bird rum",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Luxardo Bitter Bianco",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "absinthe",
       "type": "category",
-      "quantity": { "amount": 1, "unit": "dash" }
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
     }
   ],
   "preparation": "shaken",

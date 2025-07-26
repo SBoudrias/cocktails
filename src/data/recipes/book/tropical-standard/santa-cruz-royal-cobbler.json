@@ -21,7 +21,6 @@
         "unit": "drop"
       }
     },
-
     {
       "name": "Lemon juice",
       "type": "juice",
@@ -47,7 +46,6 @@
         "unit": "oz"
       }
     },
-
     {
       "name": "Chairman's Reserve Rum",
       "type": "spirit",

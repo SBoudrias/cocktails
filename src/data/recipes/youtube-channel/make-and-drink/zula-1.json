@@ -8,48 +8,75 @@
     {
       "name": "Mint leaves",
       "type": "other",
-      "quantity": { "amount": 8, "unit": "unit" }
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
     },
     {
       "name": "Herbsaint",
       "type": "spirit",
-      "quantity": { "amount": 3, "unit": "drop" }
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
     },
     {
       "name": "John D. Taylor's Velvet Falernum",
       "type": "liqueur",
-      "quantity": { "amount": 0.125, "unit": "oz" }
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
     },
     {
       "name": "simple syrup",
       "type": "syrup",
       "brix": 66,
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "orange juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "pineapple juice",
       "type": "juice",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Flor de Caña 4 year",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Appleton 8",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [

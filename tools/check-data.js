@@ -74,6 +74,14 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     console.error(validate.errors);
   }
 
+  // Reformat JSON file to ensure consistent formatting
+  const currentContent = await fs.readFile(sourceFile, 'utf-8');
+  const formattedContent = JSON.stringify(data, null, 2) + '\n';
+  if (currentContent !== formattedContent) {
+    change(`Reformatting ${path.basename(sourceFile)}`);
+    await fs.writeFile(sourceFile, formattedContent);
+  }
+
   // Enforce filename should be the name of the data.
   const basename = path.basename(sourceFile, '.json');
   if (basename !== '_source') {
