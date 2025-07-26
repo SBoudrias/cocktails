@@ -44,7 +44,8 @@ public/robots.txt
 public/sitemap.xml
 public/sitemap-*.xml
 
-# Aider files & cache
+# AI tools
 .aider*
 !.aider.conf.yml
 .cursor
+.claude/settings.local.json
