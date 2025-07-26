@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///schemas/quantity.schema.json",
+  "title": "Quantity",
+  "description": "An amount of an ingredient",
+  "type": "object",
+  "properties": {
+    "amount": { "type": "number" },
+    "unit": {
+      "enum": [
+        "oz",
+        "ml",
+        "dash",
+        "tsp",
+        "tbsp",
+        "cup",
+        "drop",
+        "pinch",
+        "spray",
+        "unit",
+        "gram",
+        "bottle",
+        "part"
+      ]
+    }
+  },
+  "required": ["amount", "unit"],
+  "additionalProperties": false
+}
