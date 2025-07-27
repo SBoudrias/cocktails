@@ -5,7 +5,7 @@ import Ajv from 'ajv/dist/2020.js';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
-import { format } from 'prettier';
+import { format, resolveConfig } from 'prettier';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
@@ -20,7 +20,12 @@ function fileExists(filepath) {
 async function writeJSON(filepath, data) {
   await fs.mkdir(path.dirname(filepath), { recursive: true });
   const jsonContent = JSON.stringify(data, null, 2);
-  const formattedContent = await format(jsonContent, { parser: 'json' });
+  const prettierConfig = await resolveConfig(filepath);
+  const formattedContent = await format(jsonContent, {
+    ...prettierConfig,
+    parser: 'json',
+    filepath,
+  });
   await fs.writeFile(filepath, formattedContent);
 }
 
@@ -80,7 +85,12 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   // Reformat JSON file to ensure consistent formatting
   const currentContent = await fs.readFile(sourceFile, 'utf-8');
   const jsonContent = JSON.stringify(data, null, 2);
-  const formattedContent = await format(jsonContent, { parser: 'json' });
+  const prettierConfig = await resolveConfig(sourceFile);
+  const formattedContent = await format(jsonContent, {
+    ...prettierConfig,
+    parser: 'json',
+    filepath: sourceFile,
+  });
   if (currentContent !== formattedContent) {
     change(`Reformatting ${path.basename(sourceFile)}`);
     await fs.writeFile(sourceFile, formattedContent);
