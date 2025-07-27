@@ -27,7 +27,11 @@
       }
     },
     {
-      "name": "Pineapple chunks",
+      "name": "pineapple",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 3,

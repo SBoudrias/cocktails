@@ -8,7 +8,10 @@
     {
       "name": "Paranubes Oaxaca Aguardiente de Caña",
       "type": "spirit",
-      "preparation": "anise-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "anise"
+      },
       "quantity": {
         "amount": 2,
         "unit": "oz"
@@ -48,7 +51,10 @@
     },
     {
       "name": "Guinness",
-      "preparation": "top with",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
       "type": "beer",
       "quantity": {
         "amount": 1,

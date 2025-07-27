@@ -12,7 +12,10 @@
     },
     {
       "name": "Perry's Tot Navy Strength Gin",
-      "preparation": "Darjeeling-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "Darjeeling tea"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 0.5,

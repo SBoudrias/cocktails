@@ -8,7 +8,11 @@
     {
       "name": "Damoiseau Pure Cane 110 Proof",
       "type": "spirit",
-      "preparation": "sous vide vanilla-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "vanilla",
+        "method": "sous-vide"
+      },
       "quantity": {
         "amount": 2,
         "unit": "oz"

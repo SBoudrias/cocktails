@@ -5,7 +5,9 @@
     {
       "name": "olive",
       "type": "other",
-      "preparation": "muddled",
+      "technique": {
+        "technique": "muddled"
+      },
       "quantity": {
         "amount": 2,
         "unit": "unit"

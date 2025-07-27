@@ -18,32 +18,16 @@
               "name": { "type": "string" },
               "type": { "const": "syrup" },
               "brix": { "type": "number" },
-              "preparation": { "type": "string" },
-              "quantity": {
-                "type": "object",
-                "properties": {
-                  "amount": { "type": "number" },
-                  "unit": {
-                    "enum": [
-                      "oz",
-                      "ml",
-                      "dash",
-                      "tsp",
-                      "tbsp",
-                      "cup",
-                      "drop",
-                      "pinch",
-                      "spray",
-                      "unit",
-                      "gram",
-                      "bottle",
-                      "part"
-                    ]
+              "technique": {
+                "oneOf": [
+                  { "$ref": "file:///schemas/technique.schema.json" },
+                  {
+                    "type": "array",
+                    "items": { "$ref": "file:///schemas/technique.schema.json" }
                   }
-                },
-                "required": ["amount", "unit"],
-                "additionalProperties": false
-              }
+                ]
+              },
+              "quantity": { "$ref": "file:///schemas/quantity.schema.json" }
             },
             "required": ["name", "type", "quantity"],
             "additionalProperties": false
@@ -70,32 +54,16 @@
                   "other"
                 ]
               },
-              "preparation": { "type": "string" },
-              "quantity": {
-                "type": "object",
-                "properties": {
-                  "amount": { "type": "number" },
-                  "unit": {
-                    "enum": [
-                      "oz",
-                      "ml",
-                      "dash",
-                      "tsp",
-                      "tbsp",
-                      "cup",
-                      "drop",
-                      "pinch",
-                      "spray",
-                      "unit",
-                      "gram",
-                      "bottle",
-                      "part"
-                    ]
+              "technique": {
+                "oneOf": [
+                  { "$ref": "file:///schemas/technique.schema.json" },
+                  {
+                    "type": "array",
+                    "items": { "$ref": "file:///schemas/technique.schema.json" }
                   }
-                },
-                "required": ["amount", "unit"],
-                "additionalProperties": false
-              }
+                ]
+              },
+              "quantity": { "$ref": "file:///schemas/quantity.schema.json" }
             },
             "required": ["name", "type", "quantity"],
             "additionalProperties": false

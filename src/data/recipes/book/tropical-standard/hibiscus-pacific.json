@@ -39,7 +39,10 @@
     },
     {
       "name": "Pueblo Viejo Reposado Tequila",
-      "preparation": "hibiscus-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "hibiscus"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 1.5,

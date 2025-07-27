@@ -8,7 +8,10 @@
     {
       "name": "Yaguara Cachaça Ouro",
       "type": "spirit",
-      "preparation": "avocado oil-washed",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "avocado oil"
+      },
       "quantity": {
         "amount": 2,
         "unit": "oz"

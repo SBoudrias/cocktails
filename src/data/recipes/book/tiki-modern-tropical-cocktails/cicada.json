@@ -15,7 +15,10 @@
     },
     {
       "name": "Paranubes Oaxaca Aguardiente de Caña",
-      "preparation": "Anise-Infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "anise"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -72,7 +75,10 @@
     },
     {
       "name": "Fernet Branca",
-      "preparation": "Float",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,

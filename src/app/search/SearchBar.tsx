@@ -4,6 +4,7 @@ import { Recipe } from '@/types/Recipe';
 import { useMemo, useRef } from 'react';
 import uFuzzy from '@leeoniya/ufuzzy';
 import transliterate from '@sindresorhus/transliterate';
+import { formatIngredientName } from '@/modules/technique';
 import {
   AppBar,
   Button,
@@ -125,7 +126,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
                 ...('categories' in ingredient ? ingredient.categories : []),
                 ...('parents' in ingredient ? ingredient.parents : []),
               ];
-              return `${ingredient.preparation ?? ''} ${ingredient.name} ${relatedCategories.join(' ')}`;
+              return `${formatIngredientName(ingredient)} ${relatedCategories.join(' ')}`;
             })
             .join(
               ' ',

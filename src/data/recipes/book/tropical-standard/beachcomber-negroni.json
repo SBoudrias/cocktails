@@ -15,7 +15,10 @@
     },
     {
       "name": "Lime juice",
-      "preparation": "clarified",
+      "technique": {
+        "technique": "clarification",
+        "method": "milk"
+      },
       "type": "juice",
       "quantity": {
         "amount": 0.25,

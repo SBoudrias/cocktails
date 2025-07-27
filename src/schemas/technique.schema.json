@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///schemas/technique.schema.json",
+  "title": "Technique",
+  "description": "A technique used to prepare an ingredient",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "infusion" },
+        "agent": { "type": "string" },
+        "agent_quantity": {
+          "$ref": "file:///schemas/quantity.schema.json"
+        },
+        "spirit_quantity": {
+          "$ref": "file:///schemas/quantity.schema.json"
+        },
+        "duration": { "type": "string" },
+        "method": { "enum": ["cold", "hot", "sous-vide"] }
+      },
+      "required": ["technique", "agent"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "fat-wash" },
+        "fat": { "type": "string" },
+        "fat_quantity": {
+          "$ref": "file:///schemas/quantity.schema.json"
+        },
+        "spirit_quantity": {
+          "$ref": "file:///schemas/quantity.schema.json"
+        },
+        "duration": { "type": "string" },
+        "temperature": { "type": "string" }
+      },
+      "required": ["technique", "fat"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "milk-wash" },
+        "milk_type": { "type": "string" },
+        "duration": { "type": "string" }
+      },
+      "required": ["technique", "milk_type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "clarification" },
+        "method": { "enum": ["milk"] },
+        "milk_type": { "type": "string" },
+        "agent": { "type": "string" }
+      },
+      "required": ["technique"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "temperature" },
+        "method": { "enum": ["chilled", "hot", "frozen", "roasted"] }
+      },
+      "required": ["technique", "method"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "muddled" }
+      },
+      "required": ["technique"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "cut" },
+        "type": {
+          "enum": [
+            "chunked",
+            "cubed",
+            "sliced",
+            "sectioned",
+            "diced",
+            "julienned",
+            "wheeled",
+            "wedged",
+            "peeled",
+            "zested"
+          ]
+        },
+        "size": { "type": "string" }
+      },
+      "required": ["technique", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "maturity" },
+        "state": {
+          "enum": ["ripe", "overripe", "fresh", "aged", "dried"]
+        }
+      },
+      "required": ["technique", "state"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "application" },
+        "method": { "enum": ["float", "rinse", "top"] },
+        "instructions": { "type": "string" }
+      },
+      "required": ["technique", "method"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "acid-adjustment" }
+      },
+      "required": ["technique"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "technique": { "const": "gelification" },
+        "agent": { "type": "string" },
+        "concentration": { "type": "string" },
+        "setting_time": { "type": "string" }
+      },
+      "required": ["technique", "agent"],
+      "additionalProperties": false
+    }
+  ]
+}

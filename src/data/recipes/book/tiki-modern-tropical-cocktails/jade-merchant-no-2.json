@@ -17,7 +17,10 @@
         "amount": 2,
         "unit": "unit"
       },
-      "preparation": "slices"
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      }
     },
     {
       "name": "Lime Juice",
@@ -29,7 +32,10 @@
     },
     {
       "name": "Iichiko Mugi Shochu",
-      "preparation": "avocado oil–washed",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "avocado oil"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 3,

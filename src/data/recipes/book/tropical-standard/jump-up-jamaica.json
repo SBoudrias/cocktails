@@ -47,7 +47,10 @@
     },
     {
       "name": "Wray & Nephew white overproof",
-      "preparation": "serrano-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "serrano pepper"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -64,7 +67,10 @@
     },
     {
       "name": "Rum",
-      "preparation": "sorrel-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "sorrel"
+      },
       "type": "category",
       "quantity": {
         "amount": 1,

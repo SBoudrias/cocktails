@@ -4,7 +4,10 @@
   "ingredients": [
     {
       "name": "Old Grand-Dad Bonded Bourbon",
-      "preparation": "Sesame oil-infused",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "sesame oil"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 1.5,

@@ -8,7 +8,11 @@
     {
       "name": "Damoiseau Pure Cane 110 Proof",
       "type": "spirit",
-      "preparation": "sous vide rhum arrangé épices",
+      "technique": {
+        "technique": "infusion",
+        "agent": "spice",
+        "method": "sous-vide"
+      },
       "quantity": {
         "amount": 1.5,
         "unit": "oz"

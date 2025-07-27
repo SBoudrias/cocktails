@@ -30,7 +30,11 @@
       }
     },
     {
-      "name": "Lemon wedge",
+      "name": "lemon",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 3,

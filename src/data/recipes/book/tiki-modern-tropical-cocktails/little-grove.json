@@ -31,7 +31,10 @@
     },
     {
       "name": "Coconut Water",
-      "preparation": "Rice-Infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "rice"
+      },
       "type": "other",
       "quantity": {
         "amount": 1,

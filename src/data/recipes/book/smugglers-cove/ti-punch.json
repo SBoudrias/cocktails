@@ -23,7 +23,11 @@
       }
     },
     {
-      "name": "Lime chunk",
+      "name": "lime",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 1,

@@ -30,8 +30,17 @@
       }
     },
     {
-      "name": "roasted pear",
-      "preparation": "section",
+      "name": "pear",
+      "technique": [
+        {
+          "technique": "temperature",
+          "method": "roasted"
+        },
+        {
+          "technique": "cut",
+          "type": "sectioned"
+        }
+      ],
       "type": "fruit",
       "quantity": {
         "amount": 1,
@@ -47,7 +56,11 @@
       }
     },
     {
-      "name": "lemon zest",
+      "name": "lemon",
+      "technique": {
+        "technique": "cut",
+        "type": "zested"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 1,
@@ -56,7 +69,10 @@
     },
     {
       "name": "Varnelli Amaro Sibilla",
-      "preparation": "float",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,

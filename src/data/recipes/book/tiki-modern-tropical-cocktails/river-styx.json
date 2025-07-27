@@ -8,7 +8,10 @@
     {
       "name": "Cimarron Blanco Tequila",
       "type": "spirit",
-      "preparation": "habanero-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "habanero"
+      },
       "quantity": {
         "amount": 1,
         "unit": "oz"

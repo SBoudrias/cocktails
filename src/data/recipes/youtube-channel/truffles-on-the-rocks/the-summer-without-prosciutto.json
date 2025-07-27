@@ -20,7 +20,10 @@
     },
     {
       "name": "Cantaloupe",
-      "preparation": "chunks",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 4,

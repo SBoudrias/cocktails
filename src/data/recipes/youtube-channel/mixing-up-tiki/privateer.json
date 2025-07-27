@@ -31,7 +31,9 @@
     },
     {
       "name": "Pineapple Juice",
-      "preparation": "Acid-Adjusted",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "type": "juice",
       "quantity": {
         "amount": 0.75,

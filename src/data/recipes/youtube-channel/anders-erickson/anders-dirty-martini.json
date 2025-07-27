@@ -37,7 +37,10 @@
     {
       "name": "Valdespino \"Ynocente\" Fino Sherry",
       "type": "liqueur",
-      "preparation": "glass rinse",
+      "technique": {
+        "technique": "application",
+        "method": "rinse"
+      },
       "quantity": {
         "amount": 1,
         "unit": "spray"

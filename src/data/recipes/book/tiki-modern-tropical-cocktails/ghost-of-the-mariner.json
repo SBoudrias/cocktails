@@ -4,7 +4,10 @@
   "ingredients": [
     {
       "name": "Bounty Dark Rum",
-      "preparation": "coffee, cacao, and chicory-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "coffee, cacao, and chicory"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 2,
