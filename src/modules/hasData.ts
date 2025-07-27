@@ -13,8 +13,10 @@ export function ingredientHasData(ingredient: RootIngredient | RecipeIngredient)
 
   const canBeAcidAdjusted =
     'acidity' in ingredient &&
-    'preparation' in ingredient &&
-    ingredient.preparation?.toLowerCase().includes('acid-adjusted');
+    'technique' in ingredient &&
+    (Array.isArray(ingredient.technique)
+      ? ingredient.technique.some((t) => t.technique === 'acid-adjustment')
+      : ingredient.technique?.technique === 'acid-adjustment');
 
   return (
     ingredient.description ||

@@ -89,7 +89,9 @@
             "diced",
             "julienned",
             "wheeled",
-            "wedged"
+            "wedged",
+            "peeled",
+            "zested"
           ]
         },
         "size": { "type": "string" }

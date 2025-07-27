@@ -7,6 +7,7 @@ import { Recipe } from '@/types/Recipe';
 import UnitSelector, { type Unit } from '@/components/Quantity/Selector';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { getIngredientUrl } from '@/modules/url';
+import { formatIngredientName } from '@/modules/technique';
 import { Stack, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
@@ -37,10 +38,7 @@ function IngredientLine({
     <Stack direction="row" spacing={0.5} alignItems="baseline">
       <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />
       <div>
-        <div className={styles.name}>
-          {ingredient.preparation && ingredient.preparation + ' '}
-          {ingredient.name}
-        </div>
+        <div className={styles.name}>{formatIngredientName(ingredient)}</div>
         {category}
         {brix}
       </div>
