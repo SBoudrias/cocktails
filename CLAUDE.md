@@ -4,7 +4,7 @@
 
 # Commands
 
-- `yarn vitest` to run tests
+- `yarn vitest --run` to run tests
 - `yarn tsc --noEmit` to typecheck
 - `yarn check-data` to validate changes to schemas or json data files
 
