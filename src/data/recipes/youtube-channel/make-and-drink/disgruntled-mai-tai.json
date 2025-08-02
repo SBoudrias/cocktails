@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Disgruntled Mai Tai",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orgeat",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Underberg",
+      "type": "liqueur",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "bottle"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "source": "Sam Ross",
+      "relation": "recipe author"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "E4kjVZnQ4jM"
+    }
+  ]
+}
