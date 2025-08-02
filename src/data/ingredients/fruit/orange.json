@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "lemon quarter",
+  "name": "orange",
   "type": "fruit"
 }

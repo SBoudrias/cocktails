@@ -61,7 +61,10 @@
     {
       "name": "Hamilton 151 Demerara Rum",
       "type": "spirit",
-      "preparation": "float",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

@@ -35,6 +35,12 @@ const INGREDIENT_PRIORITIES: Record<RecipeIngredient['type'], number> = {
   emulsifier: 5,
 };
 
+const APPLICATION_PRIORITIES: Record<'rinse' | 'top' | 'float', number> = {
+  rinse: -1,
+  top: 1,
+  float: 2,
+};
+
 const sortCompare = (a: number, b: number) => {
   if (a === b) {
     return 0;
@@ -45,13 +51,36 @@ const sortCompare = (a: number, b: number) => {
   return 1;
 };
 
+const getApplicationTechniquePriority = (
+  ingredient: Pick<RecipeIngredient, 'technique'>,
+): number => {
+  if (!ingredient.technique) return 0;
+
+  const techniques = Array.isArray(ingredient.technique)
+    ? ingredient.technique
+    : [ingredient.technique];
+  const applicationTechnique = techniques.find((t) => t.technique === 'application');
+
+  if (applicationTechnique) {
+    return APPLICATION_PRIORITIES[applicationTechnique.method];
+  }
+  return 0; // Normal sorting for other techniques (no application)
+};
+
 /**
  * Sorts the ingredients true to the Death & Co's method.
  */
 export default function sortIngredients<
-  T extends Pick<RecipeIngredient, 'quantity' | 'type'>,
+  T extends Pick<RecipeIngredient, 'quantity' | 'type' | 'technique'>,
 >(ingredients: readonly T[]): T[] {
   return ingredients.toSorted((a, b) => {
+    // Handle application techniques first: rinse goes first, float goes last
+    const aAppPriority = getApplicationTechniquePriority(a);
+    const bAppPriority = getApplicationTechniquePriority(b);
+    if (aAppPriority !== bAppPriority) {
+      return sortCompare(aAppPriority, bAppPriority);
+    }
+
     // Drop/Dash will go first. Too easy to spill!
     if (UNIT_PRIORITIES[a.quantity.unit] !== UNIT_PRIORITIES[b.quantity.unit]) {
       return sortCompare(

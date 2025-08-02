@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "orange wedge",
+  "name": "pineapple",
   "type": "fruit"
 }

@@ -4,7 +4,9 @@
   "ingredients": [
     {
       "name": "pineapple juice",
-      "preparation": "Acid-adjusted",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -44,7 +46,11 @@
       }
     },
     {
-      "name": "Pineapple chunks",
+      "name": "pineapple",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
       "type": "fruit",
       "quantity": {
         "amount": 60,

@@ -32,10 +32,20 @@
     {
       "name": "Amaro averna",
       "type": "liqueur",
-      "preparation": "Gellified (1/2 tsp 210s)",
+      "technique": [
+        {
+          "technique": "gelification",
+          "agent": "210s",
+          "concentration": "1/2 tsp"
+        },
+        {
+          "technique": "application",
+          "method": "float"
+        }
+      ],
       "quantity": {
-        "amount": 1,
-        "unit": "unit"
+        "amount": 0.5,
+        "unit": "oz"
       }
     }
   ],

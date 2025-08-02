@@ -23,7 +23,9 @@
     },
     {
       "name": "Orange juice",
-      "preparation": "Acid-adjusted",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "type": "juice",
       "quantity": {
         "amount": 0.5,

@@ -37,7 +37,10 @@
     {
       "name": "Whiskey (Bourbon)",
       "type": "category",
-      "preparation": "banana-infused",
+      "technique": {
+        "technique": "infusion",
+        "agent": "banana"
+      },
       "quantity": {
         "amount": 1.5,
         "unit": "oz"

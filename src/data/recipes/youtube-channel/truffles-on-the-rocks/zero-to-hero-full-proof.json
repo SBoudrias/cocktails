@@ -23,7 +23,10 @@
     },
     {
       "name": "Matcha Tea",
-      "preparation": "float",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
       "type": "other",
       "quantity": {
         "amount": 1,

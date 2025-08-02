@@ -71,7 +71,10 @@
     },
     {
       "name": "Coruba",
-      "preparation": "float",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
