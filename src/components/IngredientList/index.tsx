@@ -26,11 +26,9 @@ import Link from 'next/link';
 function IngredientLine({
   ingredient,
   preferredUnit,
-  scaleFactor,
 }: {
   ingredient: Recipe['ingredients'][number];
   preferredUnit: Unit;
-  scaleFactor: number;
 }) {
   let category;
   if (
@@ -47,15 +45,9 @@ function IngredientLine({
     brix = <div className={styles.category}>{ingredient.brix} Brix</div>;
   }
 
-  // Scale the quantity if scale factor is not 1
-  const displayQuantity =
-    scaleFactor !== 1
-      ? scaleQuantity(ingredient.quantity, scaleFactor)
-      : ingredient.quantity;
-
   return (
     <Stack direction="row" spacing={0.5} alignItems="baseline">
-      <Quantity preferredUnit={preferredUnit} quantity={displayQuantity} />
+      <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />
       <div>
         <div className={styles.name}>{formatIngredientName(ingredient)}</div>
         {category}
@@ -76,12 +68,21 @@ export default function IngredientList({
   const [servings, setServings] = useState(defaultServings);
   const scaleFactor = calculateScaleFactor(defaultServings, servings);
 
+  // Scale all ingredients at the list level
+  const scaledIngredients = ingredients.map((ingredient) => ({
+    ...ingredient,
+    quantity:
+      scaleFactor !== 1
+        ? scaleQuantity(ingredient.quantity, scaleFactor)
+        : ingredient.quantity,
+  }));
+
   return (
     <>
       <List>
         <ListSubheader>Ingredients</ListSubheader>
         <Paper square>
-          {sortIngredients(ingredients).map((ingredient) => {
+          {sortIngredients(scaledIngredients).map((ingredient) => {
             let href = getIngredientUrl(ingredient);
             if (ingredient.type === 'juice') {
               href += `?${new URLSearchParams({ juiceAmount: String(ingredient.quantity.amount) })}`;
@@ -94,7 +95,6 @@ export default function IngredientList({
                     <IngredientLine
                       ingredient={ingredient}
                       preferredUnit={preferredUnit}
-                      scaleFactor={scaleFactor}
                     />
                   </ListItemText>
                 </ListItem>
