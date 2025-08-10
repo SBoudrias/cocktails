@@ -67,20 +67,14 @@ function IngredientLine({
 
 export default function IngredientList({
   ingredients,
-  servings,
-  defaultServings,
+  defaultServings = 1,
 }: {
   ingredients: Recipe['ingredients'];
-  servings?: number;
   defaultServings?: number;
 }) {
   const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
-  const recipeDefaultServings = defaultServings || 1;
-  const [currentServings, setCurrentServings] = useState(
-    servings || recipeDefaultServings,
-  );
-
-  const scaleFactor = calculateScaleFactor(recipeDefaultServings, currentServings);
+  const [servings, setServings] = useState(defaultServings);
+  const scaleFactor = calculateScaleFactor(defaultServings, servings);
 
   return (
     <>
@@ -111,11 +105,7 @@ export default function IngredientList({
       </List>
       <Toolbar sx={{ justifyContent: 'space-between', px: 1 }}>
         <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
-        <ServingSelector
-          currentServings={currentServings}
-          defaultServings={recipeDefaultServings}
-          onChange={setCurrentServings}
-        />
+        <ServingSelector servings={servings} onChange={setServings} />
       </Toolbar>
     </>
   );

@@ -1,69 +1,114 @@
 'use client';
 
-import { TextField, Stack, Typography } from '@mui/material';
-import { ChangeEvent } from 'react';
-
-interface ServingSelectorProps {
-  currentServings: number;
-  defaultServings: number;
-  onChange: (servings: number) => void;
-}
+import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { Add, Remove } from '@mui/icons-material';
+import { ChangeEvent, useState, useEffect } from 'react';
 
 export default function ServingSelector({
-  currentServings,
-  defaultServings,
+  servings,
   onChange,
-}: ServingSelectorProps) {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(event.target.value, 10);
+}: {
+  servings: number;
+  onChange: (servings: number) => void;
+}) {
+  const [inputValue = servings.toString(), setInputValue] = useState<
+    string | undefined
+  >();
 
-    // Validate input: must be a positive integer between 1 and 50
-    if (!isNaN(value) && value >= 1 && value <= 50) {
-      onChange(value);
-    } else if (event.target.value === '') {
-      // Allow empty input temporarily, but don't call onChange
-      return;
+  // Update input value when servings prop changes (from button clicks or external changes)
+  useEffect(() => {
+    setInputValue(undefined);
+  }, [servings]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newInputValue = event.target.value;
+    setInputValue(newInputValue);
+
+    // Only trigger onChange if the value is valid
+    if (newInputValue !== '') {
+      const value = parseFloat(newInputValue);
+      if (!isNaN(value) && value > 0 && value <= 50) {
+        onChange(value);
+        setInputValue(undefined);
+      }
     }
   };
 
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const value = parseInt(event.target.value, 10);
+  const handleIncrement = () => {
+    setInputValue(undefined);
 
-    // If invalid input on blur, reset to current valid value
-    if (isNaN(value) || value < 1 || value > 50) {
-      event.target.value = currentServings.toString();
+    if (servings < 50) {
+      if (servings < 1) {
+        // From fractional values, go to 1
+        onChange(1);
+      } else {
+        // From 1 or above, increment by 1
+        onChange(servings + 1);
+      }
     }
+  };
+
+  const handleDecrement = () => {
+    setInputValue(undefined);
+
+    // At 0.25, button will be disabled
+    if (servings > 0.25) {
+      if (servings > 1) {
+        onChange(servings - 1);
+      } else if (servings > 0.5) {
+        onChange(0.5);
+      } else {
+        onChange(0.25);
+      }
+    }
+  };
+
+  const handleBlur = () => {
+    setInputValue(undefined);
   };
 
   return (
-    <Stack direction="row" spacing={1} alignItems="center">
-      <Typography variant="body2" component="label" htmlFor="serving-selector">
-        Servings:
-      </Typography>
-      <TextField
-        id="serving-selector"
-        type="number"
-        size="small"
-        value={currentServings}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        inputProps={{
-          min: 1,
+    <TextField
+      type="number"
+      size="small"
+      label="Servings"
+      value={inputValue}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      slotProps={{
+        input: {
+          startAdornment: (
+            <InputAdornment position="start">
+              <IconButton
+                onClick={handleDecrement}
+                disabled={servings <= 0.25}
+                size="small"
+                aria-label="Decrement"
+              >
+                <Remove fontSize="small" />
+              </IconButton>
+            </InputAdornment>
+          ),
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                onClick={handleIncrement}
+                disabled={servings >= 50}
+                size="small"
+                aria-label="Increment"
+              >
+                <Add fontSize="small" />
+              </IconButton>
+            </InputAdornment>
+          ),
+        },
+        htmlInput: {
+          min: 0,
           max: 50,
+          step: 1,
           'aria-label': 'Number of servings',
-          style: { width: '60px', textAlign: 'center' },
-        }}
-        sx={{
-          '& .MuiOutlinedInput-root': {
-            height: '32px',
-          },
-        }}
-      />
-      {currentServings !== defaultServings && (
-        <Typography variant="caption" color="text.secondary">
-          (recipe default: {defaultServings})
-        </Typography>
-      )}
-    </Stack>
+        },
+      }}
+    />
   );
 }
