@@ -190,6 +190,11 @@
           }
         ]
       }
+    },
+    "servings": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Default number of servings this recipe makes"
     }
   },
   "required": ["name", "ingredients", "preparation", "served_on", "glassware"],
