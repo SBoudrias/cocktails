@@ -2,20 +2,16 @@ import { RecipeIngredient } from '@/types/Ingredient';
 
 export interface ScaledQuantity {
   amount: number;
-  unit: string;
+  unit: RecipeIngredient['quantity']['unit'];
   originalAmount: number;
-  originalUnit: string;
+  originalUnit: RecipeIngredient['quantity']['unit'];
 }
 
 // Unit conversion constants for optimization
 const IMPERIAL_CONVERSIONS = {
-  tsp: { to: 'tbsp', factor: 1 / 3, threshold: 3 },
-  tbsp: { to: 'oz', factor: 1 / 2, threshold: 2 },
-  oz: { to: 'cup', factor: 1 / 16, threshold: 16 },
-};
-
-const METRIC_CONVERSIONS = {
-  ml: { to: 'ml', factor: 1, threshold: Infinity }, // ml doesn't convert to larger units in cocktails
+  tsp: { to: 'tbsp' as const, factor: 1 / 3, threshold: 3 },
+  tbsp: { to: 'oz' as const, factor: 1 / 2, threshold: 2 },
+  oz: { to: 'cup' as const, factor: 1 / 16, threshold: 16 },
 };
 
 /**
@@ -42,8 +38,8 @@ export function scaleQuantity(
  */
 export function getOptimalUnit(
   amount: number,
-  unit: string,
-): { amount: number; unit: string } {
+  unit: RecipeIngredient['quantity']['unit'],
+): { amount: number; unit: RecipeIngredient['quantity']['unit'] } {
   // Don't optimize very small amounts or non-convertible units
   if (amount < 0.1 || !shouldOptimizeUnit(unit)) {
     return { amount, unit };
@@ -70,7 +66,9 @@ export function getOptimalUnit(
 /**
  * Determines if a unit can be optimized to a larger unit
  */
-function shouldOptimizeUnit(unit: string): unit is keyof typeof IMPERIAL_CONVERSIONS {
+function shouldOptimizeUnit(
+  unit: RecipeIngredient['quantity']['unit'],
+): unit is keyof typeof IMPERIAL_CONVERSIONS {
   return unit in IMPERIAL_CONVERSIONS;
 }
 

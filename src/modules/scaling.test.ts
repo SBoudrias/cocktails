@@ -18,7 +18,7 @@ describe('scaling module', () => {
 
   describe('scaleQuantity', () => {
     it('should scale quantities correctly', () => {
-      const quantity = { amount: 2, unit: 'oz' };
+      const quantity = { amount: 2, unit: 'oz' as const };
       const result = scaleQuantity(quantity, 2);
 
       expect(result.amount).toBe(4);
@@ -28,7 +28,7 @@ describe('scaling module', () => {
     });
 
     it('should scale and optimize units', () => {
-      const quantity = { amount: 1, unit: 'tbsp' };
+      const quantity = { amount: 1, unit: 'tbsp' as const };
       const result = scaleQuantity(quantity, 2);
 
       expect(result.amount).toBe(1);
@@ -38,7 +38,7 @@ describe('scaling module', () => {
     });
 
     it('should handle fractional scaling', () => {
-      const quantity = { amount: 4, unit: 'oz' };
+      const quantity = { amount: 4, unit: 'oz' as const };
       const result = scaleQuantity(quantity, 0.5);
 
       expect(result.amount).toBe(2);
@@ -104,7 +104,7 @@ describe('scaling module', () => {
 
   describe('edge cases', () => {
     it('should handle zero amounts', () => {
-      const quantity = { amount: 0, unit: 'oz' };
+      const quantity = { amount: 0, unit: 'oz' as const };
       const result = scaleQuantity(quantity, 5);
 
       expect(result.amount).toBe(0);
@@ -112,7 +112,7 @@ describe('scaling module', () => {
     });
 
     it('should handle large scale factors', () => {
-      const quantity = { amount: 1, unit: 'tsp' };
+      const quantity = { amount: 1, unit: 'tsp' as const };
       const result = scaleQuantity(quantity, 50);
 
       // 50 tsp = 16.67 tbsp = 8.33 oz (doesn't reach 16 oz threshold for cup conversion)
@@ -121,7 +121,7 @@ describe('scaling module', () => {
     });
 
     it('should handle units that cannot be optimized', () => {
-      const quantity = { amount: 5, unit: 'dash' };
+      const quantity = { amount: 5, unit: 'dash' as const };
       const result = scaleQuantity(quantity, 3);
 
       expect(result.amount).toBe(15);
