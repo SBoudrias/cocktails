@@ -26,7 +26,7 @@ export default function ServingSelector({
     }
   };
 
-  const handleBlur = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value, 10);
 
     // If invalid input on blur, reset to current valid value
