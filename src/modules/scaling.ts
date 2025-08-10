@@ -1,17 +1,17 @@
 import { RecipeIngredient } from '@/types/Ingredient';
 
-export interface ScaledQuantity {
+type ScaledQuantity = {
   amount: number;
   unit: RecipeIngredient['quantity']['unit'];
   originalAmount: number;
   originalUnit: RecipeIngredient['quantity']['unit'];
-}
+};
 
 // Unit conversion constants for optimization
 const IMPERIAL_CONVERSIONS = {
   tsp: { to: 'tbsp' as const, factor: 1 / 3, threshold: 3 },
   tbsp: { to: 'oz' as const, factor: 1 / 2, threshold: 2 },
-  oz: { to: 'cup' as const, factor: 1 / 16, threshold: 16 },
+  oz: { to: 'cup' as const, factor: 1 / 8, threshold: 8 },
 };
 
 /**
