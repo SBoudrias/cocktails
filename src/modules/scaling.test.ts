@@ -65,8 +65,8 @@ describe('scaling module', () => {
       expect(result.unit).toBe('oz');
     });
 
-    it('should convert 16 oz to 1 cup', () => {
-      const result = getOptimalUnit(16, 'oz');
+    it('should convert 8 oz to 1 cup', () => {
+      const result = getOptimalUnit(8, 'oz');
       expect(result.amount).toBe(1);
       expect(result.unit).toBe('cup');
     });
@@ -115,9 +115,9 @@ describe('scaling module', () => {
       const quantity = { amount: 1, unit: 'tsp' as const };
       const result = scaleQuantity(quantity, 50);
 
-      // 50 tsp = 16.67 tbsp = 8.33 oz (doesn't reach 16 oz threshold for cup conversion)
-      expect(result.amount).toBe(8.34);
-      expect(result.unit).toBe('oz');
+      // 50 tsp = 16.67 tbsp = 8.33 oz
+      expect(result.amount).toBe(1.04);
+      expect(result.unit).toBe('cup');
     });
 
     it('should handle units that cannot be optimized', () => {
