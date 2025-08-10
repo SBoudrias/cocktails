@@ -49,3 +49,4 @@ public/sitemap-*.xml
 !.aider.conf.yml
 .cursor
 .claude/settings.local.json
+.kiro/specs
