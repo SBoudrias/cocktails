@@ -52,4 +52,5 @@ export type Recipe = {
   source: Source;
   attributions: Attribution[];
   refs: Ref[];
+  servings?: number;
 };
