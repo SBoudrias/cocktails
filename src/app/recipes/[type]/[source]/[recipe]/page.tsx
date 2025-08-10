@@ -57,7 +57,10 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
             <div className={styles.badge}>{recipe.glassware}</div>
           </Grid2>
         </Grid2>
-        <IngredientList ingredients={recipe.ingredients} />
+        <IngredientList
+          ingredients={recipe.ingredients}
+          defaultServings={recipe.servings}
+        />
         {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
           <List>
             <ListSubheader>Instructions</ListSubheader>
