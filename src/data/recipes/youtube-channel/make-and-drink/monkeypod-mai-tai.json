@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Monkeypod Mai Tai",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Macadamia nut orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      },
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      }
+    },
+    {
+      "name": "Honey Lilikoi Foam",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      },
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except dark rum with ice",
+    "Strain over fresh ice",
+    "Float dark rum on top",
+    "Top with Honey Lilikoi Foam"
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jason Vendrell & Chandra Lam"
+    },
+    {
+      "relation": "bar",
+      "source": "Monkeypod Kitchen",
+      "location": "O‘ahu, HI"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "S2E_GkECDZQ"
+    }
+  ]
+}
