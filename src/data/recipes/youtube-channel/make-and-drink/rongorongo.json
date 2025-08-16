@@ -70,12 +70,13 @@
   ],
   "attributions": [
     {
-      "source": "Steven Liles",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Steven Liles"
     },
     {
+      "relation": "bar",
       "source": "Smuggler's cove",
-      "relation": "bar"
+      "location": "San Francisco, CA"
     }
   ]
 }

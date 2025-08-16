@@ -58,9 +58,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Hale Pele, Portland",
+      "source": "Hale Pele",
       "relation": "bar",
-      "location": "Oregon"
+      "location": "Portland, OR"
     }
   ],
   "refs": [

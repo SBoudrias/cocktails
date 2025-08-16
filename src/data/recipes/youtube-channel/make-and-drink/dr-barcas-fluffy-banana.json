@@ -48,8 +48,9 @@
   ],
   "attributions": [
     {
+      "relation": "bar",
       "source": "Smuggler's Cove",
-      "relation": "bar"
+      "location": "San Francisco, CA"
     },
     {
       "source": "Make and Drink",

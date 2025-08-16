@@ -56,9 +56,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Tacoma Cabana and Devil's Reef, Tacoma",
+      "source": "Tacoma Cabana and Devil's Reef",
       "relation": "bar",
-      "location": "Washington"
+      "location": "Tacoma, WA"
     }
   ]
 }

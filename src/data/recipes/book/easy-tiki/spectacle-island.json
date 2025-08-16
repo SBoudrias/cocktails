@@ -67,9 +67,9 @@
       "relation": "recipe author"
     },
     {
-      "source": "Petworth Citizen & Reading Room, Washington",
+      "source": "Petworth Citizen & Reading Room",
       "relation": "bar",
-      "location": "DC"
+      "location": "Washington, DC"
     }
   ],
   "refs": [

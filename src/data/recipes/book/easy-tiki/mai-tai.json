@@ -55,13 +55,13 @@
   ],
   "attributions": [
     {
-      "source": "Martin Cate",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Martin Cate"
     },
     {
-      "source": "Smuggler's Cove",
       "relation": "bar",
-      "location": "San Francisco"
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
     }
   ],
   "refs": [
