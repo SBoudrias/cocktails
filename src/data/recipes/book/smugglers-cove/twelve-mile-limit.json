@@ -58,6 +58,11 @@
     {
       "relation": "recipe author",
       "source": "Tommy Millard"
+    },
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
     }
   ]
 }

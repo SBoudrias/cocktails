@@ -53,5 +53,12 @@
       "page": 118,
       "title": "smugglers-cove"
     }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
+    }
   ]
 }

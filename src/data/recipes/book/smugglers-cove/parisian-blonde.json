@@ -45,6 +45,11 @@
     {
       "relation": "adapted by",
       "source": "Erik Ellestad"
+    },
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
     }
   ]
 }

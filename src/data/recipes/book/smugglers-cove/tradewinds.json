@@ -56,5 +56,12 @@
       "type": "youtube",
       "videoId": "DoqNqSoS4j4"
     }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
+    }
   ]
 }
