@@ -85,5 +85,16 @@
       "type": "youtube",
       "videoId": "uC9gN459IGc"
     }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Garret Richard"
+    },
+    {
+      "relation": "bar",
+      "source": "Sunken Harbor Club",
+      "location": "Brooklyn, NY"
+    }
   ]
 }

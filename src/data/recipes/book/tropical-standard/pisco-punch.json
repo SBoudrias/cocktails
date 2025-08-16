@@ -68,5 +68,16 @@
       "title": "tropical-standard",
       "page": 198
     }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Garret Richard"
+    },
+    {
+      "relation": "bar",
+      "source": "Sunken Harbor Club",
+      "location": "Brooklyn, NY"
+    }
   ]
 }
