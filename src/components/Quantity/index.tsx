@@ -53,7 +53,7 @@ export default function Quantity({
   // Display with a fraction
   if (unit === 'unit' || (unitType[unit] === 'imperial' && amount % 1 !== 0)) {
     const base = Math.floor(amount);
-    const fraction = amount - base;
+    const fraction = Math.round((amount - base + Number.EPSILON) * 100) / 100;
     if (displayFraction[fraction] != null) {
       displayAmount =
         base > 0 ? `${base} ${displayFraction[fraction]}` : displayFraction[fraction];
