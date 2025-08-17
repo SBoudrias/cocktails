@@ -8,10 +8,13 @@ import { Stack } from '@mui/material';
 const displayFraction: Record<number, string> = {
   0.125: '⅛',
   0.12: '⅛',
+  0.13: '⅛',
   0.25: '¼',
   0.3: '⅓',
   0.33: '⅓',
+  0.37: '⅜',
   0.375: '⅜',
+  0.38: '⅜',
   0.5: '½',
   0.62: '⅝',
   0.625: '⅝',
@@ -50,14 +53,19 @@ export default function Quantity({
     preferredUnit === 'ml' ? convertQuantityToMl(quantity) : quantity;
 
   let displayAmount: number | string = amount;
+  const base = Math.floor(amount);
+  const fraction = Math.round((amount - base + Number.EPSILON) * 100) / 100;
+
   // Display with a fraction
   if (unit === 'unit' || (unitType[unit] === 'imperial' && amount % 1 !== 0)) {
-    const base = Math.floor(amount);
-    const fraction = Math.round((amount - base + Number.EPSILON) * 100) / 100;
     if (displayFraction[fraction] != null) {
       displayAmount =
         base > 0 ? `${base} ${displayFraction[fraction]}` : displayFraction[fraction];
     }
+  } else if (unitType[unit] === 'metric') {
+    const roundingFactor = fraction >= 0.8 ? 1 : 100;
+    displayAmount =
+      Math.round((amount + Number.EPSILON) * roundingFactor) / roundingFactor;
   }
 
   return (
