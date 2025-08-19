@@ -53,6 +53,10 @@
     {
       "name": "Fernet Vallet",
       "type": "liqueur",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
       "quantity": {
         "amount": 0.125,
         "unit": "oz"
