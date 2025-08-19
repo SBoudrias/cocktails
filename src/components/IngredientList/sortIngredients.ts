@@ -37,8 +37,8 @@ const INGREDIENT_PRIORITIES: Record<RecipeIngredient['type'], number> = {
 
 const APPLICATION_PRIORITIES: Record<'rinse' | 'top' | 'float', number> = {
   rinse: -1,
-  top: 1,
-  float: 2,
+  float: 1,
+  top: 2,
 };
 
 const sortCompare = (a: number, b: number) => {
@@ -74,7 +74,7 @@ export default function sortIngredients<
   T extends Pick<RecipeIngredient, 'quantity' | 'type' | 'technique'>,
 >(ingredients: readonly T[]): T[] {
   return ingredients.toSorted((a, b) => {
-    // Handle application techniques first: rinse goes first, float goes last
+    // Handle application techniques first: rinse goes first, top goes last
     const aAppPriority = getApplicationTechniquePriority(a);
     const bAppPriority = getApplicationTechniquePriority(b);
     if (aAppPriority !== bAppPriority) {

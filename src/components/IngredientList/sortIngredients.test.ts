@@ -137,12 +137,12 @@ describe('sortIngredients', () => {
         {
           type: 'bitter',
           quantity: { amount: 1, unit: 'oz' },
-          technique: { technique: 'application', method: 'top' },
+          technique: { technique: 'application', method: 'float' },
         },
         {
           type: 'bitter',
           quantity: { amount: 1, unit: 'oz' },
-          technique: { technique: 'application', method: 'float' },
+          technique: { technique: 'application', method: 'top' },
         },
       ]);
     });
@@ -216,7 +216,7 @@ describe('sortIngredients', () => {
       ]);
 
       const resultMethods = result.map((r) => r.technique?.method || 'none');
-      expect(resultMethods).toEqual(['rinse', 'none', 'none', 'none', 'top', 'float']);
+      expect(resultMethods).toEqual(['rinse', 'none', 'none', 'none', 'float', 'top']);
     });
   });
 });
