@@ -6,6 +6,7 @@ const cutTypeNames = {
   cubed: { countable: true, forms: ['cube', 'cubes'] },
   sliced: { countable: true, forms: ['slice', 'slices'] },
   sectioned: { countable: true, forms: ['section', 'sections'] },
+  disc: { countable: false, forms: ['disc', 'discs'] },
   diced: { countable: false, forms: ['diced', 'diced'] },
   julienned: { countable: false, forms: ['julienned', 'julienned'] },
   wheeled: { countable: true, forms: ['wheel', 'wheels'] },

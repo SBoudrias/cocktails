@@ -21,16 +21,19 @@
     {
       "name": "lemon",
       "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
       "quantity": {
         "amount": 3,
         "unit": "unit"
-      },
-      "preparation": "cut into wedges"
+      }
     }
   ],
   "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "rocks",
+  "served_on": "up",
+  "glassware": "old fashioned",
   "instructions": [
     "In a rocks glass, muddle the lemon wedges with honey",
     "Add rum and stir",

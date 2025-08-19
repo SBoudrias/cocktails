@@ -11,7 +11,7 @@
       }
     },
     {
-      "name": "granulated sugar",
+      "name": "sugar",
       "type": "other",
       "quantity": {
         "amount": 1,
@@ -21,16 +21,19 @@
     {
       "name": "lime",
       "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
       "quantity": {
         "amount": 2,
         "unit": "unit"
-      },
-      "preparation": "cut into wedges"
+      }
     }
   ],
   "preparation": "built",
   "served_on": "ice cubes",
-  "glassware": "rocks",
+  "glassware": "old fashioned",
   "instructions": [
     "In a rocks glass, gently muddle the lime wedges with sugar, focusing on the flesh and avoiding the skin as much as possible",
     "Add cachaça and 3 to 4 cubes of ice",

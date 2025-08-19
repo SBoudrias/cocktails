@@ -3,7 +3,7 @@
   "name": "Bombo",
   "ingredients": [
     {
-      "name": "Plantation O.F.T.D. Rum",
+      "name": "Planteray OFTD",
       "type": "spirit",
       "quantity": {
         "amount": 2,
@@ -20,8 +20,8 @@
     }
   ],
   "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "rocks",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "instructions": [
     "In a chilled rocks glass, combine the syrup and rum",
     "Add a large ice cube and stir to chill",

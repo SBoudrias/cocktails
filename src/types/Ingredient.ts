@@ -103,6 +103,7 @@ type TechniqueCut = {
   type:
     | 'chunked'
     | 'cubed'
+    | 'disc'
     | 'sliced'
     | 'sectioned'
     | 'diced'

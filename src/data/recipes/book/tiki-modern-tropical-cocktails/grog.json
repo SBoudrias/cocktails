@@ -21,16 +21,19 @@
     {
       "name": "lime",
       "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
       "quantity": {
         "amount": 3,
         "unit": "unit"
-      },
-      "preparation": "cut into wedges"
+      }
     }
   ],
   "preparation": "built",
   "served_on": "ice cubes",
-  "glassware": "rocks",
+  "glassware": "old fashioned",
   "instructions": [
     "In a rocks glass, muddle lime wedges and simple syrup",
     "Add rum and cubed ice",

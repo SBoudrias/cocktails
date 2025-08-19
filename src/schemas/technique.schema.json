@@ -84,6 +84,7 @@
           "enum": [
             "chunked",
             "cubed",
+            "disc",
             "sliced",
             "sectioned",
             "diced",
