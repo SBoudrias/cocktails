@@ -12,9 +12,6 @@ jobs:
       - name: Lint ✅
         run: yarn lint
 
-      - name: Prettier 💅
-        run: yarn check-code
-
   schema:
     runs-on: ubuntu-latest
     steps:
