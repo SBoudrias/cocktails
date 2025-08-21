@@ -5,67 +5,69 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --turbopack",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "tsc --noEmit && next lint",
+    "lint": "next typegen && tsc --noEmit && eslint . && prettier . --check",
     "test": "vitest --run",
-    "check-code": "prettier --check .",
     "check-data": "tools/check-data.js",
     "prepare": "husky"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@leeoniya/ufuzzy": "^1.0.18",
     "@mui/icons-material": "^6.4.5",
     "@mui/material": "^6.4.5",
     "@mui/material-nextjs": "^6.4.3",
-    "@next/third-parties": "15.1.7",
+    "@next/third-parties": "15.5.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@sindresorhus/transliterate": "^1.6.0",
-    "core-js": "^3.40.0",
+    "core-js": "^3.45.1",
     "lodash": "^4.17.21",
-    "next": "15.1.7",
+    "next": "15.5.0",
     "next-sitemap": "^4.2.3",
-    "nuqs": "^2.4.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "ts-pattern": "^5.6.2"
+    "nuqs": "^2.4.3",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "ts-pattern": "^5.8.0"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "@types/lodash": "^4.17.15",
-    "@types/node": "^22.13.5",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^24.3.0",
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "@vitejs/plugin-react": "^5.0.1",
     "@vitest/browser": "^3.2.4",
-    "@vitest/coverage-v8": "^3.0.6",
+    "@vitest/coverage-v8": "^3.2.4",
     "ajv": "^8.17.1",
     "ajv-cli": "^5.0.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.21.0",
-    "eslint-config-next": "15.1.7",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.33.0",
+    "eslint-config-next": "15.5.0",
     "husky": "^9.1.7",
-    "jsdom": "^26.0.0",
+    "jsdom": "^26.1.0",
     "nano-staged": "^0.8.0",
-    "prettier": "^3.5.2",
-    "typescript": "^5.7.3",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.6"
+    "vitest": "^3.2.4"
   },
   "nano-staged": {
     "*": "yarn prettier --write --ignore-unknown",
-    "*.m?[jt]sx?": "yarn lint --fix"
+    "*.m?[jt]sx?": "yarn eslint . --fix"
   },
   "overrides": {
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   },
-  "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
+  "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728",
+  "resolutions": {
+    "@types/react-dom": "19.1.7"
+  }
 }
