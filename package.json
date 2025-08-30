@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next typegen && tsc --noEmit && eslint . && prettier . --check",
     "test": "vitest --run",
-    "check-data": "tools/check-data.js",
+    "check-data": "tools/check-data.ts",
     "prepare": "husky"
   },
   "dependencies": {

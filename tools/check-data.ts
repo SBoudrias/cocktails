@@ -1,6 +1,5 @@
 #!/usr/bin/env -S node --no-warnings
 
-// @ts-check
 import Ajv from 'ajv/dist/2020.js';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -10,14 +9,25 @@ import { format, resolveConfig } from 'prettier';
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
 
-function fileExists(filepath) {
+interface DataWithSchema {
+  $schema: string;
+  name: string;
+  ingredients?: Array<{
+    type: string;
+    name: string;
+  }>;
+  categories?: string[];
+  parents?: string[];
+}
+
+async function fileExists(filepath: string): Promise<boolean> {
   return fs.access(filepath).then(
     () => true,
     () => false,
   );
 }
 
-async function writeJSON(filepath, data) {
+async function writeJSON(filepath: string, data: object): Promise<void> {
   await fs.mkdir(path.dirname(filepath), { recursive: true });
   const jsonContent = JSON.stringify(data, null, 2);
   const prettierConfig = await resolveConfig(filepath);
@@ -30,14 +40,14 @@ async function writeJSON(filepath, data) {
 }
 
 let exitCode = 0;
-function fail(message) {
+function fail(message: string): void {
   console.error(`├ ❌ ${message}`);
   exitCode = 1;
 }
-function pass(message) {
+function pass(message: string): void {
   console.log(`├ ✅ ${message}`);
 }
-function change(message) {
+function change(message: string): void {
   console.log(`├ 🔄 ${message}`);
 }
 
@@ -52,11 +62,11 @@ console.log('╰ Done!\n');
 
 console.log('╭ 🔍 Validating data files...');
 for await (const sourceFile of fs.glob('src/data/**/*.json')) {
-  let data;
+  let data: DataWithSchema;
   try {
     data = JSON.parse(await fs.readFile(sourceFile, 'utf-8'));
   } catch (error) {
-    fail(`Invalid JSON in ${sourceFile} ${error.message}`);
+    fail(`Invalid JSON in ${sourceFile} ${(error as Error).message}`);
     continue;
   }
 
