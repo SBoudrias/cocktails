@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Real McCoy 3 Year",
+  "name": "The Real McCoy 3 Year",
   "type": "spirit",
   "categories": ["Blended Lightly-aged Rum"]
 }
