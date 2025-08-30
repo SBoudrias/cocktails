@@ -1,4 +1,0 @@
-read:
-  - src/schemas/recipe.schema.json
-  - src/schemas/ingredient.schema.json
-  - README.md
