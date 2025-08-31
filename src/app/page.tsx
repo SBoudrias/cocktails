@@ -17,6 +17,7 @@ import CalculatorIcon from '@mui/icons-material/Calculate';
 import SearchIcon from '@mui/icons-material/Search';
 import BookIcon from '@mui/icons-material/Book';
 import YoutubeIcon from '@mui/icons-material/YouTube';
+import PodcastIcon from '@mui/icons-material/Podcasts';
 import Link from 'next/link';
 import {
   getAuthorListUrl,
@@ -56,10 +57,11 @@ function SourceListItem({ source }: { source: Source }) {
 export default async function HomePage() {
   const sources = await getAllSources();
 
-  const { book: books = [], 'youtube-channel': ytChannels = [] } = Object.groupBy(
-    sources,
-    (source) => source.type,
-  );
+  const {
+    book: books = [],
+    'youtube-channel': ytChannels = [],
+    podcast: podcasts = [],
+  } = Object.groupBy(sources, (source) => source.type);
 
   return (
     <Suspense>
@@ -129,6 +131,21 @@ export default async function HomePage() {
             </ListSubheader>
             <Paper square>
               {ytChannels.map((source) => (
+                <SourceListItem source={source} key={source.name} />
+              ))}
+            </Paper>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <ListSubheader>
+              <Stack direction="row" alignItems="center" gap={1}>
+                <PodcastIcon />
+                By Podcasts
+              </Stack>
+            </ListSubheader>
+            <Paper square>
+              {podcasts.map((source) => (
                 <SourceListItem source={source} key={source.name} />
               ))}
             </Paper>
