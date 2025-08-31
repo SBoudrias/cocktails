@@ -1,9 +1,9 @@
 import fs from 'node:fs/promises';
-import { Book, Source, YoutubeChannel } from '@/types/Source';
+import { Book, Source, YoutubeChannel, Podcast } from '@/types/Source';
 import path from 'node:path';
 import memo from 'lodash/memoize';
 import { readJSONFile } from './fs';
-import { BOOK_ROOT, RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT } from './constants';
+import { BOOK_ROOT, RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT, PODCAST_ROOT } from './constants';
 import { match } from 'ts-pattern';
 
 function getRecipeSourcePath(root: string, slug: string): string {
@@ -44,10 +44,25 @@ export const getYoutubeChannel = memo(async (slug: string): Promise<YoutubeChann
   };
 });
 
+export const getPodcast = memo(async (slug: string): Promise<Podcast> => {
+  const filepath = getRecipeSourcePath(PODCAST_ROOT, slug);
+  const data = await readJSONFile<Omit<Podcast, 'slug' | 'type'>>(filepath);
+
+  if (!data) throw new Error(`Podcast not found: ${filepath}`);
+
+  return {
+    ...data,
+    type: 'podcast',
+    slug: slug,
+    recipeAmount: await getRecipeAmount(PODCAST_ROOT, slug),
+  };
+});
+
 export const getSource = async (type: Source['type'], slug: string): Promise<Source> => {
   return match(type)
     .with('book', () => getBook(slug))
     .with('youtube-channel', () => getYoutubeChannel(slug))
+    .with('podcast', () => getPodcast(slug))
     .exhaustive();
 };
 

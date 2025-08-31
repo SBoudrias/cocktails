@@ -1,8 +1,9 @@
-import type { Ref, BookRef, YoutubeRef } from '@/types/Ref';
+import type { Ref, BookRef, YoutubeRef, PodcastRef } from '@/types/Ref';
 import type { Source } from '@/types/Source';
 import { type SxProps } from '@mui/material';
 import BookAboutCard from './Book';
 import YoutubeAboutCard from './Youtube';
+import PodcastAboutCard from './Podcast';
 import { match } from 'ts-pattern';
 import slugify from '@sindresorhus/slugify';
 
@@ -26,6 +27,17 @@ export default function SourceAboutCard({
     .with({ type: 'youtube-channel' }, (source) => {
       const ref = refs.find((ref): ref is YoutubeRef => ref.type === 'youtube');
       return <YoutubeAboutCard source={source} videoRef={ref} sx={sx} />;
+    })
+    .with({ type: 'podcast' }, (source) => {
+      const ref = refs.find((ref): ref is PodcastRef => ref.type === 'podcast');
+      return (
+        <PodcastAboutCard
+          source={source}
+          episodeTitle={ref?.episodeTitle}
+          episodeLink={ref?.episodeLink}
+          sx={sx}
+        />
+      );
     })
     .exhaustive();
 }

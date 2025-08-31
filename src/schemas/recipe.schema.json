@@ -187,6 +187,16 @@
             },
             "required": ["type", "name", "url"],
             "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": { "const": "podcast" },
+              "episodeTitle": { "type": "string" },
+              "episodeLink": { "type": "string" }
+            },
+            "required": ["type", "episodeTitle"],
+            "additionalProperties": false
           }
         ]
       }
