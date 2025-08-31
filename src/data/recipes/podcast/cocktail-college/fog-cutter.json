@@ -1,0 +1,107 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Fog Cutter",
+  "ingredients": [
+    {
+      "name": "Denizen Aged White",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Capurro Pisco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fords Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Latitude 29 Orgeat",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lemon punch syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Almond extract",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Harvey's Bristol Cream sherry",
+      "type": "liqueur",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "instructions": [
+    "Place discarded orange wedge at bottom of glass",
+    "Flash blend ingredients with 8 oz crushed ice",
+    "Pour into glass",
+    "Fill with 4 oz crushed ice",
+    "Top with sherry float",
+    "Garnish with mint sprig, orchid, and orange wedge",
+    "Serve with straw"
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Garrett Richard"
+    }
+  ],
+  "refs": [
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: Fog Cutter",
+      "episodeLink": "https://vinepair.com/cocktail-college/the-cocktail-college-podcast-fog-cutter/"
+    }
+  ]
+}
