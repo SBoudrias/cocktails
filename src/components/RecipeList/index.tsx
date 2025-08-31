@@ -4,7 +4,9 @@ import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/materia
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { getRecipeUrl } from '@/modules/url';
 import { Recipe } from '@/types/Recipe';
+import { match } from 'ts-pattern';
 
+const ATTRIBUTION_PRIORITY = ['adapted by', 'recipe author', 'book', 'bar'];
 function RecipeLine({
   recipe,
   includeSourceName,
@@ -12,12 +14,44 @@ function RecipeLine({
   recipe: Recipe;
   includeSourceName: boolean;
 }) {
+  let sourceLine;
+  if (includeSourceName) {
+    let attribution = null;
+    for (const attr of recipe.attributions) {
+      const currentPriority = ATTRIBUTION_PRIORITY.indexOf(attr.relation);
+      if (currentPriority === -1) continue;
+
+      if (!attribution) {
+        attribution = attr;
+      } else {
+        const savedPriority = ATTRIBUTION_PRIORITY.indexOf(attribution.relation);
+        if (currentPriority < savedPriority) {
+          attribution = attr;
+        }
+      }
+    }
+
+    const bookName = recipe.source.type === 'book' ? recipe.source.name : undefined;
+
+    sourceLine = match(attribution)
+      .with(null, () => recipe.source.name)
+      .with({ relation: 'adapted by' }, ({ source }) =>
+        [source, bookName].filter(Boolean).join(' | '),
+      )
+      .with({ relation: 'recipe author' }, ({ source }) =>
+        [source, bookName].filter(Boolean).join(' | '),
+      )
+      .with({ relation: 'bar' }, ({ source }) => bookName || `served at ${source}`)
+      .with({ relation: 'book' }, ({ source }) => source)
+      .exhaustive();
+  }
+
   return (
     <Link href={getRecipeUrl(recipe)}>
       <ListItem divider secondaryAction={<ChevronRight />}>
         <ListItemText
           primary={recipe.name}
-          secondary={includeSourceName ? undefined : recipe.source.name}
+          secondary={includeSourceName ? sourceLine : undefined}
         />
       </ListItem>
     </Link>
@@ -49,7 +83,7 @@ export default function RecipeList({
           <RecipeLine
             key={getRecipeUrl(recipe)}
             recipe={recipe}
-            includeSourceName={nameIsUnique(recipe.name)}
+            includeSourceName={!nameIsUnique(recipe.name)}
           />
         ))}
       </Paper>
