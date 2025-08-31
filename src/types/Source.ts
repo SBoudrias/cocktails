@@ -16,4 +16,13 @@ export type YoutubeChannel = {
   recipeAmount: number;
 };
 
-export type Source = Book | YoutubeChannel;
+export type Podcast = {
+  type: 'podcast';
+  name: string;
+  slug: string;
+  link: string;
+  description: string;
+  recipeAmount: number;
+};
+
+export type Source = Book | YoutubeChannel | Podcast;

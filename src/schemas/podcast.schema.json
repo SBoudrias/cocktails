@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///schemas/podcast.schema.json",
+  "title": "Podcast",
+  "description": "A podcast in the catalog",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": {
+      "description": "The title of the podcast",
+      "type": "string"
+    },
+    "link": {
+      "description": "Link to podcast website or platform",
+      "type": "string"
+    },
+    "description": {
+      "description": "Description of the podcast content",
+      "type": "string"
+    }
+  },
+  "required": ["name", "link", "description"],
+  "additionalProperties": false
+}

@@ -21,4 +21,10 @@ export type WebsiteRef = {
   url: string;
 };
 
-export type Ref = YoutubeRef | BookRef | WebsiteRef;
+export type PodcastRef = {
+  type: 'podcast';
+  episodeTitle: string;
+  episodeLink?: string;
+};
+
+export type Ref = YoutubeRef | BookRef | WebsiteRef | PodcastRef;
