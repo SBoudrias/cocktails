@@ -12,6 +12,24 @@
       "type": "array",
       "items": { "type": "string" }
     },
+    "categoryType": {
+      "enum": [
+        "beer",
+        "bitter",
+        "emulsifier",
+        "fruit",
+        "juice",
+        "liqueur",
+        "puree",
+        "soda",
+        "spice",
+        "spirit",
+        "syrup",
+        "tincture",
+        "wine",
+        "other"
+      ]
+    },
     "refs": {
       "type": "array",
       "items": {

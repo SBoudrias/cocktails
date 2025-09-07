@@ -1,8 +1,8 @@
-import { Category } from './Category';
-import { Ref } from './Ref';
+import { type Category } from './Category';
+import { type Ref } from './Ref';
 
 // Note: the json-schema allows "category", it's only included in the Recipe type.
-type IngredientType =
+export type IngredientType =
   | 'beer'
   | 'bitter'
   | 'emulsifier'
