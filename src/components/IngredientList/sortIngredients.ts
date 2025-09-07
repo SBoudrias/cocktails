@@ -35,6 +35,12 @@ const INGREDIENT_PRIORITIES: Record<RecipeIngredient['type'], number> = {
   emulsifier: 5,
 };
 
+function getIngredientType(ingredient: RecipeIngredient) {
+  return ingredient.type === 'category'
+    ? (ingredient.categoryType ?? ingredient.type)
+    : ingredient.type;
+}
+
 const APPLICATION_PRIORITIES: Record<'rinse' | 'top' | 'float', number> = {
   rinse: -1,
   float: 1,
@@ -70,9 +76,9 @@ const getApplicationTechniquePriority = (
 /**
  * Sorts the ingredients true to the Death & Co's method.
  */
-export default function sortIngredients<
-  T extends Pick<RecipeIngredient, 'quantity' | 'type' | 'technique'>,
->(ingredients: readonly T[]): T[] {
+export default function sortIngredients<T extends RecipeIngredient>(
+  ingredients: readonly T[],
+): T[] {
   return ingredients.toSorted((a, b) => {
     // Handle application techniques first: rinse goes first, top goes last
     const aAppPriority = getApplicationTechniquePriority(a);
@@ -90,7 +96,10 @@ export default function sortIngredients<
     }
 
     // Same value ingredients, sort by quantity
-    if (INGREDIENT_PRIORITIES[a.type] === INGREDIENT_PRIORITIES[b.type]) {
+    if (
+      INGREDIENT_PRIORITIES[getIngredientType(a)] ===
+      INGREDIENT_PRIORITIES[getIngredientType(b)]
+    ) {
       // Quantities could use different units, so compare them on a baseline of ml.
       return sortCompare(
         convertQuantityToMl(a.quantity).amount,
@@ -99,6 +108,9 @@ export default function sortIngredients<
     }
 
     // Otherwise lowest value first; ex: juices & syrup first.
-    return sortCompare(INGREDIENT_PRIORITIES[a.type], INGREDIENT_PRIORITIES[b.type]);
+    return sortCompare(
+      INGREDIENT_PRIORITIES[getIngredientType(a)],
+      INGREDIENT_PRIORITIES[getIngredientType(b)],
+    );
   });
 }
