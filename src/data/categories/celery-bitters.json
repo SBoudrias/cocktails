@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Celery Bitters"
+  "name": "Celery Bitters",
+  "categoryType": "bitter"
 }

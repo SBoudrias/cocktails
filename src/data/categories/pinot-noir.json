@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Pinot Noir"
+  "name": "Pinot Noir",
+  "categoryType": "wine"
 }

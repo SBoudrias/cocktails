@@ -7,11 +7,6 @@
   "properties": {
     "$schema": { "type": "string" },
     "name": { "type": "string" },
-    "description": { "type": "string" },
-    "parents": {
-      "type": "array",
-      "items": { "type": "string" }
-    },
     "categoryType": {
       "enum": [
         "beer",
@@ -29,6 +24,11 @@
         "wine",
         "other"
       ]
+    },
+    "description": { "type": "string" },
+    "parents": {
+      "type": "array",
+      "items": { "type": "string" }
     },
     "refs": {
       "type": "array",
@@ -48,6 +48,6 @@
       }
     }
   },
-  "required": ["name"],
+  "required": ["name", "categoryType"],
   "additionalProperties": false
 }

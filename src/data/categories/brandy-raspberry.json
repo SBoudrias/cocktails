@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Brandy (Raspberry)"
+  "name": "Brandy (Raspberry)",
+  "categoryType": "spirit"
 }

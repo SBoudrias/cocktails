@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Blended Aged Rum (Demerara)",
-  "parents": ["Blended Aged Rum"]
+  "parents": ["Blended Aged Rum"],
+  "categoryType": "spirit"
 }
