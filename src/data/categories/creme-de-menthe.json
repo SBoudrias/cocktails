@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Crème de Menthe"
+  "name": "Crème de Menthe",
+  "categoryType": "liqueur"
 }

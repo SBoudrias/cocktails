@@ -139,6 +139,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
               path.resolve(APP_ROOT, 'schemas/category.schema.json'),
             ),
             name: ingredient.name,
+            categoryType: 'FIXME',
           });
         }
       } else {

@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Unaged Cachaça",
-  "parents": ["Rhum Agricole Blanc"]
+  "parents": ["Rhum Agricole Blanc"],
+  "categoryType": "spirit"
 }

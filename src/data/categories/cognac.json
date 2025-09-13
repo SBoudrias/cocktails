@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Cognac",
-  "parents": ["Brandy (Grapes)"]
+  "parents": ["Brandy (Grapes)"],
+  "categoryType": "spirit"
 }
