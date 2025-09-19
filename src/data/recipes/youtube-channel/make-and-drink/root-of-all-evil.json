@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Root of all Evil",
+  "ingredients": [
+    {
+      "name": "absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "root beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      },
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "laOctsP6v4U"
+    }
+  ]
+}
