@@ -55,8 +55,9 @@ const ajv = new Ajv();
 console.log('╭ 📝 Registering schemas');
 for await (const schemaFile of fs.glob('src/schemas/*.schema.json')) {
   const schema = JSON.parse(await fs.readFile(schemaFile, 'utf-8'));
-  console.log('├', schema.$id);
-  ajv.addSchema(schema, schema.$id);
+  const schemaId = path.basename(schemaFile);
+  console.log('├', schemaId);
+  ajv.addSchema(schema, schemaId);
 }
 console.log('╰ Done!\n');
 
@@ -79,7 +80,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     APP_ROOT,
     path.resolve(path.dirname(sourceFile), data.$schema),
   );
-  const validate = ajv.getSchema(`file:///${schemaPath}`);
+  const validate = ajv.getSchema(path.basename(data.$schema));
 
   if (!validate) {
     fail(`Schema not found for ${sourceFile} at ${data.$schema ?? 'undefined'}`);

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "file:///schemas/category.schema.json",
+  "$id": "./category.schema.json",
   "title": "Category",
   "description": "A liqueur or spirit category",
   "type": "object",

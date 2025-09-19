@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "file:///schemas/technique.schema.json",
+  "$id": "./technique.schema.json",
   "title": "Technique",
   "description": "A technique used to prepare an ingredient",
   "oneOf": [
@@ -10,10 +10,10 @@
         "technique": { "const": "infusion" },
         "agent": { "type": "string" },
         "agent_quantity": {
-          "$ref": "file:///schemas/quantity.schema.json"
+          "$ref": "./quantity.schema.json"
         },
         "spirit_quantity": {
-          "$ref": "file:///schemas/quantity.schema.json"
+          "$ref": "./quantity.schema.json"
         },
         "duration": { "type": "string" },
         "method": { "enum": ["cold", "hot", "sous-vide"] }
@@ -27,10 +27,10 @@
         "technique": { "const": "fat-wash" },
         "fat": { "type": "string" },
         "fat_quantity": {
-          "$ref": "file:///schemas/quantity.schema.json"
+          "$ref": "./quantity.schema.json"
         },
         "spirit_quantity": {
-          "$ref": "file:///schemas/quantity.schema.json"
+          "$ref": "./quantity.schema.json"
         },
         "duration": { "type": "string" },
         "temperature": { "type": "string" }

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "file:///schemas/quantity.schema.json",
+  "$id": "./quantity.schema.json",
   "title": "Quantity",
   "description": "An amount of an ingredient",
   "type": "object",

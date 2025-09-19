@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "file:///schemas/recipe.schema.json",
+  "$id": "./recipe.schema.json",
   "title": "Recipe",
   "description": "A cocktail recipe",
   "type": "object",
@@ -20,14 +20,14 @@
               "brix": { "type": "number" },
               "technique": {
                 "oneOf": [
-                  { "$ref": "file:///schemas/technique.schema.json" },
+                  { "$ref": "./technique.schema.json" },
                   {
                     "type": "array",
-                    "items": { "$ref": "file:///schemas/technique.schema.json" }
+                    "items": { "$ref": "./technique.schema.json" }
                   }
                 ]
               },
-              "quantity": { "$ref": "file:///schemas/quantity.schema.json" }
+              "quantity": { "$ref": "./quantity.schema.json" }
             },
             "required": ["name", "type", "quantity"],
             "additionalProperties": false
@@ -56,14 +56,14 @@
               },
               "technique": {
                 "oneOf": [
-                  { "$ref": "file:///schemas/technique.schema.json" },
+                  { "$ref": "./technique.schema.json" },
                   {
                     "type": "array",
-                    "items": { "$ref": "file:///schemas/technique.schema.json" }
+                    "items": { "$ref": "./technique.schema.json" }
                   }
                 ]
               },
-              "quantity": { "$ref": "file:///schemas/quantity.schema.json" }
+              "quantity": { "$ref": "./quantity.schema.json" }
             },
             "required": ["name", "type", "quantity"],
             "additionalProperties": false

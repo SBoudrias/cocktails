@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "file:///schemas/youtube-channel.schema.json",
+  "$id": "./youtube-channel.schema.json",
   "title": "Youtube Channel",
   "description": "A Youtube channel",
   "type": "object",
