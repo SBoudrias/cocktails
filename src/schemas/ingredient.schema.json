@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "file:///schemas/ingredient.schema.json",
+  "$id": "./ingredient.schema.json",
   "title": "Ingredient",
   "description": "A single ingredient in a recipe",
   "oneOf": [
