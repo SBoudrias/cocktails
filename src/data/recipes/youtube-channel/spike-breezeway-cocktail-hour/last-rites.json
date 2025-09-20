@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Last Rites",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum Agricole Vieux",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "instructions": [
+    "Mix with ice at high speed for exactly 5 seconds",
+    "Pour into a tall glass",
+    "Add more ice to fill"
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Mariano Licuidini"
+    },
+    {
+      "relation": "bar",
+      "source": "Mai-Kai"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "2XDFzrL9epQ"
+    }
+  ]
+}
