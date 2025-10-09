@@ -1,20 +1,8 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import AppHeader from '@/components/AppHeader';
 import { Suspense } from 'react';
 import { getAllRecipes } from '@/modules/recipes';
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material';
-import { getAuthorRecipesUrl } from '@/modules/url';
-import { ChevronRight } from '@mui/icons-material';
-import groupByFirstLetter from '@/modules/groupByFirstLetter';
+import AuthorsList from './AuthorsList';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index | Authors list',
@@ -45,47 +33,13 @@ export default async function AuthorListPage() {
       });
   });
 
-  // Convert to array and sort
+  // Convert to array
   const authors = Array.from(authorsMap.values());
-
-  // Group authors by first letter
-  const authorGroups = groupByFirstLetter(authors);
 
   return (
     <Suspense>
       <AppHeader title="All Authors" />
-      <List>
-        {authorGroups.map(([letter, authors]) => {
-          if (!authors) return null;
-
-          return (
-            <li key={letter}>
-              <List>
-                <ListSubheader>{letter}</ListSubheader>
-                <Paper square>
-                  {authors.map((author) => (
-                    <Link href={getAuthorRecipesUrl(author.name)} key={author.name}>
-                      <ListItem
-                        divider
-                        secondaryAction={
-                          <Stack direction="row" spacing={1}>
-                            <Typography color="textSecondary">
-                              {author.recipeCount}
-                            </Typography>
-                            <ChevronRight />
-                          </Stack>
-                        }
-                      >
-                        <ListItemText primary={author.name} />
-                      </ListItem>
-                    </Link>
-                  ))}
-                </Paper>
-              </List>
-            </li>
-          );
-        })}
-      </List>
+      <AuthorsList authors={authors} />
     </Suspense>
   );
 }
