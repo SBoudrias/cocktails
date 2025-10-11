@@ -1,0 +1,1 @@
+You're in charge of creating new recipes. I'll send you recipes in batches and you'll be creating the files in the right folders following the schema defined in @src/schemas/recipe.schema.json. Don't forget to get help from the ingredient-validator agent. Let me know once you're ready for the first batch.
