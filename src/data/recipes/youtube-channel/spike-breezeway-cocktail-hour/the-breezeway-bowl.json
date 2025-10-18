@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "The Breezeway Bowl",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apricot liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Breezeway Blend",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "punch",
+  "instructions": [
+    "Mix on high with ice cubes and pour into the Breezeway Bowl",
+    "Add more ice",
+    "Soak a crouton or piece of toast in lemon extract, ignite and float on drink"
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Spike"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "rXH6HQVJ3Nk"
+    }
+  ]
+}
