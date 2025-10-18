@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Jasper's Arawak Cocktail",
+  "ingredients": [
+    {
+      "name": "honey",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jasper's Mix",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Myers's Original Dark Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jasper LeFranc"
+    },
+    {
+      "relation": "book",
+      "source": "Trader Vic's Book of Rum Cookery and Drinkery"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "D96jYVXdxVE"
+    }
+  ]
+}

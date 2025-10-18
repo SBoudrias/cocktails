@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Mule Shoe",
+  "ingredients": [
+    {
+      "name": "Jasper's Mix",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Triple Sec",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cherry Heering liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pot still unaged overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jasper LeFranc"
+    },
+    {
+      "relation": "book",
+      "source": "Trader Vic's Book of Rum Cookery and Drinkery"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "D96jYVXdxVE"
+    }
+  ]
+}
