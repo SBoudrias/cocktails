@@ -9,6 +9,8 @@ const displayFraction: Record<number, string> = {
   0.125: '⅛',
   0.12: '⅛',
   0.13: '⅛',
+  0.17: '⅙',
+  0.167: '⅙',
   0.25: '¼',
   0.3: '⅓',
   0.33: '⅓',
@@ -21,6 +23,11 @@ const displayFraction: Record<number, string> = {
   0.66: '⅔',
   0.67: '⅔',
   0.75: '¾',
+  0.83: '⅚',
+  0.833: '⅚',
+  0.87: '⅞',
+  0.875: '⅞',
+  0.88: '⅞',
 };
 
 const unitType: Record<
