@@ -66,8 +66,8 @@
       "relation": "recipe author"
     },
     {
-      "source": "The Inferno Room",
       "relation": "bar",
+      "source": "The Inferno Room",
       "location": "Indianapolis, IN"
     }
   ],
