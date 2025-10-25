@@ -56,6 +56,7 @@ type CategoryIngredient = Category & { type: 'category' };
 
 export type RootIngredient = (BaseIngredient | Juice) & {
   ingredients: RecipeIngredient[];
+  instructions?: string[];
 };
 
 type TechniqueInfusion = {

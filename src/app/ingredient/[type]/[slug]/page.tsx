@@ -123,6 +123,20 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       {ingredient.ingredients.length > 0 && (
         <IngredientList ingredients={ingredient.ingredients} />
       )}
+      {Array.isArray(ingredient.instructions) && ingredient.instructions.length > 0 && (
+        <List>
+          <ListSubheader>Instructions</ListSubheader>
+          <Paper square>
+            {ingredient.instructions.map((instruction, index) => (
+              <ListItem divider key={index}>
+                <ListItemText>
+                  {index + 1}. {instruction}
+                </ListItemText>
+              </ListItem>
+            ))}
+          </Paper>
+        </List>
+      )}
       {ingredient.type === 'juice' &&
         'acidity' in ingredient &&
         ingredient.acidity != null && (
