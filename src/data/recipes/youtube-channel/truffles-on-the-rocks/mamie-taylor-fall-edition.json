@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mamie Taylor - Fall Edition",
+  "ingredients": [
+    {
+      "name": "Whisky (Blended Scotch)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger ale",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "instructions": [
+    "Build all ingredients in a chilled highball glass with ice",
+    "Stir gently",
+    "Garnish with a lemon wheel"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "B0bZyraafA0",
+      "start": 68
+    }
+  ]
+}
