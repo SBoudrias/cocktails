@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "black sesame syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "black sesame seeds",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      },
+      "technique": {
+        "technique": "temperature",
+        "method": "roasted"
+      }
+    },
+    {
+      "name": "water",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Toast the black sesame seeds.",
+    "Simmer toasted seeds with water for 10-15 minutes.",
+    "Strain the mixture.",
+    "Mix in sugar (1.5x by weight of strained liquid) and salt.",
+    "Cool and store in fridge."
+  ]
+}

@@ -21,6 +21,12 @@
         },
         "ingredients": {
           "$ref": "./recipe.schema.json#/properties/ingredients"
+        },
+        "instructions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "required": ["name", "type"],
@@ -59,6 +65,12 @@
         },
         "ingredients": {
           "$ref": "./recipe.schema.json#/properties/ingredients"
+        },
+        "instructions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "required": ["name", "type"],

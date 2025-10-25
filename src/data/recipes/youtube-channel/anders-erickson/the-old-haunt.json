@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Old Haunt",
+  "ingredients": [
+    {
+      "name": "Laird's Bonded Apple Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Averna",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fee Brothers Black Walnut Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "instructions": [
+    "Smoke the lowball glass before preparing the drink.",
+    "Express orange oil over the drink."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "LaqklLOgeCY",
+      "start": 30
+    }
+  ]
+}
