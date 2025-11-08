@@ -1,0 +1,91 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "MaD Spices No 7",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "water",
+      "type": "other",
+      "quantity": {
+        "amount": 200,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 400,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 5,
+        "unit": "gram"
+      },
+      "technique": {
+        "technique": "temperature",
+        "method": "roasted"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 5,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "cardamom pods",
+      "type": "spice",
+      "quantity": {
+        "amount": 5,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Star anise",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "allspice dram",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine water and sugar in a pot and bring to a simmer.",
+    "Add toasted cinnamon, regular cinnamon, cardamom (if using green pods, double the amount), cloves, and star anise.",
+    "Simmer for 10-15 minutes to infuse the spices.",
+    "Remove from heat and stir in vanilla extract and allspice dram.",
+    "Let cool, then strain out the spices.",
+    "Store chilled."
+  ]
+}

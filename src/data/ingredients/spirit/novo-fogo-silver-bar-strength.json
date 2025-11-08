@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Novo Fogo Silver Bar Strength",
+  "type": "spirit",
+  "categories": ["Unaged Cachaça"]
+}
