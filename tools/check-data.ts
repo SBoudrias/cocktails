@@ -12,6 +12,7 @@ const APP_ROOT = path.join(ROOT, 'src');
 interface DataWithSchema {
   $schema: string;
   name: string;
+  type?: string;
   ingredients?: Array<{
     type: string;
     name: string;
@@ -176,6 +177,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
             path.resolve(APP_ROOT, 'schemas/category.schema.json'),
           ),
           name: category,
+          categoryType: data.type ?? 'FIXME',
         });
       }
     }
@@ -194,6 +196,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
             path.resolve(APP_ROOT, 'schemas/category.schema.json'),
           ),
           name: category,
+          categoryType: 'FIXME',
         });
       }
     }
