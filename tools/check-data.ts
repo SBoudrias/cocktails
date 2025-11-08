@@ -132,54 +132,51 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
           'src/data/categories',
           `${slugify(ingredient.name)}.json`,
         );
-        if (!(await fileExists(categoryPath))) {
-          fail(`Ingredient file not found ${categoryPath}`);
+        if (await fileExists(categoryPath)) continue;
 
-          await writeJSON(categoryPath, {
-            $schema: path.relative(
-              path.dirname(categoryPath),
-              path.resolve(APP_ROOT, 'schemas/category.schema.json'),
-            ),
-            name: ingredient.name,
-            categoryType: 'FIXME',
-          });
-        }
+        fail(`Ingredient file not found ${categoryPath}`);
+        await writeJSON(categoryPath, {
+          $schema: path.relative(
+            path.dirname(categoryPath),
+            path.resolve(APP_ROOT, 'schemas/category.schema.json'),
+          ),
+          name: ingredient.name,
+          categoryType: 'FIXME',
+        });
       } else {
         const ingredientPath = path.join(
           'src/data/ingredients',
           ingredient.type,
           `${slugify(ingredient.name)}.json`,
         );
-        if (!(await fileExists(ingredientPath))) {
-          fail(`Ingredient file not found ${ingredientPath}`);
+        if (await fileExists(ingredientPath)) continue;
 
-          await writeJSON(ingredientPath, {
-            $schema: path.relative(
-              path.dirname(ingredientPath),
-              path.resolve(APP_ROOT, 'schemas/ingredient.schema.json'),
-            ),
-            name: ingredient.name,
-            type: ingredient.type,
-          });
-        }
+        fail(`Ingredient file not found ${ingredientPath}`);
+        await writeJSON(ingredientPath, {
+          $schema: path.relative(
+            path.dirname(ingredientPath),
+            path.resolve(APP_ROOT, 'schemas/ingredient.schema.json'),
+          ),
+          name: ingredient.name,
+          type: ingredient.type,
+        });
       }
     }
 
     // Make sure all categories have a metadata file
     for (const category of categories) {
       const categoryPath = path.join('src/data/categories', `${slugify(category)}.json`);
-      if (!(await fileExists(categoryPath))) {
-        fail(`Category file not found ${categoryPath}`);
+      if (await fileExists(categoryPath)) continue;
 
-        await writeJSON(categoryPath, {
-          $schema: path.relative(
-            path.dirname(categoryPath),
-            path.resolve(APP_ROOT, 'schemas/category.schema.json'),
-          ),
-          name: category,
-          categoryType: data.type ?? 'FIXME',
-        });
-      }
+      fail(`Category file not found ${categoryPath}`);
+      await writeJSON(categoryPath, {
+        $schema: path.relative(
+          path.dirname(categoryPath),
+          path.resolve(APP_ROOT, 'schemas/category.schema.json'),
+        ),
+        name: category,
+        categoryType: data.type ?? 'FIXME',
+      });
     }
   }
 
@@ -187,21 +184,20 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   if (schemaPath === 'schemas/category.schema.json') {
     for (const category of data.parents ?? []) {
       const categoryPath = path.join('src/data/categories', `${slugify(category)}.json`);
-      if (!(await fileExists(categoryPath))) {
-        fail(`Category file not found ${categoryPath}`);
+      if (await fileExists(categoryPath)) continue;
 
-        await writeJSON(categoryPath, {
-          $schema: path.relative(
-            path.dirname(categoryPath),
-            path.resolve(APP_ROOT, 'schemas/category.schema.json'),
-          ),
-          name: category,
-          categoryType: 'FIXME',
-        });
-      }
+      fail(`Category file not found ${categoryPath}`);
+      await writeJSON(categoryPath, {
+        $schema: path.relative(
+          path.dirname(categoryPath),
+          path.resolve(APP_ROOT, 'schemas/category.schema.json'),
+        ),
+        name: category,
+        categoryType: 'FIXME',
+      });
     }
   }
 }
-console.log(exitCode > 0 ? '╰ ❌ Validation failed!' : '╰ ✅ Done!');
 
+console.log(exitCode > 0 ? '╰ ❌ Validation failed!' : '╰ ✅ Done!');
 process.exit(exitCode);
