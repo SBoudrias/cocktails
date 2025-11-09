@@ -65,7 +65,7 @@
       "name": "orgeat",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
