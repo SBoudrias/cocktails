@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Amer Picon",
+  "type": "liqueur",
+  "categories": ["Amaro"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "_-XvArvbh6w"
+    }
+  ]
+}
