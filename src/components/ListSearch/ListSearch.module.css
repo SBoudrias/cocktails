@@ -1,0 +1,15 @@
+/* Styles for ListSearch component if needed */
+/* Most styles are handled by MUI's styled components */
+
+.searchContainer {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  background-color: var(--background-color);
+}
+
+@media (max-width: 600px) {
+  .searchContainer {
+    padding: 8px;
+  }
+}
