@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Tree dots and a dash",
+  "name": "Three dots and a dash",
   "preparation": "flash blended",
   "served_on": "crushed ice",
   "glassware": "footed pilsner",
