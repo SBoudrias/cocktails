@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Honolulu",
+  "preparation": "blended",
+  "served_on": "crushed ice",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Column still lightly aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "rock candy syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend all ingredients with crushed ice.",
+    "Pour into a chilled coupe."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Trader Vic"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Y7YB-bRN_Y8"
+    }
+  ]
+}

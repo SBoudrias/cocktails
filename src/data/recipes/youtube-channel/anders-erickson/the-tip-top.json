@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Tip Top",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Valdespino \"Ynocente\" Fino Sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into a chilled nick & nora glass.",
+    "Express lemon oil over the drink."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "9V4Jj3bmi90",
+      "start": 411
+    }
+  ]
+}
