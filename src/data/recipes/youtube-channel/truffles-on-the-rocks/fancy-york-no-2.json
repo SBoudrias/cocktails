@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Fancy York No. 2",
+  "ingredients": [
+    {
+      "name": "Cognac",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet Menta",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Chocolate Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    }
+  ],
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "instructions": ["Garnish with a chocolate truffle"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "w0btcRZuQ4k"
+    }
+  ]
+}
