@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Bicicletta",
+  "ingredients": [
+    {
+      "name": "Dry white wine",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "instructions": ["Garnish with an orange slice"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "WYceYlQ2Yj0"
+    }
+  ]
+}
