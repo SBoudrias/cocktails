@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Baltimore Eggnog",
+  "ingredients": [
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Madeira wine",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Brandy (Grapes)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whole egg",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "5vD03Woy9s8"
+    }
+  ]
+}
