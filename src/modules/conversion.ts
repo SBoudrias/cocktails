@@ -24,3 +24,18 @@ export function convertQuantityToMl(
 
   return quantity;
 }
+
+const ML_TO_OZ = 1 / 30;
+
+export function convertQuantityToOz(
+  quantity: RecipeIngredient['quantity'],
+): RecipeIngredient['quantity'] {
+  if (quantity.unit === 'ml') {
+    return {
+      amount: quantity.amount * ML_TO_OZ,
+      unit: 'oz',
+    };
+  }
+
+  return quantity;
+}
