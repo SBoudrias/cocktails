@@ -50,3 +50,4 @@ public/sitemap-*.xml
 .cursor
 .claude/settings.local.json
 .kiro/specs
+PLAN.md
