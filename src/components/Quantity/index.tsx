@@ -2,8 +2,9 @@
 
 import styles from './style.module.css';
 import { RecipeIngredient } from '@/types/Ingredient';
-import { convertQuantityToMl } from '@/modules/conversion';
+import { convertQuantityToMl, convertQuantityToOz } from '@/modules/conversion';
 import { Stack } from '@mui/material';
+import { match } from 'ts-pattern';
 
 const displayFraction: Record<number, string> = {
   0.125: '⅛',
@@ -54,11 +55,13 @@ export default function Quantity({
   preferredUnit,
   quantity,
 }: {
-  preferredUnit: RecipeIngredient['quantity']['unit'];
+  preferredUnit: 'ml' | 'oz';
   quantity: RecipeIngredient['quantity'];
 }) {
-  const { amount, unit } =
-    preferredUnit === 'ml' ? convertQuantityToMl(quantity) : quantity;
+  const { amount, unit } = match(preferredUnit)
+    .with('ml', () => convertQuantityToMl(quantity))
+    .with('oz', () => convertQuantityToOz(quantity))
+    .exhaustive();
 
   let displayAmount: number | string = amount;
   const base = Math.floor(amount);
