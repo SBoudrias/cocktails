@@ -6,17 +6,17 @@ import transliterate from '@sindresorhus/transliterate';
  *
  * @param items - The array of items to search through
  * @param haystack - Pre-computed searchable strings corresponding to each item
- * @param needle - The search term
+ * @param needle - The search term (null, undefined, or empty returns empty array)
  * @param limit - Maximum number of results to return (default: 1000)
  * @returns Filtered array of matching items
  */
 export function fuzzySearch<T>(
   items: T[],
   haystack: string[],
-  needle: string,
+  needle: string | null | undefined,
   limit = 1000,
 ): T[] {
-  if (!needle || needle.trim().length === 0) return [];
+  if (needle == null || needle.trim().length === 0) return [];
 
   const uf = new uFuzzy();
   const [matchIndexes] = uf.search(haystack, transliterate(needle).toLowerCase());
@@ -30,5 +30,3 @@ export function fuzzySearch<T>(
 
   return [];
 }
-
-export { transliterate };

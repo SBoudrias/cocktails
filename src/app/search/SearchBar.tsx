@@ -2,7 +2,8 @@
 
 import { Recipe } from '@/types/Recipe';
 import { useMemo, useRef } from 'react';
-import { fuzzySearch, transliterate } from '@/modules/fuzzySearch';
+import { fuzzySearch } from '@/modules/fuzzySearch';
+import transliterate from '@sindresorhus/transliterate';
 import { formatIngredientName } from '@/modules/technique';
 import {
   AppBar,
@@ -136,7 +137,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
   );
 
   const searchMatches = useMemo(
-    () => fuzzySearch(recipes, haystack, searchTerm ?? ''),
+    () => fuzzySearch(recipes, haystack, searchTerm),
     [haystack, recipes, searchTerm],
   );
 
