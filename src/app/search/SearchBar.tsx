@@ -4,7 +4,7 @@ import { Recipe } from '@/types/Recipe';
 import { useMemo } from 'react';
 import { fuzzySearch } from '@/modules/fuzzySearch';
 import transliterate from '@sindresorhus/transliterate';
-import { formatIngredientName } from '@/modules/technique';
+import { getRecipeSearchText } from '@/modules/searchText';
 import {
   AppBar,
   Card,
@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import { useQueryState } from 'nuqs';
-import { Category } from '@/types/Category';
 import RecipeList from '@/components/RecipeList';
 import groupByFirstLetter from '@/modules/groupByFirstLetter';
 import SearchInput from '@/components/SearchInput';
@@ -48,25 +47,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
     return (name: string) => store[name.toLowerCase()]?.length === 1;
   }, [recipes]);
 
-  const haystack = useMemo(
-    () =>
-      recipes.map((recipe) => {
-        return transliterate(
-          `${recipe.name} ${recipe.ingredients
-            .map((ingredient) => {
-              const relatedCategories: Category[] = [
-                ...('categories' in ingredient ? ingredient.categories : []),
-                ...('parents' in ingredient ? ingredient.parents : []),
-              ];
-              return `${formatIngredientName(ingredient)} ${relatedCategories.join(' ')}`;
-            })
-            .join(
-              ' ',
-            )} ${recipe.attributions.map((attribution) => attribution.source).join(' ')}`,
-        ).toLowerCase();
-      }),
-    [recipes],
-  );
+  const haystack = useMemo(() => recipes.map(getRecipeSearchText), [recipes]);
 
   const searchMatches = useMemo(
     () => fuzzySearch(recipes, haystack, searchTerm),
