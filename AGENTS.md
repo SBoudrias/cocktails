@@ -23,23 +23,49 @@ Start by reading @README.md
 - Inline types that won't be reused instead of creating separate type definitions.
 - Handle null/undefined inside functions rather than requiring callers to handle it.
 - Trim string outputs when building search text or similar concatenated strings.
+- Keep accessibility attributes (role, aria-\*) inside the component that renders the element, not in wrapper components.
 
 # Testing
 
-This project uses vitest and React testing library for testing. Always prefer the use of semantic assertions in tests. For example:
+This project uses vitest and React testing library for testing. Test utilities are in `@/testing`.
+
+## Semantic selectors over data-testid
+
+Never use `data-testid`. Use semantic roles and aria attributes instead:
 
 ```ts
+// DON'T: data-testid
+expect(screen.getByTestId('results')).toHaveTextContent('Mojito');
+
 // DON'T: search everywhere for strings
 expect(screen.queryByText('bar')).not.toBeInTheDocument();
 expect(screen.getByText('foo')).toBeInTheDocument();
 
-// DO: select the semantic item, and assert against its text content.
-const listItems = screen.getAllByRole('listitem');
-expect(listItems[0]).not.toHaveTextContent('bar');
-expect(listItems[0]).toHaveTextContent('foo');
+// DO: select by semantic role and check text content
+const resultList = screen.getByRole('list');
+expect(resultList).toHaveTextContent('Mojito');
+expect(resultList).not.toHaveTextContent('Daiquiri');
+
+// DO: use aria-labelledby for grouped content
+const mGroup = screen.getByRole('group', { name: 'M' });
+expect(mGroup).toHaveTextContent('Mojito');
 ```
 
-Use meaningful expressions in assertions, not magic numbers:
+## Use specific mock assertions
+
+```ts
+// DON'T: manually extract last call
+expect(onUrlUpdate).toHaveBeenCalled();
+const lastCall = onUrlUpdate.mock.calls.at(-1)?.[0];
+expect(lastCall?.queryString).toContain('search=dai');
+
+// DO: use toHaveBeenLastCalledWith
+expect(onUrlUpdate).toHaveBeenLastCalledWith(
+  expect.objectContaining({ queryString: '?search=dai' }),
+);
+```
+
+## Use meaningful expressions, not magic numbers
 
 ```ts
 // DON'T: magic number
@@ -49,7 +75,7 @@ expect(onChange).toHaveBeenCalledTimes(9);
 expect(onChange).toHaveBeenCalledTimes('margarita'.length);
 ```
 
-Prefer inline snapshots for complex string outputs - they show the full value in the test file:
+## Prefer inline snapshots for complex outputs
 
 ```ts
 // DON'T: hide the expected value
@@ -57,6 +83,16 @@ expect(getSearchText(item)).toBe(expectedText);
 
 // DO: inline snapshot shows full output
 expect(getSearchText(item)).toMatchInlineSnapshot(`"rum aged jamaican"`);
+```
+
+## Use URL factory functions
+
+```ts
+// DON'T: magic strings for URLs
+expect(link).toHaveAttribute('href', '/recipes/book/test-source/recipe-1');
+
+// DO: use URL factory functions
+expect(link).toHaveAttribute('href', getRecipeUrl(recipe));
 ```
 
 # Project Structure
