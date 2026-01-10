@@ -37,19 +37,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-type SearchInputProps = {
-  value: string;
-  onChange: (value: string | null) => void;
-  placeholder?: string;
-  autoFocus?: boolean;
-};
-
 export default function SearchInput({
   value,
-  onChange,
+  onChangeAction,
   placeholder = 'Search…',
   autoFocus = false,
-}: SearchInputProps) {
+}: {
+  value: string;
+  onChangeAction: (value: string | null) => void;
+  placeholder?: string;
+  autoFocus?: boolean;
+}) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -63,7 +61,7 @@ export default function SearchInput({
           placeholder={placeholder}
           inputProps={{ 'aria-label': 'search' }}
           value={value}
-          onChange={(e) => onChange(e.currentTarget.value)}
+          onChange={(e) => onChangeAction(e.currentTarget.value)}
           type="search"
           autoFocus={autoFocus}
           onKeyUp={(e) => {
@@ -76,7 +74,7 @@ export default function SearchInput({
       <Button
         type="reset"
         onClick={() => {
-          onChange(null);
+          onChangeAction(null);
           inputRef.current?.querySelector('input')?.focus();
         }}
       >

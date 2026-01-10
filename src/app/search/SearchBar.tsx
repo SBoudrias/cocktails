@@ -34,7 +34,7 @@ function SearchBar({
       <IconButton size="large" edge="start" aria-label="Go back" href="/">
         <ChevronLeft />
       </IconButton>
-      <SearchInput value={value} onChange={onChange} autoFocus />
+      <SearchInput value={value} onChangeAction={onChange} autoFocus />
     </Toolbar>
   );
 }
