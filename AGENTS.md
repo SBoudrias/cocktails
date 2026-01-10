@@ -18,6 +18,11 @@ Start by reading @README.md
 - Don't force types. Don't use patterns like `any` or `as Type` with typescript.
 - Imports within the Next.js web-app should be written importing from the root with the `@/...` alias. Only use relative imports when importing files located inside the same folder.
 - Always use `ts-pattern` when matching on types. (instead of `switch` or `if`)
+- Don't re-export from modules. Import directly from the original source.
+- Only export functions that are actually used. Don't pre-export "for future use" - that's dead code.
+- Inline types that won't be reused instead of creating separate type definitions.
+- Handle null/undefined inside functions rather than requiring callers to handle it.
+- Trim string outputs when building search text or similar concatenated strings.
 
 # Testing
 
@@ -32,6 +37,26 @@ expect(screen.getByText('foo')).toBeInTheDocument();
 const listItems = screen.getAllByRole('listitem');
 expect(listItems[0]).not.toHaveTextContent('bar');
 expect(listItems[0]).toHaveTextContent('foo');
+```
+
+Use meaningful expressions in assertions, not magic numbers:
+
+```ts
+// DON'T: magic number
+expect(onChange).toHaveBeenCalledTimes(9);
+
+// DO: express the intent
+expect(onChange).toHaveBeenCalledTimes('margarita'.length);
+```
+
+Prefer inline snapshots for complex string outputs - they show the full value in the test file:
+
+```ts
+// DON'T: hide the expected value
+expect(getSearchText(item)).toBe(expectedText);
+
+// DO: inline snapshot shows full output
+expect(getSearchText(item)).toMatchInlineSnapshot(`"rum aged jamaican"`);
 ```
 
 # Project Structure
