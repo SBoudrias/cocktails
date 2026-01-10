@@ -2,7 +2,6 @@
 
 import { Recipe } from '@/types/Recipe';
 import { useMemo } from 'react';
-import { fuzzySearch } from '@/modules/fuzzySearch';
 import { getRecipeSearchText } from '@/modules/searchText';
 import {
   AppBar,
@@ -10,15 +9,14 @@ import {
   CardContent,
   CardHeader,
   IconButton,
-  List,
   Toolbar,
   Typography,
 } from '@mui/material';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import { useQueryState } from 'nuqs';
 import RecipeList from '@/components/RecipeList';
-import groupByFirstLetter from '@/modules/groupByFirstLetter';
 import SearchInput from '@/components/SearchInput';
+import SearchableList from '@/components/SearchableList';
 
 function SearchBar({
   value,
@@ -46,48 +44,16 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
     return (name: string) => store[name.toLowerCase()]?.length === 1;
   }, [recipes]);
 
-  const haystack = useMemo(() => recipes.map(getRecipeSearchText), [recipes]);
-
-  const searchMatches = useMemo(
-    () => fuzzySearch(recipes, haystack, searchTerm),
-    [haystack, recipes, searchTerm],
+  const emptyState = (
+    <Card sx={{ m: 2 }}>
+      <CardHeader title="No results found" />
+      <CardContent>
+        <Typography variant="body2">
+          No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
+        </Typography>
+      </CardContent>
+    </Card>
   );
-
-  let content;
-  if (searchMatches.length > 0) {
-    content = <RecipeList recipes={searchMatches} isNameUniqueFn={nameIsUnique} />;
-  } else if (!searchTerm || searchTerm.trim().length === 0) {
-    const groups = groupByFirstLetter(recipes);
-
-    content = (
-      <List>
-        {groups.map(([letter, recipes]) => {
-          if (!recipes) return;
-
-          return (
-            <li key={letter}>
-              <RecipeList
-                recipes={recipes}
-                header={letter}
-                isNameUniqueFn={nameIsUnique}
-              />
-            </li>
-          );
-        })}
-      </List>
-    );
-  } else {
-    content = (
-      <Card sx={{ m: 2 }}>
-        <CardHeader title="No results found" />
-        <CardContent>
-          <Typography variant="body2">
-            No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
-          </Typography>
-        </CardContent>
-      </Card>
-    );
-  }
 
   return (
     <>
@@ -95,7 +61,15 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
         <SearchBar onChange={setSearchTerm} value={searchTerm ?? ''} />
       </AppBar>
       <Toolbar />
-      {content}
+      <SearchableList
+        items={recipes}
+        getSearchText={getRecipeSearchText}
+        renderItem={(items, header) => (
+          <RecipeList recipes={items} header={header} isNameUniqueFn={nameIsUnique} />
+        )}
+        searchTerm={searchTerm}
+        emptyState={emptyState}
+      />
     </>
   );
 }
