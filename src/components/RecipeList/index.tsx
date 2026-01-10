@@ -61,12 +61,10 @@ function RecipeLine({
 export default function RecipeList({
   recipes,
   header,
-  headerId,
   isNameUniqueFn,
 }: {
   recipes: Recipe[];
   header?: React.ReactNode;
-  headerId?: string;
   isNameUniqueFn?: (name: string) => boolean;
 }) {
   const nameIsUnique = useMemo(() => {
@@ -77,8 +75,10 @@ export default function RecipeList({
     return (name: string) => store[name.toLowerCase()]?.length === 1;
   }, [isNameUniqueFn, recipes]);
 
+  const headerId = header ? `group-header-${header}` : undefined;
+
   return (
-    <List>
+    <List role={header ? 'group' : undefined} aria-labelledby={headerId}>
       {header && <ListSubheader id={headerId}>{header}</ListSubheader>}
       <Paper square>
         {recipes.map((recipe) => (
