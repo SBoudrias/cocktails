@@ -2,8 +2,7 @@
 
 import { Recipe } from '@/types/Recipe';
 import { useMemo, useRef } from 'react';
-import uFuzzy from '@leeoniya/ufuzzy';
-import transliterate from '@sindresorhus/transliterate';
+import { fuzzySearch, transliterate } from '@/modules/fuzzySearch';
 import { formatIngredientName } from '@/modules/technique';
 import {
   AppBar,
@@ -136,26 +135,10 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
     [recipes],
   );
 
-  const searchMatches = useMemo(() => {
-    if (!searchTerm || searchTerm.trim().length === 0) return [];
-
-    const uf = new uFuzzy();
-    const [matchIndexes] = uf.search(
-      haystack,
-      transliterate(searchTerm).toLowerCase(),
-      0,
-      1e3,
-    );
-
-    if (Array.isArray(matchIndexes) && matchIndexes.length > 0) {
-      return matchIndexes
-        .map((index) => recipes[index])
-        .filter((recipe) => recipe != null);
-    }
-
-    // No matches found
-    return [];
-  }, [haystack, recipes, searchTerm]);
+  const searchMatches = useMemo(
+    () => fuzzySearch(recipes, haystack, searchTerm ?? ''),
+    [haystack, recipes, searchTerm],
+  );
 
   let content;
   if (searchMatches.length > 0) {
