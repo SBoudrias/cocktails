@@ -4,48 +4,54 @@ import SearchInput from './index';
 
 describe('SearchInput', () => {
   it('renders with placeholder text', () => {
-    const onChange = vi.fn();
-    render(<SearchInput value="" onChange={onChange} placeholder="Search recipes…" />);
+    const onChangeAction = vi.fn();
+    render(
+      <SearchInput
+        value=""
+        onChangeAction={onChangeAction}
+        placeholder="Search recipes…"
+      />,
+    );
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveAttribute('placeholder', 'Search recipes…');
   });
 
   it('renders with default placeholder when not specified', () => {
-    const onChange = vi.fn();
-    render(<SearchInput value="" onChange={onChange} />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="" onChangeAction={onChangeAction} />);
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveAttribute('placeholder', 'Search…');
   });
 
-  it('calls onChange when user types', async () => {
+  it('calls onChangeAction when user types', async () => {
     const user = userEvent.setup();
-    const onChange = vi.fn();
-    render(<SearchInput value="" onChange={onChange} />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="" onChangeAction={onChangeAction} />);
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'margarita');
 
-    expect(onChange).toHaveBeenCalledTimes(9);
-    expect(onChange).toHaveBeenLastCalledWith('a');
+    expect(onChangeAction).toHaveBeenCalledTimes('margarita'.length);
+    expect(onChangeAction).toHaveBeenLastCalledWith('a');
   });
 
-  it('clears value and calls onChange with null when clear button clicked', async () => {
+  it('clears value and calls onChangeAction with null when clear button clicked', async () => {
     const user = userEvent.setup();
-    const onChange = vi.fn();
-    render(<SearchInput value="daiquiri" onChange={onChange} />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="daiquiri" onChangeAction={onChangeAction} />);
 
     const clearButton = screen.getByRole('button', { name: /clear/i });
     await user.click(clearButton);
 
-    expect(onChange).toHaveBeenCalledWith(null);
+    expect(onChangeAction).toHaveBeenCalledWith(null);
   });
 
   it('focuses input after clearing', async () => {
     const user = userEvent.setup();
-    const onChange = vi.fn();
-    render(<SearchInput value="daiquiri" onChange={onChange} />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="daiquiri" onChangeAction={onChangeAction} />);
 
     const input = screen.getByRole('searchbox');
     const clearButton = screen.getByRole('button', { name: /clear/i });
@@ -55,16 +61,16 @@ describe('SearchInput', () => {
   });
 
   it('auto-focuses when autoFocus prop is true', () => {
-    const onChange = vi.fn();
-    render(<SearchInput value="" onChange={onChange} autoFocus />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="" onChangeAction={onChangeAction} autoFocus />);
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveFocus();
   });
 
   it('does not auto-focus when autoFocus prop is false', () => {
-    const onChange = vi.fn();
-    render(<SearchInput value="" onChange={onChange} autoFocus={false} />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="" onChangeAction={onChangeAction} autoFocus={false} />);
 
     const input = screen.getByRole('searchbox');
     expect(input).not.toHaveFocus();
@@ -72,8 +78,8 @@ describe('SearchInput', () => {
 
   it('blurs input when Enter key is pressed', async () => {
     const user = userEvent.setup();
-    const onChange = vi.fn();
-    render(<SearchInput value="test" onChange={onChange} autoFocus />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="test" onChangeAction={onChangeAction} autoFocus />);
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveFocus();
@@ -84,16 +90,16 @@ describe('SearchInput', () => {
   });
 
   it('displays the provided value', () => {
-    const onChange = vi.fn();
-    render(<SearchInput value="mojito" onChange={onChange} />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="mojito" onChangeAction={onChangeAction} />);
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('mojito');
   });
 
   it('has proper accessibility attributes', () => {
-    const onChange = vi.fn();
-    render(<SearchInput value="" onChange={onChange} />);
+    const onChangeAction = vi.fn();
+    render(<SearchInput value="" onChangeAction={onChangeAction} />);
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveAttribute('aria-label', 'search');
