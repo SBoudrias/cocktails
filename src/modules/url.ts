@@ -21,8 +21,8 @@ export function getSourceUrl(source: Source) {
   return `/source/${source.type}/${source.slug}`;
 }
 
-export function getSearchUrl() {
-  return `/search`;
+export function getRecipeListUrl() {
+  return '/list/recipes';
 }
 
 export function getBottleListUrl() {

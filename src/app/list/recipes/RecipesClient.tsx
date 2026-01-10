@@ -3,43 +3,16 @@
 import { Recipe } from '@/types/Recipe';
 import { useMemo } from 'react';
 import { getRecipeSearchText } from '@/modules/searchText';
-import {
-  AppBar,
-  Card,
-  CardContent,
-  CardHeader,
-  IconButton,
-  Toolbar,
-  Typography,
-} from '@mui/material';
-import ChevronLeft from '@mui/icons-material/ChevronLeft';
+import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import RecipeList from '@/components/RecipeList';
-import SearchInput from '@/components/SearchInput';
 import SearchableList from '@/components/SearchableList';
+import SearchHeader from '@/components/SearchHeader';
 
-function SearchBar({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (value: string | null) => void;
-}) {
-  return (
-    <Toolbar>
-      <IconButton size="large" edge="start" aria-label="Go back" href="/">
-        <ChevronLeft />
-      </IconButton>
-      <SearchInput value={value} onChangeAction={onChange} autoFocus />
-    </Toolbar>
-  );
-}
-
-export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
+export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const nameIsUnique = useMemo(() => {
-    // Normalize names to lower case to avoid case sensitivity
     const store = Object.groupBy(recipes, (recipe) => recipe.name.toLowerCase());
     return (name: string) => store[name.toLowerCase()]?.length === 1;
   }, [recipes]);
@@ -49,7 +22,7 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
       <CardHeader title="No results found" />
       <CardContent>
         <Typography variant="body2">
-          No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
+          No recipes matched the search term &quot;{searchTerm}&quot;
         </Typography>
       </CardContent>
     </Card>
@@ -57,10 +30,11 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
 
   return (
     <>
-      <AppBar>
-        <SearchBar onChange={setSearchTerm} value={searchTerm ?? ''} />
-      </AppBar>
-      <Toolbar />
+      <SearchHeader
+        title="All Recipes"
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+      />
       <SearchableList
         items={recipes}
         getSearchText={getRecipeSearchText}
