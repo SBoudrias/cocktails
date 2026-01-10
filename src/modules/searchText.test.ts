@@ -54,7 +54,7 @@ function createMockRecipeIngredient(
 describe('getRecipeSearchText', () => {
   it('includes recipe name', () => {
     const recipe = createMockRecipe({ name: 'Daiquiri' });
-    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(`"daiquiri  "`);
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(`"daiquiri"`);
   });
 
   it('includes ingredient names', () => {
@@ -65,7 +65,7 @@ describe('getRecipeSearchText', () => {
       ],
     });
     expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
-      `"test recipe white rum  lime juice  "`,
+      `"test recipe white rum  lime juice"`,
     );
   });
 
@@ -79,7 +79,7 @@ describe('getRecipeSearchText', () => {
       ],
     });
     expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
-      `"test recipe appleton estate 8 year aged rum "`,
+      `"test recipe appleton estate 8 year aged rum"`,
     );
   });
 
@@ -97,12 +97,6 @@ describe('getRecipeSearchText', () => {
 
   it('transliterates special characters', () => {
     const recipe = createMockRecipe({ name: 'Café Cubano' });
-    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(`"cafe cubano  "`);
-  });
-
-  it('returns lowercase text', () => {
-    const recipe = createMockRecipe({ name: 'MAI TAI' });
-    const result = getRecipeSearchText(recipe);
-    expect(result).toBe(result.toLowerCase());
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(`"cafe cubano"`);
   });
 });
