@@ -2,7 +2,7 @@ import { screen, within } from '@testing-library/react';
 import SearchPage from './SearchBar';
 import { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
-import { renderWithNuqs, setupWithNuqs } from '../../../tools/test-setup';
+import { renderWithNuqs, setupWithNuqs } from '@/testing';
 
 let recipeCounter = 0;
 

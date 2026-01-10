@@ -1,14 +1,7 @@
-import '@testing-library/jest-dom/vitest';
-import { cleanup, render, RenderOptions } from '@testing-library/react';
+import { render, RenderOptions } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
-import { afterEach } from 'vitest';
 import { ComponentProps, ReactNode } from 'react';
-
-// runs a cleanup after each test case (e.g. clearing jsdom)
-afterEach(() => {
-  cleanup();
-});
 
 type NuqsRenderOptions = RenderOptions & {
   nuqsOptions?: Omit<ComponentProps<typeof NuqsTestingAdapter>, 'children'>;
