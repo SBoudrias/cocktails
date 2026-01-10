@@ -5,21 +5,19 @@ import { List } from '@mui/material';
 import { fuzzySearch } from '@/modules/fuzzySearch';
 import groupByFirstLetter from '@/modules/groupByFirstLetter';
 
-type SearchableListProps<T extends { name: string }> = {
-  items: T[];
-  getSearchText: (item: T) => string;
-  renderItem: (items: T[], header?: string) => ReactNode;
-  searchTerm: string | null;
-  emptyState: ReactNode;
-};
-
 export default function SearchableList<T extends { name: string }>({
   items,
   getSearchText,
   renderItem,
   searchTerm,
   emptyState,
-}: SearchableListProps<T>) {
+}: {
+  items: T[];
+  getSearchText: (item: T) => string;
+  renderItem: (items: T[], header?: string) => ReactNode;
+  searchTerm: string | null;
+  emptyState: ReactNode;
+}) {
   const haystack = useMemo(() => items.map(getSearchText), [items, getSearchText]);
 
   const searchMatches = useMemo(
