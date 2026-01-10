@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import SearchPage from './SearchBar';
 import { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
