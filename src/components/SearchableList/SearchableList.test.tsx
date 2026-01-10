@@ -13,9 +13,13 @@ const testItems: TestItem[] = [
 
 const getSearchText = (item: TestItem) => item.name.toLowerCase();
 
-const renderItem = (items: TestItem[], header?: string) => (
+const renderItem = (items: TestItem[], header?: string, headerId?: string) => (
   <ul data-testid={header ? `group-${header}` : 'results'}>
-    {header && <li data-testid="header">{header}</li>}
+    {header && (
+      <li data-testid="header" id={headerId}>
+        {header}
+      </li>
+    )}
     {items.map((item) => (
       <li key={item.name} data-testid="item">
         {item.name}

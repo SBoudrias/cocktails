@@ -64,8 +64,13 @@ export default function SearchPage({ recipes }: { recipes: Recipe[] }) {
       <SearchableList
         items={recipes}
         getSearchText={getRecipeSearchText}
-        renderItem={(items, header) => (
-          <RecipeList recipes={items} header={header} isNameUniqueFn={nameIsUnique} />
+        renderItem={(items, header, headerId) => (
+          <RecipeList
+            recipes={items}
+            header={header}
+            headerId={headerId}
+            isNameUniqueFn={nameIsUnique}
+          />
         )}
         searchTerm={searchTerm}
         emptyState={emptyState}

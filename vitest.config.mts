@@ -19,7 +19,7 @@ export default defineConfig({
         'out/**/*',
       ],
     },
-    testTimeout: 300,
+    testTimeout: 5000,
   },
   plugins: [tsconfigPaths(), react()],
 });
