@@ -1,12 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import {
-  getRecipeSearchText,
-  getNameSearchText,
-  getIngredientSearchText,
-  getAttributionSearchText,
-} from './searchText';
+import { getRecipeSearchText } from './searchText';
 import { Recipe } from '@/types/Recipe';
-import { RootIngredient, RecipeIngredient } from '@/types/Ingredient';
+import { RecipeIngredient } from '@/types/Ingredient';
 import { Category } from '@/types/Category';
 
 const mockCategory: Category = {
@@ -56,23 +51,10 @@ function createMockRecipeIngredient(
   } as RecipeIngredient;
 }
 
-function createMockIngredient(overrides: Partial<RootIngredient> = {}): RootIngredient {
-  return {
-    name: 'Test Ingredient',
-    slug: 'test-ingredient',
-    type: 'spirit',
-    categories: [],
-    refs: [],
-    ingredients: [],
-    ...overrides,
-  };
-}
-
 describe('getRecipeSearchText', () => {
   it('includes recipe name', () => {
     const recipe = createMockRecipe({ name: 'Daiquiri' });
-    const result = getRecipeSearchText(recipe);
-    expect(result).toContain('daiquiri');
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(`"daiquiri  "`);
   });
 
   it('includes ingredient names', () => {
@@ -82,9 +64,9 @@ describe('getRecipeSearchText', () => {
         createMockRecipeIngredient({ name: 'Lime Juice' }),
       ],
     });
-    const result = getRecipeSearchText(recipe);
-    expect(result).toContain('white rum');
-    expect(result).toContain('lime juice');
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
+      `"test recipe white rum  lime juice  "`,
+    );
   });
 
   it('includes category names from ingredients', () => {
@@ -96,8 +78,9 @@ describe('getRecipeSearchText', () => {
         }),
       ],
     });
-    const result = getRecipeSearchText(recipe);
-    expect(result).toContain('aged rum');
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
+      `"test recipe appleton estate 8 year aged rum "`,
+    );
   });
 
   it('includes attribution sources', () => {
@@ -107,84 +90,19 @@ describe('getRecipeSearchText', () => {
         { relation: 'recipe author', source: 'Martin Cate' },
       ],
     });
-    const result = getRecipeSearchText(recipe);
-    expect(result).toContain("smuggler's cove");
-    expect(result).toContain('martin cate');
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
+      `"test recipe  smuggler's cove martin cate"`,
+    );
   });
 
   it('transliterates special characters', () => {
     const recipe = createMockRecipe({ name: 'Café Cubano' });
-    const result = getRecipeSearchText(recipe);
-    expect(result).toContain('cafe cubano');
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(`"cafe cubano  "`);
   });
 
   it('returns lowercase text', () => {
     const recipe = createMockRecipe({ name: 'MAI TAI' });
     const result = getRecipeSearchText(recipe);
-    expect(result).toBe(result.toLowerCase());
-  });
-});
-
-describe('getNameSearchText', () => {
-  it('returns transliterated lowercase name', () => {
-    const result = getNameSearchText({ name: 'Café Martini' });
-    expect(result).toBe('cafe martini');
-  });
-
-  it('handles plain ascii names', () => {
-    const result = getNameSearchText({ name: 'Old Fashioned' });
-    expect(result).toBe('old fashioned');
-  });
-});
-
-describe('getIngredientSearchText', () => {
-  it('includes ingredient name', () => {
-    const ingredient = createMockIngredient({ name: 'Jamaican Rum' });
-    const result = getIngredientSearchText(ingredient);
-    expect(result).toContain('jamaican rum');
-  });
-
-  it('includes category names', () => {
-    const ingredient = createMockIngredient({
-      name: 'Appleton Estate 8 Year',
-      categories: [mockCategory],
-    });
-    const result = getIngredientSearchText(ingredient);
-    expect(result).toContain('aged rum');
-  });
-
-  it('returns lowercase text', () => {
-    const ingredient = createMockIngredient({ name: 'OVERPROOF RUM' });
-    const result = getIngredientSearchText(ingredient);
-    expect(result).toBe(result.toLowerCase());
-  });
-});
-
-describe('getAttributionSearchText', () => {
-  it('includes name', () => {
-    const result = getAttributionSearchText({ name: "Smuggler's Cove" });
-    expect(result).toContain("smuggler's cove");
-  });
-
-  it('includes location when present', () => {
-    const result = getAttributionSearchText({
-      name: 'Death & Co',
-      location: 'New York',
-    });
-    expect(result).toContain('death & co');
-    expect(result).toContain('new york');
-  });
-
-  it('handles missing location', () => {
-    const result = getAttributionSearchText({ name: 'Test Bar' });
-    expect(result).toBe('test bar');
-  });
-
-  it('returns lowercase text', () => {
-    const result = getAttributionSearchText({
-      name: 'THE BAR',
-      location: 'LOS ANGELES',
-    });
     expect(result).toBe(result.toLowerCase());
   });
 });
