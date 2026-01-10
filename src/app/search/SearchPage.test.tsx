@@ -1,8 +1,7 @@
-import { render, screen, within } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
+import { screen, within } from '@testing-library/react';
 import SearchPage from './SearchBar';
 import { Recipe } from '@/types/Recipe';
+import { renderWithNuqs, setupWithNuqs } from '../../../tools/test-setup';
 
 let recipeCounter = 0;
 
@@ -39,11 +38,7 @@ describe('SearchPage', () => {
   });
 
   it('renders search input and recipe list', () => {
-    render(
-      <NuqsTestingAdapter>
-        <SearchPage recipes={testRecipes} />
-      </NuqsTestingAdapter>,
-    );
+    renderWithNuqs(<SearchPage recipes={testRecipes} />);
 
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
     expect(screen.getByText('Mojito')).toBeInTheDocument();
@@ -51,12 +46,7 @@ describe('SearchPage', () => {
   });
 
   it('typing in search filters the recipe list', async () => {
-    const user = userEvent.setup();
-    render(
-      <NuqsTestingAdapter>
-        <SearchPage recipes={testRecipes} />
-      </NuqsTestingAdapter>,
-    );
+    const { user } = setupWithNuqs(<SearchPage recipes={testRecipes} />);
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'moj');
@@ -67,12 +57,9 @@ describe('SearchPage', () => {
   });
 
   it('clearing search shows all recipes grouped by letter', async () => {
-    const user = userEvent.setup();
-    render(
-      <NuqsTestingAdapter searchParams="?search=moj">
-        <SearchPage recipes={testRecipes} />
-      </NuqsTestingAdapter>,
-    );
+    const { user } = setupWithNuqs(<SearchPage recipes={testRecipes} />, {
+      nuqsOptions: { searchParams: '?search=moj' },
+    });
 
     // Initially filtered
     expect(screen.getByText('Mojito')).toBeInTheDocument();
@@ -89,14 +76,10 @@ describe('SearchPage', () => {
   });
 
   it('URL updates with search param when typing', async () => {
-    const user = userEvent.setup();
     const onUrlUpdate = vi.fn();
-
-    render(
-      <NuqsTestingAdapter onUrlUpdate={onUrlUpdate}>
-        <SearchPage recipes={testRecipes} />
-      </NuqsTestingAdapter>,
-    );
+    const { user } = setupWithNuqs(<SearchPage recipes={testRecipes} />, {
+      nuqsOptions: { onUrlUpdate },
+    });
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'dai');
@@ -108,12 +91,7 @@ describe('SearchPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const user = userEvent.setup();
-    render(
-      <NuqsTestingAdapter>
-        <SearchPage recipes={testRecipes} />
-      </NuqsTestingAdapter>,
-    );
+    const { user } = setupWithNuqs(<SearchPage recipes={testRecipes} />);
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -123,22 +101,16 @@ describe('SearchPage', () => {
   });
 
   it('recipe items link to correct recipe detail pages', () => {
-    render(
-      <NuqsTestingAdapter>
-        <SearchPage recipes={testRecipes} />
-      </NuqsTestingAdapter>,
-    );
+    renderWithNuqs(<SearchPage recipes={testRecipes} />);
 
     const mojitoLink = screen.getByRole('link', { name: /mojito/i });
     expect(mojitoLink).toHaveAttribute('href', '/recipes/book/test-source/recipe-1');
   });
 
   it('loads with search term from URL', () => {
-    render(
-      <NuqsTestingAdapter searchParams="?search=margarita">
-        <SearchPage recipes={testRecipes} />
-      </NuqsTestingAdapter>,
-    );
+    renderWithNuqs(<SearchPage recipes={testRecipes} />, {
+      nuqsOptions: { searchParams: '?search=margarita' },
+    });
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('margarita');
@@ -147,11 +119,7 @@ describe('SearchPage', () => {
   });
 
   it('groups recipes by first letter when not searching', () => {
-    render(
-      <NuqsTestingAdapter>
-        <SearchPage recipes={testRecipes} />
-      </NuqsTestingAdapter>,
-    );
+    renderWithNuqs(<SearchPage recipes={testRecipes} />);
 
     // Should have letter headers for D, L (from "The Last Word"), M
     const lists = screen.getAllByRole('list');
