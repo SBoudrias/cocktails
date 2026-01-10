@@ -3,7 +3,6 @@
 import { Recipe } from '@/types/Recipe';
 import { useMemo } from 'react';
 import { fuzzySearch } from '@/modules/fuzzySearch';
-import transliterate from '@sindresorhus/transliterate';
 import { getRecipeSearchText } from '@/modules/searchText';
 import {
   AppBar,

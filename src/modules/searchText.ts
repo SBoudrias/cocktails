@@ -8,7 +8,7 @@ import { type RecipeIngredient } from '@/types/Ingredient';
  * Returns transliterated lowercase text suitable for fuzzy search matching.
  */
 function normalize(text: string): string {
-  return transliterate(text).toLowerCase();
+  return transliterate(text).toLowerCase().trim();
 }
 
 /**
