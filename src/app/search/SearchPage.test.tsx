@@ -1,6 +1,7 @@
 import { screen, within } from '@testing-library/react';
 import SearchPage from './SearchBar';
 import { Recipe } from '@/types/Recipe';
+import { getRecipeUrl } from '@/modules/url';
 import { renderWithNuqs, setupWithNuqs } from '../../../tools/test-setup';
 
 let recipeCounter = 0;
@@ -101,10 +102,11 @@ describe('SearchPage', () => {
   });
 
   it('recipe items link to correct recipe detail pages', () => {
-    renderWithNuqs(<SearchPage recipes={testRecipes} />);
+    const mojito = mockRecipe('Test Recipe');
+    renderWithNuqs(<SearchPage recipes={[mojito]} />);
 
-    const mojitoLink = screen.getByRole('link', { name: /mojito/i });
-    expect(mojitoLink).toHaveAttribute('href', '/recipes/book/test-source/recipe-1');
+    const link = screen.getByRole('link', { name: /test recipe/i });
+    expect(link).toHaveAttribute('href', getRecipeUrl(mojito));
   });
 
   it('loads with search term from URL', () => {
@@ -114,19 +116,25 @@ describe('SearchPage', () => {
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('margarita');
-    expect(screen.getByText('Margarita')).toBeInTheDocument();
-    expect(screen.queryByText('Mojito')).not.toBeInTheDocument();
+
+    // Select the result list and check its text content
+    const resultList = screen.getByRole('list');
+    expect(resultList).toHaveTextContent('Margarita');
+    expect(resultList).not.toHaveTextContent('Mojito');
   });
 
   it('groups recipes by first letter when not searching', () => {
     renderWithNuqs(<SearchPage recipes={testRecipes} />);
 
-    // Should have letter headers for D, L (from "The Last Word"), M
-    const lists = screen.getAllByRole('list');
-    const dGroup = lists.find((list) => within(list).queryByText('D'));
-    const mGroup = lists.find((list) => within(list).queryByText('M'));
+    // Groups are identified by aria-labelledby pointing to their header
+    const dGroup = screen.getByRole('group', { name: 'D' });
+    const lGroup = screen.getByRole('group', { name: 'L' });
+    const mGroup = screen.getByRole('group', { name: 'M' });
 
-    expect(dGroup).toBeDefined();
-    expect(mGroup).toBeDefined();
+    expect(dGroup).toHaveTextContent('Daiquiri');
+    expect(lGroup).toHaveTextContent('The Last Word');
+    expect(mGroup).toHaveTextContent('Mojito');
+    expect(mGroup).toHaveTextContent('Margarita');
+    expect(mGroup).toHaveTextContent('Mai Tai');
   });
 });

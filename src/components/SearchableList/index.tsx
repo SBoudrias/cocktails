@@ -14,7 +14,7 @@ export default function SearchableList<T extends { name: string }>({
 }: {
   items: T[];
   getSearchText: (item: T) => string;
-  renderItem: (items: T[], header?: string) => ReactNode;
+  renderItem: (items: T[], header?: string, headerId?: string) => ReactNode;
   searchTerm: string | null;
   emptyState: ReactNode;
 }) {
@@ -36,8 +36,13 @@ export default function SearchableList<T extends { name: string }>({
       <List>
         {groups.map(([letter, groupItems]) => {
           if (!groupItems) return null;
+          const labelId = `group-header-${letter}`;
 
-          return <li key={letter}>{renderItem(groupItems, letter)}</li>;
+          return (
+            <li key={letter} role="group" aria-labelledby={labelId}>
+              {renderItem(groupItems, letter, labelId)}
+            </li>
+          );
         })}
       </List>
     );
