@@ -42,8 +42,12 @@ describe('SearchPage', () => {
     renderWithNuqs(<SearchPage recipes={testRecipes} />);
 
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
-    expect(screen.getByText('Mojito')).toBeInTheDocument();
-    expect(screen.getByText('Daiquiri')).toBeInTheDocument();
+
+    const mGroup = screen.getByRole('group', { name: 'M' });
+    expect(mGroup).toHaveTextContent('Mojito');
+
+    const dGroup = screen.getByRole('group', { name: 'D' });
+    expect(dGroup).toHaveTextContent('Daiquiri');
   });
 
   it('typing in search filters the recipe list', async () => {
@@ -52,9 +56,10 @@ describe('SearchPage', () => {
     const input = screen.getByRole('searchbox');
     await user.type(input, 'moj');
 
-    expect(screen.getByText('Mojito')).toBeInTheDocument();
-    expect(screen.queryByText('Daiquiri')).not.toBeInTheDocument();
-    expect(screen.queryByText('Margarita')).not.toBeInTheDocument();
+    const resultList = screen.getByRole('list');
+    expect(resultList).toHaveTextContent('Mojito');
+    expect(resultList).not.toHaveTextContent('Daiquiri');
+    expect(resultList).not.toHaveTextContent('Margarita');
   });
 
   it('clearing search shows all recipes grouped by letter', async () => {
@@ -63,17 +68,21 @@ describe('SearchPage', () => {
     });
 
     // Initially filtered
-    expect(screen.getByText('Mojito')).toBeInTheDocument();
-    expect(screen.queryByText('Daiquiri')).not.toBeInTheDocument();
+    const resultList = screen.getByRole('list');
+    expect(resultList).toHaveTextContent('Mojito');
+    expect(resultList).not.toHaveTextContent('Daiquiri');
 
     // Clear the search
     const clearButton = screen.getByRole('button', { name: /clear/i });
     await user.click(clearButton);
 
     // All recipes should be visible, grouped by letter
-    expect(screen.getByText('Mojito')).toBeInTheDocument();
-    expect(screen.getByText('Daiquiri')).toBeInTheDocument();
-    expect(screen.getByText('Mai Tai')).toBeInTheDocument();
+    const mGroup = screen.getByRole('group', { name: 'M' });
+    expect(mGroup).toHaveTextContent('Mojito');
+    expect(mGroup).toHaveTextContent('Mai Tai');
+
+    const dGroup = screen.getByRole('group', { name: 'D' });
+    expect(dGroup).toHaveTextContent('Daiquiri');
   });
 
   it('URL updates with search param when typing', async () => {
@@ -86,9 +95,9 @@ describe('SearchPage', () => {
     await user.type(input, 'dai');
 
     // Check that URL was updated with search param
-    expect(onUrlUpdate).toHaveBeenCalled();
-    const lastCall = onUrlUpdate.mock.calls.at(-1)?.[0];
-    expect(lastCall?.queryString).toContain('search=dai');
+    expect(onUrlUpdate).toHaveBeenLastCalledWith(
+      expect.objectContaining({ queryString: '?search=dai' }),
+    );
   });
 
   it('shows no results when search has no matches', async () => {
