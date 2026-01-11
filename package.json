@@ -53,6 +53,7 @@
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
     "nano-staged": "^0.8.0",
+    "next-router-mock": "^1.0.5",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "vite-tsconfig-paths": "^5.1.4",

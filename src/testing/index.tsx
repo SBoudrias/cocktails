@@ -2,33 +2,29 @@ import { render, RenderOptions } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
 import { ComponentProps, ReactNode } from 'react';
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 
 type NuqsRenderOptions = RenderOptions & {
   nuqsOptions?: Omit<ComponentProps<typeof NuqsTestingAdapter>, 'children'>;
+  routerOptions?: Omit<ComponentProps<typeof MemoryRouterProvider>, 'children'>;
 };
 
 /**
- * Render with NuqsTestingAdapter wrapper for URL state testing.
- * Pass nuqsOptions.searchParams or nuqsOptions.onUrlUpdate for URL state control.
- */
-export function renderWithNuqs(
-  ui: ReactNode,
-  { nuqsOptions, ...renderOptions }: NuqsRenderOptions = {},
-) {
-  return render(
-    <NuqsTestingAdapter {...nuqsOptions}>{ui}</NuqsTestingAdapter>,
-    renderOptions,
-  );
-}
-
-/**
- * Combined setup with userEvent and NuqsTestingAdapter.
+ * Combined setup with userEvent mocks for Next.js.
  * Returns user instance + all render utilities.
  * Follows testing-library recommended pattern: https://testing-library.com/docs/user-event/intro/
  */
-export function setupWithNuqs(ui: ReactNode, options: NuqsRenderOptions = {}) {
+export function setupApp(
+  ui: ReactNode,
+  { nuqsOptions, routerOptions, ...renderOptions }: NuqsRenderOptions = {},
+) {
   return {
     user: userEvent.setup(),
-    ...renderWithNuqs(ui, options),
+    ...render(
+      <MemoryRouterProvider {...routerOptions}>
+        <NuqsTestingAdapter {...nuqsOptions}>{ui}</NuqsTestingAdapter>
+      </MemoryRouterProvider>,
+      renderOptions,
+    ),
   };
 }
