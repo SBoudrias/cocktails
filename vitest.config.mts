@@ -8,6 +8,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./tools/test-setup.ts'],
     clearMocks: true,
+    exclude: ['node_modules', '.worktrees'],
     coverage: {
       provider: 'v8',
       all: true,
