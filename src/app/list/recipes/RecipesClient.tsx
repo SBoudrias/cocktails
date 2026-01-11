@@ -14,7 +14,6 @@ import {
 } from '@mui/material';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import { useQueryState } from 'nuqs';
-import { useRouter } from 'next/navigation';
 import RecipeList from '@/components/RecipeList';
 import SearchInput from '@/components/SearchInput';
 import SearchableList from '@/components/SearchableList';
@@ -22,15 +21,18 @@ import SearchableList from '@/components/SearchableList';
 function RecipesSearchBar({
   value,
   onChange,
-  onBack,
 }: {
   value: string;
   onChange: (value: string | null) => void;
-  onBack: () => void;
 }) {
   return (
     <Toolbar>
-      <IconButton size="large" edge="start" aria-label="Go back" onClick={onBack}>
+      <IconButton
+        size="large"
+        edge="start"
+        aria-label="Go back"
+        onClick={() => window.history.back()}
+      >
         <ChevronLeft />
       </IconButton>
       <SearchInput value={value} onChangeAction={onChange} autoFocus />
@@ -39,7 +41,6 @@ function RecipesSearchBar({
 }
 
 export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
-  const router = useRouter();
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const nameIsUnique = useMemo(() => {
@@ -62,11 +63,7 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
   return (
     <>
       <AppBar>
-        <RecipesSearchBar
-          onChange={setSearchTerm}
-          value={searchTerm ?? ''}
-          onBack={() => router.back()}
-        />
+        <RecipesSearchBar onChange={setSearchTerm} value={searchTerm ?? ''} />
       </AppBar>
       <Toolbar />
       <SearchableList
