@@ -15,6 +15,9 @@ vi.mock('next/navigation', () => ({
   usePathname: () => '/list/ingredients',
 }));
 
+// Note: Global mock for next/navigation is in test-setup.ts, but we override here
+// because the mockBack function needs to be accessible for the back button test
+
 vi.mock('@/modules/ingredients', () => ({
   getAllIngredients: vi.fn(),
 }));
@@ -79,18 +82,12 @@ describe('IngredientsPage', () => {
     expect(gGroup).toHaveTextContent('Gin');
   });
 
-  it('clicking search icon activates search mode', async () => {
-    const { user } = setupApp(await IngredientsPage());
+  it('shows search input and title together', async () => {
+    setupApp(await IngredientsPage());
 
-    // Initially shows title
+    // Both title and search input are always visible
     expect(screen.getByText('All Ingredients')).toBeInTheDocument();
-
-    // Click search icon
-    await user.click(screen.getByRole('button', { name: /search/i }));
-
-    // Now shows search input
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
-    expect(screen.queryByText('All Ingredients')).not.toBeInTheDocument();
   });
 
   it('typing filters ingredient list', async () => {
@@ -117,9 +114,9 @@ describe('IngredientsPage', () => {
     expect(resultList).toHaveTextContent('Honey Syrup');
     expect(resultList).not.toHaveTextContent('Simple Syrup');
 
-    // Close the search (which sets searchTerm to null)
-    const closeButton = screen.getByRole('button', { name: /close search/i });
-    await user.click(closeButton);
+    // Clear the search input
+    const input = screen.getByRole('searchbox');
+    await user.clear(input);
 
     // All ingredients should be visible, grouped by letter
     const sGroup = screen.getByRole('group', { name: 'S' });
