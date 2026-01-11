@@ -1,24 +1,11 @@
-import { vi, beforeEach, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect } from 'vitest';
 import { screen, within } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import IngredientsPage from './page';
 import { getIngredientUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import { getAllIngredients } from '@/modules/ingredients';
 import { getAllCategories } from '@/modules/categories';
-
-// Mock next/navigation
-const mockBack = vi.fn();
-vi.mock('next/navigation', () => ({
-  useRouter: () => ({ back: mockBack }),
-  usePathname: () => '/list/ingredients',
-}));
-
-// Note: Global mock for next/navigation is in test-setup.ts, but we override here
-// because the mockBack function needs to be accessible for the back button test
-
-beforeEach(() => {
-  mockBack.mockClear();
-});
 
 describe('IngredientsPage', () => {
   it('renders title and ingredient list when not searching', async () => {
@@ -151,12 +138,20 @@ describe('IngredientsPage', () => {
   });
 
   it('back button navigates correctly', async () => {
+    // Build navigation history with two pushes (as suggested in PR review)
+    await mockRouter.push('/');
+    await mockRouter.push('/list/ingredients');
+
+    // Spy on back to verify it's called (next-router-mock doesn't maintain actual history)
+    const backSpy = vi.spyOn(mockRouter, 'back');
+
     const { user } = setupApp(await IngredientsPage());
 
     const backButton = screen.getByRole('button', { name: /go back/i });
     await user.click(backButton);
 
-    expect(mockBack).toHaveBeenCalled();
+    expect(backSpy).toHaveBeenCalled();
+    backSpy.mockRestore();
   });
 
   it('filters out liqueur and spirit type ingredients', async () => {
