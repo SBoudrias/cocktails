@@ -1,14 +1,19 @@
-import { redirect } from 'next/navigation';
+'use client';
 
-export default function SearchPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ search?: string }>;
-}) {
-  return searchParams.then((params) => {
-    const url = params.search
-      ? `/list/recipes?search=${encodeURIComponent(params.search)}`
+import { useSearchParams, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+
+export default function SearchPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const search = searchParams.get('search');
+    const url = search
+      ? `/list/recipes?search=${encodeURIComponent(search)}`
       : '/list/recipes';
-    redirect(url);
-  });
+    router.replace(url);
+  }, [router, searchParams]);
+
+  return null;
 }

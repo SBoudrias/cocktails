@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import RecipesClient from './RecipesClient';
+import { RecipesClient } from './page';
 import { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
 import { renderWithNuqs, setupWithNuqs } from '@/testing';
@@ -113,7 +113,7 @@ describe('RecipesClient', () => {
     await user.type(input, 'xyznonexistent');
 
     expect(screen.getByText('No results found')).toBeInTheDocument();
-    expect(screen.getByText(/No recipes matched/)).toBeInTheDocument();
+    expect(screen.getByText(/No recipes or ingredients matched/)).toBeInTheDocument();
   });
 
   it('recipe items link to correct recipe detail pages', () => {

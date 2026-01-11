@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import RecipesClient from './RecipesClient';
+
+export { RecipesClient };
 import { Suspense } from 'react';
 import { getAllRecipes } from '@/modules/recipes';
 

@@ -53,7 +53,7 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
       <CardHeader title="No results found" />
       <CardContent>
         <Typography variant="body2">
-          No recipes matched the search term &quot;{searchTerm}&quot;
+          No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
         </Typography>
       </CardContent>
     </Card>
