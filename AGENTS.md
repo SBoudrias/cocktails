@@ -24,10 +24,36 @@ Start by reading @README.md
 - Handle null/undefined inside functions rather than requiring callers to handle it.
 - Trim string outputs when building search text or similar concatenated strings.
 - Keep accessibility attributes (role, aria-\*) inside the component that renders the element, not in wrapper components.
+- Keep generic behavior (like back navigation) inside components rather than passing callbacks down.
+- Use Next.js Link href objects instead of manually building URL strings:
+
+  ```tsx
+  // DON'T: manual URL string building
+  const params = new URLSearchParams({ search: term });
+  <Link href={`/search?${params.toString()}`}>
+
+  // DO: Next.js href object
+  <Link href={{ pathname: '/search', query: { search: term } }}>
+  ```
 
 # Testing
 
 This project uses vitest and React testing library for testing. Test utilities are in `@/testing`.
+
+## Test page components, not internals
+
+Import and test the page component (`page.tsx`) rather than internal client components. This keeps tests agnostic of implementation details.
+
+```ts
+// DON'T: test internal components
+import RecipesClient from './RecipesClient';
+renderWithNuqs(<RecipesClient recipes={mockRecipes} />);
+
+// DO: test the page component
+import RecipesPage from './page';
+vi.mock('@/modules/recipes', () => ({ getAllRecipes: vi.fn() }));
+renderWithNuqs(await RecipesPage());
+```
 
 ## Semantic selectors over data-testid
 
@@ -49,6 +75,18 @@ expect(resultList).not.toHaveTextContent('Daiquiri');
 // DO: use aria-labelledby for grouped content
 const mGroup = screen.getByRole('group', { name: 'M' });
 expect(mGroup).toHaveTextContent('Mojito');
+```
+
+## Be specific with role queries
+
+Always add the `name` option to role queries when possible:
+
+```ts
+// DON'T: broad query that could match wrong element
+const link = screen.getByRole('link');
+
+// DO: specific query with name
+const link = screen.getByRole('link', { name: /search all recipes/i });
 ```
 
 ## Use specific mock assertions
