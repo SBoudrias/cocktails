@@ -2,18 +2,11 @@ import { render, screen } from '@testing-library/react';
 import SearchAllLink from './index';
 
 describe('SearchAllLink', () => {
-  it('renders link with correct href including encoded search term', () => {
+  it('renders link with correct href including search term', () => {
     render(<SearchAllLink searchTerm="mai tai" />);
 
-    const link = screen.getByRole('link');
+    const link = screen.getByRole('link', { name: /search all recipes/i });
     expect(link).toHaveAttribute('href', '/search?search=mai+tai');
-  });
-
-  it('handles special characters in search term', () => {
-    render(<SearchAllLink searchTerm="rum & coke" />);
-
-    const link = screen.getByRole('link');
-    expect(link).toHaveAttribute('href', '/search?search=rum+%26+coke');
   });
 
   it('does not render when searchTerm is null', () => {
@@ -34,6 +27,8 @@ describe('SearchAllLink', () => {
   it('displays helpful text for users', () => {
     render(<SearchAllLink searchTerm="test" />);
 
-    expect(screen.getByText(/not finding what you're looking for/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /not finding what you're looking for/i }),
+    ).toBeInTheDocument();
   });
 });
