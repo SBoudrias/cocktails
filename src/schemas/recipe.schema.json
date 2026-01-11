@@ -54,6 +54,7 @@
                   "other"
                 ]
               },
+              "brix": { "type": "number" },
               "technique": {
                 "oneOf": [
                   { "$ref": "./technique.schema.json" },
