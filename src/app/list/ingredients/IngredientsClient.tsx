@@ -5,12 +5,13 @@ import { BaseIngredient } from '@/types/Ingredient';
 import { Category } from '@/types/Category';
 import { getIngredientOrCategorySearchText } from '@/modules/searchText';
 import { getIngredientUrl } from '@/modules/url';
-import { Card, CardContent, CardHeader, Typography } from '@mui/material';
+import { Card, CardHeader } from '@mui/material';
 import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import { ChevronRight } from '@mui/icons-material';
 import { useQueryState } from 'nuqs';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
+import SearchAllLink from '@/components/SearchAllLink';
 
 export default function IngredientsClient({
   ingredients,
@@ -20,14 +21,12 @@ export default function IngredientsClient({
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
-      <CardContent>
-        <Typography variant="body2">
-          No ingredients matched the search term &quot;{searchTerm}&quot;
-        </Typography>
-      </CardContent>
-    </Card>
+    <>
+      <Card sx={{ m: 2 }}>
+        <CardHeader title="No results found" />
+      </Card>
+      <SearchAllLink searchTerm={searchTerm} />
+    </>
   );
 
   const renderItem = (items: (BaseIngredient | Category)[], header?: string) => {

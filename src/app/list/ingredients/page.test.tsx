@@ -92,7 +92,8 @@ describe('IngredientsPage', () => {
     await user.type(input, 'xyznonexistent');
 
     expect(screen.getByText('No results found')).toBeInTheDocument();
-    expect(screen.getByText(/No ingredients matched/)).toBeInTheDocument();
+    // SearchAllLink component is shown in empty state
+    expect(screen.getByRole('link', { name: /search all recipes/i })).toBeInTheDocument();
   });
 
   it('ingredient items link to correct ingredient detail pages', async () => {
