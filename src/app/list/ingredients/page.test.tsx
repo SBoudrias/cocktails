@@ -104,6 +104,7 @@ describe('IngredientsPage', () => {
       (i) => i.type !== 'liqueur' && i.type !== 'spirit',
     );
     const testIngredient = filteredIngredients[0];
+    if (!testIngredient) throw new Error('Expected at least one filtered ingredient');
 
     const link = screen.getByRole('link', { name: new RegExp(testIngredient.name, 'i') });
     expect(link).toHaveAttribute('href', getIngredientUrl(testIngredient));
@@ -115,6 +116,7 @@ describe('IngredientsPage', () => {
     // Find a real category and verify its link
     const allCategories = await getAllCategories();
     const testCategory = allCategories[0];
+    if (!testCategory) throw new Error('Expected at least one category');
 
     const link = screen.getByRole('link', { name: new RegExp(testCategory.name, 'i') });
     expect(link).toHaveAttribute('href', getIngredientUrl(testCategory));
@@ -142,6 +144,7 @@ describe('IngredientsPage', () => {
 
     // Each group should have items (subheader + ingredient links)
     const firstGroup = groups[0];
+    if (!firstGroup) throw new Error('Expected at least one group');
     const items = within(firstGroup).getAllByRole('listitem');
     expect(items.length).toBeGreaterThan(0);
   });
@@ -188,6 +191,8 @@ describe('IngredientsPage', () => {
     // Verify at least one ingredient and one category are shown
     const sampleIngredient = filteredIngredients[0];
     const sampleCategory = allCategories[0];
+    if (!sampleIngredient) throw new Error('Expected at least one filtered ingredient');
+    if (!sampleCategory) throw new Error('Expected at least one category');
 
     expect(list).toHaveTextContent(sampleIngredient.name);
     expect(list).toHaveTextContent(sampleCategory.name);
