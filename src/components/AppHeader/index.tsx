@@ -1,6 +1,6 @@
 'use client';
 
-import { getSearchUrl } from '@/modules/url';
+import { getRecipeListUrl } from '@/modules/url';
 import { ChevronLeft, Search } from '@mui/icons-material';
 import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { useRouter, usePathname } from 'next/navigation';
@@ -37,7 +37,12 @@ export default function AppHeader({ title }: { title: string }) {
           >
             {title}
           </Typography>
-          <IconButton size="large" edge="end" aria-label="Search" href={getSearchUrl()}>
+          <IconButton
+            size="large"
+            edge="end"
+            aria-label="Search"
+            href={getRecipeListUrl()}
+          >
             <Search />
           </IconButton>
         </Toolbar>
