@@ -7,12 +7,10 @@ export default function SearchAllLink({ searchTerm }: { searchTerm: string | nul
     return null;
   }
 
-  const searchParams = new URLSearchParams({ search: searchTerm });
-
   return (
     <Card sx={{ m: 2 }}>
       <CardContent>
-        <Link href={`/search?${searchParams.toString()}`}>
+        <Link href={{ pathname: '/search', query: { search: searchTerm } }}>
           <Typography
             variant="body2"
             sx={{
