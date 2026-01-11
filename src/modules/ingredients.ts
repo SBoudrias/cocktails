@@ -3,14 +3,14 @@ import fs from 'node:fs/promises';
 import slugify from '@sindresorhus/slugify';
 import memo from 'lodash/memoize';
 import uniqBy from 'lodash/uniqBy';
-import { RootIngredient } from '@/types/Ingredient';
+import type { RootIngredient } from '@/types/Ingredient';
 import { INGREDIENT_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import { getCategoriesPerParent, getCategory } from './categories';
-import { Ref } from '@/types/Ref';
-import { Category } from '@/types/Category';
+import type { Ref } from '@/types/Ref';
+import type { Category } from '@/types/Category';
 import { match } from 'ts-pattern';
-import { Recipe } from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 import { getAllRecipes } from './recipes';
 
 function toAlphaSort<I extends { name: string }>(arr: I[]) {

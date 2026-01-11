@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, SxProps } from '@mui/material';
+import type { SxProps } from '@mui/material';
+import { Card, CardContent, CardHeader } from '@mui/material';
 import Video from '@/components/Video';
-import { YoutubeRef } from '@/types/Ref';
+import type { YoutubeRef } from '@/types/Ref';
 
 export default function VideoListCard({
   refs,

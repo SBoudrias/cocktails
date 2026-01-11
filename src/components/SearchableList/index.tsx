@@ -1,6 +1,7 @@
 'use client';
 
-import { useMemo, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { useMemo } from 'react';
 import { List } from '@mui/material';
 import { fuzzySearch } from '@/modules/fuzzySearch';
 import groupByFirstLetter from '@/modules/groupByFirstLetter';

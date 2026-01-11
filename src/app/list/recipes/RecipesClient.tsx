@@ -1,6 +1,6 @@
 'use client';
 
-import { Recipe } from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 import { useMemo } from 'react';
 import { getRecipeSearchText } from '@/modules/searchText';
 import {

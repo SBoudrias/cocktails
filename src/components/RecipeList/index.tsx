@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { getRecipeUrl } from '@/modules/url';
-import { Recipe } from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 import { match } from 'ts-pattern';
 
 const ATTRIBUTION_PRIORITY = ['adapted by', 'recipe author', 'book', 'bar'];

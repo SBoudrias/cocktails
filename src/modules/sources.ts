@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { Book, Source, YoutubeChannel, Podcast } from '@/types/Source';
+import type { Book, Source, YoutubeChannel, Podcast } from '@/types/Source';
 import path from 'node:path';
 import memo from 'lodash/memoize';
 import { readJSONFile } from './fs';

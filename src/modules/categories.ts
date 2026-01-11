@@ -1,11 +1,11 @@
 import path from 'node:path';
 import memo from 'lodash/memoize';
 import fs from 'node:fs/promises';
-import { Category } from '@/types/Category';
+import type { Category } from '@/types/Category';
 import { CATEGORY_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import slugify from '@sindresorhus/slugify';
-import { Ref } from '@/types/Ref';
+import type { Ref } from '@/types/Ref';
 
 export const getCategory = memo(async (category: string): Promise<Category> => {
   const filepath = path.join(CATEGORY_ROOT, `${category}.json`);

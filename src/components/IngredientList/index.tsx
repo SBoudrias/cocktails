@@ -4,7 +4,7 @@ import { useState } from 'react';
 import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
 import Quantity from '@/components/Quantity';
-import { Recipe } from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 import UnitSelector, { type Unit } from '@/components/Quantity/Selector';
 import ServingSelector from '@/components/ServingSelector';
 import useLocalStorage from '@/hooks/useLocalStorage';

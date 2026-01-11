@@ -1,6 +1,6 @@
-import { Source } from './Source';
-import { Ref } from './Ref';
-import { RecipeIngredient } from './Ingredient';
+import type { Source } from './Source';
+import type { Ref } from './Ref';
+import type { RecipeIngredient } from './Ingredient';
 
 type BarAttribution = {
   relation: 'bar';

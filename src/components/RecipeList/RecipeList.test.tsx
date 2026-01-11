@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import RecipeList from './index';
-import { Recipe } from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 
 let recipeCounter = 0;
 

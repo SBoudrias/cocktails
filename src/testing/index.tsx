@@ -1,7 +1,8 @@
-import { render, RenderOptions } from '@testing-library/react';
+import type { RenderOptions } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
-import { ComponentProps, ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 
 type NuqsRenderOptions = RenderOptions & {

@@ -1,7 +1,9 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
-import NextLink, { LinkProps } from 'next/link';
-import { forwardRef, Ref } from 'react';
+import type { LinkProps } from 'next/link';
+import NextLink from 'next/link';
+import type { Ref } from 'react';
+import { forwardRef } from 'react';
 
 const LinkBehaviour = forwardRef(function LinkBehaviour(
   props: LinkProps,

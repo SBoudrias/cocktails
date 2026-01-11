@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import BookIcon from '@mui/icons-material/Book';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { Book } from '@/types/Source';
+import type { Book } from '@/types/Source';
 
 export default function BookAboutCard({
   source,
