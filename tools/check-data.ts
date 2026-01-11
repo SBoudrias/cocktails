@@ -9,14 +9,17 @@ import { format, resolveConfig } from 'prettier';
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
 
+interface Ingredient {
+  type: string;
+  name: string;
+  brix?: number;
+}
+
 interface DataWithSchema {
   $schema: string;
   name: string;
   type?: string;
-  ingredients?: Array<{
-    type: string;
-    name: string;
-  }>;
+  ingredients?: Ingredient[];
   categories?: string[];
   parents?: string[];
 }
@@ -60,6 +63,16 @@ for await (const schemaFile of fs.glob('src/schemas/*.schema.json')) {
   console.log('├', schemaId);
   ajv.addSchema(schema, schemaId);
 }
+console.log('╰ Done!\n');
+
+// Collect all category slugs for duplicate detection
+console.log('╭ 📦 Collecting category slugs');
+const categorySlugs = new Set<string>();
+for await (const categoryFile of fs.glob('src/data/categories/*.json')) {
+  const slug = path.basename(categoryFile, '.json');
+  categorySlugs.add(slug);
+}
+console.log(`├ Found ${categorySlugs.size} categories`);
 console.log('╰ Done!\n');
 
 console.log('╭ 🔍 Validating data files...');
@@ -119,11 +132,40 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     }
   }
 
+  // Ensure no ingredient file has the same name as a category
+  if (schemaPath === 'schemas/ingredient.schema.json') {
+    const ingredientSlug = slugify(data.name);
+    if (categorySlugs.has(ingredientSlug)) {
+      fail(
+        `Ingredient "${data.name}" duplicates category "${ingredientSlug}". ` +
+          `Remove the ingredient file and use type: "category" in recipes instead.`,
+      );
+    }
+  }
+
   if (
     schemaPath === 'schemas/recipe.schema.json' ||
     schemaPath === 'schemas/ingredient.schema.json'
   ) {
     const { ingredients = [], categories = [] } = data;
+    let fileModified = false;
+
+    // Auto-fix ingredients that should be categories
+    for (const ingredient of ingredients) {
+      const ingredientSlug = slugify(ingredient.name);
+      if (ingredient.type !== 'category' && categorySlugs.has(ingredientSlug)) {
+        change(
+          `Fixing "${ingredient.name}" in ${path.basename(sourceFile)}: ` +
+            `type "${ingredient.type}" → "category"`,
+        );
+        ingredient.type = 'category';
+        fileModified = true;
+      }
+    }
+
+    if (fileModified) {
+      await writeJSON(sourceFile, data);
+    }
 
     // Make sure all ingredients listed somewhere have a metadata file
     for (const ingredient of ingredients) {
