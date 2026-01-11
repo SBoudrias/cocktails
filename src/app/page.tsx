@@ -24,7 +24,7 @@ import {
   getBarListUrl,
   getBottleListUrl,
   getIngredientListUrl,
-  getSearchUrl,
+  getRecipeListUrl,
   getSourceUrl,
 } from '@/modules/url';
 import { getAllSources } from '@/modules/sources';
@@ -68,7 +68,7 @@ export default async function HomePage() {
       <AppHeader title="Cocktail Index" />
       <List sx={{ mt: 2 }}>
         <Paper square>
-          <Link href={getSearchUrl()}>
+          <Link href={getRecipeListUrl()}>
             <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
               <ListItemButton>
                 <ListItemIcon>

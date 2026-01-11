@@ -1,8 +1,14 @@
 import { screen } from '@testing-library/react';
-import SearchPage from './SearchBar';
+import RecipesClient from './RecipesClient';
 import { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
 import { renderWithNuqs, setupWithNuqs } from '@/testing';
+
+// Mock next/navigation
+const mockBack = vi.fn();
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ back: mockBack }),
+}));
 
 let recipeCounter = 0;
 
@@ -33,13 +39,13 @@ const testRecipes: Recipe[] = [
   mockRecipe('The Last Word'),
 ];
 
-describe('SearchPage', () => {
+describe('RecipesClient', () => {
   beforeEach(() => {
     recipeCounter = 0;
   });
 
   it('renders search input and recipe list', () => {
-    renderWithNuqs(<SearchPage recipes={testRecipes} />);
+    renderWithNuqs(<RecipesClient recipes={testRecipes} />);
 
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
 
@@ -51,7 +57,7 @@ describe('SearchPage', () => {
   });
 
   it('typing in search filters the recipe list', async () => {
-    const { user } = setupWithNuqs(<SearchPage recipes={testRecipes} />);
+    const { user } = setupWithNuqs(<RecipesClient recipes={testRecipes} />);
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'moj');
@@ -63,7 +69,7 @@ describe('SearchPage', () => {
   });
 
   it('clearing search shows all recipes grouped by letter', async () => {
-    const { user } = setupWithNuqs(<SearchPage recipes={testRecipes} />, {
+    const { user } = setupWithNuqs(<RecipesClient recipes={testRecipes} />, {
       nuqsOptions: { searchParams: '?search=moj' },
     });
 
@@ -87,7 +93,7 @@ describe('SearchPage', () => {
 
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
-    const { user } = setupWithNuqs(<SearchPage recipes={testRecipes} />, {
+    const { user } = setupWithNuqs(<RecipesClient recipes={testRecipes} />, {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -101,25 +107,25 @@ describe('SearchPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupWithNuqs(<SearchPage recipes={testRecipes} />);
+    const { user } = setupWithNuqs(<RecipesClient recipes={testRecipes} />);
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
 
     expect(screen.getByText('No results found')).toBeInTheDocument();
-    expect(screen.getByText(/No recipes or ingredients matched/)).toBeInTheDocument();
+    expect(screen.getByText(/No recipes matched/)).toBeInTheDocument();
   });
 
   it('recipe items link to correct recipe detail pages', () => {
     const mojito = mockRecipe('Test Recipe');
-    renderWithNuqs(<SearchPage recipes={[mojito]} />);
+    renderWithNuqs(<RecipesClient recipes={[mojito]} />);
 
     const link = screen.getByRole('link', { name: /test recipe/i });
     expect(link).toHaveAttribute('href', getRecipeUrl(mojito));
   });
 
   it('loads with search term from URL', () => {
-    renderWithNuqs(<SearchPage recipes={testRecipes} />, {
+    renderWithNuqs(<RecipesClient recipes={testRecipes} />, {
       nuqsOptions: { searchParams: '?search=margarita' },
     });
 
@@ -133,7 +139,7 @@ describe('SearchPage', () => {
   });
 
   it('groups recipes by first letter when not searching', () => {
-    renderWithNuqs(<SearchPage recipes={testRecipes} />);
+    renderWithNuqs(<RecipesClient recipes={testRecipes} />);
 
     // Groups are identified by aria-labelledby pointing to their header
     const dGroup = screen.getByRole('group', { name: 'D' });
