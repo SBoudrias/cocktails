@@ -1,20 +1,14 @@
+import { vi, beforeEach, describe, it } from 'vitest';
 import { screen } from '@testing-library/react';
 import RecipesPage from './page';
-import { Recipe } from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
-import { renderWithNuqs, setupWithNuqs } from '@/testing';
+import { setupApp } from '@/testing';
+import { getAllRecipes } from '@/modules/recipes';
 
 vi.mock('@/modules/recipes', () => ({
   getAllRecipes: vi.fn(),
 }));
-
-import { getAllRecipes } from '@/modules/recipes';
-
-const mockHistoryBack = vi.fn();
-Object.defineProperty(window, 'history', {
-  value: { back: mockHistoryBack },
-  writable: true,
-});
 
 let recipeCounter = 0;
 
@@ -45,14 +39,14 @@ const testRecipes: Recipe[] = [
   mockRecipe('The Last Word'),
 ];
 
-describe('RecipesPage', () => {
-  beforeEach(() => {
-    recipeCounter = 0;
-    vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
-  });
+beforeEach(() => {
+  recipeCounter = 0;
+  vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
+});
 
+describe('RecipesPage', () => {
   it('renders search input and recipe list', async () => {
-    renderWithNuqs(await RecipesPage());
+    setupApp(await RecipesPage());
 
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
 
@@ -64,7 +58,7 @@ describe('RecipesPage', () => {
   });
 
   it('typing in search filters the recipe list', async () => {
-    const { user } = setupWithNuqs(await RecipesPage());
+    const { user } = setupApp(await RecipesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'moj');
@@ -76,7 +70,7 @@ describe('RecipesPage', () => {
   });
 
   it('clearing search shows all recipes grouped by letter', async () => {
-    const { user } = setupWithNuqs(await RecipesPage(), {
+    const { user } = setupApp(await RecipesPage(), {
       nuqsOptions: { searchParams: '?search=moj' },
     });
 
@@ -100,7 +94,7 @@ describe('RecipesPage', () => {
 
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
-    const { user } = setupWithNuqs(await RecipesPage(), {
+    const { user } = setupApp(await RecipesPage(), {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -114,7 +108,7 @@ describe('RecipesPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupWithNuqs(await RecipesPage());
+    const { user } = setupApp(await RecipesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -126,14 +120,14 @@ describe('RecipesPage', () => {
   it('recipe items link to correct recipe detail pages', async () => {
     const mojito = mockRecipe('Test Recipe');
     vi.mocked(getAllRecipes).mockResolvedValue([mojito]);
-    renderWithNuqs(await RecipesPage());
+    setupApp(await RecipesPage());
 
     const link = screen.getByRole('link', { name: /test recipe/i });
     expect(link).toHaveAttribute('href', getRecipeUrl(mojito));
   });
 
   it('loads with search term from URL', async () => {
-    renderWithNuqs(await RecipesPage(), {
+    setupApp(await RecipesPage(), {
       nuqsOptions: { searchParams: '?search=margarita' },
     });
 
@@ -147,7 +141,7 @@ describe('RecipesPage', () => {
   });
 
   it('groups recipes by first letter when not searching', async () => {
-    renderWithNuqs(await RecipesPage());
+    setupApp(await RecipesPage());
 
     // Groups are identified by aria-labelledby pointing to their header
     const dGroup = screen.getByRole('group', { name: 'D' });

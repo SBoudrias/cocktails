@@ -17,21 +17,24 @@ import { useQueryState } from 'nuqs';
 import RecipeList from '@/components/RecipeList';
 import SearchInput from '@/components/SearchInput';
 import SearchableList from '@/components/SearchableList';
+import { useRouter } from 'next/router';
 
-function RecipesSearchBar({
+function SearchBar({
   value,
   onChange,
 }: {
   value: string;
   onChange: (value: string | null) => void;
 }) {
+  const router = useRouter();
+
   return (
     <Toolbar>
       <IconButton
         size="large"
         edge="start"
         aria-label="Go back"
-        onClick={() => window.history.back()}
+        onClick={() => router.back()}
       >
         <ChevronLeft />
       </IconButton>
@@ -63,7 +66,7 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
   return (
     <>
       <AppBar>
-        <RecipesSearchBar onChange={setSearchTerm} value={searchTerm ?? ''} />
+        <SearchBar onChange={setSearchTerm} value={searchTerm ?? ''} />
       </AppBar>
       <Toolbar />
       <SearchableList
