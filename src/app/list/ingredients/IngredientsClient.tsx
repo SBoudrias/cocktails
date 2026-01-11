@@ -30,20 +30,24 @@ export default function IngredientsClient({
     </Card>
   );
 
-  const renderItem = (items: (BaseIngredient | Category)[], header?: string) => (
-    <List>
-      {header && <ListSubheader>{header}</ListSubheader>}
-      <Paper square>
-        {items.map((ingredient) => (
-          <Link href={getIngredientUrl(ingredient)} key={ingredient.slug}>
-            <ListItem divider secondaryAction={<ChevronRight />}>
-              <ListItemText primary={ingredient.name} />
-            </ListItem>
-          </Link>
-        ))}
-      </Paper>
-    </List>
-  );
+  const renderItem = (items: (BaseIngredient | Category)[], header?: string) => {
+    const headerId = header ? `group-header-${header}` : undefined;
+
+    return (
+      <List role={header ? 'group' : undefined} aria-labelledby={headerId}>
+        {header && <ListSubheader id={headerId}>{header}</ListSubheader>}
+        <Paper square>
+          {items.map((ingredient) => (
+            <Link href={getIngredientUrl(ingredient)} key={ingredient.slug}>
+              <ListItem divider secondaryAction={<ChevronRight />}>
+                <ListItemText primary={ingredient.name} />
+              </ListItem>
+            </Link>
+          ))}
+        </Paper>
+      </List>
+    );
+  };
 
   return (
     <>
