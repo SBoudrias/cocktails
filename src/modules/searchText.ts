@@ -48,7 +48,9 @@ export function getRecipeSearchText(recipe: Recipe): string {
  * Extracts searchable text from an ingredient or category list item.
  * Includes name and parent category names.
  */
-export function getListItemSearchText(item: BaseIngredient | Category): string {
+export function getIngredientOrCategorySearchText(
+  item: BaseIngredient | Category,
+): string {
   const relatedCategories: Category[] =
     'categories' in item ? item.categories : item.parents;
   const categoryNames = relatedCategories.map((c) => c.name).join(' ');
