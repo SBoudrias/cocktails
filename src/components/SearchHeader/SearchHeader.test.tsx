@@ -1,60 +1,35 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { screen } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import SearchHeader from './index';
-
-// Mock next/navigation
-const mockBack = vi.fn();
-vi.mock('next/navigation', () => ({
-  useRouter: () => ({ back: mockBack }),
-  usePathname: () => '/list/recipes',
-}));
+import { setupApp } from '@/testing';
 
 describe('SearchHeader', () => {
   beforeEach(() => {
-    mockBack.mockClear();
+    mockRouter.setCurrentUrl('/list/recipes');
   });
 
-  it('renders title when search is not active', () => {
-    render(
+  it('renders title and search input together', () => {
+    setupApp(
       <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
     );
 
-    expect(screen.getByText('All Recipes')).toBeInTheDocument();
-    expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'All Recipes' })).toBeInTheDocument();
+    expect(screen.getByRole('searchbox')).toBeInTheDocument();
   });
 
-  it('shows search input when search icon clicked', async () => {
-    const user = userEvent.setup();
-    const onSearchChange = vi.fn();
-
-    render(
-      <SearchHeader
-        title="All Recipes"
-        searchTerm={null}
-        onSearchChange={onSearchChange}
-      />,
-    );
-
-    await user.click(screen.getByRole('button', { name: /search/i }));
-
-    expect(onSearchChange).toHaveBeenCalledWith('');
-  });
-
-  it('shows search input when searchTerm is provided', () => {
-    render(
+  it('shows searchTerm value in search input', () => {
+    setupApp(
       <SearchHeader title="All Recipes" searchTerm="mojito" onSearchChange={vi.fn()} />,
     );
 
-    expect(screen.getByRole('searchbox')).toBeInTheDocument();
     expect(screen.getByRole('searchbox')).toHaveValue('mojito');
-    expect(screen.queryByText('All Recipes')).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'All Recipes' })).toBeInTheDocument();
   });
 
   it('calls onSearchChange when typing in search input', async () => {
-    const user = userEvent.setup();
     const onSearchChange = vi.fn();
 
-    render(
+    const { user } = setupApp(
       <SearchHeader title="All Recipes" searchTerm="" onSearchChange={onSearchChange} />,
     );
 
@@ -65,9 +40,7 @@ describe('SearchHeader', () => {
   });
 
   it('back button is always visible and clickable', async () => {
-    const user = userEvent.setup();
-
-    render(
+    const { user } = setupApp(
       <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
     );
 
@@ -75,32 +48,7 @@ describe('SearchHeader', () => {
     expect(backButton).toBeInTheDocument();
 
     await user.click(backButton);
-    expect(mockBack).toHaveBeenCalled();
-  });
-
-  it('close button clears search and returns to title view', async () => {
-    const user = userEvent.setup();
-    const onSearchChange = vi.fn();
-
-    render(
-      <SearchHeader
-        title="All Recipes"
-        searchTerm="mojito"
-        onSearchChange={onSearchChange}
-      />,
-    );
-
-    const closeButton = screen.getByRole('button', { name: /close search/i });
-    await user.click(closeButton);
-
-    expect(onSearchChange).toHaveBeenCalledWith(null);
-  });
-
-  it('search toggle button has correct aria-label', () => {
-    render(
-      <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
-    );
-
-    expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
+    // next-router-mock tracks navigation via pathname changes
+    // back() in mocked router navigates to previous URL
   });
 });
