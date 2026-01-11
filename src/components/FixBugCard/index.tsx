@@ -1,4 +1,5 @@
-import { Button, Card, CardContent, Stack, SxProps } from '@mui/material';
+import type { SxProps } from '@mui/material';
+import { Button, Card, CardContent, Stack } from '@mui/material';
 import BugReportIcon from '@mui/icons-material/BugReport';
 
 export default function FixBugCard({ fixUrl, sx }: { fixUrl: string; sx?: SxProps }) {

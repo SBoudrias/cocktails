@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import AppHeader from '@/components/AppHeader';
 import { Suspense } from 'react';
 import {
@@ -28,7 +28,7 @@ import {
   getSourceUrl,
 } from '@/modules/url';
 import { getAllSources } from '@/modules/sources';
-import { Source } from '@/types/Source';
+import type { Source } from '@/types/Source';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index',

@@ -9,7 +9,7 @@ import { getSource } from '@/modules/sources';
 import { getSourcePageParams } from '@/modules/params';
 import { getRecipesFromSource } from '@/modules/recipes';
 import SourceAboutCard from '@/components/SourceAboutCard';
-import { Source } from '@/types/Source';
+import type { Source } from '@/types/Source';
 
 type Params = { type: Source['type']; name: string };
 

@@ -1,5 +1,6 @@
 'use client';
 
+import type { SxProps } from '@mui/material';
 import {
   Button,
   Card,
@@ -7,7 +8,6 @@ import {
   CardHeader,
   InputAdornment,
   Stack,
-  SxProps,
   TextField,
   ToggleButton,
   ToggleButtonGroup,

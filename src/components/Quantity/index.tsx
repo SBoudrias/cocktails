@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './style.module.css';
-import { RecipeIngredient } from '@/types/Ingredient';
+import type { RecipeIngredient } from '@/types/Ingredient';
 import { convertQuantityToMl, convertQuantityToOz } from '@/modules/conversion';
 import { Stack } from '@mui/material';
 import { match } from 'ts-pattern';

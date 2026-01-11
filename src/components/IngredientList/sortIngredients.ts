@@ -1,5 +1,5 @@
 import { convertQuantityToMl } from '@/modules/conversion';
-import { RecipeIngredient } from '@/types/Ingredient';
+import type { RecipeIngredient } from '@/types/Ingredient';
 
 const UNIT_PRIORITIES: Record<RecipeIngredient['quantity']['unit'], number> = {
   spray: 0,

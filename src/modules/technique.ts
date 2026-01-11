@@ -1,5 +1,5 @@
 import { match } from 'ts-pattern';
-import { RecipeIngredient } from '@/types/Ingredient';
+import type { RecipeIngredient, Technique } from '@/types/Ingredient';
 
 const cutTypeNames = {
   chunked: { countable: true, forms: ['chunk', 'chunks'] },
@@ -19,7 +19,7 @@ const cutTypeNames = {
  * Converts a technique object to a human-readable string for display
  */
 function formatSingleTechnique(
-  technique: import('@/types/Ingredient').Technique,
+  technique: Technique,
   name: string,
   ingredient: RecipeIngredient,
 ): string {

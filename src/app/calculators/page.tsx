@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import AppHeader from '@/components/AppHeader';
 import { Suspense } from 'react';
 import { List, ListItem, ListItemText, Paper } from '@mui/material';

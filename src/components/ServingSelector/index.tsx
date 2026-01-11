@@ -2,7 +2,8 @@
 
 import { TextField, IconButton, InputAdornment } from '@mui/material';
 import { Add, Remove } from '@mui/icons-material';
-import { ChangeEvent, useState, useEffect } from 'react';
+import type { ChangeEvent } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function ServingSelector({
   servings,

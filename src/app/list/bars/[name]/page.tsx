@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import AppHeader from '@/components/AppHeader';
 import { Suspense } from 'react';
@@ -8,7 +8,7 @@ import { getRecipeUrl } from '@/modules/url';
 import { ChevronRight } from '@mui/icons-material';
 import { notFound } from 'next/navigation';
 import slugify from '@sindresorhus/slugify';
-import { Recipe } from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 
 // Helper function to find the actual bar name from the slug
 function findBarNameFromSlug(

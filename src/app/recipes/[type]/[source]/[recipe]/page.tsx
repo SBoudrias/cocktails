@@ -3,7 +3,7 @@ import AppHeader from '@/components/AppHeader';
 import { getRecipe } from '@/modules/recipes';
 import { getRecipePageParams } from '@/modules/params';
 import { Box } from '@mui/material';
-import { Source } from '@/types/Source';
+import type { Source } from '@/types/Source';
 import styles from './style.module.css';
 import { Grid2, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import IngredientList from '@/components/IngredientList';

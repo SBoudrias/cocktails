@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { Source } from '@/types/Source';
+import type { Source } from '@/types/Source';
 import { INGREDIENT_ROOT, RECIPE_ROOT } from './constants';
 
 export async function getRecipePageParams(): Promise<

@@ -21,6 +21,11 @@ const eslintConfig = [
       '.worktrees/**',
     ],
   },
+  {
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+    },
+  },
 ];
 
 export default eslintConfig;

@@ -1,16 +1,16 @@
+import type { SxProps } from '@mui/material';
 import {
   Card,
   CardContent,
   CardHeader,
   Link,
-  SxProps,
   Table,
   TableBody,
   TableCell,
   TableRow,
 } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { Recipe } from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 
 const attributionRelationLabels = {
   'recipe author': 'Created by',

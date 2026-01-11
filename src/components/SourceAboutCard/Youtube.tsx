@@ -10,8 +10,8 @@ import {
 import Video from '@/components/Video';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { YoutubeRef } from '@/types/Ref';
-import { YoutubeChannel } from '@/types/Source';
+import type { YoutubeRef } from '@/types/Ref';
+import type { YoutubeChannel } from '@/types/Source';
 
 export default function YoutubeAboutCard({
   source,

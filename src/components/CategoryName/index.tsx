@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import { Category } from '@/types/Category';
+import type { Category } from '@/types/Category';
 import { getCategoryUrl } from '@/modules/url';
 import styles from './category.module.css';
 

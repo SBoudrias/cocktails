@@ -1,5 +1,5 @@
-import { Category } from '@/types/Category';
-import { RecipeIngredient, RootIngredient } from '@/types/Ingredient';
+import type { Category } from '@/types/Category';
+import type { RecipeIngredient, RootIngredient } from '@/types/Ingredient';
 
 export function categoryHasData(category: Category) {
   return category.description || category.parents.length > 0 || category.refs.length > 0;

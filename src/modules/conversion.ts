@@ -1,4 +1,4 @@
-import { RecipeIngredient } from '@/types/Ingredient';
+import type { RecipeIngredient } from '@/types/Ingredient';
 
 const IMPERIAL_TO_ML = {
   tsp: 5,

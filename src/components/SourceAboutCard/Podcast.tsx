@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import PodcastsIcon from '@mui/icons-material/Podcasts';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { Podcast } from '@/types/Source';
+import type { Podcast } from '@/types/Source';
 
 export default function PodcastAboutCard({
   source,

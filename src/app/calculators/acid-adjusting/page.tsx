@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import AppHeader from '@/components/AppHeader';
 import { Suspense } from 'react';
 import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
