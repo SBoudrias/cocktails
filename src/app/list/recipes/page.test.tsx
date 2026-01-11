@@ -1,10 +1,17 @@
-import { vi, beforeEach, describe, it } from 'vitest';
+import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
 import RecipesPage from './page';
 import type { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import { getAllRecipes } from '@/modules/recipes';
+
+// Mock next/navigation
+const mockBack = vi.fn();
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ back: mockBack }),
+  usePathname: () => '/list/recipes',
+}));
 
 vi.mock('@/modules/recipes', () => ({
   getAllRecipes: vi.fn(),
@@ -41,14 +48,15 @@ const testRecipes: Recipe[] = [
 
 beforeEach(() => {
   recipeCounter = 0;
+  mockBack.mockClear();
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
 });
 
 describe('RecipesPage', () => {
-  it('renders search input and recipe list', async () => {
+  it('renders title and recipe list when not searching', async () => {
     setupApp(await RecipesPage());
 
-    expect(screen.getByRole('searchbox')).toBeInTheDocument();
+    expect(screen.getByText('All Recipes')).toBeInTheDocument();
 
     const mGroup = screen.getByRole('group', { name: 'M' });
     expect(mGroup).toHaveTextContent('Mojito');
@@ -57,8 +65,24 @@ describe('RecipesPage', () => {
     expect(dGroup).toHaveTextContent('Daiquiri');
   });
 
-  it('typing in search filters the recipe list', async () => {
+  it('clicking search icon activates search mode', async () => {
     const { user } = setupApp(await RecipesPage());
+
+    // Initially shows title
+    expect(screen.getByText('All Recipes')).toBeInTheDocument();
+
+    // Click search icon
+    await user.click(screen.getByRole('button', { name: /search/i }));
+
+    // Now shows search input
+    expect(screen.getByRole('searchbox')).toBeInTheDocument();
+    expect(screen.queryByText('All Recipes')).not.toBeInTheDocument();
+  });
+
+  it('typing filters recipe list', async () => {
+    const { user } = setupApp(await RecipesPage(), {
+      nuqsOptions: { searchParams: '?search=' },
+    });
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'moj');
@@ -79,9 +103,9 @@ describe('RecipesPage', () => {
     expect(resultList).toHaveTextContent('Mojito');
     expect(resultList).not.toHaveTextContent('Daiquiri');
 
-    // Clear the search
-    const clearButton = screen.getByRole('button', { name: /clear/i });
-    await user.click(clearButton);
+    // Close the search (which sets searchTerm to null)
+    const closeButton = screen.getByRole('button', { name: /close search/i });
+    await user.click(closeButton);
 
     // All recipes should be visible, grouped by letter
     const mGroup = screen.getByRole('group', { name: 'M' });
@@ -95,20 +119,21 @@ describe('RecipesPage', () => {
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
     const { user } = setupApp(await RecipesPage(), {
-      nuqsOptions: { onUrlUpdate },
+      nuqsOptions: { searchParams: '?search=', onUrlUpdate },
     });
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'dai');
 
-    // Check that URL was updated with search param
     expect(onUrlUpdate).toHaveBeenLastCalledWith(
       expect.objectContaining({ queryString: '?search=dai' }),
     );
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupApp(await RecipesPage());
+    const { user } = setupApp(await RecipesPage(), {
+      nuqsOptions: { searchParams: '?search=' },
+    });
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -134,7 +159,6 @@ describe('RecipesPage', () => {
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('margarita');
 
-    // Select the result list and check its text content
     const resultList = screen.getByRole('list');
     expect(resultList).toHaveTextContent('Margarita');
     expect(resultList).not.toHaveTextContent('Mojito');
@@ -143,7 +167,6 @@ describe('RecipesPage', () => {
   it('groups recipes by first letter when not searching', async () => {
     setupApp(await RecipesPage());
 
-    // Groups are identified by aria-labelledby pointing to their header
     const dGroup = screen.getByRole('group', { name: 'D' });
     const lGroup = screen.getByRole('group', { name: 'L' });
     const mGroup = screen.getByRole('group', { name: 'M' });
@@ -153,5 +176,14 @@ describe('RecipesPage', () => {
     expect(mGroup).toHaveTextContent('Mojito');
     expect(mGroup).toHaveTextContent('Margarita');
     expect(mGroup).toHaveTextContent('Mai Tai');
+  });
+
+  it('back button navigates correctly', async () => {
+    const { user } = setupApp(await RecipesPage());
+
+    const backButton = screen.getByRole('button', { name: /go back/i });
+    await user.click(backButton);
+
+    expect(mockBack).toHaveBeenCalled();
   });
 });
