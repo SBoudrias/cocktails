@@ -33,3 +33,13 @@ jobs:
         run: yarn vitest --run --coverage
 
       - uses: codecov/codecov-action@v5
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/setup-node
+
+      - name: Build 🏗️
+        run: yarn next build
