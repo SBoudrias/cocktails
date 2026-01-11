@@ -1,14 +1,20 @@
 import { screen } from '@testing-library/react';
-import { RecipesClient } from './page';
+import RecipesPage from './page';
 import { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
 import { renderWithNuqs, setupWithNuqs } from '@/testing';
 
-// Mock next/navigation
-const mockBack = vi.fn();
-vi.mock('next/navigation', () => ({
-  useRouter: () => ({ back: mockBack }),
+vi.mock('@/modules/recipes', () => ({
+  getAllRecipes: vi.fn(),
 }));
+
+import { getAllRecipes } from '@/modules/recipes';
+
+const mockHistoryBack = vi.fn();
+Object.defineProperty(window, 'history', {
+  value: { back: mockHistoryBack },
+  writable: true,
+});
 
 let recipeCounter = 0;
 
@@ -39,13 +45,14 @@ const testRecipes: Recipe[] = [
   mockRecipe('The Last Word'),
 ];
 
-describe('RecipesClient', () => {
+describe('RecipesPage', () => {
   beforeEach(() => {
     recipeCounter = 0;
+    vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
   });
 
-  it('renders search input and recipe list', () => {
-    renderWithNuqs(<RecipesClient recipes={testRecipes} />);
+  it('renders search input and recipe list', async () => {
+    renderWithNuqs(await RecipesPage());
 
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
 
@@ -57,7 +64,7 @@ describe('RecipesClient', () => {
   });
 
   it('typing in search filters the recipe list', async () => {
-    const { user } = setupWithNuqs(<RecipesClient recipes={testRecipes} />);
+    const { user } = setupWithNuqs(await RecipesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'moj');
@@ -69,7 +76,7 @@ describe('RecipesClient', () => {
   });
 
   it('clearing search shows all recipes grouped by letter', async () => {
-    const { user } = setupWithNuqs(<RecipesClient recipes={testRecipes} />, {
+    const { user } = setupWithNuqs(await RecipesPage(), {
       nuqsOptions: { searchParams: '?search=moj' },
     });
 
@@ -93,7 +100,7 @@ describe('RecipesClient', () => {
 
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
-    const { user } = setupWithNuqs(<RecipesClient recipes={testRecipes} />, {
+    const { user } = setupWithNuqs(await RecipesPage(), {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -107,7 +114,7 @@ describe('RecipesClient', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupWithNuqs(<RecipesClient recipes={testRecipes} />);
+    const { user } = setupWithNuqs(await RecipesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -116,16 +123,17 @@ describe('RecipesClient', () => {
     expect(screen.getByText(/No recipes or ingredients matched/)).toBeInTheDocument();
   });
 
-  it('recipe items link to correct recipe detail pages', () => {
+  it('recipe items link to correct recipe detail pages', async () => {
     const mojito = mockRecipe('Test Recipe');
-    renderWithNuqs(<RecipesClient recipes={[mojito]} />);
+    vi.mocked(getAllRecipes).mockResolvedValue([mojito]);
+    renderWithNuqs(await RecipesPage());
 
     const link = screen.getByRole('link', { name: /test recipe/i });
     expect(link).toHaveAttribute('href', getRecipeUrl(mojito));
   });
 
-  it('loads with search term from URL', () => {
-    renderWithNuqs(<RecipesClient recipes={testRecipes} />, {
+  it('loads with search term from URL', async () => {
+    renderWithNuqs(await RecipesPage(), {
       nuqsOptions: { searchParams: '?search=margarita' },
     });
 
@@ -138,8 +146,8 @@ describe('RecipesClient', () => {
     expect(resultList).not.toHaveTextContent('Mojito');
   });
 
-  it('groups recipes by first letter when not searching', () => {
-    renderWithNuqs(<RecipesClient recipes={testRecipes} />);
+  it('groups recipes by first letter when not searching', async () => {
+    renderWithNuqs(await RecipesPage());
 
     // Groups are identified by aria-labelledby pointing to their header
     const dGroup = screen.getByRole('group', { name: 'D' });
