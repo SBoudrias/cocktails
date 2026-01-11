@@ -55,7 +55,7 @@
     },
     {
       "name": "gardenia mix",
-      "type": "syrup",
+      "type": "category",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

@@ -33,7 +33,7 @@
     {
       "name": "Orgeat",
       "brix": 50,
-      "type": "syrup",
+      "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"

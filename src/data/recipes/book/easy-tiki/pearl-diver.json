@@ -28,7 +28,7 @@
     },
     {
       "name": "Gardenia Mix",
-      "type": "syrup",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
