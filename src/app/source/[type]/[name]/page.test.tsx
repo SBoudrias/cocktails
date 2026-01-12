@@ -1,4 +1,4 @@
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, beforeAll } from 'vitest';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import SourcePage from './page';
@@ -7,7 +7,30 @@ import { setupApp } from '@/testing';
 import { getSource } from '@/modules/sources';
 import { getRecipesFromSource } from '@/modules/recipes';
 
+// Cache data to avoid slow repeated data loading in CI
+let cachedSource: Awaited<ReturnType<typeof getSource>> | null = null;
+let cachedRecipes: Awaited<ReturnType<typeof getRecipesFromSource>> | null = null;
+
+async function getCachedSource() {
+  if (!cachedSource) {
+    cachedSource = await getSource('book', 'smugglers-cove');
+  }
+  return cachedSource;
+}
+
+async function getCachedRecipes() {
+  if (!cachedRecipes) {
+    cachedRecipes = await getRecipesFromSource({ type: 'book', slug: 'smugglers-cove' });
+  }
+  return cachedRecipes;
+}
+
 describe('SourcePage', () => {
+  // Pre-warm data cache before tests run to avoid CI timeouts
+  beforeAll(async () => {
+    await getCachedSource();
+    await getCachedRecipes();
+  });
   it('shows search input, source name as title and recipe list', async () => {
     const source = await getSource('book', 'smugglers-cove');
     setupApp(
