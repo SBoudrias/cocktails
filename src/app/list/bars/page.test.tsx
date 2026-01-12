@@ -1,4 +1,4 @@
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, beforeAll } from 'vitest';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import BarsPage from './page';
@@ -6,8 +6,13 @@ import { getBarRecipesUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import { getAllRecipes } from '@/modules/recipes';
 
+// Cache for bars data - populated in beforeAll to avoid timeout on first test in CI
+let cachedBars: { name: string; location?: string; recipeCount: number }[] = [];
+
 // Helper to get bars from real recipe data
 async function getBarsFromRecipes() {
+  if (cachedBars.length > 0) return cachedBars;
+
   const allRecipes = await getAllRecipes();
   const barsMap = new Map<
     string,
@@ -29,8 +34,14 @@ async function getBarsFromRecipes() {
       });
   });
 
-  return Array.from(barsMap.values());
+  cachedBars = Array.from(barsMap.values());
+  return cachedBars;
 }
+
+// Pre-warm the data cache before any tests run to avoid CI timeout on first test
+beforeAll(async () => {
+  await getBarsFromRecipes();
+});
 
 describe('BarsPage', () => {
   it('shows search input, title and list', async () => {
