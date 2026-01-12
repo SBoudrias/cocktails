@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { BaseIngredient } from '@/types/Ingredient';
+import type { BaseIngredient } from '@/types/Ingredient';
 import { getIngredientOrCategorySearchText } from '@/modules/searchText';
 import { getIngredientUrl } from '@/modules/url';
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
