@@ -5,7 +5,7 @@ import AuthorsPage from './page';
 import { getAuthorRecipesUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import { getAllRecipes } from '@/modules/recipes';
-import type { Recipe } from '@/types';
+import type { Recipe } from '@/types/Recipe';
 
 // Cache recipes data to avoid slow data loading in each test
 let cachedRecipes: Recipe[] | null = null;
