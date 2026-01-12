@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { BaseIngredient } from '@/types/Ingredient';
-import { getListItemSearchText } from '@/modules/searchText';
+import { getIngredientOrCategorySearchText } from '@/modules/searchText';
 import { getIngredientUrl } from '@/modules/url';
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
@@ -57,7 +57,7 @@ export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }
       />
       <SearchableList
         items={bottles}
-        getSearchText={getListItemSearchText}
+        getSearchText={getIngredientOrCategorySearchText}
         renderItem={renderItem}
         searchTerm={searchTerm}
         emptyState={emptyState}

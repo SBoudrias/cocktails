@@ -1,17 +1,11 @@
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import RecipesPage from './page';
 import type { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import { getAllRecipes } from '@/modules/recipes';
-
-// Mock next/navigation
-const mockBack = vi.fn();
-vi.mock('next/navigation', () => ({
-  useRouter: () => ({ back: mockBack }),
-  usePathname: () => '/list/recipes',
-}));
 
 vi.mock('@/modules/recipes', () => ({
   getAllRecipes: vi.fn(),
@@ -48,7 +42,6 @@ const testRecipes: Recipe[] = [
 
 beforeEach(() => {
   recipeCounter = 0;
-  mockBack.mockClear();
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
 });
 
@@ -65,18 +58,12 @@ describe('RecipesPage', () => {
     expect(dGroup).toHaveTextContent('Daiquiri');
   });
 
-  it('clicking search icon activates search mode', async () => {
-    const { user } = setupApp(await RecipesPage());
+  it('shows search input and title together', async () => {
+    setupApp(await RecipesPage());
 
-    // Initially shows title
+    // Both title and search input are always visible
     expect(screen.getByText('All Recipes')).toBeInTheDocument();
-
-    // Click search icon
-    await user.click(screen.getByRole('button', { name: /search/i }));
-
-    // Now shows search input
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
-    expect(screen.queryByText('All Recipes')).not.toBeInTheDocument();
   });
 
   it('typing filters recipe list', async () => {
@@ -103,9 +90,9 @@ describe('RecipesPage', () => {
     expect(resultList).toHaveTextContent('Mojito');
     expect(resultList).not.toHaveTextContent('Daiquiri');
 
-    // Close the search (which sets searchTerm to null)
-    const closeButton = screen.getByRole('button', { name: /close search/i });
-    await user.click(closeButton);
+    // Clear the search input
+    const input = screen.getByRole('searchbox');
+    await user.clear(input);
 
     // All recipes should be visible, grouped by letter
     const mGroup = screen.getByRole('group', { name: 'M' });
@@ -179,11 +166,19 @@ describe('RecipesPage', () => {
   });
 
   it('back button navigates correctly', async () => {
+    // Build navigation history with two pushes
+    await mockRouter.push('/');
+    await mockRouter.push('/list/recipes');
+
+    // Spy on back to verify it's called (next-router-mock doesn't maintain actual history)
+    const backSpy = vi.spyOn(mockRouter, 'back');
+
     const { user } = setupApp(await RecipesPage());
 
     const backButton = screen.getByRole('button', { name: /go back/i });
     await user.click(backButton);
 
-    expect(mockBack).toHaveBeenCalled();
+    expect(backSpy).toHaveBeenCalled();
+    backSpy.mockRestore();
   });
 });
