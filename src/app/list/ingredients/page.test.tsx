@@ -8,28 +8,19 @@ import { getAllIngredients } from '@/modules/ingredients';
 import { getAllCategories } from '@/modules/categories';
 
 describe('IngredientsPage', () => {
-  it('renders title and ingredient list when not searching', async () => {
-    setupApp(await IngredientsPage());
-
-    expect(screen.getByText('All Ingredients')).toBeInTheDocument();
-
-    // Verify some real ingredients are shown grouped by letter
-    const list = screen.getByRole('list');
-    expect(list).toBeInTheDocument();
-  });
-
-  it('shows search input and title together', async () => {
+  it('shows search input, title and list', async () => {
     setupApp(await IngredientsPage());
 
     // Both title and search input are always visible
     expect(screen.getByText('All Ingredients')).toBeInTheDocument();
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
+
+    // Verify some real ingredients are shown grouped by letter
+    expect(screen.getByRole('list')).toBeInTheDocument();
   });
 
   it('typing filters ingredient list', async () => {
-    const { user } = setupApp(await IngredientsPage(), {
-      nuqsOptions: { searchParams: '?search=' },
-    });
+    const { user } = setupApp(await IngredientsPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'lime juice');
@@ -40,7 +31,7 @@ describe('IngredientsPage', () => {
 
   it('clearing search shows all ingredients grouped by letter', async () => {
     const { user } = setupApp(await IngredientsPage(), {
-      nuqsOptions: { searchParams: '?search=lime' },
+      nuqsOptions: { searchParams: { search: 'lime' } },
     });
 
     // Initially filtered
@@ -49,6 +40,7 @@ describe('IngredientsPage', () => {
 
     // Clear the search input
     const input = screen.getByRole('searchbox');
+    expect(input).toHaveValue('lime');
     await user.clear(input);
 
     // All ingredients should be visible, grouped by letter
@@ -59,7 +51,7 @@ describe('IngredientsPage', () => {
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
     const { user } = setupApp(await IngredientsPage(), {
-      nuqsOptions: { searchParams: '?search=', onUrlUpdate },
+      nuqsOptions: { onUrlUpdate },
     });
 
     const input = screen.getByRole('searchbox');
@@ -71,9 +63,7 @@ describe('IngredientsPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupApp(await IngredientsPage(), {
-      nuqsOptions: { searchParams: '?search=' },
-    });
+    const { user } = setupApp(await IngredientsPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -91,8 +81,7 @@ describe('IngredientsPage', () => {
     const filteredIngredients = allIngredients.filter(
       (i) => i.type !== 'liqueur' && i.type !== 'spirit',
     );
-    const testIngredient = filteredIngredients[0];
-    if (!testIngredient) throw new Error('Expected at least one filtered ingredient');
+    const testIngredient = filteredIngredients[0]!;
 
     const link = screen.getByRole('link', { name: new RegExp(testIngredient.name, 'i') });
     expect(link).toHaveAttribute('href', getIngredientUrl(testIngredient));
@@ -103,8 +92,7 @@ describe('IngredientsPage', () => {
 
     // Find a real category and verify its link
     const allCategories = await getAllCategories();
-    const testCategory = allCategories[0];
-    if (!testCategory) throw new Error('Expected at least one category');
+    const testCategory = allCategories[0]!;
 
     const link = screen.getByRole('link', { name: new RegExp(testCategory.name, 'i') });
     expect(link).toHaveAttribute('href', getIngredientUrl(testCategory));
@@ -112,7 +100,7 @@ describe('IngredientsPage', () => {
 
   it('loads with search term from URL', async () => {
     setupApp(await IngredientsPage(), {
-      nuqsOptions: { searchParams: '?search=lime' },
+      nuqsOptions: { searchParams: { search: 'lime' } },
     });
 
     const input = screen.getByRole('searchbox');
@@ -131,8 +119,7 @@ describe('IngredientsPage', () => {
     expect(groups.length).toBeGreaterThan(0);
 
     // Each group should have items (subheader + ingredient links)
-    const firstGroup = groups[0];
-    if (!firstGroup) throw new Error('Expected at least one group');
+    const firstGroup = groups[0]!;
     const items = within(firstGroup).getAllByRole('listitem');
     expect(items.length).toBeGreaterThan(0);
   });
@@ -185,10 +172,8 @@ describe('IngredientsPage', () => {
     const list = screen.getByRole('list');
 
     // Verify at least one ingredient and one category are shown
-    const sampleIngredient = filteredIngredients[0];
-    const sampleCategory = allCategories[0];
-    if (!sampleIngredient) throw new Error('Expected at least one filtered ingredient');
-    if (!sampleCategory) throw new Error('Expected at least one category');
+    const sampleIngredient = filteredIngredients[0]!;
+    const sampleCategory = allCategories[0]!;
 
     expect(list).toHaveTextContent(sampleIngredient.name);
     expect(list).toHaveTextContent(sampleCategory.name);
