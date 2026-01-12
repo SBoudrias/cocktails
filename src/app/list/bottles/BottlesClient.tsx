@@ -10,6 +10,7 @@ import { ChevronRight } from '@mui/icons-material';
 import { useQueryState } from 'nuqs';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
+import SearchAllLink from '@/components/SearchAllLink';
 
 export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
@@ -61,6 +62,7 @@ export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }
         searchTerm={searchTerm}
         emptyState={emptyState}
       />
+      <SearchAllLink searchTerm={searchTerm} />
     </>
   );
 }
