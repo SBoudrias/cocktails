@@ -57,3 +57,10 @@ export function getIngredientOrCategorySearchText(
 
   return normalize(`${item.name} ${categoryNames}`);
 }
+
+/**
+ * Extracts searchable text from an item with a name property.
+ */
+export function getNameSearchText(item: { name: string }): string {
+  return normalize(item.name);
+}
