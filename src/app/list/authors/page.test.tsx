@@ -1,12 +1,27 @@
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, beforeAll } from 'vitest';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import AuthorsPage from './page';
 import { getAuthorRecipesUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import { getAllRecipes } from '@/modules/recipes';
+import type { Recipe } from '@/types';
+
+// Cache recipes data to avoid slow data loading in each test
+let cachedRecipes: Recipe[] | null = null;
+async function getCachedRecipes() {
+  if (!cachedRecipes) {
+    cachedRecipes = await getAllRecipes();
+  }
+  return cachedRecipes;
+}
 
 describe('AuthorsPage', () => {
+  // Pre-warm the recipe cache before any tests run (CI is slower)
+  beforeAll(async () => {
+    await getCachedRecipes();
+  });
+
   it('shows search input, title and list', async () => {
     setupApp(await AuthorsPage());
 
