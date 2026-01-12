@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { BaseIngredient } from '@/types/Ingredient';
-import { Category } from '@/types/Category';
+import type { BaseIngredient } from '@/types/Ingredient';
+import type { Category } from '@/types/Category';
 import { getIngredientOrCategorySearchText } from '@/modules/searchText';
 import { getIngredientUrl } from '@/modules/url';
 import { Card, CardHeader } from '@mui/material';
