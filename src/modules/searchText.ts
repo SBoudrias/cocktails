@@ -32,6 +32,14 @@ function getAttributionSearchText(attribution: Attribution): string {
 }
 
 /**
+ * Extracts searchable text from a bar or author list item.
+ * Includes name and location when present.
+ */
+export function getBarSearchText(item: { name: string; location?: string }): string {
+  return normalize(`${item.name} ${item.location ?? ''}`);
+}
+
+/**
  * Extracts searchable text from a recipe.
  * Includes recipe name, ingredient names, category names, and attribution sources.
  */
