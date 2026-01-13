@@ -1,20 +1,39 @@
 import Link from 'next/link';
-import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 
 export function LinkListItem({
   href,
   primary,
   secondary,
+  tertiary,
 }: {
   href: string;
   primary: React.ReactNode;
   secondary?: React.ReactNode;
+  tertiary?: React.ReactNode;
 }) {
   return (
     <Link href={href}>
       <ListItem divider secondaryAction={<ChevronRight />}>
-        <ListItemText primary={primary} secondary={secondary} />
+        <ListItemText
+          primary={
+            tertiary ? (
+              <Stack
+                component="span"
+                direction="row"
+                justifyContent="space-between"
+                alignItems="baseline"
+              >
+                <span>{primary}</span>
+                {tertiary}
+              </Stack>
+            ) : (
+              primary
+            )
+          }
+          secondary={secondary}
+        />
       </ListItem>
     </Link>
   );
