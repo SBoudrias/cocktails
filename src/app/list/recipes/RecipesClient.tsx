@@ -18,10 +18,12 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
   const nameIsUnique = useNameIsUnique(recipes);
   const renderRecipe = useCallback(
     (recipe: Recipe): React.ReactNode => {
+      const href = getRecipeUrl(recipe);
       return (
         <LinkListItem
-          key={recipe.slug}
-          href={getRecipeUrl(recipe)}
+          // Using href as key since recipe `slug`s aren't unique
+          key={href}
+          href={href}
           primary={recipe.name}
           secondary={nameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)}
         />

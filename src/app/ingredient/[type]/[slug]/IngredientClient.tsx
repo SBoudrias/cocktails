@@ -49,25 +49,17 @@ export default function IngredientClient({
   const renderRecipe = useCallback(
     (recipe: Recipe) => {
       const ing = recipe.ingredients.find((i) => i.slug === ingredient.slug);
-      const attribution = recipeNameIsUnique(recipe)
-        ? undefined
-        : getRecipeAttribution(recipe);
       const recipeUrl = getRecipeUrl(recipe);
-
-      const secondary =
-        ing || attribution ? (
-          <span style={{ display: 'flex', justifyContent: 'space-between', gap: '4px' }}>
-            <span>{attribution}</span>
-            {ing && <Quantity quantity={ing.quantity} preferredUnit="oz" />}
-          </span>
-        ) : undefined;
 
       return (
         <LinkListItem
           key={recipeUrl}
           href={recipeUrl}
           primary={recipe.name}
-          secondary={secondary}
+          secondary={
+            recipeNameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)
+          }
+          tertiary={ing && <Quantity quantity={ing.quantity} preferredUnit="oz" />}
         />
       );
     },
