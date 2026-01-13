@@ -16,24 +16,15 @@ export function LinkListItem({
   return (
     <Link href={href}>
       <ListItem divider secondaryAction={<ChevronRight />}>
-        <ListItemText
-          primary={
-            tertiary ? (
-              <Stack
-                component="span"
-                direction="row"
-                justifyContent="space-between"
-                alignItems="baseline"
-              >
-                <span>{primary}</span>
-                {tertiary}
-              </Stack>
-            ) : (
-              primary
-            )
-          }
-          secondary={secondary}
-        />
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
+          <ListItemText primary={primary} secondary={secondary} />
+          {tertiary}
+        </Stack>
       </ListItem>
     </Link>
   );

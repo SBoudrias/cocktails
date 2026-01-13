@@ -49,12 +49,13 @@ export default function IngredientClient({
   const renderRecipe = useCallback(
     (recipe: Recipe) => {
       const ing = recipe.ingredients.find((i) => i.slug === ingredient.slug);
-      const recipeUrl = getRecipeUrl(recipe);
+      const href = getRecipeUrl(recipe);
 
       return (
         <LinkListItem
-          key={recipeUrl}
-          href={recipeUrl}
+          // Using href as key since recipe `slug`s aren't unique
+          key={href}
+          href={href}
           primary={recipe.name}
           secondary={
             recipeNameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)

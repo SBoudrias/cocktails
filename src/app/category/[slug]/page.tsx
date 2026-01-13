@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { notFound } from 'next/navigation';
-import { getCategory } from '@/modules/categories';
+import { getCategory, getChildCategories } from '@/modules/categories';
 import { CATEGORY_ROOT } from '@/modules/constants';
 import AppHeader from '@/components/AppHeader';
 import CategoryName from '@/components/CategoryName';
@@ -24,7 +24,8 @@ import { ingredientHasData } from '@/modules/hasData';
 import FixBugCard from '@/components/FixBugCard';
 import VideoListCard from '@/components/VideoListCard';
 import { getRecipeByCategory } from '@/modules/recipes';
-import RecipeList from '@/components/RecipeList';
+import CategoryClient from './CategoryClient';
+import type { Metadata } from 'next';
 
 type Params = { slug: string };
 
@@ -41,7 +42,11 @@ export async function generateStaticParams(): Promise<Params[]> {
   return params;
 }
 
-export async function generateMetadata({ params }: { params: Promise<Params> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
   const { slug } = await params;
 
   try {
@@ -61,6 +66,8 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   const category = await getCategory(slug);
   const [members, substitutes] = await getIngredientsForCategory(category);
   const relatedRecipes = await getRecipeByCategory(category);
+  const childCategories = await getChildCategories(category);
+  const categorySlugs = [category.slug, ...childCategories.map((c) => c.slug)];
 
   const videos = category.refs.filter((ref) => ref.type === 'youtube');
   const firstVideo = videos.shift();
@@ -141,7 +148,11 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
         <VideoListCard title="Other videos" refs={videos} sx={{ m: 1 }} />
       )}
       {relatedRecipes.length > 0 && (
-        <RecipeList recipes={relatedRecipes} header={`Recipes using ${category.name}`} />
+        <CategoryClient
+          category={category}
+          relatedRecipes={relatedRecipes}
+          categorySlugs={categorySlugs}
+        />
       )}
       <FixBugCard
         fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${slug}.json`}
