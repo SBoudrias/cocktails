@@ -25,6 +25,18 @@ describe('BottlesPage', () => {
     expect(resultList).toHaveTextContent(/campari/i);
   });
 
+  it('filters bottles by category name', async () => {
+    const { user } = setupApp(await BottlesPage());
+
+    const input = screen.getByRole('searchbox');
+    // Search by category - "Jamaican" is a category for several rums
+    await user.type(input, 'jamaican');
+
+    const resultList = screen.getByRole('list');
+    // Should find bottles categorized as Jamaican Rum
+    expect(resultList).toHaveTextContent(/appleton/i);
+  });
+
   it('clearing search shows all bottles grouped by letter', async () => {
     const { user } = setupApp(await BottlesPage(), {
       nuqsOptions: { searchParams: { search: 'rum' } },

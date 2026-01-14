@@ -1,11 +1,9 @@
 'use client';
 
-import { ChevronRight } from '@mui/icons-material';
 import { Card, CardHeader } from '@mui/material';
-import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
-import Link from 'next/link';
 import { useQueryState } from 'nuqs';
 import type { BaseIngredient } from '@/types/Ingredient';
+import { LinkList, LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
 import { getIngredientOrCategorySearchText } from '@/modules/searchText';
@@ -20,25 +18,6 @@ export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }
     </Card>
   );
 
-  const renderItem = (items: BaseIngredient[], header?: string) => {
-    const headerId = header ? `group-header-${header}` : undefined;
-
-    return (
-      <List role={header ? 'group' : undefined} aria-labelledby={headerId}>
-        {header && <ListSubheader id={headerId}>{header}</ListSubheader>}
-        <Paper square>
-          {items.map((bottle) => (
-            <Link href={getIngredientUrl(bottle)} key={bottle.slug}>
-              <ListItem divider secondaryAction={<ChevronRight />}>
-                <ListItemText primary={bottle.name} />
-              </ListItem>
-            </Link>
-          ))}
-        </Paper>
-      </List>
-    );
-  };
-
   return (
     <>
       <SearchHeader
@@ -49,7 +28,19 @@ export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }
       <SearchableList
         items={bottles}
         getSearchText={getIngredientOrCategorySearchText}
-        renderItem={renderItem}
+        renderItem={(items, header) => (
+          <LinkList
+            items={items}
+            header={header}
+            renderItem={(bottle) => (
+              <LinkListItem
+                key={bottle.slug}
+                href={getIngredientUrl(bottle)}
+                primary={bottle.name}
+              />
+            )}
+          />
+        )}
         searchTerm={searchTerm}
         emptyState={emptyState}
       />
