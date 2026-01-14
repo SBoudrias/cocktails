@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 import {
   getIngredient,
   getRecipesForIngredient,
@@ -40,10 +41,12 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const relatedRecipes = await getRecipesForIngredient(ingredient);
 
   return (
-    <IngredientClient
-      ingredient={ingredient}
-      substitutes={substitutes}
-      relatedRecipes={relatedRecipes}
-    />
+    <Suspense>
+      <IngredientClient
+        ingredient={ingredient}
+        substitutes={substitutes}
+        relatedRecipes={relatedRecipes}
+      />
+    </Suspense>
   );
 }
