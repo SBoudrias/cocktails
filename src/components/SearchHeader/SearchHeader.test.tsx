@@ -19,6 +19,23 @@ describe('SearchHeader', () => {
     );
 
     expect(screen.getByRole('searchbox')).toHaveValue('mojito');
+  });
+
+  it('hides title when search is active', () => {
+    setupApp(
+      <SearchHeader title="All Recipes" searchTerm="mojito" onSearchChange={vi.fn()} />,
+    );
+
+    expect(
+      screen.queryByRole('heading', { name: 'All Recipes' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('shows title when search is cleared', () => {
+    setupApp(
+      <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
+    );
+
     expect(screen.getByRole('heading', { name: 'All Recipes' })).toBeInTheDocument();
   });
 

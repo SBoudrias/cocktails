@@ -41,9 +41,11 @@ export default function SearchHeader({
         </Toolbar>
       </AppBar>
       <Toolbar />
-      <Typography variant="h5" component="h1" sx={{ mx: 2, my: 1 }}>
-        {title}
-      </Typography>
+      {!searchTerm && (
+        <Typography variant="h5" component="h1" sx={{ mx: 2, my: 1 }}>
+          {title}
+        </Typography>
+      )}
     </>
   );
 }
