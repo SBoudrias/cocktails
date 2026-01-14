@@ -57,3 +57,11 @@ export function getIngredientOrCategorySearchText(
 
   return normalize(`${item.name} ${categoryNames}`);
 }
+
+/**
+ * Extracts searchable text from a bar.
+ * Includes bar name and location.
+ */
+export function getBarSearchText(bar: { name: string; location?: string }): string {
+  return normalize(`${bar.name} ${bar.location ?? ''}`);
+}
