@@ -65,3 +65,10 @@ export function getIngredientOrCategorySearchText(
 export function getBarSearchText(bar: { name: string; location?: string }): string {
   return normalize(`${bar.name} ${bar.location ?? ''}`);
 }
+
+/**
+ * Extracts searchable text from an author.
+ */
+export function getAuthorSearchText(item: { name: string }): string {
+  return normalize(item.name);
+}
