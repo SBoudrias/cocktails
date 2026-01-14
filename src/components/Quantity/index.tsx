@@ -1,10 +1,10 @@
 'use client';
 
-import styles from './style.module.css';
-import type { RecipeIngredient } from '@/types/Ingredient';
-import { convertQuantityToMl, convertQuantityToOz } from '@/modules/conversion';
 import { Stack } from '@mui/material';
 import { match } from 'ts-pattern';
+import type { RecipeIngredient } from '@/types/Ingredient';
+import { convertQuantityToMl, convertQuantityToOz } from '@/modules/conversion';
+import styles from './style.module.css';
 
 const displayFraction: Record<number, string> = {
   0.125: '⅛',

@@ -1,8 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import AppHeader from '@/components/AppHeader';
-import { Suspense } from 'react';
-import { getAllRecipes } from '@/modules/recipes';
+import { ChevronRight } from '@mui/icons-material';
 import {
   List,
   ListItem,
@@ -12,9 +9,12 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { getBarRecipesUrl } from '@/modules/url';
-import { ChevronRight } from '@mui/icons-material';
+import Link from 'next/link';
+import { Suspense } from 'react';
+import AppHeader from '@/components/AppHeader';
 import groupByFirstLetter from '@/modules/groupByFirstLetter';
+import { getAllRecipes } from '@/modules/recipes';
+import { getBarRecipesUrl } from '@/modules/url';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index | Bars list',

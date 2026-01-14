@@ -1,10 +1,10 @@
-import { vi, beforeEach, describe, it } from 'vitest';
 import { screen } from '@testing-library/react';
-import RecipesPage from './page';
+import { vi, beforeEach, describe, it } from 'vitest';
 import type { Recipe } from '@/types/Recipe';
+import { getAllRecipes } from '@/modules/recipes';
 import { getRecipeUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
-import { getAllRecipes } from '@/modules/recipes';
+import RecipesPage from './page';
 
 vi.mock('@/modules/recipes', () => ({
   getAllRecipes: vi.fn(),

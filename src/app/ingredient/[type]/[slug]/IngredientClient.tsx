@@ -1,10 +1,7 @@
 'use client';
 
-import AppHeader from '@/components/AppHeader';
-import Video from '@/components/Video';
-import Link from 'next/link';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '@/modules/url';
 import {
   Button,
   Card,
@@ -18,21 +15,24 @@ import {
   Paper,
   Stack,
 } from '@mui/material';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { ingredientHasData } from '@/modules/hasData';
 import { uniqBy } from 'lodash';
-import IngredientList from '@/components/IngredientList';
-import FixBugCard from '@/components/FixBugCard';
-import VideoListCard from '@/components/VideoListCard';
-import CategoryName from '@/components/CategoryName';
-import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
-import RecipeList, { getRecipeAttribution } from '@/components/RecipeList';
-import { LinkListItem } from '@/components/LinkList';
-import Quantity from '@/components/Quantity';
-import useNameIsUnique from '@/hooks/useNameIsUnique';
+import Link from 'next/link';
+import { useCallback } from 'react';
 import type { RootIngredient } from '@/types/Ingredient';
 import type { Recipe } from '@/types/Recipe';
-import { useCallback } from 'react';
+import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
+import AppHeader from '@/components/AppHeader';
+import CategoryName from '@/components/CategoryName';
+import FixBugCard from '@/components/FixBugCard';
+import IngredientList from '@/components/IngredientList';
+import { LinkListItem } from '@/components/LinkList';
+import Quantity from '@/components/Quantity';
+import RecipeList, { getRecipeAttribution } from '@/components/RecipeList';
+import Video from '@/components/Video';
+import VideoListCard from '@/components/VideoListCard';
+import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { ingredientHasData } from '@/modules/hasData';
+import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '@/modules/url';
 
 export default function IngredientClient({
   ingredient,

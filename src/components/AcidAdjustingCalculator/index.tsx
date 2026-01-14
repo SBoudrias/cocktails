@@ -12,9 +12,9 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from '@mui/material';
+import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
 import Video from '@/components/Video';
-import { useSearchParams } from 'next/navigation';
 
 const LIME_ACIDITY = 6;
 

@@ -1,8 +1,8 @@
 import transliterate from '@sindresorhus/transliterate';
 import { formatIngredientName } from '@/modules/technique';
-import { type Recipe, type Attribution } from '@/types/Recipe';
 import { type Category } from '@/types/Category';
 import { type BaseIngredient, type RecipeIngredient } from '@/types/Ingredient';
+import { type Recipe, type Attribution } from '@/types/Recipe';
 
 /**
  * Returns transliterated lowercase text suitable for fuzzy search matching.

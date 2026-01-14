@@ -1,15 +1,15 @@
 'use client';
 
-import type { Recipe } from '@/types/Recipe';
-import { getRecipeSearchText } from '@/modules/searchText';
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
+import { useCallback } from 'react';
+import type { Recipe } from '@/types/Recipe';
+import { LinkListItem } from '@/components/LinkList';
 import RecipeList, { getRecipeAttribution } from '@/components/RecipeList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
-import { useCallback } from 'react';
-import { LinkListItem } from '@/components/LinkList';
+import { getRecipeSearchText } from '@/modules/searchText';
 import { getRecipeUrl } from '@/modules/url';
 
 export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {

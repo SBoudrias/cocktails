@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { formatIngredientName } from './technique';
 import type { RecipeIngredient } from '@/types/Ingredient';
+import { formatIngredientName } from './technique';
 
 // Helper to create a basic ingredient for testing
 function createIngredient(overrides: Partial<RecipeIngredient> = {}): RecipeIngredient {

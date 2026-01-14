@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { getRecipeSearchText } from './searchText';
-import type { Recipe } from '@/types/Recipe';
-import type { RecipeIngredient } from '@/types/Ingredient';
 import type { Category } from '@/types/Category';
+import type { RecipeIngredient } from '@/types/Ingredient';
+import type { Recipe } from '@/types/Recipe';
+import { getRecipeSearchText } from './searchText';
 
 const mockCategory: Category = {
   name: 'Aged Rum',

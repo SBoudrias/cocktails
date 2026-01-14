@@ -1,11 +1,11 @@
-import { vi, describe, it, expect } from 'vitest';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import IngredientsPage from './page';
+import { vi, describe, it, expect } from 'vitest';
+import { getAllCategories } from '@/modules/categories';
+import { getAllIngredients } from '@/modules/ingredients';
 import { getIngredientUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
-import { getAllIngredients } from '@/modules/ingredients';
-import { getAllCategories } from '@/modules/categories';
+import IngredientsPage from './page';
 
 describe('IngredientsPage', () => {
   it('shows search input, title and list', async () => {

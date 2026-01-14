@@ -1,3 +1,5 @@
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import BookIcon from '@mui/icons-material/Book';
 import {
   Button,
   Card,
@@ -7,8 +9,6 @@ import {
   Typography,
   type SxProps,
 } from '@mui/material';
-import BookIcon from '@mui/icons-material/Book';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import type { Book } from '@/types/Source';
 
 export default function BookAboutCard({

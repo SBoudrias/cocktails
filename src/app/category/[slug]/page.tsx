@@ -1,15 +1,5 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { notFound } from 'next/navigation';
-import { getCategory, getChildCategories } from '@/modules/categories';
-import { CATEGORY_ROOT } from '@/modules/constants';
-import AppHeader from '@/components/AppHeader';
-import CategoryName from '@/components/CategoryName';
-import { getIngredientsForCategory } from '@/modules/ingredients';
-import Video from '@/components/Video';
-import Link from 'next/link';
+import type { Metadata } from 'next';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { getIngredientUrl } from '@/modules/url';
 import {
   Card,
   CardContent,
@@ -20,12 +10,22 @@ import {
   Paper,
   Stack,
 } from '@mui/material';
-import { ingredientHasData } from '@/modules/hasData';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import AppHeader from '@/components/AppHeader';
+import CategoryName from '@/components/CategoryName';
 import FixBugCard from '@/components/FixBugCard';
+import Video from '@/components/Video';
 import VideoListCard from '@/components/VideoListCard';
+import { getCategory, getChildCategories } from '@/modules/categories';
+import { CATEGORY_ROOT } from '@/modules/constants';
+import { ingredientHasData } from '@/modules/hasData';
+import { getIngredientsForCategory } from '@/modules/ingredients';
 import { getRecipeByCategory } from '@/modules/recipes';
+import { getIngredientUrl } from '@/modules/url';
 import CategoryClient from './CategoryClient';
-import type { Metadata } from 'next';
 
 type Params = { slug: string };
 

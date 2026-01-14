@@ -1,16 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import sortIngredients from './sortIngredients';
-import styles from './style.module.css';
-import Quantity from '@/components/Quantity';
-import type { Recipe } from '@/types/Recipe';
-import UnitSelector, { type Unit } from '@/components/Quantity/Selector';
-import ServingSelector from '@/components/ServingSelector';
-import useLocalStorage from '@/hooks/useLocalStorage';
-import { getIngredientUrl } from '@/modules/url';
-import { formatIngredientName } from '@/modules/technique';
-import { scaleQuantity, calculateScaleFactor } from '@/modules/scaling';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
   Stack,
   List,
@@ -20,8 +10,18 @@ import {
   Paper,
   Toolbar,
 } from '@mui/material';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
+import { useState } from 'react';
+import type { Recipe } from '@/types/Recipe';
+import Quantity from '@/components/Quantity';
+import UnitSelector, { type Unit } from '@/components/Quantity/Selector';
+import ServingSelector from '@/components/ServingSelector';
+import useLocalStorage from '@/hooks/useLocalStorage';
+import { scaleQuantity, calculateScaleFactor } from '@/modules/scaling';
+import { formatIngredientName } from '@/modules/technique';
+import { getIngredientUrl } from '@/modules/url';
+import sortIngredients from './sortIngredients';
+import styles from './style.module.css';
 
 function IngredientLine({
   ingredient,

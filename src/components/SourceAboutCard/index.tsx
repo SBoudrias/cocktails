@@ -1,11 +1,11 @@
+import { type SxProps } from '@mui/material';
+import slugify from '@sindresorhus/slugify';
+import { match } from 'ts-pattern';
 import type { Ref, BookRef, YoutubeRef, PodcastRef } from '@/types/Ref';
 import type { Source } from '@/types/Source';
-import { type SxProps } from '@mui/material';
 import BookAboutCard from './Book';
-import YoutubeAboutCard from './Youtube';
 import PodcastAboutCard from './Podcast';
-import { match } from 'ts-pattern';
-import slugify from '@sindresorhus/slugify';
+import YoutubeAboutCard from './Youtube';
 
 export default function SourceAboutCard({
   source,

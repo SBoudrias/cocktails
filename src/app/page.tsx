@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
-import AppHeader from '@/components/AppHeader';
-import { Suspense } from 'react';
+import BookIcon from '@mui/icons-material/Book';
+import CalculatorIcon from '@mui/icons-material/Calculate';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import PodcastIcon from '@mui/icons-material/Podcasts';
+import SearchIcon from '@mui/icons-material/Search';
+import YoutubeIcon from '@mui/icons-material/YouTube';
 import {
   List,
   ListItem,
@@ -12,13 +16,11 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import CalculatorIcon from '@mui/icons-material/Calculate';
-import SearchIcon from '@mui/icons-material/Search';
-import BookIcon from '@mui/icons-material/Book';
-import YoutubeIcon from '@mui/icons-material/YouTube';
-import PodcastIcon from '@mui/icons-material/Podcasts';
 import Link from 'next/link';
+import { Suspense } from 'react';
+import type { Source } from '@/types/Source';
+import AppHeader from '@/components/AppHeader';
+import { getAllSources } from '@/modules/sources';
 import {
   getAuthorListUrl,
   getBarListUrl,
@@ -27,8 +29,6 @@ import {
   getRecipeListUrl,
   getSourceUrl,
 } from '@/modules/url';
-import { getAllSources } from '@/modules/sources';
-import type { Source } from '@/types/Source';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index',

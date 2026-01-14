@@ -1,16 +1,16 @@
-import { notFound } from 'next/navigation';
-import AppHeader from '@/components/AppHeader';
-import { getRecipe } from '@/modules/recipes';
-import { getRecipePageParams } from '@/modules/params';
 import { Box } from '@mui/material';
-import type { Source } from '@/types/Source';
-import styles from './style.module.css';
 import { Grid2, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
-import IngredientList from '@/components/IngredientList';
+import { notFound } from 'next/navigation';
+import type { Source } from '@/types/Source';
+import AppHeader from '@/components/AppHeader';
 import FixBugCard from '@/components/FixBugCard';
-import VideoListCard from '@/components/VideoListCard';
-import SourceAboutCard from '@/components/SourceAboutCard';
+import IngredientList from '@/components/IngredientList';
 import RecipeAttributionCard from '@/components/RecipeAttributionCard';
+import SourceAboutCard from '@/components/SourceAboutCard';
+import VideoListCard from '@/components/VideoListCard';
+import { getRecipePageParams } from '@/modules/params';
+import { getRecipe } from '@/modules/recipes';
+import styles from './style.module.css';
 
 type Params = { type: Source['type']; source: string; recipe: string };
 

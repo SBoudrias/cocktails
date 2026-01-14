@@ -1,6 +1,6 @@
-import { getRecipeUrl } from '@/modules/url';
-import type { Recipe } from '@/types/Recipe';
 import { match } from 'ts-pattern';
+import type { Recipe } from '@/types/Recipe';
+import { getRecipeUrl } from '@/modules/url';
 import { LinkList, LinkListItem } from '../LinkList';
 
 const ATTRIBUTION_PRIORITY = ['adapted by', 'recipe author', 'book', 'bar'];

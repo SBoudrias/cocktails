@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import AppHeader from '@/components/AppHeader';
 import { Suspense } from 'react';
 import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
+import AppHeader from '@/components/AppHeader';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index | Acid Adjusting',

@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
 import ChevronRight from '@mui/icons-material/ChevronRight';
+import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
+import Link from 'next/link';
 
 export function LinkListItem({
   href,

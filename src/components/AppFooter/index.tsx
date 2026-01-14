@@ -1,8 +1,8 @@
 'use client';
 
-import { Divider, Link, Stack, Typography } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import HomeIcon from '@mui/icons-material/Home';
+import { Divider, Link, Stack, Typography } from '@mui/material';
 
 export default function AppFooter() {
   return (

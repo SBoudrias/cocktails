@@ -1,10 +1,10 @@
-import fs from 'node:fs/promises';
-import type { Book, Source, YoutubeChannel, Podcast } from '@/types/Source';
-import path from 'node:path';
 import memo from 'lodash/memoize';
-import { readJSONFile } from './fs';
-import { BOOK_ROOT, RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT, PODCAST_ROOT } from './constants';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { match } from 'ts-pattern';
+import type { Book, Source, YoutubeChannel, Podcast } from '@/types/Source';
+import { BOOK_ROOT, RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT, PODCAST_ROOT } from './constants';
+import { readJSONFile } from './fs';
 
 function getRecipeSourcePath(root: string, slug: string): string {
   return path.join(root, slug, '_source.json');

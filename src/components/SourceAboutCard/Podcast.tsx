@@ -1,3 +1,5 @@
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import PodcastsIcon from '@mui/icons-material/Podcasts';
 import {
   Button,
   Card,
@@ -7,8 +9,6 @@ import {
   Typography,
   type SxProps,
 } from '@mui/material';
-import PodcastsIcon from '@mui/icons-material/Podcasts';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import type { Podcast } from '@/types/Source';
 
 export default function PodcastAboutCard({

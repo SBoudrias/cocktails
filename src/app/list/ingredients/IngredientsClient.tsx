@@ -1,17 +1,17 @@
 'use client';
 
-import Link from 'next/link';
-import type { BaseIngredient } from '@/types/Ingredient';
-import type { Category } from '@/types/Category';
-import { getIngredientOrCategorySearchText } from '@/modules/searchText';
-import { getIngredientUrl } from '@/modules/url';
+import { ChevronRight } from '@mui/icons-material';
 import { Card, CardHeader } from '@mui/material';
 import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
-import { ChevronRight } from '@mui/icons-material';
+import Link from 'next/link';
 import { useQueryState } from 'nuqs';
+import type { Category } from '@/types/Category';
+import type { BaseIngredient } from '@/types/Ingredient';
 import SearchableList from '@/components/SearchableList';
-import SearchHeader from '@/components/SearchHeader';
 import SearchAllLink from '@/components/SearchAllLink';
+import SearchHeader from '@/components/SearchHeader';
+import { getIngredientOrCategorySearchText } from '@/modules/searchText';
+import { getIngredientUrl } from '@/modules/url';
 
 export default function IngredientsClient({
   ingredients,

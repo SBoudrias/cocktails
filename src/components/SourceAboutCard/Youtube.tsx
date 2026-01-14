@@ -1,3 +1,5 @@
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import {
   Button,
   Card,
@@ -7,11 +9,9 @@ import {
   Typography,
   type SxProps,
 } from '@mui/material';
-import Video from '@/components/Video';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import type { YoutubeRef } from '@/types/Ref';
 import type { YoutubeChannel } from '@/types/Source';
+import Video from '@/components/Video';
 
 export default function YoutubeAboutCard({
   source,

@@ -1,10 +1,10 @@
 #!/usr/bin/env -S node --no-warnings
 
+import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
+import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import slugify from '@sindresorhus/slugify';
-import { format, resolveConfig } from 'prettier';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
@@ -33,14 +33,8 @@ async function fileExists(filepath: string): Promise<boolean> {
 
 async function writeJSON(filepath: string, data: object): Promise<void> {
   await fs.mkdir(path.dirname(filepath), { recursive: true });
-  const jsonContent = JSON.stringify(data, null, 2);
-  const prettierConfig = await resolveConfig(filepath);
-  const formattedContent = await format(jsonContent, {
-    ...prettierConfig,
-    parser: 'json',
-    filepath,
-  });
-  await fs.writeFile(filepath, formattedContent);
+  const jsonContent = JSON.stringify(data, null, 2) + '\n';
+  await fs.writeFile(filepath, jsonContent);
 }
 
 let exitCode = 0;
@@ -105,20 +99,6 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   if (!isValid) {
     fail(`Validation failed for ${sourceFile}`);
     console.error(validate.errors);
-  }
-
-  // Reformat JSON file to ensure consistent formatting
-  const currentContent = await fs.readFile(sourceFile, 'utf-8');
-  const jsonContent = JSON.stringify(data, null, 2);
-  const prettierConfig = await resolveConfig(sourceFile);
-  const formattedContent = await format(jsonContent, {
-    ...prettierConfig,
-    parser: 'json',
-    filepath: sourceFile,
-  });
-  if (currentContent !== formattedContent) {
-    change(`Reformatting ${path.basename(sourceFile)}`);
-    await fs.writeFile(sourceFile, formattedContent);
   }
 
   // Enforce filename should be the name of the data.
@@ -240,6 +220,9 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     }
   }
 }
+
+// Trigger reformatting once on all files for good measures
+execSync(`yarn oxfmt`, { stdio: 'ignore' });
 
 console.log(exitCode > 0 ? '╰ ❌ Validation failed!' : '╰ ✅ Done!');
 process.exit(exitCode);
