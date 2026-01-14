@@ -1,20 +1,7 @@
 import type { Metadata } from 'next';
-import { ChevronRight } from '@mui/icons-material';
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material';
-import Link from 'next/link';
 import { Suspense } from 'react';
-import AppHeader from '@/components/AppHeader';
-import groupByFirstLetter from '@/modules/groupByFirstLetter';
 import { getAllRecipes } from '@/modules/recipes';
-import { getBarRecipesUrl } from '@/modules/url';
+import BarsClient from './BarsClient';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index | Bars list',
@@ -45,49 +32,13 @@ export default async function BarListPage() {
   });
 
   // Convert to array and sort
-  const bars = Array.from(barsMap.values());
-
-  // Group bars by first letter
-  const barGroups = groupByFirstLetter(bars);
+  const bars = Array.from(barsMap.values()).toSorted((a, b) =>
+    a.name.localeCompare(b.name),
+  );
 
   return (
     <Suspense>
-      <AppHeader title="All Bars" />
-      <List>
-        {barGroups.map(([letter, bars]) => {
-          if (!bars) return null;
-
-          return (
-            <li key={letter}>
-              <List>
-                <ListSubheader>{letter}</ListSubheader>
-                <Paper square>
-                  {bars.map((bar) => (
-                    <Link
-                      href={getBarRecipesUrl(bar)}
-                      key={bar.name + (bar.location ?? '')}
-                    >
-                      <ListItem
-                        divider
-                        secondaryAction={
-                          <Stack direction="row" spacing={1}>
-                            <Typography color="textSecondary">
-                              {bar.recipeCount}
-                            </Typography>
-                            <ChevronRight />
-                          </Stack>
-                        }
-                      >
-                        <ListItemText primary={bar.name} secondary={bar.location} />
-                      </ListItem>
-                    </Link>
-                  ))}
-                </Paper>
-              </List>
-            </li>
-          );
-        })}
-      </List>
+      <BarsClient bars={bars} />
     </Suspense>
   );
 }
