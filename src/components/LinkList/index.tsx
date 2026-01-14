@@ -8,26 +8,26 @@ export function LinkListItem({
   secondary,
   tertiary,
 }: {
-  href: string;
+  href?: string;
   primary: React.ReactNode;
   secondary?: React.ReactNode;
   tertiary?: React.ReactNode;
 }) {
-  return (
-    <Link href={href}>
-      <ListItem divider secondaryAction={<ChevronRight />}>
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          width="100%"
-        >
-          <ListItemText primary={primary} secondary={secondary} />
-          {tertiary}
-        </Stack>
-      </ListItem>
-    </Link>
+  const item = (
+    <ListItem divider secondaryAction={href ? <ChevronRight /> : undefined}>
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        width="100%"
+      >
+        <ListItemText primary={primary} secondary={secondary} />
+        {tertiary}
+      </Stack>
+    </ListItem>
   );
+
+  return href ? <Link href={href}>{item}</Link> : item;
 }
 
 export function LinkList<T>({
