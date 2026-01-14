@@ -16,14 +16,17 @@ export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
-      <CardContent>
-        <Typography variant="body2">
-          No bottles matched the search term &quot;{searchTerm}&quot;
-        </Typography>
-      </CardContent>
-    </Card>
+    <>
+      <Card sx={{ m: 2 }}>
+        <CardHeader title="No results found" />
+        <CardContent>
+          <Typography variant="body2">
+            No bottles matched the search term &quot;{searchTerm}&quot;
+          </Typography>
+        </CardContent>
+      </Card>
+      <SearchAllLink searchTerm={searchTerm} />
+    </>
   );
 
   const renderItem = (items: BaseIngredient[], header?: string) => {
@@ -62,7 +65,6 @@ export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }
         searchTerm={searchTerm}
         emptyState={emptyState}
       />
-      <SearchAllLink searchTerm={searchTerm} />
     </>
   );
 }

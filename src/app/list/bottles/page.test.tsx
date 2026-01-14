@@ -197,21 +197,30 @@ describe('BottlesPage', () => {
     expect(tGroup).not.toHaveTextContent('Test Syrup');
   });
 
-  it('shows SearchAllLink when searching', async () => {
+  it('shows SearchAllLink when no results found', async () => {
     const { user } = setupApp(await BottlesPage(), {
       nuqsOptions: { searchParams: '?search=' },
     });
 
     const input = screen.getByRole('searchbox');
-    await user.type(input, 'rum');
+    await user.type(input, 'xyznotfound');
 
     const searchAllLink = screen.getByRole('link', { name: /search all recipes/i });
-    expect(searchAllLink).toHaveAttribute('href', '/search?search=rum');
+    expect(searchAllLink).toHaveAttribute('href', '/search?search=xyznotfound');
   });
 
-  it('does not show SearchAllLink when not searching', async () => {
-    setupApp(await BottlesPage());
+  it('does not show SearchAllLink when results exist', async () => {
+    const { user } = setupApp(await BottlesPage(), {
+      nuqsOptions: { searchParams: '?search=' },
+    });
 
+    const input = screen.getByRole('searchbox');
+    await user.type(input, 'campari');
+
+    // Results should be found
+    expect(screen.getByRole('list')).toHaveTextContent('Campari');
+
+    // SearchAllLink should not be shown when there are results
     expect(
       screen.queryByRole('link', { name: /search all recipes/i }),
     ).not.toBeInTheDocument();
