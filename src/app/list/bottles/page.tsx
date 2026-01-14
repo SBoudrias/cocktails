@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import AppHeader from '@/components/AppHeader';
-import { Suspense } from 'react';
-import { getAllIngredients } from '@/modules/ingredients';
-import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
-import { getIngredientUrl } from '@/modules/url';
 import { ChevronRight } from '@mui/icons-material';
+import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import Link from 'next/link';
+import { Suspense } from 'react';
+import AppHeader from '@/components/AppHeader';
 import groupByFirstLetter from '@/modules/groupByFirstLetter';
+import { getAllIngredients } from '@/modules/ingredients';
+import { getIngredientUrl } from '@/modules/url';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index | Bottle list',

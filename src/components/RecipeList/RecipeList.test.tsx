@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import RecipeList, { getRecipeAttribution } from './index';
-import { LinkListItem } from '../LinkList';
-import { getRecipeUrl } from '@/modules/url';
 import type { Recipe } from '@/types/Recipe';
+import { getRecipeUrl } from '@/modules/url';
+import { LinkListItem } from '../LinkList';
+import RecipeList, { getRecipeAttribution } from './index';
 
 let recipeCounter = 0;
 

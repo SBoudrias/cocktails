@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import IngredientList from './index';
 import type { Recipe } from '@/types/Recipe';
+import IngredientList from './index';
 
 describe('IngredientList', () => {
   const mockIngredients: Recipe['ingredients'] = [

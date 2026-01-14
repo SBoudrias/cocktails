@@ -1,13 +1,13 @@
 'use client';
 
-import RecipeList, { getRecipeAttribution } from '@/components/RecipeList';
-import { LinkListItem } from '@/components/LinkList';
-import Quantity from '@/components/Quantity';
-import useNameIsUnique from '@/hooks/useNameIsUnique';
-import { getRecipeUrl } from '@/modules/url';
+import { useCallback } from 'react';
 import type { Category } from '@/types/Category';
 import type { Recipe } from '@/types/Recipe';
-import { useCallback } from 'react';
+import { LinkListItem } from '@/components/LinkList';
+import Quantity from '@/components/Quantity';
+import RecipeList, { getRecipeAttribution } from '@/components/RecipeList';
+import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getRecipeUrl } from '@/modules/url';
 
 export default function CategoryClient({
   category,

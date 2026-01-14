@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import SearchHeader from './index';
 import { setupApp } from '@/testing';
+import SearchHeader from './index';
 
 describe('SearchHeader', () => {
   it('renders title and search input together', () => {

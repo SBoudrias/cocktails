@@ -1,15 +1,15 @@
-import AppHeader from '@/components/AppHeader';
-import { Suspense } from 'react';
-import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import Link from 'next/link';
-import { getRecipeUrl } from '@/modules/url';
 import { notFound } from 'next/navigation';
-import { getSource } from '@/modules/sources';
+import { Suspense } from 'react';
+import type { Source } from '@/types/Source';
+import AppHeader from '@/components/AppHeader';
+import SourceAboutCard from '@/components/SourceAboutCard';
 import { getSourcePageParams } from '@/modules/params';
 import { getRecipesFromSource } from '@/modules/recipes';
-import SourceAboutCard from '@/components/SourceAboutCard';
-import type { Source } from '@/types/Source';
+import { getSource } from '@/modules/sources';
+import { getRecipeUrl } from '@/modules/url';
 
 type Params = { type: Source['type']; name: string };
 

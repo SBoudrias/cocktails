@@ -1,4 +1,5 @@
 import type { SxProps } from '@mui/material';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import {
   Card,
   CardContent,
@@ -9,7 +10,6 @@ import {
   TableCell,
   TableRow,
 } from '@mui/material';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import type { Recipe } from '@/types/Recipe';
 
 const attributionRelationLabels = {

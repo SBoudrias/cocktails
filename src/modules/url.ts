@@ -1,7 +1,7 @@
+import slugify from '@sindresorhus/slugify';
 import type { RecipeIngredient } from '@/types/Ingredient';
 import type { Recipe } from '@/types/Recipe';
 import type { Source } from '@/types/Source';
-import slugify from '@sindresorhus/slugify';
 
 export function getRecipeUrl(recipe: Recipe) {
   return `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`;

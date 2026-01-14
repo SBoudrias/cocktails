@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { Card, CardContent, Typography } from '@mui/material';
 import { ChevronRight } from '@mui/icons-material';
+import { Card, CardContent, Typography } from '@mui/material';
+import Link from 'next/link';
 
 export default function SearchAllLink({ searchTerm }: { searchTerm: string | null }) {
   if (!searchTerm || searchTerm.trim() === '') {

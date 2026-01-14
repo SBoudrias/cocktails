@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import AppHeader from '@/components/AppHeader';
-import { Suspense } from 'react';
-import { getAllRecipes } from '@/modules/recipes';
-import { List, ListItem, ListItemText, Paper } from '@mui/material';
-import { getRecipeUrl } from '@/modules/url';
 import { ChevronRight } from '@mui/icons-material';
-import { notFound } from 'next/navigation';
+import { List, ListItem, ListItemText, Paper } from '@mui/material';
 import slugify from '@sindresorhus/slugify';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 import type { Recipe } from '@/types/Recipe';
+import AppHeader from '@/components/AppHeader';
+import { getAllRecipes } from '@/modules/recipes';
+import { getRecipeUrl } from '@/modules/url';
 
 // Helper function to find the actual bar name from the slug
 function findBarNameFromSlug(

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import { getAllIngredients } from '@/modules/ingredients';
 import { getAllCategories } from '@/modules/categories';
+import { getAllIngredients } from '@/modules/ingredients';
 import IngredientsClient from './IngredientsClient';
 
 export const metadata: Metadata = {

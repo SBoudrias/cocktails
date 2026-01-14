@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import sortIngredients from './sortIngredients';
 import { type RecipeIngredient } from '@/types/Ingredient';
+import sortIngredients from './sortIngredients';
 
 function createTestIngredient(
   partial: Omit<Partial<RecipeIngredient>, 'quantity'> & {

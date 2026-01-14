@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import RecipesClient from './RecipesClient';
 import { Suspense } from 'react';
 import { getAllRecipes } from '@/modules/recipes';
+import RecipesClient from './RecipesClient';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index | All Recipes',

@@ -1,17 +1,17 @@
-import path from 'node:path';
-import fs from 'node:fs/promises';
-import type { Recipe } from '@/types/Recipe';
-import type { Source } from '@/types/Source';
 import slugify from '@sindresorhus/slugify';
+import { uniqBy } from 'lodash';
 import memo from 'lodash/memoize';
-import { readJSONFile } from './fs';
-import { RECIPE_ROOT } from './constants';
-import { getIngredient } from './ingredients';
-import { getCategory, getChildCategories } from './categories';
-import { getSource } from './sources';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { match } from 'ts-pattern';
 import type { Category } from '@/types/Category';
-import { uniqBy } from 'lodash';
+import type { Recipe } from '@/types/Recipe';
+import type { Source } from '@/types/Source';
+import { getCategory, getChildCategories } from './categories';
+import { RECIPE_ROOT } from './constants';
+import { readJSONFile } from './fs';
+import { getIngredient } from './ingredients';
+import { getSource } from './sources';
 
 function toAlphaSort<I extends { name: string }>(arr: I[]) {
   return arr.toSorted((a, b) => a.name.localeCompare(b.name));

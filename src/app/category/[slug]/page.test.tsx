@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
-import CategoryPage from './page';
+import { describe, it, expect } from 'vitest';
 import { setupApp } from '@/testing';
+import CategoryPage from './page';
 
 describe('CategoryPage', () => {
   describe('basic rendering', () => {

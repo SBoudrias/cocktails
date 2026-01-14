@@ -1,9 +1,9 @@
 'use client';
 
-import { useRef } from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 import { Button, InputBase, Stack } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
-import SearchIcon from '@mui/icons-material/Search';
+import { useRef } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

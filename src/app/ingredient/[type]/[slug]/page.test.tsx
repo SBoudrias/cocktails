@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
-import IngredientPage from './page';
+import { describe, it, expect } from 'vitest';
 import { setupApp } from '@/testing';
+import IngredientPage from './page';
 
 describe('IngredientPage', () => {
   describe('recipe list quantity display', () => {
