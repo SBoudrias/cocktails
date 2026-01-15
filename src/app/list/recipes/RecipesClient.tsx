@@ -2,13 +2,14 @@
 
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import type { Recipe } from '@/types/Recipe';
-import { LinkListItem } from '@/components/LinkList';
-import RecipeList, { getRecipeAttribution } from '@/components/RecipeList';
+import { LinkList, LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
+import { getRecipeAttribution } from '@/modules/recipes';
 import { getRecipeSearchText } from '@/modules/searchText';
 import { getRecipeUrl } from '@/modules/url';
 
@@ -43,6 +44,12 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
     </Card>
   );
 
+  const isSearching = searchTerm != null && searchTerm.trim() !== '';
+  const groupByFirstLetter = useMemo(
+    () => (recipe: Recipe) => getNameFirstLetter(recipe.name),
+    [],
+  );
+
   return (
     <>
       <SearchHeader
@@ -53,9 +60,17 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
       <SearchableList
         items={recipes}
         getSearchText={getRecipeSearchText}
-        renderItem={(items, header) => (
-          <RecipeList recipes={items} header={header} renderRecipe={renderRecipe} />
-        )}
+        renderItem={(items) =>
+          isSearching ? (
+            <LinkList items={items} renderItem={renderRecipe} />
+          ) : (
+            <LinkList
+              items={items}
+              groupBy={groupByFirstLetter}
+              renderItem={renderRecipe}
+            />
+          )
+        }
         searchTerm={searchTerm}
         emptyState={emptyState}
       />

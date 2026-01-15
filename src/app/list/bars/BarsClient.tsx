@@ -3,9 +3,11 @@
 import { Typography } from '@mui/material';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
+import { useMemo } from 'react';
 import { LinkList, LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
+import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
 import { getBarSearchText } from '@/modules/searchText';
 import { getBarRecipesUrl } from '@/modules/url';
 
@@ -22,6 +24,12 @@ export default function BarsClient({
     </Card>
   );
 
+  const isSearching = searchTerm != null && searchTerm.trim() !== '';
+  const groupByFirstLetter = useMemo(
+    () => (bar: { name: string }) => getNameFirstLetter(bar.name),
+    [],
+  );
+
   return (
     <>
       <SearchHeader
@@ -32,23 +40,40 @@ export default function BarsClient({
       <SearchableList
         items={bars}
         getSearchText={getBarSearchText}
-        renderItem={(items, header) => (
-          <LinkList
-            items={items}
-            header={header}
-            renderItem={(bar) => (
-              <LinkListItem
-                key={bar.name + (bar.location ?? '')}
-                href={getBarRecipesUrl(bar)}
-                primary={bar.name}
-                secondary={bar.location}
-                tertiary={
-                  <Typography color="textSecondary">{bar.recipeCount}</Typography>
-                }
-              />
-            )}
-          />
-        )}
+        renderItem={(items) =>
+          isSearching ? (
+            <LinkList
+              items={items}
+              renderItem={(bar) => (
+                <LinkListItem
+                  key={bar.name + (bar.location ?? '')}
+                  href={getBarRecipesUrl(bar)}
+                  primary={bar.name}
+                  secondary={bar.location}
+                  tertiary={
+                    <Typography color="textSecondary">{bar.recipeCount}</Typography>
+                  }
+                />
+              )}
+            />
+          ) : (
+            <LinkList
+              items={items}
+              groupBy={groupByFirstLetter}
+              renderItem={(bar) => (
+                <LinkListItem
+                  key={bar.name + (bar.location ?? '')}
+                  href={getBarRecipesUrl(bar)}
+                  primary={bar.name}
+                  secondary={bar.location}
+                  tertiary={
+                    <Typography color="textSecondary">{bar.recipeCount}</Typography>
+                  }
+                />
+              )}
+            />
+          )
+        }
         searchTerm={searchTerm}
         emptyState={emptyState}
       />

@@ -13,11 +13,9 @@ const testItems: TestItem[] = [
 
 const getSearchText = (item: TestItem) => item.name.toLowerCase();
 
-const renderItem = (items: TestItem[], header?: string) => {
-  const headerId = header ? `header-${header}` : undefined;
+const renderItem = (items: TestItem[]) => {
   return (
-    <ul role={header ? 'group' : 'list'} aria-labelledby={headerId}>
-      {header && <li id={headerId}>{header}</li>}
+    <ul role="list">
       {items.map((item) => (
         <li key={item.name}>{item.name}</li>
       ))}
@@ -32,7 +30,7 @@ const emptyState = (
 );
 
 describe('SearchableList', () => {
-  it('renders all items grouped by first letter when searchTerm is empty', () => {
+  it('renders all items when searchTerm is empty', () => {
     render(
       <SearchableList
         items={testItems}
@@ -43,13 +41,15 @@ describe('SearchableList', () => {
       />,
     );
 
-    // Should have groups for D, L (from "The Last Word"), M
-    expect(screen.getByRole('group', { name: 'D' })).toBeInTheDocument();
-    expect(screen.getByRole('group', { name: 'L' })).toBeInTheDocument();
-    expect(screen.getByRole('group', { name: 'M' })).toBeInTheDocument();
+    const list = screen.getByRole('list');
+    expect(list).toHaveTextContent('Mojito');
+    expect(list).toHaveTextContent('Margarita');
+    expect(list).toHaveTextContent('Mai Tai');
+    expect(list).toHaveTextContent('Daiquiri');
+    expect(list).toHaveTextContent('The Last Word');
   });
 
-  it('renders all items grouped by first letter when searchTerm is null', () => {
+  it('renders all items when searchTerm is null', () => {
     render(
       <SearchableList
         items={testItems}
@@ -60,27 +60,9 @@ describe('SearchableList', () => {
       />,
     );
 
-    // All groups should be present
-    expect(screen.getByRole('group', { name: 'D' })).toBeInTheDocument();
-    expect(screen.getByRole('group', { name: 'L' })).toBeInTheDocument();
-    expect(screen.getByRole('group', { name: 'M' })).toBeInTheDocument();
-  });
-
-  it('strips articles (the/an/a) when grouping by first letter', () => {
-    render(
-      <SearchableList
-        items={testItems}
-        getSearchText={getSearchText}
-        renderItem={renderItem}
-        searchTerm={null}
-        emptyState={emptyState}
-      />,
-    );
-
-    // "The Last Word" should be grouped under "L", not "T"
-    const lGroup = screen.getByRole('group', { name: 'L' });
-    expect(lGroup).toHaveTextContent('The Last Word');
-    expect(screen.queryByRole('group', { name: 'T' })).not.toBeInTheDocument();
+    const list = screen.getByRole('list');
+    expect(list).toHaveTextContent('Mojito');
+    expect(list).toHaveTextContent('Daiquiri');
   });
 
   it('filters items with fuzzy search when searchTerm is provided', () => {
@@ -115,29 +97,6 @@ describe('SearchableList', () => {
     expect(screen.getByText('No results found')).toBeInTheDocument();
   });
 
-  it('calls renderItem for each group when displaying grouped items', () => {
-    render(
-      <SearchableList
-        items={testItems}
-        getSearchText={getSearchText}
-        renderItem={renderItem}
-        searchTerm={null}
-        emptyState={emptyState}
-      />,
-    );
-
-    // Each group should have its items
-    const dGroup = screen.getByRole('group', { name: 'D' });
-    const lGroup = screen.getByRole('group', { name: 'L' });
-    const mGroup = screen.getByRole('group', { name: 'M' });
-
-    expect(dGroup).toHaveTextContent('Daiquiri');
-    expect(lGroup).toHaveTextContent('The Last Word');
-    expect(mGroup).toHaveTextContent('Mojito');
-    expect(mGroup).toHaveTextContent('Margarita');
-    expect(mGroup).toHaveTextContent('Mai Tai');
-  });
-
   it('calls renderItem with filtered items when searching', () => {
     render(
       <SearchableList
@@ -166,8 +125,9 @@ describe('SearchableList', () => {
       />,
     );
 
-    // Should show grouped items, not empty state
-    expect(screen.getByRole('group', { name: 'D' })).toBeInTheDocument();
+    // Should show all items, not empty state
+    const list = screen.getByRole('list');
+    expect(list).toHaveTextContent('Mojito');
     expect(screen.queryByRole('status')).not.toBeInTheDocument();
   });
 });

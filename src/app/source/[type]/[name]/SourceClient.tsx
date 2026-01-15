@@ -4,8 +4,7 @@ import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import type { Recipe } from '@/types/Recipe';
 import type { Source } from '@/types/Source';
-import { LinkListItem } from '@/components/LinkList';
-import RecipeList from '@/components/RecipeList';
+import { LinkList, LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
@@ -44,12 +43,8 @@ export default function SourceClient({
         <SearchableList
           items={recipes}
           getSearchText={getRecipeSearchText}
-          renderItem={(filteredRecipes, header) => (
-            <RecipeList
-              recipes={filteredRecipes}
-              header={header}
-              renderRecipe={renderRecipe}
-            />
+          renderItem={(filteredRecipes) => (
+            <LinkList items={filteredRecipes} renderItem={renderRecipe} />
           )}
           searchTerm={searchTerm}
           emptyState={emptyState}
@@ -58,11 +53,7 @@ export default function SourceClient({
         <>
           <SourceAboutCard source={source} sx={{ m: 2 }} />
           {recipes.length > 0 && (
-            <RecipeList
-              recipes={recipes}
-              header="All Recipes"
-              renderRecipe={renderRecipe}
-            />
+            <LinkList items={recipes} header="All Recipes" renderItem={renderRecipe} />
           )}
         </>
       )}

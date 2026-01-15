@@ -11,7 +11,6 @@ import CategoryName from '@/components/CategoryName';
 import FixBugCard from '@/components/FixBugCard';
 import { LinkList, LinkListItem } from '@/components/LinkList';
 import Quantity from '@/components/Quantity';
-import RecipeList, { getRecipeAttribution } from '@/components/RecipeList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
@@ -19,6 +18,7 @@ import Video from '@/components/Video';
 import VideoListCard from '@/components/VideoListCard';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
 import { ingredientHasData } from '@/modules/hasData';
+import { getRecipeAttribution } from '@/modules/recipes';
 import { getRecipeSearchText } from '@/modules/searchText';
 import { getIngredientUrl, getRecipeUrl } from '@/modules/url';
 
@@ -102,9 +102,7 @@ export default function CategoryClient({
         <SearchableList
           items={relatedRecipes}
           getSearchText={getRecipeSearchText}
-          renderItem={(recipes, header) => (
-            <RecipeList recipes={recipes} header={header} renderRecipe={renderRecipe} />
-          )}
+          renderItem={(recipes) => <LinkList items={recipes} renderItem={renderRecipe} />}
           searchTerm={searchTerm}
           emptyState={emptyState}
         />
@@ -169,10 +167,10 @@ export default function CategoryClient({
             <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
           )}
           {relatedRecipes.length > 0 && (
-            <RecipeList
-              recipes={relatedRecipes}
+            <LinkList
+              items={relatedRecipes}
               header={`Recipes using ${category.name}`}
-              renderRecipe={renderRecipe}
+              renderItem={renderRecipe}
             />
           )}
           <FixBugCard

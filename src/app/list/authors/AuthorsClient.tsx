@@ -1,10 +1,13 @@
 'use client';
 
-import { Card, CardHeader, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
+import { useMemo } from 'react';
 import { LinkList, LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
+import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
 import { getAuthorSearchText } from '@/modules/searchText';
 import { getAuthorRecipesUrl } from '@/modules/url';
 
@@ -21,6 +24,12 @@ export default function AuthorsClient({
     </Card>
   );
 
+  const isSearching = searchTerm != null && searchTerm.trim() !== '';
+  const groupByFirstLetter = useMemo(
+    () => (author: { name: string }) => getNameFirstLetter(author.name),
+    [],
+  );
+
   return (
     <>
       <SearchHeader
@@ -31,22 +40,38 @@ export default function AuthorsClient({
       <SearchableList
         items={authors}
         getSearchText={getAuthorSearchText}
-        renderItem={(items, header) => (
-          <LinkList
-            items={items}
-            header={header}
-            renderItem={(author) => (
-              <LinkListItem
-                key={author.name}
-                href={getAuthorRecipesUrl(author.name)}
-                primary={author.name}
-                tertiary={
-                  <Typography color="textSecondary">{author.recipeCount}</Typography>
-                }
-              />
-            )}
-          />
-        )}
+        renderItem={(items) =>
+          isSearching ? (
+            <LinkList
+              items={items}
+              renderItem={(author) => (
+                <LinkListItem
+                  key={author.name}
+                  href={getAuthorRecipesUrl(author.name)}
+                  primary={author.name}
+                  tertiary={
+                    <Typography color="textSecondary">{author.recipeCount}</Typography>
+                  }
+                />
+              )}
+            />
+          ) : (
+            <LinkList
+              items={items}
+              groupBy={groupByFirstLetter}
+              renderItem={(author) => (
+                <LinkListItem
+                  key={author.name}
+                  href={getAuthorRecipesUrl(author.name)}
+                  primary={author.name}
+                  tertiary={
+                    <Typography color="textSecondary">{author.recipeCount}</Typography>
+                  }
+                />
+              )}
+            />
+          )
+        }
         searchTerm={searchTerm}
         emptyState={emptyState}
       />

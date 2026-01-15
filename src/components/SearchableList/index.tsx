@@ -1,10 +1,8 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { List } from '@mui/material';
 import { useMemo } from 'react';
 import { fuzzySearch } from '@/modules/fuzzySearch';
-import groupByFirstLetter from '@/modules/groupByFirstLetter';
 
 export default function SearchableList<T extends { name: string }>({
   items,
@@ -15,7 +13,7 @@ export default function SearchableList<T extends { name: string }>({
 }: {
   items: T[];
   getSearchText: (item: T) => string;
-  renderItem: (items: T[], header?: string) => ReactNode;
+  renderItem: (items: T[]) => ReactNode;
   searchTerm: string | null;
   emptyState: ReactNode;
 }) {
@@ -31,17 +29,7 @@ export default function SearchableList<T extends { name: string }>({
   }
 
   if (!searchTerm || searchTerm.trim().length === 0) {
-    const groups = groupByFirstLetter(items);
-
-    return (
-      <List>
-        {groups.map(([letter, groupItems]) => {
-          if (!groupItems) return null;
-
-          return <li key={letter}>{renderItem(groupItems, letter)}</li>;
-        })}
-      </List>
-    );
+    return renderItem(items);
   }
 
   return emptyState;
