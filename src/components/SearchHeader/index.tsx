@@ -10,7 +10,7 @@ export default function SearchHeader({
   searchTerm,
   onSearchChange,
 }: {
-  title: string;
+  title?: string;
   searchTerm: string | null;
   onSearchChange: (value: string | null) => void;
 }) {
@@ -41,7 +41,7 @@ export default function SearchHeader({
         </Toolbar>
       </AppBar>
       <Toolbar />
-      {!searchTerm && (
+      {!searchTerm && title && (
         <Typography variant="h5" component="h1" sx={{ mx: 2, my: 1 }}>
           {title}
         </Typography>
