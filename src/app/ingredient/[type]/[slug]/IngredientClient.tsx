@@ -1,6 +1,5 @@
 'use client';
 
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import {
   Button,
@@ -16,18 +15,18 @@ import {
   Stack,
 } from '@mui/material';
 import { uniqBy } from 'lodash';
-import Link from 'next/link';
 import { useQueryState } from 'nuqs';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import type { RootIngredient } from '@/types/Ingredient';
 import type { Recipe } from '@/types/Recipe';
 import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
+import AppHeader from '@/components/AppHeader';
 import CategoryName from '@/components/CategoryName';
 import FixBugCard from '@/components/FixBugCard';
 import IngredientList from '@/components/IngredientList';
-import { LinkListItem } from '@/components/LinkList';
+import { LinkList, LinkListItem } from '@/components/LinkList';
 import Quantity from '@/components/Quantity';
-import { getRecipeAttribution } from '@/components/RecipeList';
+import RecipeList, { getRecipeAttribution } from '@/components/RecipeList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
@@ -50,7 +49,31 @@ export default function IngredientClient({
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const recipeNameIsUnique = useNameIsUnique(relatedRecipes);
   const topCategory = ingredient.categories[0];
-  const isSearching = Boolean(searchTerm);
+  const isSearching = searchTerm != null && searchTerm.trim() !== '';
+
+  const { firstVideo, additionalVideos } = useMemo(() => {
+    const allRefs = [
+      ...ingredient.refs,
+      ...ingredient.categories.flatMap((c) => c.refs ?? []),
+    ];
+    const videos = uniqBy(
+      allRefs.filter((ref) => ref.type === 'youtube'),
+      'videoId',
+    );
+    return {
+      firstVideo: videos[0],
+      additionalVideos: videos.slice(1),
+    };
+  }, [ingredient.refs, ingredient.categories]);
+
+  const emptyState = (
+    <>
+      <Card sx={{ m: 2 }}>
+        <CardHeader title="No results found" />
+      </Card>
+      <SearchAllLink searchTerm={searchTerm} />
+    </>
+  );
 
   const renderRecipe = useCallback(
     (recipe: Recipe) => {
@@ -59,7 +82,6 @@ export default function IngredientClient({
 
       return (
         <LinkListItem
-          // Using href as key since recipe `slug`s aren't unique
           key={href}
           href={href}
           primary={recipe.name}
@@ -71,29 +93,6 @@ export default function IngredientClient({
       );
     },
     [ingredient.slug, recipeNameIsUnique],
-  );
-
-  const renderSearchItem = useCallback(
-    (items: Recipe[], header?: string) => {
-      const headerId = header ? `group-header-${header}` : undefined;
-
-      return (
-        <List role={header ? 'group' : undefined} aria-labelledby={headerId}>
-          {header && <ListSubheader id={headerId}>{header}</ListSubheader>}
-          <Paper square>{items.map(renderRecipe)}</Paper>
-        </List>
-      );
-    },
-    [renderRecipe],
-  );
-
-  const emptyState = (
-    <>
-      <Card sx={{ m: 2 }}>
-        <CardHeader title="No results found" />
-      </Card>
-      <SearchAllLink searchTerm={searchTerm} />
-    </>
   );
 
   let descriptionCard;
@@ -139,24 +138,28 @@ export default function IngredientClient({
     );
   }
 
-  const allRefs = [
-    ...ingredient.refs,
-    ...ingredient.categories.flatMap((c) => c.refs ?? []),
-  ];
-  const videos = uniqBy(
-    allRefs.filter((ref) => ref.type === 'youtube'),
-    'videoId',
-  );
-  const firstVideo = videos.shift();
-
   return (
     <>
-      <SearchHeader
-        title={ingredient.name}
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-      />
-      {!isSearching && (
+      {relatedRecipes.length > 0 ? (
+        <SearchHeader
+          title={ingredient.name}
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+        />
+      ) : (
+        <AppHeader title={ingredient.name} />
+      )}
+      {isSearching ? (
+        <SearchableList
+          items={relatedRecipes}
+          getSearchText={getRecipeSearchText}
+          renderItem={(recipes, header) => (
+            <RecipeList recipes={recipes} header={header} renderRecipe={renderRecipe} />
+          )}
+          searchTerm={searchTerm}
+          emptyState={emptyState}
+        />
+      ) : (
         <>
           {firstVideo && <Video id={firstVideo.videoId} start={firstVideo.start} />}
           {descriptionCard}
@@ -187,44 +190,31 @@ export default function IngredientClient({
               />
             )}
           {substitutes.length > 0 && (
-            <List>
-              <ListSubheader>Some substitution option</ListSubheader>
-              <Paper square>
-                {substitutes.slice(0, 10).map((substitute) => {
-                  if (ingredientHasData(substitute)) {
-                    return (
-                      <Link key={substitute.slug} href={getIngredientUrl(substitute)}>
-                        <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                          <ListItemText>{substitute.name}</ListItemText>
-                        </ListItem>
-                      </Link>
-                    );
+            <LinkList
+              header="Some substitution option"
+              items={substitutes.slice(0, 10)}
+              renderItem={(substitute) => (
+                <LinkListItem
+                  key={substitute.slug}
+                  href={
+                    ingredientHasData(substitute)
+                      ? getIngredientUrl(substitute)
+                      : undefined
                   }
-
-                  return (
-                    <ListItem key={substitute.slug} divider>
-                      <ListItemText>{substitute.name}</ListItemText>
-                    </ListItem>
-                  );
-                })}
-              </Paper>
-            </List>
+                  primary={substitute.name}
+                />
+              )}
+            />
           )}
-        </>
-      )}
-      {relatedRecipes.length > 0 && (
-        <SearchableList
-          items={relatedRecipes}
-          getSearchText={getRecipeSearchText}
-          renderItem={renderSearchItem}
-          searchTerm={searchTerm}
-          emptyState={emptyState}
-        />
-      )}
-      {!isSearching && (
-        <>
-          {videos.length > 0 && (
-            <VideoListCard title="Other videos" refs={videos} sx={{ m: 1 }} />
+          {additionalVideos.length > 0 && (
+            <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
+          )}
+          {relatedRecipes.length > 0 && (
+            <RecipeList
+              recipes={relatedRecipes}
+              header={`Recipes using ${ingredient.name}`}
+              renderRecipe={renderRecipe}
+            />
           )}
           <FixBugCard
             fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
