@@ -8,6 +8,7 @@ import type { Category } from '@/types/Category';
 import type { Recipe } from '@/types/Recipe';
 import type { Source } from '@/types/Source';
 import { getCategory, getChildCategories } from './categories';
+import { isChapterFolder } from './chapters';
 import { RECIPE_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import { getIngredient } from './ingredients';
@@ -24,9 +25,34 @@ export const getRecipe = memo(
       slug: string;
     },
     recipe: string,
+    chapter?: string,
   ): Promise<Recipe> => {
-    const filepath = path.join(RECIPE_ROOT, source.type, source.slug, `${recipe}.json`);
-    const data = await readJSONFile<Omit<Recipe, 'source' | 'slug'>>(filepath);
+    // Try direct path first (flat structure or known chapter)
+    const directPath = chapter
+      ? path.join(RECIPE_ROOT, source.type, source.slug, chapter, `${recipe}.json`)
+      : path.join(RECIPE_ROOT, source.type, source.slug, `${recipe}.json`);
+
+    let filepath = directPath;
+    let resolvedChapter = chapter;
+
+    // If no chapter provided, try flat path first, then search chapter directories
+    if (!chapter) {
+      const data = await readJSONFile<Omit<Recipe, 'source' | 'slug'>>(directPath);
+      if (!data) {
+        // Search in chapter directories using glob
+        const sourcePath = path.join(RECIPE_ROOT, source.type, source.slug);
+        const matches = await fs.glob(`*/${recipe}.json`, { cwd: sourcePath });
+        const matchArray = await Array.fromAsync(matches);
+
+        const matchedPath = matchArray[0];
+        if (matchedPath) {
+          resolvedChapter = path.dirname(matchedPath);
+          filepath = path.join(sourcePath, matchedPath);
+        }
+      }
+    }
+
+    const data = await readJSONFile<Omit<Recipe, 'source' | 'slug' | 'chapter'>>(filepath);
 
     if (!data) throw new Error(`Recipe not found: ${filepath}`);
 
@@ -35,6 +61,7 @@ export const getRecipe = memo(
     return {
       ...data,
       slug: recipe,
+      chapter: resolvedChapter,
       refs: data.refs ?? [],
       attributions: data.attributions ?? [],
       ingredients: await Promise.all(
@@ -59,15 +86,36 @@ export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
 
   for await (const sourceType of await fs.readdir(RECIPE_ROOT)) {
     for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, sourceType))) {
-      for await (const recipeFilename of await fs.readdir(
-        path.join(RECIPE_ROOT, sourceType, sourceSlug),
-      )) {
-        if (recipeFilename === '_source.json') continue;
-        const recipeSlug = path.basename(recipeFilename, '.json');
+      const sourcePath = path.join(RECIPE_ROOT, sourceType, sourceSlug);
 
-        recipes.push(
-          getRecipe({ type: sourceType as Source['type'], slug: sourceSlug }, recipeSlug),
-        );
+      for await (const entry of await fs.readdir(sourcePath)) {
+        if (entry === '_source.json') continue;
+
+        const entryPath = path.join(sourcePath, entry);
+        const stat = await fs.stat(entryPath);
+
+        if (stat.isDirectory() && isChapterFolder(entry)) {
+          // Chapter directory - traverse recipes inside
+          for await (const recipeFilename of await fs.readdir(entryPath)) {
+            if (!recipeFilename.endsWith('.json')) continue;
+            const recipeSlug = path.basename(recipeFilename, '.json');
+
+            recipes.push(
+              getRecipe(
+                { type: sourceType as Source['type'], slug: sourceSlug },
+                recipeSlug,
+                entry,
+              ),
+            );
+          }
+        } else if (entry.endsWith('.json')) {
+          // Flat recipe file
+          const recipeSlug = path.basename(entry, '.json');
+
+          recipes.push(
+            getRecipe({ type: sourceType as Source['type'], slug: sourceSlug }, recipeSlug),
+          );
+        }
       }
     }
   }

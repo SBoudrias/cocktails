@@ -4,21 +4,21 @@ import { vi, describe, it, expect } from 'vitest';
 import { setupApp } from '@/testing';
 import SourcePage from './page';
 
-// Using real Smuggler's Cove book which has:
-// - 100+ recipes
-// - Description text
-// - Well-known recipes like Mai Tai, Jungle Bird, etc.
-const TEST_BOOK = {
-  type: 'book' as const,
-  slug: 'smugglers-cove',
-  name: "Smuggler's Cove",
-};
+// Note: Book sources now have their own dedicated route at /source/book/[name]
+// This test file tests the shared source page for non-book sources.
 
-// Using Anders Erickson YouTube channel for source type variety
+// Using Anders Erickson YouTube channel as the main test source
 const TEST_YOUTUBE = {
   type: 'youtube-channel' as const,
   slug: 'anders-erickson',
   name: 'Anders Erickson',
+};
+
+// Using a second YouTube channel for variety testing
+const TEST_YOUTUBE_ALT = {
+  type: 'youtube-channel' as const,
+  slug: 'educated-barfly',
+  name: 'The Educated Barfly',
 };
 
 describe('SourcePage', () => {
@@ -26,35 +26,32 @@ describe('SourcePage', () => {
     it('renders SearchHeader with searchbox', async () => {
       setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
       );
 
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
 
-    it('renders source about card with description', async () => {
+    it('renders source about card with source name', async () => {
       setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
       );
 
-      // Smuggler's Cove has a description mentioning Martin and Rebecca Cate
-      expect(screen.getByText(/Martin and Rebecca Cate/)).toBeInTheDocument();
+      // Source name appears in the about card
+      expect(screen.getByText(TEST_YOUTUBE.name)).toBeInTheDocument();
     });
 
     it('renders recipe list with header', async () => {
       setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
       );
 
       expect(screen.getByText('All Recipes')).toBeInTheDocument();
-
-      // Mai Tai is a well-known Smuggler's Cove recipe
-      expect(screen.getByRole('link', { name: /Mai Tai/ })).toBeInTheDocument();
     });
   });
 
@@ -62,39 +59,38 @@ describe('SourcePage', () => {
     it('search filters recipes within source', async () => {
       const { user } = setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
       );
 
       const input = screen.getByRole('searchbox');
-      await user.type(input, 'jungle bird');
+      await user.type(input, 'margarita');
 
       const resultList = screen.getByRole('list');
-      expect(resultList).toHaveTextContent('Jungle bird');
-      expect(resultList).not.toHaveTextContent('Mai Tai');
+      expect(resultList).toHaveTextContent(/margarita/i);
     });
 
     it('URL updates with search param', async () => {
       const onUrlUpdate = vi.fn();
       const { user } = setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
         { nuqsOptions: { onUrlUpdate } },
       );
 
       const input = screen.getByRole('searchbox');
-      await user.type(input, 'mai tai');
+      await user.type(input, 'margarita');
 
       expect(onUrlUpdate).toHaveBeenLastCalledWith(
-        expect.objectContaining({ queryString: '?search=mai+tai' }),
+        expect.objectContaining({ queryString: '?search=margarita' }),
       );
     });
 
     it('shows SearchAllLink in no results state', async () => {
       const { user } = setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
       );
 
@@ -110,29 +106,29 @@ describe('SourcePage', () => {
     it('hides source about card when searching', async () => {
       const { user } = setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
       );
 
-      // About card is visible initially
-      expect(screen.getByText(/Martin and Rebecca Cate/)).toBeInTheDocument();
+      // About card is visible initially (shows source name)
+      expect(screen.getByText(TEST_YOUTUBE.name)).toBeInTheDocument();
 
       const input = screen.getByRole('searchbox');
-      await user.type(input, 'mai tai');
+      await user.type(input, 'margarita');
 
       // About card should be hidden during search
-      expect(screen.queryByText(/Martin and Rebecca Cate/)).not.toBeInTheDocument();
+      expect(screen.queryByText(TEST_YOUTUBE.name)).not.toBeInTheDocument();
     });
 
     it('back button navigates correctly', async () => {
       await mockRouter.push('/');
-      await mockRouter.push(`/source/${TEST_BOOK.type}/${TEST_BOOK.slug}`);
+      await mockRouter.push(`/source/${TEST_YOUTUBE.type}/${TEST_YOUTUBE.slug}`);
 
       const backSpy = vi.spyOn(mockRouter, 'back');
 
       const { user } = setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
       );
 
@@ -146,70 +142,70 @@ describe('SourcePage', () => {
     it('loads with search term from URL', async () => {
       setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
-        { nuqsOptions: { searchParams: '?search=jungle' } },
+        { nuqsOptions: { searchParams: '?search=margarita' } },
       );
 
       const input = screen.getByRole('searchbox');
-      expect(input).toHaveValue('jungle');
+      expect(input).toHaveValue('margarita');
 
       const resultList = screen.getByRole('list');
-      expect(resultList).toHaveTextContent('Jungle bird');
+      expect(resultList).toHaveTextContent(/margarita/i);
     });
 
     it('clearing search restores full page content', async () => {
       const { user } = setupApp(
         await SourcePage({
-          params: Promise.resolve({ type: TEST_BOOK.type, name: TEST_BOOK.slug }),
+          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
-        { nuqsOptions: { searchParams: '?search=jungle' } },
+        { nuqsOptions: { searchParams: '?search=margarita' } },
       );
 
       // Initially filtered - about card hidden
-      expect(screen.queryByText(/Martin and Rebecca Cate/)).not.toBeInTheDocument();
+      expect(screen.queryByText(TEST_YOUTUBE.name)).not.toBeInTheDocument();
 
       // Clear the search
       const clearButton = screen.getByRole('button', { name: /clear/i });
       await user.click(clearButton);
 
       // About card should be restored
-      expect(screen.getByText(/Martin and Rebecca Cate/)).toBeInTheDocument();
+      expect(screen.getByText(TEST_YOUTUBE.name)).toBeInTheDocument();
       expect(screen.getByText('All Recipes')).toBeInTheDocument();
     });
   });
 
-  describe('with youtube-channel source type', () => {
-    it('renders youtube channel source correctly', async () => {
+  describe('with alternate youtube-channel source', () => {
+    it('renders different youtube channel source correctly', async () => {
       setupApp(
         await SourcePage({
           params: Promise.resolve({
-            type: TEST_YOUTUBE.type,
-            name: TEST_YOUTUBE.slug,
+            type: TEST_YOUTUBE_ALT.type,
+            name: TEST_YOUTUBE_ALT.slug,
           }),
         }),
       );
 
       // Source name appears in the about card
-      expect(screen.getByText(TEST_YOUTUBE.name)).toBeInTheDocument();
+      expect(screen.getByText(TEST_YOUTUBE_ALT.name)).toBeInTheDocument();
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
 
-    it('search works with youtube channel recipes', async () => {
+    it('search works with alternate youtube channel recipes', async () => {
       const { user } = setupApp(
         await SourcePage({
           params: Promise.resolve({
-            type: TEST_YOUTUBE.type,
-            name: TEST_YOUTUBE.slug,
+            type: TEST_YOUTUBE_ALT.type,
+            name: TEST_YOUTUBE_ALT.slug,
           }),
         }),
       );
 
       const input = screen.getByRole('searchbox');
-      await user.type(input, 'margarita');
+      await user.type(input, 'daiquiri');
 
       const resultList = screen.getByRole('list');
-      expect(resultList).toHaveTextContent(/margarita/i);
+      expect(resultList).toHaveTextContent(/daiquiri/i);
     });
   });
 });

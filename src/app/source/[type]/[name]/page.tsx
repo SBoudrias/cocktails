@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import type { Source } from '@/types/Source';
 import { getSourcePageParams } from '@/modules/params';
@@ -15,6 +15,11 @@ export async function generateStaticParams(): Promise<Params[]> {
 export async function generateMetadata({ params }: { params: Promise<Params> }) {
   const { type, name } = await params;
 
+  // Books have their own route
+  if (type === 'book') {
+    return {};
+  }
+
   try {
     const source = await getSource(type, name);
 
@@ -28,6 +33,11 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 
 export default async function SourcePage({ params }: { params: Promise<Params> }) {
   const { type, name } = await params;
+
+  // Books have their own dedicated route
+  if (type === 'book') {
+    redirect(`/source/book/${name}`);
+  }
 
   const source = await getSource(type, name);
   const recipes = await getRecipesFromSource(source);

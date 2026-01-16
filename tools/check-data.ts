@@ -221,8 +221,93 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   }
 }
 
+console.log('╰ Done!\n');
+
+// Validate book chapter structure
+const CHAPTER_PATTERN = /^\d+_.+$/;
+
+function isChapterFolder(name: string): boolean {
+  return CHAPTER_PATTERN.test(name);
+}
+
+console.log('╭ 📚 Validating book chapter structure...');
+const bookRoot = 'src/data/recipes/book';
+for await (const bookSlug of await fs.readdir(bookRoot)) {
+  const bookPath = path.join(bookRoot, bookSlug);
+  const entries = await fs.readdir(bookPath);
+
+  const flatRecipes: string[] = [];
+  const chapterDirs: string[] = [];
+  const recipeSlugs = new Map<string, string>(); // slug -> location for duplicate detection
+
+  for (const entry of entries) {
+    if (entry === '_source.json') continue;
+
+    const entryPath = path.join(bookPath, entry);
+    const stat = await fs.stat(entryPath);
+
+    if (stat.isDirectory()) {
+      // Validate chapter folder naming pattern
+      if (!isChapterFolder(entry)) {
+        fail(`Book "${bookSlug}": Directory "${entry}" does not match chapter pattern (##_Name)`);
+        continue;
+      }
+
+      chapterDirs.push(entry);
+
+      // Check for recipes in chapter
+      const chapterEntries = await fs.readdir(entryPath);
+      const chapterRecipes = chapterEntries.filter((f) => f.endsWith('.json'));
+
+      if (chapterRecipes.length === 0) {
+        fail(`Book "${bookSlug}": Chapter "${entry}" is empty`);
+      }
+
+      // Check for duplicate recipe slugs
+      for (const recipeFile of chapterRecipes) {
+        const recipeSlug = path.basename(recipeFile, '.json');
+        const existingLocation = recipeSlugs.get(recipeSlug);
+        if (existingLocation) {
+          fail(
+            `Book "${bookSlug}": Duplicate recipe "${recipeSlug}" ` +
+              `found in "${entry}" and "${existingLocation}"`,
+          );
+        } else {
+          recipeSlugs.set(recipeSlug, entry);
+        }
+      }
+    } else if (entry.endsWith('.json')) {
+      flatRecipes.push(entry);
+
+      // Check for duplicate recipe slugs
+      const recipeSlug = path.basename(entry, '.json');
+      const existingLocation = recipeSlugs.get(recipeSlug);
+      if (existingLocation) {
+        fail(
+          `Book "${bookSlug}": Duplicate recipe "${recipeSlug}" ` +
+            `found in root and "${existingLocation}"`,
+        );
+      } else {
+        recipeSlugs.set(recipeSlug, 'root');
+      }
+    }
+  }
+
+  // All-or-nothing: if chapters exist, all recipes must be in chapters
+  if (chapterDirs.length > 0 && flatRecipes.length > 0) {
+    fail(
+      `Book "${bookSlug}": Has chapter directories but also has flat recipe files. ` +
+        `Move all recipes into chapter directories: ${flatRecipes.join(', ')}`,
+    );
+  }
+}
+
 // Trigger reformatting once on all files for good measures
-execSync(`yarn oxfmt`, { stdio: 'ignore' });
+try {
+  execSync(`yarn oxfmt`, { stdio: 'ignore' });
+} catch {
+  // oxfmt may not be installed/available, ignore the error
+}
 
 console.log(exitCode > 0 ? '╰ ❌ Validation failed!' : '╰ ✅ Done!');
 process.exit(exitCode);

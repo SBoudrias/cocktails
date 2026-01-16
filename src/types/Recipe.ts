@@ -28,6 +28,7 @@ export type Attribution =
 export type Recipe = {
   name: string;
   slug: string;
+  chapter?: string; // Derived from filesystem folder name (e.g., "01_Rum Drinks")
   preparation: 'built' | 'shaken' | 'stirred' | 'blended' | 'flash blended' | 'swizzled';
   served_on: 'big rock' | 'up' | 'crushed ice' | 'blended' | 'ice cubes';
   glassware:

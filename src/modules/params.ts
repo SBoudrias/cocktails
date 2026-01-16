@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { Source } from '@/types/Source';
+import { isChapterFolder } from './chapters';
 import { INGREDIENT_ROOT, RECIPE_ROOT } from './constants';
 
 export async function getRecipePageParams(): Promise<
@@ -14,17 +15,34 @@ export async function getRecipePageParams(): Promise<
 
   for await (const type of await fs.readdir(RECIPE_ROOT)) {
     for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, type))) {
-      for await (const dataFilePath of await fs.readdir(
-        path.join(RECIPE_ROOT, type, sourceSlug),
-      )) {
-        if (dataFilePath === '_source.json') continue;
+      const sourcePath = path.join(RECIPE_ROOT, type, sourceSlug);
 
-        const recipeSlug = path.basename(dataFilePath, '.json');
-        params.push({
-          type: type as Source['type'],
-          source: sourceSlug,
-          recipe: recipeSlug,
-        });
+      for await (const entry of await fs.readdir(sourcePath)) {
+        if (entry === '_source.json') continue;
+
+        const entryPath = path.join(sourcePath, entry);
+        const stat = await fs.stat(entryPath);
+
+        if (stat.isDirectory() && isChapterFolder(entry)) {
+          // Chapter directory - traverse recipes inside
+          for await (const recipeFilename of await fs.readdir(entryPath)) {
+            if (!recipeFilename.endsWith('.json')) continue;
+            const recipeSlug = path.basename(recipeFilename, '.json');
+            params.push({
+              type: type as Source['type'],
+              source: sourceSlug,
+              recipe: recipeSlug,
+            });
+          }
+        } else if (entry.endsWith('.json')) {
+          // Flat recipe file
+          const recipeSlug = path.basename(entry, '.json');
+          params.push({
+            type: type as Source['type'],
+            source: sourceSlug,
+            recipe: recipeSlug,
+          });
+        }
       }
     }
   }
@@ -56,12 +74,26 @@ export async function getSourcePageParams(): Promise<
   const params = [];
 
   for await (const type of await fs.readdir(RECIPE_ROOT)) {
+    // Books have their own dedicated route at /source/book/[name]
+    if (type === 'book') continue;
+
     for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, type))) {
       params.push({
         type: type as Source['type'],
         name: sourceSlug,
       });
     }
+  }
+
+  return params;
+}
+
+export async function getBookPageParams(): Promise<{ name: string }[]> {
+  const params = [];
+  const bookPath = path.join(RECIPE_ROOT, 'book');
+
+  for await (const sourceSlug of await fs.readdir(bookPath)) {
+    params.push({ name: sourceSlug });
   }
 
   return params;

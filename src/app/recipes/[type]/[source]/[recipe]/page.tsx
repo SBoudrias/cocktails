@@ -81,7 +81,11 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
         )}
         {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
         <FixBugCard
-          fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/recipes/${type}/${source}/${recipeSlug}.json`}
+          fixUrl={
+            recipe.chapter
+              ? `https://github.com/SBoudrias/cocktails/edit/main/src/data/recipes/${type}/${source}/${encodeURIComponent(recipe.chapter)}/${recipeSlug}.json`
+              : `https://github.com/SBoudrias/cocktails/edit/main/src/data/recipes/${type}/${source}/${recipeSlug}.json`
+          }
           sx={{ m: 1 }}
         />
       </Box>
