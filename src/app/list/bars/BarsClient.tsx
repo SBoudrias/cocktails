@@ -5,15 +5,25 @@ import { useQueryState } from 'nuqs';
 import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
-import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
+import { byNameListConfig } from '@/modules/lists/by-name';
 import { getBarSearchText } from '@/modules/searchText';
 import { getBarRecipesUrl } from '@/modules/url';
 
-export default function BarsClient({
-  bars,
-}: {
-  bars: { name: string; location?: string; recipeCount: number }[];
-}) {
+type Bar = { name: string; location?: string; recipeCount: number };
+
+function renderBar(bar: Bar) {
+  return (
+    <LinkListItem
+      key={bar.name + (bar.location ?? '')}
+      href={getBarRecipesUrl(bar)}
+      primary={bar.name}
+      secondary={bar.location}
+      tertiary={<Typography color="textSecondary">{bar.recipeCount}</Typography>}
+    />
+  );
+}
+
+export default function BarsClient({ bars }: { bars: Bar[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
@@ -32,16 +42,8 @@ export default function BarsClient({
       <SearchableList
         items={bars}
         getSearchText={getBarSearchText}
-        groupBy={getNameFirstLetter}
-        renderItem={(bar) => (
-          <LinkListItem
-            key={bar.name + (bar.location ?? '')}
-            href={getBarRecipesUrl(bar)}
-            primary={bar.name}
-            secondary={bar.location}
-            tertiary={<Typography color="textSecondary">{bar.recipeCount}</Typography>}
-          />
-        )}
+        config={byNameListConfig}
+        renderItem={renderBar}
         searchTerm={searchTerm}
         emptyState={emptyState}
       />

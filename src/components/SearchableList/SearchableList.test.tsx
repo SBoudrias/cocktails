@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
+import { byNameListConfig } from '@/modules/lists/by-name';
 import SearchableList from './index';
 
 type TestItem = { name: string };
@@ -28,7 +28,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderItem}
         searchTerm=""
         emptyState={emptyState}
@@ -46,7 +46,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderItem}
         searchTerm={null}
         emptyState={emptyState}
@@ -64,7 +64,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderItem}
         searchTerm={null}
         emptyState={emptyState}
@@ -82,7 +82,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderItem}
         searchTerm="moj"
         emptyState={emptyState}
@@ -99,7 +99,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderItem}
         searchTerm="nonexistent"
         emptyState={emptyState}
@@ -115,7 +115,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderItem}
         searchTerm={null}
         emptyState={emptyState}
@@ -139,7 +139,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderItem}
         searchTerm="mai"
         emptyState={emptyState}
@@ -155,7 +155,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderItem}
         searchTerm="   "
         emptyState={emptyState}

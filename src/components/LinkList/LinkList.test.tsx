@@ -44,12 +44,16 @@ describe('LinkList', () => {
     });
   });
 
-  describe('with groupBy', () => {
+  describe('with config', () => {
     it('groups items by the provided function', () => {
       render(
         <LinkList
           items={testItems}
-          groupBy={(item) => item.category}
+          config={{
+            groupBy: (item) => item.category,
+            sortItemBy: () => 0,
+            sortHeaderBy: (a, b) => a.localeCompare(b),
+          }}
           renderItem={renderItem}
         />,
       );
@@ -76,7 +80,11 @@ describe('LinkList', () => {
       render(
         <LinkList
           items={items}
-          groupBy={(item) => item.category}
+          config={{
+            groupBy: (item) => item.category,
+            sortItemBy: () => 0,
+            sortHeaderBy: (a, b) => a.localeCompare(b),
+          }}
           renderItem={renderItem}
         />,
       );

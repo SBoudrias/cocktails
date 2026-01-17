@@ -8,9 +8,19 @@ import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
-import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
+import { byNameListConfig } from '@/modules/lists/by-name';
 import { getIngredientOrCategorySearchText } from '@/modules/searchText';
 import { getIngredientUrl } from '@/modules/url';
+
+function renderIngredient(ingredient: BaseIngredient | Category) {
+  return (
+    <LinkListItem
+      key={ingredient.slug}
+      href={getIngredientUrl(ingredient)}
+      primary={ingredient.name}
+    />
+  );
+}
 
 export default function IngredientsClient({
   ingredients,
@@ -38,14 +48,8 @@ export default function IngredientsClient({
       <SearchableList
         items={ingredients}
         getSearchText={getIngredientOrCategorySearchText}
-        groupBy={getNameFirstLetter}
-        renderItem={(ingredient) => (
-          <LinkListItem
-            key={ingredient.slug}
-            href={getIngredientUrl(ingredient)}
-            primary={ingredient.name}
-          />
-        )}
+        config={byNameListConfig}
+        renderItem={renderIngredient}
         searchTerm={searchTerm}
         emptyState={emptyState}
       />

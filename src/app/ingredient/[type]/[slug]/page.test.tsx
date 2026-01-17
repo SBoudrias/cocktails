@@ -173,11 +173,10 @@ describe('IngredientPage', () => {
       // Chartreuse swizzle is unique (only one recipe with that name)
       // Find the specific link, then get the listitem inside it (MUI ListItem is child of Next.js Link)
       const chartreuseLink = screen.getByRole('link', { name: /Chartreuse swizzle/ });
-      const chartreuse = chartreuseLink.querySelector('li');
 
       // Should show quantity but NOT source attribution
-      expect(chartreuse).toHaveTextContent('1oz');
-      expect(chartreuse).not.toHaveTextContent("Smuggler's Cove");
+      expect(chartreuseLink).toHaveTextContent('1oz');
+      expect(chartreuseLink).not.toHaveTextContent("Smuggler's Cove");
     });
   });
 

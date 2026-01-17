@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getNameFirstLetter, getNameForSorting } from './getNameFirstLetter';
+import { getNameFirstLetter, getNameForSorting } from './by-name';
 
 describe('getNameFirstLetter', () => {
   it('returns the first letter of a simple name', () => {
