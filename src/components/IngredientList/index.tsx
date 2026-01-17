@@ -83,10 +83,13 @@ export default function IngredientList({
         <ListSubheader>Ingredients</ListSubheader>
         <Paper square>
           {sortIngredients(scaledIngredients).map((ingredient) => {
-            let href = getIngredientUrl(ingredient);
-            if (ingredient.type === 'juice') {
-              href += `?${new URLSearchParams({ juiceAmount: String(ingredient.quantity.amount) })}`;
-            }
+            const href =
+              ingredient.type === 'juice'
+                ? {
+                    pathname: getIngredientUrl(ingredient),
+                    query: { juiceAmount: String(ingredient.quantity.amount) },
+                  }
+                : getIngredientUrl(ingredient);
 
             return (
               <Link key={ingredient.slug} href={href}>

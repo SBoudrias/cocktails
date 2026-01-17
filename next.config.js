@@ -3,8 +3,7 @@ const nextConfig = {
   output: 'export',
   basePath: '/cocktails',
   reactStrictMode: true,
-  // TODO: enable
-  // typedRoutes: true,
+  typedRoutes: true,
 };
 
 export default nextConfig;
