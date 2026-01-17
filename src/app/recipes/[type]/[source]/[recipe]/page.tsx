@@ -1,5 +1,12 @@
-import { Box } from '@mui/material';
-import { Grid, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import {
+  Box,
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  Paper,
+} from '@mui/material';
 import { notFound } from 'next/navigation';
 import type { Source } from '@/types/Source';
 import AppHeader from '@/components/AppHeader';
@@ -81,7 +88,11 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
         )}
         {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
         <FixBugCard
-          fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/recipes/${type}/${source}/${recipeSlug}.json`}
+          fixUrl={
+            recipe.chapter
+              ? `https://github.com/SBoudrias/cocktails/edit/main/src/data/recipes/${type}/${source}/${encodeURIComponent(recipe.chapter)}/${recipeSlug}.json`
+              : `https://github.com/SBoudrias/cocktails/edit/main/src/data/recipes/${type}/${source}/${recipeSlug}.json`
+          }
           sx={{ m: 1 }}
         />
       </Box>
