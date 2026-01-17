@@ -55,24 +55,40 @@ export const getRecipe = memo(
 );
 
 export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
-  const recipes: Promise<Recipe>[] = [];
+  // Read all source types (book, youtube-channel, etc.)
+  const sourceTypes = await fs.readdir(RECIPE_ROOT);
 
-  for await (const sourceType of await fs.readdir(RECIPE_ROOT)) {
-    for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, sourceType))) {
-      for await (const recipeFilename of await fs.readdir(
-        path.join(RECIPE_ROOT, sourceType, sourceSlug),
-      )) {
-        if (recipeFilename === '_source.json') continue;
-        const recipeSlug = path.basename(recipeFilename, '.json');
+  // Read all source directories in parallel
+  const sourceDirs = await Promise.all(
+    sourceTypes.map(async (sourceType) => {
+      const sourceSlugs = await fs.readdir(path.join(RECIPE_ROOT, sourceType));
+      return sourceSlugs.map((sourceSlug) => ({ sourceType, sourceSlug }));
+    }),
+  );
 
-        recipes.push(
-          getRecipe({ type: sourceType as Source['type'], slug: sourceSlug }, recipeSlug),
-        );
-      }
-    }
-  }
+  // Read all recipe files in parallel
+  const recipeFiles = await Promise.all(
+    sourceDirs.flat().map(async ({ sourceType, sourceSlug }) => {
+      const files = await fs.readdir(path.join(RECIPE_ROOT, sourceType, sourceSlug));
+      return files
+        .filter((file) => file !== '_source.json')
+        .map((file) => ({
+          sourceType: sourceType as Source['type'],
+          sourceSlug,
+          recipeSlug: path.basename(file, '.json'),
+        }));
+    }),
+  );
 
-  const allRecipes = await Promise.all(recipes);
+  // Fetch all recipes in parallel
+  const allRecipes = await Promise.all(
+    recipeFiles
+      .flat()
+      .map(({ sourceType, sourceSlug, recipeSlug }) =>
+        getRecipe({ type: sourceType, slug: sourceSlug }, recipeSlug),
+      ),
+  );
+
   return toAlphaSort(allRecipes);
 });
 

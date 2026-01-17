@@ -11,7 +11,7 @@ import {
   Toolbar,
 } from '@mui/material';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import type { Recipe } from '@/types/Recipe';
 import Quantity from '@/components/Quantity';
 import UnitSelector, { type Unit } from '@/components/Quantity/Selector';
@@ -69,13 +69,17 @@ export default function IngredientList({
   const scaleFactor = calculateScaleFactor(defaultServings, servings);
 
   // Scale all ingredients at the list level
-  const scaledIngredients = ingredients.map((ingredient) => ({
-    ...ingredient,
-    quantity:
-      scaleFactor !== 1
-        ? scaleQuantity(ingredient.quantity, scaleFactor)
-        : ingredient.quantity,
-  }));
+  const scaledIngredients = useMemo(
+    () =>
+      ingredients.map((ingredient) => ({
+        ...ingredient,
+        quantity:
+          scaleFactor !== 1
+            ? scaleQuantity(ingredient.quantity, scaleFactor)
+            : ingredient.quantity,
+      })),
+    [ingredients, scaleFactor],
+  );
 
   return (
     <>
