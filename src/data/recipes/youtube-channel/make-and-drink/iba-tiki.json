@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "IBA Tiki",
+  "ingredients": [
+    {
+      "name": "Pineapple Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaretto",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Frangelico",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Havana Club Profundo",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Havana Club Cuban Smoky",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jOtodT0sKsI",
+      "start": 761
+    }
+  ]
+}

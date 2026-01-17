@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Spirit of Portland",
+  "ingredients": [
+    {
+      "name": "Pineapple Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Frangelico",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jameson",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jOtodT0sKsI",
+      "start": 124
+    }
+  ]
+}
