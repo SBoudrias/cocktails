@@ -8,8 +8,8 @@ import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
-import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
 import { getRecipeAttribution } from '@/modules/getRecipeAttribution';
+import { byNameListConfig } from '@/modules/lists/by-name';
 import { getRecipeSearchText } from '@/modules/searchText';
 import { getRecipeUrl } from '@/modules/url';
 
@@ -54,7 +54,7 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
       <SearchableList
         items={recipes}
         getSearchText={getRecipeSearchText}
-        groupBy={getNameFirstLetter}
+        config={byNameListConfig}
         renderItem={renderRecipe}
         searchTerm={searchTerm}
         emptyState={emptyState}

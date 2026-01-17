@@ -2,6 +2,7 @@ import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
 import Link from 'next/link';
 import { useMemo } from 'react';
+import type { ListConfig } from '@/modules/lists/type';
 
 export function LinkListItem({
   href,
@@ -31,48 +32,47 @@ export function LinkListItem({
   return href ? <Link href={href}>{item}</Link> : item;
 }
 
-type LinkListProps<T> = {
+export function LinkList<const T>({
+  items,
+  renderItem,
+  config,
+  header = '',
+}: {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
-  groupBy?: (item: T) => string;
+  config?: ListConfig<T>;
   header?: string;
-};
-
-export function LinkList<T>({ items, groupBy, header, renderItem }: LinkListProps<T>) {
+}) {
   const groups = useMemo(() => {
-    if (!groupBy && !header) {
-      // No grouping - return single group with empty key
-      return [['', items] as const];
-    }
+    const {
+      groupBy = () => header,
+      sortItemBy = () => 0,
+      sortHeaderBy = (a: string, b: string) => a.localeCompare(b),
+    } = config ?? {};
 
-    // Use the provided groupBy function, or group everything under the header
-    const groupFn = groupBy ?? (() => header ?? '');
-    const groupedItems = Object.groupBy(items, groupFn);
-    return Object.entries(groupedItems).toSorted(([a], [b]) => a.localeCompare(b));
-  }, [items, groupBy, header]);
+    const groupedItems = Object.groupBy(items, groupBy);
 
-  // If there's only one group with no header, render a simple flat list
-  const firstGroup = groups[0];
-  if (groups.length === 1 && firstGroup && firstGroup[0] === '') {
     return (
-      <List>
-        <Paper square>{items.map((item) => renderItem(item))}</Paper>
-      </List>
+      Object.entries(groupedItems)
+        // Sort items within each group
+        .map(([header, items = []]): [string, T[]] => [
+          header,
+          items.toSorted(sortItemBy),
+        ])
+        // Sort the groups by their headers
+        .toSorted(([a], [b]) => sortHeaderBy(a, b))
     );
-  }
+  }, [items, config, header]);
 
-  // Otherwise, render groups with headers
   return (
     <List>
-      {groups.map(([groupKey, groupItems]) => {
-        if (!groupItems) return null;
-
-        const headerId = `group-header-${groupKey}`;
+      {groups.map(([header, groupItems]) => {
+        const headerId = `group-header-${header}`;
 
         return (
-          <li key={groupKey}>
-            <List role="group" aria-labelledby={headerId}>
-              <ListSubheader id={headerId}>{groupKey}</ListSubheader>
+          <li key={header}>
+            <List role="group" aria-labelledby={header ? headerId : undefined}>
+              {header && <ListSubheader id={headerId}>{header}</ListSubheader>}
               <Paper square>{groupItems.map((item) => renderItem(item))}</Paper>
             </List>
           </li>

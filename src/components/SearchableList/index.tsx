@@ -1,23 +1,22 @@
-'use client';
-
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
+import type { ListConfig } from '@/modules/lists/type';
 import { fuzzySearch } from '@/modules/fuzzySearch';
 import { LinkList } from '../LinkList';
 
-export default function SearchableList<T extends { name: string }>({
+export default function SearchableList<const T>({
   items,
+  searchTerm,
   getSearchText,
   renderItem,
-  groupBy,
-  searchTerm,
+  config,
   emptyState,
 }: {
   items: T[];
+  searchTerm: string | null;
   getSearchText: (item: T) => string;
   renderItem: (item: T) => ReactNode;
-  groupBy?: (item: T) => string;
-  searchTerm: string | null;
+  config?: ListConfig<T>;
   emptyState: ReactNode;
 }) {
   const haystack = useMemo(() => items.map(getSearchText), [items, getSearchText]);
@@ -34,7 +33,7 @@ export default function SearchableList<T extends { name: string }>({
 
   if (!searchTerm || searchTerm.trim().length === 0) {
     // When not searching, show grouped list
-    return <LinkList items={items} groupBy={groupBy} renderItem={renderItem} />;
+    return <LinkList items={items} config={config} renderItem={renderItem} />;
   }
 
   return emptyState;

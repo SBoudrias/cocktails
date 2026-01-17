@@ -5,15 +5,24 @@ import { useQueryState } from 'nuqs';
 import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
-import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
+import { byNameListConfig } from '@/modules/lists/by-name';
 import { getAuthorSearchText } from '@/modules/searchText';
 import { getAuthorRecipesUrl } from '@/modules/url';
 
-export default function AuthorsClient({
-  authors,
-}: {
-  authors: { name: string; recipeCount: number }[];
-}) {
+type Author = { name: string; recipeCount: number };
+
+function renderAuthor(author: Author) {
+  return (
+    <LinkListItem
+      key={author.name}
+      href={getAuthorRecipesUrl(author.name)}
+      primary={author.name}
+      tertiary={<Typography color="textSecondary">{author.recipeCount}</Typography>}
+    />
+  );
+}
+
+export default function AuthorsClient({ authors }: { authors: Author[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
@@ -32,15 +41,8 @@ export default function AuthorsClient({
       <SearchableList
         items={authors}
         getSearchText={getAuthorSearchText}
-        groupBy={getNameFirstLetter}
-        renderItem={(author) => (
-          <LinkListItem
-            key={author.name}
-            href={getAuthorRecipesUrl(author.name)}
-            primary={author.name}
-            tertiary={<Typography color="textSecondary">{author.recipeCount}</Typography>}
-          />
-        )}
+        config={byNameListConfig}
+        renderItem={renderAuthor}
         searchTerm={searchTerm}
         emptyState={emptyState}
       />
