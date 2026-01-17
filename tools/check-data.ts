@@ -42,9 +42,6 @@ function fail(message: string): void {
   console.error(`├ ❌ ${message}`);
   exitCode = 1;
 }
-function pass(message: string): void {
-  console.log(`├ ✅ ${message}`);
-}
 function change(message: string): void {
   console.log(`├ 🔄 ${message}`);
 }
