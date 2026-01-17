@@ -1,6 +1,6 @@
 ---
 name: youtube
-description: Fetch video metadata from YouTube URLs using yt-dlp. Use when the user provides a YouTube URL or asks to get context, recipe info, or details from a YouTube video.
+description: Fetch video metadata from YouTube URLs using yt-dlp. Use when the user provides a YouTube URL or asks to get details from a YouTube video.
 ---
 
 # YouTube Video Context
