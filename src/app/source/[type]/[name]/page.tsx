@@ -4,6 +4,7 @@ import type { Source } from '@/types/Source';
 import { getSourcePageParams } from '@/modules/params';
 import { getRecipesFromSource } from '@/modules/recipes';
 import { getSource } from '@/modules/sources';
+import BookSourceClient from './BookSourceClient';
 import SourceClient from './SourceClient';
 
 type Params = { type: Source['type']; name: string };
@@ -34,7 +35,11 @@ export default async function SourcePage({ params }: { params: Promise<Params> }
 
   return (
     <Suspense>
-      <SourceClient source={source} recipes={recipes} />
+      {source.type === 'book' ? (
+        <BookSourceClient source={source} recipes={recipes} />
+      ) : (
+        <SourceClient source={source} recipes={recipes} />
+      )}
     </Suspense>
   );
 }
