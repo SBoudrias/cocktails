@@ -1,14 +1,10 @@
 import type { Metadata } from 'next';
-import { ChevronRight } from '@mui/icons-material';
-import { List, ListItem, ListItemText, Paper } from '@mui/material';
 import slugify from '@sindresorhus/slugify';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import type { Recipe } from '@/types/Recipe';
-import AppHeader from '@/components/AppHeader';
 import { getAllRecipes } from '@/modules/recipes';
-import { getRecipeUrl } from '@/modules/url';
+import BarRecipesClient from './BarRecipesClient';
 
 // Helper function to find the actual bar name from the slug
 function findBarNameFromSlug(
@@ -96,18 +92,7 @@ export default async function BarRecipesPage({ params }: Props) {
 
   return (
     <Suspense>
-      <AppHeader title={`Recipes from ${formatBarName(bar)}`} />
-      <List sx={{ mt: 2 }}>
-        <Paper square>
-          {barRecipes.map((recipe) => (
-            <Link href={getRecipeUrl(recipe)} key={recipe.slug}>
-              <ListItem divider secondaryAction={<ChevronRight />}>
-                <ListItemText primary={recipe.name} />
-              </ListItem>
-            </Link>
-          ))}
-        </Paper>
-      </List>
+      <BarRecipesClient barName={formatBarName(bar)} recipes={barRecipes} />
     </Suspense>
   );
 }
