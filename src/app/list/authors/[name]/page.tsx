@@ -1,14 +1,10 @@
 import type { Metadata } from 'next';
-import { ChevronRight } from '@mui/icons-material';
-import { List, ListItem, ListItemText, Paper } from '@mui/material';
 import slugify from '@sindresorhus/slugify';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import type { Recipe } from '@/types/Recipe';
-import AppHeader from '@/components/AppHeader';
 import { getAllRecipes } from '@/modules/recipes';
-import { getRecipeUrl } from '@/modules/url';
+import AuthorRecipesClient from './AuthorRecipesClient';
 
 // Helper function to find the actual author name from the slug
 function findAuthorNameFromSlug(slug: string, recipes: Recipe[]): string | null {
@@ -90,30 +86,7 @@ export default async function AuthorRecipesPage({ params }: Props) {
 
   return (
     <Suspense>
-      <AppHeader title={`Recipes by ${authorName}`} />
-      <List sx={{ mt: 2 }}>
-        <Paper square>
-          {authorRecipes.map((recipe) => {
-            // Get the attribution if the recipe was adapted by someone else
-            const adaptedBy = recipe.attributions.find(
-              (attribution) =>
-                attribution.relation === 'adapted by' &&
-                attribution.source !== authorName,
-            );
-
-            return (
-              <Link href={getRecipeUrl(recipe)} key={recipe.slug}>
-                <ListItem divider secondaryAction={<ChevronRight />}>
-                  <ListItemText
-                    primary={recipe.name}
-                    secondary={adaptedBy ? `Adapted by ${adaptedBy.source}` : undefined}
-                  />
-                </ListItem>
-              </Link>
-            );
-          })}
-        </Paper>
-      </List>
+      <AuthorRecipesClient authorName={authorName} recipes={authorRecipes} />
     </Suspense>
   );
 }
