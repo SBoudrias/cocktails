@@ -1,0 +1,47 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      nextjs:
+        patterns:
+          - next
+          - '@next/*'
+          - next-*
+          - '@vitejs/*'
+          - vite-tsconfig-paths
+          - nuqs
+      react:
+        patterns:
+          - react
+          - react-dom
+          - '@types/react'
+          - '@types/react-dom'
+      styling:
+        patterns:
+          - '@mui/*'
+          - '@emotion/*'
+      testing:
+        patterns:
+          - vitest
+          - '@vitest/*'
+          - '@testing-library/*'
+          - happy-dom
+      typescript:
+        patterns:
+          - typescript
+          - '@types/node'
+          - '@types/lodash'
+      linting:
+        patterns:
+          - eslint
+          - oxfmt
+          - eslint-*
+          - husky
+          - nano-staged
+      ajv:
+        patterns:
+          - ajv
+          - ajv-cli

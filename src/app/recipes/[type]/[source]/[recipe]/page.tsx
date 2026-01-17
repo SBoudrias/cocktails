@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { Grid2, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import { Grid, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import { notFound } from 'next/navigation';
 import type { Source } from '@/types/Source';
 import AppHeader from '@/components/AppHeader';
@@ -46,17 +46,17 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
     <>
       <AppHeader title={recipe.name} />
       <Box component="main">
-        <Grid2 container columns={3} sx={{ textAlign: 'center', my: 1 }}>
-          <Grid2 size={1}>
+        <Grid container columns={3} sx={{ textAlign: 'center', my: 1 }}>
+          <Grid size={1}>
             <div className={styles.badge}>{recipe.preparation}</div>
-          </Grid2>
-          <Grid2 size={1}>
+          </Grid>
+          <Grid size={1}>
             <div className={styles.badge}>{recipe.served_on}</div>
-          </Grid2>
-          <Grid2 size={1}>
+          </Grid>
+          <Grid size={1}>
             <div className={styles.badge}>{recipe.glassware}</div>
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
         <IngredientList
           ingredients={recipe.ingredients}
           defaultServings={recipe.servings}
