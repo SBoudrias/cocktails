@@ -1,12 +1,4 @@
-import { getNameFirstLetter } from './getNameFirstLetter';
-
-const articleRegExp = /^(the |an |a )?(\w+)/i;
-
-/** Strips leading articles (the/an/a) for sorting purposes */
-function getNameForSorting(name: string): string {
-  const [, , strippedName = name] = name.match(articleRegExp) ?? [];
-  return strippedName;
-}
+import { getNameFirstLetter, getNameForSorting } from './getNameFirstLetter';
 
 export default function groupByFirstLetter<T extends { name: string }>(
   entities: T[],
@@ -19,7 +11,7 @@ export default function groupByFirstLetter<T extends { name: string }>(
       return [
         letter,
         entities?.sort((a, b) =>
-          getNameForSorting(a.name).localeCompare(getNameForSorting(b.name)),
+          getNameForSorting(a).localeCompare(getNameForSorting(b)),
         ),
       ];
     });
