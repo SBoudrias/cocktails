@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/cocktails',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails',
   reactStrictMode: true,
   // TODO: enable
   // typedRoutes: true,
