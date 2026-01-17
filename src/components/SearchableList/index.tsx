@@ -1,21 +1,22 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { List } from '@mui/material';
 import { useMemo } from 'react';
 import { fuzzySearch } from '@/modules/fuzzySearch';
-import groupByFirstLetter from '@/modules/groupByFirstLetter';
+import { LinkList } from '../LinkList';
 
 export default function SearchableList<T extends { name: string }>({
   items,
   getSearchText,
   renderItem,
+  groupBy,
   searchTerm,
   emptyState,
 }: {
   items: T[];
   getSearchText: (item: T) => string;
-  renderItem: (items: T[], header?: string) => ReactNode;
+  renderItem: (item: T) => ReactNode;
+  groupBy?: (item: T) => string;
   searchTerm: string | null;
   emptyState: ReactNode;
 }) {
@@ -27,21 +28,13 @@ export default function SearchableList<T extends { name: string }>({
   );
 
   if (searchMatches.length > 0) {
-    return renderItem(searchMatches);
+    // When searching, show flat list (no grouping)
+    return <LinkList items={searchMatches} renderItem={renderItem} />;
   }
 
   if (!searchTerm || searchTerm.trim().length === 0) {
-    const groups = groupByFirstLetter(items);
-
-    return (
-      <List>
-        {groups.map(([letter, groupItems]) => {
-          if (!groupItems) return null;
-
-          return <li key={letter}>{renderItem(groupItems, letter)}</li>;
-        })}
-      </List>
-    );
+    // When not searching, show grouped list
+    return <LinkList items={items} groupBy={groupBy} renderItem={renderItem} />;
   }
 
   return emptyState;

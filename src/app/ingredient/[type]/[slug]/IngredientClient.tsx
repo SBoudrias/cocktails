@@ -26,7 +26,6 @@ import FixBugCard from '@/components/FixBugCard';
 import IngredientList from '@/components/IngredientList';
 import { LinkList, LinkListItem } from '@/components/LinkList';
 import Quantity from '@/components/Quantity';
-import RecipeList from '@/components/RecipeList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
@@ -154,9 +153,7 @@ export default function IngredientClient({
         <SearchableList
           items={relatedRecipes}
           getSearchText={getRecipeSearchText}
-          renderItem={(recipes, header) => (
-            <RecipeList recipes={recipes} header={header} renderRecipe={renderRecipe} />
-          )}
+          renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}
         />
@@ -211,10 +208,10 @@ export default function IngredientClient({
             <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
           )}
           {relatedRecipes.length > 0 && (
-            <RecipeList
-              recipes={relatedRecipes}
+            <LinkList
               header={`Recipes using ${ingredient.name}`}
-              renderRecipe={renderRecipe}
+              items={relatedRecipes}
+              renderItem={renderRecipe}
             />
           )}
           <FixBugCard

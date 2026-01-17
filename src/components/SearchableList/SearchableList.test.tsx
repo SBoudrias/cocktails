@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
 import SearchableList from './index';
 
 type TestItem = { name: string };
@@ -13,17 +14,7 @@ const testItems: TestItem[] = [
 
 const getSearchText = (item: TestItem) => item.name.toLowerCase();
 
-const renderItem = (items: TestItem[], header?: string) => {
-  const headerId = header ? `header-${header}` : undefined;
-  return (
-    <ul role={header ? 'group' : 'list'} aria-labelledby={headerId}>
-      {header && <li id={headerId}>{header}</li>}
-      {items.map((item) => (
-        <li key={item.name}>{item.name}</li>
-      ))}
-    </ul>
-  );
-};
+const renderItem = (item: TestItem) => <li key={item.name}>{item.name}</li>;
 
 const emptyState = (
   <div role="status">
@@ -37,6 +28,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
+        groupBy={getNameFirstLetter}
         renderItem={renderItem}
         searchTerm=""
         emptyState={emptyState}
@@ -54,6 +46,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
+        groupBy={getNameFirstLetter}
         renderItem={renderItem}
         searchTerm={null}
         emptyState={emptyState}
@@ -71,6 +64,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
+        groupBy={getNameFirstLetter}
         renderItem={renderItem}
         searchTerm={null}
         emptyState={emptyState}
@@ -88,16 +82,16 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
+        groupBy={getNameFirstLetter}
         renderItem={renderItem}
         searchTerm="moj"
         emptyState={emptyState}
       />,
     );
 
-    const results = screen.getByRole('list');
-    expect(results).toHaveTextContent('Mojito');
-    expect(results).not.toHaveTextContent('Daiquiri');
-    expect(results).not.toHaveTextContent('Margarita');
+    expect(screen.getByText('Mojito')).toBeInTheDocument();
+    expect(screen.queryByText('Daiquiri')).not.toBeInTheDocument();
+    expect(screen.queryByText('Margarita')).not.toBeInTheDocument();
   });
 
   it('shows empty state when search has no matches', () => {
@@ -105,6 +99,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
+        groupBy={getNameFirstLetter}
         renderItem={renderItem}
         searchTerm="nonexistent"
         emptyState={emptyState}
@@ -120,6 +115,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
+        groupBy={getNameFirstLetter}
         renderItem={renderItem}
         searchTerm={null}
         emptyState={emptyState}
@@ -143,16 +139,15 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
+        groupBy={getNameFirstLetter}
         renderItem={renderItem}
         searchTerm="mai"
         emptyState={emptyState}
       />,
     );
 
-    const results = screen.getByRole('list');
-    const items = results.querySelectorAll('li');
-    expect(items).toHaveLength(1);
-    expect(results).toHaveTextContent('Mai Tai');
+    expect(screen.getByText('Mai Tai')).toBeInTheDocument();
+    expect(screen.queryByText('Mojito')).not.toBeInTheDocument();
   });
 
   it('handles whitespace-only searchTerm as empty', () => {
@@ -160,6 +155,7 @@ describe('SearchableList', () => {
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
+        groupBy={getNameFirstLetter}
         renderItem={renderItem}
         searchTerm="   "
         emptyState={emptyState}

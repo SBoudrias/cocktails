@@ -3,9 +3,10 @@
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import type { BaseIngredient } from '@/types/Ingredient';
-import { LinkList, LinkListItem } from '@/components/LinkList';
+import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
+import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
 import { getIngredientOrCategorySearchText } from '@/modules/searchText';
 import { getIngredientUrl } from '@/modules/url';
 
@@ -28,17 +29,12 @@ export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }
       <SearchableList
         items={bottles}
         getSearchText={getIngredientOrCategorySearchText}
-        renderItem={(items, header) => (
-          <LinkList
-            items={items}
-            header={header}
-            renderItem={(bottle) => (
-              <LinkListItem
-                key={bottle.slug}
-                href={getIngredientUrl(bottle)}
-                primary={bottle.name}
-              />
-            )}
+        groupBy={getNameFirstLetter}
+        renderItem={(bottle) => (
+          <LinkListItem
+            key={bottle.slug}
+            href={getIngredientUrl(bottle)}
+            primary={bottle.name}
           />
         )}
         searchTerm={searchTerm}

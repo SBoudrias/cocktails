@@ -5,10 +5,10 @@ import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
 import type { Recipe } from '@/types/Recipe';
 import { LinkListItem } from '@/components/LinkList';
-import RecipeList from '@/components/RecipeList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getNameFirstLetter } from '@/modules/getNameFirstLetter';
 import { getRecipeAttribution } from '@/modules/getRecipeAttribution';
 import { getRecipeSearchText } from '@/modules/searchText';
 import { getRecipeUrl } from '@/modules/url';
@@ -54,9 +54,8 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
       <SearchableList
         items={recipes}
         getSearchText={getRecipeSearchText}
-        renderItem={(items, header) => (
-          <RecipeList recipes={items} header={header} renderRecipe={renderRecipe} />
-        )}
+        groupBy={getNameFirstLetter}
+        renderItem={renderRecipe}
         searchTerm={searchTerm}
         emptyState={emptyState}
       />
