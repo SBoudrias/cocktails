@@ -17,6 +17,7 @@ yt-dlp --skip-download --dump-json "VIDEO_URL"
 ```
 
 This returns JSON with:
+
 - `title` - Video title
 - `description` - Full description (often contains recipes, timestamps, links)
 - `channel` - Channel name (useful for source attribution)
