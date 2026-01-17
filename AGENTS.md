@@ -3,7 +3,7 @@ Start by reading @README.md
 # Environment
 
 - Module: `esm`. Use ES modules (import/export) syntax, not CommonJS (require)
-- Package manager: `yarn`.
+- Package manager: `yarn`. Run `yarn install` when starting work from a new worktree.
 - Node version: >=24. This means scripts should always be `*.ts` files and simply executed with `node file.ts` with the built-in type-stripping support. This also means you must use modern JavaScript features, like `toSorted` instead of `sort`, etc.
 - Framework: Next.js.
 
