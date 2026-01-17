@@ -2,8 +2,6 @@ import type { Recipe } from '@/types/Recipe';
 import { getRecipeUrl } from '@/modules/url';
 import { LinkList, LinkListItem } from '../LinkList';
 
-export { getRecipeAttribution } from '@/modules/getRecipeAttribution';
-
 function defaultRenderRecipe(recipe: Recipe) {
   return (
     <LinkListItem key={recipe.slug} href={getRecipeUrl(recipe)} primary={recipe.name} />
