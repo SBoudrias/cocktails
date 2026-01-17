@@ -37,8 +37,10 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const { type, slug } = await params;
 
   const ingredient = await getIngredient(type, slug);
-  const substitutes = await getSubstitutesForIngredient(ingredient);
-  const relatedRecipes = await getRecipesForIngredient(ingredient);
+  const [substitutes, relatedRecipes] = await Promise.all([
+    getSubstitutesForIngredient(ingredient),
+    getRecipesForIngredient(ingredient),
+  ]);
 
   return (
     <Suspense>
