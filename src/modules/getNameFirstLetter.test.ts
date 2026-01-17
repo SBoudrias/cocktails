@@ -42,15 +42,15 @@ describe('getNameForSorting', () => {
   });
 
   it('strips leading "the" article', () => {
-    expect(getNameForSorting({ name: 'The Last Word' })).toBe('Last');
+    expect(getNameForSorting({ name: 'The Last Word' })).toBe('Last Word');
   });
 
   it('strips leading "a" article', () => {
-    expect(getNameForSorting({ name: 'A Perfect Storm' })).toBe('Perfect');
+    expect(getNameForSorting({ name: 'A Perfect Storm' })).toBe('Perfect Storm');
   });
 
   it('strips leading "an" article', () => {
-    expect(getNameForSorting({ name: 'An Old Fashioned' })).toBe('Old');
+    expect(getNameForSorting({ name: 'An Old Fashioned' })).toBe('Old Fashioned');
   });
 
   it('handles case insensitive article stripping', () => {
