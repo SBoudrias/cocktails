@@ -1,4 +1,4 @@
-const articleRegExp = /^(the |an |a )?(\w+)/i;
+const articleRegExp = /^(the |an |a )?(.+)/i;
 
 /**
  * Extracts the first letter of a name, skipping leading articles (the, an, a).
