@@ -27,8 +27,9 @@ describe('getNameFirstLetter', () => {
     expect(getNameFirstLetter({ name: 'the storm' })).toBe('S');
   });
 
-  it('returns the first character for names starting with non-letter', () => {
-    expect(getNameFirstLetter({ name: '123 Cocktail' })).toBe('1');
+  it('returns # for names starting with numbers', () => {
+    expect(getNameFirstLetter({ name: '123 Cocktail' })).toBe('#');
+    expect(getNameFirstLetter({ name: '3 Dots and a Dash' })).toBe('#');
   });
 
   it('handles empty string', () => {
