@@ -84,7 +84,11 @@ export function LinkList<const T>({
         return (
           <li key={header}>
             <List role="group" aria-labelledby={header ? headerId : undefined}>
-              {header && <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>}
+              {header && (
+                <StickyGroupHeader id={headerId} sx={{ scrollMarginTop: 64 }}>
+                  {header}
+                </StickyGroupHeader>
+              )}
               <Paper square>
                 {groupItems.map((item) => renderItem(item))}
                 {footer && groupIndex === groups.length - 1 && footer}
