@@ -21,6 +21,8 @@ const Container = styled('nav')(({ theme }) => ({
   zIndex: theme.zIndex.speedDial,
   touchAction: 'none',
   userSelect: 'none',
+  backgroundColor: theme.palette.common.black,
+  borderRadius: theme.shape.borderRadius,
 }));
 
 const Letter = styled('button')<{ $active?: boolean; $hasContent?: boolean }>(
@@ -33,15 +35,15 @@ const Letter = styled('button')<{ $active?: boolean; $hasContent?: boolean }>(
     fontWeight: $active ? 700 : 500,
     color: $hasContent
       ? $active
-        ? theme.palette.primary.main
-        : theme.palette.text.primary
-      : theme.palette.text.disabled,
+        ? theme.palette.primary.light
+        : theme.palette.common.white
+      : alpha(theme.palette.common.white, 0.4),
     cursor: 'pointer',
     lineHeight: 1.4,
     minWidth: 20,
     touchAction: 'none',
     '&:focus-visible': {
-      outline: `2px solid ${theme.palette.primary.main}`,
+      outline: `2px solid ${theme.palette.primary.light}`,
       borderRadius: theme.shape.borderRadius,
     },
   }),
