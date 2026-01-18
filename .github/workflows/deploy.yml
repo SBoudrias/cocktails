@@ -26,10 +26,9 @@ jobs:
         run: yarn next build
 
       - name: Deploy to gh-pages 🚀
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          publish_branch: gh-pages
-          keep_files: false
-          exclude_assets: 'pr-preview'
+          folder: ./out
+          branch: gh-pages
+          clean-exclude: pr-preview/
+          force: false
