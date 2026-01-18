@@ -146,6 +146,24 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
         }
         casings.get(attribution.source)!.push(sourceFile);
       }
+
+      // Check for combined author names (should be separate attributions)
+      // We require 4+ words to avoid false positives on valid names like "Make and Drink".
+      // This means rare cases like "Cher and Madonna" (3 words) won't be caught,
+      // but most combined authors have at least one full name (e.g. "Cher and John Smith").
+      if (
+        attribution.relation === 'recipe author' ||
+        attribution.relation === 'adapted by'
+      ) {
+        const hasConnector = / (and|&) /i.test(attribution.source);
+        const wordCount = attribution.source.split(/\s+/).length;
+        if (hasConnector && wordCount >= 4) {
+          fail(
+            `Combined authors in ${path.basename(sourceFile)}: "${attribution.source}". ` +
+              `Split into separate attributions, one per person.`,
+          );
+        }
+      }
     }
   }
 

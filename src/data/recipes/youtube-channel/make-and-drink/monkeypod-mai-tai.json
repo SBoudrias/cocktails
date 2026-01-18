@@ -71,7 +71,11 @@
   "attributions": [
     {
       "relation": "recipe author",
-      "source": "Jason Vendrell & Chandra Lam"
+      "source": "Jason Vendrell"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Chandra Lam"
     },
     {
       "relation": "bar",
