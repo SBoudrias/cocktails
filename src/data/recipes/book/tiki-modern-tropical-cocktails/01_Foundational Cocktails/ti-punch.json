@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Ti' Punch",
+  "ingredients": [
+    {
+      "name": "Damoiseau Pure Cane 110 Proof",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "lime",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      },
+      "technique": {
+        "technique": "cut",
+        "type": "disc"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "instructions": [
+    "With a sharp paring knife, cut a disc of skin from the lime about the size of a silver dollar, taking as little of the pith and actual fruit as possible",
+    "In a rocks glass, muddle the lime disk with cane or simple syrup",
+    "Top with rhum",
+    "Stir well to mix",
+    "Note: While ice is not traditionally used in the Ti' Punch—on the islands, it is considered sacrilege—if adding a few cubes makes it easier for you to enjoy, go for it"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 14
+    }
+  ]
+}

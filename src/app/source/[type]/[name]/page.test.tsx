@@ -217,8 +217,8 @@ const TEST_BOOK_WITH_CHAPTERS = {
 // Book source without chapters
 const TEST_BOOK_WITHOUT_CHAPTERS = {
   type: 'book' as const,
-  slug: 'easy-tiki',
-  name: 'Easy Tiki',
+  slug: 'minimalist-tiki',
+  name: 'Minimalist Tiki',
 };
 
 describe('SourcePage - Book sources', () => {

@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Quarterdeck",
+  "ingredients": [
+    {
+      "name": "Hayman's Royal Dock Navy Strength Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Yuzu Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "green tea syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "instructions": [
+    "Combine all ingredients in a shaker with cubed ice",
+    "Shake and double strain into a chilled coupe",
+    "Garnish with freshly grated lime zest or a dehydrated lime wheel",
+    "",
+    "Variation:",
+    "Add a fresh cucumber chip to the shaker to give the cocktail a faint honeydew-melon flavor and a refreshing crispness",
+    "If you go this route, garnish with another cucumber chip in place of the dehydrated lime wheel"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 42
+    }
+  ]
+}

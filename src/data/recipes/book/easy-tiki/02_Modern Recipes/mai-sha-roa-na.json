@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Mai Sha Roa Na",
+  "ingredients": [
+    {
+      "name": "Jamaican overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat Works Ltd macadamia nut syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add 1 1/2 cups cracked or crushed ice and shake briefly, two or three shakes.",
+    "Pour into a double rocks glass.",
+    "Garnish with a lime hull, a mint sprig, and some banana chips, if desired."
+  ],
+  "attributions": [
+    {
+      "source": "Anthony Schmidt",
+      "relation": "recipe author"
+    },
+    {
+      "source": "False Idol",
+      "relation": "bar",
+      "location": "Cleveland, OH"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 132
+    }
+  ]
+}

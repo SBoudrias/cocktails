@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Lake at Night",
+  "ingredients": [
+    {
+      "name": "Monopolowa Vodka",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "Lapsang souchong"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Senior & Co. The Genuine Blue Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cardamom bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "instructions": [
+    "Combine all ingredients in a shaker with cubed ice",
+    "Shake and double strain into a chilled coupe or Nick and Nora glass",
+    "Garnish with an orange twist or peel"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 44
+    }
+  ]
+}

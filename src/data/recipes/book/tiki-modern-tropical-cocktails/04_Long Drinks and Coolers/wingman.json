@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Wingman",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Hampden Estate Rum Fire",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "brown butter"
+      },
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum liqueur",
+      "technique": {
+        "technique": "infusion",
+        "agent": "kaffir lime leaf"
+      },
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple Cider",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "type": "category",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine first three ingredients in a mixing glass with light ice and stir briefly to chill and dilute.",
+    "In a Collins glass, pour over a large ice cube, top with cider, and garnish with fresh pineapple leaves."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 68
+    }
+  ]
+}

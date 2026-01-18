@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Jamaican Mule",
+  "ingredients": [
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add 1/2 cup crushed ice and shake for about 5 seconds.",
+    "Pour into a Pilsner glass filled with crushed ice.",
+    "Garnish with candied ginger on a pick, a lime wheel, and an edible orchid."
+  ],
+  "attributions": [
+    {
+      "source": "Jelani Johnson",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Clover Club",
+      "relation": "bar",
+      "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 141
+    }
+  ]
+}

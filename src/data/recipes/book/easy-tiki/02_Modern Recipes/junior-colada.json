@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Junior Colada",
+  "ingredients": [
+    {
+      "name": "Planteray Stiggins' Fancy pineapple rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum Clément Mahina Coco",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coconut soda",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "highball",
+  "instructions": [
+    "Combine the rum, coconut liqueur, pineapple juice, and lime juice in a highball glass.",
+    "Stir, using a swizzle stick or barspoon to combine.",
+    "Add crushed ice and then top with coconut soda.",
+    "Stir until well combined.",
+    "Garnish with a pineapple wedge and a cocktail umbrella."
+  ],
+  "attributions": [
+    {
+      "source": "David Perez",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Lei Low",
+      "relation": "bar",
+      "location": "Houston, TX"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "easy-tiki",
+      "page": 97
+    }
+  ]
+}

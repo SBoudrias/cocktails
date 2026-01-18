@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Kentucky Mai Tai",
+  "ingredients": [
+    {
+      "name": "Evan Williams Black Label",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nuestra Soledad Espadin Joven Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Crème de Pêche de Vigne",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add ice and shake until chilled, about 10 seconds.",
+    "Strain into a rocks glass half filled with crushed ice.",
+    "Add more crushed ice to fill the glass.",
+    "Garnish with a mint sprig, a cherry, and a pineapple slice."
+  ],
+  "attributions": [
+    {
+      "source": "Dan Sabo",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Pali Society",
+      "relation": "bar",
+      "location": "Los Angeles, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 133
+    },
+    {
+      "type": "youtube",
+      "videoId": "ve0A397FfA0"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Caipirinha",
+  "ingredients": [
+    {
+      "name": "Yaguara Cachaça Branca",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "lime",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    }
+  ],
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "instructions": [
+    "In a rocks glass, gently muddle the lime wedges with sugar, focusing on the flesh and avoiding the skin as much as possible",
+    "Add cachaça and 3 to 4 cubes of ice",
+    "Stir gently until the glass is chilled"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 10
+    }
+  ]
+}

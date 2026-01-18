@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Missionary's Downfall",
+  "ingredients": [
+    {
+      "name": "Diplomatico Planas",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rothman & Winter Orchard Apricot",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 15,
+        "unit": "unit"
+      }
+    }
+  ],
+  "preparation": "blended",
+  "served_on": "up",
+  "glassware": "hurricane",
+  "instructions": [
+    "Combine all ingredients in a blender with pebbled ice",
+    "Blend on high speed until smooth, approximately 15 to 20 seconds",
+    "Pour into a hurricane glass",
+    "Garnish with a generous mint bouquet, pineapple wedge, and scored lime wheel"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 30
+    }
+  ]
+}

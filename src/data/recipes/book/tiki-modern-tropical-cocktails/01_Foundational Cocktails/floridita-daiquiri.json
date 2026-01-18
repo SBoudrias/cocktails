@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Floridita Daiquiri",
+  "ingredients": [
+    {
+      "name": "Diplomatico Planas",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "instructions": [
+    "In a shaker, combine lime juice and sugar",
+    "Stir with a bar spoon to mix",
+    "Add the rum and cubed ice",
+    "Shake vigorously—the shaker should be frosted and so cold that you can barely stand to hold it any longer",
+    "Fine strain into a chilled coupe"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 16
+    }
+  ]
+}
