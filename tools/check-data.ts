@@ -16,11 +16,18 @@ interface Ingredient {
   brix?: number;
 }
 
+interface Attribution {
+  relation: string;
+  source: string;
+  location?: string;
+}
+
 interface DataWithSchema {
   $schema: string;
   name: string;
   type?: string;
   ingredients?: Ingredient[];
+  attributions?: Attribution[];
   categories?: string[];
   parents?: string[];
 }
@@ -66,6 +73,10 @@ for await (const categoryFile of fs.glob('src/data/categories/*.json')) {
 }
 console.log(`├ Found ${categorySlugs.size} categories`);
 console.log('╰ Done!\n');
+
+// Track bar names for case-insensitive duplicate detection
+// Maps lowercase name -> Map of exact casing -> list of files using that casing
+const barNameCasings = new Map<string, Map<string, string[]>>();
 
 console.log('╭ 🔍 Validating data files...');
 for await (const sourceFile of fs.glob('src/data/**/*.json')) {
@@ -118,6 +129,23 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
         `Ingredient "${data.name}" duplicates category "${ingredientSlug}". ` +
           `Remove the ingredient file and use type: "category" in recipes instead.`,
       );
+    }
+  }
+
+  // Collect bar attributions for case consistency check
+  if (schemaPath === 'schemas/recipe.schema.json') {
+    for (const attribution of data.attributions ?? []) {
+      if (attribution.relation === 'bar') {
+        const lowerName = attribution.source.toLowerCase();
+        if (!barNameCasings.has(lowerName)) {
+          barNameCasings.set(lowerName, new Map());
+        }
+        const casings = barNameCasings.get(lowerName)!;
+        if (!casings.has(attribution.source)) {
+          casings.set(attribution.source, []);
+        }
+        casings.get(attribution.source)!.push(sourceFile);
+      }
     }
   }
 
@@ -219,6 +247,18 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   }
 }
 
+console.log('╰ Done!\n');
+
+// Check for inconsistent bar name casing
+console.log('╭ 🍸 Checking bar name consistency...');
+for (const [, casings] of barNameCasings) {
+  if (casings.size > 1) {
+    const variants = Array.from(casings.entries())
+      .map(([casing, files]) => `"${casing}" in ${files.length} file(s)`)
+      .join(', ');
+    fail(`Bar name has inconsistent casing: ${variants}`);
+  }
+}
 console.log('╰ Done!\n');
 
 // Validate book chapter structure
