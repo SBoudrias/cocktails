@@ -2,31 +2,16 @@
 
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
+import { useCallback } from 'react';
 import type { Recipe } from '@/types/Recipe';
 import { LinkList, LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
+import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getRecipeAttribution } from '@/modules/getRecipeAttribution';
 import { getRecipeSearchText } from '@/modules/searchText';
 import { getRecipeUrl } from '@/modules/url';
-
-function renderRecipe(recipe: Recipe, authorName: string) {
-  // Get the attribution if the recipe was adapted by someone else
-  const adaptedBy = recipe.attributions.find(
-    (attribution) =>
-      attribution.relation === 'adapted by' && attribution.source !== authorName,
-  );
-
-  const href = getRecipeUrl(recipe);
-  return (
-    <LinkListItem
-      key={href}
-      href={href}
-      primary={recipe.name}
-      secondary={adaptedBy ? `Adapted by ${adaptedBy.source}` : undefined}
-    />
-  );
-}
 
 export default function AuthorRecipesClient({
   authorName,
@@ -37,6 +22,7 @@ export default function AuthorRecipesClient({
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
+  const nameIsUnique = useNameIsUnique(recipes);
 
   const emptyState = (
     <>
@@ -47,7 +33,20 @@ export default function AuthorRecipesClient({
     </>
   );
 
-  const renderItem = (recipe: Recipe) => renderRecipe(recipe, authorName);
+  const renderItem = useCallback(
+    (recipe: Recipe) => {
+      const href = getRecipeUrl(recipe);
+      return (
+        <LinkListItem
+          key={href}
+          href={href}
+          primary={recipe.name}
+          secondary={nameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)}
+        />
+      );
+    },
+    [nameIsUnique],
+  );
 
   return (
     <>
