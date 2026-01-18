@@ -13,7 +13,8 @@ import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
 import type { Recipe } from '@/types/Recipe';
 import type { Book } from '@/types/Source';
-import { LinkList, LinkListItem } from '@/components/LinkList';
+import IndexedList from '@/components/IndexedList';
+import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
@@ -104,7 +105,7 @@ export default function BookSourceClient({
           <GroupModeToggle value={groupMode} onChange={setGroupMode} />
         </Stack>
       )}
-      <LinkList items={recipes} config={listConfig} renderItem={renderRecipe} />
+      <IndexedList items={recipes} config={listConfig} renderItem={renderRecipe} />
     </>
   );
 }
