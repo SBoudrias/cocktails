@@ -1,7 +1,9 @@
 'use client';
 
+import type { Route } from 'next';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { getRecipeListUrl } from '@/modules/url';
 
 export default function SearchRedirect() {
   const router = useRouter();
@@ -10,8 +12,8 @@ export default function SearchRedirect() {
   useEffect(() => {
     const search = searchParams.get('search');
     const url = search
-      ? `/list/recipes?search=${encodeURIComponent(search)}`
-      : '/list/recipes';
+      ? (`${getRecipeListUrl()}?${new URLSearchParams({ search })}` as Route)
+      : getRecipeListUrl();
     router.replace(url);
   }, [router, searchParams]);
 

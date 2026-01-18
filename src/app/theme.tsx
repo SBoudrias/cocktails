@@ -6,7 +6,7 @@ import NextLink from 'next/link';
 import { forwardRef } from 'react';
 
 const LinkBehaviour = forwardRef(function LinkBehaviour(
-  props: LinkProps,
+  props: LinkProps<string>,
   ref: Ref<HTMLAnchorElement>,
 ) {
   return <NextLink ref={ref} {...props} />;
