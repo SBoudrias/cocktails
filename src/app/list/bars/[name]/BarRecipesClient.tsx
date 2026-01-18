@@ -2,18 +2,16 @@
 
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
+import { useCallback } from 'react';
 import type { Recipe } from '@/types/Recipe';
 import { LinkList, LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
+import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getRecipeAttribution } from '@/modules/getRecipeAttribution';
 import { getRecipeSearchText } from '@/modules/searchText';
 import { getRecipeUrl } from '@/modules/url';
-
-function renderRecipe(recipe: Recipe) {
-  const href = getRecipeUrl(recipe);
-  return <LinkListItem key={href} href={href} primary={recipe.name} />;
-}
 
 export default function BarRecipesClient({
   barName,
@@ -24,6 +22,7 @@ export default function BarRecipesClient({
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
+  const nameIsUnique = useNameIsUnique(recipes);
 
   const emptyState = (
     <>
@@ -32,6 +31,21 @@ export default function BarRecipesClient({
       </Card>
       <SearchAllLink searchTerm={searchTerm} />
     </>
+  );
+
+  const renderRecipe = useCallback(
+    (recipe: Recipe) => {
+      const href = getRecipeUrl(recipe);
+      return (
+        <LinkListItem
+          key={href}
+          href={href}
+          primary={recipe.name}
+          secondary={nameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)}
+        />
+      );
+    },
+    [nameIsUnique],
   );
 
   return (
