@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Rum flip",
+  "preparation": "flash blended",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Whole egg",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "brix": 66,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 165,
+      "title": "smugglers-cove"
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
+    }
+  ]
+}

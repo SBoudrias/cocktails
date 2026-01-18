@@ -1,0 +1,93 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "The twenty seventy swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "brix": 66,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "brix": 50,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St. Elizabeth allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura 1919 rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Herbstura",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 116,
+      "title": "smugglers-cove"
+    },
+    {
+      "type": "youtube",
+      "videoId": "EaFb_6zlM6U"
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Doctor funk",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "brix": 50,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Herbsaint",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black pot still unaged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 266,
+      "title": "smugglers-cove"
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
+    }
+  ]
+}

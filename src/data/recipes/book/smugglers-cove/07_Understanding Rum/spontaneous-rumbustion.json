@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Spontaneous Rumbustion",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "brix": 50,
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black blended overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pot still lightly aged overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Boiling water",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 210,
+      "title": "smugglers-cove"
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
+    }
+  ]
+}

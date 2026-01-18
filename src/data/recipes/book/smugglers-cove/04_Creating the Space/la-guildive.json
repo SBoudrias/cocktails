@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "La Guildive",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Licor 43",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mathilde pêche",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "page": 116,
+      "title": "smugglers-cove"
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Smuggler's Cove",
+      "location": "San Francisco, CA"
+    }
+  ]
+}
