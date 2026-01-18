@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Après-Ski Swizzle",
+  "ingredients": [
+    {
+      "name": "The Real McCoy 3 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "highball",
+  "instructions": [
+    "Combine all the ingredients in a Zombie glass or tiki mug and top with crushed ice until full.",
+    "Swizzle with a swizzle stick or barspoon until chilled, about 10 seconds.",
+    "Add more crushed ice to fill the glass, if needed.",
+    "Garnish with a pineapple wedge, pineapple fronds, and a dusting of confectioners' sugar."
+  ],
+  "attributions": [
+    {
+      "source": "Nathan Hazard",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Coconut Club",
+      "relation": "bar",
+      "location": "Los Angeles, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 126
+    }
+  ]
+}

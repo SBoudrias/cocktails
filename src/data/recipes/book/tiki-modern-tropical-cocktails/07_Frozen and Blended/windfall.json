@@ -1,0 +1,108 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Windfall",
+  "preparation": "blended",
+  "served_on": "crushed ice",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Solo 1971 Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sho Chiku Bai Nigori Sake",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pear",
+      "technique": [
+        {
+          "technique": "temperature",
+          "method": "roasted"
+        },
+        {
+          "technique": "cut",
+          "type": "sectioned"
+        }
+      ],
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon",
+      "technique": {
+        "technique": "cut",
+        "type": "zested"
+      },
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    },
+    {
+      "name": "Varnelli Amaro Sibilla",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a blender, combine mezcal, sake, honey syrup, pear, lemon juice, and lemon zest",
+    "Add just enough crushed or small pieces of ice so that a small amount of ice peeks above the level of the liquid",
+    "Blend on high speed for 15 to 20 seconds",
+    "Pour into a chilled glass and float the amaro around the rim",
+    "Garnish with a fresh rosemary sprig or an edible flower"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tiki-modern-tropical-cocktails",
+      "page": 136
+    }
+  ],
+  "attributions": [
+    {
+      "source": "Karen Jarman",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Yola Mezcal",
+      "relation": "bar",
+      "location": "New York, NY"
+    }
+  ]
+}

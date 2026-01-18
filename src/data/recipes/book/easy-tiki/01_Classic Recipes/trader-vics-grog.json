@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Trader Vic's Grog",
+  "ingredients": [
+    {
+      "name": "Planteray OFTD",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "passion fruit syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "instructions": [
+    "Shake all ingredients with ice for about 5 seconds.",
+    "Strain into a footed Pilsner glass filled with crushed ice.",
+    "Garnish with maraschino cherries on a cocktail spear and a mint sprig."
+  ],
+  "attributions": [
+    {
+      "source": "Martin Cate",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Smuggler's Cove",
+      "relation": "bar",
+      "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 74
+    }
+  ]
+}

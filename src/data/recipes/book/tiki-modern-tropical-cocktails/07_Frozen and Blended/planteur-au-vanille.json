@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Planteur au Vanille",
+  "preparation": "blended",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Damoiseau Pure Cane 110 Proof",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "vanilla",
+        "method": "sous-vide"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Crème de Banane",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "toasted coconut syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "guava puree",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all in a blender with scant ice",
+    "Blend on high speed for 10 to 15 seconds",
+    "If blending batches, add about 5 more seconds per additional serve",
+    "Pour into a chilled collins glass",
+    "Garnish with grated cinnamon and a dehydrated pineapple chip"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 123
+    }
+  ]
+}

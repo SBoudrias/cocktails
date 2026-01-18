@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Coco No Coco",
+  "ingredients": [
+    {
+      "name": "El Dorado 12 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add ice and shake briefly to integrate, about 5 seconds.",
+    "Strain into a tiki mug or an extra-tall Collins glass filled with crushed ice.",
+    "Garnish with freshly grated nutmeg, grated cinnamon, and a tonka bean, if desired."
+  ],
+  "attributions": [
+    {
+      "source": "Ezra Star",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Drink",
+      "relation": "bar",
+      "location": "Boston, MA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 118
+    }
+  ]
+}

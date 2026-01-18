@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Jade Merchant No. 2",
+  "ingredients": [
+    {
+      "name": "Mint Leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      },
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      }
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Iichiko Mugi Shochu",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "avocado oil"
+      },
+      "type": "spirit",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Tea Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aloe Vera Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "instructions": [
+    "In a shaker, muddle mint, cucumber chips, and lime juice.",
+    "Add remaining ingredients and shake to chill.",
+    "Strain into a chilled double rocks glass lined with a cucumber strip over crushed ice.",
+    "Garnish with a generous bouquet of mint and a scored lime shell.",
+    "For Avocado Oil–Washed Shochu: Combine 8 ounces avocado oil and 25% ounces (750 milliliters) shochu in a glass or nonporous, nonreactive container with a lid. Shake to mix, then let steep at room temperature for 6 hours. Transfer the container to the freezer for another 4 hours or overnight to let the oil solidify. Remove from the freezer, then discard the solidified oil and skim off any remaining solids. Double strain the shochu through cheesecloth before using."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 54
+    }
+  ]
+}
