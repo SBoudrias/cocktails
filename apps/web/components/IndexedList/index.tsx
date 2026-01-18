@@ -59,7 +59,7 @@ export default function IndexedList<const T>({
   const handleIndexSelect = useCallback((index: string) => {
     const header = document.getElementById(`group-header-${index}`);
     if (header) {
-      header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      header.scrollIntoView({ behavior: 'instant', block: 'start' });
       setActiveIndex(index);
     }
   }, []);
