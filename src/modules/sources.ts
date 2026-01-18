@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { match } from 'ts-pattern';
 import type { Book, Source, YoutubeChannel, Podcast } from '@/types/Source';
+import { isChapterFolder } from './chapters';
 import { BOOK_ROOT, RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT, PODCAST_ROOT } from './constants';
 import { readJSONFile } from './fs';
 
@@ -10,10 +11,24 @@ function getRecipeSourcePath(root: string, slug: string): string {
   return path.join(root, slug, '_source.json');
 }
 
-function getRecipeAmount(root: string, slug: string): Promise<number> {
+async function getRecipeAmount(root: string, slug: string): Promise<number> {
   const folderPath = path.join(root, slug);
-  // length - 1 because of the _source.json file
-  return fs.readdir(folderPath).then((files) => files.length - 1);
+  const entries = await fs.readdir(folderPath, { withFileTypes: true });
+
+  let count = 0;
+  for (const entry of entries) {
+    if (entry.isDirectory() && isChapterFolder(entry.name)) {
+      const chapterFiles = await fs.readdir(path.join(folderPath, entry.name));
+      count += chapterFiles.filter((f) => f.endsWith('.json')).length;
+    } else if (
+      entry.isFile() &&
+      entry.name.endsWith('.json') &&
+      entry.name !== '_source.json'
+    ) {
+      count++;
+    }
+  }
+  return count;
 }
 
 export const getBook = memo(async (book: string): Promise<Book> => {
