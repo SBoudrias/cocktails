@@ -41,11 +41,15 @@ export default function AuthorRecipesClient({
           key={href}
           href={href}
           primary={recipe.name}
-          secondary={nameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)}
+          secondary={
+            nameIsUnique(recipe)
+              ? undefined
+              : getRecipeAttribution(recipe, { author: authorName })
+          }
         />
       );
     },
-    [nameIsUnique],
+    [nameIsUnique, authorName],
   );
 
   return (
