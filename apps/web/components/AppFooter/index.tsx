@@ -1,44 +1,54 @@
 'use client';
 
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import HomeIcon from '@mui/icons-material/Home';
-import { Divider, Link, Stack, Typography } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LocalBarIcon from '@mui/icons-material/LocalBar';
+import { Link, Stack, Typography } from '@mui/material';
 
 export default function AppFooter() {
   return (
-    <Stack spacing={2} sx={{ py: 2 }}>
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
+    <Stack
+      direction="row"
+      sx={{
+        py: 2,
+        px: 2,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+    >
+      <Link
+        href="/"
+        underline="none"
         sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
+          color: '#1A0F0A',
+          fontWeight: 600,
+          textShadow: '1px 1px 2px rgba(255, 255, 255, 0.3)',
+          '&:hover': {
+            color: '#0A3030',
+          },
         }}
       >
-        <Link
-          href="https://github.com/SBoudrias/cocktails/"
-          underline="none"
-          target="_blank"
-          rel="noopener"
-        >
-          Contribute on GitHub <ArrowOutwardIcon sx={{ fontSize: 'medium' }} />
-        </Link>
-      </Stack>
-      <Stack
-        direction="row"
-        divider
+        <Typography sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <LocalBarIcon sx={{ fontSize: 'medium' }} /> Cocktail Index
+        </Typography>
+      </Link>
+      <Link
+        href="https://github.com/SBoudrias/cocktails/"
+        underline="none"
+        target="_blank"
+        rel="noopener"
         sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
+          color: '#1A0F0A',
+          fontWeight: 600,
+          textShadow: '1px 1px 2px rgba(255, 255, 255, 0.3)',
+          '&:hover': {
+            color: '#0A3030',
+          },
         }}
       >
-        <Link href="/" underline="none">
-          <Typography color="textSecondary">
-            <HomeIcon sx={{ fontSize: 'medium' }} /> Cocktail Index
-          </Typography>
-        </Link>
-      </Stack>
+        <Typography sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <GitHubIcon sx={{ fontSize: 'medium' }} /> Contribute on GitHub
+        </Typography>
+      </Link>
     </Stack>
   );
 }

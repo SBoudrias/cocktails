@@ -56,7 +56,23 @@ export default function RootLayout({
             <NuqsAdapter>
               <Box sx={{ maxWidth: 600, mx: 'auto' }}>
                 {children}
-                <AppFooter />
+                <Box
+                  sx={{
+                    width: '100%',
+                    mt: 4,
+                    backgroundImage:
+                      'linear-gradient(to bottom, var(--mui-palette-background-default) 0%, transparent 15%), url(/cocktails/tiki-beach-divider.png)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'top center',
+                    backgroundRepeat: 'no-repeat',
+                    minHeight: '400px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  <AppFooter />
+                </Box>
               </Box>
             </NuqsAdapter>
           </ThemeProvider>
