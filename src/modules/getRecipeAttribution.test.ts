@@ -102,4 +102,79 @@ describe('getRecipeAttribution', () => {
 
     expect(getRecipeAttribution(recipe)).toBe('served at Some Bar');
   });
+
+  describe('exclude options', () => {
+    it('excludes author and shows only book name', () => {
+      const recipe = mockRecipe(
+        'Test Recipe',
+        [{ relation: 'recipe author', source: 'John Doe' }],
+        'book',
+      );
+
+      expect(getRecipeAttribution(recipe, { author: 'John Doe' })).toBe('Test Source');
+    });
+
+    it('excludes author case-insensitively', () => {
+      const recipe = mockRecipe(
+        'Test Recipe',
+        [{ relation: 'recipe author', source: 'John Doe' }],
+        'book',
+      );
+
+      expect(getRecipeAttribution(recipe, { author: 'john doe' })).toBe('Test Source');
+    });
+
+    it('falls back to next attribution when author excluded and no book', () => {
+      const recipe = mockRecipe(
+        'Test Recipe',
+        [
+          { relation: 'recipe author', source: 'John Doe' },
+          { relation: 'bar', source: 'Test Bar' },
+        ],
+        'podcast',
+      );
+
+      expect(getRecipeAttribution(recipe, { author: 'John Doe' })).toBe(
+        'served at Test Bar',
+      );
+    });
+
+    it('excludes bar and shows book name instead', () => {
+      const recipe = mockRecipe(
+        'Test Recipe',
+        [{ relation: 'bar', source: 'Death & Co' }],
+        'book',
+      );
+
+      expect(getRecipeAttribution(recipe, { bar: 'Death & Co' })).toBe('Test Source');
+    });
+
+    it('returns undefined when bar excluded and no book', () => {
+      const recipe = mockRecipe(
+        'Test Recipe',
+        [{ relation: 'bar', source: 'Death & Co' }],
+        'podcast',
+      );
+
+      expect(getRecipeAttribution(recipe, { bar: 'Death & Co' })).toBe('Test Source');
+    });
+
+    it('excludes source name from fallback', () => {
+      const recipe = mockRecipe('Test Recipe', [], 'book');
+
+      expect(getRecipeAttribution(recipe, { source: 'Test Source' })).toBeUndefined();
+    });
+
+    it('returns undefined when all attributions are excluded', () => {
+      const recipe = mockRecipe(
+        'Test Recipe',
+        [{ relation: 'recipe author', source: 'John Doe' }],
+        'podcast',
+      );
+
+      expect(
+        getRecipeAttribution(recipe, { author: 'John Doe', source: 'Test Source' }),
+      ).toBeUndefined();
+    });
+  });
 });

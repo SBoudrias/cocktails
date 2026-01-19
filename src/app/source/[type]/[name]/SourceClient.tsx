@@ -43,11 +43,15 @@ export default function SourceClient({
           key={href}
           href={href}
           primary={recipe.name}
-          secondary={nameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)}
+          secondary={
+            nameIsUnique(recipe)
+              ? undefined
+              : getRecipeAttribution(recipe, { source: source.name })
+          }
         />
       );
     },
-    [nameIsUnique],
+    [nameIsUnique, source.name],
   );
 
   return (

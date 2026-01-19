@@ -55,11 +55,15 @@ export default function BookSourceClient({
           key={href}
           href={href}
           primary={recipe.name}
-          secondary={nameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)}
+          secondary={
+            nameIsUnique(recipe)
+              ? undefined
+              : getRecipeAttribution(recipe, { source: source.name })
+          }
         />
       );
     },
-    [nameIsUnique],
+    [nameIsUnique, source.name],
   );
 
   const emptyState = (

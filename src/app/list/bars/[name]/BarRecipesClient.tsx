@@ -41,11 +41,15 @@ export default function BarRecipesClient({
           key={href}
           href={href}
           primary={recipe.name}
-          secondary={nameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)}
+          secondary={
+            nameIsUnique(recipe)
+              ? undefined
+              : getRecipeAttribution(recipe, { bar: barName })
+          }
         />
       );
     },
-    [nameIsUnique],
+    [nameIsUnique, barName],
   );
 
   return (
