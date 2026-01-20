@@ -19,11 +19,11 @@ export default function AppFooter() {
         href="/"
         underline="none"
         sx={{
-          color: '#1A0F0A',
+          color: '#E8F4F4',
           fontWeight: 600,
-          textShadow: '1px 1px 2px rgba(255, 255, 255, 0.3)',
+          textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)',
           '&:hover': {
-            color: '#0A3030',
+            color: '#FFD580',
           },
         }}
       >
@@ -37,11 +37,11 @@ export default function AppFooter() {
         target="_blank"
         rel="noopener"
         sx={{
-          color: '#1A0F0A',
+          color: '#E8F4F4',
           fontWeight: 600,
-          textShadow: '1px 1px 2px rgba(255, 255, 255, 0.3)',
+          textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)',
           '&:hover': {
-            color: '#0A3030',
+            color: '#FFD580',
           },
         }}
       >
