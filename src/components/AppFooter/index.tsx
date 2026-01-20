@@ -11,8 +11,9 @@ export default function AppFooter() {
       sx={{
         py: 2,
         px: 2,
+        minHeight: '300px',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'flex-end',
       }}
     >
       <Link
