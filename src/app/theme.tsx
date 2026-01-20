@@ -100,6 +100,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(10, 20, 32, 0.9)',
+        },
+      },
+    },
     MuiListSubheader: {
       styleOverrides: {
         root: {
