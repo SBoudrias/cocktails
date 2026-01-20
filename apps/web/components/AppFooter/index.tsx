@@ -20,9 +20,9 @@ export default function AppFooter() {
         href="/"
         underline="none"
         sx={{
-          color: '#E8F4F4',
-          fontWeight: 600,
-          textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)',
+          color: '#FFFFFF',
+          fontWeight: 700,
+          textShadow: '2px 2px 6px rgba(0, 0, 0, 0.95), 0px 0px 8px rgba(0, 0, 0, 0.8)',
           '&:hover': {
             color: '#FFD580',
           },
@@ -38,9 +38,9 @@ export default function AppFooter() {
         target="_blank"
         rel="noopener"
         sx={{
-          color: '#E8F4F4',
-          fontWeight: 600,
-          textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)',
+          color: '#FFFFFF',
+          fontWeight: 700,
+          textShadow: '2px 2px 6px rgba(0, 0, 0, 0.95), 0px 0px 8px rgba(0, 0, 0, 0.8)',
           '&:hover': {
             color: '#FFD580',
           },
