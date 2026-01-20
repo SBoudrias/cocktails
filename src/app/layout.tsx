@@ -54,23 +54,18 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <NuqsAdapter>
-              <Box sx={{ maxWidth: 600, mx: 'auto' }}>
-                {children}
-                <Box
-                  sx={{
-                    width: '100%',
-                    mt: 4,
-                    backgroundImage:
-                      'linear-gradient(to bottom, var(--mui-palette-background-default) 0%, transparent 10%), url(/cocktails/tiki-beach-divider.png)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center center',
-                    backgroundRepeat: 'no-repeat',
-                    minHeight: '500px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'flex-end',
-                  }}
-                >
+              <Box
+                sx={{
+                  minHeight: '100vh',
+                  backgroundImage: 'url(/cocktails/tiki-beach-divider.png)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'bottom center',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundAttachment: 'fixed',
+                }}
+              >
+                <Box sx={{ maxWidth: 600, mx: 'auto' }}>
+                  {children}
                   <AppFooter />
                 </Box>
               </Box>
