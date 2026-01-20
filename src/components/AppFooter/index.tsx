@@ -22,9 +22,14 @@ export default function AppFooter() {
         sx={{
           color: '#FFFFFF',
           fontWeight: 700,
-          textShadow: '2px 2px 6px rgba(0, 0, 0, 0.95), 0px 0px 8px rgba(0, 0, 0, 0.8)',
+          backgroundColor: 'rgba(10, 20, 32, 0.7)',
+          px: 2,
+          py: 1.5,
+          borderRadius: 2,
+          backdropFilter: 'blur(4px)',
           '&:hover': {
             color: '#FFD580',
+            backgroundColor: 'rgba(10, 20, 32, 0.85)',
           },
         }}
       >
@@ -40,9 +45,14 @@ export default function AppFooter() {
         sx={{
           color: '#FFFFFF',
           fontWeight: 700,
-          textShadow: '2px 2px 6px rgba(0, 0, 0, 0.95), 0px 0px 8px rgba(0, 0, 0, 0.8)',
+          backgroundColor: 'rgba(10, 20, 32, 0.7)',
+          px: 2,
+          py: 1.5,
+          borderRadius: 2,
+          backdropFilter: 'blur(4px)',
           '&:hover': {
             color: '#FFD580',
+            backgroundColor: 'rgba(10, 20, 32, 0.85)',
           },
         }}
       >
