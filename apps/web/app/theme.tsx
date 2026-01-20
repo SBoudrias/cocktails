@@ -66,6 +66,14 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(10, 20, 32, 0.9)',
+          backdropFilter: 'blur(8px)',
+        },
+      },
+    },
     MuiLink: {
       defaultProps: {
         component: LinkBehaviour,
