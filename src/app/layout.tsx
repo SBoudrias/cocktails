@@ -58,10 +58,9 @@ export default function RootLayout({
                 sx={{
                   minHeight: '100vh',
                   backgroundImage: 'url(/cocktails/tiki-beach-divider.png)',
-                  backgroundSize: 'cover',
+                  backgroundSize: 'contain',
                   backgroundPosition: 'bottom center',
                   backgroundRepeat: 'no-repeat',
-                  backgroundAttachment: 'fixed',
                 }}
               >
                 <Box sx={{ maxWidth: 600, mx: 'auto' }}>
