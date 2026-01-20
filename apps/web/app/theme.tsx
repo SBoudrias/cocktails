@@ -106,7 +106,7 @@ const theme = createTheme({
           lineHeight: '1.4rem',
           paddingTop: 16,
           paddingBottom: 16,
-          backgroundColor: 'var(--mui-palette-background-default)',
+          backgroundColor: 'transparent',
         },
       },
     },
