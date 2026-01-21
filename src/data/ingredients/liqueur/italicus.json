@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Italicus",
+  "type": "liqueur",
+  "description": "Rosolio di Bergamotto - an Italian liqueur flavored with bergamot",
+  "categories": ["Bergamot liqueur"]
+}

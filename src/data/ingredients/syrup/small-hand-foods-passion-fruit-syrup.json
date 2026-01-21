@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Small Hand Foods Passion Fruit syrup",
+  "type": "syrup",
+  "categories": ["Passion fruit syrup"]
+}

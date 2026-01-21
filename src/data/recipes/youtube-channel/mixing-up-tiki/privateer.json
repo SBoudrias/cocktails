@@ -23,7 +23,7 @@
     },
     {
       "name": "Passion fruit Syrup",
-      "type": "syrup",
+      "type": "category",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

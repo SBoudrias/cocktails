@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Don's Mix",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": ["Combine 2 parts fresh grapefruit juice with 1 part cinnamon syrup."]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Banana Syrup (Reàl)",
+  "type": "syrup",
+  "categories": ["Banana Syrup"]
+}

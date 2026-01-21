@@ -56,7 +56,7 @@
     },
     {
       "name": "passion fruit syrup",
-      "type": "syrup",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"

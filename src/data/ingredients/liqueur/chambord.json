@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Chambord",
+  "type": "liqueur",
+  "categories": ["Raspberry liqueur"]
+}

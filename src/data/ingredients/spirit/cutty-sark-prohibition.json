@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cutty Sark Prohibition",
+  "type": "spirit",
+  "categories": ["Whisky (Blended Scotch)"]
+}

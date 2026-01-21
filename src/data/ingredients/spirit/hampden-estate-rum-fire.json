@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Hampden estate Rum Fire",
+  "name": "Hampden Estate Rum Fire",
   "type": "spirit",
   "categories": [
     "Pot still unaged rum",

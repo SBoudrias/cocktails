@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bitter Truth Jerry Thomas' Own Decanter Bitters",
+  "type": "bitter"
+}

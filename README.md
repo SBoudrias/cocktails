@@ -52,6 +52,10 @@ Here's a few common conventions:
 3. When a recipe list multiple options (A or B), pick one.
 4. Prefer using `oz` or other imperial metrics in the recipe file (not `ml`.)
 5. Only document garnishes in the `instructions` section
+6. A "Zombie glass" is a collins glass
+7. Substitute mixes with their component ingredients:
+   - Don's mix: replace with 2 parts grapefruit juice & 1 part cinnamon syrup
+   - Don's spices no. 2: replace with 1 part vanilla syrup & 1 part allspice dram
 
 ### Syrups & Brix
 

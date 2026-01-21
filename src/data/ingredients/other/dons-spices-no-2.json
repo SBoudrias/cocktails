@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Don's Spices No. 2",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": ["Combine equal parts vanilla syrup and pimento liqueur."]
+}

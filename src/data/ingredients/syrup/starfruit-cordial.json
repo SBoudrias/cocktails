@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "starfruit cordial",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "starfruit",
+      "type": "fruit",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Cut ends off starfruit.",
+    "Juice with a macerating juicer or similar.",
+    "Strain juice and add one part white sugar by weight.",
+    "Stir until sugar is incorporated.",
+    "Refrigerate for up to seven days."
+  ]
+}

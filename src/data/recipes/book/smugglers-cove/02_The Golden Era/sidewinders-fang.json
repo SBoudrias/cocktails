@@ -24,7 +24,7 @@
     {
       "name": "Passion fruit syrup",
       "brix": 66,
-      "type": "syrup",
+      "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"

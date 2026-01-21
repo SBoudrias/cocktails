@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Thomas Henry Mystic Mango soda",
+  "type": "soda",
+  "categories": ["Mango soda"]
+}

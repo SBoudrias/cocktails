@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Pusser's British Navy Rum",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}
