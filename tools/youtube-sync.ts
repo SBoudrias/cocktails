@@ -279,11 +279,23 @@ function createGitHubIssue(newVideos: NewVideosForChannel[]): void {
   const title = `New YouTube Videos (Week of ${weekStart})`;
   const body = formatIssueBody(newVideos);
 
+  // Ensure labels exist (--force creates if missing or updates if exists)
+  for (const label of ISSUE_LABELS) {
+    try {
+      execSync(`gh label create "${label}" --force`, { stdio: 'ignore' });
+    } catch {
+      // Ignore errors - we'll try to use the label anyway
+    }
+  }
+
   const labelArgs = ISSUE_LABELS.map((label) => `--label "${label}"`).join(' ');
 
   try {
-    execSync(`gh issue create --title "${title}" --body "${body}" ${labelArgs}`, {
-      stdio: 'inherit',
+    // Use stdin to pass body to avoid shell escaping issues with backticks
+    execSync(`gh issue create --title "${title}" --body-file - ${labelArgs}`, {
+      input: body,
+      stdio: ['pipe', 'inherit', 'inherit'],
+      encoding: 'utf-8',
     });
     logger.success('GitHub issue created successfully');
   } catch (error) {
