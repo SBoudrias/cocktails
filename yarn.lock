@@ -1229,12 +1229,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:16.1.3":
-  version: 16.1.3
-  resolution: "@next/eslint-plugin-next@npm:16.1.3"
+"@next/eslint-plugin-next@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@next/eslint-plugin-next@npm:16.1.4"
   dependencies:
     fast-glob: "npm:3.3.1"
-  checksum: 10c0/e79b79cd9e11bddd4cf6bcd9021989c9d421a73cd6227cd08d0502b6f476647dab7b13600bb86eb35f032ed2305c38bd2e3fd702739e9dc38c69ce18e9d0b4ba
+  checksum: 10c0/1c2c0572aaad1881874a976bf17c57a2482db9b809db732650dcf07b352726d0a536537972f533276e5cba647784a46c397f7a9981f48c7c47ccccfff699b4b3
   languageName: node
   linkType: hard
 
@@ -1362,58 +1362,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oxfmt/darwin-arm64@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@oxfmt/darwin-arm64@npm:0.24.0"
+"@oxfmt/darwin-arm64@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@oxfmt/darwin-arm64@npm:0.26.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@oxfmt/darwin-x64@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@oxfmt/darwin-x64@npm:0.24.0"
+"@oxfmt/darwin-x64@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@oxfmt/darwin-x64@npm:0.26.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@oxfmt/linux-arm64-gnu@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@oxfmt/linux-arm64-gnu@npm:0.24.0"
+"@oxfmt/linux-arm64-gnu@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@oxfmt/linux-arm64-gnu@npm:0.26.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@oxfmt/linux-arm64-musl@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@oxfmt/linux-arm64-musl@npm:0.24.0"
+"@oxfmt/linux-arm64-musl@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@oxfmt/linux-arm64-musl@npm:0.26.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@oxfmt/linux-x64-gnu@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@oxfmt/linux-x64-gnu@npm:0.24.0"
+"@oxfmt/linux-x64-gnu@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@oxfmt/linux-x64-gnu@npm:0.26.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@oxfmt/linux-x64-musl@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@oxfmt/linux-x64-musl@npm:0.24.0"
+"@oxfmt/linux-x64-musl@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@oxfmt/linux-x64-musl@npm:0.26.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@oxfmt/win32-arm64@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@oxfmt/win32-arm64@npm:0.24.0"
+"@oxfmt/win32-arm64@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@oxfmt/win32-arm64@npm:0.26.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@oxfmt/win32-x64@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@oxfmt/win32-x64@npm:0.24.0"
+"@oxfmt/win32-x64@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@oxfmt/win32-x64@npm:0.26.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -2799,7 +2799,7 @@ __metadata:
     autoprefixer: "npm:^10.4.23"
     core-js: "npm:^3.47.0"
     eslint: "npm:^9.39.2"
-    eslint-config-next: "npm:16.1.3"
+    eslint-config-next: "npm:16.1.4"
     happy-dom: "npm:^20.3.1"
     husky: "npm:^9.1.7"
     lodash: "npm:^4.17.21"
@@ -2808,7 +2808,7 @@ __metadata:
     next-router-mock: "npm:^1.0.5"
     next-sitemap: "npm:^4.2.3"
     nuqs: "npm:^2.8.6"
-    oxfmt: "npm:^0.24.0"
+    oxfmt: "npm:^0.26.0"
     react: "npm:19.2.3"
     react-dom: "npm:19.2.3"
     ts-pattern: "npm:^5.9.0"
@@ -3366,11 +3366,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:16.1.3":
-  version: 16.1.3
-  resolution: "eslint-config-next@npm:16.1.3"
+"eslint-config-next@npm:16.1.4":
+  version: 16.1.4
+  resolution: "eslint-config-next@npm:16.1.4"
   dependencies:
-    "@next/eslint-plugin-next": "npm:16.1.3"
+    "@next/eslint-plugin-next": "npm:16.1.4"
     eslint-import-resolver-node: "npm:^0.3.6"
     eslint-import-resolver-typescript: "npm:^3.5.2"
     eslint-plugin-import: "npm:^2.32.0"
@@ -3385,7 +3385,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/97f949213614709813bef763acc83274637c5e1f8c82c700ce35e81b01cb3476d595dc107eecfae945b4cb0ff7e91065968c437bdecdd94ff977ac426f0e6123
+  checksum: 10c0/df9725cd26f4e663789738d92132ef7d95488a85a824090dc076d0b4ba0b889bdd69a7c83a19cf6fb5b78aa2c3e5ff2f21d2bada89adaccb9c26cb309e94c907
   languageName: node
   linkType: hard
 
@@ -5367,18 +5367,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oxfmt@npm:^0.24.0":
-  version: 0.24.0
-  resolution: "oxfmt@npm:0.24.0"
+"oxfmt@npm:^0.26.0":
+  version: 0.26.0
+  resolution: "oxfmt@npm:0.26.0"
   dependencies:
-    "@oxfmt/darwin-arm64": "npm:0.24.0"
-    "@oxfmt/darwin-x64": "npm:0.24.0"
-    "@oxfmt/linux-arm64-gnu": "npm:0.24.0"
-    "@oxfmt/linux-arm64-musl": "npm:0.24.0"
-    "@oxfmt/linux-x64-gnu": "npm:0.24.0"
-    "@oxfmt/linux-x64-musl": "npm:0.24.0"
-    "@oxfmt/win32-arm64": "npm:0.24.0"
-    "@oxfmt/win32-x64": "npm:0.24.0"
+    "@oxfmt/darwin-arm64": "npm:0.26.0"
+    "@oxfmt/darwin-x64": "npm:0.26.0"
+    "@oxfmt/linux-arm64-gnu": "npm:0.26.0"
+    "@oxfmt/linux-arm64-musl": "npm:0.26.0"
+    "@oxfmt/linux-x64-gnu": "npm:0.26.0"
+    "@oxfmt/linux-x64-musl": "npm:0.26.0"
+    "@oxfmt/win32-arm64": "npm:0.26.0"
+    "@oxfmt/win32-x64": "npm:0.26.0"
     tinypool: "npm:2.0.0"
   dependenciesMeta:
     "@oxfmt/darwin-arm64":
@@ -5399,7 +5399,7 @@ __metadata:
       optional: true
   bin:
     oxfmt: bin/oxfmt
-  checksum: 10c0/5d10057f7f59ba6137759df52c633ad16f92735974c4852d9c785b418fad0076021bfe21a29d7acfe631c6269d88415f4c27bfbb440086f2ce145ec44b7bb5d9
+  checksum: 10c0/7e782fdd313883fb51998724ebe4402423a6d67348378402ddf6b5d8751fc891d1538d1d5289a524c988b29678e29ba94924655cdf252a90c68b6b24a8b02a92
   languageName: node
   linkType: hard
 
