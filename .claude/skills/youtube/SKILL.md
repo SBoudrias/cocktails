@@ -40,3 +40,32 @@ User: "Create a recipe from https://youtube.com/watch?v=xyz"
 1. Fetch the video metadata with yt-dlp
 2. Extract the recipe from the description
 3. Use the channel name for attribution
+
+## Backfilling New YouTube Channels
+
+When adding a new YouTube channel to the cocktails app:
+
+1. Create the channel directory structure:
+   - `src/data/recipes/youtube-channel/CHANNEL_SLUG/`
+   - `src/data/recipes/youtube-channel/CHANNEL_SLUG/_source.json`
+
+2. Backfill videos to create GitHub issue with all available videos:
+
+   ```bash
+   node tools/youtube-sync.ts --channel CHANNEL_SLUG --days 365 --dry-run
+   ```
+
+3. Review the dry-run output to see what videos will be listed
+
+4. Run without dry-run to create the issue:
+   ```bash
+   node tools/youtube-sync.ts --channel CHANNEL_SLUG --days 365
+   ```
+
+This creates a GitHub issue listing all videos from the channel that don't have recipes yet.
+
+## Channel Video Sync
+
+A GitHub Action runs weekly to check all channels for new videos and creates an issue if any are found.
+
+To manually trigger: Run the workflow dispatch for `youtube-sync.yml` in GitHub Actions.
