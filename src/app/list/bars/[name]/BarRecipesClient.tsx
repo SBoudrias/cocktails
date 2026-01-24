@@ -44,7 +44,7 @@ export default function BarRecipesClient({
           secondary={
             nameIsUnique(recipe)
               ? undefined
-              : getRecipeAttribution(recipe, { bar: barName })
+              : getRecipeAttribution(recipe, { exclude: { bar: barName } })
           }
         />
       );

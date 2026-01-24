@@ -9,10 +9,14 @@ const ATTRIBUTION_PRIORITY: Attribution['relation'][] = [
 ];
 
 type ExcludeOptions = {
-  /** Exclude this author name from "adapted by" and "recipe author" attributions */
-  author?: string;
-  /** Exclude this bar name from "bar" attributions */
+  /** Exclude this name from "adapted by" attributions */
+  'adapted by'?: string;
+  /** Exclude this name from "recipe author" attributions */
+  'recipe author'?: string;
+  /** Exclude this name from "bar" attributions */
   bar?: string;
+  /** Exclude this name from "book" attributions */
+  book?: string;
   /** Exclude this source name from the fallback */
   source?: string;
 };
@@ -24,11 +28,12 @@ function formatAttribution(
 ): string | undefined {
   return match(attr)
     .with({ relation: 'adapted by' }, ({ source }) => {
-      const isExcluded = exclude?.author?.toLowerCase() === source.toLowerCase();
+      const isExcluded = exclude?.['adapted by']?.toLowerCase() === source.toLowerCase();
       return isExcluded ? bookName : [source, bookName].filter(Boolean).join(' | ');
     })
     .with({ relation: 'recipe author' }, ({ source }) => {
-      const isExcluded = exclude?.author?.toLowerCase() === source.toLowerCase();
+      const isExcluded =
+        exclude?.['recipe author']?.toLowerCase() === source.toLowerCase();
       return isExcluded ? bookName : [source, bookName].filter(Boolean).join(' | ');
     })
     .with({ relation: 'bar' }, ({ source }) => {
@@ -36,7 +41,10 @@ function formatAttribution(
       if (isExcluded) return bookName;
       return bookName ?? `served at ${source}`;
     })
-    .with({ relation: 'book' }, ({ source }) => source)
+    .with({ relation: 'book' }, ({ source }) => {
+      const isExcluded = exclude?.book?.toLowerCase() === source.toLowerCase();
+      return isExcluded ? undefined : source;
+    })
     .exhaustive();
 }
 
@@ -46,12 +54,14 @@ function formatAttribution(
  * to the default attribution behavior for some recipes.
  *
  * @param recipe - The recipe to get attribution for
- * @param exclude - Optional exclusion options to filter out specific attributions
+ * @param options - Optional options object
+ * @param options.exclude - Exclusion options to filter out specific attributions
  */
 export function getRecipeAttribution(
   recipe: Recipe,
-  exclude?: ExcludeOptions,
+  options?: { exclude?: ExcludeOptions },
 ): string | undefined {
+  const exclude = options?.exclude;
   const sortedAttributions = recipe.attributions
     .filter((attr) => ATTRIBUTION_PRIORITY.includes(attr.relation))
     .toSorted(

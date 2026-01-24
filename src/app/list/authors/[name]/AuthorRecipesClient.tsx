@@ -44,7 +44,9 @@ export default function AuthorRecipesClient({
           secondary={
             nameIsUnique(recipe)
               ? undefined
-              : getRecipeAttribution(recipe, { author: authorName })
+              : getRecipeAttribution(recipe, {
+                  exclude: { 'recipe author': authorName, 'adapted by': authorName },
+                })
           }
         />
       );
