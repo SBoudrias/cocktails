@@ -52,14 +52,14 @@ When adding a new YouTube channel to the cocktails app:
 2. Backfill videos to create GitHub issue with all available videos:
 
    ```bash
-   node tools/youtube-sync.ts --channel CHANNEL_SLUG --days 365 --dry-run
+   yarn youtube-sync --channel CHANNEL_SLUG --days 365 --dry-run
    ```
 
 3. Review the dry-run output to see what videos will be listed
 
 4. Run without dry-run to create the issue:
    ```bash
-   node tools/youtube-sync.ts --channel CHANNEL_SLUG --days 365
+   yarn youtube-sync --channel CHANNEL_SLUG --days 365
    ```
 
 This creates a GitHub issue listing all videos from the channel that don't have recipes yet.
@@ -69,3 +69,10 @@ This creates a GitHub issue listing all videos from the channel that don't have 
 A GitHub Action runs weekly to check all channels for new videos and creates an issue if any are found.
 
 To manually trigger: Run the workflow dispatch for `youtube-sync.yml` in GitHub Actions.
+
+## Available Options
+
+- `--dry-run` - Test without creating GitHub issues
+- `--days <number>` - Number of days to look back for videos (default: 7)
+- `--channel <slug>` - Only process a specific channel by slug
+- `--help` - Show help message
