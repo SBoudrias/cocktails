@@ -11,7 +11,7 @@
       }
     },
     {
-      "name": "Giffard Abricot du Roussillon",
+      "name": "Giffard abricot du Roussillon",
       "type": "liqueur",
       "quantity": {
         "amount": 1,
@@ -19,7 +19,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -38,7 +38,7 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "VqVJ10en-Uc"
+      "videoId": "5w6eLckHwWg"
     }
   ]
 }

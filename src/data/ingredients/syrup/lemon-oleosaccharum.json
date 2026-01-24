@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "lemon oleosaccharum",
+  "type": "syrup"
+}
