@@ -5,6 +5,7 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { logger } from './cli-util.ts';
+import * as YouTubeAPI from './youtube-api.ts';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const YOUTUBE_CHANNEL_ROOT = path.join(ROOT, 'src/data/recipes/youtube-channel');
@@ -90,11 +91,11 @@ async function getTrackedChannels(): Promise<ChannelSource[]> {
 }
 
 /**
- * Fetch recent videos from a YouTube channel using yt-dlp
+ * Fetch recent videos from a YouTube channel using yt-dlp (fallback method)
  * Fetches the most recent N videos (default: 100) which includes upload dates
  * This is faster than fetching all videos or using date filtering
  */
-function fetchChannelVideos(channelUrl: string, playlistEnd = 100): Video[] {
+function fetchChannelVideosYtDlp(channelUrl: string, playlistEnd = 100): Video[] {
   // Ensure URL ends with /videos to get all channel videos
   const videosUrl = channelUrl.endsWith('/videos') ? channelUrl : `${channelUrl}/videos`;
 
@@ -123,6 +124,34 @@ function fetchChannelVideos(channelUrl: string, playlistEnd = 100): Video[] {
   } catch (error) {
     throw new Error(`Failed to fetch videos: ${(error as Error).message}`);
   }
+}
+
+/**
+ * Fetch recent videos from a YouTube channel
+ * Tries YouTube Data API first (if key available), falls back to yt-dlp
+ */
+async function fetchChannelVideos(
+  channelUrl: string,
+  maxResults = 100,
+): Promise<Video[]> {
+  const apiKey = process.env.YOUTUBE_API_KEY;
+
+  // Try YouTube Data API first if key is available
+  if (apiKey) {
+    try {
+      logger.item('Using YouTube Data API...');
+      const videos = await YouTubeAPI.fetchChannelVideos(apiKey, channelUrl, maxResults);
+      return videos;
+    } catch (error) {
+      logger.error(`API failed: ${(error as Error).message}`);
+      logger.item('Falling back to yt-dlp...');
+    }
+  } else {
+    logger.item('No YOUTUBE_API_KEY found, using yt-dlp...');
+  }
+
+  // Fall back to yt-dlp
+  return fetchChannelVideosYtDlp(channelUrl, maxResults);
 }
 
 /**
@@ -299,7 +328,7 @@ async function main(): Promise<void> {
     try {
       // Fetch recent videos from YouTube
       logger.item('Fetching recent videos from YouTube...');
-      const allVideos = fetchChannelVideos(channel.link);
+      const allVideos = await fetchChannelVideos(channel.link);
       logger.item(`Found ${allVideos.length} recent videos`);
 
       // Get existing video IDs

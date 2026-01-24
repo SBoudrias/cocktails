@@ -64,6 +64,22 @@ When adding a new YouTube channel to the cocktails app:
 
 This creates a GitHub issue listing all videos from the channel that don't have recipes yet.
 
+## YouTube API Configuration
+
+The sync tool supports two methods for fetching videos:
+
+1. **YouTube Data API v3** (Recommended) - Reliable, fast, and works in CI environments
+   - Set `YOUTUBE_API_KEY` environment variable with your API key
+   - Get a free API key from [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+   - 50 quota units/day = ~1,667 API calls (more than enough for this use case)
+   - Add as GitHub secret: Repository Settings → Secrets → Actions → `YOUTUBE_API_KEY`
+
+2. **yt-dlp** (Fallback) - Used automatically if API key not available
+   - Works locally but may be blocked by YouTube in CI environments
+   - No configuration needed, but less reliable in automated contexts
+
+The tool automatically tries the API first (if key available), then falls back to yt-dlp if needed.
+
 ## Channel Video Sync
 
 A GitHub Action runs weekly to check all channels for new videos and creates an issue if any are found.
