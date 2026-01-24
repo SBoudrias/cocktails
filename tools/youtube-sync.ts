@@ -1,8 +1,10 @@
 #!/usr/bin/env -S node --no-warnings
 
+import { Command } from 'commander';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { logError, logFooter, logHeader, logItem, logSuccess } from './cli-util.ts';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const YOUTUBE_CHANNEL_ROOT = path.join(ROOT, 'src/data/recipes/youtube-channel');
@@ -42,16 +44,25 @@ interface YtDlpOutput {
   }>;
 }
 
-// Parse CLI arguments
-const args = process.argv.slice(2);
-const dryRun = args.includes('--dry-run');
+// Parse CLI arguments with commander
+const program = new Command();
 
-const daysIndex = args.indexOf('--days');
-const daysArg = daysIndex !== -1 ? args[daysIndex + 1] : undefined;
-const maxAgeDays = daysArg ? Number.parseInt(daysArg) : DEFAULT_MAX_AGE_DAYS;
+program
+  .name('youtube-sync')
+  .description('Sync YouTube channels and create GitHub issues for new videos')
+  .option('--dry-run', 'Test without creating GitHub issues')
+  .option(
+    '--days <number>',
+    'Number of days to look back for videos',
+    DEFAULT_MAX_AGE_DAYS.toString(),
+  )
+  .option('--channel <slug>', 'Only process a specific channel by slug')
+  .parse();
 
-const channelIndex = args.indexOf('--channel');
-const specificChannel = channelIndex !== -1 ? (args[channelIndex + 1] ?? null) : null;
+const options = program.opts();
+const dryRun = options.dryRun ?? false;
+const maxAgeDays = Number.parseInt(options.days);
+const specificChannel = options.channel ?? null;
 
 /**
  * Get all tracked YouTube channels from the filesystem
@@ -79,22 +90,36 @@ async function getTrackedChannels(): Promise<ChannelSource[]> {
 }
 
 /**
- * Fetch all videos from a YouTube channel using yt-dlp
+ * Fetch recent videos from a YouTube channel using yt-dlp
+ * Fetches the most recent N videos (default: 100) which includes upload dates
+ * This is faster than fetching all videos or using date filtering
  */
-function fetchChannelVideos(channelUrl: string): Video[] {
+function fetchChannelVideos(channelUrl: string, playlistEnd = 100): Video[] {
+  // Ensure URL ends with /videos to get all channel videos
+  const videosUrl = channelUrl.endsWith('/videos') ? channelUrl : `${channelUrl}/videos`;
+
   try {
+    // Note: yt-dlp may return non-zero exit code even with --ignore-errors if some videos fail
+    // Use || true to force exit code 0 so execSync doesn't throw
     const output = execSync(
-      `yt-dlp --flat-playlist --skip-download --dump-single-json "${channelUrl}"`,
-      { encoding: 'utf-8', maxBuffer: 50 * 1024 * 1024, stdio: ['pipe', 'pipe', 'pipe'] },
+      `yt-dlp --ignore-errors --no-warnings --playlist-end ${playlistEnd} --skip-download --dump-single-json "${videosUrl}" || true`,
+      { encoding: 'utf-8', maxBuffer: 100 * 1024 * 1024 },
     );
 
+    if (!output || output.trim() === '') {
+      throw new Error('yt-dlp returned empty output');
+    }
+
     const data = JSON.parse(output) as YtDlpOutput;
-    return (data.entries ?? []).map((entry) => ({
-      id: entry.id,
-      title: entry.title,
-      url: entry.url || `https://youtube.com/watch?v=${entry.id}`,
-      upload_date: entry.upload_date,
-    }));
+
+    return (data.entries ?? [])
+      .filter((entry) => entry != null) // Filter out null entries from failed videos
+      .map((entry) => ({
+        id: entry.id,
+        title: entry.title,
+        url: entry.url || `https://youtube.com/watch?v=${entry.id}`,
+        upload_date: entry.upload_date,
+      }));
   } catch (error) {
     throw new Error(`Failed to fetch videos: ${(error as Error).message}`);
   }
@@ -130,7 +155,8 @@ async function getExistingVideoIds(channelSlug: string): Promise<Set<string>> {
 }
 
 /**
- * Filter videos to find new ones uploaded within the specified timeframe
+ * Filter videos to find new ones that don't have recipes yet
+ * and were uploaded within the specified timeframe
  */
 function findNewVideos(
   allVideos: Video[],
@@ -230,7 +256,7 @@ function createGitHubIssue(newVideos: NewVideosForChannel[]): void {
     execSync(`gh issue create --title "${title}" --body "${body}" ${labelArgs}`, {
       stdio: 'inherit',
     });
-    console.log('✅ GitHub issue created successfully');
+    logSuccess('GitHub issue created successfully');
   } catch (error) {
     throw new Error(`Failed to create GitHub issue: ${(error as Error).message}`);
   }
@@ -240,16 +266,16 @@ function createGitHubIssue(newVideos: NewVideosForChannel[]): void {
  * Main execution
  */
 async function main(): Promise<void> {
-  console.log('╭ 📺 YouTube Video Sync');
-  console.log(`├ Max age: ${maxAgeDays} days`);
-  console.log(`├ Dry run: ${dryRun ? 'yes' : 'no'}`);
+  logHeader('📺 YouTube Video Sync');
+  logItem(`Max age: ${maxAgeDays} days`);
+  logItem(`Dry run: ${dryRun ? 'yes' : 'no'}`);
   if (specificChannel) {
-    console.log(`├ Channel filter: ${specificChannel}`);
+    logItem(`Channel filter: ${specificChannel}`);
   }
-  console.log('╰');
+  logFooter();
 
   // Get tracked channels
-  console.log('\n╭ 📋 Loading tracked channels...');
+  logHeader('📋 Loading tracked channels...');
   let channels = await getTrackedChannels();
 
   // Filter to specific channel if requested
@@ -261,29 +287,29 @@ async function main(): Promise<void> {
     }
   }
 
-  console.log(`├ Found ${channels.length} channel(s)`);
-  console.log('╰');
+  logItem(`Found ${channels.length} channel(s)`);
+  logFooter();
 
   // Process each channel
   const allNewVideos: NewVideosForChannel[] = [];
 
   for (const channel of channels) {
-    console.log(`\n╭ 🔍 Processing: ${channel.name}`);
+    logHeader(`🔍 Processing: ${channel.name}`);
 
     try {
-      // Fetch videos from YouTube
-      console.log('├ Fetching videos from YouTube...');
+      // Fetch recent videos from YouTube
+      logItem('Fetching recent videos from YouTube...');
       const allVideos = fetchChannelVideos(channel.link);
-      console.log(`├ Found ${allVideos.length} total videos`);
+      logItem(`Found ${allVideos.length} recent videos`);
 
       // Get existing video IDs
-      console.log('├ Reading existing recipes...');
+      logItem('Reading existing recipes...');
       const existingIds = await getExistingVideoIds(channel.slug);
-      console.log(`├ Found ${existingIds.size} existing recipes`);
+      logItem(`Found ${existingIds.size} existing recipes`);
 
-      // Find new videos
+      // Find new videos from the specified timeframe
       const newVideos = findNewVideos(allVideos, existingIds, maxAgeDays);
-      console.log(`├ Found ${newVideos.length} new video(s)`);
+      logItem(`Found ${newVideos.length} new video(s) from last ${maxAgeDays} days`);
 
       if (newVideos.length > 0) {
         allNewVideos.push({
@@ -294,38 +320,38 @@ async function main(): Promise<void> {
         });
       }
 
-      console.log('╰ Done');
+      logFooter('Done');
     } catch (error) {
-      console.error(`├ ❌ Error: ${(error as Error).message}`);
-      console.log('╰ Skipping channel');
+      logError(`Error: ${(error as Error).message}`);
+      logFooter('Skipping channel');
       continue;
     }
   }
 
   // Create issue or print results
-  console.log('\n╭ 📊 Summary');
+  logHeader('📊 Summary');
   const totalNewVideos = allNewVideos.reduce((sum, ch) => sum + ch.videos.length, 0);
-  console.log(`├ Channels with new videos: ${allNewVideos.length}`);
-  console.log(`├ Total new videos: ${totalNewVideos}`);
-  console.log('╰');
+  logItem(`Channels with new videos: ${allNewVideos.length}`);
+  logItem(`Total new videos: ${totalNewVideos}`);
+  logFooter();
 
   if (totalNewVideos === 0) {
-    console.log('\n✅ No new videos found - nothing to do!');
+    logSuccess('No new videos found - nothing to do!');
     return;
   }
 
   if (dryRun) {
-    console.log('\n╭ 📝 Dry run - Issue preview:');
-    console.log('├─────────────────────────────');
+    logHeader('📝 Dry run - Issue preview:');
+    logItem('─────────────────────────────');
     console.log(formatIssueBody(allNewVideos));
-    console.log('╰─────────────────────────────');
+    logFooter('─────────────────────────────');
   } else {
-    console.log('\n╭ 📤 Creating GitHub issue...');
+    logHeader('📤 Creating GitHub issue...');
     createGitHubIssue(allNewVideos);
-    console.log('╰');
+    logFooter();
   }
 
-  console.log('\n✅ YouTube sync completed successfully!');
+  logSuccess('YouTube sync completed successfully!');
 }
 
 main().catch((error) => {

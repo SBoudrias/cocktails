@@ -6,6 +6,7 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { isChapterFolder } from '../src/modules/chapters.ts';
+import { logChange, logError, logFooter, logHeader, logItem } from './cli-util.ts';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
@@ -47,38 +48,35 @@ async function writeJSON(filepath: string, data: object): Promise<void> {
 
 let exitCode = 0;
 function fail(message: string): void {
-  console.error(`├ ❌ ${message}`);
+  logError(message);
   exitCode = 1;
-}
-function change(message: string): void {
-  console.log(`├ 🔄 ${message}`);
 }
 
 const ajv = new Ajv();
-console.log('╭ 📝 Registering schemas');
+logHeader('📝 Registering schemas');
 for await (const schemaFile of fs.glob('src/schemas/*.schema.json')) {
   const schema = JSON.parse(await fs.readFile(schemaFile, 'utf-8'));
   const schemaId = path.basename(schemaFile);
-  console.log('├', schemaId);
+  logItem(schemaId);
   ajv.addSchema(schema, schemaId);
 }
-console.log('╰ Done!\n');
+logFooter();
 
 // Collect all category slugs for duplicate detection
-console.log('╭ 📦 Collecting category slugs');
+logHeader('📦 Collecting category slugs');
 const categorySlugs = new Set<string>();
 for await (const categoryFile of fs.glob('src/data/categories/*.json')) {
   const slug = path.basename(categoryFile, '.json');
   categorySlugs.add(slug);
 }
-console.log(`├ Found ${categorySlugs.size} categories`);
-console.log('╰ Done!\n');
+logItem(`Found ${categorySlugs.size} categories`);
+logFooter();
 
 // Track bar names for case-insensitive duplicate detection
 // Maps lowercase name -> Map of exact casing -> list of files using that casing
 const barNameCasings = new Map<string, Map<string, string[]>>();
 
-console.log('╭ 🔍 Validating data files...');
+logHeader('🔍 Validating data files...');
 for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   let data: DataWithSchema;
   try {
@@ -116,7 +114,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     const expectedName = slugify(data.name);
     if (basename !== expectedName) {
       const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);
-      change(`Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`);
+      logChange(`Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`);
       await fs.rename(sourceFile, newPath);
     }
   }
@@ -178,7 +176,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     for (const ingredient of ingredients) {
       const ingredientSlug = slugify(ingredient.name);
       if (ingredient.type !== 'category' && categorySlugs.has(ingredientSlug)) {
-        change(
+        logChange(
           `Fixing "${ingredient.name}" in ${path.basename(sourceFile)}: ` +
             `type "${ingredient.type}" → "category"`,
         );
@@ -265,10 +263,10 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   }
 }
 
-console.log('╰ Done!\n');
+logFooter();
 
 // Check for inconsistent bar name casing
-console.log('╭ 🍸 Checking bar name consistency...');
+logHeader('🍸 Checking bar name consistency...');
 for (const [, casings] of barNameCasings) {
   if (casings.size > 1) {
     const variants = Array.from(casings.entries())
@@ -277,10 +275,10 @@ for (const [, casings] of barNameCasings) {
     fail(`Bar name has inconsistent casing: ${variants}`);
   }
 }
-console.log('╰ Done!\n');
+logFooter();
 
 // Validate book chapter structure
-console.log('╭ 📚 Validating book chapter structure...');
+logHeader('📚 Validating book chapter structure...');
 const bookRoot = 'src/data/recipes/book';
 for await (const bookSlug of await fs.readdir(bookRoot)) {
   const bookPath = path.join(bookRoot, bookSlug);
@@ -357,5 +355,9 @@ for await (const bookSlug of await fs.readdir(bookRoot)) {
 // Trigger reformatting once on all files for good measures
 execSync(`yarn oxfmt`, { stdio: 'ignore' });
 
-console.log(exitCode > 0 ? '╰ ❌ Validation failed!' : '╰ ✅ Done!');
+if (exitCode > 0) {
+  logFooter('❌ Validation failed!');
+} else {
+  logFooter('✅ Done!');
+}
 process.exit(exitCode);
