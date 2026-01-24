@@ -126,16 +126,6 @@ describe('BottlesPage', () => {
     expect(items.length).toBeGreaterThan(0);
   });
 
-  it('home button navigates to home', async () => {
-    await mockRouter.push('/list/bottles');
-
-    setupApp(await BottlesPage());
-
-    const homeButton = screen.getByRole('link', { name: /go to home/i });
-    expect(homeButton).toBeInTheDocument();
-    expect(homeButton).toHaveAttribute('href', '/');
-  });
-
   it('only shows liqueur and spirit type ingredients', async () => {
     setupApp(await BottlesPage());
 

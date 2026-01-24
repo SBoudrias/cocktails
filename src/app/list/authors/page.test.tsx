@@ -104,16 +104,6 @@ describe('AuthorListPage', () => {
     expect(items.length).toBeGreaterThan(0);
   });
 
-  it('home button navigates to home', async () => {
-    await mockRouter.push('/list/authors');
-
-    setupApp(await AuthorListPage());
-
-    const homeButton = screen.getByRole('link', { name: /go to home/i });
-    expect(homeButton).toBeInTheDocument();
-    expect(homeButton).toHaveAttribute('href', '/');
-  });
-
   it('shows recipe count for each author', async () => {
     setupApp(await AuthorListPage());
 

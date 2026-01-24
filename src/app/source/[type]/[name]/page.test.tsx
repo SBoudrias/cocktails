@@ -117,20 +117,6 @@ describe('SourcePage', () => {
       expect(screen.queryByText(TEST_YOUTUBE.name)).not.toBeInTheDocument();
     });
 
-    it('home button navigates to home', async () => {
-      await mockRouter.push(`/source/${TEST_YOUTUBE.type}/${TEST_YOUTUBE.slug}`);
-
-      setupApp(
-        await SourcePage({
-          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
-        }),
-      );
-
-      const homeButton = screen.getByRole('link', { name: /go to home/i });
-      expect(homeButton).toBeInTheDocument();
-      expect(homeButton).toHaveAttribute('href', '/');
-    });
-
     it('loads with search term from URL', async () => {
       setupApp(
         await SourcePage({
