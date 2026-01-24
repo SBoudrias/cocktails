@@ -257,15 +257,12 @@ describe('IngredientPage', () => {
       expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
     });
 
-    it('back button navigates correctly', async () => {
-      await mockRouter.push('/');
+    it('home button navigates to home', async () => {
       await mockRouter.push(
         `/ingredient/${TEST_INGREDIENT.type}/${TEST_INGREDIENT.slug}`,
       );
 
-      const backSpy = vi.spyOn(mockRouter, 'back');
-
-      const { user } = setupApp(
+      setupApp(
         await IngredientPage({
           params: Promise.resolve({
             type: TEST_INGREDIENT.type,
@@ -274,11 +271,9 @@ describe('IngredientPage', () => {
         }),
       );
 
-      const backButton = screen.getByRole('button', { name: /go back/i });
-      await user.click(backButton);
-
-      expect(backSpy).toHaveBeenCalled();
-      backSpy.mockRestore();
+      const homeButton = screen.getByRole('link', { name: /go to home/i });
+      expect(homeButton).toBeInTheDocument();
+      expect(homeButton).toHaveAttribute('href', '/');
     });
 
     it('loads with search term from URL', async () => {

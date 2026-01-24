@@ -1,7 +1,7 @@
 'use client';
 
 import { Home } from '@mui/icons-material';
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import SearchInput from '@/components/SearchInput';
 
@@ -23,7 +23,7 @@ export default function SearchHeader({
         <Toolbar>
           {isHome ? (
             <IconButton size="large" edge="start" disabled>
-              <Home sx={{ visibility: 'hidden' }} />
+              <Icon />
             </IconButton>
           ) : (
             <IconButton size="large" edge="start" aria-label="Go to home" href="/">

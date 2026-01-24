@@ -184,23 +184,18 @@ describe('CategoryPage', () => {
       expect(screen.queryByText(/Examples of.*London Dry Gin/)).not.toBeInTheDocument();
     });
 
-    it('back button navigates correctly', async () => {
-      await mockRouter.push('/');
+    it('home button navigates to home', async () => {
       await mockRouter.push('/category/london-dry-gin');
 
-      const backSpy = vi.spyOn(mockRouter, 'back');
-
-      const { user } = setupApp(
+      setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
       );
 
-      const backButton = screen.getByRole('button', { name: /go back/i });
-      await user.click(backButton);
-
-      expect(backSpy).toHaveBeenCalled();
-      backSpy.mockRestore();
+      const homeButton = screen.getByRole('link', { name: /go to home/i });
+      expect(homeButton).toBeInTheDocument();
+      expect(homeButton).toHaveAttribute('href', '/');
     });
 
     it('loads with search term from URL', async () => {

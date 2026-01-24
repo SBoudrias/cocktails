@@ -52,27 +52,25 @@ describe('SearchHeader', () => {
     expect(onSearchChange).toHaveBeenCalledTimes('dai'.length);
   });
 
-  it('back button is visible on pages and clickable', async () => {
+  it('home button is visible on pages and links to home', async () => {
     mockRouter.setCurrentUrl('/list/recipes');
 
-    const { user } = setupApp(
+    setupApp(
       <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
     );
 
-    const backButton = screen.getByRole('button', { name: /go back/i });
-    expect(backButton).toBeInTheDocument();
-
-    await user.click(backButton);
-    // next-router-mock doesn't yet support `back()`, so cannot verify the behavior.
+    const homeButton = screen.getByRole('link', { name: /go to home/i });
+    expect(homeButton).toBeInTheDocument();
+    expect(homeButton).toHaveAttribute('href', '/');
   });
 
-  it('back button isnt avaible on home page', async () => {
+  it("home button isn't available on home page", async () => {
     mockRouter.setCurrentUrl('/');
     setupApp(
       <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
     );
 
-    const backButton = screen.queryByRole('button', { name: /go back/i });
-    expect(backButton).not.toBeInTheDocument();
+    const homeButton = screen.queryByRole('link', { name: /go to home/i });
+    expect(homeButton).not.toBeInTheDocument();
   });
 });

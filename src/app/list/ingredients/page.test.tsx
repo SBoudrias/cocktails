@@ -124,21 +124,14 @@ describe('IngredientsPage', () => {
     expect(items.length).toBeGreaterThan(0);
   });
 
-  it('back button navigates correctly', async () => {
-    // Build navigation history with two pushes (as suggested in PR review)
-    await mockRouter.push('/');
+  it('home button navigates to home', async () => {
     await mockRouter.push('/list/ingredients');
 
-    // Spy on back to verify it's called (next-router-mock doesn't maintain actual history)
-    const backSpy = vi.spyOn(mockRouter, 'back');
+    setupApp(await IngredientsPage());
 
-    const { user } = setupApp(await IngredientsPage());
-
-    const backButton = screen.getByRole('button', { name: /go back/i });
-    await user.click(backButton);
-
-    expect(backSpy).toHaveBeenCalled();
-    backSpy.mockRestore();
+    const homeButton = screen.getByRole('link', { name: /go to home/i });
+    expect(homeButton).toBeInTheDocument();
+    expect(homeButton).toHaveAttribute('href', '/');
   });
 
   it('filters out liqueur and spirit type ingredients', async () => {
