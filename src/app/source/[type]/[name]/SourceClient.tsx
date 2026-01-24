@@ -46,7 +46,7 @@ export default function SourceClient({
           secondary={
             nameIsUnique(recipe)
               ? undefined
-              : getRecipeAttribution(recipe, { source: source.name })
+              : getRecipeAttribution(recipe, { exclude: { source: source.name } })
           }
         />
       );
