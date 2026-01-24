@@ -9,14 +9,8 @@ const ATTRIBUTION_PRIORITY: Attribution['relation'][] = [
 ];
 
 type ExcludeOptions = {
-  /** Exclude this name from "adapted by" attributions */
-  'adapted by'?: string;
-  /** Exclude this name from "recipe author" attributions */
-  'recipe author'?: string;
-  /** Exclude this name from "bar" attributions */
-  bar?: string;
-  /** Exclude this name from "book" attributions */
-  book?: string;
+  [K in Attribution['relation']]?: string;
+} & {
   /** Exclude this source name from the fallback */
   source?: string;
 };
