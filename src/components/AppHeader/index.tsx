@@ -1,13 +1,12 @@
 'use client';
 
-import { ChevronLeft, Search } from '@mui/icons-material';
+import { Home, Search } from '@mui/icons-material';
 import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { getRecipeListUrl } from '@/modules/url';
 
 export default function AppHeader({ title }: { title: string }) {
   const pathname = usePathname();
-  const router = useRouter();
   const isHome = pathname === '/';
 
   return (
@@ -19,13 +18,8 @@ export default function AppHeader({ title }: { title: string }) {
               <Icon />
             </IconButton>
           ) : (
-            <IconButton
-              size="large"
-              edge="start"
-              aria-label="Go back"
-              onClick={() => router.back()}
-            >
-              <ChevronLeft />
+            <IconButton size="large" edge="start" aria-label="Go to home" href="/">
+              <Home />
             </IconButton>
           )}
           <Typography
