@@ -1,15 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Siesta",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
-    {
-      "name": "Tequila (Blanco)",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Lime juice",
       "type": "juice",
@@ -41,11 +36,16 @@
         "amount": 0.25,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "attributions": [
     {
       "relation": "recipe author",

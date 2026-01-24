@@ -2,15 +2,37 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "absinthe air",
   "type": "other",
-  "description": "A foam topping made from absinthe, water, and sucrose fatty acid ester",
+  "description": "A foam topping made from absinthe, water, and sucrose fatty acid ester.",
   "ingredients": [
     {
       "name": "Absinthe",
       "type": "category",
       "quantity": {
-        "amount": 1,
-        "unit": "part"
+        "amount": 50,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "water",
+      "type": "other",
+      "quantity": {
+        "amount": 115,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "sucrose fatty acid ester (E473)",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "gram"
       }
     }
+  ],
+  "instructions": [
+    "Blend all ingredients",
+    "Place an aquarium pump in the liquid and let it generate air",
+    "If not used the same day, the liquid can be stored in the fridge and reused the next day",
+    "Yields enough for about 20 cocktails."
   ]
 }
