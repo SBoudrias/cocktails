@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "absinthe air",
+  "type": "other",
+  "description": "A foam topping made from absinthe, water, and sucrose fatty acid ester",
+  "ingredients": [
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ]
+}
