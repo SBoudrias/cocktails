@@ -126,19 +126,14 @@ describe('BottlesPage', () => {
     expect(items.length).toBeGreaterThan(0);
   });
 
-  it('back button navigates correctly', async () => {
-    await mockRouter.push('/');
+  it('home button navigates to home', async () => {
     await mockRouter.push('/list/bottles');
 
-    const backSpy = vi.spyOn(mockRouter, 'back');
+    setupApp(await BottlesPage());
 
-    const { user } = setupApp(await BottlesPage());
-
-    const backButton = screen.getByRole('button', { name: /go back/i });
-    await user.click(backButton);
-
-    expect(backSpy).toHaveBeenCalled();
-    backSpy.mockRestore();
+    const homeButton = screen.getByRole('link', { name: /go to home/i });
+    expect(homeButton).toBeInTheDocument();
+    expect(homeButton).toHaveAttribute('href', '/');
   });
 
   it('only shows liqueur and spirit type ingredients', async () => {
