@@ -4,7 +4,7 @@ import { Command } from 'commander';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { logError, logFooter, logHeader, logItem, logSuccess } from './cli-util.ts';
+import { logger } from './cli-util.ts';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const YOUTUBE_CHANNEL_ROOT = path.join(ROOT, 'src/data/recipes/youtube-channel');
@@ -256,7 +256,7 @@ function createGitHubIssue(newVideos: NewVideosForChannel[]): void {
     execSync(`gh issue create --title "${title}" --body "${body}" ${labelArgs}`, {
       stdio: 'inherit',
     });
-    logSuccess('GitHub issue created successfully');
+    logger.success('GitHub issue created successfully');
   } catch (error) {
     throw new Error(`Failed to create GitHub issue: ${(error as Error).message}`);
   }
@@ -266,16 +266,16 @@ function createGitHubIssue(newVideos: NewVideosForChannel[]): void {
  * Main execution
  */
 async function main(): Promise<void> {
-  logHeader('📺 YouTube Video Sync');
-  logItem(`Max age: ${maxAgeDays} days`);
-  logItem(`Dry run: ${dryRun ? 'yes' : 'no'}`);
+  logger.header('📺 YouTube Video Sync');
+  logger.item(`Max age: ${maxAgeDays} days`);
+  logger.item(`Dry run: ${dryRun ? 'yes' : 'no'}`);
   if (specificChannel) {
-    logItem(`Channel filter: ${specificChannel}`);
+    logger.item(`Channel filter: ${specificChannel}`);
   }
-  logFooter();
+  logger.footer();
 
   // Get tracked channels
-  logHeader('📋 Loading tracked channels...');
+  logger.header('📋 Loading tracked channels...');
   let channels = await getTrackedChannels();
 
   // Filter to specific channel if requested
@@ -287,29 +287,29 @@ async function main(): Promise<void> {
     }
   }
 
-  logItem(`Found ${channels.length} channel(s)`);
-  logFooter();
+  logger.item(`Found ${channels.length} channel(s)`);
+  logger.footer();
 
   // Process each channel
   const allNewVideos: NewVideosForChannel[] = [];
 
   for (const channel of channels) {
-    logHeader(`🔍 Processing: ${channel.name}`);
+    logger.header(`🔍 Processing: ${channel.name}`);
 
     try {
       // Fetch recent videos from YouTube
-      logItem('Fetching recent videos from YouTube...');
+      logger.item('Fetching recent videos from YouTube...');
       const allVideos = fetchChannelVideos(channel.link);
-      logItem(`Found ${allVideos.length} recent videos`);
+      logger.item(`Found ${allVideos.length} recent videos`);
 
       // Get existing video IDs
-      logItem('Reading existing recipes...');
+      logger.item('Reading existing recipes...');
       const existingIds = await getExistingVideoIds(channel.slug);
-      logItem(`Found ${existingIds.size} existing recipes`);
+      logger.item(`Found ${existingIds.size} existing recipes`);
 
       // Find new videos from the specified timeframe
       const newVideos = findNewVideos(allVideos, existingIds, maxAgeDays);
-      logItem(`Found ${newVideos.length} new video(s) from last ${maxAgeDays} days`);
+      logger.item(`Found ${newVideos.length} new video(s) from last ${maxAgeDays} days`);
 
       if (newVideos.length > 0) {
         allNewVideos.push({
@@ -320,38 +320,38 @@ async function main(): Promise<void> {
         });
       }
 
-      logFooter('Done');
+      logger.footer('Done');
     } catch (error) {
-      logError(`Error: ${(error as Error).message}`);
-      logFooter('Skipping channel');
+      logger.error(`Error: ${(error as Error).message}`);
+      logger.footer('Skipping channel');
       continue;
     }
   }
 
   // Create issue or print results
-  logHeader('📊 Summary');
+  logger.header('📊 Summary');
   const totalNewVideos = allNewVideos.reduce((sum, ch) => sum + ch.videos.length, 0);
-  logItem(`Channels with new videos: ${allNewVideos.length}`);
-  logItem(`Total new videos: ${totalNewVideos}`);
-  logFooter();
+  logger.item(`Channels with new videos: ${allNewVideos.length}`);
+  logger.item(`Total new videos: ${totalNewVideos}`);
+  logger.footer();
 
   if (totalNewVideos === 0) {
-    logSuccess('No new videos found - nothing to do!');
+    logger.success('No new videos found - nothing to do!');
     return;
   }
 
   if (dryRun) {
-    logHeader('📝 Dry run - Issue preview:');
-    logItem('─────────────────────────────');
+    logger.header('📝 Dry run - Issue preview:');
+    logger.item('─────────────────────────────');
     console.log(formatIssueBody(allNewVideos));
-    logFooter('─────────────────────────────');
+    logger.footer('─────────────────────────────');
   } else {
-    logHeader('📤 Creating GitHub issue...');
+    logger.header('📤 Creating GitHub issue...');
     createGitHubIssue(allNewVideos);
-    logFooter();
+    logger.footer();
   }
 
-  logSuccess('YouTube sync completed successfully!');
+  logger.success('YouTube sync completed successfully!');
 }
 
 main().catch((error) => {
