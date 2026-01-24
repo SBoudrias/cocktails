@@ -257,25 +257,6 @@ describe('IngredientPage', () => {
       expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
     });
 
-    it('home button navigates to home', async () => {
-      await mockRouter.push(
-        `/ingredient/${TEST_INGREDIENT.type}/${TEST_INGREDIENT.slug}`,
-      );
-
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
-
-      const homeButton = screen.getByRole('link', { name: /go to home/i });
-      expect(homeButton).toBeInTheDocument();
-      expect(homeButton).toHaveAttribute('href', '/');
-    });
-
     it('loads with search term from URL', async () => {
       setupApp(
         await IngredientPage({

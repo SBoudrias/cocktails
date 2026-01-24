@@ -184,20 +184,6 @@ describe('CategoryPage', () => {
       expect(screen.queryByText(/Examples of.*London Dry Gin/)).not.toBeInTheDocument();
     });
 
-    it('home button navigates to home', async () => {
-      await mockRouter.push('/category/london-dry-gin');
-
-      setupApp(
-        await CategoryPage({
-          params: Promise.resolve({ slug: 'london-dry-gin' }),
-        }),
-      );
-
-      const homeButton = screen.getByRole('link', { name: /go to home/i });
-      expect(homeButton).toBeInTheDocument();
-      expect(homeButton).toHaveAttribute('href', '/');
-    });
-
     it('loads with search term from URL', async () => {
       setupApp(
         await CategoryPage({

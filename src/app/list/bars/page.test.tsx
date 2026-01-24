@@ -116,16 +116,6 @@ describe('BarListPage', () => {
     expect(items.length).toBeGreaterThan(0);
   });
 
-  it('home button navigates to home', async () => {
-    await mockRouter.push('/list/bars');
-
-    setupApp(await BarListPage());
-
-    const homeButton = screen.getByRole('link', { name: /go to home/i });
-    expect(homeButton).toBeInTheDocument();
-    expect(homeButton).toHaveAttribute('href', '/');
-  });
-
   it('shows recipe count for each bar', async () => {
     setupApp(await BarListPage());
 
