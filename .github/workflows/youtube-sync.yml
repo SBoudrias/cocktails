@@ -26,4 +26,5 @@ jobs:
       - name: Run YouTube sync 📺
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: yarn youtube-sync
