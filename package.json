@@ -11,6 +11,7 @@
     "lint": "next typegen && tsc --noEmit && eslint . && oxfmt . --check",
     "test": "vitest --run",
     "check-data": "tools/check-data.ts",
+    "youtube-sync": "tools/youtube-sync.ts",
     "prepare": "husky"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "@next/third-parties": "16.1.4",
     "@sindresorhus/slugify": "^3.0.0",
     "@sindresorhus/transliterate": "^2.3.1",
+    "commander": "^14.0.2",
     "core-js": "^3.47.0",
     "lodash": "^4.17.21",
     "next": "16.1.4",
