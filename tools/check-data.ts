@@ -6,7 +6,7 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { isChapterFolder } from '../src/modules/chapters.ts';
-import { logChange, logError, logFooter, logHeader, logItem } from './cli-util.ts';
+import { logger } from './cli-util.ts';
 
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
@@ -48,35 +48,35 @@ async function writeJSON(filepath: string, data: object): Promise<void> {
 
 let exitCode = 0;
 function fail(message: string): void {
-  logError(message);
+  logger.error(message);
   exitCode = 1;
 }
 
 const ajv = new Ajv();
-logHeader('📝 Registering schemas');
+logger.header('📝 Registering schemas');
 for await (const schemaFile of fs.glob('src/schemas/*.schema.json')) {
   const schema = JSON.parse(await fs.readFile(schemaFile, 'utf-8'));
   const schemaId = path.basename(schemaFile);
-  logItem(schemaId);
+  logger.item(schemaId);
   ajv.addSchema(schema, schemaId);
 }
-logFooter();
+logger.footer();
 
 // Collect all category slugs for duplicate detection
-logHeader('📦 Collecting category slugs');
+logger.header('📦 Collecting category slugs');
 const categorySlugs = new Set<string>();
 for await (const categoryFile of fs.glob('src/data/categories/*.json')) {
   const slug = path.basename(categoryFile, '.json');
   categorySlugs.add(slug);
 }
-logItem(`Found ${categorySlugs.size} categories`);
-logFooter();
+logger.item(`Found ${categorySlugs.size} categories`);
+logger.footer();
 
 // Track bar names for case-insensitive duplicate detection
 // Maps lowercase name -> Map of exact casing -> list of files using that casing
 const barNameCasings = new Map<string, Map<string, string[]>>();
 
-logHeader('🔍 Validating data files...');
+logger.header('🔍 Validating data files...');
 for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   let data: DataWithSchema;
   try {
@@ -114,7 +114,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     const expectedName = slugify(data.name);
     if (basename !== expectedName) {
       const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);
-      logChange(`Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`);
+      logger.change(`Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`);
       await fs.rename(sourceFile, newPath);
     }
   }
@@ -176,7 +176,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
     for (const ingredient of ingredients) {
       const ingredientSlug = slugify(ingredient.name);
       if (ingredient.type !== 'category' && categorySlugs.has(ingredientSlug)) {
-        logChange(
+        logger.change(
           `Fixing "${ingredient.name}" in ${path.basename(sourceFile)}: ` +
             `type "${ingredient.type}" → "category"`,
         );
@@ -263,10 +263,10 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   }
 }
 
-logFooter();
+logger.footer();
 
 // Check for inconsistent bar name casing
-logHeader('🍸 Checking bar name consistency...');
+logger.header('🍸 Checking bar name consistency...');
 for (const [, casings] of barNameCasings) {
   if (casings.size > 1) {
     const variants = Array.from(casings.entries())
@@ -275,10 +275,10 @@ for (const [, casings] of barNameCasings) {
     fail(`Bar name has inconsistent casing: ${variants}`);
   }
 }
-logFooter();
+logger.footer();
 
 // Validate book chapter structure
-logHeader('📚 Validating book chapter structure...');
+logger.header('📚 Validating book chapter structure...');
 const bookRoot = 'src/data/recipes/book';
 for await (const bookSlug of await fs.readdir(bookRoot)) {
   const bookPath = path.join(bookRoot, bookSlug);
@@ -356,8 +356,8 @@ for await (const bookSlug of await fs.readdir(bookRoot)) {
 execSync(`yarn oxfmt`, { stdio: 'ignore' });
 
 if (exitCode > 0) {
-  logFooter('❌ Validation failed!');
+  logger.footer('❌ Validation failed!');
 } else {
-  logFooter('✅ Done!');
+  logger.footer('✅ Done!');
 }
 process.exit(exitCode);
