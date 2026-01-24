@@ -60,7 +60,7 @@ for await (const schemaFile of fs.glob('src/schemas/*.schema.json')) {
   logger.item(schemaId);
   ajv.addSchema(schema, schemaId);
 }
-logger.footer();
+logger.footer('Done!');
 
 // Collect all category slugs for duplicate detection
 logger.header('📦 Collecting category slugs');
@@ -70,7 +70,7 @@ for await (const categoryFile of fs.glob('src/data/categories/*.json')) {
   categorySlugs.add(slug);
 }
 logger.item(`Found ${categorySlugs.size} categories`);
-logger.footer();
+logger.footer('Done!');
 
 // Track bar names for case-insensitive duplicate detection
 // Maps lowercase name -> Map of exact casing -> list of files using that casing
@@ -263,7 +263,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
   }
 }
 
-logger.footer();
+logger.footer('Done!');
 
 // Check for inconsistent bar name casing
 logger.header('🍸 Checking bar name consistency...');
@@ -275,7 +275,7 @@ for (const [, casings] of barNameCasings) {
     fail(`Bar name has inconsistent casing: ${variants}`);
   }
 }
-logger.footer();
+logger.footer('Done!');
 
 // Validate book chapter structure
 logger.header('📚 Validating book chapter structure...');

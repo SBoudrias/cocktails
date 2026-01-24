@@ -26,4 +26,4 @@ jobs:
       - name: Run YouTube sync 📺
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node tools/youtube-sync.ts
+        run: yarn youtube-sync
