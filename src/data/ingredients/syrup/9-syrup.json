@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "#9 syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "almond paste",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine two parts ginger syrup with one part almond paste.",
+    "Blend.",
+    "Add one bar spoon of pimento liqueur and stir."
+  ]
+}

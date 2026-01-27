@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bittermens' elemakule tiki bitters",
-  "type": "bitter"
+  "type": "bitter",
+  "categories": ["Tropical bitters"]
 }

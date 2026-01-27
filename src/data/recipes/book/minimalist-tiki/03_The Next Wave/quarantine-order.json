@@ -1,0 +1,91 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Quarantine Order",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 5,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum-Bar Gold",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker. Flash blend or shake well with crushed ice, pour into a snifter glass. Fill with fresh crushed ice.",
+    "Garnish with a bouquet of mint, a lime wheel, and a speared cherry on a bamboo skewer."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "William Prestwood"
+    },
+    {
+      "relation": "bar",
+      "source": "Pagan Idol",
+      "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 248
+    },
+    {
+      "type": "youtube",
+      "videoId": "Xpm3BbgR9_Y"
+    }
+  ]
+}

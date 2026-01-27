@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Scotch Bonnet Simple Syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Scotch bonnet",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      },
+      "technique": {
+        "technique": "cut",
+        "type": "diced"
+      }
+    },
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 1.75,
+        "unit": "cup"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine chopped scotch bonnet or habanero peppers (wear gloves), brown sugar, and water over medium heat until rolling boil.",
+    "Allow to steep and cool at room temperature.",
+    "Chill before using."
+  ]
+}

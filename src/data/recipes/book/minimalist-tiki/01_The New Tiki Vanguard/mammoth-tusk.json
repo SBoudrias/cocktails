@@ -1,0 +1,92 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Mammoth Tusk",
+  "glassware": "snifter",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "ingredients": [
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum Agricole Blanc",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker.",
+    "Flash blend or shake with crushed ice, pour into a large snifter glass.",
+    "Fill with fresh crushed ice and top with aromatic bitters.",
+    "Garnish with a mint sprig and a paper umbrella."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Chad Austin"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 152
+    }
+  ]
+}

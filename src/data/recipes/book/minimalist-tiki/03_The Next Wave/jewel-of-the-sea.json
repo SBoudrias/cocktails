@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Jewel of the Sea",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "mandarin orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laki Kane Gardenia Mix",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pusser's British Navy Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker, stir well to combine the Gardenia Mix.",
+    "Shake with cubed ice.",
+    "Strain into a shell mug.",
+    "Add cubed ice.",
+    "Garnish with a large orchid."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Laki Kane",
+      "location": "London, UK"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 236
+    }
+  ]
+}

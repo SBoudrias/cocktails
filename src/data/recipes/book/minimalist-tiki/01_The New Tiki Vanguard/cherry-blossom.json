@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Cherry Blossom",
+  "glassware": "hurricane",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "ingredients": [
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blue Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still lightly aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a cocktail shaker with crushed ice.",
+    "Shake well.",
+    "Pour into a hurricane glass.",
+    "Garnish with a lime wheel, sprig of mint, and a cinnamon stick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Justin Wojslaw"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 180
+    }
+  ]
+}

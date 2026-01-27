@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "Passion fruit syrup",
+  "categoryType": "syrup"
+}

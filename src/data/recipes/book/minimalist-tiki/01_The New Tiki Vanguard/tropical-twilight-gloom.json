@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Tropical Twilight Gloom",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple drinking vinegar (Pok Pok Som)",
+      "type": "soda",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fords Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Krogstad Aquavit",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Gently roll mint leaves. Add mint leaves, pineapple chunks, and drinking vinegar to a collins or Pearl Diver glass and muddle.",
+    "Add remaining ingredients plus one cup crushed ice.",
+    "Swizzle vigorously with a bar spoon or a swizzle stick, adding fresh crushed ice as needed until frost forms on the outside of the glass.",
+    "Top with freshly crushed ice.",
+    "Garnish with a mint bouquet, a pineapple crescent and frond, and an orchid, and a swizzle stick."
+  ],
+  "attributions": [
+    {
+      "source": "Shelby Allison",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Erin Hayes",
+      "relation": "recipe author"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 202
+    }
+  ]
+}

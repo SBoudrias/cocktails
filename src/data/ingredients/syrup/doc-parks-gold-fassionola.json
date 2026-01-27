@@ -2,6 +2,7 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Doc Parks' Gold Fassionola",
   "type": "syrup",
+  "categories": ["Fassionola"],
   "ingredients": [
     {
       "name": "Passion fruit purée",

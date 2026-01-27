@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Red Fassionola",
-  "type": "syrup"
+  "type": "syrup",
+  "categories": ["Fassionola"]
 }

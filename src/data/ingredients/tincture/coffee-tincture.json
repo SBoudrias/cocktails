@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Coffee tincture",
+  "type": "tincture",
+  "ingredients": [
+    {
+      "name": "Freshly ground coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum Agricole Blanc",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Infuse freshly ground coffee in unaged, 50% ABV cane juice rum for 48 hours.",
+    "Strain and bottle."
+  ]
+}

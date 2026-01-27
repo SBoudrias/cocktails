@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Laki Kane Gardenia Mix",
+  "type": "syrup",
+  "categories": ["Gardenia Mix"],
+  "ingredients": [
+    {
+      "name": "vanilla paste",
+      "type": "other",
+      "quantity": {
+        "amount": 0.3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 1.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "honey",
+      "type": "other",
+      "quantity": {
+        "amount": 6.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "butter",
+      "type": "other",
+      "quantity": {
+        "amount": 10,
+        "unit": "tbsp"
+      }
+    }
+  ],
+  "instructions": ["Blend all ingredients well until fully combined."]
+}

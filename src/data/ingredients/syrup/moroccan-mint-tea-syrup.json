@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Moroccan mint tea syrup",
+  "type": "syrup",
+  "instructions": [
+    "Make a strong cup of Moroccan mint tea (or substitute any green tea)",
+    "Add a dash of vanilla extract",
+    "Add equal parts by volume granulated sugar, stirring until dissolved"
+  ]
+}

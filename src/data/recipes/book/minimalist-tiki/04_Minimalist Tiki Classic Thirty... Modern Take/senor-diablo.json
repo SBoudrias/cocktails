@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Señor Diablo",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ancho Reyes Ancho Chile Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "blueberry syrup (Reàl)",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mezcal",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients except ginger beer in shaker.",
+    "Shake with crushed ice.",
+    "Add ginger beer to Collins glass, pour shaker contents into glass.",
+    "Top with fresh crushed ice.",
+    "Garnish with two red chilis, in the shape of devil's horns."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Oriol Elias"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 269
+    }
+  ]
+}

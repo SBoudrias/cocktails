@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Don Pancho Orígenes 8 Year",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}

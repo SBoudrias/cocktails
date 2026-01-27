@@ -3,7 +3,7 @@
   "name": "Lost Voyage",
   "ingredients": [
     {
-      "name": "Rhum Clément Select Barrel",
+      "name": "Clément Select Barrel",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,

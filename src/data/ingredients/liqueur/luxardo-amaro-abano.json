@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Luxardo Amaro Abano",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}

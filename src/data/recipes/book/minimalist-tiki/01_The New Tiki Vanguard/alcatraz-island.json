@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Alcatraz Island",
+  "glassware": "collins",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "ingredients": [
+    {
+      "name": "Tropical bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Tea Honey",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laird's Bonded Apple Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Harbor San Miguel Southwestern Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Manzanilla)",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all ingredients except manzanilla sherry in shaker.",
+    "Shake with crushed ice, pour into a zombie glass.",
+    "Fill with fresh crushed ice.",
+    "Top with manzanilla sherry float.",
+    "Garnish with a sprig of mint, a lemon peel, and a swizzle stick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jeanie Grant"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 175
+    }
+  ]
+}

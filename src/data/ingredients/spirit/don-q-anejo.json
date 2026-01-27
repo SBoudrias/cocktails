@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Don Q Añejo",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}

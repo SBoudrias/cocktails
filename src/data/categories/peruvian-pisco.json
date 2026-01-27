@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Peruvian pisco",
+  "name": "Peruvian Pisco",
   "parents": ["Pisco"],
   "categoryType": "spirit"
 }

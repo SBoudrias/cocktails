@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Rosemary honey syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "honey",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "water",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "rosemary sprig",
+      "type": "spice",
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a small saucepan.",
+    "Heat on low and allow to steep but not reduce.",
+    "Refrigerate."
+  ]
+}

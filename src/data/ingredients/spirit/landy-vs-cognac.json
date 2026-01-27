@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Landy VS cognac",
+  "type": "spirit",
+  "categories": ["Cognac"]
+}

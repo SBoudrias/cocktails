@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "I Should Coco",
+  "glassware": "snifter",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "toasted coconut"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Four Roses Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sparkling wine",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker.",
+    "Shake with crushed ice, pour into a large snifter glass.",
+    "Fill with fresh crushed ice.",
+    "Top with sparkling wine.",
+    "Garnish with freshly grated nutmeg and cinnamon, an orange slice, and a mint sprig."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Zac Overman"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 212
+    }
+  ]
+}

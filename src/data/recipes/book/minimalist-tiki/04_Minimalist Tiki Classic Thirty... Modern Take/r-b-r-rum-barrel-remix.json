@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "R.B.R. (Rum Barrel Remix)",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Doc Parks' Gold Fassionola",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hampden Estate 46",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Original Dark",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray OFTD",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker. Shake or flash blend with crushed ice, pour into a rum barrel tiki mug. Top with fresh crushed ice.",
+    "Garnish with pineapple fronds, a spent lime shell, a swizzle stick, and a pineapple sphere (use a melon baller)."
+  ],
+  "attributions": [
+    {
+      "source": "Doc Parks",
+      "relation": "recipe author"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 276
+    },
+    {
+      "type": "youtube",
+      "videoId": "wciFLpzB8zc"
+    }
+  ]
+}

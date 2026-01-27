@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Trois Rivières VSOP",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Vieux"]
+}

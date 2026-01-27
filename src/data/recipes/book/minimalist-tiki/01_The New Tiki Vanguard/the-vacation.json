@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "The Vacation",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "technique": {
+        "technique": "infusion",
+        "agent": "vanilla"
+      },
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "mango syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Real McCoy 3 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum J.M. Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Capurro Pisco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "source": "Doc Parks",
+      "relation": "recipe author"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 159
+    },
+    {
+      "type": "youtube",
+      "videoId": "i9790lVvSMc"
+    }
+  ]
+}

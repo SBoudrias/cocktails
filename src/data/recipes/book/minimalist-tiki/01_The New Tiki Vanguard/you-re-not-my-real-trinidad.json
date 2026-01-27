@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "You're Not My Real Trinidad",
+  "glassware": "tiki",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "ingredients": [
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "PX sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker.",
+    "Shake with crushed ice, pour into tiki mug.",
+    "Garnish with a pineapple crescent, two pineapple fronds, a lime wheel, an orchid, and a swizzle stick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Kevin Beary"
+    },
+    {
+      "relation": "bar",
+      "source": "Three Dots and a Dash",
+      "location": "Chicago, IL"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 186
+    }
+  ]
+}

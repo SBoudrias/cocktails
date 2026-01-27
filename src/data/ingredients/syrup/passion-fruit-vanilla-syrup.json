@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Passion fruit vanilla syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "water",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 2.25,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "vanilla bean",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "cup"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine water, passion fruit purée, and vanilla bean (cut and seeded) in a saucepan over medium heat.",
+    "Add sugar and stir until dissolved.",
+    "Cool and fine strain before using."
+  ]
+}

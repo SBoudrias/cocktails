@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tio Pepe Fino",
+  "type": "liqueur",
+  "categories": ["Sherry (Fino)"]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Dr. Penn",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pomegranate molasses",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Branca Menta",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maggie's Farm Queen's Share Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all ingredients except seltzer in Collins glass.",
+    "Swizzle with crushed ice until mixed.",
+    "Fill with seltzer and top with fresh crushed ice.",
+    "Garnish with pineapple fronds and an orchid."
+  ],
+  "attributions": [
+    {
+      "source": "Brian Maxwell",
+      "relation": "recipe author"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 147
+    }
+  ]
+}

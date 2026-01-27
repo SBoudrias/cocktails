@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Port of Innsmouth",
+  "glassware": "snifter",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "ingredients": [
+    {
+      "name": "aromatic bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Original Dark",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker.",
+    "Flash blend or shake with crushed ice, pour into a large snifter.",
+    "Fill with fresh crushed ice.",
+    "Garnish with a mint sprig."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jason Alexander"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 168
+    }
+  ]
+}

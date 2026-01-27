@@ -1,0 +1,92 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Dr. Funk E. Sanchez",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "CBD Oil",
+      "type": "category",
+      "quantity": {
+        "amount": 10,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Wray & Nephew white overproof",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Xaymaca",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Clément Select Barrel",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker.",
+    "Shake or flash blend with crushed ice, strain into a footed pilsner glass filled with fresh crushed ice.",
+    "Garnish with a mint sprig, a dehydrated lime wheel, and star anise."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Chris Coy"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Eli Sanchez"
+    },
+    {
+      "relation": "bar",
+      "source": "The Inferno Room",
+      "location": "Indianapolis, IN"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 268
+    }
+  ]
+}

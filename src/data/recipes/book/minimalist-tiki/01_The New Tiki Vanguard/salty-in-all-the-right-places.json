@@ -1,0 +1,96 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Salty in All the Right Places",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "coconut oil",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Letherbee Barrel-Aged Absinthe",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Papaya Purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Wray & Nephew white overproof",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum J.M Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker.",
+    "Flash blend or shake with one cup crushed ice, pour into a double old-fashioned glass.",
+    "Fill with fresh crushed ice.",
+    "Garnish with dried papaya and other tropical accoutrement."
+  ],
+  "attributions": [
+    {
+      "source": "Shelby Allison",
+      "relation": "recipe author"
+    },
+    {
+      "source": "Erin Hayes",
+      "relation": "recipe author"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 202
+    }
+  ]
+}

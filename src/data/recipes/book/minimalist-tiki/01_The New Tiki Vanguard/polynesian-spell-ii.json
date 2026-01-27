@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Polynesian Spell II",
+  "glassware": "collins",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "ingredients": [
+    {
+      "name": "lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "green grape juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Avua Amburana",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in a tall Collins or hurricane glass.",
+    "Fill with fresh crushed ice.",
+    "Swizzle vigorously with a swizzle stick or bar spoon.",
+    "Top off with crushed ice.",
+    "Garnish with a pineapple crescent, two pineapple fronds, a lime wheel, and three skewered green grapes."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Kevin Beary"
+    },
+    {
+      "relation": "bar",
+      "source": "Three Dots and a Dash",
+      "location": "Chicago, IL"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 185
+    }
+  ]
+}

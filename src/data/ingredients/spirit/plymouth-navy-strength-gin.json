@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Plymouth Navy Strength gin",
+  "type": "spirit",
+  "categories": ["Gin (Navy Strength)"]
+}
