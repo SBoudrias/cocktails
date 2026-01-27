@@ -198,8 +198,8 @@ const TEST_BOOK_WITH_CHAPTERS = {
 // Book source without chapters
 const TEST_BOOK_WITHOUT_CHAPTERS = {
   type: 'book' as const,
-  slug: 'minimalist-tiki',
-  name: 'Minimalist Tiki',
+  slug: 'sippin-safari',
+  name: "Sippin' Safari",
 };
 
 describe('SourcePage - Book sources', () => {
@@ -370,7 +370,7 @@ describe('SourcePage - Book sources', () => {
       );
 
       // Should show alphabetical grouping
-      expect(screen.getByRole('group', { name: 'A' })).toBeInTheDocument();
+      expect(screen.getByRole('group', { name: 'C' })).toBeInTheDocument();
     });
   });
 });
