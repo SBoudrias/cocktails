@@ -1,6 +1,6 @@
 'use client';
 
-import { Home, Search } from '@mui/icons-material';
+import { LocalBar, Search } from '@mui/icons-material';
 import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { getRecipeListUrl } from '#/modules/url';
@@ -19,7 +19,7 @@ export default function AppHeader({ title }: { title: string }) {
             </IconButton>
           ) : (
             <IconButton size="large" edge="start" aria-label="Go to home" href="/">
-              <Home />
+              <LocalBar />
             </IconButton>
           )}
           <Typography
