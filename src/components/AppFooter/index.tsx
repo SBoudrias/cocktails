@@ -1,44 +1,44 @@
 'use client';
 
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import HomeIcon from '@mui/icons-material/Home';
-import { Divider, Link, Stack, Typography } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LocalBarIcon from '@mui/icons-material/LocalBar';
+import { Button, Stack } from '@mui/material';
+
+const buttonSx = {
+  color: '#FFFFFF',
+  fontWeight: 700,
+  backgroundColor: 'rgba(10, 20, 32, 0.7)',
+  backdropFilter: 'blur(4px)',
+  '&:hover': {
+    color: '#FFD580',
+    backgroundColor: 'rgba(10, 20, 32, 0.85)',
+  },
+};
 
 export default function AppFooter() {
   return (
-    <Stack spacing={2} sx={{ py: 2 }}>
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
+    <Stack
+      direction="row"
+      sx={{
+        py: 2,
+        px: 2,
+        minHeight: '350px',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+      }}
+    >
+      <Button href="/" startIcon={<LocalBarIcon />} sx={buttonSx}>
+        Cocktail Index
+      </Button>
+      <Button
+        href="https://github.com/SBoudrias/cocktails/"
+        target="_blank"
+        rel="noopener"
+        startIcon={<GitHubIcon />}
+        sx={buttonSx}
       >
-        <Link
-          href="https://github.com/SBoudrias/cocktails/"
-          underline="none"
-          target="_blank"
-          rel="noopener"
-        >
-          Contribute on GitHub <ArrowOutwardIcon sx={{ fontSize: 'medium' }} />
-        </Link>
-      </Stack>
-      <Stack
-        direction="row"
-        divider
-        sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Link href="/" underline="none">
-          <Typography color="textSecondary">
-            <HomeIcon sx={{ fontSize: 'medium' }} /> Cocktail Index
-          </Typography>
-        </Link>
-      </Stack>
+        Contribute on GitHub
+      </Button>
     </Stack>
   );
 }
