@@ -2,7 +2,18 @@
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
-import { Link, Stack, Typography } from '@mui/material';
+import { Button, Stack } from '@mui/material';
+
+const buttonSx = {
+  color: '#FFFFFF',
+  fontWeight: 700,
+  backgroundColor: 'rgba(10, 20, 32, 0.7)',
+  backdropFilter: 'blur(4px)',
+  '&:hover': {
+    color: '#FFD580',
+    backgroundColor: 'rgba(10, 20, 32, 0.85)',
+  },
+};
 
 export default function AppFooter() {
   return (
@@ -16,50 +27,18 @@ export default function AppFooter() {
         alignItems: 'flex-end',
       }}
     >
-      <Link
-        href="/"
-        underline="none"
-        sx={{
-          color: '#FFFFFF',
-          fontWeight: 700,
-          backgroundColor: 'rgba(10, 20, 32, 0.7)',
-          px: 2,
-          py: 1.5,
-          borderRadius: 2,
-          backdropFilter: 'blur(4px)',
-          '&:hover': {
-            color: '#FFD580',
-            backgroundColor: 'rgba(10, 20, 32, 0.85)',
-          },
-        }}
-      >
-        <Typography sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-          <LocalBarIcon sx={{ fontSize: 'medium' }} /> Cocktail Index
-        </Typography>
-      </Link>
-      <Link
+      <Button href="/" startIcon={<LocalBarIcon />} sx={buttonSx}>
+        Cocktail Index
+      </Button>
+      <Button
         href="https://github.com/SBoudrias/cocktails/"
-        underline="none"
         target="_blank"
         rel="noopener"
-        sx={{
-          color: '#FFFFFF',
-          fontWeight: 700,
-          backgroundColor: 'rgba(10, 20, 32, 0.7)',
-          px: 2,
-          py: 1.5,
-          borderRadius: 2,
-          backdropFilter: 'blur(4px)',
-          '&:hover': {
-            color: '#FFD580',
-            backgroundColor: 'rgba(10, 20, 32, 0.85)',
-          },
-        }}
+        startIcon={<GitHubIcon />}
+        sx={buttonSx}
       >
-        <Typography sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-          <GitHubIcon sx={{ fontSize: 'medium' }} /> Contribute on GitHub
-        </Typography>
-      </Link>
+        Contribute on GitHub
+      </Button>
     </Stack>
   );
 }
