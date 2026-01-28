@@ -1,3 +1,4 @@
+import type { Route } from 'next';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
 import Link from 'next/link';
@@ -10,7 +11,7 @@ export function LinkListItem({
   secondary,
   tertiary,
 }: {
-  href?: string;
+  href?: Route;
   primary: React.ReactNode;
   secondary?: React.ReactNode;
   tertiary?: React.ReactNode;
