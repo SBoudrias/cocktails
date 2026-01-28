@@ -198,7 +198,6 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
         );
         if (await fileExists(categoryPath)) continue;
 
-        fail(`Ingredient file not found ${categoryPath}`);
         await writeJSON(categoryPath, {
           $schema: path.relative(
             path.dirname(categoryPath),
@@ -207,6 +206,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
           name: ingredient.name,
           categoryType: 'FIXME',
         });
+        fail(`Created ${categoryPath} - review and set categoryType`);
       } else {
         const ingredientPath = path.join(
           'src/data/ingredients',
@@ -215,7 +215,6 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
         );
         if (await fileExists(ingredientPath)) continue;
 
-        fail(`Ingredient file not found ${ingredientPath}`);
         await writeJSON(ingredientPath, {
           $schema: path.relative(
             path.dirname(ingredientPath),
@@ -224,6 +223,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
           name: ingredient.name,
           type: ingredient.type,
         });
+        fail(`Created ${ingredientPath} - review and add details if needed`);
       }
     }
 
@@ -232,7 +232,6 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
       const categoryPath = path.join('src/data/categories', `${slugify(category)}.json`);
       if (await fileExists(categoryPath)) continue;
 
-      fail(`Category file not found ${categoryPath}`);
       await writeJSON(categoryPath, {
         $schema: path.relative(
           path.dirname(categoryPath),
@@ -241,6 +240,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
         name: category,
         categoryType: data.type ?? 'FIXME',
       });
+      fail(`Created ${categoryPath} - review and set categoryType`);
     }
   }
 
@@ -250,7 +250,6 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
       const categoryPath = path.join('src/data/categories', `${slugify(category)}.json`);
       if (await fileExists(categoryPath)) continue;
 
-      fail(`Category file not found ${categoryPath}`);
       await writeJSON(categoryPath, {
         $schema: path.relative(
           path.dirname(categoryPath),
@@ -259,6 +258,7 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
         name: category,
         categoryType: 'FIXME',
       });
+      fail(`Created ${categoryPath} - review and set categoryType`);
     }
   }
 }
