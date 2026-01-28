@@ -13,6 +13,7 @@ Start by reading @README.md
 - `yarn vitest --run` to run tests
 - `yarn lint` to lint and typecheck the codebase
 - `yarn check-data` to validate schemas and json data files. Do note this command will also autofix many errors.
+- `yarn oxfmt <file>` to fix formatting issues. This project uses oxfmt, not prettier.
 
 # Code style
 
