@@ -6,12 +6,18 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { isChapterFolder } from '../src/modules/chapters.ts';
+import {
+  compareIngredients,
+  type SortableIngredient,
+} from '../src/modules/ingredientSorting.ts';
 import { logger } from './cli-util.ts';
+import { createKeyOrdersRegistry, sortObjectKeys } from './schema-key-orders.ts';
 
+const startTime = performance.now();
 const ROOT = path.join(import.meta.dirname, '..');
 const APP_ROOT = path.join(ROOT, 'src');
 
-interface Ingredient {
+interface Ingredient extends SortableIngredient {
   type: string;
   name: string;
   brix?: number;
@@ -33,6 +39,37 @@ interface DataWithSchema {
   parents?: string[];
 }
 
+function addCategoryType(
+  ingredient: Ingredient,
+  categoryTypes: Map<string, string>,
+): SortableIngredient {
+  return {
+    type: ingredient.type,
+    categoryType:
+      ingredient.type === 'category'
+        ? categoryTypes.get(slugify(ingredient.name))
+        : undefined,
+    quantity: ingredient.quantity!,
+    technique: ingredient.technique,
+  };
+}
+
+function sortRecipeIngredients(
+  ingredients: Ingredient[],
+  categoryTypes: Map<string, string>,
+): Ingredient[] {
+  return ingredients.toSorted((a, b) => {
+    if (!a.quantity || !b.quantity) return 0;
+    return compareIngredients(
+      addCategoryType(a, categoryTypes),
+      addCategoryType(b, categoryTypes),
+    );
+  });
+}
+
+// Key ordering registry - populated during schema loading
+const { keyOrders, registerSchema } = createKeyOrdersRegistry();
+
 async function fileExists(filepath: string): Promise<boolean> {
   return fs.access(filepath).then(
     () => true,
@@ -42,7 +79,8 @@ async function fileExists(filepath: string): Promise<boolean> {
 
 async function writeJSON(filepath: string, data: object): Promise<void> {
   await fs.mkdir(path.dirname(filepath), { recursive: true });
-  const jsonContent = JSON.stringify(data, null, 2) + '\n';
+  const sortedData = sortObjectKeys(data, keyOrders);
+  const jsonContent = JSON.stringify(sortedData, null, 2) + '\n';
   await fs.writeFile(filepath, jsonContent);
 }
 
@@ -59,17 +97,34 @@ for await (const schemaFile of fs.glob('src/schemas/*.schema.json')) {
   const schemaId = path.basename(schemaFile);
   logger.item(schemaId);
   ajv.addSchema(schema, schemaId);
+
+  // Extract key ordering from schema
+  registerSchema(schemaId, schema);
 }
 logger.footer('Done!');
 
-// Collect all category slugs for duplicate detection
-logger.header('📦 Collecting category slugs');
+// Collect all category slugs and canonical names for duplicate detection and name matching
+logger.header('📦 Collecting category and ingredient data');
 const categorySlugs = new Set<string>();
+const canonicalNames = new Map<string, string>(); // slug -> canonical name
+const categoryTypes = new Map<string, string>(); // slug -> categoryType
+
 for await (const categoryFile of fs.glob('src/data/categories/*.json')) {
   const slug = path.basename(categoryFile, '.json');
   categorySlugs.add(slug);
+  const data = JSON.parse(await fs.readFile(categoryFile, 'utf-8'));
+  canonicalNames.set(slugify(data.name), data.name);
+  if (data.categoryType) {
+    categoryTypes.set(slugify(data.name), data.categoryType);
+  }
 }
 logger.item(`Found ${categorySlugs.size} categories`);
+
+for await (const ingredientFile of fs.glob('src/data/ingredients/**/*.json')) {
+  const data = JSON.parse(await fs.readFile(ingredientFile, 'utf-8'));
+  canonicalNames.set(slugify(data.name), data.name);
+}
+logger.item(`Collected ${canonicalNames.size} canonical names`);
 logger.footer('Done!');
 
 // Track bar names for case-insensitive duplicate detection
@@ -185,6 +240,31 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
       }
     }
 
+    // Auto-fix ingredient name capitalization to match canonical names
+    for (const ingredient of ingredients) {
+      const ingredientSlug = slugify(ingredient.name);
+      const canonical = canonicalNames.get(ingredientSlug);
+      if (canonical && canonical !== ingredient.name) {
+        logger.change(
+          `Fixing "${ingredient.name}" → "${canonical}" in ${path.basename(sourceFile)}`,
+        );
+        ingredient.name = canonical;
+        fileModified = true;
+      }
+    }
+
+    // Sort recipe ingredients to match app display order
+    if (schemaPath === 'schemas/recipe.schema.json' && ingredients.length > 1) {
+      const sortedIngredients = sortRecipeIngredients(ingredients, categoryTypes);
+      const ingredientsChanged = ingredients.some(
+        (ing, i) => ing.name !== sortedIngredients[i]?.name,
+      );
+      if (ingredientsChanged) {
+        data.ingredients = sortedIngredients;
+        fileModified = true;
+      }
+    }
+
     if (fileModified) {
       await writeJSON(sourceFile, data);
     }
@@ -261,8 +341,15 @@ for await (const sourceFile of fs.glob('src/data/**/*.json')) {
       fail(`Created ${categoryPath} - review and set categoryType`);
     }
   }
-}
 
+  // Apply key ordering to all data files (silently)
+  const originalJson = JSON.stringify(data, null, 2);
+  const sortedData = sortObjectKeys(data, keyOrders);
+  const sortedJson = JSON.stringify(sortedData, null, 2);
+  if (originalJson !== sortedJson) {
+    await writeJSON(sourceFile, data);
+  }
+}
 logger.footer('Done!');
 
 // Check for inconsistent bar name casing
@@ -351,13 +438,15 @@ for await (const bookSlug of await fs.readdir(bookRoot)) {
     );
   }
 }
+logger.footer('Done!');
 
 // Trigger reformatting once on all files for good measures
 execSync(`yarn oxfmt`, { stdio: 'ignore' });
 
+const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
 if (exitCode > 0) {
-  logger.footer('❌ Validation failed!');
+  logger.failure(`❌ Validation failed! ⏱️ ${elapsed}s`);
 } else {
-  logger.footer('✅ Done!');
+  logger.success(`All good! ⏱️ ${elapsed}s`);
 }
 process.exit(exitCode);

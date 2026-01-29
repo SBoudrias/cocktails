@@ -17,10 +17,10 @@ import Quantity from '@/components/Quantity';
 import UnitSelector, { type Unit } from '@/components/Quantity/Selector';
 import ServingSelector from '@/components/ServingSelector';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import { compareIngredients } from '@/modules/ingredientSorting';
 import { scaleQuantity, calculateScaleFactor } from '@/modules/scaling';
 import { formatIngredientName } from '@/modules/technique';
 import { getIngredientUrl } from '@/modules/url';
-import sortIngredients from './sortIngredients';
 import styles from './style.module.css';
 
 function IngredientLine({
@@ -86,7 +86,7 @@ export default function IngredientList({
       <List>
         <ListSubheader>Ingredients</ListSubheader>
         <Paper square>
-          {sortIngredients(scaledIngredients).map((ingredient) => {
+          {scaledIngredients.toSorted(compareIngredients).map((ingredient) => {
             let href = getIngredientUrl(ingredient);
             if (ingredient.type === 'juice') {
               href += `?${new URLSearchParams({ juiceAmount: String(ingredient.quantity.amount) })}`;

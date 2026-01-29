@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { type RecipeIngredient } from '@/types/Ingredient';
-import sortIngredients from './sortIngredients';
+import { compareIngredients } from './ingredientSorting';
 
 function createTestIngredient(
   partial: Omit<Partial<RecipeIngredient>, 'quantity'> & {
@@ -28,7 +28,7 @@ function createTestIngredient(
   } as RecipeIngredient;
 }
 
-describe('sortIngredients', () => {
+describe('compareIngredients', () => {
   it('should sort ingredients by unit priority', () => {
     const ingredients = [
       createTestIngredient({ quantity: { unit: 'unit' } }),
@@ -44,7 +44,7 @@ describe('sortIngredients', () => {
       createTestIngredient({ quantity: { unit: 'bottle' } }),
     ];
 
-    const result = sortIngredients(ingredients);
+    const result = ingredients.toSorted(compareIngredients);
 
     expect(result).toEqual([
       createTestIngredient({ quantity: { unit: 'unit' } }),
@@ -68,7 +68,7 @@ describe('sortIngredients', () => {
       createTestIngredient({ type: 'juice' }),
     ];
 
-    const result = sortIngredients(ingredients);
+    const result = ingredients.toSorted(compareIngredients);
 
     expect(result).toEqual([
       createTestIngredient({ type: 'juice' }),
@@ -84,7 +84,7 @@ describe('sortIngredients', () => {
       createTestIngredient({ quantity: { amount: 1, unit: 'oz' } }),
     ];
 
-    const result = sortIngredients(ingredients);
+    const result = ingredients.toSorted(compareIngredients);
 
     expect(result).toEqual([
       createTestIngredient({ quantity: { amount: 1, unit: 'oz' } }),
@@ -105,7 +105,7 @@ describe('sortIngredients', () => {
         createTestIngredient({ type: 'juice' }),
       ];
 
-      const result = sortIngredients(ingredients);
+      const result = ingredients.toSorted(compareIngredients);
 
       expect(result[0]).toEqual(
         createTestIngredient({
@@ -127,7 +127,7 @@ describe('sortIngredients', () => {
         createTestIngredient({ type: 'juice' }),
       ];
 
-      const result = sortIngredients(ingredients);
+      const result = ingredients.toSorted(compareIngredients);
 
       expect(result[result.length - 1]).toEqual(
         createTestIngredient({
@@ -139,7 +139,7 @@ describe('sortIngredients', () => {
     });
 
     it('should sort top after rinse but before float', () => {
-      const result = sortIngredients([
+      const result = [
         createTestIngredient({
           type: 'bitter',
           technique: { technique: 'application', method: 'float' },
@@ -153,7 +153,7 @@ describe('sortIngredients', () => {
           type: 'bitter',
           technique: { technique: 'application', method: 'rinse' },
         }),
-      ]);
+      ].toSorted(compareIngredients);
 
       expect(result).toEqual([
         createTestIngredient({
@@ -173,7 +173,7 @@ describe('sortIngredients', () => {
     });
 
     it('should handle ingredients with multiple techniques', () => {
-      const result = sortIngredients([
+      const result = [
         createTestIngredient(),
         createTestIngredient({
           type: 'bitter',
@@ -184,7 +184,7 @@ describe('sortIngredients', () => {
           ],
         }),
         createTestIngredient({ type: 'juice' }),
-      ]);
+      ].toSorted(compareIngredients);
 
       expect(result[result.length - 1]).toEqual(
         createTestIngredient({
@@ -199,7 +199,7 @@ describe('sortIngredients', () => {
     });
 
     it('should handle ingredients without application technique normally', () => {
-      const result = sortIngredients([
+      const result = [
         createTestIngredient({
           type: 'bitter',
           quantity: { amount: 1, unit: 'dash' },
@@ -207,7 +207,7 @@ describe('sortIngredients', () => {
         }),
         createTestIngredient({ type: 'juice' }),
         createTestIngredient(),
-      ]);
+      ].toSorted(compareIngredients);
 
       expect(result).toEqual([
         createTestIngredient({
@@ -221,7 +221,7 @@ describe('sortIngredients', () => {
     });
 
     it('should handle complete sorting order with all application techniques', () => {
-      const result = sortIngredients([
+      const result = [
         createTestIngredient({ quantity: { amount: 2, unit: 'oz' } }),
         createTestIngredient({
           type: 'bitter',
@@ -240,7 +240,7 @@ describe('sortIngredients', () => {
           quantity: { amount: 1, unit: 'dash' },
           technique: { technique: 'application', method: 'rinse' },
         }),
-      ]);
+      ].toSorted(compareIngredients);
 
       const resultMethods = result.map((r) => {
         const technique = r.technique;
@@ -264,7 +264,7 @@ describe('sortIngredients', () => {
       createTestIngredient({ type: 'category' }), // no categoryType, defaults to 'category'
     ];
 
-    const result = sortIngredients(ingredients);
+    const result = ingredients.toSorted(compareIngredients);
 
     expect(result).toEqual([
       createTestIngredient({ type: 'category', categoryType: 'juice' }),

@@ -44,4 +44,11 @@ export const logger = {
   success(message: string): void {
     console.log(`✅ ${message}`);
   },
+
+  /**
+   * Log a failure message
+   */
+  failure(message: string): void {
+    console.log(`❌ ${message}`);
+  },
 };
