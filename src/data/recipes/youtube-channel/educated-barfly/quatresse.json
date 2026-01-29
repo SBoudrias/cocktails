@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Lemon Juice",
-      "type": "juice",
+      "name": "Simple syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Simple Syrup",
-      "type": "syrup",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },

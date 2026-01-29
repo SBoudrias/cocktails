@@ -6,11 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Plymouth Gin",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
@@ -38,11 +38,11 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Plymouth Gin",
+      "type": "spirit",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],

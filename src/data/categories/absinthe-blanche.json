@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Absinthe blanche",
+  "categoryType": "spirit",
   "description": "Absinthe blanche is a crystal clear in color Absinthe.",
-  "parents": ["Absinthe"],
-  "categoryType": "spirit"
+  "parents": ["Absinthe"]
 }

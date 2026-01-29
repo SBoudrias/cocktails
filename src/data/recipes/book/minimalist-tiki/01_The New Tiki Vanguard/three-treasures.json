@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Three Treasures",
-  "glassware": "coupe",
   "preparation": "shaken",
   "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "St. George Absinthe Verte",
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,

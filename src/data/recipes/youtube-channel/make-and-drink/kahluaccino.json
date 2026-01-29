@@ -6,6 +6,14 @@
   "glassware": "collins",
   "ingredients": [
     {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "espresso",
       "type": "other",
       "quantity": {
@@ -14,18 +22,10 @@
       }
     },
     {
-      "name": "whole milk",
+      "name": "Whole milk",
       "type": "other",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },

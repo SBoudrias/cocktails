@@ -6,6 +6,39 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Chinola Manguo Liqueur",
       "type": "liqueur",
       "quantity": {
@@ -27,39 +60,6 @@
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "simple syrup",
-      "type": "syrup",
-      "brix": 60,
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
       }
     }
   ],

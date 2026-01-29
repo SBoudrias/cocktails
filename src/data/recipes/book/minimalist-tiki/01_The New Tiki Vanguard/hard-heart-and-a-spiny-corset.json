@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Hard Heart and a Spiny Corset",
-  "glassware": "old fashioned",
   "preparation": "flash blended",
   "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
@@ -42,6 +34,14 @@
       "type": "puree",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },

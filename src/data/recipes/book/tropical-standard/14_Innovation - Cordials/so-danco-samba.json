@@ -22,19 +22,11 @@
       }
     },
     {
-      "name": "makrut lime leaf tincture",
-      "type": "tincture",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Pineapple juice",
+      "type": "juice",
       "technique": {
         "technique": "acid-adjustment"
       },
-      "type": "juice",
       "quantity": {
         "amount": 0.375,
         "unit": "tsp"
@@ -49,19 +41,20 @@
       }
     },
     {
+      "name": "makrut lime leaf tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
       "name": "Novo Fogo Silver",
       "type": "spirit",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 226
     }
   ],
   "attributions": [
@@ -73,6 +66,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 226
     }
   ]
 }

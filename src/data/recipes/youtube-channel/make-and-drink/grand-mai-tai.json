@@ -1,15 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Grand Mai Tai",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Orgeat",
       "type": "category",
@@ -19,7 +14,15 @@
       }
     },
     {
-      "name": "Orange Curacao",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Add all ingredients except Myers's Original Dark Rum to a shaker with ice",
     "Shake vigorously until well-chilled",
@@ -54,8 +54,8 @@
   ],
   "attributions": [
     {
-      "source": "Disneyland Resort",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Disneyland Resort"
     }
   ],
   "refs": [

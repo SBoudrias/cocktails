@@ -6,27 +6,11 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Buffalo Trace Bourbon",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Crème de Cassis",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -39,11 +23,27 @@
       }
     },
     {
-      "name": "Angostura Bitters",
-      "type": "bitter",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cassis",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Buffalo Trace Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

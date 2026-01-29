@@ -6,10 +6,42 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Avuá Oak Cachaça",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1,
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "tepache",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Spiced Honey Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -30,15 +62,7 @@
       }
     },
     {
-      "name": "tepache",
-      "type": "other",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard Banane du Brésil",
+      "name": "Giffard banane du Brésil",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
@@ -46,35 +70,11 @@
       }
     },
     {
-      "name": "Spiced Honey Syrup",
-      "type": "syrup",
+      "name": "Avuá Oak Cachaça",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
       }
     }
   ],

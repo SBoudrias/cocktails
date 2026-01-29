@@ -22,18 +22,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 176,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 176
     }
   ]
 }

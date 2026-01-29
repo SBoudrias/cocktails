@@ -1,9 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Silver Root Beer Fizz",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "pineapple juice",
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -11,7 +22,7 @@
       }
     },
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -35,14 +46,6 @@
       }
     },
     {
-      "name": "egg white",
-      "type": "emulsifier",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      }
-    },
-    {
       "name": "root beer",
       "type": "soda",
       "quantity": {
@@ -51,9 +54,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "highball",
   "attributions": [
     {
       "relation": "recipe author",

@@ -1,12 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Kill Devyl Reef",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Hamilton 86 Demerara Rum",
-      "type": "spirit",
+      "name": "honey",
+      "type": "other",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "passion fruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -27,7 +46,7 @@
       }
     },
     {
-      "name": "St. Elizabeth Allspice Dram",
+      "name": "St-Elizabeth Allspice Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
@@ -35,33 +54,14 @@
       }
     },
     {
-      "name": "honey",
-      "type": "other",
+      "name": "Hamilton 86 Demerara Rum",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "snifter",
   "instructions": [
     "Combine all in a shaker with cubed ice",
     "Shake and strain into a snifter or Tiki mug over pebbled ice",

@@ -6,11 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Gin",
+      "name": "Orange bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -30,11 +30,11 @@
       }
     },
     {
-      "name": "Orange bitters",
+      "name": "Gin",
       "type": "category",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],

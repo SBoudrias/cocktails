@@ -1,29 +1,16 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Old Ironsides",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Scarlet Ibis Trinidad Rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cruzan Black Strap",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Sweet Vermouth",
-      "type": "category",
+      "name": "Whiskey Barrel-Aged Bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -35,17 +22,30 @@
       }
     },
     {
-      "name": "Whiskey Barrel-Aged Bitters",
-      "type": "bitter",
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Scarlet Ibis Trinidad Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Add all ingredients to a mixing glass",
     "Add ice and stir until well-chilled",

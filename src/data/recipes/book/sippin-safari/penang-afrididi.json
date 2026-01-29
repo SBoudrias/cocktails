@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.25,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,

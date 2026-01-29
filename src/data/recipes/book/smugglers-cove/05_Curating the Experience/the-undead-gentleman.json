@@ -6,6 +6,14 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Absinthe blanche",
       "type": "category",
       "quantity": {
@@ -31,8 +39,8 @@
     },
     {
       "name": "Cinnamon syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -47,7 +55,7 @@
       }
     },
     {
-      "name": "Black blended overproof rum",
+      "name": "Black blended Overproof Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -55,27 +63,12 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 142,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -83,6 +76,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 142
     }
   ]
 }

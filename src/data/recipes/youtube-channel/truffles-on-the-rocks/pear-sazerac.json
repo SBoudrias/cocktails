@@ -1,31 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Pear Sazerac",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Whiskey (Rye)",
-      "type": "category",
-      "quantity": {
-        "amount": 1.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Poire Williams",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cane syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
     {
       "name": "Peychaud's bitters",
       "type": "bitter",
@@ -41,11 +20,32 @@
         "amount": 1,
         "unit": "dash"
       }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Poire Williams",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "instructions": [
     "Rinse a chilled rocks glass with absinthe and discard excess",
     "Stir all ingredients with ice for 20-30 seconds",

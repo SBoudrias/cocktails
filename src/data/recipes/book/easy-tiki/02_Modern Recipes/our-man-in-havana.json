@@ -1,13 +1,40 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Our Man in Havana",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
+  "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Byrrh Grand Quinquina",
-      "type": "liqueur",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orange bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
@@ -19,53 +46,26 @@
       }
     },
     {
-      "name": "orange curaçao",
-      "type": "category",
+      "name": "Byrrh Grand Quinquina",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "orange bitters",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "ice cubes",
-  "glassware": "nick & nora",
   "instructions": [
     "Combine all the ingredients in a mixing glass, fill with ice to within an inch of the rim, and stir to combine.",
     "Strain into a Nick & Nora glass and garnish with a spiraled lime twist."
   ],
   "attributions": [
     {
-      "source": "Garret Richard",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Garret Richard"
     },
     {
-      "source": "Existing Conditions",
       "relation": "bar",
+      "source": "Existing Conditions",
       "location": "New York, NY"
     }
   ],

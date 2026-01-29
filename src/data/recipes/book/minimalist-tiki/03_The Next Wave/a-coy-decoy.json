@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -22,16 +22,8 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard crème de pamplemousse rose",
-      "type": "liqueur",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
@@ -42,6 +34,14 @@
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard crème de pamplemousse rose",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },

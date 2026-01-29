@@ -15,11 +15,11 @@
     },
     {
       "name": "Strawberry",
+      "type": "fruit",
       "technique": {
         "technique": "temperature",
         "method": "frozen"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 60,
         "unit": "gram"
@@ -58,17 +58,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 95
-    },
-    {
-      "type": "youtube",
-      "videoId": "LwvhRy0iIfk"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -78,6 +67,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 95
+    },
+    {
+      "type": "youtube",
+      "videoId": "LwvhRy0iIfk"
     }
   ]
 }

@@ -6,14 +6,6 @@
   "glassware": "flute",
   "ingredients": [
     {
-      "name": "Plymouth gin",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
@@ -26,6 +18,14 @@
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },

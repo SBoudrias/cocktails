@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Charlie Chaplin",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Plymouth Sloe Gin",
       "type": "liqueur",
@@ -17,19 +28,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Add all ingredients to a shaker with ice",
     "Shake well and strain into a coupe glass",

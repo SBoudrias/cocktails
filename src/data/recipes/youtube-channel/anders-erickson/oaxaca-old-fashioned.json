@@ -6,19 +6,11 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Siete Leguas Reposado Tequila",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Del Maguey Vida Mezcal",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
@@ -30,11 +22,19 @@
       }
     },
     {
-      "name": "Angostura Bitters",
-      "type": "bitter",
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siete Leguas Reposado Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],
@@ -45,8 +45,8 @@
   ],
   "attributions": [
     {
-      "source": "Phil Ward",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Phil Ward"
     }
   ],
   "refs": [

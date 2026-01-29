@@ -1,12 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Bitter Mai Tai",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Campari",
-      "type": "liqueur",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -19,33 +38,14 @@
       }
     },
     {
-      "name": "orange curaçao",
-      "type": "category",
+      "name": "Campari",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Jeremy Oertel",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Jeremy Oertel"
     },
     {
-      "source": "Dram",
       "relation": "bar",
+      "source": "Dram",
       "location": "Brooklyn, NY"
     }
   ],

@@ -6,6 +6,22 @@
   "glassware": "tiki",
   "ingredients": [
     {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Hamilton 86 Demerara Rum",
       "type": "spirit",
       "quantity": {
@@ -16,22 +32,6 @@
     {
       "name": "Don Q Gold Rum",
       "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grenadine",
-      "type": "syrup",
       "quantity": {
         "amount": 1,
         "unit": "oz"

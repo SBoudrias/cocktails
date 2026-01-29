@@ -6,19 +6,19 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Simple syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -54,8 +54,8 @@
   ],
   "attributions": [
     {
-      "source": "Matt Pietrek",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Matt Pietrek"
     }
   ],
   "refs": [

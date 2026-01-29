@@ -1,17 +1,28 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Après-Ski Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "The Real McCoy 3 Year",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -19,7 +30,7 @@
       }
     },
     {
-      "name": "green Chartreuse",
+      "name": "Green Chartreuse",
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
@@ -27,25 +38,14 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "The Real McCoy 3 Year",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "swizzled",
-  "served_on": "crushed ice",
-  "glassware": "highball",
   "instructions": [
     "Combine all the ingredients in a Zombie glass or tiki mug and top with crushed ice until full.",
     "Swizzle with a swizzle stick or barspoon until chilled, about 10 seconds.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Nathan Hazard",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Nathan Hazard"
     },
     {
-      "source": "Coconut Club",
       "relation": "bar",
+      "source": "Coconut Club",
       "location": "Los Angeles, CA"
     }
   ],

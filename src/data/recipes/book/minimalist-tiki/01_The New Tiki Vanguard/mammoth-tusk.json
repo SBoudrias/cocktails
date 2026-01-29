@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Mammoth Tusk",
-  "glassware": "snifter",
   "preparation": "flash blended",
   "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
       "name": "Peychaud's bitters",
@@ -14,23 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -42,6 +26,22 @@
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },

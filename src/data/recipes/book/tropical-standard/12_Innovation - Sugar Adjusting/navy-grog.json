@@ -22,17 +22,6 @@
       }
     },
     {
-      "name": "grapefruit juice",
-      "technique": {
-        "technique": "acid-adjustment"
-      },
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "grog concentrate syrup",
       "type": "syrup",
       "quantity": {
@@ -41,7 +30,18 @@
       }
     },
     {
-      "name": "St. Elizabeth Allspice Dram",
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 1,
@@ -73,13 +73,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 205
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -89,6 +82,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 205
     }
   ]
 }

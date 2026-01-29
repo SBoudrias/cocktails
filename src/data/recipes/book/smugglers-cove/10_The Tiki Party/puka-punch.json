@@ -6,11 +6,11 @@
   "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -30,20 +30,28 @@
       }
     },
     {
-      "name": "Honey syrup",
-      "brix": 50,
-      "type": "syrup",
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Passion fruit syrup",
-      "brix": 66,
-      "type": "category",
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 50,
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -56,23 +64,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended lightly aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -80,35 +72,43 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Black blended overproof rum",
+      "name": "Black blended Overproof Rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
   "instructions": ["Float the overproof rum on top of the drink."],
-  "refs": [
-    {
-      "type": "book",
-      "page": 318,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 318
     }
   ]
 }

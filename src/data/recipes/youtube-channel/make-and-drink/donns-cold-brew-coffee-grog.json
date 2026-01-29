@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Donn's Cold Brew Coffee Grog",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "saline",
+      "name": "Saline",
       "type": "other",
       "quantity": {
         "amount": 5,
@@ -11,7 +14,7 @@
       }
     },
     {
-      "name": "half and half",
+      "name": "half-and-half",
       "type": "other",
       "quantity": {
         "amount": 0.5,
@@ -51,19 +54,16 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Make and Drink"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
       "videoId": "7GZoSg9VK_M"
-    }
-  ],
-  "attributions": [
-    {
-      "source": "Make and Drink",
-      "relation": "recipe author"
     }
   ]
 }

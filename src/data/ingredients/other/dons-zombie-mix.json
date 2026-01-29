@@ -4,7 +4,7 @@
   "type": "other",
   "ingredients": [
     {
-      "name": "grenadine",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -28,7 +28,7 @@
       }
     },
     {
-      "name": "absinthe",
+      "name": "Absinthe",
       "type": "category",
       "quantity": {
         "amount": 1,

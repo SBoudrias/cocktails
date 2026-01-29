@@ -30,6 +30,14 @@
       }
     },
     {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "St. George Raspberry Brandy",
       "type": "spirit",
       "quantity": {
@@ -46,31 +54,12 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Seltzer",
       "type": "soda",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 199
-    },
-    {
-      "type": "youtube",
-      "videoId": "ZPkl2DaESZ4"
     }
   ],
   "attributions": [
@@ -82,6 +71,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 199
+    },
+    {
+      "type": "youtube",
+      "videoId": "ZPkl2DaESZ4"
     }
   ]
 }

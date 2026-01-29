@@ -1,23 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Jamaican Spiced Swizzle #3",
-  "glassware": "highball",
   "preparation": "swizzled",
   "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -30,18 +30,18 @@
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "cinnamon syrup",
-      "type": "syrup",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },

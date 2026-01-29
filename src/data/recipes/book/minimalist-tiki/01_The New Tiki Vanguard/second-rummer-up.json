@@ -6,7 +6,7 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -14,15 +14,7 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -30,10 +22,18 @@
       }
     },
     {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -54,8 +54,8 @@
   ],
   "attributions": [
     {
-      "source": "Brian Maxwell",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Maxwell"
     }
   ],
   "refs": [

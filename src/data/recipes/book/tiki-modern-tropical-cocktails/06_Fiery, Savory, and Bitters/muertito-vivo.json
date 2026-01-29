@@ -6,15 +6,31 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Flor de Caña 7 Year",
-      "type": "spirit",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.375,
         "unit": "oz"
       }
     },
     {
-      "name": "Hamilton 151 Demerara Rum",
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -30,26 +46,10 @@
       }
     },
     {
-      "name": "Cinnamon Syrup",
-      "type": "syrup",
+      "name": "Flor de Caña 7 Year",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.375,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Grapefruit Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.375,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

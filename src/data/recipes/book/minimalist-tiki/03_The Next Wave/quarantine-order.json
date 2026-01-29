@@ -14,22 +14,6 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
@@ -42,6 +26,22 @@
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },

@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Marcie '55",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Bittermens' Burlesque Bitters",
@@ -11,7 +14,7 @@
       }
     },
     {
-      "name": "Fernet Branca",
+      "name": "Fernet-Branca",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Add all ingredients to a mixing glass with ice",
     "Stir until well-chilled",
@@ -53,8 +53,8 @@
   ],
   "attributions": [
     {
-      "source": "Disneyland Resort",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Disneyland Resort"
     }
   ],
   "refs": [

@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "South Seas Sleepwalker",
-  "glassware": "collins",
   "preparation": "flash blended",
   "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "aromatic bitters",
+      "name": "Aromatic Bitters",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -22,42 +22,42 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grenadine",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "honey syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },

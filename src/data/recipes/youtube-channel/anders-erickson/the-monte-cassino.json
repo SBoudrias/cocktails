@@ -6,6 +6,14 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Rittenhouse Rye",
       "type": "spirit",
       "quantity": {
@@ -24,14 +32,6 @@
     {
       "name": "Yellow Chartreuse",
       "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon juice",
-      "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

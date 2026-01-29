@@ -6,10 +6,10 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Journeyman Distillery Bilberry Black Hearts Gin",
-      "type": "spirit",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -30,10 +30,10 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Journeyman Distillery Bilberry Black Hearts Gin",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     }

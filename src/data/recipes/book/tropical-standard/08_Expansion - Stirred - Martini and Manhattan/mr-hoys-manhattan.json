@@ -47,22 +47,15 @@
     },
     {
       "name": "Rittenhouse Rye",
+      "type": "spirit",
       "technique": {
         "technique": "infusion",
         "agent": "pineapple"
       },
-      "type": "spirit",
       "quantity": {
         "amount": 2.25,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 141
     }
   ],
   "attributions": [
@@ -74,6 +67,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 141
     }
   ]
 }

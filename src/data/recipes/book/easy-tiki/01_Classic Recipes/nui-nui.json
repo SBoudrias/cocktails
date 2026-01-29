@@ -1,31 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Nui Nui",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
   "ingredients": [
-    {
-      "name": "El Dorado 5 Year",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orange juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Donn's Spices #2",
       "type": "syrup",
@@ -35,7 +14,7 @@
       }
     },
     {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -43,17 +22,38 @@
       }
     },
     {
-      "name": "cane syrup",
+      "name": "Cane syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 5 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "footed pilsner",
   "instructions": [
     "Shake all ingredients with 4 ice cubes until chilled, about 10 seconds.",
     "Strain into a footed Pilsner glass filled with crushed ice.",
@@ -61,8 +61,8 @@
   ],
   "attributions": [
     {
-      "source": "Brian Miller",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Miller"
     }
   ],
   "refs": [

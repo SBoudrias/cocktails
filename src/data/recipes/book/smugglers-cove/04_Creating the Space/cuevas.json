@@ -6,9 +6,25 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Bittermens' elemakule tiki bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    },
+    {
       "name": "Cinnamon syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tawny Port",
+      "type": "category",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -23,35 +39,12 @@
       }
     },
     {
-      "name": "Tawny Port",
-      "type": "category",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Bittermens 'Elemakule Tiki bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 118,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -59,6 +52,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 118
     }
   ]
 }

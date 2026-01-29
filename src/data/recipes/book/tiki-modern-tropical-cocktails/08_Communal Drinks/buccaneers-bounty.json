@@ -1,25 +1,13 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Buccaneer's Bounty",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
   "ingredients": [
     {
-      "name": "Spiced Rum",
-      "type": "category",
-      "quantity": {
-        "amount": 8.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Rittenhouse Rye",
-      "type": "spirit",
-      "quantity": {
-        "amount": 4.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 3.33,
@@ -27,7 +15,7 @@
       }
     },
     {
-      "name": "soursop juice",
+      "name": "Soursop Juice",
       "type": "juice",
       "quantity": {
         "amount": 4.25,
@@ -35,7 +23,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 4.25,
@@ -49,12 +37,24 @@
         "amount": 1.5,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Spiced Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "punch",
-  "servings": 6,
   "instructions": [
     "Combine all ingredients in a nonreactive container and stir to mix",
     "Decant over ice into a Tiki bowl or serving vessel of your choice",

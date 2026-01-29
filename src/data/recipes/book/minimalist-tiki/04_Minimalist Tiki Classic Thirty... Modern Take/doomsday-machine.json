@@ -6,17 +6,6 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "technique": {
-        "technique": "acid-adjustment"
-      },
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -33,7 +22,7 @@
       }
     },
     {
-      "name": "banana syrup",
+      "name": "Banana Syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -49,6 +38,17 @@
       },
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },

@@ -6,18 +6,18 @@
   "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Macchu Pisco",
-      "type": "spirit",
+      "name": "Mango purée",
+      "type": "puree",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Hampden Estate Rum Fire",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -30,18 +30,18 @@
       }
     },
     {
-      "name": "mango puree",
-      "type": "puree",
+      "name": "Macchu Pisco",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     }

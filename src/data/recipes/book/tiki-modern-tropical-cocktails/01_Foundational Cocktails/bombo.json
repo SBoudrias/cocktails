@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Bombo",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
     {
       "name": "Planteray OFTD",
       "type": "spirit",
@@ -9,19 +20,8 @@
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
     }
   ],
-  "preparation": "built",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "instructions": [
     "In a chilled rocks glass, combine the syrup and rum",
     "Add a large ice cube and stir to chill",

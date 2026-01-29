@@ -6,22 +6,6 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Cognac",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Whiskey (Rye)",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Coffee liqueur",
       "type": "category",
       "quantity": {
@@ -34,6 +18,22 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cognac",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Fancy York No. 2",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Cognac",
+      "name": "Chocolate Bitters",
       "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -19,25 +30,14 @@
       }
     },
     {
-      "name": "Crème de Cacao",
+      "name": "Cognac",
       "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 2,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Chocolate Bitters",
-      "type": "category",
-      "quantity": {
-        "amount": 3,
-        "unit": "dash"
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "instructions": ["Garnish with a chocolate truffle"],
   "refs": [
     {

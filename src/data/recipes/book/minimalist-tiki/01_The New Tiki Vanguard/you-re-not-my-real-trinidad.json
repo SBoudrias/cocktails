@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "You're Not My Real Trinidad",
-  "glassware": "tiki",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -30,18 +30,18 @@
       }
     },
     {
-      "name": "PX sherry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "PX sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     }

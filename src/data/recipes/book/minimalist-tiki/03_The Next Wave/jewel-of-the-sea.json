@@ -22,18 +22,18 @@
       }
     },
     {
-      "name": "Pusser's British Navy Rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Orange Curaçao",
       "type": "category",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pusser's British Navy Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.75,
         "unit": "oz"
       }
     }

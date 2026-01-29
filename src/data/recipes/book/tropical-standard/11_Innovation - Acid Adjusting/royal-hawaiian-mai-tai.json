@@ -14,21 +14,21 @@
       }
     },
     {
-      "name": "Pineapple juice",
-      "technique": {
-        "technique": "acid-adjustment"
-      },
-      "type": "juice",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 1,
+        "amount": 0.625,
         "unit": "oz"
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
+      "name": "Pineapple juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "quantity": {
-        "amount": 0.625,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -57,23 +57,12 @@
       }
     },
     {
-      "name": "Chairman's Reserve Rum",
+      "name": "Chairman's Reserve rum",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 179
-    },
-    {
-      "type": "youtube",
-      "videoId": "RUE2Rz07qtc"
     }
   ],
   "attributions": [
@@ -85,6 +74,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 179
+    },
+    {
+      "type": "youtube",
+      "videoId": "RUE2Rz07qtc"
     }
   ]
 }

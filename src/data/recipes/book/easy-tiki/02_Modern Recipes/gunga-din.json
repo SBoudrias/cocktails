@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Gunga Din",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "Q tonic water",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
     {
       "name": "cardamom pods",
       "type": "spice",
@@ -11,10 +22,26 @@
       }
     },
     {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -25,35 +52,8 @@
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Q tonic water",
-      "type": "soda",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine the cardamom pods and simple syrup in a cocktail shaker and muddle until fragrant.",
     "Add the gin, pineapple juice, and lime juice.",
@@ -64,12 +64,12 @@
   ],
   "attributions": [
     {
-      "source": "St. John Frizell",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "St. John Frizell"
     },
     {
-      "source": "Fort Defiance",
       "relation": "bar",
+      "source": "Fort Defiance",
       "location": "Brooklyn, NY"
     }
   ],

@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Ravagers Funeral",
-  "glassware": "snifter",
   "preparation": "flash blended",
   "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
       "name": "cucumber bitters",
@@ -14,15 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "tamarind simple syrup",
+      "name": "Tamarind simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
@@ -30,7 +22,15 @@
       }
     },
     {
-      "name": "Giffard Abricot du Roussillon",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard abricot du Roussillon",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,

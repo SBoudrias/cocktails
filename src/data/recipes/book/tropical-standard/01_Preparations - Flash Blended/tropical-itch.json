@@ -30,6 +30,15 @@
       }
     },
     {
+      "name": "Cassia Cinnamon Bark syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Mango purée",
       "type": "puree",
       "quantity": {
@@ -54,15 +63,6 @@
       }
     },
     {
-      "name": "Cassia Cinnamon Bark syrup",
-      "type": "syrup",
-      "brix": 50,
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Brandy (Pear)",
       "type": "category",
       "quantity": {
@@ -79,13 +79,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 39
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -95,6 +88,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 39
     }
   ]
 }

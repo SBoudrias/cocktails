@@ -1,23 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Floridita Daiquiri",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
-    {
-      "name": "Diplomatico Planas",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
     {
       "name": "sugar",
       "type": "other",
@@ -25,11 +12,24 @@
         "amount": 1,
         "unit": "tsp"
       }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Diplomatico Planas",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "In a shaker, combine lime juice and sugar",
     "Stir with a bar spoon to mix",

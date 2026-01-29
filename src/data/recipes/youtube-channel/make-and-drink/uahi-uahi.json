@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Uahi Uahi",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -8,14 +11,6 @@
       "quantity": {
         "amount": 2,
         "unit": "dash"
-      }
-    },
-    {
-      "name": "allspice dram",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
       }
     },
     {
@@ -43,6 +38,14 @@
       }
     },
     {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
       "name": "El Dorado 12 Year",
       "type": "spirit",
       "quantity": {
@@ -59,9 +62,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "attributions": [
     {
       "relation": "recipe author",

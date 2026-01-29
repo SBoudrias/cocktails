@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Donn's Gardenia Shakerato",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "Gardenia Mix 2.0",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "espresso",
       "type": "other",
@@ -11,18 +22,10 @@
       }
     },
     {
-      "name": "whole milk",
+      "name": "Whole milk",
       "type": "other",
       "quantity": {
         "amount": 4,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Gardenia Mix 2.0",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -35,9 +38,6 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "refs": [
     {
       "type": "youtube",

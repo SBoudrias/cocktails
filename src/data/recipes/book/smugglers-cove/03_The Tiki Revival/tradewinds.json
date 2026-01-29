@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -38,23 +38,12 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 94,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "DoqNqSoS4j4"
     }
   ],
   "attributions": [
@@ -62,6 +51,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 94
+    },
+    {
+      "type": "youtube",
+      "videoId": "DoqNqSoS4j4"
     }
   ]
 }

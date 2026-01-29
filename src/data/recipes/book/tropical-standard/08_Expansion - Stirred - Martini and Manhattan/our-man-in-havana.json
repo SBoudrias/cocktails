@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "orgeat",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -62,13 +62,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 138
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -78,6 +71,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 138
     }
   ]
 }

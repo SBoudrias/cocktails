@@ -14,14 +14,6 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
@@ -38,10 +30,10 @@
       }
     },
     {
-      "name": "Trois Rivières VSOP",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -50,6 +42,14 @@
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Trois Rivières VSOP",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }

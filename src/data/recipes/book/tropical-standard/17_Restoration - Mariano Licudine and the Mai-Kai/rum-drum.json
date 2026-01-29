@@ -22,6 +22,14 @@
       }
     },
     {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
       "name": "calamansi juice",
       "type": "juice",
       "quantity": {
@@ -54,7 +62,7 @@
       }
     },
     {
-      "name": "grapefruit juice",
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -62,15 +70,7 @@
       }
     },
     {
-      "name": "Demerara syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "honey syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
@@ -79,7 +79,7 @@
       }
     },
     {
-      "name": "St. Elizabeth Allspice Dram",
+      "name": "St-Elizabeth Allspice Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 1,
@@ -111,17 +111,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 246
-    },
-    {
-      "type": "youtube",
-      "videoId": "X52gqUg_EQE"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -131,6 +120,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 246
+    },
+    {
+      "type": "youtube",
+      "videoId": "X52gqUg_EQE"
     }
   ]
 }

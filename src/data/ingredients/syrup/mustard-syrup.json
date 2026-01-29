@@ -4,7 +4,7 @@
   "type": "syrup",
   "ingredients": [
     {
-      "name": "Simple Syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 25,

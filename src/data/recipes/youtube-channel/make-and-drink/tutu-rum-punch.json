@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Tutu Rum Punch",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -11,7 +14,7 @@
       }
     },
     {
-      "name": "grapefruit juice",
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -19,7 +22,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -43,13 +46,10 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "attributions": [
     {
-      "source": "Trader Vic",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Trader Vic"
     }
   ],
   "refs": [

@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "vanilla extract",
+      "name": "Vanilla extract",
       "type": "other",
       "quantity": {
         "amount": 5,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "pineapple gum syrup",
+      "name": "Pineapple Gum Syrup",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -47,26 +47,15 @@
     },
     {
       "name": "Barbancourt 5 Star",
+      "type": "spirit",
       "technique": {
         "technique": "milk-wash",
         "milk_type": "oolong tea milk"
       },
-      "type": "spirit",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 195
-    },
-    {
-      "type": "youtube",
-      "videoId": "F60vThZDHA4"
     }
   ],
   "attributions": [
@@ -78,6 +67,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 195
+    },
+    {
+      "type": "youtube",
+      "videoId": "F60vThZDHA4"
     }
   ]
 }

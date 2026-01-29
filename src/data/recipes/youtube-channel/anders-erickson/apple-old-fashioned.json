@@ -1,23 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Apple Old Fashioned",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Woodford Reserve Double Oaked Bourbon",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "apple cider syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
@@ -33,11 +20,24 @@
         "amount": 1,
         "unit": "dash"
       }
+    },
+    {
+      "name": "apple cider syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Woodford Reserve Double Oaked Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "instructions": ["Express orange oil over the drink", "Garnish with apple slices"],
   "refs": [
     {

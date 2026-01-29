@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "We're on the Move",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "MaD Spices No 7",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Lime juice",
       "type": "juice",
@@ -11,10 +22,10 @@
       }
     },
     {
-      "name": "MaD Spices No 7",
-      "type": "syrup",
+      "name": "Paranubes Oaxaca Aguardiente de Caña",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -27,15 +38,7 @@
       }
     },
     {
-      "name": "Avua Amburana",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Hampden estate Rum Fire",
+      "name": "Hampden Estate Rum Fire",
       "type": "spirit",
       "quantity": {
         "amount": 0.75,
@@ -43,17 +46,14 @@
       }
     },
     {
-      "name": "Paranubes Oaxaca Aguardiente de Caña",
+      "name": "Avua Amburana",
       "type": "spirit",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "attributions": [
     {
       "relation": "recipe author",

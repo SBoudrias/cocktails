@@ -6,10 +6,26 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Yaguara Cachaça Branca",
-      "type": "spirit",
+      "name": "Papaya Syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "carrot juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -22,26 +38,10 @@
       }
     },
     {
-      "name": "Papaya Syrup",
-      "type": "syrup",
+      "name": "Yaguara Cachaça Branca",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Carrot Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }

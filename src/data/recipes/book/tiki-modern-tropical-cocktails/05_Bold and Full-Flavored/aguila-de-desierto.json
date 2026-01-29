@@ -1,26 +1,21 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Aguila de Desierto",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Tequila Tromba Reposado",
-      "type": "spirit",
+      "name": "Bittermens Hellfire Habanero Shrub",
+      "type": "bitter",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
       "name": "tepache",
       "type": "other",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard Banane du Brésil",
-      "type": "liqueur",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
@@ -35,7 +30,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -43,17 +38,22 @@
       }
     },
     {
-      "name": "Bittermens Hellfire Habanero Shrub",
-      "type": "bitter",
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila Tromba Reposado",
+      "type": "spirit",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all in a shaker with cubed ice",
     "Shake and pour all contents into a skull or tall Tiki mug",

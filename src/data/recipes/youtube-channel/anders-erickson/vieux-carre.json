@@ -6,6 +6,30 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Rittenhouse Rye",
       "type": "spirit",
       "quantity": {
@@ -27,30 +51,6 @@
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Bénédictine",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Peychaud's Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Angostura Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
       }
     }
   ],

@@ -1,25 +1,28 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Cobra's Fang",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Smith & Cross",
+      "name": "Pernod",
       "type": "spirit",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
-      "name": "orange juice",
-      "type": "juice",
+      "name": "Grenadine",
+      "type": "syrup",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -27,10 +30,10 @@
       }
     },
     {
-      "name": "grenadine",
-      "type": "syrup",
+      "name": "Orange juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -43,17 +46,14 @@
       }
     },
     {
-      "name": "Pernod",
+      "name": "Smith & Cross",
       "type": "spirit",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "snifter",
   "instructions": [
     "Shake all ingredients with ice until chilled, about 10 seconds.",
     "Strain into a snifter glass and top with crushed ice.",
@@ -61,12 +61,12 @@
   ],
   "attributions": [
     {
-      "source": "Patrick Gartner",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Patrick Gartner"
     },
     {
-      "source": "Donna",
       "relation": "bar",
+      "source": "Donna",
       "location": "Brooklyn, NY"
     }
   ],

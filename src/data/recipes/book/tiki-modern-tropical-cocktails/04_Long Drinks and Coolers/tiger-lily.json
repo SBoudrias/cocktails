@@ -6,18 +6,26 @@
   "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Campo de Encanto Pisco",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Marie Brizard Yuzu Liqueur",
-      "type": "liqueur",
+      "name": "Grapefruit juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -30,27 +38,19 @@
       }
     },
     {
-      "name": "Grapefruit Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Honey Syrup",
-      "type": "syrup",
+      "name": "Marie Brizard Yuzu Liqueur",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Angostura Bitters",
-      "type": "bitter",
+      "name": "Campo de Encanto Pisco",
+      "type": "spirit",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],

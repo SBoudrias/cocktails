@@ -1,29 +1,16 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Not Far from the Three",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Yellow Chartreuse",
-      "type": "liqueur",
+      "name": "Mint leaves",
+      "type": "other",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Brandy (Apple)",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pear nectar",
-      "type": "juice",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 12,
+        "unit": "unit"
       }
     },
     {
@@ -43,17 +30,30 @@
       }
     },
     {
-      "name": "Mint leaves",
-      "type": "other",
+      "name": "Pear nectar",
+      "type": "juice",
       "quantity": {
-        "amount": 12,
-        "unit": "unit"
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Brandy (Apple)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "swizzled",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Add mint leaves and all ingredients to glass",
     "Add crushed ice",

@@ -1,17 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Tequi La Banane",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "julep",
   "ingredients": [
     {
-      "name": "La Gritona reposado tequila",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -19,7 +14,7 @@
       }
     },
     {
-      "name": "orgeat",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -27,7 +22,7 @@
       }
     },
     {
-      "name": "Giffard Banane du Brésil",
+      "name": "Giffard banane du Brésil",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
@@ -41,11 +36,16 @@
         "amount": 0.25,
         "unit": "oz"
       }
+    },
+    {
+      "name": "La Gritona reposado tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "julep",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add a small scoop of crushed ice and shake until the ice has dissolved.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Orlando Franklin McCray",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Orlando Franklin McCray"
     },
     {
-      "source": "Nightmoves",
       "relation": "bar",
+      "source": "Nightmoves",
       "location": "New York, NY"
     }
   ],

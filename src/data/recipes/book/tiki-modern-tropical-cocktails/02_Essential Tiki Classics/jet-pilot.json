@@ -1,12 +1,55 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Jet Pilot",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Hamilton Jamaican Pot Still Black",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -19,7 +62,7 @@
       }
     },
     {
-      "name": "Hamilton 151 Demerara Rum",
+      "name": "Hamilton 151 Demerara rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.75,
@@ -27,57 +70,14 @@
       }
     },
     {
-      "name": "Pernod",
+      "name": "Hamilton Jamaican Pot Still Black",
       "type": "spirit",
       "quantity": {
-        "amount": 6,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine all ingredients in a shaker with crushed ice",
     "Shake and strain into a rocks glass over pebbled ice",

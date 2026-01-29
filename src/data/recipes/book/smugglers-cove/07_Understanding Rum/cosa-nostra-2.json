@@ -6,10 +6,26 @@
   "glassware": "collins",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -22,22 +38,6 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
       "name": "Ginger ale",
       "type": "soda",
       "quantity": {
@@ -46,18 +46,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 210,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 210
     }
   ]
 }

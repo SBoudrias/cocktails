@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Absinthe Colada",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Pineapple Juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -11,7 +14,7 @@
       }
     },
     {
-      "name": "Cream of Coconut",
+      "name": "Cream of coconut",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Add all ingredients to a blender",
     "Add crushed ice",
@@ -54,16 +54,16 @@
   ],
   "attributions": [
     {
-      "source": "Maxwell Britten",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Maxwell Britten"
     },
     {
-      "source": "Natasha David",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Natasha David"
     },
     {
-      "source": "Maison Premiere",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Maison Premiere"
     }
   ],
   "refs": [

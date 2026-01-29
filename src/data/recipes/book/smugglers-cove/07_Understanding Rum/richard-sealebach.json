@@ -6,22 +6,6 @@
   "glassware": "flute",
   "ingredients": [
     {
-      "name": "Pierre Ferrand Dry Curaçao",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "R.L. Seale 10 year rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
@@ -38,6 +22,22 @@
       }
     },
     {
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "R.L. Seale 10 year rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Champagne",
       "type": "category",
       "quantity": {
@@ -46,18 +46,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 209,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 209
     }
   ]
 }

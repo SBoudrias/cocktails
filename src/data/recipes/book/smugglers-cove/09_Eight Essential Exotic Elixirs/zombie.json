@@ -6,11 +6,20 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Herbstura",
+      "type": "bitter",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
@@ -23,20 +32,19 @@
     },
     {
       "name": "Cinnamon syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Grenadine",
-      "brix": 50,
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
-        "unit": "tsp"
+        "amount": 0.75,
+        "unit": "oz"
       }
     },
     {
@@ -48,7 +56,15 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Black blended Overproof Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -62,29 +78,6 @@
         "amount": 1.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Black blended overproof rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Herbstura",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 268,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -92,6 +85,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 268
     }
   ]
 }

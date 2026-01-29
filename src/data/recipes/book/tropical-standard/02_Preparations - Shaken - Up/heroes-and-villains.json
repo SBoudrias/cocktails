@@ -22,6 +22,22 @@
       }
     },
     {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "orange bell pepper juice",
       "type": "juice",
       "quantity": {
@@ -34,22 +50,6 @@
       "type": "juice",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Ginger syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "grenadine",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -78,13 +78,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 67
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -94,6 +87,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 67
     }
   ]
 }

@@ -6,28 +6,28 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Orgeat",
+      "type": "category",
+      "brix": 50,
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
       "name": "Passion fruit syrup",
-      "brix": 66,
       "type": "category",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Orgeat",
-      "brix": 50,
-      "type": "category",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -40,7 +40,7 @@
       }
     },
     {
-      "name": "London dry gin",
+      "name": "London Dry Gin",
       "type": "category",
       "quantity": {
         "amount": 1.25,
@@ -48,22 +48,22 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 67,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "TFp9ybIxlfo"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 67
+    },
+    {
+      "type": "youtube",
+      "videoId": "TFp9ybIxlfo"
     }
   ]
 }

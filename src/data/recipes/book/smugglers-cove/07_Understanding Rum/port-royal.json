@@ -6,6 +6,14 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Hellfire tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -15,18 +23,10 @@
     },
     {
       "name": "Jerk syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended lightly aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -39,19 +39,12 @@
       }
     },
     {
-      "name": "Hellfire tincture",
-      "type": "tincture",
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
       "quantity": {
-        "amount": 5,
-        "unit": "drop"
+        "amount": 1.5,
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 204,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -59,6 +52,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 204
     }
   ]
 }

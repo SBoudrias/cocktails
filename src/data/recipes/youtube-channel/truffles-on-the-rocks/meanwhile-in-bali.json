@@ -1,23 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Meanwhile in Bali",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
-    {
-      "name": "Havana Club 3 Year",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Pandan Syrup",
       "type": "syrup",
@@ -27,17 +14,30 @@
       }
     },
     {
-      "name": "Apricot Liqueur",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apricot liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Havana Club 3 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Add all ingredients to a shaker",
     "Add ice and shake for 10 seconds",

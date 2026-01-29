@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Peach liqueur",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Falernum",
       "type": "category",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peach liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },

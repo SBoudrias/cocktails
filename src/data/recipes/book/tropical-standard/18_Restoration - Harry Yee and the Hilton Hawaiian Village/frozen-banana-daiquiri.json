@@ -15,11 +15,11 @@
     },
     {
       "name": "banana",
+      "type": "fruit",
       "technique": {
         "technique": "maturity",
         "state": "ripe"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 60,
         "unit": "gram"
@@ -42,7 +42,7 @@
       }
     },
     {
-      "name": "Flor de Caña 4 Year",
+      "name": "Flor de Caña 4 year",
       "type": "spirit",
       "quantity": {
         "amount": 2,
@@ -58,13 +58,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 256
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -74,6 +67,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 256
     }
   ]
 }

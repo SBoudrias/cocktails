@@ -1,10 +1,21 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Fog Cutter",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Neisson Élevé Sous Bois",
-      "type": "spirit",
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -27,33 +38,22 @@
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Sherry (Amontillado)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Neisson Élevé Sous Bois",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all ingredients in a cocktail shaker and add 1 cup crushed ice.",
     "Shake for 5 seconds.",
@@ -63,12 +63,12 @@
   ],
   "attributions": [
     {
-      "source": "Paul McGee",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Paul McGee"
     },
     {
-      "source": "Lost Lake",
       "relation": "bar",
+      "source": "Lost Lake",
       "location": "Chicago, IL"
     }
   ],

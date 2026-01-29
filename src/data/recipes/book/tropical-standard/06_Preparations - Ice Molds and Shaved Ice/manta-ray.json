@@ -6,7 +6,7 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "mint leaves",
+      "name": "Mint leaves",
       "type": "other",
       "quantity": {
         "amount": 6,
@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
@@ -38,7 +30,7 @@
       }
     },
     {
-      "name": "honey syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -51,6 +43,14 @@
       "quantity": {
         "amount": 1,
         "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
       }
     },
     {
@@ -86,13 +86,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 117
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -102,6 +95,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 117
     }
   ]
 }

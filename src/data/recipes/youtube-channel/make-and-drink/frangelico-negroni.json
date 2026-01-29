@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Frangelico Negroni",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
       "name": "Frangelico",
@@ -35,9 +38,6 @@
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "refs": [
     {
       "type": "youtube",

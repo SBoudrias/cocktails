@@ -6,10 +6,37 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Tequila (Blanco)",
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Bitter Truth Aromatic Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -22,45 +49,12 @@
       }
     },
     {
-      "name": "Passion fruit Syrup",
+      "name": "Tequila (Blanco)",
       "type": "category",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Pineapple Juice",
-      "technique": {
-        "technique": "acid-adjustment"
-      },
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bitter Truth Aromatic Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Saline",
-      "type": "other",
-      "quantity": {
-        "amount": 5,
-        "unit": "drop"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "youtube",
-      "videoId": "b36EXT8NMUM"
     }
   ],
   "instructions": [
@@ -69,5 +63,11 @@
     "Open pour into a double old fashioned glass.",
     "Top with more pebble ice.",
     "Garnish with a rosemary sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "b36EXT8NMUM"
+    }
   ]
 }

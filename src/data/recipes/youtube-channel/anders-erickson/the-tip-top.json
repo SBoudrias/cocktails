@@ -6,22 +6,6 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bénédictine",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
@@ -35,6 +19,22 @@
       "quantity": {
         "amount": 1,
         "unit": "tsp"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

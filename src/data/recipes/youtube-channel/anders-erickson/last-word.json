@@ -6,6 +6,14 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "The Botanist Islay Dry Gin",
       "type": "spirit",
       "quantity": {
@@ -24,14 +32,6 @@
     {
       "name": "Luxardo Maraschino Liqueur",
       "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

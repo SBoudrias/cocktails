@@ -6,11 +6,11 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
@@ -23,10 +23,18 @@
     },
     {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -39,7 +47,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -47,27 +55,12 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 97,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -75,6 +68,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 97
     }
   ]
 }

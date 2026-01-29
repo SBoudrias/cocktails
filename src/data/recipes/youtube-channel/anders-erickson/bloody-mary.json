@@ -1,28 +1,31 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Bloody Mary",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "Vodka",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lustau Amontillado Los Arcos Sherry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tomato juice",
-      "type": "juice",
+      "name": "Tabasco sauce",
+      "type": "other",
       "quantity": {
         "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Horseradish",
+      "type": "other",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Worcestershire sauce",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -35,10 +38,26 @@
       }
     },
     {
-      "name": "Worcestershire sauce",
-      "type": "other",
+      "name": "Tomato juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -49,27 +68,8 @@
         "amount": 0.25,
         "unit": "tsp"
       }
-    },
-    {
-      "name": "Horseradish",
-      "type": "other",
-      "quantity": {
-        "amount": 0.125,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Tabasco sauce",
-      "type": "other",
-      "quantity": {
-        "amount": 4,
-        "unit": "dash"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "highball",
   "instructions": [
     "Add all ingredients to a shaker with ice",
     "Shake gently to combine",

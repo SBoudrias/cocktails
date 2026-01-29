@@ -1,12 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Don's Special Daiquiri",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Bacardi 8",
-      "type": "spirit",
+      "name": "Passion fruit purée",
+      "type": "puree",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Agave syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -19,7 +38,7 @@
       }
     },
     {
-      "name": "spiced rum",
+      "name": "Spiced Rum",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -27,45 +46,26 @@
       }
     },
     {
-      "name": "agave syrup",
-      "type": "syrup",
+      "name": "Bacardi 8",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit purée",
-      "type": "puree",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Shake all ingredients with ice until chilled, about 10 seconds.",
     "Strain into a coupe."
   ],
   "attributions": [
     {
-      "source": "Daniele Dalla Pola",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Daniele Dalla Pola"
     },
     {
-      "source": "Esotico",
       "relation": "bar",
+      "source": "Esotico",
       "location": "Miami, FL"
     }
   ],

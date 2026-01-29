@@ -1,20 +1,44 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Missionary's Downfall",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Planteray 3 Star",
-      "type": "spirit",
+      "name": "pineapple",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked",
+        "size": "1-inch"
+      },
       "quantity": {
-        "amount": 1.25,
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "honey syrup",
-      "type": "syrup",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -27,38 +51,14 @@
       }
     },
     {
-      "name": "lemon juice",
-      "type": "juice",
+      "name": "Planteray 3 Star",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.25,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple",
-      "type": "fruit",
-      "quantity": {
-        "amount": 5,
-        "unit": "unit"
-      },
-      "technique": {
-        "technique": "cut",
-        "type": "chunked",
-        "size": "1-inch"
-      }
-    },
-    {
-      "name": "mint leaves",
-      "type": "other",
-      "quantity": {
-        "amount": 6,
-        "unit": "unit"
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "blended",
-  "glassware": "snifter",
   "instructions": [
     "Blend all ingredients with 3/4 cup ice until smooth.",
     "Pour into a snifter glass.",

@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Four Suns",
-  "glassware": "hurricane",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "hurricane",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "grapefruit juice",
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 1,

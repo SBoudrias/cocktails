@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "pineapple gum syrup",
+  "name": "Pineapple Gum Syrup",
   "type": "syrup",
   "refs": [
     {

@@ -1,20 +1,15 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Hot Tiger's Milk",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
   "ingredients": [
     {
       "name": "Tiger's Milk Batter",
       "type": "other",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "El Dorado 8 Year",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -27,17 +22,22 @@
       }
     },
     {
-      "name": "water",
+      "name": "Water",
       "type": "other",
       "quantity": {
         "amount": 5,
         "unit": "oz"
       }
+    },
+    {
+      "name": "El Dorado 8 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "built",
-  "served_on": "up",
-  "glassware": "irish",
   "instructions": [
     "Add batter to a warmed mug.",
     "Add rum and evaporated milk.",

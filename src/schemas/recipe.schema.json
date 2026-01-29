@@ -7,6 +7,46 @@
   "properties": {
     "$schema": { "type": "string" },
     "name": { "type": "string" },
+    "preparation": {
+      "enum": [
+        "built",
+        "shaken",
+        "stirred",
+        "blended",
+        "flash blended",
+        "swizzled",
+        "other"
+      ]
+    },
+    "served_on": {
+      "enum": ["big rock", "up", "crushed ice", "blended", "ice cubes"]
+    },
+    "glassware": {
+      "enum": [
+        "old fashioned",
+        "collins",
+        "highball",
+        "snifter",
+        "coupe",
+        "martini",
+        "nick & nora",
+        "irish",
+        "hurricane",
+        "julep",
+        "mule",
+        "tiki",
+        "punch",
+        "flute",
+        "footed pilsner",
+        "goblet",
+        "wine glass"
+      ]
+    },
+    "servings": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Default number of servings this recipe makes"
+    },
     "ingredients": {
       "type": "array",
       "items": {
@@ -73,41 +113,6 @@
       },
       "minItems": 1,
       "uniqueItems": true
-    },
-    "preparation": {
-      "enum": [
-        "built",
-        "shaken",
-        "stirred",
-        "blended",
-        "flash blended",
-        "swizzled",
-        "other"
-      ]
-    },
-    "served_on": {
-      "enum": ["big rock", "up", "crushed ice", "blended", "ice cubes"]
-    },
-    "glassware": {
-      "enum": [
-        "old fashioned",
-        "collins",
-        "highball",
-        "snifter",
-        "coupe",
-        "martini",
-        "nick & nora",
-        "irish",
-        "hurricane",
-        "julep",
-        "mule",
-        "tiki",
-        "punch",
-        "flute",
-        "footed pilsner",
-        "goblet",
-        "wine glass"
-      ]
     },
     "instructions": {
       "type": "array",
@@ -201,11 +206,6 @@
           }
         ]
       }
-    },
-    "servings": {
-      "type": "integer",
-      "minimum": 1,
-      "description": "Default number of servings this recipe makes"
     }
   },
   "required": ["name", "ingredients", "preparation", "served_on", "glassware"],

@@ -1,28 +1,15 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Third Wave Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "gin",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "honey syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -35,17 +22,30 @@
       }
     },
     {
-      "name": "ginger syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "swizzled",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Combine all the ingredients in a tall swizzle glass.",
     "Add crushed ice until the glass is full.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Ryan Lotz",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Ryan Lotz"
     },
     {
-      "source": "Shore Leave",
       "relation": "bar",
+      "source": "Shore Leave",
       "location": "Boston, MA"
     }
   ],

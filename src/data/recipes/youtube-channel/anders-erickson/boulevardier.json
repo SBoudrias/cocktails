@@ -6,14 +6,6 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Elijah Craig Bourbon",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Campari",
       "type": "liqueur",
       "quantity": {
@@ -26,6 +18,14 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Elijah Craig bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }

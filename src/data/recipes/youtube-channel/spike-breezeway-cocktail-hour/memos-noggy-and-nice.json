@@ -6,51 +6,11 @@
   "glassware": "goblet",
   "ingredients": [
     {
-      "name": "Hamilton White Stache",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Nixta",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Mezcal",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Heavy whipping cream",
+      "name": "Whole egg",
       "type": "other",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Demerara syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
+        "unit": "unit"
       }
     },
     {
@@ -70,11 +30,51 @@
       }
     },
     {
-      "name": "Whole egg",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
       "type": "other",
       "quantity": {
         "amount": 1,
-        "unit": "unit"
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mezcal",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton White Stache",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nixta",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     }
   ],

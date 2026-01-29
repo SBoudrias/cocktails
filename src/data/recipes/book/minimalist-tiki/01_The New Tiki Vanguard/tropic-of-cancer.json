@@ -1,18 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Tropic of Cancer",
-  "glassware": "old fashioned",
   "preparation": "stirred",
   "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "salt",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "pinch"
-      }
-    },
     {
       "name": "Giffard crème de fruit de la passion",
       "type": "liqueur",
@@ -35,6 +27,14 @@
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
       }
     }
   ],

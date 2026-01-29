@@ -6,6 +6,14 @@
   "glassware": "footed pilsner",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -23,8 +31,8 @@
     },
     {
       "name": "Honey syrup",
-      "brix": 50,
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -39,7 +47,7 @@
       }
     },
     {
-      "name": "St. Elizabeth allspice Dram",
+      "name": "St-Elizabeth Allspice Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
@@ -47,15 +55,7 @@
       }
     },
     {
-      "name": "Rhum agricole vieux",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -63,23 +63,12 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Rhum Agricole Vieux",
+      "type": "category",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 1.5,
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 43,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "DmrWDWmhWC8"
     }
   ],
   "attributions": [
@@ -87,6 +76,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 43
+    },
+    {
+      "type": "youtube",
+      "videoId": "DmrWDWmhWC8"
     }
   ]
 }

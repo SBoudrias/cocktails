@@ -6,10 +6,27 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Siete Leguas Blanco Tequila",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -22,27 +39,10 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Siete Leguas Blanco Tequila",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "simple syrup",
-      "type": "syrup",
-      "brix": 60,
-      "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     }
@@ -50,8 +50,8 @@
   "instructions": ["Expressed grapefruit oil & peel for garnish (or lime wheel)"],
   "attributions": [
     {
-      "source": "Katie Stipe",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Katie Stipe"
     }
   ],
   "refs": [

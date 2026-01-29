@@ -6,47 +6,15 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Rittenhouse Rye",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 4,
+        "unit": "dash"
       }
     },
     {
-      "name": "Giffard Banane du Brésil",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cinnamon Syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Peychaud's Bitters",
+      "name": "Peychaud's bitters",
       "type": "bitter",
       "quantity": {
         "amount": 6,
@@ -54,11 +22,43 @@
       }
     },
     {
-      "name": "Angostura Bitters",
-      "type": "bitter",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 4,
-        "unit": "dash"
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

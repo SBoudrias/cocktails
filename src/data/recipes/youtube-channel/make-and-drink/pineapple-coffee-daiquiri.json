@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "coffee bitters",
+      "name": "Coffee bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -22,18 +22,18 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Pineapple Gum Syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "pineapple gum syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },

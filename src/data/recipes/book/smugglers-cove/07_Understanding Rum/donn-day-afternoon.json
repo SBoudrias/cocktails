@@ -15,10 +15,18 @@
     },
     {
       "name": "Cinnamon syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum Agricole Blanc",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     },
@@ -29,21 +37,6 @@
         "amount": 4,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Rhum agricole blanc",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 206,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -51,6 +44,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 206
     }
   ]
 }

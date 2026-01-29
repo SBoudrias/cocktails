@@ -1,26 +1,30 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Koopman",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 10,
   "ingredients": [
     {
-      "name": "Captive Spirits Bourbon Barreled Big Gin",
-      "type": "spirit",
-      "quantity": {
-        "amount": 17,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Batavia Arrack van Oosten",
-      "type": "spirit",
+      "name": "Lemongrass Syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 8.5,
         "unit": "oz"
       }
     },
     {
-      "name": "lemongrass syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Earl Grey tea",
+      "type": "other",
       "quantity": {
         "amount": 8.5,
         "unit": "oz"
@@ -35,26 +39,22 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
       "quantity": {
         "amount": 8.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Earl Grey tea",
-      "type": "other",
+      "name": "Captive Spirits Bourbon Barreled Big Gin",
+      "type": "spirit",
       "quantity": {
-        "amount": 8.5,
+        "amount": 17,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "punch",
-  "servings": 10,
   "instructions": [
     "Combine all ingredients and stir to mix",
     "Keep at least 4 hours or up to overnight in a covered container in the refrigerator",

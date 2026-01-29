@@ -6,17 +6,9 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "SC Mai Tai rich simple syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -24,10 +16,18 @@
     },
     {
       "name": "Orgeat",
-      "brix": 50,
       "type": "category",
+      "brix": 50,
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -40,7 +40,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -48,18 +48,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 261,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 261
     }
   ]
 }

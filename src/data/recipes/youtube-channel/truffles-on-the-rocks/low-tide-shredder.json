@@ -1,26 +1,30 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Low Tide Shredder",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "servings": 4,
   "ingredients": [
     {
-      "name": "Smith & Cross",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 100,
-        "unit": "ml"
-      }
-    },
-    {
-      "name": "Sherry (Fino)",
-      "type": "category",
-      "quantity": {
-        "amount": 100,
+        "amount": 60,
         "unit": "ml"
       }
     },
     {
       "name": "Cream of coconut",
       "type": "syrup",
+      "quantity": {
+        "amount": 100,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Coconut milk",
+      "type": "other",
       "quantity": {
         "amount": 100,
         "unit": "ml"
@@ -43,26 +47,22 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Smith & Cross",
+      "type": "spirit",
       "quantity": {
-        "amount": 60,
+        "amount": 100,
         "unit": "ml"
       }
     },
     {
-      "name": "Coconut milk",
-      "type": "other",
+      "name": "Sherry (Fino)",
+      "type": "category",
       "quantity": {
         "amount": 100,
         "unit": "ml"
       }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "highball",
-  "servings": 4,
   "instructions": [
     "Preparation: Add all ingredients to a large container and stir well to fully combine.",
     "Strain through a double layer of cheesecloth to remove pulp and excess solids, then bottle and store in the fridge",

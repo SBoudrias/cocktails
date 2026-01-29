@@ -6,6 +6,14 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Kahlua Original coffee liqueur",
       "type": "liqueur",
       "quantity": {
@@ -18,14 +26,6 @@
       "type": "category",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Heavy whipping cream",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
         "unit": "oz"
       }
     },

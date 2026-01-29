@@ -1,21 +1,24 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Zombie (1930)",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
     {
       "name": "Pernod",
       "type": "spirit",
       "quantity": {
         "amount": 6,
         "unit": "drop"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
@@ -27,14 +30,6 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Don's Remix",
       "type": "syrup",
       "quantity": {
@@ -43,10 +38,26 @@
       }
     },
     {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Falernum (Tropical Standard)",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black blended Overproof Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -65,19 +76,8 @@
         "amount": 1.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Black blended Overproof Rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "attributions": [
     {
       "relation": "recipe author",

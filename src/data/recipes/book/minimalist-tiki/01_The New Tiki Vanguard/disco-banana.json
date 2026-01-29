@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Disco Banana",
-  "glassware": "coupe",
   "preparation": "blended",
   "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "banana",
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -22,18 +22,10 @@
       }
     },
     {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard banane du Brésil",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -46,7 +38,15 @@
       }
     },
     {
-      "name": "Clément Premiere Canne",
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Clément Première Canne",
       "type": "spirit",
       "quantity": {
         "amount": 0.75,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Hampden estate Rum Fire",
+      "name": "Hampden Estate Rum Fire",
       "type": "spirit",
       "quantity": {
         "amount": 0.75,

@@ -1,39 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Jamaican Mule",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
   "ingredients": [
-    {
-      "name": "Appleton Signature",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "ginger syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
@@ -41,11 +12,40 @@
         "amount": 2,
         "unit": "dash"
       }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "footed pilsner",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add 1/2 cup crushed ice and shake for about 5 seconds.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Jelani Johnson",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Jelani Johnson"
     },
     {
-      "source": "Clover Club",
       "relation": "bar",
+      "source": "Clover Club",
       "location": "Brooklyn, NY"
     }
   ],

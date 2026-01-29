@@ -6,15 +6,7 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -22,7 +14,15 @@
       }
     },
     {
-      "name": "green chartreuse",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
@@ -40,8 +40,8 @@
   ],
   "attributions": [
     {
-      "source": "Gentlemen's Companion",
-      "relation": "book"
+      "relation": "book",
+      "source": "Gentlemen's Companion"
     }
   ],
   "refs": [

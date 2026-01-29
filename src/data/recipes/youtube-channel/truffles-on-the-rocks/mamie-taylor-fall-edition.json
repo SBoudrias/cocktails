@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Mamie Taylor - Fall Edition",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
   "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
     {
       "name": "Whisky (Blended Scotch)",
       "type": "category",
@@ -17,19 +28,8 @@
         "amount": 3,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 4,
-        "unit": "dash"
-      }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "highball",
   "instructions": [
     "Build all ingredients in a chilled highball glass with ice",
     "Stir gently",

@@ -6,10 +6,18 @@
   "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Rhum J.M Blanc",
-      "type": "spirit",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -30,28 +38,20 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
+      "name": "Rhum J.M Blanc",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
       "name": "Braulio",
+      "type": "liqueur",
       "technique": {
         "technique": "application",
         "method": "float"
       },
-      "type": "liqueur",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"

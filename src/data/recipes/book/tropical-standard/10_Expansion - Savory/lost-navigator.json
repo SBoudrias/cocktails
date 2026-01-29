@@ -30,6 +30,22 @@
       }
     },
     {
+      "name": "vanilla-sandalwood syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cassia Cinnamon Bark syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -46,35 +62,12 @@
       }
     },
     {
-      "name": "vanilla-sandalwood syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "cassia cinnamon bark syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.375,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Santa Teresa 1796 Rum",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 161
     }
   ],
   "attributions": [
@@ -86,6 +79,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 161
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Penicillin",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Whisky (Blended Scotch)",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Ginger",
       "type": "spice",
@@ -36,6 +31,14 @@
       }
     },
     {
+      "name": "Whisky (Blended Scotch)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Whisky (Islay Scotch)",
       "type": "category",
       "technique": {
@@ -48,9 +51,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "Thinly slice ginger into thumb-sized pieces",
     "Muddle ginger with Scotch in shaker",
@@ -60,17 +60,17 @@
     "Float smoky Scotch on top",
     "Garnish with candied ginger"
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Sam Ross"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
       "videoId": "B0bZyraafA0",
       "start": 160
-    }
-  ],
-  "attributions": [
-    {
-      "relation": "recipe author",
-      "source": "Sam Ross"
     }
   ]
 }

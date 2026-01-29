@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.25,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.25,
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -46,7 +46,15 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -58,14 +66,6 @@
       "type": "category",
       "quantity": {
         "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cream of coconut",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
         "unit": "oz"
       }
     },

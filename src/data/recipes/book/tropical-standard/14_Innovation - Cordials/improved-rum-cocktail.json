@@ -70,13 +70,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 227
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -86,6 +79,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 227
     }
   ]
 }

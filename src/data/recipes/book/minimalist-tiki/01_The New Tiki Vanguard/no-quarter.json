@@ -6,15 +6,7 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -22,7 +14,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -30,10 +22,18 @@
       }
     },
     {
-      "name": "demerara syrup",
+      "name": "Demerara syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -62,8 +62,8 @@
   ],
   "attributions": [
     {
-      "source": "Tiki Lindy",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Tiki Lindy"
     }
   ],
   "refs": [

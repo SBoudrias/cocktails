@@ -6,6 +6,14 @@
   "glassware": "punch",
   "ingredients": [
     {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
@@ -14,10 +22,10 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -34,14 +42,6 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "St. Elizabeth allspice Dram",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -71,18 +71,18 @@
     }
   ],
   "instructions": ["Multiply the ingredients by the number of guests."],
-  "refs": [
-    {
-      "type": "book",
-      "page": 313,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 313
     }
   ]
 }

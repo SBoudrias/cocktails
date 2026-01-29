@@ -6,11 +6,11 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Ting grapefruit soda",
-      "type": "soda",
+      "name": "Herbstura",
+      "type": "bitter",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
@@ -23,8 +23,8 @@
     },
     {
       "name": "Honey syrup",
-      "brix": 50,
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -47,19 +47,12 @@
       }
     },
     {
-      "name": "Herbstura",
-      "type": "bitter",
+      "name": "Ting grapefruit soda",
+      "type": "soda",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 2,
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 137,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -67,6 +60,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 137
     }
   ]
 }

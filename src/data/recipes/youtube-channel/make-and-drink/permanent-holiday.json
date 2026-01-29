@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Permanent Holiday",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
       "name": "Lime juice",
@@ -51,19 +54,16 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "footed pilsner",
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Trey Jenkins"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
       "videoId": "KzhfvJV7MV4"
-    }
-  ],
-  "attributions": [
-    {
-      "source": "Trey Jenkins",
-      "relation": "recipe author"
     }
   ]
 }

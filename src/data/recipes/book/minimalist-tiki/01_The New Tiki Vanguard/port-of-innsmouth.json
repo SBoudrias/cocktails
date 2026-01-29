@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Port of Innsmouth",
-  "glassware": "snifter",
   "preparation": "flash blended",
   "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "aromatic bitters",
+      "name": "Aromatic Bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -14,15 +14,15 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Vanilla syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -30,10 +30,10 @@
       }
     },
     {
-      "name": "vanilla syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     },

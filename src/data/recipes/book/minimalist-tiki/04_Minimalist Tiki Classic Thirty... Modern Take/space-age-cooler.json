@@ -14,23 +14,7 @@
       }
     },
     {
-      "name": "Grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple gum syrup",
+      "name": "Pineapple Gum Syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -46,10 +30,26 @@
       }
     },
     {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Italicus",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },

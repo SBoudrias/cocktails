@@ -6,14 +6,26 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Sobieski Estate Vodka",
-      "type": "spirit",
-      "technique": {
-        "technique": "fat-wash",
-        "fat": "coconut oil"
-      },
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -26,26 +38,14 @@
       }
     },
     {
-      "name": "honey syrup",
-      "type": "syrup",
+      "name": "Sobieski Estate Vodka",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "coconut oil"
+      },
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }

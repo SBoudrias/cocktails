@@ -1,35 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Death Valley at Sunset",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
-    {
-      "name": "Blue Nectar Silver Tequila",
-      "type": "spirit",
-      "technique": {
-        "technique": "fat-wash",
-        "fat": "avocado-oil"
-      },
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Ancho Reyes Ancho Chile Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "papaya purée",
-      "type": "puree",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Cinnamon syrup",
       "type": "syrup",
@@ -47,17 +22,42 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Papaya Purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ancho Reyes Ancho Chile Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blue Nectar Silver Tequila",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "avocado-oil"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all ingredients in a shaker with cubed ice",
     "Shake and fine strain into a chilled coupe rimmed with chile salt"

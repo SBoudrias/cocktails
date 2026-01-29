@@ -1,23 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Grog",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Pusser's Gunpowder Proof British Navy Rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "simple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
     {
       "name": "lime",
       "type": "fruit",
@@ -29,11 +16,24 @@
         "amount": 3,
         "unit": "unit"
       }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pusser's Gunpowder Proof British Navy Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "In a rocks glass, muddle lime wedges and simple syrup",
     "Add rum and cubed ice",

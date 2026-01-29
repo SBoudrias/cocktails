@@ -1,17 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Assunta",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Mezcal",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -27,7 +22,15 @@
       }
     },
     {
-      "name": "Ginger Beer",
+      "name": "Mezcal",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
       "type": "soda",
       "quantity": {
         "amount": 2,
@@ -35,9 +38,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "collins",
   "instructions": [
     "Add mezcal, lime juice, and amaretto to a shaker",
     "Add ice and shake until well-chilled",
@@ -46,12 +46,12 @@
   ],
   "attributions": [
     {
-      "source": "Simon Sebbah",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Simon Sebbah"
     },
     {
-      "source": "Saint Theo's",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Saint Theo's"
     }
   ],
   "refs": [

@@ -14,15 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grenadine",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -30,7 +22,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -38,8 +30,8 @@
       }
     },
     {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
@@ -50,6 +42,14 @@
       "type": "spirit",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -65,8 +65,8 @@
   "refs": [
     {
       "type": "book",
-      "page": 22,
-      "title": "tiki-modern-tropical-cocktails"
+      "title": "tiki-modern-tropical-cocktails",
+      "page": 22
     },
     {
       "type": "youtube",

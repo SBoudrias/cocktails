@@ -6,15 +6,15 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Salt",
-      "type": "other",
+      "name": "Fernet-Branca",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
-        "unit": "pinch"
+        "amount": 0.5,
+        "unit": "tsp"
       }
     },
     {
-      "name": "Giffard Banane du Brésil",
+      "name": "Giffard banane du Brésil",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
@@ -30,6 +30,14 @@
       }
     },
     {
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Blanc vermouth",
       "type": "category",
       "quantity": {
@@ -38,19 +46,11 @@
       }
     },
     {
-      "name": "Fernet Branca",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Hampden estate Rum Fire",
-      "type": "spirit",
+      "name": "Salt",
+      "type": "other",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
+        "unit": "pinch"
       }
     }
   ],
@@ -61,8 +61,8 @@
   ],
   "attributions": [
     {
-      "source": "Brian Maxwell",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Maxwell"
     }
   ],
   "refs": [

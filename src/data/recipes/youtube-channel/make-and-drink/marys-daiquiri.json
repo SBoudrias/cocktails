@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -32,8 +32,8 @@
   ],
   "attributions": [
     {
-      "source": "Doc Parks",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Doc Parks"
     }
   ],
   "refs": [

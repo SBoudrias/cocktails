@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Bourbon Lift",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "Woodford Reserve Double Oaked Bourbon",
-      "type": "spirit",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -19,18 +30,10 @@
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
+      "name": "Woodford Reserve Double Oaked Bourbon",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "heavy whipping cream",
-      "type": "other",
-      "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "highball",
   "instructions": [
     "Add all ingredients to a shaker with ice and shake vigorously.",
     "Strain into a highball glass.",

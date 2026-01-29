@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Spicy with Tequila",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Mint leaves",
@@ -19,18 +22,18 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Agave syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -43,7 +46,7 @@
       }
     },
     {
-      "name": "Tequila Blanco",
+      "name": "Tequila (Blanco)",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -51,9 +54,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Muddle mint leaves in shaker",
     "Add remaining ingredients and ice",
@@ -63,8 +63,8 @@
   ],
   "attributions": [
     {
-      "source": "Bobby Heugel",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Bobby Heugel"
     }
   ],
   "refs": [

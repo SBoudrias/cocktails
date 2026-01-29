@@ -7,11 +7,11 @@
   "ingredients": [
     {
       "name": "pineapple",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "chunked"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 5,
         "unit": "unit"
@@ -26,19 +26,19 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Demerara syrup",
-      "brix": 66,
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -51,7 +51,7 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -59,22 +59,22 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 39,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "8ocVfDO-Xfk"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 39
+    },
+    {
+      "type": "youtube",
+      "videoId": "8ocVfDO-Xfk"
     }
   ]
 }

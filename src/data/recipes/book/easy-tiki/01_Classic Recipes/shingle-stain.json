@@ -1,25 +1,20 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Shingle Stain",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Blended Aged Rum (Jamaica)",
-      "type": "category",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
-      "name": "Rhum Agricole Blanc",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -27,7 +22,7 @@
       }
     },
     {
-      "name": "grenadine",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -43,17 +38,22 @@
       }
     },
     {
-      "name": "Angostura Bitters",
-      "type": "bitter",
+      "name": "Rhum Agricole Blanc",
+      "type": "category",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -62,12 +62,12 @@
   ],
   "attributions": [
     {
-      "source": "David Kinsey",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "David Kinsey"
     },
     {
-      "source": "Kindred",
       "relation": "bar",
+      "source": "Kindred",
       "location": "Cleveland, OH"
     }
   ],

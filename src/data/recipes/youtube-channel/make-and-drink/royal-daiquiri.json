@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Royal Daiquiri",
+  "preparation": "blended",
+  "served_on": "crushed ice",
+  "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
     {
       "name": "Lime juice",
       "type": "juice",
@@ -19,14 +30,6 @@
       }
     },
     {
-      "name": "sugar",
-      "type": "other",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Column still lightly aged rum",
       "type": "category",
       "quantity": {
@@ -35,9 +38,6 @@
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "crushed ice",
-  "glassware": "coupe",
   "instructions": ["Blend lightly with half a cup of crushed ice", "Serve in a coupe"],
   "attributions": [
     {

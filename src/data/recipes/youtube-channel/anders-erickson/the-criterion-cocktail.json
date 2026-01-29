@@ -6,11 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Maison Rouge VSOP Cognac",
-      "type": "spirit",
+      "name": "cardamom bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 3,
+        "unit": "dash"
       }
     },
     {
@@ -22,11 +22,11 @@
       }
     },
     {
-      "name": "cardamom bitters",
-      "type": "bitter",
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
       "quantity": {
-        "amount": 3,
-        "unit": "dash"
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

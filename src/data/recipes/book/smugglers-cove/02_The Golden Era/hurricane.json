@@ -15,15 +15,15 @@
     },
     {
       "name": "Passion fruit syrup",
-      "brix": 66,
       "type": "category",
+      "brix": 66,
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
     },
     {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 4,
@@ -31,18 +31,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 68,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 68
     }
   ]
 }

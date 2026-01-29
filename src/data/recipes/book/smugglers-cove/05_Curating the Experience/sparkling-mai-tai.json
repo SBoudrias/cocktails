@@ -15,7 +15,15 @@
     },
     {
       "name": "Orgeat",
+      "type": "category",
       "brix": 50,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black blended Overproof Rum",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -31,15 +39,7 @@
       }
     },
     {
-      "name": "Black blended overproof rum",
-      "type": "category",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -55,18 +55,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 136,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 136
     }
   ]
 }

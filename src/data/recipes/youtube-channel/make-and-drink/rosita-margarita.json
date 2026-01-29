@@ -6,7 +6,7 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "agave syrup",
+      "name": "Agave syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Bols Orange Curacao",
+      "name": "Bols orange curaçao",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
@@ -48,8 +48,8 @@
   ],
   "attributions": [
     {
-      "source": "Trader Sam's",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Trader Sam's"
     }
   ],
   "refs": [

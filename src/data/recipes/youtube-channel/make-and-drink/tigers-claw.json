@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Tiger's Claw",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "Orange Bitters",
+      "name": "Orange bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -11,7 +14,7 @@
       }
     },
     {
-      "name": "Cinnamon Syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -19,7 +22,7 @@
       }
     },
     {
-      "name": "Lime Juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -27,7 +30,7 @@
       }
     },
     {
-      "name": "Pineapple Juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -51,13 +54,10 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "footed pilsner",
   "attributions": [
     {
-      "source": "Erick Castro",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Erick Castro"
     }
   ],
   "refs": [

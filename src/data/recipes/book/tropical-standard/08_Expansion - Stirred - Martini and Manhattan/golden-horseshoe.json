@@ -38,14 +38,6 @@
       }
     },
     {
-      "name": "Contratto Bianco",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Mahón Xoriguer Gin",
       "type": "spirit",
       "quantity": {
@@ -60,13 +52,14 @@
         "amount": 0.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 139
+      "name": "Contratto Bianco",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -78,6 +71,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 139
     }
   ]
 }

@@ -1,25 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Clarified New York Sour",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Wild Turkey 101",
-      "type": "spirit",
-      "quantity": {
-        "amount": 10,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Simple Syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 4,
@@ -27,10 +14,26 @@
       }
     },
     {
-      "name": "Whole Milk",
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whole milk",
       "type": "other",
       "quantity": {
         "amount": 5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Wild Turkey 101",
+      "type": "spirit",
+      "quantity": {
+        "amount": 10,
         "unit": "oz"
       }
     },
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "instructions": [
     "Mix bourbon, simple syrup, and lemon juice in one container",
     "In another container, add whole milk",

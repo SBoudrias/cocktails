@@ -1,17 +1,36 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Plank Walk",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Shannon Mustipher's Navy Rum Blend",
-      "type": "spirit",
+      "name": "Papaya Syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Hamilton 151 Demerara Rum",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -27,33 +46,14 @@
       }
     },
     {
-      "name": "papaya syrup",
-      "type": "syrup",
+      "name": "Shannon Mustipher's Navy Rum Blend",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "snifter",
   "instructions": [
     "Combine all in a shaker with ice",
     "Flash blend with a stand or wand mixer for 15 seconds",

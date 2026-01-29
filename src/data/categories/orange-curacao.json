@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Orange Curaçao",
+  "categoryType": "liqueur",
   "description": "Curaçao is a liqueur flavored with the dried peel of the bitter orange variety laraha, a citrus fruit grown on the Caribbean island of Curaçao. Curaçao can be sold in numerous forms, though the most common are the orange-hued dry curaçao and blue curaçao, which is dyed bright blue.",
-  "parents": ["Orange liqueur"],
-  "categoryType": "liqueur"
+  "parents": ["Orange liqueur"]
 }

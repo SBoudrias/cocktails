@@ -6,10 +6,11 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Pineapple juice",
-      "type": "juice",
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 2,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -22,11 +23,10 @@
       }
     },
     {
-      "name": "Demerara syrup",
-      "brix": 66,
-      "type": "syrup",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 2,
         "unit": "oz"
       }
     },
@@ -39,7 +39,7 @@
       }
     },
     {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -47,22 +47,22 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 96,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "ZJrHKHLUhNg"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 96
+    },
+    {
+      "type": "youtube",
+      "videoId": "ZJrHKHLUhNg"
     }
   ]
 }

@@ -22,18 +22,10 @@
       }
     },
     {
-      "name": "Mezcal",
-      "type": "category",
+      "name": "Abuelita’s Hot Chocolate",
+      "type": "other",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Coffee Liqueur",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     },
@@ -46,10 +38,18 @@
       }
     },
     {
-      "name": "Abuelita’s Hot Chocolate",
-      "type": "other",
+      "name": "Mezcal",
+      "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coffee liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     }

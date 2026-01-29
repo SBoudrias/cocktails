@@ -14,11 +14,19 @@
       }
     },
     {
-      "name": "Peychaud's Bitters",
+      "name": "Peychaud's bitters",
       "type": "bitter",
       "quantity": {
         "amount": 2,
         "unit": "dash"
+      }
+    },
+    {
+      "name": "Red Fassionola",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
       }
     },
     {
@@ -34,14 +42,6 @@
       "type": "juice",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Red Fassionola",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -94,13 +94,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 233
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -110,6 +103,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 233
     }
   ]
 }

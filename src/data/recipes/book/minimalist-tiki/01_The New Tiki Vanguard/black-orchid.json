@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Black Orchid",
-  "glassware": "tiki",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 1,

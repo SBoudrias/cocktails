@@ -23,11 +23,11 @@
     },
     {
       "name": "Matcha Tea",
+      "type": "other",
       "technique": {
         "technique": "application",
         "method": "float"
       },
-      "type": "other",
       "quantity": {
         "amount": 1,
         "unit": "oz"

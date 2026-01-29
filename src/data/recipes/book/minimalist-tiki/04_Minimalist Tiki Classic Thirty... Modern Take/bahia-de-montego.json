@@ -14,11 +14,11 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Molasses",
+      "type": "other",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
@@ -30,15 +30,7 @@
       }
     },
     {
-      "name": "Molasses",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "banana syrup (Reàl)",
+      "name": "Banana Syrup (Reàl)",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -46,10 +38,10 @@
       }
     },
     {
-      "name": "Allspice Dram",
-      "type": "category",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -58,6 +50,14 @@
       "type": "category",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },

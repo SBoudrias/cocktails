@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Green Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Wormwood Bitters",
@@ -11,7 +14,7 @@
       }
     },
     {
-      "name": "Lime Juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -35,9 +38,6 @@
       }
     }
   ],
-  "preparation": "swizzled",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Fill a collins glass with crushed ice",
     "Add all ingredients",

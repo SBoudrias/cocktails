@@ -1,7 +1,34 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "The Boomerang",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Rittenhouse Rye",
       "type": "spirit",
@@ -17,35 +44,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Dolin Blanc Vermouth de Chambéry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": ["Express lemon oil over the drink", "garnish with lemon peel"],
   "refs": [
     {

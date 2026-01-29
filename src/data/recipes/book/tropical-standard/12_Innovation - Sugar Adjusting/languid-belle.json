@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "almond extract",
+      "name": "Almond extract",
       "type": "other",
       "quantity": {
         "amount": 6,
@@ -30,15 +30,7 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grenadine",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -51,6 +43,14 @@
       "quantity": {
         "amount": 1,
         "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
       }
     },
     {
@@ -94,17 +94,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 202
-    },
-    {
-      "type": "youtube",
-      "videoId": "8CSun3cBjpk"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -114,6 +103,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 202
+    },
+    {
+      "type": "youtube",
+      "videoId": "8CSun3cBjpk"
     }
   ]
 }

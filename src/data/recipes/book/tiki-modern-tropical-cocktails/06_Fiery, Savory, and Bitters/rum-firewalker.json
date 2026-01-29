@@ -6,10 +6,18 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Hampden Estate Rum Fire",
-      "type": "spirit",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 3,
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -22,18 +30,10 @@
       }
     },
     {
-      "name": "cinnamon syrup",
-      "type": "syrup",
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
+        "amount": 3,
         "unit": "oz"
       }
     }
@@ -43,22 +43,22 @@
     "Shake to chill, then pour into a Collins glass over cubed ice",
     "Garnish with a mint sprig and an edible flower"
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jason Alexander"
+    },
+    {
+      "relation": "bar",
+      "source": "Tacoma Cabana and Devil's Reef",
+      "location": "Tacoma, WA"
+    }
+  ],
   "refs": [
     {
       "type": "book",
       "title": "tiki-modern-tropical-cocktails",
       "page": 119
-    }
-  ],
-  "attributions": [
-    {
-      "source": "Jason Alexander",
-      "relation": "recipe author"
-    },
-    {
-      "source": "Tacoma Cabana and Devil's Reef",
-      "relation": "bar",
-      "location": "Tacoma, WA"
     }
   ]
 }

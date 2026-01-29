@@ -6,10 +6,10 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Tequila Reposado",
-      "type": "category",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -38,10 +38,10 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Tequila Reposado",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     }

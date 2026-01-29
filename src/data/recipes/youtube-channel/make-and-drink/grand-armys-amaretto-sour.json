@@ -1,17 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Grand Army's Amaretto Sour",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Lazzaroni Amaretto",
-      "type": "liqueur",
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "unit"
       }
     },
     {
-      "name": "Lemon Juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -27,17 +30,14 @@
       }
     },
     {
-      "name": "Egg White",
-      "type": "emulsifier",
+      "name": "Lazzaroni Amaretto",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
-        "unit": "unit"
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Add all ingredients to a shaker",
     "Dry shake for 10-15 seconds",
@@ -46,8 +46,8 @@
   ],
   "attributions": [
     {
-      "source": "Grand Army Bar",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Grand Army Bar"
     }
   ],
   "refs": [

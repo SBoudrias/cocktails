@@ -6,20 +6,12 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Novo Fogo Silver",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "lime",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "wedged"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 3,
         "unit": "unit"
@@ -31,6 +23,14 @@
       "quantity": {
         "amount": 1,
         "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Novo Fogo Silver",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

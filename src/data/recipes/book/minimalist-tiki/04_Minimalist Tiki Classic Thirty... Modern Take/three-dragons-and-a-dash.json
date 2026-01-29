@@ -30,14 +30,6 @@
       }
     },
     {
-      "name": "Soursop Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.25,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Pandan Syrup",
       "type": "syrup",
       "quantity": {
@@ -46,8 +38,24 @@
       }
     },
     {
+      "name": "Soursop Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Allspice Dram",
       "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pusser's Gunpowder Proof British Navy Rum",
+      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -66,14 +74,6 @@
       "type": "spirit",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pusser's Gunpowder Proof British Navy Rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     }

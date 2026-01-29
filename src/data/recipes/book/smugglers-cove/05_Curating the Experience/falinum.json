@@ -6,6 +6,14 @@
   "glassware": "tiki",
   "ingredients": [
     {
+      "name": "Orange bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
@@ -16,14 +24,6 @@
     {
       "name": "Cream of coconut",
       "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Seltzer",
-      "type": "soda",
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -46,19 +46,12 @@
       }
     },
     {
-      "name": "Orange bitters",
-      "type": "category",
+      "name": "Seltzer",
+      "type": "soda",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 144,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -66,6 +59,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 144
     }
   ]
 }

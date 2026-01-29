@@ -6,6 +6,14 @@
   "glassware": "highball",
   "ingredients": [
     {
+      "name": "Mango Boba",
+      "type": "other",
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
+    },
+    {
       "name": "Mango Habenero Syrup",
       "type": "syrup",
       "quantity": {
@@ -14,7 +22,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -35,14 +43,6 @@
       "quantity": {
         "amount": 2,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Mango Boba",
-      "type": "other",
-      "quantity": {
-        "amount": 10,
-        "unit": "unit"
       }
     }
   ],

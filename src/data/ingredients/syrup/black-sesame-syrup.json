@@ -6,17 +6,17 @@
     {
       "name": "black sesame seeds",
       "type": "other",
-      "quantity": {
-        "amount": 2,
-        "unit": "cup"
-      },
       "technique": {
         "technique": "temperature",
         "method": "roasted"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
       }
     },
     {
-      "name": "water",
+      "name": "Water",
       "type": "other",
       "quantity": {
         "amount": 2,
@@ -32,7 +32,7 @@
       }
     },
     {
-      "name": "salt",
+      "name": "Salt",
       "type": "other",
       "quantity": {
         "amount": 1,

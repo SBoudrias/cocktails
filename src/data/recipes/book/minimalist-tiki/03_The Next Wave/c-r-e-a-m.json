@@ -1,23 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "C.R.E.A.M.",
-  "glassware": "tiki",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },

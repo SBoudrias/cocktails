@@ -1,16 +1,32 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Paraiso Eterno",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 4,
   "ingredients": [
     {
-      "name": "Diplomatico Planas",
-      "type": "spirit",
-      "technique": {
-        "technique": "infusion",
-        "agent": "anise"
-      },
+      "name": "Coconut water",
+      "type": "other",
       "quantity": {
-        "amount": 8.5,
+        "amount": 3.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 4.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 6,
         "unit": "oz"
       }
     },
@@ -23,34 +39,18 @@
       }
     },
     {
-      "name": "vanilla syrup",
-      "type": "syrup",
+      "name": "Diplomatico Planas",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "anise"
+      },
       "quantity": {
-        "amount": 4.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "coconut water",
-      "type": "other",
-      "quantity": {
-        "amount": 3.33,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 6,
+        "amount": 8.5,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "punch",
-  "servings": 4,
   "instructions": [
     "Combine all ingredients in a nonreactive container and stir to mix",
     "Decant over ice into a Tiki bowl or serving vessel of your choice",

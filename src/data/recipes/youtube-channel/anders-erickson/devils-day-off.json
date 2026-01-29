@@ -6,10 +6,10 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Grapefruit juice",
-      "type": "juice",
+      "name": "Agave syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -22,10 +22,10 @@
       }
     },
     {
-      "name": "Agave syrup",
-      "type": "syrup",
+      "name": "Grapefruit juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 2,
         "unit": "oz"
       }
     },

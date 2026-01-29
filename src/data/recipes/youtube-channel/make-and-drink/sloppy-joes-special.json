@@ -1,13 +1,24 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Sloppy Joe's Special",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "grenadine",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "tsp"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     },
     {
@@ -19,14 +30,6 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "port",
       "type": "category",
       "quantity": {
@@ -35,7 +38,7 @@
       }
     },
     {
-      "name": "cognac",
+      "name": "Cognac",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -43,13 +46,10 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "attributions": [
     {
-      "source": "Sloppy Joe's",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Sloppy Joe's"
     }
   ],
   "refs": [

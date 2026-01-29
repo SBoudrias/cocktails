@@ -1,33 +1,20 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Sleeping Lotus",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "London Dry Gin",
-      "type": "category",
+      "name": "Mint leaves",
+      "type": "other",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 10,
+        "unit": "unit"
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orange bitters",
+      "name": "Orange bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -35,17 +22,30 @@
       }
     },
     {
-      "name": "mint leaves",
-      "type": "other",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 10,
-        "unit": "unit"
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "London Dry Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Sierra Kirk",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Sierra Kirk"
     },
     {
-      "source": "Hale Pele",
       "relation": "bar",
+      "source": "Hale Pele",
       "location": "Portland, OR"
     }
   ],

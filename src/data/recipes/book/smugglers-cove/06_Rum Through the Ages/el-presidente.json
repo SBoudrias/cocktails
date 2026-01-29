@@ -7,19 +7,11 @@
   "ingredients": [
     {
       "name": "Grenadine",
-      "brix": 50,
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "tsp"
-      }
-    },
-    {
-      "name": "Dry vermouth",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
       }
     },
     {
@@ -31,7 +23,15 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
+      "name": "Dry vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -39,18 +39,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 172,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 172
     }
   ]
 }

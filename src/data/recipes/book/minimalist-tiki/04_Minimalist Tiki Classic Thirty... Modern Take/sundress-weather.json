@@ -1,18 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Sundress Weather",
-  "glassware": "old fashioned",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Salt",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "pinch"
-      }
-    },
     {
       "name": "Lemon juice",
       "type": "juice",
@@ -51,6 +43,14 @@
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
       }
     }
   ],

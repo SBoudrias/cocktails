@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Transatlantic Orbit",
-  "glassware": "tiki",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -22,32 +22,32 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "apricot liqueur",
-      "type": "category",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "cinnamon syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apricot liqueur",
+      "type": "category",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

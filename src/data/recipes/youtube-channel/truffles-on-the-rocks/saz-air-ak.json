@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Saz-Air-Ak",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Michter's US*1 Straight Rye Whiskey",
-      "type": "spirit",
+      "name": "Absinthe",
+      "type": "category",
       "quantity": {
-        "amount": 1.75,
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "lemon oleosaccharum",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.16,
         "unit": "oz"
       }
     },
@@ -19,19 +30,11 @@
       }
     },
     {
-      "name": "lemon oleosaccharum",
-      "type": "syrup",
+      "name": "Michter's US*1 Straight Rye Whiskey",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.16,
+        "amount": 1.75,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Absinthe",
-      "type": "category",
-      "quantity": {
-        "amount": 4,
-        "unit": "dash"
       }
     },
     {
@@ -47,9 +50,6 @@
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "Stir all ingredients except absinthe air with ice",
     "Strain into an old fashioned glass over fresh ice",

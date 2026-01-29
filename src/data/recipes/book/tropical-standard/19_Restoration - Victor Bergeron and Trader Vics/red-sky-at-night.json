@@ -30,34 +30,26 @@
       }
     },
     {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Egg white",
-      "type": "emulsifier",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grenadine",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "honey syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -68,13 +60,14 @@
         "amount": 2,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 261
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -86,6 +79,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 261
     }
   ]
 }

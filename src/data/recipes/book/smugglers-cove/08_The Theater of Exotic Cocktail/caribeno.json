@@ -6,19 +6,19 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Coconut water",
-      "type": "other",
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 4,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Demerara syrup",
-      "brix": 66,
-      "type": "syrup",
+      "name": "Coconut water",
+      "type": "other",
       "quantity": {
-        "amount": 0.5,
+        "amount": 4,
         "unit": "oz"
       }
     },
@@ -31,18 +31,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 249,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 249
     }
   ]
 }

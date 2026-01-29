@@ -1,18 +1,13 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Kamaʻāina",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Lemon Juice",
+      "name": "Lemon juice",
       "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Triple Sec",
-      "type": "category",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -27,10 +22,10 @@
       }
     },
     {
-      "name": "7 Up",
-      "type": "soda",
+      "name": "Triple Sec",
+      "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -41,15 +36,20 @@
         "amount": 1,
         "unit": "oz"
       }
+    },
+    {
+      "name": "7 Up",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "attributions": [
     {
-      "source": "Trader Vic's Bartenders Guide",
-      "relation": "book"
+      "relation": "book",
+      "source": "Trader Vic's Bartenders Guide"
     }
   ],
   "refs": [

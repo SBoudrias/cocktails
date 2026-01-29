@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "The Bainbridge",
-  "glassware": "hurricane",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,

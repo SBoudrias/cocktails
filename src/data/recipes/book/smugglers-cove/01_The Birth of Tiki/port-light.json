@@ -6,8 +6,26 @@
   "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "Egg white",
-      "type": "emulsifier",
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -22,37 +40,12 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Honey syrup",
-      "brix": 50,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Passion fruit syrup",
-      "brix": 66,
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 44,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -60,6 +53,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 44
     }
   ]
 }

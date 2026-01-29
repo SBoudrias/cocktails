@@ -1,12 +1,12 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "London Dry Gin",
+  "categoryType": "spirit",
   "parents": ["Dry Gin"],
   "refs": [
     {
       "type": "youtube",
       "videoId": "6SlljhQsjDY"
     }
-  ],
-  "categoryType": "spirit"
+  ]
 }

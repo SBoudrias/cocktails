@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "lime punch syrup",
+      "name": "Lime punch syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Chairman's Reserve Rum",
+      "name": "Chairman's Reserve rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -78,13 +78,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 212
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -94,6 +87,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 212
     }
   ]
 }

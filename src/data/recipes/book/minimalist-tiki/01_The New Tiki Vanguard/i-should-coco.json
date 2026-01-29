@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "I Should Coco",
-  "glassware": "snifter",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
       "name": "Lemon juice",
@@ -22,6 +22,14 @@
       }
     },
     {
+      "name": "Four Roses Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Sweet vermouth",
       "type": "category",
       "technique": {
@@ -30,14 +38,6 @@
       },
       "quantity": {
         "amount": 3,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Four Roses Bourbon",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
         "unit": "oz"
       }
     },

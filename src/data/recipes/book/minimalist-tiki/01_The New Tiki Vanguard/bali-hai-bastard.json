@@ -1,28 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Bali Hai Bastard",
-  "glassware": "old fashioned",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "demerara syrup",
+      "name": "Demerara syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -30,7 +14,7 @@
       }
     },
     {
-      "name": "passion fruit purée",
+      "name": "Passion fruit purée",
       "type": "puree",
       "quantity": {
         "amount": 0.5,
@@ -38,8 +22,16 @@
       }
     },
     {
-      "name": "Cutwater Bali Hai Tiki Gold Pineapple Rum",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
@@ -58,6 +50,14 @@
       "type": "spirit",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cutwater Bali Hai Tiki Gold Pineapple Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }

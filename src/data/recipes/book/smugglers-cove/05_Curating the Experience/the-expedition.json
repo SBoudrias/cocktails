@@ -6,17 +6,18 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
       "name": "Cinnamon syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -24,27 +25,18 @@
     },
     {
       "name": "Honey syrup",
-      "brix": 50,
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Vanilla syrup",
-      "brix": 66,
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Seltzer",
-      "type": "soda",
-      "quantity": {
-        "amount": 2,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -57,7 +49,15 @@
       }
     },
     {
-      "name": "Black blended rum",
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -65,23 +65,12 @@
       }
     },
     {
-      "name": "Whiskey (Bourbon)",
-      "type": "category",
+      "name": "Seltzer",
+      "type": "soda",
       "quantity": {
-        "amount": 1,
+        "amount": 2,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 140,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "suNHnelA4xc"
     }
   ],
   "attributions": [
@@ -89,6 +78,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 140
+    },
+    {
+      "type": "youtube",
+      "videoId": "suNHnelA4xc"
     }
   ]
 }

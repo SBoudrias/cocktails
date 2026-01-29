@@ -1,17 +1,24 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Ti' Punch",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Damoiseau Pure Cane 110 Proof",
-      "type": "spirit",
+      "name": "lime",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "disc"
+      },
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "unit"
       }
     },
     {
-      "name": "cane syrup",
+      "name": "Cane syrup",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -19,21 +26,14 @@
       }
     },
     {
-      "name": "lime",
-      "type": "fruit",
+      "name": "Damoiseau Pure Cane 110 Proof",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      },
-      "technique": {
-        "technique": "cut",
-        "type": "disc"
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "With a sharp paring knife, cut a disc of skin from the lime about the size of a silver dollar, taking as little of the pith and actual fruit as possible",
     "In a rocks glass, muddle the lime disk with cane or simple syrup",

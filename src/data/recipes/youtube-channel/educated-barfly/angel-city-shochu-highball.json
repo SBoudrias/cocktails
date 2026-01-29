@@ -6,10 +6,26 @@
   "glassware": "highball",
   "ingredients": [
     {
-      "name": "Shochu",
-      "type": "category",
+      "name": "Saline",
+      "type": "other",
       "quantity": {
-        "amount": 1.5,
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -22,27 +38,11 @@
       }
     },
     {
-      "name": "Lime Juice",
-      "type": "juice",
+      "name": "Shochu",
+      "type": "category",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Honey Syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Saline",
-      "type": "other",
-      "quantity": {
-        "amount": 5,
-        "unit": "drop"
       }
     },
     {

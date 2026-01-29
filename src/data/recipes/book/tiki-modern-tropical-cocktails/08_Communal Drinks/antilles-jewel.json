@@ -1,28 +1,24 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Antilles Jewel",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 10,
   "ingredients": [
     {
-      "name": "Mount Gay Black Barrel",
-      "type": "spirit",
-      "quantity": {
-        "amount": 17,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Hamilton 86 Demerara Rum",
-      "type": "spirit",
+      "name": "Coconut water",
+      "type": "other",
       "quantity": {
         "amount": 8.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Tempus Fugit Crème de Banane",
-      "type": "liqueur",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 6.75,
+        "amount": 12,
         "unit": "oz"
       }
     },
@@ -35,26 +31,30 @@
       }
     },
     {
-      "name": "coconut water",
-      "type": "other",
+      "name": "Tempus Fugit crème de banane",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 6.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 86 Demerara Rum",
+      "type": "spirit",
       "quantity": {
         "amount": 8.5,
         "unit": "oz"
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Mount Gay Black Barrel",
+      "type": "spirit",
       "quantity": {
-        "amount": 12,
+        "amount": 17,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "punch",
-  "servings": 10,
   "instructions": [
     "Combine all ingredients and stir to mix",
     "Keep at least 4 hours or up to overnight in a covered container in the refrigerator",

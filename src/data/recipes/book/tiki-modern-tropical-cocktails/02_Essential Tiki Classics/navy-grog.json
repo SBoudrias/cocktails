@@ -1,7 +1,34 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Navy Grog",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Denizen Aged White",
       "type": "spirit",
@@ -27,31 +54,7 @@
       }
     },
     {
-      "name": "honey syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "seltzer",
+      "name": "Seltzer",
       "type": "soda",
       "quantity": {
         "amount": 0.75,
@@ -59,9 +62,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine all ingredients in a shaker with cubed ice",
     "Shake and strain into a chilled rocks glass over an ice cone",

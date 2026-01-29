@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
@@ -42,6 +34,14 @@
       "type": "syrup",
       "quantity": {
         "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -70,13 +70,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 81
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -86,6 +79,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 81
     }
   ]
 }

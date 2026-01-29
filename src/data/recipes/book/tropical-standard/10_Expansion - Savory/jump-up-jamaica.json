@@ -39,11 +39,11 @@
     },
     {
       "name": "Wray & Nephew white overproof",
+      "type": "spirit",
       "technique": {
         "technique": "infusion",
         "agent": "serrano pepper"
       },
-      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -59,30 +59,23 @@
     },
     {
       "name": "Rum",
+      "type": "category",
       "technique": {
         "technique": "infusion",
         "agent": "sorrel"
       },
-      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "seltzer",
+      "name": "Seltzer",
       "type": "soda",
       "quantity": {
         "amount": 3,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 167
     }
   ],
   "attributions": [
@@ -94,6 +87,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 167
     }
   ]
 }

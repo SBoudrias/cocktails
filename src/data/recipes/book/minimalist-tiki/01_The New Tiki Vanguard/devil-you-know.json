@@ -1,23 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Devil You Know",
-  "glassware": "tiki",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     },

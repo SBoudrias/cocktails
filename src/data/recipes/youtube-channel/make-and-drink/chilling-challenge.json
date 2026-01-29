@@ -6,14 +6,6 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Pernod",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
@@ -22,7 +14,15 @@
       }
     },
     {
-      "name": "ginger syrup",
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "honey syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -64,8 +64,8 @@
   ],
   "attributions": [
     {
-      "source": "Trader Sam's",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Trader Sam's"
     }
   ],
   "refs": [

@@ -13,15 +13,6 @@
         "unit": "drop"
       }
     },
-
-    {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Guava syrup",
       "type": "syrup",
@@ -39,8 +30,24 @@
       }
     },
     {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "John D. Taylor's Velvet Falernum",
       "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -51,14 +58,6 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Hampden Estate Rum Fire",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },

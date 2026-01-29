@@ -6,30 +6,6 @@
   "glassware": "highball",
   "ingredients": [
     {
-      "name": "orange juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "strawberry syrup",
       "type": "syrup",
       "quantity": {
@@ -38,7 +14,7 @@
       }
     },
     {
-      "name": "raspberry syrup",
+      "name": "Raspberry syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -46,7 +22,31 @@
       }
     },
     {
-      "name": "rum",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -62,7 +62,7 @@
       }
     },
     {
-      "name": "mezcal",
+      "name": "Mezcal",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -72,8 +72,8 @@
   ],
   "attributions": [
     {
-      "source": "Rayo Cocktail Bar",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Rayo Cocktail Bar"
     }
   ],
   "refs": [

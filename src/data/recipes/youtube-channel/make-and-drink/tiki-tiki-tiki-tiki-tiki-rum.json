@@ -6,7 +6,7 @@
   "glassware": "snifter",
   "ingredients": [
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
+      "name": "Cream of coconut",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "cream of coconut",
-      "type": "syrup",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 2,
         "unit": "oz"
       }
     },
@@ -40,8 +40,8 @@
   ],
   "attributions": [
     {
-      "source": "The Enchanted Tiki Room",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "The Enchanted Tiki Room"
     }
   ],
   "refs": [

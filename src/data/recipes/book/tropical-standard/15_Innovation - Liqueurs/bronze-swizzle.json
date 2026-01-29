@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Demerara syrup",
       "type": "syrup",
       "quantity": {
@@ -38,7 +30,15 @@
       }
     },
     {
-      "name": "lime punch syrup",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime punch syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -70,13 +70,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 231
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -86,6 +79,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 231
     }
   ]
 }

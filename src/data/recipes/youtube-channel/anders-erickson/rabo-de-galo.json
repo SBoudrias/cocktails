@@ -6,10 +6,10 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Novo Fogo Gold",
-      "type": "spirit",
+      "name": "Cynar",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -22,10 +22,10 @@
       }
     },
     {
-      "name": "Cynar",
-      "type": "liqueur",
+      "name": "Novo Fogo Gold",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

@@ -1,7 +1,42 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Fog Cutter (The Brother Cleve Remix)",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
+    {
+      "name": "sesame syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "calamansi juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Crème de Noyaux",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hayman's Royal Dock Navy Strength Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Santa Teresa 1796 Rum",
       "type": "spirit",
@@ -27,38 +62,6 @@
       }
     },
     {
-      "name": "Hayman's Royal Dock Navy Strength Gin",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tempus Fugit Crème de Noyaux",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "sesame syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "calamansi juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Lustau East India Solera Sherry",
       "type": "liqueur",
       "technique": {
@@ -71,9 +74,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "snifter",
   "instructions": [
     "Shake with ice and pour into a large snifter or Tiki mug",
     "Float Lustau East India Solera Sherry or Cynar 70 on top",

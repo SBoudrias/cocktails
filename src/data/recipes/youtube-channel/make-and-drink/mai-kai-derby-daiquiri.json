@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -40,12 +40,12 @@
   ],
   "attributions": [
     {
-      "source": "Mariano Licudine",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Mariano Licudine"
     },
     {
-      "source": "Mai-Kai",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Mai-Kai"
     }
   ],
   "refs": [

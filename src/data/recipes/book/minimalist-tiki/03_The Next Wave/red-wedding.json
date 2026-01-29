@@ -6,7 +6,7 @@
   "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,

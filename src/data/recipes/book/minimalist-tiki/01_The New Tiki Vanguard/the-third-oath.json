@@ -1,20 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "The Third Oath",
-  "glassware": "snifter",
   "preparation": "flash blended",
   "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "absinthe",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "aromatic bitters",
+      "name": "Aromatic Bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -22,7 +14,23 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -30,10 +38,10 @@
       }
     },
     {
-      "name": "grapefruit juice",
-      "type": "juice",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -42,14 +50,6 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1.5,
         "unit": "oz"
       }
     },

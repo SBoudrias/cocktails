@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Strangers in Paradise",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "La Favorite Coeur de Canne",
-      "type": "spirit",
+      "name": "Macadamia nut orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -35,18 +46,10 @@
       }
     },
     {
-      "name": "Macadamia nut orgeat",
-      "type": "category",
+      "name": "La Favorite Coeur de Canne",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -63,9 +66,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all but fernet in a shaker with cubed ice",
     "Shake and pour all contents into a skull or tall tiki mug",

@@ -38,6 +38,14 @@
       }
     },
     {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Pierre Ferrand Dry Curaçao",
       "type": "liqueur",
       "quantity": {
@@ -60,14 +68,17 @@
         "amount": 2,
         "unit": "oz"
       }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Garret Richard"
     },
     {
-      "name": "water",
-      "type": "other",
-      "quantity": {
-        "amount": 1.25,
-        "unit": "oz"
-      }
+      "relation": "bar",
+      "source": "Sunken Harbor Club",
+      "location": "Brooklyn, NY"
     }
   ],
   "refs": [
@@ -80,17 +91,6 @@
       "type": "youtube",
       "videoId": "-0erGDQ0-Sc",
       "start": 166
-    }
-  ],
-  "attributions": [
-    {
-      "relation": "recipe author",
-      "source": "Garret Richard"
-    },
-    {
-      "relation": "bar",
-      "source": "Sunken Harbor Club",
-      "location": "Brooklyn, NY"
     }
   ]
 }

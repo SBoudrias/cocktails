@@ -6,17 +6,9 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Cinnamon syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -24,10 +16,18 @@
     },
     {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -40,7 +40,7 @@
       }
     },
     {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -48,18 +48,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 93,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 93
     }
   ]
 }

@@ -6,20 +6,24 @@
   "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Four Roses Bourbon",
-      "type": "spirit",
-      "technique": {
-        "technique": "fat-wash",
-        "fat": "coconut oil"
-      },
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
       "name": "Lemongrass Syrup",
       "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -34,19 +38,15 @@
       }
     },
     {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura Bitters",
-      "type": "bitter",
+      "name": "Four Roses Bourbon",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "coconut oil"
+      },
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],

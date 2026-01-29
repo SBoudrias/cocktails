@@ -6,10 +6,10 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.17,
         "unit": "oz"
       }
     },
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "grapefruit juice",
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 0.33,
@@ -38,10 +38,10 @@
       }
     },
     {
-      "name": "cinnamon syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.17,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -70,6 +70,14 @@
       }
     },
     {
+      "name": "Hayman's Royal Dock Navy Strength Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Macchu Pisco",
       "type": "spirit",
       "quantity": {
@@ -84,14 +92,6 @@
         "amount": 1.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Hayman's Royal Dock Navy Strength Gin",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
     }
   ],
   "instructions": [
@@ -102,8 +102,8 @@
   ],
   "attributions": [
     {
-      "source": "Zac Overman",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Zac Overman"
     }
   ],
   "refs": [

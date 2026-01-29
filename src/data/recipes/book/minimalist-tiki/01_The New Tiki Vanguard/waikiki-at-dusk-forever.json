@@ -72,12 +72,12 @@
   ],
   "attributions": [
     {
-      "source": "Shelby Allison",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Shelby Allison"
     },
     {
-      "source": "Erin Hayes",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Erin Hayes"
     }
   ],
   "refs": [

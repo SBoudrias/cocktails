@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Clover Club",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Raspberries",
+      "name": "raspberries",
       "type": "fruit",
       "quantity": {
         "amount": 5,
@@ -11,11 +14,19 @@
       }
     },
     {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "brix": 60,
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -36,15 +47,7 @@
       }
     },
     {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "egg white",
+      "name": "Egg white",
       "type": "emulsifier",
       "quantity": {
         "amount": 0.5,
@@ -52,9 +55,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Add raspberries and simple syrup to shaker tin",
     "Muddle raspberries",

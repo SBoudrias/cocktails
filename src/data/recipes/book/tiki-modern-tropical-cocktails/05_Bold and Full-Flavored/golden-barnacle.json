@@ -6,15 +6,7 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.66,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -22,7 +14,7 @@
       }
     },
     {
-      "name": "honey syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -30,10 +22,18 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.66,
         "unit": "oz"
       }
     },
@@ -65,8 +65,8 @@
   "refs": [
     {
       "type": "book",
-      "page": 101,
-      "title": "tiki-modern-tropical-cocktails"
+      "title": "tiki-modern-tropical-cocktails",
+      "page": 101
     },
     {
       "type": "youtube",

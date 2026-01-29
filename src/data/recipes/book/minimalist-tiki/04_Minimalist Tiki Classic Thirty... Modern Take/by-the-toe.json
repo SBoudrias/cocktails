@@ -1,10 +1,26 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "By the Toe",
-  "glassware": "collins",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Lemon juice",
       "type": "juice",
@@ -18,22 +34,6 @@
       "type": "juice",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },

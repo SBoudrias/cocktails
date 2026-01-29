@@ -6,11 +6,11 @@
   "glassware": "punch",
   "ingredients": [
     {
-      "name": "Orange juice",
-      "type": "juice",
+      "name": "Herbstura",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
@@ -23,23 +23,23 @@
     },
     {
       "name": "Honey syrup",
-      "brix": 50,
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Black blended rum",
-      "type": "category",
+      "name": "Orange juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1.25,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Black blended overproof rum",
+      "name": "Black blended Overproof Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -55,19 +55,12 @@
       }
     },
     {
-      "name": "Herbstura",
-      "type": "bitter",
+      "name": "Black Blended Rum",
+      "type": "category",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 1.25,
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 68,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -75,6 +68,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 68
     }
   ]
 }

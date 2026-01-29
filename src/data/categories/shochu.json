@@ -1,11 +1,11 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Shochu",
+  "categoryType": "spirit",
   "refs": [
     {
       "type": "youtube",
       "videoId": "3tAqPyJseHg"
     }
-  ],
-  "categoryType": "spirit"
+  ]
 }

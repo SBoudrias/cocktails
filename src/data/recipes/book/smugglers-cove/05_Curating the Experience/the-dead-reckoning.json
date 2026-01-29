@@ -6,10 +6,18 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Seltzer",
-      "type": "soda",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -30,14 +38,6 @@
       }
     },
     {
-      "name": "Maple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Brandy (Vanilla)",
       "type": "category",
       "quantity": {
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -62,19 +62,12 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Seltzer",
+      "type": "soda",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 142,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -82,6 +75,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 142
     }
   ]
 }

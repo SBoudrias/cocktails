@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Amaro (Fernet)",
-  "parents": ["Amaro"],
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "parents": ["Amaro"]
 }

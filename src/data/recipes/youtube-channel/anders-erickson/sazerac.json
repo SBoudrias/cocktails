@@ -6,10 +6,35 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Sazerac Straight Rye Whiskey",
+      "name": "Nouvelle Orleans Absinthe Superieure",
       "type": "spirit",
       "quantity": {
-        "amount": 1.5,
+        "amount": 1,
+        "unit": "spray"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -22,36 +47,11 @@
       }
     },
     {
-      "name": "simple syrup",
-      "type": "syrup",
-      "brix": 60,
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Peychaud's Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 3,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Angostura Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Nouvelle Orleans Absinthe Superieure",
+      "name": "Sazerac Straight Rye Whiskey",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "spray"
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],

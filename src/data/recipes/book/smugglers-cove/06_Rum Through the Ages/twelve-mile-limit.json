@@ -15,18 +15,10 @@
     },
     {
       "name": "Grenadine",
-      "brix": 50,
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended lightly aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
         "unit": "oz"
       }
     },
@@ -45,13 +37,14 @@
         "amount": 0.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 172,
-      "title": "smugglers-cove"
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -63,6 +56,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 172
     }
   ]
 }

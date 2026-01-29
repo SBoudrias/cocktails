@@ -6,14 +6,6 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Green Chartreuse",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Drambuie",
       "type": "liqueur",
       "quantity": {
@@ -22,7 +14,15 @@
       }
     },
     {
-      "name": "Rhum agricole blanc",
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum Agricole Blanc",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -30,18 +30,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 206,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 206
     }
   ]
 }

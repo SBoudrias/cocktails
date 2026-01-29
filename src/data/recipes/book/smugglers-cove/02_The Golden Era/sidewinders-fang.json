@@ -23,10 +23,26 @@
     },
     {
       "name": "Passion fruit syrup",
-      "brix": 66,
       "type": "category",
+      "brix": 66,
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -37,29 +53,6 @@
         "amount": 3,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Blended aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Black blended rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 62,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -67,6 +60,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 62
     }
   ]
 }

@@ -6,6 +6,14 @@
   "glassware": "punch",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -22,7 +30,7 @@
       }
     },
     {
-      "name": "St. Elizabeth allspice Dram",
+      "name": "St-Elizabeth Allspice Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
@@ -38,14 +46,6 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    },
-    {
       "name": "Nutmeg",
       "type": "spice",
       "quantity": {
@@ -55,18 +55,18 @@
     }
   ],
   "instructions": ["Multiply the ingredients by the number of guests."],
-  "refs": [
-    {
-      "type": "book",
-      "page": 312,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 312
     }
   ]
 }

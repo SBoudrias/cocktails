@@ -1,31 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Zombie",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
-    {
-      "name": "Scarlet Ibis Trinidad Rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Hamilton Jamaican Pot Still Black",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon Hart 151",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Pernod",
       "type": "spirit",
@@ -35,15 +14,15 @@
       }
     },
     {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
-      "name": "grenadine",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -67,7 +46,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -75,17 +54,38 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon Hart 151",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Scarlet Ibis Trinidad Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Combine all ingredients in a shaker with cubed ice",
     "Shake and strain into a Collins glass or Tiki vessel of your choice over crushed ice",

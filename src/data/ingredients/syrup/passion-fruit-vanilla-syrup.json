@@ -4,7 +4,7 @@
   "type": "syrup",
   "ingredients": [
     {
-      "name": "water",
+      "name": "Water",
       "type": "other",
       "quantity": {
         "amount": 2,
@@ -12,7 +12,7 @@
       }
     },
     {
-      "name": "passion fruit purée",
+      "name": "Passion fruit purée",
       "type": "puree",
       "quantity": {
         "amount": 2.25,
@@ -20,7 +20,7 @@
       }
     },
     {
-      "name": "vanilla bean",
+      "name": "Vanilla bean",
       "type": "spice",
       "quantity": {
         "amount": 0.5,

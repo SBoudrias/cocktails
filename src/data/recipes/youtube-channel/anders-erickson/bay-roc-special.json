@@ -6,10 +6,10 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Appleton 12",
-      "type": "spirit",
+      "name": "Jasper's Mix",
+      "type": "syrup",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -22,10 +22,10 @@
       }
     },
     {
-      "name": "Jasper's Mix",
-      "type": "syrup",
+      "name": "Appleton 12",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

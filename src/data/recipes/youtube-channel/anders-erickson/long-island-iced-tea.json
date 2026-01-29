@@ -6,6 +6,23 @@
   "glassware": "highball",
   "ingredients": [
     {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Union Horse Distilling Co. Rider Vodka",
       "type": "spirit",
       "quantity": {
@@ -42,23 +59,6 @@
       "type": "liqueur",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Demerara syrup",
-      "type": "syrup",
-      "brix": 66,
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },

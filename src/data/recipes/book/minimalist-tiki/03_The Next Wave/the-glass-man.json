@@ -6,14 +6,6 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Passion fruit purée",
       "type": "puree",
       "quantity": {
@@ -22,10 +14,18 @@
       }
     },
     {
-      "name": "orgeat",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },

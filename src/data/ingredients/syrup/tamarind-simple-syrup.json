@@ -12,7 +12,7 @@
       }
     },
     {
-      "name": "water",
+      "name": "Water",
       "type": "other",
       "quantity": {
         "amount": 1,
@@ -20,7 +20,7 @@
       }
     },
     {
-      "name": "Tamarind Concentrate",
+      "name": "Tamarind concentrate",
       "type": "other",
       "quantity": {
         "amount": 3,

@@ -14,15 +14,15 @@
       }
     },
     {
-      "name": "Vodka",
-      "type": "category",
+      "name": "Amaro Averna",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Coffee Liqueur",
+      "name": "Coffee liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -30,10 +30,10 @@
       }
     },
     {
-      "name": "Amaro Averna",
-      "type": "liqueur",
+      "name": "Vodka",
+      "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     }

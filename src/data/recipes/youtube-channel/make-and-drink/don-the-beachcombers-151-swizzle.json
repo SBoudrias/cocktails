@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -30,9 +30,9 @@
       }
     },
     {
-      "name": "simple syrup",
-      "brix": 66,
+      "name": "Simple syrup",
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -49,12 +49,12 @@
   ],
   "attributions": [
     {
-      "source": "Don the Beachcomber",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Don the Beachcomber"
     },
     {
-      "source": "Beachbum Berry Remixed",
-      "relation": "book"
+      "relation": "book",
+      "source": "Beachbum Berry Remixed"
     }
   ],
   "refs": [

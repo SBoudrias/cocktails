@@ -14,15 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -30,10 +22,10 @@
       }
     },
     {
-      "name": "Falernum",
-      "type": "category",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -42,6 +34,14 @@
       "type": "category",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -84,8 +84,8 @@
   ],
   "attributions": [
     {
-      "source": "Oriol Elias",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Oriol Elias"
     }
   ],
   "refs": [

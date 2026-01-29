@@ -23,10 +23,10 @@
     },
     {
       "name": "Orange juice",
+      "type": "juice",
       "technique": {
         "technique": "acid-adjustment"
       },
-      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -73,13 +73,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 174
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -89,6 +82,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 174
     }
   ]
 }

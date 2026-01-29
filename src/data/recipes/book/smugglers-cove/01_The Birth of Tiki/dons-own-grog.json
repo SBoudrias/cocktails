@@ -6,29 +6,37 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Grenadine",
+      "type": "syrup",
+      "brix": 50,
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Grenadine",
-      "brix": 50,
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 0.75,
+        "unit": "oz"
       }
     },
     {
@@ -40,15 +48,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -56,7 +56,7 @@
       }
     },
     {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -64,23 +64,12 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Blended Aged Rum",
+      "type": "category",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 40,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "8ocVfDO-Xfk"
     }
   ],
   "attributions": [
@@ -88,6 +77,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 40
+    },
+    {
+      "type": "youtube",
+      "videoId": "8ocVfDO-Xfk"
     }
   ]
 }

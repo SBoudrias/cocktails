@@ -38,18 +38,18 @@
       }
     },
     {
-      "name": "Falernum",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Mezcal",
       "type": "category",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -77,8 +77,8 @@
   ],
   "attributions": [
     {
-      "source": "Shea Hogan",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Shea Hogan"
     },
     {
       "relation": "bar",

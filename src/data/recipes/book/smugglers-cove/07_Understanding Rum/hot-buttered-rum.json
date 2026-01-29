@@ -14,27 +14,20 @@
       }
     },
     {
-      "name": "Blended aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Hot water",
       "type": "other",
       "quantity": {
         "amount": 6,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 202,
-      "title": "smugglers-cove"
+      "name": "Blended Aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -42,6 +35,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 202
     }
   ]
 }

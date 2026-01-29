@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Rongorongo",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -59,15 +62,6 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "footed pilsner",
-  "refs": [
-    {
-      "type": "youtube",
-      "videoId": "vTukpJSpWIE"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -77,6 +71,12 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vTukpJSpWIE"
     }
   ]
 }

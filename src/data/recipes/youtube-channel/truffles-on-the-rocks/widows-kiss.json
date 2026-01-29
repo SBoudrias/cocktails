@@ -6,11 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Calvados",
-      "type": "category",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -30,11 +30,11 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Calvados",
+      "type": "category",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],

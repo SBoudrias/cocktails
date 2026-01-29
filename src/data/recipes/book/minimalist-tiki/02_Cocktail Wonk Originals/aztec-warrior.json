@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Aztec Warrior",
-  "glassware": "tiki",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -11,6 +11,15 @@
       "quantity": {
         "amount": 2,
         "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
       }
     },
     {
@@ -26,15 +35,6 @@
       "type": "juice",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cinnamon syrup",
-      "type": "syrup",
-      "brix": 66,
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },

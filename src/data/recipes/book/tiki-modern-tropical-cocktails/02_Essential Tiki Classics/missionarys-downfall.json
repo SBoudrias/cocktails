@@ -1,21 +1,16 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Missionary's Downfall",
+  "preparation": "blended",
+  "served_on": "up",
+  "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Diplomatico Planas",
-      "type": "spirit",
+      "name": "Mint leaves",
+      "type": "other",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Rothman & Winter Orchard Apricot",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
+        "amount": 15,
+        "unit": "unit"
       }
     },
     {
@@ -35,15 +30,7 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -51,17 +38,30 @@
       }
     },
     {
-      "name": "mint leaves",
-      "type": "other",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 15,
-        "unit": "unit"
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rothman & Winter Orchard Apricot",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Diplomatico Planas",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "up",
-  "glassware": "hurricane",
   "instructions": [
     "Combine all ingredients in a blender with pebbled ice",
     "Blend on high speed until smooth, approximately 15 to 20 seconds",

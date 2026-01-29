@@ -6,16 +6,8 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Del Maguey Vida Mezcal",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Aperol",
-      "type": "liqueur",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
@@ -30,10 +22,18 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Aperol",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }
@@ -45,8 +45,8 @@
   ],
   "attributions": [
     {
-      "source": "Phil Ward",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Phil Ward"
     }
   ],
   "refs": [

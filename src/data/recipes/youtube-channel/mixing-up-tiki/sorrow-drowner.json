@@ -6,18 +6,26 @@
   "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Smith & Cross",
-      "type": "spirit",
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut milk",
+      "type": "other",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Hamilton 151 Demerara rum",
-      "type": "spirit",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 4,
         "unit": "oz"
       }
     },
@@ -30,39 +38,31 @@
       }
     },
     {
-      "name": "Coconut Milk",
-      "type": "other",
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Maple Syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 4,
-        "unit": "oz"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "youtube",
-      "videoId": "tav5ZfA0uKI"
     }
   ],
   "instructions": [
     "Combine all ingredients in a shaker with ice.",
     "Shake well and strain into an old fashioned glass.",
     "Garnish with freshly grated nutmeg and cinnamon, and a torched cinnamon stick."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "tav5ZfA0uKI"
+    }
   ]
 }

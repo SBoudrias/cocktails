@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Allspice Dram",
+  "categoryType": "liqueur",
   "refs": [
     {
       "type": "youtube",
@@ -14,6 +15,5 @@
       "type": "youtube",
       "videoId": "8kSgziSsutg"
     }
-  ],
-  "categoryType": "liqueur"
+  ]
 }

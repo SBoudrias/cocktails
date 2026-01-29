@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "What is Good",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
     {
       "name": "sugar",
       "type": "other",
@@ -11,7 +22,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -19,15 +30,7 @@
       }
     },
     {
-      "name": "gin",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "apricot liqueur",
+      "name": "Apricot liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -35,21 +38,18 @@
       }
     },
     {
-      "name": "egg white",
-      "type": "emulsifier",
+      "name": "Gin",
+      "type": "category",
       "quantity": {
         "amount": 1,
-        "unit": "unit"
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "attributions": [
     {
-      "source": "Sloppy Joe's",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Sloppy Joe's"
     }
   ],
   "refs": [
