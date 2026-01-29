@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Cassia Cinnamon Bark syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "cassia cinnamon bark syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -70,13 +70,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 63
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -86,6 +79,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 63
     }
   ]
 }

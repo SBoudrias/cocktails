@@ -6,14 +6,26 @@
   "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Cimarron Blanco Tequila",
-      "type": "spirit",
-      "technique": {
-        "technique": "infusion",
-        "agent": "habanero"
-      },
+      "name": "Passion fruit purée",
+      "type": "puree",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -42,26 +54,14 @@
       }
     },
     {
-      "name": "passion fruit purée",
-      "type": "puree",
+      "name": "Cimarron Blanco Tequila",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "habanero"
+      },
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     }
@@ -71,21 +71,21 @@
     "Shake and strain into a snifter glass over crushed ice",
     "Garnish with freshly crushed pink peppercorns and serve with a paper umbrella"
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Karen Fu"
+    },
+    {
+      "relation": "bar",
+      "source": "The Studio at the Freehand New York"
+    }
+  ],
   "refs": [
     {
       "type": "book",
       "title": "tiki-modern-tropical-cocktails",
       "page": 118
-    }
-  ],
-  "attributions": [
-    {
-      "source": "Karen Fu",
-      "relation": "recipe author"
-    },
-    {
-      "source": "The Studio at the Freehand New York",
-      "relation": "bar"
     }
   ]
 }

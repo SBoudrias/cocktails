@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Scorpion",
+  "preparation": "blended",
+  "served_on": "crushed ice",
+  "glassware": "punch",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 2.25,
@@ -11,18 +14,18 @@
       }
     },
     {
-      "name": "orange juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 3,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orgeat",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 2.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
         "unit": "oz"
       }
     },
@@ -51,9 +54,6 @@
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "crushed ice",
-  "glassware": "punch",
   "instructions": [
     "Combine all the ingredients in a blender with 1 cup cubed ice.",
     "Blend for 10 seconds and then pour into a Scorpion Bowl or other large vessel.",
@@ -61,8 +61,8 @@
   ],
   "attributions": [
     {
-      "source": "Jane Danger",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Jane Danger"
     }
   ],
   "refs": [

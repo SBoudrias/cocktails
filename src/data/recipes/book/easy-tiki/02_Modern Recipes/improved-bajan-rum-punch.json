@@ -1,31 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Improved Bajan Rum Punch",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
   "ingredients": [
-    {
-      "name": "Mount Gay Black Barrel",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "ginger syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
@@ -35,7 +14,31 @@
       }
     },
     {
-      "name": "seltzer",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mount Gay Black Barrel",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
       "type": "soda",
       "quantity": {
         "amount": 1,
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "collins",
   "instructions": [
     "Combine the rum, ginger syrup, lime juice, and bitters in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Austin Hartman",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Austin Hartman"
     },
     {
-      "source": "Paradise Lounge",
       "relation": "bar",
+      "source": "Paradise Lounge",
       "location": "New York, NY"
     }
   ],

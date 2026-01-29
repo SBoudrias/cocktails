@@ -6,14 +6,14 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Hampden Estate Rum Fire",
+      "name": "Falernum liqueur",
+      "type": "category",
       "technique": {
-        "technique": "fat-wash",
-        "fat": "brown butter"
+        "technique": "infusion",
+        "agent": "kaffir lime leaf"
       },
-      "type": "spirit",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -26,24 +26,24 @@
       }
     },
     {
-      "name": "Falernum liqueur",
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
       "technique": {
-        "technique": "infusion",
-        "agent": "kaffir lime leaf"
+        "technique": "fat-wash",
+        "fat": "brown butter"
       },
-      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     },
     {
       "name": "Pineapple Cider",
+      "type": "category",
       "technique": {
         "technique": "application",
         "method": "top"
       },
-      "type": "category",
       "quantity": {
         "amount": 4,
         "unit": "oz"

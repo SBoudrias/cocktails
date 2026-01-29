@@ -6,24 +6,16 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Captive Spirits Bourbon Barreled Big Gin",
-      "type": "spirit",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Batavia Arrack van Oosten",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard Crème de Menthe",
-      "type": "liqueur",
+      "name": "Grapefruit juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -38,26 +30,34 @@
       }
     },
     {
-      "name": "Cinnamon Syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Grapefruit Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Crème de Menthe",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Captive Spirits Bourbon Barreled Big Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }

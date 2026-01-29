@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Austral Summer",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Monteru brandy",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -19,7 +30,7 @@
       }
     },
     {
-      "name": "Kalani coconut liqueur",
+      "name": "Kalani Coconut Liqueur",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
@@ -35,25 +46,14 @@
       }
     },
     {
-      "name": "lemon juice",
-      "type": "juice",
+      "name": "Monteru brandy",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker with a few pellets of crushed or cracked ice and shake until they melt.",
     "Pour into a Collins glass and fill the glass with crushed ice.",
@@ -61,12 +61,12 @@
   ],
   "attributions": [
     {
-      "source": "Eryn Reece",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Eryn Reece"
     },
     {
-      "source": "Banzarbar",
       "relation": "bar",
+      "source": "Banzarbar",
       "location": "New York, NY"
     }
   ],

@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "ginger syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
@@ -65,8 +65,8 @@
   ],
   "attributions": [
     {
-      "source": "Brian Maxwell",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Maxwell"
     }
   ],
   "refs": [

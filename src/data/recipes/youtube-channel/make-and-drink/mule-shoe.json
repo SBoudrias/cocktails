@@ -1,6 +1,9 @@
 {
   "$schema": "../../../schemas/recipe.schema.json",
   "name": "Mule Shoe",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Jasper's Mix",
@@ -35,9 +38,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "attributions": [
     {
       "relation": "recipe author",

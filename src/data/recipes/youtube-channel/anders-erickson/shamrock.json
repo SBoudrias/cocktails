@@ -6,19 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Powers Gold Label",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Dolin Blanc Vermouth de Chambery",
+      "name": "Tempus Fugit Crème de Menthe",
       "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
@@ -30,11 +22,19 @@
       }
     },
     {
-      "name": "Tempus Fugit Crème de Menthe",
+      "name": "Powers Gold Label",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
       "type": "liqueur",
       "quantity": {
-        "amount": 1,
-        "unit": "tsp"
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],

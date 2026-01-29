@@ -6,10 +6,34 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Coruba",
-      "type": "spirit",
+      "name": "Saline",
+      "type": "other",
       "quantity": {
-        "amount": 1,
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Bittermens Hopped Grapefruit Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Amaro di Angostura",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -30,35 +54,11 @@
       }
     },
     {
-      "name": "Amaro di Angostura",
-      "type": "liqueur",
+      "name": "Coruba",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bittermens Hopped Grapefruit Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 3,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Saline",
-      "type": "other",
-      "quantity": {
-        "amount": 5,
-        "unit": "drop"
       }
     }
   ],

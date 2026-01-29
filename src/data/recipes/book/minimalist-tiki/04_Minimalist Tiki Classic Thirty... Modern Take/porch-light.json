@@ -6,6 +6,14 @@
   "glassware": "goblet",
   "ingredients": [
     {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
@@ -14,15 +22,7 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -42,6 +42,14 @@
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -67,14 +75,6 @@
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Egg white",
-      "type": "emulsifier",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
       }
     }
   ],

@@ -1,26 +1,13 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "On Christmas Island",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
-    {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Vanilla syrup",
       "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "St-Elizabeth Allspice Dram",
-      "type": "liqueur",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -39,6 +26,22 @@
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -67,9 +70,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "attributions": [
     {
       "relation": "bar",

@@ -6,26 +6,26 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "watermelon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -48,8 +48,8 @@
   ],
   "attributions": [
     {
-      "source": "Jock Lindey's Hangar Bar",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Jock Lindey's Hangar Bar"
     }
   ],
   "refs": [

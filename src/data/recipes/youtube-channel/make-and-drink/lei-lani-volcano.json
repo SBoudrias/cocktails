@@ -6,23 +6,15 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "guava juice",
-      "type": "juice",
+      "name": "rock candy syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 3,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -30,10 +22,18 @@
       }
     },
     {
-      "name": "rock candy syrup",
-      "type": "syrup",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "guava juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
         "unit": "oz"
       }
     },
@@ -48,8 +48,8 @@
   ],
   "attributions": [
     {
-      "source": "Disney's Polynesian Village Resort",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Disney's Polynesian Village Resort"
     }
   ],
   "refs": [

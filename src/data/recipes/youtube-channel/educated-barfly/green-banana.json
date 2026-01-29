@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Green Banana",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "Banana oleosaccharum",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Lime juice",
       "type": "juice",
@@ -19,10 +30,10 @@
       }
     },
     {
-      "name": "Banana oleosaccharum",
-      "type": "syrup",
+      "name": "Paranubes Oaxaca Aguardiente de Caña",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     },
@@ -33,19 +44,8 @@
         "amount": 0.25,
         "unit": "tsp"
       }
-    },
-    {
-      "name": "Paranubes Oaxaca Aguardiente de Caña",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": ["Garnish with matcha powder sprinkled on top"],
   "refs": [
     {

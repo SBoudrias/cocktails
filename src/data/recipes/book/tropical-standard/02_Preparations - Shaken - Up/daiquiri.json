@@ -30,27 +30,20 @@
       }
     },
     {
-      "name": "Blended Lightly-aged Rum",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Falernum (Tropical Standard)",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 55
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -62,6 +55,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 55
     }
   ]
 }

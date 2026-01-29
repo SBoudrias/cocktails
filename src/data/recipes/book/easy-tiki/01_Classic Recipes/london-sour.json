@@ -1,14 +1,13 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "London Sour",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
       "name": "orange",
       "type": "fruit",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      },
       "technique": [
         {
           "technique": "cut",
@@ -17,18 +16,30 @@
         {
           "technique": "muddled"
         }
-      ]
+      ],
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
     },
     {
-      "name": "Del Maguey Vida Mezcal",
-      "type": "spirit",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "lemon juice",
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -44,25 +55,14 @@
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "Put the orange wedge in a cocktail shaker and muddle to release its oils and juice.",
     "Add all the remaining ingredients and ice and shake until chilled, about 10 seconds.",
@@ -71,16 +71,16 @@
   ],
   "attributions": [
     {
-      "source": "Jane Danger",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Jane Danger"
     },
     {
-      "source": "Austin Hartman",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Austin Hartman"
     },
     {
-      "source": "Paradise Lounge",
       "relation": "bar",
+      "source": "Paradise Lounge",
       "location": "New York, NY"
     }
   ],

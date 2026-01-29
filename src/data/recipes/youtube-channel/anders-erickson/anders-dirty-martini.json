@@ -1,39 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Anders' Dirty Martini",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
   "ingredients": [
-    {
-      "name": "Plymouth Gin",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "olive brine",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Scrappy's Celery Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    },
     {
       "name": "Valdespino \"Ynocente\" Fino Sherry",
       "type": "liqueur",
@@ -45,11 +16,40 @@
         "amount": 1,
         "unit": "spray"
       }
+    },
+    {
+      "name": "Scrappy's Celery Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "olive brine",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "up",
-  "glassware": "martini",
   "instructions": [
     "Rinse chilled glass with Fino Sherry",
     "Combine remaining ingredients in mixing glass and stir with ice",

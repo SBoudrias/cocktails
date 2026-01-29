@@ -1,13 +1,16 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Baltimore Eggnog",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Whole milk",
+      "name": "Whole egg",
       "type": "other",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "unit"
       }
     },
     {
@@ -20,10 +23,10 @@
       }
     },
     {
-      "name": "Madeira wine",
-      "type": "category",
+      "name": "Whole milk",
+      "type": "other",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     },
@@ -44,17 +47,14 @@
       }
     },
     {
-      "name": "Whole egg",
-      "type": "other",
+      "name": "Madeira wine",
+      "type": "category",
       "quantity": {
-        "amount": 1,
-        "unit": "unit"
+        "amount": 0.5,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "refs": [
     {
       "type": "youtube",

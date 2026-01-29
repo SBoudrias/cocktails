@@ -6,11 +6,11 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Seltzer",
-      "type": "soda",
+      "name": "Peychaud's bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
@@ -23,8 +23,8 @@
     },
     {
       "name": "Orgeat",
-      "brix": 50,
       "type": "category",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -55,24 +55,12 @@
       }
     },
     {
-      "name": "Peychaud's bitters",
-      "type": "bitter",
+      "name": "Seltzer",
+      "type": "soda",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 1.5,
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 120,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "gIIod50BWDo",
-      "start": 269
     }
   ],
   "attributions": [
@@ -80,6 +68,18 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 120
+    },
+    {
+      "type": "youtube",
+      "videoId": "gIIod50BWDo",
+      "start": 269
     }
   ]
 }

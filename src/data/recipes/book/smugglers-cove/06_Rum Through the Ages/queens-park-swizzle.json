@@ -14,6 +14,14 @@
       }
     },
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -23,35 +31,20 @@
     },
     {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 181,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -63,6 +56,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 181
     }
   ]
 }

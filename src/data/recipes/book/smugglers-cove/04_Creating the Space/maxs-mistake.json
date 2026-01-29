@@ -6,6 +6,23 @@
   "glassware": "snifter",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
@@ -15,36 +32,19 @@
     },
     {
       "name": "Passion fruit syrup",
-      "brix": 66,
       "type": "category",
+      "brix": 66,
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Honey syrup",
-      "brix": 50,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "London dry gin",
+      "name": "London Dry Gin",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
       }
     },
     {
@@ -56,18 +56,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 115,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 115
     }
   ]
 }

@@ -1,25 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Poolside",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Shannon Mustipher's Navy Rum Blend",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Avuá Oak Cachaça",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "ginger syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -43,17 +30,30 @@
       }
     },
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Avuá Oak Cachaça",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Shannon Mustipher's Navy Rum Blend",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Combine all ingredients in a blender with ice",
     "Flash blend for 8 to 10 seconds",

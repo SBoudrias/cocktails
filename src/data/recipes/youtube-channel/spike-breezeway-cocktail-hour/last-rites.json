@@ -1,20 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Last Rites",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -35,9 +38,6 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Mix with ice at high speed for exactly 5 seconds",
     "Pour into a tall glass",

@@ -6,23 +6,34 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Damoiseau Pure Cane 110 Proof",
-      "type": "spirit",
-      "technique": {
-        "technique": "infusion",
-        "agent": "spice",
-        "method": "sous-vide"
-      },
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Guava purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Yellow Chartreuse",
-      "type": "liqueur",
+      "name": "Vanilla syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -35,35 +46,24 @@
       }
     },
     {
-      "name": "Guava Purée",
-      "type": "puree",
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Vanilla Syrup",
-      "type": "syrup",
+      "name": "Damoiseau Pure Cane 110 Proof",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "spice",
+        "method": "sous-vide"
+      },
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
       }
     }
   ],

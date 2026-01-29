@@ -6,36 +6,29 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Li Hing Mui syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Blended aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
         "amount": 1,
         "unit": "dash"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 203,
-      "title": "smugglers-cove"
+      "name": "Li Hing Mui syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Blended Aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -43,6 +36,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 203
     }
   ]
 }

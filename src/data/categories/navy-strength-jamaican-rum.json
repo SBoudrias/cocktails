@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Navy Strength Jamaican Rum",
-  "parents": ["Overproof Rum", "Jamaican Rum", "Navy style rum"],
-  "categoryType": "spirit"
+  "categoryType": "spirit",
+  "parents": ["Overproof Rum", "Jamaican Rum", "Navy style rum"]
 }

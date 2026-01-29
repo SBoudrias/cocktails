@@ -6,18 +6,18 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Beefeater London Dry Gin",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Grenadine",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -30,19 +30,19 @@
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Beefeater London Dry Gin",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 1.5,
+        "unit": "oz"
       }
     },
     {

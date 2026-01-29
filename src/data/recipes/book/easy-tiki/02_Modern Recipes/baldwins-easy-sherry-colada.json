@@ -1,17 +1,20 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Baldwin's (Easy) Sherry Colada",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "Sherry (Amontillado)",
-      "type": "category",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -27,17 +30,14 @@
       }
     },
     {
-      "name": "lemon juice",
-      "type": "juice",
+      "name": "Sherry (Amontillado)",
+      "type": "category",
       "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "highball",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -47,12 +47,12 @@
   ],
   "attributions": [
     {
-      "source": "Ran Duan",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Ran Duan"
     },
     {
-      "source": "Baldwin Bar",
       "relation": "bar",
+      "source": "Baldwin Bar",
       "location": "Boston, MA"
     }
   ],

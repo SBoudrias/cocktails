@@ -8,27 +8,42 @@
     {
       "name": "Angostura bitters",
       "type": "bitter",
-      "quantity": { "amount": 2, "unit": "dash" }
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "#9 syrup",
       "type": "syrup",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Alamea spiced rum",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Bacardi 4",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
   "instructions": [
@@ -40,8 +55,8 @@
   ],
   "attributions": [
     {
-      "source": "Daniele Dalla Pola",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Daniele Dalla Pola"
     }
   ],
   "refs": [

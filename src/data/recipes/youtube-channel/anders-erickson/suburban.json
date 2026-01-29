@@ -1,13 +1,24 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Suburban",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Rittenhouse Rye",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
@@ -27,25 +38,14 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Regan's Orange Bitters No. 6",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": ["Express orange oil over the drink", "Garnish with orange peel"],
   "refs": [
     {

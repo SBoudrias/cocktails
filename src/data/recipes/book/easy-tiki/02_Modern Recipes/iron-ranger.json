@@ -1,47 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Iron Ranger",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
   "ingredients": [
-    {
-      "name": "Whiskey (Bourbon)",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "John D. Taylor's velvet falernum",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "simple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
@@ -49,11 +12,48 @@
         "amount": 2,
         "unit": "dash"
       }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "hurricane",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add 1 large ice cube and shake until it melts.",
@@ -62,12 +62,12 @@
   ],
   "attributions": [
     {
-      "source": "Erick Castro",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Erick Castro"
     },
     {
-      "source": "Polite Provisions",
       "relation": "bar",
+      "source": "Polite Provisions",
       "location": "Cleveland, OH"
     }
   ],

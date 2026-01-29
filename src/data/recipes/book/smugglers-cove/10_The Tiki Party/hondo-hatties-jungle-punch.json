@@ -6,19 +6,27 @@
   "glassware": "punch",
   "ingredients": [
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
       "name": "Honey syrup",
-      "brix": 50,
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -39,14 +47,6 @@
       }
     },
     {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Mathilde poire",
       "type": "liqueur",
       "quantity": {
@@ -55,35 +55,35 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
     }
   ],
   "instructions": ["Multiply the ingredients by the number of guests."],
-  "refs": [
-    {
-      "type": "book",
-      "page": 311,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 311
     }
   ]
 }

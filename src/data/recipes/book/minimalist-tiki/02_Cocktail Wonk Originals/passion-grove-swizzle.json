@@ -6,7 +6,15 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "lemon juice",
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -14,18 +22,10 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -63,8 +63,8 @@
   ],
   "attributions": [
     {
-      "source": "Matt Pietrek",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Matt Pietrek"
     }
   ],
   "refs": [

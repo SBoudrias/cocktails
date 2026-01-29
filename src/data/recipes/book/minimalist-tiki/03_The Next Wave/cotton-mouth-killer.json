@@ -6,7 +6,15 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -30,15 +38,7 @@
       }
     },
     {
-      "name": "simple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "apricot liqueur",
+      "name": "Apricot liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -64,13 +64,13 @@
     {
       "name": "Wray & Nephew white overproof",
       "type": "spirit",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      },
       "technique": {
         "technique": "application",
         "method": "float"
+      },
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
       }
     }
   ],

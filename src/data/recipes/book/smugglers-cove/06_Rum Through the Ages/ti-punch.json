@@ -6,6 +6,18 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
+      "name": "lime",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "disc"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
       "name": "Cane syrup",
       "type": "syrup",
       "brix": 66,
@@ -15,31 +27,12 @@
       }
     },
     {
-      "name": "Rhum agricole blanc",
+      "name": "Rhum Agricole Blanc",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "lime",
-      "technique": {
-        "technique": "cut",
-        "type": "disc"
-      },
-      "type": "fruit",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 179,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -47,6 +40,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 179
     }
   ]
 }

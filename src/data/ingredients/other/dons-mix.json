@@ -4,7 +4,7 @@
   "type": "other",
   "ingredients": [
     {
-      "name": "grapefruit juice",
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 2,
@@ -12,7 +12,7 @@
       }
     },
     {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 1,

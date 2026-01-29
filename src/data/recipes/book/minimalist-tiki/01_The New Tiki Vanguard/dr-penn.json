@@ -6,18 +6,18 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "pomegranate molasses",
       "type": "other",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "seltzer",
+      "name": "Seltzer",
       "type": "soda",
       "quantity": {
         "amount": 1,
@@ -54,8 +54,8 @@
   ],
   "attributions": [
     {
-      "source": "Brian Maxwell",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Maxwell"
     }
   ],
   "refs": [

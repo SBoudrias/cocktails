@@ -1,21 +1,16 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Manhattan Highball",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "Whiskey (Rye)",
-      "type": "category",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Sweet vermouth",
-      "type": "category",
-      "quantity": {
-        "amount": 0.67,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
@@ -27,11 +22,19 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Sweet vermouth",
+      "type": "category",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 0.67,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
       }
     },
     {
@@ -47,9 +50,6 @@
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "ice cubes",
-  "glassware": "highball",
   "instructions": [
     "Pour into a highball glass filled with ice",
     "Top with 3 oz sparkling water",

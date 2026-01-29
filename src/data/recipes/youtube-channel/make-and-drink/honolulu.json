@@ -6,14 +6,6 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Column still lightly aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "pineapple",
       "type": "fruit",
       "technique": {
@@ -23,6 +15,14 @@
       "quantity": {
         "amount": 0.5,
         "unit": "unit"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
       }
     },
     {
@@ -42,10 +42,10 @@
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
+      "name": "Column still lightly aged rum",
+      "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

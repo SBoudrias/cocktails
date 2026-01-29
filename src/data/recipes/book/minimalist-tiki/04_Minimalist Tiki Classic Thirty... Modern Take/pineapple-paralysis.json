@@ -6,26 +6,18 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Evan Williams Bottled-in-Bond",
-      "type": "spirit",
+      "name": "Bittermens' elemakule tiki bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 3,
+        "unit": "drop"
       }
     },
     {
-      "name": "Planteray Stiggins' Fancy pineapple rum",
-      "type": "spirit",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pierre Ferrand Dry Curaçao",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -34,14 +26,6 @@
       "type": "category",
       "quantity": {
         "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -62,11 +46,27 @@
       }
     },
     {
-      "name": "Bittermens' elemakule tiki bitters",
-      "type": "bitter",
+      "name": "Planteray Stiggins' Fancy pineapple rum",
+      "type": "spirit",
       "quantity": {
-        "amount": 3,
-        "unit": "drop"
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Evan Williams Bottled-in-Bond",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],

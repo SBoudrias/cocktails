@@ -6,22 +6,6 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Giffard abricot du Roussillon",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Rhum agricole vieux",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
@@ -36,13 +20,22 @@
         "amount": 1,
         "unit": "dash"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 203,
-      "title": "smugglers-cove"
+      "name": "Giffard abricot du Roussillon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum Agricole Vieux",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -50,6 +43,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 203
     }
   ]
 }

@@ -1,12 +1,31 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Midori Colada",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Midori melon liqueur",
-      "type": "liqueur",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut milk",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -19,31 +38,15 @@
       }
     },
     {
-      "name": "Pineapple Juice",
-      "type": "juice",
+      "name": "Midori melon liqueur",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
+        "amount": 2,
         "unit": "oz"
       }
     },
     {
-      "name": "Coconut Milk",
-      "type": "other",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Xanthan Gum",
+      "name": "xanthan gum",
       "type": "emulsifier",
       "quantity": {
         "amount": 0.25,
@@ -51,9 +54,6 @@
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "blended",
-  "glassware": "hurricane",
   "instructions": [
     "Add all ingredients to a blender",
     "Add ice and blend until smooth",

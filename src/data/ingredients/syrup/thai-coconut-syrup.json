@@ -5,7 +5,7 @@
   "description": "A spicy and aromatic crème de coconut syrup with ginger, cilantro, and Thai chili",
   "ingredients": [
     {
-      "name": "Coconut Milk",
+      "name": "Coconut milk",
       "type": "other",
       "quantity": {
         "amount": 400,
@@ -13,7 +13,7 @@
       }
     },
     {
-      "name": "Sugar",
+      "name": "sugar",
       "type": "other",
       "quantity": {
         "amount": 382,

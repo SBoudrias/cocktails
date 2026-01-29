@@ -1,32 +1,16 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Doomsayer's Grog",
-  "glassware": "snifter",
   "preparation": "flash blended",
   "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "aromatic bitters",
+      "name": "Aromatic Bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "dash"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "honey syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
       }
     },
     {
@@ -38,15 +22,31 @@
       }
     },
     {
-      "name": "Allspice Dram",
-      "type": "category",
+      "name": "Honey syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "grapefruit juice",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -54,10 +54,10 @@
       }
     },
     {
-      "name": "cinnamon syrup",
-      "type": "syrup",
+      "name": "Allspice Dram",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },

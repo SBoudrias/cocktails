@@ -14,22 +14,6 @@
       }
     },
     {
-      "name": "Bittermens New England Spiced Cranberry bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Egg white",
-      "type": "emulsifier",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "tangerine juice",
       "type": "juice",
       "quantity": {
@@ -54,19 +38,28 @@
       }
     },
     {
+      "name": "Bittermens New England Spiced Cranberry bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
       "name": "Alipús San Luis Del Rio Mezcal",
       "type": "spirit",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 49
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -78,6 +71,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 49
     }
   ]
 }

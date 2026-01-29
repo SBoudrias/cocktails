@@ -1,12 +1,16 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Cocchinut Ape",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "servings": 10,
   "ingredients": [
     {
-      "name": "Cocchi Americano",
-      "type": "liqueur",
+      "name": "Water",
+      "type": "other",
       "quantity": {
-        "amount": 7,
+        "amount": 3,
         "unit": "oz"
       }
     },
@@ -35,23 +39,19 @@
       }
     },
     {
-      "name": "water",
-      "type": "other",
+      "name": "Cocchi Americano",
+      "type": "liqueur",
       "quantity": {
-        "amount": 3,
+        "amount": 7,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine all ingredients and stir to integrate",
     "Fat wash the whole cocktail with 3.5 oz (100 ml) of coconut oil",
     "Bottle and refrigerate until ready to serve"
   ],
-  "servings": 10,
   "refs": [
     {
       "type": "youtube",

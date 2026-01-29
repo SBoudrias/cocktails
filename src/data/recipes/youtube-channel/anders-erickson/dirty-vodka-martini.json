@@ -1,15 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Dirty Vodka Martini",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
   "ingredients": [
-    {
-      "name": "Grey Goose Vodka",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
     {
       "name": "olive brine",
       "type": "other",
@@ -17,11 +12,16 @@
         "amount": 1,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Grey Goose Vodka",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "up",
-  "glassware": "martini",
   "instructions": ["Garnish with 3 olives"],
   "refs": [
     {

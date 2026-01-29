@@ -6,18 +6,10 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Bundaberg guava soda",
-      "type": "soda",
+      "name": "Cream of coconut",
+      "type": "syrup",
       "quantity": {
-        "amount": 3,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -30,31 +22,28 @@
       }
     },
     {
-      "name": "Cream of coconut",
-      "type": "syrup",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 94,
-      "title": "smugglers-cove"
     },
     {
-      "type": "youtube",
-      "videoId": "V48-T0Hw45g"
+      "name": "Bundaberg guava soda",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -62,6 +51,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 94
+    },
+    {
+      "type": "youtube",
+      "videoId": "V48-T0Hw45g"
     }
   ]
 }

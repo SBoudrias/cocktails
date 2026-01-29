@@ -6,14 +6,10 @@
   "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "Paranubes Oaxaca Aguardiente de Caña",
-      "type": "spirit",
-      "technique": {
-        "technique": "infusion",
-        "agent": "anise"
-      },
+      "name": "Coffee syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -42,20 +38,24 @@
       }
     },
     {
-      "name": "coffee syrup",
-      "type": "syrup",
+      "name": "Paranubes Oaxaca Aguardiente de Caña",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "anise"
+      },
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     },
     {
       "name": "Guinness",
+      "type": "beer",
       "technique": {
         "technique": "application",
         "method": "top"
       },
-      "type": "beer",
       "quantity": {
         "amount": 1,
         "unit": "oz"

@@ -6,18 +6,18 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Del Maguey Vida Mezcal",
-      "type": "spirit",
+      "name": "Red Rice Horchata",
+      "type": "other",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Hamilton Jamaican Pot Still Black",
-      "type": "spirit",
+      "name": "Fernet Vallet",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 0.125,
         "unit": "oz"
       }
     },
@@ -30,16 +30,16 @@
       }
     },
     {
-      "name": "Fernet-Vallet",
-      "type": "liqueur",
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.125,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Red Rice Horchata",
-      "type": "other",
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"

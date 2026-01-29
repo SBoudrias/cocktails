@@ -1,29 +1,16 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Brown Bomba",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Prizefight Irish Whiskey",
-      "type": "spirit",
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Hamilton Jamaican Pot Still Black",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tamworth Distilling Von Humboldt's Natur Wasser Tamarind Cordial",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
@@ -43,7 +30,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -51,17 +38,30 @@
       }
     },
     {
-      "name": "Bittermens Xocolatl Mole Bitters",
-      "type": "bitter",
+      "name": "Tamworth Distilling Von Humboldt's Natur Wasser Tamarind Cordial",
+      "type": "liqueur",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Prizefight Irish Whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "hurricane",
   "instructions": [
     "Combine all in a shaker with cubed ice",
     "Shake and strain into a hurricane glass over pebbled ice",

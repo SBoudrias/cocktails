@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Tongan Rhum Swizzle",
-  "glassware": "collins",
   "preparation": "swizzled",
   "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -14,7 +14,15 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -22,18 +30,10 @@
       }
     },
     {
-      "name": "grapefruit juice",
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },

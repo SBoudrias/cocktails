@@ -1,18 +1,21 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Isla de Piña",
+  "preparation": "flash blended",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Diplomatico Planas",
-      "type": "spirit",
+      "name": "Passion fruit purée",
+      "type": "puree",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Giffard Caribbean Pineapple",
-      "type": "liqueur",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -27,25 +30,22 @@
       }
     },
     {
-      "name": "passion fruit purée",
-      "type": "puree",
+      "name": "Giffard Caribbean Pineapple",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Diplomatico Planas",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all ingredients in a shaker with scant crushed ice",
     "Flash blend with a stand or wand mixer for 5 to 10 seconds",

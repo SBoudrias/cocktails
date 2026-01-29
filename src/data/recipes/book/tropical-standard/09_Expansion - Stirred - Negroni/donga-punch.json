@@ -38,17 +38,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 151
-    },
-    {
-      "type": "youtube",
-      "videoId": "Cxp9bigA1UA"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -58,6 +47,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 151
+    },
+    {
+      "type": "youtube",
+      "videoId": "Cxp9bigA1UA"
     }
   ]
 }

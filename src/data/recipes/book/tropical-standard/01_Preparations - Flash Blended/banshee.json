@@ -30,26 +30,10 @@
       }
     },
     {
-      "name": "Banana Bunch Liqueur (Tropical Standard)",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Hamilton 86 Demerara Rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tempus Fugit Crème de Cacao",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
         "unit": "oz"
       }
     },
@@ -60,13 +44,22 @@
         "amount": 0.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 45
+      "name": "Banana Bunch Liqueur (Tropical Standard)",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -78,6 +71,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 45
     }
   ]
 }

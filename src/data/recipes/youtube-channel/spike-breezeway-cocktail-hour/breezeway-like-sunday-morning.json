@@ -1,7 +1,34 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Breezeway like Sunday morning",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
+    {
+      "name": "Chocolate Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orange bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Lime juice",
       "type": "juice",
@@ -15,14 +42,6 @@
       "type": "juice",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Honey syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -57,27 +76,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Chocolate bitters",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Orange bitters",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "attributions": [
     {
       "relation": "recipe author",

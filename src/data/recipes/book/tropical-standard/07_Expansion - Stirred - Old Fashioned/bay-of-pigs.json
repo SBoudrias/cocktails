@@ -54,23 +54,12 @@
       }
     },
     {
-      "name": "Chairman's Reserve Rum",
+      "name": "Chairman's Reserve rum",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 133
-    },
-    {
-      "type": "youtube",
-      "videoId": "aYGdqtDhRiA"
     }
   ],
   "attributions": [
@@ -82,6 +71,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 133
+    },
+    {
+      "type": "youtube",
+      "videoId": "aYGdqtDhRiA"
     }
   ]
 }

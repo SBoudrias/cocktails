@@ -6,27 +6,19 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "olive brine",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cane syrup",
+      "name": "Cane syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
         "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "olive brine",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
         "unit": "tsp"
       }
     },
@@ -39,8 +31,8 @@
       }
     },
     {
-      "name": "Egg white",
-      "type": "emulsifier",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -55,6 +47,14 @@
       }
     },
     {
+      "name": "Paranubes Oaxaca Aguardiente de Caña",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Hidalgo \"La Gitana\" Manzanilla Sherry",
       "type": "liqueur",
       "quantity": {
@@ -63,19 +63,12 @@
       }
     },
     {
-      "name": "Paranubes Oaxaca Aguardiente de Caña",
-      "type": "spirit",
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 159
     }
   ],
   "attributions": [
@@ -87,6 +80,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 159
     }
   ]
 }

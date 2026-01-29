@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Lau Lana",
-  "glassware": "collins",
   "preparation": "blended",
   "served_on": "blended",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "strawberry",
+      "name": "Strawberry",
       "type": "fruit",
       "quantity": {
         "amount": 1,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,

@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Angelico Martini",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -8,14 +11,6 @@
       "quantity": {
         "amount": 2,
         "unit": "dash"
-      }
-    },
-    {
-      "name": "Frangelico",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
       }
     },
     {
@@ -39,6 +34,14 @@
       }
     },
     {
+      "name": "Frangelico",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Vodka",
       "type": "category",
       "quantity": {
@@ -47,9 +50,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "refs": [
     {
       "type": "youtube",

@@ -6,10 +6,18 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Cynar",
-      "type": "liqueur",
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
       "quantity": {
-        "amount": 2,
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -22,19 +30,11 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Cynar",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.25,
+        "amount": 2,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Regan's Orange Bitters No. 6",
-      "type": "bitter",
-      "quantity": {
-        "amount": 4,
-        "unit": "dash"
       }
     }
   ],

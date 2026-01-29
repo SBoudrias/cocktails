@@ -1,17 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Maitai ri'i",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Jamaican Rum",
-      "type": "category",
+      "name": "rock candy syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime Juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -35,17 +38,14 @@
       }
     },
     {
-      "name": "Rock Candy Syrup",
-      "type": "syrup",
+      "name": "Jamaican Rum",
+      "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "Add all ingredients to a shaker",
     "Add ice and shake until well-chilled",

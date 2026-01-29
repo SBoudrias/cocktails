@@ -15,26 +15,10 @@
     },
     {
       "name": "Passion fruit syrup",
-      "brix": 66,
       "type": "category",
+      "brix": 66,
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Li Hing Mui powder",
-      "type": "spice",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Seltzer",
-      "type": "soda",
-      "quantity": {
-        "amount": 2,
         "unit": "oz"
       }
     },
@@ -53,13 +37,22 @@
         "amount": 2,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 139,
-      "title": "smugglers-cove"
+      "name": "Li Hing Mui powder",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -67,6 +60,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 139
     }
   ]
 }

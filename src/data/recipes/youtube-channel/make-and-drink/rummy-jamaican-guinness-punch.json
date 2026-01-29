@@ -1,13 +1,17 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Rummy Jamaican Guinness Punch",
+  "preparation": "blended",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "servings": 4,
   "ingredients": [
     {
-      "name": "Whole milk",
+      "name": "Vanilla extract",
       "type": "other",
       "quantity": {
-        "amount": 12,
-        "unit": "oz"
+        "amount": 0.5,
+        "unit": "tsp"
       }
     },
     {
@@ -19,10 +23,10 @@
       }
     },
     {
-      "name": "Guinness",
-      "type": "beer",
+      "name": "Whole milk",
+      "type": "other",
       "quantity": {
-        "amount": 15,
+        "amount": 12,
         "unit": "oz"
       }
     },
@@ -35,18 +39,14 @@
       }
     },
     {
-      "name": "Vanilla extract",
-      "type": "other",
+      "name": "Guinness",
+      "type": "beer",
       "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
+        "amount": 15,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
-  "servings": 4,
   "refs": [
     {
       "type": "youtube",

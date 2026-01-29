@@ -6,31 +6,7 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Iichiko Mugi Shochu",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lustau Amontillado Los Arcos Sherry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Calpico concentrate",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orgeat",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -46,10 +22,34 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Calpico concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Iichiko Mugi Shochu",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }

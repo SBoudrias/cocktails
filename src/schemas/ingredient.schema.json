@@ -16,9 +16,6 @@
           "type": "array",
           "items": { "type": "string" }
         },
-        "refs": {
-          "$ref": "./recipe.schema.json#/properties/refs"
-        },
         "ingredients": {
           "$ref": "./recipe.schema.json#/properties/ingredients"
         },
@@ -27,6 +24,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "refs": {
+          "$ref": "./recipe.schema.json#/properties/refs"
         }
       },
       "required": ["name", "type"],
@@ -60,9 +60,6 @@
           "type": "array",
           "items": { "type": "string" }
         },
-        "refs": {
-          "$ref": "./recipe.schema.json#/properties/refs"
-        },
         "ingredients": {
           "$ref": "./recipe.schema.json#/properties/ingredients"
         },
@@ -71,6 +68,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "refs": {
+          "$ref": "./recipe.schema.json#/properties/refs"
         }
       },
       "required": ["name", "type"],

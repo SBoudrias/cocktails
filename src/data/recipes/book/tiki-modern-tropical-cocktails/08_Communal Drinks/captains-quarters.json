@@ -1,20 +1,16 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Captain's Quarters",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
   "ingredients": [
     {
-      "name": "Pusser's Gunpowder Proof British Navy Rum",
-      "type": "spirit",
+      "name": "Ceylon tea",
+      "type": "other",
       "quantity": {
-        "amount": 8.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "La Favorite Coeur d'Ambre",
-      "type": "spirit",
-      "quantity": {
-        "amount": 3.33,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -27,7 +23,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 4.25,
@@ -35,18 +31,22 @@
       }
     },
     {
-      "name": "Ceylon tea",
-      "type": "other",
+      "name": "La Favorite Coeur d'Ambre",
+      "type": "spirit",
       "quantity": {
-        "amount": 1.5,
+        "amount": 3.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pusser's Gunpowder Proof British Navy Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 8.5,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "punch",
-  "servings": 6,
   "instructions": [
     "Combine all ingredients in a nonreactive container and stir to mix",
     "Decant over ice into a Tiki bowl or serving vessel of your choice",

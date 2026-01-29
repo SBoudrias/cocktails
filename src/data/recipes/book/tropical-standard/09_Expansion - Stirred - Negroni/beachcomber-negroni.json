@@ -15,11 +15,11 @@
     },
     {
       "name": "Lime juice",
+      "type": "juice",
       "technique": {
         "technique": "clarification",
         "method": "milk"
       },
-      "type": "juice",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -50,27 +50,20 @@
       }
     },
     {
-      "name": "Flor de Caña 4 Year",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Banks 5 Island Rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 149
+      "name": "Flor de Caña 4 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -82,6 +75,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 149
     }
   ]
 }

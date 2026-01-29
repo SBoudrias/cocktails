@@ -6,6 +6,14 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Del Maguey Vida Mezcal",
       "type": "spirit",
       "quantity": {
@@ -28,14 +36,6 @@
         "amount": 0.75,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
     }
   ],
   "instructions": [
@@ -44,8 +44,8 @@
   ],
   "attributions": [
     {
-      "source": "Joaquín Simó",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
     }
   ],
   "refs": [

@@ -1,13 +1,17 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Jamaican Guinness Punch",
+  "preparation": "blended",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "servings": 4,
   "ingredients": [
     {
-      "name": "Whole milk",
+      "name": "Vanilla extract",
       "type": "other",
       "quantity": {
-        "amount": 12,
-        "unit": "oz"
+        "amount": 0.5,
+        "unit": "tsp"
       }
     },
     {
@@ -19,26 +23,22 @@
       }
     },
     {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Guinness",
       "type": "beer",
       "quantity": {
         "amount": 15,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Vanilla extract",
-      "type": "other",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
     }
   ],
-  "preparation": "blended",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
-  "servings": 4,
   "refs": [
     {
       "type": "youtube",

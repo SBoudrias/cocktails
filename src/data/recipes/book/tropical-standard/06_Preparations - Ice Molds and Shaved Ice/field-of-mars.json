@@ -14,19 +14,12 @@
       }
     },
     {
-      "name": "makrut lime leaf tincture",
-      "type": "tincture",
+      "name": "Cane syrup",
+      "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "tsp"
-      }
-    },
-    {
-      "name": "Granny Smith apple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
       }
     },
     {
@@ -38,12 +31,11 @@
       }
     },
     {
-      "name": "cane syrup",
-      "type": "syrup",
-      "brix": 66,
+      "name": "Granny Smith apple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
+        "amount": 0.75,
+        "unit": "oz"
       }
     },
     {
@@ -55,19 +47,20 @@
       }
     },
     {
+      "name": "makrut lime leaf tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
       "name": "Compass Box Artist Blend Scotch Whisky",
       "type": "spirit",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 119
     }
   ],
   "attributions": [
@@ -79,6 +72,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 119
     }
   ]
 }

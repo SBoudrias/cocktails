@@ -1,21 +1,40 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Almond Brother",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Tequila Reposado",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime Juice",
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Rothman & Winter Orchard Apricot",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
@@ -27,33 +46,14 @@
       }
     },
     {
-      "name": "Orgeat",
+      "name": "Tequila Reposado",
       "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 2,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Maple Syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Rothman & Winter Orchard Apricot",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Add all ingredients to a shaker",
     "Add ice and shake until well-chilled",

@@ -6,6 +6,14 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "John D. Taylor's Velvet Falernum",
       "type": "liqueur",
       "quantity": {
@@ -14,27 +22,12 @@
       }
     },
     {
-      "name": "Blended aged rum (Barbados)",
+      "name": "Blended Aged Rum (Barbados)",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 180,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -42,6 +35,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 180
     }
   ]
 }

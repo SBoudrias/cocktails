@@ -6,6 +6,14 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
+      "name": "Macadamia nut orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -14,15 +22,7 @@
       }
     },
     {
-      "name": "Orange curaçao",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Macadamia nut orgeat",
+      "name": "Orange Curaçao",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -40,25 +40,25 @@
     {
       "name": "Black Blended Rum",
       "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      },
       "technique": {
         "technique": "application",
         "method": "float"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     },
     {
       "name": "Honey Lilikoi Foam",
       "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      },
       "technique": {
         "technique": "application",
         "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
       }
     }
   ],

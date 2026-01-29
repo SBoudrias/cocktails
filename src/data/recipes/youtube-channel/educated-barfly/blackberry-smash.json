@@ -6,28 +6,12 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Whiskey (Bourbon)",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Simple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "lemon",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "wedged"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 4,
         "unit": "unit"
@@ -47,6 +31,22 @@
       "quantity": {
         "amount": 8,
         "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

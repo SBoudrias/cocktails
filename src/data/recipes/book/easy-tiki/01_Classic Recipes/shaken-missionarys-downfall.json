@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Shaken Missionary's Downfall",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "mint leaves",
+      "name": "Mint leaves",
       "type": "other",
       "quantity": {
         "amount": 10,
@@ -11,15 +14,15 @@
       }
     },
     {
-      "name": "Blended Lightly-aged Rum",
-      "type": "category",
+      "name": "Honey syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -27,7 +30,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -43,17 +46,14 @@
       }
     },
     {
-      "name": "honey syrup",
-      "type": "syrup",
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Shake all ingredients with ice until chilled, about 10 seconds.",
     "Strain into a tiki mug and top with crushed ice.",
@@ -61,12 +61,12 @@
   ],
   "attributions": [
     {
-      "source": "Jelani Johnson",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Jelani Johnson"
     },
     {
-      "source": "Clover Club",
       "relation": "bar",
+      "source": "Clover Club",
       "location": "Brooklyn, NY"
     }
   ],

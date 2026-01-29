@@ -6,6 +6,14 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Black Blended Rum (Jamaica)",
       "type": "category",
       "quantity": {
@@ -18,14 +26,6 @@
       "type": "liqueur",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "heavy whipping cream",
-      "type": "other",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     }

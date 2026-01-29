@@ -6,10 +6,11 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Seltzer",
-      "type": "soda",
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 2,
+        "amount": 0.33,
         "unit": "oz"
       }
     },
@@ -30,32 +31,20 @@
       }
     },
     {
-      "name": "Demerara syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.33,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended aged rum (Jamaica)",
+      "name": "Blended Aged Rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 176,
-      "title": "smugglers-cove"
     },
     {
-      "type": "youtube",
-      "videoId": "YPnIDJNlPlA"
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -63,6 +52,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 176
+    },
+    {
+      "type": "youtube",
+      "videoId": "YPnIDJNlPlA"
     }
   ]
 }

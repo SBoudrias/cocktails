@@ -14,14 +14,6 @@
       }
     },
     {
-      "name": "Li Hing Mui powder",
-      "type": "spice",
-      "quantity": {
-        "amount": 0.125,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Drambuie",
       "type": "liqueur",
       "quantity": {
@@ -30,19 +22,20 @@
       }
     },
     {
-      "name": "Blended aged rum (Jamaica)",
+      "name": "Blended Aged Rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 204,
-      "title": "smugglers-cove"
+      "name": "Li Hing Mui powder",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
     }
   ],
   "attributions": [
@@ -50,6 +43,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 204
     }
   ]
 }

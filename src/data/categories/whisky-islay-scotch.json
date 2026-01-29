@@ -1,12 +1,12 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Whisky (Islay Scotch)",
+  "categoryType": "spirit",
   "parents": ["Whisky (Scotch)"],
   "refs": [
     {
       "type": "youtube",
       "videoId": "yqniYWLN6PE"
     }
-  ],
-  "categoryType": "spirit"
+  ]
 }

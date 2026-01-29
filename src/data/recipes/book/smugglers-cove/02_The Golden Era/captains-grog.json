@@ -6,6 +6,22 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Almond extract",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -30,30 +46,6 @@
       }
     },
     {
-      "name": "Vanilla extract",
-      "type": "other",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Seltzer",
-      "type": "soda",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "John D. Taylor's Velvet Falernum",
       "type": "liqueur",
       "quantity": {
@@ -70,7 +62,7 @@
       }
     },
     {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -78,7 +70,7 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -86,23 +78,20 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 65,
-      "title": "smugglers-cove"
     },
     {
-      "type": "youtube",
-      "videoId": "dUajt7tLq1s"
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -110,6 +99,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 65
+    },
+    {
+      "type": "youtube",
+      "videoId": "dUajt7tLq1s"
     }
   ]
 }

@@ -6,24 +6,8 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Ginger beer",
-      "type": "soda",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Lime juice",
       "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Licor 43",
-      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -38,10 +22,26 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Licor 43",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -54,18 +54,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 116,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 116
     }
   ]
 }

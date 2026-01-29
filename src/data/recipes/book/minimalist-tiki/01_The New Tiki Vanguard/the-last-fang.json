@@ -1,31 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "The Last Fang",
-  "glassware": "snifter",
   "preparation": "flash blended",
   "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orange juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "passion fruit syrup (Reàl)",
       "type": "syrup",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -38,18 +38,18 @@
       }
     },
     {
-      "name": "Seltzer",
-      "type": "soda",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Trois Rivières Ambré",
       "type": "spirit",
       "quantity": {
         "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }

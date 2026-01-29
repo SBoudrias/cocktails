@@ -6,14 +6,6 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Cold-brewed Coffee Concentrate",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Orgeat",
       "type": "category",
       "quantity": {
@@ -22,8 +14,8 @@
       }
     },
     {
-      "name": "Spiced Rum",
-      "type": "category",
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -42,6 +34,14 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Spiced Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

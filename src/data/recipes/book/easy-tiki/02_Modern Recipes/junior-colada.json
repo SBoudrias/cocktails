@@ -1,10 +1,29 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Junior Colada",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "Planteray Stiggins' Fancy pineapple rum",
-      "type": "spirit",
+      "name": "coconut soda",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -19,33 +38,14 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
+      "name": "Planteray Stiggins' Fancy pineapple rum",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "coconut soda",
-      "type": "soda",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
       }
     }
   ],
-  "preparation": "swizzled",
-  "served_on": "crushed ice",
-  "glassware": "highball",
   "instructions": [
     "Combine the rum, coconut liqueur, pineapple juice, and lime juice in a highball glass.",
     "Stir, using a swizzle stick or barspoon to combine.",
@@ -55,12 +55,12 @@
   ],
   "attributions": [
     {
-      "source": "David Perez",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "David Perez"
     },
     {
-      "source": "Lei Low",
       "relation": "bar",
+      "source": "Lei Low",
       "location": "Houston, TX"
     }
   ],

@@ -7,11 +7,11 @@
   "ingredients": [
     {
       "name": "lime",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "wedged"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 1,
         "unit": "unit"
@@ -50,18 +50,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 43,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 43
     }
   ]
 }

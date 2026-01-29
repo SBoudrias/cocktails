@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Cold Buttered Rum",
+  "preparation": "flash blended",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -27,9 +30,6 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "up",
-  "glassware": "coupe",
   "refs": [
     {
       "type": "youtube",

@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Bamboo Punch",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Peychaud's bitters",
@@ -11,15 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -27,10 +22,18 @@
       }
     },
     {
-      "name": "Column still lightly aged rum",
-      "type": "category",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -43,17 +46,14 @@
       }
     },
     {
-      "name": "Black Blended Rum (Jamaica)",
+      "name": "Column still lightly aged rum",
       "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "attributions": [
     {
       "relation": "recipe author",

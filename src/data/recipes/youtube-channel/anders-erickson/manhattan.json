@@ -6,11 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Rittenhouse Rye",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -22,11 +22,11 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],

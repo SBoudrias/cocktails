@@ -1,44 +1,16 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "No Woman No Cry",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 10,
   "ingredients": [
     {
-      "name": "Hamilton Jamaican Pot Still Black",
-      "type": "spirit",
-      "quantity": {
-        "amount": 17,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Gosling's Black Seal 151",
-      "type": "spirit",
-      "quantity": {
-        "amount": 8.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "hibiscus syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 8.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 3.33,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 6.75,
         "unit": "oz"
       }
     },
@@ -51,6 +23,22 @@
       }
     },
     {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 6.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "hibiscus syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
@@ -59,18 +47,30 @@
       }
     },
     {
-      "name": "Peychaud's Bitters",
+      "name": "Peychaud's bitters",
       "type": "bitter",
       "quantity": {
         "amount": 3.33,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Gosling's Black Seal 151",
+      "type": "spirit",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 17,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "punch",
-  "servings": 10,
   "instructions": [
     "Combine all ingredients and stir to mix",
     "Keep at least 4 hours or up to overnight in a covered container in the refrigerator",

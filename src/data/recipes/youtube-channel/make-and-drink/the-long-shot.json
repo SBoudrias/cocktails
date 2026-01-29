@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "The Long Shot",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -11,18 +14,10 @@
       }
     },
     {
-      "name": "orgeat",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "banana bunch liqueur tropical standard",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -31,6 +26,14 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana Bunch Liqueur (Tropical Standard)",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -50,17 +53,14 @@
   "instructions": [
     "Add all of the ingredients to a shaker with ice and shake. Strain into a glass and fill with pebble ice. Garnish."
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "attributions": [
     {
-      "source": "Andrea Leibrandt",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Andrea Leibrandt"
     },
     {
-      "source": "Mister Mao",
       "relation": "bar",
+      "source": "Mister Mao",
       "location": "New Orleans, LA"
     }
   ],

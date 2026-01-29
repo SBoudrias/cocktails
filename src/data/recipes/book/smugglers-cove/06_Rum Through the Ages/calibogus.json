@@ -6,11 +6,11 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Seltzer",
-      "type": "soda",
+      "name": "Spruce beer soda extract",
+      "type": "other",
       "quantity": {
-        "amount": 3,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "drop"
       }
     },
     {
@@ -23,19 +23,11 @@
     },
     {
       "name": "Molasses syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Spruce beer soda extract",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "drop"
       }
     },
     {
@@ -47,19 +39,20 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.25,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 167,
-      "title": "smugglers-cove"
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -67,6 +60,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 167
     }
   ]
 }

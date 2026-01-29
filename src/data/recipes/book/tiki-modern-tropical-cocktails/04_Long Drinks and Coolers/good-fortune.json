@@ -7,26 +7,18 @@
   "ingredients": [
     {
       "name": "Pastis 51",
+      "type": "liqueur",
       "technique": {
         "technique": "application",
         "method": "rinse"
       },
-      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Mango Syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Mint Leaves",
+      "name": "Mint leaves",
       "type": "other",
       "quantity": {
         "amount": 6,
@@ -34,14 +26,10 @@
       }
     },
     {
-      "name": "Four Roses Bourbon",
-      "technique": {
-        "technique": "fat-wash",
-        "fat": "szechuan oil"
-      },
-      "type": "spirit",
+      "name": "Mango Syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -54,10 +42,22 @@
       }
     },
     {
-      "name": "Lemon Juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Four Roses Bourbon",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "szechuan oil"
+      },
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }

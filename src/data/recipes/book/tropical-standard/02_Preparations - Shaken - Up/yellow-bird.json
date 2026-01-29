@@ -22,19 +22,19 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.625,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "lime cordial",
       "type": "syrup",
       "quantity": {
         "amount": 1,
         "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.625,
+        "unit": "oz"
       }
     },
     {
@@ -62,6 +62,17 @@
       }
     }
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Garret Richard"
+    },
+    {
+      "relation": "bar",
+      "source": "Sunken Harbor Club",
+      "location": "Brooklyn, NY"
+    }
+  ],
   "refs": [
     {
       "type": "book",
@@ -72,17 +83,6 @@
       "type": "youtube",
       "videoId": "VH105KbRFbQ",
       "start": 420
-    }
-  ],
-  "attributions": [
-    {
-      "relation": "recipe author",
-      "source": "Garret Richard"
-    },
-    {
-      "relation": "bar",
-      "source": "Sunken Harbor Club",
-      "location": "Brooklyn, NY"
     }
   ]
 }

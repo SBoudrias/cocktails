@@ -6,6 +6,14 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "drop"
+      }
+    },
+    {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
@@ -14,11 +22,48 @@
       }
     },
     {
-      "name": "Pernod",
-      "type": "spirit",
+      "name": "Orange juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
-        "unit": "drop"
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "chilled"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
       }
     },
     {
@@ -38,51 +83,6 @@
       }
     },
     {
-      "name": "honey syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orange juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "coffee",
-      "technique": {
-        "technique": "temperature",
-        "method": "chilled"
-      },
-      "type": "other",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Smith & Cross",
       "type": "spirit",
       "quantity": {
@@ -91,7 +91,15 @@
       }
     },
     {
-      "name": "El Dorado 12 year",
+      "name": "El Dorado 12 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Goslings Black Seal Rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
@@ -105,24 +113,16 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Goslings Black Seal Rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
     }
   ],
   "attributions": [
     {
-      "source": "Mai-Kai",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Mai-Kai"
     },
     {
-      "source": "The Atomic Grog",
       "relation": "adapted by",
+      "source": "The Atomic Grog",
       "url": "https://www.slammie.com/atomicgrog/blog/2012/04/04/mai-kai-cocktail-review-the-black-magic-emerges-from-the-shadows-as-a-true-classic/"
     }
   ],

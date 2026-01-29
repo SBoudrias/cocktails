@@ -13,7 +13,7 @@
       }
     },
     {
-      "name": "cinnamon",
+      "name": "Cinnamon",
       "type": "spice",
       "quantity": {
         "amount": 1,
@@ -21,7 +21,7 @@
       }
     },
     {
-      "name": "water",
+      "name": "Water",
       "type": "other",
       "quantity": {
         "amount": 200,

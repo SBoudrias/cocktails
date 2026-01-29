@@ -1,33 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Breakfast Mai Tai",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Smith & Cross",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard Banane du Brésil",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -35,10 +14,26 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -49,11 +44,16 @@
         "amount": 0.75,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine the overproof rum, banana liqueur, orgeat, cinnamon syrup, and lime juice in a cocktail shaker.",
     "Add a few pellets of crushed or cracked ice and shake until they melt.",
@@ -62,12 +62,12 @@
   ],
   "attributions": [
     {
-      "source": "Fanny Chu",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Fanny Chu"
     },
     {
-      "source": "Donna",
       "relation": "bar",
+      "source": "Donna",
       "location": "Brooklyn, NY"
     }
   ],

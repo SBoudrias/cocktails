@@ -6,18 +6,18 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Rittenhouse Rye",
-      "type": "spirit",
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
-      "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "liqueur",
+      "name": "Grenadine",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -30,19 +30,19 @@
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Regan's Orange Bitters No. 6",
-      "type": "bitter",
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],

@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Mai Tai",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Hamilton 86 Demerara Rum",
-      "type": "spirit",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -27,25 +38,14 @@
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
+      "name": "Hamilton 86 Demerara Rum",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine all ingredients in a shaker with cubed ice",
     "Shake and dump into a double rocks glass",

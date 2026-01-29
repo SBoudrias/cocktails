@@ -6,47 +6,7 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Tiki Lovers White",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bitter Truth Apricot Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple gum syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bitter Truth Aromatic Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 6,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Mint Leaves",
+      "name": "Mint leaves",
       "type": "other",
       "quantity": {
         "amount": 8,
@@ -60,12 +20,46 @@
         "amount": 5,
         "unit": "drop"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "youtube",
-      "videoId": "NNEFzDgWnMM"
+      "name": "Bitter Truth Aromatic Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 6,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pineapple Gum Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bitter Truth Apricot Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tiki Lovers White",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
   "instructions": [
@@ -75,5 +69,11 @@
     "Top with more pebble ice.",
     "Top with a float of aromatic bitters.",
     "Garnish with a mint sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NNEFzDgWnMM"
+    }
   ]
 }

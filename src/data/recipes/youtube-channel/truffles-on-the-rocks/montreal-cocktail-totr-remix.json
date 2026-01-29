@@ -6,19 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Whiskey (Rye)",
-      "type": "category",
+      "name": "Saline",
+      "type": "other",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "London Dry Gin",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -38,11 +30,19 @@
       }
     },
     {
-      "name": "Saline",
-      "type": "other",
+      "name": "Whiskey (Rye)",
+      "type": "category",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "London Dry Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     }
   ],

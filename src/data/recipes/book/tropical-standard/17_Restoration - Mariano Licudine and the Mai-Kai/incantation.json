@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "honey syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
@@ -55,14 +55,6 @@
       }
     },
     {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Cold-brewed Coffee Concentrate",
       "type": "other",
       "quantity": {
@@ -71,7 +63,15 @@
       }
     },
     {
-      "name": "St. Elizabeth Allspice Dram",
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 1,
@@ -119,13 +119,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 248
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -135,6 +128,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 248
     }
   ]
 }

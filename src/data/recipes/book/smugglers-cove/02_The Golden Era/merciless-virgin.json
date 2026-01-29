@@ -14,10 +14,10 @@
       }
     },
     {
-      "name": "Seltzer",
-      "type": "soda",
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -38,27 +38,20 @@
       }
     },
     {
-      "name": "Pierre Ferrand Dry Curaçao",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 67,
-      "title": "smugglers-cove"
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -66,6 +59,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 67
     }
   ]
 }

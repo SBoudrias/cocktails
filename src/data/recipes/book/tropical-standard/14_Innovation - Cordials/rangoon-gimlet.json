@@ -7,11 +7,11 @@
   "ingredients": [
     {
       "name": "lime",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "wedged"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 1,
         "unit": "unit"
@@ -34,7 +34,7 @@
       }
     },
     {
-      "name": "Lime cordial",
+      "name": "lime cordial",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
@@ -50,17 +50,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 219
-    },
-    {
-      "type": "youtube",
-      "videoId": "WhammUDUkwo"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -70,6 +59,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 219
+    },
+    {
+      "type": "youtube",
+      "videoId": "WhammUDUkwo"
     }
   ]
 }

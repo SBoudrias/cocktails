@@ -1,12 +1,32 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Make and Drink's Amaretto Sour",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Lazzaroni Amaretto",
-      "type": "liqueur",
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
-        "amount": 1.5,
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -19,34 +39,14 @@
       }
     },
     {
-      "name": "Lemon Juice",
-      "type": "juice",
+      "name": "Lazzaroni Amaretto",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Simple Syrup",
-      "type": "syrup",
-      "brix": 66,
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Egg White",
-      "type": "emulsifier",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Add all ingredients to a shaker",
     "Dry shake for 10-15 seconds",

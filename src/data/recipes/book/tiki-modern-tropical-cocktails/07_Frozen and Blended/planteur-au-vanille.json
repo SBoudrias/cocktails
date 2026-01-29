@@ -6,6 +6,38 @@
   "glassware": "collins",
   "ingredients": [
     {
+      "name": "Toasted Coconut Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Guava purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit crème de banane",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Damoiseau Pure Cane 110 Proof",
       "type": "spirit",
       "technique": {
@@ -15,38 +47,6 @@
       },
       "quantity": {
         "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tempus Fugit Crème de Banane",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "toasted coconut syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "guava puree",
-      "type": "puree",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     }

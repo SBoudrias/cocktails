@@ -6,7 +6,7 @@
   "glassware": "snifter",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "grapefruit juice",
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Hampden estate Rum Fire",
+      "name": "Hampden Estate Rum Fire",
       "type": "spirit",
       "quantity": {
         "amount": 0.75,
@@ -72,8 +72,8 @@
   ],
   "attributions": [
     {
-      "source": "Doc Parks",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Doc Parks"
     }
   ],
   "refs": [

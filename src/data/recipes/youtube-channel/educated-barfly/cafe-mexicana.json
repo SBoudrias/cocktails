@@ -6,14 +6,6 @@
   "glassware": "highball",
   "ingredients": [
     {
-      "name": "Cold-brewed Coffee Concentrate",
-      "type": "other",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Vanilla syrup",
       "type": "syrup",
       "quantity": {
@@ -22,7 +14,15 @@
       }
     },
     {
-      "name": "Coffee Liqueur",
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coffee liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -30,10 +30,10 @@
       }
     },
     {
-      "name": "Tequila Reposado",
+      "name": "Orange Curaçao",
       "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -46,10 +46,10 @@
       }
     },
     {
-      "name": "Orange Curaçao",
+      "name": "Tequila Reposado",
       "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

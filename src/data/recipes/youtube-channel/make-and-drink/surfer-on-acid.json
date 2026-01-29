@@ -6,43 +6,11 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Don Q Cristal Rum",
-      "type": "spirit",
+      "name": "Saline",
+      "type": "other",
       "quantity": {
-        "amount": 1.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Jägermeister",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Smith & Cross",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Malibu",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
@@ -63,11 +31,43 @@
       }
     },
     {
-      "name": "Saline",
-      "type": "other",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Malibu",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jägermeister",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Don Q Cristal Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
       }
     }
   ],

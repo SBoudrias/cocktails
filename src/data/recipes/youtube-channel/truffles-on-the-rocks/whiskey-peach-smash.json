@@ -6,36 +6,12 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Whiskey (Bourbon)",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Orange Curaçao",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Peach",
-      "type": "fruit",
-      "quantity": {
-        "amount": 40,
-        "unit": "gram"
-      }
-    },
-    {
       "name": "lemon",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "wedged"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 3,
         "unit": "unit"
@@ -47,6 +23,30 @@
       "quantity": {
         "amount": 8,
         "unit": "unit"
+      }
+    },
+    {
+      "name": "Peach",
+      "type": "fruit",
+      "quantity": {
+        "amount": 40,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

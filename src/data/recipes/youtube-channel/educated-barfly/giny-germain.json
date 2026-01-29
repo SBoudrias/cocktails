@@ -7,18 +7,26 @@
   "ingredients": [
     {
       "name": "Cucumber",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "cubed"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 20,
         "unit": "unit"
       }
     },
     {
-      "name": "Lemon Juice",
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -26,7 +34,7 @@
       }
     },
     {
-      "name": "St-Germain Elderflower Liqueur",
+      "name": "St Germain Elderflower Liqueur",
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
@@ -39,14 +47,6 @@
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Egg White",
-      "type": "emulsifier",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
       }
     }
   ],

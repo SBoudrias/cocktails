@@ -1,12 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Escape to Fantasy Island",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Planteray OFTD",
-      "type": "spirit",
+      "name": "Ginger syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mango purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -19,33 +38,14 @@
       }
     },
     {
-      "name": "ginger syrup",
-      "type": "syrup",
+      "name": "Planteray OFTD",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "mango purée",
-      "type": "puree",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all ingredients in a shaker with cubed ice",
     "Shake and fine strain into a chilled coupe",

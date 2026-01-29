@@ -1,16 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Peg Leg",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Old Grand-Dad Bonded Bourbon",
-      "technique": {
-        "technique": "fat-wash",
-        "fat": "sesame oil"
-      },
-      "type": "spirit",
+      "name": "Tempus Fugit Crème de Cacao",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -20,14 +27,6 @@
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Tempus Fugit Crème de Cacao",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
       }
     },
     {
@@ -47,17 +46,18 @@
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
+      "name": "Old Grand-Dad Bonded Bourbon",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "sesame oil"
+      },
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine all in a shaker with cubed ice",
     "Shake and strain into a rocks glass over ice",

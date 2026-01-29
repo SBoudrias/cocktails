@@ -6,10 +6,18 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Flor de Caña 7 year",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -30,18 +38,10 @@
       }
     },
     {
-      "name": "Falernum syrup",
-      "type": "category",
+      "name": "Flor de Caña 7 Year",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     }

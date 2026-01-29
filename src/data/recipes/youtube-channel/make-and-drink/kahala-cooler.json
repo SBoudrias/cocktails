@@ -1,17 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Kahala Cooler",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "brix": 0.66,
       "quantity": {
@@ -24,6 +19,14 @@
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -60,9 +63,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "attributions": [
     {
       "relation": "recipe author",

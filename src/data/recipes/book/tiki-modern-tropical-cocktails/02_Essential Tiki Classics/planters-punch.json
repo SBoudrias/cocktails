@@ -1,17 +1,20 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Planter's Punch",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Two James Doctor Bird Rum",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "grenadine",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
@@ -19,10 +22,10 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Two James Doctor Bird rum",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     },
@@ -39,9 +42,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "collins",
   "instructions": [
     "Combine all but the bitters in a shaker with cubed ice",
     "Shake and strain into a Collins glass over cubed ice",

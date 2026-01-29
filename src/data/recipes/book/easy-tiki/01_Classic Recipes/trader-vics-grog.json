@@ -1,39 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Trader Vic's Grog",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
   "ingredients": [
-    {
-      "name": "Planteray OFTD",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
@@ -41,11 +12,40 @@
         "amount": 3,
         "unit": "dash"
       }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray OFTD",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "footed pilsner",
   "instructions": [
     "Shake all ingredients with ice for about 5 seconds.",
     "Strain into a footed Pilsner glass filled with crushed ice.",
@@ -53,12 +53,12 @@
   ],
   "attributions": [
     {
-      "source": "Martin Cate",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Martin Cate"
     },
     {
-      "source": "Smuggler's Cove",
       "relation": "bar",
+      "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
     }
   ],

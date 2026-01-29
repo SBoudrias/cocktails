@@ -1,20 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Maiden Voyage",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Captive Spirits Bourbon Barreled Big Gin",
-      "type": "spirit",
+      "name": "Vanilla syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Lemorton Pommeau de Normandie",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -35,33 +46,22 @@
       }
     },
     {
-      "name": "vanilla syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Lemorton Pommeau de Normandie",
+      "type": "spirit",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Captive Spirits Bourbon Barreled Big Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "snifter",
   "instructions": [
     "Combine all in a shaker with cubed ice",
     "Shake and strain into a snifter and fill with pebbled ice",

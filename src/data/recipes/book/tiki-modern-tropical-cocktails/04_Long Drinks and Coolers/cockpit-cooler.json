@@ -6,22 +6,6 @@
   "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "Hampden Estate Rum Fire",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Hamilton Pimento Dram",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Toasted Coconut Syrup",
       "type": "syrup",
       "quantity": {
@@ -30,7 +14,15 @@
       }
     },
     {
-      "name": "Carrot Juice",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "carrot juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -46,10 +38,18 @@
       }
     },
     {
-      "name": "Lime Juice",
-      "type": "juice",
+      "name": "Hamilton Pimento Dram",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }

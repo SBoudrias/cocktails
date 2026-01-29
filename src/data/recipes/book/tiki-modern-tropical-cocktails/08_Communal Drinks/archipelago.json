@@ -1,20 +1,24 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Archipelago",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
   "ingredients": [
     {
-      "name": "Batavia Arrack van Oosten",
-      "type": "spirit",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 8.5,
+        "amount": 3.33,
         "unit": "oz"
       }
     },
     {
-      "name": "Lemorton Pommeau de Normandie",
-      "type": "spirit",
+      "name": "Ginger syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 3.33,
+        "amount": 4.25,
         "unit": "oz"
       }
     },
@@ -27,26 +31,22 @@
       }
     },
     {
-      "name": "ginger syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 4.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
+      "name": "Lemorton Pommeau de Normandie",
+      "type": "spirit",
       "quantity": {
         "amount": 3.33,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "punch",
-  "servings": 6,
   "instructions": [
     "Combine all ingredients in a nonreactive container and stir to mix",
     "Decant over ice into a Tiki bowl or serving vessel of your choice",

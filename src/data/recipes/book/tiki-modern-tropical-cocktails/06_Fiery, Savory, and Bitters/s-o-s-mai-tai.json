@@ -6,7 +6,7 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -46,6 +46,12 @@
       }
     }
   ],
+  "instructions": [
+    "Combine all ingredients in a shaker and add a handful of ice",
+    "Shake vigorously and pour all contents into a Collins glass and top with fresh pebbled ice",
+    "Garnish with a flaming lime shell",
+    "Note: For added excitement, sprinkle ground cinnamon from a shaker or sifter over the flame to create impressive fire sparkles. Be mindful of your surroundings, as the sparks can jump as much as 18 to 24 inches above the drink. Use common safety measures that come into play when working with open flames - tie any hair back, roll up your sleeves, and make sure you're in a well ventilated area with a fire extinguisher handy."
+  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -59,18 +65,12 @@
   "refs": [
     {
       "type": "book",
-      "page": 120,
-      "title": "tiki-modern-tropical-cocktails"
+      "title": "tiki-modern-tropical-cocktails",
+      "page": 120
     },
     {
       "type": "youtube",
       "videoId": "Ce8IHqiUVHU"
     }
-  ],
-  "instructions": [
-    "Combine all ingredients in a shaker and add a handful of ice",
-    "Shake vigorously and pour all contents into a Collins glass and top with fresh pebbled ice",
-    "Garnish with a flaming lime shell",
-    "Note: For added excitement, sprinkle ground cinnamon from a shaker or sifter over the flame to create impressive fire sparkles. Be mindful of your surroundings, as the sparks can jump as much as 18 to 24 inches above the drink. Use common safety measures that come into play when working with open flames - tie any hair back, roll up your sleeves, and make sure you're in a well ventilated area with a fire extinguisher handy."
   ]
 }

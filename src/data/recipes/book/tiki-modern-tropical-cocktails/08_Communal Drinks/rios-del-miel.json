@@ -1,12 +1,104 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Rios Del Miel",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 10,
   "ingredients": [
     {
-      "name": "Yaguara Cachaça Prata",
-      "type": "spirit",
+      "name": "pineapple",
+      "type": "fruit",
       "quantity": {
-        "amount": 25.33,
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Star anise",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "coriander seeds",
+      "type": "spice",
+      "quantity": {
+        "amount": 20,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "boiling"
+      },
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sencha tea",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 8.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 34,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Yuzu Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 4.25,
         "unit": "oz"
       }
     },
@@ -27,106 +119,14 @@
       }
     },
     {
-      "name": "Marie Brizard Yuzu Liqueur",
-      "type": "liqueur",
+      "name": "Yaguara Cachaça Prata",
+      "type": "spirit",
       "quantity": {
-        "amount": 4.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon",
-      "type": "fruit",
-      "quantity": {
-        "amount": 12,
-        "unit": "unit"
-      }
-    },
-    {
-      "name": "pineapple",
-      "type": "fruit",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      }
-    },
-    {
-      "name": "coriander seeds",
-      "type": "spice",
-      "quantity": {
-        "amount": 20,
-        "unit": "unit"
-      }
-    },
-    {
-      "name": "cloves",
-      "type": "spice",
-      "quantity": {
-        "amount": 3,
-        "unit": "unit"
-      }
-    },
-    {
-      "name": "cinnamon stick",
-      "type": "spice",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      }
-    },
-    {
-      "name": "star anise",
-      "type": "spice",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      }
-    },
-    {
-      "name": "sugar",
-      "type": "other",
-      "quantity": {
-        "amount": 2,
-        "unit": "cup"
-      }
-    },
-    {
-      "name": "Sencha tea",
-      "type": "other",
-      "technique": {
-        "technique": "temperature",
-        "method": "hot"
-      },
-      "quantity": {
-        "amount": 8.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "water",
-      "type": "other",
-      "technique": {
-        "technique": "temperature",
-        "method": "boiling"
-      },
-      "quantity": {
-        "amount": 8,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "whole milk",
-      "type": "other",
-      "quantity": {
-        "amount": 34,
+        "amount": 25.33,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "punch",
-  "servings": 10,
   "instructions": [
     "With a peeler, remove peel from the lemons. Juice the peeled lemons and reserve the liquid; discard the squeezed-out solids.",
     "Combine the lemon peels, pineapple, spices, and sugar in a large bowl or nonporous, nonreactive container, and muddle.",

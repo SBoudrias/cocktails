@@ -22,18 +22,18 @@
       }
     },
     {
-      "name": "Tequila Blanco",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Fernet-Branca",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }

@@ -1,29 +1,16 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Samurai's Downfall",
+  "preparation": "blended",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Mizu Saga Barley shochu",
-      "type": "spirit",
+      "name": "green shiso leaves",
+      "type": "other",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard crème de pêche de vigne",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
+        "amount": 5,
+        "unit": "unit"
       }
     },
     {
@@ -35,7 +22,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -43,17 +30,30 @@
       }
     },
     {
-      "name": "green shiso leaves",
-      "type": "other",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 5,
-        "unit": "unit"
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Crème de Pêche de Vigne",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mizu Saga Barley shochu",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "crushed ice",
-  "glassware": "hurricane",
   "instructions": [
     "Combine all the ingredients in a blender.",
     "Add 3/4 cup crushed ice and blend on low for 3 seconds.",
@@ -63,12 +63,12 @@
   ],
   "attributions": [
     {
-      "source": "Brian Evans",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Evans"
     },
     {
-      "source": "Sunday in Brooklyn",
       "relation": "bar",
+      "source": "Sunday in Brooklyn",
       "location": "Brooklyn, NY"
     }
   ],

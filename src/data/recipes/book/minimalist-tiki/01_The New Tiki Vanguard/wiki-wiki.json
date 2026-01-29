@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Wiki Wiki",
-  "glassware": "collins",
   "preparation": "swizzled",
   "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "saline",
+      "name": "Saline",
       "type": "other",
       "quantity": {
         "amount": 2,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,

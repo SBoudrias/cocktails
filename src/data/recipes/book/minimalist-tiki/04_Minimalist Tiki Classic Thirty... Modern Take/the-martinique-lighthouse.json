@@ -14,6 +14,22 @@
       }
     },
     {
+      "name": "Calamansi syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
@@ -26,22 +42,6 @@
       "type": "juice",
       "quantity": {
         "amount": 1.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Calamansi syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },

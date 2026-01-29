@@ -6,10 +6,19 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Ginger beer",
-      "type": "soda",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 4,
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -22,16 +31,7 @@
       }
     },
     {
-      "name": "Demerara syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "London dry gin",
+      "name": "London Dry Gin",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -47,19 +47,12 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Ginger beer",
+      "type": "soda",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 4,
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 65,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -67,6 +60,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 65
     }
   ]
 }

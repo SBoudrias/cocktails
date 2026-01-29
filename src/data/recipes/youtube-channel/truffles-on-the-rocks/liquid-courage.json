@@ -1,15 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Liquid Courage",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Tequila Reposado",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Licor 43",
       "type": "liqueur",
@@ -27,6 +22,14 @@
       }
     },
     {
+      "name": "Tequila Reposado",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Heavy whipping cream",
       "type": "other",
       "technique": {
@@ -39,9 +42,6 @@
       }
     }
   ],
-  "preparation": "stirred",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "Lightly sweeten heavy cream by mixing 6 oz cream with 0.5 oz simple syrup",
     "Stir tequila, Licor 43, and coffee liqueur with ice",

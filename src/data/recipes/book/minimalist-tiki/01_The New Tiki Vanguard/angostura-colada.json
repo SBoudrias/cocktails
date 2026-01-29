@@ -1,23 +1,15 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Angostura Colada",
-  "glassware": "snifter",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 2,
         "unit": "oz"
       }
     },
@@ -26,6 +18,14 @@
       "type": "syrup",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     },

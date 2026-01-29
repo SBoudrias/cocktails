@@ -1,26 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Trinidadi Issues",
-  "glassware": "collins",
   "preparation": "swizzled",
   "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Orgeat",
       "type": "category",
@@ -30,7 +14,7 @@
       }
     },
     {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -38,8 +22,16 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Barbados)",
-      "type": "category",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
@@ -50,6 +42,14 @@
       "type": "bitter",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Barbados)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     }

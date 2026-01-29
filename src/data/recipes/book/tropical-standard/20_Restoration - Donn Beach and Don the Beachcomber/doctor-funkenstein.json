@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "cane syrup",
+      "name": "Cane syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
@@ -55,7 +55,7 @@
       }
     },
     {
-      "name": "grenadine",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -71,7 +71,7 @@
       }
     },
     {
-      "name": "Denizen Merchant's Reserve",
+      "name": "Denizen Merchants Reserve",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -87,13 +87,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 267
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -103,6 +96,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 267
     }
   ]
 }

@@ -6,18 +6,34 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Hamilton Jamaican Pot Still Black",
-      "type": "spirit",
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1.5,
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Coffee syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "La Favorite Coeur d'Ambre",
-      "type": "spirit",
+      "name": "passion fruit juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -30,35 +46,19 @@
       }
     },
     {
-      "name": "Coffee Syrup",
-      "type": "syrup",
+      "name": "La Favorite Coeur d'Ambre",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Passion Fruit Juice",
-      "type": "juice",
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bittermens Xocolatl Mole Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
       }
     }
   ],

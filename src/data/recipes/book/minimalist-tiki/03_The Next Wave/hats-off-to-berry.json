@@ -1,23 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Hats Off to Berry",
-  "glassware": "old fashioned",
   "preparation": "shaken",
   "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Pernod",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
         "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
         "unit": "dash"
       }
     },

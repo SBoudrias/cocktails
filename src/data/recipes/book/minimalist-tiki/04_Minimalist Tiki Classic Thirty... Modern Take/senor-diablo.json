@@ -22,19 +22,19 @@
       }
     },
     {
-      "name": "Ancho Reyes Ancho Chile Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "blueberry syrup (Reàl)",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Ancho Reyes Ancho Chile Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {

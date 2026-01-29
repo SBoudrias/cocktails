@@ -12,7 +12,7 @@
       }
     },
     {
-      "name": "water",
+      "name": "Water",
       "type": "other",
       "quantity": {
         "amount": 1,
@@ -20,7 +20,7 @@
       }
     },
     {
-      "name": "rosemary sprig",
+      "name": "Rosemary Sprig",
       "type": "spice",
       "quantity": {
         "amount": 5,

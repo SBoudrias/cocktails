@@ -6,10 +6,34 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Tanqueray London Dry Gin",
-      "type": "spirit",
+      "name": "Scrappy's Aromatic Bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1,
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     },
@@ -30,7 +54,7 @@
       }
     },
     {
-      "name": "Pierre Ferrand Dry Curacao",
+      "name": "Pierre Ferrand Dry Curaçao",
       "type": "liqueur",
       "quantity": {
         "amount": 0.33,
@@ -38,42 +62,18 @@
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
+      "name": "Tanqueray London Dry Gin",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.33,
+        "amount": 1,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Scrappy's Aromatic Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
       }
     }
   ],
   "attributions": [
     {
-      "source": "Raffles Hotel",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Raffles Hotel"
     }
   ],
   "refs": [

@@ -1,21 +1,40 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Lavender",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "Verjus",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blueberry lavender shrub",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Cognac",
       "type": "category",
       "technique": [
         {
           "technique": "fat-wash",
+          "spirit_quantity": {
+            "amount": 200,
+            "unit": "ml"
+          },
           "fat": "browned butter",
           "fat_quantity": {
             "amount": 2,
             "unit": "tbsp"
-          },
-          "spirit_quantity": {
-            "amount": 200,
-            "unit": "ml"
           }
         },
         {
@@ -33,33 +52,14 @@
       }
     },
     {
-      "name": "Blueberry lavender shrub",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Champagne",
       "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Verjus",
-      "type": "other",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": ["Garnish with a lavender sprig"],
   "refs": [
     {

@@ -14,11 +14,19 @@
       }
     },
     {
-      "name": "Bittermens Orange Cream Citrate Bitters",
+      "name": "Bittermens Orange Cream Citrate bitters",
       "type": "bitter",
       "quantity": {
         "amount": 6,
         "unit": "drop"
+      }
+    },
+    {
+      "name": "vanilla-sandalwood syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
       }
     },
     {
@@ -38,15 +46,7 @@
       }
     },
     {
-      "name": "vanilla-sandalwood syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple gum syrup",
+      "name": "Pineapple Gum Syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
@@ -71,22 +71,15 @@
     },
     {
       "name": "Coruba",
+      "type": "spirit",
       "technique": {
         "technique": "application",
         "method": "float"
       },
-      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 239
     }
   ],
   "attributions": [
@@ -98,6 +91,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 239
     }
   ]
 }

@@ -6,11 +6,19 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Whiskey (Rye)",
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orange bitters",
       "type": "category",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
@@ -30,19 +38,11 @@
       }
     },
     {
-      "name": "Angostura Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Orange bitters",
+      "name": "Whiskey (Rye)",
       "type": "category",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

@@ -1,21 +1,16 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "St. Charles Punch",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Fonsecca Bin 27 Ruby Port",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Maison Rouge VSOP Cognac",
+      "name": "St. George Absinthe Verte",
       "type": "spirit",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -36,17 +31,22 @@
       }
     },
     {
-      "name": "St. George Absinthe Verte",
+      "name": "Fonsecca Bin 27 Ruby Port",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
       "type": "spirit",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": ["Garnish with lemon wheel and berries"],
   "attributions": [
     {

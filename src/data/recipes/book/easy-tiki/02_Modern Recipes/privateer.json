@@ -1,7 +1,34 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Privateer",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
     {
       "name": "tequila",
       "type": "category",
@@ -11,31 +38,7 @@
       }
     },
     {
-      "name": "passion fruit syrup",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "salt",
+      "name": "Salt",
       "type": "other",
       "quantity": {
         "amount": 1,
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -55,12 +55,12 @@
   ],
   "attributions": [
     {
-      "source": "Chris Vanderginst",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Chris Vanderginst"
     },
     {
-      "source": "Mutiny Bar",
       "relation": "bar",
+      "source": "Mutiny Bar",
       "location": "Detroit, MI"
     }
   ],

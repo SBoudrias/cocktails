@@ -1,9 +1,24 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Jade Merchant No. 2",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Mint Leaves",
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Mint leaves",
       "type": "other",
       "quantity": {
         "amount": 10,
@@ -11,34 +26,18 @@
       }
     },
     {
-      "name": "Cucumber",
-      "type": "fruit",
-      "quantity": {
-        "amount": 2,
-        "unit": "unit"
-      },
-      "technique": {
-        "technique": "cut",
-        "type": "sliced"
-      }
-    },
-    {
-      "name": "Lime Juice",
+      "name": "Aloe Vera Juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Iichiko Mugi Shochu",
-      "technique": {
-        "technique": "fat-wash",
-        "fat": "avocado oil"
-      },
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 3,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -51,17 +50,18 @@
       }
     },
     {
-      "name": "Aloe Vera Juice",
-      "type": "juice",
+      "name": "Iichiko Mugi Shochu",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "avocado oil"
+      },
       "quantity": {
-        "amount": 0.25,
+        "amount": 3,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "In a shaker, muddle mint, cucumber chips, and lime juice.",
     "Add remaining ingredients and shake to chill.",

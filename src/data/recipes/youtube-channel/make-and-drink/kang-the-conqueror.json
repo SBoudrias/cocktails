@@ -6,6 +6,22 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Empress 1908 Gin",
       "type": "spirit",
       "quantity": {
@@ -14,23 +30,7 @@
       }
     },
     {
-      "name": "simple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Amaro averna",
+      "name": "Amaro Averna",
       "type": "liqueur",
       "technique": [
         {

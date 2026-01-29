@@ -47,11 +47,11 @@
     },
     {
       "name": "Rum",
+      "type": "category",
       "technique": {
         "technique": "infusion",
         "agent": "cacao nibs"
       },
-      "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
@@ -66,13 +66,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 98
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -82,6 +75,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 98
     }
   ]
 }

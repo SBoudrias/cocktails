@@ -6,10 +6,10 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Del Maguey Vida Mezcal",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -22,10 +22,10 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 2,
         "unit": "oz"
       }
     }

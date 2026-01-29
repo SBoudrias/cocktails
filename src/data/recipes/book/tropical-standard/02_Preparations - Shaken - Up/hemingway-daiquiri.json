@@ -14,14 +14,6 @@
       }
     },
     {
-      "name": "Luxardo Maraschino Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -30,11 +22,19 @@
       }
     },
     {
-      "name": "grapefruit punch syrup",
+      "name": "Grapefruit punch syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
       }
     },
     {
@@ -46,13 +46,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 58
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -62,6 +55,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 58
     }
   ]
 }

@@ -6,27 +6,35 @@
   "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
       "name": "Passion fruit syrup",
-      "brix": 66,
       "type": "category",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Mathilde poire",
-      "type": "liqueur",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -39,10 +47,10 @@
       }
     },
     {
-      "name": "Seltzer",
-      "type": "soda",
+      "name": "Mathilde poire",
+      "type": "liqueur",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -55,27 +63,12 @@
       }
     },
     {
-      "name": "Peychaud's bitters",
-      "type": "bitter",
+      "name": "Seltzer",
+      "type": "soda",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 118,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -83,6 +76,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 118
     }
   ]
 }

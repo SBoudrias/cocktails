@@ -15,8 +15,8 @@
     },
     {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -24,8 +24,8 @@
     },
     {
       "name": "Honey syrup",
-      "brix": 50,
       "type": "syrup",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -40,7 +40,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -56,18 +56,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 121,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 121
     }
   ]
 }

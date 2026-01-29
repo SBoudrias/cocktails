@@ -22,19 +22,19 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cane syrup",
+      "name": "Cane syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -47,7 +47,7 @@
       }
     },
     {
-      "name": "Chairman's Reserve Rum",
+      "name": "Chairman's Reserve rum",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -63,13 +63,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 85
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -79,6 +72,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 85
     }
   ]
 }

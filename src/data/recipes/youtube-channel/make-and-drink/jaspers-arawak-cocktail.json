@@ -1,6 +1,9 @@
 {
   "$schema": "../../../schemas/recipe.schema.json",
   "name": "Jasper's Arawak Cocktail",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "honey",
@@ -27,9 +30,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "attributions": [
     {
       "relation": "recipe author",

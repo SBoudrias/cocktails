@@ -6,14 +6,6 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Salt",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "pinch"
-      }
-    },
-    {
       "name": "Scotch Bonnet Simple Syrup",
       "type": "syrup",
       "quantity": {
@@ -51,6 +43,14 @@
       "quantity": {
         "amount": 1,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
       }
     }
   ],

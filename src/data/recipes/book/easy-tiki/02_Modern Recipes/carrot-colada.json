@@ -1,25 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Carrot Colada",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "London dry gin",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Amaro Montenegro",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -49,11 +36,24 @@
         "amount": 0.75,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Amaro Montenegro",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "London Dry Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "hurricane",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add 1 large ice cube and shake until it melts.",
@@ -62,12 +62,12 @@
   ],
   "attributions": [
     {
-      "source": "Christine Wiseman",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Christine Wiseman"
     },
     {
-      "source": "Broken Shaker",
       "relation": "bar",
+      "source": "Broken Shaker",
       "location": "Los Angeles, CA"
     }
   ],

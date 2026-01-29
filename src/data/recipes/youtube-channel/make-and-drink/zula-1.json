@@ -22,15 +22,7 @@
       }
     },
     {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.125,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
@@ -39,7 +31,7 @@
       }
     },
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -47,7 +39,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -55,10 +47,18 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.125,
         "unit": "oz"
       }
     },
@@ -81,8 +81,8 @@
   ],
   "attributions": [
     {
-      "source": "The Atomic Grog",
       "relation": "adapted by",
+      "source": "The Atomic Grog",
       "url": "https://www.slammie.com/atomicgrog/blog/2012/03/05/mai-kai-cocktail-review-double-your-pleasure-with-the-exotic-and-delicious-zula/"
     }
   ],

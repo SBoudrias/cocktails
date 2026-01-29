@@ -7,11 +7,11 @@
   "ingredients": [
     {
       "name": "lime",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "sectioned"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 6,
         "unit": "unit"
@@ -34,7 +34,7 @@
       }
     },
     {
-      "name": "pineapple gum syrup",
+      "name": "Pineapple Gum Syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -58,13 +58,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 77
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -74,6 +67,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 77
     }
   ]
 }

@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -40,8 +40,8 @@
   ],
   "attributions": [
     {
-      "source": "Nomad Lounge at Disney's Animal Kingdom Park",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Nomad Lounge at Disney's Animal Kingdom Park"
     }
   ],
   "refs": [

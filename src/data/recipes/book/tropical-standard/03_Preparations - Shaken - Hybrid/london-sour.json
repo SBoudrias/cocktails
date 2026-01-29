@@ -7,11 +7,11 @@
   "ingredients": [
     {
       "name": "lemon",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "wedged"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 1,
         "unit": "unit"
@@ -19,11 +19,11 @@
     },
     {
       "name": "orange",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "wedged"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 1,
         "unit": "unit"
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Peychaud's Bitters",
+      "name": "Peychaud's bitters",
       "type": "bitter",
       "quantity": {
         "amount": 2,
@@ -54,18 +54,18 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "orgeat",
-      "type": "category",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -86,13 +86,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 73
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -102,6 +95,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 73
     }
   ]
 }

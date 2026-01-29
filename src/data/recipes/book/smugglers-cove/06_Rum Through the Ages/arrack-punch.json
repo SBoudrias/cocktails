@@ -23,18 +23,10 @@
     },
     {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 3,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Batavia Arrack van Oosten",
-      "type": "spirit",
-      "quantity": {
-        "amount": 6,
         "unit": "oz"
       }
     },
@@ -47,7 +39,15 @@
       }
     },
     {
-      "name": "Carbonated Chai Tea",
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Carbonated chai tea",
       "type": "soda",
       "quantity": {
         "amount": 6,
@@ -55,18 +55,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 163,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 163
     }
   ]
 }

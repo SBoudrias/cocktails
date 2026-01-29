@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Camparinara Punch (Rummy)",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
     {
       "name": "Ginger syrup",
@@ -19,19 +22,19 @@
       }
     },
     {
-      "name": "St-Elizabeth Allspice Dram",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 2,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
       }
     },
     {
@@ -51,9 +54,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "refs": [
     {
       "type": "youtube",

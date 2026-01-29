@@ -6,10 +6,19 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Seltzer",
-      "type": "soda",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -22,15 +31,6 @@
       }
     },
     {
-      "name": "Cinnamon syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Cherry Heering liqueur",
       "type": "category",
       "quantity": {
@@ -39,7 +39,7 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -47,19 +47,12 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Seltzer",
+      "type": "soda",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 121,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -67,6 +60,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 121
     }
   ]
 }

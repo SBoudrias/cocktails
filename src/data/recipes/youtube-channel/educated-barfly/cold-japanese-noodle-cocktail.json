@@ -1,12 +1,39 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Cold Japanese Noodle Cocktail",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Blended Lightly-aged Rum",
-      "type": "category",
+      "name": "sesame oil",
+      "type": "other",
       "quantity": {
-        "amount": 1.5,
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cucumber juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -27,41 +54,14 @@
       }
     },
     {
-      "name": "cucumber juice",
-      "type": "juice",
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Demerara syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "sesame oil",
-      "type": "other",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "instructions": [
     "Dry blend all ingredient to incorporate the sesame oil.",
     "Add ice to shaker and stain over big rock of ice."

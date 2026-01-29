@@ -6,6 +6,40 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "pear",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "temperature",
+          "method": "roasted"
+        },
+        {
+          "technique": "cut",
+          "type": "sectioned"
+        }
+      ],
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Solo 1971 Mezcal",
       "type": "spirit",
       "quantity": {
@@ -22,46 +56,12 @@
       }
     },
     {
-      "name": "honey syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pear",
-      "technique": [
-        {
-          "technique": "temperature",
-          "method": "roasted"
-        },
-        {
-          "technique": "cut",
-          "type": "sectioned"
-        }
-      ],
-      "type": "fruit",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "lemon",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "zested"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 1,
         "unit": "pinch"
@@ -69,11 +69,11 @@
     },
     {
       "name": "Varnelli Amaro Sibilla",
+      "type": "liqueur",
       "technique": {
         "technique": "application",
         "method": "float"
       },
-      "type": "liqueur",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -87,22 +87,22 @@
     "Pour into a chilled glass and float the amaro around the rim",
     "Garnish with a fresh rosemary sprig or an edible flower"
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Karen Jarman"
+    },
+    {
+      "relation": "bar",
+      "source": "Yola Mezcal",
+      "location": "New York, NY"
+    }
+  ],
   "refs": [
     {
       "type": "book",
       "title": "tiki-modern-tropical-cocktails",
       "page": 136
-    }
-  ],
-  "attributions": [
-    {
-      "source": "Karen Jarman",
-      "relation": "recipe author"
-    },
-    {
-      "source": "Yola Mezcal",
-      "relation": "bar",
-      "location": "New York, NY"
     }
   ]
 }

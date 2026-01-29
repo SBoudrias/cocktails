@@ -4,7 +4,7 @@
   "type": "syrup",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -20,7 +20,7 @@
       }
     },
     {
-      "name": "Angostura Bitters",
+      "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
         "amount": 0.5,
@@ -28,7 +28,7 @@
       }
     },
     {
-      "name": "nutmeg",
+      "name": "Nutmeg",
       "type": "spice",
       "quantity": {
         "amount": 0.5,

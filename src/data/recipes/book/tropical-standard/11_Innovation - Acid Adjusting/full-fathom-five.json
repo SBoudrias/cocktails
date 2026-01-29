@@ -46,18 +46,18 @@
       }
     },
     {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
+      "name": "Gardenia Mix",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "gardenia mix",
-      "type": "category",
+      "name": "Falernum (Tropical Standard)",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -78,19 +78,12 @@
       }
     },
     {
-      "name": " Hamilton 86 Demerara Rum",
+      "name": "Hamilton 86 Demerara Rum",
       "type": "spirit",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 181
     }
   ],
   "attributions": [
@@ -102,6 +95,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 181
     }
   ]
 }

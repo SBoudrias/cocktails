@@ -6,14 +6,6 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Mint leaves",
-      "type": "other",
-      "quantity": {
-        "amount": 8,
-        "unit": "unit"
-      }
-    },
-    {
       "name": "pineapple",
       "type": "fruit",
       "quantity": {
@@ -22,7 +14,15 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -30,16 +30,16 @@
       }
     },
     {
-      "name": "pineapple drinking vinegar (Pok Pok Som)",
-      "type": "soda",
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
+      "name": "Krogstad Aquavit",
+      "type": "spirit",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
@@ -54,10 +54,10 @@
       }
     },
     {
-      "name": "Krogstad Aquavit",
-      "type": "spirit",
+      "name": "pineapple drinking vinegar (Pok Pok Som)",
+      "type": "soda",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     }
@@ -71,12 +71,12 @@
   ],
   "attributions": [
     {
-      "source": "Shelby Allison",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Shelby Allison"
     },
     {
-      "source": "Erin Hayes",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Erin Hayes"
     }
   ],
   "refs": [

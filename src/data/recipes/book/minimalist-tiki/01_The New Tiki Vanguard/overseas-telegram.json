@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Overseas Telegram",
-  "glassware": "footed pilsner",
   "preparation": "shaken",
   "served_on": "ice cubes",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -30,18 +30,6 @@
       }
     },
     {
-      "name": "Reuben's Gose",
-      "type": "beer",
-      "technique": {
-        "technique": "application",
-        "method": "top"
-      },
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Peychaud's bitters",
       "type": "bitter",
       "technique": {
@@ -51,6 +39,18 @@
       "quantity": {
         "amount": 1,
         "unit": "unit"
+      }
+    },
+    {
+      "name": "Reuben's Gose",
+      "type": "beer",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

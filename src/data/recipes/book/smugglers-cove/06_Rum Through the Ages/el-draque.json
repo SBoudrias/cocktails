@@ -15,8 +15,8 @@
     },
     {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
@@ -39,18 +39,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 163,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 163
     }
   ]
 }

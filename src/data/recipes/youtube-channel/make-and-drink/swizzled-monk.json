@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Swizzled Monk",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Lemon Juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -15,14 +26,6 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Fernet Branca",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -43,17 +46,14 @@
       }
     }
   ],
-  "preparation": "swizzled",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Add all ingredients to a collins glass filled with crushed ice",
     "Swizzle until well-chilled and frost forms on the outside of the mug"
   ],
   "attributions": [
     {
-      "source": "Disneyland Resort",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Disneyland Resort"
     }
   ],
   "refs": [

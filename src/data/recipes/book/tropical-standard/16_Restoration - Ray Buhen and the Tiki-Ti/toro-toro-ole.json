@@ -14,7 +14,15 @@
       }
     },
     {
-      "name": "Peychaud's Bitters",
+      "name": "pasilla chile tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
       "type": "bitter",
       "quantity": {
         "amount": 3,
@@ -38,11 +46,11 @@
       }
     },
     {
-      "name": "pasilla chile tincture",
-      "type": "tincture",
+      "name": "Red Fassionola",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 0.5,
+        "unit": "oz"
       }
     },
     {
@@ -50,14 +58,6 @@
       "type": "juice",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Red Fassionola",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -86,13 +86,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 242
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -102,6 +95,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 242
     }
   ]
 }

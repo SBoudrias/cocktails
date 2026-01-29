@@ -6,6 +6,15 @@
   "glassware": "collins",
   "ingredients": [
     {
+      "name": "Orgeat",
+      "type": "category",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
@@ -22,8 +31,15 @@
       }
     },
     {
-      "name": "Orgeat",
-      "brix": 50,
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Oloroso)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -39,43 +55,27 @@
       }
     },
     {
-      "name": "Gin",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Sherry (Oloroso)",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
     }
   ],
   "instructions": ["Float the sherry on top of the drink."],
-  "refs": [
-    {
-      "type": "book",
-      "page": 275,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 275
     }
   ]
 }

@@ -7,22 +7,14 @@
   "ingredients": [
     {
       "name": "lime",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "sectioned"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 6,
         "unit": "unit"
-      }
-    },
-    {
-      "name": "white sugar",
-      "type": "other",
-      "quantity": {
-        "amount": 2,
-        "unit": "tsp"
       }
     },
     {
@@ -31,6 +23,14 @@
       "quantity": {
         "amount": 5,
         "unit": "drop"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
       }
     },
     {
@@ -50,13 +50,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 78
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -66,6 +59,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 78
     }
   ]
 }

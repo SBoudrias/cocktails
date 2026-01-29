@@ -6,15 +6,7 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -22,11 +14,19 @@
       }
     },
     {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "brix": 66,
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -55,8 +55,8 @@
   ],
   "attributions": [
     {
-      "source": "Matt Pietrek",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Matt Pietrek"
     }
   ],
   "refs": [

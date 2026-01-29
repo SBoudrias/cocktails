@@ -6,10 +6,28 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Black blended overproof rum",
-      "type": "category",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "brix": 66,
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -22,32 +40,6 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Passion fruit syrup",
-      "brix": 66,
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Demerara syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Luxardo Maraschino Liqueur",
       "type": "liqueur",
       "quantity": {
@@ -56,7 +48,15 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Black blended Overproof Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -67,22 +67,22 @@
   "instructions": [
     "Serve the overproof rum in a separate shot glass. Guests can then explore how the drink flavor change as they add more."
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 44,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "C2jlz4V_jTk"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 44
+    },
+    {
+      "type": "youtube",
+      "videoId": "C2jlz4V_jTk"
     }
   ]
 }

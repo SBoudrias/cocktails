@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Shark's Tooth",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -11,7 +14,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -44,17 +47,14 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Serve in a glass with a ice shell.",
     "The cherry syrup can be substituted with 1/2oz of simply syrup + a barspoon of maraschino cherry syrup. Or simply with grenadine."
   ],
   "attributions": [
     {
-      "source": "Don the Beachcomber",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Don the Beachcomber"
     }
   ],
   "refs": [

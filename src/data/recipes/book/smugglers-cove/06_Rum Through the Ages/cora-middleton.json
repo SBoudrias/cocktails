@@ -6,33 +6,9 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Egg white",
-      "type": "emulsifier",
-      "quantity": {
-        "amount": 2,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Blended aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -45,13 +21,30 @@
         "amount": 0.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 174,
-      "title": "smugglers-cove"
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
     }
   ],
   "attributions": [
@@ -59,6 +52,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 174
     }
   ]
 }

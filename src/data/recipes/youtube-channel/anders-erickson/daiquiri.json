@@ -6,10 +6,10 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "El Dorado 3 Year",
-      "type": "spirit",
+      "name": "Simple syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -22,10 +22,10 @@
       }
     },
     {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "El Dorado 3 Year",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     }

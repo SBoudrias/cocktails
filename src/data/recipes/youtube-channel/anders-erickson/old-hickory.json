@@ -6,6 +6,22 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Cocchi Vermouth di Torino",
       "type": "liqueur",
       "quantity": {
@@ -19,22 +35,6 @@
       "quantity": {
         "amount": 1,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Regan's Orange Bitters No. 6",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Peychaud's Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 3,
-        "unit": "dash"
       }
     }
   ],

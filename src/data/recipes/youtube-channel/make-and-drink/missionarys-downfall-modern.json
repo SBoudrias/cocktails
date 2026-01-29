@@ -1,13 +1,36 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Missionary's Downfall (Modern)",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "pineapple juice",
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
+      "quantity": {
+        "amount": 60,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
       "technique": {
         "technique": "acid-adjustment"
       },
-      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -46,26 +69,6 @@
       }
     },
     {
-      "name": "pineapple",
-      "technique": {
-        "technique": "cut",
-        "type": "chunked"
-      },
-      "type": "fruit",
-      "quantity": {
-        "amount": 60,
-        "unit": "gram"
-      }
-    },
-    {
-      "name": "Mint leaves",
-      "type": "other",
-      "quantity": {
-        "amount": 12,
-        "unit": "unit"
-      }
-    },
-    {
       "name": "xanthan gum",
       "type": "emulsifier",
       "quantity": {
@@ -74,9 +77,6 @@
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "blended",
-  "glassware": "coupe",
   "instructions": [
     "Add all ingredients to a blender",
     "Add 170 grams of crushed ice",
@@ -85,8 +85,8 @@
   ],
   "attributions": [
     {
-      "source": "Garret Richard",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Garret Richard"
     }
   ],
   "refs": [

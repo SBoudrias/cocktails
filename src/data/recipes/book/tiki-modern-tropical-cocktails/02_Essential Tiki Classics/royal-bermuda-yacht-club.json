@@ -1,12 +1,15 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Royal Bermuda Yacht Club",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Hamilton 86 Demerara Rum",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -27,17 +30,14 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Hamilton 86 Demerara Rum",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all ingredients in a shaker with cubed ice",
     "Shake and double strain into a chilled coupe",

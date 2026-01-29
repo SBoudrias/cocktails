@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Whiskey (Straight Corn)",
-  "parents": ["Whiskey (Bourbon)"],
-  "categoryType": "spirit"
+  "categoryType": "spirit",
+  "parents": ["Whiskey (Bourbon)"]
 }

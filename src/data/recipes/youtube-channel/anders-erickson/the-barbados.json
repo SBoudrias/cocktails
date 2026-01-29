@@ -6,14 +6,6 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "The Real McCoy 12 year",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Falernum syrup",
       "type": "category",
       "quantity": {
@@ -26,6 +18,14 @@
       "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Real McCoy 12 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }

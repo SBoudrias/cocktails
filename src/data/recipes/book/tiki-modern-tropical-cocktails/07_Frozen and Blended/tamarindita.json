@@ -6,23 +6,7 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Ron Abuelo 7-Year Añejo Rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cynar",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "tamarind puree",
+      "name": "tamarind purée",
       "type": "puree",
       "quantity": {
         "amount": 1,
@@ -42,6 +26,22 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ron Abuelo 7-Year Añejo Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }

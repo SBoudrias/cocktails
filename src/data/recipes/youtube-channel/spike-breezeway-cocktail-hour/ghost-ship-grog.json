@@ -1,7 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Ghost Ship Grog",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "Pandan Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Lemon juice",
       "type": "juice",
@@ -15,14 +26,6 @@
       "type": "juice",
       "quantity": {
         "amount": 3,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pandan Syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -59,9 +62,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "attributions": [
     {
       "relation": "bar",

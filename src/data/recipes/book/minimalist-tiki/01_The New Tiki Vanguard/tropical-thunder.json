@@ -1,20 +1,20 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Tropical Thunder",
-  "glassware": "hurricane",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "lemon juice",
-      "type": "juice",
+      "name": "Vanilla syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -22,10 +22,10 @@
       }
     },
     {
-      "name": "vanilla syrup",
-      "type": "syrup",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     },

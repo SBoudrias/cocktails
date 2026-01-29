@@ -6,7 +6,7 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "absinthe",
+      "name": "Absinthe",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "passion fruit syrup",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "pandan syrup",
+      "name": "Pandan Syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -70,8 +70,8 @@
   ],
   "attributions": [
     {
-      "source": "Brian Maxwell",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Maxwell"
     }
   ],
   "refs": [

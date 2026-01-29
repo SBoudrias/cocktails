@@ -1,13 +1,28 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "The Summer Without Prosciutto",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Purity London Dry Gin",
-      "type": "spirit",
+      "name": "Cantaloupe",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
       }
     },
     {
@@ -19,20 +34,8 @@
       }
     },
     {
-      "name": "Cantaloupe",
-      "technique": {
-        "technique": "cut",
-        "type": "chunked"
-      },
-      "type": "fruit",
-      "quantity": {
-        "amount": 4,
-        "unit": "unit"
-      }
-    },
-    {
-      "name": "Skinos Mastiha Liqueur",
-      "type": "liqueur",
+      "name": "Simple syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -47,25 +50,22 @@
       }
     },
     {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "Skinos Mastiha Liqueur",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Egg white",
-      "type": "emulsifier",
+      "name": "Purity London Dry Gin",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "unit"
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "instructions": [
     "Add all ingredients to a shaker",
     "Muddle the cantaloupe chunks",

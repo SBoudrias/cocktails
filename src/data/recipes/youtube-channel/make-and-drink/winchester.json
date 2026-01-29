@@ -14,22 +14,6 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Ginger syrup",
       "type": "syrup",
       "brix": 50,
@@ -44,6 +28,22 @@
       "brix": 50,
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -82,8 +82,8 @@
   ],
   "attributions": [
     {
-      "source": "Brian Miller",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Brian Miller"
     }
   ],
   "refs": [

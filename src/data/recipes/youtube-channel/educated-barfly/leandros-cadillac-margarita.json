@@ -6,10 +6,10 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Tequila Añejo",
-      "type": "category",
+      "name": "Honey syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -30,10 +30,10 @@
       }
     },
     {
-      "name": "Honey syrup",
-      "type": "syrup",
+      "name": "Tequila Añejo",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     }

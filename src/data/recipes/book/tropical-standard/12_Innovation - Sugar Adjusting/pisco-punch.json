@@ -6,35 +6,19 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Saline",
-      "type": "other",
-      "quantity": {
-        "amount": 5,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple gum syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Vieux Pontarlier Absinthe",
       "type": "spirit",
       "quantity": {
         "amount": 2,
         "unit": "spray"
+      }
+    },
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
       }
     },
     {
@@ -54,19 +38,28 @@
       }
     },
     {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple Gum Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Macchu Pisco",
       "type": "spirit",
       "quantity": {
         "amount": 2,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 198
     }
   ],
   "attributions": [
@@ -78,6 +71,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 198
     }
   ]
 }

@@ -6,6 +6,23 @@
   "glassware": "punch",
   "ingredients": [
     {
+      "name": "Bittermens' elemakule tiki bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
@@ -18,15 +35,6 @@
       "type": "syrup",
       "quantity": {
         "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cinnamon syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -45,33 +53,25 @@
         "amount": 2,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Bittermens' elemakule tiki bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
     }
   ],
   "instructions": ["Multiply the ingredients by the number of guests."],
-  "refs": [
-    {
-      "type": "book",
-      "page": 311,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "-0erGDQ0-Sc"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 311
+    },
+    {
+      "type": "youtube",
+      "videoId": "-0erGDQ0-Sc"
     }
   ]
 }

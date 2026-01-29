@@ -1,25 +1,20 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Trader Vic's Sour",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Whiskey (Bourbon)",
-      "type": "category",
+      "name": "Simple syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orgeat",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -27,17 +22,22 @@
       }
     },
     {
-      "name": "simple syrup",
-      "type": "syrup",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -46,12 +46,12 @@
   ],
   "attributions": [
     {
-      "source": "Jelani Johnson",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Jelani Johnson"
     },
     {
-      "source": "Clover Club",
       "relation": "bar",
+      "source": "Clover Club",
       "location": "Brooklyn, NY"
     }
   ],

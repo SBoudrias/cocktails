@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Roffignac",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Pierre Ferrand Cognac",
@@ -19,7 +22,7 @@
       }
     },
     {
-      "name": "seltzer",
+      "name": "Seltzer",
       "type": "soda",
       "quantity": {
         "amount": 3,
@@ -33,13 +36,10 @@
     "Stir gently",
     "Garnish with fresh mint sprig"
   ],
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "collins",
   "attributions": [
     {
-      "source": "Count Louis Philippe Joseph de Roffignac",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Count Louis Philippe Joseph de Roffignac"
     }
   ],
   "refs": [

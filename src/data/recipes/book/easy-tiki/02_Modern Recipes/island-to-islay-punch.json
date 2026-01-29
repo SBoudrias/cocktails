@@ -1,20 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Island to Islay Punch",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Mount Gay Eclipse",
-      "type": "spirit",
+      "name": "Bittermens' elemakule tiki bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Bruichladdich Port Charlotte",
-      "type": "spirit",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -27,33 +38,22 @@
       }
     },
     {
-      "name": "cinnamon syrup",
-      "type": "syrup",
+      "name": "Bruichladdich Port Charlotte",
+      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bittermens 'Elemakule Tiki Bitters",
-      "type": "bitter",
+      "name": "Mount Gay Eclipse",
+      "type": "spirit",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "collins",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -61,12 +61,12 @@
   ],
   "attributions": [
     {
-      "source": "Taylor Rae Adorno",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Taylor Rae Adorno"
     },
     {
-      "source": "Ghost Donkey",
       "relation": "bar",
+      "source": "Ghost Donkey",
       "location": "New York, NY"
     }
   ],

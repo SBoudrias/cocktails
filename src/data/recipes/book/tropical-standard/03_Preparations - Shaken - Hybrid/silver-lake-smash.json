@@ -7,11 +7,11 @@
   "ingredients": [
     {
       "name": "lemon",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "sectioned"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 5,
         "unit": "unit"
@@ -26,18 +26,18 @@
       }
     },
     {
-      "name": "lime punch syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "gum syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime punch syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -50,13 +50,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 74
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -66,6 +59,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 74
     }
   ]
 }

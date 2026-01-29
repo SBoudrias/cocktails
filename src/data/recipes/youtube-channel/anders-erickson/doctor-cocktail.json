@@ -6,27 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Appleton signature",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Kronan Swedish Punsch",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
@@ -39,11 +23,27 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kronan Swedish Punsch",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     }
   ],

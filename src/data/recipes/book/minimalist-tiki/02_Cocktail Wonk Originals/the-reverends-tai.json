@@ -6,18 +6,18 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -55,8 +55,8 @@
   ],
   "attributions": [
     {
-      "source": "Matt Pietrek",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Matt Pietrek"
     }
   ],
   "refs": [

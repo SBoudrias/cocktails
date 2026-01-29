@@ -1,12 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "A Coy Decoy",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "Fords gin",
-      "type": "spirit",
+      "name": "Bittermens Boston Bittahs",
+      "type": "bitter",
       "quantity": {
-        "amount": 1,
+        "amount": 4,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -27,33 +46,14 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
+      "name": "Fords Gin",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bittermens Boston Bittahs",
-      "type": "bitter",
-      "quantity": {
-        "amount": 4,
-        "unit": "drop"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "highball",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake vigorously, about 30 seconds.",
@@ -62,8 +62,8 @@
   ],
   "attributions": [
     {
-      "source": "Chris Coy",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Chris Coy"
     },
     {
       "relation": "bar",

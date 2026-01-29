@@ -6,6 +6,23 @@
   "glassware": "punch",
   "ingredients": [
     {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -22,23 +39,6 @@
       }
     },
     {
-      "name": "Passion fruit purée",
-      "type": "puree",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Demerara syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 3,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Luxardo Maraschino Liqueur",
       "type": "liqueur",
       "quantity": {
@@ -47,7 +47,7 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 4,
@@ -55,7 +55,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 4,
@@ -63,18 +63,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 134,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 134
     }
   ]
 }

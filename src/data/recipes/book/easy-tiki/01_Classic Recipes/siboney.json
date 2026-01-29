@@ -1,12 +1,40 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Siboney",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Two James Doctor Bird rum",
-      "type": "spirit",
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -19,42 +47,14 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
+      "name": "Two James Doctor Bird rum",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit syrup",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Demerara Syrup",
-      "brix": 66,
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -62,12 +62,12 @@
   ],
   "attributions": [
     {
-      "source": "Antonio Martinez",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Antonio Martinez"
     },
     {
-      "source": "Bootlegger Tiki",
       "relation": "bar",
+      "source": "Bootlegger Tiki",
       "location": "Palm Springs, CA"
     }
   ],

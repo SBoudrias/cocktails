@@ -1,11 +1,11 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Orange Liqueur",
+  "categoryType": "liqueur",
   "refs": [
     {
       "type": "youtube",
       "videoId": "dntZiMM7Bvo"
     }
-  ],
-  "categoryType": "liqueur"
+  ]
 }

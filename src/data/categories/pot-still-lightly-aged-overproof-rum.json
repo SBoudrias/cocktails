@@ -1,12 +1,12 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Pot still lightly aged overproof rum",
+  "categoryType": "spirit",
   "parents": ["Pot still lightly aged rum", "Overproof Rum"],
   "refs": [
     {
       "type": "youtube",
       "videoId": "cIKQlUuSjPY"
     }
-  ],
-  "categoryType": "spirit"
+  ]
 }

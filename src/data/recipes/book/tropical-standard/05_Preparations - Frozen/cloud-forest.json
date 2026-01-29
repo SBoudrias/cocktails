@@ -6,19 +6,19 @@
   "glassware": "goblet",
   "ingredients": [
     {
-      "name": "Saline",
-      "type": "other",
-      "quantity": {
-        "amount": 5,
-        "unit": "drop"
-      }
-    },
-    {
       "name": "Thai basil leaves",
       "type": "other",
       "quantity": {
         "amount": 14,
         "unit": "unit"
+      }
+    },
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
       }
     },
     {
@@ -54,13 +54,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 109
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -70,6 +63,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 109
     }
   ]
 }

@@ -1,29 +1,16 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Cal Rey Margarita",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Tequila (Blanco)",
-      "type": "category",
+      "name": "Spicy tincture",
+      "type": "tincture",
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Simple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 5,
+        "unit": "dash"
       }
     },
     {
@@ -43,17 +30,30 @@
       }
     },
     {
-      "name": "Spicy tincture",
-      "type": "tincture",
+      "name": "Simple syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 5,
-        "unit": "dash"
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
   "instructions": [
     "Add all ingredients to a shaker with ice",
     "Shake until well chilled",

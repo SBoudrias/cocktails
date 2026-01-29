@@ -6,13 +6,13 @@
     {
       "name": "Scotch bonnet",
       "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      },
       "technique": {
         "technique": "cut",
         "type": "diced"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
       }
     },
     {

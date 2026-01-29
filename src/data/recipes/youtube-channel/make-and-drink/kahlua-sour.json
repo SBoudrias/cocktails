@@ -6,23 +6,15 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Kahlua Original coffee liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 2.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
+        "unit": "unit"
       }
     },
     {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -30,11 +22,19 @@
       }
     },
     {
-      "name": "egg white",
-      "type": "emulsifier",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
         "amount": 1,
-        "unit": "unit"
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kahlua Original coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
       }
     }
   ],

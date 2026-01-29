@@ -31,15 +31,15 @@
       }
     },
     {
-      "name": "Dry rosé wine",
-      "type": "category",
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
       "quantity": {
-        "amount": 6,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Peruvian pisco",
+      "name": "Peruvian Pisco",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -55,10 +55,10 @@
       }
     },
     {
-      "name": "Hampden Estate Rum Fire",
-      "type": "spirit",
+      "name": "Dry rosé wine",
+      "type": "category",
       "quantity": {
-        "amount": 1,
+        "amount": 6,
         "unit": "oz"
       }
     }

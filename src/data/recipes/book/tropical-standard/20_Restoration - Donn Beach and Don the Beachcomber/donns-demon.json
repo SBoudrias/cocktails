@@ -22,30 +22,11 @@
       }
     },
     {
-      "name": "Pineapple juice",
-      "technique": {
-        "technique": "acid-adjustment"
-      },
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Red Fassionola",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "tsp"
-      }
-    },
-    {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
       }
     },
     {
@@ -57,11 +38,30 @@
       }
     },
     {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "St. George Absinthe Verte",
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "tsp"
+      }
+    },
+    {
+      "name": "Falernum (Tropical Standard)",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
       }
     },
     {
@@ -89,7 +89,7 @@
       }
     },
     {
-      "name": "Chairman's Reserve Rum",
+      "name": "Chairman's Reserve rum",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -105,17 +105,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 265
-    },
-    {
-      "type": "youtube",
-      "videoId": "YkgV9Uy5t-g"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -125,6 +114,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 265
+    },
+    {
+      "type": "youtube",
+      "videoId": "YkgV9Uy5t-g"
     }
   ]
 }

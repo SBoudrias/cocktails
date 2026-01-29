@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "In Cold Blood",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
       "name": "Cynar",
@@ -33,9 +36,6 @@
     "Strain into a chilled old fashioned glass over a big rock",
     "Garnish with a lemon twist"
   ],
-  "preparation": "stirred",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
   "refs": [
     {
       "type": "youtube",

@@ -1,17 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Spirit of Portland",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Pineapple Juice",
-      "type": "juice",
+      "name": "Simple syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime Juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -19,10 +22,10 @@
       }
     },
     {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "refs": [
     {
       "type": "youtube",

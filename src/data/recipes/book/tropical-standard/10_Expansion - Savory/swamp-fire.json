@@ -14,14 +14,6 @@
       }
     },
     {
-      "name": "cilantro tincture",
-      "type": "tincture",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Demerara sugar",
       "type": "other",
       "quantity": {
@@ -38,6 +30,14 @@
       }
     },
     {
+      "name": "Lime punch syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
@@ -46,11 +46,11 @@
       }
     },
     {
-      "name": "lime punch syrup",
-      "type": "syrup",
+      "name": "cilantro tincture",
+      "type": "tincture",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
+        "amount": 0.25,
+        "unit": "tsp"
       }
     },
     {
@@ -62,12 +62,12 @@
       }
     },
     {
-      "name": "Tequila Blanco",
+      "name": "Tequila (Blanco)",
+      "type": "category",
       "technique": {
         "technique": "infusion",
         "agent": "jalapeño"
       },
-      "type": "category",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -90,13 +90,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 155
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -106,6 +99,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 155
     }
   ]
 }

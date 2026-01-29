@@ -6,11 +6,11 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Bundaberg guava soda",
-      "type": "soda",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Rhum agricole blanc",
+      "name": "Rhum Agricole Blanc",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -38,19 +38,12 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Bundaberg guava soda",
+      "type": "soda",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 209,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -58,6 +51,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 209
     }
   ]
 }

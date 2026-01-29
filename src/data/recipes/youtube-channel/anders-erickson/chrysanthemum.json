@@ -6,19 +6,15 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "liqueur",
+      "name": "orange",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bénédictine",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "unit"
       }
     },
     {
@@ -30,15 +26,19 @@
       }
     },
     {
-      "name": "orange",
-      "technique": {
-        "technique": "cut",
-        "type": "peeled"
-      },
-      "type": "fruit",
+      "name": "Bénédictine",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
-        "unit": "unit"
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
       }
     }
   ],

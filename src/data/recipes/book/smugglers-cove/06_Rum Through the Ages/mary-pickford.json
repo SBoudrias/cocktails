@@ -6,23 +6,6 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Grenadine",
-      "brix": 50,
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Luxardo Maraschino Liqueur",
       "type": "liqueur",
       "quantity": {
@@ -31,7 +14,24 @@
       }
     },
     {
-      "name": "Blended lightly aged rum",
+      "name": "Grenadine",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -39,18 +39,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 168,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 168
     }
   ]
 }

@@ -6,6 +6,15 @@
   "glassware": "snifter",
   "ingredients": [
     {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
@@ -22,20 +31,19 @@
       }
     },
     {
-      "name": "Honey syrup",
-      "brix": 50,
+      "name": "Molasses syrup",
       "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Molasses syrup",
-      "brix": 66,
-      "type": "syrup",
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -48,15 +56,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Black blended rum",
+      "name": "Black Blended Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -64,10 +64,10 @@
       }
     },
     {
-      "name": "Hampden estate Rum Fire",
-      "type": "spirit",
+      "name": "Blended Aged Rum",
+      "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -80,22 +80,22 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 93,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "YPnIDJNlPlA"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 93
+    },
+    {
+      "type": "youtube",
+      "videoId": "YPnIDJNlPlA"
     }
   ]
 }

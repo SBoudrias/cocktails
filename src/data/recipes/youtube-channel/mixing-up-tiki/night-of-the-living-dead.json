@@ -6,10 +6,42 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Planteray Original Dark",
-      "type": "spirit",
+      "name": "Squid Ink",
+      "type": "other",
       "quantity": {
-        "amount": 1.5,
+        "amount": 6,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Herbstura",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "BG Reynolds Zombie Punch",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -22,55 +54,23 @@
       }
     },
     {
-      "name": "BG Reynolds Zombie Punch",
-      "type": "syrup",
+      "name": "Planteray Original Dark",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Grapefruit Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Herbstura",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Squid Ink",
-      "type": "other",
-      "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "youtube",
-      "videoId": "LcJkVfKgqEk"
     }
   ],
   "instructions": [
     "Combine all ingredients in a shaker with ice.",
     "Shake well and strain into a tiki mug filled with crushed ice.",
     "Garnish with a mint sprig and a cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "LcJkVfKgqEk"
+    }
   ]
 }

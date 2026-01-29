@@ -1,9 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Hotel Nacional",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "saline",
+      "name": "Saline",
       "type": "other",
       "quantity": {
         "amount": 5,
@@ -19,7 +22,7 @@
       }
     },
     {
-      "name": "demerara syrup",
+      "name": "Demerara syrup",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -27,15 +30,7 @@
       }
     },
     {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -43,7 +38,23 @@
       }
     },
     {
-      "name": "apricot liqueur",
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Paranubes Oaxaca Aguardiente de Caña",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apricot liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -65,19 +76,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Paranubes Oaxaca Aguardiente de Caña",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "coupe",
   "attributions": [
     {
       "relation": "bar",

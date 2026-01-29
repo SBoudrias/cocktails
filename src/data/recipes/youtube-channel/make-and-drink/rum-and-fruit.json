@@ -1,20 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Rum & Fruit",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
-    {
-      "name": "Lime Juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
         "amount": 0.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -35,13 +38,10 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "attributions": [
     {
-      "source": "Ron Rico Official Mixtros Guide",
-      "relation": "book"
+      "relation": "book",
+      "source": "Ron Rico Official Mixtros Guide"
     }
   ],
   "refs": [

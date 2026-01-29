@@ -1,37 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Message in a Bottle",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
   "ingredients": [
     {
-      "name": "Diplomatico Planas",
-      "technique": {
-        "technique": "infusion",
-        "agent": "kaffir lime leaf"
-      },
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Rhum J.M Blanc",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Marie Brizard Orange Curaçao",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Ginger Syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -47,17 +22,42 @@
       }
     },
     {
-      "name": "Lime Juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Diplomatico Planas",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "kaffir lime leaf"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum J.M Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "snifter",
   "instructions": [
     "Combine all in a shaker with cubed ice.",
     "Shake and strain into a snifter over crushed ice.",

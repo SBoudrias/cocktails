@@ -6,18 +6,18 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "mint leaves",
+      "name": "Mint leaves",
+      "type": "other",
       "technique": {
         "technique": "muddled"
       },
-      "type": "other",
       "quantity": {
         "amount": 5,
         "unit": "unit"
       }
     },
     {
-      "name": "agave syrup",
+      "name": "Agave syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -25,18 +25,10 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Hamilton 151 Demerara rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -47,12 +39,20 @@
         "amount": 0.25,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
     {
-      "source": "The Enchanted Tiki Room",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "The Enchanted Tiki Room"
     }
   ],
   "refs": [

@@ -6,6 +6,14 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
+      "name": "Herbstura",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -23,8 +31,8 @@
     },
     {
       "name": "Cinnamon syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -39,15 +47,7 @@
       }
     },
     {
-      "name": "Black blended rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -55,7 +55,7 @@
       }
     },
     {
-      "name": "Black blended overproof rum",
+      "name": "Black blended Overproof Rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -63,19 +63,12 @@
       }
     },
     {
-      "name": "Herbstura",
-      "type": "bitter",
+      "name": "Black Blended Rum",
+      "type": "category",
       "quantity": {
         "amount": 1,
-        "unit": "dash"
+        "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 61,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -83,6 +76,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 61
     }
   ]
 }

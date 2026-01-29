@@ -1,18 +1,37 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Paradise Lost",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "vodka",
+      "name": "Orgeat",
       "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut water",
+      "type": "other",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "coconut water",
-      "type": "other",
+      "name": "Vodka",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -25,27 +44,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "footed pilsner",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Kirk Estopinal",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Kirk Estopinal"
     },
     {
-      "source": "Cane & Table",
       "relation": "bar",
+      "source": "Cane & Table",
       "location": "New Orleans, LA"
     }
   ],

@@ -6,25 +6,25 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Old Grand-Dad Bonded Bourbon",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "dash"
       }
     },
     {
-      "name": "Rittenhouse Rye",
-      "type": "spirit",
+      "name": "Grenadine",
+      "type": "syrup",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
       "name": "Demerara syrup",
-      "brix": 66,
       "type": "syrup",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -55,19 +55,19 @@
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
+      "name": "Old Grand-Dad Bonded Bourbon",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "tsp"
+        "amount": 0.75,
+        "unit": "oz"
       }
     },
     {
-      "name": "Angostura Bitters",
-      "type": "bitter",
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "dash"
+        "amount": 0.75,
+        "unit": "oz"
       }
     }
   ],

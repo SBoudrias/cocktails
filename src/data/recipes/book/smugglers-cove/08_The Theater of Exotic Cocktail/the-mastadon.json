@@ -6,11 +6,11 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Pineapple juice",
-      "type": "juice",
+      "name": "Peychaud's bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 3,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "dash"
       }
     },
     {
@@ -26,6 +26,14 @@
       "type": "puree",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
         "unit": "oz"
       }
     },
@@ -46,7 +54,7 @@
       }
     },
     {
-      "name": "Blended aged rum",
+      "name": "Blended Aged Rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -60,25 +68,6 @@
         "amount": 1.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Peychaud's bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 2,
-        "unit": "dash"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 251,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "ve0A397FfA0"
     }
   ],
   "attributions": [
@@ -86,6 +75,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 251
+    },
+    {
+      "type": "youtube",
+      "videoId": "ve0A397FfA0"
     }
   ]
 }

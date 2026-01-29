@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Silver Seas",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -19,7 +22,7 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -27,7 +30,7 @@
       }
     },
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -35,7 +38,7 @@
       }
     },
     {
-      "name": "passionola",
+      "name": "Passionola",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -59,13 +62,10 @@
       }
     }
   ],
-  "preparation": "flash blended",
-  "served_on": "crushed ice",
-  "glassware": "footed pilsner",
   "attributions": [
     {
-      "source": "Mr. Lemon Hart's Tropical Treat booklet",
-      "relation": "book"
+      "relation": "book",
+      "source": "Mr. Lemon Hart's Tropical Treat booklet"
     }
   ],
   "refs": [

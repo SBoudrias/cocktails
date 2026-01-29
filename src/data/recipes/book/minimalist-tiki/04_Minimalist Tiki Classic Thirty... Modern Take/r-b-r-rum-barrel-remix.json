@@ -6,6 +6,14 @@
   "glassware": "snifter",
   "ingredients": [
     {
+      "name": "Doc Parks' Gold Fassionola",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -27,14 +35,6 @@
       "quantity": {
         "amount": 1,
         "unit": "tsp"
-      }
-    },
-    {
-      "name": "Doc Parks' Gold Fassionola",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
       }
     },
     {
@@ -76,8 +76,8 @@
   ],
   "attributions": [
     {
-      "source": "Doc Parks",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Doc Parks"
     }
   ],
   "refs": [

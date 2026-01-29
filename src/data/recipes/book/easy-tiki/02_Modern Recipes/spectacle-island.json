@@ -1,7 +1,34 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Spectacle Island",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Neisson Rhum Agricole Blanc",
       "type": "spirit",
@@ -19,41 +46,14 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Saveiro 'Vento do Oeste' Madeira",
       "type": "wine",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "green Chartreuse",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "swizzled",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all the ingredients in a tiki mug.",
     "Add crushed ice until the mug is full and swizzle with a swizzle stick or barspoon.",
@@ -63,12 +63,12 @@
   ],
   "attributions": [
     {
-      "source": "Chantal Tseng",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Chantal Tseng"
     },
     {
-      "source": "Petworth Citizen & Reading Room",
       "relation": "bar",
+      "source": "Petworth Citizen & Reading Room",
       "location": "Washington, DC"
     }
   ],

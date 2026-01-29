@@ -1,17 +1,32 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Tropic of Capricorn",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Blended Aged Rum (Demerara)",
-      "type": "category",
-      "technique": {
-        "technique": "infusion",
-        "agent": "green tea"
-      },
+      "name": "Cane syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
@@ -23,33 +38,18 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "green tea"
+      },
       "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "cane syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Fernet-Branca",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -57,12 +57,12 @@
   ],
   "attributions": [
     {
-      "source": "Lauren Corriveau",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Lauren Corriveau"
     },
     {
-      "source": "Nitecap",
       "relation": "bar",
+      "source": "Nitecap",
       "location": "New York, NY"
     }
   ],

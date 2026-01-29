@@ -38,16 +38,16 @@
       }
     },
     {
-      "name": "Green Chartreuse",
-      "type": "liqueur",
+      "name": "Falernum syrup",
+      "type": "category",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Falernum syrup",
-      "type": "category",
+      "name": "Green Chartreuse",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

@@ -1,7 +1,34 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Jah Rule",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Bitter Bianco",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Novo Fogo Silver",
       "type": "spirit",
@@ -17,35 +44,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Luxardo Bitter Bianco",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "absinthe",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -53,8 +53,8 @@
   ],
   "attributions": [
     {
-      "source": "Jessica Manzey",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Jessica Manzey"
     }
   ],
   "refs": [

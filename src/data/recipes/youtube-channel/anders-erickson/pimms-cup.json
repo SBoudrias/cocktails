@@ -7,34 +7,26 @@
   "ingredients": [
     {
       "name": "Cucumber",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "sliced"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 1,
         "unit": "unit"
       }
     },
     {
-      "name": "strawberry",
+      "name": "Strawberry",
+      "type": "fruit",
       "technique": {
         "technique": "cut",
         "type": "sliced"
       },
-      "type": "fruit",
       "quantity": {
         "amount": 3,
         "unit": "unit"
-      }
-    },
-    {
-      "name": "Pimm's No.1",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
       }
     },
     {
@@ -46,7 +38,15 @@
       }
     },
     {
-      "name": "Ginger Ale",
+      "name": "Pimm's No.1",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger ale",
       "type": "soda",
       "quantity": {
         "amount": 4,

@@ -6,10 +6,11 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Sparkling wine",
+      "name": "Orgeat",
       "type": "category",
+      "brix": 50,
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -18,15 +19,6 @@
       "type": "juice",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Orgeat",
-      "brix": 50,
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -53,13 +45,14 @@
         "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
+    },
     {
-      "type": "book",
-      "page": 119,
-      "title": "smugglers-cove"
+      "name": "Sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [
@@ -67,6 +60,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 119
     }
   ]
 }

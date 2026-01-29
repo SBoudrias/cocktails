@@ -1,11 +1,11 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Gin",
+  "categoryType": "spirit",
   "refs": [
     {
       "type": "youtube",
       "videoId": "6SlljhQsjDY"
     }
-  ],
-  "categoryType": "spirit"
+  ]
 }

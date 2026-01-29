@@ -6,10 +6,11 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 50,
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -23,11 +24,10 @@
       }
     },
     {
-      "name": "Demerara syrup",
-      "type": "syrup",
-      "brix": 50,
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -74,8 +74,8 @@
   ],
   "attributions": [
     {
-      "source": "Kevin Crossman",
       "relation": "recipe author",
+      "source": "Kevin Crossman",
       "url": "https://ultimatemaitai.com/about/recipes/"
     }
   ],

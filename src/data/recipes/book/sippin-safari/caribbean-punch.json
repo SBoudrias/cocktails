@@ -1,17 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Caribbean Punch",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 3,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "almond extract",
+      "name": "Almond extract",
       "type": "other",
       "quantity": {
         "amount": 3,
@@ -27,7 +22,15 @@
       }
     },
     {
-      "name": "grenadine",
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -35,7 +38,7 @@
       }
     },
     {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -43,15 +46,7 @@
       }
     },
     {
-      "name": "falernum liqueur",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -59,10 +54,10 @@
       }
     },
     {
-      "name": "Sarsaparilla",
-      "type": "soda",
+      "name": "Falernum liqueur",
+      "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -81,11 +76,16 @@
         "amount": 1,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Sarsaparilla",
+      "type": "soda",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "attributions": [
     {
       "relation": "recipe author",

@@ -23,6 +23,7 @@
     },
     {
       "name": "pineapple",
+      "type": "fruit",
       "technique": [
         {
           "technique": "cut",
@@ -33,7 +34,6 @@
           "method": "frozen"
         }
       ],
-      "type": "fruit",
       "quantity": {
         "amount": 60,
         "unit": "gram"
@@ -41,10 +41,10 @@
     },
     {
       "name": "Pineapple juice",
+      "type": "juice",
       "technique": {
         "technique": "acid-adjustment"
       },
-      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -75,17 +75,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 107
-    },
-    {
-      "type": "youtube",
-      "videoId": "LwvhRy0iIfk"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -95,6 +84,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 107
+    },
+    {
+      "type": "youtube",
+      "videoId": "LwvhRy0iIfk"
     }
   ]
 }

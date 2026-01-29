@@ -1,17 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Coco No Coco",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "El Dorado 12 year",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -19,7 +14,7 @@
       }
     },
     {
-      "name": "orgeat",
+      "name": "Orgeat",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -27,17 +22,22 @@
       }
     },
     {
-      "name": "heavy whipping cream",
+      "name": "Heavy whipping cream",
       "type": "other",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
+    },
+    {
+      "name": "El Dorado 12 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake briefly to integrate, about 5 seconds.",
@@ -46,12 +46,12 @@
   ],
   "attributions": [
     {
-      "source": "Ezra Star",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Ezra Star"
     },
     {
-      "source": "Drink",
       "relation": "bar",
+      "source": "Drink",
       "location": "Boston, MA"
     }
   ],

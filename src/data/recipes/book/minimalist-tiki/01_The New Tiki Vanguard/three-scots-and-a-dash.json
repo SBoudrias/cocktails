@@ -39,18 +39,18 @@
       }
     },
     {
-      "name": "Drambuie",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Laphroaig 10",
       "type": "spirit",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Drambuie",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -70,8 +70,8 @@
   ],
   "attributions": [
     {
-      "source": "Zac Overman",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Zac Overman"
     }
   ],
   "refs": [

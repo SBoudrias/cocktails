@@ -1,12 +1,12 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Gin (Plymouth)",
+  "categoryType": "spirit",
   "parents": ["Gin"],
   "refs": [
     {
       "type": "youtube",
       "videoId": "6SlljhQsjDY"
     }
-  ],
-  "categoryType": "spirit"
+  ]
 }

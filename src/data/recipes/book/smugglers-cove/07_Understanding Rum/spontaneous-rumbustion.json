@@ -6,6 +6,15 @@
   "glassware": "irish",
   "ingredients": [
     {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
@@ -14,19 +23,10 @@
       }
     },
     {
-      "name": "Honey syrup",
-      "brix": 50,
-      "type": "syrup",
+      "name": "Boiling water",
+      "type": "other",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Black blended overproof rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
+        "amount": 4,
         "unit": "oz"
       }
     },
@@ -39,19 +39,12 @@
       }
     },
     {
-      "name": "Boiling water",
-      "type": "other",
+      "name": "Black blended Overproof Rum",
+      "type": "category",
       "quantity": {
-        "amount": 4,
+        "amount": 1.5,
         "unit": "oz"
       }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 210,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -59,6 +52,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 210
     }
   ]
 }

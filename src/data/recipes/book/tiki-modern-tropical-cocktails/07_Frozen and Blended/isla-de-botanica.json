@@ -6,6 +6,30 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Mango purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Yaguara Cachaça Ouro",
       "type": "spirit",
       "technique": {
@@ -14,30 +38,6 @@
       },
       "quantity": {
         "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "passion fruit-honey syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "mango puree",
-      "type": "puree",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
         "unit": "oz"
       }
     }

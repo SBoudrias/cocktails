@@ -22,18 +22,18 @@
       }
     },
     {
-      "name": "Vodka",
-      "type": "category",
+      "name": "Coconut milk",
+      "type": "other",
       "quantity": {
-        "amount": 1,
+        "amount": 2,
         "unit": "oz"
       }
     },
     {
-      "name": "coconut milk",
-      "type": "other",
+      "name": "Vodka",
+      "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -48,8 +48,8 @@
   ],
   "attributions": [
     {
-      "source": "Madre Cafe",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Madre Cafe"
     }
   ],
   "refs": [

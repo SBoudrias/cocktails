@@ -6,10 +6,10 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Maison Rouge VSOP Cognac",
-      "type": "spirit",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -22,10 +22,10 @@
       }
     },
     {
-      "name": "Lemon juice",
-      "type": "juice",
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

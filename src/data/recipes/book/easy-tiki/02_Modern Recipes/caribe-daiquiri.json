@@ -1,31 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Caribe Daiquiri",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
-    {
-      "name": "Ron del Barrilito 2 Star",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "superfine sugar",
       "type": "other",
@@ -33,11 +12,32 @@
         "amount": 1,
         "unit": "tsp"
       }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ron del Barrilito 2 Star",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -45,12 +45,12 @@
   ],
   "attributions": [
     {
-      "source": "Pablo Moix",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Pablo Moix"
     },
     {
-      "source": "Dama",
       "relation": "bar",
+      "source": "Dama",
       "location": "Los Angeles, CA"
     }
   ],

@@ -6,19 +6,11 @@
   "glassware": "martini",
   "ingredients": [
     {
-      "name": "Union Horse Distilling Co. Reunion Straight Rye Whiskey",
-      "type": "spirit",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Fernet-Branca",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
+        "unit": "dash"
       }
     },
     {
@@ -31,11 +23,19 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Union Horse Distilling Co. Reunion Straight Rye Whiskey",
+      "type": "spirit",
       "quantity": {
         "amount": 2,
-        "unit": "dash"
+        "unit": "oz"
       }
     }
   ],

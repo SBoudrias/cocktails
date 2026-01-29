@@ -6,43 +6,7 @@
   "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "BarSol Pisco",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Paranubes Oaxaca Aguardiente de Caña",
-      "technique": {
-        "technique": "infusion",
-        "agent": "anise"
-      },
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Green Chartreuse",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tempus Fugit Vieux Pontarlier Absinthe",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Honey Syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -66,7 +30,7 @@
       }
     },
     {
-      "name": "Lime Juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -74,12 +38,48 @@
       }
     },
     {
-      "name": "Fernet Branca",
+      "name": "Paranubes Oaxaca Aguardiente de Caña",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "anise"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Vieux Pontarlier Absinthe",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "BarSol Pisco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
       "technique": {
         "technique": "application",
         "method": "float"
       },
-      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

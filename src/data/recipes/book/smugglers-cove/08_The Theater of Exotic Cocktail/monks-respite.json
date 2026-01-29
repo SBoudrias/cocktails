@@ -6,10 +6,19 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Coconut water",
-      "type": "other",
+      "name": "Orange bitters",
+      "type": "category",
       "quantity": {
-        "amount": 3,
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -22,11 +31,10 @@
       }
     },
     {
-      "name": "Honey syrup",
-      "brix": 50,
-      "type": "syrup",
+      "name": "Coconut water",
+      "type": "other",
       "quantity": {
-        "amount": 0.25,
+        "amount": 3,
         "unit": "oz"
       }
     },
@@ -53,25 +61,6 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Orange bitters",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 251,
-      "title": "smugglers-cove"
-    },
-    {
-      "type": "youtube",
-      "videoId": "L43GTeJRCRY"
     }
   ],
   "attributions": [
@@ -79,6 +68,17 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 251
+    },
+    {
+      "type": "youtube",
+      "videoId": "L43GTeJRCRY"
     }
   ]
 }

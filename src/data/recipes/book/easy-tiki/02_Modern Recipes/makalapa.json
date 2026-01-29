@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Makalapa",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Blended Aged Rum (Demerara)",
-      "type": "category",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -19,23 +30,15 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     },
     {
-      "name": "grapefruit juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "seltzer",
+      "name": "Seltzer",
       "type": "soda",
       "quantity": {
         "amount": 0.5,
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine the rum, lime juice, grapefruit juice, and hibiscus honey syrup in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -54,12 +54,12 @@
   ],
   "attributions": [
     {
-      "source": "Lynnette Marrero",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Lynnette Marrero"
     },
     {
-      "source": "Llama Inn",
       "relation": "bar",
+      "source": "Llama Inn",
       "location": "Brooklyn, NY"
     }
   ],

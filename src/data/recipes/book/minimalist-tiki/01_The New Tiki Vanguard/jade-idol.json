@@ -1,31 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Jade Idol",
-  "glassware": "collins",
   "preparation": "shaken",
   "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "honey syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -34,6 +34,14 @@
       "type": "category",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Wray & Nephew white overproof",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -50,14 +58,6 @@
       "type": "liqueur",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Wray & Nephew white overproof",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     }

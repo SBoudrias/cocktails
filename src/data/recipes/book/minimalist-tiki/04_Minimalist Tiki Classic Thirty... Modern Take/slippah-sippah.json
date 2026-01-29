@@ -6,6 +6,14 @@
   "glassware": "hurricane",
   "ingredients": [
     {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -18,14 +26,6 @@
       "type": "juice",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Orange juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },

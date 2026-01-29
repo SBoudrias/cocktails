@@ -6,14 +6,6 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Bittermens' elemakule tiki bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "dash"
-      }
-    },
-    {
       "name": "Coffee tincture",
       "type": "tincture",
       "quantity": {
@@ -22,10 +14,18 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Bittermens' elemakule tiki bitters",
+      "type": "bitter",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -38,10 +38,10 @@
       }
     },
     {
-      "name": "Vanilla syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },

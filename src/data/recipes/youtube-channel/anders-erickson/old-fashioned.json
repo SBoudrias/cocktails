@@ -6,11 +6,23 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Colonel E.H. Taylor Small Batch Bourbon",
-      "type": "spirit",
+      "name": "orange",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
       "quantity": {
-        "amount": 2,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
       }
     },
     {
@@ -23,23 +35,11 @@
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Colonel E.H. Taylor Small Batch Bourbon",
+      "type": "spirit",
       "quantity": {
-        "amount": 4,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "orange",
-      "technique": {
-        "technique": "cut",
-        "type": "peeled"
-      },
-      "type": "fruit",
-      "quantity": {
-        "amount": 1,
-        "unit": "unit"
+        "amount": 2,
+        "unit": "oz"
       }
     }
   ],

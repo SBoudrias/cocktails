@@ -1,17 +1,12 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Donga Punch",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Neisson Élevé Sous Bois",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -19,7 +14,15 @@
       }
     },
     {
-      "name": "grapefruit juice",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -27,17 +30,14 @@
       }
     },
     {
-      "name": "lime juice",
-      "type": "juice",
+      "name": "Neisson Élevé Sous Bois",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Shake all ingredients with 1/2 cup crushed ice for 5 seconds.",
     "Pour into a tall glass or tiki mug and top with more crushed ice.",
@@ -45,12 +45,12 @@
   ],
   "attributions": [
     {
-      "source": "Paul McGee",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Paul McGee"
     },
     {
-      "source": "Lost Lake",
       "relation": "bar",
+      "source": "Lost Lake",
       "location": "Chicago, IL"
     }
   ],

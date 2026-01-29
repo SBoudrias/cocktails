@@ -6,7 +6,7 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "ginger beer",
+      "name": "Ginger beer",
       "type": "soda",
       "technique": {
         "technique": "application",
@@ -59,8 +59,8 @@
   ],
   "attributions": [
     {
-      "source": "Tiki Lindy",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Tiki Lindy"
     }
   ],
   "refs": [

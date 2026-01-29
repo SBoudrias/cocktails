@@ -1,7 +1,42 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Elusive Dreams",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Planteray Stiggins' Fancy pineapple rum",
       "type": "spirit",
@@ -17,43 +52,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard banane du Brésil",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add 1 large ice cube and shake until chilled, about 30 seconds.",
@@ -62,12 +62,12 @@
   ],
   "attributions": [
     {
-      "source": "Demi Natoli",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Demi Natoli"
     },
     {
-      "source": "Patterson House",
       "relation": "bar",
+      "source": "Patterson House",
       "location": "Nashville, TN"
     }
   ],

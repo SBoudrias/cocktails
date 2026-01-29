@@ -1,7 +1,42 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Lost Voyage",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
     {
       "name": "Clément Select Barrel",
       "type": "spirit",
@@ -17,43 +52,8 @@
         "amount": 1.5,
         "unit": "oz"
       }
-    },
-    {
-      "name": "cinnamon syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orange juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Combine the Martinique rum, sherry, cinnamon syrup, lemon juice, and orange juice in a cocktail shaker and shake briefly without ice.",
     "Fill a 16-ounce Collins glass with crushed ice.",
@@ -62,12 +62,12 @@
   ],
   "attributions": [
     {
-      "source": "Michael Kotke",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Michael Kotke"
     },
     {
-      "source": "Foundation Tiki Bar",
       "relation": "bar",
+      "source": "Foundation Tiki Bar",
       "location": "Milwaukee, WI"
     }
   ],

@@ -1,16 +1,31 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Ghost of the Mariner",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Bounty Dark Rum",
-      "technique": {
-        "technique": "infusion",
-        "agent": "coffee, cacao, and chicory"
-      },
-      "type": "spirit",
+      "name": "toasted coconut-honey syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -23,33 +38,18 @@
       }
     },
     {
-      "name": "toasted coconut-honey syrup",
-      "type": "syrup",
+      "name": "Bounty Dark Rum",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "coffee, cacao, and chicory"
+      },
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all in a shaker with cubed ice",
     "Shake and strain into a Tiki mug over crushed ice",

@@ -6,15 +6,7 @@
   "glassware": "snifter",
   "ingredients": [
     {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cream of Coconut",
+      "name": "Cream of coconut",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -22,10 +14,18 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -48,8 +48,8 @@
   ],
   "attributions": [
     {
-      "source": "Mai-Kai",
-      "relation": "bar"
+      "relation": "bar",
+      "source": "Mai-Kai"
     }
   ],
   "refs": [

@@ -1,6 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Painkiller",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Orange juice",
@@ -11,18 +14,18 @@
       }
     },
     {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 3.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Cream of coconut",
       "type": "syrup",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3.5,
         "unit": "oz"
       }
     },
@@ -59,9 +62,6 @@
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
   "instructions": [
     "Add all ingredients to a cocktail shaker with Kold Draft ice.",
     "Shake until well chilled.",

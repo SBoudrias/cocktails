@@ -6,6 +6,14 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
       "name": "Appleton 12",
       "type": "spirit",
       "quantity": {
@@ -35,14 +43,6 @@
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Angostura Bitters",
-      "type": "bitter",
-      "quantity": {
-        "amount": 4,
-        "unit": "dash"
       }
     }
   ],

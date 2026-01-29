@@ -14,6 +14,14 @@
       }
     },
     {
+      "name": "Sweetened condensed milk",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Coconut milk",
       "type": "other",
       "quantity": {
@@ -28,21 +36,6 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Sweetened condensed milk",
-      "type": "other",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 175,
-      "title": "smugglers-cove"
     }
   ],
   "attributions": [
@@ -50,6 +43,13 @@
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 175
     }
   ]
 }

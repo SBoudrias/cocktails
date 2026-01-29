@@ -1,23 +1,10 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Mai Sha Roa Na",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Jamaican overproof rum",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Giffard Banane du Brésil",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Orgeat Works Ltd macadamia nut syrup",
       "type": "syrup",
@@ -27,17 +14,30 @@
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "old fashioned",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add 1 1/2 cups cracked or crushed ice and shake briefly, two or three shakes.",
@@ -46,12 +46,12 @@
   ],
   "attributions": [
     {
-      "source": "Anthony Schmidt",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Anthony Schmidt"
     },
     {
-      "source": "False Idol",
       "relation": "bar",
+      "source": "False Idol",
       "location": "Cleveland, OH"
     }
   ],

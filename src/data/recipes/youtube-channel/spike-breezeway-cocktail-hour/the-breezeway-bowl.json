@@ -1,6 +1,9 @@
 {
   "$schema": "../../../schemas/recipe.schema.json",
   "name": "The Breezeway Bowl",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "punch",
   "ingredients": [
     {
       "name": "Lemon juice",
@@ -43,9 +46,6 @@
       }
     }
   ],
-  "preparation": "blended",
-  "served_on": "blended",
-  "glassware": "punch",
   "instructions": [
     "Mix on high with ice cubes and pour into the Breezeway Bowl",
     "Add more ice",

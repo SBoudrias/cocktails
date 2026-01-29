@@ -22,18 +22,18 @@
       }
     },
     {
-      "name": "Kalani Coconut Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Demerara syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Kalani Coconut Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
         "unit": "tsp"
       }
     },
@@ -54,13 +54,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 129
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -70,6 +63,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 129
     }
   ]
 }

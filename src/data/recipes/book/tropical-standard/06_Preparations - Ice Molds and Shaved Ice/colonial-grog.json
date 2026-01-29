@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "maple syrup",
+      "name": "Maple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "St. Elizabeth allspice Dram",
+      "name": "St-Elizabeth Allspice Dram",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
@@ -78,13 +78,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 123
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -94,6 +87,13 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 123
     }
   ]
 }

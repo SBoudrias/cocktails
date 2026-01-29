@@ -6,30 +6,18 @@
   "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Rittenhouse Rye",
-      "type": "spirit",
-      "technique": {
-        "technique": "fat-wash",
-        "fat": "coconut oil"
-      },
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tamworth Distilling Von Humboldt's Natur Wasser Tamarind Cordial",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "coffee syrup",
+      "name": "Coffee syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -42,10 +30,22 @@
       }
     },
     {
-      "name": "lemon juice",
-      "type": "juice",
+      "name": "Tamworth Distilling Von Humboldt's Natur Wasser Tamarind Cordial",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "coconut oil"
+      },
+      "quantity": {
+        "amount": 2,
         "unit": "oz"
       }
     }

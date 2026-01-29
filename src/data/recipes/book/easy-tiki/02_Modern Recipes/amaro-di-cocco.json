@@ -1,7 +1,34 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Amaro di Cocco",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Blended Aged Rum (Jamaica)",
       "type": "category",
@@ -25,35 +52,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Black Blended Rum",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cream of coconut",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add 1 cup crushed ice and shake for about 5 seconds.",
@@ -61,12 +61,12 @@
   ],
   "attributions": [
     {
-      "source": "Ryan Lotz",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Ryan Lotz"
     },
     {
-      "source": "Shore Leave",
       "relation": "bar",
+      "source": "Shore Leave",
       "location": "Boston, MA"
     }
   ],

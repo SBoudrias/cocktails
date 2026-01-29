@@ -6,15 +6,7 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "cinnamon syrup",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -22,10 +14,10 @@
       }
     },
     {
-      "name": "Giffard banane du Brésil",
-      "type": "liqueur",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -42,6 +34,14 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -63,8 +63,8 @@
   ],
   "attributions": [
     {
-      "source": "Zac Overman",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "Zac Overman"
     }
   ],
   "refs": [

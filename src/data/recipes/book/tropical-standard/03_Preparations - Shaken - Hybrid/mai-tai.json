@@ -14,19 +14,19 @@
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Latitude 29 Orgeat",
       "type": "syrup",
       "brix": 66,
       "quantity": {
         "amount": 0.625,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -71,17 +71,6 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "tropical-standard",
-      "page": 71
-    },
-    {
-      "type": "youtube",
-      "videoId": "InodlJAkSO8"
-    }
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -91,6 +80,17 @@
       "relation": "bar",
       "source": "Sunken Harbor Club",
       "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 71
+    },
+    {
+      "type": "youtube",
+      "videoId": "InodlJAkSO8"
     }
   ]
 }

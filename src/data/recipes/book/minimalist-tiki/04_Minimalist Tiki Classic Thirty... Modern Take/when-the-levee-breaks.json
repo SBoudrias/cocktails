@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Falernum",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Fassionola",
       "type": "category",
       "quantity": {
@@ -42,6 +34,14 @@
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },

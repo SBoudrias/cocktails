@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "lemon juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "banana liqueur",
+      "name": "Banana liqueur",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -53,8 +53,8 @@
       "location": "San Francisco, CA"
     },
     {
-      "source": "Make and Drink",
-      "relation": "adapted by"
+      "relation": "adapted by",
+      "source": "Make and Drink"
     }
   ],
   "refs": [

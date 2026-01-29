@@ -1,7 +1,26 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "The Havana Cocktail",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard abricot du Roussillon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
     {
       "name": "The Botanist Islay Dry Gin",
       "type": "spirit",
@@ -17,27 +36,8 @@
         "amount": 1,
         "unit": "oz"
       }
-    },
-    {
-      "name": "Giffard abricot du Roussillon",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": ["Garnish with dehydrated orange wheel"],
   "refs": [
     {

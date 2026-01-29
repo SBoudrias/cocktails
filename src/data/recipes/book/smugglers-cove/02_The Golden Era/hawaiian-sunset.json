@@ -6,6 +6,15 @@
   "glassware": "coupe",
   "ingredients": [
     {
+      "name": "Grenadine",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -23,20 +32,11 @@
     },
     {
       "name": "Orgeat",
-      "brix": 50,
       "type": "category",
+      "brix": 50,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Grenadine",
-      "brix": 50,
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
       }
     },
     {
@@ -48,18 +48,18 @@
       }
     }
   ],
-  "refs": [
-    {
-      "type": "book",
-      "page": 62,
-      "title": "smugglers-cove"
-    }
-  ],
   "attributions": [
     {
       "relation": "bar",
       "source": "Smuggler's Cove",
       "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 62
     }
   ]
 }

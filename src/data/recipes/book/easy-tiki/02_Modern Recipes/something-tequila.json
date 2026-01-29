@@ -1,17 +1,20 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Something Tequila",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Tequila Añejo",
+      "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
-        "amount": 3,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "lime juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -19,7 +22,7 @@
       }
     },
     {
-      "name": "orange juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -27,7 +30,7 @@
       }
     },
     {
-      "name": "pineapple juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -35,7 +38,7 @@
       }
     },
     {
-      "name": "simple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -43,17 +46,14 @@
       }
     },
     {
-      "name": "passion fruit syrup",
+      "name": "Tequila Añejo",
       "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 3,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
   "instructions": [
     "Combine all the ingredients in a cocktail shaker.",
     "Add ice and shake until chilled, about 10 seconds.",
@@ -61,12 +61,12 @@
   ],
   "attributions": [
     {
-      "source": "John Bernard",
-      "relation": "recipe author"
+      "relation": "recipe author",
+      "source": "John Bernard"
     },
     {
-      "source": "Porco Lounge & Tiki Room",
       "relation": "bar",
+      "source": "Porco Lounge & Tiki Room",
       "location": "Cleveland"
     }
   ],

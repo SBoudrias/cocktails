@@ -1,12 +1,23 @@
 {
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Quarterdeck",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Hayman's Royal Dock Navy Strength Gin",
-      "type": "spirit",
+      "name": "Green Tea Syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -19,25 +30,14 @@
       }
     },
     {
-      "name": "green tea syrup",
-      "type": "syrup",
+      "name": "Hayman's Royal Dock Navy Strength Gin",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
   "instructions": [
     "Combine all ingredients in a shaker with cubed ice",
     "Shake and double strain into a chilled coupe",
