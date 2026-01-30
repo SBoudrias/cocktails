@@ -1,12 +1,24 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Smoked Maple Old Fashioned",
+  "name": "Gin Old Fashioned",
   "preparation": "stirred",
   "served_on": "big rock",
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Fee Brothers Black Walnut Bitters",
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Regan's Orange Bitters No. 6",
       "type": "bitter",
       "quantity": {
         "amount": 3,
@@ -14,16 +26,17 @@
       }
     },
     {
-      "name": "Maple syrup",
+      "name": "Simple syrup",
       "type": "syrup",
+      "brix": 60,
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Evan Williams 1783 Small Batch Bourbon",
-      "type": "spirit",
+      "name": "Old Tom Gin",
+      "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
@@ -31,19 +44,15 @@
     }
   ],
   "instructions": [
-    "Smoke double old fashioned glass",
-    "Garnish with orange zest and cocktail cherry"
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass over a big rock.",
+    "Garnish with lemon zest and a cocktail cherry."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "_bDARIxZlcE",
-      "start": 48
-    },
-    {
-      "type": "youtube",
       "videoId": "0rnil0_xFnM",
-      "start": 704
+      "start": 869
     }
   ]
 }

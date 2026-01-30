@@ -56,6 +56,7 @@ Here's a few common conventions:
 7. Substitute mixes with their component ingredients:
    - Don's mix: replace with 2 parts grapefruit juice & 1 part cinnamon syrup
    - Don's spices no. 2: replace with 1 part vanilla syrup & 1 part allspice dram
+8. Use "seltzer" instead of "club soda" or "soda water" for carbonated water
 
 ### Syrups & Brix
 

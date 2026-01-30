@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Spoon Cocktail",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Old Overholt Straight Rye Whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Place sugar cube in an old fashioned glass.",
+    "Add bitters and a splash of soda water.",
+    "Muddle until sugar dissolves.",
+    "Add whiskey and ice, then stir.",
+    "Garnish with a lemon peel.",
+    "Serve with a small spoon."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0rnil0_xFnM",
+      "start": 86
+    }
+  ]
+}
