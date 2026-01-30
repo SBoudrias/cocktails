@@ -1,8 +1,8 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Old Fashioned",
-  "preparation": "stirred",
-  "served_on": "big rock",
+  "name": "Brandy Old Fashioned",
+  "preparation": "built",
+  "served_on": "ice cubes",
   "glassware": "old fashioned",
   "ingredients": [
     {
@@ -10,8 +10,16 @@
       "type": "fruit",
       "technique": {
         "technique": "cut",
-        "type": "peeled"
+        "type": "wedged"
       },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cocktail cherry",
+      "type": "fruit",
       "quantity": {
         "amount": 1,
         "unit": "unit"
@@ -26,38 +34,42 @@
       }
     },
     {
-      "name": "Demerara syrup",
+      "name": "Simple syrup",
       "type": "syrup",
-      "brix": 66,
+      "brix": 60,
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Colonel E.H. Taylor Small Batch Bourbon",
-      "type": "spirit",
+      "name": "Brandy (Grapes)",
+      "type": "category",
       "quantity": {
         "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "7 Up",
+      "type": "soda",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Stir all ingredients with ice.",
-    "Strain into an old fashioned glass over a big rock.",
+    "Muddle orange wedge and cherry with bitters and syrup in an old fashioned glass.",
+    "Add brandy and ice cubes.",
+    "Top with a splash of lemon-lime soda and stir.",
     "Garnish with an orange slice and cocktail cherry."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "pdcrJ5V7YKM",
-      "start": 154
-    },
-    {
-      "type": "youtube",
       "videoId": "0rnil0_xFnM",
-      "start": 585
+      "start": 406
     }
   ]
 }

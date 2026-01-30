@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "French 75",
+  "name": "Momisette",
   "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "flute",
+  "served_on": "ice cubes",
+  "glassware": "collins",
   "ingredients": [
     {
       "name": "Lemon juice",
@@ -14,44 +14,40 @@
       }
     },
     {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Plymouth Gin",
-      "type": "spirit",
+      "name": "Absinthe",
+      "type": "category",
       "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Crémant de Bourgogne Brut sparkling wine",
-      "type": "wine",
+      "name": "Seltzer",
+      "type": "soda",
       "quantity": {
-        "amount": 2,
+        "amount": 2.5,
         "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Shake gin, lemon juice, and simple syrup with ice.",
-    "Strain into a flute glass.",
-    "Top with champagne."
+    "Shake absinthe, orgeat, and lemon juice with ice.",
+    "Strain into a collins glass over ice.",
+    "Top with soda water."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "Viz7yWfcmdo"
-    },
-    {
-      "type": "youtube",
       "videoId": "0RT6a8dgPCg",
-      "start": 56
+      "start": 219
     }
   ]
 }
