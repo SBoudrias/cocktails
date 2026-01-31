@@ -1,0 +1,107 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Wassail",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "irish",
+  "servings": 8,
+  "ingredients": [
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cardamom pods",
+      "type": "spice",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Ginger",
+      "type": "spice",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Allspice berry",
+      "type": "spice",
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 125,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "unfiltered apple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 24,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laird's Bonded Apple Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 16,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Porter",
+      "type": "category",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Place cloves, allspice, cinnamon, cardamom, and ginger slices in a muslin bag.",
+    "Combine apple juice, sherry, beer, brandy, and sugar in a pot.",
+    "Add spice bag to the pot.",
+    "Heat over low, stirring until sugar dissolves.",
+    "Simmer for 20-30 minutes (do not boil).",
+    "Remove spice bag.",
+    "Ladle into Irish coffee glasses.",
+    "Garnish with dried apple slices."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "9cp5upHowwI",
+      "start": 312
+    }
+  ]
+}

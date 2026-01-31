@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Blended Brandy Alexander",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Vanilla ice cream",
+      "type": "other",
+      "quantity": {
+        "amount": 200,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Crème de Cacao Blanc",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Korbel Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add vanilla ice cream, brandy, crème de cacao, and cream to a blender.",
+    "Add 1/4 cup crushed ice.",
+    "Blend until smooth.",
+    "Pour into a hurricane glass.",
+    "Top with Bénédictine whipped cream.",
+    "Garnish with freshly grated nutmeg and a cocktail cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "8FS1ILeY8Ds",
+      "start": 524
+    }
+  ]
+}

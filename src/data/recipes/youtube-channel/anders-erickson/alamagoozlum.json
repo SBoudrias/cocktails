@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Alamagoozlum",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "servings": 3,
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bols Genever",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aquafaba",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a shaker without ice.",
+    "Dry shake vigorously.",
+    "Add ice and shake until well chilled.",
+    "Strain into Nick & Nora glasses.",
+    "Garnish with pineapple slice."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "8H-IBvOX8EI",
+      "start": 174
+    }
+  ]
+}

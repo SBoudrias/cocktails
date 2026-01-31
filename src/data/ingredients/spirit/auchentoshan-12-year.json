@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Auchentoshan 12 Year",
+  "type": "spirit",
+  "categories": ["Whisky (Scotch)"]
+}

@@ -1,31 +1,40 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Brandy Alexander",
+  "name": "Greta Garbo No. 2",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Heavy whipping cream",
-      "type": "other",
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Tempus Fugit Crème de Cacao",
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kronan Swedish Punsch",
       "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Maison Rouge VSOP Cognac",
+      "name": "Beefeater London Dry Gin",
       "type": "spirit",
       "quantity": {
-        "amount": 2,
+        "amount": 1,
         "unit": "oz"
       }
     }
@@ -34,18 +43,13 @@
     "Add all ingredients to a shaker with ice.",
     "Shake until well chilled.",
     "Strain into a coupe glass.",
-    "Garnish with freshly grated nutmeg."
+    "Express lemon oil over the drink."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "5LEgIoddxY4",
-      "start": 157
-    },
-    {
-      "type": "youtube",
-      "videoId": "8FS1ILeY8Ds",
-      "start": 313
+      "videoId": "85C2I7_RMLY",
+      "start": 415
     }
   ]
 }
