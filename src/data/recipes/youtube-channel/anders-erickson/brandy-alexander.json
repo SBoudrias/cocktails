@@ -1,28 +1,28 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Daiquiri",
+  "name": "Brandy Alexander",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "Heavy whipping cream",
+      "type": "other",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Tempus Fugit Crème de Cacao",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "El Dorado 3 Year",
+      "name": "Maison Rouge VSOP Cognac",
       "type": "spirit",
       "quantity": {
         "amount": 2,
@@ -31,19 +31,16 @@
     }
   ],
   "instructions": [
-    "Shake all ingredients with ice.",
+    "Add all ingredients to a shaker with ice.",
+    "Shake until well chilled.",
     "Strain into a coupe glass.",
-    "Garnish with a lime wheel."
+    "Garnish with freshly grated nutmeg."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "VBSjE-P_C58"
-    },
-    {
-      "type": "youtube",
-      "videoId": "71jQRf5UrpE",
-      "start": 298
+      "videoId": "5LEgIoddxY4",
+      "start": 157
     }
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Clément Canne Bleue",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Blanc"]
+}

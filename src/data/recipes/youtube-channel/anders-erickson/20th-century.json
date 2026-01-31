@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Wicked Word",
+  "name": "20th Century",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "nick & nora",
@@ -9,49 +9,45 @@
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Maison Rouge VSOP Cognac",
+      "name": "Martin Miller Westbourne Strength Gin",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Aperol",
+      "name": "Marie Brizard Crème de Cacao Blanc",
       "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Romana Black Sambuca",
-      "type": "spirit",
+      "name": "Cocchi Americano",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Shake ingredients excluding the Sambuca",
-    "Set Sambuca aflame, then drop into glass"
+    "Add all ingredients to a shaker with ice.",
+    "Shake until well chilled.",
+    "Strain into a chilled Nick & Nora glass."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "i67-17-CZCQ",
-      "start": 125
-    },
-    {
-      "type": "youtube",
-      "videoId": "6Ic0zmBpUQw",
-      "start": 248
+      "videoId": "6AyWk5teLv8",
+      "start": 246
     }
   ]
 }
