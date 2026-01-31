@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Cutwater Bali Hai Tiki Gold Pineapple Rum",
+  "type": "spirit",
+  "categories": ["Pineapple Rum"]
+}

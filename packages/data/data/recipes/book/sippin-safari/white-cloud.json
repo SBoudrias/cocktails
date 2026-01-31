@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "White Cloud",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cointreau",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still lightly aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Mai-Kai"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "LkucjFYkIEU"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Luxardo Bitter Bianco",
+  "type": "liqueur",
+  "categories": ["Italian bitter apéritif"]
+}

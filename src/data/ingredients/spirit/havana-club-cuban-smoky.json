@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Havana Club Cuban Smoky",
-  "type": "spirit",
-  "categories": ["Column still aged rum"]
-}

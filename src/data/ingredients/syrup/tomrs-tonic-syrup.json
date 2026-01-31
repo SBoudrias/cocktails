@@ -1,5 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Tomr's Tonic syrup",
-  "type": "syrup"
-}

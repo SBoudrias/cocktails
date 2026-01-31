@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Toucan Dance",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Red Fassionola",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Real McCoy 3 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker. Flash blend or shake well with crushed ice until coconut is frothy, pour into a Collins glass.",
+    "Garnish with an orchid and several pineapple balls (use a melon baller) skewered on a paper umbrella."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "William Prestwood"
+    },
+    {
+      "relation": "bar",
+      "source": "Pagan Idol",
+      "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 248
+    }
+  ]
+}

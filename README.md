@@ -30,18 +30,18 @@ Open [http://localhost:3000/cocktails](http://localhost:3000/cocktails) with you
 
 ## Creating new recipes
 
-Recipes are stored in `.json` files under `src/data/recipes/[type]/[source]/[slug].json`, and are nested under their source (book, youtube channel, etc.) The file name should be a url safe slug of the recipe name.
+Recipes are stored in `.json` files under `packages/data/data/recipes/[type]/[source]/[slug].json`, and are nested under their source (book, youtube channel, etc.) The file name should be a url safe slug of the recipe name.
 
 Each recipe file should start by defining it's schema:
 
 ```json
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../schemas/recipe.schema.json",
   "name": "TODO"
 }
 ```
 
-The format of recipes is defined in `src/schemas/recipe.schema.json`. Not all fields are required (like `instructions` or `attributions`.) If you're not sure, put `FIXME` as value and I'll fix them manually. Please do check if the ingredients are already defined inside `src/data/ingredients/**`, names are often similar and we want to reuse the defined names whenever possible.
+The format of recipes is defined in `packages/data/schemas/recipe.schema.json`. Not all fields are required (like `instructions` or `attributions`.) If you're not sure, put `FIXME` as value and I'll fix them manually. Please do check if the ingredients are already defined inside `packages/data/data/ingredients/**`, names are often similar and we want to reuse the defined names whenever possible.
 
 You can validate the new files are valid by running `yarn check-data`.
 

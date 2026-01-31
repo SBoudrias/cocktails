@@ -1,0 +1,48 @@
+{
+  "name": "@cocktails/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "next typegen && tsc --noEmit && eslint . && oxfmt . --check",
+    "test": "vitest --run"
+  },
+  "dependencies": {
+    "@cocktails/data": "workspace:*",
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@leeoniya/ufuzzy": "^1.0.19",
+    "@mui/icons-material": "^7.3.7",
+    "@mui/material": "^7.3.7",
+    "@mui/material-nextjs": "^7.3.7",
+    "@next/third-parties": "16.1.6",
+    "@sindresorhus/transliterate": "^2.3.1",
+    "core-js": "^3.47.0",
+    "next": "16.1.6",
+    "next-sitemap": "^4.2.3",
+    "nuqs": "^2.8.7",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "ts-pattern": "^5.9.0"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "19.2.10",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/browser": "^4.0.18",
+    "@vitest/coverage-v8": "^4.0.18",
+    "autoprefixer": "^10.4.23",
+    "happy-dom": "^20.4.0",
+    "next-router-mock": "^1.0.5",
+    "vite-tsconfig-paths": "^6.0.5"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Hamilton Pimento Dram",
+  "type": "liqueur",
+  "categories": ["Allspice Dram"]
+}

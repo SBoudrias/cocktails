@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "La Luna Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

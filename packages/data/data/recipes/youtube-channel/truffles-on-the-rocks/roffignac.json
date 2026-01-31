@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Roffignac",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Pierre Ferrand Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "raspberry shrub",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build over ice in a Collins glass",
+    "Top with seltzer",
+    "Stir gently",
+    "Garnish with fresh mint sprig"
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Count Louis Philippe Joseph de Roffignac"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "v_tTsok1iIE"
+    }
+  ]
+}

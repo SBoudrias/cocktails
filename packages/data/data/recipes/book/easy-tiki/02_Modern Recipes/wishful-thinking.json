@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Wishful Thinking",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum J.M Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hayman's sloe gin",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add cracked ice and shake until chilled, about 10 seconds.",
+    "Pour into a decorative mug and add more cracked ice to fill, if necessary.",
+    "Garnish with a mint sprig."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Julia McKinley"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 101
+    }
+  ]
+}

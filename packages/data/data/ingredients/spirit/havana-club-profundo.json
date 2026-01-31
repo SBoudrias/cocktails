@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Havana Club Profundo",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}

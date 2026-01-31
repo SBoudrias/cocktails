@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Don's Zombie Mix",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ]
+}

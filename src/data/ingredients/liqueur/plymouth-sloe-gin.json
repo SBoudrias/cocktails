@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Plymouth Sloe Gin",
-  "type": "liqueur",
-  "categories": ["Sloe Gin"]
-}

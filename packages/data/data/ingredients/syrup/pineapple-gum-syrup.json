@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Pineapple Gum Syrup",
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wrWhDX0udjs"
+    }
+  ]
+}

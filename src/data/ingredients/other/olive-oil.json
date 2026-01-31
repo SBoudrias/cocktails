@@ -1,5 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "olive oil",
-  "type": "other"
-}

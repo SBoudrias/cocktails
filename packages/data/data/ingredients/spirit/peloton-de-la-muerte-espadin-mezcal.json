@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Pelotón de la Muerte Espadín Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

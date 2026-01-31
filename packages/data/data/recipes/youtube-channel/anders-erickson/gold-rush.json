@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Gold Rush",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 75,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Eagle Rare Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a rocks glass over ice."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "VBSjE-P_C58"
+    }
+  ]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Sho Chiku Bai Nigori Sake",
-  "type": "liqueur",
-  "categories": ["Sake"]
-}

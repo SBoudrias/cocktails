@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "vanilla-sandalwood syrup",
+  "type": "syrup"
+}

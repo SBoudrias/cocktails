@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Bruichladdich The Classic Laddie whisky",
+  "type": "spirit",
+  "categories": ["Whisky (Islay Scotch)"]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Mizu Saga Barley shochu",
-  "type": "spirit",
-  "categories": ["Barley Shochu"]
-}

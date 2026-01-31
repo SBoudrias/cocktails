@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Privateer",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "tequila",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add ice and shake until chilled, about 10 seconds.",
+    "Pour into a tiki mug, or double strain through a mesh strainer into a coupe.",
+    "Garnish with a torched rosemary sprig.",
+    "Note: If serving in a tiki mug, singe the rosemary once it's been placed vertically in the glass; if serving in a coupe, singe the rosemary before placing it on the surface of the cocktail."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Chris Vanderginst"
+    },
+    {
+      "relation": "bar",
+      "source": "Mutiny Bar",
+      "location": "Detroit, MI"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 110
+    }
+  ]
+}

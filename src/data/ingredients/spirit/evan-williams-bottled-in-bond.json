@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Evan Williams Bottled-in-Bond",
-  "type": "spirit",
-  "categories": ["Whiskey (Bourbon)"]
-}

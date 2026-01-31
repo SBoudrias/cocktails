@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Nux Alpina Walnut Liqueur",
-  "type": "liqueur",
-  "categories": ["Walnut Liqueur"]
-}

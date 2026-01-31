@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Merlet Crème de Pêche de Vigne",
+  "type": "liqueur",
+  "categories": ["Peach liqueur"]
+}

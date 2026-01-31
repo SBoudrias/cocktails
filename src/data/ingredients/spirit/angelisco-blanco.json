@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Angelisco Blanco",
-  "type": "spirit",
-  "categories": ["Tequila (Blanco)"]
-}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/book.schema.json",
+  "name": "Tropical Standard",
+  "link": "https://www.tropicalstandard.com/",
+  "description": "Weaving together lessons from the craft cocktail revival, the history of the tropical canon, and today’s cutting-edge bar techniques, master mixologist Garret Richard and award-winning cocktail writer Ben Schaffer provide a unique handbook for the tropical cocktail’s next wave."
+}

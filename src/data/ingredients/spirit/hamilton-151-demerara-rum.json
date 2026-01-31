@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Hamilton 151 Demerara rum",
-  "type": "spirit",
-  "categories": ["Black blended Overproof Rum"]
-}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Trailer Happiness Fassionola",
-  "type": "syrup",
-  "categories": ["Fassionola"]
-}

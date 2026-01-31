@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Gosling's Black Seal 151",
+  "type": "spirit",
+  "categories": ["Black blended Overproof Rum"]
+}

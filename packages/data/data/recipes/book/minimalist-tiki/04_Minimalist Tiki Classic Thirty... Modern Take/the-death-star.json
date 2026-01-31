@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Death Star",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "punch",
+  "servings": 2,
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 7,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fassionola",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hampden Estate Rum Fire",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peruvian Pisco",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dry rosé wine",
+      "type": "category",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in shaker and dry shake.",
+    "Pour into tiki bowl.",
+    "Top with fresh crushed ice.",
+    "Garnish with orange slices, orchids, pineapple fronds, two long straws, and dry ice if available and used safely (see page 77)."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Maxwell"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 266
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Negroni",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "The Botanist Islay Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass over ice.",
+    "Garnish with an orange twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "lgy6vEX_hQg"
+    },
+    {
+      "type": "youtube",
+      "videoId": "0R6Byhm5cNg",
+      "start": 313
+    }
+  ]
+}

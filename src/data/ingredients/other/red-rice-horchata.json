@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Red Rice Horchata",
-  "type": "other",
-  "categories": ["Horchata"]
-}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Saline",
+  "type": "other",
+  "description": "Saline is a mixture of salt and water. Just like cooking, the addition of salt helps brighten up the flavor of a drink. For mixology use, it is usually composed of 20% salt and 80% water. You can substitute saline with a pinch of salt.",
+  "ingredients": [
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "part"
+      }
+    }
+  ]
+}

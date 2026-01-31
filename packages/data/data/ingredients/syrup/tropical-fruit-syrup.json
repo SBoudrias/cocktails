@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "tropical fruit syrup",
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "i9790lVvSMc"
+    }
+  ]
+}

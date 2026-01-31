@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Apologue Celery Root Liqueur",
-  "type": "liqueur",
-  "categories": ["Celery Root Liqueur"]
-}

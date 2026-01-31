@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Maggie's Farm Falernum",
-  "type": "liqueur",
-  "categories": ["Falernum liqueur"]
-}

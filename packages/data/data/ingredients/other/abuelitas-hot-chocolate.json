@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Abuelita’s Hot Chocolate",
+  "type": "other"
+}

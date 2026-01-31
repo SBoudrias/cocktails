@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Chairman's Reserve Legacy Rum",
+  "type": "spirit",
+  "categories": ["Blended Aged Rum"]
+}

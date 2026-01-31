@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Evan Williams Black Label",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

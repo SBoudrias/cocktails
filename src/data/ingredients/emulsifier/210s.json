@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "210s",
-  "type": "emulsifier",
-  "description": "Can be substituted with 9 parts gum arabic (acacia gum) and 1 part xanthan gum"
-}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "black cherry syrup (Reàl)",
+  "type": "syrup"
+}

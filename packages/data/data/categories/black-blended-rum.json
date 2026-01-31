@@ -1,0 +1,12 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Black Blended Rum",
+  "categoryType": "spirit",
+  "parents": ["Rum"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "sTM6xzUOxOM"
+    }
+  ]
+}

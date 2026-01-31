@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Herbstura",
+  "type": "bitter",
+  "description": "Herbstura is a mix of 1:1 Herbsaint and Angostura bitters from Don the Beachcomber for use in his Tiki cocktails; circa 1960. Herbsaint can be substituted by other absinth or pastis.",
+  "ingredients": [
+    {
+      "name": "Herbsaint",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ]
+}

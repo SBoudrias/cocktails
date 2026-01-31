@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Nuestra Soledad Espadin Joven Mezcal",
-  "type": "spirit",
-  "categories": ["Mezcal"]
-}

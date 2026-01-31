@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Marie Brizard Yuzu Liqueur",
-  "type": "liqueur",
-  "categories": ["Yuzu Liqueur"]
-}

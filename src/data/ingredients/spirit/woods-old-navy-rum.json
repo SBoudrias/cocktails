@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Wood's Old Navy rum",
-  "type": "spirit",
-  "categories": ["Navy style rum", "Black blended Overproof Rum"]
-}

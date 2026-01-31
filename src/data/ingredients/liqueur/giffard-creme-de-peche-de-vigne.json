@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Giffard Crème de Pêche de Vigne",
-  "type": "liqueur",
-  "categories": ["Peach liqueur"]
-}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Orgeat Works Ltd macadamia nut syrup",
+  "type": "syrup",
+  "categories": ["Macadamia nut orgeat"]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Select Aperitivo",
-  "type": "liqueur",
-  "categories": ["Italian bitter apéritif"]
-}

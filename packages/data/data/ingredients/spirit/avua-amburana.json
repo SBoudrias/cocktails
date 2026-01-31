@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Avua Amburana",
+  "type": "spirit",
+  "categories": ["Aged Cachaça"]
+}

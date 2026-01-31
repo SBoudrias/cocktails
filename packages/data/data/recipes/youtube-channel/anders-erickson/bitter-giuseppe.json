@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Bitter Giuseppe",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add lemon peel swath to mixing glass.",
+    "Add all ingredients and stir with ice.",
+    "Strain into a coupe glass.",
+    "Express lemon oil over the drink and garnish with lemon peel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "5w6eLckHwWg"
+    }
+  ]
+}

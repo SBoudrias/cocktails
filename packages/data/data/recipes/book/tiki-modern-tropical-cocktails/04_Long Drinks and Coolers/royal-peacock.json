@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Royal Peacock",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Bittermens Hellfire Habanero Shrub",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mango Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard crème de fruit de la passion",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Neisson Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all in a shaker with cubed ice.",
+    "Shake and strain into a collins glass rimmed with chile salt over ice.",
+    "Garnish with 3 pineapple leaves."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Dani DeLuna"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 76
+    }
+  ]
+}

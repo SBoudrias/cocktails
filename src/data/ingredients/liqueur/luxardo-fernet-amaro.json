@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Luxardo Fernet Amaro",
-  "type": "liqueur",
-  "categories": ["Amaro (Fernet)"]
-}

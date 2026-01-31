@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "apple cider syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "unfiltered apple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Bring 4 cups unfiltered apple juice (cider) to a boil with 1 cinnamon stick.",
+    "Carefully reduce to 25% (about 1 cup), 60–90 minutes.",
+    "Remove cinnamon, add a pinch of salt, and strain.",
+    "Store chilled."
+  ]
+}

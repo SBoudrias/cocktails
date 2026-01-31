@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Hamilton West Indies 1670 Blend Rum",
+  "type": "spirit",
+  "categories": ["Blended Aged Rum"]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Latitude 29 Orgeat",
-  "type": "syrup",
-  "categories": ["orgeat"]
-}

@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Old Ironsides",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Whiskey Barrel-Aged Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lazzaroni Amaretto",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Scarlet Ibis Trinidad Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a mixing glass",
+    "Add ice and stir until well-chilled",
+    "Strain into a chilled coupe glass"
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Miller"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co.",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "BCt6BLN6n_A"
+    }
+  ]
+}

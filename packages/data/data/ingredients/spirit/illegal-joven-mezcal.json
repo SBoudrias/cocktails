@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Illegal Joven Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Uruapan Charanda Blanco Rum",
-  "type": "spirit",
-  "categories": ["Charanda"]
-}

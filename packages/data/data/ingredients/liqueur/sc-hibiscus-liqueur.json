@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "SC Hibiscus liqueur",
+  "type": "liqueur",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "YPnIDJNlPlA"
+    }
+  ]
+}

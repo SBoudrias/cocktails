@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Campo de Encanto Pisco",
+  "type": "spirit",
+  "categories": ["Peruvian pisco"]
+}

@@ -1,5 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "mandarin orange juice",
-  "type": "juice"
-}

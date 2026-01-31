@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Empress 1908 Gin",
+  "type": "spirit",
+  "categories": ["Gin (New American)"]
+}

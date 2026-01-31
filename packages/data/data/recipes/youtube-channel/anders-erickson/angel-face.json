@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Angel Face",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Giffard abricot du Roussillon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Calvados",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Beefeater London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into a chilled coupe glass.",
+    "Express orange oil over the drink."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "2nHl1pBETt8",
+      "start": 330
+    }
+  ]
+}

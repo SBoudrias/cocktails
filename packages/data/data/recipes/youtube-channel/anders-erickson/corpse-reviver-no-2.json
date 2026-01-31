@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Corpse Reviver No. 2",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "spray"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Triple Sec",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Americano",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "London Dry Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rinse a chilled coupe glass with absinthe and discard the excess.",
+    "Shake remaining ingredients with ice.",
+    "Strain into the prepared glass.",
+    "Garnish with a cocktail cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0RT6a8dgPCg",
+      "start": 161
+    }
+  ]
+}

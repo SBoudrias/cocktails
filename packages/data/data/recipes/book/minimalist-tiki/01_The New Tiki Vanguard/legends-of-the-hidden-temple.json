@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Legends of the Hidden Temple",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "punch",
+  "servings": 4,
+  "ingredients": [
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 8",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Don Q Cristal Rum",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "hibiscus"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all ingredients except blackstrap in shaker.",
+    "Shake with crushed ice, pour into large-format tiki bowl.",
+    "Top with fresh crushed ice.",
+    "Add blackstrap float.",
+    "Garnish with a full pineapple top and orchids. Use dry ice if desired."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Maxwell"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 147
+    }
+  ]
+}

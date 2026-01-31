@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Siesta",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siete Leguas Blanco Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Expressed grapefruit oil & peel for garnish (or lime wheel)"],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Katie Stipe"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "F6o09CBEVvU"
+    }
+  ]
+}

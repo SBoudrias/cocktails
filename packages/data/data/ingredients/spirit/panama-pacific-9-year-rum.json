@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Panamá-Pacific 9 Year Rum",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}

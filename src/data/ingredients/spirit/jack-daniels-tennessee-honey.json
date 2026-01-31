@@ -1,5 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Jack Daniel's Tennessee Honey",
-  "type": "spirit"
-}

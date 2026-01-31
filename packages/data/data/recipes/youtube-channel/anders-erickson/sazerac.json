@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Sazerac",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Nouvelle Orleans Absinthe Superieure",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "spray"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sazerac Straight Rye Whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rinse a chilled old fashioned glass with absinthe and discard the excess.",
+    "Stir the remaining ingredients with ice.",
+    "Strain into the prepared glass.",
+    "Garnish with lemon zest."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "dJ-sAEzw9Jc"
+    },
+    {
+      "type": "youtube",
+      "videoId": "0rnil0_xFnM",
+      "start": 248
+    }
+  ]
+}

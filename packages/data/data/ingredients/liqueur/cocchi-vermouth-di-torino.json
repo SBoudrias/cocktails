@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Cocchi Vermouth di Torino",
+  "type": "liqueur",
+  "categories": ["Sweet vermouth"]
+}

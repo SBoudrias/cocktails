@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Braulio",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}

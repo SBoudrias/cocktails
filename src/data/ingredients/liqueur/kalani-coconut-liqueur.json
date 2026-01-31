@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Kalani Coconut Liqueur",
-  "type": "liqueur",
-  "categories": ["Coconut Liqueur"]
-}

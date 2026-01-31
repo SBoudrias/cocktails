@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Monymusk Overproof White Rum",
+  "type": "spirit",
+  "categories": ["Pot still unaged rum", "Jamaican overproof rum"]
+}

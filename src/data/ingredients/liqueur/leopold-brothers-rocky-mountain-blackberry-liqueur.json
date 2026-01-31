@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Leopold brothers rocky mountain blackberry liqueur",
-  "type": "liqueur",
-  "categories": ["Blackberry liqueur"]
-}

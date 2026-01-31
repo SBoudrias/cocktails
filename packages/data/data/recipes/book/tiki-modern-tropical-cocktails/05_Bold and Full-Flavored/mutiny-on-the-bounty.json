@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mutiny on the Bounty",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Shannon Mustipher's spiced syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "tangerine juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Perry's Tot Navy Strength Gin",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "Darjeeling tea"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all in a shaker with pebbled ice",
+    "Shake and pour all contents into a Tiki mug and top with pebbled ice",
+    "Garnish with mint sprig, an edible flower, a scored lime wheel, and a dehydrated pineapple wedge"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Tiki: Modern Tropical Cocktails",
+      "page": 98
+    }
+  ]
+}

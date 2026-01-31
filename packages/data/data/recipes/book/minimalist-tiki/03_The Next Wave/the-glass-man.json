@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Glass Man",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Real McCoy 5 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum-Bar Silver",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all ingredients in shaker. Shake with crushed ice, pour into a tiki mug. Fill with fresh crushed ice.",
+    "Garnish with a mint sprig, a dehydrated lime wheel, a swizzle stick, and an orchid."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Eli Sanchez"
+    },
+    {
+      "relation": "bar",
+      "source": "The Inferno Room",
+      "location": "Indianapolis, IN"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Minimalist Tiki",
+      "page": 232
+    }
+  ]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Baileys",
-  "type": "liqueur",
-  "categories": ["Irish Cream"]
-}

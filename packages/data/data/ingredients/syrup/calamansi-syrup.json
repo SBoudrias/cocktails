@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Calamansi syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Calamansi purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 10,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 10,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orange blossom water",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ]
+}

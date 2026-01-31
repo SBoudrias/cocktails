@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Missionary's Downfall",
+  "preparation": "blended",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peach liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a blender",
+    "Blend with crushed ice until smooth",
+    "Pour into a chilled coupe glass"
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Don the Beachcomber"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Daniele Dalla Pola"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jEHxVunOS1o"
+    }
+  ]
+}

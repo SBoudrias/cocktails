@@ -1,0 +1,16 @@
+{
+  "name": "@cocktails/youtube-sync",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "youtube-sync": "node src/youtube-sync.ts"
+  },
+  "dependencies": {
+    "@cocktails/data": "workspace:*",
+    "commander": "^14.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.1.0"
+  }
+}

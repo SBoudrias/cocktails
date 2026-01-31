@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Old Harbor San Miguel Southwestern Gin",
+  "type": "spirit",
+  "categories": ["Gin (New American)"]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Lustau East India Solera Sherry",
-  "type": "liqueur",
-  "categories": ["Sherry (Cream)"]
-}

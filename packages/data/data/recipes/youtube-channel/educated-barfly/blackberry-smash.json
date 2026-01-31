@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Blackberry Smash",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Blackberry",
+      "type": "fruit",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the lemon wedges, blackberries, and mint leaves in a cocktail shaker",
+    "Add bourbon and simple syrup",
+    "Shake with ice",
+    "Fine strain over ice in an old fashioned glass",
+    "Garnish with a mint sprig and blackberry"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "gkVbBVq91Rs"
+    }
+  ]
+}

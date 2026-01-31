@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Grapefruit punch syrup",
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Ejz5pWsOZsc"
+    }
+  ]
+}

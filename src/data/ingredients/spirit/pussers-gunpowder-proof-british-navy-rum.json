@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Pusser's Gunpowder Proof British Navy Rum",
-  "type": "spirit",
-  "categories": ["Navy style rum"]
-}

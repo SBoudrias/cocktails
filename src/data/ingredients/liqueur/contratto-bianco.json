@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Contratto Bianco",
-  "type": "liqueur",
-  "categories": ["Blanc vermouth"]
-}

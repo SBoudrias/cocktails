@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Neisson Rhum Agricole Blanc",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Blanc"]
+}

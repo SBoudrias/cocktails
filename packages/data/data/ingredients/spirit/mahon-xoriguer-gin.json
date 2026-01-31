@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Mahón Xoriguer Gin",
+  "type": "spirit",
+  "categories": ["Gin"]
+}

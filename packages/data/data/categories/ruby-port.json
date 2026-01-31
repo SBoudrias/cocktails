@@ -1,0 +1,6 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Ruby Port",
+  "categoryType": "liqueur",
+  "parents": ["Port"]
+}

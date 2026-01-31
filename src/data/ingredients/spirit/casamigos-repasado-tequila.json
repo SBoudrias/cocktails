@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Casamigos Repasado Tequila",
-  "type": "spirit",
-  "categories": ["Tequila Reposado"]
-}

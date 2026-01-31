@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Celery serrano juice",
+  "type": "juice",
+  "ingredients": [
+    {
+      "name": "celery",
+      "type": "fruit",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "serrano pepper",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": ["Juice all ingredients"]
+}

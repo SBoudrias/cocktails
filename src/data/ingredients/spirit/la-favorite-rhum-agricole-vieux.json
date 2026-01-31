@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "La Favorite Rhum Agricole Vieux",
-  "type": "spirit",
-  "categories": ["Rhum Agricole Vieux"]
-}

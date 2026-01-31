@@ -1,0 +1,5 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Brandy (Pear)",
+  "categoryType": "spirit"
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Barbancourt 110 Haitian Proof",
-  "type": "spirit",
-  "categories": ["Rhum Agricole Blanc"]
-}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Marie Brizard Parfait Amour",
-  "type": "liqueur",
-  "categories": ["Parfait Amour"]
-}

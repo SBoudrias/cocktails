@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Tapatio Blanco Tequila",
-  "type": "spirit",
-  "categories": ["High-proof Tequila (Blanco)"]
-}

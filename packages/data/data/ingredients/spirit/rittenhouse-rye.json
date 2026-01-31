@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Rittenhouse Rye",
+  "type": "spirit",
+  "categories": ["Whiskey (Rye)"]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Black Russian",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Kahlua Original coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "GA224aeFg7U"
+    }
+  ]
+}

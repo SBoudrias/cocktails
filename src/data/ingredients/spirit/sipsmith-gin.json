@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Sipsmith Gin",
-  "type": "spirit",
-  "categories": ["London Dry Gin"]
-}

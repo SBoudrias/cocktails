@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Valdespino \"Ynocente\" Fino Sherry",
-  "type": "liqueur",
-  "categories": ["Sherry (Fino)"]
-}

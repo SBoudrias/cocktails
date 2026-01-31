@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Laphroaig Select",
-  "type": "spirit",
-  "categories": ["Whisky (Islay Scotch)"]
-}

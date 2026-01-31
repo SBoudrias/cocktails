@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Luxardo Cherry Liqueur",
-  "type": "liqueur",
-  "categories": ["Cherry Heering liqueur"]
-}

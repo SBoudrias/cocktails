@@ -1,5 +1,0 @@
-{
-  "$schema": "../../schemas/category.schema.json",
-  "name": "Aquavit",
-  "categoryType": "spirit"
-}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Monopolowa Vodka",
+  "type": "spirit",
+  "categories": ["Vodka"]
+}

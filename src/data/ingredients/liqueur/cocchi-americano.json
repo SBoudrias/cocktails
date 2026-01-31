@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Cocchi Americano",
-  "type": "liqueur",
-  "categories": ["Blanc vermouth"]
-}

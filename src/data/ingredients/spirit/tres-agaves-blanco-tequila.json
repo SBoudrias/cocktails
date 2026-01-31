@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Tres Agaves Blanco Tequila",
-  "type": "spirit",
-  "categories": ["Tequila Blanco"]
-}

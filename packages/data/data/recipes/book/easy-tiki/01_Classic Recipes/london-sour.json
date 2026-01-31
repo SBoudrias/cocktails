@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "London Sour",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "wedged"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barbadillo Manzanilla Sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Put the orange wedge in a cocktail shaker and muddle to release its oils and juice.",
+    "Add all the remaining ingredients and ice and shake until chilled, about 10 seconds.",
+    "Fine strain into a rocks glass filled with ice.",
+    "Garnish with a thin spiral of lemon peel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jane Danger"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Austin Hartman"
+    },
+    {
+      "relation": "bar",
+      "source": "Paradise Lounge",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 87
+    }
+  ]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Hayman's Royal Dock Navy Strength Gin",
-  "type": "spirit",
-  "categories": ["Gin (Navy Strength)"]
-}

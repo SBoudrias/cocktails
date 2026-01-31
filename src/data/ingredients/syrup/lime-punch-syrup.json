@@ -1,5 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Lime punch syrup",
-  "type": "syrup"
-}

@@ -1,0 +1,11 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Sloe gin",
+  "categoryType": "liqueur",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "6SlljhQsjDY"
+    }
+  ]
+}

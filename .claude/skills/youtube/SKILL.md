@@ -46,8 +46,8 @@ User: "Create a recipe from https://youtube.com/watch?v=xyz"
 When adding a new YouTube channel to the cocktails app:
 
 1. Create the channel directory structure:
-   - `src/data/recipes/youtube-channel/CHANNEL_SLUG/`
-   - `src/data/recipes/youtube-channel/CHANNEL_SLUG/_source.json`
+   - `packages/data/data/recipes/youtube-channel/CHANNEL_SLUG/`
+   - `packages/data/data/recipes/youtube-channel/CHANNEL_SLUG/_source.json`
 
 2. Backfill videos to create GitHub issue with all available videos:
 

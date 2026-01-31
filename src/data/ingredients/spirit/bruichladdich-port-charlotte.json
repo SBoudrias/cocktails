@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Bruichladdich Port Charlotte",
-  "type": "spirit",
-  "categories": ["Whisky (Islay Scotch)"]
-}

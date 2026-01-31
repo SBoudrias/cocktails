@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Ron Abuelo 7-Year Añejo Rum",
-  "type": "spirit",
-  "categories": ["Column still aged rum"]
-}

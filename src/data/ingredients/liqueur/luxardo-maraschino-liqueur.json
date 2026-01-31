@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Luxardo Maraschino Liqueur",
-  "type": "liqueur",
-  "categories": ["Maraschino liqueur"]
-}

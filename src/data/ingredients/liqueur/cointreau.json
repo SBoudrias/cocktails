@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Cointreau",
-  "type": "liqueur",
-  "categories": ["Triple Sec"]
-}

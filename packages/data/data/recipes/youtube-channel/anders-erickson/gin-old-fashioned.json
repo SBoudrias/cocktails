@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Gin Old Fashioned",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Tom Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass over a big rock.",
+    "Garnish with lemon zest and a cocktail cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0rnil0_xFnM",
+      "start": 869
+    }
+  ]
+}

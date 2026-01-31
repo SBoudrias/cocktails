@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Make and Drink's Amaretto Sour",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado Versailles Single Still",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lazzaroni Amaretto",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a shaker",
+    "Dry shake for 10-15 seconds",
+    "Add ice and shake again until well-chilled",
+    "Double strain into a chilled coupe glass"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "BCt6BLN6n_A"
+    }
+  ]
+}

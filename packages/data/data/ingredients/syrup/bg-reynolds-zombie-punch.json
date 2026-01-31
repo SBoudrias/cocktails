@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "BG Reynolds Zombie Punch",
+  "type": "syrup"
+}

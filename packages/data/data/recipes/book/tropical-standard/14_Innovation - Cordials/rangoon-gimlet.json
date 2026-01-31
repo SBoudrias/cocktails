@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Rangoon Gimlet",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "lime",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "lime cordial",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cadenhead's Old Raj Blue Label Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Garret Richard"
+    },
+    {
+      "relation": "bar",
+      "source": "Sunken Harbor Club",
+      "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tropical-standard",
+      "page": 219
+    },
+    {
+      "type": "youtube",
+      "videoId": "WhammUDUkwo"
+    }
+  ]
+}

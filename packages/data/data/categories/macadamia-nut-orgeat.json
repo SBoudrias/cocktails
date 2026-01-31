@@ -1,0 +1,6 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Macadamia nut orgeat",
+  "categoryType": "syrup",
+  "parents": ["Orgeat"]
+}

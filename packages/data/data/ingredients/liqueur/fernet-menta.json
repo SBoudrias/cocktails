@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Fernet Menta",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Giffard Fleur de Sureau Sauvage",
+  "type": "liqueur",
+  "categories": ["Elderflower Liqueur"]
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Pegu Club",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Shake all ingredients with ice.", "Strain into a coupe glass."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "YenV_NoabM4"
+    }
+  ]
+}

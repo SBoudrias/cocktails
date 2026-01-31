@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Earl Grey tea",
+  "type": "other"
+}

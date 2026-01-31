@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Laird's Bonded Apple Brandy",
+  "type": "spirit",
+  "categories": ["Brandy (Apple)"]
+}

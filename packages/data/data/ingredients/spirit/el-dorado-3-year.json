@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "El Dorado 3 Year",
+  "type": "spirit",
+  "categories": ["Blended Lightly-aged Rum"]
+}

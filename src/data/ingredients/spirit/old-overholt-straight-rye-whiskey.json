@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Old Overholt Straight Rye Whiskey",
-  "type": "spirit",
-  "categories": ["Whiskey (Rye)"]
-}

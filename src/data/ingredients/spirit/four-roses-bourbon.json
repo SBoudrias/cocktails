@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Four Roses Bourbon",
-  "type": "spirit",
-  "categories": ["Whiskey (Bourbon)"]
-}

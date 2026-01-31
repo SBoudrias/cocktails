@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "St. George Green Chile Vodka",
-  "type": "spirit",
-  "categories": ["Brandy (Green Chile)"]
-}

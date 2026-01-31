@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Two James Doctor Bird rum",
+  "type": "spirit",
+  "categories": ["Navy Strength Jamaican Rum"]
+}

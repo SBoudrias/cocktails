@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Doctor Cocktail",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kronan Swedish Punsch",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Shake all ingredients with ice.", "Strain into a coupe glass."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "SxSrQcyrMS0"
+    },
+    {
+      "type": "youtube",
+      "videoId": "4ulBVniIbaA",
+      "start": 122
+    }
+  ]
+}

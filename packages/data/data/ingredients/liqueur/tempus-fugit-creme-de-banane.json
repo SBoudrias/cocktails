@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Tempus Fugit crème de banane",
+  "type": "liqueur",
+  "categories": ["Banana liqueur"]
+}

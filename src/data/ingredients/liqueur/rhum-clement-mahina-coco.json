@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Rhum Clément Mahina Coco",
-  "type": "liqueur",
-  "categories": ["Coconut Liqueur"]
-}

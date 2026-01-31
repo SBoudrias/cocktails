@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Cimarron Blanco Tequila",
-  "type": "spirit",
-  "categories": ["Tequila (Blanco)"]
-}

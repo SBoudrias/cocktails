@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Neisson Élevé Sous Bois",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Vieux"]
+}

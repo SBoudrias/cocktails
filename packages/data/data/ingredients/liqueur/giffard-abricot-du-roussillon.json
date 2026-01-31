@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Giffard abricot du Roussillon",
+  "type": "liqueur",
+  "categories": ["Apricot liqueur"]
+}

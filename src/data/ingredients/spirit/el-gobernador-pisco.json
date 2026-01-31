@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "El Gobernador Pisco",
-  "type": "spirit",
-  "categories": ["Chilean Pisco"]
-}

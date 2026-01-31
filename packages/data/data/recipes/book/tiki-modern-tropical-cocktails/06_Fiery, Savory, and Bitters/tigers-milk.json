@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tiger's Milk",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Coffee syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coconut cream",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tamworth Distilling Von Humboldt's Natur Wasser Tamarind Cordial",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "coconut oil"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all in a shaker with pebbled ice",
+    "Flash blend with a stand or wand mixer for 10 to 15 seconds",
+    "Pour into a young coconut shell set in a coconut husk, single-serve Tiki bowl, or bamboo mug wrapped with a banana leaf",
+    "Garnish with grated cinnamon and a dusting of cocoa powder"
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "tiki-modern-tropical-cocktails",
+      "page": 117
+    }
+  ]
+}

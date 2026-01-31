@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Port Light",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Grand-Dad 114 Proof Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Garnish with pineapple fronds and cocktail umbrella"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "-DnpmdGBmgs",
+      "start": 164
+    }
+  ]
+}

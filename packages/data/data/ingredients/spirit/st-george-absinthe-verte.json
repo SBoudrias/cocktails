@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "St. George Absinthe Verte",
+  "type": "spirit",
+  "categories": ["Absinthe"]
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Yuzu Liqueur",
+  "categoryType": "liqueur"
+}

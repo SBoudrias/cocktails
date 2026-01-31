@@ -1,0 +1,12 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Whiskey (Bourbon)",
+  "categoryType": "spirit",
+  "parents": ["Whiskey"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "uGGDZgPHSas"
+    }
+  ]
+}

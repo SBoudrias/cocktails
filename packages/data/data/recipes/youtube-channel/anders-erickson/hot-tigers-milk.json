@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Hot Tiger's Milk",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Tiger's Milk Batter",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "evaporated milk",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 8 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add batter to a warmed mug.",
+    "Add rum and evaporated milk.",
+    "Top with boiling water and stir to combine.",
+    "Garnish with grated nutmeg and a clove-studded orange peel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Don the Beachcomber"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "pJ_OQtJnIrY",
+      "start": 465
+    }
+  ]
+}

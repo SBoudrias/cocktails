@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Brandy Old Fashioned",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cocktail cherry",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Brandy (Grapes)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "7 Up",
+      "type": "soda",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle orange wedge and cherry with bitters and syrup in an old fashioned glass.",
+    "Add brandy and ice cubes.",
+    "Top with a splash of lemon-lime soda and stir.",
+    "Garnish with an orange slice and cocktail cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0rnil0_xFnM",
+      "start": 406
+    }
+  ]
+}

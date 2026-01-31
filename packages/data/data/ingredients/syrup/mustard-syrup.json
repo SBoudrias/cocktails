@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "mustard syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Mustard",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    }
+  ]
+}

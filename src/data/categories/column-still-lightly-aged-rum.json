@@ -1,6 +1,0 @@
-{
-  "$schema": "../../schemas/category.schema.json",
-  "name": "Column still lightly aged rum",
-  "categoryType": "spirit",
-  "parents": ["Blended Lightly-aged Rum"]
-}

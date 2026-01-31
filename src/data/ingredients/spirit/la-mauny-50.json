@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "La Mauny 50%",
-  "type": "spirit",
-  "categories": ["Rhum Agricole Blanc"]
-}
