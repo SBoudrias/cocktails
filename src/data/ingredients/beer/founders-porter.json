@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Founder's Porter",
-  "type": "beer",
-  "categories": ["Porter"]
-}
