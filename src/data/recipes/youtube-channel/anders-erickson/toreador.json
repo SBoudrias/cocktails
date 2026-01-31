@@ -1,37 +1,36 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Doctor Cocktail",
+  "name": "Toreador",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Agave syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 2,
-        "unit": "dash"
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
-      "name": "Demerara syrup",
-      "type": "syrup",
-      "brix": 66,
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "liqueur",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Kronan Swedish Punsch",
+      "name": "Giffard abricot du Roussillon",
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
@@ -39,24 +38,23 @@
       }
     },
     {
-      "name": "Appleton Signature",
+      "name": "Milagro Reposado Tequila",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "instructions": ["Shake all ingredients with ice.", "Strain into a coupe glass."],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a chilled coupe glass."
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "SxSrQcyrMS0"
-    },
-    {
-      "type": "youtube",
-      "videoId": "4ulBVniIbaA",
-      "start": 122
+      "videoId": "3aV3DzDfW_A",
+      "start": 167
     }
   ]
 }

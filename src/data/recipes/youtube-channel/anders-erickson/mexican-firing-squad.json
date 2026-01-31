@@ -1,25 +1,16 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Doctor Cocktail",
+  "name": "Mexican Firing Squad",
   "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
+  "served_on": "ice cubes",
+  "glassware": "highball",
   "ingredients": [
     {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
-        "amount": 2,
+        "amount": 4,
         "unit": "dash"
-      }
-    },
-    {
-      "name": "Demerara syrup",
-      "type": "syrup",
-      "brix": 66,
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
       }
     },
     {
@@ -31,32 +22,32 @@
       }
     },
     {
-      "name": "Kronan Swedish Punsch",
-      "type": "liqueur",
+      "name": "Grenadine",
+      "type": "syrup",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Appleton Signature",
+      "name": "Milagro Reposado Tequila",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "instructions": ["Shake all ingredients with ice.", "Strain into a coupe glass."],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a highball glass over fresh ice.",
+    "Garnish with a lime wheel."
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "SxSrQcyrMS0"
-    },
-    {
-      "type": "youtube",
-      "videoId": "4ulBVniIbaA",
-      "start": 122
+      "videoId": "3aV3DzDfW_A",
+      "start": 98
     }
   ]
 }

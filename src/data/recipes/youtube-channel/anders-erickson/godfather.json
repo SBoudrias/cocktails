@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Godfather",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Luxardo Amaretto di Saschira",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Talisker 10 Year Old Single Malt Scotch Whisky",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add whisky and amaretto to an old fashioned glass with a large ice cube.",
+    "Stir gently to combine.",
+    "Express orange oil over the drink.",
+    "Garnish with a cocktail cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "3DhncxCCB-E",
+      "start": 360
+    }
+  ]
+}

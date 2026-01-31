@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Doctor Cocktail",
+  "name": "Matador",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
@@ -9,29 +9,28 @@
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
-        "amount": 2,
+        "amount": 1,
         "unit": "dash"
-      }
-    },
-    {
-      "name": "Demerara syrup",
-      "type": "syrup",
-      "brix": 66,
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
       }
     },
     {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Kronan Swedish Punsch",
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
@@ -39,24 +38,32 @@
       }
     },
     {
-      "name": "Appleton Signature",
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Milagro Reposado Tequila",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     }
   ],
-  "instructions": ["Shake all ingredients with ice.", "Strain into a coupe glass."],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a chilled coupe glass.",
+    "Garnish with a pineapple wedge."
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "SxSrQcyrMS0"
-    },
-    {
-      "type": "youtube",
-      "videoId": "4ulBVniIbaA",
-      "start": 122
+      "videoId": "3aV3DzDfW_A",
+      "start": 240
     }
   ]
 }

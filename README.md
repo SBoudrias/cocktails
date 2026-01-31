@@ -51,12 +51,17 @@ Here's a few common conventions:
 2. When an ingredient listed is generic use "category" as its type. Only use spirit, liqueur, etc when a specific bottle/brand is called for.
 3. When a recipe list multiple options (A or B), pick one.
 4. Prefer using `oz` or other imperial metrics in the recipe file (not `ml`.)
-5. Only document garnishes in the `instructions` section
+5. Only document garnishes in the `instructions` section. Citrus peels that are muddled or infused should use the fruit (e.g., `orange`, `lemon`) with technique `{"technique": "cut", "type": "peeled"}`.
 6. A "Zombie glass" is a collins glass
 7. Substitute mixes with their component ingredients:
    - Don's mix: replace with 2 parts grapefruit juice & 1 part cinnamon syrup
    - Don's spices no. 2: replace with 1 part vanilla syrup & 1 part allspice dram
 8. Use "seltzer" instead of "club soda" or "soda water" for carbonated water
+
+### Creating new ingredients
+
+1. **Always search before creating.** Many ingredients exist with different names. Use the `ingredient-validator` agent or search `src/data/ingredients/**` first.
+2. **Spirits and liqueurs must have categories.** Check `src/data/categories/` for valid category names.
 
 ### Syrups & Brix
 

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Luxardo Amaretto di Saschira",
+  "type": "liqueur",
+  "categories": ["Amaretto"]
+}

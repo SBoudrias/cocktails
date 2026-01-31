@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pousse Café Shot",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Layer each ingredient in order using the back of a bar spoon.",
+    "Start with Bénédictine, then Chartreuse, then bitters on top."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "4OJd_phsa5w",
+      "start": 450
+    }
+  ]
+}

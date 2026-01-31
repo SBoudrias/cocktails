@@ -11,7 +11,7 @@ const cutTypeNames = {
   julienned: { countable: false, forms: ['julienned', 'julienned'] },
   wheeled: { countable: true, forms: ['wheel', 'wheels'] },
   wedged: { countable: true, forms: ['wedge', 'wedges'] },
-  peeled: { countable: false, forms: ['peel', 'peel'] },
+  peeled: { countable: false, forms: ['peel', 'peels'] },
   zested: { countable: false, forms: ['zest', 'zest'] },
 };
 

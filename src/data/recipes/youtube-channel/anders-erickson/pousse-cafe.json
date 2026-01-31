@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pousse Café",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Small hand foods raspberry gum syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Crème de Cacao Blanc",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rothman and Winter Crème de Violette",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Nonino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand 1840 Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "La Clandestine Absinthe",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour each layer carefully in order, using the back of a bar spoon.",
+    "Start with raspberry syrup at the bottom.",
+    "Layer each ingredient slowly to maintain separation.",
+    "Serve immediately to appreciate the visual layers."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "4OJd_phsa5w",
+      "start": 274
+    }
+  ]
+}
