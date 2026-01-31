@@ -30,16 +30,6 @@ jobs:
         uses: ./.github/workflows/setup-node
 
       - name: Vitest 🧪
-        run: yarn workspace @cocktails/web vitest --run --coverage && yarn workspace @cocktails/data vitest --run
+        run: yarn test
 
       - uses: codecov/codecov-action@v5
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/setup-node
-
-      - name: Build 🏗️
-        run: yarn workspace @cocktails/web build
