@@ -1,6 +1,5 @@
 import { setupApp } from '#/testing';
 import { screen } from '@testing-library/react';
-import mockRouter from 'next-router-mock';
 import { vi, describe, it, expect } from 'vitest';
 import CategoryPage from './page';
 

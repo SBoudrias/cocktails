@@ -8,17 +8,21 @@
   "type": "module",
   "scripts": {
     "dev": "yarn workspace @cocktails/web dev",
-    "lint": "tsc --project apps/web/tsconfig.json --noEmit && tsc --project packages/data/tsconfig.json --noEmit && eslint . && oxfmt . --check",
-    "test": "vitest --run --config apps/web/vitest.config.mts && vitest --run --config packages/data/vitest.config.mts",
+    "lint": "yarn workspaces foreach -A run lint && eslint . && oxfmt . --check",
+    "test": "vitest --run --coverage",
     "check-data": "node packages/data/tools/check-data.ts",
     "youtube-sync": "yarn workspace @cocktails/youtube-sync youtube-sync",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@next/eslint-plugin-next": "^16.1.6",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
+    "@types/json-schema": "^7.0.15",
+    "@types/lodash": "^4.17.23",
     "@types/node": "^25.1.0",
     "@vitejs/plugin-react": "^5.1.2",
     "@vitest/browser": "^4.0.18",
@@ -31,6 +35,7 @@
     "next-router-mock": "^1.0.5",
     "oxfmt": "^0.27.0",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0",
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^4.0.18"
   },

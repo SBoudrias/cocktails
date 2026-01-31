@@ -13,7 +13,7 @@
     "./schemas/*": "./schemas/*"
   },
   "scripts": {
-    "test": "vitest --run"
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^3.0.0",
@@ -21,9 +21,6 @@
     "ts-pattern": "^5.9.0"
   },
   "devDependencies": {
-    "@types/json-schema": "^7.0.15",
-    "@types/lodash": "^4.17.23",
-    "@types/node": "^25.1.0",
     "ajv": "^8.17.1"
   }
 }

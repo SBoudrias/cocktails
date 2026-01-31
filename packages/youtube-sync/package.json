@@ -9,8 +9,5 @@
   "dependencies": {
     "@cocktails/data": "workspace:*",
     "commander": "^14.0.2"
-  },
-  "devDependencies": {
-    "@types/node": "^25.1.0"
   }
 }

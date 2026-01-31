@@ -10,9 +10,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "postbuild": "next-sitemap",
-    "start": "next start",
-    "lint": "next typegen && tsc --noEmit && eslint . && oxfmt . --check",
-    "test": "vitest --run"
+    "lint": "next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@cocktails/data": "workspace:*",

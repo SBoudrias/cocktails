@@ -1,7 +1,6 @@
 import { getBarRecipesUrl } from '#/modules/url';
 import { setupApp } from '#/testing';
 import { screen, within } from '@testing-library/react';
-import mockRouter from 'next-router-mock';
 import { vi, describe, it, expect } from 'vitest';
 import BarListPage from './page';
 
