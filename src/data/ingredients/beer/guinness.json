@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Guinness",
-  "type": "beer"
+  "type": "beer",
+  "categories": ["Stout"]
 }
