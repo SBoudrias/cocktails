@@ -1,11 +1,23 @@
 'use client';
 
-import type { RootIngredient, Recipe } from '@cocktails/data/client';
-import {
-  getRecipeAttribution,
-  ingredientHasData,
-  getRecipeSearchText,
-} from '@cocktails/data/client';
+import type { Recipe, RootIngredient } from '@cocktails/data';
+import AcidAdjustingCalculator from '#/components/AcidAdjustingCalculator';
+import AppHeader from '#/components/AppHeader';
+import CategoryName from '#/components/CategoryName';
+import FixBugCard from '#/components/FixBugCard';
+import IngredientList from '#/components/IngredientList';
+import { LinkList, LinkListItem } from '#/components/LinkList';
+import Quantity from '#/components/Quantity';
+import SearchableList from '#/components/SearchableList';
+import SearchAllLink from '#/components/SearchAllLink';
+import SearchHeader from '#/components/SearchHeader';
+import Video from '#/components/Video';
+import VideoListCard from '#/components/VideoListCard';
+import useNameIsUnique from '#/hooks/useNameIsUnique';
+import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
+import { ingredientHasData } from '#/modules/hasData';
+import { getRecipeSearchText } from '#/modules/searchText';
+import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '#/modules/url';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import {
   Button,
@@ -23,20 +35,6 @@ import {
 import { uniqBy } from 'lodash';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
-import AcidAdjustingCalculator from '@/components/AcidAdjustingCalculator';
-import AppHeader from '@/components/AppHeader';
-import CategoryName from '@/components/CategoryName';
-import FixBugCard from '@/components/FixBugCard';
-import IngredientList from '@/components/IngredientList';
-import { LinkList, LinkListItem } from '@/components/LinkList';
-import Quantity from '@/components/Quantity';
-import SearchableList from '@/components/SearchableList';
-import SearchAllLink from '@/components/SearchAllLink';
-import SearchHeader from '@/components/SearchHeader';
-import Video from '@/components/Video';
-import VideoListCard from '@/components/VideoListCard';
-import useNameIsUnique from '@/hooks/useNameIsUnique';
-import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '@/modules/url';
 
 export default function IngredientClient({
   ingredient,

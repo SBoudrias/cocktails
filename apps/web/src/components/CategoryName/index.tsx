@@ -1,7 +1,7 @@
-import type { Category } from '@cocktails/data/client';
+import type { Category } from '@cocktails/data';
+import { getCategoryUrl } from '#/modules/url';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import Link from 'next/link';
-import { getCategoryUrl } from '@/modules/url';
 import styles from './category.module.css';
 
 export default function CategoryName({ category }: { category: Category }) {

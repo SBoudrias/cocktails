@@ -1,5 +1,12 @@
 import type { Source } from '@cocktails/data';
-import { getRecipePageParams, getRecipe } from '@cocktails/data';
+import AppHeader from '#/components/AppHeader';
+import FixBugCard from '#/components/FixBugCard';
+import IngredientList from '#/components/IngredientList';
+import RecipeAttributionCard from '#/components/RecipeAttributionCard';
+import SourceAboutCard from '#/components/SourceAboutCard';
+import VideoListCard from '#/components/VideoListCard';
+import { getRecipePageParams } from '@cocktails/data/params';
+import { getRecipe } from '@cocktails/data/recipes';
 import {
   Box,
   Grid,
@@ -10,12 +17,6 @@ import {
   Paper,
 } from '@mui/material';
 import { notFound } from 'next/navigation';
-import AppHeader from '@/components/AppHeader';
-import FixBugCard from '@/components/FixBugCard';
-import IngredientList from '@/components/IngredientList';
-import RecipeAttributionCard from '@/components/RecipeAttributionCard';
-import SourceAboutCard from '@/components/SourceAboutCard';
-import VideoListCard from '@/components/VideoListCard';
 import styles from './style.module.css';
 
 type Params = { type: Source['type']; source: string; recipe: string };

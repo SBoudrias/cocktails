@@ -1,5 +1,5 @@
+import type { Recipe } from '@cocktails/data';
 import { describe, it, expect } from 'vitest';
-import type { Recipe } from '../types/Recipe.ts';
 import { getRecipeAttribution } from './getRecipeAttribution';
 
 let recipeCounter = 0;

@@ -1,5 +1,5 @@
+import type { Recipe } from '@cocktails/data';
 import { describe, expect, it } from 'vitest';
-import type { Recipe } from '../../types/Recipe.ts';
 import {
   compareByPage,
   compareChapterHeaders,

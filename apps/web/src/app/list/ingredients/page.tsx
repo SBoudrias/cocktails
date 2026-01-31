@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { getAllCategories, getAllIngredients } from '@cocktails/data';
+import { getAllCategories } from '@cocktails/data/categories';
+import { getAllIngredients } from '@cocktails/data/ingredients';
 import { Suspense } from 'react';
 import IngredientsClient from './IngredientsClient';
 

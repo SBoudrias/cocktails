@@ -1,30 +1,16 @@
 import type { Metadata } from 'next';
-import {
-  getCategory,
-  getChildCategories,
-  CATEGORY_ROOT,
-  getIngredientsForCategory,
-  getRecipeByCategory,
-} from '@cocktails/data';
+import { getCategory, getChildCategories } from '@cocktails/data/categories';
+import { getIngredientsForCategory } from '@cocktails/data/ingredients';
+import { getCategoryPageParams } from '@cocktails/data/params';
+import { getRecipeByCategory } from '@cocktails/data/recipes';
 import { notFound } from 'next/navigation';
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import { Suspense } from 'react';
 import CategoryClient from './CategoryClient';
 
 type Params = { slug: string };
 
 export async function generateStaticParams(): Promise<Params[]> {
-  const params = [];
-
-  for await (const dataFilePath of await fs.readdir(CATEGORY_ROOT)) {
-    const categorySlug = path.basename(dataFilePath, '.json');
-    params.push({
-      slug: categorySlug,
-    });
-  }
-
-  return params;
+  return getCategoryPageParams();
 }
 
 export async function generateMetadata({

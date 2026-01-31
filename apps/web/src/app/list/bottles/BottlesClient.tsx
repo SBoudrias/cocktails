@@ -1,16 +1,14 @@
 'use client';
 
-import type { BaseIngredient } from '@cocktails/data/client';
-import {
-  byNameListConfig,
-  getIngredientOrCategorySearchText,
-} from '@cocktails/data/client';
+import type { BaseIngredient } from '@cocktails/data';
+import { LinkListItem } from '#/components/LinkList';
+import SearchableList from '#/components/SearchableList';
+import SearchHeader from '#/components/SearchHeader';
+import { byNameListConfig } from '#/modules/lists/by-name';
+import { getIngredientOrCategorySearchText } from '#/modules/searchText';
+import { getIngredientUrl } from '#/modules/url';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { LinkListItem } from '@/components/LinkList';
-import SearchableList from '@/components/SearchableList';
-import SearchHeader from '@/components/SearchHeader';
-import { getIngredientUrl } from '@/modules/url';
 
 function renderBottle(bottle: BaseIngredient) {
   return (

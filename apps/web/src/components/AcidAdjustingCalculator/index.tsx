@@ -1,6 +1,7 @@
 'use client';
 
 import type { SxProps } from '@mui/material';
+import Video from '#/components/Video';
 import {
   Button,
   Card,
@@ -14,7 +15,6 @@ import {
 } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
-import Video from '@/components/Video';
 
 const LIME_ACIDITY = 6;
 

@@ -1,9 +1,10 @@
-import { getAllCategories, getAllIngredients } from '@cocktails/data';
+import { getIngredientUrl } from '#/modules/url';
+import { setupApp } from '#/testing';
+import { getAllCategories } from '@cocktails/data/categories';
+import { getAllIngredients } from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { vi, describe, it, expect } from 'vitest';
-import { getIngredientUrl } from '@/modules/url';
-import { setupApp } from '@/testing';
 import IngredientsPage from './page';
 
 describe('IngredientsPage', () => {

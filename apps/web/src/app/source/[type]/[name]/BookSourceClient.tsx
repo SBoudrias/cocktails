@@ -1,12 +1,18 @@
 'use client';
 
-import type { Recipe, Book } from '@cocktails/data/client';
-import {
-  getRecipeAttribution,
-  createByChapterListConfig,
-  byNameListConfig,
-  getRecipeSearchText,
-} from '@cocktails/data/client';
+import type { Book, Recipe } from '@cocktails/data';
+import { LinkList, LinkListItem } from '#/components/LinkList';
+import SearchableList from '#/components/SearchableList';
+import SearchAllLink from '#/components/SearchAllLink';
+import SearchHeader from '#/components/SearchHeader';
+import SourceAboutCard from '#/components/SourceAboutCard';
+import useLocalStorage from '#/hooks/useLocalStorage';
+import useNameIsUnique from '#/hooks/useNameIsUnique';
+import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
+import { createByChapterListConfig } from '#/modules/lists/by-chapter';
+import { byNameListConfig } from '#/modules/lists/by-name';
+import { getRecipeSearchText } from '#/modules/searchText';
+import { getRecipeUrl } from '#/modules/url';
 import {
   Card,
   CardContent,
@@ -18,14 +24,6 @@ import {
 } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
-import { LinkList, LinkListItem } from '@/components/LinkList';
-import SearchableList from '@/components/SearchableList';
-import SearchAllLink from '@/components/SearchAllLink';
-import SearchHeader from '@/components/SearchHeader';
-import SourceAboutCard from '@/components/SourceAboutCard';
-import useLocalStorage from '@/hooks/useLocalStorage';
-import useNameIsUnique from '@/hooks/useNameIsUnique';
-import { getRecipeUrl } from '@/modules/url';
 
 type GroupMode = 'chapter' | 'alphabetical';
 

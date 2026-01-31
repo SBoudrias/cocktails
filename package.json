@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "yarn workspace @cocktails/web dev",
     "lint": "tsc --project apps/web/tsconfig.json --noEmit && tsc --project packages/data/tsconfig.json --noEmit && eslint . && oxfmt . --check",
-    "test": "yarn workspace @cocktails/web test && yarn workspace @cocktails/data test",
+    "test": "vitest --run --config apps/web/vitest.config.mts && vitest --run --config packages/data/vitest.config.mts",
     "check-data": "node packages/data/tools/check-data.ts",
     "youtube-sync": "yarn workspace @cocktails/youtube-sync youtube-sync",
     "prepare": "husky"

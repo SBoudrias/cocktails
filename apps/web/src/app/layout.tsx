@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from 'next';
+import AppFooter from '#/components/AppFooter';
+import FullscreenHelper from '#/components/FullscreenHelper';
 import { Box } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import './globals.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import './globals.css';
+import 'core-js/modules/es.object.group-by.js';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Roboto } from 'next/font/google';
-import 'core-js/modules/es.object.group-by.js';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
-import AppFooter from '@/components/AppFooter';
-import FullscreenHelper from '@/components/FullscreenHelper';
 import theme from './theme';
 
 const roboto = Roboto({

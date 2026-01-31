@@ -50,9 +50,9 @@ describe('LinkList', () => {
         <LinkList
           items={testItems}
           config={{
-            groupBy: (item) => item.category,
+            groupBy: (item: TestItem) => item.category,
             sortItemBy: () => 0,
-            sortHeaderBy: (a, b) => a.localeCompare(b),
+            sortHeaderBy: (a: string, b: string) => a.localeCompare(b),
           }}
           renderItem={renderItem}
         />,
@@ -81,9 +81,9 @@ describe('LinkList', () => {
         <LinkList
           items={items}
           config={{
-            groupBy: (item) => item.category,
+            groupBy: (item: TestItem) => item.category,
             sortItemBy: () => 0,
-            sortHeaderBy: (a, b) => a.localeCompare(b),
+            sortHeaderBy: (a: string, b: string) => a.localeCompare(b),
           }}
           renderItem={renderItem}
         />,

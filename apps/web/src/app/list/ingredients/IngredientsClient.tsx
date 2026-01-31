@@ -1,17 +1,15 @@
 'use client';
 
-import type { Category, BaseIngredient } from '@cocktails/data/client';
-import {
-  byNameListConfig,
-  getIngredientOrCategorySearchText,
-} from '@cocktails/data/client';
+import type { BaseIngredient, Category } from '@cocktails/data';
+import { LinkListItem } from '#/components/LinkList';
+import SearchableList from '#/components/SearchableList';
+import SearchAllLink from '#/components/SearchAllLink';
+import SearchHeader from '#/components/SearchHeader';
+import { byNameListConfig } from '#/modules/lists/by-name';
+import { getIngredientOrCategorySearchText } from '#/modules/searchText';
+import { getIngredientUrl } from '#/modules/url';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { LinkListItem } from '@/components/LinkList';
-import SearchableList from '@/components/SearchableList';
-import SearchAllLink from '@/components/SearchAllLink';
-import SearchHeader from '@/components/SearchHeader';
-import { getIngredientUrl } from '@/modules/url';
 
 function renderIngredient(ingredient: BaseIngredient | Category) {
   return (

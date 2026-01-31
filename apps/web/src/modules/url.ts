@@ -1,4 +1,4 @@
-import type { RecipeIngredient, Recipe, Source } from '@cocktails/data/client';
+import type { Recipe, RecipeIngredient, Source } from '@cocktails/data';
 import slugify from '@sindresorhus/slugify';
 
 export function getRecipeUrl(recipe: Recipe) {

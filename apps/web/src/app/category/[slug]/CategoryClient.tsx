@@ -1,26 +1,24 @@
 'use client';
 
-import type { Category, RootIngredient, Recipe } from '@cocktails/data/client';
-import {
-  getRecipeAttribution,
-  ingredientHasData,
-  getRecipeSearchText,
-} from '@cocktails/data/client';
+import type { Category, Recipe, RootIngredient } from '@cocktails/data';
+import AppHeader from '#/components/AppHeader';
+import CategoryName from '#/components/CategoryName';
+import FixBugCard from '#/components/FixBugCard';
+import { LinkList, LinkListItem } from '#/components/LinkList';
+import Quantity from '#/components/Quantity';
+import SearchableList from '#/components/SearchableList';
+import SearchAllLink from '#/components/SearchAllLink';
+import SearchHeader from '#/components/SearchHeader';
+import Video from '#/components/Video';
+import VideoListCard from '#/components/VideoListCard';
+import useNameIsUnique from '#/hooks/useNameIsUnique';
+import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
+import { ingredientHasData } from '#/modules/hasData';
+import { getRecipeSearchText } from '#/modules/searchText';
+import { getIngredientUrl, getRecipeUrl } from '#/modules/url';
 import { Card, CardContent, CardHeader, Stack } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
-import AppHeader from '@/components/AppHeader';
-import CategoryName from '@/components/CategoryName';
-import FixBugCard from '@/components/FixBugCard';
-import { LinkList, LinkListItem } from '@/components/LinkList';
-import Quantity from '@/components/Quantity';
-import SearchableList from '@/components/SearchableList';
-import SearchAllLink from '@/components/SearchAllLink';
-import SearchHeader from '@/components/SearchHeader';
-import Video from '@/components/Video';
-import VideoListCard from '@/components/VideoListCard';
-import useNameIsUnique from '@/hooks/useNameIsUnique';
-import { getIngredientUrl, getRecipeUrl } from '@/modules/url';
 
 export default function CategoryClient({
   category,

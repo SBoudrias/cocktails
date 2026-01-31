@@ -1,5 +1,7 @@
 import '@testing-library/jest-dom/vitest';
-import { getAllCategories, getAllIngredients, getAllRecipes } from '@cocktails/data';
+import { getAllCategories } from '@cocktails/data/categories';
+import { getAllIngredients } from '@cocktails/data/ingredients';
+import { getAllRecipes } from '@cocktails/data/recipes';
 import { vi } from 'vitest';
 
 vi.mock('next/router', async () => import('next-router-mock'));

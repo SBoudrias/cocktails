@@ -1,5 +1,4 @@
-import type { Recipe } from '../../types/Recipe.ts';
-import { parseChapterFolder } from '../chapters.ts';
+import { parseChapterFolder, type Recipe } from '@cocktails/data';
 
 /**
  * Get the chapter display name for a recipe.

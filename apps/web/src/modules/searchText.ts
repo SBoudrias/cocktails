@@ -1,7 +1,11 @@
+import type {
+  Attribution,
+  BaseIngredient,
+  Category,
+  Recipe,
+  RecipeIngredient,
+} from '@cocktails/data';
 import transliterate from '@sindresorhus/transliterate';
-import { type Category } from '../types/Category.ts';
-import { type BaseIngredient, type RecipeIngredient } from '../types/Ingredient.ts';
-import { type Recipe, type Attribution } from '../types/Recipe.ts';
 import { formatIngredientName } from './technique.ts';
 
 /**

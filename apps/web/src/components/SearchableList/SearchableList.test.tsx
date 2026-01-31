@@ -1,4 +1,4 @@
-import { byNameListConfig } from '@cocktails/data/client';
+import { byNameListConfig } from '#/modules/lists/by-name';
 import { render, screen } from '@testing-library/react';
 import SearchableList from './index';
 

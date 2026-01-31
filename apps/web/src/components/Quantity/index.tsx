@@ -1,7 +1,7 @@
 'use client';
 
-import type { RecipeIngredient } from '@cocktails/data/client';
-import { convertQuantityToMl, convertQuantityToOz } from '@cocktails/data/client';
+import type { RecipeIngredient } from '@cocktails/data';
+import { convertQuantityToMl, convertQuantityToOz } from '#/modules/conversion';
 import { Stack } from '@mui/material';
 import { match } from 'ts-pattern';
 import styles from './style.module.css';

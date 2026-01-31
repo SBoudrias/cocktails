@@ -17,7 +17,7 @@ Start by reading @README.md
 # Code style
 
 - Don't force types. Don't use patterns like `any` or `as Type` with typescript.
-- Imports within the Next.js web-app (`apps/web/`) should use `@/...` alias for local files. For data and types, import from `@cocktails/data`.
+- Imports within the Next.js web-app (`apps/web/`) should use `#/...` subpath imports for local files. For data and types, import from `@cocktails/data`.
 - Always use `ts-pattern` when matching on types. (instead of `switch` or `if`)
 - Don't re-export from modules. Import directly from the original source.
 - Only export functions that are actually used. Don't pre-export "for future use" - that's dead code.
@@ -39,7 +39,7 @@ Start by reading @README.md
 
 # Testing
 
-This project uses vitest and React testing library for testing. Test utilities are in `@/testing`.
+This project uses vitest and React testing library for testing. Test utilities are in `#/testing`.
 
 ## Test page components, not internals
 
@@ -186,28 +186,34 @@ packages/youtube-sync/
 
 ## Importing from @cocktails/data
 
-The data package has two entry points:
+The data package has multiple entry points via subpath exports:
 
-- `@cocktails/data` - Full package including Node.js filesystem operations (server-side only)
-- `@cocktails/data/client` - Client-safe exports without Node.js dependencies
+- `@cocktails/data` - Types and pure functions (safe for both server and client)
+- `@cocktails/data/recipes` - Recipe loading functions (server-side only)
+- `@cocktails/data/ingredients` - Ingredient loading functions (server-side only)
+- `@cocktails/data/categories` - Category loading functions (server-side only)
+- `@cocktails/data/sources` - Source loading functions (server-side only)
+- `@cocktails/data/params` - URL parameter utilities (server-side only)
 
-### Server Components (page.tsx, layout.tsx)
-
-```ts
-// Can use the full package
-import { getAllRecipes, getIngredient, getCategory } from '@cocktails/data';
-import type { Recipe, Category } from '@cocktails/data';
-```
-
-### Client Components ('use client')
+### Types and Pure Functions (Client-safe)
 
 ```ts
-// MUST use /client import to avoid bundling Node.js modules
-import type { Recipe, Category } from '@cocktails/data/client';
-import { getRecipeUrl, fuzzySearch, compareIngredients } from '@cocktails/data/client';
+// Import types from the main entry point
+import type { Recipe, Category, RootIngredient } from '@cocktails/data';
+
+// Pure functions (no Node.js dependencies) also come from main entry
+import { compareIngredients, parseChapterFolder } from '@cocktails/data';
 ```
 
-Client-safe exports include: types, URL helpers, conversion utilities, fuzzy search, ingredient sorting, scaling, and search text functions.
+### Data Loading Functions (Server Components Only)
+
+```ts
+// Server components import data-loading functions from subpaths
+import { getAllRecipes, getRecipe } from '@cocktails/data/recipes';
+import { getIngredient, getAllIngredients } from '@cocktails/data/ingredients';
+import { getCategory, getAllCategories } from '@cocktails/data/categories';
+import { getAllSources, getSource } from '@cocktails/data/sources';
+```
 
 ## Data File Conventions
 

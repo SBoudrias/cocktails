@@ -1,6 +1,6 @@
-import type { ListConfig } from '@cocktails/data/client';
+import type { ListConfig } from '#/modules/lists/type';
 import type { ReactNode } from 'react';
-import { fuzzySearch } from '@cocktails/data/client';
+import { fuzzySearch } from '#/modules/fuzzySearch';
 import { useMemo } from 'react';
 import { LinkList } from '../LinkList';
 

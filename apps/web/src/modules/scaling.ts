@@ -1,4 +1,4 @@
-import type { RecipeIngredient } from '../types/Ingredient.ts';
+import type { RecipeIngredient } from '@cocktails/data';
 
 type ScaledQuantity = {
   amount: number;

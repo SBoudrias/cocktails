@@ -3,8 +3,8 @@ import {
   getIngredient,
   getRecipesForIngredient,
   getSubstitutesForIngredient,
-  getIngredientPageParams,
-} from '@cocktails/data';
+} from '@cocktails/data/ingredients';
+import { getIngredientPageParams } from '@cocktails/data/params';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import IngredientClient from './IngredientClient';

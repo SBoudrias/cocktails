@@ -1,12 +1,13 @@
 'use client';
 
-import { byNameListConfig, getAuthorSearchText } from '@cocktails/data/client';
+import { LinkListItem } from '#/components/LinkList';
+import SearchableList from '#/components/SearchableList';
+import SearchHeader from '#/components/SearchHeader';
+import { byNameListConfig } from '#/modules/lists/by-name';
+import { getAuthorSearchText } from '#/modules/searchText';
+import { getAuthorRecipesUrl } from '#/modules/url';
 import { Card, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { LinkListItem } from '@/components/LinkList';
-import SearchableList from '@/components/SearchableList';
-import SearchHeader from '@/components/SearchHeader';
-import { getAuthorRecipesUrl } from '@/modules/url';
 
 type Author = { name: string; recipeCount: number };
 

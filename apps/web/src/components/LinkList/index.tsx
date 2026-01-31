@@ -1,4 +1,4 @@
-import type { ListConfig } from '@cocktails/data/client';
+import type { ListConfig } from '#/modules/lists/type';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
 import Link from 'next/link';

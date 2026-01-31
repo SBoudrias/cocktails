@@ -1,6 +1,6 @@
+import AppHeader from '#/components/AppHeader';
+import SalineCalculator from '#/components/SalineCalculator';
 import { Suspense } from 'react';
-import AppHeader from '@/components/AppHeader';
-import SalineCalculator from '@/components/SalineCalculator';
 
 export default function SalineCalculatorPage() {
   return (

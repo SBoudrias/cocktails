@@ -1,7 +1,5 @@
+import type { Category, Recipe, RecipeIngredient } from '@cocktails/data';
 import { describe, it, expect } from 'vitest';
-import type { Category } from '../types/Category.ts';
-import type { RecipeIngredient } from '../types/Ingredient.ts';
-import type { Recipe } from '../types/Recipe.ts';
 import { getRecipeSearchText } from './searchText';
 
 const mockCategory: Category = {

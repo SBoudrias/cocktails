@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { Source } from '../types/Source.ts';
 import { isChapterFolder } from './chapters';
-import { INGREDIENT_ROOT, RECIPE_ROOT } from './constants';
+import { CATEGORY_ROOT, INGREDIENT_ROOT, RECIPE_ROOT } from './constants';
 
 export async function getRecipePageParams(): Promise<
   {
@@ -80,6 +80,17 @@ export async function getSourcePageParams(): Promise<
         name: sourceSlug,
       });
     }
+  }
+
+  return params;
+}
+
+export async function getCategoryPageParams(): Promise<{ slug: string }[]> {
+  const params = [];
+
+  for await (const dataFilePath of await fs.readdir(CATEGORY_ROOT)) {
+    const categorySlug = path.basename(dataFilePath, '.json');
+    params.push({ slug: categorySlug });
   }
 
   return params;

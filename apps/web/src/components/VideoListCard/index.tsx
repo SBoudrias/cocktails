@@ -1,7 +1,7 @@
 import type { YoutubeRef } from '@cocktails/data';
 import type { SxProps } from '@mui/material';
+import Video from '#/components/Video';
 import { Card, CardContent, CardHeader } from '@mui/material';
-import Video from '@/components/Video';
 
 export default function VideoListCard({
   refs,

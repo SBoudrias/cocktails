@@ -1,5 +1,5 @@
+import type { Attribution, Recipe } from '@cocktails/data';
 import { match } from 'ts-pattern';
-import type { Attribution, Recipe } from '../types/Recipe.ts';
 
 const ATTRIBUTION_PRIORITY: Attribution['relation'][] = [
   'adapted by',

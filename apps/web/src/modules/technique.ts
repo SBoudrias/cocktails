@@ -1,5 +1,5 @@
+import type { RecipeIngredient, Technique } from '@cocktails/data';
 import { match } from 'ts-pattern';
-import type { RecipeIngredient, Technique } from '../types/Ingredient.ts';
 
 const cutTypeNames = {
   chunked: { countable: true, forms: ['chunk', 'chunks'] },

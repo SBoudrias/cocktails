@@ -1,5 +1,5 @@
+import type { RecipeIngredient } from '@cocktails/data';
 import { describe, it, expect } from 'vitest';
-import type { RecipeIngredient } from '../types/Ingredient.ts';
 import { formatIngredientName } from './technique';
 
 // Helper to create a basic ingredient for testing

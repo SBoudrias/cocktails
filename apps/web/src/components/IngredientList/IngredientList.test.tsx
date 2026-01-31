@@ -1,4 +1,4 @@
-import type { Recipe } from '@cocktails/data/client';
+import type { Recipe } from '@cocktails/data';
 import { render, screen, fireEvent } from '@testing-library/react';
 import IngredientList from './index';
 

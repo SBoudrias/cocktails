@@ -1,5 +1,4 @@
-import type { Category } from '../types/Category.ts';
-import type { RecipeIngredient, RootIngredient } from '../types/Ingredient.ts';
+import type { Category, RecipeIngredient, RootIngredient } from '@cocktails/data';
 
 export function categoryHasData(category: Category) {
   return category.description || category.parents.length > 0 || category.refs.length > 0;
