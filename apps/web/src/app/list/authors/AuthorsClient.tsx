@@ -1,15 +1,12 @@
 'use client';
 
-import {
-  byNameListConfig,
-  getAuthorSearchText,
-  getAuthorRecipesUrl,
-} from '@cocktails/data/client';
+import { byNameListConfig, getAuthorSearchText } from '@cocktails/data/client';
 import { Card, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
+import { getAuthorRecipesUrl } from '@/modules/url';
 
 type Author = { name: string; recipeCount: number };
 

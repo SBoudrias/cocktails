@@ -1,14 +1,6 @@
 import type { Source } from '@cocktails/data';
 import type { Metadata } from 'next';
-import {
-  getAllSources,
-  getAuthorListUrl,
-  getBarListUrl,
-  getBottleListUrl,
-  getIngredientListUrl,
-  getRecipeListUrl,
-  getSourceUrl,
-} from '@cocktails/data';
+import { getAllSources } from '@cocktails/data';
 import BookIcon from '@mui/icons-material/Book';
 import CalculatorIcon from '@mui/icons-material/Calculate';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -29,6 +21,14 @@ import {
 import Link from 'next/link';
 import { Suspense } from 'react';
 import AppHeader from '@/components/AppHeader';
+import {
+  getAuthorListUrl,
+  getBarListUrl,
+  getBottleListUrl,
+  getIngredientListUrl,
+  getRecipeListUrl,
+  getSourceUrl,
+} from '@/modules/url';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index',

@@ -1,11 +1,7 @@
 'use client';
 
 import type { Recipe, Source } from '@cocktails/data/client';
-import {
-  getRecipeAttribution,
-  getRecipeSearchText,
-  getRecipeUrl,
-} from '@cocktails/data/client';
+import { getRecipeAttribution, getRecipeSearchText } from '@cocktails/data/client';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
@@ -15,6 +11,7 @@ import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
 import SourceAboutCard from '@/components/SourceAboutCard';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getRecipeUrl } from '@/modules/url';
 
 export default function SourceClient({
   source,

@@ -1,7 +1,8 @@
-import { getAllCategories, getAllIngredients, getIngredientUrl } from '@cocktails/data';
+import { getAllCategories, getAllIngredients } from '@cocktails/data';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { vi, describe, it, expect } from 'vitest';
+import { getIngredientUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import IngredientsPage from './page';
 

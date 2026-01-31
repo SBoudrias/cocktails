@@ -6,7 +6,6 @@ import {
   createByChapterListConfig,
   byNameListConfig,
   getRecipeSearchText,
-  getRecipeUrl,
 } from '@cocktails/data/client';
 import {
   Card,
@@ -26,6 +25,7 @@ import SearchHeader from '@/components/SearchHeader';
 import SourceAboutCard from '@/components/SourceAboutCard';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getRecipeUrl } from '@/modules/url';
 
 type GroupMode = 'chapter' | 'alphabetical';
 

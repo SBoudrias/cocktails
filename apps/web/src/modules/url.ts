@@ -1,7 +1,5 @@
+import type { RecipeIngredient, Recipe, Source } from '@cocktails/data/client';
 import slugify from '@sindresorhus/slugify';
-import type { RecipeIngredient } from '../types/Ingredient.ts';
-import type { Recipe } from '../types/Recipe.ts';
-import type { Source } from '../types/Source.ts';
 
 export function getRecipeUrl(recipe: Recipe) {
   return `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`;

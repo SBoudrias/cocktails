@@ -1,7 +1,8 @@
 import type { Recipe } from '@cocktails/data';
-import { getAllRecipes, getRecipeUrl } from '@cocktails/data';
+import { getAllRecipes } from '@cocktails/data';
 import { screen } from '@testing-library/react';
 import { vi, beforeEach, describe, it } from 'vitest';
+import { getRecipeUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import RecipesPage from './page';
 

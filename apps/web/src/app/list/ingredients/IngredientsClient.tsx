@@ -4,7 +4,6 @@ import type { Category, BaseIngredient } from '@cocktails/data/client';
 import {
   byNameListConfig,
   getIngredientOrCategorySearchText,
-  getIngredientUrl,
 } from '@cocktails/data/client';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
@@ -12,6 +11,7 @@ import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchAllLink from '@/components/SearchAllLink';
 import SearchHeader from '@/components/SearchHeader';
+import { getIngredientUrl } from '@/modules/url';
 
 function renderIngredient(ingredient: BaseIngredient | Category) {
   return (

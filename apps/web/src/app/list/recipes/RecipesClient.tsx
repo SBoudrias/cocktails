@@ -5,7 +5,6 @@ import {
   getRecipeAttribution,
   byNameListConfig,
   getRecipeSearchText,
-  getRecipeUrl,
 } from '@cocktails/data/client';
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
@@ -14,6 +13,7 @@ import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getRecipeUrl } from '@/modules/url';
 
 export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');

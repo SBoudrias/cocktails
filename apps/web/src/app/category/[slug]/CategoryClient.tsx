@@ -5,8 +5,6 @@ import {
   getRecipeAttribution,
   ingredientHasData,
   getRecipeSearchText,
-  getIngredientUrl,
-  getRecipeUrl,
 } from '@cocktails/data/client';
 import { Card, CardContent, CardHeader, Stack } from '@mui/material';
 import { useQueryState } from 'nuqs';
@@ -22,6 +20,7 @@ import SearchHeader from '@/components/SearchHeader';
 import Video from '@/components/Video';
 import VideoListCard from '@/components/VideoListCard';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getIngredientUrl, getRecipeUrl } from '@/modules/url';
 
 export default function CategoryClient({
   category,

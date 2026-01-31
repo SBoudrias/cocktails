@@ -1,7 +1,7 @@
-import { getAuthorRecipesUrl } from '@cocktails/data';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { vi, describe, it, expect } from 'vitest';
+import { getAuthorRecipesUrl } from '@/modules/url';
 import { setupApp } from '@/testing';
 import AuthorListPage from './page';
 

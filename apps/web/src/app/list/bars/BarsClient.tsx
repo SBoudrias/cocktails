@@ -1,15 +1,12 @@
 'use client';
 
-import {
-  byNameListConfig,
-  getBarSearchText,
-  getBarRecipesUrl,
-} from '@cocktails/data/client';
+import { byNameListConfig, getBarSearchText } from '@cocktails/data/client';
 import { Card, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
+import { getBarRecipesUrl } from '@/modules/url';
 
 type Bar = { name: string; location?: string; recipeCount: number };
 

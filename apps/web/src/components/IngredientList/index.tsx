@@ -6,7 +6,6 @@ import {
   scaleQuantity,
   calculateScaleFactor,
   formatIngredientName,
-  getIngredientUrl,
 } from '@cocktails/data/client';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
@@ -24,6 +23,7 @@ import Quantity from '@/components/Quantity';
 import UnitSelector, { type Unit } from '@/components/Quantity/Selector';
 import ServingSelector from '@/components/ServingSelector';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import { getIngredientUrl } from '@/modules/url';
 import styles from './style.module.css';
 
 function IngredientLine({

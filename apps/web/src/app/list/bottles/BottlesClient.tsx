@@ -4,13 +4,13 @@ import type { BaseIngredient } from '@cocktails/data/client';
 import {
   byNameListConfig,
   getIngredientOrCategorySearchText,
-  getIngredientUrl,
 } from '@cocktails/data/client';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '@/components/LinkList';
 import SearchableList from '@/components/SearchableList';
 import SearchHeader from '@/components/SearchHeader';
+import { getIngredientUrl } from '@/modules/url';
 
 function renderBottle(bottle: BaseIngredient) {
   return (

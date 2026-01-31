@@ -1,9 +1,9 @@
 'use client';
 
-import { getRecipeListUrl } from '@cocktails/data/client';
 import { Home, Search } from '@mui/icons-material';
 import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
+import { getRecipeListUrl } from '@/modules/url';
 
 export default function AppHeader({ title }: { title: string }) {
   const pathname = usePathname();

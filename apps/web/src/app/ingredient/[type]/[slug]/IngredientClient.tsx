@@ -5,9 +5,6 @@ import {
   getRecipeAttribution,
   ingredientHasData,
   getRecipeSearchText,
-  getCategoryUrl,
-  getIngredientUrl,
-  getRecipeUrl,
 } from '@cocktails/data/client';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import {
@@ -39,6 +36,7 @@ import SearchHeader from '@/components/SearchHeader';
 import Video from '@/components/Video';
 import VideoListCard from '@/components/VideoListCard';
 import useNameIsUnique from '@/hooks/useNameIsUnique';
+import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '@/modules/url';
 
 export default function IngredientClient({
   ingredient,
