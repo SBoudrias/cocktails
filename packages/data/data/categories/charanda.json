@@ -1,0 +1,7 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Charanda",
+  "categoryType": "spirit",
+  "description": "Charanda is an alcoholic spirit derived from sugarcane, similar to rum. It is sometimes called aguardiente artisanal rum.",
+  "parents": ["Rum"]
+}

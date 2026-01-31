@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "R.L. Seale 10 year rum",
-  "type": "spirit",
-  "categories": ["Blended aged rum (Barbados)"]
-}

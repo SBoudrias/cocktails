@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Frangelico",
-  "type": "liqueur",
-  "categories": ["Hazelnut liqueur"]
-}

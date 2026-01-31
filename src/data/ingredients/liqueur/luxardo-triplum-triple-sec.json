@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Luxardo Triplum Triple Sec",
-  "type": "liqueur",
-  "categories": ["Triple sec"]
-}

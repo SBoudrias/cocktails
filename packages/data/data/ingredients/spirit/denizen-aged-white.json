@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Denizen Aged White",
+  "type": "spirit",
+  "categories": ["Blended Lightly-aged Rum"]
+}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Eagle Rare Bourbon",
-  "type": "spirit",
-  "categories": ["Whiskey (Bourbon)"]
-}

@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Hot Diggity Daiquiri",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Giardiniera oil",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "mustard syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apologue Celery Root Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Misguided Spirits Caribbean Queen’s Red Sky Silver Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a shaker with ice",
+    "Shake until well chilled",
+    "Strain into a chilled coupe glass",
+    "Garnish with a hot dog sausage slice"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "V3Iv2zLtHJg"
+    }
+  ]
+}

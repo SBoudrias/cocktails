@@ -1,0 +1,6 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Black Blended Rum (Demerara)",
+  "categoryType": "spirit",
+  "parents": ["Black Blended Rum"]
+}

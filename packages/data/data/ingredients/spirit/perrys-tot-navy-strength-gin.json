@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Perry's Tot Navy Strength Gin",
+  "type": "spirit",
+  "categories": ["Gin (Navy Strength)"]
+}

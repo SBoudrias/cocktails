@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Clairin Sajous",
-  "type": "spirit",
-  "categories": ["Rhum Agricole Blanc"]
-}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Fords Gin",
-  "type": "spirit",
-  "categories": ["London Dry Gin"]
-}

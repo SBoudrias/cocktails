@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Absinthe Old Fashioned",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St Germain Elderflower Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir absinthe, elderflower liqueur, and simple syrup with ice.",
+    "Strain into an old fashioned glass over a big rock.",
+    "Float Peychaud's bitters on top."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0rnil0_xFnM",
+      "start": 1159
+    }
+  ]
+}

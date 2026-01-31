@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Cream of coconut",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 425,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "coconut cream",
+      "type": "other",
+      "quantity": {
+        "amount": 400,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine everything in a saucepan and warm gently (no boiling) until the sugar dissolves.",
+    "Store refrigerated."
+  ]
+}

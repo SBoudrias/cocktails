@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Granny Smith apple juice",
+  "type": "juice"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Redbreast 12 year Irish whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (Irish)"]
+}

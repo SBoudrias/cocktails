@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Giffard Ginger of the Indies",
+  "type": "liqueur",
+  "categories": ["Ginger liqueur"]
+}

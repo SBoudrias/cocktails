@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Planteray 3 Star",
-  "type": "spirit",
-  "categories": ["Blended Lightly-aged Rum"]
-}

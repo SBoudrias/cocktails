@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Clear Creek Pear Brandy",
-  "type": "spirit",
-  "categories": ["Brandy (Pear)"]
-}

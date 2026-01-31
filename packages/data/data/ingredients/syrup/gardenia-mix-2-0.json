@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Gardenia Mix 2.0",
+  "type": "syrup",
+  "categories": ["Gardenia Mix"],
+  "ingredients": [
+    {
+      "name": "butter",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "honey",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "210s",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "gram"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "FZdv-PbFmxY"
+    }
+  ]
+}

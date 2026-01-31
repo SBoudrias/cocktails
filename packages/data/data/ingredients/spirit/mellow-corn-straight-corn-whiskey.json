@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Mellow Corn Straight Corn Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (Straight Corn)"]
+}

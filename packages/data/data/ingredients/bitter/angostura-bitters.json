@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Angostura bitters",
+  "type": "bitter",
+  "categories": ["Aromatic Bitters"]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Gardenia Mix",
+  "categoryType": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "q8JNgxG-tpk"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Sergio's hot honey syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "hot honey",
+      "type": "other",
+      "quantity": {
+        "amount": 10,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "orange blossom water",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ]
+}

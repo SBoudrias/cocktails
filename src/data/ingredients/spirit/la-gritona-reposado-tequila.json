@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "La Gritona reposado tequila",
-  "type": "spirit",
-  "categories": ["Tequila Reposado"]
-}

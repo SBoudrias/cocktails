@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Powers Gold Label",
-  "type": "spirit",
-  "categories": ["Whiskey (Irish)"]
-}

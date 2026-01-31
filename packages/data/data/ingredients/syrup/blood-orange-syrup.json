@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "blood orange syrup",
+  "type": "syrup"
+}

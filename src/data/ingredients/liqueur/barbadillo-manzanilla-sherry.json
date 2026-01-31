@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Barbadillo Manzanilla Sherry",
-  "type": "liqueur",
-  "categories": ["Sherry (Manzanilla)"]
-}

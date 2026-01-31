@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Mr. Black coffee liqueur",
+  "type": "liqueur",
+  "categories": ["Coffee liqueur"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "m_NL0mECQHk"
+    }
+  ]
+}

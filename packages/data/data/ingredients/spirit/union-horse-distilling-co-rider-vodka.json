@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Union Horse Distilling Co. Rider Vodka",
+  "type": "spirit",
+  "categories": ["Vodka"]
+}

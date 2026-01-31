@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Saveiro 'Vento do Oeste' Madeira",
-  "type": "wine",
-  "categories": ["Madeira wine"]
-}

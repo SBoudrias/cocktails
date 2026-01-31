@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Evan Williams 1783 Small Batch Bourbon",
-  "type": "spirit",
-  "categories": ["Whiskey (Bourbon)"]
-}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Midori melon liqueur",
+  "type": "liqueur",
+  "categories": ["Melon liqueur"]
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Absinthe Colada",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Menthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Rhum Agricole Blanc",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a blender",
+    "Add crushed ice",
+    "Flash blend until smooth",
+    "Pour into a tiki mug"
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Maxwell Britten"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Natasha David"
+    },
+    {
+      "relation": "bar",
+      "source": "Maison Premiere"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "lEgIjubAATY"
+    }
+  ]
+}

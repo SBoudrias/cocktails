@@ -1,5 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Pimm's No.1",
-  "type": "liqueur"
-}

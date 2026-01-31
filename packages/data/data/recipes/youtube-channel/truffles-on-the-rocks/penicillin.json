@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Penicillin",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Ginger",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 75,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whisky (Blended Scotch)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whisky (Islay Scotch)",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Thinly slice ginger into thumb-sized pieces",
+    "Muddle ginger with Scotch in shaker",
+    "Add honey syrup and lemon juice",
+    "Shake with ice",
+    "Fine strain over fresh ice in rocks glass",
+    "Float smoky Scotch on top",
+    "Garnish with candied ginger"
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Sam Ross"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "B0bZyraafA0",
+      "start": 160
+    },
+    {
+      "type": "youtube",
+      "videoId": "9lgx04fJrSM",
+      "start": 514
+    }
+  ]
+}

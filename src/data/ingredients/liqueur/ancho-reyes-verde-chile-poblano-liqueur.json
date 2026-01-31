@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Ancho Reyes Verde Chile Poblano Liqueur",
-  "type": "liqueur",
-  "categories": ["Chile Liqueur"]
-}

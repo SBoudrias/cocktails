@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Hine Rare VSOP Cognac",
-  "type": "spirit",
-  "categories": ["Cognac"]
-}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Santa Teresa 1796 Rum",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}

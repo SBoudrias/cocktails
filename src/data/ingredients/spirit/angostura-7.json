@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Angostura 7",
-  "type": "spirit",
-  "categories": ["Column still aged rum"]
-}

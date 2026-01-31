@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "BarSol Pisco",
-  "type": "spirit",
-  "categories": ["Peruvian pisco"]
-}

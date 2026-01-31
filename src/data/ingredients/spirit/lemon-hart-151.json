@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Lemon Hart 151",
-  "type": "spirit",
-  "categories": ["Black blended Overproof Rum"]
-}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Bacardi 4",
-  "type": "spirit",
-  "categories": ["Column still aged rum"]
-}

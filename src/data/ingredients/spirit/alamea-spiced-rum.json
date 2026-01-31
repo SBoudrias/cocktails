@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Alamea spiced rum",
-  "type": "spirit",
-  "categories": ["Spiced Rum"]
-}

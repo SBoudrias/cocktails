@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Passion fruit honey syrup",
+  "type": "syrup"
+}

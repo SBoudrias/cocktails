@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Dos Maderas 5+3",
+  "type": "spirit",
+  "categories": ["Blended Aged Rum"]
+}

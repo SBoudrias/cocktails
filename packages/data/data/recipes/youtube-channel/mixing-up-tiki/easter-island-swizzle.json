@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Easter Island Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Bitter Truth Aromatic Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 6,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pineapple Gum Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bitter Truth Apricot Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tiki Lovers White",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients into a collins glass and give a light muddle.",
+    "Fill the glass ¾ of the way up with pebble ice.",
+    "Swizzle until the outside is cold and frosted.",
+    "Top with more pebble ice.",
+    "Top with a float of aromatic bitters.",
+    "Garnish with a mint sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NNEFzDgWnMM"
+    }
+  ]
+}

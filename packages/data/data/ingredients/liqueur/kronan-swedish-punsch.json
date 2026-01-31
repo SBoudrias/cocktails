@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Kronan Swedish Punsch",
+  "type": "liqueur",
+  "categories": ["Swedish Punsch"]
+}

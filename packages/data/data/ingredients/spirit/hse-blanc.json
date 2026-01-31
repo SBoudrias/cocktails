@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "HSE Blanc",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Blanc"]
+}

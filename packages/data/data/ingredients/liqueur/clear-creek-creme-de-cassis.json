@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Clear Creek Crème de Cassis",
+  "type": "liqueur",
+  "categories": ["Crème de Cassis"]
+}

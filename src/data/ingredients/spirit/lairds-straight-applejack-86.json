@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Laird's Straight Applejack 86",
-  "type": "spirit",
-  "categories": ["Brandy (Apple)"]
-}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Lemorton Pommeau de Normandie",
-  "type": "spirit",
-  "categories": ["Calvados"]
-}

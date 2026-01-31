@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Ron Matusalem 15",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@cocktails/data",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./recipes": "./src/modules/recipes.ts",
+    "./categories": "./src/modules/categories.ts",
+    "./ingredients": "./src/modules/ingredients.ts",
+    "./sources": "./src/modules/sources.ts",
+    "./params": "./src/modules/params.ts",
+    "./schemas/*": "./schemas/*"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sindresorhus/slugify": "^3.0.0",
+    "lodash": "^4.17.21",
+    "ts-pattern": "^5.9.0"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  }
+}

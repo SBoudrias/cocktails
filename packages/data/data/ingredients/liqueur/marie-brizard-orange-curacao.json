@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Marie Brizard Orange Curaçao",
+  "type": "liqueur",
+  "categories": ["Orange Curaçao"]
+}

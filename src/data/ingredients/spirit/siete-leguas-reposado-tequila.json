@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Siete Leguas Reposado Tequila",
-  "type": "spirit",
-  "categories": ["Tequila Reposado"]
-}

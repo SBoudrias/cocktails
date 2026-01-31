@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "China China Amer",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}

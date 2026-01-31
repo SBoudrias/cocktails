@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Ming River Baijiu",
+  "type": "spirit",
+  "categories": ["Baijiu"]
+}

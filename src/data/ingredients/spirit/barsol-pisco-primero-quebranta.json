@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Barsol Pisco Primero Quebranta",
-  "type": "spirit",
-  "categories": ["Peruvian pisco"]
-}

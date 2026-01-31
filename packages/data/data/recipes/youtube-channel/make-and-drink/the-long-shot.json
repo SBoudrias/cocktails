@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "The Long Shot",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana Bunch Liqueur (Tropical Standard)",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "banana"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all of the ingredients to a shaker with ice and shake. Strain into a glass and fill with pebble ice. Garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Andrea Leibrandt"
+    },
+    {
+      "relation": "bar",
+      "source": "Mister Mao",
+      "location": "New Orleans, LA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "XY2p1jtYVpM"
+    }
+  ]
+}

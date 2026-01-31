@@ -1,0 +1,12 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Falernum syrup",
+  "categoryType": "syrup",
+  "parents": ["Falernum"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "hJ2Q4OS5n3k"
+    }
+  ]
+}

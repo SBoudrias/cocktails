@@ -1,0 +1,5 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Stone pine liqueur",
+  "categoryType": "liqueur"
+}

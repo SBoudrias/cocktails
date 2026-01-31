@@ -1,0 +1,39 @@
+{
+  "name": "@cocktails/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "postbuild": "next-sitemap",
+    "lint": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@cocktails/data": "workspace:*",
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@leeoniya/ufuzzy": "^1.0.19",
+    "@mui/icons-material": "^7.3.7",
+    "@mui/material": "^7.3.7",
+    "@mui/material-nextjs": "^7.3.7",
+    "@next/third-parties": "16.1.6",
+    "@sindresorhus/transliterate": "^2.3.1",
+    "core-js": "^3.47.0",
+    "next": "16.1.6",
+    "next-sitemap": "^4.2.3",
+    "nuqs": "^2.8.7",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "ts-pattern": "^5.9.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.10",
+    "@types/react-dom": "19.2.3",
+    "autoprefixer": "^10.4.23"
+  }
+}

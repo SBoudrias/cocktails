@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Kōloa Kauaʻi Coconut Rum",
-  "type": "spirit",
-  "categories": ["Coconut Rum"]
-}

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Pandan Syrup",
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "X8YwYnfg6OI"
+    }
+  ]
+}

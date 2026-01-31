@@ -6,6 +6,7 @@ Start by reading @README.md
 - Package manager: `yarn`. Run `yarn install` when starting work from a new worktree.
 - Node version: >=24. This means scripts should always be `*.ts` files and simply executed with `node file.ts` with the built-in type-stripping support. This also means you must use modern JavaScript features, like `toSorted` instead of `sort`, etc.
 - Framework: Next.js.
+- Monorepo: Yarn workspaces with packages in `apps/` and `packages/`
 
 # Commands
 
@@ -16,7 +17,7 @@ Start by reading @README.md
 # Code style
 
 - Don't force types. Don't use patterns like `any` or `as Type` with typescript.
-- Imports within the Next.js web-app should be written importing from the root with the `@/...` alias. Only use relative imports when importing files located inside the same folder.
+- Imports within the Next.js web-app (`apps/web/`) should use `#/...` subpath imports for local files. For data and types, import from `@cocktails/data`.
 - Always use `ts-pattern` when matching on types. (instead of `switch` or `if`)
 - Don't re-export from modules. Import directly from the original source.
 - Only export functions that are actually used. Don't pre-export "for future use" - that's dead code.
@@ -38,7 +39,7 @@ Start by reading @README.md
 
 # Testing
 
-This project uses vitest and React testing library for testing. Test utilities are in `@/testing`.
+This project uses vitest and React testing library for testing. Test utilities are in `#/testing`.
 
 ## Test page components, not internals
 
@@ -51,7 +52,7 @@ renderWithNuqs(<RecipesClient recipes={mockRecipes} />);
 
 // DO: test the page component
 import RecipesPage from './page';
-vi.mock('@/modules/recipes', () => ({ getAllRecipes: vi.fn() }));
+vi.mock('@cocktails/data', () => ({ getAllRecipes: vi.fn() }));
 renderWithNuqs(await RecipesPage());
 ```
 
@@ -137,68 +138,98 @@ expect(link).toHaveAttribute('href', getRecipeUrl(recipe));
 
 ## Core Architecture
 
-The application follows a data-driven architecture with JSON files as the primary data source, TypeScript modules for business logic, and React components for UI.
+This is a Yarn workspaces monorepo with:
+
+- `apps/web/` - Next.js web application (@cocktails/web)
+- `packages/data/` - Data layer with JSON files, schemas, types, and business logic (@cocktails/data)
+- `packages/youtube-sync/` - YouTube channel sync utility (@cocktails/youtube-sync)
 
 ## Directory Organization
 
-### `/src/app` - Next.js App Router
-
-- **Pages**: Route-based pages using Next.js 15 app directory structure
-- **Layout**: Global layout and theme configuration
-- **API Routes**: Manifest and other API endpoints
-
-### `/src/components` - Reusable UI Components
-
-- Each component in its own folder with `index.tsx`
-- CSS modules for styling (`.module.css`)
-- Component-specific logic and utilities
-
-### `/src/data` - JSON Data Files
+### `apps/web/` - Next.js Web App
 
 ```
-src/data/
-├── categories/          # Ingredient categories (gin, rum, etc.)
-├── ingredients/         # Individual ingredients by type
-│   ├── spirit/
-│   ├── liqueur/
-│   ├── juice/
-│   └── [other-types]/
-└── recipes/             # Recipes organized by source
-    ├── book/
-    └── youtube-channel/
+apps/web/
+├── src/
+│   ├── app/           # Next.js App Router pages
+│   ├── components/    # Reusable UI components
+│   ├── hooks/         # React hooks
+│   └── testing/       # Test utilities
+├── tools/             # Web app specific tools
+└── public/            # Static assets
 ```
 
-### `/src/modules` - Business Logic
+### `packages/data/` - Data Layer
 
-- Pure TypeScript modules for data processing
-- Memoized functions for performance
-- Utility functions for conversions, filtering, etc.
+```
+packages/data/
+├── data/
+│   ├── categories/    # Ingredient categories (gin, rum, etc.)
+│   ├── ingredients/   # Individual ingredients by type
+│   └── recipes/       # Recipes organized by source
+├── schemas/           # JSON Schema definitions
+├── src/
+│   ├── modules/       # Business logic
+│   ├── types/         # TypeScript types
+│   └── index.ts       # Package entry point
+└── tools/             # Data validation tools
+```
 
-### `/src/schemas` - JSON Schema Definitions
+### `packages/youtube-sync/` - YouTube Sync Utility
 
-- Schema validation for all data files
-- Enforces data consistency and structure
+```
+packages/youtube-sync/
+└── src/
+    ├── youtube-sync.ts
+    └── youtube-api.ts
+```
 
-### `/src/types` - TypeScript Type Definitions
+## Importing from @cocktails/data
 
-- Shared interfaces and types
-- Corresponds to JSON schemas
+The data package has multiple entry points via subpath exports:
+
+- `@cocktails/data` - Types and pure functions (safe for both server and client)
+- `@cocktails/data/recipes` - Recipe loading functions (server-side only)
+- `@cocktails/data/ingredients` - Ingredient loading functions (server-side only)
+- `@cocktails/data/categories` - Category loading functions (server-side only)
+- `@cocktails/data/sources` - Source loading functions (server-side only)
+- `@cocktails/data/params` - URL parameter utilities (server-side only)
+
+### Types and Pure Functions (Client-safe)
+
+```ts
+// Import types from the main entry point
+import type { Recipe, Category, RootIngredient } from '@cocktails/data';
+
+// Pure functions (no Node.js dependencies) also come from main entry
+import { compareIngredients, parseChapterFolder } from '@cocktails/data';
+```
+
+### Data Loading Functions (Server Components Only)
+
+```ts
+// Server components import data-loading functions from subpaths
+import { getAllRecipes, getRecipe } from '@cocktails/data/recipes';
+import { getIngredient, getAllIngredients } from '@cocktails/data/ingredients';
+import { getCategory, getAllCategories } from '@cocktails/data/categories';
+import { getAllSources, getSource } from '@cocktails/data/sources';
+```
 
 ## Data File Conventions
 
 ### Recipe Files
 
-- Path: `src/data/recipes/[type]/[source]/[slug].json`
+- Path: `packages/data/data/recipes/[type]/[source]/[slug].json`
 - Must include `$schema` reference
 - Use URL-safe slugs for filenames
 
 ### Ingredient Files
 
-- Path: `src/data/ingredients/[type]/[slug].json`
+- Path: `packages/data/data/ingredients/[type]/[slug].json`
 - Categorized by ingredient type
 - Reuse existing ingredient names when possible
 
 ### Category Files
 
-- Path: `src/data/categories/[slug].json`
+- Path: `packages/data/data/categories/[slug].json`
 - Define ingredient categories and hierarchies

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "rock candy syrup",
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "W4hpLy8iPBU"
+    }
+  ]
+}

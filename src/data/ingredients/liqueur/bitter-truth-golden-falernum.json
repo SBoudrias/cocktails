@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Bitter Truth Golden Falernum",
-  "type": "liqueur",
-  "categories": ["Falernum liqueur"]
-}

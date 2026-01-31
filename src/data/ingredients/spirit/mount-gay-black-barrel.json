@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Mount Gay Black Barrel",
-  "type": "spirit",
-  "categories": ["Blended Aged Rum"]
-}

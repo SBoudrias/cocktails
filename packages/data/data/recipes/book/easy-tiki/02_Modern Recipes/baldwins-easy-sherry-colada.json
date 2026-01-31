@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Baldwin's (Easy) Sherry Colada",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Amontillado)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a cocktail shaker.",
+    "Add ice and shake until chilled, about 10 seconds.",
+    "Pour into a Zombie or highball glass.",
+    "Add crushed ice to fill the glass.",
+    "Garnish with a pineapple wedge, pineapple fronds, and Angostura bitters, if desired."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Ran Duan"
+    },
+    {
+      "relation": "bar",
+      "source": "Baldwin Bar",
+      "location": "Boston, MA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 109
+    }
+  ]
+}

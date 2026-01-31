@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Letherbee Bësk Liqueur",
+  "type": "liqueur",
+  "categories": ["Wormwood liqueur"]
+}

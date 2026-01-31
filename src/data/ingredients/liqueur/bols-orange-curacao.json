@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Bols orange curaçao",
-  "type": "liqueur",
-  "categories": ["Orange Curaçao"]
-}

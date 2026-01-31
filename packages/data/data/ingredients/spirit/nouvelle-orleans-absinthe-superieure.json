@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Nouvelle Orleans Absinthe Superieure",
+  "type": "spirit",
+  "categories": ["Absinthe"]
+}

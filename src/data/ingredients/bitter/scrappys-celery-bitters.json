@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Scrappy's Celery Bitters",
-  "type": "bitter",
-  "categories": ["Celery Bitters"]
-}

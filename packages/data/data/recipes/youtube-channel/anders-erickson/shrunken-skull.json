@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Shrunken Skull",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 86 Demerara Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Don Q Gold Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a tiki glass over crushed ice.",
+    "Garnish with pineapple fronds and a cocktail umbrella."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "pTBVVi20ONk"
+    },
+    {
+      "type": "youtube",
+      "videoId": "4ulBVniIbaA",
+      "start": 446
+    }
+  ]
+}

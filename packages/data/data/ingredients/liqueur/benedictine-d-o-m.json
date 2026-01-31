@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Bénédictine D.O.M.",
+  "type": "liqueur"
+}

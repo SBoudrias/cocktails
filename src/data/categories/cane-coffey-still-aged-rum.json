@@ -1,6 +1,0 @@
-{
-  "$schema": "../../schemas/category.schema.json",
-  "name": "Cane coffey still aged rum",
-  "categoryType": "spirit",
-  "parents": ["Rhum Agricole Vieux"]
-}

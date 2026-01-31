@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Honey Lilikoi Foam",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 67,
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Foam Magic",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 3,
+        "unit": "gram"
+      }
+    }
+  ]
+}

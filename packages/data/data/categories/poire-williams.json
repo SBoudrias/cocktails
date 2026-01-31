@@ -1,0 +1,6 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Poire Williams",
+  "categoryType": "liqueur",
+  "parents": ["Brandy (Pear)"]
+}

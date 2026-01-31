@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Samurai's Downfall",
+  "preparation": "blended",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "green shiso leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "honey",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Crème de Pêche de Vigne",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mizu Saga Barley shochu",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a blender.",
+    "Add 3/4 cup crushed ice and blend on low for 3 seconds.",
+    "Increase the speed to high and blend for about 8 seconds, until the cocktail appears bright green.",
+    "Pour into a hurricane glass.",
+    "Garnish with a pineapple wedge and a cocktail umbrella."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Evans"
+    },
+    {
+      "relation": "bar",
+      "source": "Sunday in Brooklyn",
+      "location": "Brooklyn, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 122
+    }
+  ]
+}

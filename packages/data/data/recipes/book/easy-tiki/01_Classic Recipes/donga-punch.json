@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Donga Punch",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Neisson Élevé Sous Bois",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with 1/2 cup crushed ice for 5 seconds.",
+    "Pour into a tall glass or tiki mug and top with more crushed ice.",
+    "Garnish with a grapefruit peel, cinnamon stick, edible orchid, and mint."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Paul McGee"
+    },
+    {
+      "relation": "bar",
+      "source": "Lost Lake",
+      "location": "Chicago, IL"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Easy Tiki",
+      "page": 61
+    }
+  ]
+}

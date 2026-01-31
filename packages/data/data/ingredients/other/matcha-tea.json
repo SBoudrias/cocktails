@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Matcha Tea",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Matcha powder",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NyRkoGaPehA"
+    }
+  ]
+}

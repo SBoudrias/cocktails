@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Pyrat X.O. Reserve rum",
+  "type": "spirit",
+  "categories": ["Blended Aged Rum"]
+}

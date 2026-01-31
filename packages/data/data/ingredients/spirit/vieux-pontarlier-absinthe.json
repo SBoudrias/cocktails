@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Vieux Pontarlier Absinthe",
+  "type": "spirit",
+  "categories": ["Absinthe"]
+}

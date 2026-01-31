@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Novo Fogo Gold",
+  "type": "spirit",
+  "categories": ["Aged Cachaça"]
+}

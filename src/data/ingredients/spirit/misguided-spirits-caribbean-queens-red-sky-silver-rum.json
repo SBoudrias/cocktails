@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Misguided Spirits Caribbean Queen’s Red Sky Silver Rum",
-  "type": "spirit",
-  "categories": ["Blended Lightly-aged Rum"]
-}

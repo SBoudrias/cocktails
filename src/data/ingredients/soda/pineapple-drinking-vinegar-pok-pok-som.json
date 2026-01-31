@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "pineapple drinking vinegar (Pok Pok Som)",
-  "type": "soda",
-  "categories": ["Pineapple Drinking Vinegar"]
-}

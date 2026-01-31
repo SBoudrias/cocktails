@@ -23,12 +23,12 @@ jobs:
         uses: ./.github/workflows/setup-node
 
       - name: Build with Next.js 🏗️
-        run: yarn next build
+        run: yarn workspace @cocktails/web build
 
       - name: Deploy to gh-pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./out
+          folder: ./apps/web/out
           branch: gh-pages
           clean-exclude: pr-preview/
           force: false

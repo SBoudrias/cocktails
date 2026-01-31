@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Buffalo Trace Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

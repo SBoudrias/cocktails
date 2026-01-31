@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Dakabend Oaxacan Pot Still Rum",
-  "type": "spirit",
-  "categories": ["Charanda"]
-}

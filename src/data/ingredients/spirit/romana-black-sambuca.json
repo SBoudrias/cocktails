@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Romana Black Sambuca",
-  "type": "spirit",
-  "categories": ["Sambuca", "Pastis", "Ouzo", "Absinthe"]
-}

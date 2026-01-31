@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Monteru brandy",
+  "type": "spirit",
+  "categories": ["Brandy (Grapes)"]
+}

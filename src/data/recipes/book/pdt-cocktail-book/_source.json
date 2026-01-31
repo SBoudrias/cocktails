@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../../schemas/book.schema.json",
-  "name": "The PDT Cocktail Book",
-  "link": "https://www.pdtnyc.com/",
-  "description": "The PDT Cocktail Book by Jim Meehan"
-}

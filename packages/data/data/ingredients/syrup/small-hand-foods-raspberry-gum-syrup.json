@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Small hand foods raspberry gum syrup",
+  "type": "syrup"
+}

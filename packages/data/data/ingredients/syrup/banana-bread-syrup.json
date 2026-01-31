@@ -1,0 +1,75 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "banana bread syrup",
+  "type": "syrup",
+  "categories": ["Banana Syrup"],
+  "ingredients": [
+    {
+      "name": "banana",
+      "type": "fruit",
+      "technique": {
+        "technique": "maturity",
+        "state": "ripe"
+      },
+      "quantity": {
+        "amount": 454,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Allspice berry",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Mash the ripe bananas.",
+    "Grate the cinnamon stick and whole nutmeg.",
+    "Combine mashed bananas, brown sugar, sugar, water, allspice berry, grated cinnamon stick, and grated nutmeg in a medium saucepan.",
+    "Simmer over low heat until boiling, then boil for 5 minutes.",
+    "Remove from heat, cool, and strain before using."
+  ]
+}

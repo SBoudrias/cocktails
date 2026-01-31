@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Barbancourt 8 Year",
-  "type": "spirit",
-  "categories": ["Rhum Agricole Vieux"]
-}

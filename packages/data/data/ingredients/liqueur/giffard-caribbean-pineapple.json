@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Giffard Caribbean Pineapple",
+  "type": "liqueur",
+  "categories": ["Pineapple liqueur"]
+}

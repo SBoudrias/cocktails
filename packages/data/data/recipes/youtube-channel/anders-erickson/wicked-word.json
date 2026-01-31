@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Wicked Word",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Romana Black Sambuca",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake ingredients excluding the Sambuca",
+    "Set Sambuca aflame, then drop into glass"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "i67-17-CZCQ",
+      "start": 125
+    },
+    {
+      "type": "youtube",
+      "videoId": "6Ic0zmBpUQw",
+      "start": 248
+    }
+  ]
+}

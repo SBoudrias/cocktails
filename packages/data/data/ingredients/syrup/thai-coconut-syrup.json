@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Thai Coconut Syrup",
+  "type": "syrup",
+  "description": "A spicy and aromatic crème de coconut syrup with ginger, cilantro, and Thai chili",
+  "ingredients": [
+    {
+      "name": "Coconut milk",
+      "type": "other",
+      "quantity": {
+        "amount": 400,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 382,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Ginger",
+      "type": "spice",
+      "quantity": {
+        "amount": 60,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cilantro",
+      "type": "spice",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Thai Chili",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NDKElsxCdbA"
+    }
+  ]
+}

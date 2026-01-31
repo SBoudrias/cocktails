@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Sobieski Estate Vodka",
+  "type": "spirit",
+  "categories": ["Vodka"]
+}

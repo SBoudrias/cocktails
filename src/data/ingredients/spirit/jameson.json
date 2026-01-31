@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Jameson",
-  "type": "spirit",
-  "categories": ["Whiskey (Irish)"]
-}

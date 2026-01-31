@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Cold-brewed Coffee Concentrate",
+  "type": "other"
+}

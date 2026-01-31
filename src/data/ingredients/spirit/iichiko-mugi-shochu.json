@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Iichiko Mugi Shochu",
-  "type": "spirit",
-  "categories": ["Barley Shochu"]
-}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Van Der Hum Liqueur",
-  "type": "liqueur",
-  "categories": ["Orange Liqueur"]
-}

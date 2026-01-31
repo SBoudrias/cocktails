@@ -1,4 +1,4 @@
-You're in charge of creating new recipes. I'll send you recipes in batches and you'll be creating the files in the right folders following the schema defined in @src/schemas/recipe.schema.json.
+You're in charge of creating new recipes. I'll send you recipes in batches and you'll be creating the files in the right folders following the schema defined in `packages/data/schemas/recipe.schema.json`.
 
 Don't forget:
 

@@ -1,0 +1,6 @@
+{
+  "$schema": "../schemas/category.schema.json",
+  "name": "Jamaican overproof rum",
+  "categoryType": "spirit",
+  "parents": ["Overproof Rum", "Jamaican Rum"]
+}

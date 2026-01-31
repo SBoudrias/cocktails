@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Fee Brothers Black Walnut Bitters",
+  "type": "bitter",
+  "categories": ["Black Walnut Bitters"]
+}

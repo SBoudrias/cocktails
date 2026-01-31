@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Paranubes Oaxaca Aguardiente de Caña",
+  "type": "spirit",
+  "categories": ["Charanda"]
+}

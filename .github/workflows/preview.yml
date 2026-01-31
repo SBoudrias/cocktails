@@ -23,14 +23,14 @@ jobs:
 
       - name: Build with preview basePath 🏗️
         if: github.event.action != 'closed'
-        run: yarn next build
+        run: yarn workspace @cocktails/web build
         env:
           NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
 
       - name: Deploy PR Preview 🚀
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: ./out/
+          source-dir: ./apps/web/out/
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto

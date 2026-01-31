@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Varnelli Amaro Sibilla",
-  "type": "liqueur",
-  "categories": ["Amaro"]
-}

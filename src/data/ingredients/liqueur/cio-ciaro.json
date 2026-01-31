@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "CioCiaro",
-  "type": "liqueur",
-  "categories": ["Amaro"]
-}

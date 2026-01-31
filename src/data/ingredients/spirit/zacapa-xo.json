@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Zacapa XO",
-  "type": "spirit",
-  "categories": ["Column still aged rum"]
-}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Rémy Martin 1738 Accord Royal Cognac",
+  "type": "spirit",
+  "categories": ["Cognac"]
+}

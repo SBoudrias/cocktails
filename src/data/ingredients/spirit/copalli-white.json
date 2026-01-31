@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Copalli White",
-  "type": "spirit",
-  "categories": ["Rhum Agricole Blanc"]
-}

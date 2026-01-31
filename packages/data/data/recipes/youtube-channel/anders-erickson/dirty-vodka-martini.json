@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schemas/recipe.schema.json",
+  "name": "Dirty Vodka Martini",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "olive brine",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grey Goose Vodka",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Garnish with 3 olives"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "cwunL1zBgnI",
+      "start": 261
+    }
+  ]
+}

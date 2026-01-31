@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Tempus Fugit Vieux Pontarlier Absinthe",
-  "type": "spirit",
-  "categories": ["Absinthe"]
-}

@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Harvey's Bristol Cream sherry",
-  "type": "liqueur",
-  "categories": ["Sherry (Cream)"]
-}

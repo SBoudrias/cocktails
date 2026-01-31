@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Pueblo Viejo Reposado Tequila",
+  "type": "spirit",
+  "categories": ["Tequila Reposado"]
+}

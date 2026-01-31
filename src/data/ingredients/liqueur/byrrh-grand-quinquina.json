@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Byrrh Grand Quinquina",
-  "type": "liqueur",
-  "categories": ["Quinquina"]
-}

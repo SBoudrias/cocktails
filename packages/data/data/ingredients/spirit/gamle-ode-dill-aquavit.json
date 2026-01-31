@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Gamle Ode Dill Aquavit",
+  "type": "spirit",
+  "categories": ["Aquavit"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Suze Apéritif",
+  "type": "liqueur",
+  "categories": ["Gentian liqueur"]
+}

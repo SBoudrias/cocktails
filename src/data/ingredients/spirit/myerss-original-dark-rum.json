@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Myers's Original Dark Rum",
-  "type": "spirit",
-  "categories": ["Black Blended Rum"]
-}

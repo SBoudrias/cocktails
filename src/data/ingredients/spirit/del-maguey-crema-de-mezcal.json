@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Del Maguey Crema de Mezcal",
-  "type": "spirit",
-  "categories": ["Mezcal"]
-}
