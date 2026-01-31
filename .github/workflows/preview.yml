@@ -23,7 +23,7 @@ jobs:
 
       - name: Build with preview basePath 🏗️
         if: github.event.action != 'closed'
-        run: yarn build
+        run: yarn workspace @cocktails/web build
         env:
           NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
 

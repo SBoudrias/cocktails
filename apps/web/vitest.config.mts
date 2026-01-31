@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { defineConfig, coverageConfigDefaults } from 'vitest/config';
+import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
@@ -9,6 +9,7 @@ export default defineConfig({
     setupFiles: ['./tools/test-setup.ts'],
     clearMocks: true,
     exclude: ['node_modules', '.worktrees'],
+    testTimeout: 10000,
     coverage: {
       provider: 'v8',
       exclude: [
@@ -19,7 +20,6 @@ export default defineConfig({
         'out/**/*',
       ],
     },
-    testTimeout: 10000,
   },
   plugins: [tsconfigPaths(), react()],
 });

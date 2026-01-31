@@ -30,7 +30,7 @@ jobs:
         uses: ./.github/workflows/setup-node
 
       - name: Vitest 🧪
-        run: yarn vitest --run --coverage
+        run: yarn workspace @cocktails/web vitest --run --coverage && yarn workspace @cocktails/data vitest --run
 
       - uses: codecov/codecov-action@v5
 
@@ -42,4 +42,4 @@ jobs:
         uses: ./.github/workflows/setup-node
 
       - name: Build 🏗️
-        run: yarn next build
+        run: yarn workspace @cocktails/web build

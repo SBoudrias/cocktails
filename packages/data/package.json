@@ -8,6 +8,9 @@
     "./client": "./src/client.ts",
     "./schemas/*": "./schemas/*"
   },
+  "scripts": {
+    "test": "vitest --run"
+  },
   "dependencies": {
     "@sindresorhus/slugify": "^3.0.0",
     "lodash": "^4.17.21",
