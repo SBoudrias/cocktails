@@ -14,8 +14,8 @@ node_modules
 /coverage
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
 # production
 /build
@@ -41,9 +41,9 @@ yarn-error.log*
 next-env.d.ts
 
 # SEO auto-generated files (next-sitemap)
-public/robots.txt
-public/sitemap.xml
-public/sitemap-*.xml
+apps/web/public/robots.txt
+apps/web/public/sitemap.xml
+apps/web/public/sitemap-*.xml
 
 # AI tools
 .aider*
