@@ -2802,7 +2802,7 @@ __metadata:
     core-js: "npm:^3.47.0"
     eslint: "npm:^9.39.2"
     eslint-config-next: "npm:16.1.4"
-    happy-dom: "npm:^20.3.7"
+    happy-dom: "npm:^20.4.0"
     husky: "npm:^9.1.7"
     lodash: "npm:^4.17.21"
     nano-staged: "npm:^0.9.0"
@@ -4078,9 +4078,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^20.3.7":
-  version: 20.3.7
-  resolution: "happy-dom@npm:20.3.7"
+"happy-dom@npm:^20.4.0":
+  version: 20.4.0
+  resolution: "happy-dom@npm:20.4.0"
   dependencies:
     "@types/node": "npm:>=20.0.0"
     "@types/whatwg-mimetype": "npm:^3.0.2"
@@ -4088,7 +4088,7 @@ __metadata:
     entities: "npm:^4.5.0"
     whatwg-mimetype: "npm:^3.0.0"
     ws: "npm:^8.18.3"
-  checksum: 10c0/a85b444250f1cfcc73d4e835ee3ffc62bc7dff73b64e88f91b4273fac92b7d1809229e4e2812f4447c1b2aae895a9030300800b90778777514caf5fa91217a8a
+  checksum: 10c0/1f7d13720fce45f0de9649778f11e35d59e38d0229cdec6f30162d86087381a0a64b8efa3d3c755cc76fe95b07df3e1ded19e599e544dda14c8988002211c81b
   languageName: node
   linkType: hard
 
