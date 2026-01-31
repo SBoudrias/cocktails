@@ -1,12 +1,28 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Wicked Word",
+  "name": "Brown Derby",
   "preparation": "shaken",
   "served_on": "up",
-  "glassware": "nick & nora",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -14,44 +30,26 @@
       }
     },
     {
-      "name": "Maison Rouge VSOP Cognac",
+      "name": "Still Austin 'The Musician' Bourbon",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Aperol",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Romana Black Sambuca",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Shake ingredients excluding the Sambuca",
-    "Set Sambuca aflame, then drop into glass"
+    "Add all ingredients to a shaker with ice.",
+    "Shake until well chilled.",
+    "Express grapefruit oil over the glass.",
+    "Strain into a coupe glass.",
+    "Garnish with grapefruit peel."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "i67-17-CZCQ",
-      "start": 125
-    },
-    {
-      "type": "youtube",
-      "videoId": "6Ic0zmBpUQw",
-      "start": 248
+      "videoId": "79htbyQ8nDY",
+      "start": 454
     }
   ]
 }

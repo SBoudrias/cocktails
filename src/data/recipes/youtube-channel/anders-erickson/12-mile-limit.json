@@ -1,15 +1,31 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Wicked Word",
+  "name": "12 Mile Limit",
   "preparation": "shaken",
   "served_on": "up",
-  "glassware": "nick & nora",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -17,20 +33,12 @@
       "name": "Maison Rouge VSOP Cognac",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Aperol",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Romana Black Sambuca",
+      "name": "El Dorado 3 Year",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -39,19 +47,15 @@
     }
   ],
   "instructions": [
-    "Shake ingredients excluding the Sambuca",
-    "Set Sambuca aflame, then drop into glass"
+    "Add all ingredients to a shaker with ice.",
+    "Shake until well chilled.",
+    "Strain into a coupe glass."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "i67-17-CZCQ",
-      "start": 125
-    },
-    {
-      "type": "youtube",
-      "videoId": "6Ic0zmBpUQw",
-      "start": 248
+      "videoId": "6M6Xu_URmPg",
+      "start": 244
     }
   ]
 }
