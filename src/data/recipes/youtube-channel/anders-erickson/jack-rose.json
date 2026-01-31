@@ -1,31 +1,31 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Brandy Alexander",
+  "name": "Jack Rose",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Heavy whipping cream",
-      "type": "other",
+      "name": "Grenadine",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Tempus Fugit Crème de Cacao",
-      "type": "liqueur",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Maison Rouge VSOP Cognac",
+      "name": "Laird's Bonded Apple Brandy",
       "type": "spirit",
       "quantity": {
-        "amount": 2,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
@@ -33,19 +33,13 @@
   "instructions": [
     "Add all ingredients to a shaker with ice.",
     "Shake until well chilled.",
-    "Strain into a coupe glass.",
-    "Garnish with freshly grated nutmeg."
+    "Strain into a coupe glass."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "5LEgIoddxY4",
-      "start": 157
-    },
-    {
-      "type": "youtube",
-      "videoId": "8FS1ILeY8Ds",
-      "start": 313
+      "videoId": "7H7Cz53jDhc",
+      "start": 249
     }
   ]
 }

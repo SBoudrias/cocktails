@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Korbel Brandy",
+  "type": "spirit",
+  "categories": ["Brandy (Grapes)"]
+}
