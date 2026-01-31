@@ -1,0 +1,100 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Glögg",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "wine glass",
+  "servings": 4,
+  "ingredients": [
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cardamom pods",
+      "type": "spice",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Raisins",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fonsecca Bin 27 Ruby Port",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Red Wine",
+      "type": "category",
+      "quantity": {
+        "amount": 750,
+        "unit": "ml"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine wine, port, cognac, sugar, raisins, orange peel, and spices in a saucepan.",
+    "Tie spices and orange peel in a muslin bag for easy removal.",
+    "Heat gently without boiling, stirring until sugar dissolves.",
+    "Let simmer for 20-30 minutes to infuse.",
+    "Remove spice bag and serve warm in wine glasses."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "2Xox9vdRGtM",
+      "start": 147
+    }
+  ]
+}

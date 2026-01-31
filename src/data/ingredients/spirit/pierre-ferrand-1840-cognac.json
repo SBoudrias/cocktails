@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Pierre Ferrand 1840 Cognac",
+  "type": "spirit",
+  "categories": ["Cognac"]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Blueberry Thyme Smash",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Blueberries",
+      "type": "fruit",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Thyme",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Botanist Islay Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle blueberries, lemon slices, and thyme in a shaker.",
+    "Add gin and syrup.",
+    "Shake with ice.",
+    "Double strain into an old fashioned glass over crushed ice.",
+    "Garnish with blueberries and a bundle of thyme."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "3i4QnRLlPFc",
+      "start": 263
+    }
+  ]
+}

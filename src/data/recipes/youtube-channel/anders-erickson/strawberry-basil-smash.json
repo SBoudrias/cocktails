@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Strawberry Basil Smash",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Basil leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 9,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle strawberries, lemon slices, and basil leaves in a shaker.",
+    "Add rum and syrup.",
+    "Shake with ice.",
+    "Double strain into an old fashioned glass over crushed ice.",
+    "Garnish with strawberry slices and a basil sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "3i4QnRLlPFc",
+      "start": 199
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Shrunken Skull",
+  "name": "Hurricane (Anders Erickson)",
   "preparation": "shaken",
   "served_on": "crushed ice",
-  "glassware": "tiki",
+  "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Lime juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
@@ -14,15 +14,15 @@
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
+      "name": "Passion fruit syrup",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Hamilton 86 Demerara Rum",
+      "name": "Goslings Black Seal Rum",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Don Q Gold Rum",
+      "name": "Smith & Cross",
       "type": "spirit",
       "quantity": {
         "amount": 1,
@@ -40,18 +40,14 @@
   ],
   "instructions": [
     "Shake all ingredients with ice.",
-    "Strain into a tiki glass over crushed ice.",
+    "Strain into a hurricane glass over crushed ice.",
     "Garnish with pineapple fronds and a cocktail umbrella."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "pTBVVi20ONk"
-    },
-    {
-      "type": "youtube",
-      "videoId": "4ulBVniIbaA",
-      "start": 446
+      "videoId": "3b2-jFhtCyQ",
+      "start": 297
     }
   ]
 }
