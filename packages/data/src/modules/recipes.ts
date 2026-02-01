@@ -8,7 +8,7 @@ import type { Category } from '../types/Category.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import type { Source } from '../types/Source.ts';
 import { getCategory, getChildCategories } from './categories';
-import { isChapterFolder } from './chapters';
+import { isChapterFolder, parseChapterFolder } from './chapters';
 import { RECIPE_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import { getIngredient } from './ingredients';
@@ -63,7 +63,9 @@ export const getRecipe = memo(
     return {
       ...data,
       slug: recipe,
-      chapter: resolvedChapter,
+      chapter: resolvedChapter
+        ? (parseChapterFolder(resolvedChapter) ?? undefined)
+        : undefined,
       refs: data.refs ?? [],
       attributions: data.attributions ?? [],
       ingredients: await Promise.all(

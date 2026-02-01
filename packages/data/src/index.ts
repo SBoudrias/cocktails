@@ -19,6 +19,6 @@ export type {
   RootIngredient,
   Technique,
 } from './types/Ingredient.ts';
-export type { Attribution, Recipe } from './types/Recipe.ts';
+export type { Attribution, Chapter, Recipe } from './types/Recipe.ts';
 export type { BookRef, PodcastRef, Ref, WebsiteRef, YoutubeRef } from './types/Ref.ts';
 export type { Book, Podcast, Source, YoutubeChannel } from './types/Source.ts';
