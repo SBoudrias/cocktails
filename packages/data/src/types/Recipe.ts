@@ -25,10 +25,15 @@ export type Attribution =
       url?: string;
     };
 
+export type Chapter = {
+  order: number;
+  name: string;
+};
+
 export type Recipe = {
   name: string;
   slug: string;
-  chapter?: string; // Derived from filesystem folder name (e.g., "01_Rum Drinks")
+  chapter?: Chapter;
   preparation: 'built' | 'shaken' | 'stirred' | 'blended' | 'flash blended' | 'swizzled';
   served_on: 'big rock' | 'up' | 'crushed ice' | 'blended' | 'ice cubes';
   glassware:

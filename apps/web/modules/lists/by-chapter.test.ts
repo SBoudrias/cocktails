@@ -1,4 +1,4 @@
-import type { Recipe } from '@cocktails/data';
+import type { Chapter, Recipe } from '@cocktails/data';
 import { describe, expect, it } from 'vitest';
 import {
   compareByPage,
@@ -8,11 +8,17 @@ import {
   getChapterName,
 } from './by-chapter';
 
-const createRecipe = (name: string, chapter?: string, page?: number): Recipe =>
+function parseChapterFolder(folder: string): Chapter | undefined {
+  const match = folder.match(/^(\d+)_(.+)$/);
+  if (!match || !match[1] || !match[2]) return undefined;
+  return { order: parseInt(match[1], 10), name: match[2] };
+}
+
+const createRecipe = (name: string, chapterFolder?: string, page?: number): Recipe =>
   ({
     name,
     slug: name.toLowerCase().replace(/\s/g, '-'),
-    chapter,
+    chapter: chapterFolder ? parseChapterFolder(chapterFolder) : undefined,
     refs: page ? [{ type: 'book', title: 'Test Book', page }] : [],
   }) as Recipe;
 

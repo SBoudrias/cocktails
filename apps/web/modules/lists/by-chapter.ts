@@ -1,22 +1,11 @@
 import type { Recipe } from '@cocktails/data';
 
 /**
- * Parse chapter folder name: "01_The History of Tiki" → { order: 1, name: "The History of Tiki" }
- */
-function parseChapterFolder(folder: string): { order: number; name: string } | null {
-  const match = folder.match(/^(\d+)_(.+)$/);
-  if (!match || !match[1] || !match[2]) return null;
-  return { order: parseInt(match[1], 10), name: match[2] };
-}
-
-/**
  * Get the chapter display name for a recipe.
  * Returns 'Etc' for recipes without a valid chapter.
  */
 export function getChapterName(recipe: Recipe): string {
-  if (!recipe.chapter) return 'Etc';
-  const parsed = parseChapterFolder(recipe.chapter);
-  return parsed?.name ?? 'Etc';
+  return recipe.chapter?.name ?? 'Etc';
 }
 
 /**
@@ -61,10 +50,7 @@ export function createChapterHeaderComparator(
   const chapterOrderMap = new Map<string, number>();
   for (const recipe of recipes) {
     if (recipe.chapter) {
-      const parsed = parseChapterFolder(recipe.chapter);
-      if (parsed) {
-        chapterOrderMap.set(parsed.name, parsed.order);
-      }
+      chapterOrderMap.set(recipe.chapter.name, recipe.chapter.order);
     }
   }
 
