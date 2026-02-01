@@ -1,44 +1,37 @@
 'use client';
 
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import HomeIcon from '@mui/icons-material/Home';
-import { Divider, Link, Stack, Typography } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LocalBarIcon from '@mui/icons-material/LocalBar';
+import { Link, Stack } from '@mui/material';
 
 export default function AppFooter() {
   return (
-    <Stack spacing={2} sx={{ py: 2 }}>
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
+    <Stack
+      direction="row"
+      sx={{
+        py: 2,
+        px: 2,
+        minHeight: '350px',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+      }}
+    >
+      <Link
+        href="/"
+        underline="none"
+        sx={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 0.5 }}
       >
-        <Link
-          href="https://github.com/SBoudrias/cocktails/"
-          underline="none"
-          target="_blank"
-          rel="noopener"
-        >
-          Contribute on GitHub <ArrowOutwardIcon sx={{ fontSize: 'medium' }} />
-        </Link>
-      </Stack>
-      <Stack
-        direction="row"
-        divider
-        sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
+        <LocalBarIcon /> Cocktail Index
+      </Link>
+      <Link
+        href="https://github.com/SBoudrias/cocktails/"
+        target="_blank"
+        rel="noopener"
+        underline="none"
+        sx={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 0.5 }}
       >
-        <Link href="/" underline="none">
-          <Typography color="textSecondary">
-            <HomeIcon sx={{ fontSize: 'medium' }} /> Cocktail Index
-          </Typography>
-        </Link>
-      </Stack>
+        <GitHubIcon /> Contribute on GitHub
+      </Link>
     </Stack>
   );
 }
