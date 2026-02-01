@@ -10,7 +10,8 @@ import 'core-js/modules/es.object.group-by.js';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import AppFooter from '#/components/AppFooter';
 import FullscreenHelper from '#/components/FullscreenHelper';
-import tikiBeachDivider from '../../public/tiki-beach-divider.png';
+import tikiBeachDivider from '../../../public/tiki-beach-divider.png';
+import tikiLeavesTop from '../../../public/tiki-leaves-top.png';
 import theme from './theme';
 
 const roboto = Roboto({
@@ -62,10 +63,10 @@ export default function RootLayout({
                   minHeight: '100vh',
                   display: 'flex',
                   flexDirection: 'column',
-                  backgroundImage: `url(${tikiBeachDivider.src})`,
-                  backgroundSize: `min(100%, ${tikiBeachDivider.width}px) auto`,
-                  backgroundPosition: 'bottom center',
-                  backgroundRepeat: 'no-repeat',
+                  backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
+                  backgroundSize: `min(100%, ${tikiLeavesTop.width}px) auto, min(100%, ${tikiBeachDivider.width}px) auto`,
+                  backgroundPosition: 'center 40px, bottom center',
+                  backgroundRepeat: 'no-repeat, no-repeat',
                 }}
               >
                 <Box sx={{ flexGrow: 1 }}>{children}</Box>

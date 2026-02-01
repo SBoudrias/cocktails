@@ -2,18 +2,7 @@
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
-import { Button, Stack } from '@mui/material';
-
-const buttonSx = {
-  color: '#FFFFFF',
-  fontWeight: 700,
-  backgroundColor: 'rgba(10, 20, 32, 0.7)',
-  backdropFilter: 'blur(4px)',
-  '&:hover': {
-    color: '#FFD580',
-    backgroundColor: 'rgba(10, 20, 32, 0.85)',
-  },
-};
+import { Link, Stack } from '@mui/material';
 
 export default function AppFooter() {
   return (
@@ -27,18 +16,22 @@ export default function AppFooter() {
         alignItems: 'flex-end',
       }}
     >
-      <Button href="/" startIcon={<LocalBarIcon />} sx={buttonSx}>
-        Cocktail Index
-      </Button>
-      <Button
+      <Link
+        href="/"
+        underline="none"
+        sx={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 0.5 }}
+      >
+        <LocalBarIcon /> Cocktail Index
+      </Link>
+      <Link
         href="https://github.com/SBoudrias/cocktails/"
         target="_blank"
         rel="noopener"
-        startIcon={<GitHubIcon />}
-        sx={buttonSx}
+        underline="none"
+        sx={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 0.5 }}
       >
-        Contribute on GitHub
-      </Button>
+        <GitHubIcon /> Contribute on GitHub
+      </Link>
     </Stack>
   );
 }
