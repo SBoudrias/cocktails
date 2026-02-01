@@ -17,6 +17,7 @@ import IngredientList from '#/components/IngredientList';
 import RecipeAttributionCard from '#/components/RecipeAttributionCard';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import VideoListCard from '#/components/VideoListCard';
+import { getRecipeEditUrl } from '#/modules/url';
 import styles from './style.module.css';
 
 type Params = { type: Source['type']; source: string; recipe: string };
@@ -87,14 +88,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           <RecipeAttributionCard recipe={recipe} sx={{ m: 1 }} />
         )}
         {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
-        <FixBugCard
-          fixUrl={
-            recipe.chapter
-              ? `https://github.com/SBoudrias/cocktails/edit/main/src/data/recipes/${type}/${source}/${encodeURIComponent(`${String(recipe.chapter.order).padStart(2, '0')}_${recipe.chapter.name}`)}/${recipeSlug}.json`
-              : `https://github.com/SBoudrias/cocktails/edit/main/src/data/recipes/${type}/${source}/${recipeSlug}.json`
-          }
-          sx={{ m: 1 }}
-        />
+        <FixBugCard fixUrl={getRecipeEditUrl(recipe)} sx={{ m: 1 }} />
       </Box>
     </>
   );
