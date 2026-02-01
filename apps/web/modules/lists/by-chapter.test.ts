@@ -8,42 +8,34 @@ import {
   getChapterName,
 } from './by-chapter';
 
-function parseChapterFolder(folder: string): Chapter | undefined {
-  const match = folder.match(/^(\d+)_(.+)$/);
-  if (!match || !match[1] || !match[2]) return undefined;
-  return { order: parseInt(match[1], 10), name: match[2] };
-}
-
-const createRecipe = (name: string, chapterFolder?: string, page?: number): Recipe =>
+const createRecipe = (name: string, chapter?: Chapter, page?: number): Recipe =>
   ({
     name,
     slug: name.toLowerCase().replace(/\s/g, '-'),
-    chapter: chapterFolder ? parseChapterFolder(chapterFolder) : undefined,
+    chapter,
     refs: page ? [{ type: 'book', title: 'Test Book', page }] : [],
   }) as Recipe;
 
 describe('getChapterName', () => {
-  it('extracts chapter name from valid chapter folder', () => {
-    expect(getChapterName(createRecipe('Test', '01_Rum Drinks'))).toBe('Rum Drinks');
-    expect(getChapterName(createRecipe('Test', '02_The History of Tiki'))).toBe(
-      'The History of Tiki',
+  it('returns chapter name when present', () => {
+    expect(getChapterName(createRecipe('Test', { order: 1, name: 'Rum Drinks' }))).toBe(
+      'Rum Drinks',
     );
+    expect(
+      getChapterName(createRecipe('Test', { order: 2, name: 'The History of Tiki' })),
+    ).toBe('The History of Tiki');
   });
 
   it('returns Etc for recipes without chapter', () => {
     expect(getChapterName(createRecipe('Test'))).toBe('Etc');
   });
-
-  it('returns Etc for invalid chapter format', () => {
-    expect(getChapterName(createRecipe('Test', 'Invalid Format'))).toBe('Etc');
-  });
 });
 
 describe('compareByPage', () => {
   it('sorts recipes by page number', () => {
-    const recipe1 = createRecipe('A', '01_Rum', 10);
-    const recipe2 = createRecipe('B', '01_Rum', 5);
-    const recipe3 = createRecipe('C', '01_Rum', 15);
+    const recipe1 = createRecipe('A', { order: 1, name: 'Rum' }, 10);
+    const recipe2 = createRecipe('B', { order: 1, name: 'Rum' }, 5);
+    const recipe3 = createRecipe('C', { order: 1, name: 'Rum' }, 15);
 
     const sorted = [recipe1, recipe2, recipe3].toSorted(compareByPage);
 
@@ -51,8 +43,8 @@ describe('compareByPage', () => {
   });
 
   it('puts recipes without page at end', () => {
-    const recipe1 = createRecipe('A', '01_Rum', 10);
-    const recipe2 = createRecipe('B', '01_Rum');
+    const recipe1 = createRecipe('A', { order: 1, name: 'Rum' }, 10);
+    const recipe2 = createRecipe('B', { order: 1, name: 'Rum' });
 
     const sorted = [recipe2, recipe1].toSorted(compareByPage);
 
@@ -73,11 +65,11 @@ describe('compareChapterHeaders', () => {
 });
 
 describe('createChapterHeaderComparator', () => {
-  it('sorts chapters by their order prefix', () => {
+  it('sorts chapters by their order', () => {
     const recipes = [
-      createRecipe('A', '03_Chapter Three'),
-      createRecipe('B', '01_Chapter One'),
-      createRecipe('C', '02_Chapter Two'),
+      createRecipe('A', { order: 3, name: 'Chapter Three' }),
+      createRecipe('B', { order: 1, name: 'Chapter One' }),
+      createRecipe('C', { order: 2, name: 'Chapter Two' }),
     ];
 
     const comparator = createChapterHeaderComparator(recipes);
@@ -87,7 +79,7 @@ describe('createChapterHeaderComparator', () => {
   });
 
   it('puts Etc at end', () => {
-    const recipes = [createRecipe('A', '01_Rum'), createRecipe('B')];
+    const recipes = [createRecipe('A', { order: 1, name: 'Rum' }), createRecipe('B')];
 
     const comparator = createChapterHeaderComparator(recipes);
 
@@ -99,9 +91,9 @@ describe('createChapterHeaderComparator', () => {
 describe('createByChapterListConfig', () => {
   it('creates a config with proper grouping and sorting', () => {
     const recipes = [
-      createRecipe('Zombie', '01_Rum', 50),
-      createRecipe('Daiquiri', '01_Rum', 10),
-      createRecipe('Mai Tai', '02_Tiki', 30),
+      createRecipe('Zombie', { order: 1, name: 'Rum' }, 50),
+      createRecipe('Daiquiri', { order: 1, name: 'Rum' }, 10),
+      createRecipe('Mai Tai', { order: 2, name: 'Tiki' }, 30),
     ];
 
     const config = createByChapterListConfig(recipes);

@@ -46,3 +46,14 @@ export function getAuthorRecipesUrl(author: string) {
 export function getBarRecipesUrl(bar: { name: string; location?: string }) {
   return `/list/bars/${slugify(`${bar.name} ${bar.location ?? ''}`)}`;
 }
+
+export function getRecipeEditUrl(recipe: Recipe) {
+  const basePath = `https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/${recipe.source.type}/${recipe.source.slug}`;
+
+  if (recipe.chapter) {
+    const chapterFolder = `${String(recipe.chapter.order).padStart(2, '0')}_${recipe.chapter.name}`;
+    return `${basePath}/${encodeURIComponent(chapterFolder)}/${recipe.slug}.json`;
+  }
+
+  return `${basePath}/${recipe.slug}.json`;
+}
