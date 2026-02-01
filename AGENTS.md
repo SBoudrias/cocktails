@@ -20,6 +20,7 @@ Start by reading @README.md
 - Imports within the Next.js web-app (`apps/web/`) should use `#/...` subpath imports for local files. For data and types, import from `@cocktails/data`.
 - Always use `ts-pattern` when matching on types. (instead of `switch` or `if`)
 - Don't re-export from modules or packages. Import directly from the original source. Packages should never re-export each other's exports.
+- Don't create barrel files (index.ts that just re-exports from other files). Point package.json exports directly to the source file.
 - Only export functions that are actually used. Don't pre-export "for future use" - that's dead code. If a utility is only used within one package or app, keep it there instead of exporting from a shared package.
 - Inline types that won't be reused instead of creating separate type definitions.
 - Handle null/undefined inside functions rather than requiring callers to handle it.
