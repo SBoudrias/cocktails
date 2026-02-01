@@ -1,9 +1,9 @@
 'use client';
 
-import SearchInput from '#/components/SearchInput';
 import { Home } from '@mui/icons-material';
 import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
+import SearchInput from '#/components/SearchInput';
 
 export default function SearchHeader({
   title,

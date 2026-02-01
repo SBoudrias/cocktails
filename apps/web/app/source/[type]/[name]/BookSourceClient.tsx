@@ -1,6 +1,17 @@
 'use client';
 
 import type { Book, Recipe } from '@cocktails/data';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Stack,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from '@mui/material';
+import { useQueryState } from 'nuqs';
+import { useCallback, useMemo } from 'react';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
@@ -13,17 +24,6 @@ import { createByChapterListConfig } from '#/modules/lists/by-chapter';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  Stack,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from '@mui/material';
-import { useQueryState } from 'nuqs';
-import { useCallback, useMemo } from 'react';
 
 type GroupMode = 'chapter' | 'alphabetical';
 

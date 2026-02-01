@@ -1,5 +1,5 @@
-import { byNameListConfig } from '#/modules/lists/by-name';
 import { render, screen } from '@testing-library/react';
+import { byNameListConfig } from '#/modules/lists/by-name';
 import SearchableList from './index';
 
 type TestItem = { name: string };

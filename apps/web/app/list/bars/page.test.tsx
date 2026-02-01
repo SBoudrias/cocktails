@@ -1,7 +1,7 @@
-import { getBarRecipesUrl } from '#/modules/url';
-import { setupApp } from '#/testing';
 import { screen, within } from '@testing-library/react';
 import { vi, describe, it, expect } from 'vitest';
+import { getBarRecipesUrl } from '#/modules/url';
+import { setupApp } from '#/testing';
 import BarListPage from './page';
 
 // Real bar data from the codebase

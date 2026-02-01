@@ -1,6 +1,6 @@
-import { setupApp } from '#/testing';
 import { screen } from '@testing-library/react';
 import { vi, describe, it, expect } from 'vitest';
+import { setupApp } from '#/testing';
 import IngredientPage from './page';
 
 // Using real pineapple-juice ingredient which has:

@@ -1,8 +1,8 @@
-import type { ListConfig } from '#/modules/lists/type';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
 import Link from 'next/link';
 import { useMemo } from 'react';
+import type { ListConfig } from '#/modules/lists/type';
 
 export function LinkListItem({
   href,

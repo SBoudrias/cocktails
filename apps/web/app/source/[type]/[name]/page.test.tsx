@@ -1,6 +1,6 @@
-import { setupApp } from '#/testing';
 import { screen } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { setupApp } from '#/testing';
 import SourcePage from './page';
 
 // Using Anders Erickson YouTube channel as the main test source

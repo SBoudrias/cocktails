@@ -1,5 +1,4 @@
 import type { YoutubeRef, YoutubeChannel } from '@cocktails/data';
-import Video from '#/components/Video';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import {
@@ -11,6 +10,7 @@ import {
   Typography,
   type SxProps,
 } from '@mui/material';
+import Video from '#/components/Video';
 
 export default function YoutubeAboutCard({
   source,

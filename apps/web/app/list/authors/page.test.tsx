@@ -1,7 +1,7 @@
-import { getAuthorRecipesUrl } from '#/modules/url';
-import { setupApp } from '#/testing';
 import { screen, within } from '@testing-library/react';
 import { vi, describe, it, expect } from 'vitest';
+import { getAuthorRecipesUrl } from '#/modules/url';
+import { setupApp } from '#/testing';
 import AuthorListPage from './page';
 
 // Real author from the codebase with multiple recipes

@@ -1,6 +1,9 @@
 'use client';
 
 import type { Category, Recipe, RootIngredient } from '@cocktails/data';
+import { Card, CardContent, CardHeader, Stack } from '@mui/material';
+import { useQueryState } from 'nuqs';
+import { useCallback, useMemo } from 'react';
 import AppHeader from '#/components/AppHeader';
 import CategoryName from '#/components/CategoryName';
 import FixBugCard from '#/components/FixBugCard';
@@ -16,9 +19,6 @@ import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
 import { ingredientHasData } from '#/modules/hasData';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getIngredientUrl, getRecipeUrl } from '#/modules/url';
-import { Card, CardContent, CardHeader, Stack } from '@mui/material';
-import { useQueryState } from 'nuqs';
-import { useCallback, useMemo } from 'react';
 
 export default function CategoryClient({
   category,

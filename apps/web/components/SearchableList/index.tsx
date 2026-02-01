@@ -1,7 +1,7 @@
-import type { ListConfig } from '#/modules/lists/type';
 import type { ReactNode } from 'react';
-import { fuzzySearch } from '#/modules/fuzzySearch';
 import { useMemo } from 'react';
+import type { ListConfig } from '#/modules/lists/type';
+import { fuzzySearch } from '#/modules/fuzzySearch';
 import { LinkList } from '../LinkList';
 
 export default function SearchableList<const T>({

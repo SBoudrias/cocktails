@@ -1,6 +1,6 @@
+import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';
 import BrixCalculator from '#/components/BrixCalculator';
-import { Suspense } from 'react';
 
 export default function BrixCalculatorPage() {
   return (

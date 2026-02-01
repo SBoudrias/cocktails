@@ -1,12 +1,5 @@
 'use client';
 
-import Quantity from '#/components/Quantity';
-import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
-import ServingSelector from '#/components/ServingSelector';
-import useLocalStorage from '#/hooks/useLocalStorage';
-import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
-import { formatIngredientName } from '#/modules/technique';
-import { getIngredientUrl } from '#/modules/url';
 import { compareIngredients, type Recipe } from '@cocktails/data';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
@@ -20,6 +13,13 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import Quantity from '#/components/Quantity';
+import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
+import ServingSelector from '#/components/ServingSelector';
+import useLocalStorage from '#/hooks/useLocalStorage';
+import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
+import { formatIngredientName } from '#/modules/technique';
+import { getIngredientUrl } from '#/modules/url';
 import styles from './style.module.css';
 
 function IngredientLine({
