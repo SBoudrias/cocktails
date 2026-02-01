@@ -16,6 +16,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@cocktails/ingredient-sorting": "workspace:*",
     "@sindresorhus/slugify": "^3.0.0",
     "lodash": "^4.17.21",
     "ts-pattern": "^5.9.0"

@@ -1,15 +1,15 @@
 #!/usr/bin/env -S node --no-warnings
 
+import {
+  compareIngredients,
+  type SortableIngredient,
+} from '@cocktails/ingredient-sorting';
 import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { isChapterFolder } from '../src/modules/chapters.ts';
-import {
-  compareIngredients,
-  type SortableIngredient,
-} from '../src/modules/ingredientSorting.ts';
 import { logger } from './cli-util.ts';
 import { createKeyOrdersRegistry, sortObjectKeys } from './schema-key-orders.ts';
 

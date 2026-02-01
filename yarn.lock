@@ -234,10 +234,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cocktails/data@workspace:packages/data"
   dependencies:
+    "@cocktails/ingredient-sorting": "workspace:*"
     "@sindresorhus/slugify": "npm:^3.0.0"
     ajv: "npm:^8.17.1"
     lodash: "npm:^4.17.21"
     ts-pattern: "npm:^5.9.0"
+  languageName: unknown
+  linkType: soft
+
+"@cocktails/ingredient-sorting@workspace:*, @cocktails/ingredient-sorting@workspace:packages/ingredient-sorting":
+  version: 0.0.0-use.local
+  resolution: "@cocktails/ingredient-sorting@workspace:packages/ingredient-sorting"
   languageName: unknown
   linkType: soft
 
