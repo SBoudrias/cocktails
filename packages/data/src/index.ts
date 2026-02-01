@@ -1,5 +1,5 @@
 /**
- * Main entry point - exports only types and pure functions (no node:fs dependencies).
+ * Main entry point - exports only types (no node:fs dependencies).
  * Safe to import in both server and client components.
  *
  * For data-loading functions, import from specific subpaths:
@@ -22,10 +22,3 @@ export type {
 export type { Attribution, Recipe } from './types/Recipe.ts';
 export type { BookRef, PodcastRef, Ref, WebsiteRef, YoutubeRef } from './types/Ref.ts';
 export type { Book, Podcast, Source, YoutubeChannel } from './types/Source.ts';
-
-// Pure functions (no node:fs dependencies)
-export { parseChapterFolder, isChapterFolder } from './modules/chapters.ts';
-export {
-  type SortableIngredient,
-  compareIngredients,
-} from '@cocktails/ingredient-sorting';
