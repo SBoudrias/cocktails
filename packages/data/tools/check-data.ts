@@ -4,6 +4,7 @@ import {
   compareIngredients,
   type SortableIngredient,
 } from '@cocktails/ingredient-sorting';
+import { createSchemaFormatter } from '@cocktails/jsonschema-formatter';
 import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
 import { execSync } from 'node:child_process';
@@ -11,7 +12,6 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { isChapterFolder } from '../src/modules/chapters.ts';
 import { logger } from './cli-util.ts';
-import { createKeyOrdersRegistry, sortObjectKeys } from './schema-key-orders.ts';
 
 const startTime = performance.now();
 const PACKAGE_ROOT = path.join(import.meta.dirname, '..');
@@ -66,8 +66,8 @@ function sortRecipeIngredients(
   });
 }
 
-// Key ordering registry - populated during schema loading
-const { keyOrders, registerSchema } = createKeyOrdersRegistry();
+// Schema formatter - auto-infers key ordering from registered schemas
+const formatter = createSchemaFormatter();
 
 async function fileExists(filepath: string): Promise<boolean> {
   return fs.access(filepath).then(
@@ -78,7 +78,7 @@ async function fileExists(filepath: string): Promise<boolean> {
 
 async function writeJSON(filepath: string, data: object): Promise<void> {
   await fs.mkdir(path.dirname(filepath), { recursive: true });
-  const sortedData = sortObjectKeys(data, keyOrders);
+  const sortedData = formatter.format(data);
   const jsonContent = JSON.stringify(sortedData, null, 2) + '\n';
   await fs.writeFile(filepath, jsonContent);
 }
@@ -97,9 +97,7 @@ for await (const schemaFile of fs.glob(schemasGlob)) {
   const schemaId = path.basename(schemaFile);
   logger.item(schemaId);
   ajv.addSchema(schema, schemaId);
-
-  // Extract key ordering from schema
-  registerSchema(schemaId, schema);
+  formatter.addSchema(schema);
 }
 logger.footer('Done!');
 
@@ -357,7 +355,7 @@ for await (const sourceFile of fs.glob(dataGlob)) {
 
   // Apply key ordering to all data files (silently)
   const originalJson = JSON.stringify(data, null, 2);
-  const sortedData = sortObjectKeys(data, keyOrders);
+  const sortedData = formatter.format(data);
   const sortedJson = JSON.stringify(sortedData, null, 2);
   if (originalJson !== sortedJson) {
     await writeJSON(sourceFile, data);
