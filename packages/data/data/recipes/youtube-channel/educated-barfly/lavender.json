@@ -27,14 +27,14 @@
       "technique": [
         {
           "technique": "fat-wash",
-          "spirit_quantity": {
-            "amount": 200,
-            "unit": "ml"
-          },
           "fat": "browned butter",
           "fat_quantity": {
             "amount": 2,
             "unit": "tbsp"
+          },
+          "spirit_quantity": {
+            "amount": 200,
+            "unit": "ml"
           }
         },
         {
