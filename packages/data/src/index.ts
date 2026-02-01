@@ -28,4 +28,4 @@ export { parseChapterFolder, isChapterFolder } from './modules/chapters.ts';
 export {
   type SortableIngredient,
   compareIngredients,
-} from './modules/ingredientSorting.ts';
+} from '@cocktails/ingredient-sorting';

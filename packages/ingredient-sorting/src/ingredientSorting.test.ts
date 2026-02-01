@@ -1,31 +1,20 @@
 import { describe, it, expect } from 'vitest';
-import { type RecipeIngredient } from '../types/Ingredient.ts';
-import { compareIngredients } from './ingredientSorting';
+import { type SortableIngredient, compareIngredients } from './ingredientSorting.ts';
 
 function createTestIngredient(
-  partial: Omit<Partial<RecipeIngredient>, 'quantity'> & {
-    quantity?: Partial<RecipeIngredient['quantity']>;
-    categoryType?: RecipeIngredient['type'];
+  partial: Omit<Partial<SortableIngredient>, 'quantity'> & {
+    quantity?: { amount?: number; unit?: string };
   } = {},
-): RecipeIngredient {
-  const defaults: RecipeIngredient = {
-    name: 'Test Ingredient',
-    slug: 'test-ingredient',
-    type: 'spirit',
-    categories: [],
-    refs: [],
-    ingredients: [],
-    quantity: { amount: 1, unit: 'oz' },
-  };
-
+): SortableIngredient {
   return {
-    ...defaults,
-    ...partial,
+    type: partial.type ?? 'spirit',
+    categoryType: partial.categoryType,
     quantity: {
-      ...defaults.quantity,
-      ...partial.quantity,
+      amount: partial.quantity?.amount ?? 1,
+      unit: partial.quantity?.unit ?? 'oz',
     },
-  } as RecipeIngredient;
+    technique: partial.technique,
+  };
 }
 
 describe('compareIngredients', () => {
