@@ -12,7 +12,7 @@ import AppFooter from '#/components/AppFooter';
 import FullscreenHelper from '#/components/FullscreenHelper';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.png';
 import tikiLeavesTop from '../../../public/tiki-leaves-top.png';
-import theme from './theme';
+import theme, { TOOLBAR_HEIGHT } from './theme';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -60,12 +60,12 @@ export default function RootLayout({
                 sx={{
                   maxWidth: 600,
                   mx: 'auto',
-                  minHeight: '100vh',
+                  minHeight: `calc(100vh - ${TOOLBAR_HEIGHT}px)`,
                   display: 'flex',
                   flexDirection: 'column',
                   backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
                   backgroundSize: `min(100%, ${tikiLeavesTop.width}px) auto, min(100%, ${tikiBeachDivider.width}px) auto`,
-                  backgroundPosition: 'center 40px, bottom center',
+                  backgroundPosition: `center ${TOOLBAR_HEIGHT - 24}px, bottom center`,
                   backgroundRepeat: 'no-repeat, no-repeat',
                 }}
               >

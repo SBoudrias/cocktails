@@ -5,6 +5,8 @@ import { createTheme } from '@mui/material/styles';
 import NextLink from 'next/link';
 import { forwardRef } from 'react';
 
+export const TOOLBAR_HEIGHT = 64;
+
 const LinkBehaviour = forwardRef(function LinkBehaviour(
   props: LinkProps,
   ref: Ref<HTMLAnchorElement>,
