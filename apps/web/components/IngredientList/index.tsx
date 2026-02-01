@@ -1,6 +1,7 @@
 'use client';
 
-import { compareIngredients, type Recipe } from '@cocktails/data';
+import type { Recipe } from '@cocktails/data';
+import { compareIngredients } from '@cocktails/ingredient-sorting';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
   Stack,

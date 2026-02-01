@@ -1,4 +1,13 @@
-import { parseChapterFolder, type Recipe } from '@cocktails/data';
+import type { Recipe } from '@cocktails/data';
+
+/**
+ * Parse chapter folder name: "01_The History of Tiki" → { order: 1, name: "The History of Tiki" }
+ */
+function parseChapterFolder(folder: string): { order: number; name: string } | null {
+  const match = folder.match(/^(\d+)_(.+)$/);
+  if (!match || !match[1] || !match[2]) return null;
+  return { order: parseInt(match[1], 10), name: match[2] };
+}
 
 /**
  * Get the chapter display name for a recipe.

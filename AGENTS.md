@@ -19,8 +19,8 @@ Start by reading @README.md
 - Don't force types. Don't use patterns like `any` or `as Type` with typescript.
 - Imports within the Next.js web-app (`apps/web/`) should use `#/...` subpath imports for local files. For data and types, import from `@cocktails/data`.
 - Always use `ts-pattern` when matching on types. (instead of `switch` or `if`)
-- Don't re-export from modules. Import directly from the original source.
-- Only export functions that are actually used. Don't pre-export "for future use" - that's dead code.
+- Don't re-export from modules or packages. Import directly from the original source. Packages should never re-export each other's exports.
+- Only export functions that are actually used. Don't pre-export "for future use" - that's dead code. If a utility is only used within one package or app, keep it there instead of exporting from a shared package.
 - Inline types that won't be reused instead of creating separate type definitions.
 - Handle null/undefined inside functions rather than requiring callers to handle it.
 - Trim string outputs when building search text or similar concatenated strings.
@@ -188,21 +188,21 @@ packages/youtube-sync/
 
 The data package has multiple entry points via subpath exports:
 
-- `@cocktails/data` - Types and pure functions (safe for both server and client)
+- `@cocktails/data` - Types only (safe for both server and client)
 - `@cocktails/data/recipes` - Recipe loading functions (server-side only)
 - `@cocktails/data/ingredients` - Ingredient loading functions (server-side only)
 - `@cocktails/data/categories` - Category loading functions (server-side only)
 - `@cocktails/data/sources` - Source loading functions (server-side only)
 - `@cocktails/data/params` - URL parameter utilities (server-side only)
 
-### Types and Pure Functions (Client-safe)
+### Types (Client-safe)
 
 ```ts
 // Import types from the main entry point
 import type { Recipe, Category, RootIngredient } from '@cocktails/data';
 
-// Pure functions (no Node.js dependencies) also come from main entry
-import { compareIngredients, parseChapterFolder } from '@cocktails/data';
+// Import from original packages, not re-exports
+import { compareIngredients } from '@cocktails/ingredient-sorting';
 ```
 
 ### Data Loading Functions (Server Components Only)
