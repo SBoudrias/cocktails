@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "lint": "tsc --noEmit",
     "youtube-sync": "node src/youtube-sync.ts"
   },
   "dependencies": {
