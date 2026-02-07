@@ -67,7 +67,7 @@ export default function Quantity({
   let displayAmount: number | string = amount;
 
   if (unitType[unit] === 'imperial') {
-    const rounded = roundToFriendlyFraction(amount);
+    const rounded = roundToFriendlyFraction(amount, unit);
     const base = Math.floor(rounded);
     const fraction = Math.round((rounded - base + Number.EPSILON) * 100) / 100;
 
