@@ -1,4 +1,0 @@
-:HL["/cocktails/pr-preview/pr-131/_next/static/chunks/fc984b128ece35d6.css","style"]
-:HL["/cocktails/pr-preview/pr-131/_next/static/media/ce62453a442c7f35-s.p.a9507876.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/cocktails/pr-preview/pr-131/_next/static/chunks/d57f7b2abd1198ef.css","style"]
-0:{"buildId":"j8w4i522GLXDF1tGAzSSd","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"category","paramType":null,"paramKey":"category","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"lychee-liqueur","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
