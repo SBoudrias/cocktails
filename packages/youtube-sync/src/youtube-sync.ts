@@ -1,6 +1,6 @@
 #!/usr/bin/env -S node --no-warnings
 
-import { YOUTUBE_CHANNEL_ROOT } from '@cocktails/data';
+import { YOUTUBE_CHANNEL_ROOT } from '@cocktails/data/constants';
 import { Command } from 'commander';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';

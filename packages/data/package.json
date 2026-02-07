@@ -9,6 +9,7 @@
     "./categories": "./src/modules/categories.ts",
     "./ingredients": "./src/modules/ingredients.ts",
     "./sources": "./src/modules/sources.ts",
+    "./constants": "./src/modules/constants.ts",
     "./params": "./src/modules/params.ts",
     "./schemas/*": "./schemas/*"
   },
