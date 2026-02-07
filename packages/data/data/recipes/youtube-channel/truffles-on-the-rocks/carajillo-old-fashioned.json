@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/recipe.schema.json",
+  "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Carajillo Old Fashioned",
   "preparation": "stirred",
   "served_on": "big rock",
@@ -49,6 +49,10 @@
     {
       "type": "youtube",
       "videoId": "DUDT6sSnDrE"
+    },
+    {
+      "type": "youtube",
+      "videoId": "5FY4ExZh6NQ"
     }
   ]
 }

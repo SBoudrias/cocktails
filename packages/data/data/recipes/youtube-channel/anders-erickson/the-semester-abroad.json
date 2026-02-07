@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Semester Abroad",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Forester 100 Proof Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Express orange oil over the drink and garnish with the peel."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "JIQ_UNrQZR8",
+      "start": 248
+    }
+  ]
+}
