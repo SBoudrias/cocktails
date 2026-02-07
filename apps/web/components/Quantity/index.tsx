@@ -4,6 +4,7 @@ import type { RecipeIngredient } from '@cocktails/data';
 import { Stack } from '@mui/material';
 import { match } from 'ts-pattern';
 import { convertQuantityToMl, convertQuantityToOz } from '#/modules/conversion';
+import { roundToFriendlyFraction, roundToFriendlyMl } from '#/modules/friendly-rounding';
 import styles from './style.module.css';
 
 const displayFraction: Record<number, string> = {
@@ -34,21 +35,21 @@ const displayFraction: Record<number, string> = {
 
 const unitType: Record<
   RecipeIngredient['quantity']['unit'],
-  'imperial' | 'metric' | 'other'
+  'imperial' | 'metric' | 'counting'
 > = {
   oz: 'imperial',
   tsp: 'imperial',
   tbsp: 'imperial',
   cup: 'imperial',
+  unit: 'imperial',
   ml: 'metric',
-  bottle: 'other',
-  dash: 'other',
-  drop: 'other',
-  gram: 'other',
-  pinch: 'other',
-  spray: 'other',
-  unit: 'other',
-  part: 'other',
+  bottle: 'counting',
+  dash: 'counting',
+  drop: 'counting',
+  gram: 'counting',
+  pinch: 'counting',
+  spray: 'counting',
+  part: 'counting',
 };
 
 export default function Quantity({
@@ -64,19 +65,24 @@ export default function Quantity({
     .exhaustive();
 
   let displayAmount: number | string = amount;
-  const base = Math.floor(amount);
-  const fraction = Math.round((amount - base + Number.EPSILON) * 100) / 100;
 
-  // Display with a fraction
-  if (unit === 'unit' || (unitType[unit] === 'imperial' && amount % 1 !== 0)) {
-    if (displayFraction[fraction] != null) {
+  if (unitType[unit] === 'imperial') {
+    const rounded = roundToFriendlyFraction(amount, unit);
+    const base = Math.floor(rounded);
+    const fraction = Math.round((rounded - base + Number.EPSILON) * 100) / 100;
+
+    if (fraction === 0) {
+      displayAmount = base;
+    } else if (displayFraction[fraction] != null) {
       displayAmount =
         base > 0 ? `${base} ${displayFraction[fraction]}` : displayFraction[fraction];
+    } else {
+      displayAmount = rounded;
     }
   } else if (unitType[unit] === 'metric') {
-    const roundingFactor = fraction >= 0.8 ? 1 : 100;
-    displayAmount =
-      Math.round((amount + Number.EPSILON) * roundingFactor) / roundingFactor;
+    displayAmount = roundToFriendlyMl(amount);
+  } else {
+    displayAmount = Math.round(amount);
   }
 
   return (
