@@ -10,15 +10,17 @@
       "description": "The name of the channel",
       "type": "string"
     },
-    "link": {
-      "description": "Link to the channel homepage",
-      "type": "string"
+    "links": {
+      "description": "Links to the channel pages",
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
     },
     "description": {
       "description": "Description of the channel content",
       "type": "string"
     }
   },
-  "required": ["name", "link", "description"],
+  "required": ["name", "links", "description"],
   "additionalProperties": false
 }

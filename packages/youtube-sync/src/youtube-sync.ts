@@ -1,6 +1,6 @@
 #!/usr/bin/env -S node --no-warnings
 
-import { YOUTUBE_CHANNEL_ROOT } from '@cocktails/data/constants';
+import { RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT } from '@cocktails/data/constants';
 import { Command } from 'commander';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
@@ -14,7 +14,7 @@ const ISSUE_LABELS = ['youtube', 'automation'];
 interface ChannelSource {
   slug: string;
   name: string;
-  link: string;
+  links: string[];
 }
 
 interface Video {
@@ -22,12 +22,13 @@ interface Video {
   title: string;
   url: string;
   upload_date: string;
+  duration?: number; // Duration in seconds
 }
 
 interface NewVideosForChannel {
   channelSlug: string;
   channelName: string;
-  channelUrl: string;
+  channelUrls: string[];
   videos: Video[];
 }
 
@@ -41,6 +42,7 @@ interface YtDlpOutput {
     title: string;
     url?: string;
     upload_date: string;
+    duration?: number;
   }>;
 }
 
@@ -78,7 +80,7 @@ async function getTrackedChannels(): Promise<ChannelSource[]> {
       channels.push({
         slug: entry,
         name: sourceData.name,
-        link: sourceData.link,
+        links: sourceData.links,
       });
     } catch {
       // Skip directories without _source.json
@@ -119,6 +121,7 @@ function fetchChannelVideosYtDlp(channelUrl: string, playlistEnd = 100): Video[]
         title: entry.title,
         url: entry.url || `https://youtube.com/watch?v=${entry.id}`,
         upload_date: entry.upload_date,
+        duration: entry.duration,
       }));
   } catch (error) {
     throw new Error(`Failed to fetch videos: ${(error as Error).message}`);
@@ -154,37 +157,45 @@ async function fetchChannelVideos(
 }
 
 /**
- * Get all existing video IDs for a channel by scanning recipe files
+ * Get all existing video IDs by scanning the entire recipes directory tree.
+ * This catches videos referenced under any channel or book source.
  */
-async function getExistingVideoIds(channelSlug: string): Promise<Set<string>> {
+async function getAllExistingVideoIds(): Promise<Set<string>> {
   const videoIds = new Set<string>();
-  const channelPath = path.join(YOUTUBE_CHANNEL_ROOT, channelSlug);
 
-  try {
-    const files = await fs.readdir(channelPath);
+  async function scanDirectory(dirPath: string): Promise<void> {
+    const entries = await fs.readdir(dirPath, { withFileTypes: true });
 
-    for (const file of files) {
-      if (file === '_source.json' || !file.endsWith('.json')) continue;
+    for (const entry of entries) {
+      const fullPath = path.join(dirPath, entry.name);
 
-      const recipePath = path.join(channelPath, file);
-      const recipe = JSON.parse(await fs.readFile(recipePath, 'utf-8')) as RecipeWithRefs;
-
-      for (const ref of recipe.refs ?? []) {
-        if (ref.type === 'youtube' && ref.videoId) {
-          videoIds.add(ref.videoId);
+      if (entry.isDirectory()) {
+        await scanDirectory(fullPath);
+      } else if (entry.name.endsWith('.json') && entry.name !== '_source.json') {
+        try {
+          const recipe = JSON.parse(
+            await fs.readFile(fullPath, 'utf-8'),
+          ) as RecipeWithRefs;
+          for (const ref of recipe.refs ?? []) {
+            if (ref.type === 'youtube' && ref.videoId) {
+              videoIds.add(ref.videoId);
+            }
+          }
+        } catch {
+          // Skip files that can't be parsed
         }
       }
     }
-  } catch {
-    // Channel directory doesn't exist or is empty
   }
 
+  await scanDirectory(RECIPE_ROOT);
   return videoIds;
 }
 
 /**
  * Filter videos to find new ones that don't have recipes yet
- * and were uploaded within the specified timeframe
+ * and were uploaded within the specified timeframe.
+ * Also filters out YouTube Shorts (videos ≤ 60 seconds).
  */
 function findNewVideos(
   allVideos: Video[],
@@ -198,6 +209,9 @@ function findNewVideos(
     .filter((video) => {
       // Exclude videos that already have recipes
       if (existingIds.has(video.id)) return false;
+
+      // Filter out YouTube Shorts (≤ 60 seconds)
+      if (video.duration != null && video.duration <= 60) return false;
 
       // Skip videos without upload date
       if (!video.upload_date) return false;
@@ -215,40 +229,31 @@ function findNewVideos(
 }
 
 /**
- * Format the issue body in Markdown
+ * Format the issue body as an actionable AI agent prompt
  */
 function formatIssueBody(newVideos: NewVideosForChannel[]): string {
   const lines = [
-    '## New Videos from Tracked Channels',
+    'Process the new YouTube videos listed below. For each video:',
     '',
-    "This issue tracks new videos from our YouTube channels that don't have recipes yet.",
+    '1. Use the `youtube` skill to fetch the video metadata.',
+    '2. Skip non-recipe content (vlogs, Q&As, gear reviews, rankings, etc.)',
+    '3. Check if a recipe with that name already exists in the codebase.',
+    '   - If the existing recipe uses very similar proportions and ingredients, add the video to its `refs` array.',
+    '   - If the recipe differs significantly (different proportions or ingredients), create a new recipe with a unique slug.',
+    '4. For new cocktail recipes, use the `create-recipes` skill to create the recipe file.',
     '',
   ];
 
   for (const channel of newVideos) {
-    const videoCount = channel.videos.length;
-    const videoLabel = videoCount === 1 ? 'video' : 'videos';
-    lines.push(
-      `### [${channel.channelName}](${channel.channelUrl}) - ${videoCount} new ${videoLabel}`,
-      '',
-    );
+    const channelLinks = channel.channelUrls.map((url) => `[link](${url})`).join(', ');
+    lines.push(`## ${channel.channelName} (${channelLinks})`, '');
 
     for (const video of channel.videos) {
-      // Format date as YYYY-MM-DD
-      const year = video.upload_date.slice(0, 4);
-      const month = video.upload_date.slice(4, 6);
-      const day = video.upload_date.slice(6, 8);
-      const formattedDate = `${year}-${month}-${day}`;
-
-      lines.push(
-        `- **[${video.title}](${video.url})** (${formattedDate}) - \`videoId: ${video.id}\``,
-      );
+      lines.push(`- [${video.title}](${video.url})`);
     }
 
     lines.push('');
   }
-
-  lines.push('---', 'Generated automatically by youtube-sync workflow');
 
   return lines.join('\n');
 }
@@ -330,6 +335,12 @@ async function main(): Promise<void> {
   logger.item(`Found ${channels.length} channel(s)`);
   logger.footer();
 
+  // Build global set of existing video IDs across all recipe sources
+  logger.header('📚 Scanning existing recipes for video IDs...');
+  const existingIds = await getAllExistingVideoIds();
+  logger.item(`Found ${existingIds.size} existing video references`);
+  logger.footer();
+
   // Process each channel
   const allNewVideos: NewVideosForChannel[] = [];
 
@@ -337,25 +348,33 @@ async function main(): Promise<void> {
     logger.header(`🔍 Processing: ${channel.name}`);
 
     try {
-      // Fetch recent videos from YouTube
-      logger.item('Fetching recent videos from YouTube...');
-      const allVideos = await fetchChannelVideos(channel.link);
-      logger.item(`Found ${allVideos.length} recent videos`);
+      // Fetch recent videos from all channel links and merge
+      const allVideos: Video[] = [];
+      for (const link of channel.links) {
+        logger.item(`Fetching recent videos from ${link}...`);
+        const videos = await fetchChannelVideos(link);
+        allVideos.push(...videos);
+      }
 
-      // Get existing video IDs
-      logger.item('Reading existing recipes...');
-      const existingIds = await getExistingVideoIds(channel.slug);
-      logger.item(`Found ${existingIds.size} existing recipes`);
+      // Deduplicate by video ID (in case same video appears via multiple channel links)
+      const seen = new Set<string>();
+      const uniqueVideos = allVideos.filter((video) => {
+        if (seen.has(video.id)) return false;
+        seen.add(video.id);
+        return true;
+      });
+
+      logger.item(`Found ${uniqueVideos.length} recent videos`);
 
       // Find new videos from the specified timeframe
-      const newVideos = findNewVideos(allVideos, existingIds, maxAgeDays);
+      const newVideos = findNewVideos(uniqueVideos, existingIds, maxAgeDays);
       logger.item(`Found ${newVideos.length} new video(s) from last ${maxAgeDays} days`);
 
       if (newVideos.length > 0) {
         allNewVideos.push({
           channelSlug: channel.slug,
           channelName: channel.name,
-          channelUrl: channel.link,
+          channelUrls: channel.links,
           videos: newVideos,
         });
       }

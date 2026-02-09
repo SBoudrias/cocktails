@@ -1,8 +1,23 @@
-import type { Recipe } from '@cocktails/data';
+import type { Recipe, Source } from '@cocktails/data';
 import { describe, it, expect } from 'vitest';
 import { getRecipeAttribution } from './getRecipeAttribution';
 
 let recipeCounter = 0;
+
+function mockSource(type: Source['type']): Source {
+  const base = {
+    name: 'Test Source',
+    slug: 'test-source',
+    description: 'Test description',
+    recipeAmount: 1,
+  } as const;
+
+  if (type === 'youtube-channel') {
+    return { ...base, type, links: ['https://example.com'] };
+  }
+
+  return { ...base, type, link: 'https://example.com' };
+}
 
 const mockRecipe = (
   name: string,
@@ -11,14 +26,7 @@ const mockRecipe = (
 ): Recipe => ({
   name,
   slug: `recipe-${++recipeCounter}`,
-  source: {
-    type: sourceType,
-    name: 'Test Source',
-    slug: 'test-source',
-    link: 'https://example.com',
-    description: 'Test description',
-    recipeAmount: 1,
-  },
+  source: mockSource(sourceType),
   attributions,
   ingredients: [],
   preparation: 'shaken',
