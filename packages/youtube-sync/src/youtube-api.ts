@@ -2,6 +2,7 @@
  * YouTube Data API v3 client for fetching video metadata
  * Docs: https://developers.google.com/youtube/v3/docs
  */
+import { parse, toSeconds } from 'iso8601-duration';
 
 export interface Video {
   id: string;
@@ -54,20 +55,6 @@ interface YouTubeVideosResponse {
 }
 
 /**
- * Parse ISO 8601 duration (e.g. "PT1M30S") to seconds
- */
-function parseISO8601Duration(duration: string): number {
-  const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-  if (!match) return 0;
-
-  const hours = Number.parseInt(match[1] ?? '0');
-  const minutes = Number.parseInt(match[2] ?? '0');
-  const seconds = Number.parseInt(match[3] ?? '0');
-
-  return hours * 3600 + minutes * 60 + seconds;
-}
-
-/**
  * Fetch video durations in batch using the Videos API
  * The API allows up to 50 IDs per request
  */
@@ -97,7 +84,7 @@ async function fetchVideoDurations(
     const data = (await response.json()) as YouTubeVideosResponse;
 
     for (const item of data.items) {
-      durations.set(item.id, parseISO8601Duration(item.contentDetails.duration));
+      durations.set(item.id, toSeconds(parse(item.contentDetails.duration)));
     }
   }
 

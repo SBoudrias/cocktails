@@ -1,6 +1,9 @@
 {
   "$schema": "../../../schemas/youtube-channel.schema.json",
   "name": "Spike's Breezeway Cocktail Hour",
-  "links": ["https://www.youtube.com/@BreezewayCocktailHour"],
+  "links": [
+    "https://www.youtube.com/@BreezewayCocktailHour",
+    "https://www.youtube.com/@TikiCocktails"
+  ],
   "description": "Tiki enthusiast Spike shares his love of tropical cocktails and the culture that surrounds them."
 }

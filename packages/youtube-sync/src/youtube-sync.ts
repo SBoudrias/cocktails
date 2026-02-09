@@ -237,7 +237,9 @@ function formatIssueBody(newVideos: NewVideosForChannel[]): string {
     '',
     '1. Use the `youtube` skill to fetch the video metadata.',
     '2. Skip non-recipe content (vlogs, Q&As, gear reviews, rankings, etc.)',
-    "3. Check if a recipe with that name already exists in the codebase. If it does, add the video to the existing recipe's `refs` array (same recipes get uploaded by multiple channels).",
+    '3. Check if a recipe with that name already exists in the codebase.',
+    '   - If the existing recipe uses very similar proportions and ingredients, add the video to its `refs` array.',
+    '   - If the recipe differs significantly (different proportions or ingredients), create a new recipe with a unique slug.',
     '4. For new cocktail recipes, use the `create-recipes` skill to create the recipe file.',
     '',
   ];

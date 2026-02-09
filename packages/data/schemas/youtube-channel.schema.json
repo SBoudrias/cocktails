@@ -13,7 +13,8 @@
     "links": {
       "description": "Links to the channel pages",
       "type": "array",
-      "items": { "type": "string" }
+      "items": { "type": "string" },
+      "minItems": 1
     },
     "description": {
       "description": "Description of the channel content",

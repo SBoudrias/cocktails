@@ -378,6 +378,7 @@ __metadata:
   dependencies:
     "@cocktails/data": "workspace:*"
     commander: "npm:^14.0.2"
+    iso8601-duration: "npm:^2.1.3"
   languageName: unknown
   linkType: soft
 
@@ -4591,6 +4592,13 @@ __metadata:
   version: 3.1.1
   resolution: "isexe@npm:3.1.1"
   checksum: 10c0/9ec257654093443eb0a528a9c8cbba9c0ca7616ccb40abd6dde7202734d96bb86e4ac0d764f0f8cd965856aacbff2f4ce23e730dc19dfb41e3b0d865ca6fdcc7
+  languageName: node
+  linkType: hard
+
+"iso8601-duration@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "iso8601-duration@npm:2.1.3"
+  checksum: 10c0/fab3b77815e810bd0d30ff0bd00987a0f0f5763ca3056578bbac29f794edacdf02c6f9c3a48f2beff9d7850fd8169ffc5fb28801ca5ffaf67b472b4e07e10493
   languageName: node
   linkType: hard
 
