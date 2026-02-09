@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/youtube-channel.schema.json",
   "name": "Anders Erickson",
-  "link": "https://www.youtube.com/@AndersErickson",
+  "links": ["https://www.youtube.com/@AndersErickson"],
   "description": "Hi 👋 I'm Anders and I worked professionally behind bars for 20 years. I've decided to combine my passion for making good drinks with my love of teaching, storytelling, and videography by creating this channel!"
 }

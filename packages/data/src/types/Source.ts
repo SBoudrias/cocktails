@@ -11,7 +11,7 @@ export type YoutubeChannel = {
   type: 'youtube-channel';
   name: string;
   slug: string;
-  link: string;
+  links: string[];
   description: string;
   recipeAmount: number;
 };
