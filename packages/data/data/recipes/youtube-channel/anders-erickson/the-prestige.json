@@ -30,18 +30,18 @@
       }
     },
     {
-      "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Flor de Caña 7 Year",
       "type": "spirit",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     }

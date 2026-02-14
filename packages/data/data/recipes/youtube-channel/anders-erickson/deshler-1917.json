@@ -47,7 +47,7 @@
     },
     {
       "name": "Dubonnet Rouge",
-      "type": "liqueur",
+      "type": "wine",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

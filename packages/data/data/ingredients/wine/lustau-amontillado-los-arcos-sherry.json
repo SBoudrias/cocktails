@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
   "name": "Lustau Amontillado Los Arcos Sherry",
-  "type": "liqueur",
+  "type": "wine",
   "categories": ["Sherry (Amontillado)"]
 }

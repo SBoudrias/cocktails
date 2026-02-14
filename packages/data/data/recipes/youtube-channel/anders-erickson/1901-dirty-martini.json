@@ -33,18 +33,18 @@
       }
     },
     {
-      "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Plymouth Gin",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     }

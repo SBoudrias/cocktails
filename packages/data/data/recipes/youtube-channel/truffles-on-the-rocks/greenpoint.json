@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Cocchi Vermouth di Torino",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Yellow Chartreuse",
       "type": "liqueur",
       "quantity": {
@@ -42,6 +34,14 @@
       "type": "category",
       "quantity": {
         "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     }

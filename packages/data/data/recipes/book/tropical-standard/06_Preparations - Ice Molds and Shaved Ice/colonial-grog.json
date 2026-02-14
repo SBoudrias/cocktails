@@ -54,14 +54,6 @@
       }
     },
     {
-      "name": "Noilly Prat Extra Dry Vermouth",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Ron Navazos Palazzi Oloroso Cask Strength Rum",
       "type": "spirit",
       "quantity": {
@@ -74,6 +66,14 @@
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Noilly Prat Extra Dry Vermouth",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     }

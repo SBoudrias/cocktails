@@ -39,14 +39,6 @@
       }
     },
     {
-      "name": "Sherry (Oloroso)",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Pisco",
       "type": "category",
       "quantity": {
@@ -59,6 +51,14 @@
       "type": "category",
       "quantity": {
         "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Oloroso)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     }

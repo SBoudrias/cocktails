@@ -62,16 +62,16 @@
       }
     },
     {
-      "name": "Sherry (Amontillado)",
-      "type": "category",
+      "name": "Elements Eight Vendôme",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Elements Eight Vendôme",
-      "type": "spirit",
+      "name": "Sherry (Amontillado)",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"

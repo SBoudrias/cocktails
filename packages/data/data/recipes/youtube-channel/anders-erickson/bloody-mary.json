@@ -46,14 +46,6 @@
       }
     },
     {
-      "name": "Lustau Amontillado Los Arcos Sherry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Vodka",
       "type": "category",
       "quantity": {
@@ -67,6 +59,14 @@
       "quantity": {
         "amount": 0.25,
         "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
       }
     }
   ],

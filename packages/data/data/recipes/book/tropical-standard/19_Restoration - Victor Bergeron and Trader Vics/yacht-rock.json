@@ -46,14 +46,6 @@
       }
     },
     {
-      "name": "Comoz Blanc Vermouth de Chambéry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Campari",
       "type": "liqueur",
       "quantity": {
@@ -74,6 +66,14 @@
       "type": "spirit",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Comoz Blanc Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     }

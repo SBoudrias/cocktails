@@ -30,14 +30,6 @@
       }
     },
     {
-      "name": "Emilio Hidalgo \"Morenita\" Cream Sherry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Krogstad Aquavit",
       "type": "spirit",
       "quantity": {
@@ -58,6 +50,14 @@
       "type": "spirit",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Emilio Hidalgo \"Morenita\" Cream Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },

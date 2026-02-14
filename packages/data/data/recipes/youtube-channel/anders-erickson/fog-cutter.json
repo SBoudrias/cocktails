@@ -46,18 +46,18 @@
       }
     },
     {
-      "name": "Lustau Amontillado Los Arcos Sherry",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "The Real McCoy 3 Year",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

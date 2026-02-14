@@ -31,16 +31,16 @@
       }
     },
     {
-      "name": "Fonsecca Bin 27 Ruby Port",
-      "type": "liqueur",
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Maison Rouge VSOP Cognac",
-      "type": "spirit",
+      "name": "Fonsecca Bin 27 Ruby Port",
+      "type": "wine",
       "quantity": {
         "amount": 1,
         "unit": "oz"

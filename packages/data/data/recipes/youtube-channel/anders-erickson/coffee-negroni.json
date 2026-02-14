@@ -7,7 +7,7 @@
   "ingredients": [
     {
       "name": "Cocchi Vermouth di Torino",
-      "type": "liqueur",
+      "type": "wine",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"

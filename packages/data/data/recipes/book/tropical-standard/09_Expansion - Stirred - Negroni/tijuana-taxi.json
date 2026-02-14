@@ -38,8 +38,16 @@
       }
     },
     {
+      "name": "Del Maguey Chichicapa Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Noilly Prat Extra Dry Vermouth",
-      "type": "liqueur",
+      "type": "wine",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -47,15 +55,7 @@
     },
     {
       "name": "Mattei Cap Corse Blanc Quinquina",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Del Maguey Chichicapa Mezcal",
-      "type": "spirit",
+      "type": "wine",
       "quantity": {
         "amount": 1,
         "unit": "oz"

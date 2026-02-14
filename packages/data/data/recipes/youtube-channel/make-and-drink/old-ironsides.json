@@ -30,18 +30,18 @@
       }
     },
     {
-      "name": "Sweet vermouth",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Scarlet Ibis Trinidad Rum",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

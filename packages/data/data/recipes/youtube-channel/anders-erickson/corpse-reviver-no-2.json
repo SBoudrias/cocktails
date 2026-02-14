@@ -30,16 +30,16 @@
       }
     },
     {
-      "name": "Cocchi Americano",
-      "type": "liqueur",
+      "name": "London Dry Gin",
+      "type": "category",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "London Dry Gin",
-      "type": "category",
+      "name": "Cocchi Americano",
+      "type": "wine",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

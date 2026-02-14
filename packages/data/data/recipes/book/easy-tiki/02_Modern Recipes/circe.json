@@ -38,18 +38,18 @@
       }
     },
     {
-      "name": "Sherry (Manzanilla)",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Batavia Arrack van Oosten",
       "type": "spirit",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Manzanilla)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     }

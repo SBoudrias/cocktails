@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Cocchi Vermouth di Torino",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Rittenhouse Rye",
       "type": "spirit",
       "quantity": {
         "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

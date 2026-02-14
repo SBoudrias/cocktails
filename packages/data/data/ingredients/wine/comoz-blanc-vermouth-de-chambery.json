@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Contratto Bianco",
-  "type": "liqueur",
+  "name": "Comoz Blanc Vermouth de Chambéry",
+  "type": "wine",
   "categories": ["Blanc vermouth"]
 }
