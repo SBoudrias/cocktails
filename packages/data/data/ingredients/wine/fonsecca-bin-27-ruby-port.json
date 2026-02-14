@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
   "name": "Fonsecca Bin 27 Ruby Port",
-  "type": "liqueur",
+  "type": "wine",
   "categories": ["Ruby Port"]
 }

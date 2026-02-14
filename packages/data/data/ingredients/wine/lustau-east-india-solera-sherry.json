@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Emilio Hidalgo \"Morenita\" Cream Sherry",
-  "type": "liqueur",
+  "name": "Lustau East India Solera Sherry",
+  "type": "wine",
   "categories": ["Sherry (Cream)"]
 }

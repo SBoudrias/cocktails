@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
   "name": "Carpano Antica Formula Vermouth",
-  "type": "liqueur",
+  "type": "wine",
   "categories": ["Sweet vermouth"]
 }

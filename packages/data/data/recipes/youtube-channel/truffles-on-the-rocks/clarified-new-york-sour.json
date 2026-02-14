@@ -30,18 +30,18 @@
       }
     },
     {
-      "name": "Wild Turkey 101",
-      "type": "spirit",
-      "quantity": {
-        "amount": 10,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Red Wine",
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Wild Turkey 101",
+      "type": "spirit",
+      "quantity": {
+        "amount": 10,
         "unit": "oz"
       }
     }

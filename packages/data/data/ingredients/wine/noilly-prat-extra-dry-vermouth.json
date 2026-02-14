@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
   "name": "Noilly Prat Extra Dry Vermouth",
-  "type": "liqueur",
+  "type": "wine",
   "categories": ["Dry vermouth"]
 }

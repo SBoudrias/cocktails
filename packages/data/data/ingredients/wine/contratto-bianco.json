@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Dolin Blanc Vermouth de Chambéry",
-  "type": "liqueur",
+  "name": "Contratto Bianco",
+  "type": "wine",
   "categories": ["Blanc vermouth"]
 }

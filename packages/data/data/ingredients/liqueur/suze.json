@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
-  "name": "PX sherry",
+  "name": "Suze",
   "type": "liqueur",
-  "categories": ["Sherry"]
+  "categories": ["Gentian liqueur"]
 }

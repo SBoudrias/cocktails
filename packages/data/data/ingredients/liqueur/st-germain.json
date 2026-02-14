@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Cocchi Americano",
+  "name": "St-Germain",
   "type": "liqueur",
-  "categories": ["Blanc vermouth"]
+  "categories": ["Elderflower liqueur"]
 }

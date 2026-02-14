@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Lillet Rouge",
-  "type": "liqueur",
+  "type": "wine",
   "categories": ["Quinquina"]
 }

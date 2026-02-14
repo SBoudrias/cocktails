@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Dolin Sweet Vermouth de Chambéry",
-  "type": "liqueur",
+  "name": "Cocchi Vermouth di Torino",
+  "type": "wine",
   "categories": ["Sweet vermouth"]
 }
