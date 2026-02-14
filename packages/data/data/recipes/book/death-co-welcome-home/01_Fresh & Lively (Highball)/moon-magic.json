@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Moon Magic",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Terra Spice Birch Extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fusion Verjus Blanc",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum JM VSOP",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Park Pineau des Charentes",
+      "type": "wine",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cava",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour cava into a wine glass.",
+    "Add remaining ingredients.",
+    "Fill with ice cubes and stir once.",
+    "Garnish with 1 edible flower."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Jump"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Alex Day"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 185
+    }
+  ]
+}

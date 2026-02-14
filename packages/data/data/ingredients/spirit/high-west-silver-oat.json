@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "High West Silver Oat",
+  "type": "spirit",
+  "categories": ["Whiskey"]
+}

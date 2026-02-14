@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Banquo's Ghost",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Bitter End Moroccan Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lactart",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Coconut water",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Compass Box Great King Street Glasgow Blend",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mezcal Vago Elote",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Chill all ingredients.",
+    "Combine in a carbonation bottle and charge with CO₂.",
+    "Gently shake to dissolve CO₂.",
+    "Refrigerate at least 20 minutes (preferably 12 hours).",
+    "Pour into glass filled with ice cubes.",
+    "Express grapefruit twist over drink and insert."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 177
+    }
+  ]
+}

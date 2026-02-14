@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Guillon-Painturaud VSOP",
+  "type": "spirit",
+  "categories": ["Cognac"]
+}

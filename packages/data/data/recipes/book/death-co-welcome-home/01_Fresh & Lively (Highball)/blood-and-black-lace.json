@@ -1,0 +1,90 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Blood & Black Lace",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne Acid Solution",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Crème de Mûre",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Forester 100",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ramazzotti Amaro",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "dry sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Chill all ingredients.",
+    "Combine in a carbonation bottle and charge with CO₂.",
+    "Gently shake to dissolve CO₂.",
+    "Refrigerate at least 20 minutes (preferably 12 hours).",
+    "Pour into chilled flute."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Shannon Tebay"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 178
+    }
+  ]
+}

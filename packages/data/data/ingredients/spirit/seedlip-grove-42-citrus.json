@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Seedlip Grove 42 Citrus",
+  "type": "spirit"
+}

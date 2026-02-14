@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Forthave Spirits Marseille Amaro",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}

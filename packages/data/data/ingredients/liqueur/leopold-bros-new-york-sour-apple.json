@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Leopold Bros. New York Sour Apple",
+  "type": "liqueur"
+}

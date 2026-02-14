@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Gatekeeper",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Malic Acid Solution",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Celery syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cyril Zangs 00 Apple Cider Eau-de-Vie",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cadenhead's Old Raj Blue Label Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mattei Cap Corse Blanc Quinquina",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "dry sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Chill all ingredients.",
+    "Combine in a carbonation bottle and charge with CO₂.",
+    "Gently shake to dissolve CO₂.",
+    "Refrigerate at least 20 minutes (preferably 12 hours).",
+    "Pour into chilled flute.",
+    "Garnish with an apple slice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Shannon Tebay"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 181
+    }
+  ]
+}

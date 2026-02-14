@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bonal Gentiane-Quina",
+  "type": "liqueur",
+  "categories": ["Quinquina"]
+}

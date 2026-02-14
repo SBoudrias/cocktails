@@ -7,7 +7,7 @@
   "ingredients": [
     {
       "name": "Verjus",
-      "type": "other",
+      "type": "category",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

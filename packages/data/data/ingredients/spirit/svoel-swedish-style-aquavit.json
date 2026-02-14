@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Svöl Swedish Style Aquavit",
+  "type": "spirit",
+  "categories": ["Aquavit"]
+}

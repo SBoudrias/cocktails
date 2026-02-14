@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Lillet Blanc",
+  "type": "liqueur",
+  "categories": ["Blanc vermouth"]
+}

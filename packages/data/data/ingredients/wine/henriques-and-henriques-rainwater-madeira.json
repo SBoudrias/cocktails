@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Henriques & Henriques Rainwater Madeira",
+  "type": "wine",
+  "categories": ["Madeira wine"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Isastegi Spanish cider",
+  "type": "beer",
+  "categories": ["dry apple cider"]
+}

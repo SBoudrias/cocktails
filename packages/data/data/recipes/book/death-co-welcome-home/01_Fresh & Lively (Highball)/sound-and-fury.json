@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Sound and Fury",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "red bell pepper juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Raspberry syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Ancho Reyes Ancho Chile Liqueur",
+      "type": "liqueur",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Calle 23 Blanco",
+      "type": "spirit",
+      "quantity": { "amount": 2, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "Rub a lime wedge along the upper 1/2 inch of a collins glass, halfway around the circumference, then roll the wet portion in Aleppo salt (equal parts Aleppo pepper and kosher salt).",
+    "Shake remaining ingredients with ice, strain into the glass, and fill with ice cubes.",
+    "Garnish with a lime wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 189
+    }
+  ]
+}

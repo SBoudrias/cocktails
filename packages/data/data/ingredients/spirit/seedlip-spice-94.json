@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Seedlip Spice 94",
+  "type": "spirit"
+}

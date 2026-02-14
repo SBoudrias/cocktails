@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Whateverest",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": { "technique": "muddled" },
+      "quantity": { "amount": 2, "unit": "unit" }
+    },
+    {
+      "name": "Bitter Truth Celery Bitters",
+      "type": "bitter",
+      "quantity": { "amount": 1, "unit": "dash" }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Gamle Ode Dill Aquavit",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chamb\u00e9ry",
+      "type": "wine",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Tapatio 110 Proof Blanco",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "In a shaker, gently muddle the cucumber slices. Add remaining ingredients and shake with ice. Double strain into a collins glass filled with ice cubes.",
+    "Garnish with a cucumber slice."
+  ],
+  "attributions": [
+    { "relation": "recipe author", "source": "Jarred Weigand" },
+    { "relation": "bar", "source": "Death & Co", "location": "New York, NY" }
+  ],
+  "refs": [{ "type": "book", "title": "death-co-welcome-home", "page": 191 }]
+}

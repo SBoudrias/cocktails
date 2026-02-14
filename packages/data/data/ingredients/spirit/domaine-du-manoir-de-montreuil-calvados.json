@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Domaine du Manoir de Montreuil Calvados",
+  "type": "spirit",
+  "categories": ["Calvados"]
+}

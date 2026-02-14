@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Stillwater Nu-Tropic IPA",
+  "type": "beer",
+  "categories": ["IPA"]
+}

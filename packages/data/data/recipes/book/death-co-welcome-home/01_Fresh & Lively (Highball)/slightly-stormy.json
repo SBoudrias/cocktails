@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Slightly Stormy",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Jameson",
+      "type": "spirit",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    },
+    {
+      "name": "tonic water",
+      "type": "category",
+      "quantity": { "amount": 1, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "Pour tonic into a collins glass.",
+    "Short shake remaining ingredients with ice (about 5 seconds), then strain into the glass.",
+    "Fill with ice cubes.",
+    "Garnish with a piece of ginger candy on a skewer."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Jump"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Dave Anderson"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Jon Feuersanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 189
+    }
+  ]
+}

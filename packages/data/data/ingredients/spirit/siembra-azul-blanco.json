@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Siembra Azul Blanco",
+  "type": "spirit",
+  "categories": ["Tequila (Blanco)"]
+}

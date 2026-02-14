@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Carpano Bianco Vermouth",
+  "type": "liqueur",
+  "categories": ["Blanc vermouth"]
+}

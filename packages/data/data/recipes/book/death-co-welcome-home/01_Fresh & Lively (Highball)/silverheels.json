@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Silverheels",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Bittermens' elemakule tiki bitters",
+      "type": "bitter",
+      "quantity": { "amount": 2, "unit": "dash" }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Clear Creek 2 Year Apple Brandy",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "High West Silver Oat",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "dry apple cider",
+      "type": "category",
+      "quantity": { "amount": 2, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "Pour cider into a footed pilsner glass.",
+    "Combine remaining ingredients in a shaker and whip (shake with a few pieces of crushed ice just until incorporated).",
+    "Dump into the glass and fill with crushed ice.",
+    "Garnish with an apple slice and a mint bouquet; serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jon Feuersanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 189
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Lemorton Selection Calvados Domfrontais",
+  "type": "spirit",
+  "categories": ["Calvados"]
+}

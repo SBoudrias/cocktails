@@ -1,0 +1,90 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Outrigger",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Terra Spice Cola Extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Acid phosphate",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Tamarind Demerara Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ramazzotti Amaro",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Tesoro Reposado",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour seltzer into a collins glass.",
+    "Short shake remaining ingredients.",
+    "Strain into the glass.",
+    "Fill with ice cubes.",
+    "Garnish with a lime wedge."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 186
+    }
+  ]
+}
