@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Amrut Cask Strength",
+  "type": "spirit",
+  "categories": ["Whiskey"]
+}

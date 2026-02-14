@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "St. George Spiced Pear",
+  "type": "liqueur",
+  "categories": ["Pear liqueur"]
+}

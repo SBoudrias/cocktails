@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Salers Gentian Apéritif",
+  "type": "liqueur",
+  "categories": ["Gentian liqueur"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Emile Pernot Liqueur de Sapin",
+  "type": "liqueur",
+  "categories": ["Stone pine liqueur"]
+}

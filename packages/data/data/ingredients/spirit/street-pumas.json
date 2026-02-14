@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Street Pumas",
+  "type": "spirit",
+  "categories": ["Whisky (Blended Scotch)"]
+}

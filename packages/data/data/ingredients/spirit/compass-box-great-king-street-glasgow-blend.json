@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Compass Box Great King Street Glasgow Blend",
+  "type": "spirit",
+  "categories": ["Whisky (Blended Scotch)"]
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Miracle Mile Redeye Bitters",
+  "type": "bitter"
+}

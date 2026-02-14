@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Lo-Fi Gentian Amaro",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}

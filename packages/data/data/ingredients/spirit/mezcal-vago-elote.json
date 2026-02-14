@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mezcal Vago Elote",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Clear Creek 2 Year Apple Brandy",
+  "type": "spirit",
+  "categories": ["Brandy (Apple)"]
+}

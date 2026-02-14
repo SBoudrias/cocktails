@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Paul Beau VS",
+  "type": "spirit",
+  "categories": ["Cognac"]
+}

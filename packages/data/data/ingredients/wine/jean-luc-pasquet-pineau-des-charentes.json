@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Jean-Luc Pasquet Pineau des Charentes",
+  "type": "wine"
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Chateau La Fleur d'Or Sauternes",
+  "type": "wine"
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Clear Creek Douglas Fir Eau-de-Vie",
+  "type": "spirit"
+}

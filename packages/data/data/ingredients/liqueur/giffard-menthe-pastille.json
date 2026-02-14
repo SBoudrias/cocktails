@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Giffard Menthe-Pastille",
+  "type": "liqueur",
+  "categories": ["Crème de Menthe"]
+}

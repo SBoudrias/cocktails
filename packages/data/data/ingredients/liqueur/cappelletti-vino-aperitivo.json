@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cappelletti Vino Aperitivo",
+  "type": "liqueur",
+  "categories": ["Italian bitter apéritif"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Highland Park 12 Year",
+  "type": "spirit",
+  "categories": ["Whisky (Scotch)"]
+}

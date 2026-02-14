@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Giffard Crème de Mûre",
+  "type": "liqueur",
+  "categories": ["Crème de Mûre"]
+}

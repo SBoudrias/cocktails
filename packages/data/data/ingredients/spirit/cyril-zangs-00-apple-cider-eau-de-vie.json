@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cyril Zangs 00 Apple Cider Eau-de-Vie",
+  "type": "spirit",
+  "categories": ["Brandy (Apple)"]
+}

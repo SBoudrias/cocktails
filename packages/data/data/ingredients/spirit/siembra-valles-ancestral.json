@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Siembra Valles Ancestral",
+  "type": "spirit",
+  "categories": ["tequila"]
+}
