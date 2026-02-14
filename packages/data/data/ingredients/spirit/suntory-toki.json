@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Suntory Toki",
   "type": "spirit",
-  "categories": ["Whiskey"]
+  "categories": ["Whiskey (Japanese)"]
 }

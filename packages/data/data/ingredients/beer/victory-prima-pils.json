@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Victory Prima Pils",
-  "type": "beer"
+  "type": "beer",
+  "categories": ["Pilsner"]
 }

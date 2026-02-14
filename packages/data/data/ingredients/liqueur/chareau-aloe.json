@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Chareau Aloe",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Aloe liqueur"]
 }

@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Aval Cider",
-  "type": "beer"
+  "type": "beer",
+  "categories": ["dry apple cider"]
 }

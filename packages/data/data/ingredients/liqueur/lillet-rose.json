@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Lillet Rosé",
   "type": "liqueur",
-  "categories": ["Quinquina"]
+  "categories": ["Rosé vermouth"]
 }

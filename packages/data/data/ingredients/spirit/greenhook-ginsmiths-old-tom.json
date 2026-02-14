@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Greenhook Ginsmiths Old Tom",
   "type": "spirit",
-  "categories": ["Old Tom Gin", "Gin"]
+  "categories": ["Old Tom Gin"]
 }

@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Empirical Spirits Habanero",
-  "type": "spirit"
+  "type": "spirit",
+  "categories": ["Chile Liqueur"]
 }

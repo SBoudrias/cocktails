@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Don Ciccio & Figli Finocchietto",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Fennel liqueur"]
 }

@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Dewazakura Tobiroku Sparkling Sake",
-  "type": "wine"
+  "type": "wine",
+  "categories": ["Sake"]
 }

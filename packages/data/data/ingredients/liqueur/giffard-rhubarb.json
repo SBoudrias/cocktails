@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Giffard Rhubarb",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Rhubarb liqueur"]
 }

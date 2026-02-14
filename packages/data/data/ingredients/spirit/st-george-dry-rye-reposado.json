@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "St. George Dry Rye Reposado",
   "type": "spirit",
-  "categories": ["Gin"]
+  "categories": ["Gin (Barrel aged)"]
 }

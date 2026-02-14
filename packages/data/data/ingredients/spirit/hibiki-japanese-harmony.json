@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hibiki Japanese Harmony",
   "type": "spirit",
-  "categories": ["Whiskey"]
+  "categories": ["Whiskey (Japanese)"]
 }

@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Park Pineau des Charentes",
-  "type": "wine"
+  "type": "wine",
+  "categories": ["Pineau des Charentes"]
 }

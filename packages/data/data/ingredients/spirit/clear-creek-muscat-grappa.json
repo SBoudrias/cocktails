@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Clear Creek Muscat Grappa",
   "type": "spirit",
-  "categories": ["Brandy (Grapes)"]
+  "categories": ["Grappa"]
 }
