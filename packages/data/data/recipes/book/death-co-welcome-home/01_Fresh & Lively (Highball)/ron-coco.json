@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Ron Coco",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Citric Acid Solution",
+      "type": "other",
+      "quantity": {
+        "amount": 0.3,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Coconut water",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Oloroso)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 8 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Chill all ingredients.",
+    "Combine in a carbonation bottle and charge with CO₂.",
+    "Refrigerate at least 20 minutes.",
+    "Pour into a highball glass filled with ice cubes.",
+    "Garnish with a lemon wedge."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "George Nunez"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 187
+    }
+  ]
+}

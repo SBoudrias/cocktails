@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Shoganai",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Champagne Acid Solution",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cyril Zangs 00 Apple Cider Eau-de-Vie",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Hibiki Japanese Harmony",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "dry sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aval Cider",
+      "type": "beer",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Garnish with an apple fan."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Dave Anderson"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 187
+    }
+  ]
+}

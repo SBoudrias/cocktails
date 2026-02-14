@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Ludicrous Speed",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "makrut lime leaf",
+      "type": "spice",
+      "quantity": { "amount": 1, "unit": "unit" }
+    },
+    {
+      "name": "Pineapple Gum Syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Siembra Valles Blanco",
+      "type": "spirit",
+      "technique": { "technique": "infusion", "agent": "jalapeño" },
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "La Favorite Coeur de Canne",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Victory Prima Pils",
+      "type": "beer",
+      "quantity": { "amount": 2, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "Rub a lime wedge along the upper half inch of the glass, halfway around the circumference, then roll the wet portion in kosher salt.",
+    "Pour the beer into the glass.",
+    "Shake the remaining ingredients with ice, then strain into the glass and fill with ice cubes.",
+    "Garnish with a lime wedge."
+  ],
+  "attributions": [
+    { "relation": "recipe author", "source": "Tyson Buhler" },
+    { "relation": "bar", "source": "Death & Co", "location": "New York, NY" }
+  ],
+  "refs": [{ "type": "book", "title": "death-co-welcome-home", "page": 185 }]
+}

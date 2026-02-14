@@ -1,0 +1,91 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "High Speech",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "yellow bell pepper juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bigallet Thyme",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Emile Pernot Liqueur de Sapin",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tanqueray London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rub a lime wedge on the rim of a collins glass and roll in Aleppo salt.",
+    "Pour seltzer into the glass.",
+    "Short shake the remaining ingredients.",
+    "Strain into the glass.",
+    "Fill with ice cubes.",
+    "Garnish with 1 dehydrated lemon wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 183
+    }
+  ]
+}

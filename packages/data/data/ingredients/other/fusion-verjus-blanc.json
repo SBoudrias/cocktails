@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Fusion Verjus Blanc",
-  "type": "other"
+  "type": "other",
+  "categories": ["Verjus"]
 }

@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Kingston Americano",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Wray & Nephew white overproof",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit soda",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add rum and Campari to a collins glass.",
+    "Fill with ice cubes.",
+    "Top with grapefruit soda and stir once to combine.",
+    "Sprinkle a pinch of salt on top.",
+    "Garnish with a grapefruit half wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 184
+    }
+  ]
+}

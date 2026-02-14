@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Spritz Roselle",
+  "preparation": "stirred",
+  "served_on": "ice cubes",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Citric Acid Solution",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard crème de fruit de la passion",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Suze",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Capuro Acholado",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lo-Fi Gentian Amaro",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "dry sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour sparkling wine into a wine glass.",
+    "Stir remaining ingredients over ice, then strain into the glass and fill the glass with ice cubes.",
+    "Garnish with 1 edible flower."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 189
+    }
+  ]
+}

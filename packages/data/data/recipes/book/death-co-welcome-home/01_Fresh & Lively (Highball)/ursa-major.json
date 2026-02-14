@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Ursa Major",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lactart",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rare Tea Company Genmaicha",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Crème de Cacao Blanc",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St. George California Rice Shochu",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Chill all ingredients.",
+    "Combine in a carbonating bottle, charge with CO₂, and gently shake to dissolve CO₂.",
+    "Refrigerate at least 20 minutes (preferably 12 hours).",
+    "Pour into a highball glass and fill with ice cubes.",
+    "Express a lemon twist over the drink, then place it in the drink."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 190
+    }
+  ]
+}
