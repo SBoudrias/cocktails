@@ -22,6 +22,14 @@
       }
     },
     {
+      "name": "Champagne",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Cognac",
       "type": "category",
       "technique": [
@@ -48,14 +56,6 @@
       ],
       "quantity": {
         "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Champagne",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
         "unit": "oz"
       }
     }

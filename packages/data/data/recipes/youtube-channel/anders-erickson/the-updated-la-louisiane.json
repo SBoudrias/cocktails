@@ -34,6 +34,14 @@
       }
     },
     {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Bénédictine",
       "type": "liqueur",
       "quantity": {
@@ -46,14 +54,6 @@
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cocchi Vermouth di Torino",
-      "type": "wine",
-      "quantity": {
-        "amount": 0.75,
         "unit": "oz"
       }
     }

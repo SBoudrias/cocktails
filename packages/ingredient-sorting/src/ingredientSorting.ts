@@ -47,11 +47,11 @@ export const INGREDIENT_PRIORITIES: Record<string, number> = {
   bitter: 2,
   liqueur: 3,
   spirit: 3,
+  wine: 3,
   category: 3,
   soda: 4,
   beer: 4,
   spice: 4,
-  wine: 4,
   emulsifier: 5,
 };
 

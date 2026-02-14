@@ -22,16 +22,16 @@
       }
     },
     {
-      "name": "Cognac",
-      "type": "category",
+      "name": "Dolin Sweet Vermouth de Chambéry",
+      "type": "liqueur",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Dolin Sweet Vermouth de Chambéry",
-      "type": "wine",
+      "name": "Cognac",
+      "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"

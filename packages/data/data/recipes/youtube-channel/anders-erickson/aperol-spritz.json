@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Seltzer",
-      "type": "soda",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "dry sparkling wine",
       "type": "category",
       "quantity": {
         "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

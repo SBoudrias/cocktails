@@ -46,6 +46,14 @@
       }
     },
     {
+      "name": "Tio Pepe Fino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Trois Rivières Blanc 50%",
       "type": "spirit",
       "quantity": {
@@ -64,14 +72,6 @@
     {
       "name": "El Gobernador Pisco",
       "type": "spirit",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tio Pepe Fino",
-      "type": "wine",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

@@ -30,18 +30,18 @@
       }
     },
     {
-      "name": "Rittenhouse Rye",
-      "type": "spirit",
+      "name": "Graham's 10 Year Tawny Port",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Graham's 10 Year Tawny Port",
-      "type": "wine",
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

@@ -30,6 +30,14 @@
       }
     },
     {
+      "name": "Saveiro 'Vento do Oeste' Madeira",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Neisson Rhum Agricole Blanc",
       "type": "spirit",
       "quantity": {
@@ -42,14 +50,6 @@
       "type": "spirit",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Saveiro 'Vento do Oeste' Madeira",
-      "type": "wine",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     }

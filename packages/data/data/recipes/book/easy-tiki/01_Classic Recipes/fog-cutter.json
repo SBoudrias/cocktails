@@ -38,18 +38,18 @@
       }
     },
     {
-      "name": "Neisson Élevé Sous Bois",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Sherry (Amontillado)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Neisson Élevé Sous Bois",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

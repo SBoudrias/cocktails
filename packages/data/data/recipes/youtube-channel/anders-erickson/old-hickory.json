@@ -23,7 +23,7 @@
     },
     {
       "name": "Cocchi Vermouth di Torino",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 1,
         "unit": "oz"
@@ -31,7 +31,7 @@
     },
     {
       "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 1,
         "unit": "oz"

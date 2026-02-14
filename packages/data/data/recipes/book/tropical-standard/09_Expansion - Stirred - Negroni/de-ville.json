@@ -46,18 +46,18 @@
       }
     },
     {
-      "name": "Mount Gay Black Barrel",
-      "type": "spirit",
+      "name": "Martini Riserva Speciale Ambrato Vermouth di Torino",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1.25,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Martini Riserva Speciale Ambrato Vermouth di Torino",
-      "type": "wine",
+      "name": "Mount Gay Black Barrel",
+      "type": "spirit",
       "quantity": {
-        "amount": 1,
+        "amount": 1.25,
         "unit": "oz"
       }
     }

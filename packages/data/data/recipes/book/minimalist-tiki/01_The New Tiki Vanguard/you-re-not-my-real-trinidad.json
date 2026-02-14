@@ -39,7 +39,7 @@
     },
     {
       "name": "PX sherry",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

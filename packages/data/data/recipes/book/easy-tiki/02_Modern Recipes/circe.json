@@ -30,18 +30,10 @@
       }
     },
     {
-      "name": "St Germain Elderflower Liqueur",
+      "name": "St-Germain",
       "type": "liqueur",
       "quantity": {
         "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Batavia Arrack van Oosten",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
         "unit": "oz"
       }
     },
@@ -50,6 +42,14 @@
       "type": "category",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }

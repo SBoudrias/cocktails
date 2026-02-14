@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Zero to Hero Cordial",
+      "name": "Noilly Prat Extra Dry Vermouth",
       "type": "liqueur",
       "quantity": {
-        "amount": 2.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Noilly Prat Extra Dry Vermouth",
-      "type": "wine",
+      "name": "Zero to Hero Cordial",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 2.5,
         "unit": "oz"
       }
     },

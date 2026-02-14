@@ -46,6 +46,14 @@
       }
     },
     {
+      "name": "Lustau East India Solera Sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Cimarron Blanco Tequila",
       "type": "spirit",
       "technique": {
@@ -54,14 +62,6 @@
       },
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lustau East India Solera Sherry",
-      "type": "wine",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     }

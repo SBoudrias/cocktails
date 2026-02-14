@@ -6,6 +6,14 @@
   "glassware": "martini",
   "ingredients": [
     {
+      "name": "Cocchi Americano",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Union Horse Distilling Co. Rider Vodka",
       "type": "spirit",
       "quantity": {
@@ -18,14 +26,6 @@
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cocchi Americano",
-      "type": "wine",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     }

@@ -14,6 +14,14 @@
       }
     },
     {
+      "name": "Valdespino \"Ynocente\" Fino Sherry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
       "name": "Bénédictine",
       "type": "liqueur",
       "quantity": {
@@ -22,16 +30,8 @@
       }
     },
     {
-      "name": "Valdespino \"Ynocente\" Fino Sherry",
-      "type": "wine",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 2,
         "unit": "oz"

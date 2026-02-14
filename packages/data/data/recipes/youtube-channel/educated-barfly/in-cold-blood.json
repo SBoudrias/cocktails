@@ -14,16 +14,16 @@
       }
     },
     {
-      "name": "Whiskey (Rye)",
-      "type": "category",
+      "name": "Carpano Antica Formula Vermouth",
+      "type": "liqueur",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Carpano Antica Formula Vermouth",
-      "type": "wine",
+      "name": "Whiskey (Rye)",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"

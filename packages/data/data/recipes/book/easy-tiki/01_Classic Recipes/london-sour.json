@@ -47,18 +47,18 @@
       }
     },
     {
-      "name": "Del Maguey Vida Mezcal",
-      "type": "spirit",
+      "name": "Barbadillo Manzanilla Sherry",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Barbadillo Manzanilla Sherry",
-      "type": "wine",
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

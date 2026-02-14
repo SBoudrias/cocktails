@@ -70,6 +70,14 @@
       }
     },
     {
+      "name": "Cocchi Americano",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Clément Première Canne",
       "type": "spirit",
       "quantity": {
@@ -82,14 +90,6 @@
       "type": "spirit",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cocchi Americano",
-      "type": "wine",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     }

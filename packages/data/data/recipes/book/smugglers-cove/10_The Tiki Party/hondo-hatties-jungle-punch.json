@@ -39,6 +39,14 @@
       }
     },
     {
+      "name": "Tawny Port",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Mathilde poire",
       "type": "liqueur",
       "quantity": {
@@ -59,14 +67,6 @@
       "type": "category",
       "quantity": {
         "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tawny Port",
-      "type": "category",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     }

@@ -31,7 +31,7 @@
     },
     {
       "name": "Cocchi Americano",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

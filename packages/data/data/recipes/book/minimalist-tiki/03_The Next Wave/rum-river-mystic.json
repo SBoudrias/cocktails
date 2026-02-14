@@ -22,6 +22,14 @@
       }
     },
     {
+      "name": "Byrrh Grand Quinquina",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Panamá-Pacific 9 Year Rum",
       "type": "spirit",
       "quantity": {
@@ -34,14 +42,6 @@
       "type": "spirit",
       "quantity": {
         "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Byrrh Grand Quinquina",
-      "type": "wine",
-      "quantity": {
-        "amount": 0.75,
         "unit": "oz"
       }
     }

@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Suze Apéritif",
+      "name": "Suze",
       "type": "liqueur",
       "quantity": {
         "amount": 0.25,
@@ -38,16 +38,8 @@
       }
     },
     {
-      "name": "Del Maguey Chichicapa Mezcal",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Noilly Prat Extra Dry Vermouth",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -55,7 +47,15 @@
     },
     {
       "name": "Mattei Cap Corse Blanc Quinquina",
-      "type": "wine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Chichicapa Mezcal",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"

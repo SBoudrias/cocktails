@@ -22,16 +22,16 @@
       }
     },
     {
-      "name": "Appleton 12",
-      "type": "spirit",
+      "name": "Sweet vermouth",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Sweet vermouth",
-      "type": "category",
+      "name": "Appleton 12",
+      "type": "spirit",
       "quantity": {
         "amount": 1,
         "unit": "oz"

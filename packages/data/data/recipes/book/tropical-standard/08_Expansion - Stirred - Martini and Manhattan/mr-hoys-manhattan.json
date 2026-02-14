@@ -38,6 +38,14 @@
       }
     },
     {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Rittenhouse Rye",
       "type": "spirit",
       "technique": {
@@ -46,14 +54,6 @@
       },
       "quantity": {
         "amount": 2.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "wine",
-      "quantity": {
-        "amount": 0.75,
         "unit": "oz"
       }
     }

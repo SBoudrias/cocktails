@@ -39,18 +39,18 @@
       }
     },
     {
-      "name": "Pot still lightly aged rum (New England)",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Blandy's 5 year Verdelho Madeira",
       "type": "wine",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pot still lightly aged rum (New England)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }

@@ -47,7 +47,7 @@
     },
     {
       "name": "Lillet Rouge",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 1,
         "unit": "oz"

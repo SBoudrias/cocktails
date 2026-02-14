@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Old Grand-Dad Bonded Bourbon",
-      "type": "spirit",
+      "name": "Cocchi Vermouth di Torino",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Cocchi Vermouth di Torino",
-      "type": "wine",
+      "name": "Old Grand-Dad Bonded Bourbon",
+      "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
     }

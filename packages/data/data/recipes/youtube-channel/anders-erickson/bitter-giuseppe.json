@@ -22,18 +22,18 @@
       }
     },
     {
-      "name": "Cynar",
+      "name": "Cocchi Vermouth di Torino",
       "type": "liqueur",
       "quantity": {
-        "amount": 2,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Cocchi Vermouth di Torino",
-      "type": "wine",
+      "name": "Cynar",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1,
+        "amount": 2,
         "unit": "oz"
       }
     }

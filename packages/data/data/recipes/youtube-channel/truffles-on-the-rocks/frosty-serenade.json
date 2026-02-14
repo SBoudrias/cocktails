@@ -38,18 +38,18 @@
       }
     },
     {
-      "name": "Talisker 10 Year Old Single Malt Scotch Whisky",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Sweet vermouth",
       "type": "category",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Talisker 10 Year Old Single Malt Scotch Whisky",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }

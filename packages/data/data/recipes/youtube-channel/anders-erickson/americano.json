@@ -15,7 +15,7 @@
     },
     {
       "name": "Cocchi Vermouth di Torino",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
