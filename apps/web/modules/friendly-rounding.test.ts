@@ -12,12 +12,16 @@ describe('roundToFriendlyFraction', () => {
       expect(roundToFriendlyFraction(input, 'oz')).toBe(expected);
     });
 
-    it('rounds 0.9 up to 1', () => {
-      expect(roundToFriendlyFraction(0.9, 'oz')).toBe(1);
+    it('preserves ⅛ oz instead of rounding to 0', () => {
+      expect(roundToFriendlyFraction(0.125, 'oz')).toBe(0.125);
     });
 
-    it('rounds 2.1 down to 2', () => {
-      expect(roundToFriendlyFraction(2.1, 'oz')).toBe(2);
+    it('rounds 0.9 to ⅞', () => {
+      expect(roundToFriendlyFraction(0.9, 'oz')).toBe(0.875);
+    });
+
+    it('rounds 2.1 to 2⅛', () => {
+      expect(roundToFriendlyFraction(2.1, 'oz')).toBe(2.125);
     });
 
     it('passes whole numbers through unchanged', () => {
