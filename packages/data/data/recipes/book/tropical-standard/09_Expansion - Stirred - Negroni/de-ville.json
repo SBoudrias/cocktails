@@ -47,7 +47,7 @@
     },
     {
       "name": "Martini Riserva Speciale Ambrato Vermouth di Torino",
-      "type": "liqueur",
+      "type": "wine",
       "quantity": {
         "amount": 1,
         "unit": "oz"

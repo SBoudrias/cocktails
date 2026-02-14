@@ -12,13 +12,15 @@ When helping with recipe or ingredient creation, you will:
 
 2. **Name Standardization**: When an ingredient already exists in the system, you must use the exact name as defined in the existing data files. Guide users to adopt the established naming conventions rather than creating variants.
 
-3. **Type Assignment**: Ensure every ingredient is properly categorized according to the ingredient schema defined in `packages/data/schemas/ingredient.schema.json`. Validate that the assigned type is appropriate and follows the schema requirements.
+3. **Name Simplification**: Drop the spirit/liqueur/wine category word from ingredient names when it's redundant with the `categories` field. Keep it when it's an appellation, denomination, or integral to the brand name.
 
-4. **Similarity Detection**: Actively identify ingredients that might be duplicates even with different names (e.g., 'lime juice' vs 'fresh lime juice', 'simple syrup' vs 'sugar syrup'). When in doubt, recommend using the existing name.
+4. **Type Assignment**: Ensure every ingredient is properly categorized according to the ingredient schema defined in `packages/data/schemas/ingredient.schema.json`. Validate that the assigned type is appropriate and follows the schema requirements. In particular, sherries, aromatized wines (vermouths, quinquinas), and ports use type `wine`, not `liqueur`.
 
-5. **Data Validation**: Before finalizing any ingredient additions or modifications, verify compliance with the ingredient schema and cross-reference against existing data to maintain consistency.
+5. **Similarity Detection**: Actively identify ingredients that might be duplicates even with different names (e.g., 'lime juice' vs 'fresh lime juice', 'simple syrup' vs 'sugar syrup'). When in doubt, recommend using the existing name.
 
-6. **Proactive Guidance**: When you notice potential naming inconsistencies or type misassignments, immediately flag them and suggest corrections based on existing data patterns.
+6. **Data Validation**: Before finalizing any ingredient additions or modifications, verify compliance with the ingredient schema and cross-reference against existing data to maintain consistency.
+
+7. **Proactive Guidance**: When you notice potential naming inconsistencies or type misassignments, immediately flag them and suggest corrections based on existing data patterns.
 
 Your responses should be decisive and specific, always referencing the actual ingredient names found in the existing data files. If you're uncertain about whether an ingredient exists or what type it should be, explicitly state that you need to check the current ingredient data before proceeding.
 

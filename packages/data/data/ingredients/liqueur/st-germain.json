@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
-  "name": "St Germain Elderflower Liqueur",
+  "name": "St-Germain",
   "type": "liqueur",
   "categories": ["Elderflower liqueur"]
 }

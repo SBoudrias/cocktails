@@ -7,7 +7,7 @@
   "ingredients": [
     {
       "name": "Valdespino \"Ynocente\" Fino Sherry",
-      "type": "liqueur",
+      "type": "wine",
       "technique": {
         "technique": "application",
         "method": "rinse"
@@ -35,7 +35,7 @@
     },
     {
       "name": "Dolin Dry Vermouth de Chambéry",
-      "type": "liqueur",
+      "type": "wine",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
