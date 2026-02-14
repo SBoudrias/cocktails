@@ -1,5 +1,5 @@
-// Jiggers have ⅓ and ⅔ marks; measuring spoons/cups only have quarter increments
-const OZ_TARGETS = [0, 0.25, 0.33, 0.5, 0.67, 0.75, 1];
+// Jiggers have ⅓ and ⅔ marks; measuring spoons/cups only have quarter and eighth increments
+const OZ_TARGETS = [0, 0.125, 0.25, 0.33, 0.5, 0.67, 0.75, 0.875, 1];
 const QUARTER_TARGETS = [0, 0.25, 0.5, 0.75, 1];
 
 function snapFraction(fraction: number, targets: number[]): number {
