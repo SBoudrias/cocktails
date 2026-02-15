@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Lustau Papirusa Manzanilla",
-  "type": "liqueur",
+  "name": "Bodegas Yuste Aurora Manzanilla",
+  "type": "wine",
   "categories": ["Sherry (Manzanilla)"]
 }
