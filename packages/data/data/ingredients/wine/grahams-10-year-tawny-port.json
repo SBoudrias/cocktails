@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Graham's 10 Year Tawny Port",
   "type": "wine",
   "categories": ["Tawny Port"]

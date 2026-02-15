@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Our Man in Havana",
   "preparation": "stirred",
   "served_on": "ice cubes",

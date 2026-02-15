@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Chairman's Reserve The Forgotten Cask",
   "type": "spirit",
   "categories": ["Blended Aged Rum"]

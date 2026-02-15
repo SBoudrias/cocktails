@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Après-Ski Swizzle",
   "preparation": "swizzled",
   "served_on": "crushed ice",

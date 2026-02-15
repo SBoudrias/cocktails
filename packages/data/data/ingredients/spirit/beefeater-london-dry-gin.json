@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Beefeater London Dry Gin",
   "type": "spirit",
   "categories": ["London Dry Gin"]

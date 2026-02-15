@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Seedlip Spice 94",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -42,6 +34,14 @@
       "type": "syrup",
       "quantity": {
         "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seedlip Spice 94",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     },

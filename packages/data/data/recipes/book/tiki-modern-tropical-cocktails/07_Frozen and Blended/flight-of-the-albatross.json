@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Flight of the Albatross",
   "preparation": "blended",
   "served_on": "crushed ice",

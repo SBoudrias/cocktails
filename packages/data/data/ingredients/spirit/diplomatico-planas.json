@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Diplomatico Planas",
   "type": "spirit",
   "categories": ["Blended Lightly-aged Rum"]

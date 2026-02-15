@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/recipe.schema.json",
+  "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Fancy York No. 2",
   "preparation": "stirred",
   "served_on": "big rock",

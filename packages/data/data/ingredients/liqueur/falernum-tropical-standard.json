@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Falernum (Tropical Standard)",
   "type": "liqueur",
   "categories": ["Falernum liqueur", "Falernum syrup"],

@@ -6,14 +6,6 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Fernet-Branca",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
@@ -35,6 +27,14 @@
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {

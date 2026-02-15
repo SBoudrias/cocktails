@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/youtube-channel.schema.json",
+  "$schema": "../../../../schemas/youtube-channel.schema.json",
   "name": "Jason Miller",
   "links": ["https://www.youtube.com/@realjasonmiller"],
   "description": "Enjoying the Disney Parks one cocktail at a time."

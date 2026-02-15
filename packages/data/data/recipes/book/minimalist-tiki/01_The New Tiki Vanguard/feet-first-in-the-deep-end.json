@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Feet First in the Deep End",
   "preparation": "stirred",
   "served_on": "big rock",

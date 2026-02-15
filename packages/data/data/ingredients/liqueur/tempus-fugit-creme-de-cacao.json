@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Tempus Fugit Crème de Cacao",
   "type": "liqueur",
   "categories": ["Crème de Cacao"]

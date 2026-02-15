@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Comoz Blanc Vermouth de Chambéry",
   "type": "wine",
   "categories": ["Blanc vermouth"]

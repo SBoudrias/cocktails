@@ -14,14 +14,6 @@
       }
     },
     {
-      "name": "Trader Vic's Macadamia Nut Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Passion fruit syrup",
       "type": "category",
       "quantity": {
@@ -43,6 +35,14 @@
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Trader Vic's Macadamia Nut Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {

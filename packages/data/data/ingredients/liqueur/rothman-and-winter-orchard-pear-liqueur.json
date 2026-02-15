@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Rothman & Winter Orchard Pear Liqueur",
   "type": "liqueur",
   "categories": ["Pear liqueur"]

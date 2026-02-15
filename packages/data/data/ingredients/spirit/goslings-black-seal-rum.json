@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Goslings Black Seal Rum",
   "type": "spirit",
   "categories": ["Black Blended Rum"]

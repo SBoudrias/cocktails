@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Worthy Park Overproof",
   "type": "spirit",
   "categories": ["Pot still unaged rum", "Jamaican overproof rum"]

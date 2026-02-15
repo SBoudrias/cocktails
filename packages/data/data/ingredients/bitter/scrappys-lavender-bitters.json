@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Scrappy's Lavender Bitters",
   "type": "bitter",
   "categories": ["Aromatic Bitters"]

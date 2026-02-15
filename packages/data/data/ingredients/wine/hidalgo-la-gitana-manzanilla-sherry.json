@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hidalgo \"La Gitana\" Manzanilla Sherry",
   "type": "wine",
   "categories": ["Sherry (Manzanilla)"]

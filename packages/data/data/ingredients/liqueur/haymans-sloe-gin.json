@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hayman's sloe gin",
   "type": "liqueur",
   "categories": ["Sloe Gin"]

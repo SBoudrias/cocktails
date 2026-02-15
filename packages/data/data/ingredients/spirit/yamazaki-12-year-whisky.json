@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Yamazaki 12 Year Whisky",
   "type": "spirit",
   "categories": ["Whiskey (Japanese)"]

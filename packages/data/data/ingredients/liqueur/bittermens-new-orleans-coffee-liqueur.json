@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bittermens' New Orleans coffee liqueur",
   "type": "liqueur",
   "categories": ["Coffee liqueur"]

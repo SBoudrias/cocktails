@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Marie Brizard Crème de Cacao Blanc",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
@@ -42,6 +34,14 @@
       "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Crème de Cacao Blanc",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
         "unit": "oz"
       }
     },

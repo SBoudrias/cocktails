@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Banks 7 Golden Age Rum",
   "type": "spirit",
   "categories": ["Blended Aged Rum"]

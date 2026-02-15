@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Señor Diablo",
   "preparation": "shaken",
   "served_on": "crushed ice",

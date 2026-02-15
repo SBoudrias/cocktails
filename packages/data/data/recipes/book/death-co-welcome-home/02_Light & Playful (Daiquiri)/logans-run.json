@@ -6,14 +6,6 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Giffard Muroise du Val de Loire",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Cane syrup",
       "type": "syrup",
       "quantity": {
@@ -27,6 +19,14 @@
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Muroise du Val de Loire",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {

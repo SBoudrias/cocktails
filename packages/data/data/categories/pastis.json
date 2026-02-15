@@ -1,5 +1,5 @@
 {
-  "$schema": "../schemas/category.schema.json",
+  "$schema": "../../schemas/category.schema.json",
   "name": "Pastis",
   "categoryType": "spirit",
   "description": "Pastis is an anise-flavoured spirit and apéritif traditionally from France, typically containing less than 100 g/L sugar and 40–45% ABV (alcohol by volume)."

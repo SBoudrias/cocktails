@@ -1,6 +1,6 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Siembra Azul A\u00f1ejo Tequila",
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Siembra Azul Añejo Tequila",
   "type": "spirit",
-  "categories": ["Tequila (A\u00f1ejo)"]
+  "categories": ["Tequila (Añejo)"]
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Mai-Kai dark Jamaican rum blend",
   "type": "spirit",
   "description": "The Mai-Kai famously used the now defunct Kohala Bay dark jamaican rum. This blend from the Atomic Grog is a close approximation.",
