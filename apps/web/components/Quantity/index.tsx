@@ -35,7 +35,7 @@ const displayFraction: Record<number, string> = {
 
 const unitType: Record<
   RecipeIngredient['quantity']['unit'],
-  'imperial' | 'metric' | 'counting'
+  'imperial' | 'metric' | 'weight' | 'counting'
 > = {
   oz: 'imperial',
   tsp: 'imperial',
@@ -43,10 +43,10 @@ const unitType: Record<
   cup: 'imperial',
   unit: 'imperial',
   ml: 'metric',
+  gram: 'weight',
   bottle: 'counting',
   dash: 'counting',
   drop: 'counting',
-  gram: 'counting',
   pinch: 'counting',
   spray: 'counting',
   part: 'counting',
@@ -81,6 +81,8 @@ export default function Quantity({
     }
   } else if (unitType[unit] === 'metric') {
     displayAmount = roundToFriendlyMl(amount);
+  } else if (unitType[unit] === 'weight') {
+    displayAmount = Math.round(amount * 10) / 10;
   } else {
     displayAmount = Math.round(amount);
   }
