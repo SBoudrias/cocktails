@@ -6,8 +6,8 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Mint",
-      "type": "fruit",
+      "name": "Mint leaves",
+      "type": "other",
       "technique": {
         "technique": "muddled"
       },
