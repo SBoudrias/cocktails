@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Antilles Jewel",
   "preparation": "built",
   "served_on": "ice cubes",

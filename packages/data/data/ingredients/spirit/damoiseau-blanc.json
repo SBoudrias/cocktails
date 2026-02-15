@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Damoiseau Blanc",
   "type": "spirit",
   "categories": ["Rhum Agricole Blanc"]

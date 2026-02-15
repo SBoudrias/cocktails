@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Woodford Reserve Double Oaked Bourbon",
   "type": "spirit",
   "categories": ["Whiskey (Bourbon)"]

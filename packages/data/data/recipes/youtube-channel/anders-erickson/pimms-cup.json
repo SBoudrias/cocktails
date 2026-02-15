@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/recipe.schema.json",
+  "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Pimm's Cup",
   "preparation": "built",
   "served_on": "ice cubes",

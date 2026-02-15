@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/recipe.schema.json",
+  "$schema": "../../../../schemas/recipe.schema.json",
   "name": "ByWater",
   "preparation": "stirred",
   "served_on": "up",

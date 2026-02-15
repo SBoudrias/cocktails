@@ -147,16 +147,27 @@ for await (const sourceFile of fs.glob(dataGlob)) {
     continue;
   }
 
-  const schemaPath = path.relative(
-    path.join(PACKAGE_ROOT, 'data'),
-    path.resolve(path.dirname(sourceFile), data.$schema),
-  );
-  const validate = ajv.getSchema(path.basename(data.$schema));
+  const schemaBasename = path.basename(data.$schema);
+  const validate = ajv.getSchema(schemaBasename);
 
   if (!validate) {
     fail(`Schema not found for ${sourceFile} at ${data.$schema ?? 'undefined'}`);
     continue;
   }
+
+  const expectedSchemaPath = path.relative(
+    path.dirname(sourceFile),
+    path.resolve(PACKAGE_ROOT, 'schemas', schemaBasename),
+  );
+  if (data.$schema !== expectedSchemaPath) {
+    logger.change(
+      `Fixing $schema in ${path.basename(sourceFile)}: "${data.$schema}" → "${expectedSchemaPath}"`,
+    );
+    data.$schema = expectedSchemaPath;
+    await writeJSON(sourceFile, data);
+  }
+
+  const schemaPath = `schemas/${schemaBasename}`;
 
   const isValid = validate(data);
   if (!isValid) {

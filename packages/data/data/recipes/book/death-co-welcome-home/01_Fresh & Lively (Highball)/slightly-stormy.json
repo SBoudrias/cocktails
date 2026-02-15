@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Slightly Stormy",
   "preparation": "shaken",
   "served_on": "ice cubes",
@@ -8,32 +8,50 @@
     {
       "name": "Cold-brewed Coffee Concentrate",
       "type": "other",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     },
     {
       "name": "Ginger syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Cruzan Black Strap",
       "type": "spirit",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Jameson",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "tonic water",
       "type": "category",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
   "instructions": [

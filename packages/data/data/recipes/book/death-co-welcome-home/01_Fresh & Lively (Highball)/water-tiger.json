@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Water-Tiger",
   "preparation": "stirred",
   "served_on": "up",
@@ -8,32 +8,50 @@
     {
       "name": "Absinthe",
       "type": "category",
-      "quantity": { "amount": 1, "unit": "dash" }
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
     },
     {
       "name": "Fusion Verjus Blanc",
       "type": "other",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Chareau Aloe",
       "type": "liqueur",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     },
     {
       "name": "Carpano Bianco Vermouth",
       "type": "liqueur",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Suntory Roku",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Dewazakura Tobiroku Sparkling Sake",
       "type": "wine",
-      "quantity": { "amount": 2, "unit": "oz" }
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
   "instructions": [

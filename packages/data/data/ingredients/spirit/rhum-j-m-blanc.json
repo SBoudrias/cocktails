@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Rhum J.M Blanc",
   "type": "spirit",
   "categories": ["Rhum Agricole Blanc"]

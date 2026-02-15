@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../schemas/recipe.schema.json",
+  "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Isla de Piña",
   "preparation": "flash blended",
   "served_on": "up",

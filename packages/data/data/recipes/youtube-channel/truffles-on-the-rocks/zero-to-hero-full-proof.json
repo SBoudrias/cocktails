@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/recipe.schema.json",
+  "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Zero to Hero Full Proof",
   "preparation": "stirred",
   "served_on": "big rock",

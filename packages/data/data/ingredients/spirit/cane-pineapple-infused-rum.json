@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "CANE pineapple-infused rum",
   "type": "spirit",
   "categories": ["Pineapple Rum"],

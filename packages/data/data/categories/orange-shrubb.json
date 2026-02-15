@@ -1,5 +1,5 @@
 {
-  "$schema": "../schemas/category.schema.json",
+  "$schema": "../../schemas/category.schema.json",
   "name": "Orange shrubb",
   "categoryType": "liqueur",
   "description": "Shrubb is a West Indian liqueur made from orange peels macerated in rum. It is most often made at Christmas time, during the orange season.",
