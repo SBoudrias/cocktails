@@ -6,14 +6,6 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "St-Elizabeth Allspice Dram",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
@@ -38,7 +30,15 @@
       }
     },
     {
-      "name": "Plantation 3 Stars White Rum",
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Planteray 3 Star",
       "type": "spirit",
       "quantity": {
         "amount": 2,

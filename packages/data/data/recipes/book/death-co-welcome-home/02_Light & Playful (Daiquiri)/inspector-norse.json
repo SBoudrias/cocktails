@@ -14,14 +14,6 @@
       }
     },
     {
-      "name": "Trader Vic's Macadamia Nut Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Orgeat Works Ltd macadamia nut syrup",
       "type": "syrup",
       "quantity": {
@@ -38,11 +30,19 @@
       }
     },
     {
-      "name": "Carrot juice",
+      "name": "carrot juice",
       "type": "juice",
       "quantity": {
         "amount": 1,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Trader Vic's Macadamia Nut Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {

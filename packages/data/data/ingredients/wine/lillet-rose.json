@@ -1,6 +1,0 @@
-{
-  "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Lillet Rosé",
-  "type": "wine",
-  "categories": ["Quinquina"]
-}

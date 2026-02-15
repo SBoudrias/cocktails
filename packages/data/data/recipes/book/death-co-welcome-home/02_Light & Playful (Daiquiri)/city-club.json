@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Strawberry syrup",
+      "name": "strawberry syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Capuro Acholado",
+      "name": "Capurro Acholado",
       "type": "spirit",
       "quantity": {
         "amount": 1,

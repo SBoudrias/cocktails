@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Dry sparkling wine",
+      "name": "dry sparkling wine",
       "type": "category",
       "quantity": {
         "amount": 1,

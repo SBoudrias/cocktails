@@ -47,7 +47,7 @@
     },
     {
       "name": "Lillet Blanc",
-      "type": "wine",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

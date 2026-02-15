@@ -6,16 +6,16 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Absinthe",
-      "type": "category",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
         "unit": "dash"
       }
     },
     {
-      "name": "Angostura bitters",
-      "type": "bitter",
+      "name": "Absinthe",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "dash"

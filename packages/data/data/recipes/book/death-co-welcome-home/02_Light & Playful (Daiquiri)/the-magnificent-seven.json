@@ -6,8 +6,8 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Shiso",
-      "type": "fruit",
+      "name": "green shiso leaves",
+      "type": "other",
       "quantity": {
         "amount": 1,
         "unit": "unit"

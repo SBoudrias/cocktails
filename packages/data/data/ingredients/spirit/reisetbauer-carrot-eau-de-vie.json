@@ -1,6 +1,6 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Reisetbauer Carrot Eau-de-Vie",
   "type": "spirit",
-  "categories": ["Brandy (Grapes)"]
+  "categories": ["Brandy (Carrot)"]
 }

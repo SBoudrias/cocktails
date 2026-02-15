@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Nikka Taketsuru",
   "type": "spirit",
   "categories": ["Whiskey (Japanese)"]

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Capurro Pisco",
+  "name": "Rhum J.M Blanc 100",
   "type": "spirit",
-  "categories": ["Peruvian pisco"]
+  "categories": ["Rhum Agricole Blanc"]
 }

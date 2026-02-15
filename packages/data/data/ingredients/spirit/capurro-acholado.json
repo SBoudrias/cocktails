@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Capuro Acholado",
+  "name": "Capurro Acholado",
   "type": "spirit",
   "categories": ["Peruvian pisco"]
 }

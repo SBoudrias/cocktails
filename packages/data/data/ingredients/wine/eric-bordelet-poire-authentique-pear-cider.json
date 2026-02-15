@@ -1,6 +1,6 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Eric Bordelet Poire Authentique Pear Cider",
   "type": "wine",
-  "categories": ["Poire Williams"]
+  "categories": ["Dry apple cider"]
 }

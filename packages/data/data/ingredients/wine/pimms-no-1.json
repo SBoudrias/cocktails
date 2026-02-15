@@ -1,6 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Pimm's No.1",
-  "type": "wine",
-  "categories": ["Quinquina"]
+  "type": "wine"
 }

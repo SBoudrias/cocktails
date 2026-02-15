@@ -30,8 +30,8 @@
       }
     },
     {
-      "name": "Improved Gardenia Mix",
-      "type": "syrup",
+      "name": "Gardenia Mix",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "oz"
