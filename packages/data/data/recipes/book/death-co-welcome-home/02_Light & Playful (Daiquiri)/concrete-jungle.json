@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Concrete Jungle",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Cholula Hot Sauce",
+      "type": "other",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "Mango purée",
+      "type": "puree",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Orgeat",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Yaguara Cachaça Ouro",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Elijah Craig bourbon",
+      "type": "spirit",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "Whip all the ingredients with a few pieces of crushed ice, just until incorporated. Dump into a tulip glass and fill with crushed ice.",
+    "Garnish with an orchid flower."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 194
+    }
+  ]
+}

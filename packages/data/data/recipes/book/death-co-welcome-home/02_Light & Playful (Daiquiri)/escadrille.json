@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Escadrille",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": { "amount": 4, "unit": "dash" }
+    },
+    {
+      "name": "Orgeat",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Avua Amburana",
+      "type": "spirit",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Rhum JM Blanc",
+      "type": "spirit",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Domaine d'Espérance Blanche Armagnac",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    }
+  ],
+  "instructions": ["Grate some nutmeg over the top of the drink."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Dave Anderson"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 195
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "False Alarm (Low ABV)",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Bittermens Hellfire Habanero Shrub",
+      "type": "bitter",
+      "quantity": { "amount": 2, "unit": "dash" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Papaya Syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Clairin Sajous",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "tsp" }
+    },
+    {
+      "name": "St. George Green Chile Vodka",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "El Tesoro Blanco",
+      "type": "spirit",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Gilles Brisson Pineau des Charentes",
+      "type": "wine",
+      "quantity": { "amount": 2, "unit": "oz" }
+    }
+  ],
+  "instructions": ["Garnish with a lime wheel and a piece of dried papaya on a skewer."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 196
+    }
+  ]
+}

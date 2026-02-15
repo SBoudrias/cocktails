@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Curtis Park Swizzle",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": { "amount": 2, "unit": "dash" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "wine",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Singani 63",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "Short shake all the ingredients with ice for about 5 seconds, then strain into a collins glass. Fill with crushed ice.",
+    "Garnish with a mint bouquet and dash some Angostura bitters over the top. Serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 194
+    }
+  ]
+}
