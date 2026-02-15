@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Trader Vic's Macadamia Nut Liqueur",
+  "type": "liqueur",
+  "categories": ["Hazelnut liqueur"]
+}

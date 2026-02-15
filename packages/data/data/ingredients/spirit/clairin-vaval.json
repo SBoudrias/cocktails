@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Clairin Vaval",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Blanc"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Blume Marillen Apricot Eau-de-Vie",
+  "type": "spirit",
+  "categories": ["Brandy (Grapes)"]
+}

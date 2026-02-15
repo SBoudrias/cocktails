@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Umenoyado Yuzu Shu",
+  "type": "liqueur",
+  "categories": ["Yuzu liqueur"]
+}

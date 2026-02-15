@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Bitter End Thai Bitters",
+  "type": "bitter",
+  "categories": ["Tropical Bitters"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Del Maguey Santo Domingo Albarradas Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

@@ -31,7 +31,7 @@
     },
     {
       "name": "Orgeat",
-      "type": "syrup",
+      "type": "category",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"

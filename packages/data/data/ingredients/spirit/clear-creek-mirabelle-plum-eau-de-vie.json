@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Clear Creek Mirabelle Plum Eau-de-Vie",
+  "type": "spirit",
+  "categories": ["Brandy (Grapes)"]
+}

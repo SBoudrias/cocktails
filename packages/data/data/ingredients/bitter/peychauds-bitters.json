@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/ingredient.schema.json",
   "name": "Peychaud's bitters",
-  "type": "bitter"
+  "type": "bitter",
+  "categories": ["Aromatic Bitters"]
 }

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Nikka Coffey Grain Whisky",
+  "type": "spirit",
+  "categories": ["Whiskey (Japanese)"]
+}

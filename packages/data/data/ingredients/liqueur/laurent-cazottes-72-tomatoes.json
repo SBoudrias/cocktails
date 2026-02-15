@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Laurent Cazottes 72 Tomatoes",
+  "type": "liqueur",
+  "categories": ["Brandy (Grapes)"]
+}
