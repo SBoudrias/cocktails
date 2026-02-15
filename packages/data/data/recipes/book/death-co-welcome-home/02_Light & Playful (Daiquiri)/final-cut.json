@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Final Cut",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Raspberry syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "Booker's Bourbon",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Pikesville Rye",
+      "type": "spirit",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Gold",
+      "type": "spirit",
+      "technique": { "technique": "application", "method": "float" },
+      "quantity": { "amount": 1, "unit": "tsp" }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 196
+    }
+  ]
+}

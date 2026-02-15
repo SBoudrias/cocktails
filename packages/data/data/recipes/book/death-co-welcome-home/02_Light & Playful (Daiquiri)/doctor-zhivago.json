@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Doctor Zhivago",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": { "amount": 6, "unit": "dash" }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "El Dorado 15 Year",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Amrut Cask Strength",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    }
+  ],
+  "instructions": [
+    "Short shake all the ingredients with ice for about 5 seconds, then strain into a collins glass. Fill with crushed ice.",
+    "Garnish with an orchid flower."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 195
+    }
+  ]
+}

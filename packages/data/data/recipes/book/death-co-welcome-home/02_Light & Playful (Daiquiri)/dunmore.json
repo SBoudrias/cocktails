@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Dunmore",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "tsp" }
+    },
+    {
+      "name": "Mango purée",
+      "type": "puree",
+      "quantity": { "amount": 0.75, "unit": "tsp" }
+    },
+    {
+      "name": "Tonic Syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    },
+    {
+      "name": "Seedlip Spice 94",
+      "type": "spirit",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Adam Griggs"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 195
+    }
+  ]
+}

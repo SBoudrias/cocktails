@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Buko Gimlet",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Coconut water",
+      "type": "other",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Pandan Syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Kalani Coconut Liqueur",
+      "type": "liqueur",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Novo Fogo Silver",
+      "type": "spirit",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Four Pillars Navy Strength Gin",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    }
+  ],
+  "instructions": ["Grate some lime zest over the top of the drink."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 193
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Atlantic Pacific",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Umenoyado Yuzu Shu",
+      "type": "liqueur",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Nori-Infused La Favorite Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Diplomatico Planas",
+      "type": "spirit",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 193
+    }
+  ]
+}
