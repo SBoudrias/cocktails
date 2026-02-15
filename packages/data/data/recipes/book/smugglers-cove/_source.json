@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/book.schema.json",
+  "$schema": "../../../../schemas/book.schema.json",
   "name": "Smuggler's Cove",
   "link": "https://www.smugglerscovesf.com/book",
   "description": "Cast aside your cares and worries. Make yourself a Mai Tai, put your favorite exotica record on the hi-fi, and prepare to lose yourself in the fantastical world of tiki, one of the most alluring—and often misunderstood—movements in American cultural history. Martin and Rebecca Cate, founders and owners of Smuggler’s Cove (the most acclaimed tiki bar of the modern era) take you on a colorful journey into the lore and legend of tiki: its birth as an escapist fantasy for Depression-era Americans; how exotic cocktails were invented, stolen, and re-invented; Hollywood starlets and scandals; and tiki’s modern-day revival."

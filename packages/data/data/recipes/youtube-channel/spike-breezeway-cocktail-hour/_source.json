@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/youtube-channel.schema.json",
+  "$schema": "../../../../schemas/youtube-channel.schema.json",
   "name": "Spike's Breezeway Cocktail Hour",
   "links": [
     "https://www.youtube.com/@BreezewayCocktailHour",

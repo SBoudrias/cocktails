@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Thai Coconut Syrup",
   "type": "syrup",
   "description": "A spicy and aromatic crème de coconut syrup with ginger, cilantro, and Thai chili",

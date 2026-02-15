@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Harvey's Bristol Cream sherry",
   "type": "wine",
   "categories": ["Sherry (Cream)"]

@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Clément Première Canne",
   "type": "spirit",
   "categories": ["Rhum Agricole Blanc"]

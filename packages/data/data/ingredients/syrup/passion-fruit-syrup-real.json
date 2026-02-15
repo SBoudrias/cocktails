@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "passion fruit syrup (Reàl)",
   "type": "syrup",
   "categories": ["Passion fruit syrup"]

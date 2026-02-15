@@ -1,5 +1,5 @@
 {
-  "$schema": "../schemas/category.schema.json",
+  "$schema": "../../schemas/category.schema.json",
   "name": "Triple Sec",
   "categoryType": "liqueur",
   "description": "Triple sec is an orange-flavoured liqueur that originated in France. It usually contains 20–40% alcohol by volume.",

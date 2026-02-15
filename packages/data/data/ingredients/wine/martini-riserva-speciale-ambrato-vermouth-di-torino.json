@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Martini Riserva Speciale Ambrato Vermouth di Torino",
   "type": "wine",
   "categories": ["Sweet vermouth"]

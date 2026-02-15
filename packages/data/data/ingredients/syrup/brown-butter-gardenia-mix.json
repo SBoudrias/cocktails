@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Brown Butter Gardenia Mix",
   "type": "syrup",
   "categories": ["Gardenia Mix"],

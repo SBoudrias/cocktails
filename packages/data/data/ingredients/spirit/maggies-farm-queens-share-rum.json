@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Maggie's Farm Queen's Share Rum",
   "type": "spirit",
   "categories": ["Pot Still Lightly Aged Rum", "overproof rum"]

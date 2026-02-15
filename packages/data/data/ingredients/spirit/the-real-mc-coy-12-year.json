@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/ingredient.schema.json",
+  "$schema": "../../../schemas/ingredient.schema.json",
   "name": "The Real McCoy 12 year",
   "type": "spirit",
   "categories": ["Aged Rum"]

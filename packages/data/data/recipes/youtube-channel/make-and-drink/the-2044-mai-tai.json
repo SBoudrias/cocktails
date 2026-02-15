@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../schemas/recipe.schema.json",
+  "$schema": "../../../../schemas/recipe.schema.json",
   "name": "The 2044 Mai Tai",
   "preparation": "shaken",
   "served_on": "crushed ice",
