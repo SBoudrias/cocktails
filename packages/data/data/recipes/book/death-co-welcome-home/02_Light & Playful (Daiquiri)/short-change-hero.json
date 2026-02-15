@@ -38,8 +38,9 @@
       }
     },
     {
-      "name": "Elote-Infused Elijah Craig Bourbon",
+      "name": "Elijah Craig bourbon",
       "type": "spirit",
+      "technique": { "technique": "infusion", "agent": "elote" },
       "quantity": {
         "amount": 2,
         "unit": "oz"

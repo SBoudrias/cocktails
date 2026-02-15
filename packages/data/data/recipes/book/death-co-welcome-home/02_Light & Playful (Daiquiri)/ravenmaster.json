@@ -6,14 +6,6 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Mathilde Poire",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Cane syrup",
       "type": "syrup",
       "quantity": {
@@ -30,8 +22,17 @@
       }
     },
     {
-      "name": "Eucalyptus-Infused Yaguara Ouro Cachaça",
+      "name": "Mathilde poire",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yaguara Cachaça Ouro",
       "type": "spirit",
+      "technique": { "technique": "infusion", "agent": "eucalyptus" },
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
