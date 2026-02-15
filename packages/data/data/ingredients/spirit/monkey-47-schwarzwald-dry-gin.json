@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Monkey 47 Schwarzwald Dry Gin",
+  "type": "spirit",
+  "categories": ["Gin (New American)"]
+}

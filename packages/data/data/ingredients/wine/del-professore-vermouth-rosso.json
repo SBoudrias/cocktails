@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Del Professore Vermouth Rosso",
+  "type": "wine",
+  "categories": ["Sweet Vermouth"]
+}

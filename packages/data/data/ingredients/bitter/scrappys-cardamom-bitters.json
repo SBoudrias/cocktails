@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Scrappy's Cardamom Bitters",
+  "type": "bitter",
+  "categories": ["Aromatic Bitters"]
+}

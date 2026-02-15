@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Dale DeGroff's Pimento Bitters",
+  "type": "bitter",
+  "categories": ["Tropical Bitters"]
+}

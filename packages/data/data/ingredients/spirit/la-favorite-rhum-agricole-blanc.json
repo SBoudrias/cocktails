@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "La Favorite Rhum Agricole Blanc",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Blanc"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Singani 63",
+  "type": "spirit",
+  "categories": ["Pisco"]
+}

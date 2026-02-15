@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Knappogue Castle 12 Year Irish Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (Irish)"]
+}

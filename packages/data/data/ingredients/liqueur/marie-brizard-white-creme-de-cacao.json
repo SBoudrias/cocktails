@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Marie Brizard White Crème de Cacao",
+  "type": "liqueur",
+  "categories": ["Crème de Cacao"]
+}

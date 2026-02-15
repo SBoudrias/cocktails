@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Gilles Brisson Pineau des Charentes",
+  "type": "wine",
+  "categories": ["Pineau des Charentes"]
+}

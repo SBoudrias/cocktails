@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Domaine d'Espérance Blanche Armagnac",
+  "type": "spirit",
+  "categories": ["Brandy (Grapes)"]
+}

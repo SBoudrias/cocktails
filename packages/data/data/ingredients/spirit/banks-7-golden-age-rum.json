@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "BarSol Pisco",
+  "name": "Banks 7 Golden Age Rum",
   "type": "spirit",
-  "categories": ["Peruvian pisco"]
+  "categories": ["Blended Aged Rum"]
 }

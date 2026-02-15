@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Capuro Acholado",
+  "name": "Pikesville Rye",
   "type": "spirit",
-  "categories": ["Peruvian pisco"]
+  "categories": ["Whiskey (Rye)"]
 }

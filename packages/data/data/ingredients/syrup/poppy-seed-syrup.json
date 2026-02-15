@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Poppy Seed Syrup",
+  "type": "syrup"
+}

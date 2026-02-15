@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Hidden World",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": { "amount": 1, "unit": "dash" }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "Mango purée",
+      "type": "puree",
+      "quantity": { "amount": 2, "unit": "tsp" }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Krogstad Aquavit",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Del Maguey Santo Domingo Albarradas Mezcal",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    }
+  ],
+  "instructions": ["Garnish with a lime wheel."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 197
+    }
+  ]
+}

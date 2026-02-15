@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Dhalia",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Bitter Truth Aromatic Bitters",
+      "type": "bitter",
+      "quantity": { "amount": 1, "unit": "dash" }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Nikka Coffey Grain Whisky",
+      "type": "spirit",
+      "quantity": { "amount": 0.75, "unit": "oz" }
+    },
+    {
+      "name": "Umenoyado Umeshu",
+      "type": "liqueur",
+      "quantity": { "amount": 1.5, "unit": "oz" }
+    }
+  ],
+  "instructions": ["Garnish with an edible flower."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 195
+    }
+  ]
+}

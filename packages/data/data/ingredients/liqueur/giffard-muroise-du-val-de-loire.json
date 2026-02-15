@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Giffard Muroise du Val de Loire",
+  "type": "liqueur",
+  "categories": ["Raspberry liqueur"]
+}

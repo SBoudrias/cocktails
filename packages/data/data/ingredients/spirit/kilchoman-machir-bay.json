@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Kilchoman Machir Bay",
+  "type": "spirit",
+  "categories": ["Whisky (Islay Scotch)"]
+}

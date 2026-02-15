@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Capurro Pisco",
+  "name": "Lustau Brandy de Jerez",
   "type": "spirit",
-  "categories": ["Peruvian pisco"]
+  "categories": ["Brandy (Grapes)"]
 }

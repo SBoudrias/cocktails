@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Lustau Papirusa Manzanilla",
+  "name": "Laurent Cazottes 72 Tomatoes",
   "type": "liqueur",
-  "categories": ["Sherry (Manzanilla)"]
+  "categories": ["Brandy (Tomato)"]
 }

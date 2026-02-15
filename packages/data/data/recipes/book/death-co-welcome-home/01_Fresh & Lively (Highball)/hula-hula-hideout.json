@@ -39,7 +39,7 @@
     },
     {
       "name": "Bodegas Yuste Aurora Manzanilla",
-      "type": "liqueur",
+      "type": "wine",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"

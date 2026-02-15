@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Damoiseau VSOP Rhum",
+  "type": "spirit",
+  "categories": ["Rhum Agricole Vieux"]
+}

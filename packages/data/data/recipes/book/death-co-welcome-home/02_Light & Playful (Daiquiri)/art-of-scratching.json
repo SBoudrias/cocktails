@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Art of Scratching",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": { "amount": 2, "unit": "dash" }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": { "amount": 0.25, "unit": "oz" }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Strawberry Basil Syrup",
+      "type": "syrup",
+      "quantity": { "amount": 0.5, "unit": "oz" }
+    },
+    {
+      "name": "Marie Brizard White Crème de Cacao",
+      "type": "liqueur",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "Clément Créole Shrubb",
+      "type": "liqueur",
+      "quantity": { "amount": 1, "unit": "tsp" }
+    },
+    {
+      "name": "Wray & Nephew white overproof",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    },
+    {
+      "name": "Pierre Ferrand 1840 Cognac",
+      "type": "spirit",
+      "quantity": { "amount": 1, "unit": "oz" }
+    }
+  ],
+  "instructions": ["Express a lemon twist over the drink and discard."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Al Sotack"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 193
+    }
+  ]
+}
