@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Barrell Whiskey Batch 004",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

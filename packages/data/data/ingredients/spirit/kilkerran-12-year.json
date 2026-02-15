@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Kilkerran 12 Year",
+  "type": "spirit",
+  "categories": ["Whisky (Scotch)"]
+}

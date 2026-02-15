@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Terra Spice Eucalyptus Extract",
+  "type": "tincture"
+}

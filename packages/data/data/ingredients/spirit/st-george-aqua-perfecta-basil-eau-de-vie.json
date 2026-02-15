@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "St. George Aqua Perfecta Basil Eau-de-Vie",
+  "type": "spirit",
+  "categories": ["Brandy (Grapes)"]
+}

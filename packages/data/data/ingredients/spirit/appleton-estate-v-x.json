@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/ingredient.schema.json",
+  "name": "Appleton Estate V/X",
+  "type": "spirit",
+  "categories": ["Blended Aged Rum (Jamaica)", "Jamaican Rum"]
+}
