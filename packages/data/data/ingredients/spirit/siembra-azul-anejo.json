@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Yamazaki 12 Year Whisky",
+  "name": "Siembra Azul Añejo",
   "type": "spirit",
-  "categories": ["Whiskey (Japanese)"]
+  "categories": ["Tequila (Añejo)"]
 }
