@@ -1,6 +1,0 @@
-{
-  "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Chamomile-Infused Armagnac",
-  "type": "spirit",
-  "categories": ["Brandy (Grapes)"]
-}

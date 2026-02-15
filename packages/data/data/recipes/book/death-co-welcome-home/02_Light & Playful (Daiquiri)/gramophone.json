@@ -31,8 +31,9 @@
       "quantity": { "amount": 1, "unit": "oz" }
     },
     {
-      "name": "Chamomile-Infused Armagnac",
+      "name": "Château du Tariquet 15 Year Armagnac",
       "type": "spirit",
+      "technique": { "technique": "infusion", "agent": "chamomile" },
       "quantity": { "amount": 1, "unit": "oz" }
     }
   ],

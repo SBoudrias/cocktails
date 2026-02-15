@@ -21,8 +21,9 @@
       "quantity": { "amount": 0.5, "unit": "oz" }
     },
     {
-      "name": "Nori-Infused La Favorite Rhum Agricole Blanc",
+      "name": "La Favorite Rhum Agricole Blanc",
       "type": "spirit",
+      "technique": { "technique": "infusion", "agent": "nori" },
       "quantity": { "amount": 0.5, "unit": "oz" }
     },
     {

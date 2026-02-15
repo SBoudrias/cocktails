@@ -1,6 +1,0 @@
-{
-  "$schema": "../../schemas/ingredient.schema.json",
-  "name": "Elote-Infused Elijah Craig Bourbon",
-  "type": "spirit",
-  "categories": ["Whiskey (Bourbon)"]
-}

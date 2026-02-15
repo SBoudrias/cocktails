@@ -6,18 +6,6 @@
   "glassware": "flute",
   "ingredients": [
     {
-      "name": "Cruzan Black Strap",
-      "type": "spirit",
-      "technique": {
-        "technique": "application",
-        "method": "float"
-      },
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
       "name": "Cane syrup",
       "type": "syrup",
       "quantity": {
@@ -42,7 +30,7 @@
       }
     },
     {
-      "name": "Appleton Estate V/X",
+      "name": "Appleton Signature",
       "type": "spirit",
       "quantity": {
         "amount": 1.25,
@@ -50,11 +38,23 @@
       }
     },
     {
-      "name": "Dry sparkling wine",
+      "name": "dry sparkling wine",
       "type": "category",
       "quantity": {
         "amount": 2,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
       }
     }
   ],
