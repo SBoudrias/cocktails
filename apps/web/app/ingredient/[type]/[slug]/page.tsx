@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
 import {
   getIngredient,
   getRecipesForIngredient,
   getSubstitutesForIngredient,
 } from '@cocktails/data/ingredients';
 import { getIngredientPageParams } from '@cocktails/data/params';
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import { notFound, unstable_rethrow } from 'next/navigation';
 import { Suspense } from 'react';
 import IngredientClient from './IngredientClient';
 
@@ -28,7 +28,8 @@ export async function generateMetadata({
     return {
       title: `Cocktail Index | Learn about ${ingredient.name}`,
     };
-  } catch {
+  } catch (error) {
+    unstable_rethrow(error);
     notFound();
   }
 }

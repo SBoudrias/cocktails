@@ -1,10 +1,10 @@
 #!/usr/bin/env -S node --no-warnings
 
-import { RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT } from '@cocktails/data/constants';
-import { Command } from 'commander';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT } from '@cocktails/data/constants';
+import { Command } from 'commander';
 import { logger } from './cli-util.ts';
 import * as YouTubeAPI from './youtube-api.ts';
 
@@ -124,7 +124,9 @@ function fetchChannelVideosYtDlp(channelUrl: string, playlistEnd = 100): Video[]
         duration: entry.duration,
       }));
   } catch (error) {
-    throw new Error(`Failed to fetch videos: ${(error as Error).message}`);
+    throw new Error(`Failed to fetch videos: ${(error as Error).message}`, {
+      cause: error,
+    });
   }
 }
 
@@ -303,7 +305,9 @@ function createGitHubIssue(newVideos: NewVideosForChannel[]): void {
     });
     logger.success('GitHub issue created successfully');
   } catch (error) {
-    throw new Error(`Failed to create GitHub issue: ${(error as Error).message}`);
+    throw new Error(`Failed to create GitHub issue: ${(error as Error).message}`, {
+      cause: error,
+    });
   }
 }
 

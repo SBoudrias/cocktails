@@ -1,6 +1,6 @@
 import type { Recipe } from '@cocktails/data';
-import type { SxProps } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import type { SxProps } from '@mui/material';
 import {
   Card,
   CardContent,

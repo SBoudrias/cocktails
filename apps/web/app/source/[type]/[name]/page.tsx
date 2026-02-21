@@ -2,7 +2,7 @@ import type { Source } from '@cocktails/data';
 import { getSourcePageParams } from '@cocktails/data/params';
 import { getRecipesFromSource } from '@cocktails/data/recipes';
 import { getSource } from '@cocktails/data/sources';
-import { notFound } from 'next/navigation';
+import { notFound, unstable_rethrow } from 'next/navigation';
 import { Suspense } from 'react';
 import BookSourceClient from './BookSourceClient';
 import SourceClient from './SourceClient';
@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
     return {
       title: `Cocktail Index | ${source.name}`,
     };
-  } catch {
+  } catch (error) {
+    unstable_rethrow(error);
     notFound();
   }
 }

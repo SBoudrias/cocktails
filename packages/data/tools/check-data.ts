@@ -1,5 +1,8 @@
 #!/usr/bin/env -S node --no-warnings
 
+import { execSync } from 'node:child_process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import {
   compareIngredients,
   type SortableIngredient,
@@ -7,9 +10,6 @@ import {
 import { createSchemaFormatter } from '@cocktails/jsonschema-formatter';
 import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
-import { execSync } from 'node:child_process';
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import { isChapterFolder } from '../src/modules/chapters.ts';
 import { logger } from './cli-util.ts';
 

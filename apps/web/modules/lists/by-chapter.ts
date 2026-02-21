@@ -63,12 +63,6 @@ export function createChapterHeaderComparator(
   };
 }
 
-export const byChapterListConfig = {
-  groupBy: getChapterName,
-  sortItemBy: compareByPage,
-  sortHeaderBy: compareChapterHeaders,
-};
-
 /**
  * Create a list config with proper chapter ordering based on recipe data.
  */

@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
 import { getAllIngredients } from '@cocktails/data/ingredients';
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import BottlesClient from './BottlesClient';
 

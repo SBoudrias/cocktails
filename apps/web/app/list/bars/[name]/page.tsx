@@ -1,7 +1,7 @@
 import type { Recipe } from '@cocktails/data';
-import type { Metadata } from 'next';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import BarRecipesClient from './BarRecipesClient';

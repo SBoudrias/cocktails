@@ -1,5 +1,4 @@
 import type { Source } from '@cocktails/data';
-import type { Metadata } from 'next';
 import { getAllSources } from '@cocktails/data/sources';
 import BookIcon from '@mui/icons-material/Book';
 import CalculatorIcon from '@mui/icons-material/Calculate';
@@ -18,6 +17,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';

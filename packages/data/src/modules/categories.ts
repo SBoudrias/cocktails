@@ -1,7 +1,7 @@
-import slugify from '@sindresorhus/slugify';
-import memo from 'lodash/memoize';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import slugify from '@sindresorhus/slugify';
+import memo from 'lodash/memoize';
 import type { Category } from '../types/Category.ts';
 import type { Ref } from '../types/Ref.ts';
 import { CATEGORY_ROOT } from './constants';

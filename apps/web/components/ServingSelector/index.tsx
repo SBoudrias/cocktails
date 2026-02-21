@@ -1,8 +1,8 @@
 'use client';
 
-import type { ChangeEvent } from 'react';
 import { Add, Remove } from '@mui/icons-material';
 import { TextField, IconButton, InputAdornment } from '@mui/material';
+import type { ChangeEvent } from 'react';
 import { useState, useEffect } from 'react';
 
 export default function ServingSelector({
