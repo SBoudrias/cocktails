@@ -29,7 +29,7 @@
     "nano-staged": "^0.9.0",
     "oxfmt": "^0.34.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0",
+    "typescript-eslint": "^8.56.0",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.0.18"
   },
