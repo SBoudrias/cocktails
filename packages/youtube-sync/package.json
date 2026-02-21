@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@cocktails/data": "workspace:*",
-    "commander": "^14.0.2",
+    "commander": "^14.0.3",
     "iso8601-duration": "^2.1.3"
   }
 }
