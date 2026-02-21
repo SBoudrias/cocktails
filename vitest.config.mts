@@ -47,7 +47,6 @@ export default defineConfig({
           include: ['apps/web/app/**/*.test.tsx'],
           environment: 'happy-dom',
           setupFiles: [path.join(__dirname, 'apps/web/testing/setup-page.ts')],
-          testTimeout: 30000,
         },
       },
     ],
