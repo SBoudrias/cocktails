@@ -19,7 +19,7 @@
   "dependencies": {
     "@cocktails/ingredient-sorting": "workspace:*",
     "@sindresorhus/slugify": "^3.0.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "ts-pattern": "^5.9.0"
   },
   "devDependencies": {
