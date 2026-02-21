@@ -23,6 +23,6 @@
     "ts-pattern": "^5.9.0"
   },
   "devDependencies": {
-    "ajv": "^8.17.1"
+    "ajv": "^8.18.0"
   }
 }
