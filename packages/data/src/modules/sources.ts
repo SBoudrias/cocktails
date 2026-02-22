@@ -1,6 +1,6 @@
-import memo from 'lodash/memoize';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import memo from 'lodash/memoize';
 import { match } from 'ts-pattern';
 import type { Book, Source, YoutubeChannel, Podcast } from '../types/Source.ts';
 import { isChapterFolder } from './chapters';

@@ -6,9 +6,11 @@ import BookAboutCard from './Book';
 import PodcastAboutCard from './Podcast';
 import YoutubeAboutCard from './Youtube';
 
+const EMPTY_REFS: Ref[] = [];
+
 export default function SourceAboutCard({
   source,
-  refs = [],
+  refs = EMPTY_REFS,
   sx,
 }: {
   source: Source;

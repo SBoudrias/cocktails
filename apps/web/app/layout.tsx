@@ -1,10 +1,10 @@
-import type { Metadata, Viewport } from 'next';
 import { Box } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import './globals.css';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import './globals.css';
+import type { Metadata, Viewport } from 'next';
 import { Roboto } from 'next/font/google';
 import 'core-js/modules/es.object.group-by.js';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';

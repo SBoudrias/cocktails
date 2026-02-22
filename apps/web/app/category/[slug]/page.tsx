@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
 import { getCategory, getChildCategories } from '@cocktails/data/categories';
 import { getIngredientsForCategory } from '@cocktails/data/ingredients';
 import { getCategoryPageParams } from '@cocktails/data/params';
 import { getRecipeByCategory } from '@cocktails/data/recipes';
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import { notFound, unstable_rethrow } from 'next/navigation';
 import { Suspense } from 'react';
 import CategoryClient from './CategoryClient';
 
@@ -26,7 +26,8 @@ export async function generateMetadata({
     return {
       title: `Cocktail Index | Learn about ${category.name}`,
     };
-  } catch {
+  } catch (error) {
+    unstable_rethrow(error);
     notFound();
   }
 }

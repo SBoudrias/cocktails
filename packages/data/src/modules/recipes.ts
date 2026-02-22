@@ -1,8 +1,8 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import { uniqBy } from 'lodash';
 import memo from 'lodash/memoize';
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import { match } from 'ts-pattern';
 import type { Category } from '../types/Category.ts';
 import type { Recipe } from '../types/Recipe.ts';
@@ -52,9 +52,8 @@ export const getRecipe = memo(
       }
     }
 
-    const data = await readJSONFile<Omit<Recipe, 'source' | 'slug' | 'chapter'>>(
-      filepath,
-    );
+    const data =
+      await readJSONFile<Omit<Recipe, 'source' | 'slug' | 'chapter'>>(filepath);
 
     if (!data) throw new Error(`Recipe not found: ${filepath}`);
 

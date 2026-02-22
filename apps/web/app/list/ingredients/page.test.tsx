@@ -2,7 +2,7 @@ import { getAllCategories } from '@cocktails/data/categories';
 import { getAllIngredients } from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
 import { vi, describe, it, expect } from 'vitest';
-import { getIngredientUrl } from '#/modules/url';
+import { getCategoryUrl } from '#/modules/url';
 import { setupApp } from '#/testing';
 import IngredientsPage from './page';
 
@@ -75,26 +75,19 @@ describe('IngredientsPage', () => {
   it('ingredient items link to correct ingredient detail pages', async () => {
     setupApp(await IngredientsPage());
 
-    // Find a real ingredient and verify its link
-    const allIngredients = await getAllIngredients();
-    const filteredIngredients = allIngredients.filter(
-      (i) => i.type !== 'liqueur' && i.type !== 'spirit',
-    );
-    const testIngredient = filteredIngredients[0]!;
-
-    const link = screen.getByRole('link', { name: new RegExp(testIngredient.name, 'i') });
-    expect(link).toHaveAttribute('href', getIngredientUrl(testIngredient));
+    // Use a hardcoded known ingredient with getByText to avoid expensive
+    // accessible name computation over the full ingredient list
+    const link = screen.getByText('Apple juice').closest('a');
+    expect(link).toHaveAttribute('href', '/ingredient/juice/apple-juice');
   });
 
   it('category items link to correct category pages', async () => {
     setupApp(await IngredientsPage());
 
-    // Find a real category and verify its link
-    const allCategories = await getAllCategories();
-    const testCategory = allCategories[0]!;
-
-    const link = screen.getByRole('link', { name: new RegExp(testCategory.name, 'i') });
-    expect(link).toHaveAttribute('href', getIngredientUrl(testCategory));
+    // Use a hardcoded known category with getByText to avoid expensive
+    // accessible name computation over the full ingredient list
+    const link = screen.getByText('Aged Rum').closest('a');
+    expect(link).toHaveAttribute('href', getCategoryUrl({ slug: 'aged-rum' }));
   });
 
   it('loads with search term from URL', async () => {

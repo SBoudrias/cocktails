@@ -5,7 +5,7 @@ import { setupApp } from '#/testing';
 import AuthorListPage from './page';
 
 // Real author from the codebase with multiple recipes
-const TEST_AUTHOR = 'Garret Richard';
+const KNOWN_AUTHOR = 'Garret Richard';
 
 describe('AuthorListPage', () => {
   it('shows search input, title and list', async () => {
@@ -23,7 +23,7 @@ describe('AuthorListPage', () => {
     await user.type(input, 'garret');
 
     const resultList = screen.getByRole('list');
-    expect(resultList).toHaveTextContent(TEST_AUTHOR);
+    expect(resultList).toHaveTextContent(KNOWN_AUTHOR);
   });
 
   it('clearing search shows all authors grouped by letter', async () => {
@@ -76,8 +76,8 @@ describe('AuthorListPage', () => {
   it('author items link to correct author recipes pages', async () => {
     setupApp(await AuthorListPage());
 
-    const link = screen.getByRole('link', { name: new RegExp(TEST_AUTHOR, 'i') });
-    expect(link).toHaveAttribute('href', getAuthorRecipesUrl(TEST_AUTHOR));
+    const link = screen.getByRole('link', { name: new RegExp(KNOWN_AUTHOR, 'i') });
+    expect(link).toHaveAttribute('href', getAuthorRecipesUrl(KNOWN_AUTHOR));
   });
 
   it('loads with search term from URL', async () => {
@@ -89,7 +89,7 @@ describe('AuthorListPage', () => {
     expect(input).toHaveValue('garret');
 
     const resultList = screen.getByRole('list');
-    expect(resultList).toHaveTextContent(TEST_AUTHOR);
+    expect(resultList).toHaveTextContent(KNOWN_AUTHOR);
   });
 
   it('groups authors by first letter when not searching', async () => {
@@ -106,7 +106,7 @@ describe('AuthorListPage', () => {
   it('shows recipe count for each author', async () => {
     setupApp(await AuthorListPage());
 
-    const link = screen.getByRole('link', { name: new RegExp(TEST_AUTHOR, 'i') });
+    const link = screen.getByRole('link', { name: new RegExp(KNOWN_AUTHOR, 'i') });
     expect(link).toHaveTextContent(/\d+/);
   });
 });

@@ -249,6 +249,8 @@ export async function fetchChannelVideos(
 
     return videos;
   } catch (error) {
-    throw new Error(`Failed to fetch videos via API: ${(error as Error).message}`);
+    throw new Error(`Failed to fetch videos via API: ${(error as Error).message}`, {
+      cause: error,
+    });
   }
 }

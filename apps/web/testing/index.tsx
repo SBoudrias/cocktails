@@ -1,9 +1,9 @@
 import type { RenderOptions } from '@testing-library/react';
-import type { ComponentProps, ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
+import type { ComponentProps, ReactNode } from 'react';
 
 type NuqsRenderOptions = RenderOptions & {
   nuqsOptions?: Omit<ComponentProps<typeof NuqsTestingAdapter>, 'children'>;

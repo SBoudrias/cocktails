@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, Paper } from '@mui/material';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';

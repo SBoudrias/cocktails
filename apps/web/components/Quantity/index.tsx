@@ -64,7 +64,7 @@ export default function Quantity({
     .with('oz', () => convertQuantityToOz(quantity))
     .exhaustive();
 
-  let displayAmount: number | string = amount;
+  let displayAmount: number | string;
 
   if (unitType[unit] === 'imperial') {
     const rounded = roundToFriendlyFraction(amount, unit);

@@ -10,7 +10,7 @@ import {
   ListSubheader,
   Paper,
 } from '@mui/material';
-import { notFound } from 'next/navigation';
+import { notFound, unstable_rethrow } from 'next/navigation';
 import AppHeader from '#/components/AppHeader';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
@@ -35,7 +35,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
     return {
       title: `Cocktail Index | ${recipe.name} from ${recipe.source.name}`,
     };
-  } catch {
+  } catch (error) {
+    unstable_rethrow(error);
     notFound();
   }
 }
@@ -74,7 +75,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
             <ListSubheader>Instructions</ListSubheader>
             <Paper square>
               {recipe.instructions.map((instruction, index) => (
-                <ListItem divider key={index}>
+                <ListItem divider key={instruction}>
                   <ListItemText>
                     {index + 1}. {instruction}
                   </ListItemText>
