@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, beforeAll } from 'vitest';
 import { setupApp } from '#/testing';
 import IngredientPage from './page';
 
@@ -20,17 +20,25 @@ const TEST_SPIRIT = {
   name: 'Beefeater London Dry Gin',
 };
 
+// Cache page JSX once for the entire file to avoid repeated async data loading
+let ingredientPageJSX: Awaited<ReturnType<typeof IngredientPage>>;
+let spiritPageJSX: Awaited<ReturnType<typeof IngredientPage>>;
+
+beforeAll(async () => {
+  [ingredientPageJSX, spiritPageJSX] = await Promise.all([
+    IngredientPage({
+      params: Promise.resolve({ type: TEST_INGREDIENT.type, slug: TEST_INGREDIENT.slug }),
+    }),
+    IngredientPage({
+      params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
+    }),
+  ]);
+});
+
 describe('IngredientPage', () => {
   describe('basic rendering', () => {
-    it('renders SearchHeader showing ingredient name as title', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
+    it('renders SearchHeader showing ingredient name as title', () => {
+      setupApp(ingredientPageJSX);
 
       expect(
         screen.getByRole('heading', { level: 1, name: TEST_INGREDIENT.name }),
@@ -38,12 +46,8 @@ describe('IngredientPage', () => {
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
 
-    it('renders category information for spirits', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
-        }),
-      );
+    it('renders category information for spirits', () => {
+      setupApp(spiritPageJSX);
 
       // Beefeater categories are shown
       expect(screen.getByText(/categor/i)).toBeInTheDocument();
@@ -53,40 +57,22 @@ describe('IngredientPage', () => {
       );
     });
 
-    it('renders substitutes section for spirits', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
-        }),
-      );
+    it('renders substitutes section for spirits', () => {
+      setupApp(spiritPageJSX);
 
       expect(screen.getByText('Some substitution option')).toBeInTheDocument();
     });
 
-    it('renders acid adjusting calculator for juices with acidity', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
+    it('renders acid adjusting calculator for juices with acidity', () => {
+      setupApp(ingredientPageJSX);
 
       expect(screen.getByText('Acid Adjusting')).toBeInTheDocument();
     });
   });
 
   describe('recipe list', () => {
-    it('renders recipes using the ingredient with header', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
+    it('renders recipes using the ingredient with header', () => {
+      setupApp(ingredientPageJSX);
 
       // Recipes section has a header
       expect(
@@ -94,22 +80,14 @@ describe('IngredientPage', () => {
       ).toBeInTheDocument();
 
       // Chartreuse swizzle uses pineapple juice
-      expect(
-        screen.getByRole('link', { name: /Chartreuse swizzle/ }),
-      ).toBeInTheDocument();
+      // Use getByText instead of getByRole to avoid expensive accessible name computation
+      expect(screen.getByText('Chartreuse swizzle').closest('a')).toBeInTheDocument();
     });
   });
 
   describe('recipe list quantity display', () => {
-    it('displays ingredient quantity for each recipe', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
+    it('displays ingredient quantity for each recipe', () => {
+      setupApp(ingredientPageJSX);
 
       const allListItems = screen.getAllByRole('listitem');
 
@@ -128,15 +106,8 @@ describe('IngredientPage', () => {
       expect(chartreuse).toHaveTextContent('1oz');
     });
 
-    it('displays quantity with attribution for duplicate recipe names', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
+    it('displays quantity with attribution for duplicate recipe names', () => {
+      setupApp(ingredientPageJSX);
 
       const allListItems = screen.getAllByRole('listitem');
 
@@ -159,19 +130,12 @@ describe('IngredientPage', () => {
       expect(tikiModern).toHaveTextContent('Tiki: Modern Tropical Cocktails');
     });
 
-    it('does not show attribution for unique recipe names', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
+    it('does not show attribution for unique recipe names', () => {
+      setupApp(ingredientPageJSX);
 
       // Chartreuse swizzle is unique (only one recipe with that name)
-      // Find the specific link, then get the listitem inside it (MUI ListItem is child of Next.js Link)
-      const chartreuseLink = screen.getByRole('link', { name: /Chartreuse swizzle/ });
+      // Use getByText + closest to avoid expensive accessible name computation over large list
+      const chartreuseLink = screen.getByText('Chartreuse swizzle').closest('a');
 
       // Should show quantity but NOT source attribution
       expect(chartreuseLink).toHaveTextContent('1oz');
@@ -181,14 +145,7 @@ describe('IngredientPage', () => {
 
   describe('search functionality', () => {
     it('search filters recipes within ingredient', async () => {
-      const { user } = setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
+      const { user } = setupApp(ingredientPageJSX);
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'chartreuse swizzle');
@@ -200,15 +157,7 @@ describe('IngredientPage', () => {
 
     it('URL updates with search param', async () => {
       const onUrlUpdate = vi.fn();
-      const { user } = setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-        { nuqsOptions: { onUrlUpdate } },
-      );
+      const { user } = setupApp(ingredientPageJSX, { nuqsOptions: { onUrlUpdate } });
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'jungle');
@@ -219,14 +168,7 @@ describe('IngredientPage', () => {
     });
 
     it('shows SearchAllLink in no results state', async () => {
-      const { user } = setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-      );
+      const { user } = setupApp(ingredientPageJSX);
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'xyznonexistent');
@@ -238,11 +180,7 @@ describe('IngredientPage', () => {
     });
 
     it('hides non-recipe content when searching', async () => {
-      const { user } = setupApp(
-        await IngredientPage({
-          params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
-        }),
-      );
+      const { user } = setupApp(spiritPageJSX);
 
       // Category info is visible initially
       expect(screen.getByText(/categor/i)).toBeInTheDocument();
@@ -256,16 +194,10 @@ describe('IngredientPage', () => {
       expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
     });
 
-    it('loads with search term from URL', async () => {
-      setupApp(
-        await IngredientPage({
-          params: Promise.resolve({
-            type: TEST_INGREDIENT.type,
-            slug: TEST_INGREDIENT.slug,
-          }),
-        }),
-        { nuqsOptions: { searchParams: '?search=chartreuse' } },
-      );
+    it('loads with search term from URL', () => {
+      setupApp(ingredientPageJSX, {
+        nuqsOptions: { searchParams: '?search=chartreuse' },
+      });
 
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('chartreuse');
@@ -275,12 +207,9 @@ describe('IngredientPage', () => {
     });
 
     it('clearing search restores full page content', async () => {
-      const { user } = setupApp(
-        await IngredientPage({
-          params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
-        }),
-        { nuqsOptions: { searchParams: '?search=cloister' } },
-      );
+      const { user } = setupApp(spiritPageJSX, {
+        nuqsOptions: { searchParams: '?search=cloister' },
+      });
 
       // Initially filtered and content hidden
       expect(screen.queryByText(/categor/i)).not.toBeInTheDocument();

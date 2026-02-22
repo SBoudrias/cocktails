@@ -1,7 +1,6 @@
 import { getAllIngredients } from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
 import { vi, describe, it, expect } from 'vitest';
-import { getIngredientUrl } from '#/modules/url';
 import { setupApp } from '#/testing';
 import BottlesPage from './page';
 
@@ -92,14 +91,10 @@ describe('BottlesPage', () => {
   it('bottle items link to correct ingredient detail pages', async () => {
     setupApp(await BottlesPage());
 
-    const allIngredients = await getAllIngredients();
-    const bottles = allIngredients.filter(
-      (i) => i.type === 'liqueur' || i.type === 'spirit',
-    );
-    const testBottle = bottles[0]!;
-
-    const link = screen.getByRole('link', { name: new RegExp(testBottle.name, 'i') });
-    expect(link).toHaveAttribute('href', getIngredientUrl(testBottle));
+    // Use a hardcoded known bottle with getByText to avoid expensive
+    // accessible name computation over the full bottles list
+    const link = screen.getByText('Aberfeldy 12 Year').closest('a');
+    expect(link).toHaveAttribute('href', '/ingredient/spirit/aberfeldy-12-year');
   });
 
   it('loads with search term from URL', async () => {
