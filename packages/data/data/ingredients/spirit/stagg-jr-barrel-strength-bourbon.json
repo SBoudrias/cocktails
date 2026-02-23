@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Stagg Jr. Barrel Strength Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}
