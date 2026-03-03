@@ -351,7 +351,7 @@ __metadata:
     "@mui/icons-material": "npm:^7.3.8"
     "@mui/material": "npm:^7.3.8"
     "@mui/material-nextjs": "npm:^7.3.8"
-    "@next/third-parties": "npm:16.1.6"
+    "@next/third-parties": "npm:^16.1.6"
     "@sindresorhus/transliterate": "npm:^2.3.1"
     "@testing-library/dom": "npm:^10.4.1"
     "@testing-library/jest-dom": "npm:^6.9.1"
@@ -362,6 +362,7 @@ __metadata:
     autoprefixer: "npm:^10.4.27"
     core-js: "npm:^3.48.0"
     happy-dom: "npm:^20.7.0"
+    lite-youtube-embed: "npm:^0.3.4"
     next: "npm:16.1.6"
     next-router-mock: "npm:^1.0.5"
     next-sitemap: "npm:^4.2.3"
@@ -1434,7 +1435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/third-parties@npm:16.1.6":
+"@next/third-parties@npm:^16.1.6":
   version: 16.1.6
   resolution: "@next/third-parties@npm:16.1.6"
   dependencies:
@@ -5024,6 +5025,13 @@ __metadata:
   version: 1.2.4
   resolution: "lines-and-columns@npm:1.2.4"
   checksum: 10c0/3da6ee62d4cd9f03f5dc90b4df2540fb85b352081bee77fe4bbcd12c9000ead7f35e0a38b8d09a9bb99b13223446dd8689ff3c4959807620726d788701a83d2d
+  languageName: node
+  linkType: hard
+
+"lite-youtube-embed@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "lite-youtube-embed@npm:0.3.4"
+  checksum: 10c0/10b1bec37e83baa90c0a2cd731f760be9c98c83a17b91bcee5cdf8e3c0b8f72d90f493e9b7ddc7b6fa1ea494e4d3b5e060d6a948347c5ce42fc36a1f061e01c1
   languageName: node
   linkType: hard
 
