@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Deconstructed Morgenthaler Eggnog",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Amaro Nonino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila Añejo",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Amontillado)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Garnish with freshly grated nutmeg."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "l8ylB7D9Ifo",
+      "start": 587
+    }
+  ]
+}
