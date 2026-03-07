@@ -40,7 +40,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "autoprefixer": "^10.4.27",
-    "happy-dom": "^20.7.0",
+    "happy-dom": "^20.8.3",
     "next-router-mock": "^1.0.5"
   }
 }
