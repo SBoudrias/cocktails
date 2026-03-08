@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "After Eight",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "coupe",
+  "servings": 10,
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Cointreau",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "cup"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients and pour over 1 cup (250ml) of whole milk mixed with 6–7 crushed Mint Oreo cookies.",
+    "Let sit for 5 minutes, then fine-strain through cheesecloth to clarify.",
+    "Serve 2.5 oz (75ml) portions.",
+    "Top each serving with mint foam: blend 400ml mint water with 0.8g xanthan gum and 12g methylcellulose F50, then add 1 oz crème de menthe, ½ oz simple syrup, and ½ oz lime juice. Aerate until foamy and spoon over the drink."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "OWLMeZ-ljx4",
+      "start": 773
+    }
+  ]
+}
