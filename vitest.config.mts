@@ -37,6 +37,9 @@ export default defineConfig({
           name: 'component',
           include: ['apps/web/components/**/*.test.tsx'],
           environment: 'happy-dom',
+          environmentOptions: {
+            happyDOM: { settings: { disableIframePageLoading: true } },
+          },
           setupFiles: [path.join(__dirname, 'apps/web/testing/setup-component.ts')],
         },
       },
@@ -46,6 +49,9 @@ export default defineConfig({
           name: 'page',
           include: ['apps/web/app/**/*.test.tsx'],
           environment: 'happy-dom',
+          environmentOptions: {
+            happyDOM: { settings: { disableIframePageLoading: true } },
+          },
           setupFiles: [path.join(__dirname, 'apps/web/testing/setup-page.ts')],
         },
       },
