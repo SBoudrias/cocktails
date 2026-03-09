@@ -1,0 +1,61 @@
+name: Cleanup PR Previews
+
+# Removes stale PR preview directories from gh-pages to prevent the branch from
+# growing too large (which causes GitHub Pages build failures).
+# Run manually after merging to clean up the current backlog of stale previews.
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Remove previews for closed PRs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          OPEN_PRS=$(gh pr list --state open --json number --jq '[.[].number | tostring] | join(" ")') || {
+            echo "Failed to fetch open PRs, skipping cleanup"
+            exit 0
+          }
+          echo "Open PRs: ${OPEN_PRS:-none}"
+
+          removed=0
+          if [ -d pr-preview ]; then
+            for dir in pr-preview/pr-*/; do
+              [ -d "$dir" ] || continue
+              pr_num=$(basename "$dir" | sed 's/pr-//')
+              if ! echo " $OPEN_PRS " | grep -qw "$pr_num"; then
+                echo "Removing preview for closed PR #$pr_num"
+                rm -rf "$dir"
+                removed=$((removed + 1))
+              fi
+            done
+          fi
+          echo "Removed $removed PR preview(s)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --staged --quiet; then
+            git commit -m "Cleanup: remove previews for closed PRs"
+            git push
+          else
+            echo "Nothing to clean up"
+          fi
