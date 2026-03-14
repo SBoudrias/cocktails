@@ -1883,12 +1883,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^25.3.5":
-  version: 25.3.5
-  resolution: "@types/node@npm:25.3.5"
+"@types/node@npm:^25.5.0":
+  version: 25.5.0
+  resolution: "@types/node@npm:25.5.0"
   dependencies:
     undici-types: "npm:~7.18.0"
-  checksum: 10c0/4cf0834a6f6933bf0aca6afead117ae3db3b8f02a5f7187a24f871db0fb9344e5e46573ba387bc53b7505e1e219c4c535cbe67221ced95bb5ad98573223b19d0
+  checksum: 10c0/70c508165b6758c4f88d4f91abca526c3985eee1985503d4c2bd994dbaf588e52ac57e571160f18f117d76e963570ac82bd20e743c18987e82564312b3b62119
   languageName: node
   linkType: hard
 
@@ -2970,7 +2970,7 @@ __metadata:
     "@next/eslint-plugin-next": "npm:^16.1.6"
     "@types/json-schema": "npm:^7.0.15"
     "@types/lodash": "npm:^4.17.24"
-    "@types/node": "npm:^25.3.5"
+    "@types/node": "npm:^25.5.0"
     "@vitejs/plugin-react": "npm:^6.0.1"
     "@vitest/browser": "npm:^4.0.18"
     "@vitest/coverage-v8": "npm:^4.0.18"
