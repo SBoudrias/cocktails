@@ -6,7 +6,7 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Blackberries",
+      "name": "Blackberry",
       "type": "fruit",
       "quantity": {
         "amount": 3,
