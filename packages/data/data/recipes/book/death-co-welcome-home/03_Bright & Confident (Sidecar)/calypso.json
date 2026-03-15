@@ -6,14 +6,6 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Aquafaba",
-      "type": "other",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Cane Sugar Syrup",
       "type": "syrup",
       "quantity": {
@@ -50,6 +42,14 @@
       "type": "wine",
       "quantity": {
         "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aquafaba",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     }

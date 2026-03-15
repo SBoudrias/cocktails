@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bacardí Heritage",
   "type": "spirit",
-  "categories": ["Blended Aged Rum"]
+  "categories": ["Column Still Aged Rum"]
 }
