@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bitter End Jamaican Jerk Bitters",
+  "type": "bitter"
+}

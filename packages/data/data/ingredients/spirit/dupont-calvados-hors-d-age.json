@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Dupont Calvados Hors d'Age",
+  "type": "spirit",
+  "categories": ["Calvados"]
+}

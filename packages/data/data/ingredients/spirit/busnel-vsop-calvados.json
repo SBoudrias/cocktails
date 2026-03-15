@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Busnel VSOP Calvados",
+  "type": "spirit",
+  "categories": ["Calvados"]
+}
