@@ -199,13 +199,21 @@ for await (const sourceFile of fs.glob(dataGlob)) {
       );
     }
 
-    // Ensure the ingredient's type matches its folder
+    // Ensure the ingredient's type matches its folder — auto-move if not
     const folderType = path.basename(path.dirname(sourceFile));
     if (data.type && data.type !== folderType) {
-      fail(
-        `Ingredient "${data.name}" has type "${data.type}" but is in folder "${folderType}". ` +
-          `Move it to data/ingredients/${data.type}/ or fix the type.`,
+      const correctPath = path.join(
+        path.dirname(path.dirname(sourceFile)),
+        data.type,
+        path.basename(sourceFile),
       );
+      logger.change(
+        `Moving "${path.basename(sourceFile)}" from "${folderType}/" to "${data.type}/"`,
+      );
+      await fs.mkdir(path.dirname(correctPath), { recursive: true });
+      await fs.rename(sourceFile, correctPath);
+      // Update ingredientFolders so cross-folder checks use the new location
+      ingredientFolders.set(slugify(data.name), data.type);
     }
   }
 
