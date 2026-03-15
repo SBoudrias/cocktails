@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "House Ginger Syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -22,8 +22,8 @@
       }
     },
     {
-      "name": "House Orgeat",
-      "type": "syrup",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

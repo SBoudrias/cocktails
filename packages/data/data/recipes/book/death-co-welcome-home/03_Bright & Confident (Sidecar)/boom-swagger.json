@@ -6,7 +6,7 @@
   "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "Cane Sugar Syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "House Ginger Syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,

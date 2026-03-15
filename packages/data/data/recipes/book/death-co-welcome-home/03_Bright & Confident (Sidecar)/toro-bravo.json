@@ -17,8 +17,8 @@
       }
     },
     {
-      "name": "House Orgeat",
-      "type": "syrup",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

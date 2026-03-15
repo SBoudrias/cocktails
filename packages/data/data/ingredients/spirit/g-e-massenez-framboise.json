@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "G.E. Massenez Framboise",
-  "type": "spirit"
+  "type": "spirit",
+  "categories": ["Raspberry Brandy"]
 }

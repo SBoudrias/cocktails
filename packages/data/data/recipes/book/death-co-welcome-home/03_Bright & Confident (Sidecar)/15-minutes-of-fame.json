@@ -17,7 +17,7 @@
       }
     },
     {
-      "name": "House Ginger Syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
         "amount": 1,
@@ -25,7 +25,7 @@
       }
     },
     {
-      "name": "Cane Sugar Syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
