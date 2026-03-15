@@ -6,22 +6,6 @@
   "glassware": "highball",
   "ingredients": [
     {
-      "name": "Egg white",
-      "type": "emulsifier",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Simple syrup",
       "type": "syrup",
       "brix": 66,
@@ -39,8 +23,24 @@
       }
     },
     {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Angostura bitters",
       "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
         "amount": 1,
         "unit": "oz"

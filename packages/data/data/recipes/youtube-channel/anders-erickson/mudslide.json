@@ -1,29 +1,28 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Green Eyes",
+  "name": "Mudslide",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Simple syrup",
-      "type": "syrup",
-      "brix": 66,
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Heavy whipping cream",
+      "type": "other",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Green Chartreuse",
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kahlua Original coffee liqueur",
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
@@ -31,19 +30,19 @@
       }
     },
     {
-      "name": "Gin",
-      "type": "category",
+      "name": "Baileys",
+      "type": "liqueur",
       "quantity": {
-        "amount": 1.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     }
   ],
-  "instructions": ["Garnish with a lime wheel and cocktail cherry."],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "GHQy1w-eB8I"
+      "videoId": "M8uXEDvbvVM",
+      "start": 186
     }
   ]
 }

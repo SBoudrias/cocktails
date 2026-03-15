@@ -30,6 +30,14 @@
       }
     },
     {
+      "name": "Laphroaig 10",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Cocchi Vermouth di Torino",
       "type": "wine",
       "quantity": {
@@ -42,14 +50,6 @@
       "type": "liqueur",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Laphroaig 10",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
         "unit": "oz"
       }
     },

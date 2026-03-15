@@ -7,18 +7,18 @@
   "servings": 10,
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "cup"
-      }
-    },
-    {
       "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
         "unit": "cup"
       }
     },

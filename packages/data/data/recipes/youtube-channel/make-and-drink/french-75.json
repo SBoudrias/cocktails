@@ -1,32 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Green Eyes",
+  "name": "French 75",
   "preparation": "shaken",
   "served_on": "up",
-  "glassware": "coupe",
+  "glassware": "flute",
   "ingredients": [
     {
       "name": "Simple syrup",
       "type": "syrup",
-      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Green Chartreuse",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -37,13 +28,25 @@
         "amount": 1.5,
         "unit": "oz"
       }
+    },
+    {
+      "name": "Sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
     }
   ],
-  "instructions": ["Garnish with a lime wheel and cocktail cherry."],
+  "instructions": [
+    "Shake gin, lemon juice, and simple syrup with ice.",
+    "Strain into a flute.",
+    "Top with champagne."
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "GHQy1w-eB8I"
+      "videoId": "YfVDJnQjXQg"
     }
   ]
 }

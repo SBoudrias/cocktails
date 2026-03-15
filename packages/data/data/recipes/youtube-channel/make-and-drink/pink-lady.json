@@ -1,20 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Hemingway Daiquiri",
+  "name": "Pink Lady",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Grapefruit juice",
-      "type": "juice",
+      "name": "Egg white",
+      "type": "emulsifier",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "unit"
       }
     },
     {
-      "name": "Simple syrup",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -25,36 +25,36 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Luxardo Maraschino Liqueur",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Column still lightly aged rum",
+      "name": "Brandy (Apple)",
       "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Shake with ice until chilled.",
-    "Fine strain into a coupe.",
-    "Top with Campari air: blend 50ml Campari with 115ml water and 0.5g sucrose ester (E473), then aerate with an aquarium pump and air stone until foam forms. Scoop the air onto the drink."
+    "Dry shake all ingredients without ice.",
+    "Add ice and shake again.",
+    "Double strain into a chilled coupe."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "rdYntiiIf_U"
+      "videoId": "GLpsKngJzeI"
     }
   ]
 }

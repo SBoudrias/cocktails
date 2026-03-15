@@ -1,49 +1,47 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Green Eyes",
+  "name": "Between the Sheets",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Simple syrup",
-      "type": "syrup",
-      "brix": 66,
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lime juice",
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Green Chartreuse",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Gin",
+      "name": "Cognac",
       "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cointreau",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
-  "instructions": ["Garnish with a lime wheel and cocktail cherry."],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "GHQy1w-eB8I"
+      "videoId": "acVOsjh5PGM"
     }
   ]
 }
