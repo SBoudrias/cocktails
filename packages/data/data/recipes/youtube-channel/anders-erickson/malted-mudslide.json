@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Malted Mudslide",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Chocolate ice cream",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Baileys",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Monkey Shoulder Blended Scotch",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kahlua Original coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend all ingredients until smooth.",
+    "Top with Baileys whipped cream.",
+    "Garnish with grated chocolate."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "M8uXEDvbvVM",
+      "start": 541
+    }
+  ]
+}
