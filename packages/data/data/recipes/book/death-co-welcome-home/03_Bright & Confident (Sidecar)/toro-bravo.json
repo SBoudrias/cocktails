@@ -7,7 +7,7 @@
   "ingredients": [
     {
       "name": "Cucumber",
-      "type": "other",
+      "type": "fruit",
       "technique": {
         "technique": "muddled"
       },
