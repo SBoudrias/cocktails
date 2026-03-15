@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Diplomático Reserva Exclusiva",
+  "type": "spirit",
+  "categories": ["Column Still Aged Rum"]
+}

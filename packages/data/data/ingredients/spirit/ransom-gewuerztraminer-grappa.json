@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Ransom Gewürztraminer Grappa",
+  "type": "spirit",
+  "categories": ["Grappa"]
+}

@@ -32,7 +32,7 @@
     },
     {
       "name": "Stiegl-Radler grapefruit beer",
-      "type": "soda",
+      "type": "beer",
       "quantity": {
         "amount": 4,
         "unit": "oz"

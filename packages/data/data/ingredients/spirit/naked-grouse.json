@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Naked Grouse",
+  "type": "spirit",
+  "categories": ["Whisky (Blended Scotch)"]
+}

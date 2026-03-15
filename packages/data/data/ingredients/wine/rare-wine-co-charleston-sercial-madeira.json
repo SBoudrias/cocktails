@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Rare Wine Co. Charleston Sercial Madeira",
+  "type": "wine",
+  "categories": ["Madeira wine"]
+}

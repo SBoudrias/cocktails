@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Lustau Oloroso Sherry",
+  "type": "wine",
+  "categories": ["Sherry (Oloroso)"]
+}

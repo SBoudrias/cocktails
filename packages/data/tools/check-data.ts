@@ -119,10 +119,13 @@ for await (const categoryFile of fs.glob(categoriesGlob)) {
 }
 logger.item(`Found ${categorySlugs.size} categories`);
 
+const ingredientFolders = new Map<string, string>(); // slug -> folder type
 const ingredientsGlob = path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json');
 for await (const ingredientFile of fs.glob(ingredientsGlob)) {
   const data = JSON.parse(await fs.readFile(ingredientFile, 'utf-8'));
+  const folderType = path.basename(path.dirname(ingredientFile));
   canonicalNames.set(slugify(data.name), data.name);
+  ingredientFolders.set(slugify(data.name), folderType);
 }
 logger.item(`Collected ${canonicalNames.size} canonical names`);
 logger.footer('Done!');
@@ -194,6 +197,23 @@ for await (const sourceFile of fs.glob(dataGlob)) {
         `Ingredient "${data.name}" duplicates category "${ingredientSlug}". ` +
           `Remove the ingredient file and use type: "category" in recipes instead.`,
       );
+    }
+
+    // Ensure the ingredient's type matches its folder — auto-move if not
+    const folderType = path.basename(path.dirname(sourceFile));
+    if (data.type && data.type !== folderType) {
+      const correctPath = path.join(
+        path.dirname(path.dirname(sourceFile)),
+        data.type,
+        path.basename(sourceFile),
+      );
+      logger.change(
+        `Moving "${path.basename(sourceFile)}" from "${folderType}/" to "${data.type}/"`,
+      );
+      await fs.mkdir(path.dirname(correctPath), { recursive: true });
+      await fs.rename(sourceFile, correctPath);
+      // Update ingredientFolders so cross-folder checks use the new location
+      ingredientFolders.set(slugify(data.name), data.type);
     }
   }
 
@@ -308,6 +328,17 @@ for await (const sourceFile of fs.glob(dataGlob)) {
           `${slugify(ingredient.name)}.json`,
         );
         if (await fileExists(ingredientPath)) continue;
+
+        // Check if the ingredient exists in a different type folder
+        const existingFolderType = ingredientFolders.get(slugify(ingredient.name));
+        if (existingFolderType && existingFolderType !== ingredient.type) {
+          fail(
+            `Ingredient "${ingredient.name}" in ${path.basename(sourceFile)} ` +
+              `has type "${ingredient.type}" but the ingredient file is in folder "${existingFolderType}". ` +
+              `Use type: "${existingFolderType}" in the recipe.`,
+          );
+          continue;
+        }
 
         await writeJSON(ingredientPath, {
           $schema: path.relative(
