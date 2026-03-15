@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Glasshouse Trade Winds",
   "type": "spirit",
-  "categories": ["Brandy"]
+  "categories": ["Brandy (Grapes)"]
 }
