@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Alvear Festival Pale Cream",
+  "type": "wine",
+  "categories": ["Sherry (Cream)"]
+}

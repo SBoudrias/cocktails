@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Springbank 10 Year",
+  "type": "spirit",
+  "categories": ["Whisky (Scotch)"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Hidalgo Gobernador Oloroso",
+  "type": "wine",
+  "categories": ["Sherry (Oloroso)"]
+}

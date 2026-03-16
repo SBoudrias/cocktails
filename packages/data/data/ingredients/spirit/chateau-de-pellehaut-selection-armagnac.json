@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Château de Pellehaut Sélection Armagnac",
+  "type": "spirit",
+  "categories": ["Brandy (Grapes)"]
+}

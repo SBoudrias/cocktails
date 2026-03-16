@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "J. Rieger Kansas City Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

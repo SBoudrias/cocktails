@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Giffard Crème de Framboise",
+  "type": "liqueur",
+  "categories": ["Raspberry liqueur"]
+}

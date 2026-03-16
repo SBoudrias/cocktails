@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Massenez Kirsch Vieux",
+  "type": "spirit",
+  "categories": ["Brandy (Cherry)"]
+}

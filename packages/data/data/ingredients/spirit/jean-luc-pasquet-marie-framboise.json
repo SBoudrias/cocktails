@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Jean-Luc Pasquet Marie-Framboise",
+  "type": "spirit",
+  "categories": ["Brandy (Raspberry)"]
+}

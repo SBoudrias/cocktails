@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cascahuin 48 Plata",
+  "type": "spirit",
+  "categories": ["Tequila (Blanco)"]
+}

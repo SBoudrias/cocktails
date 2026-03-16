@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bittercube Jamaican Black Strap Bitters",
+  "type": "bitter"
+}

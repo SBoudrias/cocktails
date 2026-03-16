@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Merlet Crème de Fraise des Bois",
+  "type": "liqueur",
+  "categories": ["Strawberry liqueur"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mal Bien Espadin Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Faussé Piste Garde Manger Syrah",
+  "type": "wine",
+  "categories": ["Red wine"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Westward American Single Malt",
+  "type": "spirit",
+  "categories": ["Whiskey"]
+}

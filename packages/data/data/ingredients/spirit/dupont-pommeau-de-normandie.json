@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Dupont Pommeau de Normandie",
+  "type": "spirit",
+  "categories": ["Calvados"]
+}

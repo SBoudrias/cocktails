@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Peach Street Peach Brandy",
+  "type": "spirit",
+  "categories": ["Brandy (Peach)"]
+}

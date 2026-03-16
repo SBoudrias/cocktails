@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tariquet Classique VS Armagnac",
+  "type": "spirit",
+  "categories": ["Brandy (Grapes)"]
+}

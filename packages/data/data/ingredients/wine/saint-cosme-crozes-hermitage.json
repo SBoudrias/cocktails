@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Saint Cosme Crozes-Hermitage",
+  "type": "wine",
+  "categories": ["Red wine"]
+}

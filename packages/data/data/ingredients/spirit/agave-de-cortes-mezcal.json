@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Agave de Cortes Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

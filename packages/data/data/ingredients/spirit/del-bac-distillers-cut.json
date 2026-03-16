@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Del Bac Distiller's Cut",
+  "type": "spirit",
+  "categories": ["Whiskey"]
+}

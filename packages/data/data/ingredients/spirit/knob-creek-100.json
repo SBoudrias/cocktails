@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Knob Creek 100",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

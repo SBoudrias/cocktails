@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Lost Spirits Navy Style",
+  "type": "spirit",
+  "categories": ["Navy style rum"]
+}

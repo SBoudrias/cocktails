@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Brugal 1888",
+  "type": "spirit",
+  "categories": ["Column still aged rum"]
+}
