@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Delord 25 Year Bas Armagnac",
   "type": "spirit",
-  "categories": ["Brandy (Grapes)"]
+  "categories": ["Armagnac"]
 }
