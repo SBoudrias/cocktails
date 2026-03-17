@@ -14,8 +14,8 @@
       }
     },
     {
-      "name": "House Orange Bitters",
-      "type": "bitter",
+      "name": "Orange bitters",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "dash"

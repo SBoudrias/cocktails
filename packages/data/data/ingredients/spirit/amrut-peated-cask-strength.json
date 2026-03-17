@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Amrut Peated Cask Strength",
   "type": "spirit",
-  "categories": ["Whiskey"]
+  "categories": ["Whisky (Peated)"]
 }
