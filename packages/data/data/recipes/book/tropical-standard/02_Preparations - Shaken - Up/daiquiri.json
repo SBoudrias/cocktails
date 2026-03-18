@@ -30,14 +30,6 @@
       }
     },
     {
-      "name": "Falernum (Tropical Standard)",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Blended Lightly-aged Rum",
       "type": "category",
       "quantity": {
