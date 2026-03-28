@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Xila Licor de Agave",
+  "type": "liqueur"
+}
