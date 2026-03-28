@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "St. George All Purpose Vodka",
+  "type": "spirit",
+  "categories": ["Vodka"]
+}
