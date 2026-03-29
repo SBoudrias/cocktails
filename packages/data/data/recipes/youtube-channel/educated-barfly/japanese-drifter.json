@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Japanese Drifter",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Italicus",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yuzu Liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Midori melon liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Neon Pigeon",
+      "location": "Singapore"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "6Pe-YHdJzf0"
+    }
+  ]
+}

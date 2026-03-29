@@ -30,6 +30,14 @@
       }
     },
     {
+      "name": "Chareau Aloe",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Damoiseau Pure Cane 110 Proof",
       "type": "spirit",
       "quantity": {
@@ -42,14 +50,6 @@
       "type": "wine",
       "quantity": {
         "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Chareau Aloe",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },
