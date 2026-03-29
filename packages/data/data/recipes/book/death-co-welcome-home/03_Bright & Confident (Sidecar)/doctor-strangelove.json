@@ -49,7 +49,7 @@
       "name": "Chareau Aloe",
       "type": "liqueur",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
