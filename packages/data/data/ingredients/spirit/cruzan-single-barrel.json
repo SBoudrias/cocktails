@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "Cruzan Single Barrel",
   "type": "spirit",
-  "categories": ["Armagnac"]
+  "categories": ["Column still aged rum"]
 }

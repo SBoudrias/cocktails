@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "Château de Pellehaut Sélection Armagnac",
   "type": "spirit",
   "categories": ["Armagnac"]
 }

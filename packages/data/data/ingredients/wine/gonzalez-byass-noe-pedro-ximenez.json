@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "González Byass Noé Pedro Ximénez",
+  "type": "wine",
+  "categories": ["Sherry"]
+}

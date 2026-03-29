@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Château du Tariquet 15 Year Armagnac",
   "type": "spirit",
-  "categories": ["Brandy (Grapes)"]
+  "categories": ["Armagnac"]
 }

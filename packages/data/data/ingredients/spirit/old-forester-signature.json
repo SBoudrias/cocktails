@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "Old Forester Signature",
   "type": "spirit",
-  "categories": ["Armagnac"]
+  "categories": ["Whiskey (Bourbon)"]
 }

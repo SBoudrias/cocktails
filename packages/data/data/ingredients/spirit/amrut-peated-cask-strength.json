@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "Amrut Peated Cask Strength",
   "type": "spirit",
-  "categories": ["Armagnac"]
+  "categories": ["Whisky (Peated)"]
 }

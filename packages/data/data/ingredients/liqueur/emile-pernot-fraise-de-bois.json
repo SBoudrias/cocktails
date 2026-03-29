@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Emile Pernot Fraise de Bois",
+  "type": "liqueur",
+  "categories": ["Strawberry liqueur"]
+}

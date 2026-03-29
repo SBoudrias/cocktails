@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Massenez Garden Party",
+  "type": "liqueur",
+  "categories": ["Basil liqueur"]
+}

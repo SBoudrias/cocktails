@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "Caol Ila 12 Year",
   "type": "spirit",
-  "categories": ["Armagnac"]
+  "categories": ["Whisky (Islay Scotch)"]
 }

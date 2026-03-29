@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "St. George Terroir Gin",
   "type": "spirit",
-  "categories": ["Armagnac"]
+  "categories": ["Gin (New American)"]
 }

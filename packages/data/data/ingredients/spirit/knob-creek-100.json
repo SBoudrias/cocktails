@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "Knob Creek 100",
   "type": "spirit",
-  "categories": ["Armagnac"]
+  "categories": ["Whiskey (Bourbon)"]
 }

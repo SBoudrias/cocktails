@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "Siete Leguas Añejo Tequila",
   "type": "spirit",
-  "categories": ["Armagnac"]
+  "categories": ["Tequila Añejo"]
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Domaine d'Espérance Blanche Armagnac",
+  "name": "Tariquet Classique VS Armagnac",
   "type": "spirit",
   "categories": ["Armagnac"]
 }
