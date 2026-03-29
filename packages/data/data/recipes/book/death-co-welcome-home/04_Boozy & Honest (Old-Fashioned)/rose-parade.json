@@ -39,7 +39,7 @@
     },
     {
       "name": "Crème de Rose",
-      "type": "liqueur",
+      "type": "category",
       "quantity": {
         "amount": 1,
         "unit": "tsp"
