@@ -53,3 +53,4 @@ apps/web/public/sitemap-*.xml
 .kiro/specs
 PLAN.md
 RESEARCH.md
+.claude/worktrees
