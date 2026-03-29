@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Combier Crème de Rose",
+  "name": "Crème de Rose",
   "type": "liqueur",
   "categories": ["Rose liqueur"]
 }
