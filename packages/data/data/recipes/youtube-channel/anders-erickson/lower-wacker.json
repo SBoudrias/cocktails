@@ -2,8 +2,8 @@
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Lower Wacker",
   "preparation": "stirred",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
+  "served_on": "up",
+  "glassware": "nick & nora",
   "ingredients": [
     {
       "name": "Jeppson's Malört",

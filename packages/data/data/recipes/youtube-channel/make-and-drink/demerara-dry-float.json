@@ -53,7 +53,15 @@
   "attributions": [
     {
       "relation": "recipe author",
-      "source": "Atomic Grog"
+      "source": "Luciano"
+    },
+    {
+      "relation": "bar",
+      "source": "Mai-Kai"
+    },
+    {
+      "relation": "adapted by",
+      "source": "The Atomic Grog"
     }
   ],
   "refs": [
