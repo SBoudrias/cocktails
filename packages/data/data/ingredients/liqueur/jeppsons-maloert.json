@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Jeppson's Malört",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}
