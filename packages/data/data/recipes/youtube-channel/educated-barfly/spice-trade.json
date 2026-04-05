@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Spice Trade",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Basil leaves",
+      "type": "other",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Garnish with a basil leaf"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NIZEI5gxH1o"
+    }
+  ]
+}

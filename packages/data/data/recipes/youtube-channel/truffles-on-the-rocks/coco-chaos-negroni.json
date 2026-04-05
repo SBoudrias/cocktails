@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Coco-Chaos Negroni",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Skinos Mastiha Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Fat-wash Plymouth Gin with 55g toasted coconut chips and 30ml melted cacao butter in a sous vide bag at 65°C for 1 hour. Chill and freeze to firm up the fat, then strain.",
+    "Garnish with a makrut lime leaf"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "uh1UEEC9e5g"
+    }
+  ]
+}

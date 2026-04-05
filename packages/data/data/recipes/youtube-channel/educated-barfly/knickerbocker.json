@@ -1,12 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Green Banana",
+  "name": "Knickerbocker",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Banana oleosaccharum",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Raspberry syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -17,44 +25,40 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Clément Créole Shrubb",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican overproof rum",
+      "type": "category",
+      "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Tempus Fugit crème de banane",
-      "type": "liqueur",
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
-      }
-    },
-    {
-      "name": "Paranubes Oaxaca Aguardiente de Caña",
-      "type": "spirit",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Matcha powder",
-      "type": "spice",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "tsp"
       }
     }
   ],
-  "instructions": ["Garnish with matcha powder sprinkled on top"],
+  "instructions": ["Garnish with a raspberry"],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "BMob5vHH5ls"
-    },
-    {
-      "type": "youtube",
-      "videoId": "Xi4HVvoGPMA"
+      "videoId": "NIZEI5gxH1o"
     }
   ]
 }
