@@ -90,7 +90,13 @@ export default function Quantity({
   return (
     <Box
       component="span"
-      sx={{ display: 'inline-flex', flexDirection: 'row', gap: 0.5, alignItems: 'baseline', flexShrink: 0 }}
+      sx={{
+        display: 'inline-flex',
+        flexDirection: 'row',
+        gap: 0.5,
+        alignItems: 'baseline',
+        flexShrink: 0,
+      }}
     >
       <span className={styles.quantity}>{displayAmount}</span>
       {unit !== 'unit' && <span className={styles.unit}>{unit}</span>}
