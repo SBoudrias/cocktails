@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Soda Jerk",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Agave syrup",
+      "type": "syrup",
+      "technique": {
+        "technique": "infusion",
+        "agent": "vanilla bean"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream soda",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake all ingredients except cream soda.",
+    "Shake with ice.",
+    "Strain into glass, top with cream soda."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Kevin Diedrich"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "9VperTUEFHQ"
+    }
+  ]
+}
