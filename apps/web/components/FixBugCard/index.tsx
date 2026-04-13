@@ -6,7 +6,7 @@ export default function FixBugCard({ fixUrl, sx }: { fixUrl: string; sx?: SxProp
   return (
     <Card sx={sx}>
       <CardContent>
-        <Stack direction="row" spacing={1} alignItems="center">
+        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
           <BugReportIcon />
           <span>Found an error?</span>
           <Button href={fixUrl} target="_blank" rel="noopener nofollow">

@@ -1,7 +1,7 @@
 'use client';
 
 import type { RecipeIngredient } from '@cocktails/data';
-import { Stack } from '@mui/material';
+import { Box } from '@mui/material';
 import { match } from 'ts-pattern';
 import { convertQuantityToMl, convertQuantityToOz } from '#/modules/conversion';
 import { roundToFriendlyFraction, roundToFriendlyMl } from '#/modules/friendly-rounding';
@@ -88,15 +88,12 @@ export default function Quantity({
   }
 
   return (
-    <Stack
+    <Box
       component="span"
-      direction="row"
-      spacing={0.5}
-      alignItems="baseline"
-      flexShrink={0}
+      sx={{ display: 'inline-flex', flexDirection: 'row', gap: 0.5, alignItems: 'baseline', flexShrink: 0 }}
     >
       <span className={styles.quantity}>{displayAmount}</span>
       {unit !== 'unit' && <span className={styles.unit}>{unit}</span>}
-    </Stack>
+    </Box>
   );
 }

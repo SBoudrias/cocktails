@@ -40,7 +40,7 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
     <>
       <CardContent>
         <Stack spacing={2}>
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
             <TextField
               label="Juice weight"
               value={weightValue}
@@ -115,7 +115,7 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
               },
             }}
           />
-          <Stack direction="row" spacing={1} justifyContent="flex-end">
+          <Stack direction="row" spacing={1} sx={{ justifyContent: 'flex-end' }}>
             <Button
               color="secondary"
               onClick={() => {
@@ -152,7 +152,7 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
     <>
       <CardContent>
         <Stack spacing={2}>
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
             <TextField
               label="Juice amount"
               value={juiceAmountValue}
@@ -211,7 +211,7 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
               },
             }}
           />
-          <Stack direction="row" spacing={1} justifyContent="flex-end">
+          <Stack direction="row" spacing={1} sx={{ justifyContent: 'flex-end' }}>
             <Button
               color="secondary"
               onClick={() => {

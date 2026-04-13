@@ -19,9 +19,7 @@ export function LinkListItem({
     <ListItem divider secondaryAction={href ? <ChevronRight /> : undefined}>
       <Stack
         direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        width="100%"
+        sx={{ justifyContent: 'space-between', alignItems: 'center', width: '100%' }}
       >
         <ListItemText primary={primary} secondary={secondary} />
         {tertiary}
