@@ -46,7 +46,7 @@ function IngredientLine({
   }
 
   return (
-    <Stack direction="row" spacing={0.5} alignItems="baseline">
+    <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
       <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />
       <div>
         <div className={styles.name}>{formatIngredientName(ingredient)}</div>

@@ -123,9 +123,8 @@ export default function IngredientClient({
             {ingredient.categories.length === 1 ? 'category is' : 'categories are'}:
             <Stack
               direction="row"
-              alignItems="baseline"
               spacing={1}
-              sx={{ flexWrap: 'wrap' }}
+              sx={{ flexWrap: 'wrap', alignItems: 'baseline' }}
             >
               {ingredient.categories.map((category) => (
                 <CategoryName key={category.slug} category={category} />

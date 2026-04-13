@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Acapulco Gold",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Oscar Villegas"
+    },
+    {
+      "relation": "bar",
+      "source": "Senor Pico"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "T1S-71q3Usg"
+    }
+  ]
+}

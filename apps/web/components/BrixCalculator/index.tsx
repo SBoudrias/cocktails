@@ -38,7 +38,7 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
         <CardHeader title="Sugar Adjusting" />
         <CardContent>
           <Stack spacing={2}>
-            <Stack direction="row" spacing={1} alignItems="top">
+            <Stack direction="row" spacing={1} sx={{ alignItems: 'top' }}>
               <TextField
                 label="Juice weight"
                 value={juiceWeightValue}
@@ -107,7 +107,7 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
                 },
               }}
             />
-            <Stack direction="row" spacing={1} justifyContent="flex-end">
+            <Stack direction="row" spacing={1} sx={{ justifyContent: 'flex-end' }}>
               <Button
                 color="secondary"
                 onClick={() => {

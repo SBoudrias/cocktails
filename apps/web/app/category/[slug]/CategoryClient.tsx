@@ -115,9 +115,8 @@ export default function CategoryClient({
                   <b>{category.name}</b> is a subset of
                   <Stack
                     direction="row"
-                    alignItems="baseline"
                     spacing={1}
-                    sx={{ flexWrap: 'wrap' }}
+                    sx={{ flexWrap: 'wrap', alignItems: 'baseline' }}
                   >
                     {category.parents.map((parentCategory) => (
                       <CategoryName key={parentCategory.slug} category={parentCategory} />

@@ -34,7 +34,7 @@ export default function SalineCalculator({ sx }: { sx?: SxProps }) {
         <CardHeader title="Saline Solution Calculator" />
         <CardContent>
           <Stack spacing={2}>
-            <Stack direction="row" spacing={1} alignItems="top">
+            <Stack direction="row" spacing={1} sx={{ alignItems: 'top' }}>
               <TextField
                 label="Water weight"
                 value={waterWeightValue}
@@ -81,7 +81,7 @@ export default function SalineCalculator({ sx }: { sx?: SxProps }) {
                 },
               }}
             />
-            <Stack direction="row" spacing={1} justifyContent="flex-end">
+            <Stack direction="row" spacing={1} sx={{ justifyContent: 'flex-end' }}>
               <Button
                 color="secondary"
                 onClick={() => {

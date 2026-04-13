@@ -82,7 +82,7 @@ export default async function HomePage() {
         <li>
           <ul>
             <ListSubheader>
-              <Stack direction="row" alignItems="center" gap={1}>
+              <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                 <CalculatorIcon />
                 Calculators
               </Stack>
@@ -109,7 +109,7 @@ export default async function HomePage() {
         <li>
           <ul>
             <ListSubheader>
-              <Stack direction="row" alignItems="center" gap={1}>
+              <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                 <BookIcon />
                 By Books
               </Stack>
@@ -124,7 +124,7 @@ export default async function HomePage() {
         <li>
           <ul>
             <ListSubheader>
-              <Stack direction="row" alignItems="center" gap={1}>
+              <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                 <YoutubeIcon />
                 By Youtube Channels
               </Stack>
@@ -139,7 +139,7 @@ export default async function HomePage() {
         <li>
           <ul>
             <ListSubheader>
-              <Stack direction="row" alignItems="center" gap={1}>
+              <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                 <PodcastIcon />
                 By Podcasts
               </Stack>

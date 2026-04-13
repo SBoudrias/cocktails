@@ -26,8 +26,7 @@ export default function AppHeader({ title }: { title: string }) {
             variant="h6"
             noWrap
             component="div"
-            textAlign="center"
-            sx={{ flexGrow: 1, flexShrink: 1 }}
+            sx={{ flexGrow: 1, flexShrink: 1, textAlign: 'center' }}
           >
             {title}
           </Typography>

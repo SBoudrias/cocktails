@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Treacle",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apple juice",
+      "type": "juice",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Float apple juice on top.", "Garnish with a lemon twist."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Dick Bradsell"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "2SLTAyGmvS4"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Bramble",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Mûre",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Float crème de mûre on top.", "Garnish with fresh berries."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Dick Bradsell"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "2SLTAyGmvS4"
+    }
+  ]
+}
