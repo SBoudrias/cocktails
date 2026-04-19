@@ -1,6 +1,5 @@
 import path from 'node:path';
 import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
@@ -57,5 +56,8 @@ export default defineConfig({
       },
     ],
   },
-  plugins: [tsconfigPaths(), react()],
+  resolve: {
+    tsconfigPaths: true,
+  },
+  plugins: [react()],
 });
