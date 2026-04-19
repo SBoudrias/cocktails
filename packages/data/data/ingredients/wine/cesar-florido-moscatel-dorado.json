@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "César Florido Moscatel Dorado",
+  "type": "wine",
+  "categories": ["Sherry"]
+}

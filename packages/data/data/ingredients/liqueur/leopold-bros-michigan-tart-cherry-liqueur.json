@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Leopold Bros. Michigan Tart Cherry Liqueur",
+  "type": "liqueur"
+}

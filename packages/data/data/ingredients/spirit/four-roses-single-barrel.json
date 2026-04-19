@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Four Roses Single Barrel",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

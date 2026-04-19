@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Don Ciccio & Figli Nocino",
+  "type": "liqueur"
+}

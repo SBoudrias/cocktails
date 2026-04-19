@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Ransom Sweet Vermouth",
+  "type": "wine",
+  "categories": ["Sweet vermouth"]
+}

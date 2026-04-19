@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Pajarote Toronja Arandense & Romero",
+  "type": "liqueur"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Connemara Irish Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (Irish)"]
+}

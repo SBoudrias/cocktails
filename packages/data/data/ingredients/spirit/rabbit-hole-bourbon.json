@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Rabbit Hole Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

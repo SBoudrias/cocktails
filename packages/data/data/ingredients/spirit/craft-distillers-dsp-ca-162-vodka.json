@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Craft Distillers DSP CA 162 Vodka",
+  "type": "spirit",
+  "categories": ["Vodka"]
+}

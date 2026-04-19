@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Miracle Mile Cucumber/Orris Root Bitters",
+  "type": "bitter"
+}
