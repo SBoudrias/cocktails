@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Bad Sneakers",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.67,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laphroaig 10",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Kalani Coconut Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Suntory Toki",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a shaker and whip, shaking with a few pieces of crushed ice, just until incorporated, then dump into a double old-fashioned glass and fill the glass with crushed ice.",
+    "Garnish with toasted coconut flakes and grated grapefruit zest. Serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 273
+    }
+  ]
+}

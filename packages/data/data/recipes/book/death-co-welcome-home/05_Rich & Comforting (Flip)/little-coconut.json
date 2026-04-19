@@ -1,0 +1,95 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Little Coconut",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Whole egg",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut milk",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Averna",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Avua Amburana",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake all the ingredients, then shake again with ice. Double strain into an Irish coffee mug.",
+    "Grate some nutmeg over the top of the drink."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "George Nunez"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "Denver, CO"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 277
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Bat Country (Cold)",
+  "preparation": "built",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Milk syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Galliano Ristretto",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grand Marnier",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Ambré",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients except the cold brew in a collins glass and fill the glass with crushed ice.",
+    "Slowly pour the cold brew over the back of a spoon to float it on top of the drink.",
+    "Garnish with a dehydrated lemon wheel. Serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jonnie Long"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "Denver, CO"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 273
+    }
+  ]
+}

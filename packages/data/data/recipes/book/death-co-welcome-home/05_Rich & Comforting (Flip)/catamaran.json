@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Catamaran",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "goblet",
+  "ingredients": [
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.33,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.67,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Perry's Tot Navy Strength Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bimini",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then strain into a tulip glass. Fill the glass with crushed ice.",
+    "Garnish with an orchid flower and a cinnamon stick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Shannon Tebay"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 275
+    }
+  ]
+}

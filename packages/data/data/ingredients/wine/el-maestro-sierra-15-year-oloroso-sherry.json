@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "El Maestro Sierra 15 Year Oloroso Sherry",
+  "type": "wine",
+  "categories": ["Sherry (Oloroso)"]
+}

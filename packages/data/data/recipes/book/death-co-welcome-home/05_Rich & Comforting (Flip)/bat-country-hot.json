@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Bat Country (Hot)",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Galliano Ristretto",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Ambré",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in an Irish coffee mug.",
+    "Spoon a layer of Grand Marnier cream on top (1/4 oz Grand Marnier whisked with 1 oz heavy cream)."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jonnie Long"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "Denver, CO"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 273
+    }
+  ]
+}

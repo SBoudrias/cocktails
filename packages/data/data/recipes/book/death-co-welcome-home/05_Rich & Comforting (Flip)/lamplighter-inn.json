@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Lamplighter Inn",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Spent Coffee Grounds Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour the seltzer into a chilled fizz glass. Dry shake all the ingredients, then shake again with ice. Double strain into the glass.",
+    "Shave some coffee bean over the top of the drink."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Jump"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "Denver, CO"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 277
+    }
+  ]
+}
