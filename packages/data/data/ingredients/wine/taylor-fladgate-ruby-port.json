@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Taylor Fladgate Ruby Port",
+  "type": "wine",
+  "categories": ["Ruby port"]
+}

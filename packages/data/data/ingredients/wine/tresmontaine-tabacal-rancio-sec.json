@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tresmontaine Tabacal Rancio Sec",
+  "type": "wine"
+}

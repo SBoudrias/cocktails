@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cappelletti Pasubio",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}

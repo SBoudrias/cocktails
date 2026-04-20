@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Dupont Fine Reserve Calvados",
+  "type": "spirit",
+  "categories": ["Calvados"]
+}

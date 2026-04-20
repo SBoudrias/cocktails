@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Charles Fournier Riesling",
+  "type": "wine",
+  "categories": ["Dry white wine"]
+}

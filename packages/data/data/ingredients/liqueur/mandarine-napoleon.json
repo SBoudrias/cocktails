@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mandarine Napoléon",
+  "type": "liqueur",
+  "categories": ["Orange liqueur"]
+}

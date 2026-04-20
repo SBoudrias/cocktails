@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Musashino Junmai Daiginjo",
+  "type": "wine",
+  "categories": ["Sake"]
+}

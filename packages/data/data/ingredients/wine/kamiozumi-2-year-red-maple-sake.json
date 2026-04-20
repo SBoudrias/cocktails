@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Kamiozumi 2 Year Red Maple Sake",
+  "type": "wine",
+  "categories": ["Sake"]
+}

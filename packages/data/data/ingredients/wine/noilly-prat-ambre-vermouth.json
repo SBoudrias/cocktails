@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Noilly Prat Ambré Vermouth",
+  "type": "wine",
+  "categories": ["Amber vermouth"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Macallan 15 Year",
+  "type": "spirit",
+  "categories": ["Whisky (Scotch)"]
+}

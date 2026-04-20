@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Oakland Spirits Co. Automatic Sea Gin",
+  "type": "spirit",
+  "categories": ["Gin (New American)"]
+}

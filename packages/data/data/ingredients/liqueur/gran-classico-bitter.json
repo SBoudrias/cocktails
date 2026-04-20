@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Gran Classico Bitter",
+  "type": "liqueur",
+  "categories": ["Italian bitter apéritif"]
+}

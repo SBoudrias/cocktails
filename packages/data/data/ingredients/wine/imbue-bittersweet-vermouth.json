@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Imbue Bittersweet Vermouth",
+  "type": "wine",
+  "categories": ["Sweet vermouth"]
+}

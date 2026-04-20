@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "González Byass La Copa Vermouth",
+  "type": "wine",
+  "categories": ["Sweet vermouth"]
+}
