@@ -1,0 +1,91 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Krakatoa Punch",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "BG Reynolds Falernum",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard abricot du Roussillon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mr. Black coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients into a shaker tin and shake with cracked or pebble ice.",
+    "Dump into a zombie glass or a tiki mug.",
+    "Garnish with a cinnamon stick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Justin Wojslaw"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Coconuts & Carnage",
+      "page": 47
+    }
+  ]
+}

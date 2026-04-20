@@ -1,0 +1,91 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pharaoh's Curse",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard abricot du Roussillon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Stiggins' Fancy pineapple rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients into a shaker tin and shake with cracked or pebble ice.",
+    "Dump into a snifter.",
+    "Garnish with lemon and lime wheels and a cocktail cherry."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Justin Wojslaw"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Coconuts & Carnage",
+      "page": 63
+    }
+  ]
+}

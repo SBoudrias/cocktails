@@ -1,0 +1,91 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cape Town Cooler",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mr. Black coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Don Q Gold Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients into a shaker tin and shake with cracked or pebble ice.",
+    "Dump into a snifter glass.",
+    "Garnish with a mint sprig and a spent lime shell topped with espresso beans."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Justin Wojslaw"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Coconuts & Carnage",
+      "page": 23
+    }
+  ]
+}
