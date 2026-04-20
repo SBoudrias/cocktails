@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Scrappy's Grapefruit Bitters",
-  "type": "bitter"
+  "type": "bitter",
+  "categories": ["Grapefruit Bitters"]
 }

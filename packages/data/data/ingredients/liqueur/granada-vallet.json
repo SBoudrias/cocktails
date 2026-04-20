@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Granada-Vallet",
-  "type": "liqueur"
+  "type": "liqueur",
+  "categories": ["Amaro"]
 }

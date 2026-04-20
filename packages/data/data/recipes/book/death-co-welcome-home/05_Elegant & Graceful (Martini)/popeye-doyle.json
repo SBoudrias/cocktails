@@ -6,8 +6,8 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Cherry Heering",
-      "type": "liqueur",
+      "name": "Cherry Heering liqueur",
+      "type": "category",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
