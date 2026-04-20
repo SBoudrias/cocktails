@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Arethusa",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 7,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard Menthe-Pastille",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard White Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Agave de Cortes Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Braulio",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then strain into a double old-fashioned glass over 1 large ice cube.",
+    "Garnish with a mint leaf."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matthew Belanger"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 273
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Joto Junmai Nigori Sake",
+  "type": "wine",
+  "categories": ["Sake"]
+}

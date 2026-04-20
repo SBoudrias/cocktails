@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Clay Pigeons",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "coffee",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Leopold Bros. Maryland Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in an Irish coffee mug and stir to combine.",
+    "Spoon some toasted oat cream on top of the drink and grate some nutmeg over the top."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 275
+    }
+  ]
+}

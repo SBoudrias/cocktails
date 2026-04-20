@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Echo Chamber",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Terra Spice Eucalyptus Extract",
+      "type": "tincture",
+      "quantity": {
+        "amount": 1,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Clear Creek Pear Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Calle 23 Blanco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a shaker and whip, shaking with a few pieces of crushed ice, just until incorporated.",
+    "Dump into a tiki mug and fill the glass with crushed ice.",
+    "Garnish with a mint bouquet."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jeremy Oertel"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 275
+    }
+  ]
+}

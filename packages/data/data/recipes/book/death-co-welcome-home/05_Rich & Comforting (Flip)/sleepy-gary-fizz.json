@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Sleepy Gary Fizz",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Greek Yogurt Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Avua Prata",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barsol Acholado Pisco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour the seltzer into a fizz glass. Short shake the remaining ingredients with ice for about 5 seconds, then double strain into the glass.",
+    "Sprinkle some green tea leaves over the drink."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Matt Hunt"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "Denver, CO"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "death-co-welcome-home",
+      "page": 277
+    }
+  ]
+}

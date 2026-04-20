@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Plantation Barbados 5 Year",
+  "type": "spirit",
+  "categories": ["Barbados Rum"]
+}

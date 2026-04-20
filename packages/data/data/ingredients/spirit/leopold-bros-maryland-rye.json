@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Leopold Bros. Maryland Rye",
+  "type": "spirit",
+  "categories": ["Whiskey (Rye)"]
+}
