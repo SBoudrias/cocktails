@@ -1,8 +1,8 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Bali Hai",
-  "preparation": "shaken",
-  "served_on": "ice cubes",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
   "glassware": "collins",
   "ingredients": [
     {
