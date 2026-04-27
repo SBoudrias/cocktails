@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Beehive Old Fashioned",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "Orange bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 10,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 16,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Tom Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whisky (Scotch)",
+      "type": "category",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Coat the inside of a bottle with melted beeswax.",
+    "Combine all ingredients in the beeswax-coated bottle and stir to mix.",
+    "Pour 3 oz per serving over a big rock in an old fashioned glass.",
+    "Garnish with an orange twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "-R0Wcpvwol8"
+    }
+  ]
+}

@@ -80,6 +80,11 @@
     {
       "type": "youtube",
       "videoId": "t6qElzw9Jic"
+    },
+    {
+      "type": "youtube",
+      "videoId": "qKgCw8f50BQ",
+      "start": 487
     }
   ]
 }
