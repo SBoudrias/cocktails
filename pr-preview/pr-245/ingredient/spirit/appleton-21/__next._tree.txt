@@ -1,0 +1,4 @@
+:HL["/cocktails/pr-preview/pr-245/_next/static/chunks/0ycqd28.awmts.css","style"]
+:HL["/cocktails/pr-preview/pr-245/_next/static/media/ce62453a442c7f35-s.p.0333ktddfbsxy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/cocktails/pr-preview/pr-245/_next/static/chunks/05llsvm-p4b59.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"ingredient","param":null,"prefetchHints":0,"slots":{"children":{"name":"type","param":{"type":"d","key":"spirit","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"appleton-21","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"ep5Hm8EwvG8QAk557EkHB"}
