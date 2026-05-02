@@ -29,7 +29,7 @@
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.46.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.0",
+    "typescript-eslint": "^8.59.1",
     "vitest": "^4.1.5"
   },
   "nano-staged": {
