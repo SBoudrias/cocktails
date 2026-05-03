@@ -1,7 +1,7 @@
 [hook "pre-commit"]
 	event = pre-commit
-	command = yarn nano-staged
+	command = sh -c 'yarn nano-staged'
 
 [hook "pre-push"]
 	event = pre-push
-	command = yarn lint && yarn test
+	command = sh -c 'yarn lint && yarn test'
