@@ -1,0 +1,7 @@
+[hook "pre-commit"]
+	event = pre-commit
+	command = yarn nano-staged
+
+[hook "pre-push"]
+	event = pre-push
+	command = yarn lint && yarn test
