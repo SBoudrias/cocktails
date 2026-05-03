@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Barracuda",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Oloroso)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Garnish with a lemon twist."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "4RvvsAU4ZdE"
+    }
+  ]
+}
