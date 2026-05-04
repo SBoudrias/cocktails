@@ -12,7 +12,7 @@
     "test": "vitest --run --coverage",
     "check-data": "node packages/data/tools/check-data.ts",
     "youtube-sync": "yarn workspace @cocktails/youtube-sync youtube-sync",
-    "prepare": "git config --local include.path ../.githooks || true"
+    "prepare": "git config --local include.path ../.gitconfig || true"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
