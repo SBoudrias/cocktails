@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Bebbo Con Hongos",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "blood orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Charanda",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "dried mushrooms"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a shaker with ice",
+    "Shake until well chilled",
+    "Strain into a chilled coupe",
+    "Garnish with a lemon wheel"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mui53iIiIVE",
+      "start": 597
+    }
+  ]
+}

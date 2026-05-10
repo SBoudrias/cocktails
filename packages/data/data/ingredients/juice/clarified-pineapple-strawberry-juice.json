@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Clarified pineapple strawberry juice",
+  "type": "juice",
+  "ingredients": [
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Juice the strawberries (or extract juice from fresh fruit) and combine with pineapple juice to get total juice volume",
+    "Set aside 25% of the total juice; weigh it and add 0.2% agar agar (based on total juice weight)",
+    "Heat the agar mixture while whisking and bring to a boil",
+    "Whisk the boiled agar mixture back into the remaining 75% of juice",
+    "Refrigerate for ~1 hour until fully set",
+    "Break the gel and strain through cheesecloth, letting it fully filter",
+    "Yield is approximately 70% of the initial juice volume"
+  ]
+}

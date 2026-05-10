@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tropical Berry Highball",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Tropical berry cordial",
+      "type": "syrup",
+      "quantity": {
+        "amount": 150,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Ancho Reyes Verde Chile Poblano Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 5,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Volcán de mi Tierra Reposado",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a CO2 cream whipper",
+    "Charge with CO2, shake 10 seconds, then release the gas",
+    "Charge again, shake, and rest in the fridge",
+    "Prepare a highball glass with a light dusting of smoked paprika",
+    "Fill with ice, release gas from the siphon, and pour"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "37FkxmGDeGQ"
+    }
+  ]
+}
