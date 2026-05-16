@@ -244,6 +244,7 @@ __metadata:
     "@sindresorhus/slugify": "npm:^3.0.0"
     ajv: "npm:^8.20.0"
     lodash: "npm:^4.18.1"
+    oxfmt: "npm:^0.50.0"
     ts-pattern: "npm:^5.9.0"
   languageName: unknown
   linkType: soft
