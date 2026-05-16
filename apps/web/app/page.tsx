@@ -27,7 +27,7 @@ import {
   getBarListUrl,
   getBottleListUrl,
   getIngredientListUrl,
-  getRecentlyUpdatedUrl,
+  getRecentlyAddedUrl,
   getRecipeListUrl,
   getSourceUrl,
 } from '#/modules/url';
@@ -80,13 +80,13 @@ export default async function HomePage() {
               </ListItemButton>
             </ListItem>
           </Link>
-          <Link href={getRecentlyUpdatedUrl()}>
+          <Link href={getRecentlyAddedUrl()}>
             <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
               <ListItemButton>
                 <ListItemIcon>
                   <HistoryIcon />
                 </ListItemIcon>
-                <ListItemText primary="Recently Updated" />
+                <ListItemText primary="Recently Added" />
               </ListItemButton>
             </ListItem>
           </Link>

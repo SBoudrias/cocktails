@@ -176,7 +176,7 @@ export const getRecipesFromSource = memo(
   },
 );
 
-export const getRecentlyUpdatedRecipes = memo(async (): Promise<Recipe[]> => {
+export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
   const { stdout: repoRootRaw } = await execFile(
     'git',
     ['rev-parse', '--show-toplevel'],

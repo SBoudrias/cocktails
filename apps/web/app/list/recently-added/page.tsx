@@ -1,4 +1,4 @@
-import { getRecentlyUpdatedRecipes } from '@cocktails/data/recipes';
+import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, Paper } from '@mui/material';
 import type { Metadata } from 'next';
@@ -8,15 +8,15 @@ import AppHeader from '#/components/AppHeader';
 import { getRecipeUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Recently Updated',
+  title: 'Cocktail Index | Recently Added',
 };
 
-export default async function RecentlyUpdatedPage() {
-  const recipes = await getRecentlyUpdatedRecipes();
+export default async function RecentlyAddedPage() {
+  const recipes = await getRecentlyAddedRecipes();
 
   return (
     <Suspense>
-      <AppHeader title="Recently Updated" />
+      <AppHeader title="Recently Added" />
       <List sx={{ mt: 2 }}>
         <Paper square>
           {recipes.map((recipe) => (
