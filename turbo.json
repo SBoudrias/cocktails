@@ -1,0 +1,14 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "lint": {
+      "dependsOn": ["^lint"],
+      "outputs": []
+    },
+    "check-data": {
+      "dependsOn": ["^lint"],
+      "inputs": ["$TURBO_DEFAULT$", "data/**", "schemas/**"],
+      "outputs": []
+    }
+  }
+}

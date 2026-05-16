@@ -40,6 +40,9 @@ updates:
           - eslint-*
           - husky
           - nano-staged
+      task-runner:
+        patterns:
+          - turbo
       ajv:
         patterns:
           - ajv

@@ -10,12 +10,15 @@ import { createSchemaFormatter } from '@cocktails/jsonschema-formatter';
 import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
 import { format as formatWithOxfmt } from 'oxfmt';
-import { isChapterFolder } from '../src/modules/chapters.ts';
 import { logger } from './cli-util.ts';
 import { areSimilarNames } from './name-similarity.ts';
 
 const startTime = performance.now();
-const PACKAGE_ROOT = path.join(import.meta.dirname, '..');
+const PACKAGE_ROOT = path.join(import.meta.dirname, '../../data');
+
+function isChapterFolder(folder: string): boolean {
+  return /^\d+_.+$/.test(folder);
+}
 
 interface Ingredient extends SortableIngredient {
   type: string;
