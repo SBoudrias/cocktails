@@ -1,5 +1,9 @@
+import { execFile as execFileCb } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { promisify } from 'node:util';
+
+const execFile = promisify(execFileCb);
 import slugify from '@sindresorhus/slugify';
 import { uniqBy } from 'lodash';
 import memo from 'lodash/memoize';
@@ -173,64 +177,90 @@ export const getRecipesFromSource = memo(
 );
 
 export const getRecentlyUpdatedRecipes = memo(async (): Promise<Recipe[]> => {
-  const sourceTypes = await fs.readdir(RECIPE_ROOT);
+  const { stdout: repoRootRaw } = await execFile(
+    'git',
+    ['rev-parse', '--show-toplevel'],
+    {
+      cwd: RECIPE_ROOT,
+    },
+  );
+  const repoRoot = repoRootRaw.trim();
+  const recipeRelPath = path.relative(repoRoot, RECIPE_ROOT);
 
-  const sourceDirs = await Promise.all(
-    sourceTypes.map(async (sourceType) => {
-      const sourceSlugs = await fs.readdir(path.join(RECIPE_ROOT, sourceType));
-      return sourceSlugs.map((sourceSlug) => ({ sourceType, sourceSlug }));
-    }),
+  // --diff-filter=A: only commits that first introduced each file (immune to bulk edits)
+  // git log is newest-first, so the first occurrence of each path is its most recent add
+  const { stdout: gitLog } = await execFile(
+    'git',
+    [
+      '-c',
+      'core.quotePath=false',
+      'log',
+      '--diff-filter=A',
+      '--name-only',
+      '--format=COMMIT %ai',
+      '--',
+      recipeRelPath,
+    ],
+    { cwd: repoRoot },
   );
 
-  const recipeFiles = await Promise.all(
-    sourceDirs.flat().map(async ({ sourceType, sourceSlug }) => {
-      const sourcePath = path.join(RECIPE_ROOT, sourceType, sourceSlug);
-      const entries = await fs.readdir(sourcePath);
-      const results: {
-        sourceType: Source['type'];
-        sourceSlug: string;
-        recipeSlug: string;
-        chapter?: string;
-        mtime: Date;
-      }[] = [];
+  const seen = new Set<string>();
+  const recent: Array<{
+    sourceType: Source['type'];
+    sourceSlug: string;
+    recipeSlug: string;
+    chapter?: string;
+  }> = [];
 
-      for (const entry of entries) {
-        if (entry === '_source.json') continue;
+  let currentDate: Date | null = null;
 
-        const entryPath = path.join(sourcePath, entry);
-        const stat = await fs.stat(entryPath);
+  for (const raw of gitLog.split('\n')) {
+    if (recent.length >= 30) break;
+    const line = raw.trim();
+    if (!line) continue;
 
-        if (stat.isDirectory() && isChapterFolder(entry)) {
-          const chapterFiles = await fs.readdir(entryPath);
-          for (const recipeFilename of chapterFiles) {
-            if (!recipeFilename.endsWith('.json')) continue;
-            const recipeStat = await fs.stat(path.join(entryPath, recipeFilename));
-            results.push({
-              sourceType: sourceType as Source['type'],
-              sourceSlug,
-              recipeSlug: path.basename(recipeFilename, '.json'),
-              chapter: entry,
-              mtime: recipeStat.mtime,
-            });
-          }
-        } else if (entry.endsWith('.json')) {
-          results.push({
+    if (line.startsWith('COMMIT ')) {
+      currentDate = new Date(line.slice(7));
+    } else if (currentDate && line.endsWith('.json') && !line.includes('_source.json')) {
+      const relToRecipes = path.relative(recipeRelPath, line);
+      const parts = relToRecipes.split('/');
+
+      let entry: (typeof recent)[number] | null = null;
+
+      const sourceType = parts[0];
+      const sourceSlug = parts[1];
+
+      if (parts.length === 3) {
+        const filename = parts[2];
+        if (sourceType && sourceSlug && filename) {
+          entry = {
             sourceType: sourceType as Source['type'],
             sourceSlug,
-            recipeSlug: path.basename(entry, '.json'),
-            mtime: stat.mtime,
-          });
+            recipeSlug: path.basename(filename, '.json'),
+          };
+        }
+      } else if (parts.length === 4) {
+        const chapter = parts[2];
+        const filename = parts[3];
+        if (sourceType && sourceSlug && chapter && filename) {
+          entry = {
+            sourceType: sourceType as Source['type'],
+            sourceSlug,
+            recipeSlug: path.basename(filename, '.json'),
+            chapter,
+          };
         }
       }
 
-      return results;
-    }),
-  );
-
-  const recent = recipeFiles
-    .flat()
-    .toSorted((a, b) => b.mtime.getTime() - a.mtime.getTime())
-    .slice(0, 30);
+      if (entry) {
+        const key = `${entry.sourceType}/${entry.sourceSlug}/${entry.chapter ?? ''}/${entry.recipeSlug}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          recent.push(entry);
+        }
+      }
+    }
+  }
 
   return Promise.all(
     recent.map(({ sourceType, sourceSlug, recipeSlug, chapter }) =>
