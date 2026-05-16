@@ -6,18 +6,18 @@
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "coconut cream",
+      "type": "other",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Coconut cream",
-      "type": "other",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },

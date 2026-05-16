@@ -93,10 +93,6 @@
     {
       "relation": "recipe author",
       "source": "Gergö \"Sergio\" Muráth"
-    },
-    {
-      "relation": "adapted by",
-      "source": "Saturn"
     }
   ],
   "refs": [

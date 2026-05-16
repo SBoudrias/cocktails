@@ -14,14 +14,6 @@
       }
     },
     {
-      "name": "Tomato water",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
@@ -42,6 +34,14 @@
       "type": "juice",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tomato water",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     },
