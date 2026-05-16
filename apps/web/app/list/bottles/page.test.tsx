@@ -1,8 +1,28 @@
-import { getAllIngredients } from '@cocktails/data/ingredients';
+import { getAllIngredients, getIngredient } from '@cocktails/data/ingredients';
+import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { setupApp } from '#/testing';
 import BottlesPage from './page';
+
+vi.mock('@cocktails/data/ingredients', async (importOriginal) => ({
+  ...(await importOriginal<typeof IngredientsModule>()),
+  getAllIngredients: vi.fn(),
+}));
+
+const testIngredients = await Promise.all([
+  getIngredient('spirit', 'aberfeldy-12-year'),
+  getIngredient('spirit', 'appleton-signature'),
+  getIngredient('spirit', 'grey-goose-vodka'),
+  getIngredient('liqueur', 'campari'),
+  getIngredient('juice', 'apple-juice'),
+  getIngredient('juice', 'lime-juice'),
+  getIngredient('soda', 'ginger-beer'),
+]);
+
+beforeEach(() => {
+  vi.mocked(getAllIngredients).mockResolvedValue(testIngredients);
+});
 
 describe('BottlesPage', () => {
   it('shows search input, title and list', async () => {
@@ -40,9 +60,9 @@ describe('BottlesPage', () => {
       nuqsOptions: { searchParams: { search: 'rum' } },
     });
 
-    // Initially filtered
+    // Initially filtered through a real category name on Appleton Signature.
     const resultList = screen.getByRole('list');
-    expect(resultList).toHaveTextContent(/rum/i);
+    expect(resultList).toHaveTextContent('Appleton Signature');
 
     // Clear the search input
     const input = screen.getByRole('searchbox');

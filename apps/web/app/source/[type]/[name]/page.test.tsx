@@ -1,7 +1,14 @@
+import { getRecipe, getRecipesFromSource } from '@cocktails/data/recipes';
+import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { setupApp } from '#/testing';
 import SourcePage from './page';
+
+vi.mock('@cocktails/data/recipes', async (importOriginal) => ({
+  ...(await importOriginal<typeof RecipesModule>()),
+  getRecipesFromSource: vi.fn(),
+}));
 
 // Using Anders Erickson YouTube channel as the main test source
 const TEST_YOUTUBE = {
@@ -16,6 +23,72 @@ const TEST_YOUTUBE_ALT = {
   slug: 'educated-barfly',
   name: 'The Educated Barfly',
 };
+
+const [andersRecipes, educatedBarflyRecipes, smugglersCoveRecipes, sippinSafariRecipes] =
+  await Promise.all([
+    Promise.all([
+      getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'mezcal-margarita'),
+      getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'daiquiri'),
+    ]),
+    Promise.all([
+      getRecipe(
+        { type: 'youtube-channel', slug: 'educated-barfly' },
+        'hot-diggity-daiquiri',
+      ),
+    ]),
+    Promise.all([
+      getRecipe(
+        { type: 'book', slug: 'smugglers-cove' },
+        'aku-aku',
+        '01_The Birth of Tiki',
+      ),
+      getRecipe(
+        { type: 'book', slug: 'smugglers-cove' },
+        'pupule',
+        '01_The Birth of Tiki',
+      ),
+      getRecipe(
+        { type: 'book', slug: 'smugglers-cove' },
+        'three-dots-and-a-dash',
+        '01_The Birth of Tiki',
+      ),
+      getRecipe(
+        { type: 'book', slug: 'smugglers-cove' },
+        'suffering-bastard',
+        '02_The Golden Era',
+      ),
+      getRecipe(
+        { type: 'book', slug: 'smugglers-cove' },
+        'zombie',
+        '09_Eight Essential Exotic Elixirs',
+      ),
+    ]),
+    Promise.all([getRecipe({ type: 'book', slug: 'sippin-safari' }, 'caribbean-punch')]),
+  ]);
+
+beforeEach(() => {
+  vi.mocked(getRecipesFromSource).mockImplementation(async (source) => {
+    if (source.type === TEST_YOUTUBE.type && source.slug === TEST_YOUTUBE.slug) {
+      return andersRecipes;
+    }
+    if (source.type === TEST_YOUTUBE_ALT.type && source.slug === TEST_YOUTUBE_ALT.slug) {
+      return educatedBarflyRecipes;
+    }
+    if (
+      source.type === TEST_BOOK_WITH_CHAPTERS.type &&
+      source.slug === TEST_BOOK_WITH_CHAPTERS.slug
+    ) {
+      return smugglersCoveRecipes;
+    }
+    if (
+      source.type === TEST_BOOK_WITHOUT_CHAPTERS.type &&
+      source.slug === TEST_BOOK_WITHOUT_CHAPTERS.slug
+    ) {
+      return sippinSafariRecipes;
+    }
+    return [];
+  });
+});
 
 describe('SourcePage', () => {
   describe('basic rendering', () => {

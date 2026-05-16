@@ -1,7 +1,20 @@
+import {
+  getIngredient,
+  getRecipesForIngredient,
+  getSubstitutesForIngredient,
+} from '@cocktails/data/ingredients';
+import type * as IngredientsModule from '@cocktails/data/ingredients';
+import { getRecipe } from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
-import { vi, describe, it, expect, beforeAll } from 'vitest';
+import { vi, describe, it, expect } from 'vitest';
 import { setupApp } from '#/testing';
 import IngredientPage from './page';
+
+vi.mock('@cocktails/data/ingredients', async (importOriginal) => ({
+  ...(await importOriginal<typeof IngredientsModule>()),
+  getRecipesForIngredient: vi.fn(),
+  getSubstitutesForIngredient: vi.fn(),
+}));
 
 // Using real pineapple-juice ingredient which has:
 // - Multiple recipes (39+)
@@ -20,20 +33,49 @@ const TEST_SPIRIT = {
   name: 'Beefeater London Dry Gin',
 };
 
-// Cache page JSX once for the entire file to avoid repeated async data loading
-let ingredientPageJSX: Awaited<ReturnType<typeof IngredientPage>>;
-let spiritPageJSX: Awaited<ReturnType<typeof IngredientPage>>;
+const [pineappleRecipes, spiritRecipes, substitutes] = await Promise.all([
+  Promise.all([
+    getRecipe(
+      { type: 'book', slug: 'smugglers-cove' },
+      'jungle-bird',
+      '03_The Tiki Revival',
+    ),
+    getRecipe(
+      { type: 'book', slug: 'tiki-modern-tropical-cocktails' },
+      'jungle-bird',
+      '02_Essential Tiki Classics',
+    ),
+    getRecipe(
+      { type: 'book', slug: 'smugglers-cove' },
+      'chartreuse-swizzle',
+      '04_Creating the Space',
+    ),
+  ]),
+  Promise.all([
+    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'cloister'),
+  ]),
+  Promise.all([getIngredient('spirit', 'fords-gin')]),
+]);
 
-beforeAll(async () => {
-  [ingredientPageJSX, spiritPageJSX] = await Promise.all([
-    IngredientPage({
-      params: Promise.resolve({ type: TEST_INGREDIENT.type, slug: TEST_INGREDIENT.slug }),
-    }),
-    IngredientPage({
-      params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
-    }),
-  ]);
+vi.mocked(getRecipesForIngredient).mockImplementation(async (ingredient) => {
+  if (ingredient.slug === TEST_INGREDIENT.slug) return pineappleRecipes;
+  if (ingredient.slug === TEST_SPIRIT.slug) return spiritRecipes;
+  return [];
 });
+vi.mocked(getSubstitutesForIngredient).mockImplementation(async (ingredient) => {
+  if (ingredient.slug === TEST_SPIRIT.slug) return substitutes;
+  return [];
+});
+
+// Cache page JSX once for the entire file to avoid repeated async data loading
+const [ingredientPageJSX, spiritPageJSX] = await Promise.all([
+  IngredientPage({
+    params: Promise.resolve({ type: TEST_INGREDIENT.type, slug: TEST_INGREDIENT.slug }),
+  }),
+  IngredientPage({
+    params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
+  }),
+]);
 
 describe('IngredientPage', () => {
   describe('basic rendering', () => {

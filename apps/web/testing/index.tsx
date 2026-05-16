@@ -19,8 +19,13 @@ export function setupApp(
   ui: ReactNode,
   { nuqsOptions, routerOptions, ...renderOptions }: NuqsRenderOptions = {},
 ) {
+  let user: ReturnType<typeof userEvent.setup> | undefined;
+
   return {
-    user: userEvent.setup(),
+    get user() {
+      user ??= userEvent.setup();
+      return user;
+    },
     ...render(
       <MemoryRouterProvider {...routerOptions}>
         <NuqsTestingAdapter {...nuqsOptions}>{ui}</NuqsTestingAdapter>
