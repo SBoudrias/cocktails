@@ -4,4 +4,4 @@
 
 [hook "pre-push"]
 	event = pre-push
-	command = sh -c 'yarn lint && yarn test'
+	command = sh -c 'yarn lint && yarn test && yarn check-data'
