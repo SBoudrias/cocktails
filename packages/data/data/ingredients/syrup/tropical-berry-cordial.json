@@ -44,5 +44,11 @@
       }
     }
   ],
-  "instructions": ["Mix all ingredients to combine"]
+  "instructions": ["Mix all ingredients to combine"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "37FkxmGDeGQ"
+    }
+  ]
 }
