@@ -121,12 +121,24 @@ for await (const categoryFile of fs.glob(categoriesGlob)) {
 logger.item(`Found ${categorySlugs.size} categories`);
 
 const ingredientFolders = new Map<string, string>(); // slug -> folder type
+const ingredientFiles = new Map<string, string>(); // slug -> filepath
 const ingredientsGlob = path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json');
 for await (const ingredientFile of fs.glob(ingredientsGlob)) {
   const data = JSON.parse(await fs.readFile(ingredientFile, 'utf-8'));
   const folderType = path.basename(path.dirname(ingredientFile));
-  canonicalNames.set(slugify(data.name), data.name);
-  ingredientFolders.set(slugify(data.name), folderType);
+  const ingredientSlug = slugify(data.name);
+
+  const existingIngredientFile = ingredientFiles.get(ingredientSlug);
+  if (existingIngredientFile) {
+    fail(
+      `Duplicate ingredient slug "${ingredientSlug}" in ${ingredientFile} and ${existingIngredientFile}`,
+    );
+    continue;
+  }
+
+  canonicalNames.set(ingredientSlug, data.name);
+  ingredientFolders.set(ingredientSlug, folderType);
+  ingredientFiles.set(ingredientSlug, ingredientFile);
 }
 logger.item(`Collected ${canonicalNames.size} canonical names`);
 logger.footer('Done!');
@@ -358,6 +370,8 @@ for await (const sourceFile of fs.glob(dataGlob)) {
           name: ingredient.name,
           type: ingredient.type,
         });
+        ingredientFolders.set(slugify(ingredient.name), ingredient.type);
+        ingredientFiles.set(slugify(ingredient.name), ingredientPath);
         fail(`Created ${ingredientPath} - review and add details if needed`);
       }
     }
