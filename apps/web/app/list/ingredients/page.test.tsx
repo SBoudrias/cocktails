@@ -1,10 +1,36 @@
-import { getAllCategories } from '@cocktails/data/categories';
-import { getAllIngredients } from '@cocktails/data/ingredients';
+import { getAllCategories, getCategory } from '@cocktails/data/categories';
+import type * as CategoriesModule from '@cocktails/data/categories';
+import { getAllIngredients, getIngredient } from '@cocktails/data/ingredients';
+import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { getCategoryUrl } from '#/modules/url';
 import { setupApp } from '#/testing';
 import IngredientsPage from './page';
+
+vi.mock('@cocktails/data/categories', async (importOriginal) => ({
+  ...(await importOriginal<typeof CategoriesModule>()),
+  getAllCategories: vi.fn(),
+}));
+vi.mock('@cocktails/data/ingredients', async (importOriginal) => ({
+  ...(await importOriginal<typeof IngredientsModule>()),
+  getAllIngredients: vi.fn(),
+}));
+
+const testIngredients = await Promise.all([
+  getIngredient('juice', 'apple-juice'),
+  getIngredient('juice', 'lime-juice'),
+  getIngredient('soda', 'ginger-beer'),
+  getIngredient('liqueur', 'campari'),
+  getIngredient('spirit', 'aberfeldy-12-year'),
+  getIngredient('spirit', 'appleton-signature'),
+]);
+const testCategories = await Promise.all([getCategory('aged-rum'), getCategory('gin')]);
+
+beforeEach(() => {
+  vi.mocked(getAllIngredients).mockResolvedValue(testIngredients);
+  vi.mocked(getAllCategories).mockResolvedValue(testCategories);
+});
 
 describe('IngredientsPage', () => {
   it('shows search input, title and list', async () => {

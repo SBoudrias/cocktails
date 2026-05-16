@@ -1,7 +1,38 @@
+import { getChildCategories } from '@cocktails/data/categories';
+import type * as CategoriesModule from '@cocktails/data/categories';
+import { getIngredient, getIngredientsForCategory } from '@cocktails/data/ingredients';
+import type * as IngredientsModule from '@cocktails/data/ingredients';
+import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
+import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { setupApp } from '#/testing';
 import CategoryPage from './page';
+
+vi.mock('@cocktails/data/categories', async (importOriginal) => ({
+  ...(await importOriginal<typeof CategoriesModule>()),
+  getChildCategories: vi.fn(),
+}));
+vi.mock('@cocktails/data/ingredients', async (importOriginal) => ({
+  ...(await importOriginal<typeof IngredientsModule>()),
+  getIngredientsForCategory: vi.fn(),
+}));
+vi.mock('@cocktails/data/recipes', async (importOriginal) => ({
+  ...(await importOriginal<typeof RecipesModule>()),
+  getRecipeByCategory: vi.fn(),
+}));
+
+const testMembers = [await getIngredient('spirit', 'beefeater-london-dry-gin')];
+const testRecipes = await Promise.all([
+  getRecipe({ type: 'book', slug: 'easy-tiki' }, 'fog-cutter', '01_Classic Recipes'),
+  getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'cloister'),
+]);
+
+beforeEach(() => {
+  vi.mocked(getChildCategories).mockResolvedValue([]);
+  vi.mocked(getIngredientsForCategory).mockResolvedValue([testMembers, []]);
+  vi.mocked(getRecipeByCategory).mockResolvedValue(testRecipes);
+});
 
 describe('CategoryPage', () => {
   describe('basic rendering', () => {

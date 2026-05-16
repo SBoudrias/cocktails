@@ -1,11 +1,35 @@
+import { getAllRecipes, getRecipe } from '@cocktails/data/recipes';
+import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { getAuthorRecipesUrl } from '#/modules/url';
 import { setupApp } from '#/testing';
 import AuthorListPage from './page';
 
+vi.mock('@cocktails/data/recipes', async (importOriginal) => ({
+  ...(await importOriginal<typeof RecipesModule>()),
+  getAllRecipes: vi.fn(),
+}));
+
 // Real author from the codebase with multiple recipes
 const KNOWN_AUTHOR = 'Garret Richard';
+
+const testRecipes = await Promise.all([
+  getRecipe(
+    { type: 'book', slug: 'tropical-standard' },
+    'daiquiri',
+    '02_Preparations - Shaken - Up',
+  ),
+  getRecipe(
+    { type: 'book', slug: 'tropical-standard' },
+    'mojito',
+    '04_Preparations - Shaken - Collins',
+  ),
+]);
+
+beforeEach(() => {
+  vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
+});
 
 describe('AuthorListPage', () => {
   it('shows search input, title and list', async () => {
