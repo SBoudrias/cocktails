@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tropical berry cordial",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Clarified pineapple strawberry juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 500,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Agave syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 52,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Citric acid",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Malic acid",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 0.6,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": ["Mix all ingredients to combine"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "37FkxmGDeGQ"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Masala syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Ginger",
+      "type": "spice",
+      "quantity": {
+        "amount": 85,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 20,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "cardamom pods",
+      "type": "spice",
+      "quantity": {
+        "amount": 3,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 2,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a sous-vide bag",
+    "Cook at 70°C (158°F) for 2 hours, mixing twice during the process",
+    "Chill in an ice bath",
+    "Fine strain when bottling"
+  ]
+}

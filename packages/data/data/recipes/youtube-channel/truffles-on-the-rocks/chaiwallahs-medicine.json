@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Chaiwallah's Medicine",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Masala syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whisky (Blended Scotch)",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "English breakfast tea",
+        "agent_quantity": {
+          "amount": 7,
+          "unit": "gram"
+        },
+        "spirit_quantity": {
+          "amount": 200,
+          "unit": "ml"
+        },
+        "duration": "30 minutes"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whisky (Islay Scotch)",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except the peated Scotch with ice until cold",
+    "Fine strain over fresh ice in an old fashioned glass",
+    "Float the peated Scotch on top",
+    "Garnish with 3 candied ginger pieces"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "s5Zb1eh-C4Q"
+    }
+  ]
+}

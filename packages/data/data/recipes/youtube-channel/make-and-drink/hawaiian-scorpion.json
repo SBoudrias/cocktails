@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hawaiian Scorpion",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "punch",
+  "servings": 5,
+  "ingredients": [
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 5.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Okolehao",
+      "type": "spirit",
+      "quantity": {
+        "amount": 10,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients with ice and shake or stir to dissolve sugar",
+    "Strain into glasses over crushed ice",
+    "Garnish with mint and an orange slice"
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "EXpopwRVk5Y",
+      "start": 342
+    }
+  ]
+}
