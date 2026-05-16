@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getNameFirstLetter, getNameForSorting } from './by-name';
+import { getNameFirstLetter, getNameForSorting, byNameListConfig } from './by-name';
 
 describe('getNameFirstLetter', () => {
   it('returns the first letter of a simple name', () => {
@@ -61,5 +61,25 @@ describe('getNameForSorting', () => {
 
   it('handles empty string', () => {
     expect(getNameForSorting({ name: '' })).toBe('');
+  });
+});
+
+describe('byNameListConfig.sortItemBy', () => {
+  const sort = (names: string[]) =>
+    names
+      .map((name) => ({ name }))
+      .toSorted(byNameListConfig.sortItemBy)
+      .map((item) => item.name);
+
+  it('sorts numbers within names numerically, not lexicographically', () => {
+    expect(sort(['Appleton 12', 'Appleton 8', 'Appleton 2'])).toEqual([
+      'Appleton 2',
+      'Appleton 8',
+      'Appleton 12',
+    ]);
+  });
+
+  it('sorts alphabetically', () => {
+    expect(sort(['Rum', 'Gin', 'Absinthe'])).toEqual(['Absinthe', 'Gin', 'Rum']);
   });
 });

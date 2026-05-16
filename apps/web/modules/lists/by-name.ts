@@ -21,7 +21,9 @@ export function getNameForSorting<T extends { name: string }>(item: T): string {
 }
 
 function compareByName<T extends { name: string }>(a: T, b: T) {
-  return getNameForSorting(a).localeCompare(getNameForSorting(b));
+  return getNameForSorting(a).localeCompare(getNameForSorting(b), undefined, {
+    numeric: true,
+  });
 }
 
 export const byNameListConfig = {
