@@ -3,6 +3,7 @@ import { getAllSources } from '@cocktails/data/sources';
 import BookIcon from '@mui/icons-material/Book';
 import CalculatorIcon from '@mui/icons-material/Calculate';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import HistoryIcon from '@mui/icons-material/History';
 import PodcastIcon from '@mui/icons-material/Podcasts';
 import SearchIcon from '@mui/icons-material/Search';
 import YoutubeIcon from '@mui/icons-material/YouTube';
@@ -26,6 +27,7 @@ import {
   getBarListUrl,
   getBottleListUrl,
   getIngredientListUrl,
+  getRecentlyAddedUrl,
   getRecipeListUrl,
   getSourceUrl,
 } from '#/modules/url';
@@ -75,6 +77,16 @@ export default async function HomePage() {
                   <SearchIcon />
                 </ListItemIcon>
                 <ListItemText primary="All Recipes" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link href={getRecentlyAddedUrl()}>
+            <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <HistoryIcon />
+                </ListItemIcon>
+                <ListItemText primary="Recently Added" />
               </ListItemButton>
             </ListItem>
           </Link>
