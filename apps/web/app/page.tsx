@@ -26,6 +26,7 @@ import {
   getBarListUrl,
   getBottleListUrl,
   getIngredientListUrl,
+  getRecentlyAddedUrl,
   getRecipeListUrl,
   getSourceUrl,
 } from '#/modules/url';
@@ -155,6 +156,11 @@ export default async function HomePage() {
           <ul>
             <ListSubheader>Other lists</ListSubheader>
             <Paper square>
+              <Link href={getRecentlyAddedUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Recently Added" />
+                </ListItem>
+              </Link>
               <Link href={getAuthorListUrl()}>
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
                   <ListItemText primary="By Authors" />

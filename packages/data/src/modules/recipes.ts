@@ -172,6 +172,73 @@ export const getRecipesFromSource = memo(
   },
 );
 
+export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
+  const sourceTypes = await fs.readdir(RECIPE_ROOT);
+
+  const sourceDirs = await Promise.all(
+    sourceTypes.map(async (sourceType) => {
+      const sourceSlugs = await fs.readdir(path.join(RECIPE_ROOT, sourceType));
+      return sourceSlugs.map((sourceSlug) => ({ sourceType, sourceSlug }));
+    }),
+  );
+
+  const recipeFiles = await Promise.all(
+    sourceDirs.flat().map(async ({ sourceType, sourceSlug }) => {
+      const sourcePath = path.join(RECIPE_ROOT, sourceType, sourceSlug);
+      const entries = await fs.readdir(sourcePath);
+      const results: {
+        sourceType: Source['type'];
+        sourceSlug: string;
+        recipeSlug: string;
+        chapter?: string;
+        mtime: Date;
+      }[] = [];
+
+      for (const entry of entries) {
+        if (entry === '_source.json') continue;
+
+        const entryPath = path.join(sourcePath, entry);
+        const stat = await fs.stat(entryPath);
+
+        if (stat.isDirectory() && isChapterFolder(entry)) {
+          const chapterFiles = await fs.readdir(entryPath);
+          for (const recipeFilename of chapterFiles) {
+            if (!recipeFilename.endsWith('.json')) continue;
+            const recipeStat = await fs.stat(path.join(entryPath, recipeFilename));
+            results.push({
+              sourceType: sourceType as Source['type'],
+              sourceSlug,
+              recipeSlug: path.basename(recipeFilename, '.json'),
+              chapter: entry,
+              mtime: recipeStat.mtime,
+            });
+          }
+        } else if (entry.endsWith('.json')) {
+          results.push({
+            sourceType: sourceType as Source['type'],
+            sourceSlug,
+            recipeSlug: path.basename(entry, '.json'),
+            mtime: stat.mtime,
+          });
+        }
+      }
+
+      return results;
+    }),
+  );
+
+  const recent = recipeFiles
+    .flat()
+    .toSorted((a, b) => b.mtime.getTime() - a.mtime.getTime())
+    .slice(0, 30);
+
+  return Promise.all(
+    recent.map(({ sourceType, sourceSlug, recipeSlug, chapter }) =>
+      getRecipe({ type: sourceType, slug: sourceSlug }, recipeSlug, chapter),
+    ),
+  );
+});
+
 export const getRecipeByCategory = memo(
   async (category: Category): Promise<Recipe[]> => {
     const recipes = await getAllRecipes();
