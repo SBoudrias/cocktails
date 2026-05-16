@@ -1,15 +1,21 @@
 ---
 name: youtube
-description: Fetch video metadata from YouTube URLs using yt-dlp. Use when the user provides a YouTube URL or asks to get details from a YouTube video.
+description: Fetch video metadata from YouTube URLs using yt-dlp, and extract cocktail recipe details from the description via a Haiku subagent. Use when the user provides a YouTube URL or asks to get details from a YouTube video.
 ---
 
 # YouTube Video Context
 
-Fetch video information from YouTube using `yt-dlp`.
+Fetch video information from YouTube using `yt-dlp`, then delegate description parsing to a cheap model.
 
 ## Instructions
 
-When the user provides a YouTube URL (youtube.com or youtu.be), use `yt-dlp` to fetch video metadata:
+When the user provides a YouTube URL (youtube.com or youtu.be):
+
+1. **Fetch metadata** with `yt-dlp` (see commands below).
+2. **Delegate extraction** of recipe-relevant info to a Haiku subagent (see "Extraction step").
+3. Use the returned text as input for whatever the user actually asked for (creating recipe files, summarizing, etc.). Do recipe-file creation yourself — Haiku only returns text.
+
+## Fetching metadata
 
 ```bash
 # Get full JSON metadata
@@ -23,7 +29,7 @@ This returns JSON with:
 - `channel` - Channel name (useful for source attribution)
 - `upload_date` - Publication date
 
-## Quick commands
+### Quick commands
 
 ```bash
 # Get just the description
@@ -33,13 +39,55 @@ yt-dlp --skip-download --print description "VIDEO_URL"
 yt-dlp --skip-download --print "%(title)s" --print description "VIDEO_URL"
 ```
 
+## Extraction step
+
+After fetching the metadata, spawn a subagent with the `Agent` tool using `model: "haiku"` and `subagent_type: "general-purpose"` to read the description and pull out the recipe-relevant content.
+
+**The Haiku subagent must return plain text only — no JSON, no recipe files, no schema mapping.** It is just a reading-and-summarizing step. The main model handles structuring the result into recipe files.
+
+Pass the subagent the video `title`, `channel`, `upload_date`, and full `description`. Ask it to return a plain-text report covering:
+
+- **Recipe(s)** — for each cocktail mentioned: name, ingredients with quantities, instructions, glassware, garnish. If the description mentions multiple recipes, list each separately.
+- **Original author / creator** — who invented the cocktail (often distinct from the video host).
+- **Bar / venue** — where the cocktail is served or originated.
+- **Source attributions** — books, other channels, or people credited for the recipe.
+- **Notes** — anything else useful for attribution: year created, style/category, riffs on classics, sponsor disclosures to ignore.
+- **Uncertainty** — if a field is unclear or missing from the description, the subagent should say so explicitly rather than guess.
+
+Keep the prompt short and focused; Haiku is reading a description, not writing a recipe file.
+
+### Example subagent prompt
+
+> You are extracting cocktail recipe info from a YouTube video description. Return plain text only — do NOT output JSON or attempt to format a recipe file.
+>
+> Video title: `<title>`
+> Channel: `<channel>`
+> Upload date: `<upload_date>`
+>
+> Description:
+>
+> ```
+> <description>
+> ```
+>
+> Report:
+>
+> - Recipe(s): name, ingredients with quantities, instructions, glassware, garnish (one block per cocktail)
+> - Original author / creator (if credited)
+> - Bar or venue (if mentioned)
+> - Source attributions (books, other channels, people)
+> - Notes worth keeping for attribution
+> - Anything unclear or missing — say so explicitly
+>
+> Ignore sponsor reads, merch links, and unrelated promo.
+
 ## Examples
 
 User: "Create a recipe from https://youtube.com/watch?v=xyz"
 
-1. Fetch the video metadata with yt-dlp
-2. Extract the recipe from the description
-3. Use the channel name for attribution
+1. Fetch the video metadata with yt-dlp.
+2. Delegate description parsing to a Haiku subagent (text output only).
+3. Use the returned notes plus the channel name for attribution to write the recipe file yourself, following `packages/data/schemas/recipe.schema.json`.
 
 ## Backfilling New YouTube Channels
 
