@@ -437,9 +437,9 @@ for (const [i, a] of authorNames.entries()) {
       const filesA = authorNameUsages.get(a)!;
       const filesB = authorNameUsages.get(b)!;
       logger.warn(
-        `Similar author names — possible misspelling:\n` +
-          `  "${a}" (${filesA.length} recipe(s)) vs "${b}" (${filesB.length} recipe(s))\n` +
-          `  Review and standardize spelling. If genuinely different people, this is a false positive.`,
+        `Similar author names — possible misspelling:`,
+        `"${a}" (${filesA.length} recipe(s)) vs "${b}" (${filesB.length} recipe(s))`,
+        `Review and standardize spelling. If genuinely different people, this is a false positive.`,
       );
     }
   }
@@ -456,9 +456,9 @@ for (const [i, a] of barKeys.entries()) {
       const countA = Array.from(casingsA.values()).flat().length;
       const countB = Array.from(casingsB.values()).flat().length;
       logger.warn(
-        `Similar bar names — possible misspelling:\n` +
-          `  "${displayA}" (${countA} recipe(s)) vs "${displayB}" (${countB} recipe(s))\n` +
-          `  Review and standardize spelling. If genuinely different bars, this is a false positive.`,
+        `Similar bar names — possible misspelling:`,
+        `"${displayA}" (${countA} recipe(s)) vs "${displayB}" (${countB} recipe(s))`,
+        `Review and standardize spelling. If genuinely different bars, this is a false positive.`,
       );
     }
   }
