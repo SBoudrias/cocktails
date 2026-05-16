@@ -1,6 +1,5 @@
 #!/usr/bin/env -S node --no-warnings
 
-import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
@@ -10,6 +9,7 @@ import {
 import { createSchemaFormatter } from '@cocktails/jsonschema-formatter';
 import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
+import { format as formatWithOxfmt } from 'oxfmt';
 import { isChapterFolder } from '../src/modules/chapters.ts';
 import { logger } from './cli-util.ts';
 import { areSimilarNames } from './name-similarity.ts';
@@ -70,18 +70,17 @@ function sortRecipeIngredients(
 // Schema formatter - auto-infers key ordering from registered schemas
 const formatter = createSchemaFormatter();
 
-async function fileExists(filepath: string): Promise<boolean> {
-  return fs.access(filepath).then(
-    () => true,
-    () => false,
-  );
-}
-
 async function writeJSON(filepath: string, data: object): Promise<void> {
   await fs.mkdir(path.dirname(filepath), { recursive: true });
   const sortedData = formatter.format(data);
   const jsonContent = JSON.stringify(sortedData, null, 2) + '\n';
-  await fs.writeFile(filepath, jsonContent);
+  const formattedJson = await formatWithOxfmt(filepath, jsonContent);
+  if (formattedJson.errors.length > 0) {
+    fail(`Could not format ${filepath}: ${formattedJson.errors[0]?.message}`);
+    await fs.writeFile(filepath, jsonContent);
+    return;
+  }
+  await fs.writeFile(filepath, formattedJson.code);
 }
 
 let exitCode = 0;
@@ -325,13 +324,16 @@ for await (const sourceFile of fs.glob(dataGlob)) {
 
     // Make sure all ingredients listed somewhere have a metadata file
     for (const ingredient of ingredients) {
+      const ingredientSlug = slugify(ingredient.name);
+
       if (ingredient.type === 'category') {
+        if (categorySlugs.has(ingredientSlug)) continue;
+
         const categoryPath = path.join(
           PACKAGE_ROOT,
           'data/categories',
-          `${slugify(ingredient.name)}.json`,
+          `${ingredientSlug}.json`,
         );
-        if (await fileExists(categoryPath)) continue;
 
         await writeJSON(categoryPath, {
           $schema: path.relative(
@@ -341,19 +343,14 @@ for await (const sourceFile of fs.glob(dataGlob)) {
           name: ingredient.name,
           categoryType: 'FIXME',
         });
+        categorySlugs.add(ingredientSlug);
         fail(`Created ${categoryPath} - review and set categoryType`);
       } else {
-        const ingredientPath = path.join(
-          PACKAGE_ROOT,
-          'data/ingredients',
-          ingredient.type,
-          `${slugify(ingredient.name)}.json`,
-        );
-        if (await fileExists(ingredientPath)) continue;
-
         // Check if the ingredient exists in a different type folder
-        const existingFolderType = ingredientFolders.get(slugify(ingredient.name));
-        if (existingFolderType && existingFolderType !== ingredient.type) {
+        const existingFolderType = ingredientFolders.get(ingredientSlug);
+        if (existingFolderType === ingredient.type) continue;
+
+        if (existingFolderType) {
           fail(
             `Ingredient "${ingredient.name}" in ${path.basename(sourceFile)} ` +
               `has type "${ingredient.type}" but the ingredient file is in folder "${existingFolderType}". ` +
@@ -361,6 +358,13 @@ for await (const sourceFile of fs.glob(dataGlob)) {
           );
           continue;
         }
+
+        const ingredientPath = path.join(
+          PACKAGE_ROOT,
+          'data/ingredients',
+          ingredient.type,
+          `${ingredientSlug}.json`,
+        );
 
         await writeJSON(ingredientPath, {
           $schema: path.relative(
@@ -370,20 +374,22 @@ for await (const sourceFile of fs.glob(dataGlob)) {
           name: ingredient.name,
           type: ingredient.type,
         });
-        ingredientFolders.set(slugify(ingredient.name), ingredient.type);
-        ingredientFiles.set(slugify(ingredient.name), ingredientPath);
+        ingredientFolders.set(ingredientSlug, ingredient.type);
+        ingredientFiles.set(ingredientSlug, ingredientPath);
         fail(`Created ${ingredientPath} - review and add details if needed`);
       }
     }
 
     // Make sure all categories have a metadata file
     for (const category of categories) {
+      const categorySlug = slugify(category);
+      if (categorySlugs.has(categorySlug)) continue;
+
       const categoryPath = path.join(
         PACKAGE_ROOT,
         'data/categories',
-        `${slugify(category)}.json`,
+        `${categorySlug}.json`,
       );
-      if (await fileExists(categoryPath)) continue;
 
       await writeJSON(categoryPath, {
         $schema: path.relative(
@@ -393,6 +399,7 @@ for await (const sourceFile of fs.glob(dataGlob)) {
         name: category,
         categoryType: data.type ?? 'FIXME',
       });
+      categorySlugs.add(categorySlug);
       fail(`Created ${categoryPath} - review and set categoryType`);
     }
   }
@@ -400,12 +407,14 @@ for await (const sourceFile of fs.glob(dataGlob)) {
   // Make sure there's all parent categories have their metadata files
   if (schemaPath === 'schemas/category.schema.json') {
     for (const category of data.parents ?? []) {
+      const categorySlug = slugify(category);
+      if (categorySlugs.has(categorySlug)) continue;
+
       const categoryPath = path.join(
         PACKAGE_ROOT,
         'data/categories',
-        `${slugify(category)}.json`,
+        `${categorySlug}.json`,
       );
-      if (await fileExists(categoryPath)) continue;
 
       await writeJSON(categoryPath, {
         $schema: path.relative(
@@ -415,6 +424,7 @@ for await (const sourceFile of fs.glob(dataGlob)) {
         name: category,
         categoryType: 'FIXME',
       });
+      categorySlugs.add(categorySlug);
       fail(`Created ${categoryPath} - review and set categoryType`);
     }
   }
@@ -555,9 +565,6 @@ for await (const bookSlug of await fs.readdir(bookRoot)) {
   }
 }
 logger.footer('Done!');
-
-// Trigger reformatting once on all files for good measures
-execSync(`yarn oxfmt`, { stdio: 'ignore' });
 
 const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
 if (exitCode > 0) {

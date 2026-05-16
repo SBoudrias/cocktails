@@ -23,6 +23,7 @@
     "ts-pattern": "^5.9.0"
   },
   "devDependencies": {
-    "ajv": "^8.20.0"
+    "ajv": "^8.20.0",
+    "oxfmt": "^0.50.0"
   }
 }
