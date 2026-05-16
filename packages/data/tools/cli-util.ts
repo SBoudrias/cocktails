@@ -46,6 +46,13 @@ export const logger = {
   },
 
   /**
+   * Log a warning message (visible but does not fail the check)
+   */
+  warn(message: string): void {
+    console.warn(`├ ⚠️  ${message}`);
+  },
+
+  /**
    * Log a failure message
    */
   failure(message: string): void {
