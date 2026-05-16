@@ -3,6 +3,7 @@ import { getAllSources } from '@cocktails/data/sources';
 import BookIcon from '@mui/icons-material/Book';
 import CalculatorIcon from '@mui/icons-material/Calculate';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import HistoryIcon from '@mui/icons-material/History';
 import PodcastIcon from '@mui/icons-material/Podcasts';
 import SearchIcon from '@mui/icons-material/Search';
 import YoutubeIcon from '@mui/icons-material/YouTube';
@@ -26,7 +27,7 @@ import {
   getBarListUrl,
   getBottleListUrl,
   getIngredientListUrl,
-  getRecentlyAddedUrl,
+  getRecentlyUpdatedUrl,
   getRecipeListUrl,
   getSourceUrl,
 } from '#/modules/url';
@@ -76,6 +77,16 @@ export default async function HomePage() {
                   <SearchIcon />
                 </ListItemIcon>
                 <ListItemText primary="All Recipes" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link href={getRecentlyUpdatedUrl()}>
+            <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <HistoryIcon />
+                </ListItemIcon>
+                <ListItemText primary="Recently Updated" />
               </ListItemButton>
             </ListItem>
           </Link>
@@ -156,11 +167,6 @@ export default async function HomePage() {
           <ul>
             <ListSubheader>Other lists</ListSubheader>
             <Paper square>
-              <Link href={getRecentlyAddedUrl()}>
-                <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                  <ListItemText primary="Recently Added" />
-                </ListItem>
-              </Link>
               <Link href={getAuthorListUrl()}>
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
                   <ListItemText primary="By Authors" />

@@ -23,8 +23,8 @@ export function getRecipeListUrl() {
   return '/list/recipes';
 }
 
-export function getRecentlyAddedUrl() {
-  return '/list/recently-added';
+export function getRecentlyUpdatedUrl() {
+  return '/list/recently-updated';
 }
 
 export function getBottleListUrl() {

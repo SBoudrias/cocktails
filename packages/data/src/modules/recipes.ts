@@ -172,7 +172,7 @@ export const getRecipesFromSource = memo(
   },
 );
 
-export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
+export const getRecentlyUpdatedRecipes = memo(async (): Promise<Recipe[]> => {
   const sourceTypes = await fs.readdir(RECIPE_ROOT);
 
   const sourceDirs = await Promise.all(
