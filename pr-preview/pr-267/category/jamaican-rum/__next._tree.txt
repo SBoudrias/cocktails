@@ -1,4 +1,4 @@
 :HL["/cocktails/pr-preview/pr-267/_next/static/chunks/0ycqd28.awmts.css","style"]
 :HL["/cocktails/pr-preview/pr-267/_next/static/media/ce62453a442c7f35-s.p.0333ktddfbsxy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/cocktails/pr-preview/pr-267/_next/static/chunks/05llsvm-p4b59.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"category","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"jamaican-rum","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"yVmDi5CXCekCH1vFPUYFI"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"category","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"jamaican-rum","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"ohobA8MiSM4tAGWTdpqPq"}
