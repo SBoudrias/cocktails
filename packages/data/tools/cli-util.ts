@@ -2,52 +2,40 @@
  * Shared CLI utilities for tools
  */
 
+function withContinuation(prefix: string, ...messages: string[]): string {
+  const lines = messages.flatMap((m) => m.split('\n'));
+  return lines.map((line, i) => (i === 0 ? `${prefix}${line}` : `│ ${line}`)).join('\n');
+}
+
 export const logger = {
-  /**
-   * Log a section header
-   */
   header(message: string): void {
     console.log(`╭ ${message}`);
   },
 
-  /**
-   * Log a section item
-   */
-  item(message: string): void {
-    console.log(`├ ${message}`);
+  item(...messages: string[]): void {
+    console.log(withContinuation('├ ', ...messages));
   },
 
-  /**
-   * Log a section footer
-   */
   footer(message = 'Done!'): void {
     console.log(`╰ ${message}\n`);
   },
 
-  /**
-   * Log an error message
-   */
-  error(message: string): void {
-    console.error(`├ ❌ ${message}`);
+  error(...messages: string[]): void {
+    console.error(withContinuation('├ ❌ ', ...messages));
   },
 
-  /**
-   * Log a change message
-   */
-  change(message: string): void {
-    console.log(`├ 🔄 ${message}`);
+  change(...messages: string[]): void {
+    console.log(withContinuation('├ 🔄 ', ...messages));
   },
 
-  /**
-   * Log a success message
-   */
   success(message: string): void {
     console.log(`✅ ${message}`);
   },
 
-  /**
-   * Log a failure message
-   */
+  warn(...messages: string[]): void {
+    console.warn(withContinuation('├ ⚠️  ', ...messages));
+  },
+
   failure(message: string): void {
     console.log(`❌ ${message}`);
   },

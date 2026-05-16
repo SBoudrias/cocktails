@@ -12,6 +12,7 @@ import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
 import { isChapterFolder } from '../src/modules/chapters.ts';
 import { logger } from './cli-util.ts';
+import { areSimilarNames } from './name-similarity.ts';
 
 const startTime = performance.now();
 const PACKAGE_ROOT = path.join(import.meta.dirname, '..');
@@ -134,6 +135,10 @@ logger.footer('Done!');
 // Maps lowercase name -> Map of exact casing -> list of files using that casing
 const barNameCasings = new Map<string, Map<string, string[]>>();
 
+// Track author/adapted-by names for similarity detection
+// Maps name -> list of recipe files using that name
+const authorNameUsages = new Map<string, string[]>();
+
 logger.header('🔍 Validating data files...');
 const dataGlob = path.join(PACKAGE_ROOT, 'data/**/*.json');
 for await (const sourceFile of fs.glob(dataGlob)) {
@@ -248,6 +253,11 @@ for await (const sourceFile of fs.glob(dataGlob)) {
               `Split into separate attributions, one per person.`,
           );
         }
+
+        if (!authorNameUsages.has(attribution.source)) {
+          authorNameUsages.set(attribution.source, []);
+        }
+        authorNameUsages.get(attribution.source)!.push(sourceFile);
       }
     }
   }
@@ -415,6 +425,45 @@ for (const [, casings] of barNameCasings) {
     fail(`Bar name has inconsistent casing: ${variants}`);
   }
 }
+logger.footer('Done!');
+
+// Check for similar author and bar names (possible misspellings)
+logger.header('👥 Checking for similar author and bar names...');
+
+const authorNames = Array.from(authorNameUsages.keys());
+for (const [i, a] of authorNames.entries()) {
+  for (const b of authorNames.slice(i + 1)) {
+    if (areSimilarNames(a, b)) {
+      const filesA = authorNameUsages.get(a)!;
+      const filesB = authorNameUsages.get(b)!;
+      logger.warn(
+        `Similar author names — possible misspelling:`,
+        `"${a}" (${filesA.length} recipe(s)) vs "${b}" (${filesB.length} recipe(s))`,
+        `Review and standardize spelling. If genuinely different people, this is a false positive.`,
+      );
+    }
+  }
+}
+
+const barKeys = Array.from(barNameCasings.keys());
+for (const [i, a] of barKeys.entries()) {
+  for (const b of barKeys.slice(i + 1)) {
+    if (areSimilarNames(a, b)) {
+      const casingsA = barNameCasings.get(a)!;
+      const casingsB = barNameCasings.get(b)!;
+      const displayA = Array.from(casingsA.keys())[0] ?? a;
+      const displayB = Array.from(casingsB.keys())[0] ?? b;
+      const countA = Array.from(casingsA.values()).flat().length;
+      const countB = Array.from(casingsB.values()).flat().length;
+      logger.warn(
+        `Similar bar names — possible misspelling:`,
+        `"${displayA}" (${countA} recipe(s)) vs "${displayB}" (${countB} recipe(s))`,
+        `Review and standardize spelling. If genuinely different bars, this is a false positive.`,
+      );
+    }
+  }
+}
+
 logger.footer('Done!');
 
 // Validate book chapter structure
