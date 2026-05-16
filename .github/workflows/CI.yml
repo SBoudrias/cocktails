@@ -19,6 +19,14 @@ jobs:
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
 
+      - name: Cache Turborepo artifacts ⚡
+        uses: actions/cache@v4
+        with:
+          path: .turbo/cache
+          key: turbo-check-data-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            turbo-check-data-${{ runner.os }}-
+
       - name: JSON Schema 💽
         run: yarn check-data
 
