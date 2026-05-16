@@ -431,10 +431,8 @@ logger.footer('Done!');
 logger.header('👥 Checking for similar author and bar names...');
 
 const authorNames = Array.from(authorNameUsages.keys());
-for (let i = 0; i < authorNames.length; i++) {
-  for (let j = i + 1; j < authorNames.length; j++) {
-    const a = authorNames[i]!,
-      b = authorNames[j]!;
+for (const [i, a] of authorNames.entries()) {
+  for (const b of authorNames.slice(i + 1)) {
     if (areSimilarNames(a, b)) {
       const filesA = authorNameUsages.get(a)!;
       const filesB = authorNameUsages.get(b)!;
@@ -448,10 +446,8 @@ for (let i = 0; i < authorNames.length; i++) {
 }
 
 const barKeys = Array.from(barNameCasings.keys());
-for (let i = 0; i < barKeys.length; i++) {
-  for (let j = i + 1; j < barKeys.length; j++) {
-    const a = barKeys[i]!,
-      b = barKeys[j]!;
+for (const [i, a] of barKeys.entries()) {
+  for (const b of barKeys.slice(i + 1)) {
     if (areSimilarNames(a, b)) {
       const casingsA = barNameCasings.get(a)!;
       const casingsB = barNameCasings.get(b)!;
