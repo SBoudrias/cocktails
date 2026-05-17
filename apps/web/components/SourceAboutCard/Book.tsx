@@ -13,13 +13,19 @@ import {
 
 export default function BookAboutCard({
   source,
+  chapterName,
   page,
   sx,
 }: {
   source: Book;
+  chapterName?: string;
   page?: number;
   sx?: SxProps;
 }) {
+  const subheader = [chapterName, typeof page === 'number' ? `page ${page}` : undefined]
+    .filter(Boolean)
+    .join(' · ');
+
   return (
     <Card sx={sx}>
       <CardHeader
@@ -29,7 +35,7 @@ export default function BookAboutCard({
             &nbsp;{source.name}
           </>
         }
-        subheader={page ? `page ${page}` : undefined}
+        subheader={subheader || undefined}
       />
       <CardContent>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
