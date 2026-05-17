@@ -187,8 +187,7 @@ export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
   const repoRoot = repoRootRaw.trim();
   const recipeRelPath = path.relative(repoRoot, RECIPE_ROOT);
 
-  // --diff-filter=A: only commits that first introduced each file (immune to bulk edits)
-  // git log is newest-first, so the first occurrence of each path is its most recent add
+  // --diff-filter=A: only commits that first introduced each file.
   const { stdout: gitLog } = await execFile(
     'git',
     [
@@ -197,7 +196,7 @@ export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
       'log',
       '--diff-filter=A',
       '--name-only',
-      '--format=COMMIT %ai',
+      '--format=COMMIT %cI',
       '--',
       recipeRelPath,
     ],
@@ -210,12 +209,12 @@ export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
     sourceSlug: string;
     recipeSlug: string;
     chapter?: string;
+    date: Date;
   }> = [];
 
   let currentDate: Date | null = null;
 
   for (const raw of gitLog.split('\n')) {
-    if (recent.length >= 30) break;
     const line = raw.trim();
     if (!line) continue;
 
@@ -237,6 +236,7 @@ export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
             sourceType: sourceType as Source['type'],
             sourceSlug,
             recipeSlug: path.basename(filename, '.json'),
+            date: currentDate,
           };
         }
       } else if (parts.length === 4) {
@@ -248,6 +248,7 @@ export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
             sourceSlug,
             recipeSlug: path.basename(filename, '.json'),
             chapter,
+            date: currentDate,
           };
         }
       }
@@ -263,9 +264,12 @@ export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
   }
 
   return Promise.all(
-    recent.map(({ sourceType, sourceSlug, recipeSlug, chapter }) =>
-      getRecipe({ type: sourceType, slug: sourceSlug }, recipeSlug, chapter),
-    ),
+    recent
+      .toSorted((a, b) => b.date.getTime() - a.date.getTime())
+      .slice(0, 30)
+      .map(({ sourceType, sourceSlug, recipeSlug, chapter }) =>
+        getRecipe({ type: sourceType, slug: sourceSlug }, recipeSlug, chapter),
+      ),
   );
 });
 
