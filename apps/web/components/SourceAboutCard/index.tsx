@@ -10,10 +10,12 @@ const EMPTY_REFS: Ref[] = [];
 
 export default function SourceAboutCard({
   source,
+  chapterName,
   refs = EMPTY_REFS,
   sx,
 }: {
   source: Source;
+  chapterName?: string;
   refs?: Ref[];
   sx?: SxProps;
 }) {
@@ -23,7 +25,14 @@ export default function SourceAboutCard({
         (ref): ref is BookRef =>
           ref.type === 'book' && slugify(ref.title) === source.slug,
       );
-      return <BookAboutCard source={source} page={ref?.page} sx={sx} />;
+      return (
+        <BookAboutCard
+          source={source}
+          chapterName={chapterName}
+          page={ref?.page}
+          sx={sx}
+        />
+      );
     })
     .with({ type: 'youtube-channel' }, (source) => {
       const ref = refs.find((ref): ref is YoutubeRef => ref.type === 'youtube');

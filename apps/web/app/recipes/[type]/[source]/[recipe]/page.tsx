@@ -84,7 +84,12 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
             </Paper>
           </List>
         )}
-        <SourceAboutCard source={recipe.source} refs={recipe.refs} sx={{ m: 1 }} />
+        <SourceAboutCard
+          source={recipe.source}
+          chapterName={recipe.chapter?.name}
+          refs={recipe.refs}
+          sx={{ m: 1 }}
+        />
         {recipe.attributions.length > 0 && (
           <RecipeAttributionCard recipe={recipe} sx={{ m: 1 }} />
         )}
