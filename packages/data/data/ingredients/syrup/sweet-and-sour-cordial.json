@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Sweet & Sour Cordial",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 750,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "cane sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Citric acid",
+      "type": "other",
+      "quantity": {
+        "amount": 45,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Malic acid",
+      "type": "other",
+      "quantity": {
+        "amount": 15,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients, stirring until the sugar and acids have dissolved."
+  ]
+}
