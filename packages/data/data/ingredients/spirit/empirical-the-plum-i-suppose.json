@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Empirical The Plum, I Suppose",
+  "type": "spirit",
+  "categories": ["Brandy (Plum)"]
+}

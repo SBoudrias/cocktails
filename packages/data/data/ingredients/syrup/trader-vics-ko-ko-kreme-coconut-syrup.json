@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Trader Vic's Ko-Ko Kreme Coconut Syrup",
+  "type": "syrup"
+}
