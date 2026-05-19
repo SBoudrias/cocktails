@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-prefers-color-scheme="dark">
+    <html lang="en" data-prefers-color-scheme="dark" style={{ colorScheme: 'dark' }}>
       <head>
         <link
           rel="sitemap"
@@ -53,7 +53,7 @@ export default function RootLayout({
       </head>
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme} defaultMode="dark" storageManager={null}>
             <CssBaseline />
             <NuqsAdapter>
               <Box

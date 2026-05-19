@@ -15,6 +15,7 @@ const LinkBehaviour = forwardRef(function LinkBehaviour(
 // Tiki nighttime palette inspired by tropical night scene
 const theme = createTheme({
   cssVariables: true,
+  defaultColorScheme: 'dark',
   typography: {
     fontFamily: 'var(--font-roboto)',
   },
