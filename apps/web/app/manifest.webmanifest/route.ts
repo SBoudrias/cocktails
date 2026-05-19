@@ -8,6 +8,8 @@ export function GET() {
     short_name: 'Cocktail Index',
     display: 'standalone',
     orientation: 'portrait',
+    background_color: '#0A1420',
+    theme_color: '#0A1420',
   };
 
   return Response.json(manifest);
