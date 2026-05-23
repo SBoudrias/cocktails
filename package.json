@@ -21,8 +21,8 @@
     "@types/lodash": "^4.17.24",
     "@types/node": "^25.8.0",
     "@vitejs/plugin-react": "^6.0.2",
-    "@vitest/browser": "^4.1.6",
-    "@vitest/coverage-v8": "^4.1.6",
+    "@vitest/browser": "^4.1.7",
+    "@vitest/coverage-v8": "^4.1.7",
     "eslint": "^10.4.0",
     "eslint-config-next": "16.2.6",
     "nano-staged": "^1.0.2",
@@ -30,7 +30,7 @@
     "turbo": "^2.9.14",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.3",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.7"
   },
   "nano-staged": {
     "*": "oxfmt --no-error-on-unmatched-pattern",
