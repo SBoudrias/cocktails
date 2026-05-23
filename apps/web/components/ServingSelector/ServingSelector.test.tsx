@@ -1,5 +1,13 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { useState } from 'react';
 import ServingSelector from './index';
+
+function StatefulServingSelector({ initialServings = 2 }: { initialServings?: number }) {
+  const [servings, setServings] = useState(initialServings);
+
+  return <ServingSelector servings={servings} onChange={setServings} />;
+}
 
 describe('ServingSelector', () => {
   it('should render with current servings value and call onChange', () => {
@@ -24,6 +32,9 @@ describe('ServingSelector', () => {
     fireEvent.change(input, { target: { value: '-1' } });
     expect(onChange).not.toHaveBeenCalled();
 
+    fireEvent.change(input, { target: { value: '0.1' } });
+    expect(onChange).not.toHaveBeenCalled();
+
     // Should not call onChange for invalid values above maximum
     fireEvent.change(input, { target: { value: '51' } });
     expect(onChange).not.toHaveBeenCalled();
@@ -39,8 +50,9 @@ describe('ServingSelector', () => {
     render(<ServingSelector servings={2} onChange={onChange} />);
 
     const input = screen.getByLabelText('Number of servings');
-    expect(input).toHaveAttribute('min', '0');
+    expect(input).toHaveAttribute('min', '0.25');
     expect(input).toHaveAttribute('max', '50');
+    expect(input).toHaveAttribute('step', '0.25');
     expect(input).toHaveAttribute('type', 'number');
   });
 
@@ -145,29 +157,29 @@ describe('ServingSelector', () => {
   });
 
   describe('Input blur behavior', () => {
-    it('should reset to current value when invalid input is entered and field loses focus', () => {
-      const onChange = vi.fn();
-      render(<ServingSelector servings={2} onChange={onChange} />);
+    it('should reset to current value when invalid input is entered and field loses focus', async () => {
+      const user = userEvent.setup();
+      render(<StatefulServingSelector />);
 
       const input = screen.getByLabelText('Number of servings');
 
-      // Enter invalid value
-      fireEvent.change(input, { target: { value: '0.1' } });
-      fireEvent.blur(input);
+      await user.clear(input);
+      await user.paste('0.1');
+      await user.tab();
 
       // Should reset to current servings value
       expect(input).toHaveValue(2);
     });
 
-    it('should reset to current value when value above maximum is entered and field loses focus', () => {
-      const onChange = vi.fn();
-      render(<ServingSelector servings={2} onChange={onChange} />);
+    it('should reset to current value when value above maximum is entered and field loses focus', async () => {
+      const user = userEvent.setup();
+      render(<StatefulServingSelector />);
 
       const input = screen.getByLabelText('Number of servings');
 
-      // Enter invalid value
-      fireEvent.change(input, { target: { value: '100' } });
-      fireEvent.blur(input);
+      await user.clear(input);
+      await user.paste('100');
+      await user.tab();
 
       // Should reset to current servings value
       expect(input).toHaveValue(2);

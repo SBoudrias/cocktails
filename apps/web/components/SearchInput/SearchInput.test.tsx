@@ -1,6 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { useState } from 'react';
 import SearchInput from './index';
+
+function StatefulSearchInput({ initialValue = '' }: { initialValue?: string }) {
+  const [value, setValue] = useState(initialValue);
+
+  return (
+    <SearchInput
+      value={value}
+      onChangeAction={(nextValue) => setValue(nextValue ?? '')}
+    />
+  );
+}
 
 describe('SearchInput', () => {
   it('renders with placeholder text', () => {
@@ -25,16 +37,14 @@ describe('SearchInput', () => {
     expect(input).toHaveAttribute('placeholder', 'Search…');
   });
 
-  it('calls onChangeAction when user types', async () => {
+  it('updates the visible value when user types', async () => {
     const user = userEvent.setup();
-    const onChangeAction = vi.fn();
-    render(<SearchInput value="" onChangeAction={onChangeAction} />);
+    render(<StatefulSearchInput />);
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'margarita');
 
-    expect(onChangeAction).toHaveBeenCalledTimes('margarita'.length);
-    expect(onChangeAction).toHaveBeenLastCalledWith('a');
+    expect(input).toHaveValue('margarita');
   });
 
   it('clears value and calls onChangeAction with null when clear button clicked', async () => {

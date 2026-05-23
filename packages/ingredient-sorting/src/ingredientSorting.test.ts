@@ -127,7 +127,7 @@ describe('compareIngredients', () => {
       );
     });
 
-    it('should sort top after rinse but before float', () => {
+    it('should sort top after float', () => {
       const result = [
         createTestIngredient({
           type: 'bitter',
