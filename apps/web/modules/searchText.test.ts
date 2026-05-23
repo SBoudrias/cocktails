@@ -63,7 +63,7 @@ describe('getRecipeSearchText', () => {
       ],
     });
     expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
-      `"test recipe white rum  lime juice"`,
+      `"test recipe white rum lime juice"`,
     );
   });
 
@@ -89,7 +89,7 @@ describe('getRecipeSearchText', () => {
       ],
     });
     expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
-      `"test recipe  smuggler's cove martin cate"`,
+      `"test recipe smuggler's cove martin cate"`,
     );
   });
 

@@ -12,7 +12,7 @@ import { formatIngredientName } from './technique.ts';
  * Returns transliterated lowercase text suitable for fuzzy search matching.
  */
 function normalize(text: string): string {
-  return transliterate(text).toLowerCase().trim();
+  return transliterate(text).toLowerCase().replace(/\s+/g, ' ').trim();
 }
 
 /**

@@ -5,6 +5,9 @@ import { TextField, IconButton, InputAdornment } from '@mui/material';
 import type { ChangeEvent } from 'react';
 import { useState, useEffect } from 'react';
 
+const MIN_SERVINGS = 0.25;
+const MAX_SERVINGS = 50;
+
 export default function ServingSelector({
   servings,
   onChange,
@@ -28,7 +31,7 @@ export default function ServingSelector({
     // Only trigger onChange if the value is valid
     if (newInputValue !== '') {
       const value = parseFloat(newInputValue);
-      if (!isNaN(value) && value > 0 && value <= 50) {
+      if (!isNaN(value) && value >= MIN_SERVINGS && value <= MAX_SERVINGS) {
         onChange(value);
         setInputValue(undefined);
       }
@@ -38,7 +41,7 @@ export default function ServingSelector({
   const handleIncrement = () => {
     setInputValue(undefined);
 
-    if (servings < 50) {
+    if (servings < MAX_SERVINGS) {
       if (servings < 1) {
         // From fractional values, go to 1
         onChange(1);
@@ -53,13 +56,13 @@ export default function ServingSelector({
     setInputValue(undefined);
 
     // At 0.25, button will be disabled
-    if (servings > 0.25) {
+    if (servings > MIN_SERVINGS) {
       if (servings > 1) {
         onChange(servings - 1);
       } else if (servings > 0.5) {
         onChange(0.5);
       } else {
-        onChange(0.25);
+        onChange(MIN_SERVINGS);
       }
     }
   };
@@ -82,7 +85,7 @@ export default function ServingSelector({
             <InputAdornment position="start">
               <IconButton
                 onClick={handleDecrement}
-                disabled={servings <= 0.25}
+                disabled={servings <= MIN_SERVINGS}
                 size="small"
                 aria-label="Decrement"
               >
@@ -94,7 +97,7 @@ export default function ServingSelector({
             <InputAdornment position="end">
               <IconButton
                 onClick={handleIncrement}
-                disabled={servings >= 50}
+                disabled={servings >= MAX_SERVINGS}
                 size="small"
                 aria-label="Increment"
               >
@@ -104,9 +107,9 @@ export default function ServingSelector({
           ),
         },
         htmlInput: {
-          min: 0,
-          max: 50,
-          step: 1,
+          min: MIN_SERVINGS,
+          max: MAX_SERVINGS,
+          step: MIN_SERVINGS,
           'aria-label': 'Number of servings',
         },
       }}
