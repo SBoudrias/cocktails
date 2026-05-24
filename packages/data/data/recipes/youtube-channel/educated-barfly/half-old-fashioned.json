@@ -1,15 +1,15 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Champagne Cocktail",
+  "name": "Half Old Fashioned",
   "preparation": "built",
-  "served_on": "up",
-  "glassware": "flute",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
       "name": "Sugar cube",
       "type": "other",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "unit"
       }
     },
@@ -22,23 +22,31 @@
       }
     },
     {
-      "name": "Sparkling wine",
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Whiskey (Rye)",
       "type": "category",
       "quantity": {
-        "amount": 4,
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Place a sugar cube in a flute.",
-    "Dash bitters over the sugar cube.",
-    "Top with champagne."
+    "Muddle sugar cube, bitters, and seltzer in an old fashioned glass.",
+    "Add rye whiskey and ice, then stir.",
+    "Garnish with lemon and orange twists and a maraschino cherry."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "YfVDJnQjXQg"
+      "videoId": "zEbL3PMtgRE"
     }
   ]
 }

@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Floradora",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Raspberry syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except ginger beer with ice.",
+    "Strain into a highball glass over ice.",
+    "Top with ginger beer and garnish with a lime twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "URCwbDD2vLM"
+    }
+  ]
+}

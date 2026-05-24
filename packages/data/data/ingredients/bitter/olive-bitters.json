@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Sugar cube",
-  "type": "other"
+  "name": "Olive bitters",
+  "type": "bitter"
 }
