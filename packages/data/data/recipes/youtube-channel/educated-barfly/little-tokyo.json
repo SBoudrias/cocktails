@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Little Tokyo",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Yuzu bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Yuzu sake",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mancino Sakura Vermouth",
+      "type": "wine",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cucumber"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with cracked ice.",
+    "Strain into a chilled Nick & Nora glass.",
+    "Garnish with a cucumber ribbon."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Adam George Fournier"
+    },
+    {
+      "relation": "bar",
+      "source": "Accomplice",
+      "location": "Mar Vista, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "lAuYfFQxniQ"
+    }
+  ]
+}
