@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Clarified Spiced Margarita Cordial",
+  "type": "liqueur",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Orange Liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "cup"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the lime juice, cinnamon syrup, and orange liqueur.",
+    "Pour the mixture into the whole milk to clarify.",
+    "Strain until clear."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "cWyzf3dQp20",
+      "start": 852
+    }
+  ]
+}
