@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Mint Julep",
+  "preparation": "built",
+  "served_on": "crushed ice",
+  "glassware": "julep",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Put the bourbon and simple syrup in a julep tin. Fill the tin halfway with crushed ice. Stir with a teaspoon, churning the ice as you go, for about 10 seconds, holding the tin by the rim so the entire tin can eventually frost up. Add more crushed ice to fill the drink two-thirds full and stir until the tin is completely frosted. Add more ice to form a cone above the rim. Garnish with the mint bouquet in the center of the ice and serve with a straw."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 147
+    }
+  ]
+}
