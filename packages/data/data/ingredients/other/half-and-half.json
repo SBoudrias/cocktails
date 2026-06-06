@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "half-and-half",
+  "name": "Half and half",
   "type": "other"
 }
