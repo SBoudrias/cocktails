@@ -1,0 +1,98 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Anjou Mama",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "pear",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "sliced"
+        },
+        {
+          "technique": "maturity",
+          "state": "ripe"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cassia Cinnamon Bark syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hayman's Old Tom Gin",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "pennyroyal"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tanqueray No. Ten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the pear slices. Add the remaining ingredients and shake with ice, then strain into a Nick & Nora glass. Garnish with the lemon wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jillian Vose"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 154
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Paloma",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "lime",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Tesoro Blanco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit soda",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Rim a highball glass with kosher salt. Squeeze half a lime into a shaker and drop it in. Add the tequila, grapefruit juice, and simple syrup and short shake with 3 ice cubes. Strain into a highball glass filled with ice cubes and top with grapefruit soda. Garnish with the lime wheel and serve with a straw."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 148
+    }
+  ]
+}

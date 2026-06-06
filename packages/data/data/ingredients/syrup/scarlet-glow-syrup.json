@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Scarlet Glow Syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Scarlet Glow herbal tea",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "superfine sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    }
+  ],
+  "instructions": [
+    "In a saucepan, bring 2 cups of water to a boil.",
+    "Remove from the heat and stir in 4 heaping teaspoons of Scarlet Glow herbal tea (available at inpursuitoftea.com).",
+    "Cover and let stand for 6 hours.",
+    "Strain through a cheesecloth-lined sieve.",
+    "Add 2 cups of superfine sugar and shake or stir until the sugar is dissolved."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 277
+    }
+  ]
+}

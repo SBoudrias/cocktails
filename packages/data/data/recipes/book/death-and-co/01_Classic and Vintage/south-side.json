@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "South Side",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Beefeater London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a cocktail shaker, gently muddle the mint. Add the remaining ingredients, shake with ice, and strain into a coupe. Garnish with a mint leaf."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 151
+    }
+  ]
+}
