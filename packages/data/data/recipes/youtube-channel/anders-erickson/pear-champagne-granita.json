@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pear Champagne Granita",
+  "preparation": "built",
+  "served_on": "crushed ice",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Pear Granita",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Baron-Fuenté Grand Reserve Brut Champagne",
+      "type": "wine",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add pear granita to a chilled coupe.",
+    "Top with Champagne.",
+    "Garnish with expressed lemon oil and a pear slice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ouRs57kDexU",
+      "start": 177
+    }
+  ]
+}

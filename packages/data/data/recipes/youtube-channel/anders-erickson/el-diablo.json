@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "El Diablo",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jules Theuriet Crème de Cassis de Dijon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila Reposado",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake lime juice and tequila with ice.",
+    "Strain into a Collins glass with ice.",
+    "Top with ginger beer.",
+    "Float an inverted lime shell on top, fill it with crème de cassis, then tip it into the drink and stir."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "xN3ymSPZJjY",
+      "start": 265
+    },
+    {
+      "type": "youtube",
+      "videoId": "u0N9FFJ1i5c",
+      "start": 183
+    }
+  ]
+}

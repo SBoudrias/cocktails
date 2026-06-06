@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tileño Mezcal Espadin Joven",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

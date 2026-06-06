@@ -1,7 +1,7 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Bitters Buck",
-  "preparation": "shaken",
+  "preparation": "built",
   "served_on": "ice cubes",
   "glassware": "highball",
   "ingredients": [
@@ -44,15 +44,15 @@
     }
   ],
   "instructions": [
-    "Shake bitters, syrup, and lemon juice with ice.",
-    "Strain into a highball glass over ice.",
-    "Top with ginger beer and garnish with a mint sprig."
+    "Build bitters, lemon juice, and syrup in a highball glass over ice.",
+    "Top with ginger beer.",
+    "Garnish with a mint sprig."
   ],
   "refs": [
     {
       "type": "youtube",
       "videoId": "0J6-sPDCOMw",
-      "start": 657
+      "start": 621
     }
   ]
 }

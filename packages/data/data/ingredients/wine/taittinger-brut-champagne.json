@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Taittinger Brut Champagne",
+  "type": "wine",
+  "categories": ["Champagne"]
+}

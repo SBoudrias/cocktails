@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Irish Coffee",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 3.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Powers Gold Label",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Warm an Irish coffee glass.",
+    "Add Irish whiskey and Demerara syrup to the glass.",
+    "Add hot coffee, leaving room for cream.",
+    "Lightly whip heavy cream and float it over the drink using the back of a spoon."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Pn_xYUkm8qo",
+      "start": 147
+    },
+    {
+      "type": "youtube",
+      "videoId": "sJsY1LokABA",
+      "start": 304
+    }
+  ]
+}

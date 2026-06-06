@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pomegranate Spritz",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Pomegranate juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "dry sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Fill a wine glass with ice cubes.",
+    "Add pomegranate juice, Aperol, and prosecco.",
+    "Top with seltzer.",
+    "Stir and garnish with pomegranate seeds and mint."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jeZaorUB72A",
+      "start": 960
+    }
+  ]
+}

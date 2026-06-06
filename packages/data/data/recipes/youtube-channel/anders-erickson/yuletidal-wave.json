@@ -1,0 +1,117 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Yuletidal Wave",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Licor 43",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura 1919 rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Elijah Craig bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand 1840 Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rothman & Winter Orchard Pear Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a hurricane glass over ice cubes.",
+    "Garnish with pineapple fronds, grated nutmeg, and a tiki umbrella."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Martin Cate"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    },
+    {
+      "relation": "book",
+      "source": "Smuggler's Cove",
+      "url": "https://amzn.to/3qNsgKk"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "s30L-iu171E",
+      "start": 209
+    }
+  ]
+}

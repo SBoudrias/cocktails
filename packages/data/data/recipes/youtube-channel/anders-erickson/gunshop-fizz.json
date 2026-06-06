@@ -1,0 +1,128 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Gunshop Fizz",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "sliced"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "peeled"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Grapefruit",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "peeled"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Stappi red bitter soda",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle strawberries, cucumber slices, orange peels, and grapefruit peels in a shaker tin.",
+    "Add Peychaud's bitters, lemon juice, simple syrup, and ice.",
+    "Shake well, then fine strain into a Collins glass over ice cubes.",
+    "Top with red bitter soda.",
+    "Garnish with a cucumber slice and strawberry."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Kirk Estopinal"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Maks Pazuniak"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NYKEbNf5ksg",
+      "start": 275
+    }
+  ]
+}

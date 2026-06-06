@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Baron-Fuenté Grand Reserve Brut Champagne",
+  "type": "wine",
+  "categories": ["Champagne"]
+}

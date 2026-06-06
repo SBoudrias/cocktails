@@ -1,0 +1,105 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Sangria",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "ingredients": [
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "green apple",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grand Marnier",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Don Nuño Oloroso Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Red Wine",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "bottle"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the sliced fruit, Demerara syrup, lemon juice, Grand Marnier, oloroso sherry, and red wine in a pitcher or punch bowl.",
+    "Stir to incorporate, cover, and refrigerate for a few hours or overnight.",
+    "Serve over ice cubes.",
+    "Optionally top each glass with a splash of seltzer."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NNI--bxevNo",
+      "start": 279
+    }
+  ]
+}

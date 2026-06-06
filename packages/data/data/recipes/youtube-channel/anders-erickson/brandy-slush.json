@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Brandy Slush",
+  "preparation": "other",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "servings": 16,
+  "ingredients": [
+    {
+      "name": "frozen concentrated orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "frozen concentrated lemonade",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "black tea syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Korbel Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Sprite",
+      "type": "soda",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine orange juice concentrate, lemonade concentrate, brandy, black tea syrup, and water in a sealable container.",
+    "Stir to combine.",
+    "Freeze for 12-24 hours.",
+    "Scoop the frozen slush into an old fashioned glass.",
+    "Top with Sprite.",
+    "Garnish with an orange slice."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "rQ59lgXm8Ho",
+      "start": 349
+    }
+  ]
+}

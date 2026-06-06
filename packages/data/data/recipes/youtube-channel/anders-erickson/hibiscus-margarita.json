@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hibiscus Margarita",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "hibiscus syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Milagro Reposado Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rim an old fashioned glass with salt.",
+    "Shake all ingredients with ice.",
+    "Strain into the prepared glass over ice.",
+    "Garnish with a lime wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Shannon Mustipher"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jxpT11WEtWQ",
+      "start": 393
+    },
+    {
+      "type": "website",
+      "name": "Food52",
+      "url": "https://food52.com/recipes/85581-hibiscus-margarita"
+    }
+  ]
+}

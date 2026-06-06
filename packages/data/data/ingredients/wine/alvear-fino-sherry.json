@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Alvear Fino Sherry",
+  "type": "wine",
+  "categories": ["Sherry (Fino)"]
+}

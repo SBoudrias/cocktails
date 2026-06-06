@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Baby Guinness",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Baileys",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kahlua Original coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Add coffee liqueur to the glass.", "Float Baileys on top."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "UbQO4xhiRIg",
+      "start": 1120
+    },
+    {
+      "type": "website",
+      "name": "Original TikTok",
+      "url": "https://www.tiktok.com/t/ZTLNGTFg4/"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Queen's Park Hotel Super Cocktail",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura 1919 rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a coupe glass.",
+    "Garnish with a lime twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ASTV1OEXhbE",
+      "start": 270
+    },
+    {
+      "type": "youtube",
+      "videoId": "YwHw259XAOU",
+      "start": 482
+    },
+    {
+      "type": "youtube",
+      "videoId": "VBhMwM6_u-s",
+      "start": 202
+    },
+    {
+      "type": "youtube",
+      "videoId": "TrWcObh6YKM",
+      "start": 796
+    }
+  ]
+}

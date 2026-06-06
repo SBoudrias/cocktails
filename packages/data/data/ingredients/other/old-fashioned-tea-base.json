@@ -1,0 +1,113 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Old Fashioned tea base",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Allspice berry",
+      "type": "spice",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cocoa nibs",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Vanilla bean",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "red chili flakes",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "black tea",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lapsang Souchong black tea",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Bring water to a boil in a small pot.",
+    "Reduce heat to low and add cloves, cracked allspice berries, cinnamon stick, cocoa nibs, vanilla bean, and red chili flakes.",
+    "Simmer covered for 10 minutes.",
+    "Turn off heat, add black teas and orange peels, cover, and steep for 5 minutes.",
+    "Strain, add salt, and allow to cool."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "t1FGow6i_cY",
+      "start": 145
+    }
+  ]
+}

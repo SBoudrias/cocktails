@@ -55,8 +55,23 @@
   "refs": [
     {
       "type": "youtube",
+      "videoId": "rMCsrbidAJ4",
+      "start": 367
+    },
+    {
+      "type": "youtube",
       "videoId": "0RT6a8dgPCg",
       "start": 161
+    },
+    {
+      "type": "youtube",
+      "videoId": "XQ6aHAKCImI",
+      "start": 92
+    },
+    {
+      "type": "youtube",
+      "videoId": "bGxOcLRCBWk",
+      "start": 244
     }
   ]
 }

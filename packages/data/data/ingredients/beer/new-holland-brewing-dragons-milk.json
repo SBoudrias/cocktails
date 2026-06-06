@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "New Holland Brewing Dragon's Milk",
+  "type": "beer",
+  "categories": ["Stout"]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Blended Pink Squirrel",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "goblet",
+  "ingredients": [
+    {
+      "name": "Vanilla ice cream",
+      "type": "other",
+      "quantity": {
+        "amount": 200,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Half and half",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Crème de Noyaux",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard White Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add vanilla ice cream, crème de noyaux, crème de cacao, and half and half to a blender.",
+    "Add 1/4 cup crushed ice.",
+    "Blend until smooth.",
+    "Pour into a frozen goblet.",
+    "Top with Chartreuse whipped cream.",
+    "Garnish with grated nutmeg and a cocktail cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "kRPWDOCVByk",
+      "start": 281
+    }
+  ]
+}

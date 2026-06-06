@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "A Little Thyme Off",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "technique": {
+        "technique": "infusion",
+        "agent": "thyme"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 4.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake lemon juice and thyme-infused simple syrup briefly with ice.",
+    "Pour into a collins glass filled with ice.",
+    "Top with ginger beer.",
+    "Garnish with thyme sprigs and a lemon wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ZE3G8aUyOn0",
+      "start": 180
+    }
+  ]
+}

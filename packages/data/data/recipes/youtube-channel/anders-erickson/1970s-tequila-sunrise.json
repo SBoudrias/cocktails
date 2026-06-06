@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "1970s Tequila Sunrise",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siete Leguas Blanco Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build tequila and orange juice in a highball glass over ice.",
+    "Stir to combine.",
+    "Pour grenadine down the side of the glass so it sinks.",
+    "Garnish with an orange slice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Bobby Lozoff"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Billy Rice"
+    },
+    {
+      "relation": "bar",
+      "source": "Trident",
+      "location": "Sausalito, California"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "VNaSpZ3YOoM",
+      "start": 293
+    }
+  ]
+}

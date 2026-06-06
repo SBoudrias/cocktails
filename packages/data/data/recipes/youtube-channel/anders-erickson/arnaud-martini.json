@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Arnaud Martini",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "Astraea Ocean Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jules Theuriet Crème de Cassis de Dijon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Garnish with expressed lemon oil and a lemon peel"],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "FI4wUOzJvUE",
+      "start": 265
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "Umeshu",
+  "categoryType": "wine",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "tVz-w7rZwZg",
+      "start": 130
+    }
+  ]
+}

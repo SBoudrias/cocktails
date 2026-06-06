@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Painkiller (Inspired)",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 8 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a shaker with crushed ice.",
+    "Shake briefly.",
+    "Open pour into an old fashioned glass.",
+    "Top with more crushed ice.",
+    "Garnish with grated nutmeg, pineapple fronds, and a cocktail umbrella."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Daphne Henderson"
+    },
+    {
+      "relation": "bar",
+      "source": "Soggy Dollar Bar",
+      "location": "Jost Van Dyke, British Virgin Islands"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "XYfHK3goJLk",
+      "start": 390
+    }
+  ]
+}

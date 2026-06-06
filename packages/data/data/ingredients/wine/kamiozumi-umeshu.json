@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Kamiozumi Umeshu",
-  "type": "wine"
+  "type": "wine",
+  "categories": ["Umeshu"]
 }

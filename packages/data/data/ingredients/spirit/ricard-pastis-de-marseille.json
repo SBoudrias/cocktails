@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Ricard Pastis de Marseille",
+  "type": "spirit",
+  "categories": ["Pastis"]
+}

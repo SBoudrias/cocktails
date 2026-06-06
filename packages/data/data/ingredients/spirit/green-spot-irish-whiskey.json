@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Green Spot Irish Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (Irish)"]
+}

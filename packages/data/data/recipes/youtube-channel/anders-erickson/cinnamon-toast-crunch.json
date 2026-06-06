@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cinnamon Toast Crunch",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Fireball Cinnamon Whisky",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "RumChata",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "root beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add Fireball Cinnamon Whisky to an ice-filled glass.",
+    "Add RumChata.",
+    "Top with root beer and stir."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jeZaorUB72A",
+      "start": 605
+    }
+  ]
+}

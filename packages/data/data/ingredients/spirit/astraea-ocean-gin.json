@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Astraea Ocean Gin",
+  "type": "spirit",
+  "categories": ["London Dry Gin"]
+}

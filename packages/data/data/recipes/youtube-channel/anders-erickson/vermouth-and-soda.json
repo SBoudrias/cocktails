@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Vermouth & Soda",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour chilled vermouth into a chilled wine glass.",
+    "Top with a splash of seltzer.",
+    "Express lemon oil over the drink and garnish with a lemon peel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "VBhMwM6_u-s",
+      "start": 395
+    }
+  ]
+}

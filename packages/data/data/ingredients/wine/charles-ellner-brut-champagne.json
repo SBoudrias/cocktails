@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Charles Ellner Brut Champagne",
+  "type": "wine",
+  "categories": ["Champagne"]
+}

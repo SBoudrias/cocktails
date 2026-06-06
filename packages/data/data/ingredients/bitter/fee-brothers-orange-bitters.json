@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Fee Brothers Orange Bitters",
+  "type": "bitter",
+  "categories": ["Orange bitters"]
+}

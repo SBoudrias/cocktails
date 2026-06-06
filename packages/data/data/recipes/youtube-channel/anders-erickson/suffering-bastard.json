@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Suffering Bastard",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Beefeater London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except ginger beer with ice.",
+    "Strain into a collins glass over ice cubes.",
+    "Top with ginger beer.",
+    "Garnish with a mint sprig and orange slice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joe Scialom"
+    },
+    {
+      "relation": "book",
+      "source": "Potions of the Caribbean",
+      "url": "https://amzn.to/3qRD6z2"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "oRQtYcyRKVI",
+      "start": 392
+    }
+  ]
+}

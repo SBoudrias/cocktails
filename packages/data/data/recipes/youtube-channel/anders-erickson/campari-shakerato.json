@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Campari Shakerato",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Vigorously shake the Campari with ice.",
+    "Strain into a chilled coupe.",
+    "Express lemon oil over the top."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "knmDu3rPg7E",
+      "start": 257
+    }
+  ]
+}

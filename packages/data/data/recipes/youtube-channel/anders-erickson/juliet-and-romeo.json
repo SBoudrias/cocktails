@@ -1,0 +1,106 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Juliet & Romeo",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "rose water",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Beefeater London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle cucumber slices with a small pinch of salt in a shaker tin.",
+    "Add gin, simple syrup, lime juice, rose water, mint, and ice.",
+    "Shake, then double strain into a chilled coupe.",
+    "Garnish with a mint leaf, one drop of rose water, and three drops of Angostura bitters."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Toby Maloney"
+    },
+    {
+      "relation": "bar",
+      "source": "The Violet Hour",
+      "location": "Chicago"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Ttnf3PbJqnA",
+      "start": 265
+    }
+  ]
+}

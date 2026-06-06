@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Choya Kokuto Umeshu",
   "type": "wine",
-  "categories": ["Plum wine"]
+  "categories": ["Umeshu"]
 }

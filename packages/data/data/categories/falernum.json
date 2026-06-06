@@ -1,5 +1,12 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Falernum",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Y2AMcTB_kbY",
+      "start": 203
+    }
+  ]
 }

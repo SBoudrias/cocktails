@@ -1,0 +1,116 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Alton Brown's Aged Eggnog",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "coupe",
+  "servings": 12,
+  "ingredients": [
+    {
+      "name": "Egg yolk",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Half and half",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 12",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Elijah Craig bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Beat egg yolks with sugar and nutmeg in a large mixing bowl until the mixture lightens in color.",
+    "Combine dairy, spirits, and salt in a separate vessel.",
+    "Slowly beat the dairy and spirits mixture into the egg mixture.",
+    "Transfer to glass jars and store sealed in the refrigerator.",
+    "Garnish each serving with freshly grated nutmeg."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alton Brown",
+      "url": "https://altonbrown.com/recipes/aged-eggnog/"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "s7Rcx7Fekn4",
+      "start": 332
+    },
+    {
+      "type": "website",
+      "name": "Alton Brown",
+      "url": "https://altonbrown.com/recipes/aged-eggnog/"
+    }
+  ]
+}

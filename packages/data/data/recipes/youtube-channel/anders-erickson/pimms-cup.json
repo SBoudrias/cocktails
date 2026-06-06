@@ -63,6 +63,11 @@
     {
       "type": "youtube",
       "videoId": "VBSjE-P_C58"
+    },
+    {
+      "type": "youtube",
+      "videoId": "CGq0rFP_Jl0",
+      "start": 470
     }
   ]
 }

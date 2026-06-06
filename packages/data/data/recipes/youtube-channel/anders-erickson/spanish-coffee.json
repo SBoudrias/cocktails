@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Spanish Coffee",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St. George NOLA coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rim an Irish coffee glass with sugar.",
+    "Add rum to the glass, ignite carefully, and rotate the glass to caramelize the sugared rim.",
+    "Extinguish the flame.",
+    "Add coffee liqueur, orange curaçao, and hot coffee, then stir to combine.",
+    "Top with lightly whipped heavy cream.",
+    "Garnish with grated nutmeg."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "p3X7_-TVIDs",
+      "start": 335
+    }
+  ]
+}

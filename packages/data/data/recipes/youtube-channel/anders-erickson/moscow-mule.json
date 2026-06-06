@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Moscow Mule",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "mule",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Valentine Vodka",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 4.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Fill a copper mule mug with ice cubes.",
+    "Add vodka, lime juice, and Angostura bitters.",
+    "Top with ginger beer and give it a little stir.",
+    "Garnish with a large mint sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mvo1CzEJd14",
+      "start": 272
+    }
+  ]
+}

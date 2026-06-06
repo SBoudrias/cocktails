@@ -1,0 +1,98 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "White Sangria",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "ingredients": [
+    {
+      "name": "Peach",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard abricot du Roussillon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Valdespino \"Ynocente\" Fino Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dry white wine",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "bottle"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the sliced fruit, simple syrup, lemon juice, apricot liqueur, fino sherry, and dry white wine in a pitcher or punch bowl.",
+    "Serve over ice cubes.",
+    "Optionally top each glass with a splash of seltzer."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mAxJU3qd8OE",
+      "start": 343
+    }
+  ]
+}

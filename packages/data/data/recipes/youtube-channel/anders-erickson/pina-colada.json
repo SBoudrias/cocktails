@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Piña Colada",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut milk",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Real McCoy 3 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a tin with 8-10 oz crushed ice.",
+    "Blend with an immersion blender until frothy and fluffy.",
+    "Pour into a chilled pineapple-shaped glass.",
+    "Garnish with pineapple wedges, pineapple fronds, a cocktail cherry, and a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Ramón Marrero"
+    },
+    {
+      "relation": "bar",
+      "source": "Caribe Hilton",
+      "location": "San Juan, Puerto Rico"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "eH9yt9JpXXk",
+      "start": 210
+    }
+  ]
+}

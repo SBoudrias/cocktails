@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Hurricane (Anders Erickson)",
+  "name": "Hurricane",
   "preparation": "shaken",
   "served_on": "crushed ice",
   "glassware": "hurricane",

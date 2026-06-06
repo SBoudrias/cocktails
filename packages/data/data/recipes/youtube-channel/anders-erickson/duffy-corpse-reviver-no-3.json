@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Duffy Corpse Reviver No. 3",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ricard Pastis de Marseille",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cava",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake pastis and lemon juice with ice.",
+    "Strain into a flute glass.",
+    "Top with cava.",
+    "Garnish with expressed lemon oil."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "The Official Mixer's Manual"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "kBHi_atZsbM",
+      "start": 565
+    }
+  ]
+}

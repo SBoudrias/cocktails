@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Dahlia Cup",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "rinse"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "spray"
+      }
+    },
+    {
+      "name": "Drambuie",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Americano",
+      "type": "wine",
+      "technique": {
+        "technique": "infusion",
+        "agent": "dried chamomile flowers",
+        "agent_quantity": {
+          "amount": 5,
+          "unit": "gram"
+        },
+        "spirit_quantity": {
+          "amount": 375,
+          "unit": "ml"
+        },
+        "duration": "1 hour",
+        "method": "cold"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir the chamomile-infused Cocchi Americano and Drambuie with ice.",
+    "Rinse a chilled Nick & Nora glass with mezcal.",
+    "Strain into the prepared glass.",
+    "Express lemon zest over the drink and garnish with a chamomile flower and lemon peel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "sRFQgUq6Xoc",
+      "start": 331
+    }
+  ]
+}
