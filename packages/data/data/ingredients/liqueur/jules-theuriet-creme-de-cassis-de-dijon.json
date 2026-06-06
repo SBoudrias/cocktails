@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Jules Theuriet Crème de Cassis de Dijon",
+  "type": "liqueur",
+  "categories": ["Crème de Cassis"]
+}

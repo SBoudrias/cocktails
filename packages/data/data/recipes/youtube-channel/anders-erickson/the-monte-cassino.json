@@ -39,11 +39,22 @@
     }
   ],
   "instructions": ["Shake all ingredients with ice.", "Strain into a chilled coupe."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Damon Dyer"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
       "videoId": "9V4Jj3bmi90",
       "start": 138
+    },
+    {
+      "type": "youtube",
+      "videoId": "NGPSk_jMZvA",
+      "start": 268
     }
   ]
 }

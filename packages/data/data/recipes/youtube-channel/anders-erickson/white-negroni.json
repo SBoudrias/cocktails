@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "White Negroni",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Suze",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lillet Blanc",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass over a large ice cube.",
+    "Garnish with grapefruit zest."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "fBax4HODqyA",
+      "start": 198
+    }
+  ]
+}

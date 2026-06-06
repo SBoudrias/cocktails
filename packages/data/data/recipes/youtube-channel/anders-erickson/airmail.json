@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Airmail",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 75,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Don Q Gold Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Charles Ellner Brut Champagne",
+      "type": "wine",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake rum, honey syrup, and lime juice with ice.",
+    "Strain into a coupe.",
+    "Top with Champagne."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vaVcBQ6tiFw",
+      "start": 225
+    }
+  ]
+}

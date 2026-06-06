@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Ford Cocktail",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bénédictine D.O.M.",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Scofflaw Old Tom Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into a chilled coupe.",
+    "Garnish with expressed orange oil and an orange peel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "UJJqbCGHsOg",
+      "start": 329
+    }
+  ]
+}

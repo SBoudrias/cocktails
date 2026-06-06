@@ -1,52 +1,36 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mary Pickford (Anders Erickson)",
+  "name": "Applejack Rabbit",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Lime juice",
+      "name": "Orange juice",
       "type": "juice",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Grenadine",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Luxardo Maraschino Liqueur",
-      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "St-Elizabeth Allspice Dram",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Probitas Rum",
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laird's Bonded Apple Brandy",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
@@ -57,13 +41,13 @@
   "instructions": [
     "Shake all ingredients with ice.",
     "Strain into a chilled coupe glass.",
-    "Garnish with pineapple fronds and a cocktail cherry."
+    "Garnish with a dehydrated orange wheel."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "4ulBVniIbaA",
-      "start": 352
+      "videoId": "9OxlSOioD_k",
+      "start": 251
     }
   ]
 }

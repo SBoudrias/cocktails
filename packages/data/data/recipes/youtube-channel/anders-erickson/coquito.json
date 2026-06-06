@@ -1,0 +1,118 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Coquito",
+  "preparation": "blended",
+  "served_on": "up",
+  "glassware": "old fashioned",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "Star anise",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 25,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "evaporated milk",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweetened condensed milk",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut milk",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Don Q Gold Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Boil water with cinnamon sticks, cloves, and star anise until reduced by half.",
+    "Chill the spice tea.",
+    "Blend coconut milk, evaporated milk, sweetened condensed milk, cream of coconut, vanilla extract, 2 oz chilled spice tea, salt, and rum until combined.",
+    "Chill before serving.",
+    "Garnish with grated nutmeg."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "SAeGIcLjMlk",
+      "start": 353
+    }
+  ]
+}

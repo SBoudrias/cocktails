@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Death's Door Gin",
+  "type": "spirit",
+  "categories": ["Gin"]
+}

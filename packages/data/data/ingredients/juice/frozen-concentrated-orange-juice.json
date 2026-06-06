@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "frozen concentrated orange juice",
+  "type": "juice"
+}

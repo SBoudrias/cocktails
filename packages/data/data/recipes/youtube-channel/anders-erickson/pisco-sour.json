@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pisco Sour",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barsol Pisco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aquafaba",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake all ingredients without ice.",
+    "Add ice and shake again.",
+    "Double strain into a chilled wine glass.",
+    "Garnish with 1 drop of Angostura bitters."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "FdAQ96mYwNQ",
+      "start": 337
+    }
+  ]
+}

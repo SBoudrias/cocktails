@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Albrecht Crémant d'Alsace Brut",
+  "type": "wine",
+  "categories": ["Sparkling wine"]
+}

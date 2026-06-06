@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tia Maria Coffee Liqueur",
+  "type": "liqueur",
+  "categories": ["Coffee liqueur"]
+}

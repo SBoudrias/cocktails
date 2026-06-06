@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Alexander Cocktail",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Half and half",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Martin Miller's Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake with ice for 10-15 seconds.",
+    "Double strain into a chilled coupe.",
+    "Garnish with freshly grated nutmeg."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mBGgu3qRztY",
+      "start": 137
+    }
+  ]
+}

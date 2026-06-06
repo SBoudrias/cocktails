@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Smoky Spicy Margarita",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Jalapeño",
+      "type": "spice",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Agave syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rim an old fashioned glass with Tajin.",
+    "Shake all ingredients with ice.",
+    "Double strain into the prepared glass over ice.",
+    "Garnish with a lime wheel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jxpT11WEtWQ",
+      "start": 123
+    }
+  ]
+}

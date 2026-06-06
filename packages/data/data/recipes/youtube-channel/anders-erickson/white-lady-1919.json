@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "White Lady (1919)",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Crème de Menthe",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Triplum Triple Sec",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a chilled coupe glass."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Harry MacElhone"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "IAmf7XqE0T8",
+      "start": 286
+    }
+  ]
+}

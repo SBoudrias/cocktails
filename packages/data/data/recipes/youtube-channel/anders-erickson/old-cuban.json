@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Old Cuban",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura 1919 rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake mint leaves, bitters, simple syrup, lime juice, and rum with ice.",
+    "Double strain into a chilled coupe glass.",
+    "Top with sparkling wine.",
+    "Garnish with a mint leaf."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Audrey Saunders"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "IAaiRENeyvc",
+      "start": 477
+    }
+  ]
+}

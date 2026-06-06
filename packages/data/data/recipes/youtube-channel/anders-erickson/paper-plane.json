@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Paper Plane",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Grand-Dad Bonded Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Nonino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Double strain into a chilled nick & nora glass.",
+    "Garnish with a small paper plane."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Sam Ross"
+    },
+    {
+      "relation": "bar",
+      "source": "The Violet Hour",
+      "location": "Chicago"
+    },
+    {
+      "relation": "bar",
+      "source": "Milk & Honey",
+      "location": "New York"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "yu4JNOvec1k",
+      "start": 284
+    }
+  ]
+}

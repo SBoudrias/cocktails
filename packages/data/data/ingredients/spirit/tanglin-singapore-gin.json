@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tanglin Singapore Gin",
+  "type": "spirit",
+  "categories": ["Gin"]
+}

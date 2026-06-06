@@ -1,5 +1,12 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Ginger syrup",
-  "type": "syrup"
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vGBMrJgjZB4",
+      "start": 331
+    }
+  ]
 }

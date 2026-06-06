@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Psycho Killer",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Marie Brizard White Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard banane du Brésil",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cocoa nibs",
+        "agent_quantity": {
+          "amount": 1,
+          "unit": "tbsp"
+        },
+        "spirit_quantity": {
+          "amount": 1,
+          "unit": "cup"
+        },
+        "duration": "1-2 hours",
+        "method": "cold"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Redbreast 12 year Irish whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into a Nick & Nora glass.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jillian Vose"
+    },
+    {
+      "relation": "bar",
+      "source": "The Dead Rabbit",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "u0N9FFJ1i5c",
+      "start": 98
+    }
+  ]
+}

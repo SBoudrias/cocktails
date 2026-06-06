@@ -1,0 +1,110 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Charles Dickens Punch",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "punch",
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "black tea",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 32,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "pineapple",
+        "agent_quantity": {
+          "amount": 1,
+          "unit": "unit"
+        },
+        "spirit_quantity": {
+          "amount": 1,
+          "unit": "bottle"
+        },
+        "duration": "1-2 weeks",
+        "method": "cold"
+      },
+      "quantity": {
+        "amount": 16,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Peel the lemons into a pot, add the Demerara sugar, and massage the sugar into the peels to make an oleo-saccharum.",
+    "Let the lemon peels and sugar rest for about 30 minutes.",
+    "Brew 4 cups of black tea and juice the peeled lemons.",
+    "Add pineapple-infused rum and cognac to the oleo-saccharum, stir, and warm gently over low heat without boiling.",
+    "Carefully ignite the warmed punch and let it burn for about 3 minutes, then cover the pot to extinguish the flame.",
+    "Add the lemon juice and black tea, warm gently without boiling, then remove the lemon peels.",
+    "Serve warm. Garnish with lemon oil, lemon wheels, or grated nutmeg."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Charles Dickens"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    },
+    {
+      "relation": "book",
+      "source": "Punch: The Delights (and Dangers) of the Flowing Bowl",
+      "url": "https://amzn.to/3DxfhzY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "BXGS7Ai2hec",
+      "start": 227
+    }
+  ]
+}

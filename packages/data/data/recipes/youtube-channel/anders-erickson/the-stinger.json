@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Stinger",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Tempus Fugit Crème de Menthe",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake with ice briefly to aerate.",
+    "Strain over crushed ice.",
+    "Garnish with a fresh mint sprig and optionally mist absinthe over the top."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mBGgu3qRztY",
+      "start": 56
+    }
+  ]
+}

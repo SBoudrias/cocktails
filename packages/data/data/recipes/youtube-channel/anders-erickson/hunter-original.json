@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hunter (Original)",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Cherry Heering liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a mixing glass with ice.",
+    "Stir until well chilled.",
+    "Strain into a chilled coupe glass."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Café Royal Cocktail Book",
+      "url": "https://amzn.to/4oT4jfF"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vECQyr3-Lyw",
+      "start": 260
+    }
+  ]
+}

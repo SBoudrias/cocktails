@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Rusty Nail",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Drambuie",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Monkey Shoulder Blended Scotch",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass over a big rock.",
+    "Garnish with expressed lemon oil."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "s30L-iu171E",
+      "start": 64
+    },
+    {
+      "type": "youtube",
+      "videoId": "nTyrz70_OPA",
+      "start": 117
+    }
+  ]
+}

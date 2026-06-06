@@ -1,7 +1,7 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Aviation",
-  "preparation": "stirred",
+  "preparation": "shaken",
   "served_on": "up",
   "glassware": "nick & nora",
   "ingredients": [
@@ -57,6 +57,11 @@
     {
       "type": "youtube",
       "videoId": "Kmw5D32W8sM"
+    },
+    {
+      "type": "youtube",
+      "videoId": "RRvfkkSjceM",
+      "start": 136
     }
   ]
 }

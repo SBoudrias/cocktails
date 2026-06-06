@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Miami Vice",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "technique": {
+        "technique": "temperature",
+        "method": "frozen"
+      },
+      "quantity": {
+        "amount": 140,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "technique": {
+        "technique": "temperature",
+        "method": "frozen"
+      },
+      "quantity": {
+        "amount": 140,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Probitas Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend 1.5 oz Probitas Rum, simple syrup, lime juice, and frozen strawberries until smooth.",
+    "Blend 1.5 oz Probitas Rum, cream of coconut, pineapple juice, and frozen pineapple until smooth.",
+    "Pour both portions into a hurricane glass at the same time to keep the colors separated."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0JUtwxuMCg0",
+      "start": 516
+    }
+  ]
+}

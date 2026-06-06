@@ -38,11 +38,20 @@
       }
     }
   ],
-  "instructions": ["Shake all ingredients with ice.", "Strain into a coupe glass."],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Double strain into a chilled cocktail glass.",
+    "Garnish with orange oil."
+  ],
   "refs": [
     {
       "type": "youtube",
       "videoId": "YenV_NoabM4"
+    },
+    {
+      "type": "youtube",
+      "videoId": "NLF7z6MHMa0",
+      "start": 358
     }
   ]
 }

@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Penicillin",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Ginger",
+      "type": "spice",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 75,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laphroaig 10",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Monkey Shoulder Blended Scotch",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the ginger slices in a shaker.",
+    "Add the remaining ingredients and shake with ice.",
+    "Fine strain into an old fashioned glass over fresh ice.",
+    "Garnish with candied ginger."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Sam Ross"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "G51IC-s_ECI",
+      "start": 186
+    }
+  ]
+}

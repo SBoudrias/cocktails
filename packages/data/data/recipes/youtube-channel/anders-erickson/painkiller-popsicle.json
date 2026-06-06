@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Painkiller Popsicle",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "Light corn syrup",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 5.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 9,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pusser's British Navy Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend all ingredients until smooth.",
+    "Pour into popsicle molds.",
+    "Freeze for at least 12 hours."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "KTLIeNgrhiY",
+      "start": 761
+    }
+  ]
+}

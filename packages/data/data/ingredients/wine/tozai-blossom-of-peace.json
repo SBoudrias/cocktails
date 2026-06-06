@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Tozai Blossom of Peace",
   "type": "wine",
-  "categories": ["Plum wine"]
+  "categories": ["Umeshu"]
 }

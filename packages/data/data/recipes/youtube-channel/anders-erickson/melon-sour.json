@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Melon Sour",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Midori melon liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake all ingredients without ice.",
+    "Add ice and shake again.",
+    "Double strain into a coupe glass.",
+    "Express lemon oil over the drink."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "UbQO4xhiRIg",
+      "start": 633
+    },
+    {
+      "type": "website",
+      "name": "Original TikTok",
+      "url": "https://www.tiktok.com/t/ZTLNtkUcD/"
+    }
+  ]
+}

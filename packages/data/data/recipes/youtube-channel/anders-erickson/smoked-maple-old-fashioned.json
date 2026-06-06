@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "Evan Williams 1783 Small Batch Bourbon",
+      "name": "Elijah Craig bourbon",
       "type": "spirit",
       "quantity": {
         "amount": 2,
@@ -31,10 +31,17 @@
     }
   ],
   "instructions": [
-    "Smoke double old fashioned glass",
+    "Smoke a double old fashioned glass.",
+    "Stir the bourbon, maple syrup, and bitters with ice.",
+    "Strain into the smoked glass over a big rock.",
     "Garnish with orange zest and cocktail cherry"
   ],
   "refs": [
+    {
+      "type": "youtube",
+      "videoId": "EOIWzKAQk9w",
+      "start": 218
+    },
     {
       "type": "youtube",
       "videoId": "_bDARIxZlcE",

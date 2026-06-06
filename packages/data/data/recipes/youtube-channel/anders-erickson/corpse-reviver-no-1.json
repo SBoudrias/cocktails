@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Corpse Reviver No. 1",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Laird's Straight Applejack 86",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice until chilled.",
+    "Strain into a chilled coupe glass.",
+    "Garnish with expressed lemon oil and a lemon peel."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "The Savoy Cocktail Book"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "rMCsrbidAJ4",
+      "start": 248
+    }
+  ]
+}

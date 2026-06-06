@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Martinez",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Fee Brothers Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Scofflaw Old Tom Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a mixing glass with ice.",
+    "Stir until well-chilled.",
+    "Strain into a chilled coupe glass.",
+    "Garnish with expressed lemon oil and a lemon peel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "MuxY7_-_U_8",
+      "start": 241
+    }
+  ]
+}

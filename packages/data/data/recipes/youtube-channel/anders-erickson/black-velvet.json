@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Black Velvet",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Guinness",
+      "type": "beer",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour Guinness into a chilled coupe glass.",
+    "Let the Guinness settle.",
+    "Slowly pour sparkling wine over the back of a spoon to layer."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "IAaiRENeyvc",
+      "start": 766
+    }
+  ]
+}

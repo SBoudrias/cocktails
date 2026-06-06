@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Roasted Apple",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Caramel syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Pedro Ximénez Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Real McCoy 3 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Calvados",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Torch a cinnamon stick and cover it with an old fashioned glass to smoke the glass.",
+    "Stir all ingredients with ice.",
+    "Add a large ice cube to the smoked glass.",
+    "Strain the cocktail into the prepared glass.",
+    "Garnish with an apple slice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Dalevoll"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "gABCX2zJ3T8",
+      "start": 671
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Flying Dutchman",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine D.O.M.",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Genever",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Double strain into a chilled coupe.",
+    "Garnish with expressed lemon oil and a lemon swath."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian McGregor"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson",
+      "url": "https://www.youtube.com/watch?v=yh_WeCrFuRA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "yh_WeCrFuRA",
+      "start": 320
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tom & Jerry batter",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Egg yolk",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Allspice berry",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine spices and rum in a small bowl, stir, and set aside.",
+    "Separate eggs into two bowls.",
+    "Add sugar, vanilla extract, bitters, and spice mixture to the yolks, then stir to combine.",
+    "Add salt to egg whites and whip to stiff peaks.",
+    "Gently fold the egg whites into the yolk mixture."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "tfPrLUlFO8k",
+      "start": 211
+    }
+  ]
+}

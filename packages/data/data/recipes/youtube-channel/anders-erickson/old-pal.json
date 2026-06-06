@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Old Pal",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a mixing glass with ice.",
+    "Stir until well chilled.",
+    "Strain into a chilled Nick & Nora glass.",
+    "Express lemon oil over the drink and garnish with the peel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "op3jvecV1ME",
+      "start": 443
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Sagehen",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Red Delicious apple",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "diced"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 0.25,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "technique": {
+        "technique": "infusion",
+        "agent": "sage"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the diced apple in the shaker tin.",
+    "Add gin, Yellow Chartreuse, lemon juice, and sage-infused honey syrup.",
+    "Shake with ice and double strain into a coupe.",
+    "Garnish with a sage leaf."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Leandro DiMonriva"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "EKyIy5iG87Q",
+      "start": 150
+    }
+  ]
+}

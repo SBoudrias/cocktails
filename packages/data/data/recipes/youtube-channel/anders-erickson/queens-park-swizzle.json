@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Queen's Park Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 5,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 12 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Press the mint leaves lightly in a collins glass and slide them along the inside of the glass.",
+    "Add rum, Demerara syrup, and lime juice.",
+    "Add crushed ice and swizzle until chilled.",
+    "Top with more crushed ice and float Angostura bitters over the top.",
+    "Garnish with a mint sprig."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Queen's Park Hotel",
+      "location": "Port of Spain, Trinidad"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ox1-C1owN80",
+      "start": 188
+    }
+  ]
+}

@@ -30,7 +30,18 @@
       }
     }
   ],
+  "instructions": [
+    "Add all ingredients to a mixing glass with ice.",
+    "Stir until chilled and diluted.",
+    "Strain into an old fashioned glass over a large ice cube.",
+    "No garnish."
+  ],
   "refs": [
+    {
+      "type": "youtube",
+      "videoId": "QFjRjAP-k1k",
+      "start": 278
+    },
     {
       "type": "youtube",
       "videoId": "S0tjh7LkLLE",

@@ -31,7 +31,7 @@
     }
   ],
   "instructions": [
-    "Shake all ingredients with ice.",
+    "Stir all ingredients with ice.",
     "Strain into a martini glass.",
     "Garnish with a lemon twist."
   ],
@@ -39,6 +39,11 @@
     {
       "type": "youtube",
       "videoId": "VBSjE-P_C58"
+    },
+    {
+      "type": "youtube",
+      "videoId": "PIen6ladAjI",
+      "start": 433
     }
   ]
 }

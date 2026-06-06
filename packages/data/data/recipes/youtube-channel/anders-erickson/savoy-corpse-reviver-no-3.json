@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Savoy Corpse Reviver No. 3",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tempus Fugit Crème de Menthe",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice until chilled.",
+    "Strain into a chilled coupe glass."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "The Savoy Cocktail Book"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "kBHi_atZsbM",
+      "start": 456
+    }
+  ]
+}

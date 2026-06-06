@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Sherry Cobbler",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "goblet",
+  "ingredients": [
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "wheeled",
+          "size": "quartered"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Marie Brizard Orange Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Don Nuño Oloroso Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Cut an orange wheel into quarters and add it to a shaker tin.",
+    "Muddle the orange quarters.",
+    "Add oloroso sherry, orange curaçao, and crushed ice.",
+    "Shake briefly.",
+    "Pour into a chilled goblet and top with more crushed ice.",
+    "Garnish with fresh raspberries and mint."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "f7SpTmbMOsQ",
+      "start": 193
+    }
+  ]
+}

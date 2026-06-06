@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mango Basil Pisco Popsicle",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "Basil leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Light corn syrup",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mango purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 11,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barsol Pisco Primero Quebranta",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend all ingredients until smooth.",
+    "Pour into popsicle molds.",
+    "Freeze for at least 12 hours."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "KTLIeNgrhiY",
+      "start": 1006
+    }
+  ]
+}

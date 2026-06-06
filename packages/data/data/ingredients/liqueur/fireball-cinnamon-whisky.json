@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Fireball Cinnamon Whisky",
+  "type": "liqueur",
+  "categories": ["Cinnamon Liqueur"]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tradewinds",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kōloa Kauaʻi Dark Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Don Q Gold Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Giffard abricot du Roussillon",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a tiki glass.",
+    "Fill with crushed ice and swizzle until chilled and incorporated.",
+    "Top with more crushed ice and garnish with grated nutmeg, pineapple fronds, and a cocktail umbrella."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "RThEGH0sbgM",
+      "start": 290
+    },
+    {
+      "type": "youtube",
+      "videoId": "lWDA__gwSow",
+      "start": 173
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Authentic Grog",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 10,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Mister Fogg Navy Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients and stir until the sugar dissolves.",
+    "Serve in an old fashioned glass with ice cubes.",
+    "Garnish with a half lime shell."
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "pG7mU5eenRA",
+      "start": 497
+    }
+  ]
+}

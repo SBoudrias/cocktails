@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tanglin Black Powder Navy Strength Gin",
+  "type": "spirit",
+  "categories": ["Gin (Navy Strength)"]
+}

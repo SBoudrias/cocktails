@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cold Brew Irish Coffee",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Powers Gold Label",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mr. Black coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add coffee liqueur and Irish whiskey to a mixing glass with ice.",
+    "Stir until chilled.",
+    "Strain into an Irish coffee glass.",
+    "Lightly whip heavy cream and float it over the drink."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "sJsY1LokABA",
+      "start": 389
+    }
+  ]
+}

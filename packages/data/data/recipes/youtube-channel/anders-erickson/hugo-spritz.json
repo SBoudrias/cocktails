@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hugo Spritz",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "St-Germain",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "dry sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Fill a wine glass with ice cubes.",
+    "Add St-Germain, prosecco, seltzer, and mint leaves.",
+    "Stir gently.",
+    "Garnish with a mint sprig and lime wheel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "BUb54paVf0s",
+      "start": 272
+    }
+  ]
+}

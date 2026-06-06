@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "God Dammit",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Tabasco sauce",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Baileys",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jeppson's Malört",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Milagro Reposado Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Basil Hayden Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all ingredients in an old fashioned glass over ice cubes.",
+    "Stir to combine."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Al Kintner"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "K9me5NuClhE",
+      "start": 176
+    }
+  ]
+}

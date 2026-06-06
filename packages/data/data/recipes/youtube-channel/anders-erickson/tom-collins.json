@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tom Collins",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Scofflaw Old Tom Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake gin, lemon juice, and simple syrup with ice for about 5 seconds.",
+    "Pour into a chilled Collins glass over ice.",
+    "Top with seltzer.",
+    "Garnish with a lemon wheel and cocktail cherry."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "DKkHTEozo7o",
+      "start": 243
+    },
+    {
+      "type": "youtube",
+      "videoId": "XQ6aHAKCImI",
+      "start": 33
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Martini",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Martin Miller's Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into a chilled martini glass.",
+    "Express lemon oil over the drink and discard the peel.",
+    "Garnish with an olive."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "izZsjqnADAA",
+      "start": 319
+    },
+    {
+      "type": "youtube",
+      "videoId": "TrWcObh6YKM",
+      "start": 853
+    }
+  ]
+}

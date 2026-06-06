@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "White Stallion",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Vanilla ice cream",
+      "type": "other",
+      "quantity": {
+        "amount": 30,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Grand Marnier",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Plymouth Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Taittinger Brut Champagne",
+      "type": "wine",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add softened vanilla ice cream, gin, and orange liqueur to a shaking tin.",
+    "Shake without ice until the ice cream is liquid.",
+    "Pour Champagne into a chilled flute.",
+    "Gently add the ice cream mixture, stirring partway through to incorporate.",
+    "Garnish with expressed orange or lemon oil."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "E1TfYiFrnXk",
+      "start": 224
+    }
+  ]
+}

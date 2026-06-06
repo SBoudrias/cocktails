@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Absinthe Frappé",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "wedged"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St. George Absinthe Verte",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle lemon wedges and simple syrup in a shaker.",
+    "Add absinthe and ice, then shake.",
+    "Fine strain into an old fashioned glass over crushed ice.",
+    "Top with sparkling mineral water.",
+    "Garnish with a mint sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "g4_hKcbMLL4",
+      "start": 270
+    }
+  ]
+}

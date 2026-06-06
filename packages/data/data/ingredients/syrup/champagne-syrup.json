@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Champagne syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine 1.5 parts sugar with 1 part Champagne and stir until dissolved."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "gABCX2zJ3T8",
+      "start": 323
+    }
+  ]
+}

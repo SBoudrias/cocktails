@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Smoked Kentucky Colonel",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bénédictine D.O.M.",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Elijah Craig bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Smoke-rinse an old fashioned glass.",
+    "Stir with ice.",
+    "Strain over a big rock in the smoke-rinsed glass.",
+    "Express flamed lemon oil over the drink."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "gZdT2GBf91I",
+      "start": 104
+    }
+  ]
+}

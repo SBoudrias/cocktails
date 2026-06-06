@@ -44,6 +44,16 @@
     {
       "type": "youtube",
       "videoId": "xnXFbjQSu-k"
+    },
+    {
+      "type": "youtube",
+      "videoId": "QXgD6BIbxHk",
+      "start": 347
+    },
+    {
+      "type": "youtube",
+      "videoId": "YFqEvNdPrX8",
+      "start": 362
     }
   ]
 }

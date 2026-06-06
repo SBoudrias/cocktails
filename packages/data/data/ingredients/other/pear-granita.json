@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Pear Granita",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Pear nectar",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Rothman & Winter Orchard Pear Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 12,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine ingredients and pour into a shallow pan.",
+    "Freeze for one hour, then use a fork to scrape the ice crystals from the edges into the center.",
+    "Repeat scraping every 45 minutes until flaky, 3 to 4 times."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ouRs57kDexU",
+      "start": 14
+    }
+  ]
+}

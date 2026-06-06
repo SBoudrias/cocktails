@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Top of the Morning",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blue Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build in a Collins glass.",
+    "Garnish with rainbow candy and marshmallows."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "UbQO4xhiRIg",
+      "start": 184
+    },
+    {
+      "type": "website",
+      "name": "Original TikTok",
+      "url": "https://www.tiktok.com/t/ZTLNt2K6t/"
+    }
+  ]
+}

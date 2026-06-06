@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Champagne Cocktail",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Charles Ellner Brut Champagne",
+      "type": "wine",
+      "quantity": {
+        "amount": 4.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Saturate a sugar cube with Angostura bitters in a flute.",
+    "Add chilled Cognac.",
+    "Top with Champagne.",
+    "Garnish with expressed lemon and/or orange oil."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vaVcBQ6tiFw",
+      "start": 68
+    },
+    {
+      "type": "youtube",
+      "videoId": "WmMC1qb2LgA",
+      "start": 222
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Haunted House",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kronan Swedish Punsch",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain over a big rock.",
+    "Garnish with expressed orange oil and a cherry."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jeremy Oertel"
+    },
+    {
+      "relation": "book",
+      "source": "The Old Fashioned",
+      "url": "https://amzn.to/2VmB60v"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "u0N9FFJ1i5c",
+      "start": 30
+    }
+  ]
+}

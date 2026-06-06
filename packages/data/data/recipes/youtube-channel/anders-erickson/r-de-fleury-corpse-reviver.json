@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "R. de Fleury Corpse Reviver",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maison Rouge VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice until chilled.",
+    "Strain into a chilled coupe glass."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "R. de Fleury"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "kBHi_atZsbM",
+      "start": 694
+    }
+  ]
+}

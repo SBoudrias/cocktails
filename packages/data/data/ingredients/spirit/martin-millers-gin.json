@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Martin Miller's Gin",
+  "type": "spirit",
+  "categories": ["London Dry Gin"]
+}
