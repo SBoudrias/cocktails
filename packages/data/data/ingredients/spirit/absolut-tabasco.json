@@ -2,5 +2,6 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Absolut Tabasco",
   "type": "spirit",
+  "description": "A 38% ABV chili pepper-flavored vodka.",
   "categories": ["Vodka"]
 }
