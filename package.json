@@ -32,11 +32,6 @@
     "typescript-eslint": "^8.60.1",
     "vitest": "^4.1.8"
   },
-  "nano-staged": {
-    "*": "oxfmt --no-error-on-unmatched-pattern",
-    "packages/data/data/**/*.json": "yarn check-data",
-    "*.m?[jt]sx?": "eslint . --fix"
-  },
   "volta": {
     "node": "24.13.0"
   },
