@@ -11,6 +11,7 @@ import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
 import { format as formatWithOxfmt } from 'oxfmt';
 import { logger } from './cli-util.ts';
+import { findFloatingIngredients } from './floating-ingredients.ts';
 import { areSimilarNames } from './name-similarity.ts';
 
 const startTime = performance.now();
@@ -124,6 +125,12 @@ logger.item(`Found ${categorySlugs.size} categories`);
 
 const ingredientFolders = new Map<string, string>(); // slug -> folder type
 const ingredientFiles = new Map<string, string>(); // slug -> filepath
+const ingredients: Array<{
+  name: string;
+  type: string;
+  slug: string;
+  filepath: string;
+}> = [];
 const ingredientsGlob = path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json');
 for await (const ingredientFile of fs.glob(ingredientsGlob)) {
   const data = JSON.parse(await fs.readFile(ingredientFile, 'utf-8'));
@@ -141,6 +148,12 @@ for await (const ingredientFile of fs.glob(ingredientsGlob)) {
   canonicalNames.set(ingredientSlug, data.name);
   ingredientFolders.set(ingredientSlug, folderType);
   ingredientFiles.set(ingredientSlug, ingredientFile);
+  ingredients.push({
+    name: data.name,
+    type: data.type,
+    slug: ingredientSlug,
+    filepath: ingredientFile,
+  });
 }
 logger.item(`Collected ${canonicalNames.size} canonical names`);
 logger.footer('Done!');
@@ -152,6 +165,7 @@ const barNameCasings = new Map<string, Map<string, string[]>>();
 // Track author/adapted-by names for similarity detection
 // Maps name -> list of recipe files using that name
 const authorNameUsages = new Map<string, string[]>();
+const referencedIngredientSlugs = new Set<string>();
 
 logger.header('🔍 Validating data files...');
 const dataGlob = path.join(PACKAGE_ROOT, 'data/**/*.json');
@@ -349,6 +363,8 @@ for await (const sourceFile of fs.glob(dataGlob)) {
         categorySlugs.add(ingredientSlug);
         fail(`Created ${categoryPath} - review and set categoryType`);
       } else {
+        referencedIngredientSlugs.add(ingredientSlug);
+
         // Check if the ingredient exists in a different type folder
         const existingFolderType = ingredientFolders.get(ingredientSlug);
         if (existingFolderType === ingredient.type) continue;
@@ -439,6 +455,17 @@ for await (const sourceFile of fs.glob(dataGlob)) {
   if (originalJson !== sortedJson) {
     await writeJSON(sourceFile, data);
   }
+}
+logger.footer('Done!');
+
+logger.header('🛟 Checking for floating ingredients...');
+for (const ingredient of findFloatingIngredients(
+  ingredients,
+  referencedIngredientSlugs,
+)) {
+  fail(
+    `Floating ingredient "${ingredient.name}" in ${ingredient.filepath} is not referenced by any recipe`,
+  );
 }
 logger.footer('Done!');
 
