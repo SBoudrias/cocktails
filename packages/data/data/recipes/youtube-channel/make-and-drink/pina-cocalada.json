@@ -1,0 +1,96 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Piña Cocalada",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Orange bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "cardamom bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray OFTD",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 8",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coca-Cola",
+      "type": "soda",
+      "technique": {
+        "technique": "temperature",
+        "method": "frozen"
+      },
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Freeze the Coca-Cola in one-ounce cubes.",
+    "Blend all ingredients with 1/4 cup of crushed ice until smooth.",
+    "Pour into a hurricane glass."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "FPszVucAMxY"
+    }
+  ]
+}

@@ -1,20 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Heirloom Martini",
-  "preparation": "stirred",
-  "served_on": "up",
-  "glassware": "martini",
+  "name": "Crimson Cactus",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "MSG solution",
-      "type": "other",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Grapefruit juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -30,18 +22,10 @@
       }
     },
     {
-      "name": "Lime juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Tomato water",
-      "type": "juice",
-      "quantity": {
-        "amount": 1.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -54,22 +38,23 @@
       }
     },
     {
-      "name": "Gin",
+      "name": "Mezcal",
       "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into an old fashioned glass over a large ice cube."
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "d3dVE7L4Gww"
-    },
-    {
-      "type": "youtube",
-      "videoId": "S5r3hC2LGP0"
+      "videoId": "-9CloDhCB9A",
+      "start": 1036
     }
   ]
 }

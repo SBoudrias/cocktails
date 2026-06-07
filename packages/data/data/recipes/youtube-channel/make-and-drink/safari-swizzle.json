@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Safar Swizzle",
+  "name": "Safari Swizzle",
   "preparation": "swizzled",
   "served_on": "crushed ice",
   "glassware": "collins",
@@ -52,13 +52,18 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "The Enchanted Tiki Room"
+      "source": "Trader Sam's Enchanted Tiki Bar",
+      "location": "Anaheim, CA"
     }
   ],
   "refs": [
     {
       "type": "youtube",
       "videoId": "l96xzj9ojZM"
+    },
+    {
+      "type": "youtube",
+      "videoId": "6vgoIA12rUk"
     }
   ]
 }

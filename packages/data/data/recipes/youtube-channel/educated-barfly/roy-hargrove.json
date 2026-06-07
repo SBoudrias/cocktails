@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Roy Hargrove",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Barolo Chinato",
+      "type": "wine",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all ingredients in an old fashioned glass.",
+    "Add a large ice cube and stir until chilled.",
+    "Garnish with a lemon twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Wolfgang"
+    },
+    {
+      "relation": "bar",
+      "source": "Cannon Ball",
+      "location": "Pasadena, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "-9CloDhCB9A",
+      "start": 120
+    }
+  ]
+}
