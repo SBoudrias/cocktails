@@ -1,38 +1,30 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Bergerac Mix",
-  "type": "other",
+  "name": "Pendennis Mix",
+  "type": "liqueur",
   "ingredients": [
     {
-      "name": "Bergerac red wine",
-      "type": "wine",
-      "quantity": {
-        "amount": 6,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cruzan Black Strap",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cynar",
-      "type": "liqueur",
-      "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Demerara syrup",
+      "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Apricot Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Crème de Pêche",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
       }
     }
   ],
