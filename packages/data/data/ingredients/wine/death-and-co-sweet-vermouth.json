@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Death & Co Sweet Vermouth",
+  "type": "wine",
+  "categories": ["Sweet vermouth"],
+  "ingredients": [
+    {
+      "name": "Dolin Sweet Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Punt e Mes",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": ["Combine equal parts sweet vermouth and Punt e Mes."],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 284
+    }
+  ]
+}

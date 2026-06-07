@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Don's Mix",
+  "name": "Donn's Mix",
   "type": "other",
   "ingredients": [
     {

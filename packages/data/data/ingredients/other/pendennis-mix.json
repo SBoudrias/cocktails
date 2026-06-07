@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Pendennis Mix",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Apricot Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard Crème de Pêche",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": ["Combine all ingredients."],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 284
+    }
+  ]
+}

@@ -1,5 +1,24 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Donn's Spices #2",
-  "type": "syrup"
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": ["Combine equal parts vanilla syrup and allspice dram."]
 }
