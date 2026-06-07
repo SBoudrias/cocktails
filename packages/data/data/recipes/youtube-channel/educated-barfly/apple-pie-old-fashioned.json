@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Apple Pie Old Fashioned",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Fee Brothers Black Walnut Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Brandy (Apple)",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "winter spices",
+        "spirit_quantity": {
+          "amount": 350,
+          "unit": "ml"
+        },
+        "duration": "24 hours",
+        "method": "cold"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the sugar cube with bitters and seltzer in an old fashioned glass.",
+    "Add the infused apple brandy and a large ice cube, then stir until chilled.",
+    "Garnish with a lemon twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Leandro DiMonriva"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "eAbWoi8RDz0"
+    }
+  ]
+}
