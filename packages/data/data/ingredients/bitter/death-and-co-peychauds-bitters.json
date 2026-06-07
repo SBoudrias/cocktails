@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Death & Co Peychaud's Bitters",
+  "type": "bitter",
+  "categories": ["Aromatic Bitters"],
+  "ingredients": [
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Bitter Truth Creole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine 2 parts Peychaud's bitters with 1 part Bitter Truth Creole Bitters."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 284
+    }
+  ]
+}

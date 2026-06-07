@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bitter Truth Creole Bitters",
+  "type": "bitter",
+  "categories": ["Aromatic Bitters"]
+}
