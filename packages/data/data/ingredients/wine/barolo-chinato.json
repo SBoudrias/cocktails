@@ -1,5 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Barolo Chinato",
-  "type": "wine"
+  "type": "wine",
+  "categories": ["Quinquina"]
 }
