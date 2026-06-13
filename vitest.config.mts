@@ -9,6 +9,12 @@ export default defineConfig({
     root: __dirname,
     globals: true,
     clearMocks: true,
+    server: {
+      deps: {
+        // Work around https://github.com/mui/material-ui/issues/48636.
+        inline: ['@mui/material'],
+      },
+    },
     exclude: ['node_modules', '.worktrees'],
     testTimeout: 10000,
     coverage: {
