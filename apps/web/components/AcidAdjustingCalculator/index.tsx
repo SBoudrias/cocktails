@@ -12,8 +12,8 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from '@mui/material';
-import { useSearchParams } from 'next/navigation';
-import { Suspense, useState } from 'react';
+import { useQueryState } from 'nuqs';
+import { useState } from 'react';
 import Video from '#/components/Video';
 
 const LIME_ACIDITY = 6;
@@ -134,16 +134,14 @@ function ClassicalCalculator({ defaultAcidity }: { defaultAcidity: number }) {
 }
 
 function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) {
-  const searchParams = useSearchParams();
-  const defaultJuiceAmount = parseFloat(searchParams.get('juiceAmount') as string);
-
-  const [juiceAmountValue, setJuiceAmount] = useState<string | number>(
-    isNaN(defaultJuiceAmount) ? 1 : defaultJuiceAmount,
-  );
+  const [juiceAmountValue, setJuiceAmount] = useQueryState('juiceAmount', {
+    defaultValue: '1',
+  });
+  const [initialJuiceAmount] = useState(juiceAmountValue);
   const [targetAcidityValue, setTargetAcidity] = useState<string | number>(LIME_ACIDITY);
   const [acidAmountValue, setAcidAmount] = useState<string | number>(defaultAcidity);
 
-  const juiceAmount = parseFloat(juiceAmountValue as string);
+  const juiceAmount = parseFloat(juiceAmountValue);
   const targetAcidity = parseFloat(targetAcidityValue as string);
   const acidAmount = parseFloat(acidAmountValue as string);
   const diff = juiceAmount * (targetAcidity - acidAmount);
@@ -215,6 +213,7 @@ function AcidAdjusterCalculator({ defaultAcidity }: { defaultAcidity: number }) 
             <Button
               color="secondary"
               onClick={() => {
+                setJuiceAmount(initialJuiceAmount);
                 setTargetAcidity(LIME_ACIDITY);
                 setAcidAmount(defaultAcidity);
               }}
@@ -241,34 +240,32 @@ export default function AcidAdjustingCalculator({
   const [type, setType] = useState<'powder' | 'acid-adjuster'>('acid-adjuster');
 
   return (
-    <Suspense>
-      <Card sx={sx}>
-        <CardHeader
-          title="Acid Adjusting"
-          action={
-            <ToggleButtonGroup
-              value={type}
-              onChange={(_, newVal) =>
-                setType(newVal === 'powder' ? 'powder' : 'acid-adjuster')
-              }
-              size="small"
-              aria-label="Preferred acid-adjusting technique"
-              exclusive
-            >
-              <ToggleButton value="acid-adjuster">Solution</ToggleButton>
-              <ToggleButton value="powder">Powder</ToggleButton>
-            </ToggleButtonGroup>
-          }
-          sx={{
-            pb: 3,
-          }}
-        />
-        {type === 'powder' ? (
-          <ClassicalCalculator defaultAcidity={defaultAcidity} />
-        ) : (
-          <AcidAdjusterCalculator defaultAcidity={defaultAcidity} />
-        )}
-      </Card>
-    </Suspense>
+    <Card sx={sx}>
+      <CardHeader
+        title="Acid Adjusting"
+        action={
+          <ToggleButtonGroup
+            value={type}
+            onChange={(_, newVal) =>
+              setType(newVal === 'powder' ? 'powder' : 'acid-adjuster')
+            }
+            size="small"
+            aria-label="Preferred acid-adjusting technique"
+            exclusive
+          >
+            <ToggleButton value="acid-adjuster">Solution</ToggleButton>
+            <ToggleButton value="powder">Powder</ToggleButton>
+          </ToggleButtonGroup>
+        }
+        sx={{
+          pb: 3,
+        }}
+      />
+      {type === 'powder' ? (
+        <ClassicalCalculator defaultAcidity={defaultAcidity} />
+      ) : (
+        <AcidAdjusterCalculator defaultAcidity={defaultAcidity} />
+      )}
+    </Card>
   );
 }

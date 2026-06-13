@@ -3,6 +3,124 @@
   "name": "Falernum (Tropical Standard)",
   "type": "liqueur",
   "categories": ["Falernum liqueur", "Falernum syrup"],
+  "ingredients": [
+    {
+      "name": "Star anise",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Mace",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Lime peel",
+      "type": "fruit",
+      "quantity": {
+        "amount": 13,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Ginger",
+      "type": "spice",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced",
+        "size": "thin"
+      },
+      "quantity": {
+        "amount": 28,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 30,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Wray & Nephew white overproof",
+      "type": "spirit",
+      "quantity": {
+        "amount": 125,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Almond extract",
+      "type": "other",
+      "quantity": {
+        "amount": 0.6,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 15,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 50,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 265,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "gum syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 830,
+        "unit": "ml"
+      }
+    }
+  ],
+  "instructions": [
+    "Grind the star anise, mace, nutmeg, and cloves using a mortar and pestle or spice grinder.",
+    "Combine the lime peel, ginger, and rums in a blender. Blend on high speed until the ginger is liquefied and the lime peel is thoroughly diced.",
+    "Combine the spices and blended mixture in a bag and vacuum seal it. Place in a 125 F water bath for 12 hours, or refrigerate for 24 hours.",
+    "Fine-strain the mixture, pressing on the solids to maximize extraction, then add the almond extract, juices, and cane syrup. Combine with an equal amount of gum syrup.",
+    "Bottle and refrigerate for up to 6 months. Makes 55 ounces."
+  ],
   "refs": [
     {
       "type": "youtube",

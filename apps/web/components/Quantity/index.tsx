@@ -3,7 +3,7 @@
 import type { RecipeIngredient } from '@cocktails/data';
 import { Box } from '@mui/material';
 import { match } from 'ts-pattern';
-import { convertQuantityToMl, convertQuantityToOz } from '#/modules/conversion';
+import { tryConvertVolume } from '#/modules/conversion';
 import { roundToFriendlyFraction, roundToFriendlyMl } from '#/modules/friendly-rounding';
 import styles from './style.module.css';
 
@@ -88,8 +88,15 @@ export default function Quantity({
   quantity: RecipeIngredient['quantity'];
 }) {
   const { amount, maximum, modifier, unit } = match(preferredUnit)
-    .with('ml', () => convertQuantityToMl(quantity))
-    .with('oz', () => convertQuantityToOz(quantity))
+    .with('ml', () => tryConvertVolume(quantity, 'ml') ?? quantity)
+    .with('oz', () =>
+      match(quantity)
+        .with(
+          { unit: 'ml' },
+          (metricQuantity) => tryConvertVolume(metricQuantity, 'oz') ?? metricQuantity,
+        )
+        .otherwise((imperialQuantity) => imperialQuantity),
+    )
     .exhaustive();
 
   return (

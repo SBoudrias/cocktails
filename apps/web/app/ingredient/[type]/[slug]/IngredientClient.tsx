@@ -18,7 +18,6 @@ import {
 import { uniqBy } from 'lodash';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
-import AcidAdjustingCalculator from '#/components/AcidAdjustingCalculator';
 import AppHeader from '#/components/AppHeader';
 import CategoryName from '#/components/CategoryName';
 import FixBugCard from '#/components/FixBugCard';
@@ -35,6 +34,7 @@ import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
 import { ingredientHasData } from '#/modules/hasData';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '#/modules/url';
+import IngredientCalculators from './IngredientCalculators';
 
 export default function IngredientClient({
   ingredient,
@@ -177,14 +177,7 @@ export default function IngredientClient({
                 </Paper>
               </List>
             )}
-          {ingredient.type === 'juice' &&
-            'acidity' in ingredient &&
-            ingredient.acidity != null && (
-              <AcidAdjustingCalculator
-                defaultAcidity={ingredient.acidity}
-                sx={{ m: 1 }}
-              />
-            )}
+          <IngredientCalculators ingredient={ingredient} />
           {substitutes.length > 0 && (
             <LinkList
               header="Some substitution option"

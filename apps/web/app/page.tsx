@@ -100,19 +100,24 @@ export default async function HomePage() {
               </Stack>
             </ListSubheader>
             <Paper square>
-              <Link href={'/calculators/acid-adjusting'}>
+              <Link href="/calculators/acid-adjusting">
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
                   <ListItemText primary="Acid Adjusting" />
                 </ListItem>
               </Link>
-              <Link href={'/calculators/brix'}>
+              <Link href="/calculators/juice-clarification">
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                  <ListItemText primary="Sugar Adjusting (Brix calculator)" />
+                  <ListItemText primary="Juice Clarification" />
                 </ListItem>
               </Link>
-              <Link href={'/calculators/saline'}>
+              <Link href="/calculators/saline">
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
                   <ListItemText primary="Saline Solution Calculator" />
+                </ListItem>
+              </Link>
+              <Link href="/calculators/brix">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Sugar Adjusting (Brix calculator)" />
                 </ListItem>
               </Link>
             </Paper>
