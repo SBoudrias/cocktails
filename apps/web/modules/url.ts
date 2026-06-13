@@ -1,5 +1,8 @@
-import type { Recipe, RecipeIngredient, Source } from '@cocktails/data';
+import type { UrlObject } from 'node:url';
+import type { Recipe, RecipeIngredient, Source, Technique } from '@cocktails/data';
 import slugify from '@sindresorhus/slugify';
+import { P, match } from 'ts-pattern';
+import { tryConvertVolume } from '#/modules/conversion';
 
 export function getRecipeUrl(recipe: Recipe) {
   return `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`;
@@ -13,6 +16,56 @@ export function getIngredientUrl(ingredient: Omit<RecipeIngredient, 'quantity'>)
   if (ingredient.type === 'category') return getCategoryUrl(ingredient);
 
   return `/ingredient/${ingredient.type}/${ingredient.slug}`;
+}
+
+function getTechniqueContext(technique: Technique) {
+  return match(technique)
+    .with({ technique: 'clarification', method: 'milk' }, () => 'clarification:milk')
+    .with({ technique: 'clarification', milk_type: P.string }, () => 'clarification:milk')
+    .with(
+      { technique: 'clarification', agent: P.string },
+      ({ agent }) => `clarification:${slugify(agent)}`,
+    )
+    .with({ technique: 'clarification' }, () => 'clarification')
+    .otherwise(({ technique }) => technique);
+}
+
+function getAcidAdjustedJuiceAmount(
+  ingredient: RecipeIngredient,
+  techniques: Technique[],
+) {
+  const isAcidAdjusted = techniques.some((technique) =>
+    match(technique)
+      .with({ technique: 'acid-adjustment' }, () => true)
+      .otherwise(() => false),
+  );
+  if (!isAcidAdjusted) {
+    return undefined;
+  }
+
+  return tryConvertVolume(ingredient.quantity, 'oz')?.amount;
+}
+
+export function getRecipeIngredientUrl(ingredient: RecipeIngredient): string | UrlObject {
+  const pathname = getIngredientUrl(ingredient);
+  if (ingredient.type === 'category' || ingredient.technique == null) {
+    return pathname;
+  }
+
+  const techniques = Array.isArray(ingredient.technique)
+    ? ingredient.technique
+    : [ingredient.technique];
+  const juiceAmount = getAcidAdjustedJuiceAmount(ingredient, techniques);
+
+  return {
+    pathname,
+    query: {
+      technique: techniques.map(getTechniqueContext),
+      amount: String(ingredient.quantity.amount),
+      unit: ingredient.quantity.unit,
+      ...(juiceAmount === undefined ? {} : { juiceAmount: String(juiceAmount) }),
+    },
+  };
 }
 
 export function getSourceUrl(source: Source) {

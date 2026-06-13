@@ -1,5 +1,54 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "lime cordial",
-  "type": "syrup"
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "technique": {
+        "technique": "clarification"
+      },
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Lime peel",
+      "type": "fruit",
+      "quantity": {
+        "amount": 12.5,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Citric acid",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Malic acid",
+      "type": "other",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the clarified lime juice, white sugar, and lime peel in a saucepan. Bring to a simmer, stirring occasionally. Cover, reduce the heat to low, and simmer for 15 minutes. Remove from the heat and let sit for 6 hours.",
+    "Strain the syrup and add the citric and malic acids, stirring until fully integrated. Bottle and refrigerate for up to 2 weeks. Makes 16 ounces."
+  ]
 }

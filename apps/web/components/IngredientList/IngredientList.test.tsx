@@ -2,6 +2,14 @@ import type { Recipe } from '@cocktails/data';
 import { render, screen, fireEvent } from '@testing-library/react';
 import IngredientList from './index';
 
+function getLinkSearchParams(name: string | RegExp) {
+  const href = screen.getByRole('link', { name }).getAttribute('href');
+  if (href == null) {
+    throw new Error('Expected ingredient link to have an href');
+  }
+  return new URL(href, 'https://example.com').searchParams;
+}
+
 describe('IngredientList', () => {
   const mockIngredients: Recipe['ingredients'] = [
     {
@@ -107,5 +115,49 @@ describe('IngredientList', () => {
 
     // Should now show 2 ¼ (0.75 * 3 = 2.25, displayed as 2 ¼)
     expect(screen.getByText('2 ¼')).toBeInTheDocument();
+  });
+
+  it('keeps ordinary ingredient links free of recipe context', () => {
+    render(<IngredientList ingredients={mockIngredients} />);
+
+    expect(screen.getByRole('link', { name: /Lemon Juice/i })).toHaveAttribute(
+      'href',
+      '/ingredient/juice/lemon-juice',
+    );
+  });
+
+  it('links techniques with the scaled quantity and unit', () => {
+    const contextualIngredients: Recipe['ingredients'] = [
+      {
+        name: 'Lime juice',
+        slug: 'lime-juice',
+        type: 'juice',
+        quantity: { amount: 0.75, unit: 'oz' },
+        technique: [{ technique: 'clarification' }, { technique: 'acid-adjustment' }],
+        categories: [],
+        refs: [],
+        ingredients: [],
+      },
+    ];
+
+    render(<IngredientList ingredients={contextualIngredients} />);
+
+    const initialParams = getLinkSearchParams(/acid-adjusted clarified Lime juice/i);
+    expect(initialParams.getAll('technique')).toEqual([
+      'clarification',
+      'acid-adjustment',
+    ]);
+    expect(initialParams.get('amount')).toBe('0.75');
+    expect(initialParams.get('unit')).toBe('oz');
+    expect(initialParams.get('juiceAmount')).toBe('0.75');
+
+    fireEvent.change(screen.getByLabelText('Number of servings'), {
+      target: { value: '3' },
+    });
+
+    const scaledParams = getLinkSearchParams(/acid-adjusted clarified Lime juice/i);
+    expect(scaledParams.get('amount')).toBe('2.25');
+    expect(scaledParams.get('unit')).toBe('oz');
+    expect(scaledParams.get('juiceAmount')).toBe('2.25');
   });
 });

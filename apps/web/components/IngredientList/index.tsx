@@ -20,7 +20,7 @@ import ServingSelector from '#/components/ServingSelector';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
 import { formatIngredientName } from '#/modules/technique';
-import { getIngredientUrl } from '#/modules/url';
+import { getRecipeIngredientUrl } from '#/modules/url';
 import styles from './style.module.css';
 
 function IngredientLine({
@@ -87,13 +87,8 @@ export default function IngredientList({
         <ListSubheader>Ingredients</ListSubheader>
         <Paper square>
           {scaledIngredients.toSorted(compareIngredients).map((ingredient) => {
-            let href = getIngredientUrl(ingredient);
-            if (ingredient.type === 'juice') {
-              href += `?${new URLSearchParams({ juiceAmount: String(ingredient.quantity.amount) })}`;
-            }
-
             return (
-              <Link key={ingredient.slug} href={href}>
+              <Link key={ingredient.slug} href={getRecipeIngredientUrl(ingredient)}>
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
                   <ListItemText>
                     <IngredientLine

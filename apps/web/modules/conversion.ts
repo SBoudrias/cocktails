@@ -1,46 +1,34 @@
 import type { RecipeIngredient } from '@cocktails/data';
 
-const IMPERIAL_TO_ML = {
+type Quantity = RecipeIngredient['quantity'];
+
+const VOLUME_TO_ML = {
+  ml: 1,
   tsp: 5,
   tbsp: 15,
   oz: 30,
   cup: 240,
 };
 
-function shouldConvertUnit(unit: string): unit is keyof typeof IMPERIAL_TO_ML {
-  return unit in IMPERIAL_TO_ML;
+function isVolumeUnit(unit: string): unit is keyof typeof VOLUME_TO_ML {
+  return unit in VOLUME_TO_ML;
 }
 
-export function convertQuantityToMl(
-  quantity: RecipeIngredient['quantity'],
-): RecipeIngredient['quantity'] {
+export function tryConvertVolume<TargetUnit extends 'ml' | 'oz'>(
+  quantity: Quantity,
+  targetUnit: TargetUnit,
+): (Omit<Quantity, 'unit'> & { unit: TargetUnit }) | undefined {
   const unit: string = quantity.unit;
-  if (shouldConvertUnit(unit)) {
-    const factor = IMPERIAL_TO_ML[unit];
-    return {
-      ...quantity,
-      amount: quantity.amount * factor,
-      maximum: quantity.maximum == null ? undefined : quantity.maximum * factor,
-      unit: 'ml',
-    };
+  if (!isVolumeUnit(unit)) {
+    return undefined;
   }
 
-  return quantity;
-}
-
-const ML_TO_OZ = 1 / 30;
-
-export function convertQuantityToOz(
-  quantity: RecipeIngredient['quantity'],
-): RecipeIngredient['quantity'] {
-  if (quantity.unit === 'ml') {
-    return {
-      ...quantity,
-      amount: quantity.amount * ML_TO_OZ,
-      maximum: quantity.maximum == null ? undefined : quantity.maximum * ML_TO_OZ,
-      unit: 'oz',
-    };
-  }
-
-  return quantity;
+  const targetFactor = VOLUME_TO_ML[targetUnit];
+  const factor = VOLUME_TO_ML[unit] / targetFactor;
+  return {
+    ...quantity,
+    amount: quantity.amount * factor,
+    maximum: quantity.maximum == null ? undefined : quantity.maximum * factor,
+    unit: targetUnit,
+  };
 }
