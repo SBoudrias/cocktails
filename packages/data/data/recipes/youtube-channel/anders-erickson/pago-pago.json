@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pago Pago",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "cubed"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard White Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Clément  VSOP Rhum Agricole Vieux",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the pineapple cubes in a shaker.",
+    "Add the remaining ingredients and shake with ice.",
+    "Double strain into a chilled nick & nora glass.",
+    "Garnish with a pineapple frond."
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    },
+    {
+      "relation": "book",
+      "source": "The How and When"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "6FZtQNdTReg",
+      "start": 397
+    }
+  ]
+}
