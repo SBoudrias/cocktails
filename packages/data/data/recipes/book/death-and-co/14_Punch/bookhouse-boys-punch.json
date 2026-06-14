@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Bookhouse Boys Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Overholt Straight Rye Whiskey",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "chamomile"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Weller Antique 107 Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, combine all the ingredients except the seltzer. Fill the pitcher three-quarters full with ice cubes. Stir until cold, then strain into a punch bowl over 1 large block of ice. Top with the seltzer. Garnish with 6 grapefruit crescents and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jessica Gonzalez"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 233
+    }
+  ]
+}

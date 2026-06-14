@@ -1,0 +1,114 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "East River Underground",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "wheeled"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "White sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 18,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "makrut lime leaf",
+      "type": "spice",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 8,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "La Favorite Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siembra Azul Blanco",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "jalapeño"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the sugar cubes, cucumber wheels, Kaffir lime leaves, and salt with the seltzer until the sugar is fully broken up. Add the remaining ingredients and fill the pitcher three-quarters full with ice cubes. Stir until cold, then strain into a punch bowl over 1 large block of ice. Garnish with 6 cucumber wheels and 6 fresh Kaffir lime leaves and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 234
+    }
+  ]
+}

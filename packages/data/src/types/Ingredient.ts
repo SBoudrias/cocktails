@@ -35,6 +35,8 @@ type Unit =
 
 type QuantityDetails = {
   amount: number;
+  maximum?: number;
+  modifier?: 'scant';
   unit: Unit;
 };
 

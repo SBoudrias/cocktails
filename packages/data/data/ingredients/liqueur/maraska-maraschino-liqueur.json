@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Maraska Maraschino Liqueur",
+  "type": "liqueur",
+  "categories": ["Maraschino liqueur"]
+}

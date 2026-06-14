@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Cobra Verde",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Overholt Straight Rye Whiskey",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "chamomile"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Neisson Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a coupe. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 176
+    }
+  ]
+}

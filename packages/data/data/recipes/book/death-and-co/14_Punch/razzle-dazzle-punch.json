@@ -1,0 +1,110 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Razzle-Dazzle Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "zested"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "raspberries",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 18,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "superfine sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kümmel",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Overholt Straight Rye Whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the raspberries with the sugar and orange twists. Add the remaining ingredients except the champagne and fill the pitcher with ice cubes. Stir until cold. Pour the champagne into a punch bowl, then strain the contents of the pitcher over the top. Add 1 large block of ice. Garnish with 12 raspberries and 6 lemon wheels and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brad Farran"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 241
+    }
+  ]
+}

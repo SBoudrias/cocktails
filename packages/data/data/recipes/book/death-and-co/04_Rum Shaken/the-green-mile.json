@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "The Green Mile",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Thai basil leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Vieux Pontarlier Absinthe",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Green Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barbancourt White",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then double strain into a coupe. Garnish with a Thai basil leaf."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 172
+    }
+  ]
+}

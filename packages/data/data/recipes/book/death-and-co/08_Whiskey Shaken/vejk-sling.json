@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Vejk Sling",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Death & Co Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blanc vermouth",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "chamomile"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Compass Box Artist Blend Scotch Whisky",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients except the seltzer with ice, then strain into a highball glass filled with ice cubes. Top with seltzer. Garnish with 1 lemon twist and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 203
+    }
+  ]
+}

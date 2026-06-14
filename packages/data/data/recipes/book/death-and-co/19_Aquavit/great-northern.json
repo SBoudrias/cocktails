@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Great Northern",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Acacia honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cointreau",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lillet Blanc",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Linie Aquavit",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Short shake all the ingredients with 3 ice cubes, then strain into a double rocks glass filled with crushed ice. Garnish with the orange crescents."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jessica Gonzalez"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 254
+    }
+  ]
+}

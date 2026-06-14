@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Chamomile Julep",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "julep",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Overholt Straight Rye Whiskey",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "chamomile"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Put the rye and simple syrup in a julep tin. Fill the tin halfway with crushed ice. Stir with a teaspoon, churning the ice as you go, for about 10 seconds, holding the tin by the rim so the entire tin can eventually frost up. Add more crushed ice to fill the tin two-thirds full and stir until the tin is completely frosted. Add more ice to form a cone above the rim. Garnish with 1 mint bouquet in the center of the ice and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 242
+    }
+  ]
+}

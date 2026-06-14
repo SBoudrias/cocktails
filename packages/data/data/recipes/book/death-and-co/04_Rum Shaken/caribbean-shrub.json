@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Caribbean Shrub",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Strawberry-Balsamic Gastrique",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "La Favorite Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Short shake all the ingredients with 3 ice cubes, then strain into a highball glass filled with crushed ice.",
+    "Garnish with half a strawberry and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 170
+    }
+  ]
+}

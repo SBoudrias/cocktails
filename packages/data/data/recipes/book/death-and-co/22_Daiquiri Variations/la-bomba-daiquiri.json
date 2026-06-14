@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "La Bomba Daiquiri",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "raspberries",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "pomegranate molasses",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barbancourt White",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, gently muddle the raspberries.",
+    "Add the remaining ingredients and shake with ice.",
+    "Double strain into a coupe.",
+    "Garnish with the lime wheel and raspberry flag."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 262
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Kill-Devil Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "raspberries",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 15,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "White sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the sugar cubes with the raspberries and seltzer until the sugar is fully broken up. Add the remaining ingredients except the champagne and fill the pitcher three-quarters full with ice cubes. Stir until cold, then strain into a punch bowl over 1 large block of ice. Top with the champagne. Garnish with 12 raspberries and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 236
+    }
+  ]
+}

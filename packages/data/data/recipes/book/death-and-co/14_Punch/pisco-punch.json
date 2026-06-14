@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Pisco Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "White sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Macchu Pisco",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "strawberry and pineapple"
+      },
+      "quantity": {
+        "amount": 9,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 9,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the sugar cubes with 3 ounces of the seltzer until the sugar is fully broken up. Add the remaining ingredients except the remaining seltzer and fill the pitcher three-quarters full with ice cubes. Stir until cold, then strain into a punch bowl over 1 large block of ice. Top with the remaining 6 ounces of seltzer. Garnish with 6 strawberry slices and 6 lime wheels and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 239
+    }
+  ]
+}

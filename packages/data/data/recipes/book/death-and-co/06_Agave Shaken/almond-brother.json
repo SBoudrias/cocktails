@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Almond Brother",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rothman & Winter Orchard Apricot",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Amaretto",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siete Leguas Reposado Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then strain into a coupe.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jason Littrell"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 181
+    }
+  ]
+}

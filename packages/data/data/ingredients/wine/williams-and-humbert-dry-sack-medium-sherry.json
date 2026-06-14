@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Williams & Humbert Dry Sack Medium Sherry",
+  "type": "wine",
+  "categories": ["Sherry"]
+}

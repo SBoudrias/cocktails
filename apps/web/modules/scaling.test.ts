@@ -44,6 +44,27 @@ describe('scaling module', () => {
       expect(result.amount).toBe(2);
       expect(result.unit).toBe('oz');
     });
+
+    it('should preserve modifiers and scale both ends of a range', () => {
+      expect(
+        scaleQuantity(
+          {
+            amount: 6,
+            maximum: 8,
+            modifier: 'scant',
+            unit: 'unit',
+          },
+          2,
+        ),
+      ).toEqual({
+        amount: 12,
+        maximum: 16,
+        modifier: 'scant',
+        unit: 'unit',
+        originalAmount: 6,
+        originalUnit: 'unit',
+      });
+    });
   });
 
   describe('getOptimalUnit', () => {

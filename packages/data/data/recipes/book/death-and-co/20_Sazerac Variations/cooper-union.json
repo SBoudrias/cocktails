@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Cooper Union",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Laphroaig 10",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "rinse"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Death & Co Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "St-Germain",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Redbreast 12 year Irish whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rinse a double rocks glass with Laphroaig and dump.",
+    "Stir the remaining ingredients (except the lemon twist) over ice, then strain into the glass.",
+    "Squeeze the lemon twist over the drink and discard.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 255
+    }
+  ]
+}

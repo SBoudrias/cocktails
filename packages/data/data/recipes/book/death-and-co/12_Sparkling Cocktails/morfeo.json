@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Morfeo",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Acacia honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Galliano L'Autentico",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Overholt Straight Rye Whiskey",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "chamomile"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients (except the champagne) with ice, then strain into a flute.",
+    "Top with champagne.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 226
+    }
+  ]
+}

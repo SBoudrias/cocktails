@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "6th Street Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "La Favorite Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Whip all the ingredients, shaking with a few pieces of crushed ice just until incorporated. Pour into a pilsner glass filled with crushed ice and swizzle until cold. Garnish with the mint sprig and lime wheel and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 248
+    }
+  ]
+}

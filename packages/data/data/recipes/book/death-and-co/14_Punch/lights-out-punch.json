@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Lights Out Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Whiskey Barrel-Aged Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cinnamon orange tea"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Centinela Reposado Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, combine all the ingredients except the seltzer. Fill the pitcher three-quarters full with ice cubes. Stir until cold, then strain into a punch bowl over 1 large block of ice. Top with the seltzer. Garnish with 6 apple slices and some cinnamon grated over the bowl and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 237
+    }
+  ]
+}

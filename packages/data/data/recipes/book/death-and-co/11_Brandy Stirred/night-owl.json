@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Night Owl",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Punt e Mes",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau East India Solera Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice.",
+    "Strain into a coupe. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Day"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 218
+    }
+  ]
+}

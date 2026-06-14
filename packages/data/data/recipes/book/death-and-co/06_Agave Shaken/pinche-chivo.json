@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Pinche Chivo",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wheeled"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Acacia honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
+      "type": "wine",
+      "technique": {
+        "technique": "infusion",
+        "agent": "sage"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cabrito Blanco Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the cucumber wheels.",
+    "Add the remaining ingredients and shake with ice, then strain into a coupe.",
+    "Garnish with the cucumber ribbon on a cocktail pick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 187
+    }
+  ]
+}

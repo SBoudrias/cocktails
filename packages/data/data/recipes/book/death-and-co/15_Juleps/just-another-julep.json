@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Just Another Julep",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "julep",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Buffalo Trace Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Goslings Black Seal Rum",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rub the mint around the inside of a julep tin and discard. Fill the tin with crushed ice and add the bourbon and syrup. Swizzle briefly, then top with crushed ice. Pour the rum over the top. Garnish with 1 mint bouquet in the center of the ice and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Miller"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 243
+    }
+  ]
+}

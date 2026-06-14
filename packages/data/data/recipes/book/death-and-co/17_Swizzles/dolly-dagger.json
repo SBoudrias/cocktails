@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Dolly Dagger",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Williams & Humbert Dry Sack Medium Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Whip all the ingredients, shaking with a few pieces of crushed ice just until incorporated. Strain into a pilsner glass filled with crushed ice. Swizzle until cold. Garnish with the mint sprig and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Day"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 249
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Passing Aden",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "cinnamon stick",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Bitter Truth Aromatic Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cinnamon orange tea"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Batavia Arrack van Oosten",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a coupe. Garnish with a lemon twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Day"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 179
+    }
+  ]
+}

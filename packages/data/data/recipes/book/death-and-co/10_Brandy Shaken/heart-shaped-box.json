@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Heart-Shaped Box",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Aged balsamic vinegar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cassia Cinnamon Bark syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Germain",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hine Rare VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, gently muddle the strawberry.",
+    "Add the remaining ingredients and short shake.",
+    "Strain into a double rocks glass filled with crushed ice.",
+    "Garnish with half a strawberry and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brad Farran"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 211
+    }
+  ]
+}

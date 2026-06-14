@@ -1,0 +1,92 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Cinder",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Smoked salt",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pueblo Viejo Reposado Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siembra Azul Blanco",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "jalapeño"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rim a coupe with smoked salt.",
+    "Shake the remaining ingredients with ice, then strain into the coupe.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 182
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Green and Red",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "wheeled"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Alvear Festival Pale Cream",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Americano",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siete Leguas Blanco Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siembra Azul Blanco",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "jalapeño"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a mixing glass, muddle the cucumber wheels.",
+    "Add the remaining ingredients and stir over ice, then strain into a coupe.",
+    "Garnish with the cucumber ribbon on a cocktail pick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 192
+    }
+  ]
+}

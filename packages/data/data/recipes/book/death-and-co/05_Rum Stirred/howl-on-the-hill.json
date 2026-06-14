@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Howl on the Hill",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Vieux Pontarlier Absinthe",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Santa Teresa 1796 Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Carpano Antica Formula Vermouth",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 15 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a coupe. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jessica Gonzalez"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 178
+    }
+  ]
+}

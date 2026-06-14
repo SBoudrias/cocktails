@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Sweet and Vicious",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Fuji apple",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Nonino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Overholt Straight Rye Whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a mixing glass, gently muddle the apple slices. Add the remaining ingredients and stir over ice. Double strain into a coupe and garnish with 1 apple fan."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Day"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 208
+    }
+  ]
+}

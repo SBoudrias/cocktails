@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Poire Man's Cobbler",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "pear",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "maturity",
+          "state": "ripe"
+        },
+        {
+          "technique": "cut",
+          "type": "cubed"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 0.25,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Death & Co Peychaud's Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Busnel VSOP Calvados",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the pear.",
+    "Add the remaining ingredients and shake with ice.",
+    "Strain into a double rocks glass filled with crushed ice.",
+    "Garnish with a Bartlett pear slice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 214
+    }
+  ]
+}

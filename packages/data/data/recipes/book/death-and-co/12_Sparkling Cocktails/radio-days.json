@@ -1,0 +1,100 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Radio Days",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "sectioned"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Acacia honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Salers Gentian Apéritif",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tanqueray London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the orange crescent and bitters.",
+    "Add the remaining ingredients (except the champagne) and shake with ice.",
+    "Strain into a large coupe and top with champagne.",
+    "Garnish with 1 orange crescent."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Day"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 226
+    }
+  ]
+}

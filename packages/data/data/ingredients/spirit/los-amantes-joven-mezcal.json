@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Los Amantes Joven Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

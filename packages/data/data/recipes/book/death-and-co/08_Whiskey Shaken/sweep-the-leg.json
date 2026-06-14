@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Sweep the Leg",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Acacia honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Amaro Abano",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Suntory Hakushu 12 Year Whisky",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Short shake all the ingredients with 3 ice cubes, then strain into a pilsner glass filled with crushed ice. Skewer 1 lime wheel, 1 orange crescent, and 1 brandied cherry on a cocktail pick and insert into the ice along with 1 mint sprig."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brad Farran"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 202
+    }
+  ]
+}

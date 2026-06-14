@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Vampire Blues",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pumpkin butter",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau East India Solera Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Weller Antique 107 Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then strain into a double rocks glass filled with ice cubes. Garnish with a few grates of the cinnamon stick over the top, then garnish with the cinnamon stick and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jessica Gonzalez"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 203
+    }
+  ]
+}

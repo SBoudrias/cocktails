@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "La Conferencia",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Tesoro Reposado",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Vida Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "La Favorite Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Santa Teresa 1796 Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a double rocks glass.",
+    "Garnish with the orange twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 272
+    }
+  ]
+}

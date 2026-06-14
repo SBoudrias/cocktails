@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Ty Cobbler",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "cocktail cherry",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siete Leguas Blanco Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the cherries and sugar cube.",
+    "Add the remaining ingredients and dry shake.",
+    "Dump into a double rocks glass filled with crushed ice.",
+    "Garnish with the orange wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 189
+    }
+  ]
+}

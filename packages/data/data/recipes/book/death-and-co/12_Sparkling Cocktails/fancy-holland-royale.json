@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Fancy Holland Royale",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Fee Brothers Whiskey Barrel-Aged Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Grand Marnier",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bols Genever",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients (except the champagne) over ice, then strain into a flute.",
+    "Top with champagne.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 223
+    }
+  ]
+}

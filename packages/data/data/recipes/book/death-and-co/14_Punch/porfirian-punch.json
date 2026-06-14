@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Porfirian Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "White sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 9,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cinnamon orange tea"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hidalgo \"La Gitana\" Manzanilla Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Siembra Azul Blanco",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "spiced pear"
+      },
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 9,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the sugar cubes with 3 ounces of the seltzer until the sugar is fully broken up. Add the remaining ingredients except the remaining seltzer and fill the pitcher three-quarters full with ice cubes. Stir until cold, then strain into a punch bowl over 1 large block of ice. Top with the remaining 6 ounces of seltzer. Garnish with 6 pear slices and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Day"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 239
+    }
+  ]
+}

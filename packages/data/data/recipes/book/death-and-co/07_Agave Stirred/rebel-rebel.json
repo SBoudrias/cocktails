@@ -1,0 +1,96 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Rebel Rebel",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Cherry tomato",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Death & Co Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Fusion Verjus Blanc",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Siete Leguas Blanco Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Americano Rosa",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "technique": {
+        "technique": "infusion",
+        "agent": "watermelon"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "In a mixing glass, muddle the cherry tomato.",
+    "Add the remaining ingredients and stir over ice.",
+    "Double strain into a Nick & Nora glass.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jillian Vose"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 193
+    }
+  ]
+}

@@ -16,8 +16,11 @@ export function convertQuantityToMl(
 ): RecipeIngredient['quantity'] {
   const unit: string = quantity.unit;
   if (shouldConvertUnit(unit)) {
+    const factor = IMPERIAL_TO_ML[unit];
     return {
-      amount: quantity.amount * IMPERIAL_TO_ML[unit],
+      ...quantity,
+      amount: quantity.amount * factor,
+      maximum: quantity.maximum == null ? undefined : quantity.maximum * factor,
       unit: 'ml',
     };
   }
@@ -32,7 +35,9 @@ export function convertQuantityToOz(
 ): RecipeIngredient['quantity'] {
   if (quantity.unit === 'ml') {
     return {
+      ...quantity,
       amount: quantity.amount * ML_TO_OZ,
+      maximum: quantity.maximum == null ? undefined : quantity.maximum * ML_TO_OZ,
       unit: 'oz',
     };
   }

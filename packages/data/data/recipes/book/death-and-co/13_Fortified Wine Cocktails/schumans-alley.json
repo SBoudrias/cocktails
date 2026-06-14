@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Schuman's Alley",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Bittermens Hopped Grapefruit Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Dale DeGroff's Pimento Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Contratta Vermouth Bianco",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Americano",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fords Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a Nick & Nora glass.",
+    "To garnish, squeeze 1 lemon twist over the drink, then roll it up, skewer it on a cocktail pick, and drop it in the drink."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jillian Vose"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 231
+    }
+  ]
+}

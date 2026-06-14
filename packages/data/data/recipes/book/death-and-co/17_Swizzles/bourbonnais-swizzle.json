@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Bourbonnais Swizzle",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lillet Rouge",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Marie Brizard White Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Buffalo Trace Bourbon",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "pecan"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake all the ingredients, then add 3 ice cubes and short shake. Strain into a pilsner glass filled with crushed ice. Serve with a straw. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Miller"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 248
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Te Amo",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "Death & Co Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bittermens Hellfire Habanero Shrub",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Marie Brizard White Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Tesoro Añejo Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a martini glass.",
+    "Garnish with the orange twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brad Farran"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 195
+    }
+  ]
+}

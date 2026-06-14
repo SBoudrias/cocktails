@@ -31,6 +31,10 @@ Create recipe files in the right `packages/data/data/recipes/[type]/[source]/[sl
   ```
 
 - Do not create ingredient files for infused or otherwise modified spirits unless the underlying base ingredient itself is missing.
+- Do not use `House` as an ingredient-name prefix. It is ambiguous outside the
+  source context. Namespace source-specific house ingredients to their source,
+  for example `Death & Co Horchata`, while preserving the source wording in
+  extraction notes.
 - Watch for renamed products and search before creating new bottles. Examples:
   - `Appleton Estate Reserve` is now `Appleton 8`
   - `Appleton Estate V/X` is now `Appleton Signature`

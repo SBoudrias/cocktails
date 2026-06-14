@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Piña Colada Deconstruction",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Coconut water",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kalani Coconut Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Flor de Caña 4 year",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "pineapple"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients with ice, then strain into a coupe. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 179
+    }
+  ]
+}

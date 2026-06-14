@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Sling of Aphrodite",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cassia Cinnamon Bark syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Clear Creek Pear Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "La Favorite Coeur d'Ambre",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then strain into a highball glass filled with ice cubes.",
+    "Garnish with an apple fan and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 174
+    }
+  ]
+}

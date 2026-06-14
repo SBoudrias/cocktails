@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Tea Time at Guillermo's",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Death & Co Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Fee Brothers Whiskey Barrel-Aged Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Siembra Azul Reposado",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "Queen of Earl tea"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Drambuie",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fortaleza Reposado Tequila",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Scarlet Ibis Trinidad Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into an old-fashioned glass over 1 large ice cube.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jillian Vose"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 273
+    }
+  ]
+}

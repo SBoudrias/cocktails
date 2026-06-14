@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bushmills Irish Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (Irish)"]
+}

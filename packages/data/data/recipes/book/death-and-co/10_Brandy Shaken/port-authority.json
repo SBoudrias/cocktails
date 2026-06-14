@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Port Authority",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Blackberry",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cassis",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Otima 10-Year Tawny Port",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cognac",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, gently muddle the blackberries.",
+    "Add the remaining ingredients and shake with ice.",
+    "Double strain into a coupe and garnish with a blackberry."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 214
+    }
+  ]
+}

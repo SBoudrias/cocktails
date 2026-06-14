@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Coffey Park Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barbancourt White",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Amontillado Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": [
+    "Whip all the ingredients (except the bitters), shaking with a few pieces of crushed ice just until incorporated. Strain into a pilsner glass filled with crushed ice. Swizzle until cold. Add the bitters and swizzle them into the top of the drink. Garnish with the mint sprig and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Alex Day"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 249
+    }
+  ]
+}

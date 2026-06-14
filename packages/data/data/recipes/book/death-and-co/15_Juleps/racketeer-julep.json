@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Racketeer Julep",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "julep",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bols Genever",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bitter Truth Aromatic Bitters",
+      "type": "bitter",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": [
+    "Rub the mint around the inside of a julep tin and discard. Put the remaining ingredients except the bitters in the tin. Fill the tin halfway with crushed ice. Stir with a teaspoon, churning the ice as you go, for about 10 seconds, holding the tin by the rim so the entire tin can eventually frost up. Add more crushed ice to fill the tin two-thirds full and stir until the tin is completely frosted. Add more ice to form a cone above the rim. Top with the bitters. Garnish with 1 mint bouquet in the center of the ice and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jessica Gonzalez"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 244
+    }
+  ]
+}

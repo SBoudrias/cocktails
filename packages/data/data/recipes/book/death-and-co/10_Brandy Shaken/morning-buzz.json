@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Morning Buzz",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Egg yolk",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "technique": {
+        "technique": "infusion",
+        "agent": "Honey Nut Cheerios"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Amontillado Los Arcos Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Zacapa 23",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hine Rare VSOP Cognac",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake all the ingredients.",
+    "Shake with ice.",
+    "Double strain into a fancy fizz glass. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jillian Vose"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 213
+    }
+  ]
+}

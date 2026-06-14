@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Take Two",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Vieux Pontarlier Absinthe",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bergerac Mix",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ron del Barrilito 3 Star",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then strain into a coupe.",
+    "Garnish with the lime wedge."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 263
+    }
+  ]
+}

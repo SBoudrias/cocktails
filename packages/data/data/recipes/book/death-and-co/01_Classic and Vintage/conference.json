@@ -54,8 +54,8 @@
       }
     },
     {
-      "name": "Cognac",
-      "type": "category",
+      "name": "Hine Rare VSOP Cognac",
+      "type": "spirit",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -76,6 +76,11 @@
       "type": "book",
       "title": "Death & Co: Modern Classic Cocktails",
       "page": 137
+    },
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 270
     }
   ]
 }

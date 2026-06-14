@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Sleepy Hollow Fizz",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Egg yolk",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Pumpkin purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 151",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Flor de Caña 7 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake all the ingredients (except the club soda), then shake again with ice. Strain into a fizz glass and top with club soda. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Miller"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 247
+    }
+  ]
+}

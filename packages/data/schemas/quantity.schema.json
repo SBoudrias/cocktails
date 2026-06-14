@@ -6,6 +6,8 @@
   "type": "object",
   "properties": {
     "amount": { "type": "number" },
+    "maximum": { "type": "number" },
+    "modifier": { "enum": ["scant"] },
     "unit": {
       "enum": [
         "oz",

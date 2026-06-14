@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Get Lucky",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Blackberry",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Acacia honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Flor de Caña 4 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Death & Co Peychaud's Bitters",
+      "type": "bitter",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pilsner glass, gently muddle the blackberries. Fill the glass with crushed ice.",
+    "In a shaker, whip the remaining ingredients, shaking with a few pieces of crushed ice just until incorporated. Strain into the glass.",
+    "Garnish with a thin layer of bitters and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Scott Teague"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 171
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Hadley's Tears",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Bitter Truth Aromatic Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St. George Absinthe Verte",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Galliano Ristretto",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bols Genever",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a double rocks glass over 1 large ice cube. Garnish with an orange twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jillian Vose"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 178
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Drunken Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "Demerara sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Death & Co Peychaud's Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 6,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Famous Grouse",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "Fuji apple"
+      },
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 7.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the sugar cubes with 3 ounces of the seltzer until the sugar is fully broken up. Add the remaining ingredients except the remaining seltzer and fill the pitcher three-quarters full with ice cubes. Stir until cold, then strain into a punch bowl over 1 large block of ice. Top with the remaining 4½ ounces of seltzer. Garnish with 6 apple slices and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 234
+    }
+  ]
+}

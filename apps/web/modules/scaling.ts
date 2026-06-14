@@ -2,6 +2,8 @@ import type { RecipeIngredient } from '@cocktails/data';
 
 type ScaledQuantity = {
   amount: number;
+  maximum?: number;
+  modifier?: RecipeIngredient['quantity']['modifier'];
   unit: RecipeIngredient['quantity']['unit'];
   originalAmount: number;
   originalUnit: RecipeIngredient['quantity']['unit'];
@@ -22,10 +24,22 @@ export function scaleQuantity(
   scaleFactor: number,
 ): ScaledQuantity {
   const scaledAmount = quantity.amount * scaleFactor;
+  if (quantity.maximum != null) {
+    return {
+      amount: Math.round(scaledAmount * 100) / 100,
+      maximum: Math.round(quantity.maximum * scaleFactor * 100) / 100,
+      modifier: quantity.modifier,
+      unit: quantity.unit,
+      originalAmount: quantity.amount,
+      originalUnit: quantity.unit,
+    };
+  }
+
   const optimized = getOptimalUnit(scaledAmount, quantity.unit);
 
   return {
     amount: optimized.amount,
+    modifier: quantity.modifier,
     unit: optimized.unit,
     originalAmount: quantity.amount,
     originalUnit: quantity.unit,

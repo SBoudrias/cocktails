@@ -1,0 +1,95 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Koko B. Ware",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "La Favorite Coeur d'Ambre",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Short shake all the ingredients with 3 ice cubes, then strain into a coconut mug filled with crushed ice.",
+    "Garnish with a few grates of nutmeg and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 173
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Little Sparrow",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Laird's Bonded Apple Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Germain",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Carpano Antica Formula Vermouth",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Busnel VSOP Calvados",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice.",
+    "Strain into a coupe.",
+    "Garnish with a lemon twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Miller"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 218
+    }
+  ]
+}

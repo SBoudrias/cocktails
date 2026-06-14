@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Dangerous Liaisons",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Acacia honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bernheim Original Wheat Whiskey",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "lavender"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then strain into a highball glass filled with ice. Garnish with 1 grapefruit crescent on a cocktail pick and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 198
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Blown Rose",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Fuji apple",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Overholt Straight Rye Whiskey",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "chamomile"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the apple slices. Add the remaining ingredients and shake with ice. Double strain into a coupe and garnish with 1 lime wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 198
+    }
+  ]
+}

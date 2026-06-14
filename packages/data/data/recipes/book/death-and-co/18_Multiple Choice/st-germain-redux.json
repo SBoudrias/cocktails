@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "St-Germain Redux",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Beefeater London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Germain",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a wine glass filled with ice cubes and stir until cold. Garnish with the lemon twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 253
+    }
+  ]
+}

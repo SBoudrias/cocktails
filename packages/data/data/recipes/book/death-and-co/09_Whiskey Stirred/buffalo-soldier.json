@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Buffalo Soldier",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Buffalo Trace Bourbon",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "pecan"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir the bourbon and syrup over ice, then strain into a double rocks glass over 1 large ice cube. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Miller"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 204
+    }
+  ]
+}

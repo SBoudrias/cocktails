@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Baker's Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

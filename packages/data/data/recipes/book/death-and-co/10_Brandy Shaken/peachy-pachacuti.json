@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Peachy Pachacuti",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Peach",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "maturity",
+          "state": "ripe"
+        },
+        {
+          "technique": "cut",
+          "type": "sliced"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Greek yogurt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Macchu Pisco",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the peach slices.",
+    "Add the remaining ingredients and shake with ice.",
+    "Double strain into a snifter over 1 large ice cube. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 214
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Cynaro de Bergerac",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Vieux Pontarlier Absinthe",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Hayman's Old Tom Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bols Barrel-Aged Genever",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bergerac Mix",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a Nick & Nora glass.",
+    "Garnish with 1 orange twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brad Farran"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 229
+    }
+  ]
+}

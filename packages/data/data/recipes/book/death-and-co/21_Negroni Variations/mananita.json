@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Mañanita",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Sombra Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "technique": {
+        "technique": "infusion",
+        "agent": "coffee and chile"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Death & Co Sweet Vermouth",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a double rocks glass over 1 large ice cube.",
+    "Garnish with the orange twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 259
+    }
+  ]
+}

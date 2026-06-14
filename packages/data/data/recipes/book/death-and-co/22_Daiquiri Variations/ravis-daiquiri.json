@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Ravi's Daiquiri",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Flor de Caña 4 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients with ice, then double strain into a coupe.",
+    "Garnish with the lime wedge."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Ravi DeRossi"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 264
+    }
+  ]
+}

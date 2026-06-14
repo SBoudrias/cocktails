@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Banks of Islay",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Curry leaves",
+      "type": "spice",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laphroaig 10",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, gently muddle the curry leaves. Add the remaining ingredients and shake with ice, then double strain into a coupe. Garnish with 1 fresh curry leaf."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 197
+    }
+  ]
+}

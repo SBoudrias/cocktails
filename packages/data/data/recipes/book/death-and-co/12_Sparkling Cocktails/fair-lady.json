@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Fair Lady",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Krogstad Aquavit",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
+      "type": "wine",
+      "technique": {
+        "technique": "infusion",
+        "agent": "sage"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients (except the champagne) with ice, then strain into a flute.",
+    "Top with champagne.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jillian Vose"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 222
+    }
+  ]
+}
