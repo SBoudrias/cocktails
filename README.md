@@ -59,6 +59,14 @@ Here's a few common conventions:
    - Don's mix: replace with 2 parts grapefruit juice & 1 part cinnamon syrup
    - Don's spices no. 2: replace with 1 part vanilla syrup & 1 part allspice dram
 8. Use "seltzer" instead of "club soda" or "soda water" for carbonated water
+9. When the source lists an ingredient without a measurement, use
+   `{"amount": 1, "unit": "unit"}`. Preserve how it is applied with a technique
+   such as `top`, `rinse`, or `float`, and keep any source-specific wording in
+   the instructions.
+10. Preserve qualified and ranged quantities. Use `"modifier": "scant"` for a
+    scant measurement and `"maximum"` for the upper bound of a range. For
+    example, 6 to 8 mint leaves is
+    `{"amount": 6, "maximum": 8, "unit": "unit"}`.
 
 ### Creating new ingredients
 

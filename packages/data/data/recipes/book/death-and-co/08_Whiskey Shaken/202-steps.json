@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "202 Steps",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Tangerine",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "peeled"
+      },
+      "quantity": {
+        "amount": 0.25,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Death & Co Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Baker's Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the tangerine. Add the remaining ingredients and shake with ice, then double strain into a double rocks glass over 1 large ice cube. Garnish with 1 orange twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Phil Ward"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 197
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Rock, Paper, Scissors",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "Bittermens Xocolatl Mole Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Marie Brizard White Crème de Cacao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Alchemia Chocolate Vodka",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Otima 10-Year Tawny Port",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Carpano Antica Formula Vermouth",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Zacapa 23",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a martini glass. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    },
+    {
+      "relation": "bar",
+      "source": "Death & Co",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 180
+    }
+  ]
+}

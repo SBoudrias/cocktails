@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "La Diablada Pisco",
+  "type": "spirit",
+  "categories": ["Peruvian Pisco"]
+}

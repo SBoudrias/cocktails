@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "B.A.F.",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "zested"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gran Classico Bitter",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Macallan Fine Oak 10 Year Scotch",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Oloroso Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients except the lemon twist over ice, then strain into a double rocks glass. Squeeze the lemon twist over the drink and discard. No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Eryn Reece"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 204
+    }
+  ]
+}

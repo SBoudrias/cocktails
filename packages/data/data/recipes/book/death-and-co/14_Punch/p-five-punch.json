@@ -1,0 +1,90 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "P-Five Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "White sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton White Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cadenhead's Old Raj Blue Label Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Becherovka",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campo de Encanto Acholado",
+      "type": "spirit",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the sugar cubes with the orgeat until the sugar is fully broken up. Add the remaining ingredients and fill the pitcher three-quarters full with ice cubes. Roll the drink into another pitcher and repeat until the drink is very cold and the sugar is completely dissolved. Strain into a punch bowl over 1 large block of ice. Garnish with 6 lemon wheels and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 238
+    }
+  ]
+}

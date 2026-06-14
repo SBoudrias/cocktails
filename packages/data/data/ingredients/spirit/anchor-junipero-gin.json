@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Anchor Junipero Gin",
+  "type": "spirit",
+  "categories": ["Gin (New American)"]
+}

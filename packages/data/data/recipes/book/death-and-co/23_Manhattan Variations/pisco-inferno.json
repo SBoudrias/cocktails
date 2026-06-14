@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Pisco Inferno",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "Death & Co Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Fee Brothers Whiskey Barrel-Aged Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cherry Heering liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 2.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Massenez Kirsch Vieux",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Dolin Rouge Vermouth",
+      "type": "wine",
+      "technique": {
+        "technique": "infusion",
+        "agent": "ancho chile"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campo de Encanto Acholado",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients over ice, then strain into a martini glass.",
+    "Garnish with the orange twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brad Farran"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 269
+    }
+  ]
+}

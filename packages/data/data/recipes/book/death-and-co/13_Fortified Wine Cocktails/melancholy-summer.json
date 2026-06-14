@@ -1,0 +1,93 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Melancholy Summer",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "wheeled"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cantaloupe juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Acacia honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Suze",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lustau Papirusa Manzanilla",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fords Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a shaker, muddle the cucumber wheels.",
+    "Add the remaining ingredients and shake with ice.",
+    "Double strain into a Nick & Nora glass.",
+    "Garnish with 1 cucumber ribbon on a cocktail pick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Eryn Reece"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 231
+    }
+  ]
+}

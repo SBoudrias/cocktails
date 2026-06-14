@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Fair Fault",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Granny Smith apple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cruzan Single Barrel",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jean-Luc Pasquet Pineau des Charentes",
+      "type": "wine",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all the ingredients (except the Black Strap rum) with ice, then strain into a port glass.",
+    "Float the Black Strap rum on top.",
+    "No garnish."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyson Buhler"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 230
+    }
+  ]
+}

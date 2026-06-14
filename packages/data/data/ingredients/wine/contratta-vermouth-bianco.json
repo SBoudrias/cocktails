@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Contratta Vermouth Bianco",
+  "type": "wine",
+  "categories": ["Blanc vermouth"]
+}

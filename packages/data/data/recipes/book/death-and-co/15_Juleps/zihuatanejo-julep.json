@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Zihuatanejo Julep",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "julep",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "El Tesoro Reposado",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Del Maguey Chichicapa Mezcal",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rub the mint around the inside of a julep tin and discard. Fill the tin with crushed ice and add the tequila and syrup. Swizzle briefly, then top with crushed ice. Float the mezcal on top. Grate the side of a cinnamon stick away from the drink to release its aromas, then place the cinnamon stick and 1 mint bouquet in the center of the ice and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Miller"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 244
+    }
+  ]
+}

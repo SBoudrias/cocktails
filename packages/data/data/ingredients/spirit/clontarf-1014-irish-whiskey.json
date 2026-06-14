@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Clontarf 1014 Irish Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (Irish)"]
+}

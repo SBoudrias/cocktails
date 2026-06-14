@@ -52,6 +52,34 @@ const unitType: Record<
   part: 'counting',
 };
 
+function formatAmount(
+  amount: number,
+  unit: RecipeIngredient['quantity']['unit'],
+): number | string {
+  if (unitType[unit] === 'imperial') {
+    const rounded = roundToFriendlyFraction(amount, unit);
+    const base = Math.floor(rounded);
+    const fraction = Math.round((rounded - base + Number.EPSILON) * 100) / 100;
+
+    if (fraction === 0) {
+      return base;
+    }
+    if (displayFraction[fraction] != null) {
+      return base > 0
+        ? `${base} ${displayFraction[fraction]}`
+        : displayFraction[fraction];
+    }
+    return rounded;
+  }
+  if (unitType[unit] === 'metric') {
+    return roundToFriendlyMl(amount);
+  }
+  if (unitType[unit] === 'weight') {
+    return Math.round(amount * 10) / 10;
+  }
+  return Math.round(amount);
+}
+
 export default function Quantity({
   preferredUnit,
   quantity,
@@ -59,33 +87,10 @@ export default function Quantity({
   preferredUnit: 'ml' | 'oz';
   quantity: RecipeIngredient['quantity'];
 }) {
-  const { amount, unit } = match(preferredUnit)
+  const { amount, maximum, modifier, unit } = match(preferredUnit)
     .with('ml', () => convertQuantityToMl(quantity))
     .with('oz', () => convertQuantityToOz(quantity))
     .exhaustive();
-
-  let displayAmount: number | string;
-
-  if (unitType[unit] === 'imperial') {
-    const rounded = roundToFriendlyFraction(amount, unit);
-    const base = Math.floor(rounded);
-    const fraction = Math.round((rounded - base + Number.EPSILON) * 100) / 100;
-
-    if (fraction === 0) {
-      displayAmount = base;
-    } else if (displayFraction[fraction] != null) {
-      displayAmount =
-        base > 0 ? `${base} ${displayFraction[fraction]}` : displayFraction[fraction];
-    } else {
-      displayAmount = rounded;
-    }
-  } else if (unitType[unit] === 'metric') {
-    displayAmount = roundToFriendlyMl(amount);
-  } else if (unitType[unit] === 'weight') {
-    displayAmount = Math.round(amount * 10) / 10;
-  } else {
-    displayAmount = Math.round(amount);
-  }
 
   return (
     <Box
@@ -98,7 +103,14 @@ export default function Quantity({
         flexShrink: 0,
       }}
     >
-      <span className={styles.quantity}>{displayAmount}</span>
+      {modifier != null && <span className={styles.modifier}>{modifier}</span>}
+      <span className={styles.quantity}>{formatAmount(amount, unit)}</span>
+      {maximum != null && (
+        <>
+          <span className={styles.modifier}>to</span>
+          <span className={styles.quantity}>{formatAmount(maximum, unit)}</span>
+        </>
+      )}
       {unit !== 'unit' && <span className={styles.unit}>{unit}</span>}
     </Box>
   );

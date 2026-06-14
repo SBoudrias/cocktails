@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Del Maguey Espadin Especial Mezcal",
+  "type": "spirit",
+  "categories": ["Mezcal"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bar Code Baked Apple Bitters",
+  "type": "bitter",
+  "categories": ["Aromatic Bitters"]
+}

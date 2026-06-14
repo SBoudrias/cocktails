@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Dirty Mary, Crazy Larry",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Laird's Bonded Apple Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Full Sail Session Black Lager",
+      "type": "beer",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Fill a pilsner glass with ice cubes and add the apple brandy.",
+    "Top with Full Sail."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Thomas Waugh"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 222
+    }
+  ]
+}

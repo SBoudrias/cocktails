@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Toby's Sour Cherry Shrub",
+  "type": "other"
+}

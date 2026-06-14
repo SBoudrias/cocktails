@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Full Sail Session Black Lager",
+  "type": "beer",
+  "categories": ["Schwarzbier"]
+}

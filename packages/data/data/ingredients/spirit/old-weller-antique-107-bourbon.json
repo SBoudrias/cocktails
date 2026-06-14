@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Old Weller Antique 107 Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

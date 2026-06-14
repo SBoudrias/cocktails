@@ -44,6 +44,22 @@ describe('conversion module', () => {
       expect(result.amount).toBe(15);
       expect(result.unit).toBe('ml');
     });
+
+    it('should preserve quantity details while converting a range', () => {
+      expect(
+        convertQuantityToMl({
+          amount: 0.5,
+          maximum: 0.75,
+          modifier: 'scant',
+          unit: 'oz',
+        }),
+      ).toEqual({
+        amount: 15,
+        maximum: 22.5,
+        modifier: 'scant',
+        unit: 'ml',
+      });
+    });
   });
 
   describe('convertQuantityToOz', () => {
@@ -87,6 +103,22 @@ describe('conversion module', () => {
       const result = convertQuantityToOz({ amount: 0, unit: 'ml' });
       expect(result.amount).toBe(0);
       expect(result.unit).toBe('oz');
+    });
+
+    it('should preserve quantity details while converting a range', () => {
+      expect(
+        convertQuantityToOz({
+          amount: 15,
+          maximum: 30,
+          modifier: 'scant',
+          unit: 'ml',
+        }),
+      ).toEqual({
+        amount: 0.5,
+        maximum: 1,
+        modifier: 'scant',
+        unit: 'oz',
+      });
     });
   });
 });

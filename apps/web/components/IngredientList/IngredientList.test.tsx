@@ -47,6 +47,42 @@ describe('IngredientList', () => {
     expect(servingInput).toHaveValue(3);
   });
 
+  it('should display approximate and ranged source quantities', () => {
+    const sourceQuantities: Recipe['ingredients'] = [
+      {
+        name: 'Yellow Chartreuse',
+        slug: 'yellow-chartreuse',
+        type: 'liqueur',
+        quantity: { amount: 0.5, modifier: 'scant', unit: 'oz' },
+        categories: [],
+        refs: [],
+        ingredients: [],
+      },
+      {
+        name: 'Mint leaves',
+        slug: 'mint-leaves',
+        type: 'other',
+        quantity: { amount: 6, maximum: 8, unit: 'unit' },
+        categories: [],
+        refs: [],
+        ingredients: [],
+      },
+    ];
+
+    render(<IngredientList ingredients={sourceQuantities} />);
+
+    const ingredientList = screen.getByRole('list');
+    const modifier = screen.getByText('scant');
+    const rangeSeparator = screen.getByText('to');
+
+    expect(rangeSeparator).toHaveAttribute('class', modifier.getAttribute('class'));
+    expect(ingredientList).toHaveTextContent('½');
+    expect(screen.getByText('6')).toBeVisible();
+    expect(rangeSeparator).toBeVisible();
+    expect(screen.getByText('8')).toBeVisible();
+    expect(ingredientList).toHaveTextContent('Mint leaves');
+  });
+
   it('should scale ingredient quantities when servings change', () => {
     const fractionalIngredients: Recipe['ingredients'] = [
       {

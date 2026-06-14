@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mackeson Stout",
+  "type": "beer",
+  "categories": ["Stout"]
+}

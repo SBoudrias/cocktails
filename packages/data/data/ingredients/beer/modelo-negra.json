@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Modelo Negra",
+  "type": "beer",
+  "categories": ["Munich Dunkel"]
+}

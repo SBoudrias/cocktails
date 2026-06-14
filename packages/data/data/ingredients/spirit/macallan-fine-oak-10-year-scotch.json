@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Macallan Fine Oak 10 Year Scotch",
+  "type": "spirit",
+  "categories": ["Whisky (Scotch)"]
+}

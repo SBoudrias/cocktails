@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Double-Barrel Julep",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "julep",
+  "ingredients": [
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "G.E. Massenez Crème de Pêche",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Diplomático Reserva Exclusiva",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Old Grand-Dad 114 Proof Bourbon",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey Barrel-Aged Bitters",
+      "type": "bitter",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    }
+  ],
+  "instructions": [
+    "Put the bourbon, Diplomático rum, peach liqueur, and syrup in a julep tin. Fill the tin halfway with crushed ice. Stir with a teaspoon, churning the ice as you go, for about 10 seconds, holding the tin by the rim so the entire tin can eventually frost up. Add more crushed ice to fill the tin two-thirds full and stir until the tin is completely frosted. Add more ice to form a cone above the rim. Float the Smith & Cross rum over the drink and top with the bitters. Garnish with 1 mint bouquet in the center of the ice and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 242
+    }
+  ]
+}

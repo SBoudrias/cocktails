@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bols Barrel-Aged Genever",
+  "type": "spirit",
+  "categories": ["Genever"]
+}

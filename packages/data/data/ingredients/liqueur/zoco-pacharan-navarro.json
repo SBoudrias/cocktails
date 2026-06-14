@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Lillet Blanc",
+  "name": "Zoco Pacharán Navarro",
   "type": "liqueur",
-  "categories": ["Blanc vermouth"]
+  "categories": ["Pacharán"]
 }

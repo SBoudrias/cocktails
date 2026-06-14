@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Courvoisier Cognac",
+  "type": "spirit",
+  "categories": ["Cognac"]
+}

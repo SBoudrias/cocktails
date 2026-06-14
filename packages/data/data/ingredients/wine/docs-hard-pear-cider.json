@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Doc's Hard Pear Cider",
+  "type": "wine",
+  "categories": ["Pear cider"]
+}

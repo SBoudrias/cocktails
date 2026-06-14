@@ -1,0 +1,103 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Lust for Life Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "orange",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "zested"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Demerara sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 9,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Punt e Mes",
+      "type": "wine",
+      "technique": {
+        "technique": "infusion",
+        "agent": "grapefruit"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "quantity": {
+        "amount": 4.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Krogstad Aquavit",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the sugar cubes with the orange twists. Add the seltzer, lemon juice, and pineapple juice and stir until the sugar is dissolved. Add the aquavit and infused vermouth and fill the pitcher three-quarters full with ice cubes. Stir until cold. Pour the champagne into a punch bowl over 1 large block of ice, then strain the contents of the pitcher over the top. Garnish with 6 lemon wheels and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joaquín Simó"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 237
+    }
+  ]
+}

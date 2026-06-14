@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Evan Williams Single-Barrel Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Alchemia Chocolate Vodka",
+  "type": "spirit",
+  "categories": ["Chocolate Vodka"]
+}

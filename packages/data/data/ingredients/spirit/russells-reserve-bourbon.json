@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Russell's Reserve Bourbon",
+  "type": "spirit",
+  "categories": ["Whiskey (Bourbon)"]
+}

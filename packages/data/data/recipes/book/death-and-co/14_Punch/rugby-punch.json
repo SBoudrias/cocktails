@@ -1,0 +1,103 @@
+{
+  "$schema": "../../../../../schemas/recipe.schema.json",
+  "name": "Rugby Punch",
+  "preparation": "other",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 6,
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "zested"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "White sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 9,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grand Marnier",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Nonino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Champagne",
+      "type": "category",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Famous Grouse",
+      "type": "spirit",
+      "technique": {
+        "technique": "infusion",
+        "agent": "coconut green tea"
+      },
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "In a pitcher, muddle the sugar cubes with the lemon twists and seltzer until the sugar is fully broken up. Add the remaining ingredients except the champagne and fill the pitcher three-quarters full with ice cubes. Stir until cold, then strain into a punch bowl over 1 large block of ice. Top with the champagne. Garnish with 6 lemon wheels and serve with a ladle and punch glasses."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jessica Gonzalez"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "Death & Co: Modern Classic Cocktails",
+      "page": 241
+    }
+  ]
+}

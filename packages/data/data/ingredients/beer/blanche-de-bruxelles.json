@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Blanche de Bruxelles",
+  "type": "beer",
+  "categories": ["Witbier"]
+}
