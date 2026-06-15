@@ -1,5 +1,6 @@
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
+import type { ListItemTextProps } from '@mui/material/ListItemText';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import type { ListConfig } from '#/modules/lists/type';
@@ -8,11 +9,13 @@ export function LinkListItem({
   href,
   primary,
   secondary,
+  secondaryTypographyProps,
   tertiary,
 }: {
   href?: string;
   primary: React.ReactNode;
   secondary?: React.ReactNode;
+  secondaryTypographyProps?: NonNullable<ListItemTextProps['slotProps']>['secondary'];
   tertiary?: React.ReactNode;
 }) {
   const item = (
@@ -21,7 +24,11 @@ export function LinkListItem({
         direction="row"
         sx={{ justifyContent: 'space-between', alignItems: 'center', width: '100%' }}
       >
-        <ListItemText primary={primary} secondary={secondary} />
+        <ListItemText
+          primary={primary}
+          secondary={secondary}
+          slotProps={{ secondary: secondaryTypographyProps }}
+        />
         {tertiary}
       </Stack>
     </ListItem>

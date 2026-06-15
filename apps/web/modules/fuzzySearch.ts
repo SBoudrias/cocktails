@@ -1,6 +1,8 @@
 import uFuzzy from '@leeoniya/ufuzzy';
 import transliterate from '@sindresorhus/transliterate';
 
+const uf = new uFuzzy();
+
 /**
  * Performs fuzzy search on a list of items using transliteration for accent-insensitive matching.
  *
@@ -18,7 +20,6 @@ export function fuzzySearch<T>(
 ): T[] {
   if (needle == null || needle.trim().length === 0) return [];
 
-  const uf = new uFuzzy();
   const [matchIndexes] = uf.search(haystack, transliterate(needle).toLowerCase());
 
   if (Array.isArray(matchIndexes) && matchIndexes.length > 0) {

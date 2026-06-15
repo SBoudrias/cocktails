@@ -1,6 +1,6 @@
 import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { vi, beforeEach, describe, it } from 'vitest';
 import { getRecipeUrl } from '#/modules/url';
 import { setupApp } from '#/testing';
@@ -16,7 +16,7 @@ vi.mock('@cocktails/data/recipes', async () => {
 
 let recipeCounter = 0;
 
-const mockRecipe = (name: string): Recipe => ({
+const mockRecipe = (name: string, overrides: Partial<Recipe> = {}): Recipe => ({
   name,
   slug: `recipe-${++recipeCounter}`,
   source: {
@@ -33,6 +33,7 @@ const mockRecipe = (name: string): Recipe => ({
   served_on: 'up',
   glassware: 'coupe',
   refs: [],
+  ...overrides,
 });
 
 const testRecipes: Recipe[] = [
@@ -59,6 +60,64 @@ describe('RecipesPage', () => {
 
     const dGroup = screen.getByRole('group', { name: 'D' });
     expect(dGroup).toHaveTextContent('Daiquiri');
+
+    expect(screen.getAllByText('Test Source')).toHaveLength(testRecipes.length);
+  });
+
+  it('always identifies recipes by source and book chapter', async () => {
+    vi.mocked(getAllRecipes).mockResolvedValue([
+      mockRecipe('Book Chapter Recipe', {
+        chapter: { order: 1, name: 'Classic Cocktails' },
+        attributions: [
+          { relation: 'recipe author', source: 'Recipe Author' },
+          { relation: 'bar', source: 'Some Bar' },
+        ],
+      }),
+      mockRecipe('Book Recipe'),
+      mockRecipe('YouTube Recipe', {
+        source: {
+          type: 'youtube-channel',
+          name: 'Test Channel',
+          slug: 'test-channel',
+          links: ['https://example.com'],
+          description: 'Test description',
+          recipeAmount: 1,
+        },
+      }),
+      mockRecipe('Podcast Recipe', {
+        source: {
+          type: 'podcast',
+          name: 'Test Podcast',
+          slug: 'test-podcast',
+          link: 'https://example.com',
+          description: 'Test description',
+          recipeAmount: 1,
+        },
+      }),
+    ]);
+
+    setupApp(await RecipesPage());
+
+    expect(
+      within(screen.getByRole('link', { name: /book chapter recipe/i })).getByText(
+        'Test Source · Classic Cocktails',
+      ),
+    ).toBeInTheDocument();
+    expect(
+      within(screen.getByRole('link', { name: /book recipe/i })).getByText('Test Source'),
+    ).toBeInTheDocument();
+    expect(
+      within(screen.getByRole('link', { name: /youtube recipe/i })).getByText(
+        'Test Channel',
+      ),
+    ).toBeInTheDocument();
+    expect(
+      within(screen.getByRole('link', { name: /podcast recipe/i })).getByText(
+        'Test Podcast',
+      ),
+    ).toBeInTheDocument();
+    expect(screen.queryByText('Recipe Author')).not.toBeInTheDocument();
+    expect(screen.queryByText('Some Bar')).not.toBeInTheDocument();
   });
 
   it('typing in search filters the recipe list', async () => {
