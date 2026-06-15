@@ -1,36 +1,38 @@
 'use client';
 
-import type { Recipe } from '@cocktails/data';
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
-import useNameIsUnique from '#/hooks/useNameIsUnique';
-import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
 import { byNameListConfig } from '#/modules/lists/by-name';
-import { getRecipeSearchText } from '#/modules/searchText';
-import { getRecipeUrl } from '#/modules/url';
+import type { RecipeListItem } from './recipeListItem';
 
-export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
+const getSearchText = (item: RecipeListItem) => item.searchText;
+const secondaryTypographyProps = {
+  variant: 'caption',
+  sx: { lineHeight: 1.35 },
+} as const;
+
+export default function RecipesClient({
+  recipeListItems,
+}: {
+  recipeListItems: RecipeListItem[];
+}) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
-  const nameIsUnique = useNameIsUnique(recipes);
   const renderRecipe = useCallback(
-    (recipe: Recipe): React.ReactNode => {
-      const href = getRecipeUrl(recipe);
-      return (
-        <LinkListItem
-          // Using href as key since recipe `slug`s aren't unique
-          key={href}
-          href={href}
-          primary={recipe.name}
-          secondary={nameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)}
-        />
-      );
-    },
-    [nameIsUnique],
+    (recipe: RecipeListItem): React.ReactNode => (
+      <LinkListItem
+        key={recipe.href}
+        href={recipe.href}
+        primary={recipe.name}
+        secondary={recipe.secondary}
+        secondaryTypographyProps={secondaryTypographyProps}
+      />
+    ),
+    [],
   );
 
   const emptyState = (
@@ -52,8 +54,8 @@ export default function RecipesClient({ recipes }: { recipes: Recipe[] }) {
         onSearchChange={setSearchTerm}
       />
       <SearchableList
-        items={recipes}
-        getSearchText={getRecipeSearchText}
+        items={recipeListItems}
+        getSearchText={getSearchText}
         config={byNameListConfig}
         renderItem={renderRecipe}
         searchTerm={searchTerm}

@@ -1,6 +1,7 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { getRecipeListItems } from './recipeListItem';
 import RecipesClient from './RecipesClient';
 
 export const metadata: Metadata = {
@@ -9,10 +10,11 @@ export const metadata: Metadata = {
 
 export default async function RecipesPage() {
   const recipes = await getAllRecipes();
+  const recipeListItems = getRecipeListItems(recipes);
 
   return (
     <Suspense>
-      <RecipesClient recipes={recipes} />
+      <RecipesClient recipeListItems={recipeListItems} />
     </Suspense>
   );
 }
