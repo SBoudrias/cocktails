@@ -5,9 +5,9 @@ import {
 } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe } from '@cocktails/data/recipes';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { setupApp } from '#/testing';
 import IngredientPage from './page';
 
@@ -186,9 +186,27 @@ describe('IngredientPage', () => {
 
       await user.clear(juiceAmount);
       await user.type(juiceAmount, '2');
-      await user.click(screen.getByRole('button', { name: 'Reset to defaults' }));
+      await user.click(
+        screen.getByRole('button', { name: 'Reset juice adjustment to defaults' }),
+      );
 
       expect(juiceAmount).toHaveValue(0.5);
+      expect(
+        screen.queryByRole('heading', { name: 'Make the solution' }),
+      ).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'Lime' })).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'Lemon' })).not.toBeInTheDocument();
+      const calculatorActions = screen.getByRole('group', {
+        name: 'Solution adjustment actions',
+      });
+      expect(
+        within(calculatorActions).getByRole('link', { name: 'Full calculator' }),
+      ).toHaveAttribute('href', '/calculators/acid-adjusting?juiceAmount=0.5');
+      expect(
+        within(calculatorActions).getByRole('button', {
+          name: 'Reset juice adjustment to defaults',
+        }),
+      ).toBeInTheDocument();
     });
   });
 
