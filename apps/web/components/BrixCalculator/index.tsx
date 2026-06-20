@@ -13,8 +13,12 @@ import {
 } from '@mui/material';
 import { Suspense, useState } from 'react';
 
+const DEFAULT_JUICE_WEIGHT = 100;
+
 export default function BrixCalculator({ sx }: { sx?: SxProps }) {
-  const [juiceWeightValue, setJuiceWeight] = useState<string | number>('');
+  const [juiceWeightValue, setJuiceWeight] = useState<string | number>(
+    DEFAULT_JUICE_WEIGHT,
+  );
   const [currentBrixValue, setCurrentBrix] = useState<string | number>(0);
   const [targetBrixValue, setTargetBrix] = useState<string | number>(50);
 
@@ -111,7 +115,7 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
               <Button
                 color="secondary"
                 onClick={() => {
-                  setJuiceWeight('');
+                  setJuiceWeight(DEFAULT_JUICE_WEIGHT);
                   setCurrentBrix(0);
                   setTargetBrix(50);
                 }}
