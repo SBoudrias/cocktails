@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Hamilton Beachbum Berry's Navy Grog Blend",
+  "type": "spirit",
+  "categories": ["Navy style rum"]
+}
