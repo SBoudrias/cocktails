@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Morning Glory Fizz",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "rinse"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whisky (Blended Scotch)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aquafaba",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry-shake all ingredients except the absinthe and seltzer, then shake again with ice.",
+    "Rinse a chilled highball glass with absinthe and double-strain the drink into it without ice.",
+    "Top with seltzer and garnish with a lemon twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "93Zgdb0SuQw",
+      "start": 226
+    }
+  ]
+}

@@ -1,12 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Gold Rush",
+  "name": "Hamilton Beachbum Berry Navy Grog",
   "preparation": "shaken",
-  "served_on": "big rock",
+  "served_on": "crushed ice",
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Lemon juice",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -16,14 +24,14 @@
     {
       "name": "Honey syrup",
       "type": "syrup",
-      "brix": 75,
+      "brix": 50,
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Eagle Rare Bourbon",
+      "name": "Hamilton Beachbum Berry's Navy Grog Blend",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
@@ -33,17 +41,14 @@
   ],
   "instructions": [
     "Shake all ingredients with ice.",
-    "Strain into a rocks glass over ice."
+    "Strain into an old fashioned glass filled with crushed ice.",
+    "Garnish with grapefruit and lime wheels and a mint sprig."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "VBSjE-P_C58"
-    },
-    {
-      "type": "youtube",
-      "videoId": "qLwJ2aixqYY",
-      "start": 146
+      "videoId": "u_-ho-y3ukg",
+      "start": 168
     }
   ]
 }

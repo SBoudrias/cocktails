@@ -1,5 +1,37 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "strawberry syrup",
-  "type": "syrup"
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "superfine sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Mash the strawberries and sugar together, then let the mixture macerate for 24 hours.",
+    "Strain through a nut milk bag."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "CMqfwy_EKgs"
+    }
+  ]
 }
