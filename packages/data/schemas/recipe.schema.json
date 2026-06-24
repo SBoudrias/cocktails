@@ -18,6 +18,17 @@
         "other"
       ]
     },
+    "technique": {
+      "oneOf": [
+        { "$ref": "./recipe-technique.schema.json" },
+        {
+          "type": "array",
+          "items": { "$ref": "./recipe-technique.schema.json" },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      ]
+    },
     "served_on": {
       "enum": ["big rock", "up", "crushed ice", "blended", "ice cubes"]
     },
