@@ -24,5 +24,8 @@ describe('RecentlyAddedPage', () => {
     const recipeLink = screen.getByRole('link', { name: /daiquiri/i });
     expect(recipeLink).toHaveTextContent('Tropical Standard');
     expect(recipeLink).toHaveTextContent('Preparations - Shaken - Up');
+    expect(
+      screen.getByText('Tropical Standard · Preparations - Shaken - Up'),
+    ).toHaveClass('MuiTypography-caption');
   });
 });

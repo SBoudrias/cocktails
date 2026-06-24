@@ -14,7 +14,7 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
-import { getRecipeSource } from '#/modules/getRecipeSource';
+import { getRecipeSource, recipeSourceTypographyProps } from '#/modules/getRecipeSource';
 import { ingredientHasData } from '#/modules/hasData';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getIngredientUrl, getRecipeUrl } from '#/modules/url';
@@ -74,6 +74,7 @@ export default function CategoryClient({
           href={recipeUrl}
           primary={recipe.name}
           secondary={getRecipeSource(recipe)}
+          secondaryTypographyProps={recipeSourceTypographyProps}
           tertiary={ing && <Quantity quantity={ing.quantity} preferredUnit="oz" />}
         />
       );

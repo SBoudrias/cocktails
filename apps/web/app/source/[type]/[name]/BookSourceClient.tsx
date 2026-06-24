@@ -18,7 +18,7 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import useLocalStorage from '#/hooks/useLocalStorage';
-import { getRecipeSource } from '#/modules/getRecipeSource';
+import { getRecipeSource, recipeSourceTypographyProps } from '#/modules/getRecipeSource';
 import { createByChapterListConfig } from '#/modules/lists/by-chapter';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import { getRecipeSearchText } from '#/modules/searchText';
@@ -52,6 +52,7 @@ export default function BookSourceClient({
         href={href}
         primary={recipe.name}
         secondary={getRecipeSource(recipe)}
+        secondaryTypographyProps={recipeSourceTypographyProps}
       />
     );
   }, []);

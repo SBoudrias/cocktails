@@ -6,14 +6,11 @@ import { useCallback } from 'react';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
+import { recipeSourceTypographyProps } from '#/modules/getRecipeSource';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import type { RecipeListItem } from './recipeListItem';
 
 const getSearchText = (item: RecipeListItem) => item.searchText;
-const secondaryTypographyProps = {
-  variant: 'caption',
-  sx: { lineHeight: 1.35 },
-} as const;
 
 export default function RecipesClient({
   recipeListItems,
@@ -29,7 +26,7 @@ export default function RecipesClient({
         href={recipe.href}
         primary={recipe.name}
         secondary={recipe.secondary}
-        secondaryTypographyProps={secondaryTypographyProps}
+        secondaryTypographyProps={recipeSourceTypographyProps}
       />
     ),
     [],

@@ -9,7 +9,7 @@ import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
-import { getRecipeSource } from '#/modules/getRecipeSource';
+import { getRecipeSource, recipeSourceTypographyProps } from '#/modules/getRecipeSource';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
 
@@ -40,6 +40,7 @@ export default function SourceClient({
         href={href}
         primary={recipe.name}
         secondary={getRecipeSource(recipe)}
+        secondaryTypographyProps={recipeSourceTypographyProps}
       />
     );
   }, []);
