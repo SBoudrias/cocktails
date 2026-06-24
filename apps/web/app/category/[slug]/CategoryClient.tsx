@@ -9,12 +9,13 @@ import CategoryName from '#/components/CategoryName';
 import FixBugCard from '#/components/FixBugCard';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import Quantity from '#/components/Quantity';
+import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
-import { getRecipeSource, recipeSourceTypographyProps } from '#/modules/getRecipeSource';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { ingredientHasData } from '#/modules/hasData';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getIngredientUrl, getRecipeUrl } from '#/modules/url';
@@ -69,12 +70,11 @@ export default function CategoryClient({
       const recipeUrl = getRecipeUrl(recipe);
 
       return (
-        <LinkListItem
+        <RecipeLinkListItem
           key={recipeUrl}
           href={recipeUrl}
-          primary={recipe.name}
-          secondary={getRecipeSource(recipe)}
-          secondaryTypographyProps={recipeSourceTypographyProps}
+          name={recipe.name}
+          source={getRecipeSource(recipe)}
           tertiary={ing && <Quantity quantity={ing.quantity} preferredUnit="oz" />}
         />
       );

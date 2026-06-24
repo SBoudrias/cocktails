@@ -1,11 +1,10 @@
 import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { List, ListItem, ListItemText, Paper } from '@mui/material';
+import { List, Paper } from '@mui/material';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';
-import { getRecipeSource, recipeSourceTypographyProps } from '#/modules/getRecipeSource';
+import RecipeLinkListItem from '#/components/RecipeLinkListItem';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
@@ -21,15 +20,12 @@ export default async function RecentlyAddedPage() {
       <List sx={{ mt: 2 }}>
         <Paper square>
           {recipes.map((recipe) => (
-            <Link href={getRecipeUrl(recipe)} key={getRecipeUrl(recipe)}>
-              <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                <ListItemText
-                  primary={recipe.name}
-                  secondary={getRecipeSource(recipe)}
-                  slotProps={{ secondary: recipeSourceTypographyProps }}
-                />
-              </ListItem>
-            </Link>
+            <RecipeLinkListItem
+              key={getRecipeUrl(recipe)}
+              href={getRecipeUrl(recipe)}
+              name={recipe.name}
+              source={getRecipeSource(recipe)}
+            />
           ))}
         </Paper>
       </List>

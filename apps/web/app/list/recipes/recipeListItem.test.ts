@@ -49,7 +49,7 @@ describe('getRecipeListItems', () => {
       {
         name: 'Indexed Recipe',
         href: getRecipeUrl(recipe),
-        secondary: 'Test Book · Rum Drinks',
+        source: 'Test Book · Rum Drinks',
         searchText: 'indexed recipe appleton signature jamaican rum recipe author',
       },
     ]);
