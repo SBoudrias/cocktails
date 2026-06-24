@@ -1,5 +1,5 @@
 import { screen, within } from '@testing-library/react';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import AcidAdjustingPage from './page';
 
 describe('AcidAdjustingPage', () => {

@@ -45,7 +45,7 @@ export default defineConfig({
           environmentOptions: {
             happyDOM: { settings: { disableIframePageLoading: true } },
           },
-          setupFiles: [path.join(__dirname, 'apps/web/testing/setup-component.ts')],
+          setupFiles: [path.join(__dirname, 'apps/web/vitest.setup.ts')],
         },
       },
       {
@@ -57,7 +57,7 @@ export default defineConfig({
           environmentOptions: {
             happyDOM: { settings: { disableIframePageLoading: true } },
           },
-          setupFiles: [path.join(__dirname, 'apps/web/testing/setup-page.ts')],
+          setupFiles: [path.join(__dirname, 'apps/web/vitest.setup.ts')],
         },
       },
     ],

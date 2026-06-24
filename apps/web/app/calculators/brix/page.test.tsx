@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import BrixCalculatorPage from './page';
 
 describe('Sugar adjusting calculator', () => {

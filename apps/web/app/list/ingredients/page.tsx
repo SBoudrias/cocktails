@@ -9,8 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default async function IngredientListPage() {
-  const allIngredients = await getAllIngredients();
-  const allCategories = await getAllCategories();
+  const [allIngredients, allCategories] = await Promise.all([
+    getAllIngredients(),
+    getAllCategories(),
+  ]);
   const ingredients = allIngredients.filter((ingredient) => {
     return ingredient.type !== 'liqueur' && ingredient.type !== 'spirit';
   });

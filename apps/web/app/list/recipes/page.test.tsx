@@ -3,7 +3,7 @@ import { getAllRecipes } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
 import { vi, beforeEach, describe, it } from 'vitest';
 import { getRecipeUrl } from '#/modules/url';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import RecipesPage from './page';
 
 vi.mock('@cocktails/data/recipes', async () => {

@@ -1,7 +1,7 @@
 import { getRecipe } from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import RecipePage from './page';
 
 describe('RecipePage', () => {

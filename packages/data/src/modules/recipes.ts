@@ -5,8 +5,8 @@ import { promisify } from 'node:util';
 
 const execFile = promisify(execFileCb);
 import slugify from '@sindresorhus/slugify';
-import { uniqBy } from 'lodash';
 import memo from 'lodash/memoize';
+import uniqBy from 'lodash/uniqBy';
 import { match } from 'ts-pattern';
 import type { Category } from '../types/Category.ts';
 import type { Recipe } from '../types/Recipe.ts';

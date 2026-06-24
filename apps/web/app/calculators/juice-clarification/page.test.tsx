@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import JuiceClarificationCalculatorPage from './page';
 
 describe('JuiceClarificationCalculatorPage', () => {
