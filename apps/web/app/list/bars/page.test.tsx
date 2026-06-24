@@ -4,6 +4,7 @@ import { screen, within } from '@testing-library/react';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { getBarRecipesUrl } from '#/modules/url';
 import { setupApp } from '#/testing';
+import BarRecipesPage from './[name]/page';
 import BarListPage from './page';
 
 vi.mock('@cocktails/data/recipes', async (importOriginal) => ({
@@ -151,5 +152,22 @@ describe('BarListPage', () => {
 
     const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
     expect(link).toHaveTextContent(TEST_BAR.location);
+  });
+});
+
+describe('BarRecipesPage', () => {
+  it('shows the source for every recipe', async () => {
+    setupApp(
+      await BarRecipesPage({
+        params: Promise.resolve({ name: 'sunken-harbor-club-brooklyn-ny' }),
+      }),
+    );
+
+    expect(screen.getByRole('link', { name: /daiquiri/i })).toHaveTextContent(
+      'Tropical Standard',
+    );
+    expect(screen.getByRole('link', { name: /mojito/i })).toHaveTextContent(
+      'Tropical Standard',
+    );
   });
 });

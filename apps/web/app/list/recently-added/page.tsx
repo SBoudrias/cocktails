@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default async function RecentlyAddedPage() {
           {recipes.map((recipe) => (
             <Link href={getRecipeUrl(recipe)} key={getRecipeUrl(recipe)}>
               <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                <ListItemText primary={recipe.name} secondary={recipe.source.name} />
+                <ListItemText primary={recipe.name} secondary={getRecipeSource(recipe)} />
               </ListItem>
             </Link>
           ))}

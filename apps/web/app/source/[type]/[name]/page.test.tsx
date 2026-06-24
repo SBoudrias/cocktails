@@ -102,15 +102,14 @@ describe('SourcePage', () => {
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
 
-    it('renders source about card with source name', async () => {
+    it('renders the source about card', async () => {
       setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
       );
 
-      // Source name appears in the about card
-      expect(screen.getByText(TEST_YOUTUBE.name)).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Go to channel' })).toBeInTheDocument();
     });
 
     it('renders recipe list with header', async () => {
@@ -121,6 +120,9 @@ describe('SourcePage', () => {
       );
 
       expect(screen.getByText('All Recipes')).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /mezcal margarita/i })).toHaveTextContent(
+        TEST_YOUTUBE.name,
+      );
     });
   });
 
@@ -179,14 +181,14 @@ describe('SourcePage', () => {
         }),
       );
 
-      // About card is visible initially (shows source name)
-      expect(screen.getByText(TEST_YOUTUBE.name)).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Go to channel' })).toBeInTheDocument();
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'margarita');
 
-      // About card should be hidden during search
-      expect(screen.queryByText(TEST_YOUTUBE.name)).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('link', { name: 'Go to channel' }),
+      ).not.toBeInTheDocument();
     });
 
     it('loads with search term from URL', async () => {
@@ -212,15 +214,15 @@ describe('SourcePage', () => {
         { nuqsOptions: { searchParams: '?search=margarita' } },
       );
 
-      // Initially filtered - about card hidden
-      expect(screen.queryByText(TEST_YOUTUBE.name)).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('link', { name: 'Go to channel' }),
+      ).not.toBeInTheDocument();
 
       // Clear the search
       const clearButton = screen.getByRole('button', { name: /clear/i });
       await user.click(clearButton);
 
-      // About card should be restored
-      expect(screen.getByText(TEST_YOUTUBE.name)).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Go to channel' })).toBeInTheDocument();
       expect(screen.getByText('All Recipes')).toBeInTheDocument();
     });
   });
@@ -236,8 +238,7 @@ describe('SourcePage', () => {
         }),
       );
 
-      // Source name appears in the about card
-      expect(screen.getByText(TEST_YOUTUBE_ALT.name)).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Go to channel' })).toBeInTheDocument();
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
 
@@ -412,6 +413,9 @@ describe('SourcePage - Book sources', () => {
         screen.getByRole('link', { name: /three dots and a dash/i }),
       ).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /pupule/i })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /pupule/i })).toHaveTextContent(
+        "Smuggler's Cove · The Birth of Tiki",
+      );
     });
   });
 

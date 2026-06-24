@@ -8,8 +8,7 @@ import { LinkList, LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
-import useNameIsUnique from '#/hooks/useNameIsUnique';
-import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
 
@@ -22,7 +21,6 @@ export default function AuthorRecipesClient({
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
-  const nameIsUnique = useNameIsUnique(recipes);
 
   const emptyState = (
     <>
@@ -33,26 +31,17 @@ export default function AuthorRecipesClient({
     </>
   );
 
-  const renderItem = useCallback(
-    (recipe: Recipe) => {
-      const href = getRecipeUrl(recipe);
-      return (
-        <LinkListItem
-          key={href}
-          href={href}
-          primary={recipe.name}
-          secondary={
-            nameIsUnique(recipe)
-              ? undefined
-              : getRecipeAttribution(recipe, {
-                  exclude: { 'recipe author': authorName, 'adapted by': authorName },
-                })
-          }
-        />
-      );
-    },
-    [nameIsUnique, authorName],
-  );
+  const renderItem = useCallback((recipe: Recipe) => {
+    const href = getRecipeUrl(recipe);
+    return (
+      <LinkListItem
+        key={href}
+        href={href}
+        primary={recipe.name}
+        secondary={getRecipeSource(recipe)}
+      />
+    );
+  }, []);
 
   return (
     <>

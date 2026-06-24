@@ -29,8 +29,7 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
-import useNameIsUnique from '#/hooks/useNameIsUnique';
-import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { ingredientHasData } from '#/modules/hasData';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '#/modules/url';
@@ -46,7 +45,6 @@ export default function IngredientClient({
   relatedRecipes: Recipe[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
-  const recipeNameIsUnique = useNameIsUnique(relatedRecipes);
   const topCategory = ingredient.categories[0];
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
 
@@ -84,14 +82,12 @@ export default function IngredientClient({
           key={href}
           href={href}
           primary={recipe.name}
-          secondary={
-            recipeNameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)
-          }
+          secondary={getRecipeSource(recipe)}
           tertiary={ing && <Quantity quantity={ing.quantity} preferredUnit="oz" />}
         />
       );
     },
-    [ingredient.slug, recipeNameIsUnique],
+    [ingredient.slug],
   );
 
   let descriptionCard;
