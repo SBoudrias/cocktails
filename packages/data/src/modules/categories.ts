@@ -58,7 +58,22 @@ export const getCategoriesPerParent = memo(
 export const getChildCategories = memo(
   async (parent: Category): Promise<Category[]> => {
     const categoriesPerParent = await getCategoriesPerParent();
-    return categoriesPerParent[parent.slug] ?? [];
+    const visited = new Set([parent.slug]);
+    const subcategories: Category[] = [];
+
+    const collectSubcategories = (parentSlug: string) => {
+      for (const category of categoriesPerParent[parentSlug] ?? []) {
+        if (visited.has(category.slug)) continue;
+
+        visited.add(category.slug);
+        subcategories.push(category);
+        collectSubcategories(category.slug);
+      }
+    };
+
+    collectSubcategories(parent.slug);
+
+    return subcategories.toSorted((a, b) => a.name.localeCompare(b.name));
   },
   (category) => category.slug,
 );
