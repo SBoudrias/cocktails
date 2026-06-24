@@ -18,11 +18,15 @@ describe('HomePage', () => {
     ).toEqual([
       'Acid Adjusting',
       'Juice Clarification',
+      'Milk Clarification',
       'Saline Solution Calculator',
       'Sugar Adjusting (Brix calculator)',
     ]);
     expect(
       within(calculators).getByRole('link', { name: 'Juice Clarification' }),
     ).toHaveAttribute('href', '/calculators/juice-clarification');
+    expect(
+      within(calculators).getByRole('link', { name: 'Milk Clarification' }),
+    ).toHaveAttribute('href', '/calculators/milk-clarification');
   });
 });

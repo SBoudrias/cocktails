@@ -1,5 +1,5 @@
 import type { Recipe } from '@cocktails/data';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import IngredientList from './index';
 
 function getLinkSearchParams(name: string | RegExp) {
@@ -159,5 +159,36 @@ describe('IngredientList', () => {
     expect(scaledParams.get('amount')).toBe('2.25');
     expect(scaledParams.get('unit')).toBe('oz');
     expect(scaledParams.get('juiceAmount')).toBe('2.25');
+  });
+
+  it('links recipe-level milk clarification from the Techniques section', () => {
+    render(
+      <IngredientList
+        ingredients={mockIngredients}
+        technique={{
+          technique: 'clarification',
+          method: 'milk',
+          milk_type: 'Coconut milk',
+          milk_quantity: { amount: 4, unit: 'oz' },
+        }}
+      />,
+    );
+
+    const techniques = screen.getByRole('list', { name: 'Techniques' });
+    expect(techniques).toHaveTextContent('Milk clarification');
+    expect(techniques).toHaveTextContent('4ozCoconut milk');
+
+    const calculatorLink = within(techniques).getByRole('link', {
+      name: 'Milk clarification calculator for Coconut milk',
+    });
+    const calculatorUrl = new URL(
+      calculatorLink.getAttribute('href') ?? '',
+      'https://cocktail-index.test',
+    );
+
+    expect(calculatorUrl.pathname).toBe('/calculators/milk-clarification');
+    expect([...calculatorUrl.searchParams.entries()]).toEqual([
+      ['milkType', 'Coconut milk'],
+    ]);
   });
 });

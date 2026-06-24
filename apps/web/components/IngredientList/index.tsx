@@ -22,7 +22,7 @@ import ServingSelector from '#/components/ServingSelector';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
 import { formatIngredientName } from '#/modules/technique';
-import { getRecipeIngredientUrl } from '#/modules/url';
+import { getMilkClarificationCalculatorUrl, getRecipeIngredientUrl } from '#/modules/url';
 import styles from './style.module.css';
 
 function IngredientLine({
@@ -69,9 +69,15 @@ function TechniqueDetails({
   return match(technique)
     .with({ technique: 'clarification', method: 'milk' }, (milkClarification) => (
       <Stack spacing={0.5}>
-        <Typography component="div" variant="subtitle1" sx={{ fontWeight: 'medium' }}>
-          Milk clarification
-        </Typography>
+        <Link
+          href={getMilkClarificationCalculatorUrl(milkClarification.milk_type)}
+          aria-label={`Milk clarification calculator for ${milkClarification.milk_type}`}
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
+          <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'medium' }}>
+            Milk clarification
+          </Typography>
+        </Link>
         <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
           <Quantity
             preferredUnit={preferredUnit}

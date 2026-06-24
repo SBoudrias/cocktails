@@ -1,5 +1,5 @@
 import { getRecipe } from '@cocktails/data/recipes';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { setupApp } from '#/testing';
 import RecipePage from './page';
@@ -47,6 +47,18 @@ describe('RecipePage', () => {
     const techniques = screen.getByRole('list', { name: 'Techniques' });
     expect(techniques).toHaveTextContent('Milk clarification');
     expect(techniques).toHaveTextContent('5ozWhole milk');
+
+    const calculatorLink = within(techniques).getByRole('link', {
+      name: 'Milk clarification calculator for Whole milk',
+    });
+    const calculatorUrl = new URL(
+      calculatorLink.getAttribute('href') ?? '',
+      'https://cocktail-index.test',
+    );
+
+    expect(calculatorUrl.pathname).toBe('/calculators/milk-clarification');
+    expect(calculatorUrl.searchParams.get('milkType')).toBe('Whole milk');
+    expect([...calculatorUrl.searchParams.keys()]).toEqual(['milkType']);
 
     await user.click(screen.getByRole('button', { name: 'ml' }));
 
