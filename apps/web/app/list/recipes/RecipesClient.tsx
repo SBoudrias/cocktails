@@ -3,10 +3,9 @@
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
-import { LinkListItem } from '#/components/LinkList';
+import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
-import { recipeSourceTypographyProps } from '#/modules/getRecipeSource';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import type { RecipeListItem } from './recipeListItem';
 
@@ -21,12 +20,11 @@ export default function RecipesClient({
 
   const renderRecipe = useCallback(
     (recipe: RecipeListItem): React.ReactNode => (
-      <LinkListItem
+      <RecipeLinkListItem
         key={recipe.href}
         href={recipe.href}
-        primary={recipe.name}
-        secondary={recipe.secondary}
-        secondaryTypographyProps={recipeSourceTypographyProps}
+        name={recipe.name}
+        source={recipe.source}
       />
     ),
     [],

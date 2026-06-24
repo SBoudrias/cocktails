@@ -4,12 +4,13 @@ import type { Recipe, Source } from '@cocktails/data';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
-import { LinkList, LinkListItem } from '#/components/LinkList';
+import { LinkList } from '#/components/LinkList';
+import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
-import { getRecipeSource, recipeSourceTypographyProps } from '#/modules/getRecipeSource';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
 
@@ -35,12 +36,11 @@ export default function SourceClient({
   const renderRecipe = useCallback((recipe: Recipe) => {
     const href = getRecipeUrl(recipe);
     return (
-      <LinkListItem
+      <RecipeLinkListItem
         key={href}
         href={href}
-        primary={recipe.name}
-        secondary={getRecipeSource(recipe)}
-        secondaryTypographyProps={recipeSourceTypographyProps}
+        name={recipe.name}
+        source={getRecipeSource(recipe)}
       />
     );
   }, []);
