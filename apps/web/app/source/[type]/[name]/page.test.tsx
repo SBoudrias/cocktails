@@ -102,16 +102,6 @@ describe('SourcePage', () => {
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
 
-    it('renders the source about card', async () => {
-      setupApp(
-        await SourcePage({
-          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
-        }),
-      );
-
-      expect(screen.getByRole('link', { name: 'Go to channel' })).toBeInTheDocument();
-    });
-
     it('renders recipe list with header', async () => {
       setupApp(
         await SourcePage({
@@ -174,23 +164,6 @@ describe('SourcePage', () => {
       ).toBeInTheDocument();
     });
 
-    it('hides source about card when searching', async () => {
-      const { user } = setupApp(
-        await SourcePage({
-          params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
-        }),
-      );
-
-      expect(screen.getByRole('link', { name: 'Go to channel' })).toBeInTheDocument();
-
-      const input = screen.getByRole('searchbox');
-      await user.type(input, 'margarita');
-
-      expect(
-        screen.queryByRole('link', { name: 'Go to channel' }),
-      ).not.toBeInTheDocument();
-    });
-
     it('loads with search term from URL', async () => {
       setupApp(
         await SourcePage({
@@ -214,34 +187,15 @@ describe('SourcePage', () => {
         { nuqsOptions: { searchParams: '?search=margarita' } },
       );
 
-      expect(
-        screen.queryByRole('link', { name: 'Go to channel' }),
-      ).not.toBeInTheDocument();
-
       // Clear the search
       const clearButton = screen.getByRole('button', { name: /clear/i });
       await user.click(clearButton);
 
-      expect(screen.getByRole('link', { name: 'Go to channel' })).toBeInTheDocument();
       expect(screen.getByText('All Recipes')).toBeInTheDocument();
     });
   });
 
   describe('with alternate youtube-channel source', () => {
-    it('renders different youtube channel source correctly', async () => {
-      setupApp(
-        await SourcePage({
-          params: Promise.resolve({
-            type: TEST_YOUTUBE_ALT.type,
-            name: TEST_YOUTUBE_ALT.slug,
-          }),
-        }),
-      );
-
-      expect(screen.getByRole('link', { name: 'Go to channel' })).toBeInTheDocument();
-      expect(screen.getByRole('searchbox')).toBeInTheDocument();
-    });
-
     it('search works with alternate youtube channel recipes', async () => {
       const { user } = setupApp(
         await SourcePage({

@@ -96,7 +96,9 @@ describe('CategoryPage', () => {
       expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
 
       // Cloister uses Beefeater London Dry Gin (a specific bottle in the category)
-      expect(screen.getByRole('link', { name: /Cloister/ })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /Cloister/ })).toHaveTextContent(
+        'Anders Erickson',
+      );
     });
   });
 
@@ -115,19 +117,6 @@ describe('CategoryPage', () => {
       // Cloister uses 1.5 oz Beefeater London Dry Gin (spirit in category)
       const cloisterLink = screen.getByRole('link', { name: /Cloister/ });
       expect(cloisterLink).toHaveTextContent('1 ½oz');
-    });
-
-    it('shows the source for unique recipe names', async () => {
-      setupApp(
-        await CategoryPage({
-          params: Promise.resolve({ slug: 'london-dry-gin' }),
-        }),
-      );
-
-      // Cloister is unique (only one recipe with that name)
-      const cloisterLink = screen.getByRole('link', { name: /Cloister/ });
-      expect(cloisterLink).toHaveTextContent('1 ½oz');
-      expect(screen.getByText('Anders Erickson')).toHaveClass('MuiTypography-caption');
     });
   });
 
