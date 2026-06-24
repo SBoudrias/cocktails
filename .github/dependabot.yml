@@ -1,5 +1,13 @@
 version: 2
 updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      # v2.2.1+ uses actions/cache@v4, which still targets Node.js 20.
+      - dependency-name: millionco/react-doctor
+
   - package-ecosystem: npm
     directory: /
     schedule:
