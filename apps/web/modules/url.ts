@@ -91,6 +91,13 @@ export function getNonAlcoholicRecipeListUrl(): Route {
   return '/list/non-alcoholic';
 }
 
+export function getMilkClarificationCalculatorUrl(milkType: string): UrlObject {
+  return {
+    pathname: '/calculators/milk-clarification',
+    query: { milkType },
+  };
+}
+
 export function getBottleListUrl(): Route {
   return '/list/bottles';
 }

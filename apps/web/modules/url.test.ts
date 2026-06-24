@@ -1,6 +1,19 @@
 import type { Recipe, RecipeIngredient } from '@cocktails/data';
 import { describe, expect, it } from 'vitest';
-import { getRecipeEditUrl, getRecipeIngredientUrl } from './url';
+import {
+  getMilkClarificationCalculatorUrl,
+  getRecipeEditUrl,
+  getRecipeIngredientUrl,
+} from './url';
+
+describe('getMilkClarificationCalculatorUrl', () => {
+  it('prefills only the canonical milk type', () => {
+    expect(getMilkClarificationCalculatorUrl('Coconut milk')).toEqual({
+      pathname: '/calculators/milk-clarification',
+      query: { milkType: 'Coconut milk' },
+    });
+  });
+});
 
 const createRecipe = (
   slug: string,
