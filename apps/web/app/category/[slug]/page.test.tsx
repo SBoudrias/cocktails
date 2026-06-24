@@ -1,4 +1,4 @@
-import { getChildCategories } from '@cocktails/data/categories';
+import { getCategory, getChildCategories } from '@cocktails/data/categories';
 import type * as CategoriesModule from '@cocktails/data/categories';
 import { getIngredient, getIngredientsForCategory } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
@@ -6,6 +6,7 @@ import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
+import { getCategoryUrl } from '#/modules/url';
 import { setupApp } from '#/testing';
 import CategoryPage from './page';
 
@@ -27,6 +28,9 @@ const testRecipes = await Promise.all([
   getRecipe({ type: 'book', slug: 'easy-tiki' }, 'fog-cutter', '01_Classic Recipes'),
   getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'cloister'),
 ]);
+const { getChildCategories: getActualChildCategories } = await vi.importActual<
+  typeof CategoriesModule
+>('@cocktails/data/categories');
 
 beforeEach(() => {
   vi.mocked(getChildCategories).mockResolvedValue([]);
@@ -65,6 +69,29 @@ describe('CategoryPage', () => {
       expect(
         screen.getByRole('link', { name: 'Beefeater London Dry Gin' }),
       ).toBeInTheDocument();
+    });
+
+    it('renders links to nested child categories', async () => {
+      const childCategories = await Promise.all([
+        getCategory('aged-rum'),
+        getCategory('blended-aged-rum-jamaica'),
+        getCategory('aged-cachaca'),
+      ]);
+      vi.mocked(getChildCategories).mockImplementation(getActualChildCategories);
+
+      setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'rum' }),
+        }),
+      );
+
+      expect(screen.getByText('Subcategories of Rum')).toBeInTheDocument();
+      for (const childCategory of childCategories) {
+        expect(screen.getByRole('link', { name: childCategory.name })).toHaveAttribute(
+          'href',
+          getCategoryUrl(childCategory),
+        );
+      }
     });
 
     it('renders search header with title', async () => {

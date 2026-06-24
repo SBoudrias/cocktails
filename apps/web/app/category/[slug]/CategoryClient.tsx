@@ -18,7 +18,7 @@ import useNameIsUnique from '#/hooks/useNameIsUnique';
 import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
 import { ingredientHasData } from '#/modules/hasData';
 import { getRecipeSearchText } from '#/modules/searchText';
-import { getIngredientUrl, getRecipeUrl } from '#/modules/url';
+import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '#/modules/url';
 
 export default function CategoryClient({
   category,
@@ -125,6 +125,19 @@ export default function CategoryClient({
                 </CardContent>
               )}
             </Card>
+          )}
+          {childCategories.length > 0 && (
+            <LinkList
+              header={`Subcategories of ${category.name}`}
+              items={childCategories}
+              renderItem={(childCategory) => (
+                <LinkListItem
+                  key={childCategory.slug}
+                  href={getCategoryUrl(childCategory)}
+                  primary={childCategory.name}
+                />
+              )}
+            />
           )}
           {members.length > 0 && (
             <LinkList
