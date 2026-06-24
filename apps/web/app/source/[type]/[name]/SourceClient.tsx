@@ -9,8 +9,7 @@ import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
-import useNameIsUnique from '#/hooks/useNameIsUnique';
-import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
 
@@ -23,7 +22,6 @@ export default function SourceClient({
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
-  const nameIsUnique = useNameIsUnique(recipes);
 
   const emptyState = (
     <>
@@ -34,24 +32,17 @@ export default function SourceClient({
     </>
   );
 
-  const renderRecipe = useCallback(
-    (recipe: Recipe) => {
-      const href = getRecipeUrl(recipe);
-      return (
-        <LinkListItem
-          key={href}
-          href={href}
-          primary={recipe.name}
-          secondary={
-            nameIsUnique(recipe)
-              ? undefined
-              : getRecipeAttribution(recipe, { exclude: { source: source.name } })
-          }
-        />
-      );
-    },
-    [nameIsUnique, source.name],
-  );
+  const renderRecipe = useCallback((recipe: Recipe) => {
+    const href = getRecipeUrl(recipe);
+    return (
+      <LinkListItem
+        key={href}
+        href={href}
+        primary={recipe.name}
+        secondary={getRecipeSource(recipe)}
+      />
+    );
+  }, []);
 
   return (
     <>

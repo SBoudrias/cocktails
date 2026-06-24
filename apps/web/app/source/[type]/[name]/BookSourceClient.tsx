@@ -18,8 +18,7 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import useLocalStorage from '#/hooks/useLocalStorage';
-import useNameIsUnique from '#/hooks/useNameIsUnique';
-import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { createByChapterListConfig } from '#/modules/lists/by-chapter';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import { getRecipeSearchText } from '#/modules/searchText';
@@ -41,29 +40,21 @@ export default function BookSourceClient({
   );
 
   const hasChapters = recipes.some((r) => r.chapter);
-  const nameIsUnique = useNameIsUnique(recipes);
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
 
   const chapterConfig = useMemo(() => createByChapterListConfig(recipes), [recipes]);
 
-  const renderRecipe = useCallback(
-    (recipe: Recipe): React.ReactNode => {
-      const href = getRecipeUrl(recipe);
-      return (
-        <LinkListItem
-          key={href}
-          href={href}
-          primary={recipe.name}
-          secondary={
-            nameIsUnique(recipe)
-              ? undefined
-              : getRecipeAttribution(recipe, { exclude: { source: source.name } })
-          }
-        />
-      );
-    },
-    [nameIsUnique, source.name],
-  );
+  const renderRecipe = useCallback((recipe: Recipe): React.ReactNode => {
+    const href = getRecipeUrl(recipe);
+    return (
+      <LinkListItem
+        key={href}
+        href={href}
+        primary={recipe.name}
+        secondary={getRecipeSource(recipe)}
+      />
+    );
+  }, []);
 
   const emptyState = (
     <>

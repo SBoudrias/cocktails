@@ -246,7 +246,7 @@ describe('IngredientPage', () => {
       expect(chartreuse).toHaveTextContent('1oz');
     });
 
-    it('displays quantity with attribution for duplicate recipe names', () => {
+    it('displays quantity with sources for duplicate recipe names', () => {
       setupApp(ingredientPageJSX);
 
       const allListItems = screen.getAllByRole('listitem');
@@ -270,16 +270,16 @@ describe('IngredientPage', () => {
       expect(tikiModern).toHaveTextContent('Tiki: Modern Tropical Cocktails');
     });
 
-    it('does not show attribution for unique recipe names', () => {
+    it('shows the source for unique recipe names', () => {
       setupApp(ingredientPageJSX);
 
       // Chartreuse swizzle is unique (only one recipe with that name)
       // Use getByText + closest to avoid expensive accessible name computation over large list
       const chartreuseLink = screen.getByText('Chartreuse swizzle').closest('a');
 
-      // Should show quantity but NOT source attribution
+      // The source is always shown alongside the quantity.
       expect(chartreuseLink).toHaveTextContent('1oz');
-      expect(chartreuseLink).not.toHaveTextContent("Smuggler's Cove");
+      expect(chartreuseLink).toHaveTextContent("Smuggler's Cove");
     });
   });
 

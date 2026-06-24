@@ -117,7 +117,7 @@ describe('CategoryPage', () => {
       expect(cloisterLink).toHaveTextContent('1 ½oz');
     });
 
-    it('does not show attribution for unique recipe names', async () => {
+    it('shows the source for unique recipe names', async () => {
       setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
@@ -127,7 +127,7 @@ describe('CategoryPage', () => {
       // Cloister is unique (only one recipe with that name)
       const cloisterLink = screen.getByRole('link', { name: /Cloister/ });
       expect(cloisterLink).toHaveTextContent('1 ½oz');
-      expect(cloisterLink).not.toHaveTextContent('Anders Erickson');
+      expect(cloisterLink).toHaveTextContent('Anders Erickson');
     });
   });
 

@@ -14,8 +14,7 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
-import useNameIsUnique from '#/hooks/useNameIsUnique';
-import { getRecipeAttribution } from '#/modules/getRecipeAttribution';
+import { getRecipeSource } from '#/modules/getRecipeSource';
 import { ingredientHasData } from '#/modules/hasData';
 import { getRecipeSearchText } from '#/modules/searchText';
 import { getIngredientUrl, getRecipeUrl } from '#/modules/url';
@@ -34,7 +33,6 @@ export default function CategoryClient({
   childCategories: Category[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
-  const recipeNameIsUnique = useNameIsUnique(relatedRecipes);
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
 
   const categorySlugs = useMemo(
@@ -75,14 +73,12 @@ export default function CategoryClient({
           key={recipeUrl}
           href={recipeUrl}
           primary={recipe.name}
-          secondary={
-            recipeNameIsUnique(recipe) ? undefined : getRecipeAttribution(recipe)
-          }
+          secondary={getRecipeSource(recipe)}
           tertiary={ing && <Quantity quantity={ing.quantity} preferredUnit="oz" />}
         />
       );
     },
-    [category.slug, categorySlugs, recipeNameIsUnique],
+    [category.slug, categorySlugs],
   );
 
   return (
