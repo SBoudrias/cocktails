@@ -127,7 +127,7 @@ describe('CategoryPage', () => {
       // Cloister is unique (only one recipe with that name)
       const cloisterLink = screen.getByRole('link', { name: /Cloister/ });
       expect(cloisterLink).toHaveTextContent('1 ½oz');
-      expect(cloisterLink).toHaveTextContent('Anders Erickson');
+      expect(screen.getByText('Anders Erickson')).toHaveClass('MuiTypography-caption');
     });
   });
 
