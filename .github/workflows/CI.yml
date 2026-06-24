@@ -40,4 +40,4 @@ jobs:
       - name: Vitest 🧪
         run: yarn test
 
-      - uses: codecov/codecov-action@v6
+      - uses: codecov/codecov-action@v7
