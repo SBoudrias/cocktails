@@ -2,6 +2,17 @@
   "$schema": "../../../../../schemas/recipe.schema.json",
   "name": "Rios Del Miel",
   "preparation": "built",
+  "techniques": [
+    {
+      "technique": "clarification",
+      "method": "milk",
+      "milk_type": "Whole milk",
+      "quantity": {
+        "amount": 34,
+        "unit": "oz"
+      }
+    }
+  ],
   "served_on": "ice cubes",
   "glassware": "punch",
   "servings": 10,
@@ -84,14 +95,6 @@
       "quantity": {
         "amount": 2,
         "unit": "cup"
-      }
-    },
-    {
-      "name": "Whole milk",
-      "type": "other",
-      "quantity": {
-        "amount": 34,
-        "unit": "oz"
       }
     },
     {

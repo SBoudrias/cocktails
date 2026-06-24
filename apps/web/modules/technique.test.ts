@@ -1,6 +1,6 @@
 import type { RecipeIngredient } from '@cocktails/data';
 import { describe, it, expect } from 'vitest';
-import { formatIngredientName } from './technique';
+import { formatIngredientName, formatRecipeTechniqueName } from './technique';
 
 // Helper to create a basic ingredient for testing
 function createIngredient(overrides: Partial<RecipeIngredient> = {}): RecipeIngredient {
@@ -386,5 +386,18 @@ describe('formatIngredientName', () => {
       });
       expect(formatIngredientName(ingredient)).toBe('cucumber slice');
     });
+  });
+});
+
+describe('formatRecipeTechniqueName', () => {
+  it('formats milk clarification as a recipe technique name', () => {
+    expect(
+      formatRecipeTechniqueName({
+        technique: 'clarification',
+        method: 'milk',
+        milk_type: 'Whole milk',
+        quantity: { amount: 5, unit: 'oz' },
+      }),
+    ).toBe('Milk clarification');
   });
 });

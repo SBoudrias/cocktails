@@ -44,3 +44,23 @@ describe('getRecentlyAddedRecipes', () => {
     ]);
   });
 });
+
+describe('getRecipe', () => {
+  it('loads authored recipe techniques from the plural array field', async () => {
+    const { getRecipe } = await import('./recipes');
+
+    const recipe = await getRecipe(
+      { type: 'youtube-channel', slug: 'truffles-on-the-rocks' },
+      'clarified-new-york-sour',
+    );
+
+    expect(recipe.techniques).toEqual([
+      {
+        technique: 'clarification',
+        method: 'milk',
+        milk_type: 'Whole milk',
+        quantity: { amount: 5, unit: 'oz' },
+      },
+    ]);
+  });
+});

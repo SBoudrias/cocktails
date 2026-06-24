@@ -1,4 +1,4 @@
-import type { RecipeIngredient, Technique } from '@cocktails/data';
+import type { RecipeIngredient, RecipeTechnique, Technique } from '@cocktails/data';
 import { match } from 'ts-pattern';
 
 const cutTypeNames = {
@@ -78,4 +78,19 @@ export function formatIngredientName(ingredient: RecipeIngredient): string {
 
   // Handle single technique (backward compatibility)
   return formatSingleTechnique(ingredient.technique, name, ingredient);
+}
+
+export function formatRecipeTechnique(technique: RecipeTechnique): string {
+  return match(technique)
+    .with(
+      { technique: 'clarification', method: 'milk' },
+      ({ milk_type: milkType }) => `${milkType} clarified`,
+    )
+    .exhaustive();
+}
+
+export function formatRecipeTechniqueName(technique: RecipeTechnique): string {
+  return match(technique)
+    .with({ technique: 'clarification', method: 'milk' }, () => 'Milk clarification')
+    .exhaustive();
 }

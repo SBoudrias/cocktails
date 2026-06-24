@@ -12,6 +12,10 @@ import Ajv from 'ajv/dist/2020.js';
 import { format as formatWithOxfmt } from 'oxfmt';
 import { logger } from './cli-util.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
+import {
+  getMilkClarificationIngredientSlugs,
+  validateMilkClarification,
+} from './milk-clarification.ts';
 import { areSimilarNames } from './name-similarity.ts';
 
 const startTime = performance.now();
@@ -41,6 +45,12 @@ interface DataWithSchema {
   attributions?: Attribution[];
   categories?: string[];
   parents?: string[];
+  techniques?: Array<{
+    technique: 'clarification';
+    method: 'milk';
+    milk_type: string;
+    quantity: { amount: number; unit: string };
+  }>;
 }
 
 function addCategoryType(
@@ -252,6 +262,19 @@ for await (const sourceFile of fs.glob(dataGlob)) {
 
   // Collect bar attributions for case consistency check
   if (schemaPath === 'schemas/recipe.schema.json') {
+    if (isValid) {
+      for (const message of validateMilkClarification(
+        { ingredients: data.ingredients ?? [], techniques: data.techniques },
+        canonicalNames,
+        ingredientFolders,
+      )) {
+        fail(`${message} in ${path.basename(sourceFile)}`);
+      }
+      for (const ingredientSlug of getMilkClarificationIngredientSlugs(data)) {
+        referencedIngredientSlugs.add(ingredientSlug);
+      }
+    }
+
     for (const attribution of data.attributions ?? []) {
       if (attribution.relation === 'bar') {
         const lowerName = attribution.source.toLowerCase();
