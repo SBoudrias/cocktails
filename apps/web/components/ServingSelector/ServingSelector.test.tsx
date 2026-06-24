@@ -185,4 +185,19 @@ describe('ServingSelector', () => {
       expect(input).toHaveValue(2);
     });
   });
+
+  it('discards an invalid edit when servings changes externally', async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    const { rerender } = render(<ServingSelector servings={2} onChange={onChange} />);
+    const input = screen.getByLabelText('Number of servings');
+
+    await user.clear(input);
+    await user.type(input, '0.1');
+    expect(input).toHaveValue(0.1);
+
+    rerender(<ServingSelector servings={3} onChange={onChange} />);
+
+    expect(input).toHaveValue(3);
+  });
 });

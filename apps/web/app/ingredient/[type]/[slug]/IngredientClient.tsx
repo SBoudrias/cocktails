@@ -15,7 +15,7 @@ import {
   Paper,
   Stack,
 } from '@mui/material';
-import { uniqBy } from 'lodash';
+import uniqBy from 'lodash/uniqBy';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
 import AppHeader from '#/components/AppHeader';

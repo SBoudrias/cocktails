@@ -1,0 +1,51 @@
+import '@testing-library/jest-dom/vitest';
+import type { RenderOptions } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Storage } from 'happy-dom';
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
+import type { ComponentProps, ReactNode } from 'react';
+import { createElement } from 'react';
+import { vi } from 'vitest';
+
+vi.mock('next/router', async () => import('next-router-mock'));
+vi.mock('next/navigation', async () => import('next-router-mock/navigation'));
+vi.mock('lite-youtube-embed', () => ({}));
+
+// In Node.js 25+, the global localStorage is a built-in that lacks the full
+// Web Storage API (e.g. no clear()). Replace it with happy-dom's implementation.
+if (typeof localStorage?.clear !== 'function') {
+  vi.stubGlobal('localStorage', new Storage());
+}
+
+export function setupApp(
+  ui: ReactNode,
+  {
+    nuqsOptions,
+    routerOptions,
+    ...renderOptions
+  }: RenderOptions & {
+    nuqsOptions?: Omit<ComponentProps<typeof NuqsTestingAdapter>, 'children'>;
+    routerOptions?: Omit<ComponentProps<typeof MemoryRouterProvider>, 'children'>;
+  } = {},
+) {
+  let user: ReturnType<typeof userEvent.setup> | undefined;
+
+  return {
+    get user() {
+      user ??= userEvent.setup();
+      return user;
+    },
+    ...render(
+      createElement(MemoryRouterProvider, {
+        ...routerOptions,
+        children: createElement(NuqsTestingAdapter, {
+          ...nuqsOptions,
+          children: ui,
+        }),
+      }),
+      renderOptions,
+    ),
+  };
+}

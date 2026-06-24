@@ -16,10 +16,9 @@ export default async function BarListPage() {
     { name: string; location?: string; recipeCount: number }
   >();
 
-  allRecipes.forEach((recipe) => {
-    recipe.attributions
-      .filter((attribution) => attribution.relation === 'bar')
-      .forEach((attribution) => {
+  for (const recipe of allRecipes) {
+    for (const attribution of recipe.attributions) {
+      if (attribution.relation === 'bar') {
         const mapKey = `${attribution.source}${attribution.location ?? ''}`;
         const bar = barsMap.get(mapKey) || {
           name: attribution.source,
@@ -28,8 +27,9 @@ export default async function BarListPage() {
         };
         bar.recipeCount += 1;
         barsMap.set(mapKey, bar);
-      });
-  });
+      }
+    }
+  }
 
   // Convert to array and sort
   const bars = Array.from(barsMap.values()).toSorted((a, b) =>

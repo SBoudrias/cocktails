@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import SearchHeader from './index';
 
 describe('SearchHeader', () => {

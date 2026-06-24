@@ -3,7 +3,7 @@
 import { Add, Remove } from '@mui/icons-material';
 import { TextField, IconButton, InputAdornment } from '@mui/material';
 import type { ChangeEvent } from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const MIN_SERVINGS = 0.25;
 const MAX_SERVINGS = 50;
@@ -15,31 +15,26 @@ export default function ServingSelector({
   servings: number;
   onChange: (servings: number) => void;
 }) {
-  const [inputValue = servings.toString(), setInputValue] = useState<
-    string | undefined
-  >();
-
-  // Update input value when servings prop changes (from button clicks or external changes)
-  useEffect(() => {
-    setInputValue(undefined);
-  }, [servings]);
+  const [draft, setDraft] = useState<{
+    base: number;
+    text: string;
+  }>();
+  const inputValue = draft?.base === servings ? draft.text : undefined;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newInputValue = event.target.value;
-    setInputValue(newInputValue);
+    const text = event.target.value;
+    const value = Number(text);
 
-    // Only trigger onChange if the value is valid
-    if (newInputValue !== '') {
-      const value = parseFloat(newInputValue);
-      if (!isNaN(value) && value >= MIN_SERVINGS && value <= MAX_SERVINGS) {
-        onChange(value);
-        setInputValue(undefined);
-      }
+    if (text !== '' && value >= MIN_SERVINGS && value <= MAX_SERVINGS) {
+      setDraft(undefined);
+      onChange(value);
+    } else {
+      setDraft({ base: servings, text });
     }
   };
 
   const handleIncrement = () => {
-    setInputValue(undefined);
+    setDraft(undefined);
 
     if (servings < MAX_SERVINGS) {
       if (servings < 1) {
@@ -53,7 +48,7 @@ export default function ServingSelector({
   };
 
   const handleDecrement = () => {
-    setInputValue(undefined);
+    setDraft(undefined);
 
     // At 0.25, button will be disabled
     if (servings > MIN_SERVINGS) {
@@ -68,7 +63,7 @@ export default function ServingSelector({
   };
 
   const handleBlur = () => {
-    setInputValue(undefined);
+    setDraft(undefined);
   };
 
   return (
@@ -76,7 +71,7 @@ export default function ServingSelector({
       type="number"
       size="small"
       label="Servings"
-      value={inputValue}
+      value={inputValue ?? servings}
       onChange={handleChange}
       onBlur={handleBlur}
       slotProps={{

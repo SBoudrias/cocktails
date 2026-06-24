@@ -27,8 +27,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { name } = await params;
-  const allRecipes = await getAllRecipes();
+  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
   const authorName = findAuthorNameFromSlug(name, allRecipes);
 
   if (!authorName) {
@@ -46,24 +45,22 @@ export async function generateStaticParams() {
   const allRecipes = await getAllRecipes();
   const params = new Set<string>();
 
-  allRecipes.forEach((recipe) => {
-    recipe.attributions
-      .filter(
-        (attribution) =>
-          attribution.relation === 'recipe author' ||
-          attribution.relation === 'adapted by',
-      )
-      .forEach((attribution) => {
+  for (const recipe of allRecipes) {
+    for (const attribution of recipe.attributions) {
+      if (
+        attribution.relation === 'recipe author' ||
+        attribution.relation === 'adapted by'
+      ) {
         params.add(slugify(attribution.source));
-      });
-  });
+      }
+    }
+  }
 
   return Array.from(params).map((name) => ({ name }));
 }
 
 export default async function AuthorRecipesPage({ params }: Props) {
-  const { name } = await params;
-  const allRecipes = await getAllRecipes();
+  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
   const authorName = findAuthorNameFromSlug(name, allRecipes);
 
   if (!authorName) {

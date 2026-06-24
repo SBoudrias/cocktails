@@ -5,7 +5,7 @@ import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { getCategoryUrl } from '#/modules/url';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import IngredientsPage from './page';
 
 vi.mock('@cocktails/data/categories', async (importOriginal) => ({

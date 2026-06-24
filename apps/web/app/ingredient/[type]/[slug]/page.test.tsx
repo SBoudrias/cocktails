@@ -8,7 +8,7 @@ import { getRecipe } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import IngredientPage from './page';
 
 vi.mock('@cocktails/data/ingredients', async (importOriginal) => ({

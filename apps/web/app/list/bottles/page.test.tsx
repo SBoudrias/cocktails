@@ -2,7 +2,7 @@ import { getAllIngredients, getIngredient } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
-import { setupApp } from '#/testing';
+import { setupApp } from '#/vitest.setup';
 import BottlesPage from './page';
 
 vi.mock('@cocktails/data/ingredients', async (importOriginal) => ({

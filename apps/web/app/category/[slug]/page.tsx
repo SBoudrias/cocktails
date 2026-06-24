@@ -36,9 +36,11 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   const { slug } = await params;
 
   const category = await getCategory(slug);
-  const [members, substitutes] = await getIngredientsForCategory(category);
-  const relatedRecipes = await getRecipeByCategory(category);
-  const childCategories = await getChildCategories(category);
+  const [[members, substitutes], relatedRecipes, childCategories] = await Promise.all([
+    getIngredientsForCategory(category),
+    getRecipeByCategory(category),
+    getChildCategories(category),
+  ]);
 
   return (
     <Suspense>

@@ -73,10 +73,10 @@ function PowderCalculator({
   onProfileChange: (profile: AcidProfile) => void;
   showFullCalculatorLink: boolean;
 }) {
-  const [targetAcidityValue, setTargetAcidity] = useState(
+  const [targetAcidityValue, setTargetAcidity] = useState(() =>
     DEFAULT_TARGET_ACIDITY.toString(),
   );
-  const [acidAmountValue, setAcidAmount] = useState(defaultAcidity.toString());
+  const [acidAmountValue, setAcidAmount] = useState(() => defaultAcidity.toString());
   const [weightValue, setWeight] = useState('100');
 
   const targetAcidity = parseNumber(targetAcidityValue);
@@ -361,11 +361,11 @@ function SolutionCalculator({
     defaultValue: '1',
   });
   const [initialJuiceAmount] = useState(juiceAmountValue);
-  const [targetAcidityValue, setTargetAcidity] = useState(
+  const [targetAcidityValue, setTargetAcidity] = useState(() =>
     DEFAULT_TARGET_ACIDITY.toString(),
   );
-  const [acidAmountValue, setAcidAmount] = useState(defaultAcidity.toString());
-  const [solutionVolumeValue, setSolutionVolume] = useState(
+  const [acidAmountValue, setAcidAmount] = useState(() => defaultAcidity.toString());
+  const [solutionVolumeValue, setSolutionVolume] = useState(() =>
     DEFAULT_SOLUTION_VOLUME.toString(),
   );
 
