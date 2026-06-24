@@ -80,6 +80,13 @@ export function getRecentlyAddedUrl() {
   return '/list/recently-added';
 }
 
+export function getMilkClarificationCalculatorUrl(milkType: string): UrlObject {
+  return {
+    pathname: '/calculators/milk-clarification',
+    query: { milkType },
+  };
+}
+
 export function getBottleListUrl() {
   return '/list/bottles';
 }
