@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,16028,e=>{"use strict";var t=e.i(18566);e.s(["default",0,function(){let e=(0,t.useSearchParams)().get("search");return(0,t.redirect)(e?`/list/recipes?search=${encodeURIComponent(e)}`:"/list/recipes")}])}]);
