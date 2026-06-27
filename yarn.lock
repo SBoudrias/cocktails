@@ -316,7 +316,7 @@ __metadata:
   dependencies:
     "@cocktails/data": "workspace:*"
     commander: "npm:^15.0.0"
-    iso8601-duration: "npm:^2.1.3"
+    iso8601-duration: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4553,10 +4553,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iso8601-duration@npm:^2.1.3":
-  version: 2.1.3
-  resolution: "iso8601-duration@npm:2.1.3"
-  checksum: 10c0/fab3b77815e810bd0d30ff0bd00987a0f0f5763ca3056578bbac29f794edacdf02c6f9c3a48f2beff9d7850fd8169ffc5fb28801ca5ffaf67b472b4e07e10493
+"iso8601-duration@npm:^2.1.4":
+  version: 2.1.4
+  resolution: "iso8601-duration@npm:2.1.4"
+  checksum: 10c0/5dc89a2a542b29af36b6b1834cf831166a35cb57bd9af3530c36ac2c01897890f46756f8f184131003d20abf7d9c18b326e8167e4285cc3a3519f70d1edcf581
   languageName: node
   linkType: hard
 
