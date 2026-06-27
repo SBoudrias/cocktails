@@ -10,6 +10,6 @@
   "dependencies": {
     "@cocktails/data": "workspace:*",
     "commander": "^15.0.0",
-    "iso8601-duration": "^2.1.3"
+    "iso8601-duration": "^2.1.4"
   }
 }
