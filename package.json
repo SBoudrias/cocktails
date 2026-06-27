@@ -23,7 +23,7 @@
     "@vitejs/plugin-react": "^6.0.3",
     "@vitest/browser": "^4.1.9",
     "@vitest/coverage-v8": "^4.1.9",
-    "eslint": "^10.5.0",
+    "eslint": "^10.6.0",
     "eslint-config-next": "16.2.9",
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.56.0",
