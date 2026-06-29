@@ -1,28 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Panacea",
+  "name": "Akasaka Sour",
   "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Egg white",
-      "type": "emulsifier",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
         "amount": 1,
-        "unit": "unit"
+        "unit": "tsp"
       }
     },
     {
-      "name": "Simple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blueberry lavender shrub",
+      "name": "Liber & Co. Japanese Yuzu Syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -33,12 +25,20 @@
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Whisky (Blended Scotch)",
+      "name": "Gin",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -46,23 +46,17 @@
       }
     }
   ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Make and Drink"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "z0_980tk3Lw"
-    },
-    {
-      "type": "youtube",
-      "videoId": "l3AVZXBy_fg"
-    },
-    {
-      "type": "youtube",
-      "videoId": "qKgCw8f50BQ",
-      "start": 264
-    },
-    {
-      "type": "youtube",
-      "videoId": "e9NCH46rqks"
+      "videoId": "xleP0FpIrNM",
+      "start": 79
     }
   ]
 }

@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "21st Century",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lillet Blanc",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lychee Foam",
+      "type": "other",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except Lychee Foam with ice.",
+    "Strain into a chilled coupe.",
+    "Top with Lychee Foam.",
+    "Garnish with a lemon twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "5I6CsA9IY1M",
+      "start": 97
+    }
+  ]
+}

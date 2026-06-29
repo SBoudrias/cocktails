@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mountain Dew Voltage",
+  "type": "soda"
+}

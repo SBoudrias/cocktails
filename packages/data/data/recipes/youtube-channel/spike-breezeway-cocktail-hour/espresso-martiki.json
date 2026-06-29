@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Espresso Martiki",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "flute",
+  "ingredients": [
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "espresso",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mr. Black coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton Jamaican Pot Still Black",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Double strain into a chilled glass.",
+    "Garnish with espresso beans."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Martin Hudak"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "I4FbF9ylfmE",
+      "start": 955
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Liber & Co. Japanese Yuzu Syrup",
+  "type": "syrup"
+}
