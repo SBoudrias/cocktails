@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Blue Cheese Dirty Martini",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "MSG solution",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Olive bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cocchi Americano",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dry vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "blue cheese"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into a chilled martini glass.",
+    "Garnish with olives."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "1X_YcpW4tJE"
+    }
+  ]
+}
