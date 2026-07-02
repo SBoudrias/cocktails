@@ -23,4 +23,37 @@ describe('RecipePage', () => {
 
     expect(screen.getByText('The Tiki Revival · page 96')).toBeInTheDocument();
   });
+
+  it('renders whole-recipe clarification in a scalable Techniques section', async () => {
+    const clarifiedRecipe = await getRecipe(
+      { type: 'youtube-channel', slug: 'truffles-on-the-rocks' },
+      'clarified-new-york-sour',
+    );
+
+    const { user } = setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: clarifiedRecipe.source.type,
+          source: clarifiedRecipe.source.slug,
+          recipe: clarifiedRecipe.slug,
+        }),
+      }),
+    );
+
+    const recipeContent = screen.getByRole('main');
+    expect(recipeContent).toHaveTextContent('stirred');
+    expect(screen.queryByText('Whole milk clarified')).not.toBeInTheDocument();
+
+    const techniques = screen.getByRole('list', { name: 'Techniques' });
+    expect(techniques).toHaveTextContent('Milk clarification');
+    expect(techniques).toHaveTextContent('5ozWhole milk');
+
+    await user.click(screen.getByRole('button', { name: 'ml' }));
+
+    expect(techniques).toHaveTextContent('150mlWhole milk');
+
+    await user.click(screen.getByRole('button', { name: 'Increment' }));
+
+    expect(techniques).toHaveTextContent('300mlWhole milk');
+  });
 });

@@ -1,6 +1,6 @@
 'use client';
 
-import type { Recipe } from '@cocktails/data';
+import type { Recipe, RecipeTechnique } from '@cocktails/data';
 import { compareIngredients } from '@cocktails/ingredient-sorting';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
@@ -11,9 +11,11 @@ import {
   ListSubheader,
   Paper,
   Toolbar,
+  Typography,
 } from '@mui/material';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import { match } from 'ts-pattern';
 import Quantity from '#/components/Quantity';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import ServingSelector from '#/components/ServingSelector';
@@ -57,11 +59,38 @@ function IngredientLine({
   );
 }
 
+function TechniqueDetails({
+  technique,
+  preferredUnit,
+}: {
+  technique: RecipeTechnique;
+  preferredUnit: Unit;
+}) {
+  return match(technique)
+    .with({ technique: 'clarification', method: 'milk' }, (milkClarification) => (
+      <Stack spacing={0.5}>
+        <Typography component="div" variant="subtitle1" sx={{ fontWeight: 'medium' }}>
+          Milk clarification
+        </Typography>
+        <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
+          <Quantity
+            preferredUnit={preferredUnit}
+            quantity={milkClarification.milk_quantity}
+          />
+          <div className={styles.name}>{milkClarification.milk_type}</div>
+        </Stack>
+      </Stack>
+    ))
+    .exhaustive();
+}
+
 export default function IngredientList({
   ingredients,
+  technique,
   defaultServings = 1,
 }: {
   ingredients: Recipe['ingredients'];
+  technique?: Recipe['technique'];
   defaultServings?: number;
 }) {
   const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
@@ -79,6 +108,19 @@ export default function IngredientList({
             : ingredient.quantity,
       })),
     [ingredients, scaleFactor],
+  );
+  const scaledTechniques = useMemo(
+    () =>
+      (technique == null ? [] : Array.isArray(technique) ? technique : [technique]).map(
+        (recipeTechnique) => ({
+          ...recipeTechnique,
+          milk_quantity:
+            scaleFactor !== 1
+              ? scaleQuantity(recipeTechnique.milk_quantity, scaleFactor)
+              : recipeTechnique.milk_quantity,
+        }),
+      ),
+    [scaleFactor, technique],
   );
 
   return (
@@ -102,6 +144,26 @@ export default function IngredientList({
           })}
         </Paper>
       </List>
+      {scaledTechniques.length > 0 && (
+        <List aria-labelledby="recipe-techniques-heading">
+          <ListSubheader id="recipe-techniques-heading">Techniques</ListSubheader>
+          <Paper square>
+            {scaledTechniques.map((recipeTechnique, index) => (
+              <ListItem
+                divider
+                key={`${recipeTechnique.technique}-${recipeTechnique.milk_type}-${index}`}
+              >
+                <ListItemText>
+                  <TechniqueDetails
+                    technique={recipeTechnique}
+                    preferredUnit={preferredUnit}
+                  />
+                </ListItemText>
+              </ListItem>
+            ))}
+          </Paper>
+        </List>
+      )}
       <Toolbar sx={{ justifyContent: 'space-between', px: 1 }}>
         <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
         <ServingSelector servings={servings} onChange={setServings} />
