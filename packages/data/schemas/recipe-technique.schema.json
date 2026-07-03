@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./recipe-technique.schema.json",
+  "title": "Recipe technique",
+  "description": "A technique applied to a complete cocktail recipe",
+  "type": "object",
+  "properties": {
+    "technique": { "const": "clarification" },
+    "method": { "const": "milk" },
+    "milk_type": { "type": "string" },
+    "quantity": { "$ref": "./quantity.schema.json" }
+  },
+  "required": ["technique", "method", "milk_type", "quantity"],
+  "additionalProperties": false
+}

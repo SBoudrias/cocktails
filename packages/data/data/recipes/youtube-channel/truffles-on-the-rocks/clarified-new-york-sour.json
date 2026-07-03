@@ -2,6 +2,17 @@
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Clarified New York Sour",
   "preparation": "stirred",
+  "techniques": [
+    {
+      "technique": "clarification",
+      "method": "milk",
+      "milk_type": "Whole milk",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    }
+  ],
   "served_on": "big rock",
   "glassware": "old fashioned",
   "ingredients": [
@@ -16,14 +27,6 @@
     {
       "name": "Lemon juice",
       "type": "juice",
-      "quantity": {
-        "amount": 5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Whole milk",
-      "type": "other",
       "quantity": {
         "amount": 5,
         "unit": "oz"

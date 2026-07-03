@@ -1,6 +1,6 @@
 'use client';
 
-import type { Recipe } from '@cocktails/data';
+import type { Recipe, RecipeTechnique } from '@cocktails/data';
 import { compareIngredients } from '@cocktails/ingredient-sorting';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
@@ -13,15 +13,18 @@ import {
   Toolbar,
 } from '@mui/material';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
+import { match } from 'ts-pattern';
 import Quantity from '#/components/Quantity';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import ServingSelector from '#/components/ServingSelector';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
-import { formatIngredientName } from '#/modules/technique';
+import { formatIngredientName, formatRecipeTechniqueName } from '#/modules/technique';
 import { getRecipeIngredientUrl } from '#/modules/url';
 import styles from './style.module.css';
+
+const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
 
 function IngredientLine({
   ingredient,
@@ -57,28 +60,55 @@ function IngredientLine({
   );
 }
 
+function TechniqueDetails({
+  technique,
+  preferredUnit,
+}: {
+  technique: RecipeTechnique;
+  preferredUnit: Unit;
+}) {
+  return match(technique)
+    .with({ technique: 'clarification', method: 'milk' }, (milkClarification) => (
+      <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
+        <Quantity preferredUnit={preferredUnit} quantity={milkClarification.quantity} />
+        <div className={styles.name}>{milkClarification.milk_type}</div>
+      </Stack>
+    ))
+    .exhaustive();
+}
+
 export default function IngredientList({
   ingredients,
+  techniques = EMPTY_TECHNIQUES,
   defaultServings = 1,
 }: {
   ingredients: Recipe['ingredients'];
+  techniques?: RecipeTechnique[];
   defaultServings?: number;
 }) {
   const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
   const [servings, setServings] = useState(defaultServings);
   const scaleFactor = calculateScaleFactor(defaultServings, servings);
 
-  // Scale all ingredients at the list level
   const scaledIngredients = useMemo(
     () =>
-      ingredients.map((ingredient) => ({
-        ...ingredient,
-        quantity:
-          scaleFactor !== 1
-            ? scaleQuantity(ingredient.quantity, scaleFactor)
-            : ingredient.quantity,
-      })),
+      scaleFactor === 1
+        ? ingredients
+        : ingredients.map((ingredient) => ({
+            ...ingredient,
+            quantity: scaleQuantity(ingredient.quantity, scaleFactor),
+          })),
     [ingredients, scaleFactor],
+  );
+  const scaledTechniques = useMemo(
+    () =>
+      scaleFactor === 1
+        ? techniques
+        : techniques.map((recipeTechnique) => ({
+            ...recipeTechnique,
+            quantity: scaleQuantity(recipeTechnique.quantity, scaleFactor),
+          })),
+    [scaleFactor, techniques],
   );
 
   return (
@@ -102,6 +132,29 @@ export default function IngredientList({
           })}
         </Paper>
       </List>
+      {scaledTechniques.map((recipeTechnique) => {
+        const headingId = `recipe-technique-${recipeTechnique.technique}-heading`;
+
+        return (
+          <Fragment key={recipeTechnique.technique}>
+            <ListSubheader component="div" id={headingId}>
+              {formatRecipeTechniqueName(recipeTechnique)}
+            </ListSubheader>
+            <List aria-labelledby={headingId}>
+              <Paper square>
+                <ListItem divider>
+                  <ListItemText>
+                    <TechniqueDetails
+                      technique={recipeTechnique}
+                      preferredUnit={preferredUnit}
+                    />
+                  </ListItemText>
+                </ListItem>
+              </Paper>
+            </List>
+          </Fragment>
+        );
+      })}
       <Toolbar sx={{ justifyContent: 'space-between', px: 1 }}>
         <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
         <ServingSelector servings={servings} onChange={setServings} />

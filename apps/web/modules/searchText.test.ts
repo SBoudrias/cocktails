@@ -93,6 +93,39 @@ describe('getRecipeSearchText', () => {
     );
   });
 
+  it('includes the canonical and formatted whole-recipe technique names', () => {
+    const recipe = createMockRecipe({
+      techniques: [
+        {
+          technique: 'clarification',
+          method: 'milk',
+          milk_type: 'Coconut milk',
+          quantity: { amount: 4, unit: 'oz' },
+        },
+      ],
+    });
+
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
+      `"test recipe clarification coconut milk clarified"`,
+    );
+  });
+
+  it('keeps ingredient clarification scoped to its ingredient', () => {
+    const recipe = createMockRecipe({
+      ingredients: [
+        createMockRecipeIngredient({
+          name: 'Lime juice',
+          type: 'juice',
+          technique: { technique: 'clarification', method: 'milk' },
+        }),
+      ],
+    });
+
+    expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(
+      `"test recipe milk-clarified lime juice"`,
+    );
+  });
+
   it('transliterates special characters', () => {
     const recipe = createMockRecipe({ name: 'Café Cubano' });
     expect(getRecipeSearchText(recipe)).toMatchInlineSnapshot(`"cafe cubano"`);

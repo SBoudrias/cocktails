@@ -6,7 +6,7 @@ import type {
   RecipeIngredient,
 } from '@cocktails/data';
 import transliterate from '@sindresorhus/transliterate';
-import { formatIngredientName } from './technique.ts';
+import { formatIngredientName, formatRecipeTechnique } from './technique.ts';
 
 /**
  * Returns transliterated lowercase text suitable for fuzzy search matching.
@@ -42,9 +42,13 @@ function getAttributionSearchText(attribution: Attribution): string {
 export function getRecipeSearchText(recipe: Recipe): string {
   const ingredientParts = recipe.ingredients.map(getIngredientSearchText);
   const attributionParts = recipe.attributions.map(getAttributionSearchText);
+  const techniqueParts =
+    recipe.techniques?.map(
+      (technique) => `${technique.technique} ${formatRecipeTechnique(technique)}`,
+    ) ?? [];
 
   return normalize(
-    `${recipe.name} ${ingredientParts.join(' ')} ${attributionParts.join(' ')}`,
+    `${recipe.name} ${techniqueParts.join(' ')} ${ingredientParts.join(' ')} ${attributionParts.join(' ')}`,
   );
 }
 

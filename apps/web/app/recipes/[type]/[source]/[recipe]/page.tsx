@@ -68,6 +68,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
         </Grid>
         <IngredientList
           ingredients={recipe.ingredients}
+          techniques={recipe.techniques}
           defaultServings={recipe.servings}
         />
         {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (

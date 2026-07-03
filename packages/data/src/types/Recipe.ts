@@ -30,11 +30,19 @@ export type Chapter = {
   name: string;
 };
 
+export type RecipeTechnique = {
+  technique: 'clarification';
+  method: 'milk';
+  milk_type: string;
+  quantity: RecipeIngredient['quantity'];
+};
+
 export type Recipe = {
   name: string;
   slug: string;
   chapter?: Chapter;
   preparation: 'built' | 'shaken' | 'stirred' | 'blended' | 'flash blended' | 'swizzled';
+  techniques?: RecipeTechnique[];
   served_on: 'big rock' | 'up' | 'crushed ice' | 'blended' | 'ice cubes';
   glassware:
     | 'old fashioned'

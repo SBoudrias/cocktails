@@ -22,6 +22,8 @@ function toAlphaSort<I extends { name: string }>(arr: I[]) {
   return arr.toSorted((a, b) => a.name.localeCompare(b.name));
 }
 
+type RecipeData = Omit<Recipe, 'chapter' | 'slug' | 'source'>;
+
 export const getRecipe = memo(
   async (
     source: {
@@ -41,7 +43,7 @@ export const getRecipe = memo(
 
     // If no chapter provided, try flat path first, then search chapter directories
     if (!chapter) {
-      const data = await readJSONFile<Omit<Recipe, 'source' | 'slug'>>(directPath);
+      const data = await readJSONFile<RecipeData>(directPath);
       if (!data) {
         // Search in chapter directories using glob
         const sourcePath = path.join(RECIPE_ROOT, source.type, source.slug);
@@ -56,8 +58,7 @@ export const getRecipe = memo(
       }
     }
 
-    const data =
-      await readJSONFile<Omit<Recipe, 'source' | 'slug' | 'chapter'>>(filepath);
+    const data = await readJSONFile<RecipeData>(filepath);
 
     if (!data) throw new Error(`Recipe not found: ${filepath}`);
 

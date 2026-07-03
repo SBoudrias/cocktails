@@ -165,9 +165,21 @@ export const getSubstitutesForIngredient = memo(
 export const getRecipesForIngredient = memo(
   async (ingredient: RootIngredient): Promise<Recipe[]> => {
     const allRecipes = await getAllRecipes();
-    const relatedRecipes = allRecipes.filter((recipe) =>
-      recipe.ingredients.some((i) => i.slug === ingredient.slug),
-    );
+    const relatedRecipes = allRecipes.filter((recipe) => {
+      const isDirectIngredient = recipe.ingredients.some(
+        (recipeIngredient) => recipeIngredient.slug === ingredient.slug,
+      );
+      const isTechniqueMaterial = (recipe.techniques ?? []).some((technique) =>
+        match(technique)
+          .with(
+            { technique: 'clarification', method: 'milk' },
+            ({ milk_type: milkType }) => slugify(milkType) === ingredient.slug,
+          )
+          .exhaustive(),
+      );
+
+      return isDirectIngredient || isTechniqueMaterial;
+    });
 
     return toAlphaSort(relatedRecipes);
   },
