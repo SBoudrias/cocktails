@@ -63,7 +63,6 @@ describe('HomePage', () => {
       within(calculators).getByRole('link', { name: 'Juice Clarification' }),
     ).toHaveAttribute('href', '/calculators/juice-clarification');
   });
-
   it('links to recently added recipes when recent recipe data is available', async () => {
     setupApp(await HomePage());
 
@@ -81,5 +80,14 @@ describe('HomePage', () => {
     expect(
       screen.queryByRole('link', { name: /recently added/i }),
     ).not.toBeInTheDocument();
+  });
+
+  it('links to the non-alcoholic recipe list', async () => {
+    setupApp(await HomePage());
+
+    expect(screen.getByRole('link', { name: 'Non-Alcoholic Recipes' })).toHaveAttribute(
+      'href',
+      '/list/non-alcoholic',
+    );
   });
 });

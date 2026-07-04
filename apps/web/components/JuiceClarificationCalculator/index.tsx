@@ -1,5 +1,6 @@
 'use client';
 
+import { tryConvertVolume } from '@cocktails/conversion';
 import type { RecipeIngredient } from '@cocktails/data';
 import type { SxProps } from '@mui/material';
 import {
@@ -17,7 +18,6 @@ import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
 import Video from '#/components/Video';
-import { tryConvertVolume } from '#/modules/conversion';
 
 const DEFAULT_JUICE_WEIGHT = 250;
 const MINIMUM_CONTEXTUAL_JUICE_WEIGHT = DEFAULT_JUICE_WEIGHT;

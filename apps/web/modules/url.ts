@@ -1,8 +1,8 @@
 import type { UrlObject } from 'node:url';
+import { tryConvertVolume } from '@cocktails/conversion';
 import type { Recipe, RecipeIngredient, Source, Technique } from '@cocktails/data';
 import slugify from '@sindresorhus/slugify';
 import { P, match } from 'ts-pattern';
-import { tryConvertVolume } from '#/modules/conversion';
 
 export function getRecipeUrl(recipe: Recipe) {
   return `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`;
@@ -78,6 +78,10 @@ export function getRecipeListUrl() {
 
 export function getRecentlyAddedUrl() {
   return '/list/recently-added';
+}
+
+export function getNonAlcoholicRecipeListUrl() {
+  return '/list/non-alcoholic';
 }
 
 export function getBottleListUrl() {

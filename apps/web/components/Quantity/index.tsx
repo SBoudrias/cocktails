@@ -1,9 +1,9 @@
 'use client';
 
+import { tryConvertVolume } from '@cocktails/conversion';
 import type { RecipeIngredient } from '@cocktails/data';
 import { Box } from '@mui/material';
 import { match } from 'ts-pattern';
-import { tryConvertVolume } from '#/modules/conversion';
 import { roundToFriendlyFraction, roundToFriendlyMl } from '#/modules/friendly-rounding';
 import styles from './style.module.css';
 
@@ -80,6 +80,10 @@ function formatAmount(
   return Math.round(amount);
 }
 
+function shouldConvertForDisplay(quantity: RecipeIngredient['quantity']) {
+  return unitType[quantity.unit] !== 'counting';
+}
+
 export default function Quantity({
   preferredUnit,
   quantity,
@@ -88,7 +92,11 @@ export default function Quantity({
   quantity: RecipeIngredient['quantity'];
 }) {
   const { amount, maximum, modifier, unit } = match(preferredUnit)
-    .with('ml', () => tryConvertVolume(quantity, 'ml') ?? quantity)
+    .with('ml', () =>
+      shouldConvertForDisplay(quantity)
+        ? (tryConvertVolume(quantity, 'ml') ?? quantity)
+        : quantity,
+    )
     .with('oz', () =>
       match(quantity)
         .with(

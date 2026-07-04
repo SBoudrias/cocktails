@@ -117,6 +117,28 @@ describe('IngredientList', () => {
     expect(screen.getByText('2 ¼')).toBeInTheDocument();
   });
 
+  it('keeps counting quantities in their source unit when metric display is selected', () => {
+    const ingredients: Recipe['ingredients'] = [
+      {
+        name: 'Angostura bitters',
+        slug: 'angostura-bitters',
+        type: 'bitter',
+        quantity: { amount: 2, unit: 'dash' },
+        categories: [],
+        refs: [],
+        ingredients: [],
+      },
+    ];
+
+    render(<IngredientList ingredients={ingredients} />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'ml' }));
+
+    const ingredientList = screen.getByRole('list');
+    expect(ingredientList).toHaveTextContent('2dash');
+    expect(ingredientList).not.toHaveTextContent('ml');
+  });
+
   it('keeps ordinary ingredient links free of recipe context', () => {
     render(<IngredientList ingredients={mockIngredients} />);
 
