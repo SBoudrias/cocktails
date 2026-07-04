@@ -1,49 +1,27 @@
 #!/usr/bin/env -S node --no-warnings
 
 import { execSync } from 'node:child_process';
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { RECIPE_ROOT, YOUTUBE_CHANNEL_ROOT } from '@cocktails/data/constants';
 import { Command } from 'commander';
 import { logger } from './cli-util.ts';
-import * as YouTubeAPI from './youtube-api.ts';
+import {
+  collectRecipeVideoReferences,
+  getVideoIdsFromRecipeReferences,
+} from './recipe-video-refs.ts';
+import {
+  dedupeVideos,
+  fetchChannelVideos,
+  getTrackedChannels,
+  type Video,
+} from './youtube-channel-videos.ts';
 
 const DEFAULT_MAX_AGE_DAYS = 7;
 const ISSUE_LABELS = ['youtube', 'automation'];
-
-interface ChannelSource {
-  slug: string;
-  name: string;
-  links: string[];
-}
-
-interface Video {
-  id: string;
-  title: string;
-  url: string;
-  upload_date: string;
-  duration?: number; // Duration in seconds
-}
 
 interface NewVideosForChannel {
   channelSlug: string;
   channelName: string;
   channelUrls: string[];
   videos: Video[];
-}
-
-interface RecipeWithRefs {
-  refs?: Array<{ type: string; videoId?: string }>;
-}
-
-interface YtDlpOutput {
-  entries?: Array<{
-    id: string;
-    title: string;
-    url?: string;
-    upload_date: string;
-    duration?: number;
-  }>;
 }
 
 // Parse CLI arguments with commander
@@ -65,134 +43,6 @@ const options = program.opts();
 const dryRun = options.dryRun ?? false;
 const maxAgeDays = Number.parseInt(options.days);
 const specificChannel = options.channel ?? null;
-
-/**
- * Get all tracked YouTube channels from the filesystem
- */
-async function getTrackedChannels(): Promise<ChannelSource[]> {
-  const channels: ChannelSource[] = [];
-  const entries = await fs.readdir(YOUTUBE_CHANNEL_ROOT);
-
-  for (const entry of entries) {
-    const sourcePath = path.join(YOUTUBE_CHANNEL_ROOT, entry, '_source.json');
-    try {
-      const sourceData = JSON.parse(await fs.readFile(sourcePath, 'utf-8'));
-      channels.push({
-        slug: entry,
-        name: sourceData.name,
-        links: sourceData.links,
-      });
-    } catch {
-      // Skip directories without _source.json
-      continue;
-    }
-  }
-
-  return channels;
-}
-
-/**
- * Fetch recent videos from a YouTube channel using yt-dlp (fallback method)
- * Fetches the most recent N videos (default: 100) which includes upload dates
- * This is faster than fetching all videos or using date filtering
- */
-function fetchChannelVideosYtDlp(channelUrl: string, playlistEnd = 100): Video[] {
-  // Ensure URL ends with /videos to get all channel videos
-  const videosUrl = channelUrl.endsWith('/videos') ? channelUrl : `${channelUrl}/videos`;
-
-  try {
-    // Note: yt-dlp may return non-zero exit code even with --ignore-errors if some videos fail
-    // Use || true to force exit code 0 so execSync doesn't throw
-    const output = execSync(
-      `yt-dlp --ignore-errors --no-warnings --playlist-end ${playlistEnd} --skip-download --dump-single-json "${videosUrl}" || true`,
-      { encoding: 'utf-8', maxBuffer: 100 * 1024 * 1024 },
-    );
-
-    if (!output || output.trim() === '') {
-      throw new Error('yt-dlp returned empty output');
-    }
-
-    const data = JSON.parse(output) as YtDlpOutput;
-
-    return (data.entries ?? [])
-      .filter((entry) => entry != null) // Filter out null entries from failed videos
-      .map((entry) => ({
-        id: entry.id,
-        title: entry.title,
-        url: entry.url || `https://youtube.com/watch?v=${entry.id}`,
-        upload_date: entry.upload_date,
-        duration: entry.duration,
-      }));
-  } catch (error) {
-    throw new Error(`Failed to fetch videos: ${(error as Error).message}`, {
-      cause: error,
-    });
-  }
-}
-
-/**
- * Fetch recent videos from a YouTube channel
- * Tries YouTube Data API first (if key available), falls back to yt-dlp
- */
-async function fetchChannelVideos(
-  channelUrl: string,
-  maxResults = 100,
-): Promise<Video[]> {
-  const apiKey = process.env.YOUTUBE_API_KEY;
-
-  // Try YouTube Data API first if key is available
-  if (apiKey) {
-    try {
-      logger.item('Using YouTube Data API...');
-      const videos = await YouTubeAPI.fetchChannelVideos(apiKey, channelUrl, maxResults);
-      return videos;
-    } catch (error) {
-      logger.error(`API failed: ${(error as Error).message}`);
-      logger.item('Falling back to yt-dlp...');
-    }
-  } else {
-    logger.item('No YOUTUBE_API_KEY found, using yt-dlp...');
-  }
-
-  // Fall back to yt-dlp
-  return fetchChannelVideosYtDlp(channelUrl, maxResults);
-}
-
-/**
- * Get all existing video IDs by scanning the entire recipes directory tree.
- * This catches videos referenced under any channel or book source.
- */
-async function getAllExistingVideoIds(): Promise<Set<string>> {
-  const videoIds = new Set<string>();
-
-  async function scanDirectory(dirPath: string): Promise<void> {
-    const entries = await fs.readdir(dirPath, { withFileTypes: true });
-
-    for (const entry of entries) {
-      const fullPath = path.join(dirPath, entry.name);
-
-      if (entry.isDirectory()) {
-        await scanDirectory(fullPath);
-      } else if (entry.name.endsWith('.json') && entry.name !== '_source.json') {
-        try {
-          const recipe = JSON.parse(
-            await fs.readFile(fullPath, 'utf-8'),
-          ) as RecipeWithRefs;
-          for (const ref of recipe.refs ?? []) {
-            if (ref.type === 'youtube' && ref.videoId) {
-              videoIds.add(ref.videoId);
-            }
-          }
-        } catch {
-          // Skip files that can't be parsed
-        }
-      }
-    }
-  }
-
-  await scanDirectory(RECIPE_ROOT);
-  return videoIds;
-}
 
 /**
  * Filter videos to find new ones that don't have recipes yet
@@ -311,6 +161,10 @@ function createGitHubIssue(newVideos: NewVideosForChannel[]): void {
   }
 }
 
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 /**
  * Main execution
  */
@@ -341,7 +195,9 @@ async function main(): Promise<void> {
 
   // Build global set of existing video IDs across all recipe sources
   logger.header('📚 Scanning existing recipes for video IDs...');
-  const existingIds = await getAllExistingVideoIds();
+  const existingIds = getVideoIdsFromRecipeReferences(
+    await collectRecipeVideoReferences(),
+  );
   logger.item(`Found ${existingIds.size} existing video references`);
   logger.footer();
 
@@ -356,17 +212,13 @@ async function main(): Promise<void> {
       const allVideos: Video[] = [];
       for (const link of channel.links) {
         logger.item(`Fetching recent videos from ${link}...`);
-        const videos = await fetchChannelVideos(link);
+        const videos = await fetchChannelVideos(link, {
+          onStatus: (message) => logger.item(message),
+        });
         allVideos.push(...videos);
       }
 
-      // Deduplicate by video ID (in case same video appears via multiple channel links)
-      const seen = new Set<string>();
-      const uniqueVideos = allVideos.filter((video) => {
-        if (seen.has(video.id)) return false;
-        seen.add(video.id);
-        return true;
-      });
+      const uniqueVideos = dedupeVideos(allVideos);
 
       logger.item(`Found ${uniqueVideos.length} recent videos`);
 
@@ -385,7 +237,7 @@ async function main(): Promise<void> {
 
       logger.footer('Done');
     } catch (error) {
-      logger.error(`Error: ${(error as Error).message}`);
+      logger.error(`Error: ${getErrorMessage(error)}`);
       logger.footer('Skipping channel');
       continue;
     }
