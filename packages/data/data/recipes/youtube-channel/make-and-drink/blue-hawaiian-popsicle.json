@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Blue Hawaiian Popsicle",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "punch",
+  "servings": 5,
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 3.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blue Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients until homogeneous.",
+    "Pour into popsicle molds.",
+    "Freeze until solid."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Make and Drink"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "pyAdpZbcEdg",
+      "start": 421
+    }
+  ]
+}

@@ -70,30 +70,48 @@
       "type": "syrup",
       "technique": {
         "technique": "application",
-        "method": "float",
-        "instructions": "Use as the strawberry component of the lava flow; the source lists the syrup prep but no cocktail amount."
+        "method": "float"
       },
       "quantity": {
         "amount": 1,
-        "unit": "unit"
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Blend the pineapple juice, cream syrup, banana liqueur, rums, frozen banana, xanthan gum, and 110 grams nugget or crushed ice.",
-    "Pour with the strawberry syrup to create the lava flow effect."
+    "Add the strawberry syrup to a hurricane glass.",
+    "Blend the pineapple juice, cream syrup, banana liqueur, coconut rum, light rum, frozen banana, xanthan gum, and 110 grams of nugget or crushed ice.",
+    "Pour the blended drink over the strawberry syrup.",
+    "Float the Hamilton 151 Demerara rum on top."
   ],
   "attributions": [
     {
+      "relation": "adapted by",
+      "source": "Make and Drink"
+    },
+    {
       "relation": "bar",
-      "source": "Four Seasons Maui",
+      "source": "Four Seasons Resort Maui at Wailea",
       "location": "Maui, HI"
     }
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "Ow8wtNvWKNc"
+      "videoId": "Ow8wtNvWKNc",
+      "start": 362
     }
   ]
 }
