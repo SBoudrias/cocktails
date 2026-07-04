@@ -19,7 +19,7 @@
     "@next/eslint-plugin-next": "^16.2.10",
     "@types/json-schema": "^7.0.15",
     "@types/lodash": "^4.17.24",
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.1.0",
     "@vitejs/plugin-react": "^6.0.3",
     "@vitest/browser": "^4.1.9",
     "@vitest/coverage-v8": "^4.1.9",
