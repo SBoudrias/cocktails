@@ -1,4 +1,5 @@
 import type { Source } from '@cocktails/data';
+import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import { getAllSources } from '@cocktails/data/sources';
 import BookIcon from '@mui/icons-material/Book';
 import CalculatorIcon from '@mui/icons-material/Calculate';
@@ -57,7 +58,10 @@ function SourceListItem({ source }: { source: Source }) {
 }
 
 export default async function HomePage() {
-  const sources = await getAllSources();
+  const [sources, recentlyAddedRecipes] = await Promise.all([
+    getAllSources(),
+    getRecentlyAddedRecipes(),
+  ]);
 
   const {
     book: books = [],
@@ -80,16 +84,18 @@ export default async function HomePage() {
               </ListItemButton>
             </ListItem>
           </Link>
-          <Link href={getRecentlyAddedUrl()}>
-            <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HistoryIcon />
-                </ListItemIcon>
-                <ListItemText primary="Recently Added" />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          {recentlyAddedRecipes.length > 0 && (
+            <Link href={getRecentlyAddedUrl()}>
+              <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <HistoryIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Recently Added" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+          )}
         </Paper>
         <li>
           <ul>

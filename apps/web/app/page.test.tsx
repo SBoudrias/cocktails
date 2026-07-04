@@ -1,6 +1,44 @@
+import type { Recipe, Source } from '@cocktails/data';
+import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
+import { getAllSources } from '@cocktails/data/sources';
 import { screen, within } from '@testing-library/react';
+import { beforeEach, vi } from 'vitest';
 import { setupApp } from '#/vitest.setup';
 import HomePage from './page';
+
+vi.mock('@cocktails/data/recipes', () => ({
+  getRecentlyAddedRecipes: vi.fn(),
+}));
+
+vi.mock('@cocktails/data/sources', () => ({
+  getAllSources: vi.fn(),
+}));
+
+const testRecipe: Recipe = {
+  name: 'Daiquiri',
+  slug: 'daiquiri',
+  source: {
+    type: 'book',
+    name: 'Test Book',
+    slug: 'test-book',
+    link: 'https://example.com',
+    description: 'Test book',
+    recipeAmount: 1,
+  },
+  attributions: [],
+  ingredients: [],
+  preparation: 'shaken',
+  served_on: 'up',
+  glassware: 'coupe',
+  refs: [],
+};
+
+const testSources: Source[] = [];
+
+beforeEach(() => {
+  vi.mocked(getAllSources).mockResolvedValue(testSources);
+  vi.mocked(getRecentlyAddedRecipes).mockResolvedValue([testRecipe]);
+});
 
 describe('HomePage', () => {
   it('lists calculators alphabetically', async () => {
@@ -24,5 +62,24 @@ describe('HomePage', () => {
     expect(
       within(calculators).getByRole('link', { name: 'Juice Clarification' }),
     ).toHaveAttribute('href', '/calculators/juice-clarification');
+  });
+
+  it('links to recently added recipes when recent recipe data is available', async () => {
+    setupApp(await HomePage());
+
+    expect(screen.getByRole('link', { name: /recently added/i })).toHaveAttribute(
+      'href',
+      '/list/recently-added',
+    );
+  });
+
+  it('hides the recently added link when recent recipe data is unavailable', async () => {
+    vi.mocked(getRecentlyAddedRecipes).mockResolvedValue([]);
+
+    setupApp(await HomePage());
+
+    expect(
+      screen.queryByRole('link', { name: /recently added/i }),
+    ).not.toBeInTheDocument();
   });
 });

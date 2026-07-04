@@ -19,13 +19,15 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
 
       - name: Build with Next.js 🏗️
         run: yarn workspace @cocktails/web build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Deploy to gh-pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4

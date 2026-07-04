@@ -24,6 +24,262 @@ function toAlphaSort<I extends { name: string }>(arr: I[]) {
 
 type RecipeData = Omit<Recipe, 'chapter' | 'slug' | 'source'>;
 
+type RecentRecipeEntry = {
+  sourceType: Source['type'];
+  sourceSlug: string;
+  recipeSlug: string;
+  chapter?: string;
+  date: Date;
+};
+
+const recentlyAddedRecipeLimit = 30;
+const githubApiMaxPages = 3;
+
+function isSourceType(sourceType: string | undefined): sourceType is Source['type'] {
+  return (
+    sourceType === 'book' || sourceType === 'youtube-channel' || sourceType === 'podcast'
+  );
+}
+
+function parseRecentRecipePath(
+  recipeRelPath: string,
+  filename: string,
+  date: Date,
+): RecentRecipeEntry | null {
+  if (!filename.startsWith(`${recipeRelPath}/`)) return null;
+  if (!filename.endsWith('.json') || filename.includes('_source.json')) return null;
+
+  const parts = filename.slice(recipeRelPath.length + 1).split('/');
+  const sourceType = parts[0];
+  const sourceSlug = parts[1];
+
+  if (!isSourceType(sourceType) || !sourceSlug) return null;
+
+  if (parts.length === 3) {
+    const recipeFilename = parts[2];
+    if (!recipeFilename) return null;
+
+    return {
+      sourceType,
+      sourceSlug,
+      recipeSlug: path.basename(recipeFilename, '.json'),
+      date,
+    };
+  }
+
+  if (parts.length === 4) {
+    const chapter = parts[2];
+    const recipeFilename = parts[3];
+    if (!chapter || !recipeFilename) return null;
+
+    return {
+      sourceType,
+      sourceSlug,
+      recipeSlug: path.basename(recipeFilename, '.json'),
+      chapter,
+      date,
+    };
+  }
+
+  return null;
+}
+
+function getRecentRecipeKey(entry: RecentRecipeEntry): string {
+  return `${entry.sourceType}/${entry.sourceSlug}/${entry.chapter ?? ''}/${entry.recipeSlug}`;
+}
+
+async function resolveGitRecipeContext(): Promise<{
+  repoRoot: string;
+  recipeRelPath: string;
+}> {
+  const { stdout: repoRootRaw } = await execFile(
+    'git',
+    ['rev-parse', '--show-toplevel'],
+    {
+      cwd: RECIPE_ROOT,
+    },
+  );
+  const repoRoot = repoRootRaw.trim();
+
+  return {
+    repoRoot,
+    recipeRelPath: path.relative(repoRoot, RECIPE_ROOT),
+  };
+}
+
+async function hasFullGitHistory(repoRoot: string): Promise<boolean> {
+  const { stdout } = await execFile('git', ['rev-parse', '--is-shallow-repository'], {
+    cwd: repoRoot,
+  });
+
+  return stdout.trim() !== 'true';
+}
+
+function getGitHubRepository(): { owner: string; repo: string } | null {
+  const [owner, repo, extra] = (process.env.GITHUB_REPOSITORY ?? '').split('/');
+  if (!owner || !repo || extra) return null;
+
+  return { owner, repo };
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  if (typeof value !== 'object' || value === null) return false;
+  return true;
+}
+
+function getObjectProperty(value: unknown, key: string): unknown {
+  if (!isRecord(value)) return undefined;
+  return value[key];
+}
+
+function getStringProperty(value: unknown, key: string): string | undefined {
+  const property = getObjectProperty(value, key);
+  return typeof property === 'string' ? property : undefined;
+}
+
+async function fetchGitHubJson(url: URL): Promise<unknown> {
+  const headers: Record<string, string> = {
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
+  if (process.env.GITHUB_TOKEN) {
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+
+  const response = await fetch(url, { headers });
+  if (!response.ok) {
+    throw new Error(`GitHub API request failed: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+function getGitHubCommitDate(commit: unknown): Date | null {
+  const commitData = getObjectProperty(commit, 'commit');
+  const committer = getObjectProperty(commitData, 'committer');
+  const date = getStringProperty(committer, 'date');
+  if (!date) return null;
+
+  return new Date(date);
+}
+
+async function getRecentlyAddedRecipesFromGit({
+  repoRoot,
+  recipeRelPath,
+}: {
+  repoRoot: string;
+  recipeRelPath: string;
+}): Promise<RecentRecipeEntry[]> {
+  // --diff-filter=A: only commits that first introduced each file.
+  const { stdout: gitLog } = await execFile(
+    'git',
+    [
+      '-c',
+      'core.quotePath=false',
+      'log',
+      '--diff-filter=A',
+      '--name-only',
+      '--format=COMMIT %cI',
+      '--',
+      recipeRelPath,
+    ],
+    { cwd: repoRoot },
+  );
+
+  const recent: RecentRecipeEntry[] = [];
+  const seen = new Set<string>();
+  let currentDate: Date | null = null;
+
+  for (const raw of gitLog.split('\n')) {
+    const line = raw.trim();
+    if (!line) continue;
+
+    if (line.startsWith('COMMIT ')) {
+      currentDate = new Date(line.slice(7));
+    } else if (currentDate) {
+      const entry = parseRecentRecipePath(recipeRelPath, line, currentDate);
+      if (!entry) continue;
+
+      const key = getRecentRecipeKey(entry);
+      if (!seen.has(key)) {
+        seen.add(key);
+        recent.push(entry);
+      }
+    }
+  }
+
+  return recent;
+}
+
+async function getRecentlyAddedRecipesFromGitHub(
+  recipeRelPath: string,
+): Promise<RecentRecipeEntry[]> {
+  const repository = getGitHubRepository();
+  if (!repository) return [];
+
+  const apiRoot = process.env.GITHUB_API_URL ?? 'https://api.github.com';
+  const recent: RecentRecipeEntry[] = [];
+  const seen = new Set<string>();
+
+  try {
+    for (let page = 1; page <= githubApiMaxPages; page++) {
+      if (recent.length >= recentlyAddedRecipeLimit) break;
+
+      const commitsUrl = new URL(
+        `/repos/${repository.owner}/${repository.repo}/commits`,
+        apiRoot,
+      );
+      commitsUrl.searchParams.set('path', recipeRelPath);
+      commitsUrl.searchParams.set('per_page', '100');
+      commitsUrl.searchParams.set('page', String(page));
+      if (process.env.GITHUB_SHA) {
+        commitsUrl.searchParams.set('sha', process.env.GITHUB_SHA);
+      }
+
+      const commits = await fetchGitHubJson(commitsUrl);
+      if (!Array.isArray(commits) || commits.length === 0) break;
+
+      for (const commit of commits) {
+        if (recent.length >= recentlyAddedRecipeLimit) break;
+
+        const sha = getStringProperty(commit, 'sha');
+        const date = getGitHubCommitDate(commit);
+        if (!sha || !date) continue;
+
+        const commitUrl = new URL(
+          `/repos/${repository.owner}/${repository.repo}/commits/${sha}`,
+          apiRoot,
+        );
+        const commitDetails = await fetchGitHubJson(commitUrl);
+        const files = getObjectProperty(commitDetails, 'files');
+        if (!Array.isArray(files)) continue;
+
+        for (const file of files) {
+          if (getStringProperty(file, 'status') !== 'added') continue;
+
+          const filename = getStringProperty(file, 'filename');
+          if (!filename) continue;
+
+          const entry = parseRecentRecipePath(recipeRelPath, filename, date);
+          if (!entry) continue;
+
+          const key = getRecentRecipeKey(entry);
+          if (!seen.has(key)) {
+            seen.add(key);
+            recent.push(entry);
+          }
+
+          if (recent.length >= recentlyAddedRecipeLimit) break;
+        }
+      }
+    }
+  } catch {
+    return [];
+  }
+
+  return recent;
+}
+
 export const getRecipe = memo(
   async (
     source: {
@@ -181,96 +437,15 @@ export const getRecipesFromSource = memo(
 );
 
 export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
-  const { stdout: repoRootRaw } = await execFile(
-    'git',
-    ['rev-parse', '--show-toplevel'],
-    {
-      cwd: RECIPE_ROOT,
-    },
-  );
-  const repoRoot = repoRootRaw.trim();
-  const recipeRelPath = path.relative(repoRoot, RECIPE_ROOT);
-
-  // --diff-filter=A: only commits that first introduced each file.
-  const { stdout: gitLog } = await execFile(
-    'git',
-    [
-      '-c',
-      'core.quotePath=false',
-      'log',
-      '--diff-filter=A',
-      '--name-only',
-      '--format=COMMIT %cI',
-      '--',
-      recipeRelPath,
-    ],
-    { cwd: repoRoot },
-  );
-
-  const seen = new Set<string>();
-  const recent: Array<{
-    sourceType: Source['type'];
-    sourceSlug: string;
-    recipeSlug: string;
-    chapter?: string;
-    date: Date;
-  }> = [];
-
-  let currentDate: Date | null = null;
-
-  for (const raw of gitLog.split('\n')) {
-    const line = raw.trim();
-    if (!line) continue;
-
-    if (line.startsWith('COMMIT ')) {
-      currentDate = new Date(line.slice(7));
-    } else if (currentDate && line.endsWith('.json') && !line.includes('_source.json')) {
-      const relToRecipes = path.relative(recipeRelPath, line);
-      const parts = relToRecipes.split('/');
-
-      let entry: (typeof recent)[number] | null = null;
-
-      const sourceType = parts[0];
-      const sourceSlug = parts[1];
-
-      if (parts.length === 3) {
-        const filename = parts[2];
-        if (sourceType && sourceSlug && filename) {
-          entry = {
-            sourceType: sourceType as Source['type'],
-            sourceSlug,
-            recipeSlug: path.basename(filename, '.json'),
-            date: currentDate,
-          };
-        }
-      } else if (parts.length === 4) {
-        const chapter = parts[2];
-        const filename = parts[3];
-        if (sourceType && sourceSlug && chapter && filename) {
-          entry = {
-            sourceType: sourceType as Source['type'],
-            sourceSlug,
-            recipeSlug: path.basename(filename, '.json'),
-            chapter,
-            date: currentDate,
-          };
-        }
-      }
-
-      if (entry) {
-        const key = `${entry.sourceType}/${entry.sourceSlug}/${entry.chapter ?? ''}/${entry.recipeSlug}`;
-        if (!seen.has(key)) {
-          seen.add(key);
-          recent.push(entry);
-        }
-      }
-    }
-  }
+  const { repoRoot, recipeRelPath } = await resolveGitRecipeContext();
+  const recent = (await hasFullGitHistory(repoRoot))
+    ? await getRecentlyAddedRecipesFromGit({ repoRoot, recipeRelPath })
+    : await getRecentlyAddedRecipesFromGitHub(recipeRelPath);
 
   return Promise.all(
     recent
       .toSorted((a, b) => b.date.getTime() - a.date.getTime())
-      .slice(0, 30)
+      .slice(0, recentlyAddedRecipeLimit)
       .map(({ sourceType, sourceSlug, recipeSlug, chapter }) =>
         getRecipe({ type: sourceType, slug: sourceSlug }, recipeSlug, chapter),
       ),
