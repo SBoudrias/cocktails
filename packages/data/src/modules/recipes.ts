@@ -87,6 +87,7 @@ export const getRecipe = memo(
       source: sourceData,
     };
   },
+  (source, recipe, chapter) => `${source.type}/${source.slug}/${chapter ?? ''}/${recipe}`,
 );
 
 export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
@@ -157,18 +158,20 @@ export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
   return toAlphaSort(allRecipes);
 });
 
-export const getRecipesPerSource = async (): Promise<{
-  [sourceType: string]: { [sourceSlug: string]: Recipe[] | undefined };
-}> => {
-  const recipes = await getAllRecipes();
+export const getRecipesPerSource = memo(
+  async (): Promise<{
+    [sourceType: string]: { [sourceSlug: string]: Recipe[] | undefined };
+  }> => {
+    const recipes = await getAllRecipes();
 
-  const bySourceType = Object.groupBy(recipes, (recipe) => recipe.source.type);
-  return Object.fromEntries(
-    Object.entries(bySourceType).map(([type, recipes]) => {
-      return [type, Object.groupBy(recipes, (recipe) => recipe.source.slug)];
-    }),
-  );
-};
+    const bySourceType = Object.groupBy(recipes, (recipe) => recipe.source.type);
+    return Object.fromEntries(
+      Object.entries(bySourceType).map(([type, recipes]) => {
+        return [type, Object.groupBy(recipes, (recipe) => recipe.source.slug)];
+      }),
+    );
+  },
+);
 
 export const getRecipesFromSource = memo(
   async (source: Pick<Source, 'slug' | 'type'>): Promise<Recipe[]> => {
