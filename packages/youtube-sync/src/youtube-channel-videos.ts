@@ -6,6 +6,10 @@ import * as YouTubeAPI from './youtube-api.ts';
 
 export type Video = YouTubeAPI.Video;
 
+export type FlatPlaylistVideo = Omit<Video, 'upload_date'> & {
+  upload_date?: string;
+};
+
 export interface ChannelSource {
   slug: string;
   name: string;
@@ -72,25 +76,29 @@ export async function getTrackedChannels(): Promise<ChannelSource[]> {
   return channels.toSorted((a, b) => a.name.localeCompare(b.name));
 }
 
-/**
- * Fetch recent videos from a YouTube channel using yt-dlp.
- */
-export function fetchChannelVideosYtDlp(channelUrl: string, maxResults = 100): Video[] {
-  const videosUrl = channelUrl.endsWith('/videos') ? channelUrl : `${channelUrl}/videos`;
-  const args = [
-    '--ignore-errors',
-    '--no-warnings',
-    '--skip-download',
-    '--dump-single-json',
-  ];
+function getChannelVideosUrl(channelUrl: string): string {
+  return channelUrl.endsWith('/videos') ? channelUrl : `${channelUrl}/videos`;
+}
 
-  if (Number.isFinite(maxResults)) {
-    args.push('--playlist-end', maxResults.toString());
+function parsePlaylistEntries<TVideo>(
+  stdout: string,
+  toVideo: (entry: Record<string, unknown>) => TVideo | undefined,
+): TVideo[] {
+  const data: unknown = JSON.parse(stdout);
+  if (!isRecord(data) || !Array.isArray(data.entries)) {
+    return [];
   }
 
-  args.push(videosUrl);
+  return data.entries.flatMap((entry): TVideo[] => {
+    if (!isRecord(entry)) return [];
 
-  const result = spawnSync('yt-dlp', args, {
+    const video = toVideo(entry);
+    return video ? [video] : [];
+  });
+}
+
+function runYtDlpPlaylist(channelUrl: string, args: string[]): string {
+  const result = spawnSync('yt-dlp', [...args, getChannelVideosUrl(channelUrl)], {
     encoding: 'utf-8',
     maxBuffer: 100 * 1024 * 1024,
   });
@@ -108,28 +116,70 @@ export function fetchChannelVideosYtDlp(channelUrl: string, maxResults = 100): V
     );
   }
 
-  const data: unknown = JSON.parse(result.stdout);
-  if (!isRecord(data) || !Array.isArray(data.entries)) {
-    return [];
-  }
+  return result.stdout;
+}
 
-  return data.entries.flatMap((entry): Video[] => {
-    if (!isRecord(entry)) return [];
+function appendPlaylistLimit(args: string[], maxResults: number): string[] {
+  if (!Number.isFinite(maxResults)) return args;
 
+  return [...args, '--playlist-end', maxResults.toString()];
+}
+
+/**
+ * Fetch a channel playlist with yt-dlp's flat extractor.
+ *
+ * This is intentionally lower fidelity than the full extractor: historical
+ * inventory generation only needs stable video IDs and titles for ref matching,
+ * and full extraction can hang on large channel archives.
+ */
+export function fetchChannelVideosFlatYtDlp(
+  channelUrl: string,
+  maxResults = 100,
+): FlatPlaylistVideo[] {
+  const args = appendPlaylistLimit(
+    ['--ignore-errors', '--no-warnings', '--flat-playlist', '--dump-single-json'],
+    maxResults,
+  );
+  const stdout = runYtDlpPlaylist(channelUrl, args);
+
+  return parsePlaylistEntries(stdout, (entry): FlatPlaylistVideo | undefined => {
+    const id = readString(entry, 'id');
+    const title = readString(entry, 'title');
+    if (!id || !title) return undefined;
+
+    return {
+      id,
+      title,
+      url: readString(entry, 'url') ?? `https://youtube.com/watch?v=${id}`,
+      upload_date: readString(entry, 'upload_date'),
+      duration: readNumber(entry, 'duration'),
+    };
+  });
+}
+
+/**
+ * Fetch recent videos from a YouTube channel using yt-dlp's full extractor.
+ */
+export function fetchChannelVideosYtDlp(channelUrl: string, maxResults = 100): Video[] {
+  const args = appendPlaylistLimit(
+    ['--ignore-errors', '--no-warnings', '--skip-download', '--dump-single-json'],
+    maxResults,
+  );
+  const stdout = runYtDlpPlaylist(channelUrl, args);
+
+  return parsePlaylistEntries(stdout, (entry): Video | undefined => {
     const id = readString(entry, 'id');
     const title = readString(entry, 'title');
     const uploadDate = readString(entry, 'upload_date');
-    if (!id || !title || !uploadDate) return [];
+    if (!id || !title || !uploadDate) return undefined;
 
-    return [
-      {
-        id,
-        title,
-        url: readString(entry, 'url') ?? `https://youtube.com/watch?v=${id}`,
-        upload_date: uploadDate,
-        duration: readNumber(entry, 'duration'),
-      },
-    ];
+    return {
+      id,
+      title,
+      url: readString(entry, 'url') ?? `https://youtube.com/watch?v=${id}`,
+      upload_date: uploadDate,
+      duration: readNumber(entry, 'duration'),
+    };
   });
 }
 
@@ -160,7 +210,7 @@ export async function fetchChannelVideos(
   return fetchChannelVideosYtDlp(channelUrl, maxResults);
 }
 
-export function dedupeVideos(videos: Video[]): Video[] {
+export function dedupeVideos<TVideo extends { id: string }>(videos: TVideo[]): TVideo[] {
   const seen = new Set<string>();
 
   return videos.filter((video) => {

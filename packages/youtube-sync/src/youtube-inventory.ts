@@ -9,10 +9,11 @@ import { collectRecipeVideoReferences } from './recipe-video-refs.ts';
 import type { RecipeVideoReference } from './recipe-video-refs.ts';
 import {
   dedupeVideos,
+  fetchChannelVideosFlatYtDlp,
   fetchChannelVideos,
   getTrackedChannels,
   type ChannelSource,
-  type Video,
+  type FlatPlaylistVideo,
 } from './youtube-channel-videos.ts';
 
 const DEFAULT_CHANNEL = 'make-and-drink';
@@ -23,6 +24,7 @@ const PROJECT_ROOT = path.resolve(RECIPE_ROOT, '../../../..');
 
 type OutputFormat = 'markdown' | 'json' | 'both';
 type SortOrder = 'newest' | 'oldest';
+type FetchMode = 'flat' | 'full';
 
 type InventoryOptions = {
   channel: string;
@@ -34,6 +36,7 @@ type InventoryOptions = {
   outputDir: string;
   format: OutputFormat;
   sort: SortOrder;
+  fetchMode: FetchMode;
   dryRun?: boolean;
 };
 
@@ -41,8 +44,10 @@ type InventoryVideo = {
   videoId: string;
   title: string;
   url: string;
-  uploadDate: string;
+  uploadDate?: string;
   durationSeconds?: number;
+  playlistIndex: number;
+  source: FetchMode;
   alreadyReferenced: boolean;
   referencedBy: RecipeVideoReference[];
 };
@@ -79,6 +84,14 @@ function parseSortOrder(value: string): SortOrder {
   throw new Error('Expected sort to be one of: newest, oldest');
 }
 
+function parseFetchMode(value: string): FetchMode {
+  if (value === 'flat' || value === 'full') {
+    return value;
+  }
+
+  throw new Error('Expected fetch mode to be one of: flat, full');
+}
+
 function getErrorMessage(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
@@ -97,14 +110,19 @@ function formatUploadDate(uploadDate: string): string {
 
 function sortVideos(videos: InventoryVideo[], sort: SortOrder): InventoryVideo[] {
   return videos.toSorted((a, b) => {
-    const comparison = a.uploadDate.localeCompare(b.uploadDate);
+    const comparison =
+      a.uploadDate && b.uploadDate
+        ? a.uploadDate.localeCompare(b.uploadDate)
+        : b.playlistIndex - a.playlistIndex;
     return sort === 'oldest' ? comparison : -comparison;
   });
 }
 
 function toInventoryVideo(
-  video: Video,
+  video: FlatPlaylistVideo,
   references: Map<string, RecipeVideoReference[]>,
+  playlistIndex: number,
+  source: FetchMode,
 ): InventoryVideo {
   const referencedBy = references.get(video.id) ?? [];
 
@@ -112,8 +130,10 @@ function toInventoryVideo(
     videoId: video.id,
     title: video.title,
     url: video.url,
-    uploadDate: formatUploadDate(video.upload_date),
+    uploadDate: video.upload_date ? formatUploadDate(video.upload_date) : undefined,
     durationSeconds: video.duration,
+    playlistIndex,
+    source,
     alreadyReferenced: referencedBy.length > 0,
     referencedBy,
   };
@@ -210,7 +230,9 @@ function formatBatchMarkdown(channel: ChannelSource, batch: InventoryBatch): str
   for (const video of batch.videos) {
     lines.push(`- [${video.title}](${video.url})`);
     lines.push(`  - videoId: ${video.videoId}`);
-    lines.push(`  - uploadDate: ${video.uploadDate}`);
+    lines.push(`  - source: ${video.source}`);
+    lines.push(`  - playlistIndex: ${video.playlistIndex}`);
+    lines.push(`  - uploadDate: ${video.uploadDate ?? 'unknown'}`);
     if (video.durationSeconds != null) {
       lines.push(`  - durationSeconds: ${video.durationSeconds}`);
     }
@@ -284,6 +306,7 @@ function buildIndex(
       batchSize: options.batchSize,
       sort: options.sort,
       format: options.format,
+      fetchMode: options.fetchMode,
     },
     totals: {
       fetched: videos.length,
@@ -306,15 +329,19 @@ function buildIndex(
 async function fetchChannelInventoryVideos(
   channel: ChannelSource,
   maxResults: number,
-): Promise<Video[]> {
-  const videosByLink: Video[] = [];
+  fetchMode: FetchMode,
+): Promise<FlatPlaylistVideo[]> {
+  const videosByLink: FlatPlaylistVideo[] = [];
 
   for (const link of channel.links) {
     logger.item(`Fetching videos from ${link}...`);
-    const videos = await fetchChannelVideos(link, {
-      maxResults,
-      onStatus: (message) => logger.item(message),
-    });
+    const videos =
+      fetchMode === 'flat'
+        ? fetchChannelVideosFlatYtDlp(link, maxResults)
+        : await fetchChannelVideos(link, {
+            maxResults,
+            onStatus: (message) => logger.item(message),
+          });
     videosByLink.push(...videos);
   }
 
@@ -349,6 +376,12 @@ program
   )
   .option('--format <format>', 'markdown, json, or both', parseOutputFormat, 'both')
   .option('--sort <order>', 'oldest or newest', parseSortOrder, 'oldest')
+  .option(
+    '--fetch-mode <mode>',
+    'flat for fast ID/title inventory, full for richer metadata',
+    parseFetchMode,
+    'flat',
+  )
   .option('--dry-run', 'Print summary and first batch without writing files')
   .parse();
 
@@ -360,6 +393,7 @@ async function main(): Promise<void> {
   logger.header('📺 YouTube Inventory');
   logger.item(`Channel: ${options.channel}`);
   logger.item(`Max results: ${options.all ? 'all' : options.maxResults}`);
+  logger.item(`Fetch mode: ${options.fetchMode}`);
   logger.item(`Batch size: ${options.batchSize}`);
   logger.item(`Output dir: ${outputDir}`);
   logger.item(`Dry run: ${options.dryRun ? 'yes' : 'no'}`);
@@ -383,12 +417,18 @@ async function main(): Promise<void> {
   logger.footer();
 
   logger.header(`🔍 Fetching ${channel.name} videos...`);
-  const fetchedVideos = await fetchChannelInventoryVideos(channel, maxResults);
+  const fetchedVideos = await fetchChannelInventoryVideos(
+    channel,
+    maxResults,
+    options.fetchMode,
+  );
   logger.item(`Fetched ${fetchedVideos.length} unique video(s)`);
   logger.footer();
 
   const inventoryVideos = sortVideos(
-    fetchedVideos.map((video) => toInventoryVideo(video, recipeReferences)),
+    fetchedVideos.map((video, playlistIndex) =>
+      toInventoryVideo(video, recipeReferences, playlistIndex, options.fetchMode),
+    ),
     options.sort,
   );
   const selectedVideos = selectBatchVideos(inventoryVideos, options);

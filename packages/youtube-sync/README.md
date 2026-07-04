@@ -20,12 +20,18 @@ Run without `--dry-run` only when you want to create the GitHub issue.
 
 ### `yarn youtube-inventory`
 
-Creates a full channel inventory and writes agent-sized backfill batches. Use
-this for historical backfills such as Make and Drink.
+Creates a channel inventory and writes agent-sized backfill batches. Use this
+for historical backfills such as Make and Drink.
+
+By default, the command uses yt-dlp's flat playlist mode. That fetches stable
+video IDs and titles quickly, compares them against recipe refs, and avoids the
+slow full-metadata channel crawl that can stall on large archives. Batch agents
+should fetch full video metadata only for the specific videos they are assigned.
 
 ```bash
 yarn youtube-inventory \
   --channel make-and-drink \
+  --max-results 200 \
   --batch-size 8 \
   --output-dir tmp/youtube-inventory/make-and-drink \
   --sort oldest
@@ -35,7 +41,11 @@ Useful options:
 
 - `--channel <slug>`: tracked `youtube-channel` source slug. Defaults to
   `make-and-drink`.
-- `--max-results <number>`: maximum videos to fetch. Defaults to `500`.
+- `--fetch-mode flat|full`: discovery mode. Defaults to `flat`. Use `full`
+  only when you need upload dates from the inventory step and can tolerate a
+  slower channel crawl.
+- `--max-results <number>`: maximum videos to fetch from the channel playlist.
+  Defaults to `500`.
 - `--all`: fetch all available channel videos.
 - `--include-referenced`: include videos that already appear in `refs` so agents
   can audit multi-recipe videos.
@@ -58,17 +68,23 @@ and listed in `index.json` with the recipe paths that reference them. Use
 `--include-referenced` when you want agents to audit videos that may contain
 additional unmodeled recipes.
 
+Flat inventories may have `uploadDate: unknown`; use `playlistIndex` and
+`source: flat` as the audit context. The channel playlist is newest-first, so
+`--sort oldest` reverses that order when upload dates are unavailable.
+
 ## Backfill Flow
 
-1. Run `yarn youtube-inventory --channel make-and-drink`.
+1. Run `yarn youtube-inventory --channel make-and-drink --max-results 200`.
 2. Assign one generated batch file per agent.
 3. For each video, the agent should decide `create`, `add-ref`, `skip`, or
    `uncertain`.
-4. Add a YouTube ref to an existing book or channel recipe when the formula
+4. Fetch full metadata for each assigned video with yt-dlp or the `youtube`
+   skill.
+5. Add a YouTube ref to an existing book or channel recipe when the formula
    matches.
-5. Create a new `youtube-channel/make-and-drink` recipe only when the video
+6. Create a new `youtube-channel/make-and-drink` recipe only when the video
    version is distinct.
-6. Run `yarn check-data` after recipe edits.
+7. Run `yarn check-data` after recipe edits.
 
 For final validation, run:
 
@@ -81,5 +97,7 @@ yarn lint
 ## YouTube Access
 
 Set `YOUTUBE_API_KEY` to use YouTube Data API v3. The tools fall back to
-`yt-dlp` when no API key is configured, but large channel inventories are more
-reliable with the API.
+`yt-dlp` when no API key is configured. `youtube-sync` still benefits from the
+API because it needs recent upload dates; `youtube-inventory` defaults to flat
+yt-dlp discovery because historical backfills primarily need complete video ID
+coverage.

@@ -92,17 +92,25 @@ User: "Create a recipe from https://youtube.com/watch?v=xyz"
 ## Backfilling YouTube Channels
 
 For historical backfills or agent teams, start by generating an inventory. This
-creates batch files that exclude videos already referenced by recipe JSON by
-default and include enough context for agents to decide whether to create a new
-recipe, add a ref to an existing recipe, skip the video, or report uncertainty.
+uses flat YouTube playlist discovery by default so large channels can be audited
+by video ID and title without waiting for a full metadata crawl. The generated
+batch files exclude videos already referenced by recipe JSON by default and
+include enough context for agents to decide whether to create a new recipe, add
+a ref to an existing recipe, skip the video, or report uncertainty.
 
 ```bash
 yarn youtube-inventory \
   --channel CHANNEL_SLUG \
+  --max-results 200 \
   --batch-size 8 \
   --output-dir tmp/youtube-inventory/CHANNEL_SLUG \
   --sort oldest
 ```
+
+Use `--fetch-mode full` only for a smaller audit where upload dates from the
+inventory step matter. The default `--fetch-mode flat` may write
+`uploadDate: unknown`; use `playlistIndex` and the video URL as the assignment
+context, then fetch full metadata for only the videos in the assigned batch.
 
 Use `--include-referenced` when auditing videos that may contain additional
 unmodeled recipes even though the video ID already appears in a recipe ref. Use
