@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The White Flag",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cream syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Frangelico",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Real McCoy 5 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Shake all ingredients with ice.", "Strain into a chilled coupe."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jack Schramm"
+    },
+    {
+      "relation": "bar",
+      "source": "Existing Conditions",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "hrsFiKL4Bdc",
+      "start": 217
+    }
+  ]
+}
