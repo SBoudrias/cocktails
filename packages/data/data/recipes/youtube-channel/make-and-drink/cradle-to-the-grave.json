@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cradle to the Grave",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Stir with ice, strain, and garnish with grated nutmeg."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Mary Palac"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "-3AzPoVDtQY",
+      "start": 55
+    }
+  ]
+}

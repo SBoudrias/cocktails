@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Scorpion Reef",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Chocolate Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mezcal",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build in the glass with ice, swizzle, top with more crushed ice, and swizzle again."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "N7uE6SApHM4",
+      "start": 464
+    }
+  ]
+}

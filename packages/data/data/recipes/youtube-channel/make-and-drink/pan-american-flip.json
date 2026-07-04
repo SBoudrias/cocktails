@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pan American Flip",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Menthe",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Shake with ice, strain, and garnish with a cherry."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "N7uE6SApHM4",
+      "start": 157
+    }
+  ]
+}
