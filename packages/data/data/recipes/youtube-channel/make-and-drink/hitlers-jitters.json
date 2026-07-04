@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hitler's Jitters",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "F. Garcia Bode"
+    },
+    {
+      "relation": "bar",
+      "source": "Cafe Plaza",
+      "location": "Maracaibo, Venezuela"
+    },
+    {
+      "relation": "book",
+      "source": "Beachbum Berry's Potions of the Caribbean"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "EFeGd4yKmso",
+      "start": 233
+    }
+  ]
+}
