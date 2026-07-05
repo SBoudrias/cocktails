@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Lemongrass and Thai Chili Syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 250,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Lemongrass",
+      "type": "spice",
+      "technique": {
+        "technique": "cut",
+        "type": "chunked"
+      },
+      "quantity": {
+        "amount": 35,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Thai Chili",
+      "type": "spice",
+      "quantity": {
+        "amount": 2,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend the simple syrup, lemongrass, and Thai chili until smooth.",
+    "Filter through a coffee filter until clear.",
+    "Adjust chili to preferred heat."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "bE1kcZJIbjI"
+    }
+  ]
+}

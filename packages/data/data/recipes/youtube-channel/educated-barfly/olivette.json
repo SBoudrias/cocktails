@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Olivette",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "St-Germain",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Americano",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dry vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Stir all ingredients with ice.", "Strain and garnish with an olive."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "FOjO73ues48",
+      "start": 603
+    }
+  ]
+}
