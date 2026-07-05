@@ -23,7 +23,7 @@
     },
     {
       "name": "Cream Soda Grog Concentrate",
-      "type": "other",
+      "type": "syrup",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

@@ -13,11 +13,6 @@ export type YoutubeChannel = {
   slug: string;
   links: [string, ...string[]];
   description: string;
-  reviewedVideos?: {
-    videoId: string;
-    status: 'skip' | 'uncertain';
-    reason: string;
-  }[];
   recipeAmount: number;
 };
 

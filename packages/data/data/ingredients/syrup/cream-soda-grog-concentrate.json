@@ -1,7 +1,7 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Cream Soda Grog Concentrate",
-  "type": "other",
+  "type": "syrup",
   "ingredients": [
     {
       "name": "Cream soda",

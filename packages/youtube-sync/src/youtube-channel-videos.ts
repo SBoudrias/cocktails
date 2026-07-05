@@ -14,7 +14,6 @@ export interface ChannelSource {
   slug: string;
   name: string;
   links: string[];
-  reviewedVideos: ReviewedVideo[];
 }
 
 type FetchChannelVideosOptions = {
@@ -66,22 +65,10 @@ export async function getTrackedChannels(): Promise<ChannelSource[]> {
 
       const name = readString(sourceData, 'name');
       const links = sourceData.links;
-      const reviewedVideos = sourceData.reviewedVideos;
       if (
         !name ||
         !Array.isArray(links) ||
-        !links.every((link) => typeof link === 'string') ||
-        (reviewedVideos != null &&
-          (!Array.isArray(reviewedVideos) ||
-            !reviewedVideos.every((video): video is ReviewedVideo => {
-              if (!isRecord(video)) return false;
-
-              return (
-                typeof video.videoId === 'string' &&
-                (video.status === 'skip' || video.status === 'uncertain') &&
-                typeof video.reason === 'string'
-              );
-            })))
+        !links.every((link) => typeof link === 'string')
       ) {
         continue;
       }
@@ -90,7 +77,6 @@ export async function getTrackedChannels(): Promise<ChannelSource[]> {
         slug: entry,
         name,
         links,
-        reviewedVideos: reviewedVideos ?? [],
       });
     } catch {
       // Skip directories without a readable _source.json.

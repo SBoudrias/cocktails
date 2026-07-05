@@ -14,6 +14,7 @@ import {
   getTrackedChannels,
   type ChannelSource,
   type FlatPlaylistVideo,
+  type ReviewedVideo,
 } from './youtube-channel-videos.ts';
 
 const DEFAULT_CHANNEL = 'make-and-drink';
@@ -33,6 +34,7 @@ type InventoryOptions = {
   includeShorts?: boolean;
   includeReferenced?: boolean;
   includeReviewed?: boolean;
+  reviewedFile?: string;
   batchSize: number;
   outputDir: string;
   format: OutputFormat;
@@ -51,7 +53,7 @@ type InventoryVideo = {
   source: FetchMode;
   alreadyReferenced: boolean;
   referencedBy: RecipeVideoReference[];
-  reviewed?: ChannelSource['reviewedVideos'][number];
+  reviewed?: ReviewedVideo;
 };
 
 type InventoryBatch = {
@@ -104,6 +106,51 @@ function resolveOutputDir(outputDir: string): string {
   return path.resolve(PROJECT_ROOT, outputDir);
 }
 
+function resolveProjectPath(filepath: string): string {
+  if (path.isAbsolute(filepath)) return filepath;
+
+  return path.resolve(PROJECT_ROOT, filepath);
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+function isReviewedVideo(value: unknown): value is ReviewedVideo {
+  if (!isRecord(value)) return false;
+
+  return (
+    typeof value.videoId === 'string' &&
+    (value.status === 'skip' || value.status === 'uncertain') &&
+    typeof value.reason === 'string'
+  );
+}
+
+function parseReviewedVideos(data: unknown): ReviewedVideo[] {
+  if (!Array.isArray(data)) {
+    throw new Error('Expected reviewed file to contain an array');
+  }
+
+  if (!data.every(isReviewedVideo)) {
+    throw new Error(
+      'Expected reviewed videos to have videoId, status skip|uncertain, and reason',
+    );
+  }
+
+  return data;
+}
+
+async function readReviewedVideos(
+  reviewedFile: string | undefined,
+): Promise<ReviewedVideo[]> {
+  if (!reviewedFile) return [];
+
+  const data: unknown = JSON.parse(
+    await fs.readFile(resolveProjectPath(reviewedFile), 'utf-8'),
+  );
+  return parseReviewedVideos(data);
+}
+
 function formatUploadDate(uploadDate: string): string {
   if (!/^\d{8}$/.test(uploadDate)) return uploadDate;
 
@@ -123,12 +170,12 @@ function sortVideos(videos: InventoryVideo[], sort: SortOrder): InventoryVideo[]
 function toInventoryVideo(
   video: FlatPlaylistVideo,
   references: Map<string, RecipeVideoReference[]>,
-  reviewedVideos: Map<string, ChannelSource['reviewedVideos'][number]>,
+  reviewedVideoMap: Map<string, ReviewedVideo>,
   playlistIndex: number,
   source: FetchMode,
 ): InventoryVideo {
   const referencedBy = references.get(video.id) ?? [];
-  const reviewed = reviewedVideos.get(video.id);
+  const reviewed = reviewedVideoMap.get(video.id);
 
   return {
     videoId: video.id,
@@ -323,6 +370,7 @@ function buildIndex(
       includeShorts: Boolean(options.includeShorts),
       includeReferenced: Boolean(options.includeReferenced),
       includeReviewed: Boolean(options.includeReviewed),
+      reviewedFile: options.reviewedFile,
       batchSize: options.batchSize,
       sort: options.sort,
       format: options.format,
@@ -384,7 +432,11 @@ program
   .option('--all', 'Fetch all available channel videos')
   .option('--include-shorts', 'Include videos with duration <= 60 seconds')
   .option('--include-referenced', 'Include videos that already appear in recipe refs')
-  .option('--include-reviewed', 'Include videos marked reviewed in channel metadata')
+  .option('--include-reviewed', 'Include videos listed in --reviewed-file')
+  .option(
+    '--reviewed-file <path>',
+    'Temporary JSON review ledger to exclude from generated batches',
+  )
   .option(
     '--batch-size <number>',
     'Number of videos per agent batch',
@@ -418,6 +470,9 @@ async function main(): Promise<void> {
   logger.item(`Fetch mode: ${options.fetchMode}`);
   logger.item(`Batch size: ${options.batchSize}`);
   logger.item(`Output dir: ${outputDir}`);
+  if (options.reviewedFile) {
+    logger.item(`Reviewed file: ${resolveProjectPath(options.reviewedFile)}`);
+  }
   logger.item(`Dry run: ${options.dryRun ? 'yes' : 'no'}`);
   logger.footer();
 
@@ -447,15 +502,16 @@ async function main(): Promise<void> {
   logger.item(`Fetched ${fetchedVideos.length} unique video(s)`);
   logger.footer();
 
-  const reviewedVideos = new Map(
-    channel.reviewedVideos.map((video) => [video.videoId, video]),
+  const reviewedVideoEntries = await readReviewedVideos(options.reviewedFile);
+  const reviewedVideoMap = new Map(
+    reviewedVideoEntries.map((video) => [video.videoId, video]),
   );
   const inventoryVideos = sortVideos(
     fetchedVideos.map((video, playlistIndex) =>
       toInventoryVideo(
         video,
         recipeReferences,
-        reviewedVideos,
+        reviewedVideoMap,
         playlistIndex,
         options.fetchMode,
       ),

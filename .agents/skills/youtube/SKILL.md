@@ -114,7 +114,12 @@ context, then fetch full metadata for only the videos in the assigned batch.
 
 Use `--include-referenced` when auditing videos that may contain additional
 unmodeled recipes even though the video ID already appears in a recipe ref. Use
-`--dry-run` to preview the index and first batch without writing files.
+`--reviewed-file tmp/youtube-inventory/CHANNEL_SLUG/reviewed.json` to exclude
+temporary `skip` or `uncertain` decisions while regenerating batches. Do not
+store this ledger in `_source.json` or commit it to the recipe dataset. Use
+`--include-reviewed` only when you want those temporary reviewed videos back in
+the generated batches. Use `--dry-run` to preview the index and first batch
+without writing files.
 
 When processing an inventory batch:
 
@@ -127,7 +132,9 @@ When processing an inventory batch:
 5. Create a new `youtube-channel/CHANNEL_SLUG` recipe only when the video
    version is distinct.
 6. Report `create`, `add-ref`, `skip`, or `uncertain` for every video.
-7. Run `yarn check-data` after edits.
+7. Keep `skip` and `uncertain` review state in a temporary reviewed file only
+   if you need to resume or regenerate batches.
+8. Run `yarn check-data` after edits.
 
 ## Adding New YouTube Channels
 

@@ -49,8 +49,9 @@ Useful options:
 - `--all`: fetch all available channel videos.
 - `--include-referenced`: include videos that already appear in `refs` so agents
   can audit multi-recipe videos.
-- `--include-reviewed`: include videos marked `skip` or `uncertain` in the
-  channel `_source.json` `reviewedVideos` ledger.
+- `--reviewed-file <path>`: temporary JSON review ledger for the current
+  backfill. Videos listed here are excluded from batches by default.
+- `--include-reviewed`: include videos listed in `--reviewed-file`.
 - `--include-shorts`: include videos that are 60 seconds or shorter.
 - `--batch-size <number>`: videos per batch. Defaults to `8`.
 - `--format markdown|json|both`: batch output format. Defaults to `both`.
@@ -70,12 +71,28 @@ and listed in `index.json` with the recipe paths that reference them. Use
 `--include-referenced` when you want agents to audit videos that may contain
 additional unmodeled recipes.
 
-Videos that have been reviewed but should not get a recipe ref can be recorded
-in the channel `_source.json` under `reviewedVideos`. This is for durable
-`skip` and `uncertain` decisions, such as ingredient-prep videos, equipment
-videos, or videos where the available source does not provide a complete enough
-formula. These are excluded from batches by default and listed in `index.json`
-with reason `reviewed`.
+Videos that have been reviewed during a backfill but should not get a recipe
+ref can be recorded in a temporary JSON file and passed with `--reviewed-file`.
+Do not commit this ledger into the recipe source dataset. It is scratch state
+for splitting and resuming agent batches, such as ingredient-prep videos,
+equipment videos, or videos where the available source does not provide a
+complete enough formula. These are excluded from batches by default and listed
+in `index.json` with reason `reviewed`.
+
+```json
+[
+  {
+    "videoId": "AcVlelDj-TE",
+    "status": "skip",
+    "reason": "Cream of coconut prep video, not a cocktail recipe."
+  },
+  {
+    "videoId": "Yf4yPvNM0sE",
+    "status": "uncertain",
+    "reason": "Guinness and eggnog idea; source omits Guinness quantity."
+  }
+]
+```
 
 Flat inventories may have `uploadDate: unknown`; use `playlistIndex` and
 `source: flat` as the audit context. The channel playlist is newest-first, so
@@ -93,7 +110,9 @@ Flat inventories may have `uploadDate: unknown`; use `playlistIndex` and
    matches.
 6. Create a new `youtube-channel/make-and-drink` recipe only when the video
    version is distinct.
-7. Run `yarn check-data` after recipe edits.
+7. Keep `skip` and `uncertain` decisions in a temporary reviewed file if you
+   need to resume or regenerate batches.
+8. Run `yarn check-data` after recipe edits.
 
 For final validation, run:
 
