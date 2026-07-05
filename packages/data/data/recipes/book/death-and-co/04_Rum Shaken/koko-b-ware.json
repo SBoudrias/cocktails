@@ -49,7 +49,7 @@
       "name": "La Favorite Coeur d'Ambre",
       "type": "spirit",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -90,6 +90,11 @@
       "type": "book",
       "title": "Death & Co: Modern Classic Cocktails",
       "page": 173
+    },
+    {
+      "type": "youtube",
+      "videoId": "jFyOlO9XJms",
+      "start": 37
     }
   ]
 }

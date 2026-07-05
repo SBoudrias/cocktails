@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Jamaican Nog",
+  "preparation": "blended",
+  "served_on": "up",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Whole egg",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Powdered sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Jamaican Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Core the pineapple and save the pineapple pieces for blending.",
+    "Blend the eggs, milk, pineapple pieces, powdered sugar, and rum.",
+    "Serve in the cored pineapple."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "h1QSy1vrraE",
+      "start": 130
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Old Fashioned (Make and Drink)",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Aromatic Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "maximum": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mscxYXNH_5s"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frozen Slushie Daiquiri",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 3.7,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 4.7,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 16,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Flor de Caña 4 year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3.7,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Probitas Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 3.7,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "9mKjp1-t3Xo",
+      "start": 171
+    }
+  ]
+}

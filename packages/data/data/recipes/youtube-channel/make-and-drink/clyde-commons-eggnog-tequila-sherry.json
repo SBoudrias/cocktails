@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Clyde Commons Eggnog (Tequila-Sherry)",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "punch",
+  "servings": 4,
+  "ingredients": [
+    {
+      "name": "Whole egg",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila Añejo",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Amontillado)",
+      "type": "category",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Clyde Common"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mwxaJQhld80",
+      "start": 172
+    }
+  ]
+}

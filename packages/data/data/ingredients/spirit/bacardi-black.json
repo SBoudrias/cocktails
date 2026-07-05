@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bacardi Black",
+  "type": "spirit",
+  "categories": ["Black Blended Rum"]
+}

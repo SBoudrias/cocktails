@@ -1,5 +1,5 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Vanilla bean paste",
-  "type": "other"
+  "name": "Brown sugar syrup",
+  "type": "syrup"
 }

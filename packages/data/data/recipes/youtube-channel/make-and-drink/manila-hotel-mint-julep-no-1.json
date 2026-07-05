@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Manila Hotel Mint Julep No. 1",
+  "preparation": "built",
+  "served_on": "crushed ice",
+  "glassware": "julep",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "superfine sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the sugar, water, and mint lightly, then remove the bruised mint.",
+    "Fill the glass with crushed ice, add bourbon, and slowly distribute the rum over the top.",
+    "Garnish with fresh mint, pineapple sticks, and a cherry."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Monk Antrim"
+    },
+    {
+      "relation": "book",
+      "source": "The Gentleman's Companion"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "lU08yGoILbk",
+      "start": 120
+    }
+  ]
+}

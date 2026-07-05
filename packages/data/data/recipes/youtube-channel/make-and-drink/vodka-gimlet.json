@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Vodka Gimlet",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "lime cordial",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "lyJBhjW_LsQ"
+    }
+  ]
+}

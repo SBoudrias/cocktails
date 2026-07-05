@@ -45,6 +45,16 @@
       "type": "book",
       "title": "Death & Co: Modern Classic Cocktails",
       "page": 259
+    },
+    {
+      "type": "youtube",
+      "videoId": "jczq-fE4foM",
+      "start": 274
+    },
+    {
+      "type": "youtube",
+      "videoId": "WAbJ7oOPSG4",
+      "start": 111
     }
   ]
 }

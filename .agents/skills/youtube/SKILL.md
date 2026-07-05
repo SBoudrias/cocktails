@@ -1,6 +1,6 @@
 ---
 name: youtube
-description: Fetch video metadata from YouTube URLs using yt-dlp, and extract cocktail recipe details from the description via a Haiku subagent. Use when the user provides a YouTube URL or asks to get details from a YouTube video.
+description: Fetch video metadata from YouTube URLs using yt-dlp, extract cocktail recipe details from descriptions, and plan or execute YouTube channel recipe backfills with youtube-inventory batches. Use when the user provides a YouTube URL, asks to get details from a YouTube video, or asks to backfill recipes from a YouTube channel.
 ---
 
 # YouTube Video Context
@@ -89,7 +89,54 @@ User: "Create a recipe from https://youtube.com/watch?v=xyz"
 2. Delegate description parsing to a Haiku subagent (text output only).
 3. Use the returned notes plus the channel name for attribution to write the recipe file yourself, following `packages/data/schemas/recipe.schema.json`.
 
-## Backfilling New YouTube Channels
+## Backfilling YouTube Channels
+
+For historical backfills or agent teams, start by generating an inventory. This
+uses flat YouTube playlist discovery by default so large channels can be audited
+by video ID and title without waiting for a full metadata crawl. The generated
+batch files exclude videos already referenced by recipe JSON by default and
+include enough context for agents to decide whether to create a new recipe, add
+a ref to an existing recipe, skip the video, or report uncertainty.
+
+```bash
+yarn youtube-inventory \
+  --channel CHANNEL_SLUG \
+  --max-results 200 \
+  --batch-size 8 \
+  --output-dir tmp/youtube-inventory/CHANNEL_SLUG \
+  --sort oldest
+```
+
+Use `--fetch-mode full` only for a smaller audit where upload dates from the
+inventory step matter. The default `--fetch-mode flat` may write
+`uploadDate: unknown`; use `playlistIndex` and the video URL as the assignment
+context, then fetch full metadata for only the videos in the assigned batch.
+
+Use `--include-referenced` when auditing videos that may contain additional
+unmodeled recipes even though the video ID already appears in a recipe ref. Use
+`--reviewed-file tmp/youtube-inventory/CHANNEL_SLUG/reviewed.json` to exclude
+temporary `skip` or `uncertain` decisions while regenerating batches. Do not
+store this ledger in `_source.json` or commit it to the recipe dataset. Use
+`--include-reviewed` only when you want those temporary reviewed videos back in
+the generated batches. Use `--dry-run` to preview the index and first batch
+without writing files.
+
+When processing an inventory batch:
+
+1. Fetch metadata for each video using this skill.
+2. Split multi-recipe videos into separate recipe candidates and use
+   `refs[].start` when useful.
+3. Search existing recipes before creating a new file.
+4. Add a YouTube ref to an existing book or channel recipe when the formula
+   matches.
+5. Create a new `youtube-channel/CHANNEL_SLUG` recipe only when the video
+   version is distinct.
+6. Report `create`, `add-ref`, `skip`, or `uncertain` for every video.
+7. Keep `skip` and `uncertain` review state in a temporary reviewed file only
+   if you need to resume or regenerate batches.
+8. Run `yarn check-data` after edits.
+
+## Adding New YouTube Channels
 
 When adding a new YouTube channel to the cocktails app:
 
@@ -97,15 +144,21 @@ When adding a new YouTube channel to the cocktails app:
    - `packages/data/data/recipes/youtube-channel/CHANNEL_SLUG/`
    - `packages/data/data/recipes/youtube-channel/CHANNEL_SLUG/_source.json`
 
-2. Backfill videos to create GitHub issue with all available videos:
+2. Generate a historical inventory for agent backfill:
+
+   ```bash
+   yarn youtube-inventory --channel CHANNEL_SLUG --sort oldest
+   ```
+
+3. For weekly monitoring, create a GitHub issue with recent videos:
 
    ```bash
    yarn youtube-sync --channel CHANNEL_SLUG --days 365 --dry-run
    ```
 
-3. Review the dry-run output to see what videos will be listed
+4. Review the dry-run output to see what videos will be listed
 
-4. Run without dry-run to create the issue:
+5. Run without dry-run to create the issue:
    ```bash
    yarn youtube-sync --channel CHANNEL_SLUG --days 365
    ```

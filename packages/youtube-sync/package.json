@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "tsc --noEmit",
+    "lint": "cd ../.. && yarn tsc --noEmit -p packages/youtube-sync/tsconfig.json",
+    "inventory": "node src/youtube-inventory.ts",
     "youtube-sync": "node src/youtube-sync.ts"
   },
   "dependencies": {

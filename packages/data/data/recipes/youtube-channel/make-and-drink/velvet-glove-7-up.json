@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Velvet Glove (7 Up)",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "lime",
+      "type": "fruit",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Peach liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Column still lightly aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "7 Up",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "oG1pEQxTNrc"
+    }
+  ]
+}

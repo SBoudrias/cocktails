@@ -1,0 +1,117 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tiki Eggnog (Make and Drink)",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "punch",
+  "servings": 12,
+  "ingredients": [
+    {
+      "name": "Whole egg",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 225,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "vanilla paste",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 18,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray OFTD",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Amontillado)",
+      "type": "category",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Chairman's Reserve rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the eggs and sugar, then mix in the dairy, spices, sherry, and rums.",
+    "Chill before serving."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0sT3iNIyWkA",
+      "start": 154
+    }
+  ]
+}

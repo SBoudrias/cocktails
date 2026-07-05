@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hot Rum Cow",
+  "preparation": "blended",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 4.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend the sugar, bitters, vanilla, very hot milk, and rum thoroughly in an electric drink mixer.",
+    "Pour into a warmed Irish coffee glass.",
+    "Dust with grated nutmeg."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Trader Vic's Bartender's Guide"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "CrHQLAPmMsI",
+      "start": 206
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pisco Sour (Peruvian)",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pisco",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "lYncU8nOLRg"
+    }
+  ]
+}

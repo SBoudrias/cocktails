@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Strawberry Daiquiri Slush",
+  "preparation": "other",
+  "served_on": "blended",
+  "glassware": "goblet",
+  "servings": 4,
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "strawberry syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Add the chilled batch to a slush machine and freeze until pourable."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "VXCiiGJHhmE",
+      "start": 233
+    }
+  ]
+}

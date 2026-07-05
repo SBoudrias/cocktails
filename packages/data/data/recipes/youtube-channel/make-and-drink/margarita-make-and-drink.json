@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Margarita (Make and Drink)",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cointreau",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ObYC4XIyCMQ"
+    },
+    {
+      "type": "youtube",
+      "videoId": "mscxYXNH_5s"
+    }
+  ]
+}

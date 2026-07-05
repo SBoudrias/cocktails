@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Savoy Plaza",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Raspberry syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Brandy (Apple)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "MlgpkZHj1KA",
+      "start": 755
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frozen Paper Plane",
+  "preparation": "other",
+  "served_on": "blended",
+  "glassware": "old fashioned",
+  "servings": 4,
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2.8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 4.8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2.8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Nonino",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2.8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2.8,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Pour into a frozen drink machine and run until slushy."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "FR9gXbdVru4",
+      "start": 498
+    }
+  ]
+}

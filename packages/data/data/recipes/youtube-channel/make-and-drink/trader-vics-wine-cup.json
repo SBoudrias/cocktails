@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Trader Vic's Wine Cup",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "ingredients": [
+    {
+      "name": "pineapple",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "orange",
+      "type": "fruit",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Strawberry",
+      "type": "fruit",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Passion fruit nectar",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grand Marnier",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peach liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dry white wine",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "bottle"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Trader Vic's"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "nk3V6NX3slI",
+      "start": 110
+    }
+  ]
+}

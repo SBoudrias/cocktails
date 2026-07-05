@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mai Tai Spritz",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "wine glass",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Denizen Merchants Reserve",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sparkling wine",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the lime juice, orgeat, dry curaçao, and rum, then chill for 1 to 2 hours.",
+    "Pour into a wine glass and top with sparkling wine."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Martin Cate"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ZWfeOUh4_RM",
+      "start": 321
+    }
+  ]
+}

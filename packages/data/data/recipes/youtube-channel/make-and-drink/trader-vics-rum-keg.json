@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Trader Vic's Rum Keg",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "punch",
+  "servings": 4,
+  "ingredients": [
+    {
+      "name": "rock candy syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit nectar",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Apricot liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Trader Vic's"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "cXw4HR1XWOQ"
+    }
+  ]
+}

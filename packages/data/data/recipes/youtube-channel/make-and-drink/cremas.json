@@ -1,0 +1,99 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Crémas",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "goblet",
+  "servings": 8,
+  "ingredients": [
+    {
+      "name": "lime",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Sweetened condensed milk",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "evaporated milk",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Almond extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 15,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend the dairy, cream of coconut, spices, extracts, lime zest, lime juice, and rum, then chill before serving."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "MJ4EDgJuf_4"
+    }
+  ]
+}

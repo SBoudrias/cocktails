@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Parisian Dispatch",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blanc vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top",
+        "instructions": "Top with seltzer."
+      },
+      "quantity": {
+        "amount": 3,
+        "maximum": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vL1VOioSpsk",
+      "start": 100
+    }
+  ]
+}

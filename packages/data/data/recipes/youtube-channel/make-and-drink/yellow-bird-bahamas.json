@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Yellow Bird (Bahamas)",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Galliano L'Autentico",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Shake with crushed ice."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "qdcfQFZ6D0M",
+      "start": 473
+    }
+  ]
+}

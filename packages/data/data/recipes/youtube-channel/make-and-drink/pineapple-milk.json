@@ -3,7 +3,7 @@
   "name": "Pineapple Milk",
   "preparation": "blended",
   "served_on": "blended",
-  "glassware": "hurricane",
+  "glassware": "goblet",
   "ingredients": [
     {
       "name": "pineapple",
@@ -18,7 +18,7 @@
       }
     },
     {
-      "name": "Vanilla bean paste",
+      "name": "vanilla paste",
       "type": "other",
       "quantity": {
         "amount": 0.25,
@@ -66,8 +66,16 @@
       }
     }
   ],
-  "instructions": ["Blend all ingredients with 1/2 cup of ice."],
+  "instructions": [
+    "Blend all ingredients with 1/2 cup of ice.",
+    "Pour into a goblet.",
+    "Garnish with a pineapple slice."
+  ],
   "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Make and Drink"
+    },
     {
       "relation": "book",
       "source": "The Gentleman's Companion"
@@ -76,7 +84,8 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "Euuhf8bF_xc"
+      "videoId": "Euuhf8bF_xc",
+      "start": 91
     }
   ]
 }

@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frozen Grasshopper",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "goblet",
+  "ingredients": [
+    {
+      "name": "Half and half",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vanilla ice cream",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Crème de Menthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": ["Blend with 1 cup of crushed ice until smooth."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jeffrey Morgenthaler",
+      "url": "https://jeffreymorgenthaler.com/grasshopper/"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "MBXO2UUjLw4",
+      "start": 156
+    }
+  ]
+}

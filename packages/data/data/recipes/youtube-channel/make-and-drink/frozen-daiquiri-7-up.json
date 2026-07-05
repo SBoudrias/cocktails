@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frozen Daiquiri (7 Up)",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "coupe",
+  "servings": 8,
+  "ingredients": [
+    {
+      "name": "frozen concentrated lemonade",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Column still lightly aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "7 Up",
+      "type": "soda",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "oG1pEQxTNrc"
+    }
+  ]
+}

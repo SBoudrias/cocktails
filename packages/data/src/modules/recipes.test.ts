@@ -59,6 +59,36 @@ describe('getRecentlyAddedRecipes', () => {
     ]);
   });
 
+  it('skips recently added recipes that have since been deleted', async () => {
+    const repoRoot = process.cwd();
+    const gitLog = [
+      'COMMIT 2026-05-19T09:00:00-04:00',
+      'packages/data/data/recipes/youtube-channel/make-and-drink/amaretto-sour-make-and-drink.json',
+      'COMMIT 2026-05-18T09:00:00-04:00',
+      'packages/data/data/recipes/youtube-channel/educated-barfly/snake-eyes.json',
+      'packages/data/data/recipes/youtube-channel/anders-erickson/belmont-jewel.json',
+    ].join('\n');
+
+    execFileMocks.promise.mockImplementation((command, args, options) => {
+      if (args.includes('--show-toplevel')) {
+        return Promise.resolve({ stdout: `${repoRoot}\n`, stderr: '' });
+      }
+      if (args.includes('--is-shallow-repository')) {
+        return Promise.resolve({ stdout: 'false\n', stderr: '' });
+      }
+
+      expect(command).toBe('git');
+      expect(options).toEqual({ cwd: repoRoot });
+      expect(args).toContain('--diff-filter=A');
+      return Promise.resolve({ stdout: gitLog, stderr: '' });
+    });
+
+    const { getRecentlyAddedRecipes } = await import('./recipes');
+    const recipes = await getRecentlyAddedRecipes();
+
+    expect(recipes.map((recipe) => recipe.name)).toEqual(['Snake Eyes', 'Belmont Jewel']);
+  });
+
   it('uses GitHub commit data when local git history is shallow', async () => {
     const repoRoot = process.cwd();
     const fetchMock = vi.fn(async (url: URL | string) => {

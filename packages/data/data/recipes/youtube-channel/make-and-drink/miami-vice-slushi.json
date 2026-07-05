@@ -1,0 +1,109 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Miami Vice Slushi",
+  "preparation": "other",
+  "served_on": "blended",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 85,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 102,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "strawberry syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 5.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut milk",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 10,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 10.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 17,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 18,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 9.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 15.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the lime juice, strawberry syrup, 85 grams of sugar, 15.5 ounces of light rum, and 17 ounces of water for the strawberry daiquiri side.",
+    "Combine the pineapple juice, 102 grams of sugar, coconut milk, 9.5 ounces of light rum, and 10.75 ounces of water for the piña colada side.",
+    "Add each mix to a separate slush machine tank and run until slushed.",
+    "Serve the strawberry daiquiri and piña colada sides together in an old fashioned glass."
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Make and Drink"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "WhOjUVnvW28",
+      "start": 533
+    }
+  ]
+}

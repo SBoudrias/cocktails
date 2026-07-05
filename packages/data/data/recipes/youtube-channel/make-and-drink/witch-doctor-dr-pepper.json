@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Witch Doctor (Dr Pepper)",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dr Pepper",
+      "type": "soda",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Try These New Drinks with... Dr Pepper"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "PHt5Y5-6Xe4",
+      "start": 107
+    }
+  ]
+}

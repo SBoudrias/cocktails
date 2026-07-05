@@ -14,14 +14,6 @@
       }
     },
     {
-      "name": "Raspberry syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "cream syrup",
       "type": "syrup",
       "quantity": {
@@ -32,6 +24,14 @@
     {
       "name": "Lemon juice",
       "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Raspberry syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

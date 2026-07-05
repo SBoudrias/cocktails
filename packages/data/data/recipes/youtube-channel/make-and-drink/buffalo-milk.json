@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Buffalo Milk",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Half and half",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kahlua Original coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Blend with 1.5 cups of ice until smooth.", "Top with whipped cream."],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Michael Hoffler"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Oz-mdK4Lkfw",
+      "start": 95
+    }
+  ]
+}

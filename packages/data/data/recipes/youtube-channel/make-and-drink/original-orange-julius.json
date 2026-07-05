@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Original Orange Julius",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "collins",
+  "servings": 2,
+  "ingredients": [
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 70,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "2% milk",
+      "type": "other",
+      "quantity": {
+        "amount": 3.4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 10.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Blend with 200 grams of ice."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wp6NFgJAWX8"
+    }
+  ]
+}

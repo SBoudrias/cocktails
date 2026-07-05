@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cachaça Lemonade",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Brazilian Lemonade",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Unaged Cachaça",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all ingredients in a highball glass over ice.",
+    "Stir to combine."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "-Eg2827uckc",
+      "start": 290
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "12x12 MaD Nog",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "punch",
+  "servings": 12,
+  "ingredients": [
+    {
+      "name": "Whole egg",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 200,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "vanilla paste",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 12,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 18,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sherry (Amontillado)",
+      "type": "category",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 12",
+      "type": "spirit",
+      "quantity": {
+        "amount": 16,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the eggs and sugar, then blend or mix in the dairy, spirits, vanilla, and nutmeg.",
+    "Bottle and refrigerate before serving."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Me4sb7g8KQA",
+      "start": 204
+    }
+  ]
+}

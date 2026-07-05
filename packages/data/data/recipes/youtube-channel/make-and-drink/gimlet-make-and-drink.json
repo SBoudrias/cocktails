@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Gimlet (Make and Drink)",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "lime cordial",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "London Dry Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "V6CW-r2Rx2s"
+    }
+  ]
+}

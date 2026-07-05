@@ -6,16 +6,16 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Raspberry syrup",
-      "type": "syrup",
+      "name": "Calpico concentrate",
+      "type": "other",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Calpico concentrate",
-      "type": "other",
+      "name": "Raspberry syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
