@@ -2,5 +2,387 @@
   "$schema": "../../../../schemas/youtube-channel.schema.json",
   "name": "Make and Drink",
   "links": ["https://www.youtube.com/@makeanddrink"],
-  "description": "The channel mainly focuses on tropical, exotic, tiki, and rum cocktails through their historical recipes and stories as well as exploring modern adaptations, ingredients, and techniques."
+  "description": "The channel mainly focuses on tropical, exotic, tiki, and rum cocktails through their historical recipes and stories as well as exploring modern adaptations, ingredients, and techniques.",
+  "reviewedVideos": [
+    {
+      "videoId": "AcVlelDj-TE",
+      "status": "skip",
+      "reason": "Cream of coconut prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "wvcJxQc2Jhw",
+      "status": "skip",
+      "reason": "Clear orgeat prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "GHf6xzFBFjE",
+      "status": "skip",
+      "reason": "Storage and equipment video, no cocktail recipe."
+    },
+    {
+      "videoId": "Yf4yPvNM0sE",
+      "status": "uncertain",
+      "reason": "Guinness and eggnog idea; source omits Guinness quantity."
+    },
+    {
+      "videoId": "0nraR3w1WEI",
+      "status": "skip",
+      "reason": "Bar tools video, no cocktail recipe."
+    },
+    {
+      "videoId": "kJ_4Qsr7Lqw",
+      "status": "skip",
+      "reason": "Rum tasting in generic daiquiris; no measured recipe."
+    },
+    {
+      "videoId": "XyIUklBBleQ",
+      "status": "skip",
+      "reason": "Mystery rum tasting with Mai Tai context, no source formula."
+    },
+    {
+      "videoId": "V25EnL0oTps",
+      "status": "skip",
+      "reason": "Orange liqueur tasting, no cocktail recipe."
+    },
+    {
+      "videoId": "XaYYLvVvcIQ",
+      "status": "skip",
+      "reason": "Rum tasting, no exact Daiquiri or Mai Tai formula."
+    },
+    {
+      "videoId": "jWtHpuGhNNc",
+      "status": "skip",
+      "reason": "Nut-free orgeat prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "5eNEeSDjvYk",
+      "status": "skip",
+      "reason": "Refractometer and Brix education video, no cocktail recipe."
+    },
+    {
+      "videoId": "Kcxuktfziig",
+      "status": "skip",
+      "reason": "Rum history video with Mai Tai context, no formula."
+    },
+    {
+      "videoId": "O9xmQxL6gi8",
+      "status": "skip",
+      "reason": "Slushie machine comparison, no measured cocktail recipe."
+    },
+    {
+      "videoId": "La8WsEQD1Os",
+      "status": "uncertain",
+      "reason": "Potential Dark Star add-ref, but source lime/lemon mismatch needs manual verification."
+    },
+    {
+      "videoId": "86822B5N1l8",
+      "status": "skip",
+      "reason": "Slushie machine comparison, no measured cocktail recipe."
+    },
+    {
+      "videoId": "7rCtf6hcpO8",
+      "status": "skip",
+      "reason": "Nugget ice testing video, no cocktail recipe."
+    },
+    {
+      "videoId": "dcw6IJSice4",
+      "status": "skip",
+      "reason": "Acid-adjusting prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "LdU6QpiJ-jg",
+      "status": "skip",
+      "reason": "Lime storage experiment, no source-provided cocktail recipe."
+    },
+    {
+      "videoId": "PfQTYtA-POg",
+      "status": "skip",
+      "reason": "Clear ice and equipment video, no cocktail recipe."
+    },
+    {
+      "videoId": "fsO_Y7QpeEY",
+      "status": "skip",
+      "reason": "Rum recommendation and tasting list, no cocktail recipe."
+    },
+    {
+      "videoId": "laBREtCKmgg",
+      "status": "skip",
+      "reason": "Rum tasting, no measured cocktail recipe."
+    },
+    {
+      "videoId": "RthgQYnSXLI",
+      "status": "skip",
+      "reason": "Equipment demo, no measured recipes in metadata."
+    },
+    {
+      "videoId": "1YVcc6XCi_w",
+      "status": "skip",
+      "reason": "Demerara rum explainer, no cocktail recipe."
+    },
+    {
+      "videoId": "9bYrIgAn9wg",
+      "status": "skip",
+      "reason": "Homemade rum cream and liqueur prep, not a cocktail recipe."
+    },
+    {
+      "videoId": "2GTUqMN8hNI",
+      "status": "skip",
+      "reason": "Appleton Mai Tai tasting, no measured recipe."
+    },
+    {
+      "videoId": "Vcehd-vYLcQ",
+      "status": "uncertain",
+      "reason": "Sleeping Lotus formula differs from existing recipe; video needs manual verification."
+    },
+    {
+      "videoId": "9ukSwWiC3ps",
+      "status": "skip",
+      "reason": "Rum age statement explainer, no cocktail recipe."
+    },
+    {
+      "videoId": "gUxVVVwkl1Q",
+      "status": "skip",
+      "reason": "Rum value-buy list, no cocktail recipe."
+    },
+    {
+      "videoId": "YAWmK9zvDqw",
+      "status": "skip",
+      "reason": "Rum review, no cocktail recipe."
+    },
+    {
+      "videoId": "m_NL0mECQHk",
+      "status": "skip",
+      "reason": "Coffee liqueur tasting, no cocktail recipe."
+    },
+    {
+      "videoId": "fdt2lfVxQPA",
+      "status": "skip",
+      "reason": "Super juice comparison and prep, no cocktail recipe."
+    },
+    {
+      "videoId": "jnpUrm6MveQ",
+      "status": "skip",
+      "reason": "Allspice dram prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "LMWGB1Zre0o",
+      "status": "skip",
+      "reason": "Gift guide, no cocktail recipe."
+    },
+    {
+      "videoId": "Ejz5pWsOZsc",
+      "status": "skip",
+      "reason": "Oleo, clarified juice, cordial, and punch syrup prep video."
+    },
+    {
+      "videoId": "t4dPamlMmMI",
+      "status": "skip",
+      "reason": "Slushie machine review, no measured cocktail recipe."
+    },
+    {
+      "videoId": "vfMsmJzJu3c",
+      "status": "uncertain",
+      "reason": "Tiger's Milk variants have incomplete or ambiguous spirit splits."
+    },
+    {
+      "videoId": "JZUT8ftsH8Q",
+      "status": "skip",
+      "reason": "Ice maker and gear review, no cocktail recipe."
+    },
+    {
+      "videoId": "sTM6xzUOxOM",
+      "status": "skip",
+      "reason": "Dark rum tasting and comparison, no cocktail recipe."
+    },
+    {
+      "videoId": "axhAyXCI8kE",
+      "status": "skip",
+      "reason": "Juice comparison, no cocktail recipe."
+    },
+    {
+      "videoId": "yhs5pfcyWf8",
+      "status": "skip",
+      "reason": "Costco rum tasting, no recipe measurements."
+    },
+    {
+      "videoId": "tSVYVUiB8Lo",
+      "status": "skip",
+      "reason": "Syrup and ingredient tutorial, not a cocktail recipe."
+    },
+    {
+      "videoId": "qY6n-UnLTmM",
+      "status": "uncertain",
+      "reason": "Rum and Coke source lists ingredients but no measurements."
+    },
+    {
+      "videoId": "6Rhp6G1bYdo",
+      "status": "skip",
+      "reason": "Coconut rum comparison, no cocktail recipe."
+    },
+    {
+      "videoId": "Yb52vkN1RgU",
+      "status": "skip",
+      "reason": "Rum comparison for Mai Tais, no source measurements."
+    },
+    {
+      "videoId": "GtU8XnqCD4s",
+      "status": "skip",
+      "reason": "Orgeat ingredient tutorial, not a cocktail recipe."
+    },
+    {
+      "videoId": "NW800oJirPE",
+      "status": "skip",
+      "reason": "Syrup tutorial, not a cocktail recipe."
+    },
+    {
+      "videoId": "3c-x0srIXg4",
+      "status": "skip",
+      "reason": "Bacardi rum tasting, no cocktail recipe."
+    },
+    {
+      "videoId": "z4JweLenHHE",
+      "status": "skip",
+      "reason": "Ginger syrup prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "DPou5FJIYJc",
+      "status": "skip",
+      "reason": "Powdered sugar technique video, no cocktail recipe."
+    },
+    {
+      "videoId": "kWoNiJekWGo",
+      "status": "skip",
+      "reason": "Rum tasting in Daiquiris, no recipe measurements."
+    },
+    {
+      "videoId": "M-xIzvMycSg",
+      "status": "skip",
+      "reason": "Passion fruit syrup tasting and prep, not a cocktail recipe."
+    },
+    {
+      "videoId": "W4hpLy8iPBU",
+      "status": "skip",
+      "reason": "Rock candy syrup prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "0D1rcq4_XKw",
+      "status": "skip",
+      "reason": "Banana liqueur tasting, no cocktail recipe."
+    },
+    {
+      "videoId": "954jshwgH6k",
+      "status": "skip",
+      "reason": "Coconut rum infusion prep, not a cocktail recipe."
+    },
+    {
+      "videoId": "wrWhDX0udjs",
+      "status": "skip",
+      "reason": "Pineapple gum syrup prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "iwCEGWjIs8I",
+      "status": "uncertain",
+      "reason": "Tropical Standard El Presidente source appears to differ from existing data."
+    },
+    {
+      "videoId": "dYe3J1DRcVc",
+      "status": "skip",
+      "reason": "Clarified lime juice and cordial prep, not a cocktail recipe."
+    },
+    {
+      "videoId": "l4gmccJ3uqc",
+      "status": "skip",
+      "reason": "Rum usage list video, no cocktail formula."
+    },
+    {
+      "videoId": "Ky2OlfuTrfs",
+      "status": "uncertain",
+      "reason": "Rum Advent tasting has only partial transcript recipe details."
+    },
+    {
+      "videoId": "Hjmtv9iBE0I",
+      "status": "uncertain",
+      "reason": "Bounty White Daiquiri lacks a complete source formula."
+    },
+    {
+      "videoId": "utBbShl2gOU",
+      "status": "skip",
+      "reason": "Rum gift guide, no cocktail formula."
+    },
+    {
+      "videoId": "LgsYWuDzH5k",
+      "status": "skip",
+      "reason": "Rum bottle discussion, no cocktail formula."
+    },
+    {
+      "videoId": "xoKlzN4EM1w",
+      "status": "skip",
+      "reason": "Pecan orgeat prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "K23v0rykTYM",
+      "status": "skip",
+      "reason": "Banana rum prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "7Z65fF4eBew",
+      "status": "skip",
+      "reason": "Orgeat and syrup prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "Z2nxFxzcdKk",
+      "status": "skip",
+      "reason": "Pineapple juicing technique video, no cocktail recipe."
+    },
+    {
+      "videoId": "HYl_Puj_fkw",
+      "status": "skip",
+      "reason": "Grenadine prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "w_CeAl_HbRs",
+      "status": "skip",
+      "reason": "Coconut product explainer, no cocktail recipe."
+    },
+    {
+      "videoId": "8pFBK0KWkNc",
+      "status": "skip",
+      "reason": "Acid adjuster prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "qhXZKrKUGzg",
+      "status": "skip",
+      "reason": "Orgeat prep and comparison video, not a cocktail recipe."
+    },
+    {
+      "videoId": "VAmFCbBg6zk",
+      "status": "skip",
+      "reason": "Rum bottle buying guide, no cocktail recipe."
+    },
+    {
+      "videoId": "PpHlEX601_g",
+      "status": "skip",
+      "reason": "White creme de cacao prep video, not a cocktail recipe."
+    },
+    {
+      "videoId": "8aksmrbBs2c",
+      "status": "uncertain",
+      "reason": "Description provides no measurements and requires manual extraction."
+    },
+    {
+      "videoId": "pDO8hZcfelg",
+      "status": "uncertain",
+      "reason": "Irish Coffee source omits cream measurement."
+    },
+    {
+      "videoId": "0757OjuqQR0",
+      "status": "skip",
+      "reason": "Bar stock and bottle buying guide, no cocktail recipe."
+    },
+    {
+      "videoId": "035muu7kyLg",
+      "status": "skip",
+      "reason": "Clear ice technique video, not a cocktail recipe."
+    }
+  ]
 }

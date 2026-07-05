@@ -32,6 +32,7 @@ type InventoryOptions = {
   all?: boolean;
   includeShorts?: boolean;
   includeReferenced?: boolean;
+  includeReviewed?: boolean;
   batchSize: number;
   outputDir: string;
   format: OutputFormat;
@@ -50,6 +51,7 @@ type InventoryVideo = {
   source: FetchMode;
   alreadyReferenced: boolean;
   referencedBy: RecipeVideoReference[];
+  reviewed?: ChannelSource['reviewedVideos'][number];
 };
 
 type InventoryBatch = {
@@ -121,10 +123,12 @@ function sortVideos(videos: InventoryVideo[], sort: SortOrder): InventoryVideo[]
 function toInventoryVideo(
   video: FlatPlaylistVideo,
   references: Map<string, RecipeVideoReference[]>,
+  reviewedVideos: Map<string, ChannelSource['reviewedVideos'][number]>,
   playlistIndex: number,
   source: FetchMode,
 ): InventoryVideo {
   const referencedBy = references.get(video.id) ?? [];
+  const reviewed = reviewedVideos.get(video.id);
 
   return {
     videoId: video.id,
@@ -136,6 +140,7 @@ function toInventoryVideo(
     source,
     alreadyReferenced: referencedBy.length > 0,
     referencedBy,
+    reviewed,
   };
 }
 
@@ -145,6 +150,7 @@ function selectBatchVideos(
 ): InventoryVideo[] {
   return videos.filter((video) => {
     if (!options.includeReferenced && video.alreadyReferenced) return false;
+    if (!options.includeReviewed && video.reviewed) return false;
     if (
       !options.includeShorts &&
       video.durationSeconds != null &&
@@ -160,11 +166,19 @@ function selectBatchVideos(
 function getExcludedVideos(
   videos: InventoryVideo[],
   options: InventoryOptions,
-): Array<InventoryVideo & { reason: 'already-referenced' | 'short' }> {
+): Array<InventoryVideo & { reason: 'already-referenced' | 'reviewed' | 'short' }> {
   return videos.flatMap(
-    (video): Array<InventoryVideo & { reason: 'already-referenced' | 'short' }> => {
+    (
+      video,
+    ): Array<
+      InventoryVideo & { reason: 'already-referenced' | 'reviewed' | 'short' }
+    > => {
       if (!options.includeReferenced && video.alreadyReferenced) {
         return [{ ...video, reason: 'already-referenced' }];
+      }
+
+      if (!options.includeReviewed && video.reviewed) {
+        return [{ ...video, reason: 'reviewed' }];
       }
 
       if (
@@ -237,6 +251,9 @@ function formatBatchMarkdown(channel: ChannelSource, batch: InventoryBatch): str
       lines.push(`  - durationSeconds: ${video.durationSeconds}`);
     }
     lines.push(...formatRecipeReferences(video.referencedBy));
+    if (video.reviewed) {
+      lines.push(`  - reviewed: ${video.reviewed.status} - ${video.reviewed.reason}`);
+    }
     lines.push('');
   }
 
@@ -289,7 +306,9 @@ function buildIndex(
   options: InventoryOptions,
   videos: InventoryVideo[],
   selectedVideos: InventoryVideo[],
-  excludedVideos: Array<InventoryVideo & { reason: 'already-referenced' | 'short' }>,
+  excludedVideos: Array<
+    InventoryVideo & { reason: 'already-referenced' | 'reviewed' | 'short' }
+  >,
   batches: InventoryBatch[],
 ): object {
   return {
@@ -303,6 +322,7 @@ function buildIndex(
       maxResults: options.all ? 'all' : options.maxResults,
       includeShorts: Boolean(options.includeShorts),
       includeReferenced: Boolean(options.includeReferenced),
+      includeReviewed: Boolean(options.includeReviewed),
       batchSize: options.batchSize,
       sort: options.sort,
       format: options.format,
@@ -313,6 +333,7 @@ function buildIndex(
       selectedForBatches: selectedVideos.length,
       excluded: excludedVideos.length,
       alreadyReferenced: videos.filter((video) => video.alreadyReferenced).length,
+      reviewed: videos.filter((video) => video.reviewed).length,
       batches: batches.length,
     },
     batches: batches.map((batch) => ({
@@ -363,6 +384,7 @@ program
   .option('--all', 'Fetch all available channel videos')
   .option('--include-shorts', 'Include videos with duration <= 60 seconds')
   .option('--include-referenced', 'Include videos that already appear in recipe refs')
+  .option('--include-reviewed', 'Include videos marked reviewed in channel metadata')
   .option(
     '--batch-size <number>',
     'Number of videos per agent batch',
@@ -425,9 +447,18 @@ async function main(): Promise<void> {
   logger.item(`Fetched ${fetchedVideos.length} unique video(s)`);
   logger.footer();
 
+  const reviewedVideos = new Map(
+    channel.reviewedVideos.map((video) => [video.videoId, video]),
+  );
   const inventoryVideos = sortVideos(
     fetchedVideos.map((video, playlistIndex) =>
-      toInventoryVideo(video, recipeReferences, playlistIndex, options.fetchMode),
+      toInventoryVideo(
+        video,
+        recipeReferences,
+        reviewedVideos,
+        playlistIndex,
+        options.fetchMode,
+      ),
     ),
     options.sort,
   );
@@ -457,6 +488,7 @@ async function main(): Promise<void> {
   logger.item(
     `Already referenced: ${inventoryVideos.filter((video) => video.alreadyReferenced).length}`,
   );
+  logger.item(`Reviewed: ${inventoryVideos.filter((video) => video.reviewed).length}`);
   logger.item(`Batches: ${batches.length}`);
   logger.footer();
 

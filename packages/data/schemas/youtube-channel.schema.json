@@ -19,6 +19,21 @@
     "description": {
       "description": "Description of the channel content",
       "type": "string"
+    },
+    "reviewedVideos": {
+      "description": "Channel videos that have been reviewed for recipe backfill but intentionally do not have recipe refs.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "videoId": { "type": "string" },
+          "status": { "enum": ["skip", "uncertain"] },
+          "reason": { "type": "string" }
+        },
+        "required": ["videoId", "status", "reason"],
+        "additionalProperties": false
+      },
+      "uniqueItems": true
     }
   },
   "required": ["name", "links", "description"],
