@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cucumber Lemon Gimlet",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Basil leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "maximum": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Lemongrass and Thai Chili Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Empress 1908 Cucumber Lemon Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Use a generous handful of basil leaves.",
+    "Shake hard with ice and fine strain into a chilled coupe.",
+    "Garnish with a fresh basil leaf."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "bE1kcZJIbjI"
+    }
+  ]
+}

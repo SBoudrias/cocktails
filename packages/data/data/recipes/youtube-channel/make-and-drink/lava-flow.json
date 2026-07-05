@@ -1,0 +1,99 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Lava Flow",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "banana",
+      "type": "fruit",
+      "technique": {
+        "technique": "temperature",
+        "method": "frozen"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "cream syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kōloa Kauaʻi Coconut Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton White Stache",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "strawberry syrup",
+      "type": "syrup",
+      "technique": {
+        "technique": "application",
+        "method": "float",
+        "instructions": "Use as the strawberry component of the lava flow; the source lists the syrup prep but no cocktail amount."
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend the pineapple juice, cream syrup, banana liqueur, rums, frozen banana, xanthan gum, and 110 grams nugget or crushed ice.",
+    "Pour with the strawberry syrup to create the lava flow effect."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Four Seasons Maui",
+      "location": "Maui, HI"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Ow8wtNvWKNc"
+    }
+  ]
+}
