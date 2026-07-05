@@ -72,6 +72,11 @@
       "type": "book",
       "title": "Minimalist Tiki",
       "page": 240
+    },
+    {
+      "type": "youtube",
+      "videoId": "vKqw1hu9fq4",
+      "start": 108
     }
   ]
 }

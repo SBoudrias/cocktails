@@ -79,6 +79,11 @@
       "type": "podcast",
       "episodeTitle": "Painkiller",
       "episodeLink": "https://vinepair.com/cocktail-college/painkiller/"
+    },
+    {
+      "type": "youtube",
+      "videoId": "cTUMLfAyJKI",
+      "start": 192
     }
   ]
 }

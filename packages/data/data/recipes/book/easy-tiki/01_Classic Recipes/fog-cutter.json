@@ -77,6 +77,11 @@
       "type": "book",
       "title": "Easy Tiki",
       "page": 79
+    },
+    {
+      "type": "youtube",
+      "videoId": "XEPtHqQ5DzE",
+      "start": 357
     }
   ]
 }
