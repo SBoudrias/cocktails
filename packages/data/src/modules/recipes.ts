@@ -474,20 +474,33 @@ export const getRecipesFromSource = memo(
   },
 );
 
+function isMissingRecipeError(error: unknown): boolean {
+  return error instanceof Error && error.message.startsWith('Recipe not found: ');
+}
+
 export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
   const { repoRoot, recipeRelPath } = await resolveGitRecipeContext();
   const recent = (await hasFullGitHistory(repoRoot))
     ? await getRecentlyAddedRecipesFromGit({ repoRoot, recipeRelPath })
     : await getRecentlyAddedRecipesFromGitHub(recipeRelPath);
 
-  return Promise.all(
-    recent
-      .toSorted((a, b) => b.date.getTime() - a.date.getTime())
-      .slice(0, recentlyAddedRecipeLimit)
-      .map(({ sourceType, sourceSlug, recipeSlug, chapter }) =>
-        getRecipe({ type: sourceType, slug: sourceSlug }, recipeSlug, chapter),
-      ),
-  );
+  const recipes: Recipe[] = [];
+
+  for (const { sourceType, sourceSlug, recipeSlug, chapter } of recent.toSorted(
+    (a, b) => b.date.getTime() - a.date.getTime(),
+  )) {
+    try {
+      recipes.push(
+        await getRecipe({ type: sourceType, slug: sourceSlug }, recipeSlug, chapter),
+      );
+    } catch (error) {
+      if (!isMissingRecipeError(error)) throw error;
+    }
+
+    if (recipes.length >= recentlyAddedRecipeLimit) break;
+  }
+
+  return recipes;
 });
 
 export const getNonAlcoholicRecipes = memo(async (): Promise<Recipe[]> => {
