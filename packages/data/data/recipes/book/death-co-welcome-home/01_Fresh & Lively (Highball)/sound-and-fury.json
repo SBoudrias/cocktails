@@ -14,16 +14,16 @@
       }
     },
     {
-      "name": "Raspberry syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Raspberry syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"

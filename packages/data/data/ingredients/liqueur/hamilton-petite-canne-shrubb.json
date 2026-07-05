@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Hamilton Petite Canne Shrubb",
+  "type": "liqueur",
+  "categories": ["Orange shrubb"]
+}

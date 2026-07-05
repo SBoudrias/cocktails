@@ -6,7 +6,7 @@
   "glassware": "highball",
   "ingredients": [
     {
-      "name": "Raspberry syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Ginger syrup",
+      "name": "Raspberry syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,

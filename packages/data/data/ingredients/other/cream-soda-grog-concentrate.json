@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cream Soda Grog Concentrate",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Cream soda",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Allspice berry",
+      "type": "spice",
+      "quantity": {
+        "amount": 20,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Vanilla bean",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 281,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Brown sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 281,
+        "unit": "gram"
+      }
+    }
+  ]
+}

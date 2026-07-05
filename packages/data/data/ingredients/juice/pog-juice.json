@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "POG juice",
+  "type": "juice",
+  "ingredients": [
+    {
+      "name": "passion fruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "guava juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ]
+}

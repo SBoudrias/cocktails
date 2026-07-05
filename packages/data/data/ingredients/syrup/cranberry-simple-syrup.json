@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cranberry simple syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Cranberry juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ]
+}

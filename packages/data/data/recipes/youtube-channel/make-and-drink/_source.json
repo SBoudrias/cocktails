@@ -30,6 +30,56 @@
       "reason": "Acid-adjusted juice and foam-topped Mai Tai variants need manual modeling."
     },
     {
+      "videoId": "hJ2Q4OS5n3k",
+      "status": "uncertain",
+      "reason": "Corn 'N Oil formula differs from existing recipe; remaining formulas are ingredient prep."
+    },
+    {
+      "videoId": "v6bVszuThCE",
+      "status": "skip",
+      "reason": "Rum comparison using a generic Daiquiri formula, no distinct named recipe."
+    },
+    {
+      "videoId": "goHynJhu_N0",
+      "status": "uncertain",
+      "reason": "Beachcomber Negroni formula differs from existing recipe and needs source verification."
+    },
+    {
+      "videoId": "jFyOlO9XJms",
+      "status": "uncertain",
+      "reason": "Koko B Ware quantity differs from existing Death & Co recipe; needs source verification."
+    },
+    {
+      "videoId": "CrHQLAPmMsI",
+      "status": "uncertain",
+      "reason": "Trader Vic hot drink formulas use free-form top or fill quantities."
+    },
+    {
+      "videoId": "x0tLZ0GFN6U",
+      "status": "skip",
+      "reason": "Rum tasting video, no measured distinct recipe."
+    },
+    {
+      "videoId": "NcVSzthbuVI",
+      "status": "skip",
+      "reason": "Worst Mai Tai gag recipe, no measured cocktail recipe."
+    },
+    {
+      "videoId": "-Eg2827uckc",
+      "status": "uncertain",
+      "reason": "Brazilian lemonade cocktail has unclear sweetener and condensed milk details."
+    },
+    {
+      "videoId": "OH2uUeltD60",
+      "status": "uncertain",
+      "reason": "Jungle All the Way exact recipe is unclear; other recipes from the video were created."
+    },
+    {
+      "videoId": "lyJBhjW_LsQ",
+      "status": "uncertain",
+      "reason": "Sea Breeze formula omits vodka; other recipes from the video were created."
+    },
+    {
       "videoId": "0nraR3w1WEI",
       "status": "skip",
       "reason": "Bar tools video, no cocktail recipe."

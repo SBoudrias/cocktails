@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mint Frappe (7 Up)",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Crème de Menthe",
+      "type": "category",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Build over 7 Up ice cubes."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "oG1pEQxTNrc"
+    }
+  ]
+}
