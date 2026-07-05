@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Kuleana Nanea Rum",
+  "type": "spirit",
+  "categories": ["Rum"]
+}
