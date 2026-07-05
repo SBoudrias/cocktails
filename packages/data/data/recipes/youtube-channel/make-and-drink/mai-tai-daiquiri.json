@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mai Tai Daiquiri",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Blend with 1 1/2 cups cracked or nugget ice, or 10 oz shaved ice."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "WZY1Qm2j5L4",
+      "start": 296
+    }
+  ]
+}
