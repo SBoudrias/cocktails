@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hot Brown Cow",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour hot milk and strong hot coffee into a warmed Irish coffee glass.",
+    "Add Jamaican rum and stir.",
+    "Dust with grated nutmeg."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Trader Vic's Bartender's Guide"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "CrHQLAPmMsI",
+      "start": 300
+    }
+  ]
+}

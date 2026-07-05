@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Brazilian Lemonade",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 750,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "lime",
+      "type": "fruit",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Sweetened condensed milk",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend the whole limes with water briefly, then strain.",
+    "Blend the strained lime water with sweetened condensed milk."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "-Eg2827uckc",
+      "start": 139
+    }
+  ]
+}

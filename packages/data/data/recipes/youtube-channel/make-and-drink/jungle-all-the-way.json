@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Jungle All the Way",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Kahlua Original coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a tiki mug over crushed ice."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Trader Sam's",
+      "location": "Anaheim, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "OH2uUeltD60",
+      "start": 57
+    }
+  ]
+}

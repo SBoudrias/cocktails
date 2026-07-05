@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cafe Royal No. 1",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Pour hot strong coffee into a warmed Irish coffee glass.",
+    "Place the sugar cube on a spoon over the glass, soak it with Demerara rum, and ignite.",
+    "When the flame dies, stir the sugar and rum into the coffee."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Trader Vic's Bartender's Guide"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "CrHQLAPmMsI",
+      "start": 39
+    }
+  ]
+}
