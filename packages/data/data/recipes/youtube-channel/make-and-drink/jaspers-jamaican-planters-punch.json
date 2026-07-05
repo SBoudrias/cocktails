@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Jasper's Rum Punch",
+  "name": "Jasper's Jamaican Planter's Punch",
   "preparation": "swizzled",
   "served_on": "ice cubes",
   "glassware": "tiki",
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Wray & Nephew white overproof",
+      "name": "Coruba",
       "type": "spirit",
       "quantity": {
         "amount": 1.5,
@@ -30,11 +30,6 @@
       }
     }
   ],
-  "instructions": [
-    "Combine Jasper's Mix and rum in a glass with ice.",
-    "Swizzle to mix and chill.",
-    "Garnish with grated nutmeg and a mint sprig."
-  ],
   "attributions": [
     {
       "relation": "recipe author",
@@ -42,10 +37,6 @@
     }
   ],
   "refs": [
-    {
-      "type": "youtube",
-      "videoId": "sRTGCquUgMs"
-    },
     {
       "type": "youtube",
       "videoId": "cSdWGfMfFa4",
