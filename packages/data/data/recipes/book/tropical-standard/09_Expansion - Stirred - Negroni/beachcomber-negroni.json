@@ -17,8 +17,7 @@
       "name": "Lime juice",
       "type": "juice",
       "technique": {
-        "technique": "clarification",
-        "method": "milk"
+        "technique": "clarification"
       },
       "quantity": {
         "amount": 0.25,
@@ -29,7 +28,7 @@
       "name": "Don's Remix",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -61,10 +60,23 @@
       "name": "Flor de Caña 4 year",
       "type": "spirit",
       "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     }
+  ],
+  "instructions": [
+    "Combine all ingredients in a mixing glass with ice.",
+    "Stir, then strain into a double old fashioned glass over one large ice cube.",
+    "Garnish with a grapefruit peel."
   ],
   "attributions": [
     {
@@ -82,6 +94,11 @@
       "type": "book",
       "title": "tropical-standard",
       "page": 149
+    },
+    {
+      "type": "youtube",
+      "videoId": "goHynJhu_N0",
+      "start": 163
     }
   ]
 }
