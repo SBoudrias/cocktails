@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Banana Bogey",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "banana",
+      "type": "fruit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "rock candy syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": ["Blend with 8 oz nugget ice until smooth."],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Garden Gallery",
+      "location": "Disney Inn, Walt Disney World"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "WO_w8pWGIQk",
+      "start": 165
+    }
+  ]
+}

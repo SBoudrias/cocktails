@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Boomer",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "lemon",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "sliced"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Dr Pepper",
+      "type": "soda",
+      "technique": {
+        "technique": "temperature",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Heat Dr Pepper in a saucepan.",
+    "Pour the hot Dr Pepper into a cup or glass over a lemon slice, then add the rum."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Try These New Drinks with... Dr Pepper"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "PHt5Y5-6Xe4",
+      "start": 542
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pepper/Mint",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Crème de Menthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dr Pepper",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top",
+        "instructions": "Fill with Dr Pepper."
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Try These New Drinks with... Dr Pepper"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "PHt5Y5-6Xe4",
+      "start": 427
+    }
+  ]
+}
