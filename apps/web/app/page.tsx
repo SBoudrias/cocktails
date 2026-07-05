@@ -28,6 +28,7 @@ import {
   getBarListUrl,
   getBottleListUrl,
   getIngredientListUrl,
+  getNonAlcoholicRecipeListUrl,
   getRecentlyAddedUrl,
   getRecipeListUrl,
   getSourceUrl,
@@ -191,6 +192,11 @@ export default async function HomePage() {
               <Link href={getIngredientListUrl()}>
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
                   <ListItemText primary="All Ingredients" />
+                </ListItem>
+              </Link>
+              <Link href={getNonAlcoholicRecipeListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Non-Alcoholic Recipes" />
                 </ListItem>
               </Link>
               <Link href={getBottleListUrl()}>

@@ -32,8 +32,21 @@ describe('tryConvertVolume', () => {
     });
   });
 
-  it('returns undefined for unsupported units', () => {
-    expect(tryConvertVolume({ amount: 3, unit: 'dash' }, 'ml')).toBeUndefined();
+  it('returns undefined for non-volume units', () => {
     expect(tryConvertVolume({ amount: 100, unit: 'gram' }, 'oz')).toBeUndefined();
+  });
+
+  it('converts tiny volume units', () => {
+    expect(tryConvertVolume({ amount: 4, unit: 'dash' }, 'oz')).toEqual({
+      amount: 0.125,
+      unit: 'oz',
+    });
+    expect(tryConvertVolume({ amount: 3, unit: 'drop' }, 'oz')?.amount).toBeCloseTo(
+      3 / 576,
+    );
+    expect(tryConvertVolume({ amount: 2, unit: 'spray' }, 'ml')).toEqual({
+      amount: 0.375,
+      unit: 'ml',
+    });
   });
 });
