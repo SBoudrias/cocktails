@@ -22,8 +22,8 @@
     "@types/lodash": "^4.17.24",
     "@types/node": "^26.1.0",
     "@vitejs/plugin-react": "^6.0.3",
-    "@vitest/browser": "^4.1.9",
-    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/browser": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^10.6.0",
     "eslint-config-next": "16.2.10",
     "nano-staged": "^1.0.2",
@@ -31,7 +31,7 @@
     "turbo": "^2.10.3",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.1",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "volta": {
     "node": "24.13.0"
