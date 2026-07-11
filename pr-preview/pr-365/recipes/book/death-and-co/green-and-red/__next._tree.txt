@@ -1,0 +1,4 @@
+:HL["/cocktails/pr-preview/pr-365/_next/static/chunks/3-h4pvb1brn1u.css","style"]
+:HL["/cocktails/pr-preview/pr-365/_next/static/media/ce62453a442c7f35-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/cocktails/pr-preview/pr-365/_next/static/chunks/2_diiozivt4bo.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"recipes","param":null,"prefetchHints":0,"slots":{"children":{"name":"type","param":{"type":"d","key":"book","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"source","param":{"type":"d","key":"death-and-co","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"recipe","param":{"type":"d","key":"green-and-red","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}}}},"staleTime":300,"buildId":"dZIoeVfVlI8e7K1rdGKOZ"}
