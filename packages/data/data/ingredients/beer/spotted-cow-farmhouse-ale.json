@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Spotted Cow Farmhouse Ale",
+  "type": "beer",
+  "categories": ["Cream Ale"]
+}

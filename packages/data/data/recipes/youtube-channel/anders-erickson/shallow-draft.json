@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Shallow Draft",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Anders x Portland Syrups Falernum",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Spotted Cow Farmhouse Ale",
+      "type": "beer",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 6,
+        "maximum": 8,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build the falernum and lemon juice in a highball glass with ice.",
+    "Top with beer.",
+    "Garnish with a lemon wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "gu5hZ5Rb8nc",
+      "start": 636
+    }
+  ]
+}

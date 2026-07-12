@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Miami Nice",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Guava purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Santa Teresa 1796 Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend all ingredients with one cup of ice.",
+    "Pour into a hurricane glass."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "The Beehive",
+      "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "KV95hZJ5skY",
+      "start": 98
+    }
+  ]
+}

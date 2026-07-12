@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Sore Loser",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Sherry (Amontillado)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peach liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a chilled coupe.",
+    "Garnish with an orange twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "6G49Rfg0U9c",
+      "start": 581
+    }
+  ]
+}
