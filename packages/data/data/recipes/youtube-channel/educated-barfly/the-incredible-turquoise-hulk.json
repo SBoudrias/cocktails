@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "9th Wonder",
+  "name": "The Incredible Turquoise Hulk",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
@@ -9,20 +9,36 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Ancho Reyes Ancho Chile Liqueur",
-      "type": "liqueur",
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Crème de Cacao",
+      "name": "Blue Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -30,7 +46,7 @@
       }
     },
     {
-      "name": "Tequila (Blanco)",
+      "name": "Cognac",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -39,30 +55,14 @@
     }
   ],
   "instructions": [
-    "Add all ingredients to a shaker with ice",
-    "Shake until well chilled",
-    "Strain into a chilled coupe",
-    "Garnish with a lemon wheel"
-  ],
-  "attributions": [
-    {
-      "relation": "recipe author",
-      "source": "Erick Castro"
-    }
+    "Shake all ingredients with ice.",
+    "Strain into a chilled coupe.",
+    "Garnish with a lime wheel."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "mui53iIiIVE",
-      "start": 90
-    },
-    {
-      "type": "youtube",
-      "videoId": "fPB3-wUqHu0"
-    },
-    {
-      "type": "youtube",
-      "videoId": "PoIxlnNztWA"
+      "videoId": "w-kp0wFD9OA"
     }
   ]
 }
