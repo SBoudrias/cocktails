@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Sailor Jerry Spiced Rum",
+  "type": "spirit",
+  "categories": ["Spiced Rum"]
+}

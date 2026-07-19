@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Salted cream",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 500,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ]
+}
