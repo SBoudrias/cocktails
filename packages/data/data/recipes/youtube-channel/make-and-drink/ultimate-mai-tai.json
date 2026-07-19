@@ -40,34 +40,10 @@
       }
     },
     {
-      "name": "Appleton 12",
+      "name": "Ultimate Mai Tai Rum Blend",
       "type": "spirit",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Smith & Cross",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Planteray OFTD",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Planteray Xaymaca",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.5,
+        "amount": 2,
         "unit": "oz"
       }
     }

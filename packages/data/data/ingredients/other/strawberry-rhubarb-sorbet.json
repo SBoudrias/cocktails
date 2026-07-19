@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Strawberry Rhubarb Sorbet",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Strawberry puree",
+      "type": "puree",
+      "quantity": {
+        "amount": 500,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Rhubarb",
+      "type": "fruit",
+      "quantity": {
+        "amount": 150,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 150,
+        "unit": "gram"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0hpf8ZRe1ss",
+      "start": 294
+    }
+  ]
+}

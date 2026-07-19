@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Gorilla Grog",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "passion fruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "guava juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "part"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "C-dTFBiLwqo"
+    }
+  ]
+}

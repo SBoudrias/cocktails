@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Margaritas & Cream",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Strawberry Rhubarb Sorbet",
+      "type": "other",
+      "quantity": {
+        "amount": 130,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Salted cream",
+      "type": "other",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Schmuck",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "0hpf8ZRe1ss",
+      "start": 648
+    }
+  ]
+}
