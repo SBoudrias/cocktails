@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Dark and Stormy",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Goslings Black Seal Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add the rum and ginger beer to a double old fashioned glass.",
+    "Fill with ice cubes.",
+    "Garnish with a lime wedge, if desired."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "XWvrlF-_tfs"
+    }
+  ]
+}
