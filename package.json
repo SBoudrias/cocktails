@@ -28,7 +28,7 @@
     "eslint-config-next": "16.2.11",
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.60.0",
-    "turbo": "^2.10.6",
+    "turbo": "^2.10.7",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.65.0",
     "vitest": "^4.1.10"
