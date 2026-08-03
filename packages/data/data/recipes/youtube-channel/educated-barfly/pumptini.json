@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pumptini",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "raspberry",
+      "type": "fruit",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Garnish with a fresh raspberry."],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Pump",
+      "location": "West Hollywood, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "epleXpr5LAw",
+      "start": 342
+    }
+  ]
+}

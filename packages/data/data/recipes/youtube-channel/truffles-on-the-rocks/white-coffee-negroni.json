@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "White Coffee Negroni",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Blanc vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Bitter Bianco",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "coffee oil"
+      },
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir with ice.",
+    "Strain over a large clear ice cube.",
+    "Garnish with a white chocolate disk and three coffee beans."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "5pRGj9A2TPk"
+    }
+  ]
+}

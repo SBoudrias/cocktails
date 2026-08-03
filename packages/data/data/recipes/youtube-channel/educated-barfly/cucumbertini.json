@@ -1,20 +1,28 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Gun Metal Blue",
+  "name": "Cucumbertini",
   "preparation": "shaken",
   "served_on": "up",
-  "glassware": "coupe",
+  "glassware": "martini",
   "ingredients": [
     {
-      "name": "Cinnamon syrup",
-      "type": "syrup",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "cucumber juice",
       "type": "juice",
       "quantity": {
         "amount": 0.75,
@@ -22,15 +30,7 @@
       }
     },
     {
-      "name": "Peach liqueur",
-      "type": "category",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blue Curaçao",
+      "name": "Elderflower liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Mezcal",
+      "name": "Gin",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -46,19 +46,18 @@
       }
     }
   ],
-  "instructions": ["Garnish with an orange coin twist and float"],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Pump",
+      "location": "West Hollywood, CA"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "NIZEI5gxH1o"
-    },
-    {
-      "type": "youtube",
-      "videoId": "Bk6MjJcGIaI"
-    },
-    {
-      "type": "youtube",
-      "videoId": "amV7m3Ycml8"
+      "videoId": "epleXpr5LAw",
+      "start": 569
     }
   ]
 }

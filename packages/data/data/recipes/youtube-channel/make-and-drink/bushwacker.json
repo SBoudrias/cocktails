@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Bushwacker",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Chocolate Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "espresso",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "chilled"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Half and half",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": ["Coat the glass with chocolate syrup."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "qJHm91kLg3c"
+    }
+  ]
+}
