@@ -1,15 +1,23 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Gun Metal Blue",
+  "name": "Pendulum",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Cinnamon syrup",
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Jasmine tea syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -17,20 +25,12 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Peach liqueur",
-      "type": "category",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blue Curaçao",
+      "name": "Apricot liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -41,24 +41,21 @@
       "name": "Mezcal",
       "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "instructions": ["Garnish with an orange coin twist and float"],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Truffles On The Rocks"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "NIZEI5gxH1o"
-    },
-    {
-      "type": "youtube",
-      "videoId": "Bk6MjJcGIaI"
-    },
-    {
-      "type": "youtube",
-      "videoId": "amV7m3Ycml8"
+      "videoId": "4y9LXFJQgBg"
     }
   ]
 }
