@@ -20,7 +20,7 @@
     "noUncheckedIndexedAccess": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "target": "ES2017"
+    "target": "ES2022"
   },
   "include": ["**/*.mts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", ".next", "out", "apps/web/.next", "apps/web/out"]

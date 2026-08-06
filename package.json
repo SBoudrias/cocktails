@@ -21,6 +21,7 @@
     "@types/json-schema": "^7.0.15",
     "@types/lodash": "^4.17.24",
     "@types/node": "^26.1.2",
+    "@typescript/native": "npm:typescript@^7.0.2",
     "@vitejs/plugin-react": "^6.0.4",
     "@vitest/browser": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
@@ -29,12 +30,20 @@
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.61.0",
     "turbo": "^2.10.7",
-    "typescript": "^6.0.3",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
     "typescript-eslint": "^8.65.0",
     "vitest": "^4.1.10"
+  },
+  "dependenciesMeta": {
+    "core-js": {
+      "built": false
+    },
+    "unrs-resolver": {
+      "built": false
+    }
   },
   "volta": {
     "node": "24.13.0"
   },
-  "packageManager": "yarn@4.12.0+sha512.f45ab632439a67f8bc759bf32ead036a1f413287b9042726b7cc4818b7b49e14e9423ba49b18f9e06ea4941c1ad062385b1d8760a8d5091a1a31e5f6219afca8"
+  "packageManager": "yarn@4.18.0+sha512.fcb8716fe7cd0eece141ffc18b92193a9df9204c1ba83189c288835223fc0bbe64af473bab0d5e9927a7daeb5caf2bb07eb2787cc9338ca040ea125f2a1f2f7e"
 }
