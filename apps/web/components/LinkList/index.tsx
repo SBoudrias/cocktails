@@ -1,18 +1,19 @@
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
 import type { ListItemTextProps } from '@mui/material/ListItemText';
+import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import type { ListConfig } from '#/modules/lists/type';
 
-export function LinkListItem({
+export function LinkListItem<RouteType>({
   href,
   primary,
   secondary,
   secondaryTypographyProps,
   tertiary,
 }: {
-  href?: string;
+  href?: LinkProps<RouteType>['href'];
   primary: React.ReactNode;
   secondary?: React.ReactNode;
   secondaryTypographyProps?: NonNullable<ListItemTextProps['slotProps']>['secondary'];

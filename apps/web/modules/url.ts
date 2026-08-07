@@ -2,17 +2,22 @@ import type { UrlObject } from 'node:url';
 import { tryConvertVolume } from '@cocktails/conversion';
 import type { Recipe, RecipeIngredient, Source, Technique } from '@cocktails/data';
 import slugify from '@sindresorhus/slugify';
+import type { Route } from 'next';
 import { P, match } from 'ts-pattern';
 
-export function getRecipeUrl(recipe: Recipe) {
+export function getRecipeUrl(
+  recipe: Recipe,
+): Route<`/recipes/${string}/${string}/${string}`> {
   return `/recipes/${recipe.source.type}/${recipe.source.slug}/${recipe.slug}`;
 }
 
-export function getCategoryUrl(category: { slug: string }) {
+export function getCategoryUrl(category: { slug: string }): Route<`/category/${string}`> {
   return `/category/${category.slug}`;
 }
 
-export function getIngredientUrl(ingredient: Omit<RecipeIngredient, 'quantity'>) {
+export function getIngredientUrl(
+  ingredient: Omit<RecipeIngredient, 'quantity'>,
+): Route<`/category/${string}`> | Route<`/ingredient/${string}/${string}`> {
   if (ingredient.type === 'category') return getCategoryUrl(ingredient);
 
   return `/ingredient/${ingredient.type}/${ingredient.slug}`;
@@ -46,7 +51,9 @@ function getAcidAdjustedJuiceAmount(
   return tryConvertVolume(ingredient.quantity, 'oz')?.amount;
 }
 
-export function getRecipeIngredientUrl(ingredient: RecipeIngredient): string | UrlObject {
+export function getRecipeIngredientUrl(
+  ingredient: RecipeIngredient,
+): ReturnType<typeof getIngredientUrl> | UrlObject {
   const pathname = getIngredientUrl(ingredient);
   if (ingredient.type === 'category' || ingredient.technique == null) {
     return pathname;
@@ -68,43 +75,46 @@ export function getRecipeIngredientUrl(ingredient: RecipeIngredient): string | U
   };
 }
 
-export function getSourceUrl(source: Source) {
+export function getSourceUrl(source: Source): Route<`/source/${string}/${string}`> {
   return `/source/${source.type}/${source.slug}`;
 }
 
-export function getRecipeListUrl() {
+export function getRecipeListUrl(): Route {
   return '/list/recipes';
 }
 
-export function getRecentlyAddedUrl() {
+export function getRecentlyAddedUrl(): Route {
   return '/list/recently-added';
 }
 
-export function getNonAlcoholicRecipeListUrl() {
+export function getNonAlcoholicRecipeListUrl(): Route {
   return '/list/non-alcoholic';
 }
 
-export function getBottleListUrl() {
+export function getBottleListUrl(): Route {
   return '/list/bottles';
 }
 
-export function getIngredientListUrl() {
+export function getIngredientListUrl(): Route {
   return '/list/ingredients';
 }
 
-export function getAuthorListUrl() {
+export function getAuthorListUrl(): Route {
   return '/list/authors';
 }
 
-export function getBarListUrl() {
+export function getBarListUrl(): Route {
   return '/list/bars';
 }
 
-export function getAuthorRecipesUrl(author: string) {
+export function getAuthorRecipesUrl(author: string): Route<`/list/authors/${string}`> {
   return `/list/authors/${slugify(author)}`;
 }
 
-export function getBarRecipesUrl(bar: { name: string; location?: string }) {
+export function getBarRecipesUrl(bar: {
+  name: string;
+  location?: string;
+}): Route<`/list/bars/${string}`> {
   return `/list/bars/${slugify(`${bar.name} ${bar.location ?? ''}`)}`;
 }
 

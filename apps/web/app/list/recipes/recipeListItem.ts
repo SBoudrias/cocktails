@@ -5,7 +5,7 @@ import { getRecipeUrl } from '#/modules/url';
 
 export type RecipeListItem = {
   name: string;
-  href: string;
+  href: ReturnType<typeof getRecipeUrl>;
   source: string;
   searchText: string;
 };
