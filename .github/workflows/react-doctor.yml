@@ -20,8 +20,7 @@ jobs:
   react-doctor:
     runs-on: ubuntu-latest
     steps:
+      # The action fetches the PR base commit itself, so the default shallow
+      # checkout is enough. `fetch-depth: 0` spent ~11 min fetching this repo.
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-      # v2.2.1+ uses actions/cache@v4, which still targets Node.js 20.
-      - uses: millionco/react-doctor@v2.2.0
+      - uses: millionco/react-doctor@v2.2.8
