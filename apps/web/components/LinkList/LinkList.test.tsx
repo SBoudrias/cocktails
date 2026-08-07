@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
+import { getRecipeListUrl } from '#/modules/url';
 import { LinkList, LinkListItem } from './index';
 
 type TestItem = { id: string; name: string; category: string };
@@ -111,9 +112,9 @@ describe('LinkListItem', () => {
   });
 
   it('renders as a link when href is provided', () => {
-    render(<LinkListItem primary="Test Item" href="/test" />);
+    render(<LinkListItem primary="Test Item" href={getRecipeListUrl()} />);
     const link = screen.getByRole('link');
-    expect(link).toHaveAttribute('href', '/test');
+    expect(link).toHaveAttribute('href', getRecipeListUrl());
   });
 
   it('renders tertiary content when provided', () => {

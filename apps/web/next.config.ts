@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails',
   reactStrictMode: true,
+  typedRoutes: true,
   experimental: {
     cpus: 8,
     staticGenerationMaxConcurrency: 4,
