@@ -23,7 +23,7 @@
     "@vitest/browser": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
     "nano-staged": "^1.0.2",
-    "oxfmt": "^0.61.0",
+    "oxfmt": "^0.62.0",
     "oxlint": "^1.77.0",
     "turbo": "^2.10.7",
     "typescript": "7.0.2",
