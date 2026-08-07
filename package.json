@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "yarn workspace @cocktails/web dev",
-    "lint": "yarn workspaces foreach -A run lint && eslint . && oxfmt . --check",
+    "lint": "yarn workspaces foreach -A run lint && oxlint . && oxfmt . --check",
     "test": "vitest --run --coverage",
     "check-data": "turbo run check-data --filter=@cocktails/data",
     "youtube-inventory": "yarn workspace @cocktails/youtube-sync inventory",
@@ -16,8 +16,6 @@
     "prepare": "git config --local include.path ../.gitconfig || true"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@next/eslint-plugin-next": "^16.3.0",
     "@types/json-schema": "^7.0.15",
     "@types/lodash": "^4.17.24",
     "@types/node": "^26.1.2",
@@ -25,20 +23,15 @@
     "@vitejs/plugin-react": "^6.0.4",
     "@vitest/browser": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
-    "eslint": "^10.8.0",
-    "eslint-config-next": "16.3.0",
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.61.0",
+    "oxlint": "^1.77.0",
     "turbo": "^2.10.7",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
-    "typescript-eslint": "^8.65.0",
     "vitest": "^4.1.10"
   },
   "dependenciesMeta": {
     "core-js": {
-      "built": false
-    },
-    "unrs-resolver": {
       "built": false
     }
   },

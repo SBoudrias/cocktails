@@ -1,0 +1,63 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "nextjs", "react"],
+  "categories": {
+    "correctness": "error"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true,
+    "es2024": true
+  },
+  "settings": {
+    "next": {
+      "rootDir": "apps/web/"
+    }
+  },
+  "ignorePatterns": [
+    "coverage/**",
+    "next-env.d.ts",
+    ".worktrees/**",
+    "apps/**/.next/**",
+    "apps/**/out/**"
+  ],
+  "rules": {
+    "typescript/ban-ts-comment": "error",
+    "typescript/consistent-type-imports": "error",
+    "typescript/no-empty-object-type": "error",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-namespace": "error",
+    "typescript/no-require-imports": "error",
+    "typescript/no-unnecessary-type-constraint": "error",
+    "typescript/no-unsafe-function-type": "error",
+    "no-array-constructor": "error",
+    "no-case-declarations": "error",
+    "no-empty": "error",
+    "no-fallthrough": "error",
+    "no-prototype-builtins": "error",
+    "no-regex-spaces": "error",
+    "no-unexpected-multiline": "error",
+    "preserve-caught-error": "error",
+    "react/exhaustive-deps": "error",
+    "react/rules-of-hooks": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+      "rules": {
+        "no-redeclare": "off",
+        "no-var": "error",
+        "prefer-const": "error",
+        "prefer-rest-params": "error",
+        "prefer-spread": "error"
+      }
+    },
+    {
+      "files": ["apps/web/vitest.setup.ts"],
+      "rules": {
+        "react/no-children-prop": "off"
+      }
+    }
+  ]
+}
