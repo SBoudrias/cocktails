@@ -14,6 +14,7 @@ Start by reading @README.md
 - `yarn lint` to lint and typecheck the codebase
 - `yarn check-data` to validate schemas and json data files. Do note this command will also autofix many errors.
 - `yarn oxfmt <file>` to fix formatting issues. This project uses oxfmt, not prettier.
+- `yarn oxlint <file>` to lint a file. This project uses oxlint, not eslint. Rules live in `.oxlintrc.json`.
 
 # Code style
 

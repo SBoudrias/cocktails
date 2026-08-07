@@ -43,9 +43,8 @@ updates:
           - '@types/lodash'
       linting:
         patterns:
-          - eslint
+          - oxlint
           - oxfmt
-          - eslint-*
           - husky
           - nano-staged
       task-runner:
