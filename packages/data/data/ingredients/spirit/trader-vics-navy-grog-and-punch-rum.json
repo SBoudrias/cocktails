@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Trader Vic's Navy Grog and Punch Rum",
+  "type": "spirit"
+}

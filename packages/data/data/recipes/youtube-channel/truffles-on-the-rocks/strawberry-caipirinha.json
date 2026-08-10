@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Strawberry Caipirinha",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "lime",
+      "type": "fruit",
+      "technique": {
+        "technique": "cut",
+        "type": "wedged"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Aged Cachaça",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "freeze-dried strawberries",
+        "duration": "24 hours"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the lime and sugar until juicy.",
+    "Add the strawberry-infused cachaça and fill with ice.",
+    "Shake and dirty dump into a rocks glass.",
+    "Garnish."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "6RYJdwlnfV8"
+    }
+  ]
+}

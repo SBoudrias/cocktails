@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Negroni Pomodoro",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Tomato water",
+      "type": "juice",
+      "technique": {
+        "technique": "temperature",
+        "method": "frozen"
+      },
+      "quantity": {
+        "amount": 5,
+        "maximum": 6,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Blanc vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Luxardo Bitter Bianco",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cucumber"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build over the tomato water ice cubes in an old fashioned glass.",
+    "Garnish with a baby heirloom tomato."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "eChoQevKNl8"
+    }
+  ]
+}
