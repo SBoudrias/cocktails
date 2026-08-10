@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Rich simple syrup",
+  "type": "syrup"
+}

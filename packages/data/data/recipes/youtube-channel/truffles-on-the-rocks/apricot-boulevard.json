@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Apricot Boulevard",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Apricot liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain over a large ice cube.",
+    "Garnish with a mint leaf."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "CSPGRxGFDT4"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cocktail of Laughter and Forgetting",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 14,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (Blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a coupe.",
+    "Top with an Angostura spritz."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "QabRCaNxo0Y"
+    }
+  ]
+}

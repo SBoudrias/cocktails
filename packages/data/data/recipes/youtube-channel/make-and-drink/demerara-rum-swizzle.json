@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Demerara Rum Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Swizzle all ingredients except the seltzer with crushed ice.",
+    "Top with club soda."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Charles H. Baker"
+    },
+    {
+      "relation": "book",
+      "source": "The South American Gentleman's Companion"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jM2YBaQvMgk"
+    }
+  ]
+}

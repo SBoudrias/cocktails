@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Crushable Low-ABV Summer Drink",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Empress 1908 0.0 Indigo",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blanc vermouth",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cucumber and lemon peel",
+        "duration": "2-3 minutes flash infusion, or overnight"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build over ice and give it a gentle stir.",
+    "Garnish with Castelvetrano olives."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NdAf_37E2Fk"
+    }
+  ]
+}

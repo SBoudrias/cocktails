@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Empress 1908 0.0 Indigo",
+  "type": "spirit"
+}
