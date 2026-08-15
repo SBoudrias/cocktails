@@ -25,7 +25,7 @@
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
-    "turbo": "^2.10.8",
+    "turbo": "^2.10.9",
     "typescript": "7.0.2",
     "vitest": "^4.1.10"
   },
