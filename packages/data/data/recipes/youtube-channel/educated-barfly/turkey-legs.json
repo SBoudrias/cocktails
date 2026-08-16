@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Turkey Legs",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laird's Straight Applejack 86",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except blackstrap rum with ice.",
+    "Strain into an old fashioned glass over crushed ice.",
+    "Float blackstrap rum on top.",
+    "Garnish with a mint sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "_mMWmBOoNuY",
+      "start": 621
+    }
+  ]
+}

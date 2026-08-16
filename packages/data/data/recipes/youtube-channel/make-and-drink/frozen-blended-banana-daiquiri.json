@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frozen Blended Banana Daiquiri",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "banana",
+      "type": "fruit",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray 3 Star",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Xaymaca",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend all ingredients with 1 ½ cups crushed or nugget ice until smooth."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Julie Reiner"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "bD3AYzlZtO0"
+    }
+  ]
+}
