@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Toreador",
+  "name": "Honi Honi",
   "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "martini",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
   "ingredients": [
     {
       "name": "Simple syrup",
@@ -14,23 +14,31 @@
       }
     },
     {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Apricot liqueur",
+      "name": "Orange Curaçao",
       "type": "category",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Tequila (Blanco)",
+      "name": "Whisky (Blended Scotch)",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -39,19 +47,15 @@
     }
   ],
   "instructions": [
-    "Shake all ingredients with ice.",
-    "Strain into a chilled martini glass.",
-    "Garnish with a lime wheel."
+    "Add ingredients and pebble ice to a shaker.",
+    "Shake vigorously and pour everything into a Tahitian mug.",
+    "Fill with more ice.",
+    "Garnish with a fruit stick and mint."
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "2EzFeUQIEdg",
-      "start": 473
-    },
-    {
-      "type": "youtube",
-      "videoId": "Z0Tj--sfQpE"
+      "videoId": "tK4s46lh0qY"
     }
   ]
 }

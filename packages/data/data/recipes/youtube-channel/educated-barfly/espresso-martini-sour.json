@@ -1,57 +1,57 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Toreador",
+  "name": "Espresso Martini Sour",
   "preparation": "shaken",
   "served_on": "up",
-  "glassware": "martini",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
+      "name": "espresso",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.75,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Apricot liqueur",
+      "name": "Coffee liqueur",
       "type": "category",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Tequila (Blanco)",
+      "name": "Gin",
       "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "instructions": [
-    "Shake all ingredients with ice.",
-    "Strain into a chilled martini glass.",
-    "Garnish with a lime wheel."
-  ],
+  "instructions": ["Shake all ingredients with ice.", "Strain into a coupe."],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "2EzFeUQIEdg",
-      "start": 473
-    },
-    {
-      "type": "youtube",
-      "videoId": "Z0Tj--sfQpE"
+      "videoId": "_mMWmBOoNuY",
+      "start": 356
     }
   ]
 }
