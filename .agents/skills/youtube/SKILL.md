@@ -131,10 +131,24 @@ When processing an inventory batch:
    matches.
 5. Create a new `youtube-channel/CHANNEL_SLUG` recipe only when the video
    version is distinct.
-6. Report `create`, `add-ref`, `skip`, or `uncertain` for every video.
-7. Keep `skip` and `uncertain` review state in a temporary reviewed file only
+6. **Name new recipes per the naming convention**: a parenthetical in a recipe
+   name is reserved for authorship attribution (an original or named
+   adaptation) and only when disambiguation from another version of the same
+   drink **within the same channel** is needed. Do not use the channel name in
+   parentheses (e.g. avoid `Mai Tai (Make and Drink)`); that wrongly implies
+   the channel authored the recipe. Only versions that **diverge from the
+   accepted/common industry recipe** need disambiguation — the accepted recipe
+   itself uses the plain name directly (e.g. `Ramos Gin Fizz` + `Ramos Gin
+Fizz (7 Up)`, `Nui Nui` + `Nui Nui (Holiday)`). Disambiguate divergent
+   versions with numbering (`no. 1`, `no. 2`), provenance (the bar, book, or
+   author behind that version), or a date only when the date is a meaningful
+   version identifier (e.g. a historical recipe year like `Zombie (1930)`) —
+   never the video upload year. Drop the parenthetical entirely when there is
+   only one version of that drink in the channel.
+7. Report `create`, `add-ref`, `skip`, or `uncertain` for every video.
+8. Keep `skip` and `uncertain` review state in a temporary reviewed file only
    if you need to resume or regenerate batches.
-8. Run `yarn check-data` after edits.
+9. Run `yarn check-data` after edits.
 
 ## Adding New YouTube Channels
 

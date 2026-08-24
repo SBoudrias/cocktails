@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Dubonnet Frappé",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Wray & Nephew white overproof",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dubonnet Rouge",
+      "type": "wine",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all the ingredients to a blender with 1 1/2 cups of crushed or nugget ice.",
+    "Blend until smooth.",
+    "Pour into a glass and garnish with orange zest."
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Julia McKinley"
+    },
+    {
+      "relation": "bar",
+      "source": "Lost Lake",
+      "location": "Chicago, IL"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jdysbgNL3DE"
+    }
+  ]
+}

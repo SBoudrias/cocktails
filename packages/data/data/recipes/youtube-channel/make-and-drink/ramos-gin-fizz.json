@@ -1,12 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Green Pepper",
+  "name": "Ramos Gin Fizz",
   "preparation": "shaken",
   "served_on": "up",
-  "glassware": "coupe",
+  "glassware": "collins",
   "ingredients": [
     {
-      "name": "Hellfire tincture",
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Orange flower water",
       "type": "tincture",
       "quantity": {
         "amount": 2,
@@ -14,56 +22,51 @@
       }
     },
     {
-      "name": "Sweet & Sour Cordial",
-      "type": "syrup",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "green bell pepper juice",
+      "name": "Lemon juice",
       "type": "juice",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blanc vermouth",
-      "type": "category",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Green Chartreuse",
-      "type": "liqueur",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Tequila (Blanco)",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "London Dry Gin",
       "type": "category",
       "quantity": {
-        "amount": 1.25,
+        "amount": 2,
         "unit": "oz"
       }
     }
   ],
-  "instructions": [],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "SCiiWGWCV2I",
-      "start": 57
-    },
-    {
-      "type": "youtube",
-      "videoId": "jiIHrvqNUB4"
+      "videoId": "jUHZoRY6prc"
     }
   ]
 }

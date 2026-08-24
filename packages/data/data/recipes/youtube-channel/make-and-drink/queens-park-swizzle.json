@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Queen's Park Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "lime",
+      "type": "fruit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "oNPRn-uLAR8"
+    },
+    {
+      "type": "youtube",
+      "videoId": "VhwLm7dkp20",
+      "start": 568
+    }
+  ]
+}

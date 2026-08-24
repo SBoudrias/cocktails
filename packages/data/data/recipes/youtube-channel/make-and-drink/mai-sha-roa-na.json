@@ -1,21 +1,13 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Saturn",
+  "name": "Mai Sha Roa Na",
   "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Orgeat",
-      "type": "category",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Passion fruit syrup",
-      "type": "category",
+      "name": "Vanilla Mac Nut Cordial",
+      "type": "other",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -25,41 +17,46 @@
       "name": "Lemon juice",
       "type": "juice",
       "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Falernum",
+      "name": "Madeira wine",
       "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Gin",
+      "name": "Jamaican overproof rum",
       "type": "category",
       "quantity": {
-        "amount": 1.25,
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
   "attributions": [
     {
-      "relation": "recipe author",
-      "source": "J. Popo Galsini"
+      "relation": "bar",
+      "source": "False Idol"
     }
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "fSoCMszoAiM"
-    },
-    {
-      "type": "youtube",
-      "videoId": "B4k1zPhW-jw"
+      "videoId": "k3YgI7ULs-o",
+      "start": 156
     }
   ]
 }

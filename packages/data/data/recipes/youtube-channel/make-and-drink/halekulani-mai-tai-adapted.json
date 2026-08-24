@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Halekulani Mai Tai (Official)",
+  "name": "Halekulani Mai Tai (Adapted)",
   "preparation": "shaken",
   "served_on": "ice cubes",
   "glassware": "old fashioned",
@@ -14,10 +14,11 @@
       }
     },
     {
-      "name": "rock candy syrup",
+      "name": "Simple syrup",
       "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 0.33,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -38,18 +39,10 @@
       }
     },
     {
-      "name": "Bacardi Black",
+      "name": "Bacardi 8",
       "type": "spirit",
       "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Bacardi Gold",
-      "type": "spirit",
-      "quantity": {
-        "amount": 0.75,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -71,6 +64,10 @@
       "relation": "bar",
       "source": "Halekulani Hotel",
       "location": "Waikiki, Honolulu, HI"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Make and Drink"
     }
   ],
   "refs": [

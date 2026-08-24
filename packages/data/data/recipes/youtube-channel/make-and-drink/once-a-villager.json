@@ -1,0 +1,106 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Once a Villager",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Doc Parks' Gold Fassionola",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Barbados)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Worthy Park Estate 109 Dark Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all the ingredients to a shaker with ice.",
+    "Shake until well-chilled.",
+    "Strain into a tiki glass filled with crushed ice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Doc Parks"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "YpSbVbYkOj4"
+    }
+  ]
+}

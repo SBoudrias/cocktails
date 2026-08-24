@@ -67,6 +67,21 @@ Here's a few common conventions:
     scant measurement and `"maximum"` for the upper bound of a range. For
     example, 6 to 8 mint leaves is
     `{"amount": 6, "maximum": 8, "unit": "unit"}`.
+11. A parenthetical in a recipe name is reserved for **authorship attribution** —
+    an original recipe or a named adaptation — and only when it needs to be
+    distinguished from another version of the same drink **within the same
+    source/channel**. Do not use a channel or source name in parentheses to
+    label a version of a classic cocktail (e.g. avoid `Mai Tai (Make and
+Drink)`); that wrongly implies the channel authored the recipe. Only versions
+    that **diverge from the accepted/common industry recipe** need
+    disambiguation — the accepted recipe itself uses the plain name directly
+    (e.g. `Ramos Gin Fizz` + `Ramos Gin Fizz (7 Up)`, `Nui Nui` + `Nui Nui
+(Holiday)`). Disambiguate divergent versions with numbering (`no. 1`, `no.
+2`), provenance (the bar, book, or author behind that version), or a date
+    only when the date is a meaningful version identifier (e.g. a historical
+    recipe year like `Zombie (1930)`) — never the video upload year. Drop the
+    parenthetical entirely when there is only one version of that drink in the
+    source.
 
 ### Creating new ingredients
 

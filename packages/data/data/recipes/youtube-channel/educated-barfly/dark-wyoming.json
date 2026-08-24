@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Dark Wyoming",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Carpano Antica Formula Vermouth",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blue Cream",
+      "type": "other",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir the cold brew concentrate, crème de cacao, vermouth, and whiskey over ice.",
+    "Strain into a rocks glass over a large ice cube.",
+    "Top with blue cream."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "XduE9F5OIl0",
+      "start": 1475
+    }
+  ]
+}

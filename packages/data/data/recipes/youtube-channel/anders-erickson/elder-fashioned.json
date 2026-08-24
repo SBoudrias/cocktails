@@ -1,16 +1,25 @@
 {
-  "$schema": "../../../../../schemas/recipe.schema.json",
-  "name": "Elder Fashion",
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Elder Fashioned",
   "preparation": "stirred",
   "served_on": "big rock",
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Death & Co Orange Bitters",
+      "name": "Regan's Orange Bitters No. 6",
       "type": "bitter",
       "quantity": {
-        "amount": 2,
+        "amount": 1,
         "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 60,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
       }
     },
     {
@@ -22,7 +31,7 @@
       }
     },
     {
-      "name": "Plymouth Gin",
+      "name": "Elijah Craig bourbon",
       "type": "spirit",
       "quantity": {
         "amount": 2,
@@ -31,25 +40,21 @@
     }
   ],
   "instructions": [
-    "Stir all the ingredients over ice, then strain into a double rocks glass over 1 large ice cube.",
-    "Garnish with the grapefruit twist."
+    "Stir all the ingredients over ice.",
+    "Strain into a rocks glass over a large ice cube.",
+    "Garnish with an expressed orange oil and orange peel."
   ],
   "attributions": [
     {
       "relation": "recipe author",
-      "source": "Phil Ward"
+      "source": "Simon Difford"
     }
   ],
   "refs": [
     {
-      "type": "book",
-      "title": "Death & Co: Modern Classic Cocktails",
-      "page": 270
-    },
-    {
       "type": "youtube",
       "videoId": "yqrQJO1brcM",
-      "start": 571
+      "start": 432
     }
   ]
 }
