@@ -1,65 +1,63 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Saturn",
+  "name": "Rum Runner",
   "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Orgeat",
-      "type": "category",
+      "name": "Grenadine",
+      "type": "syrup",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Passion fruit syrup",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Overproof Rum",
+      "type": "category",
+      "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Falernum",
+      "name": "Crème de Mûre",
       "type": "category",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Gin",
+      "name": "Banana liqueur",
       "type": "category",
       "quantity": {
-        "amount": 1.25,
+        "amount": 0.75,
         "unit": "oz"
       }
-    }
-  ],
-  "attributions": [
+    },
     {
-      "relation": "recipe author",
-      "source": "J. Popo Galsini"
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "fSoCMszoAiM"
-    },
-    {
-      "type": "youtube",
-      "videoId": "B4k1zPhW-jw"
+      "videoId": "QFGXH_Nn-Fw"
     }
   ]
 }

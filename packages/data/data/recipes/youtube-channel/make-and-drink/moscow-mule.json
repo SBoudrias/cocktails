@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Moscow Mule",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "mule",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "lyJBhjW_LsQ"
+    }
+  ]
+}

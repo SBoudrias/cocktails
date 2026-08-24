@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Italian bitter apéritif",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "parents": ["Bitter apéritif"]
 }

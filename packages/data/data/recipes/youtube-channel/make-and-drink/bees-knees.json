@@ -1,21 +1,12 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Old Fashioned",
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
+  "name": "Bee's Knees",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Aromatic Bitters",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "maximum": 4,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Simple syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.75,
@@ -23,7 +14,15 @@
       }
     },
     {
-      "name": "Whiskey (Bourbon)",
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -34,7 +33,7 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "mscxYXNH_5s"
+      "videoId": "5hc9FqMH_N8"
     }
   ]
 }

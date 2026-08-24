@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Nui Nui",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Vanilla syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add the ingredients and pebble ice to a mixing tin.",
+    "Mix on high for 6 to 8 seconds.",
+    "Pour everything into a tall glass.",
+    "Fill with more ice.",
+    "Garnish with an orange peel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Donn Beach"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wmMjJFvb_pU"
+    }
+  ]
+}

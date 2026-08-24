@@ -1,29 +1,28 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Old Fashioned",
-  "preparation": "built",
-  "served_on": "ice cubes",
-  "glassware": "old fashioned",
+  "name": "Daiquiri",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
-    {
-      "name": "Aromatic Bitters",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "maximum": 4,
-        "unit": "dash"
-      }
-    },
     {
       "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Whiskey (Bourbon)",
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
       "type": "category",
       "quantity": {
         "amount": 2,

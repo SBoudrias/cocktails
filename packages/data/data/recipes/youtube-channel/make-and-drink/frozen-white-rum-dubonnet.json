@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frozen White Rum Dubonnet",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Luxardo Maraschino Liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Dubonnet Rouge",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bacardi Superior",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all the ingredients to a blender with crushed ice.",
+    "Blend until smooth.",
+    "Pour into a glass."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Charles H. Baker Jr."
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "jdysbgNL3DE"
+    }
+  ]
+}

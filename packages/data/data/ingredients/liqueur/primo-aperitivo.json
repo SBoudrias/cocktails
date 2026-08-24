@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Primo Aperitivo",
+  "type": "liqueur",
+  "categories": ["Bitter apéritif"]
+}

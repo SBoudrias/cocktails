@@ -1,29 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Old Fashioned",
+  "name": "Rusty Nail",
   "preparation": "built",
   "served_on": "ice cubes",
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Aromatic Bitters",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
-        "maximum": 4,
-        "unit": "dash"
-      }
-    },
-    {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "Drambuie",
+      "type": "liqueur",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Whiskey (Bourbon)",
+      "name": "Whisky (Scotch)",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -34,7 +25,7 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "mscxYXNH_5s"
+      "videoId": "EslI0ru7Ngk"
     }
   ]
 }

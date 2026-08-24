@@ -1,32 +1,44 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Old Fashioned",
-  "preparation": "built",
-  "served_on": "ice cubes",
+  "name": "Sazerac",
+  "preparation": "stirred",
+  "served_on": "up",
   "glassware": "old fashioned",
   "ingredients": [
     {
-      "name": "Aromatic Bitters",
+      "name": "Absinthe",
       "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "rinse"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 2,
-        "maximum": 4,
         "unit": "dash"
       }
     },
     {
       "name": "Simple syrup",
       "type": "syrup",
+      "brix": 66,
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Whiskey (Bourbon)",
+      "name": "Whiskey (Rye)",
       "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
@@ -34,7 +46,7 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "mscxYXNH_5s"
+      "videoId": "jUHZoRY6prc"
     }
   ]
 }

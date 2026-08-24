@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Carl's Jug of Boom",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Firewater Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 5,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Guava syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple Gum Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all the ingredients to a shaker with ice.",
+    "Shake until well-chilled.",
+    "Strain into a tiki glass filled with crushed ice.",
+    "Garnish with a dehydrated pineapple slice."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "XduE9F5OIl0",
+      "start": 432
+    }
+  ]
+}
