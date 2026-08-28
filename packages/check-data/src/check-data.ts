@@ -10,6 +10,12 @@ import { createSchemaFormatter } from '@cocktails/jsonschema-formatter';
 import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
 import { format as formatWithOxfmt } from 'oxfmt';
+import {
+  isApprovedOverlap,
+  normalizeName,
+  validateApprovedOverlaps,
+  type ApprovedOverlaps,
+} from './approved-overlaps.ts';
 import { logger } from './cli-util.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
 import {
@@ -20,6 +26,7 @@ import { areSimilarNames } from './name-similarity.ts';
 
 const startTime = performance.now();
 const PACKAGE_ROOT = path.join(import.meta.dirname, '../../data');
+const APPROVED_OVERLAPS_PATH = path.join(PACKAGE_ROOT, 'approved-overlaps.json');
 
 function isChapterFolder(folder: string): boolean {
   return /^\d+_.+$/.test(folder);
@@ -171,6 +178,19 @@ logger.footer('Done!');
 // Track bar names for case-insensitive duplicate detection
 // Maps lowercase name -> Map of exact casing -> list of files using that casing
 const barNameCasings = new Map<string, Map<string, string[]>>();
+
+// Names of authors and bars known to be valid, so their similar-name overlaps
+// are suppressed. Loaded from packages/data/approved-overlaps.json.
+let approvedOverlaps: ApprovedOverlaps = {
+  author: [],
+  bar: [],
+};
+
+try {
+  approvedOverlaps = JSON.parse(await fs.readFile(APPROVED_OVERLAPS_PATH, 'utf-8'));
+} catch (error) {
+  fail(`Could not read approved overlaps registry: ${(error as Error).message}`);
+}
 
 // Track author/adapted-by names for similarity detection
 // Maps name -> list of recipe files using that name
@@ -504,13 +524,27 @@ for (const [, casings] of barNameCasings) {
 }
 logger.footer('Done!');
 
+// Validate the approved overlaps registry against the names actually in use.
+for (const message of validateApprovedOverlaps(
+  approvedOverlaps,
+  new Map([
+    ...Array.from(
+      authorNameUsages.keys(),
+      (name) => [normalizeName(name), name] as const,
+    ),
+    ...Array.from(barNameCasings.keys(), (name) => [normalizeName(name), name] as const),
+  ]),
+)) {
+  logger.warn(`Approved overlaps registry: ${message}`);
+}
+
 // Check for similar author and bar names (possible misspellings)
 logger.header('👥 Checking for similar author and bar names...');
 
 const authorNames = Array.from(authorNameUsages.keys());
 for (const [i, a] of authorNames.entries()) {
   for (const b of authorNames.slice(i + 1)) {
-    if (areSimilarNames(a, b)) {
+    if (areSimilarNames(a, b) && !isApprovedOverlap(approvedOverlaps, 'author', a, b)) {
       const filesA = authorNameUsages.get(a)!;
       const filesB = authorNameUsages.get(b)!;
       logger.warn(
@@ -525,7 +559,7 @@ for (const [i, a] of authorNames.entries()) {
 const barKeys = Array.from(barNameCasings.keys());
 for (const [i, a] of barKeys.entries()) {
   for (const b of barKeys.slice(i + 1)) {
-    if (areSimilarNames(a, b)) {
+    if (areSimilarNames(a, b) && !isApprovedOverlap(approvedOverlaps, 'bar', a, b)) {
       const casingsA = barNameCasings.get(a)!;
       const casingsB = barNameCasings.get(b)!;
       const displayA = Array.from(casingsA.keys())[0] ?? a;
