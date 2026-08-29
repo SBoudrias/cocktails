@@ -230,11 +230,11 @@ __metadata:
     "@testing-library/dom": "npm:^10.4.1"
     "@testing-library/jest-dom": "npm:^7.0.1"
     "@testing-library/react": "npm:^16.3.2"
-    "@testing-library/user-event": "npm:^14.6.5"
+    "@testing-library/user-event": "npm:^14.6.6"
     "@types/react": "npm:19.2.18"
     "@types/react-dom": "npm:19.2.5"
     core-js: "npm:^3.50.0"
-    happy-dom: "npm:^20.11.2"
+    happy-dom: "npm:^20.11.6"
     lite-youtube-embed: "npm:^0.3.4"
     next: "npm:16.3.3"
     next-router-mock: "npm:^1.0.5"
@@ -1586,12 +1586,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/user-event@npm:^14.6.5":
-  version: 14.6.5
-  resolution: "@testing-library/user-event@npm:14.6.5"
+"@testing-library/user-event@npm:^14.6.6":
+  version: 14.6.6
+  resolution: "@testing-library/user-event@npm:14.6.6"
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
-  checksum: 10c0/874ad9548fb286bf1b42d9bdc7080b5b9e82cf975608b5e082cc5bbb506816291b6117305477c0a30670914279c2b35039cd07e7559ee993c5f5211722a95660
+  checksum: 10c0/2cb82d3a364a2a29da19bb5d2a614aedaa474ac6f599a42fc28c1926056f7b91f5cec37b33452bafcb3f6b37a950024da289dea88ead3c2056c6005c91c7f942
   languageName: node
   linkType: hard
 
@@ -2655,9 +2655,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^20.11.2":
-  version: 20.11.2
-  resolution: "happy-dom@npm:20.11.2"
+"happy-dom@npm:^20.11.6":
+  version: 20.11.6
+  resolution: "happy-dom@npm:20.11.6"
   dependencies:
     "@types/node": "npm:>=20.0.0"
     "@types/whatwg-mimetype": "npm:^3.0.2"
@@ -2666,7 +2666,7 @@ __metadata:
     entities: "npm:^7.0.1"
     whatwg-mimetype: "npm:^3.0.0"
     ws: "npm:^8.21.0"
-  checksum: 10c0/cf59418fff5f2bd8d4b827a986afadfbd892b6c8c3986881bbb4d2db7fcea69483b87505f221110db5b9787f1226174b3600823abf2b2ad38d8397b67515b98e
+  checksum: 10c0/09711651886849e6dcd0fde1c56685a50569485bf33795ea420598fe22406a17ac56f3b661315829ee6ed14a27c31be77c429ae2aff79a4373b254105ed17749
   languageName: node
   linkType: hard
 
