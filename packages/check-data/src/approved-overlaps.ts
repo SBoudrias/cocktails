@@ -9,7 +9,7 @@
  * can't silently disappear behind an approved name.
  */
 
-export const OVERLAP_KINDS = ['author', 'bar'] as const;
+export const OVERLAP_KINDS = ['author', 'bar', 'ingredient'] as const;
 export type OverlapKind = (typeof OVERLAP_KINDS)[number];
 
 export type ApprovedOverlaps = Record<OverlapKind, string[]>;

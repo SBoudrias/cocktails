@@ -18,6 +18,7 @@ import {
 } from './approved-overlaps.ts';
 import { logger } from './cli-util.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
+import { findSimilarIngredientPairs } from './ingredient-similarity.ts';
 import {
   getMilkClarificationIngredientSlugs,
   validateMilkClarification,
@@ -175,6 +176,9 @@ for await (const ingredientFile of fs.glob(ingredientsGlob)) {
 logger.item(`Collected ${canonicalNames.size} canonical names`);
 logger.footer('Done!');
 
+// Ingredient names for similar-name detection (possible misspellings).
+const ingredientNames = ingredients.map((ingredient) => ingredient.name);
+
 // Track bar names for case-insensitive duplicate detection
 // Maps lowercase name -> Map of exact casing -> list of files using that casing
 const barNameCasings = new Map<string, Map<string, string[]>>();
@@ -184,6 +188,7 @@ const barNameCasings = new Map<string, Map<string, string[]>>();
 let approvedOverlaps: ApprovedOverlaps = {
   author: [],
   bar: [],
+  ingredient: [],
 };
 
 try {
@@ -533,6 +538,7 @@ for (const message of validateApprovedOverlaps(
       (name) => [normalizeName(name), name] as const,
     ),
     ...Array.from(barNameCasings.keys(), (name) => [normalizeName(name), name] as const),
+    ...ingredientNames.map((name) => [normalizeName(name), name] as const),
   ]),
 )) {
   logger.warn(`Approved overlaps registry: ${message}`);
@@ -573,6 +579,19 @@ for (const [i, a] of barKeys.entries()) {
       );
     }
   }
+}
+
+logger.footer('Done!');
+
+// Check for similar ingredient names (possible misspellings)
+logger.header('🥃 Checking for similar ingredient names...');
+
+for (const { a, b } of findSimilarIngredientPairs(ingredientNames)) {
+  if (isApprovedOverlap(approvedOverlaps, 'ingredient', a, b)) continue;
+  fail(
+    `Similar ingredient names — possible misspelling: "${a}" vs "${b}". ` +
+      `Review and standardize spelling. If genuinely different ingredients, register them in the approved overlaps registry.`,
+  );
 }
 
 logger.footer('Done!');

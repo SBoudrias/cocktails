@@ -9,6 +9,7 @@ import {
 const approved: ApprovedOverlaps = {
   author: ['trey jenkins', 'carey jenkins'],
   bar: ['death & co', 'death co'],
+  ingredient: ['coconut milk', 'coconut oil'],
 };
 
 describe('normalizeName', () => {
@@ -70,8 +71,18 @@ describe('isApprovedOverlap', () => {
     const emptyBar: ApprovedOverlaps = {
       author: ['trey jenkins', 'carey jenkins'],
       bar: [],
+      ingredient: [],
     };
     expect(isApprovedOverlap(emptyBar, 'bar', 'Death & Co', 'Death Co.')).toBe(false);
+  });
+
+  it('scopes approvals to the ingredient kind', () => {
+    expect(isApprovedOverlap(approved, 'ingredient', 'Coconut milk', 'coconut oil')).toBe(
+      true,
+    );
+    expect(isApprovedOverlap(approved, 'author', 'Coconut milk', 'coconut oil')).toBe(
+      false,
+    );
   });
 });
 
@@ -85,20 +96,26 @@ describe('validateApprovedOverlaps', () => {
           ['carey jenkins', 'Carey Jenkins'],
           ['death & co', 'Death & Co'],
           ['death co', 'Death Co'],
+          ['coconut milk', 'Coconut milk'],
+          ['coconut oil', 'coconut oil'],
         ]),
       ),
     ).toEqual([]);
   });
 
   it('flags non-normalized names', () => {
-    const bad: ApprovedOverlaps = { author: ['Trey Jenkins.'], bar: [] };
+    const bad: ApprovedOverlaps = { author: ['Trey Jenkins.'], bar: [], ingredient: [] };
     expect(validateApprovedOverlaps(bad, new Map())).toContain(
       'Approved author name "Trey Jenkins." is not normalized; use "trey jenkins"',
     );
   });
 
   it('flags duplicate names', () => {
-    const bad: ApprovedOverlaps = { author: ['trey jenkins', 'Trey Jenkins'], bar: [] };
+    const bad: ApprovedOverlaps = {
+      author: ['trey jenkins', 'Trey Jenkins'],
+      bar: [],
+      ingredient: [],
+    };
     expect(validateApprovedOverlaps(bad, new Map())).toContain(
       'Approved author name "Trey Jenkins" is listed more than once',
     );

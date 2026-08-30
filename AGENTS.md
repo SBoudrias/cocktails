@@ -239,19 +239,22 @@ import { getAllSources, getSource } from '@cocktails/data/sources';
 
 ## Approved Overlaps Registry
 
-`yarn check-data` warns about similar author and bar names that might be misspellings. When two names are genuinely different (e.g. two different people with similar names), register them as reviewed so the warning stops appearing.
+`yarn check-data` warns about similar author, bar, and ingredient names that might be misspellings. When two names are genuinely different (e.g. two different people with similar names, or two distinct products like `Zacapa 23` and `Zacapa XO`), register them as reviewed so the check passes.
 
 - File: `packages/data/approved-overlaps.json`
-- Stores a list of validated names per kind (`author`, `bar`), in normalized form (lowercase, no trailing punctuation)
+- Stores a list of validated names per kind (`author`, `bar`, `ingredient`), in normalized form (lowercase, no trailing punctuation)
 - An overlap warning is suppressed only when **both** names in the pair are in the approved list
 - Add a name only after confirming it is a real, distinct name (not a misspelling)
+- Ingredient names are compared with digits stripped, so age statements (`El Dorado 15 Year` vs `El Dorado 5 Year`) are not flagged — only names that genuinely differ by a letter or two are
 - The registry is validated on every run: malformed JSON is fatal; stale or non-normalized entries produce a warning
+- Unlike author/bar overlaps (which only warn), an unapproved ingredient overlap **fails** the check — fix the misspelling or register the distinct products
 
 Example — two genuinely different people whose names look similar:
 
 ```json
 {
   "author": ["carey jenkins", "trey jenkins"],
-  "bar": []
+  "bar": [],
+  "ingredient": ["zacapa 23", "zacapa xo"]
 }
 ```
