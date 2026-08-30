@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "MaD waffle orgeat",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Oat milk",
+      "type": "other",
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Brown sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 125,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 125,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the oat milk, brown sugar, and white sugar.",
+    "Add vanilla extract, a pinch of cinnamon, and fresh nutmeg."
+  ]
+}

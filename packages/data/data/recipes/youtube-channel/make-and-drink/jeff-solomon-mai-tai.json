@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Jeff Solomon Mai Tai",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pierre Ferrand Dry Curaçao",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum J.M Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Two James Doctor Bird rum",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except the float with crushed ice.",
+    "Open pour into a glass with crushed ice.",
+    "Garnish with a mint sprig and float the rum on top."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jeff Solomon"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "4n10FubX338",
+      "start": 204
+    }
+  ]
+}

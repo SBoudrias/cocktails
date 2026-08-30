@@ -1,10 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Azalea Cocktail",
+  "name": "Azalea No 2",
   "preparation": "shaken",
   "served_on": "up",
   "glassware": "coupe",
   "ingredients": [
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
     {
       "name": "Simple syrup",
       "type": "syrup",
@@ -14,27 +22,22 @@
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Lemon juice",
+      "name": "Pineapple juice",
       "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Gin",
+      "name": "Vodka",
       "type": "category",
       "technique": {
         "technique": "infusion",
-        "agent": "lemon and cucumber"
+        "agent": "rose grapefruit"
       },
       "quantity": {
         "amount": 2,
@@ -43,6 +46,7 @@
     }
   ],
   "instructions": [
+    "Acidulate the pineapple juice with citric acid to match lemon juice acidity.",
     "Shake all ingredients with ice.",
     "Strain into a chilled coupe.",
     "Express a lemon twist over the drink and garnish with the twist."
@@ -50,13 +54,8 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "zC6RvHEmslo",
-      "start": 535
-    },
-    {
-      "type": "youtube",
       "videoId": "DdlQVfDIchs",
-      "start": 22
+      "start": 111
     }
   ]
 }

@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Fat Daq",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Fee Brothers Bacon Fat Wash",
+      "type": "tincture",
+      "quantity": {
+        "amount": 6,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lychee liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a chilled glass.",
+    "Express a lime twist over the drink and garnish with the twist.",
+    "The video build swaps in Fee Brothers Browned Butter Fat Wash for a brown buttered lychee daiquiri."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Leandro DiMonriva"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "DpTZIPMHQrQ",
+      "start": 945
+    }
+  ]
+}

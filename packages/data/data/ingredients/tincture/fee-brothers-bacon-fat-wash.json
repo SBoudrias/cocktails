@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Fee Brothers Bacon Fat Wash",
+  "type": "tincture",
+  "description": "Water-soluble, ready-to-use modifier that delivers bacon fat-washed flavor and mouthfeel in a few dashes."
+}

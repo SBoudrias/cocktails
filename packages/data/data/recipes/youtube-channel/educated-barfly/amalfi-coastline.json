@@ -49,6 +49,10 @@
     {
       "name": "Gin",
       "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "lemon"
+      },
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
@@ -77,6 +81,10 @@
       "type": "youtube",
       "videoId": "FOjO73ues48",
       "start": 251
+    },
+    {
+      "type": "youtube",
+      "videoId": "BlH3zJTviIo"
     }
   ]
 }
