@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Fee Brothers Roasted Duck Fat Wash",
+  "type": "tincture",
+  "description": "Water-soluble, ready-to-use modifier that delivers roasted duck fat-washed flavor and mouthfeel in a few dashes."
+}

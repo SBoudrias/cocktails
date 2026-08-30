@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mai Name is Earl",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Earl Grey tea syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Italicus",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barbados Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "For the tea syrup, steep 2 Earl Grey tea bags in 100 ml boiling water for 5 minutes, remove the bags, and stir in 100 grams of sugar.",
+    "Shake all ingredients with ice.",
+    "Strain into a tall glass with fresh ice.",
+    "Garnish with a mint sprig and a lemon coin."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Make and Drink"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "8_9ZD03ytKw",
+      "start": 232
+    }
+  ]
+}

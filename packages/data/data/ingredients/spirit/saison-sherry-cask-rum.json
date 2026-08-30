@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Saison Sherry Cask Rum",
+  "type": "spirit",
+  "categories": ["Rum"]
+}

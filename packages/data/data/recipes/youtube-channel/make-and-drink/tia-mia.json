@@ -1,18 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "True History Mai Tai",
+  "name": "Tia Mia",
   "preparation": "shaken",
   "served_on": "crushed ice",
   "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Simple syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.25,
-        "unit": "oz"
-      }
-    },
     {
       "name": "Orgeat",
       "type": "category",
@@ -25,7 +17,7 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -41,21 +33,39 @@
       "name": "Jamaican Rum",
       "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mezcal",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
-  "instructions": ["The simple syrup is optional in the source formula."],
+  "instructions": [
+    "Shake all ingredients with crushed ice.",
+    "Open pour into a glass with crushed ice.",
+    "Garnish with a mint sprig, a lime wheel, and a flower."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Ivy Mix"
+    },
+    {
+      "relation": "book",
+      "source": "Spirits of Latin America"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "DCt0I2x5xls",
-      "start": 102
-    },
-    {
-      "type": "youtube",
-      "videoId": "iOKebLVlqR8"
+      "videoId": "iDC7Tf705os",
+      "start": 127
     }
   ]
 }

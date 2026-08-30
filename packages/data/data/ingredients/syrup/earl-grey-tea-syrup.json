@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Earl Grey tea syrup",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 100,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Earl Grey tea",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 100,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Steep 2 Earl Grey tea bags in 100 ml boiling water for 5 minutes.",
+    "Remove the tea bags and stir in the sugar.",
+    "For a cold-brewed version, steep the tea bags in cold water for 24 hours instead."
+  ]
+}
