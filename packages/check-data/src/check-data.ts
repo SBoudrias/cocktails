@@ -594,9 +594,10 @@ for (const { a, b } of findSimilarIngredientPairs(ingredientNames)) {
   if (isApprovedOverlap(approvedOverlaps, 'ingredient', a, b)) continue;
   const fileA = path.relative(REPO_ROOT, ingredientFilesByName.get(a)!);
   const fileB = path.relative(REPO_ROOT, ingredientFilesByName.get(b)!);
+  const overlapsPath = path.relative(REPO_ROOT, APPROVED_OVERLAPS_PATH);
   fail(
     `Similar ingredient names — possible misspelling: "${a}" (${fileA}) vs "${b}" (${fileB}). ` +
-      `Review and standardize spelling. If genuinely different ingredients, register them in the approved overlaps registry.`,
+      `Review and standardize spelling. If genuinely different ingredients, register both names in the "ingredient" list of ${overlapsPath} to allow this overlap.`,
   );
 }
 
