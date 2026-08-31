@@ -27,6 +27,7 @@ import { areSimilarNames } from './name-similarity.ts';
 
 const startTime = performance.now();
 const PACKAGE_ROOT = path.join(import.meta.dirname, '../../data');
+const REPO_ROOT = path.join(PACKAGE_ROOT, '..');
 const APPROVED_OVERLAPS_PATH = path.join(PACKAGE_ROOT, 'approved-overlaps.json');
 
 function isChapterFolder(folder: string): boolean {
@@ -178,6 +179,9 @@ logger.footer('Done!');
 
 // Ingredient names for similar-name detection (possible misspellings).
 const ingredientNames = ingredients.map((ingredient) => ingredient.name);
+const ingredientFilesByName = new Map(
+  ingredients.map((ingredient) => [ingredient.name, ingredient.filepath] as const),
+);
 
 // Track bar names for case-insensitive duplicate detection
 // Maps lowercase name -> Map of exact casing -> list of files using that casing
@@ -588,8 +592,10 @@ logger.header('🥃 Checking for similar ingredient names...');
 
 for (const { a, b } of findSimilarIngredientPairs(ingredientNames)) {
   if (isApprovedOverlap(approvedOverlaps, 'ingredient', a, b)) continue;
+  const fileA = path.relative(REPO_ROOT, ingredientFilesByName.get(a)!);
+  const fileB = path.relative(REPO_ROOT, ingredientFilesByName.get(b)!);
   fail(
-    `Similar ingredient names — possible misspelling: "${a}" vs "${b}". ` +
+    `Similar ingredient names — possible misspelling: "${a}" (${fileA}) vs "${b}" (${fileB}). ` +
       `Review and standardize spelling. If genuinely different ingredients, register them in the approved overlaps registry.`,
   );
 }
