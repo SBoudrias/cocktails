@@ -1,4 +1,27 @@
 {
   "author": ["carey jenkins", "trey jenkins"],
-  "bar": []
+  "bar": [],
+  "ingredient": [
+    "baker's bourbon",
+    "barbancourt 5 star",
+    "barbancourt 8 year",
+    "booker's bourbon",
+    "coconut milk",
+    "coconut mix",
+    "coconut oil",
+    "hibiscus shrub",
+    "hibiscus syrup",
+    "pierre ferrand 1840 cognac",
+    "pierre ferrand cognac",
+    "planteray 3 star",
+    "planteray 5 year",
+    "rhum jm vo",
+    "rhum jm vsop",
+    "rothman & winter orchard peach liqueur",
+    "rothman & winter orchard pear liqueur",
+    "suntory roku",
+    "suntory toki",
+    "wild turkey 101 rye",
+    "wild turkey rye"
+  ]
 }

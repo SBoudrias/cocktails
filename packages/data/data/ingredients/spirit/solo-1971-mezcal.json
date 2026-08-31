@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Solo 1971 Mezcal",
-  "type": "spirit",
-  "categories": ["Mezcal"]
-}
