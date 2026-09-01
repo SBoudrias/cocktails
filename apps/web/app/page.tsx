@@ -117,6 +117,11 @@ export default async function HomePage() {
                   <ListItemText primary="Juice Clarification" />
                 </ListItem>
               </Link>
+              <Link href="/calculators/milk-clarification">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Milk Clarification" />
+                </ListItem>
+              </Link>
               <Link href="/calculators/saline">
                 <ListItem divider secondaryAction={<ChevronRightIcon />}>
                   <ListItemText primary="Saline Solution Calculator" />

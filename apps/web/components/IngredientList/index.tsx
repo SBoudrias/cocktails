@@ -21,7 +21,7 @@ import ServingSelector from '#/components/ServingSelector';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
 import { formatIngredientName, formatRecipeTechniqueName } from '#/modules/technique';
-import { getRecipeIngredientUrl } from '#/modules/url';
+import { getMilkClarificationCalculatorUrl, getRecipeIngredientUrl } from '#/modules/url';
 import styles from './style.module.css';
 
 const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
@@ -69,10 +69,16 @@ function TechniqueDetails({
 }) {
   return match(technique)
     .with({ technique: 'clarification', method: 'milk' }, (milkClarification) => (
-      <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
-        <Quantity preferredUnit={preferredUnit} quantity={milkClarification.quantity} />
-        <div className={styles.name}>{milkClarification.milk_type}</div>
-      </Stack>
+      <Link
+        href={getMilkClarificationCalculatorUrl(milkClarification.milk_type)}
+        aria-label={`Milk clarification calculator for ${milkClarification.milk_type}`}
+        style={{ color: 'inherit', textDecoration: 'none' }}
+      >
+        <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
+          <Quantity preferredUnit={preferredUnit} quantity={milkClarification.quantity} />
+          <div className={styles.name}>{milkClarification.milk_type}</div>
+        </Stack>
+      </Link>
     ))
     .exhaustive();
 }
