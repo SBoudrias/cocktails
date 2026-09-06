@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Peach Iced Tea Cordial",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "black tea",
+      "type": "other",
+      "quantity": {
+        "amount": 450,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Peach syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 125,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Citric acid",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Malic acid",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Brew approximately 8 g of black tea in 750 ml of hot water for 5 minutes, then remove the tea leaves and let cool slightly.",
+    "Combine 450 ml of the brewed tea with the peach syrup, citric acid, and malic acid.",
+    "Stir until the acids are completely dissolved, then bottle and refrigerate."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "H-jSQOFhJ-s"
+    }
+  ]
+}

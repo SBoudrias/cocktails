@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Dragon Barrel",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Mango Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dragon fruit syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Soursop Juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add ingredients and pebble ice to a shaker tin.",
+    "Shake vigorously.",
+    "Pour everything into a mai tai glass and fill with more ice.",
+    "Garnish with mint."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Marco"
+    },
+    {
+      "relation": "bar",
+      "source": "The Lucky Tiki"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "x2dps8pcWh0"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Empress 1908 Elderflower Rose Gin",
+  "type": "spirit",
+  "categories": ["Gin"]
+}
