@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Fig & Cinnamon Cordial",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Fig",
+      "type": "fruit",
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 250,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 3,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Peel and thinly slice fresh figs, then add them to a jar with an equal weight of sugar. For every 250 g of sugar, add 3 g of cinnamon.",
+    "Let sit for 24 hours, stirring 2-3 times to help dissolve the sugar.",
+    "Strain through a nut milk bag and measure the yield.",
+    "Acidify with an equal amount of fresh lime juice, or an acid solution (for every 89 g of water: 4 g citric acid, 2 g malic acid, 5 g sugar, and a tiny pinch of salt)."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "yMZx06URH_8"
+    }
+  ]
+}

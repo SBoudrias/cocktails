@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Banana Bread Old Fashioned",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Bittermens' elemakule tiki bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cacao"
+      },
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir with ice and strain over a large ice cube in an old fashioned glass.",
+    "Garnish with an orange twist."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wby5OL55pUE",
+      "start": 1128
+    }
+  ]
+}

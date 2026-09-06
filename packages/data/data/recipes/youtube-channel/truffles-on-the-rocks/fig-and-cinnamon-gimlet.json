@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Fig & Cinnamon Gimlet",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Fig & Cinnamon Cordial",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Empress 1908 Elderflower Rose Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Stir with ice and strain into a chilled coupe."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "yMZx06URH_8"
+    }
+  ]
+}

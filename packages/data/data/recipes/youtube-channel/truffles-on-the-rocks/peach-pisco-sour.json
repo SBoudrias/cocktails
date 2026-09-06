@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Peach Pisco Sour",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peach syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dry vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Peruvian Pisco",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dry shake without ice to create a rich foam.",
+    "Add ice and shake again until thoroughly chilled.",
+    "Fine-strain into a coupe glass."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "H-jSQOFhJ-s",
+      "start": 560
+    }
+  ]
+}

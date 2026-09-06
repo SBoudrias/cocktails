@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tiger Trap",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amante 1530",
+      "type": "liqueur",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake with ice and strain into a chilled coupe.",
+    "Float the Amante 1530.",
+    "Garnish with a freeze dried lime wheel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wby5OL55pUE",
+      "start": 191
+    }
+  ]
+}

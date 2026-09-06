@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Peach Old Fashioned",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "servings": 9,
+  "ingredients": [
+    {
+      "name": "Peach syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 100,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Bitter Truth Peach Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 10,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Whiskey (Rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 600,
+        "unit": "ml"
+      }
+    }
+  ],
+  "instructions": [
+    "Pre-batch: remove 100 ml of rye from a 700 ml bottle and replace it with the peach syrup and peach bitters. Shake and store the bottle in the freezer.",
+    "To serve: pour 75 ml of the batch over ice in an old fashioned glass.",
+    "Stir until properly chilled and diluted.",
+    "Garnish with fresh peach slices."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "H-jSQOFhJ-s",
+      "start": 200
+    }
+  ]
+}

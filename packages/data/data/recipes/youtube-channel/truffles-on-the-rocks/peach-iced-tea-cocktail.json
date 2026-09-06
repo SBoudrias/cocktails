@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Peach Iced Tea Cocktail",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Peach Iced Tea Cordial",
+      "type": "syrup",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dry Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build over ice in a Collins glass.",
+    "Stir gently.",
+    "Garnish with fresh peach slices."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "H-jSQOFhJ-s",
+      "start": 380
+    }
+  ]
+}

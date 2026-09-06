@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Amante 1530",
+  "type": "liqueur",
+  "categories": ["Amaro"]
+}
