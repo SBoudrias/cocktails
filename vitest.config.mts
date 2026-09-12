@@ -64,6 +64,16 @@ export default defineConfig({
   },
   resolve: {
     tsconfigPaths: true,
+    alias: [
+      // Tests read data JSON through the node:fs fallback (see
+      // packages/data/globs.stub.ts): transforming the real import.meta.glob
+      // under vitest costs a one-time multi-second pass over the ~4k data
+      // files, and Vite's glob semantics differ from Turbopack's anyway.
+      {
+        find: '../../globs',
+        replacement: path.join(__dirname, 'packages/data/globs.stub.ts'),
+      },
+    ],
   },
   plugins: [react()],
 });
