@@ -18,15 +18,12 @@ import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
 import Video from '#/components/Video';
+import { formatAmount } from '#/modules/formatAmount';
 
 const DEFAULT_JUICE_WEIGHT = 250;
 const MINIMUM_CONTEXTUAL_JUICE_WEIGHT = DEFAULT_JUICE_WEIGHT;
 const WATER_RATIO = 0.3;
 const AGAR_RATIO = 0.003;
-
-function formatAmount(amount: number, maximumFractionDigits: number) {
-  return amount.toLocaleString('en', { maximumFractionDigits });
-}
 
 function getDefaultJuiceWeight(searchParams: Pick<URLSearchParams, 'get'>) {
   const amount = Number(searchParams.get('amount'));

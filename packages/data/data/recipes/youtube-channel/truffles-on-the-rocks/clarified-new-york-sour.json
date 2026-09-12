@@ -15,6 +15,7 @@
   ],
   "served_on": "big rock",
   "glassware": "old fashioned",
+  "servings": 10,
   "ingredients": [
     {
       "name": "Simple syrup",
@@ -33,18 +34,22 @@
       }
     },
     {
-      "name": "Red Wine",
-      "type": "category",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Wild Turkey 101",
       "type": "spirit",
       "quantity": {
         "amount": 10,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Red Wine",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 5,
         "unit": "oz"
       }
     }

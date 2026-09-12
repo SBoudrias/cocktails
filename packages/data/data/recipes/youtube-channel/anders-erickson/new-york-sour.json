@@ -23,14 +23,6 @@
       }
     },
     {
-      "name": "Red Wine",
-      "type": "category",
-      "quantity": {
-        "amount": 0.75,
-        "unit": "oz"
-      }
-    },
-    {
       "name": "Basil Hayden Bourbon",
       "type": "spirit",
       "quantity": {
@@ -43,6 +35,18 @@
       "type": "emulsifier",
       "quantity": {
         "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Red Wine",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.75,
         "unit": "oz"
       }
     }
