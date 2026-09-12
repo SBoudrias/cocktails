@@ -6,7 +6,6 @@ import { promisify } from 'node:util';
 const execFile = promisify(execFileCb);
 import { tryConvertVolume } from '@cocktails/conversion';
 import slugify from '@sindresorhus/slugify';
-import memo from 'lodash/memoize';
 import uniqBy from 'lodash/uniqBy';
 import { match } from 'ts-pattern';
 import type { Category } from '../types/Category.ts';
@@ -18,6 +17,7 @@ import { isChapterFolder, parseChapterFolder } from './chapters';
 import { RECIPE_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import { getIngredient } from './ingredients';
+import memo from './memo';
 import { getSource } from './sources';
 
 function toAlphaSort<I extends { name: string }>(arr: I[]) {
