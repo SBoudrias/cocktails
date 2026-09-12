@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import lodashMemoize from 'lodash/memoize';
 import { DATA_ROOT } from './constants';
 
 /**
@@ -43,23 +44,17 @@ function watchDataFilesInDev() {
   }
 }
 
-export default function memo<Args extends unknown[], R>(
-  fn: (...args: Args) => R,
-  resolver?: (...args: Args) => string,
-): (...args: Args) => R {
-  const cache = new Map<string, R>();
+export default function memo<T extends (...args: never[]) => unknown>(
+  fn: T,
+  resolver?: (...args: Parameters<T>) => string,
+): T {
+  const memoized = lodashMemoize(fn, resolver);
 
-  const memoized = (...args: Args): R => {
-    const key = resolver ? resolver(...args) : String(args[0]);
-    const cached = cache.get(key);
-    if (cached !== undefined) return cached;
-
-    const value = fn(...args);
-    cache.set(key, value);
-    return value;
-  };
-
-  caches.push(cache);
+  caches.push({
+    clear: () => {
+      memoized.cache.clear?.();
+    },
+  });
   watchDataFilesInDev();
 
   return memoized;

@@ -381,7 +381,7 @@ export const getRecipe = memo(
       source: sourceData,
     };
   },
-  (source, recipe, chapter) => `${source.type}/${source.slug}/${chapter ?? ''}/${recipe}`,
+  (source, recipe, chapter = '') => `${source.type}/${source.slug}/${chapter}/${recipe}`,
 );
 
 export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
