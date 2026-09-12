@@ -1,7 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
-import memo from 'lodash/memoize';
 import uniqBy from 'lodash/uniqBy';
 import { match } from 'ts-pattern';
 import type { Category } from '../types/Category.ts';
@@ -11,6 +10,7 @@ import type { Ref } from '../types/Ref.ts';
 import { getCategoriesPerParent, getCategory } from './categories';
 import { INGREDIENT_ROOT } from './constants';
 import { readJSONFile } from './fs';
+import memo from './memo';
 import { getAllRecipes } from './recipes';
 
 function toAlphaSort<I extends { name: string }>(arr: I[]) {
