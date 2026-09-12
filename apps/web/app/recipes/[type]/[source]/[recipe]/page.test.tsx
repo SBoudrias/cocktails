@@ -47,14 +47,14 @@ describe('RecipePage', () => {
     const technique = screen.getByRole('list', { name: 'Milk clarification' });
     const techniqueDetails = within(technique).getByRole('listitem');
     expect(techniqueDetails).not.toHaveTextContent('Milk clarification');
-    expect(techniqueDetails).toHaveTextContent('5ozWhole milk');
+    expect(techniqueDetails).toHaveTextContent('5 oz Whole milk');
 
     await user.click(screen.getByRole('button', { name: 'ml' }));
 
-    expect(techniqueDetails).toHaveTextContent('150mlWhole milk');
+    expect(techniqueDetails).toHaveTextContent('150 ml Whole milk');
 
     await user.click(screen.getByRole('button', { name: 'Increment' }));
 
-    expect(techniqueDetails).toHaveTextContent('300mlWhole milk');
+    expect(techniqueDetails).toHaveTextContent('300 ml Whole milk');
   });
 });

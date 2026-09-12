@@ -139,11 +139,11 @@ describe('CategoryPage', () => {
 
       // Fog Cutter uses 0.5 oz London Dry Gin (category type)
       const fogCutterLink = screen.getByRole('link', { name: /Fog Cutter/ });
-      expect(fogCutterLink).toHaveTextContent('½oz');
+      expect(fogCutterLink).toHaveTextContent('½ oz');
 
       // Cloister uses 1.5 oz Beefeater London Dry Gin (spirit in category)
       const cloisterLink = screen.getByRole('link', { name: /Cloister/ });
-      expect(cloisterLink).toHaveTextContent('1 ½oz');
+      expect(cloisterLink).toHaveTextContent('1 ½ oz');
     });
   });
 

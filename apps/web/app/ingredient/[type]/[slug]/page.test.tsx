@@ -237,13 +237,13 @@ describe('IngredientPage', () => {
           item.textContent?.includes('Jungle bird') &&
           item.textContent?.includes("Smuggler's Cove"),
       );
-      expect(jungleBird).toHaveTextContent('2oz');
+      expect(jungleBird).toHaveTextContent('2 oz');
 
       // Chartreuse swizzle uses 1 oz pineapple juice
       const chartreuse = allListItems.find((item) =>
         item.textContent?.includes('Chartreuse swizzle'),
       );
-      expect(chartreuse).toHaveTextContent('1oz');
+      expect(chartreuse).toHaveTextContent('1 oz');
       expect(chartreuse).toHaveTextContent("Smuggler's Cove");
     });
 
@@ -258,7 +258,7 @@ describe('IngredientPage', () => {
           item.textContent?.includes('Jungle bird') &&
           item.textContent?.includes("Smuggler's Cove"),
       );
-      expect(smugglersCove).toHaveTextContent('2oz');
+      expect(smugglersCove).toHaveTextContent('2 oz');
       expect(smugglersCove).toHaveTextContent("Smuggler's Cove");
 
       // Tiki Modern version: 1.5 oz (rendered as fraction), attributed to book
@@ -267,7 +267,7 @@ describe('IngredientPage', () => {
           item.textContent?.includes('Jungle Bird') &&
           item.textContent?.includes('Tiki: Modern Tropical Cocktails'),
       );
-      expect(tikiModern).toHaveTextContent('1 ½oz');
+      expect(tikiModern).toHaveTextContent('1 ½ oz');
       expect(tikiModern).toHaveTextContent('Tiki: Modern Tropical Cocktails');
     });
   });

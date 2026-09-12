@@ -118,15 +118,25 @@ export default function Quantity({
         flexShrink: 0,
       }}
     >
-      {modifier != null && <span className={styles.modifier}>{modifier}</span>}
+      {modifier != null && (
+        <>
+          <span className={styles.modifier}>{modifier}</span>{' '}
+        </>
+      )}
       <span className={styles.quantity}>{formatAmount(amount, unit)}</span>
       {maximum != null && (
         <>
-          <span className={styles.modifier}>to</span>
+          {' '}
+          <span className={styles.modifier}>to</span>{' '}
           <span className={styles.quantity}>{formatAmount(maximum, unit)}</span>
         </>
       )}
-      {unit !== 'unit' && <span className={styles.unit}>{unit}</span>}
+      {unit !== 'unit' && (
+        <>
+          {' '}
+          <span className={styles.unit}>{unit}</span>
+        </>
+      )}
     </Box>
   );
 }
