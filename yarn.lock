@@ -169,7 +169,7 @@ __metadata:
   dependencies:
     "@cocktails/ingredient-sorting": "workspace:*"
     "@cocktails/jsonschema-formatter": "workspace:*"
-    "@sindresorhus/slugify": "npm:^3.0.0"
+    "@sindresorhus/slugify": "npm:^3.0.1"
     ajv: "npm:^8.20.0"
     oxfmt: "npm:^0.67.0"
   bin:
@@ -191,7 +191,7 @@ __metadata:
   dependencies:
     "@cocktails/check-data": "workspace:*"
     "@cocktails/conversion": "workspace:*"
-    "@sindresorhus/slugify": "npm:^3.0.0"
+    "@sindresorhus/slugify": "npm:^3.0.1"
     lodash: "npm:^4.18.1"
     ts-pattern: "npm:^5.9.0"
   languageName: unknown
@@ -1497,13 +1497,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sindresorhus/slugify@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@sindresorhus/slugify@npm:3.0.0"
+"@sindresorhus/slugify@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@sindresorhus/slugify@npm:3.0.1"
   dependencies:
     "@sindresorhus/transliterate": "npm:^2.0.0"
     escape-string-regexp: "npm:^5.0.0"
-  checksum: 10c0/e149fcaf81828f137061646970a8c04a00f4730483ae98c17542fc0edc100ec4ee8958311eb22703f1575d14eeffd216a8f47fd30886a893384e4c3faf9f895b
+  checksum: 10c0/3b18d4adbfc46e3eec393d9bd55b74d61d11f2dbaa68df7a2436bb6a6593e22c43259c10f78e81a917666aec9ecf89b565f15d34911f922736a2fd23faf4a94a
   languageName: node
   linkType: hard
 
