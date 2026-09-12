@@ -1,6 +1,53 @@
 import type { Recipe, RecipeIngredient } from '@cocktails/data';
 import { describe, expect, it } from 'vitest';
-import { getRecipeEditUrl, getRecipeIngredientUrl } from './url';
+import {
+  getMilkClarificationCalculatorUrl,
+  getRecipeEditUrl,
+  getRecipeIngredientUrl,
+} from './url';
+
+describe('getMilkClarificationCalculatorUrl', () => {
+  it('prefills only the canonical milk type when the batch volume is unknown', () => {
+    expect(
+      getMilkClarificationCalculatorUrl({
+        milkType: 'Coconut milk',
+        batchQuantity: undefined,
+        ratio: undefined,
+      }),
+    ).toEqual({
+      pathname: '/calculators/milk-clarification',
+      query: { milkType: 'Coconut milk' },
+    });
+  });
+
+  it('prefills the batch volume and the recipe ratio', () => {
+    expect(
+      getMilkClarificationCalculatorUrl({
+        milkType: 'Whole milk',
+        batchQuantity: { amount: 19.5, unit: 'oz' },
+        ratio: 5 / 19.5,
+      }),
+    ).toEqual({
+      pathname: '/calculators/milk-clarification',
+      query: {
+        milkType: 'Whole milk',
+        amount: '19.5',
+        unit: 'oz',
+        ratio: String(Math.round((5 / 19.5) * 10_000) / 10_000),
+      },
+    });
+  });
+
+  it('rounds the ratio to keep the url readable', () => {
+    const url = getMilkClarificationCalculatorUrl({
+      milkType: 'Whole milk',
+      batchQuantity: { amount: 28, unit: 'oz' },
+      ratio: 8 / 28,
+    });
+
+    expect(url.query).toMatchObject({ ratio: '0.2857' });
+  });
+});
 
 const createRecipe = (
   slug: string,

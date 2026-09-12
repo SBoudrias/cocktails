@@ -508,6 +508,18 @@ export const getNonAlcoholicRecipes = memo(async (): Promise<Recipe[]> => {
   return toAlphaSort(recipes.filter(isNonAlcoholicRecipe));
 });
 
+export const getMilkClarifiedRecipes = memo(async (): Promise<Recipe[]> => {
+  const recipes = await getAllRecipes();
+  return toAlphaSort(
+    recipes.filter((recipe) =>
+      recipe.techniques?.some(
+        (technique) =>
+          technique.technique === 'clarification' && technique.method === 'milk',
+      ),
+    ),
+  );
+});
+
 export const getRecipeByCategory = memo(
   async (category: Category): Promise<Recipe[]> => {
     const recipes = await getAllRecipes();

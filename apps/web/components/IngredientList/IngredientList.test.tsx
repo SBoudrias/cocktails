@@ -1,5 +1,6 @@
 import type { Recipe } from '@cocktails/data';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
+import { beforeEach } from 'vitest';
 import IngredientList from './index';
 
 function getLinkSearchParams(name: string | RegExp) {
@@ -11,6 +12,10 @@ function getLinkSearchParams(name: string | RegExp) {
 }
 
 describe('IngredientList', () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
   const mockIngredients: Recipe['ingredients'] = [
     {
       name: 'Gin',
@@ -181,5 +186,74 @@ describe('IngredientList', () => {
     expect(scaledParams.get('amount')).toBe('2.25');
     expect(scaledParams.get('unit')).toBe('oz');
     expect(scaledParams.get('juiceAmount')).toBe('2.25');
+  });
+
+  it('keeps the technique row plain and links the calculator from the section header', () => {
+    render(
+      <IngredientList
+        ingredients={mockIngredients}
+        techniques={[
+          {
+            technique: 'clarification',
+            method: 'milk',
+            milk_type: 'Coconut milk',
+            quantity: { amount: 4, unit: 'oz' },
+          },
+        ]}
+      />,
+    );
+
+    const technique = screen.getByRole('list', { name: 'Milk clarification' });
+    const techniqueDetails = within(technique).getByRole('listitem');
+    expect(techniqueDetails).toHaveTextContent('4 oz Coconut milk');
+    expect(within(technique).queryByRole('link')).not.toBeInTheDocument();
+
+    const calculatorLink = screen.getByRole('link', {
+      name: 'Calculate milk for a batch',
+    });
+    const calculatorUrl = new URL(
+      calculatorLink.getAttribute('href') ?? '',
+      'https://cocktail-index.test',
+    );
+
+    expect(calculatorUrl.pathname).toBe('/calculators/milk-clarification');
+    expect(calculatorUrl.searchParams.get('milkType')).toBe('Coconut milk');
+    // mockIngredients batch is 2 oz gin + 1 oz lemon juice = 3 oz
+    expect(calculatorUrl.searchParams.get('amount')).toBe('3');
+    expect(calculatorUrl.searchParams.get('unit')).toBe('oz');
+    expect(calculatorUrl.searchParams.has('ratio')).toBe(false);
+  });
+
+  it('prefills the calculator with the scaled recipe size and ratio', () => {
+    render(
+      <IngredientList
+        ingredients={mockIngredients}
+        techniques={[
+          {
+            technique: 'clarification',
+            method: 'milk',
+            milk_type: 'Coconut milk',
+            quantity: { amount: 0.75, unit: 'oz' },
+          },
+        ]}
+      />,
+    );
+
+    const getCalculatorParams = () => {
+      const link = screen.getByRole('link', { name: 'Calculate milk for a batch' });
+      return new URL(link.getAttribute('href') ?? '', 'https://cocktail-index.test')
+        .searchParams;
+    };
+
+    // 3 oz batch, 0.75 oz of milk
+    expect(getCalculatorParams().get('amount')).toBe('3');
+    expect(getCalculatorParams().get('ratio')).toBe('0.25');
+
+    fireEvent.change(screen.getByLabelText('Number of servings'), {
+      target: { value: '2' },
+    });
+
+    expect(getCalculatorParams().get('amount')).toBe('6');
+    expect(getCalculatorParams().get('ratio')).toBe('0.25');
   });
 });

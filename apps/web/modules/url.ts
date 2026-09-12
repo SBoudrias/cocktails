@@ -91,6 +91,34 @@ export function getNonAlcoholicRecipeListUrl(): Route {
   return '/list/non-alcoholic';
 }
 
+export function getMilkClarificationCalculatorUrl({
+  milkType,
+  batchQuantity,
+  ratio,
+}: {
+  milkType: string;
+  batchQuantity?: { amount: number; unit: 'ml' | 'oz' };
+  ratio?: number;
+}): UrlObject {
+  return {
+    pathname: '/calculators/milk-clarification',
+    query: {
+      milkType,
+      ...(batchQuantity && {
+        amount: String(batchQuantity.amount),
+        unit: batchQuantity.unit,
+      }),
+      ...(ratio != null && {
+        ratio: String(Math.round(ratio * 10_000) / 10_000),
+      }),
+    },
+  };
+}
+
+export function getMilkClarifiedRecipeListUrl(): Route {
+  return '/list/milk-clarification';
+}
+
 export function getBottleListUrl(): Route {
   return '/list/bottles';
 }

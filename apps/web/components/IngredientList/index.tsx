@@ -2,6 +2,7 @@
 
 import type { Recipe, RecipeTechnique } from '@cocktails/data';
 import { compareIngredients } from '@cocktails/ingredient-sorting';
+import CalculateIcon from '@mui/icons-material/Calculate';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
   Stack,
@@ -9,6 +10,7 @@ import {
   ListItem,
   ListItemText,
   ListSubheader,
+  Link as MuiLink,
   Paper,
   Toolbar,
 } from '@mui/material';
@@ -19,9 +21,10 @@ import Quantity from '#/components/Quantity';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import ServingSelector from '#/components/ServingSelector';
 import useLocalStorage from '#/hooks/useLocalStorage';
+import { getMilkClarificationContext } from '#/modules/milkClarification';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
 import { formatIngredientName, formatRecipeTechniqueName } from '#/modules/technique';
-import { getRecipeIngredientUrl } from '#/modules/url';
+import { getMilkClarificationCalculatorUrl, getRecipeIngredientUrl } from '#/modules/url';
 import styles from './style.module.css';
 
 const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
@@ -134,11 +137,44 @@ export default function IngredientList({
       </List>
       {scaledTechniques.map((recipeTechnique) => {
         const headingId = `recipe-technique-${recipeTechnique.technique}-heading`;
+        const calculatorUrl = match(recipeTechnique)
+          .with({ technique: 'clarification', method: 'milk' }, (milkClarification) =>
+            getMilkClarificationCalculatorUrl({
+              milkType: milkClarification.milk_type,
+              ...getMilkClarificationContext({
+                milkClarification,
+                ingredients: scaledIngredients,
+                preferredUnit,
+              }),
+            }),
+          )
+          .exhaustive();
 
         return (
           <Fragment key={recipeTechnique.technique}>
-            <ListSubheader component="div" id={headingId}>
-              {formatRecipeTechniqueName(recipeTechnique)}
+            <ListSubheader component="div">
+              <Stack
+                direction="row"
+                sx={{ alignItems: 'center', justifyContent: 'space-between' }}
+              >
+                <span id={headingId}>{formatRecipeTechniqueName(recipeTechnique)}</span>
+                <MuiLink
+                  component={Link}
+                  href={calculatorUrl}
+                  underline="none"
+                  sx={{
+                    color: '#FFFFFF',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                  }}
+                >
+                  {/* The Calculate glyph sits low in its viewBox; lift it into
+                      the text cap band */}
+                  <CalculateIcon sx={{ fontSize: 13, transform: 'translateY(-1.5px)' }} />
+                  Calculate milk for a batch
+                </MuiLink>
+              </Stack>
             </ListSubheader>
             <List aria-labelledby={headingId}>
               <Paper square>
