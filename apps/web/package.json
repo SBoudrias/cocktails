@@ -41,7 +41,7 @@
     "@testing-library/user-event": "^14.6.7",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.7",
-    "happy-dom": "^20.13.1",
+    "happy-dom": "^20.14.0",
     "next-router-mock": "^1.0.5",
     "typescript": "7.0.2"
   }
