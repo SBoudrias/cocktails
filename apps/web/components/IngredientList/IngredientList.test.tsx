@@ -135,7 +135,7 @@ describe('IngredientList', () => {
     fireEvent.click(screen.getByRole('button', { name: 'ml' }));
 
     const ingredientList = screen.getByRole('list');
-    expect(ingredientList).toHaveTextContent('2dash');
+    expect(ingredientList).toHaveTextContent('2 dash');
     expect(ingredientList).not.toHaveTextContent('ml');
   });
 
