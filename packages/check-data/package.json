@@ -10,7 +10,7 @@
   "dependencies": {
     "@cocktails/ingredient-sorting": "workspace:*",
     "@cocktails/jsonschema-formatter": "workspace:*",
-    "@sindresorhus/slugify": "^3.0.0",
+    "@sindresorhus/slugify": "^3.0.1",
     "ajv": "^8.20.0",
     "oxfmt": "^0.66.0"
   }
