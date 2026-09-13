@@ -5,11 +5,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "DP7oukgK_1w"
+      "videoId": "DP7oukgK_1w",
+      "channel": "anders-erickson"
     },
     {
       "type": "youtube",
       "videoId": "CvEDhkR6K14",
+      "channel": "anders-erickson",
       "start": 240
     }
   ]

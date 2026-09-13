@@ -62,19 +62,23 @@
     {
       "type": "youtube",
       "videoId": "adCd-fbuf5I",
+      "channel": "educated-barfly",
       "start": 113
     },
     {
       "type": "youtube",
-      "videoId": "EHYtxigB7FU"
+      "videoId": "EHYtxigB7FU",
+      "channel": "truffles-on-the-rocks"
     },
     {
       "type": "youtube",
-      "videoId": "cVjUzza4jTo"
+      "videoId": "cVjUzza4jTo",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
       "videoId": "jBzAintFqlU",
+      "channel": "educated-barfly",
       "start": 13
     }
   ]

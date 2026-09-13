@@ -32,7 +32,7 @@ Open [http://localhost:3000/cocktails](http://localhost:3000/cocktails) with you
 
 Recipes are stored in `.json` files under `packages/data/data/recipes/[type]/[source]/[slug].json`, and are nested under their source (book, youtube channel, etc.) The file name should be a url safe slug of the recipe name.
 
-Before adding a new recipe, please check if it already exists in the database. If it does, update the existing recipe instead of creating a new one. With youtube channel in particular, we often see the same recipes uploaded by multiple channels or videos. When the recipe exists, just add the video to the `refs` array of the existing recipe. If the recipe differs somewhat, create a new recipe with a different slug.
+Before adding a new recipe, please check if it already exists in the database. If it does, update the existing recipe instead of creating a new one. With youtube channel in particular, we often see the same recipes uploaded by multiple channels or videos. When the recipe exists, just add the video to the `refs` array of the existing recipe — youtube refs carry the slug of the channel that published the video (`"channel": "anders-erickson"`), which makes the recipe appear on every listed channel's page. If the recipe differs somewhat, create a new recipe with a different slug.
 
 Each recipe file should start by defining it's schema:
 

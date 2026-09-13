@@ -72,11 +72,13 @@
     {
       "type": "youtube",
       "videoId": "_yzwr4igaIg",
+      "channel": "educated-barfly",
       "start": 1012
     },
     {
       "type": "youtube",
-      "videoId": "cb2BYQSWC2E"
+      "videoId": "cb2BYQSWC2E",
+      "channel": "educated-barfly"
     }
   ]
 }

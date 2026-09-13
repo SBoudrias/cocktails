@@ -39,20 +39,24 @@
     {
       "type": "youtube",
       "videoId": "QXgD6BIbxHk",
+      "channel": "anders-erickson",
       "start": 370
     },
     {
       "type": "youtube",
-      "videoId": "xnXFbjQSu-k"
+      "videoId": "xnXFbjQSu-k",
+      "channel": "anders-erickson"
     },
     {
       "type": "youtube",
       "videoId": "QXgD6BIbxHk",
+      "channel": "anders-erickson",
       "start": 347
     },
     {
       "type": "youtube",
       "videoId": "YFqEvNdPrX8",
+      "channel": "anders-erickson",
       "start": 362
     }
   ]

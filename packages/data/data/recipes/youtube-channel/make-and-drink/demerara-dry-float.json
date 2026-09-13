@@ -67,11 +67,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "uwb0r1Db8sg"
+      "videoId": "uwb0r1Db8sg",
+      "channel": "make-and-drink"
     },
     {
       "type": "youtube",
-      "videoId": "UKFX3WCPeXg"
+      "videoId": "UKFX3WCPeXg",
+      "channel": "spike-breezeway-cocktail-hour"
     }
   ]
 }

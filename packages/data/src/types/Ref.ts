@@ -6,6 +6,8 @@
 export type YoutubeRef = {
   type: 'youtube';
   videoId: string;
+  /** Slug of the `youtube-channel` source that published the video. */
+  channel: string;
   start?: number;
 };
 

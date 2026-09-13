@@ -94,11 +94,13 @@
     },
     {
       "type": "youtube",
-      "videoId": "LwvhRy0iIfk"
+      "videoId": "LwvhRy0iIfk",
+      "channel": "make-and-drink"
     },
     {
       "type": "youtube",
       "videoId": "kDG_9pm4k0I",
+      "channel": "make-and-drink",
       "start": 310
     }
   ]

@@ -38,11 +38,13 @@
     {
       "type": "youtube",
       "videoId": "vOM5wbvegzo",
+      "channel": "anders-erickson",
       "start": 401
     },
     {
       "type": "youtube",
       "videoId": "qLwJ2aixqYY",
+      "channel": "anders-erickson",
       "start": 46
     }
   ]

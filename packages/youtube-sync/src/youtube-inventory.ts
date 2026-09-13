@@ -278,7 +278,7 @@ function formatBatchMarkdown(channel: ChannelSource, batch: InventoryBatch): str
     '1. Use the `youtube` skill to fetch video metadata and recipe details.',
     '2. Split multi-recipe videos into separate recipe candidates and use `refs[].start` when useful.',
     '3. Search existing recipe files before creating a new Make and Drink recipe.',
-    '4. Add a YouTube ref to an existing book or channel recipe when the formula matches.',
+    `4. Add a YouTube ref (with \`"channel": "${channel.slug}"\`) to an existing book or channel recipe when the formula matches.`,
     '5. Create a new `youtube-channel/make-and-drink` recipe only when the video version is distinct.',
     '6. Report `create`, `add-ref`, `skip`, or `uncertain` for every video with evidence.',
     '',

@@ -188,9 +188,13 @@
             "properties": {
               "type": { "const": "youtube" },
               "videoId": { "type": "string" },
+              "channel": {
+                "description": "Slug of the youtube-channel source that published the video",
+                "type": "string"
+              },
               "start": { "type": "number" }
             },
-            "required": ["type", "videoId"],
+            "required": ["type", "videoId", "channel"],
             "additionalProperties": false
           },
           {

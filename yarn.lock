@@ -266,6 +266,7 @@ __metadata:
   resolution: "@cocktails/youtube-sync@workspace:packages/youtube-sync"
   dependencies:
     "@cocktails/data": "workspace:*"
+    "@sindresorhus/slugify": "npm:^3.0.1"
     commander: "npm:^15.0.0"
     iso8601-duration: "npm:^2.1.4"
   languageName: unknown

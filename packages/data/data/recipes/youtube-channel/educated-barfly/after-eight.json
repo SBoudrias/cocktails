@@ -68,11 +68,13 @@
     {
       "type": "youtube",
       "videoId": "OWLMeZ-ljx4",
+      "channel": "educated-barfly",
       "start": 773
     },
     {
       "type": "youtube",
-      "videoId": "LncplhTmoKs"
+      "videoId": "LncplhTmoKs",
+      "channel": "educated-barfly"
     }
   ]
 }

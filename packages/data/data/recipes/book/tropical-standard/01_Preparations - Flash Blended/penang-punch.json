@@ -107,11 +107,13 @@
     {
       "type": "youtube",
       "videoId": "aQq0eLv4Emo",
+      "channel": "make-and-drink",
       "start": 367
     },
     {
       "type": "youtube",
       "videoId": "270omsGw3zg",
+      "channel": "make-and-drink",
       "start": 281
     }
   ]

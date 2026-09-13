@@ -51,15 +51,18 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "2ThWDvwgbWg"
+      "videoId": "2ThWDvwgbWg",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
-      "videoId": "d3dVE7L4Gww"
+      "videoId": "d3dVE7L4Gww",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
-      "videoId": "rUk4cTmssOo"
+      "videoId": "rUk4cTmssOo",
+      "channel": "educated-barfly"
     }
   ]
 }

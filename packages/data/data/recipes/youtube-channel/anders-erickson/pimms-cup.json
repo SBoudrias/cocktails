@@ -62,11 +62,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "VBSjE-P_C58"
+      "videoId": "VBSjE-P_C58",
+      "channel": "anders-erickson"
     },
     {
       "type": "youtube",
       "videoId": "CGq0rFP_Jl0",
+      "channel": "anders-erickson",
       "start": 470
     }
   ]

@@ -63,16 +63,19 @@
     {
       "type": "youtube",
       "videoId": "yu4JNOvec1k",
+      "channel": "anders-erickson",
       "start": 284
     },
     {
       "type": "youtube",
       "videoId": "WAbJ7oOPSG4",
+      "channel": "make-and-drink",
       "start": 229
     },
     {
       "type": "youtube",
       "videoId": "PSY8XSXnzR0",
+      "channel": "anders-erickson",
       "start": 340
     }
   ]

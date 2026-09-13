@@ -31,11 +31,13 @@
     {
       "type": "youtube",
       "videoId": "s30L-iu171E",
+      "channel": "anders-erickson",
       "start": 64
     },
     {
       "type": "youtube",
       "videoId": "nTyrz70_OPA",
+      "channel": "anders-erickson",
       "start": 117
     }
   ]

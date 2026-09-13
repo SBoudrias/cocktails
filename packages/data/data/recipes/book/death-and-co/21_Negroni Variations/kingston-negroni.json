@@ -49,11 +49,13 @@
     {
       "type": "youtube",
       "videoId": "jczq-fE4foM",
+      "channel": "make-and-drink",
       "start": 274
     },
     {
       "type": "youtube",
       "videoId": "WAbJ7oOPSG4",
+      "channel": "make-and-drink",
       "start": 111
     }
   ]

@@ -46,16 +46,19 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "YenV_NoabM4"
+      "videoId": "YenV_NoabM4",
+      "channel": "anders-erickson"
     },
     {
       "type": "youtube",
       "videoId": "NLF7z6MHMa0",
+      "channel": "anders-erickson",
       "start": 358
     },
     {
       "type": "youtube",
       "videoId": "WYBO1WRwGBw",
+      "channel": "anders-erickson",
       "start": 495
     }
   ]

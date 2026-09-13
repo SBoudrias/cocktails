@@ -38,15 +38,18 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "re76GCUoiH4"
+      "videoId": "re76GCUoiH4",
+      "channel": "anders-erickson"
     },
     {
       "type": "youtube",
-      "videoId": "3ML0x7NtH5Y"
+      "videoId": "3ML0x7NtH5Y",
+      "channel": "truffles-on-the-rocks"
     },
     {
       "type": "youtube",
       "videoId": "TrWcObh6YKM",
+      "channel": "anders-erickson",
       "start": 853
     }
   ]
