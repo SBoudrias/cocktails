@@ -62,10 +62,20 @@
       }
     }
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tony Ramos"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
       "videoId": "rDq673YI4so"
+    },
+    {
+      "type": "youtube",
+      "videoId": "l5IMypuLeTs"
     }
   ]
 }

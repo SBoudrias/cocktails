@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Poet's Dream",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pear liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.125,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pisco",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "London Dry Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into a coupe.",
+    "Garnish with a lemon twist."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Vandell's",
+      "location": "Los Angeles, CA"
+    },
+    {
+      "relation": "book",
+      "source": "Old Waldorf Bar Days"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "eQPcf_CbWig",
+      "start": 322
+    }
+  ]
+}

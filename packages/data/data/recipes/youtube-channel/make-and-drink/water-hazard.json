@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Water Hazard",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lemonade",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gatorade",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.67,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sprite",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build vodka in a highball glass over ice.",
+    "Add Gatorade and lemonade, then top with Sprite.",
+    "Swap the Gatorade color for the variants: orange for a Sand Trap, red for a Fire Hazard."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "81KLT6v8gNA",
+      "start": 279
+    }
+  ]
+}
