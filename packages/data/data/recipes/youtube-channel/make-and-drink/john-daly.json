@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "John Daly",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lemonade",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Iced tea",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.67,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build vodka in a highball glass over ice.",
+    "Top with lemonade and iced tea to taste."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "81KLT6v8gNA",
+      "start": 56
+    }
+  ]
+}

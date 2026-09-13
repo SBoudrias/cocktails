@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Transfusion",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grape juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.67,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger ale",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build vodka and lime juice in a highball glass over ice.",
+    "Add grape juice and top with ginger ale."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "81KLT6v8gNA",
+      "start": 183
+    }
+  ]
+}
