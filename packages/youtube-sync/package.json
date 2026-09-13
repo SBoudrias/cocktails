@@ -6,10 +6,12 @@
   "scripts": {
     "lint": "cd ../.. && yarn tsc --noEmit -p packages/youtube-sync/tsconfig.json",
     "inventory": "node src/youtube-inventory.ts",
+    "ref-channels": "node src/youtube-ref-channels.ts",
     "youtube-sync": "node src/youtube-sync.ts"
   },
   "dependencies": {
     "@cocktails/data": "workspace:*",
+    "@sindresorhus/slugify": "^3.0.1",
     "commander": "^15.0.0",
     "iso8601-duration": "^2.1.4"
   }

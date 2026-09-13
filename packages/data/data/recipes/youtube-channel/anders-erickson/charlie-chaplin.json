@@ -38,15 +38,18 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "VqVJ10en-Uc"
+      "videoId": "VqVJ10en-Uc",
+      "channel": "anders-erickson"
     },
     {
       "type": "youtube",
-      "videoId": "5w6eLckHwWg"
+      "videoId": "5w6eLckHwWg",
+      "channel": "anders-erickson"
     },
     {
       "type": "youtube",
       "videoId": "PSY8XSXnzR0",
+      "channel": "anders-erickson",
       "start": 42
     }
   ]

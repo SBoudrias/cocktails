@@ -128,7 +128,10 @@ When processing an inventory batch:
    `refs[].start` when useful.
 3. Search existing recipes before creating a new file.
 4. Add a YouTube ref to an existing book or channel recipe when the formula
-   matches.
+   matches. Every youtube ref must carry `"channel": "CHANNEL_SLUG"` — the
+   tracked `youtube-channel` source slug that published the video (for the
+   channel being backfilled, that is the batch's own channel). Cross-channel
+   refs are what make a recipe appear on multiple channel lists.
 5. Create a new `youtube-channel/CHANNEL_SLUG` recipe only when the video
    version is distinct.
 6. **Name new recipes per the naming convention**: a parenthetical in a recipe

@@ -71,11 +71,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "1S7pqb3UCfU"
+      "videoId": "1S7pqb3UCfU",
+      "channel": "make-and-drink"
     },
     {
       "type": "youtube",
       "videoId": "18V9V5c0j6g",
+      "channel": "make-and-drink",
       "start": 30
     }
   ]

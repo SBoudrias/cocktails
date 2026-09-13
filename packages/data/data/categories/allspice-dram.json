@@ -5,15 +5,18 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "jnpUrm6MveQ"
+      "videoId": "jnpUrm6MveQ",
+      "channel": "make-and-drink"
     },
     {
       "type": "youtube",
-      "videoId": "-Ly2sG4eCrY"
+      "videoId": "-Ly2sG4eCrY",
+      "channel": "mixing-up-tiki"
     },
     {
       "type": "youtube",
-      "videoId": "8kSgziSsutg"
+      "videoId": "8kSgziSsutg",
+      "channel": "robs-home-bar"
     }
   ]
 }

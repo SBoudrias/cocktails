@@ -49,20 +49,24 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "z0_980tk3Lw"
+      "videoId": "z0_980tk3Lw",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
-      "videoId": "l3AVZXBy_fg"
+      "videoId": "l3AVZXBy_fg",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
       "videoId": "qKgCw8f50BQ",
+      "channel": "educated-barfly",
       "start": 264
     },
     {
       "type": "youtube",
-      "videoId": "e9NCH46rqks"
+      "videoId": "e9NCH46rqks",
+      "channel": "educated-barfly"
     }
   ]
 }

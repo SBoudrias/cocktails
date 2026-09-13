@@ -75,20 +75,24 @@
     {
       "type": "youtube",
       "videoId": "9lgx04fJrSM",
+      "channel": "anders-erickson",
       "start": 181
     },
     {
       "type": "youtube",
-      "videoId": "t6qElzw9Jic"
+      "videoId": "t6qElzw9Jic",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
       "videoId": "qKgCw8f50BQ",
+      "channel": "educated-barfly",
       "start": 487
     },
     {
       "type": "youtube",
       "videoId": "YMY0LtEq8mg",
+      "channel": "anders-erickson",
       "start": 192
     }
   ]

@@ -63,11 +63,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "LqZFLcmUFow"
+      "videoId": "LqZFLcmUFow",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
-      "videoId": "xz2_IWcVVVE"
+      "videoId": "xz2_IWcVVVE",
+      "channel": "educated-barfly"
     }
   ]
 }

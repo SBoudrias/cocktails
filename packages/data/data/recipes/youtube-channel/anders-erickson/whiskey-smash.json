@@ -53,11 +53,13 @@
     {
       "type": "youtube",
       "videoId": "0R6Byhm5cNg",
+      "channel": "anders-erickson",
       "start": 76
     },
     {
       "type": "youtube",
       "videoId": "Jo1wxAfyLto",
+      "channel": "anders-erickson",
       "start": 145
     }
   ]

@@ -48,11 +48,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "2SLTAyGmvS4"
+      "videoId": "2SLTAyGmvS4",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
       "videoId": "oHlPKrnzFdU",
+      "channel": "make-and-drink",
       "start": 115
     }
   ]

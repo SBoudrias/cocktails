@@ -86,11 +86,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "S2E_GkECDZQ"
+      "videoId": "S2E_GkECDZQ",
+      "channel": "make-and-drink"
     },
     {
       "type": "youtube",
       "videoId": "ynKiFd2rugw",
+      "channel": "make-and-drink",
       "start": 380
     }
   ]

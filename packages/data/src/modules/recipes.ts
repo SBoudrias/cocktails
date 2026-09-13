@@ -452,18 +452,49 @@ export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
   return toAlphaSort(allRecipes);
 });
 
+function getRecipeChannelSlugs(recipe: Recipe): Set<string> {
+  const slugs = new Set<string>();
+
+  for (const ref of recipe.refs) {
+    if (ref.type === 'youtube') slugs.add(ref.channel);
+  }
+
+  // The folder a recipe file lives in is its owning source.
+  if (recipe.source.type === 'youtube-channel') slugs.add(recipe.source.slug);
+
+  return slugs;
+}
+
 export const getRecipesPerSource = memo(
   async (): Promise<{
     [sourceType: string]: { [sourceSlug: string]: Recipe[] | undefined };
   }> => {
     const recipes = await getAllRecipes();
 
-    const bySourceType = Object.groupBy(recipes, (recipe) => recipe.source.type);
-    return Object.fromEntries(
-      Object.entries(bySourceType).map(([type, recipes]) => {
-        return [type, Object.groupBy(recipes, (recipe) => recipe.source.slug)];
-      }),
-    );
+    // YouTube channel lists are dynamic: a recipe appears under every channel
+    // that owns its file or that one of its youtube refs points to. This lets a
+    // recipe presented by multiple channels show up on each channel's list
+    // while keeping a single canonical recipe file.
+    const youtubeChannelRecipes: { [sourceSlug: string]: Recipe[] } = {};
+    const bySourceType: { [sourceType: string]: Recipe[] } = {};
+
+    for (const recipe of recipes) {
+      for (const slug of getRecipeChannelSlugs(recipe)) {
+        (youtubeChannelRecipes[slug] ??= []).push(recipe);
+      }
+
+      if (recipe.source.type === 'youtube-channel') continue;
+      (bySourceType[recipe.source.type] ??= []).push(recipe);
+    }
+
+    return {
+      'youtube-channel': youtubeChannelRecipes,
+      ...Object.fromEntries(
+        Object.entries(bySourceType).map(([type, recipes]) => {
+          return [type, Object.groupBy(recipes, (recipe) => recipe.source.slug)];
+        }),
+      ),
+    };
   },
 );
 

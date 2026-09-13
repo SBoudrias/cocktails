@@ -60,11 +60,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "69XylUyc-yE"
+      "videoId": "69XylUyc-yE",
+      "channel": "truffles-on-the-rocks"
     },
     {
       "type": "youtube",
-      "videoId": "81rQDA7k-c8"
+      "videoId": "81rQDA7k-c8",
+      "channel": "truffles-on-the-rocks"
     }
   ]
 }

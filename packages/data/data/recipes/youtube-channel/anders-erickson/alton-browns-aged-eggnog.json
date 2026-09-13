@@ -105,6 +105,7 @@
     {
       "type": "youtube",
       "videoId": "s7Rcx7Fekn4",
+      "channel": "anders-erickson",
       "start": 332
     },
     {
@@ -115,6 +116,7 @@
     {
       "type": "youtube",
       "videoId": "-KDjhv0ueHQ",
+      "channel": "make-and-drink",
       "start": 360
     }
   ]

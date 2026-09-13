@@ -48,11 +48,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "DUDT6sSnDrE"
+      "videoId": "DUDT6sSnDrE",
+      "channel": "truffles-on-the-rocks"
     },
     {
       "type": "youtube",
-      "videoId": "5FY4ExZh6NQ"
+      "videoId": "5FY4ExZh6NQ",
+      "channel": "educated-barfly"
     }
   ]
 }

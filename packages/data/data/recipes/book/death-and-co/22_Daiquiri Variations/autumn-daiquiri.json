@@ -73,16 +73,19 @@
     {
       "type": "youtube",
       "videoId": "_9n92LTcZwY",
+      "channel": "make-and-drink",
       "start": 62
     },
     {
       "type": "youtube",
       "videoId": "6k7UMq-lXHM",
+      "channel": "make-and-drink",
       "start": 361
     },
     {
       "type": "youtube",
       "videoId": "3-VJw_EiMz4",
+      "channel": "make-and-drink",
       "start": 65
     }
   ]

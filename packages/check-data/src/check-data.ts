@@ -9,7 +9,7 @@ import {
 import { createSchemaFormatter } from '@cocktails/jsonschema-formatter';
 import slugify from '@sindresorhus/slugify';
 import Ajv from 'ajv/dist/2020.js';
-import { format as formatWithOxfmt } from 'oxfmt';
+import { format as formatWithOxfmt, type FormatConfig } from 'oxfmt';
 import {
   isApprovedOverlap,
   normalizeName,
@@ -29,6 +29,20 @@ const startTime = performance.now();
 const PACKAGE_ROOT = path.join(import.meta.dirname, '../../data');
 const REPO_ROOT = path.join(PACKAGE_ROOT, '..');
 const APPROVED_OVERLAPS_PATH = path.join(PACKAGE_ROOT, 'approved-overlaps.json');
+
+// The `oxfmt` API does not discover `.oxfmtrc.json` like the CLI does, so the
+// repo config is loaded and passed explicitly. Without it, files written by
+// `writeJSON` drift away from `yarn oxfmt` formatting.
+const OXFMT_CONFIG_PATH = path.join(import.meta.dirname, '../../../.oxfmtrc.json');
+const oxfmtConfig: FormatConfig = JSON.parse(
+  await fs.readFile(OXFMT_CONFIG_PATH, 'utf-8').catch((error: unknown) => {
+    throw new Error(
+      `Could not read the oxfmt config at ${OXFMT_CONFIG_PATH}: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+  }),
+);
 
 function isChapterFolder(folder: string): boolean {
   return /^\d+_.+$/.test(folder);
@@ -54,6 +68,7 @@ interface DataWithSchema {
   attributions?: Attribution[];
   categories?: string[];
   parents?: string[];
+  refs?: Array<{ type: string; channel?: string }>;
   techniques?: Array<{
     technique: 'clarification';
     method: 'milk';
@@ -97,7 +112,7 @@ async function writeJSON(filepath: string, data: object): Promise<void> {
   await fs.mkdir(path.dirname(filepath), { recursive: true });
   const sortedData = formatter.format(data);
   const jsonContent = JSON.stringify(sortedData, null, 2) + '\n';
-  const formattedJson = await formatWithOxfmt(filepath, jsonContent);
+  const formattedJson = await formatWithOxfmt(filepath, jsonContent, oxfmtConfig);
   if (formattedJson.errors.length > 0) {
     fail(`Could not format ${filepath}: ${formattedJson.errors[0]?.message}`);
     await fs.writeFile(filepath, jsonContent);
@@ -129,6 +144,15 @@ logger.header('📦 Collecting category and ingredient data');
 const categorySlugs = new Set<string>();
 const canonicalNames = new Map<string, string>(); // slug -> canonical name
 const categoryTypes = new Map<string, string>(); // slug -> categoryType
+
+// Slugs of tracked youtube channels, used to validate ref channel fields
+const youtubeChannelSlugs = new Set<string>();
+const youtubeChannelRoot = path.join(PACKAGE_ROOT, 'data/recipes/youtube-channel');
+for (const entry of await fs.readdir(youtubeChannelRoot)) {
+  const entryStat = await fs.stat(path.join(youtubeChannelRoot, entry));
+  if (entryStat.isDirectory()) youtubeChannelSlugs.add(entry);
+}
+logger.item(`Found ${youtubeChannelSlugs.size} youtube channels`);
 
 const categoriesGlob = path.join(PACKAGE_ROOT, 'data/categories/*.json');
 for await (const categoryFile of fs.glob(categoriesGlob)) {
@@ -204,6 +228,10 @@ try {
 // Track author/adapted-by names for similarity detection
 // Maps name -> list of recipe files using that name
 const authorNameUsages = new Map<string, string[]>();
+
+// Youtube ref channels that are not tracked sources. Their slugs are kept in
+// the data (the video stays linked) but they get no channel page or listing.
+const untrackedRefChannels = new Map<string, number>();
 const referencedIngredientSlugs = new Set<string>();
 
 logger.header('🔍 Validating data files...');
@@ -286,6 +314,25 @@ for await (const sourceFile of fs.glob(dataGlob)) {
       await fs.rename(sourceFile, correctPath);
       // Update ingredientFolders so cross-folder checks use the new location
       ingredientFolders.set(slugify(data.name), data.type);
+    }
+  }
+
+  // Youtube ref channels power the per-channel recipe lists, so track them
+  // for the untracked-channel report below.
+  if (
+    schemaPath === 'schemas/recipe.schema.json' ||
+    schemaPath === 'schemas/category.schema.json' ||
+    schemaPath === 'schemas/ingredient.schema.json'
+  ) {
+    for (const ref of data.refs ?? []) {
+      if (ref.type !== 'youtube' || !ref.channel) continue;
+
+      if (!youtubeChannelSlugs.has(ref.channel)) {
+        untrackedRefChannels.set(
+          ref.channel,
+          (untrackedRefChannels.get(ref.channel) ?? 0) + 1,
+        );
+      }
     }
   }
 
@@ -517,6 +564,17 @@ for (const ingredient of findFloatingIngredients(
 )) {
   fail(
     `Floating ingredient "${ingredient.name}" in ${ingredient.filepath} is not referenced by any recipe`,
+  );
+}
+logger.footer('Done!');
+
+// Report refs pointing to channels that are not tracked sources
+logger.header('📺 Checking youtube ref channels...');
+for (const [channel, count] of untrackedRefChannels) {
+  logger.warn(
+    `Youtube ref channel "${channel}" (${count} ref(s)) is not a tracked youtube-channel source. ` +
+      `The videos stay linked, but the channel gets no page or recipe listing. ` +
+      `If this is a typo of a tracked channel, fix the slug.`,
   );
 }
 logger.footer('Done!');

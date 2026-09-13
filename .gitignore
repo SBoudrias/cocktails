@@ -58,3 +58,6 @@ RESEARCH.md
 
 # recipe extraction working files
 **/_extracted.txt
+
+# tool scratch output (youtube-sync caches, youtube-inventory batches, ...)
+tmp

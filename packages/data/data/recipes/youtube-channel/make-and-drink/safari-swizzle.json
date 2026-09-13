@@ -59,11 +59,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "l96xzj9ojZM"
+      "videoId": "l96xzj9ojZM",
+      "channel": "make-and-drink"
     },
     {
       "type": "youtube",
-      "videoId": "6vgoIA12rUk"
+      "videoId": "6vgoIA12rUk",
+      "channel": "jason-miller"
     }
   ]
 }

@@ -91,11 +91,13 @@
     {
       "type": "youtube",
       "videoId": "_eCla7H-TA0",
+      "channel": "anders-erickson",
       "start": 225
     },
     {
       "type": "youtube",
       "videoId": "S0tjh7LkLLE",
+      "channel": "anders-erickson",
       "start": 417
     }
   ]

@@ -58,20 +58,24 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "wbcyQK4VUCc"
+      "videoId": "wbcyQK4VUCc",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
-      "videoId": "P5qAYo2lvtQ"
+      "videoId": "P5qAYo2lvtQ",
+      "channel": "anders-erickson"
     },
     {
       "type": "youtube",
       "videoId": "qKgCw8f50BQ",
+      "channel": "educated-barfly",
       "start": 950
     },
     {
       "type": "youtube",
-      "videoId": "eTqQwRC3Wmw"
+      "videoId": "eTqQwRC3Wmw",
+      "channel": "educated-barfly"
     }
   ]
 }

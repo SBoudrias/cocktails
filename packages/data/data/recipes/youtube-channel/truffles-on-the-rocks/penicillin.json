@@ -70,11 +70,13 @@
     {
       "type": "youtube",
       "videoId": "B0bZyraafA0",
+      "channel": "truffles-on-the-rocks",
       "start": 160
     },
     {
       "type": "youtube",
       "videoId": "9lgx04fJrSM",
+      "channel": "anders-erickson",
       "start": 514
     }
   ]

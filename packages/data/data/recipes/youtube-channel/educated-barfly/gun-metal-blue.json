@@ -50,15 +50,18 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "NIZEI5gxH1o"
+      "videoId": "NIZEI5gxH1o",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
-      "videoId": "Bk6MjJcGIaI"
+      "videoId": "Bk6MjJcGIaI",
+      "channel": "educated-barfly"
     },
     {
       "type": "youtube",
-      "videoId": "amV7m3Ycml8"
+      "videoId": "amV7m3Ycml8",
+      "channel": "educated-barfly"
     }
   ]
 }

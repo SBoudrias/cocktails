@@ -199,6 +199,26 @@ describe('getRecentlyAddedRecipes', () => {
   });
 });
 
+describe('getRecipesFromSource', () => {
+  it('lists a recipe under every channel its refs point to', async () => {
+    const { getRecipesFromSource } = await import('./recipes');
+
+    // `make-and-drink/demerara-dry-float` is owned by Make and Drink but
+    // references a Spike video, so it must appear on both channel lists.
+    const makeAndDrink = await getRecipesFromSource({
+      type: 'youtube-channel',
+      slug: 'make-and-drink',
+    });
+    const spike = await getRecipesFromSource({
+      type: 'youtube-channel',
+      slug: 'spike-breezeway-cocktail-hour',
+    });
+
+    expect(makeAndDrink.map((recipe) => recipe.slug)).toContain('demerara-dry-float');
+    expect(spike.map((recipe) => recipe.slug)).toContain('demerara-dry-float');
+  });
+});
+
 describe('getRecipe', () => {
   it('loads authored recipe techniques from the plural array field', async () => {
     const { getRecipe } = await import('./recipes');

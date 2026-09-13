@@ -18,6 +18,22 @@ yarn youtube-sync --channel make-and-drink --days 30 --dry-run
 
 Run without `--dry-run` only when you want to create the GitHub issue.
 
+### `yarn ref-channels`
+
+Backfills the required `refs[].channel` field on every youtube reference in the
+data files (recipes, ingredients, categories). Resolves each videoId to its
+channel: tracked channels via their uploads playlists, anything else via a
+per-video lookup that stamps the slugified channel name (unlisted channels).
+
+```bash
+yarn ref-channels --dry-run
+yarn ref-channels
+```
+
+Network resolutions are cached in `tmp/youtube-ref-channels-cache.json` so
+reruns are cheap. Run `yarn check-data` afterwards to validate and normalize
+the edited files.
+
 ### `yarn youtube-inventory`
 
 Creates a channel inventory and writes agent-sized backfill batches. Use this

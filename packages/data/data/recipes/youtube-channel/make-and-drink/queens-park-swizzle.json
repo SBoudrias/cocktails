@@ -49,11 +49,13 @@
   "refs": [
     {
       "type": "youtube",
-      "videoId": "oNPRn-uLAR8"
+      "videoId": "oNPRn-uLAR8",
+      "channel": "make-and-drink"
     },
     {
       "type": "youtube",
       "videoId": "VhwLm7dkp20",
+      "channel": "make-and-drink",
       "start": 568
     }
   ]
