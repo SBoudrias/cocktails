@@ -69,8 +69,8 @@
       }
     },
     {
-      "name": "Everclear",
-      "type": "spirit",
+      "name": "Neutral Grain Spirit",
+      "type": "category",
       "quantity": {
         "amount": 137,
         "unit": "ml"

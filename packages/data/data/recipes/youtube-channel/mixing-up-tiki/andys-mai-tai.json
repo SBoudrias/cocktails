@@ -34,10 +34,21 @@
       }
     },
     {
-      "name": "Mixing Up Tiki Pineapple Lime Mix",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },

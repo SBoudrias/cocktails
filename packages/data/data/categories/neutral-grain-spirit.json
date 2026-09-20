@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/category.schema.json",
+  "name": "Neutral Grain Spirit",
+  "categoryType": "spirit",
+  "description": "High-proof neutral grain spirit, e.g. Everclear or Spirytus. Commonly used in tinctures and essences."
+}

@@ -5,8 +5,8 @@
   "description": "A concentrated peppermint flavoring added by the drop to bring mint character to a drink without muddling fresh mint.",
   "ingredients": [
     {
-      "name": "Everclear",
-      "type": "spirit",
+      "name": "Neutral Grain Spirit",
+      "type": "category",
       "quantity": {
         "amount": 56,
         "unit": "ml"
