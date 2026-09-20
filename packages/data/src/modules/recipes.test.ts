@@ -322,6 +322,32 @@ describe('isNonAlcoholicRecipe', () => {
     ).toBe(true);
   });
 
+  it('allows non-alcoholic spirits and liqueurs as a base', async () => {
+    const { isNonAlcoholicRecipe } = await import('./recipes');
+
+    expect(
+      isNonAlcoholicRecipe(
+        mockRecipe([
+          ingredient({
+            name: 'Wilderton Bittersweet',
+            type: 'non-alcoholic',
+            quantity: { amount: 2, unit: 'oz' },
+          }),
+          ingredient({
+            name: 'Pineapple juice',
+            type: 'juice',
+            quantity: { amount: 1.5, unit: 'oz' },
+          }),
+          ingredient({
+            name: 'Lime juice',
+            type: 'juice',
+            quantity: { amount: 0.5, unit: 'oz' },
+          }),
+        ]),
+      ),
+    ).toBe(true);
+  });
+
   it('allows bitters and tinctures when used as seasoning', async () => {
     const { isNonAlcoholicRecipe } = await import('./recipes');
 

@@ -7,7 +7,7 @@
   "ingredients": [
     {
       "name": "Zero to Hero Cordial",
-      "type": "liqueur",
+      "type": "non-alcoholic",
       "quantity": {
         "amount": 3,
         "unit": "oz"

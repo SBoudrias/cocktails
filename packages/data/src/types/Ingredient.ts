@@ -9,6 +9,7 @@ export type IngredientType =
   | 'fruit'
   | 'juice'
   | 'liqueur'
+  | 'non-alcoholic'
   | 'puree'
   | 'soda'
   | 'spice'

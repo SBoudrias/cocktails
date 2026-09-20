@@ -31,7 +31,7 @@
     },
     {
       "name": "Ritual Whiskey Alternative",
-      "type": "other",
+      "type": "non-alcoholic",
       "quantity": {
         "amount": 2,
         "unit": "oz"
