@@ -4,6 +4,60 @@
   "type": "syrup",
   "description": "Equal parts by weight of pineapple, mango, banana, yuzu, and passion fruit, blended with an equal weight of sugar and strained.",
   "categories": ["Fassionola"],
+  "ingredients": [
+    {
+      "name": "Pineapple purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Mango purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "banana purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Yuzu juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend everything on high until smooth and all the sugar has dissolved.",
+    "Strain through a nut milk bag into a sanitized container."
+  ],
   "refs": [
     {
       "type": "youtube",

@@ -3,9 +3,31 @@
   "name": "Mixing Up Tiki Pineapple Lime Mix",
   "type": "juice",
   "description": "Equal parts lime super juice and acid-adjusted pineapple juice.",
-  "instructions": [
-    "Combine 100 ml lime super juice, 100 ml fresh squeezed pineapple juice, 3.2 g citric acid, and 2 g malic acid."
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 100,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 100,
+        "unit": "ml"
+      }
+    }
   ],
+  "instructions": ["Combine equal parts of both juices."],
   "refs": [
     {
       "type": "youtube",

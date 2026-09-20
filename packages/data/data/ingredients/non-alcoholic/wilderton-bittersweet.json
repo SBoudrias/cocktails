@@ -1,7 +1,7 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Wilderton Bittersweet",
-  "type": "spirit",
+  "type": "non-alcoholic",
   "description": "A non-alcoholic spirit alternative with grapefruit and orange notes and a bitter, herbal finish, used as a Campari-style stand-in.",
   "refs": [
     {

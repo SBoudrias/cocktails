@@ -29,10 +29,7 @@
       }
     }
   ],
-  "instructions": [
-    "Combine 1 part cinnamon syrup, 1 part allspice dram, and 4 parts orgeat.",
-    "Stir until fully combined."
-  ],
+  "instructions": ["Stir until fully combined."],
   "refs": [
     {
       "type": "youtube",

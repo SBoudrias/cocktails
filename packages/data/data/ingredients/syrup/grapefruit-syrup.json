@@ -2,6 +2,44 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Grapefruit syrup",
   "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 165,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Grapefruit peel",
+      "type": "fruit",
+      "quantity": {
+        "amount": 40,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 132,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Citric acid",
+      "type": "other",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend the juice with the peels and strain.",
+    "Blend the strained juice with the sugar and citric acid until fully dissolved."
+  ],
   "refs": [
     {
       "type": "youtube",
