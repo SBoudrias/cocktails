@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Pineapple syrup",
+      "name": "Pineapple Gum Syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -57,8 +57,7 @@
   "instructions": [
     "Combine all ingredients in a shaker with crushed ice.",
     "Shake and open pour into a snifter.",
-    "Garnish with a mint sprig and an orchid.",
-    "For the pineapple syrup: combine equal weights of pineapple rinds and demerara sugar in a sealed container, let sit for at least 24 hours (shaking occasionally), then strain."
+    "Garnish with a mint sprig and an orchid."
   ],
   "attributions": [
     {
