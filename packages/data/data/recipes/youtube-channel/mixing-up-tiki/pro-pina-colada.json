@@ -22,14 +22,6 @@
       }
     },
     {
-      "name": "Lime Acid Adjuster",
-      "type": "other",
-      "quantity": {
-        "amount": 2,
-        "unit": "ml"
-      }
-    },
-    {
       "name": "coconut mix",
       "type": "syrup",
       "quantity": {
@@ -40,6 +32,9 @@
     {
       "name": "Pineapple juice",
       "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "quantity": {
         "amount": 1.5,
         "unit": "oz"

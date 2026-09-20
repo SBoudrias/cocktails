@@ -15,8 +15,11 @@
       }
     },
     {
-      "name": "Clear Lime Clone",
+      "name": "Lime juice",
       "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
