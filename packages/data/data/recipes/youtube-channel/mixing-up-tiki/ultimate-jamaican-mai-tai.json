@@ -30,6 +30,14 @@
       }
     },
     {
+      "name": "Worthy Park Estate 109 Dark Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.4,
+        "unit": "oz"
+      }
+    },
+    {
       "name": "Pierre Ferrand Dry Curaçao",
       "type": "liqueur",
       "quantity": {
@@ -38,10 +46,18 @@
       }
     },
     {
-      "name": "Ultimate Jamaican Mai Tai Blend",
+      "name": "Smith & Cross",
       "type": "spirit",
       "quantity": {
-        "amount": 2,
+        "amount": 0.8,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 12",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.8,
         "unit": "oz"
       }
     }
