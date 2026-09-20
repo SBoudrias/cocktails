@@ -7,6 +7,7 @@ import { Command } from 'commander';
 import { logger } from './cli-util.ts';
 import { collectRecipeVideoReferences } from './recipe-video-refs.ts';
 import type { RecipeVideoReference } from './recipe-video-refs.ts';
+import { hasLongFormEquivalent, isShortFormVideo } from './short-form.ts';
 import {
   dedupeVideos,
   fetchChannelVideosFlatYtDlp,
@@ -191,6 +192,19 @@ function toInventoryVideo(
   };
 }
 
+function isShortWithLongForm(video: InventoryVideo, videos: InventoryVideo[]): boolean {
+  return (
+    isShortFormVideo({ title: video.title, duration: video.durationSeconds }) &&
+    hasLongFormEquivalent(
+      { title: video.title, duration: video.durationSeconds },
+      videos.map((candidate) => ({
+        title: candidate.title,
+        duration: candidate.durationSeconds,
+      })),
+    )
+  );
+}
+
 function selectBatchVideos(
   videos: InventoryVideo[],
   options: InventoryOptions,
@@ -198,11 +212,7 @@ function selectBatchVideos(
   return videos.filter((video) => {
     if (!options.includeReferenced && video.alreadyReferenced) return false;
     if (!options.includeReviewed && video.reviewed) return false;
-    if (
-      !options.includeShorts &&
-      video.durationSeconds != null &&
-      video.durationSeconds <= 60
-    ) {
+    if (!options.includeShorts && isShortWithLongForm(video, videos)) {
       return false;
     }
 
@@ -228,11 +238,7 @@ function getExcludedVideos(
         return [{ ...video, reason: 'reviewed' }];
       }
 
-      if (
-        !options.includeShorts &&
-        video.durationSeconds != null &&
-        video.durationSeconds <= 60
-      ) {
+      if (!options.includeShorts && isShortWithLongForm(video, videos)) {
         return [{ ...video, reason: 'short' }];
       }
 
@@ -430,7 +436,10 @@ program
     DEFAULT_MAX_RESULTS,
   )
   .option('--all', 'Fetch all available channel videos')
-  .option('--include-shorts', 'Include videos with duration <= 60 seconds')
+  .option(
+    '--include-shorts',
+    'Include short-form videos (Shorts/TikTok-style) even when a long-form equivalent exists',
+  )
   .option('--include-referenced', 'Include videos that already appear in recipe refs')
   .option('--include-reviewed', 'Include videos listed in --reviewed-file')
   .option(
