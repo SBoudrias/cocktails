@@ -7,6 +7,7 @@ import {
   collectRecipeVideoReferences,
   getVideoIdsFromRecipeReferences,
 } from './recipe-video-refs.ts';
+import { hasLongFormEquivalent, isShortFormVideo } from './short-form.ts';
 import {
   dedupeVideos,
   fetchChannelVideos,
@@ -47,7 +48,8 @@ const specificChannel = options.channel ?? null;
 /**
  * Filter videos to find new ones that don't have recipes yet
  * and were uploaded within the specified timeframe.
- * Also filters out YouTube Shorts (videos ≤ 60 seconds).
+ * Also filters out short-form videos (Shorts/TikTok-style) when a long-form
+ * video of the same drink is available on the channel.
  */
 function findNewVideos(
   allVideos: Video[],
@@ -62,8 +64,11 @@ function findNewVideos(
       // Exclude videos that already have recipes
       if (existingIds.has(video.id)) return false;
 
-      // Filter out YouTube Shorts (≤ 60 seconds)
-      if (video.duration != null && video.duration <= 60) return false;
+      // Short-form videos are only interesting when no long-form
+      // equivalent exists on the channel.
+      if (isShortFormVideo(video) && hasLongFormEquivalent(video, allVideos)) {
+        return false;
+      }
 
       // Skip videos without upload date
       if (!video.upload_date) return false;
