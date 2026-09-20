@@ -7,9 +7,6 @@
     {
       "name": "Lime juice",
       "type": "juice",
-      "technique": {
-        "technique": "acid-adjustment"
-      },
       "quantity": {
         "amount": 100,
         "unit": "ml"
