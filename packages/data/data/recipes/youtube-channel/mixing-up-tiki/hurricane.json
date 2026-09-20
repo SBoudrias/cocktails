@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hurricane",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Fassionola",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a shaker with ice.",
+    "Shake well and strain into a hurricane glass filled with crushed ice.",
+    "Garnish with an umbrella."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Pat O'Brien's",
+      "location": "New Orleans, LA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "YzTdCk3V1Uw",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

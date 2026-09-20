@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tiki Bitters & Soda",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Aromatic Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine the simple syrup, lime juice, and bitters in a chilled 12 ounce Collins glass with cubed ice.",
+    "Top with soda water and give it a quick stir to mix.",
+    "Garnish with a mint sprig and serve with a straw."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "QXiCoooSPW8",
+      "channel": "mixing-up-tiki",
+      "start": 193
+    }
+  ]
+}

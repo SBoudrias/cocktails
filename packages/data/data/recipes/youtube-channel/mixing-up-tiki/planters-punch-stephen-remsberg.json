@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Planter's Punch (Stephen Remsberg)",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Aromatic Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a Collins glass filled with crushed ice.",
+    "Insert a swizzle stick and swizzle until chilled and properly diluted."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Stephen Remsberg"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mBYpj845_qQ",
+      "channel": "mixing-up-tiki",
+      "start": 174
+    }
+  ]
+}

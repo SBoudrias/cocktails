@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Passionfruit Gardenia Mix",
+  "type": "syrup",
+  "categories": ["Gardenia Mix"],
+  "ingredients": [
+    {
+      "name": "butter",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 120,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 60,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 120,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "gum arabic",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1.8,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.2,
+        "unit": "gram"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "hJpF90UuCk0",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

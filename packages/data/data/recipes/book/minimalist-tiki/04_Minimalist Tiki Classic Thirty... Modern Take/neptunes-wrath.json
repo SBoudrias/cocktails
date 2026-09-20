@@ -94,6 +94,12 @@
       "type": "book",
       "title": "Minimalist Tiki",
       "page": 273
+    },
+    {
+      "type": "youtube",
+      "videoId": "TsfaahrA1HU",
+      "channel": "mixing-up-tiki",
+      "start": 297
     }
   ]
 }

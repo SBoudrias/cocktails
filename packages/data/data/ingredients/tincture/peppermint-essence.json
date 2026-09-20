@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Peppermint essence",
+  "type": "tincture",
+  "description": "A concentrated peppermint flavoring added by the drop to bring mint character to a drink without muddling fresh mint."
+}

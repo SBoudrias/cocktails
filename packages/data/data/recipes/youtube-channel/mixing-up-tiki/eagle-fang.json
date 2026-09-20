@@ -1,0 +1,101 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Eagle Fang",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Herbstura",
+      "type": "bitter",
+      "technique": {
+        "technique": "infusion",
+        "agent": "Chinese five spice"
+      },
+      "quantity": {
+        "amount": 6,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Fassionola",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "tangerine juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all the ingredients to a shaking tin with ice.",
+    "Shake for 5-8 seconds.",
+    "Open pour into a collins glass and top with crushed ice.",
+    "Garnish with pineapple fronds and an edible flower, then add a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Cory Starr"
+    },
+    {
+      "relation": "bar",
+      "source": "Tiki Tatsu-ya",
+      "location": "Austin, TX"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "j8PWAMvIWyU",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

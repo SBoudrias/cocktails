@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Martiki Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all the ingredients except the aged Demerara rum in a collins glass.",
+    "Fill the glass ¾ of the way with crushed ice and swizzle until the outside is frosted.",
+    "Top with more crushed ice.",
+    "Float the aged Demerara rum on top.",
+    "Garnish with three pineapple fronds and a swizzle stick."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Marty Reyes"
+    },
+    {
+      "relation": "bar",
+      "source": "Swizzle",
+      "location": "Dallas, TX"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "U6xm6o31NNo",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

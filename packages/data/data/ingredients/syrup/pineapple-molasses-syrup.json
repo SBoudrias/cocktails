@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Pineapple Molasses Syrup",
+  "type": "syrup",
+  "description": "Pineapple syrup made with molasses, used as a non-alcoholic stand-in for the bourbon's burnt caramel notes of the original Halekulani.",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "QXiCoooSPW8",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

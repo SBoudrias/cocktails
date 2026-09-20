@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Grapefruit syrup",
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wT52TNA706o",
+      "channel": "mixing-up-tiki"
+    },
+    {
+      "type": "youtube",
+      "videoId": "NcwW4LsSv58",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

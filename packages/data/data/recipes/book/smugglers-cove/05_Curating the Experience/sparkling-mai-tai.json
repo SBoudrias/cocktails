@@ -67,6 +67,12 @@
       "type": "book",
       "title": "smugglers-cove",
       "page": 136
+    },
+    {
+      "type": "youtube",
+      "videoId": "NtoREIn6mos",
+      "channel": "mixing-up-tiki",
+      "start": 179
     }
   ]
 }

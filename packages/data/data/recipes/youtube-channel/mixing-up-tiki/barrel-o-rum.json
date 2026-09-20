@@ -1,0 +1,109 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Barrel O' Rum",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Aromatic Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 6,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still lightly aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mai-Kai dark Jamaican rum blend",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients with about a cup of pebble ice in a flash blender.",
+    "Flash blend for about 5 seconds and open pour into a large snifter glass.",
+    "No garnish; serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Mariano Licudine"
+    },
+    {
+      "relation": "bar",
+      "source": "Mai-Kai",
+      "location": "Fort Lauderdale, FL"
+    },
+    {
+      "relation": "adapted by",
+      "source": "The Atomic Grog",
+      "url": "http://www.slammie.com/atomicgrog/"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "yx-nRctNt50",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

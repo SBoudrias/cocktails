@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Khali's Coffee Grog",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "coconut cream",
+      "type": "other",
+      "technique": {
+        "technique": "infusion",
+        "agent": "jasmine"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gardenia Mix",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smith & Cross",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 151 Demerara rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a tiki mug with ice.",
+    "Flame an orange peel and a lemon peel over the drink and drop them in."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Khali"
+    },
+    {
+      "relation": "bar",
+      "source": "Paradise Lost"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "fWXpNCkCaqA",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

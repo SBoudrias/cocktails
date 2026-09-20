@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Treehouse Brewing Richley Hogo Rum",
+  "type": "spirit",
+  "description": "An American rum from Treehouse Brewing in Sandwich, Massachusetts, made to mimic the estery hogo notes of Jamaican rum."
+}

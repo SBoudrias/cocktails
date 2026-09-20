@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Grenadine essence",
+  "type": "tincture",
+  "description": "A high-proof grenadine flavoring reconstructed from a 1900s soda-fountain formula. Used by the drop to flavor and color drinks in place of modern pomegranate grenadine.",
+  "instructions": [
+    "Combine 3 drops clove oil, 9 drops sweet orange oil, 2.5 ml vanilla extract, 2 ml ginger extract (or 1 ml fresh pressed ginger juice), 30 ml maraschino liqueur, 1 ml cochineal tincture, 60 ml distilled water, 8 ml acid phosphate, and 137 ml Everclear."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wA2YspaqqHI",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

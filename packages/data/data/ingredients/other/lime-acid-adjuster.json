@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Lime Acid Adjuster",
+  "type": "other",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "LBI-un1oqWw",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

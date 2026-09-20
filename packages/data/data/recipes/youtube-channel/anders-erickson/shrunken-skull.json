@@ -66,6 +66,17 @@
       "videoId": "PSY8XSXnzR0",
       "channel": "anders-erickson",
       "start": 444
+    },
+    {
+      "type": "youtube",
+      "videoId": "L0CE6PBkKO8",
+      "channel": "mixing-up-tiki",
+      "start": 141
+    },
+    {
+      "type": "youtube",
+      "videoId": "wA2YspaqqHI",
+      "channel": "mixing-up-tiki"
     }
   ]
 }

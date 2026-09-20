@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "BG Reynolds Tiki Spice",
+  "type": "syrup",
+  "description": "Commercial version of Don's Spice #2, a spiced syrup of vanilla, cinnamon, and allspice."
+}

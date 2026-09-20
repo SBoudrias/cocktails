@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Monastery Grounds",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Branca Menta",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a shaker with a few pieces of crushed ice.",
+    "Whip shake, shaking just until the ingredients are incorporated.",
+    "Pour into a double old fashioned glass and fill with crushed ice.",
+    "Garnish with a mint sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Bf8r7Q53_dU",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

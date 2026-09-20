@@ -59,6 +59,17 @@
       "type": "book",
       "title": "smugglers-cove",
       "page": 258
+    },
+    {
+      "type": "youtube",
+      "videoId": "mBYpj845_qQ",
+      "channel": "mixing-up-tiki",
+      "start": 267
+    },
+    {
+      "type": "youtube",
+      "videoId": "cqCWwVsWoD8",
+      "channel": "mixing-up-tiki"
     }
   ]
 }

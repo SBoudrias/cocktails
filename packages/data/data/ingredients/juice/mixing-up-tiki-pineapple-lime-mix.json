@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mixing Up Tiki Pineapple Lime Mix",
+  "type": "juice",
+  "description": "Equal parts lime super juice and acid-adjusted pineapple juice.",
+  "instructions": [
+    "Combine 100 ml lime super juice, 100 ml fresh squeezed pineapple juice, 3.2 g citric acid, and 2 g malic acid."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ql4JrfvUVTw",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

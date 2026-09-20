@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hawaiian Sunset Mimosa",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coconut Liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sparkling wine",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add the saline, pineapple juice, passion fruit syrup, and coconut liqueur to a shaker with cubed ice.",
+    "Shake hard for about 15 seconds.",
+    "Double strain into a chilled Nick & Nora glass.",
+    "Top with sparkling wine (Prosecco)."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "GLoZXXdvYKY",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

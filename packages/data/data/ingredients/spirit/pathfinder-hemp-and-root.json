@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Pathfinder Hemp & Root",
+  "type": "spirit",
+  "description": "A non-alcoholic spirit alternative distilled from hemp and infused with roots and herbs, with an amaro-like bitterness.",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "2Mws2FiWKJM",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cold Brew Coffee Liqueur",
+  "type": "liqueur",
+  "categories": ["Coffee liqueur"],
+  "instructions": [
+    "Combine 2 cups extra bold cold brew coffee and 1 cup sugar in a blender and blend on high until the sugar is fully dissolved, giving a cold processed cold brew syrup.",
+    "Combine 1.75 cups of the cold brew syrup with 1 cup Planteray OFTD and 1 tsp vanilla extract.",
+    "Shake or stir to incorporate and pour into a sanitized bottle."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "cfYzLQOP1MY",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}
