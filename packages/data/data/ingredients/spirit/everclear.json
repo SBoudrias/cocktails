@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Everclear",
+  "type": "spirit",
+  "description": "High-proof neutral grain spirit."
+}
