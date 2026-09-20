@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Watermelon Sugar High",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ole Smoky Watermelon Whiskey",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Whip shake all ingredients except the Aperol with ice.",
+    "Strain into an old fashioned glass over ice.",
+    "Float the Aperol on top.",
+    "Garnish with fresh watermelon cubes."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "BOKkyaHV7vI",
+      "channel": "educated-barfly"
+    }
+  ]
+}

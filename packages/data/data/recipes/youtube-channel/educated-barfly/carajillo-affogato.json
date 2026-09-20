@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Carajillo Affogato",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Mango lemon sorbet",
+      "type": "other",
+      "quantity": {
+        "amount": 300,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Licor 43",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coffee cream",
+      "type": "other",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend the gin, Licor 43, and mango lemon sorbet until smooth.",
+    "Spoon into a chilled Nick & Nora glass.",
+    "Top with coffee cream.",
+    "Garnish with a freeze-dried lemon wheel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "tdsixH5I2Vw",
+      "channel": "educated-barfly"
+    }
+  ]
+}

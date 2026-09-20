@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Coffee cream",
+  "type": "other",
+  "description": "Whipped coffee cream made from instant coffee, espresso, and sugar",
+  "ingredients": [
+    {
+      "name": "Instant coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 100,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "espresso",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    }
+  ],
+  "instructions": ["Whip all ingredients until stiff peaks form."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "tdsixH5I2Vw",
+      "channel": "educated-barfly"
+    }
+  ]
+}
