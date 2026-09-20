@@ -79,10 +79,6 @@
     {
       "relation": "recipe author",
       "source": "Don the Beachcomber"
-    },
-    {
-      "relation": "adapted by",
-      "source": "Easy Tiki"
     }
   ],
   "refs": [

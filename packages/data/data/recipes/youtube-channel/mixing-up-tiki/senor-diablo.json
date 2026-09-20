@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Señor Diablo (Easy Tiki)",
+  "name": "Señor Diablo",
   "preparation": "shaken",
   "served_on": "crushed ice",
   "glassware": "tiki",
@@ -84,10 +84,6 @@
     {
       "relation": "recipe author",
       "source": "Oriol Elias"
-    },
-    {
-      "relation": "adapted by",
-      "source": "Easy Tiki"
     }
   ],
   "refs": [

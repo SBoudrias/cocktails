@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Easy Tiki Never Say Die",
+  "name": "Never Say Die",
   "preparation": "shaken",
   "served_on": "crushed ice",
   "glassware": "collins",
@@ -67,12 +67,7 @@
     "Whip shake and open pour into a collins glass.",
     "Garnish with a mint sprig."
   ],
-  "attributions": [
-    {
-      "relation": "adapted by",
-      "source": "Easy Tiki"
-    }
-  ],
+  "attributions": [],
   "refs": [
     {
       "type": "youtube",
