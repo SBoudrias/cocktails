@@ -2,7 +2,6 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Yellow Fassionola",
   "type": "syrup",
-  "description": "Equal parts by weight of pineapple, mango, banana, yuzu, and passion fruit, blended with an equal weight of sugar and strained.",
   "categories": ["Fassionola"],
   "ingredients": [
     {

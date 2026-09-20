@@ -2,7 +2,6 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "BG Reynolds Pineapple Molasses",
   "type": "syrup",
-  "description": "Commercial pineapple syrup made with molasses. Used as a non-alcoholic stand-in for the bourbon burnt-caramel notes of the original Halekulani.",
   "refs": [
     {
       "type": "youtube",

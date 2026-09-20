@@ -2,7 +2,7 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Mixing Up Tiki Pomegranate Shrub",
   "type": "syrup",
-  "description": "A quick pomegranate drinking vinegar used to bring the fruit and acidity of pomegranate into a stirred cocktail.",
+  "description": "A quick pomegranate drinking vinegar used to bring pomegranate fruit and acidity into cocktails.",
   "ingredients": [
     {
       "name": "Pomegranate juice",
