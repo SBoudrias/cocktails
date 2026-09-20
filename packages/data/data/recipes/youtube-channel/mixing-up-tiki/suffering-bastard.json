@@ -52,6 +52,12 @@
     "Top with the seltzer.",
     "Garnish with a mint sprig and an orange wheel."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joe Scialom"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",
