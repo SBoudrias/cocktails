@@ -1,7 +1,7 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Zero to Hero Cordial",
-  "type": "liqueur",
+  "type": "non-alcoholic",
   "ingredients": [
     {
       "name": "Juniper berries",

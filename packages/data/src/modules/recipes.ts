@@ -33,6 +33,7 @@ function isSmallAlcoholicFlavoringPour(ingredient: RecipeIngredient) {
 
 function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined) {
   return match(type)
+    .with('non-alcoholic', () => false)
     .with('beer', 'liqueur', 'spirit', 'wine', () => true)
     .otherwise(() => false);
 }

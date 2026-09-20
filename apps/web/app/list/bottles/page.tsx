@@ -11,7 +11,11 @@ export default async function BottlesPage() {
   const allIngredients = await getAllIngredients();
 
   const bottles = allIngredients.filter((ingredient) => {
-    return ingredient.type === 'liqueur' || ingredient.type === 'spirit';
+    return (
+      ingredient.type === 'liqueur' ||
+      ingredient.type === 'spirit' ||
+      ingredient.type === 'non-alcoholic'
+    );
   });
 
   return (

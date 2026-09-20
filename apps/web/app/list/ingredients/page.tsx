@@ -14,7 +14,11 @@ export default async function IngredientListPage() {
     getAllCategories(),
   ]);
   const ingredients = allIngredients.filter((ingredient) => {
-    return ingredient.type !== 'liqueur' && ingredient.type !== 'spirit';
+    return (
+      ingredient.type !== 'liqueur' &&
+      ingredient.type !== 'spirit' &&
+      ingredient.type !== 'non-alcoholic'
+    );
   });
 
   return (
