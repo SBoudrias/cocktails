@@ -30,8 +30,8 @@
       }
     },
     {
-      "name": "Cold Brew Coffee Liqueur",
-      "type": "liqueur",
+      "name": "Coffee liqueur",
+      "type": "category",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"

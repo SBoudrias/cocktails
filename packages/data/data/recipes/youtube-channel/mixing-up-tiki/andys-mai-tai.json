@@ -26,8 +26,8 @@
       }
     },
     {
-      "name": "Toasted Orgeat",
-      "type": "syrup",
+      "name": "Orgeat",
+      "type": "category",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
