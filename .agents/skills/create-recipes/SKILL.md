@@ -11,6 +11,7 @@ Create recipe files in the right `packages/data/data/recipes/[type]/[source]/[sl
 
 1. Read the relevant schema and nearby recipe/source files before writing new JSON.
 2. Search existing recipes first. If the recipe already exists, update it instead of creating a duplicate.
+   - Do not add a ref for a short-form video (≤3 minutes, or titled `#shorts`) when the matching recipe already references a long-form video from the same channel — shorts are recuts of long-form episodes.
 3. Search existing ingredients before adding or naming ingredient references. Reuse the existing ingredient names whenever possible.
 4. If the user provides YouTube URLs, use the `youtube` skill to fetch video metadata and extract recipe-relevant notes before writing recipe files.
 5. For tricky ingredient matching, use the `ingredient-validator` skill.
