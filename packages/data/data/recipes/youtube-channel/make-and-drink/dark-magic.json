@@ -1,0 +1,107 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Dark Magic",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Chocolate Bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "technique": {
+        "technique": "temperature",
+        "method": "chilled"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray OFTD",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Stiggins' Fancy pineapple rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Flash blend all ingredients with crushed ice.",
+    "Pour unstrained into a tiki mug.",
+    "Garnish with a pineapple slice, pineapple fronds, and a spent lime shell holding a 151-rum-soaked sugar cube."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Mai-Kai"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Make and Drink"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "c0jSfQ1h1Xk",
+      "channel": "make-and-drink"
+    }
+  ]
+}

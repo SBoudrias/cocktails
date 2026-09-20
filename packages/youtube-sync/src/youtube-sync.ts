@@ -98,6 +98,7 @@ function formatIssueBody(newVideos: NewVideosForChannel[]): string {
     '   - If the existing recipe uses very similar proportions and ingredients, add the video to its `refs` array with `"channel": "CHANNEL_SLUG"` (the slug of this channel).',
     '   - If the recipe differs significantly (different proportions or ingredients), create a new recipe with a unique slug.',
     '4. For new cocktail recipes, use the `create-recipes` skill to create the recipe file.',
+    "5. Short-form videos (3 minutes or less, or titled #shorts) are usually recuts of long-form episodes. If the matching recipe already references a long-form video from this channel, do NOT add the short as an additional ref — report it as skipped. Title-based filtering cannot always pair a short with its long-form source, so check the recipe's existing refs directly.",
     '',
   ];
 

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mango lemon sorbet",
+  "type": "other",
+  "description": "Frozen mango and lemon sherbet, used as the base of frozen dessert drinks"
+}

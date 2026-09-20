@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Blue Chair Bay Coconut Rum",
+  "type": "spirit",
+  "categories": ["Coconut Rum"]
+}

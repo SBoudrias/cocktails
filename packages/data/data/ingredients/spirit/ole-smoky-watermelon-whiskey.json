@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Ole Smoky Watermelon Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey"]
+}

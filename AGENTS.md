@@ -226,6 +226,10 @@ import { getAllSources, getSource } from '@cocktails/data/sources';
 - Must include `$schema` reference
 - Use URL-safe slugs for filenames
 
+### YouTube Video Refs
+
+- Short-form videos (3 minutes or less, or titled `#shorts`) are usually recuts of long-form episodes. When a matching recipe already references a long-form video from the same channel, do not add the short as an additional `refs` entry.
+
 ### Ingredient Files
 
 - Path: `packages/data/data/ingredients/[type]/[slug].json`

@@ -132,6 +132,15 @@ When processing an inventory batch:
    tracked `youtube-channel` source slug that published the video (for the
    channel being backfilled, that is the batch's own channel). Cross-channel
    refs are what make a recipe appear on multiple channel lists.
+   - **Short-form videos (≤3 minutes, or titled `#shorts`) are usually recuts
+     of long-form episodes.** Before adding a ref for a short, check the
+     matching recipe's existing `refs`: if a long-form video from the same
+     channel is already referenced, skip the short instead of adding a
+     duplicate ref. The automated title-based filter
+     (`packages/youtube-sync/src/short-form.ts`) can miss shorts whose titles
+     differ from their long-form source (e.g. a `Literary Cocktails?` episode
+     vs its `A Farewell to Arms` short), so when a matching recipe already
+     exists, verify against its refs directly.
 5. Create a new `youtube-channel/CHANNEL_SLUG` recipe only when the video
    version is distinct.
 6. **Name new recipes per the naming convention**: a parenthetical in a recipe
