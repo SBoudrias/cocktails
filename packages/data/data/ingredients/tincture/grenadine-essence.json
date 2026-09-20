@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Grenadine essence",
+  "type": "tincture",
+  "description": "A high-proof grenadine flavoring reconstructed from a 1900s soda-fountain formula. Used by the drop to flavor and color drinks in place of modern pomegranate grenadine.",
+  "ingredients": [
+    {
+      "name": "Clove oil",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Sweet orange oil",
+      "type": "other",
+      "quantity": {
+        "amount": 9,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Ginger extract",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Maraschino liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 30,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Cochineal tincture",
+      "type": "tincture",
+      "quantity": {
+        "amount": 1,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 60,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Acid phosphate",
+      "type": "other",
+      "quantity": {
+        "amount": 8,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Neutral Grain Spirit",
+      "type": "category",
+      "quantity": {
+        "amount": 137,
+        "unit": "ml"
+      }
+    }
+  ],
+  "instructions": ["Combine all the ingredients and bottle; use by the drop."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "wA2YspaqqHI",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Peppermint essence",
+  "type": "tincture",
+  "description": "A concentrated peppermint flavoring added by the drop to bring mint character to a drink without muddling fresh mint.",
+  "ingredients": [
+    {
+      "name": "Neutral Grain Spirit",
+      "type": "category",
+      "quantity": {
+        "amount": 56,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Peppermint essential oil",
+      "type": "other",
+      "quantity": {
+        "amount": 3.5,
+        "unit": "ml"
+      }
+    }
+  ],
+  "instructions": ["Stir for 5 to 10 minutes, then transfer to a dropper bottle."]
+}

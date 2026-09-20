@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Batched Jungle Bird",
+  "preparation": "built",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "servings": 3,
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 15,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple Gum Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 2.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coruba",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a bottle and refrigerate until chilled.",
+    "To serve, pour 5 oz of the batch over crushed ice in a double old fashioned glass.",
+    "Garnish with pineapple fronds and a lime wheel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Xz0WWEyrzoI",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

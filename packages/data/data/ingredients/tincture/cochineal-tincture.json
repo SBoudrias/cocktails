@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Cochineal tincture",
+  "type": "tincture",
+  "description": "A red coloring tincture made from cochineal, historically used to give grenadine its color."
+}

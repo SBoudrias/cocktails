@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Quamina's Cooler",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Banana liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a shaker with ice.",
+    "Shake and strain into a collins glass with crushed ice.",
+    "Garnish with pineapple fronds, a lime wheel, and an umbrella."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Brian Maxwell",
+      "url": "https://shakerofspirits.com"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "MtpOblg3fVQ",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

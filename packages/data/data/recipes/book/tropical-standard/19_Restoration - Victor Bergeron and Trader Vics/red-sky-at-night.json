@@ -86,6 +86,12 @@
       "type": "book",
       "title": "tropical-standard",
       "page": 261
+    },
+    {
+      "type": "youtube",
+      "videoId": "eOysgDe_76U",
+      "channel": "mixing-up-tiki",
+      "start": 242
     }
   ]
 }

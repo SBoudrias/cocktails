@@ -59,6 +59,12 @@
       "type": "book",
       "title": "Easy Tiki",
       "page": 61
+    },
+    {
+      "type": "youtube",
+      "videoId": "rQ8rOp_wS-s",
+      "channel": "mixing-up-tiki",
+      "start": 114
     }
   ]
 }

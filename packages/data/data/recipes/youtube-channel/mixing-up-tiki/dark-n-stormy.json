@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Dark 'n Stormy",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Goslings Black Seal Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top",
+        "instructions": "Fill the glass with ginger beer."
+      },
+      "quantity": {
+        "amount": 4.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Fill a highball glass with ice cubes and add the ginger beer.",
+    "Float the rum on top.",
+    "Garnish with a lime wedge."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "oft49DCdR6k",
+      "channel": "mixing-up-tiki",
+      "start": 164
+    }
+  ]
+}

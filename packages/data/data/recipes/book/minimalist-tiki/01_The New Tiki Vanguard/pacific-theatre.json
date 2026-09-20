@@ -79,6 +79,11 @@
       "type": "book",
       "title": "Minimalist Tiki",
       "page": 144
+    },
+    {
+      "type": "youtube",
+      "videoId": "B1TlKVreYlM",
+      "channel": "mixing-up-tiki"
     }
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mixing Up Tiki Peony Mix",
+  "type": "syrup",
+  "description": "A vegan stand-in for gardenia mix built from common tiki ingredients, providing similar body, texture, and spice without the butter and honey.",
+  "ingredients": [
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 4,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": ["Stir until fully combined."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "95bbrwdKEOM",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

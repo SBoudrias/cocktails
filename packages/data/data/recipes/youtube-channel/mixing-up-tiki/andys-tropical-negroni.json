@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Andy's Tropical Negroni",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Amaro",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "technique": {
+        "technique": "infusion",
+        "agent": "coffee"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray 3 Star",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "coconut oil"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all the ingredients in a mixing glass with cubed ice and stir for 15-20 seconds.",
+    "Strain over a big rock in an old fashioned glass."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "xADmW_Jo-mI",
+      "channel": "mixing-up-tiki",
+      "start": 340
+    }
+  ]
+}

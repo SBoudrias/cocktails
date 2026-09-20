@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mixing Up Tiki Blackstrap Tea",
+  "type": "other",
+  "description": "A non-alcoholic English breakfast tea base flavored with blackstrap molasses, nutmeg, and cinnamon, used as a dark rum stand-in for non-alcoholic tiki drinks.",
+  "ingredients": [
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 375,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "black tea",
+      "type": "other",
+      "quantity": {
+        "amount": 9.375,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 2,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 3,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Molasses",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Steep the tea, nutmeg, and cinnamon in the water, then stir in the molasses."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "30W5tJYEOhQ",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

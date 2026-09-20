@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "BG Reynolds Pineapple Molasses",
+  "type": "syrup",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "QXiCoooSPW8",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Simplified Cobra's Fang",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Fassionola",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Overproof Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a shaker with ice.",
+    "Shake well and strain into a zombie glass filled with crushed ice.",
+    "Garnish with a mint sprig and an orange wheel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Don the Beachcomber"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "E5t88NeHHjk",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

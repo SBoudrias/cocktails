@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Fu Manjito",
+  "preparation": "built",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Peppermint essence",
+      "type": "tincture",
+      "quantity": {
+        "amount": 8,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "green spirulina",
+      "type": "other",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cane syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Acid adjust the lime juice into a super juice ahead of time.",
+    "Combine all the ingredients in a collins glass.",
+    "Fill with crushed ice and swizzle until cold and fogged.",
+    "Garnish with a mint bouquet."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "HyMVxbdasTI",
+      "channel": "mixing-up-tiki",
+      "start": 309
+    }
+  ]
+}

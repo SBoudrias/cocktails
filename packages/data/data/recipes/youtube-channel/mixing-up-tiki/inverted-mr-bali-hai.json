@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Inverted Mr. Bali Hai",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Citric Acid Solution",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Pineapple Gum Syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican Coffee Foam",
+      "type": "other",
+      "technique": {
+        "technique": "application",
+        "method": "top",
+        "instructions": "Top the drink with the Jamaican coffee foam."
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake the rum, pineapple gum syrup, lemon acid solution, and saline with ice.",
+    "Strain into a coupe.",
+    "Top with the Jamaican coffee foam."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vKOxAqdKC9M",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Jamaican Coffee Foam",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 150,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 50,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Demerara sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 11,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "methylcellulose",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.8,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 10,
+        "unit": "drop"
+      }
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vKOxAqdKC9M",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Mixing Up Tiki Pomegranate Shrub",
+  "type": "syrup",
+  "description": "A quick pomegranate drinking vinegar used to bring pomegranate fruit and acidity into cocktails.",
+  "ingredients": [
+    {
+      "name": "Pomegranate juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 261,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Apple cider vinegar",
+      "type": "other",
+      "quantity": {
+        "amount": 126,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "white sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 126,
+        "unit": "gram"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend on high until all the sugar is dissolved.",
+    "Bottle and keep refrigerated."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vWoULgvPRv0",
+      "channel": "mixing-up-tiki"
+    }
+  ]
+}
