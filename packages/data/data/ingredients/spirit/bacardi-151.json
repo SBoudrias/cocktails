@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Bacardi 151",
+  "type": "spirit",
+  "categories": ["Overproof Rum"]
+}

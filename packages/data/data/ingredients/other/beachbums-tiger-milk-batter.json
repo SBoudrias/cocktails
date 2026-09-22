@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Beachbum's Tiger Milk Batter",
+  "type": "other",
+  "description": "Jeff 'Beachbum' Berry's adaptation of Don the Beachcomber's Hot Tiger's Milk batter: 4 parts coconut cream, 1 part softened butter, 1 part clover honey.",
+  "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 4,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "butter",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "honey",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": [
+    "Soften the butter at room temperature.",
+    "Combine 4 parts coconut cream with 1 part softened butter and 1 part clover honey until smooth."
+  ]
+}

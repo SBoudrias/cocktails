@@ -1,7 +1,7 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Skull & Bones",
-  "preparation": "shaken",
+  "preparation": "flash blended",
   "served_on": "crushed ice",
   "glassware": "tiki",
   "ingredients": [
@@ -22,16 +22,16 @@
       }
     },
     {
-      "name": "Passion fruit syrup",
-      "type": "category",
+      "name": "Grenadine",
+      "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
+      "name": "Passion fruit syrup",
+      "type": "category",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Blended Lightly-aged Rum",
+      "name": "Column still lightly aged rum",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -62,10 +62,21 @@
       }
     }
   ],
+  "instructions": [
+    "Blend all ingredients except ice to mix.",
+    "Add 8 oz crushed ice and blend for 5 seconds at high speed.",
+    "Pour into a skull mug or double old fashioned glass and top with crushed ice.",
+    "Garnish with a bouquet of mint sprigs."
+  ],
   "attributions": [
     {
       "relation": "recipe author",
       "source": "Tony Ramos"
+    },
+    {
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
     }
   ],
   "refs": [

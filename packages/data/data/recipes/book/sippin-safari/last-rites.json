@@ -3,11 +3,12 @@
   "name": "Last Rites",
   "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "collins",
+  "glassware": "highball",
   "ingredients": [
     {
       "name": "Passion fruit syrup",
       "type": "category",
+      "brix": 66,
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -22,8 +23,8 @@
       }
     },
     {
-      "name": "John D. Taylor's Velvet Falernum",
-      "type": "liqueur",
+      "name": "Falernum liqueur",
+      "type": "category",
       "quantity": {
         "amount": 0.25,
         "unit": "oz"
@@ -39,9 +40,8 @@
     }
   ],
   "instructions": [
-    "Mix with ice at high speed for exactly 5 seconds",
-    "Pour into a tall glass",
-    "Add more ice to fill"
+    "Blend ingredients with 6 oz crushed ice for 5 seconds.",
+    "Pour unstrained into a tall glass and fill with crushed ice."
   ],
   "attributions": [
     {
@@ -50,7 +50,8 @@
     },
     {
       "relation": "bar",
-      "source": "Mai-Kai"
+      "source": "Mai-Kai",
+      "location": "Fort Lauderdale, FL"
     }
   ],
   "refs": [

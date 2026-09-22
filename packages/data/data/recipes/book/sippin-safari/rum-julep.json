@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Nui Nui",
-  "preparation": "shaken",
+  "name": "Rum Julep",
+  "preparation": "blended",
   "served_on": "crushed ice",
-  "glassware": "tiki",
+  "glassware": "julep",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -14,24 +14,16 @@
       }
     },
     {
-      "name": "Vanilla syrup",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.125,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Cinnamon syrup",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
         "amount": 0.25,
-        "unit": "oz"
+        "unit": "tsp"
       }
     },
     {
-      "name": "Orange juice",
-      "type": "juice",
+      "name": "Honey syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -46,40 +38,62 @@
       }
     },
     {
-      "name": "Allspice Dram",
-      "type": "category",
+      "name": "Orange juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.125,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Blended Lightly-aged Rum",
+      "name": "Falernum liqueur",
       "type": "category",
       "quantity": {
-        "amount": 2,
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Appleton 12",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Add the ingredients and pebble ice to a mixing tin.",
-    "Mix on high for 6 to 8 seconds.",
-    "Pour everything into a tall glass.",
-    "Fill with more ice.",
-    "Garnish with an orange peel."
+    "Blend ingredients with ice and pour into a julep cup.",
+    "Top with crushed ice and garnish with a mint sprig."
   ],
   "attributions": [
     {
-      "relation": "recipe author",
-      "source": "Donn Beach"
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
     }
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "wmMjJFvb_pU",
-      "channel": "spike-breezeway-cocktail-hour"
+      "videoId": "aAK15c5e7iQ",
+      "channel": "make-and-drink"
     }
   ]
 }

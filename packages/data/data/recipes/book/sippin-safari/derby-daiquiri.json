@@ -1,8 +1,8 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Mai-Kai Derby Daiquiri",
-  "preparation": "shaken",
-  "served_on": "up",
+  "name": "Derby Daiquiri",
+  "preparation": "blended",
+  "served_on": "blended",
   "glassware": "coupe",
   "ingredients": [
     {
@@ -30,13 +30,17 @@
       }
     },
     {
-      "name": "Don Q White Rum",
-      "type": "spirit",
+      "name": "Column still lightly aged rum",
+      "type": "category",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
     }
+  ],
+  "instructions": [
+    "Blend all ingredients with a handful of ice.",
+    "Pour into a cocktail glass set with a Spanish comb ice shell garnish."
   ],
   "attributions": [
     {

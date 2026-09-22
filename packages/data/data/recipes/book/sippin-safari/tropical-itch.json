@@ -1,15 +1,15 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Penang Afrididi",
-  "preparation": "flash blended",
+  "name": "Tropical Itch",
+  "preparation": "shaken",
   "served_on": "crushed ice",
-  "glassware": "snifter",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Pernod",
-      "type": "spirit",
+      "name": "Almond extract",
+      "type": "other",
       "quantity": {
-        "amount": 6,
+        "amount": 2,
         "unit": "drop"
       }
     },
@@ -17,31 +17,31 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Pineapple juice",
-      "type": "juice",
+      "name": "Cinnamon syrup",
+      "type": "syrup",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Orange juice",
+      "name": "Mango Juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Passion fruit syrup",
+      "name": "London Dry Gin",
       "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 1,
         "unit": "oz"
       }
     },
@@ -49,24 +49,21 @@
       "name": "Column still lightly aged rum",
       "type": "category",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Blended Aged Rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1.5,
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
-  "refs": [
+  "instructions": [
+    "Shake all ingredients with crushed ice.",
+    "Pour unstrained into a tiki mug or tall glass.",
+    "Garnish with a fresh mango slice speared on a bamboo back scratcher."
+  ],
+  "attributions": [
     {
-      "type": "youtube",
-      "videoId": "aQq0eLv4Emo",
-      "channel": "make-and-drink"
+      "relation": "bar",
+      "source": "Bali Hai",
+      "location": "San Diego, CA"
     }
   ]
 }

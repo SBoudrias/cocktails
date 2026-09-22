@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Lovely Lovely",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "snifter",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Brown sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Orange Curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bacardi 151",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dissolve the brown sugar in the lime and lemon juices.",
+    "Add the remaining ingredients with 1 1/4 oz of crushed ice and flash blend.",
+    "Pour into a snifter glass or tiki mug."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Danny"
+    },
+    {
+      "relation": "bar",
+      "source": "Papeete Bar, Waikikian Hotel",
+      "location": "Honolulu, HI"
+    }
+  ]
+}

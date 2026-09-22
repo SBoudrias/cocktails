@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Coola Culla Mix",
+  "type": "other",
+  "description": "Don the Beachcomber's butter-honey mix for the Coola Culla Don, equal parts softened sweet butter and orange blossom honey.",
+  "ingredients": [
+    {
+      "name": "butter",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    },
+    {
+      "name": "honey",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "part"
+      }
+    }
+  ],
+  "instructions": ["Combine equal parts softened sweet butter and orange blossom honey."]
+}

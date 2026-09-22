@@ -1,18 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Caribbean Punch",
-  "preparation": "shaken",
+  "name": "Zombie (1956)",
+  "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "collins",
+  "glassware": "highball",
   "ingredients": [
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
-      }
-    },
     {
       "name": "Pernod",
       "type": "spirit",
@@ -25,7 +17,7 @@
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
-        "amount": 3,
+        "amount": 2,
         "unit": "dash"
       }
     },
@@ -38,8 +30,8 @@
       }
     },
     {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "Grapefruit juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -49,7 +41,15 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -57,12 +57,28 @@
       "name": "Falernum liqueur",
       "type": "category",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Maraschino liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black Blended Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black blended Overproof Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -73,35 +89,20 @@
       "name": "Column still aged rum",
       "type": "category",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Sarsaparilla",
-      "type": "soda",
-      "quantity": {
-        "amount": 1.5,
+        "amount": 1.25,
         "unit": "oz"
       }
     }
+  ],
+  "instructions": [
+    "Flash blend all ingredients with 4 oz crushed ice for about 5 seconds.",
+    "Pour unstrained into a tall glass."
   ],
   "attributions": [
     {
-      "relation": "recipe author",
-      "source": "Don the Beachcomber"
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "sippin-safari",
-      "page": 36
-    },
-    {
-      "type": "youtube",
-      "videoId": "laOctsP6v4U",
-      "channel": "make-and-drink"
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
     }
   ]
 }

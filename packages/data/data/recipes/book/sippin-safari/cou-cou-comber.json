@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cou-Cou-Comber",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a hollowed-out cucumber set upright in a stand.",
+    "Serve with a straw and eat the cucumber as you go."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joe Scialom"
+    },
+    {
+      "relation": "bar",
+      "source": "Caribe Hilton Hotel",
+      "location": "San Juan, Puerto Rico"
+    }
+  ]
+}

@@ -1,10 +1,18 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "1950 Zombie",
+  "name": "Kon-Tiki Mai Tai",
   "preparation": "flash blended",
   "served_on": "crushed ice",
   "glassware": "tiki",
   "ingredients": [
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
@@ -14,10 +22,10 @@
       }
     },
     {
-      "name": "Demerara syrup",
+      "name": "Ginger syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
         "unit": "tsp"
       }
     },
@@ -25,65 +33,53 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Lemon juice",
+      "name": "Orange juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Pineapple juice",
-      "type": "juice",
+      "name": "Honey syrup",
+      "type": "syrup",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Passion fruit syrup",
+      "name": "Column still aged rum",
       "type": "category",
       "quantity": {
-        "amount": 1,
+        "amount": 1.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Don Q Cristal Rum",
+      "name": "Appleton 12",
       "type": "spirit",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Chairman's Reserve rum",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Planteray OFTD",
-      "type": "spirit",
-      "quantity": {
-        "amount": 1,
+        "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
-  "refs": [
+  "instructions": [
+    "Blend ingredients with 4 oz crushed ice for 5 seconds.",
+    "Pour unstrained over crushed ice.",
+    "Garnish with mint sprigs and a pineapple spear."
+  ],
+  "attributions": [
     {
-      "type": "youtube",
-      "videoId": "KLAkC0NbNU8",
-      "channel": "make-and-drink",
-      "start": 154
+      "relation": "bar",
+      "source": "Kon-Tiki Restaurant",
+      "location": "Cleveland, OH"
     }
   ]
 }

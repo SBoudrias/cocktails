@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Nui Nui",
+  "name": "Halekulani",
   "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "tiki",
+  "served_on": "up",
+  "glassware": "coupe",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -14,18 +14,18 @@
       }
     },
     {
-      "name": "Vanilla syrup",
+      "name": "Grenadine",
       "type": "syrup",
       "quantity": {
-        "amount": 0.75,
+        "amount": 0.5,
         "unit": "tsp"
       }
     },
     {
-      "name": "Cinnamon syrup",
-      "type": "syrup",
+      "name": "Lemon juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.25,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Lime juice",
+      "name": "Pineapple juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -46,28 +46,30 @@
       }
     },
     {
-      "name": "Allspice Dram",
+      "name": "Whiskey (Bourbon)",
       "type": "category",
       "quantity": {
-        "amount": 0.75,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Blended Aged Rum",
-      "type": "category",
-      "quantity": {
-        "amount": 2,
+        "amount": 1.5,
         "unit": "oz"
       }
+    }
+  ],
+  "instructions": [
+    "Shake with ice and strain into a coupe.",
+    "Garnish with an orange peel and cherry flag."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "House Without a Key",
+      "location": "Waikiki, HI"
     }
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "DLjXocLodV0",
-      "channel": "make-and-drink",
-      "start": 107
+      "videoId": "IFVjmrZ38jU",
+      "channel": "mixing-up-tiki"
     }
   ]
 }

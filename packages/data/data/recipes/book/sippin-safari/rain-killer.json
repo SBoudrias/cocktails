@@ -1,28 +1,20 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Halekulani",
-  "preparation": "shaken",
-  "served_on": "up",
-  "glassware": "coupe",
+  "name": "Rain Killer",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "highball",
   "ingredients": [
     {
-      "name": "Aromatic Bitters",
-      "type": "category",
+      "name": "Angostura bitters",
+      "type": "bitter",
       "quantity": {
         "amount": 1,
         "unit": "dash"
       }
     },
     {
-      "name": "Grenadine",
-      "type": "syrup",
-      "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    },
-    {
-      "name": "Lemon juice",
+      "name": "Lime juice",
       "type": "juice",
       "quantity": {
         "amount": 0.5,
@@ -46,7 +38,15 @@
       }
     },
     {
-      "name": "Whiskey (Bourbon)",
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still lightly aged rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,
@@ -55,21 +55,14 @@
     }
   ],
   "instructions": [
-    "Combine all the ingredients in a shaker with ice.",
-    "Shake and strain into a chilled coupe."
+    "Blend all ingredients with 4 oz of crushed ice.",
+    "Pour unstrained into a glass. FIXME: glassware not specified in source transcription.",
+    "Garnish with mint sprigs and a paper parasol."
   ],
   "attributions": [
     {
-      "relation": "bar",
-      "source": "House Without a Key",
-      "location": "Waikiki, HI"
-    }
-  ],
-  "refs": [
-    {
-      "type": "youtube",
-      "videoId": "IFVjmrZ38jU",
-      "channel": "mixing-up-tiki"
+      "relation": "recipe author",
+      "source": "Bob Esmino"
     }
   ]
 }
