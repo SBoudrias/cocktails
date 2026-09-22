@@ -16,6 +16,7 @@ import {
   validateApprovedOverlaps,
   type ApprovedOverlaps,
 } from './approved-overlaps.ts';
+import { normalizeCategoryCasing } from './category-casing.ts';
 import { findRedundantCategoryPairs } from './category-similarity.ts';
 import { logger } from './cli-util.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
@@ -167,6 +168,19 @@ for await (const categoryFile of fs.glob(categoriesGlob)) {
   const slug = path.basename(categoryFile, '.json');
   categorySlugs.add(slug);
   const data = JSON.parse(await fs.readFile(categoryFile, 'utf-8'));
+
+  // Auto-fix category names to the sentence-case convention. Casing changes
+  // don't affect the slug, so references resolve and get canonicalized by
+  // the per-file pass below.
+  const normalizedCasing = normalizeCategoryCasing(data.name);
+  if (normalizedCasing !== data.name) {
+    logger.change(
+      `Fixing category name casing "${data.name}" → "${normalizedCasing}" in ${path.basename(categoryFile)}`,
+    );
+    data.name = normalizedCasing;
+    await writeJSON(categoryFile, data);
+  }
+
   canonicalNames.set(slugify(data.name), data.name);
   categoryCanonicalNames.set(slugify(data.name), data.name);
   if (data.categoryType) {

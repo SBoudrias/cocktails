@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Cruzan Black Strap",
   "type": "spirit",
-  "categories": ["Black Blended Rum"]
+  "categories": ["Black blended rum"]
 }

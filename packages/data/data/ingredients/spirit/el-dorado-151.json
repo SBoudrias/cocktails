@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "El Dorado 151",
   "type": "spirit",
-  "categories": ["Black blended Overproof Rum"]
+  "categories": ["Black blended overproof rum"]
 }

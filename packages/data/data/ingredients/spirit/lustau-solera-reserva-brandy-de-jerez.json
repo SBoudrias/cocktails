@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Lustau Solera Reserva Brandy de Jerez",
   "type": "spirit",
-  "categories": ["Brandy (Grapes)"]
+  "categories": ["Brandy (grapes)"]
 }

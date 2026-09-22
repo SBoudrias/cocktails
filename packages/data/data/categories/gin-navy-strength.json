@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Gin (Navy Strength)",
+  "name": "Gin (navy strength)",
   "categoryType": "spirit",
   "parents": ["Gin"],
   "refs": [

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Malibu",
   "type": "spirit",
-  "categories": ["Coconut Rum"]
+  "categories": ["Coconut rum"]
 }

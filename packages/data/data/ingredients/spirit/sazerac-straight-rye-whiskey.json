@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Sazerac Straight Rye Whiskey",
   "type": "spirit",
-  "categories": ["Whiskey (Rye)"]
+  "categories": ["Whiskey (rye)"]
 }

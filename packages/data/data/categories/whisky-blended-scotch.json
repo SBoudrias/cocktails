@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Whisky (Blended Scotch)",
+  "name": "Whisky (blended Scotch)",
   "categoryType": "spirit",
   "parents": ["Whisky (Scotch)"],
   "refs": [

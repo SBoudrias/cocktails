@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bigallet Thyme",
   "type": "liqueur",
-  "categories": ["thyme liqueur"]
+  "categories": ["Thyme liqueur"]
 }

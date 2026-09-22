@@ -6,7 +6,7 @@
   "glassware": "footed pilsner",
   "ingredients": [
     {
-      "name": "CBD Oil",
+      "name": "CBD oil",
       "type": "category",
       "quantity": {
         "amount": 10,

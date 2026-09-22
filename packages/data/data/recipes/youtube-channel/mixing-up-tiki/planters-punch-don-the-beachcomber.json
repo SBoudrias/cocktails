@@ -6,7 +6,7 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Aromatic Bitters",
+      "name": "Aromatic bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -48,7 +48,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Blended aged rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -56,7 +56,7 @@
       }
     },
     {
-      "name": "Black Blended Rum (Jamaica)",
+      "name": "Black blended rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -64,7 +64,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum",
+      "name": "Blended aged rum",
       "type": "category",
       "quantity": {
         "amount": 1,

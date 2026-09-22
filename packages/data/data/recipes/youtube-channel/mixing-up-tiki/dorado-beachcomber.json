@@ -31,7 +31,7 @@
       }
     },
     {
-      "name": "Orange Curaçao",
+      "name": "Orange curaçao",
       "type": "category",
       "quantity": {
         "amount": 0.375,
@@ -39,7 +39,7 @@
       }
     },
     {
-      "name": "Overproof Rum",
+      "name": "Overproof rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -47,7 +47,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum",
+      "name": "Blended aged rum",
       "type": "category",
       "quantity": {
         "amount": 1,

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Etienne Dupont Cidre",
   "type": "beer",
-  "categories": ["dry apple cider"]
+  "categories": ["Dry apple cider"]
 }

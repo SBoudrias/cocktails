@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Otima 10-Year Tawny Port",
   "type": "wine",
-  "categories": ["Tawny Port"]
+  "categories": ["Tawny port"]
 }

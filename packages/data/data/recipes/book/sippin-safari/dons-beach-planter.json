@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Black Blended Rum (Jamaica)",
+      "name": "Black blended rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -62,7 +62,7 @@
       }
     },
     {
-      "name": "Rhum Agricole Vieux",
+      "name": "Rhum agricole vieux",
       "type": "category",
       "quantity": {
         "amount": 1,

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Tamworth Distilling Von Humboldt's Natur Wasser Tamarind Cordial",
   "type": "liqueur",
-  "categories": ["Tamarind Liqueur"]
+  "categories": ["Tamarind liqueur"]
 }

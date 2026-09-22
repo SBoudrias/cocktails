@@ -5,7 +5,7 @@
   "categories": ["Navy style rum"],
   "ingredients": [
     {
-      "name": "Blended Aged Rum (Demerara)",
+      "name": "Blended aged rum (Demerara)",
       "type": "category",
       "quantity": {
         "amount": 5,
@@ -13,7 +13,7 @@
       }
     },
     {
-      "name": "Rhum Agricole Vieux",
+      "name": "Rhum agricole vieux",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -21,7 +21,7 @@
       }
     },
     {
-      "name": "Navy Strength Jamaican Rum",
+      "name": "Navy strength Jamaican rum",
       "type": "category",
       "quantity": {
         "amount": 1,

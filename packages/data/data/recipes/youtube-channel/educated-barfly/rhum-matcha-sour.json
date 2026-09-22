@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "Coconut Liqueur",
+      "name": "Coconut liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Rhum Agricole Vieux",
+      "name": "Rhum agricole vieux",
       "type": "category",
       "quantity": {
         "amount": 1.5,

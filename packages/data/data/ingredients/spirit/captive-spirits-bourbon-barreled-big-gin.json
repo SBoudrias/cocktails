@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Captive Spirits Bourbon Barreled Big Gin",
   "type": "spirit",
-  "categories": ["Gin (Barrel aged)"]
+  "categories": ["Gin (barrel aged)"]
 }

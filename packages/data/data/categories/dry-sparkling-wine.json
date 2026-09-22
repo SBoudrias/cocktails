@@ -1,5 +1,5 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "dry sparkling wine",
+  "name": "Dry sparkling wine",
   "categoryType": "wine"
 }

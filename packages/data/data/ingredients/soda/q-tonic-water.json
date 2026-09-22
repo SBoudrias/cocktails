@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Q tonic water",
   "type": "soda",
-  "categories": ["tonic water"]
+  "categories": ["Tonic water"]
 }

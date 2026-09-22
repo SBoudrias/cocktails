@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Boker's Bitters",
   "type": "bitter",
-  "categories": ["Aromatic Bitters"]
+  "categories": ["Aromatic bitters"]
 }

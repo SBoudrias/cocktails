@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Gardenia Mix",
+  "name": "Gardenia mix",
   "categoryType": "syrup",
   "refs": [
     {

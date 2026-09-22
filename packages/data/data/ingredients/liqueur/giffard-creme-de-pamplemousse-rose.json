@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Giffard crème de pamplemousse rose",
   "type": "liqueur",
-  "categories": ["Grapefruit Liqueur"]
+  "categories": ["Grapefruit liqueur"]
 }

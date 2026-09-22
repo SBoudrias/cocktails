@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Tanqueray London Dry Gin",
   "type": "spirit",
-  "categories": ["London Dry Gin", "Gin"]
+  "categories": ["London dry gin", "Gin"]
 }

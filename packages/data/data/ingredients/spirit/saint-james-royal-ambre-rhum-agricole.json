@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Saint James Royal Ambre Rhum Agricole",
   "type": "spirit",
-  "categories": ["Rhum Agricole Vieux"]
+  "categories": ["Rhum agricole vieux"]
 }

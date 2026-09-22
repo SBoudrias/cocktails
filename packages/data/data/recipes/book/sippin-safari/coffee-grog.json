@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Gardenia Mix",
+      "name": "Gardenia mix",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Blended aged rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Demerara)",
+      "name": "Blended aged rum (Demerara)",
       "type": "category",
       "quantity": {
         "amount": 0.5,

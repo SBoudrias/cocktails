@@ -47,9 +47,9 @@ describe('CategoryPage', () => {
         }),
       );
 
-      // London Dry Gin is a subset of Dry Gin
+      // London dry gin is a subset of Dry Gin
       expect(screen.getByText(/is a subset of/)).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: /^Dry Gin/ })).toHaveAttribute(
+      expect(screen.getByRole('link', { name: /^Dry gin/ })).toHaveAttribute(
         'href',
         '/category/dry-gin',
       );
@@ -62,10 +62,10 @@ describe('CategoryPage', () => {
         }),
       );
 
-      // Should show examples of London Dry Gin
-      expect(screen.getByText(/Examples of.*London Dry Gin/)).toBeInTheDocument();
+      // Should show examples of London dry gin
+      expect(screen.getByText(/Examples of.*London dry gin/)).toBeInTheDocument();
 
-      // Beefeater is a London Dry Gin
+      // Beefeater is a London dry gin
       expect(
         screen.getByRole('link', { name: 'Beefeater London Dry Gin' }),
       ).toBeInTheDocument();
@@ -102,7 +102,7 @@ describe('CategoryPage', () => {
       );
 
       expect(
-        screen.getByRole('heading', { level: 1, name: 'London Dry Gin' }),
+        screen.getByRole('heading', { level: 1, name: 'London dry gin' }),
       ).toBeInTheDocument();
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
@@ -117,9 +117,9 @@ describe('CategoryPage', () => {
       );
 
       // Recipes section has a header
-      expect(screen.getByText('Recipes using London Dry Gin')).toBeInTheDocument();
+      expect(screen.getByText('Recipes using London dry gin')).toBeInTheDocument();
 
-      // Fog Cutter uses London Dry Gin as a category ingredient
+      // Fog Cutter uses London dry gin as a category ingredient
       expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
 
       // Cloister uses Beefeater London Dry Gin (a specific bottle in the category)
@@ -137,7 +137,7 @@ describe('CategoryPage', () => {
         }),
       );
 
-      // Fog Cutter uses 0.5 oz London Dry Gin (category type)
+      // Fog Cutter uses 0.5 oz London dry gin (category type)
       const fogCutterLink = screen.getByRole('link', { name: /Fog Cutter/ });
       expect(fogCutterLink).toHaveTextContent('½ oz');
 
@@ -221,13 +221,13 @@ describe('CategoryPage', () => {
       );
 
       // Members list is visible initially
-      expect(screen.getByText(/Examples of.*London Dry Gin/)).toBeInTheDocument();
+      expect(screen.getByText(/Examples of.*London dry gin/)).toBeInTheDocument();
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'fog');
 
       // Members list should be hidden during search
-      expect(screen.queryByText(/Examples of.*London Dry Gin/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Examples of.*London dry gin/)).not.toBeInTheDocument();
     });
 
     it('loads with search term from URL', async () => {
@@ -255,7 +255,7 @@ describe('CategoryPage', () => {
       );
 
       // Initially filtered - examples should be hidden
-      expect(screen.queryByText(/Examples of.*London Dry Gin/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Examples of.*London dry gin/)).not.toBeInTheDocument();
 
       // Clear the search
       const clearButton = screen.getByRole('button', { name: /clear/i });
@@ -263,7 +263,7 @@ describe('CategoryPage', () => {
 
       // All content should be visible again
       expect(screen.getByText(/is a subset of/)).toBeInTheDocument();
-      expect(screen.getByText(/Examples of.*London Dry Gin/)).toBeInTheDocument();
+      expect(screen.getByText(/Examples of.*London dry gin/)).toBeInTheDocument();
 
       // Recipes should be grouped alphabetically
       expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();

@@ -1,11 +1,11 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Dry Reisling syrup",
+  "name": "Dry Riesling syrup",
   "type": "syrup",
-  "description": "Combine: 1 cup Dry Reisling (white wine), 1 ½ cups sugar",
+  "description": "Combine: 1 cup Dry Riesling (white wine), 1 ½ cups sugar",
   "ingredients": [
     {
-      "name": "Dry Reisling",
+      "name": "Dry Riesling",
       "type": "category",
       "quantity": {
         "amount": 1,

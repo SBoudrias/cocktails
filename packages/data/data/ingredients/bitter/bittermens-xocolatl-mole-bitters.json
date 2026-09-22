@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bittermens Xocolatl Mole Bitters",
   "type": "bitter",
-  "categories": ["Chocolate Bitters"]
+  "categories": ["Chocolate bitters"]
 }

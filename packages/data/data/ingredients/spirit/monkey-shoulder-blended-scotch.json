@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Monkey Shoulder Blended Scotch",
   "type": "spirit",
-  "categories": ["Whisky (Blended Scotch)"]
+  "categories": ["Whisky (blended Scotch)"]
 }

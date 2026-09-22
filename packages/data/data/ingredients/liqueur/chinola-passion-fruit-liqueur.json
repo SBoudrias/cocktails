@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Chinola Passion Fruit Liqueur",
   "type": "liqueur",
-  "categories": ["Passion Fruit Liqueur"]
+  "categories": ["Passion fruit liqueur"]
 }

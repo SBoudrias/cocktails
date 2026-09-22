@@ -31,7 +31,7 @@
       }
     },
     {
-      "name": "White Port",
+      "name": "White port",
       "type": "category",
       "technique": {
         "technique": "temperature",
@@ -43,7 +43,7 @@
       }
     },
     {
-      "name": "Tequila Reposado",
+      "name": "Tequila reposado",
       "type": "category",
       "quantity": {
         "amount": 1.5,

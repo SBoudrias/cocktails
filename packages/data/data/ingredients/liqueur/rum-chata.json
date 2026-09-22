@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "RumChata",
   "type": "liqueur",
-  "categories": ["Cream Liqueur"]
+  "categories": ["Cream liqueur"]
 }

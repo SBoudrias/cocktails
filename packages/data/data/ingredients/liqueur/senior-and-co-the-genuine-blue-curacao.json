@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Senior & Co. The Genuine Blue Curaçao",
   "type": "liqueur",
-  "categories": ["Blue Curaçao"]
+  "categories": ["Blue curaçao"]
 }

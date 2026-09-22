@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Aged Cachaça",
+  "name": "Aged cachaça",
   "categoryType": "spirit",
-  "parents": ["Rhum Agricole Vieux"]
+  "parents": ["Rhum agricole vieux"]
 }

@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Orange Liqueur",
+      "name": "Orange liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Lemon Vodka",
+      "name": "Lemon vodka",
       "type": "category",
       "quantity": {
         "amount": 1.5,

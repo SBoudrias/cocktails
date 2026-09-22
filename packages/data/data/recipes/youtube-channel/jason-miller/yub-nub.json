@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Spiced Rum",
+      "name": "Spiced rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Pineapple Rum",
+      "name": "Pineapple rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,

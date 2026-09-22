@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bergerac red wine",
   "type": "wine",
-  "categories": ["Red Wine"]
+  "categories": ["Red wine"]
 }

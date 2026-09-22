@@ -6,7 +6,7 @@
   "glassware": "nick & nora",
   "ingredients": [
     {
-      "name": "Grapefruit Bitters",
+      "name": "Grapefruit bitters",
       "type": "category",
       "quantity": {
         "amount": 8,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Tequila (Blanco)",
+      "name": "Tequila (blanco)",
       "type": "category",
       "quantity": {
         "amount": 1.5,

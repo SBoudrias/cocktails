@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Blue Curaçao",
+  "name": "Blue curaçao",
   "categoryType": "liqueur",
-  "parents": ["Orange Curaçao"]
+  "parents": ["Orange curaçao"]
 }

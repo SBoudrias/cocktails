@@ -6,7 +6,7 @@
   "glassware": "hurricane",
   "ingredients": [
     {
-      "name": "Chocolate Bitters",
+      "name": "Chocolate bitters",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -50,7 +50,7 @@
       }
     },
     {
-      "name": "Black Blended Rum (Jamaica)",
+      "name": "Black blended rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -58,7 +58,7 @@
       }
     },
     {
-      "name": "Coconut Rum",
+      "name": "Coconut rum",
       "type": "category",
       "quantity": {
         "amount": 1,

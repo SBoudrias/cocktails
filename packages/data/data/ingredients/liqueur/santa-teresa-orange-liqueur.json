@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Santa Teresa Orange Liqueur",
   "type": "liqueur",
-  "categories": ["Orange Liqueur"]
+  "categories": ["Orange liqueur"]
 }

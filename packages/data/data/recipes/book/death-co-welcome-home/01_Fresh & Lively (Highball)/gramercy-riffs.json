@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Dry Reisling",
+      "name": "Dry Riesling",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -62,7 +62,7 @@
       }
     },
     {
-      "name": "dry sparkling wine",
+      "name": "Dry sparkling wine",
       "type": "category",
       "quantity": {
         "amount": 1,

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Rhine Hall Cherry Brandy",
   "type": "spirit",
-  "categories": ["Brandy (Cherry)"]
+  "categories": ["Brandy (cherry)"]
 }

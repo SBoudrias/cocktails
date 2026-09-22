@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "George Dickel Rye",
   "type": "spirit",
-  "categories": ["Whiskey (Rye)"]
+  "categories": ["Whiskey (rye)"]
 }

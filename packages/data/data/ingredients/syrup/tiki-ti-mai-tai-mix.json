@@ -5,7 +5,7 @@
   "description": "Tiki-Ti's house Mai Tai mix, called for directly in Jeff Berry's transcription of the Jim's Special in Sippin' Safari. Berry's approximation is 2 parts curaçao, 1 part orgeat, 1 part simple syrup.",
   "ingredients": [
     {
-      "name": "Orange Curaçao",
+      "name": "Orange curaçao",
       "type": "category",
       "quantity": {
         "amount": 2,

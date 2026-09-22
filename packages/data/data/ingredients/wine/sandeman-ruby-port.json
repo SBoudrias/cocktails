@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Sandeman Ruby Port",
   "type": "wine",
-  "categories": ["Ruby Port"]
+  "categories": ["Ruby port"]
 }

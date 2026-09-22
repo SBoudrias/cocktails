@@ -2,5 +2,5 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Column still aged rum",
   "categoryType": "spirit",
-  "parents": ["Aged Rum"]
+  "parents": ["Aged rum"]
 }

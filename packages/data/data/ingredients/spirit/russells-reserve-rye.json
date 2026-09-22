@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Russell's Reserve Rye",
   "type": "spirit",
-  "categories": ["Whiskey (Rye)"]
+  "categories": ["Whiskey (rye)"]
 }

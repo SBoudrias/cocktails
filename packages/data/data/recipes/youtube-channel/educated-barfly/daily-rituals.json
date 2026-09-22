@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Chocolate Bitters",
+      "name": "Chocolate bitters",
       "type": "category",
       "quantity": {
         "amount": 2,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Aged Rum",
+      "name": "Aged rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,

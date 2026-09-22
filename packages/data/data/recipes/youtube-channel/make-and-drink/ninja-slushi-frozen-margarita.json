@@ -31,7 +31,7 @@
       }
     },
     {
-      "name": "Orange Liqueur",
+      "name": "Orange liqueur",
       "type": "category",
       "quantity": {
         "amount": 2.9,
@@ -39,7 +39,7 @@
       }
     },
     {
-      "name": "Tequila (Blanco)",
+      "name": "Tequila (blanco)",
       "type": "category",
       "quantity": {
         "amount": 5.8,

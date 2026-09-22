@@ -2,7 +2,7 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Gardenia Mix 2.0",
   "type": "syrup",
-  "categories": ["Gardenia Mix"],
+  "categories": ["Gardenia mix"],
   "ingredients": [
     {
       "name": "butter",
@@ -37,7 +37,7 @@
       }
     },
     {
-      "name": "Allspice Dram",
+      "name": "Allspice dram",
       "type": "category",
       "quantity": {
         "amount": 1,

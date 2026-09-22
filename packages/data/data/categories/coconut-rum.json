@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Coconut Rum",
+  "name": "Coconut rum",
   "categoryType": "spirit",
   "refs": [
     {

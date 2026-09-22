@@ -2,7 +2,7 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Passionfruit Gardenia Mix",
   "type": "syrup",
-  "categories": ["Gardenia Mix"],
+  "categories": ["Gardenia mix"],
   "ingredients": [
     {
       "name": "butter",

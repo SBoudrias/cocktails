@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Cobrafire Eau-de-Vie de Raisin",
   "type": "spirit",
-  "categories": ["Brandy (Grapes)"]
+  "categories": ["Brandy (grapes)"]
 }

@@ -31,7 +31,7 @@
       }
     },
     {
-      "name": "Blue Curaçao",
+      "name": "Blue curaçao",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -39,7 +39,7 @@
       }
     },
     {
-      "name": "Tawny Port",
+      "name": "Tawny port",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -63,7 +63,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum",
+      "name": "Blended aged rum",
       "type": "category",
       "quantity": {
         "amount": 2,
