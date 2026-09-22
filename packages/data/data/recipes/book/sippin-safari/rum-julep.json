@@ -1,31 +1,15 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Caribbean Punch",
-  "preparation": "shaken",
+  "name": "Rum Julep",
+  "preparation": "blended",
   "served_on": "crushed ice",
-  "glassware": "collins",
+  "glassware": "julep",
   "ingredients": [
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Pernod",
-      "type": "spirit",
-      "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
-    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
-        "amount": 3,
+        "amount": 1,
         "unit": "dash"
       }
     },
@@ -38,7 +22,7 @@
       }
     },
     {
-      "name": "Simple syrup",
+      "name": "Honey syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -54,54 +38,55 @@
       }
     },
     {
-      "name": "Falernum liqueur",
-      "type": "category",
+      "name": "Orange juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Falernum liqueur",
       "type": "category",
       "quantity": {
-        "amount": 1,
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Allspice Dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Appleton 12",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Column still aged rum",
+      "name": "Blended Aged Rum (Demerara)",
       "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Sarsaparilla",
-      "type": "soda",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
+  "instructions": [
+    "Blend ingredients with ice and pour into a julep cup.",
+    "Top with crushed ice and garnish with a mint sprig."
+  ],
   "attributions": [
     {
-      "relation": "recipe author",
-      "source": "Don the Beachcomber"
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "sippin-safari",
-      "page": 36
-    },
-    {
-      "type": "youtube",
-      "videoId": "laOctsP6v4U",
-      "channel": "make-and-drink"
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
     }
   ]
 }

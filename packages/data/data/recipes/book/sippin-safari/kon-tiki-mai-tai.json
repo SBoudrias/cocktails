@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Kon-Tiki Mai Tai",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Pernod",
+      "type": "spirit",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Ginger syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 12",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend ingredients with 4 oz crushed ice for 5 seconds.",
+    "Pour unstrained over crushed ice.",
+    "Garnish with mint sprigs and a pineapple spear."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Kon-Tiki Restaurant",
+      "location": "Cleveland, OH"
+    }
+  ]
+}

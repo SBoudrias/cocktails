@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Tiki-Ti Mai Tai Mix",
+  "type": "syrup",
+  "description": "Tiki-Ti's house Mai Tai mix, called for directly in Jeff Berry's transcription of the Jim's Special in Sippin' Safari. Compiled from curaçao, orgeat, and simple syrup."
+}

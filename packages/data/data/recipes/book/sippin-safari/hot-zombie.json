@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hot Zombie",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "butter",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Brown sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Boiling water",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Build all ingredients in an 8 oz mug and stir."],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Ron Rico Rum Company recipe book"
+    }
+  ]
+}

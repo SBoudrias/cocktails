@@ -1,18 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Caribbean Punch",
-  "preparation": "shaken",
+  "name": "Skull & Bones",
+  "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "collins",
+  "glassware": "tiki",
   "ingredients": [
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
-      }
-    },
     {
       "name": "Pernod",
       "type": "spirit",
@@ -25,7 +17,7 @@
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
-        "amount": 3,
+        "amount": 1,
         "unit": "dash"
       }
     },
@@ -33,13 +25,13 @@
       "name": "Grenadine",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
-        "unit": "tsp"
+        "amount": 0.5,
+        "unit": "oz"
       }
     },
     {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "Passion fruit syrup",
+      "type": "category",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
@@ -49,12 +41,12 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Falernum liqueur",
+      "name": "Column still lightly aged rum",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -62,46 +54,29 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Black blended Overproof Rum",
       "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Column still aged rum",
-      "type": "category",
-      "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Sarsaparilla",
-      "type": "soda",
       "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
+  "instructions": [
+    "Blend all ingredients except ice to mix.",
+    "Add 8 oz crushed ice and blend for 5 seconds at high speed.",
+    "Pour into a skull mug or double old fashioned glass and top with crushed ice.",
+    "Garnish with a bouquet of mint sprigs."
+  ],
   "attributions": [
     {
       "relation": "recipe author",
-      "source": "Don the Beachcomber"
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "sippin-safari",
-      "page": 36
+      "source": "Tony Ramos"
     },
     {
-      "type": "youtube",
-      "videoId": "laOctsP6v4U",
-      "channel": "make-and-drink"
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
     }
   ]
 }

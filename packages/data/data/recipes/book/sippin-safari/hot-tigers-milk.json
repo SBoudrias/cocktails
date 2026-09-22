@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hot Tiger's Milk",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Beachbum's Tiger Milk Batter",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Boiling water",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build ingredients in a 6 oz mug.",
+    "Add boiling water and stir until the batter dissolves.",
+    "Stud an orange peel strip with the cloves and add to the drink."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Jeff 'Beachbum' Berry"
+    }
+  ]
+}

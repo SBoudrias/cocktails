@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Jamoca",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Coffee syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend all ingredients with 4 oz crushed ice for no more than 5 seconds.",
+    "Pour unstrained into a footed pilsner or specialty glass, top with more crushed ice, and serve with a straw.",
+    "The book makes its coffee syrup with brown sugar."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Mariano Licudine"
+    }
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "sippin-safari",
+      "page": 144
+    }
+  ]
+}

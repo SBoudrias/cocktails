@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Coffee Grog",
+  "preparation": "built",
+  "served_on": "up",
+  "glassware": "irish",
+  "ingredients": [
+    {
+      "name": "Sugar cube",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Gardenia Mix",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 6,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon Hart 151",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Jamaica)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Aged Rum (Demerara)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    },
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "In a preheated mug, combine the sugar cube, Gardenia Mix, and the spice pinches.",
+    "Add 3 strips orange peel and 1 strip grapefruit peel, then the hot coffee, and stir until the mix dissolves.",
+    "FIXME: rum quantities are uncertain — the community book index lists demerara rum, gold Jamaican rum and Lemon Hart 151 as separate calls, but the available web transcription only splits 1/2 oz aged Jamaican + 1/2 oz 151 demerara; modeled as 1/2 oz gold Jamaican + 1/2 oz demerara + 1 tsp Lemon Hart 151 pending the book's exact spec.",
+    "Combine the rums in a fireproof ladle, ignite carefully, and pour flaming into the mug. Garnish with a cinnamon stick."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
+    }
+  ]
+}

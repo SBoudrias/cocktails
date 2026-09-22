@@ -1,18 +1,10 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Caribbean Punch",
-  "preparation": "shaken",
+  "name": "Zombie Punch",
+  "preparation": "flash blended",
   "served_on": "crushed ice",
   "glassware": "collins",
   "ingredients": [
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
-      }
-    },
     {
       "name": "Pernod",
       "type": "spirit",
@@ -25,31 +17,39 @@
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
-        "amount": 3,
+        "amount": 1,
         "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
       }
     },
     {
       "name": "Grenadine",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
+        "amount": 1,
         "unit": "tsp"
       }
     },
     {
-      "name": "Simple syrup",
-      "type": "syrup",
+      "name": "Grapefruit juice",
+      "type": "juice",
       "quantity": {
-        "amount": 0.5,
-        "unit": "oz"
+        "amount": 2,
+        "unit": "tsp"
       }
     },
     {
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
@@ -62,10 +62,18 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Black blended Overproof Rum",
       "type": "category",
       "quantity": {
         "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton Signature",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
         "unit": "oz"
       }
     },
@@ -73,35 +81,21 @@
       "name": "Column still aged rum",
       "type": "category",
       "quantity": {
-        "amount": 1,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Sarsaparilla",
-      "type": "soda",
-      "quantity": {
         "amount": 1.5,
         "unit": "oz"
       }
     }
   ],
+  "instructions": [
+    "Blend all ingredients briefly with crushed ice, no more than a few seconds.",
+    "Pour unstrained into an ice-filled collins glass.",
+    "Garnish elaborately with a mint sprig."
+  ],
   "attributions": [
     {
-      "relation": "recipe author",
-      "source": "Don the Beachcomber"
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "sippin-safari",
-      "page": 36
-    },
-    {
-      "type": "youtube",
-      "videoId": "laOctsP6v4U",
-      "channel": "make-and-drink"
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
     }
   ]
 }

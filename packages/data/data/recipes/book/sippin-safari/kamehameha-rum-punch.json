@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Kamehameha Rum Punch",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blackberry liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Myers's Original Dark Rum",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except the dark rum with ice.",
+    "Strain into a tall or rocks glass filled with crushed ice.",
+    "Float the dark rum on top.",
+    "Garnish with a pineapple chunk speared to a cherry."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "King Kamehameha Hotel",
+      "location": "Kona, HI"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ChDhu45kE5U",
+      "channel": "make-and-drink"
+    }
+  ]
+}

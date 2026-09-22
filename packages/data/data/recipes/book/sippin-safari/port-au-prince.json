@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Port Au Prince",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 6,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Barbancourt 5 Star",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Blend ingredients with 4 oz crushed ice.",
+    "Pour into a footed pilsner glass and top with crushed ice."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Samoan Typhoon",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "tiki",
+  "servings": 2,
+  "ingredients": [
+    {
+      "name": "honey",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit syrup",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Myers's Original Dark Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Column still aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Dissolve the honey in the lime juice.",
+    "Add the rest of the ingredients with 2 cups of ice and blend for 30 seconds.",
+    "Fill two tiki mugs, garnish with pineapple slices speared to cherries."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Joe King Sui"
+    },
+    {
+      "relation": "bar",
+      "source": "Hawaiian Village Motel and Restaurant",
+      "location": "Tampa, FL"
+    }
+  ]
+}

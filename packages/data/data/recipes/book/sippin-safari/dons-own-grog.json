@@ -1,31 +1,15 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Caribbean Punch",
+  "name": "Don's Own Grog",
   "preparation": "shaken",
-  "served_on": "crushed ice",
-  "glassware": "collins",
+  "served_on": "up",
+  "glassware": "old fashioned",
   "ingredients": [
-    {
-      "name": "Almond extract",
-      "type": "other",
-      "quantity": {
-        "amount": 3,
-        "unit": "drop"
-      }
-    },
-    {
-      "name": "Pernod",
-      "type": "spirit",
-      "quantity": {
-        "amount": 6,
-        "unit": "drop"
-      }
-    },
     {
       "name": "Angostura bitters",
       "type": "bitter",
       "quantity": {
-        "amount": 3,
+        "amount": 1,
         "unit": "dash"
       }
     },
@@ -33,15 +17,15 @@
       "name": "Grenadine",
       "type": "syrup",
       "quantity": {
-        "amount": 0.25,
-        "unit": "tsp"
+        "amount": 0.125,
+        "unit": "oz"
       }
     },
     {
       "name": "Simple syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.375,
         "unit": "oz"
       }
     },
@@ -49,12 +33,20 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Falernum liqueur",
+      "name": "Blackberry liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.375,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended Lightly-aged Rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -65,12 +57,12 @@
       "name": "Blended Aged Rum (Jamaica)",
       "type": "category",
       "quantity": {
-        "amount": 1,
+        "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Column still aged rum",
+      "name": "Pot still lightly aged rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -78,30 +70,23 @@
       }
     },
     {
-      "name": "Sarsaparilla",
-      "type": "soda",
+      "name": "Nutmeg",
+      "type": "spice",
       "quantity": {
-        "amount": 1.5,
-        "unit": "oz"
+        "amount": 1,
+        "unit": "pinch"
       }
     }
   ],
+  "instructions": [
+    "Shake with ice and freshly grated nutmeg.",
+    "Strain into an old fashioned glass and garnish with more freshly grated nutmeg."
+  ],
   "attributions": [
     {
-      "relation": "recipe author",
-      "source": "Don the Beachcomber"
-    }
-  ],
-  "refs": [
-    {
-      "type": "book",
-      "title": "sippin-safari",
-      "page": 36
-    },
-    {
-      "type": "youtube",
-      "videoId": "laOctsP6v4U",
-      "channel": "make-and-drink"
+      "relation": "bar",
+      "source": "Don the Beachcomber",
+      "location": "Hollywood, CA"
     }
   ]
 }
