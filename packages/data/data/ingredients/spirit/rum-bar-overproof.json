@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Rum-Bar Overproof",
   "type": "spirit",
-  "categories": ["Pot still unaged rum", "Jamaican overproof rum", "overproof rum"]
+  "categories": ["Pot still unaged rum", "Jamaican overproof rum", "Overproof Rum"]
 }

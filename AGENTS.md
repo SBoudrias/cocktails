@@ -240,6 +240,9 @@ import { getAllSources, getSource } from '@cocktails/data/sources';
 
 - Path: `packages/data/data/categories/[slug].json`
 - Define ingredient categories and hierarchies
+- One category per product class — before creating one, search for the same product under other names, especially French/English equivalents (e.g. `Crème de Mûre` IS blackberry liqueur; French `Crème de X` appellations are canonical). See the ingredient-validator skill for the equivalence table
+- Use `parents` for genuine subtypes, never for synonyms; a generic parent grouping substitution-friendly variants (e.g. `Falernum` → `Falernum liqueur`, `Falernum syrup`) is the sanctioned pattern — declare it with `parents` so `yarn check-data` doesn't flag it as a duplicate
+- `yarn check-data` warns about redundant category names and auto-fixes category references to canonical names, but cannot detect translation duplicates — always search the categories directory first
 
 ## Approved Overlaps Registry
 

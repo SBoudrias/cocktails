@@ -1,5 +1,13 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Crème de Mûre",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "description": "Crème de mûre is French for blackberry liqueur. Use this category for any blackberry liqueur, French crème or not — do not create a separate \"Blackberry liqueur\" category.",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "2SLTAyGmvS4",
+      "channel": "educated-barfly"
+    }
+  ]
 }

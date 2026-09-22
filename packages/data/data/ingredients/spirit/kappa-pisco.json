@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Kappa Pisco",
   "type": "spirit",
-  "categories": ["Chilean pisco"]
+  "categories": ["Chilean Pisco"]
 }

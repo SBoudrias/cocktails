@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Falernum",
   "categoryType": "liqueur",
+  "description": "Falernum is a Barbados-born flavoring of lime, almond, ginger, and clove, sold both as a liqueur and as a syrup. This generic category lets a recipe accept either — substitute one for the other and adjust proportions. Use the specific \"Falernum liqueur\" or \"Falernum syrup\" category when a recipe needs one in particular.",
   "refs": [
     {
       "type": "youtube",

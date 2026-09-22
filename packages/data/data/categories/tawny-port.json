@@ -2,5 +2,5 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Tawny Port",
   "categoryType": "wine",
-  "parents": ["Port"]
+  "parents": ["port"]
 }

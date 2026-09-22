@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Dave Arnold's chocolate bitters",
   "type": "bitter",
-  "categories": ["Chocolate bitters"]
+  "categories": ["Chocolate Bitters"]
 }

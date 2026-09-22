@@ -16,6 +16,7 @@ import {
   validateApprovedOverlaps,
   type ApprovedOverlaps,
 } from './approved-overlaps.ts';
+import { findRedundantCategoryPairs } from './category-similarity.ts';
 import { logger } from './cli-util.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
 import { findSimilarIngredientPairs } from './ingredient-similarity.ts';
@@ -155,13 +156,27 @@ for (const entry of await fs.readdir(youtubeChannelRoot)) {
 logger.item(`Found ${youtubeChannelSlugs.size} youtube channels`);
 
 const categoriesGlob = path.join(PACKAGE_ROOT, 'data/categories/*.json');
+const categoryCanonicalNames = new Map<string, string>(); // slug -> canonical name
+const allCategories: Array<{
+  name: string;
+  categoryType: string;
+  parents?: string[];
+  filepath: string;
+}> = [];
 for await (const categoryFile of fs.glob(categoriesGlob)) {
   const slug = path.basename(categoryFile, '.json');
   categorySlugs.add(slug);
   const data = JSON.parse(await fs.readFile(categoryFile, 'utf-8'));
   canonicalNames.set(slugify(data.name), data.name);
+  categoryCanonicalNames.set(slugify(data.name), data.name);
   if (data.categoryType) {
     categoryTypes.set(slugify(data.name), data.categoryType);
+    allCategories.push({
+      name: data.name,
+      categoryType: data.categoryType,
+      parents: data.parents,
+      filepath: categoryFile,
+    });
   }
 }
 logger.item(`Found ${categorySlugs.size} categories`);
@@ -422,6 +437,22 @@ for await (const sourceFile of fs.glob(dataGlob)) {
       }
     }
 
+    // Auto-fix category names on ingredient files to match the canonical
+    // category names, so variants like "Tequila Blanco" vs "Tequila (Blanco)"
+    // or "Orange liqueur" vs "Orange Liqueur" don't accumulate.
+    if (schemaPath === 'schemas/ingredient.schema.json') {
+      for (const [i, category] of categories.entries()) {
+        const canonical = categoryCanonicalNames.get(slugify(category));
+        if (canonical && canonical !== category) {
+          logger.change(
+            `Fixing category "${category}" → "${canonical}" in ${path.basename(sourceFile)}`,
+          );
+          categories[i] = canonical;
+          fileModified = true;
+        }
+      }
+    }
+
     // Sort recipe ingredients to match app display order
     if (schemaPath === 'schemas/recipe.schema.json' && ingredients.length > 1) {
       const sortedIngredients = sortRecipeIngredients(ingredients, categoryTypes);
@@ -524,6 +555,25 @@ for await (const sourceFile of fs.glob(dataGlob)) {
 
   // Make sure there's all parent categories have their metadata files
   if (schemaPath === 'schemas/category.schema.json') {
+    let fileModified = false;
+
+    // Auto-fix parent names to match the canonical category names
+    const parents = data.parents ?? [];
+    for (const [i, parent] of parents.entries()) {
+      const canonical = categoryCanonicalNames.get(slugify(parent));
+      if (canonical && canonical !== parent) {
+        logger.change(
+          `Fixing parent "${parent}" → "${canonical}" in ${path.basename(sourceFile)}`,
+        );
+        parents[i] = canonical;
+        fileModified = true;
+      }
+    }
+
+    if (fileModified) {
+      await writeJSON(sourceFile, data);
+    }
+
     for (const category of data.parents ?? []) {
       const categorySlug = slugify(category);
       if (categorySlugs.has(categorySlug)) continue;
@@ -656,6 +706,19 @@ for (const { a, b } of findSimilarIngredientPairs(ingredientNames)) {
   fail(
     `Similar ingredient names — possible misspelling: "${a}" (${fileA}) vs "${b}" (${fileB}). ` +
       `Review and standardize spelling. If genuinely different ingredients, register both names in the "ingredient" list of ${overlapsPath} to allow this overlap.`,
+  );
+}
+
+logger.footer('Done!');
+
+// Check for similar category names (same product registered under two names)
+logger.header('🏷️ Checking for redundant category names...');
+
+for (const { a, b } of findRedundantCategoryPairs(allCategories)) {
+  logger.warn(
+    `Similar category names — possible duplicate:`,
+    `"${a.name}" (${path.relative(REPO_ROOT, a.filepath)}) vs "${b.name}" (${path.relative(REPO_ROOT, b.filepath)}).`,
+    `Both are ${a.categoryType} categories. Merge them into one, or — for a generic parent grouping substitution-friendly variants (e.g. "Falernum" → "Falernum liqueur") — declare the relationship with "parents".`,
   );
 }
 

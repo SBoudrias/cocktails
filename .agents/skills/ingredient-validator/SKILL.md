@@ -23,6 +23,24 @@ Maintain ingredient data consistency when creating or modifying recipes and ingr
 - Sherries, aromatized wines such as vermouths and quinquinas, and ports use type `wine`, not `liqueur`.
 - If uncertain whether an ingredient exists or what type it should use, check the current ingredient data before proceeding and state the uncertainty explicitly.
 
+## Category Deduplication
+
+The same product class must never exist under two category names. Before creating a category in `packages/data/data/categories/`, search for the same product under its other common names — especially French/English equivalents:
+
+| Canonical category | Do NOT create a second category as                    |
+| ------------------ | ----------------------------------------------------- |
+| Crème de Mûre      | Blackberry liqueur (mûre = blackberry)                |
+| Crème de Cassis    | Blackcurrant liqueur (cassis = blackcurrant)          |
+| Crème de Cacao     | Chocolate liqueur                                     |
+| Crème de Menthe    | Mint liqueur                                          |
+| Crème de Violette  | Violet liqueur                                        |
+| Triple Sec         | Orange liqueur (it is a child of it, not a duplicate) |
+
+- French `Crème de X` appellations are the canonical category names for that product class, even when a recipe says the English name. Reference the existing category — e.g. a recipe calling for "blackberry liqueur" uses `Crème de Mûre` with `type: "category"`.
+- Use `parents` for genuine subtypes (e.g. `Orange Curaçao` and `Triple Sec` have parent `Orange Liqueur`), never for synonyms.
+- A generic parent category may group substitution-friendly variants so a recipe can accept any of them (e.g. `Falernum` with children `Falernum liqueur` and `Falernum syrup` — substitute one for the other and adjust proportions). The parent link must be declared via `parents`; that is what distinguishes an intentional hierarchy from a duplicate.
+- `yarn check-data` warns when two same-type categories differ only by a trailing generic word ("X" vs "X liqueur") unless one is declared as the other's parent, and auto-fixes category-name casing to canonical names — but it cannot catch translation duplicates like Crème de Mûre / Blackberry liqueur, so always search first.
+
 ## Techniques Are Not Bottles
 
 Infused, fat-washed, tea-infused, pepper-infused, milk-washed, and similarly modified spirits are recipe techniques, not separate ingredients.

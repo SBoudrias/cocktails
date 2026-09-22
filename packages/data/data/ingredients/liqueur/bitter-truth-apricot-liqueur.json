@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bitter Truth Apricot Liqueur",
   "type": "liqueur",
-  "categories": ["Apricot Liqueur"]
+  "categories": ["Apricot liqueur"]
 }
