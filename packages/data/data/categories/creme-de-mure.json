@@ -1,5 +1,13 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Crème de Mûre",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "description": "Crème de mûre is a French blackberry liqueur: sweet, deep purple, and made by infusing blackberries into a spirit base with added sugar. It is best known as the float that finishes a Bramble.",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "2SLTAyGmvS4",
+      "channel": "educated-barfly"
+    }
+  ]
 }

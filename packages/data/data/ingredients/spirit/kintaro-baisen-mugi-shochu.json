@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Kintaro Baisen Mugi Shochu",
   "type": "spirit",
-  "categories": ["Barley Shochu"]
+  "categories": ["Barley shochu"]
 }

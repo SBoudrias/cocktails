@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "tequila",
+      "name": "Tequila",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Unaged Cachaça",
+      "name": "Unaged cachaça",
       "type": "category",
       "quantity": {
         "amount": 1,

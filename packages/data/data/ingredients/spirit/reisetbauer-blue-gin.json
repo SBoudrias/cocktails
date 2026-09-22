@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Reisetbauer Blue Gin",
   "type": "spirit",
-  "categories": ["Dry Gin"]
+  "categories": ["Dry gin"]
 }

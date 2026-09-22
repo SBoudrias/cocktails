@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Combier Pamplemousse Rose",
   "type": "liqueur",
-  "categories": ["Grapefruit Liqueur"]
+  "categories": ["Grapefruit liqueur"]
 }

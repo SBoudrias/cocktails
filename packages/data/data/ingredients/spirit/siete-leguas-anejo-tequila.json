@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Siete Leguas Añejo Tequila",
   "type": "spirit",
-  "categories": ["Tequila Añejo"]
+  "categories": ["Tequila añejo"]
 }

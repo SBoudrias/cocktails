@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Planteray Stiggins' Fancy pineapple rum",
   "type": "spirit",
-  "categories": ["Pineapple Rum"]
+  "categories": ["Pineapple rum"]
 }

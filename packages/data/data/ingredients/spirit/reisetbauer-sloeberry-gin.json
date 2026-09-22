@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Reisetbauer Sloeberry Gin",
   "type": "spirit",
-  "categories": ["Sloe Gin"]
+  "categories": ["Sloe gin"]
 }

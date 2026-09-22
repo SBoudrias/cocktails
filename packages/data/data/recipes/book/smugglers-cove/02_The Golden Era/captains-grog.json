@@ -62,7 +62,7 @@
       }
     },
     {
-      "name": "Black Blended Rum",
+      "name": "Black blended rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -70,7 +70,7 @@
       }
     },
     {
-      "name": "Blended Lightly-aged Rum",
+      "name": "Blended lightly-aged rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -78,7 +78,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum",
+      "name": "Blended aged rum",
       "type": "category",
       "quantity": {
         "amount": 0.75,

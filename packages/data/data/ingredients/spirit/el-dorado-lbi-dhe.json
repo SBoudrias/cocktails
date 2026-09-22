@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "El Dorado LBI/DHE",
   "type": "spirit",
-  "categories": ["Blended Aged Rum (Demerara)"]
+  "categories": ["Blended aged rum (Demerara)"]
 }

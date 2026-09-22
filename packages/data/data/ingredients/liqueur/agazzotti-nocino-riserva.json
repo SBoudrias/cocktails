@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Agazzotti Nocino Riserva",
   "type": "liqueur",
-  "categories": ["Walnut Liqueur"]
+  "categories": ["Walnut liqueur"]
 }

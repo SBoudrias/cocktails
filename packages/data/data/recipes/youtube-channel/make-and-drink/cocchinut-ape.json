@@ -23,7 +23,7 @@
       }
     },
     {
-      "name": "Blended Lightly-aged Rum",
+      "name": "Blended lightly-aged rum",
       "type": "category",
       "quantity": {
         "amount": 5.75,
@@ -31,7 +31,7 @@
       }
     },
     {
-      "name": "Unaged Cachaça",
+      "name": "Unaged cachaça",
       "type": "category",
       "quantity": {
         "amount": 5.75,

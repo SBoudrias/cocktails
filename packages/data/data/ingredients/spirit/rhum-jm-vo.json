@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Rhum JM VO",
   "type": "spirit",
-  "categories": ["Rhum Agricole Vieux"]
+  "categories": ["Rhum agricole vieux"]
 }

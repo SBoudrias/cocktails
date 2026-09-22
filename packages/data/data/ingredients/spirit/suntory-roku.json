@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Suntory Roku",
   "type": "spirit",
-  "categories": ["Gin", "Dry Gin"]
+  "categories": ["Gin", "Dry gin"]
 }

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Trois Rivières Blanc 50%",
   "type": "spirit",
-  "categories": ["Rhum Agricole Blanc"]
+  "categories": ["Rhum agricole blanc"]
 }

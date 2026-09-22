@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Coconut Liqueur",
+      "name": "Coconut liqueur",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Overproof Rum",
+      "name": "Overproof rum",
       "type": "category",
       "technique": {
         "technique": "application",

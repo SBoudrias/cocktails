@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Allspice Dram",
+      "name": "Allspice dram",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Jamaican Rum",
+      "name": "Jamaican rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -62,7 +62,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum",
+      "name": "Blended aged rum",
       "type": "category",
       "quantity": {
         "amount": 1.5,

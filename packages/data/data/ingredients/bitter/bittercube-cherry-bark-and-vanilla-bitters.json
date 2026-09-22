@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Bittercube Cherry Bark and Vanilla Bitters",
   "type": "bitter",
-  "categories": ["Aromatic Bitters"]
+  "categories": ["Aromatic bitters"]
 }

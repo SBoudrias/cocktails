@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Rhum Agricole Blanc",
+      "name": "Rhum agricole blanc",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Blended aged rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 1,

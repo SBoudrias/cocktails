@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Clear Creek Blue Plum Brandy",
   "type": "spirit",
-  "categories": ["Brandy (Plum)"]
+  "categories": ["Brandy (plum)"]
 }

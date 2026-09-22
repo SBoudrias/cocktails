@@ -71,7 +71,7 @@
       }
     },
     {
-      "name": "Allspice Dram",
+      "name": "Allspice dram",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -87,7 +87,7 @@
       }
     },
     {
-      "name": "Blended Lightly-aged Rum",
+      "name": "Blended lightly-aged rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -95,7 +95,7 @@
       }
     },
     {
-      "name": "Jamaican Rum",
+      "name": "Jamaican rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -103,7 +103,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Demerara)",
+      "name": "Blended aged rum (Demerara)",
       "type": "category",
       "quantity": {
         "amount": 2,

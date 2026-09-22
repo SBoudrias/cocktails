@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Kōloa Kauaʻi Dark Rum",
   "type": "spirit",
-  "categories": ["Black Blended Rum"]
+  "categories": ["Black blended rum"]
 }

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Emilio Hidalgo \"Morenita\" Cream Sherry",
   "type": "wine",
-  "categories": ["Sherry (Cream)"]
+  "categories": ["Sherry (cream)"]
 }

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Cabeza Blanco Tequila",
   "type": "spirit",
-  "categories": ["Tequila (Blanco)"]
+  "categories": ["Tequila (blanco)"]
 }

@@ -2,7 +2,7 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "banana bread syrup",
   "type": "syrup",
-  "categories": ["Banana Syrup"],
+  "categories": ["Banana syrup"],
   "ingredients": [
     {
       "name": "banana",

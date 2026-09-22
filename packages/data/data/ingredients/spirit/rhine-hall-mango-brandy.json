@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Rhine Hall Mango Brandy",
   "type": "spirit",
-  "categories": ["Brandy (Mango)"]
+  "categories": ["Brandy (mango)"]
 }

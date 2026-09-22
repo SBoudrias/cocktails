@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Royal Combier",
   "type": "liqueur",
-  "categories": ["Orange Liqueur"]
+  "categories": ["Orange liqueur"]
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Blended Aged Rum (Barbados)",
+  "name": "Blended aged rum (Barbados)",
   "categoryType": "spirit",
-  "parents": ["Blended Aged Rum", "Barbados Rum"]
+  "parents": ["Blended aged rum", "Barbados rum"]
 }

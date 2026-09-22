@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Heirloom Pineapple Amaro",
   "type": "liqueur",
-  "categories": ["Pineapple Amaro"]
+  "categories": ["Pineapple amaro"]
 }

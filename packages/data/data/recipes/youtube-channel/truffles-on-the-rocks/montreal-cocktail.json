@@ -6,7 +6,7 @@
   "glassware": "coupe",
   "ingredients": [
     {
-      "name": "Whiskey (Rye)",
+      "name": "Whiskey (rye)",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "London Dry Gin",
+      "name": "London dry gin",
       "type": "category",
       "quantity": {
         "amount": 0.75,

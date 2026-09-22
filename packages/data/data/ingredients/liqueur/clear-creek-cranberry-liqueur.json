@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Clear Creek Cranberry Liqueur",
   "type": "liqueur",
-  "categories": ["Cranberry Liqueur"]
+  "categories": ["Cranberry liqueur"]
 }

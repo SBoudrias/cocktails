@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Louis Roque La Vieille Prune",
   "type": "spirit",
-  "categories": ["Brandy (Plum)"]
+  "categories": ["Brandy (plum)"]
 }

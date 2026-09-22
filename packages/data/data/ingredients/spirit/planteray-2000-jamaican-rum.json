@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Planteray 2000 Jamaican Rum",
   "type": "spirit",
-  "categories": ["Blended Aged Rum (Jamaica)", "Jamaican Rum"]
+  "categories": ["Blended aged rum (Jamaica)", "Jamaican rum"]
 }

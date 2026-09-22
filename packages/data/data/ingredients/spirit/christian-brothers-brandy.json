@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Christian Brothers Brandy",
   "type": "spirit",
-  "categories": ["Brandy (Grapes)"]
+  "categories": ["Brandy (grapes)"]
 }

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Pueblo Viejo Añejo Tequila",
   "type": "spirit",
-  "categories": ["Tequila Añejo"]
+  "categories": ["Tequila añejo"]
 }

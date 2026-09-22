@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Brandy (Grapes)",
+      "name": "Brandy (grapes)",
       "type": "category",
       "quantity": {
         "amount": 0.75,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Blended aged rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 1,

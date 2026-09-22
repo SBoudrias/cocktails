@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Allspice Dram",
+  "name": "Allspice dram",
   "categoryType": "liqueur",
   "refs": [
     {

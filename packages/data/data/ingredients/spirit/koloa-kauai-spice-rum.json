@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Kōloa Kauaʻi Spice Rum",
   "type": "spirit",
-  "categories": ["Spiced Rum"]
+  "categories": ["Spiced rum"]
 }

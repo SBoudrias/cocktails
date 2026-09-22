@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Reisetbauer Hazelnut Eau-de-Vie",
   "type": "spirit",
-  "categories": ["Brandy (Hazelnut)"]
+  "categories": ["Brandy (hazelnut)"]
 }

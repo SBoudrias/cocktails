@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Black Blended Rum (Jamaica)",
+      "name": "Black blended rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Blended aged rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.75,

@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "Blue Curaçao",
+      "name": "Blue curaçao",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Citrus Vodka",
+      "name": "Citrus vodka",
       "type": "category",
       "quantity": {
         "amount": 1.25,

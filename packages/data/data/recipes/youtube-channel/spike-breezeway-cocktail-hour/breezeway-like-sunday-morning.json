@@ -6,7 +6,7 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Chocolate Bitters",
+      "name": "Chocolate bitters",
       "type": "category",
       "quantity": {
         "amount": 1,

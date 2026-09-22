@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Red Rioja Wine",
   "type": "wine",
-  "categories": ["Dry red wine", "Red Wine"]
+  "categories": ["Dry red wine", "Red wine"]
 }

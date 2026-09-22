@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Blackberry liqueur",
+      "name": "Crème de Mûre",
       "type": "category",
       "quantity": {
         "amount": 0.375,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Blended Lightly-aged Rum (Jamaica)",
+      "name": "Blended lightly-aged rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Blended aged rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 0.5,

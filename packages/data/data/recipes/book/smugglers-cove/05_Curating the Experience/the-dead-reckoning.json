@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Brandy (Vanilla)",
+      "name": "Brandy (vanilla)",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Tawny Port",
+      "name": "Tawny port",
       "type": "category",
       "quantity": {
         "amount": 0.5,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum",
+      "name": "Blended aged rum",
       "type": "category",
       "quantity": {
         "amount": 2,

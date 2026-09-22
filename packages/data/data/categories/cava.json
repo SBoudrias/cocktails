@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "cava",
+  "name": "Cava",
   "categoryType": "wine",
-  "parents": ["dry sparkling wine"]
+  "parents": ["Dry sparkling wine"]
 }

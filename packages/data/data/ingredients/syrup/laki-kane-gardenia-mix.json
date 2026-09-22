@@ -2,7 +2,7 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Laki Kane Gardenia Mix",
   "type": "syrup",
-  "categories": ["Gardenia Mix"],
+  "categories": ["Gardenia mix"],
   "ingredients": [
     {
       "name": "vanilla paste",
@@ -13,7 +13,7 @@
       }
     },
     {
-      "name": "Allspice Dram",
+      "name": "Allspice dram",
       "type": "category",
       "quantity": {
         "amount": 1.75,

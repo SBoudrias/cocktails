@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Holmes Cay Fiji Single Origin Edition Rum",
   "type": "spirit",
-  "categories": ["Blended Lightly-aged Rum"]
+  "categories": ["Blended lightly-aged rum"]
 }

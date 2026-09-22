@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Martin Miller Westbourne Strength Gin",
   "type": "spirit",
-  "categories": ["Gin (Navy Strength)", "Gin"]
+  "categories": ["Gin (navy strength)", "Gin"]
 }

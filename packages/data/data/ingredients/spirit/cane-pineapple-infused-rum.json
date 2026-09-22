@@ -2,7 +2,7 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "CANE pineapple-infused rum",
   "type": "spirit",
-  "categories": ["Pineapple Rum"],
+  "categories": ["Pineapple rum"],
   "ingredients": [
     {
       "name": "Probitas Rum",

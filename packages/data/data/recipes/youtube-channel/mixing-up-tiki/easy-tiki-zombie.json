@@ -6,7 +6,7 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Aromatic Bitters",
+      "name": "Aromatic bitters",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -54,7 +54,7 @@
       }
     },
     {
-      "name": "Overproof Rum",
+      "name": "Overproof rum",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -62,7 +62,7 @@
       }
     },
     {
-      "name": "Blended Aged Rum (Jamaica)",
+      "name": "Blended aged rum (Jamaica)",
       "type": "category",
       "quantity": {
         "amount": 1.5,

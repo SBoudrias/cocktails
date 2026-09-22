@@ -2,7 +2,7 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Death & Co Peychaud's Bitters",
   "type": "bitter",
-  "categories": ["Aromatic Bitters"],
+  "categories": ["Aromatic bitters"],
   "ingredients": [
     {
       "name": "Peychaud's bitters",

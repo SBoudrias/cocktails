@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Quinta do Infantado White Porto",
   "type": "wine",
-  "categories": ["White Port"]
+  "categories": ["White port"]
 }

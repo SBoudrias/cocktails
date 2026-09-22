@@ -30,7 +30,7 @@
       }
     },
     {
-      "name": "Orange Curaçao",
+      "name": "Orange curaçao",
       "type": "category",
       "quantity": {
         "amount": 0.25,
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Tequila Reposado",
+      "name": "Tequila reposado",
       "type": "category",
       "quantity": {
         "amount": 1.5,

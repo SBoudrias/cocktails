@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Giffard crème de fruit de la passion",
   "type": "liqueur",
-  "categories": ["Passion Fruit Liqueur"]
+  "categories": ["Passion fruit liqueur"]
 }

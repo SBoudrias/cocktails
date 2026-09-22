@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Orange Liqueur",
+  "name": "Orange liqueur",
   "categoryType": "liqueur",
   "refs": [
     {

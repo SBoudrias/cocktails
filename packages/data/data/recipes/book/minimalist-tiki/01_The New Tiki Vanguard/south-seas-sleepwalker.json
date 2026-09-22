@@ -6,7 +6,7 @@
   "glassware": "collins",
   "ingredients": [
     {
-      "name": "Aromatic Bitters",
+      "name": "Aromatic bitters",
       "type": "category",
       "quantity": {
         "amount": 1,
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Allspice Dram",
+      "name": "Allspice dram",
       "type": "category",
       "quantity": {
         "amount": 1,

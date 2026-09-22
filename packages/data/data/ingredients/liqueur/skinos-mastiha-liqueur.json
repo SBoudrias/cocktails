@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Skinos Mastiha Liqueur",
   "type": "liqueur",
-  "categories": ["Mastiha Liqueur"]
+  "categories": ["Mastiha liqueur"]
 }

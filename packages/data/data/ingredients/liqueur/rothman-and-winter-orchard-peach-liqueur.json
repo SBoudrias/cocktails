@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Rothman & Winter Orchard Peach Liqueur",
   "type": "liqueur",
-  "categories": ["Peach Liqueur"]
+  "categories": ["Peach liqueur"]
 }

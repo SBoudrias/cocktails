@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Ruby Port",
+  "name": "Ruby port",
   "categoryType": "wine",
   "parents": ["Port"]
 }

@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Rum-Bar Gold",
   "type": "spirit",
-  "categories": ["Blended Lightly-aged Rum (Jamaica)", "Jamaican Rum"]
+  "categories": ["Blended lightly-aged rum (Jamaica)", "Jamaican rum"]
 }

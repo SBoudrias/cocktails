@@ -112,7 +112,7 @@ describe('IngredientsPage', () => {
 
     // Use a hardcoded known category with getByText to avoid expensive
     // accessible name computation over the full ingredient list
-    const link = screen.getByText('Aged Rum').closest('a');
+    const link = screen.getByText('Aged rum').closest('a');
     expect(link).toHaveAttribute('href', getCategoryUrl({ slug: 'aged-rum' }));
   });
 
