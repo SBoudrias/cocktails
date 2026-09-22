@@ -9,29 +9,29 @@
       "type": "syrup",
       "brix": 66,
       "quantity": {
-        "amount": 2,
-        "unit": "tsp"
+        "amount": 4,
+        "unit": "part"
       }
     },
     {
       "name": "butter",
       "type": "other",
       "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
+        "amount": 1,
+        "unit": "part"
       }
     },
     {
       "name": "honey",
       "type": "other",
       "quantity": {
-        "amount": 0.5,
-        "unit": "tsp"
+        "amount": 1,
+        "unit": "part"
       }
     }
   ],
   "instructions": [
     "Soften the butter at room temperature.",
-    "Combine all ingredients and mix thoroughly until smooth."
+    "Combine 4 parts coconut cream with 1 part softened butter and 1 part clover honey until smooth."
   ]
 }
