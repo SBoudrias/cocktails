@@ -51,5 +51,12 @@
       "relation": "bar",
       "source": "Mai-Kai"
     }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "ZcYY2Advi7k",
+      "channel": "make-and-drink"
+    }
   ]
 }

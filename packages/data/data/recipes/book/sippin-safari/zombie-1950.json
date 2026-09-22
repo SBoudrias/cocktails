@@ -88,5 +88,13 @@
       "relation": "recipe author",
       "source": "Louis Spievak"
     }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "KLAkC0NbNU8",
+      "channel": "make-and-drink",
+      "start": 154
+    }
   ]
 }

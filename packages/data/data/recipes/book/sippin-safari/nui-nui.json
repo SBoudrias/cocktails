@@ -27,7 +27,7 @@
       "type": "syrup",
       "brix": 66,
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
@@ -73,6 +73,19 @@
       "relation": "bar",
       "source": "Don the Beachcomber",
       "location": "Hollywood, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "DLjXocLodV0",
+      "channel": "make-and-drink",
+      "start": 107
+    },
+    {
+      "type": "youtube",
+      "videoId": "wmMjJFvb_pU",
+      "channel": "spike-breezeway-cocktail-hour"
     }
   ]
 }

@@ -97,5 +97,17 @@
       "source": "Don the Beachcomber",
       "location": "Hollywood, CA"
     }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Tgpa8bwllC0",
+      "channel": "make-and-drink"
+    },
+    {
+      "type": "youtube",
+      "videoId": "IbuEMPpgc4c",
+      "channel": "mixing-up-tiki"
+    }
   ]
 }

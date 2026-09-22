@@ -43,5 +43,13 @@
     "Combine all ingredients in a drink mixer tin with 8 oz crushed ice.",
     "Flash blend and open pour into a footed pilsner glass.",
     "Garnish with a pineapple frond and a mint sprig."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "_wSwP7WAw9I",
+      "channel": "make-and-drink",
+      "start": 141
+    }
   ]
 }

@@ -78,5 +78,17 @@
       "source": "Don the Beachcomber",
       "location": "Hollywood, CA"
     }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "rDq673YI4so",
+      "channel": "make-and-drink"
+    },
+    {
+      "type": "youtube",
+      "videoId": "l5IMypuLeTs",
+      "channel": "jason-miller"
+    }
   ]
 }
