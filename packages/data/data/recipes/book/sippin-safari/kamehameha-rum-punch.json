@@ -54,8 +54,8 @@
       }
     },
     {
-      "name": "Myers's Original Dark Rum",
-      "type": "spirit",
+      "name": "Black Blended Rum (Jamaica)",
+      "type": "category",
       "technique": {
         "technique": "application",
         "method": "float"
