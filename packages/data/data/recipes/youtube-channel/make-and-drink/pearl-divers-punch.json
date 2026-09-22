@@ -1,21 +1,21 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
   "name": "Pearl Diver's Punch",
-  "preparation": "blended",
+  "preparation": "flash blended",
   "served_on": "crushed ice",
-  "glassware": "footed pilsner",
+  "glassware": "tiki",
   "ingredients": [
     {
-      "name": "Gardenia Mix",
-      "type": "category",
+      "name": "Lime juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Lime juice",
-      "type": "juice",
+      "name": "Gardenia Mix 2.0",
+      "type": "syrup",
       "quantity": {
         "amount": 0.75,
         "unit": "oz"
@@ -30,8 +30,8 @@
       }
     },
     {
-      "name": "Falernum liqueur",
-      "type": "category",
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
       "quantity": {
         "amount": 1,
         "unit": "tsp"
@@ -62,16 +62,11 @@
       }
     }
   ],
-  "instructions": [
-    "Combine ingredients in a blender with 6 oz crushed ice.",
-    "Blend for 20 seconds and pour unstrained into a footed pilsner glass.",
-    "Top with crushed ice."
-  ],
-  "attributions": [
+  "refs": [
     {
-      "relation": "bar",
-      "source": "Don the Beachcomber",
-      "location": "Hollywood, CA"
+      "type": "youtube",
+      "videoId": "FZdv-PbFmxY",
+      "channel": "make-and-drink"
     }
   ]
 }
