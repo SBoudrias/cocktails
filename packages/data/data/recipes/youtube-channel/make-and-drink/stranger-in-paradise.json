@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Cool-Headed Monkey",
+  "name": "Stranger in Paradise",
   "preparation": "shaken",
   "served_on": "crushed ice",
-  "glassware": "old fashioned",
+  "glassware": "tiki",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -14,15 +14,23 @@
       }
     },
     {
-      "name": "watermelon syrup",
-      "type": "syrup",
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
       }
     },
     {
-      "name": "Grenadine",
+      "name": "Cinnamon syrup",
       "type": "syrup",
       "quantity": {
         "amount": 0.5,
@@ -33,53 +41,65 @@
       "name": "Lime juice",
       "type": "juice",
       "quantity": {
-        "amount": 1,
+        "amount": 0.75,
         "unit": "oz"
       }
     },
     {
-      "name": "Pineapple juice",
-      "type": "juice",
-      "quantity": {
-        "amount": 2,
-        "unit": "oz"
-      }
-    },
-    {
-      "name": "Van Der Hum Liqueur",
+      "name": "St-Elizabeth Allspice Dram",
       "type": "liqueur",
       "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila reposado",
+      "type": "category",
+      "quantity": {
         "amount": 1,
         "unit": "oz"
       }
     },
     {
-      "name": "Starr African Rum",
-      "type": "spirit",
+      "name": "Rhum agricole blanc",
+      "type": "category",
       "quantity": {
-        "amount": 1.5,
+        "amount": 1,
         "unit": "oz"
       }
     }
   ],
   "instructions": [
-    "Shake all ingredients with ice.",
-    "Strain into an old fashioned glass over crushed ice.",
+    "Whip shake all ingredients briefly with crushed ice.",
+    "Pour unstrained into a tiki mug and top with more crushed ice.",
     "Garnish with a pineapple slice and pineapple leaves."
   ],
   "attributions": [
     {
+      "relation": "recipe author",
+      "source": "Paul McGee"
+    },
+    {
       "relation": "bar",
-      "source": "Jock Lindsey's Hangar Bar",
-      "location": "Disney Springs, Walt Disney World"
+      "source": "Lost Lake",
+      "location": "Chicago"
     }
   ],
   "refs": [
     {
       "type": "youtube",
-      "videoId": "zlsUkL5YDto",
+      "videoId": "dKraVus1Lk0",
       "channel": "make-and-drink",
-      "start": 222
+      "start": 326
     }
   ]
 }

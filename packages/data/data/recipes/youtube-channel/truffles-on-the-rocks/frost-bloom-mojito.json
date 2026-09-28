@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frost Bloom Mojito",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Frost Bloom Mint & Lime Soda",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Prepare the Frost Bloom Mint & Lime Soda: freeze fresh mint overnight, crush it, and infuse it for 24 hours in cold acidulated lime water (lime zest with citric and malic acid), then strain, sweeten to about 17% sugar by weight, and carbonate.",
+    "Fill a large highball glass with ice.",
+    "Add the rum and top with the Frost Bloom Mint & Lime Soda.",
+    "Stir gently and garnish with a mint leaf."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Sway",
+      "location": "Sweden"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vOfNJrZ1_Ug",
+      "channel": "truffles-on-the-rocks"
+    }
+  ]
+}

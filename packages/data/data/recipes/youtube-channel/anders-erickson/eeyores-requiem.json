@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Eeyore's Requiem",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Fee Brothers Orange Bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cynar",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Fernet-Branca",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "The Botanist Islay Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Blanc Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all ingredients with ice.",
+    "Strain into an old fashioned glass over a large ice cube.",
+    "Express the oil from three swaths of orange over the drink and garnish with an orange swath."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Toby Maloney"
+    },
+    {
+      "relation": "bar",
+      "source": "The Violet Hour",
+      "location": "Chicago"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "V3QXPFYeoH0",
+      "channel": "anders-erickson",
+      "start": 529
+    }
+  ]
+}
