@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Rum Roasted Toasted Almond",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Coffee liqueur",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaretto",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Santa Teresa 1796 Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into an old fashioned glass over a large ice cube.",
+    "Garnish with grated nutmeg."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "dKraVus1Lk0",
+      "channel": "make-and-drink",
+      "start": 154
+    }
+  ]
+}

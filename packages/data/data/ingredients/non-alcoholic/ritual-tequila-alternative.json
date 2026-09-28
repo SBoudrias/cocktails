@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Ritual Tequila Alternative",
+  "type": "non-alcoholic"
+}
