@@ -40,11 +40,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchInput({
   value,
   onChangeAction,
+  onSubmitAction,
   placeholder = 'Search…',
   autoFocus = false,
 }: {
   value: string;
   onChangeAction: (value: string | null) => void;
+  onSubmitAction?: (value: string) => void;
   placeholder?: string;
   autoFocus?: boolean;
 }) {
@@ -66,6 +68,7 @@ export default function SearchInput({
           autoFocus={autoFocus}
           onKeyUp={(e) => {
             if (e.code === 'Enter') {
+              onSubmitAction?.(e.currentTarget.value);
               e.currentTarget.blur();
             }
           }}

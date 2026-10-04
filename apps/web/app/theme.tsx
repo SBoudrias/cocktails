@@ -126,6 +126,19 @@ const theme = createTheme({
         },
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        ':focus-visible': {
+          outline: '2px solid #8DD4ED',
+          outlineOffset: 2,
+        },
+        a: {
+          ':hover': {
+            textDecoration: 'underline',
+          },
+        },
+      },
+    },
     MuiListItemText: {
       styleOverrides: {
         root: {

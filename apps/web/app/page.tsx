@@ -73,7 +73,15 @@ export default async function HomePage() {
   return (
     <Suspense>
       <AppHeader title="Cocktail Index" />
-      <List sx={{ mt: 2 }}>
+      <List
+        sx={{
+          mt: 2,
+          display: { xs: 'block', md: 'grid' },
+          gridTemplateColumns: { md: '1fr 1fr' },
+          gap: { md: 2 },
+          alignItems: 'start',
+        }}
+      >
         <Paper square>
           <Link href={getRecipeListUrl()}>
             <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
