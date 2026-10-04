@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Smith",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Germain",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Mix scraped vanilla seeds or vanilla paste into coarse salt to taste.",
+    "Moisten the rim of an old fashioned glass with lime and coat it with the vanilla salt.",
+    "Shake all ingredients with ice and strain into the prepared glass over ice.",
+    "Garnish with a lime wedge.",
+    "This is a reconstruction of an unnamed drink tasted at The Smith in Manhattan around 2010, not the bar's confirmed original recipe."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "UGUlV64X_AA",
+      "channel": "make-and-drink",
+      "start": 289
+    }
+  ]
+}

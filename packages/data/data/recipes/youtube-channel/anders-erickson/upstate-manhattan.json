@@ -1,9 +1,9 @@
 {
   "$schema": "../../../../schemas/recipe.schema.json",
-  "name": "Apple Old Fashioned",
+  "name": "Upstate Manhattan",
   "preparation": "stirred",
-  "served_on": "big rock",
-  "glassware": "old fashioned",
+  "served_on": "up",
+  "glassware": "nick & nora",
   "ingredients": [
     {
       "name": "Angostura bitters",
@@ -14,7 +14,7 @@
       }
     },
     {
-      "name": "Fee Brothers Black Walnut Bitters",
+      "name": "Regan's Orange Bitters No. 6",
       "type": "bitter",
       "quantity": {
         "amount": 1,
@@ -25,12 +25,20 @@
       "name": "apple cider syrup",
       "type": "syrup",
       "quantity": {
-        "amount": 0.5,
+        "amount": 0.25,
         "unit": "oz"
       }
     },
     {
-      "name": "Woodford Reserve Double Oaked Bourbon",
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
       "type": "spirit",
       "quantity": {
         "amount": 2,
@@ -38,18 +46,22 @@
       }
     }
   ],
-  "instructions": ["Express orange oil over the drink", "Garnish with apple slices"],
-  "refs": [
+  "instructions": [
+    "Stir all ingredients with ice and strain into a chilled Nick & Nora glass.",
+    "Garnish with apple slices."
+  ],
+  "attributions": [
     {
-      "type": "youtube",
-      "videoId": "rWu7oPKxN4U",
-      "channel": "anders-erickson"
-    },
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
     {
       "type": "youtube",
       "videoId": "AJg4Lva1yK8",
       "channel": "anders-erickson",
-      "start": 325
+      "start": 472
     }
   ]
 }

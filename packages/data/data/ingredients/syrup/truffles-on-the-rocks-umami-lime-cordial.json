@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Truffles On The Rocks Umami Lime Cordial",
+  "type": "syrup",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "technique": {
+        "technique": "clarification"
+      },
+      "quantity": {
+        "amount": 500,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 367,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Rice vinegar",
+      "type": "other",
+      "quantity": {
+        "amount": 83,
+        "unit": "gram"
+      }
+    },
+    {
+      "name": "Soy sauce",
+      "type": "other",
+      "quantity": {
+        "amount": 50,
+        "unit": "drop"
+      }
+    }
+  ],
+  "instructions": ["Mix all ingredients together."],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "xW80uP5R3W0",
+      "channel": "truffles-on-the-rocks"
+    }
+  ]
+}
