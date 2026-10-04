@@ -1,9 +1,11 @@
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, Paper, Stack } from '@mui/material';
 import type { ListItemTextProps } from '@mui/material/ListItemText';
+import type { ListSubheaderProps } from '@mui/material/ListSubheader';
+import slugify from '@sindresorhus/slugify';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useCallback, useId, useMemo } from 'react';
 import StickyGroupHeader from '#/components/StickyGroupHeader';
 import type { ListConfig } from '#/modules/lists/type';
 
@@ -45,6 +47,8 @@ export function LinkList<const T>({
   config,
   header = '',
   footer,
+  onHeaderMount,
+  headerSx,
 }: {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
@@ -52,6 +56,8 @@ export function LinkList<const T>({
   header?: string;
   /** Rendered after the last group's items, inside its paper. */
   footer?: React.ReactNode;
+  onHeaderMount?: (header: string, node: HTMLElement) => void;
+  headerSx?: ListSubheaderProps['sx'];
 }) {
   const groups = useMemo(() => {
     const {
@@ -74,29 +80,43 @@ export function LinkList<const T>({
     );
   }, [items, config, header]);
 
+  // Stable across re-renders while onHeaderMount is stable: avoids ref
+  // detach/reattach churn. Unmounts can't identify their header from a null
+  // node, so the consumer prunes stale entries when the group set changes
+  const headerRef = useCallback(
+    (node: HTMLElement | null) => {
+      if (node) onHeaderMount?.(node.dataset.header ?? '', node);
+    },
+    [onHeaderMount],
+  );
+
+  const headerIdPrefix = `group-header-${useId().replace(/[^a-zA-Z0-9-]/g, '')}-`;
+
   return (
     <List>
-      {groups.map(([header, groupItems], groupIndex) => {
-        // Spaces would split aria-labelledby into dead id references, so the
-        // header's id keeps them out.
-        const headerId = `group-header-${header.replace(/\s+/g, '-')}`;
-
-        return (
-          <li key={header}>
-            <List role="group" aria-labelledby={header ? headerId : undefined}>
-              {header && (
-                <StickyGroupHeader id={headerId} sx={{ scrollMarginTop: 64 }}>
-                  {header}
-                </StickyGroupHeader>
-              )}
-              <Paper square>
-                {groupItems.map((item) => renderItem(item))}
-                {footer && groupIndex === groups.length - 1 && footer}
-              </Paper>
-            </List>
-          </li>
-        );
-      })}
+      {groups.map(([header, groupItems], groupIndex) => (
+        <li key={header}>
+          <List
+            role="group"
+            aria-labelledby={header ? `${headerIdPrefix}${slugify(header)}` : undefined}
+          >
+            {header && (
+              <StickyGroupHeader
+                ref={headerRef}
+                data-header={header}
+                id={`${headerIdPrefix}${slugify(header)}`}
+                sx={headerSx}
+              >
+                {header}
+              </StickyGroupHeader>
+            )}
+            <Paper square>
+              {groupItems.map((item) => renderItem(item))}
+              {footer && groupIndex === groups.length - 1 && footer}
+            </Paper>
+          </List>
+        </li>
+      ))}
     </List>
   );
 }
