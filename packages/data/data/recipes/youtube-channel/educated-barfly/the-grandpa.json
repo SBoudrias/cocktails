@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Grandpa",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Laird's Bonded Apple Brandy",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Use honey syrup made with 3 parts honey to 1 part water by weight.",
+    "Shake all ingredients with ice and strain into an old fashioned glass over ice cubes.",
+    "Optionally garnish with a lime twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Ridgely Hunt"
+    },
+    {
+      "relation": "recipe author",
+      "source": "George Chappell"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "oclJA6ffXhs",
+      "channel": "educated-barfly",
+      "start": 286
+    }
+  ]
+}

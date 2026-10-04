@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Breakfast Bell",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "sriracha sauce",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Heavy whipping cream",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Seltzer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Use dark, robust maple syrup and add sriracha to taste.",
+    "Froth all ingredients except seltzer with a milk frother, or dry shake, then shake with ice to build a creamy head.",
+    "Strain into a chilled collins glass without ice and refrigerate briefly to set the foam.",
+    "Poke a hole in the center of the foam and slowly top with seltzer.",
+    "Optionally serve the reserved egg yolk in a separate shot glass with a pinch of sea salt and a dab of sriracha as a prairie oyster."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Sother Teague"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "5LqUUKc4iDs",
+      "channel": "educated-barfly"
+    }
+  ]
+}

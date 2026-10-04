@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Spicy Umami Gimlet",
+  "preparation": "other",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Truffles On The Rocks Umami Lime Cordial",
+      "type": "syrup",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Empress 1908 Cucumber Lemon Gin",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "sesame oil",
+        "fat_quantity": {
+          "amount": 5,
+          "unit": "ml"
+        },
+        "spirit_quantity": {
+          "amount": 500,
+          "unit": "ml"
+        }
+      },
+      "quantity": {
+        "amount": 2.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "For the sesame-washed gin, combine 500 ml Empress 1908 Cucumber Lemon Gin with 5 ml sesame oil and let infuse. Once the oil separates, freeze until solid, then strain through a fine mesh strainer.",
+    "For the chili oil garnish, pour 150 ml hot neutral oil over 2 tablespoons chili flakes and let infuse until back to room temperature.",
+    "Add the gin and cordial to a shaker with ice and roll until thoroughly chilled.",
+    "Strain into a coupe and finish with a generous drizzle of chili oil."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "xW80uP5R3W0",
+      "channel": "truffles-on-the-rocks"
+    }
+  ]
+}
