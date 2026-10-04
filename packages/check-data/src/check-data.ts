@@ -21,6 +21,7 @@ import { findRedundantCategoryPairs } from './category-similarity.ts';
 import { logger } from './cli-util.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
 import { findSimilarIngredientPairs } from './ingredient-similarity.ts';
+import { findInlineObjects } from './json-style.ts';
 import {
   getMilkClarificationIngredientSlugs,
   validateMilkClarification,
@@ -266,12 +267,38 @@ const referencedIngredientSlugs = new Set<string>();
 logger.header('🔍 Validating data files...');
 const dataGlob = path.join(PACKAGE_ROOT, 'data/**/*.json');
 for await (const sourceFile of fs.glob(dataGlob)) {
+  let fileContent: string;
+  try {
+    fileContent = await fs.readFile(sourceFile, 'utf-8');
+  } catch (error) {
+    fail(`Could not read ${sourceFile} ${(error as Error).message}`);
+    continue;
+  }
+
   let data: DataWithSchema;
   try {
-    data = JSON.parse(await fs.readFile(sourceFile, 'utf-8'));
+    data = JSON.parse(fileContent);
   } catch (error) {
     fail(`Invalid JSON in ${sourceFile} ${(error as Error).message}`);
     continue;
+  }
+
+  // `oxfmt` preserves author line breaks, so inline objects like
+  // `"quantity": { "amount": 0.5, "unit": "oz" }` pass format checks even
+  // though the repo convention is the expanded shape. Auto-expand the file,
+  // and still fail so the convention is enforced (commit the fixed file).
+  const inlineObjects = findInlineObjects(fileContent);
+  if (inlineObjects.length > 0) {
+    const first = inlineObjects[0]!;
+    logger.change(
+      `Expanding ${inlineObjects.length} inline object(s) in ${path.basename(sourceFile)} to the multi-line convention`,
+    );
+    await writeJSON(sourceFile, data);
+    fail(
+      `Inline object in ${path.basename(sourceFile)} (line ${first.lineNumber}): ${first.line} — ` +
+        `objects must be expanded over multiple lines with one member per line. ` +
+        `The file was auto-expanded; commit the updated file.`,
+    );
   }
 
   if (!data.$schema) {
