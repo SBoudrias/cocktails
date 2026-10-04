@@ -323,6 +323,47 @@ describe('SourcePage - Book sources', () => {
       );
     });
 
+    it('shows a numeric chapter index bar in chapter mode', async () => {
+      setupApp(
+        await SourcePage({
+          params: Promise.resolve({
+            type: TEST_BOOK_WITH_CHAPTERS.type,
+            name: TEST_BOOK_WITH_CHAPTERS.slug,
+          }),
+        }),
+      );
+
+      // The bar shows chapter order numbers, not letters
+      const nav = screen.getByRole('navigation', { name: /chapter index/i });
+      expect(nav).toHaveTextContent('01');
+      expect(nav).toHaveTextContent('02');
+      expect(nav.textContent).not.toMatch(/[A-Z]/);
+    });
+
+    it('switches the index bar domain when toggling grouping mode', async () => {
+      const { user } = setupApp(
+        await SourcePage({
+          params: Promise.resolve({
+            type: TEST_BOOK_WITH_CHAPTERS.type,
+            name: TEST_BOOK_WITH_CHAPTERS.slug,
+          }),
+        }),
+      );
+
+      // Chapter mode first: numbers, chapter names as labels
+      expect(
+        screen.getByRole('button', { name: 'Jump to The Birth of Tiki' }),
+      ).toBeInTheDocument();
+
+      await user.click(screen.getByRole('button', { name: /a-z/i }));
+
+      // Alphabetical mode: letters with the alphabet domain
+      const letterNav = screen.getByRole('navigation', { name: /alphabet index/i });
+      expect(letterNav).toHaveTextContent('A');
+      expect(letterNav).toHaveTextContent('Z');
+      expect(screen.getByRole('button', { name: 'Jump to A' })).toBeInTheDocument();
+    });
+
     it('hides grouping toggle when searching', async () => {
       const { user } = setupApp(
         await SourcePage({

@@ -93,9 +93,16 @@ export default function BookSourceClient({
   return (
     <>
       <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-      <SourceAboutCard source={source} sx={{ m: 2 }} />
+      <SourceAboutCard
+        source={source}
+        // Reserve room for the floating index bar on narrow viewports
+        sx={{ m: 2, '@media (max-width: 680px)': { mr: 5 } }}
+      />
       {hasChapters && (
-        <Stack direction="row-reverse" sx={{ mx: 2 }}>
+        <Stack
+          direction="row-reverse"
+          sx={{ mx: 2, '@media (max-width: 680px)': { mr: 5 } }}
+        >
           <GroupModeToggle value={groupMode} onChange={setGroupMode} />
         </Stack>
       )}
