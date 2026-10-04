@@ -40,7 +40,10 @@
     {
       "name": "Elijah Craig bourbon",
       "type": "spirit",
-      "technique": { "technique": "infusion", "agent": "elote" },
+      "technique": {
+        "technique": "infusion",
+        "agent": "elote"
+      },
       "quantity": {
         "amount": 2,
         "unit": "oz"

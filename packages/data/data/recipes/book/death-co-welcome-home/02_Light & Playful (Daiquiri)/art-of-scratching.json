@@ -8,42 +8,66 @@
     {
       "name": "Angostura bitters",
       "type": "bitter",
-      "quantity": { "amount": 2, "unit": "dash" }
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
     },
     {
       "name": "Lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.25, "unit": "oz" }
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
     },
     {
       "name": "Lemon juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Strawberry Basil Syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Marie Brizard White Crème de Cacao",
       "type": "liqueur",
-      "quantity": { "amount": 1, "unit": "tsp" }
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
     },
     {
       "name": "Clément Créole Shrubb",
       "type": "liqueur",
-      "quantity": { "amount": 1, "unit": "tsp" }
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
     },
     {
       "name": "Wray & Nephew white overproof",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Pierre Ferrand 1840 Cognac",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
   "instructions": ["Express a lemon twist over the drink and discard."],

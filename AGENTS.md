@@ -225,6 +225,7 @@ import { getAllSources, getSource } from '@cocktails/data/sources';
 - Path: `packages/data/data/recipes/[type]/[source]/[slug].json`
 - Must include `$schema` reference
 - Use URL-safe slugs for filenames
+- Objects like `quantity` are expanded over multiple lines with one member per line (`"quantity": {` / `"amount": 0.5,` / `"unit": "oz"` / `}`), never inline on one line — `yarn check-data` auto-expands and enforces this.
 
 ### YouTube Video Refs
 

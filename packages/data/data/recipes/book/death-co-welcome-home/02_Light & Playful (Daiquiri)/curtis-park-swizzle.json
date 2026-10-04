@@ -8,27 +8,42 @@
     {
       "name": "Absinthe",
       "type": "category",
-      "quantity": { "amount": 2, "unit": "dash" }
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
     },
     {
       "name": "Lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Ginger syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Lustau Amontillado Los Arcos Sherry",
       "type": "wine",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     },
     {
       "name": "Singani 63",
       "type": "spirit",
-      "quantity": { "amount": 1, "unit": "oz" }
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
     }
   ],
   "instructions": [
