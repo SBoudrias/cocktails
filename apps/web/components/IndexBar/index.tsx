@@ -2,7 +2,7 @@
 
 import { Box, Typography } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const ALPHABET = [
   '#',
@@ -104,6 +104,41 @@ export default function IndexBar({
   const [pointerY, setPointerY] = useState<number | null>(null);
   // Suppresses the synthetic click that follows a pointer activation
   const pointerActivatedRef = useRef(false);
+
+  const clearDrag = useCallback(() => {
+    setDragIndex(null);
+    setPointerY(null);
+  }, []);
+
+  // Safety net for pointerups the container never sees: a context menu
+  // (right-click), alt-tab, or an element removed mid-drag can swallow the
+  // trailing pointerup or implicitly drop the capture, leaving the bubble
+  // stuck on screen. Window listeners while dragging cover all of those and
+  // are idempotent with the React handlers (re-clearing cleared state is a
+  // no-op).
+  const isDragging = dragIndex != null;
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const end = () => {
+      // Let the trailing synthetic click (if any) pass before re-arming
+      window.setTimeout(() => {
+        pointerActivatedRef.current = false;
+      });
+      clearDrag();
+    };
+
+    window.addEventListener('pointerup', end);
+    window.addEventListener('pointercancel', end);
+    window.addEventListener('contextmenu', end);
+    window.addEventListener('blur', end);
+    return () => {
+      window.removeEventListener('pointerup', end);
+      window.removeEventListener('pointercancel', end);
+      window.removeEventListener('contextmenu', end);
+      window.removeEventListener('blur', end);
+    };
+  }, [isDragging, clearDrag]);
 
   const findIndexAtPoint = useCallback(
     (clientX: number, clientY: number): string | null => {
