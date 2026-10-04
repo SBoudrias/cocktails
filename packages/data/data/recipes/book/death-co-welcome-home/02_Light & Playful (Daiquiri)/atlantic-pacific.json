@@ -8,28 +8,46 @@
     {
       "name": "Cane syrup",
       "type": "syrup",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Lime juice",
       "type": "juice",
-      "quantity": { "amount": 0.75, "unit": "oz" }
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
     },
     {
       "name": "Umenoyado Yuzu Shu",
       "type": "liqueur",
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "La Favorite Rhum Agricole Blanc",
       "type": "spirit",
-      "technique": { "technique": "infusion", "agent": "nori" },
-      "quantity": { "amount": 0.5, "unit": "oz" }
+      "technique": {
+        "technique": "infusion",
+        "agent": "nori"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
     },
     {
       "name": "Diplomatico Planas",
       "type": "spirit",
-      "quantity": { "amount": 1.5, "unit": "oz" }
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
     }
   ],
   "attributions": [

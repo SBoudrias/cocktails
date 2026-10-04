@@ -32,7 +32,10 @@
     {
       "name": "Yaguara Cachaça Ouro",
       "type": "spirit",
-      "technique": { "technique": "infusion", "agent": "eucalyptus" },
+      "technique": {
+        "technique": "infusion",
+        "agent": "eucalyptus"
+      },
       "quantity": {
         "amount": 0.5,
         "unit": "oz"
