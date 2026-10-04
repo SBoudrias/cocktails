@@ -105,12 +105,14 @@ export default function IndexBar({
   // Suppresses the synthetic click that follows a pointer activation
   const pointerActivatedRef = useRef(false);
 
-  // Letter-row geometry captured at pointerdown, used by the geometric
-  // fallback while dragging (see findIndexAtY)
-  const dragGeometryRef = useRef<{
+  // Drag anchor captured at pointerdown: which letter row the finger started
+  // on, at what Y, and the row height. Moves are mapped as deltas from this
+  // anchor, so toolbar collapse/expand and scroll jumps mid-drag (which
+  // reposition the fixed bar) can't skew the letter mapping.
+  const dragAnchorRef = useRef<{
     letters: HTMLElement[];
-    top: number;
-    bottom: number;
+    y: number;
+    position: number;
     rowHeight: number;
   } | null>(null);
 
@@ -153,32 +155,6 @@ export default function IndexBar({
     (clientX: number, clientY: number): string | null => {
       const element = document.elementFromPoint(clientX, clientY);
       return element?.closest('[data-index]')?.getAttribute('data-index') ?? null;
-    },
-    [],
-  );
-
-  // While dragging, the finger often leaves the bar (the bar is narrow and
-  // elementFromPoint only hits it near the right edge). Map the pointer's Y
-  // onto the bar's letter rows geometrically so the selection keeps following
-  // the finger anywhere on screen until the pointer is released.
-  //
-  // Geometry is captured once at pointerdown instead of read per-move: the
-  // toolbar collapse/expand and scroll jumps during a drag animate the fixed
-  // bar's rects, and per-move reads of a moving layout produce jittery,
-  // seemingly random selections.
-  const findIndexAtY = useCallback(
-    (
-      letters: HTMLElement[],
-      rect: { top: number; bottom: number; rowHeight: number },
-      clientY: number,
-    ): string | null => {
-      if (letters.length === 0) return null;
-
-      // Above/below the bar: clamp to the first/last letter so dragging past
-      // the ends keeps working instead of dropping the selection
-      const clamped = Math.min(Math.max(clientY, rect.top), rect.bottom - 1);
-      const position = Math.floor((clamped - rect.top) / rect.rowHeight);
-      return letters[position]?.getAttribute('data-index') ?? null;
     },
     [],
   );
@@ -234,25 +210,33 @@ export default function IndexBar({
       setPointerY(e.clientY);
       pointerActivatedRef.current = true;
 
-      // Snapshot the letter rows once; per-move rect reads during a drag
-      // (toolbar collapse, scroll jumps) animate and produce jitter
+      // Anchor the drag: which letter row the finger is on at which Y. Moves
+      // map as deltas from this anchor, so toolbar collapse/expand and scroll
+      // jumps mid-drag (which reposition the fixed bar) can't skew the mapping
       const letters = Array.from(
         e.currentTarget.querySelectorAll<HTMLElement>('[data-index]'),
       );
       const first = letters[0]?.getBoundingClientRect();
       const last = letters[letters.length - 1]?.getBoundingClientRect();
-      if (letters.length > 0 && first && last) {
-        dragGeometryRef.current = {
-          letters,
-          top: first.top,
-          bottom: last.bottom,
-          rowHeight: first.height,
-        };
+      const rowHeight = first?.height ?? 0;
+      const hitIndex = findIndexAtPoint(e.clientX, e.clientY);
+      if (letters.length > 0 && first && last && rowHeight > 0) {
+        const hitRect = document
+          .elementFromPoint(e.clientX, e.clientY)
+          ?.closest('[data-index]')
+          ?.getBoundingClientRect();
+        const position = hitRect
+          ? Math.floor((hitRect.top + hitRect.height / 2 - first.top) / rowHeight)
+          : Math.floor(
+              (Math.min(Math.max(e.clientY, first.top), last.bottom - 1) - first.top) /
+                rowHeight,
+            );
+        dragAnchorRef.current = { letters, y: e.clientY, position, rowHeight };
       } else {
-        dragGeometryRef.current = null;
+        dragAnchorRef.current = null;
       }
 
-      activateIndex(findIndexAtPoint(e.clientX, e.clientY));
+      activateIndex(hitIndex);
     },
     [findIndexAtPoint, activateIndex],
   );
@@ -261,21 +245,25 @@ export default function IndexBar({
     (e: React.PointerEvent<HTMLElement>) => {
       if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
       setPointerY(e.clientY);
+
       // The finger usually slides off the narrow bar mid-drag; elementFromPoint
-      // only hits while over the bar, so fall back to the geometry captured at
-      // pointerdown to keep following the finger until the pointer ends
-      activateIndex(
-        findIndexAtPoint(e.clientX, e.clientY) ??
-          (dragGeometryRef.current
-            ? findIndexAtY(
-                dragGeometryRef.current.letters,
-                dragGeometryRef.current,
-                e.clientY,
-              )
-            : null),
-      );
+      // only hits while over the bar. Off the bar, map the finger's travel as
+      // row deltas from the pointerdown anchor: stable even when the bar moves
+      // under us (toolbar collapse, scroll jumps).
+      const anchor = dragAnchorRef.current;
+      const hit = findIndexAtPoint(e.clientX, e.clientY);
+      if (hit) {
+        activateIndex(hit);
+      } else if (anchor) {
+        const deltaRows = Math.round((e.clientY - anchor.y) / anchor.rowHeight);
+        const position = Math.min(
+          Math.max(anchor.position + deltaRows, 0),
+          anchor.letters.length - 1,
+        );
+        activateIndex(anchor.letters[position]?.getAttribute('data-index') ?? null);
+      }
     },
-    [findIndexAtPoint, findIndexAtY, activateIndex],
+    [findIndexAtPoint, activateIndex],
   );
 
   const endDrag = useCallback((e: React.PointerEvent<HTMLElement>) => {
