@@ -105,6 +105,15 @@ export default function IndexBar({
   // Suppresses the synthetic click that follows a pointer activation
   const pointerActivatedRef = useRef(false);
 
+  // Letter-row geometry captured at pointerdown, used by the geometric
+  // fallback while dragging (see findIndexAtY)
+  const dragGeometryRef = useRef<{
+    letters: HTMLElement[];
+    top: number;
+    bottom: number;
+    rowHeight: number;
+  } | null>(null);
+
   const clearDrag = useCallback(() => {
     setDragIndex(null);
     setPointerY(null);
@@ -152,23 +161,23 @@ export default function IndexBar({
   // elementFromPoint only hits it near the right edge). Map the pointer's Y
   // onto the bar's letter rows geometrically so the selection keeps following
   // the finger anywhere on screen until the pointer is released.
+  //
+  // Geometry is captured once at pointerdown instead of read per-move: the
+  // toolbar collapse/expand and scroll jumps during a drag animate the fixed
+  // bar's rects, and per-move reads of a moving layout produce jittery,
+  // seemingly random selections.
   const findIndexAtY = useCallback(
-    (container: HTMLElement, clientY: number): string | null => {
-      const letters = Array.from(container.querySelectorAll<HTMLElement>('[data-index]'));
+    (
+      letters: HTMLElement[],
+      rect: { top: number; bottom: number; rowHeight: number },
+      clientY: number,
+    ): string | null => {
       if (letters.length === 0) return null;
-
-      const first = letters[0]?.getBoundingClientRect();
-      const last = letters[letters.length - 1]?.getBoundingClientRect();
-      if (!first || !last) return null;
-
-      const rowTop = first.top;
-      const rowBottom = last.bottom;
-      const rowHeight = first.height;
 
       // Above/below the bar: clamp to the first/last letter so dragging past
       // the ends keeps working instead of dropping the selection
-      const clamped = Math.min(Math.max(clientY, rowTop), rowBottom - 1);
-      const position = Math.floor((clamped - rowTop) / rowHeight);
+      const clamped = Math.min(Math.max(clientY, rect.top), rect.bottom - 1);
+      const position = Math.floor((clamped - rect.top) / rect.rowHeight);
       return letters[position]?.getAttribute('data-index') ?? null;
     },
     [],
@@ -224,6 +233,25 @@ export default function IndexBar({
       e.currentTarget.setPointerCapture(e.pointerId);
       setPointerY(e.clientY);
       pointerActivatedRef.current = true;
+
+      // Snapshot the letter rows once; per-move rect reads during a drag
+      // (toolbar collapse, scroll jumps) animate and produce jitter
+      const letters = Array.from(
+        e.currentTarget.querySelectorAll<HTMLElement>('[data-index]'),
+      );
+      const first = letters[0]?.getBoundingClientRect();
+      const last = letters[letters.length - 1]?.getBoundingClientRect();
+      if (letters.length > 0 && first && last) {
+        dragGeometryRef.current = {
+          letters,
+          top: first.top,
+          bottom: last.bottom,
+          rowHeight: first.height,
+        };
+      } else {
+        dragGeometryRef.current = null;
+      }
+
       activateIndex(findIndexAtPoint(e.clientX, e.clientY));
     },
     [findIndexAtPoint, activateIndex],
@@ -234,11 +262,17 @@ export default function IndexBar({
       if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
       setPointerY(e.clientY);
       // The finger usually slides off the narrow bar mid-drag; elementFromPoint
-      // only hits while over the bar, so fall back to mapping the pointer's Y
-      // onto the bar's letter rows geometrically to keep following the finger
+      // only hits while over the bar, so fall back to the geometry captured at
+      // pointerdown to keep following the finger until the pointer ends
       activateIndex(
         findIndexAtPoint(e.clientX, e.clientY) ??
-          findIndexAtY(e.currentTarget, e.clientY),
+          (dragGeometryRef.current
+            ? findIndexAtY(
+                dragGeometryRef.current.letters,
+                dragGeometryRef.current,
+                e.clientY,
+              )
+            : null),
       );
     },
     [findIndexAtPoint, findIndexAtY, activateIndex],
