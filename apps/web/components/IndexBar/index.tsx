@@ -14,21 +14,21 @@ const Container = styled('nav')(({ theme }) => {
 
   return {
     position: 'fixed',
-    // Translucent theme-aware background: rows, buttons and badges behind the
-    // bar stay visible on narrow screens
-    backgroundColor: alpha(theme.palette.background.paper, 0.8),
+    // Muted overlay: the list stays readable through the bar, no border or
+    // frame — the letters themselves carry the affordance
+    backgroundColor: alpha(theme.palette.background.paper, 0.55),
     color: theme.palette.text.primary,
     // Above page content (rows, toggle) but below the app bar
     zIndex: theme.zIndex.appBar + 1,
-    backdropFilter: 'blur(4px)',
-    border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
+    backdropFilter: 'blur(6px)',
     right: 0,
-    top: '50%',
+    // Center on the content area (viewport minus the fixed toolbar), not the
+    // full viewport, so the bar reads as centered next to the list on mobile
+    top: `calc(50% + ${toolbarMinHeight / 2}px)`,
     transform: 'translateY(-50%)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    borderRadius: `${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
     padding: theme.spacing(0.5, 0.375),
     maxHeight: `calc(100vh - ${toolbarMinHeight * 2}px)`,
     overflowY: 'auto',
@@ -148,6 +148,32 @@ export default function IndexBar({
     [],
   );
 
+  // While dragging, the finger often leaves the bar (the bar is narrow and
+  // elementFromPoint only hits it near the right edge). Map the pointer's Y
+  // onto the bar's letter rows geometrically so the selection keeps following
+  // the finger anywhere on screen until the pointer is released.
+  const findIndexAtY = useCallback(
+    (container: HTMLElement, clientY: number): string | null => {
+      const letters = Array.from(container.querySelectorAll<HTMLElement>('[data-index]'));
+      if (letters.length === 0) return null;
+
+      const first = letters[0]?.getBoundingClientRect();
+      const last = letters[letters.length - 1]?.getBoundingClientRect();
+      if (!first || !last) return null;
+
+      const rowTop = first.top;
+      const rowBottom = last.bottom;
+      const rowHeight = first.height;
+
+      // Above/below the bar: clamp to the first/last letter so dragging past
+      // the ends keeps working instead of dropping the selection
+      const clamped = Math.min(Math.max(clientY, rowTop), rowBottom - 1);
+      const position = Math.floor((clamped - rowTop) / rowHeight);
+      return letters[position]?.getAttribute('data-index') ?? null;
+    },
+    [],
+  );
+
   const findNearestAvailableIndex = useCallback(
     (index: string): string | null => {
       if (availableIndexes.has(index)) {
@@ -207,9 +233,15 @@ export default function IndexBar({
     (e: React.PointerEvent<HTMLElement>) => {
       if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
       setPointerY(e.clientY);
-      activateIndex(findIndexAtPoint(e.clientX, e.clientY));
+      // The finger usually slides off the narrow bar mid-drag; elementFromPoint
+      // only hits while over the bar, so fall back to mapping the pointer's Y
+      // onto the bar's letter rows geometrically to keep following the finger
+      activateIndex(
+        findIndexAtPoint(e.clientX, e.clientY) ??
+          findIndexAtY(e.currentTarget, e.clientY),
+      );
     },
-    [findIndexAtPoint, activateIndex],
+    [findIndexAtPoint, findIndexAtY, activateIndex],
   );
 
   const endDrag = useCallback((e: React.PointerEvent<HTMLElement>) => {
