@@ -1,16 +1,10 @@
 'use client';
 
-import { Box, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ListConfig } from '#/modules/lists/type';
 import IndexBar from '../IndexBar';
 import { LinkList } from '../LinkList';
-
-// Viewports below this have no margin between the centered content column
-// and the fixed bar, so pages hosting the bar reserve room for it
-export const INDEX_BAR_COMPACT_QUERY = '(max-width: 680px)';
-const INDEX_BAR_INSET = 5;
 
 export default function IndexedList<const T>({
   items,
@@ -22,8 +16,6 @@ export default function IndexedList<const T>({
   config: ListConfig<T>;
 }) {
   const theme = useTheme();
-  const isCompact = useMediaQuery(INDEX_BAR_COMPACT_QUERY);
-
   const [activeIndex, setActiveIndex] = useState<string | undefined>(undefined);
 
   // Registry of mounted group-header elements, keyed by their header string.
@@ -153,15 +145,13 @@ export default function IndexedList<const T>({
 
   return (
     <>
-      <Box sx={isCompact ? { pr: INDEX_BAR_INSET } : undefined}>
-        <LinkList
-          items={items}
-          renderItem={renderItem}
-          config={config}
-          onHeaderMount={handleHeaderMount}
-          headerSx={headerSx}
-        />
-      </Box>
+      <LinkList
+        items={items}
+        renderItem={renderItem}
+        config={config}
+        onHeaderMount={handleHeaderMount}
+        headerSx={headerSx}
+      />
       <IndexBar
         indexes={indexes}
         activeIndex={activeIndex}
