@@ -14,13 +14,14 @@ const Container = styled('nav')(({ theme }) => {
 
   return {
     position: 'fixed',
-    // Muted overlay: the list stays readable through the bar, no border or
-    // frame — the letters themselves carry the affordance
-    backgroundColor: alpha(theme.palette.background.paper, 0.35),
+    // Muted overlay, but distinct: a dark glass reads as its own layer
+    // against both the page background and the lighter list cards, unlike
+    // paper-tinted translucency which blends into the rows
+    backgroundColor: alpha(theme.palette.common.black, 0.4),
     color: theme.palette.text.primary,
     // Above page content (rows, toggle) but below the app bar
     zIndex: theme.zIndex.appBar + 1,
-    backdropFilter: 'blur(4px)',
+    backdropFilter: 'blur(6px)',
     right: 0,
     // Center on the content area (viewport minus the fixed toolbar), not the
     // full viewport, so the bar reads as centered next to the list on mobile
