@@ -16,11 +16,11 @@ const Container = styled('nav')(({ theme }) => {
     position: 'fixed',
     // Muted overlay: the list stays readable through the bar, no border or
     // frame — the letters themselves carry the affordance
-    backgroundColor: alpha(theme.palette.background.paper, 0.55),
+    backgroundColor: alpha(theme.palette.background.paper, 0.35),
     color: theme.palette.text.primary,
     // Above page content (rows, toggle) but below the app bar
     zIndex: theme.zIndex.appBar + 1,
-    backdropFilter: 'blur(6px)',
+    backdropFilter: 'blur(4px)',
     right: 0,
     // Center on the content area (viewport minus the fixed toolbar), not the
     // full viewport, so the bar reads as centered next to the list on mobile
@@ -29,7 +29,7 @@ const Container = styled('nav')(({ theme }) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: theme.spacing(0.5, 0.375),
+    padding: theme.spacing(0.25, 0.25),
     maxHeight: `calc(100vh - ${toolbarMinHeight * 2}px)`,
     overflowY: 'auto',
     touchAction: 'none',
@@ -45,10 +45,10 @@ const Letter = styled('button')<{ $active?: boolean; $hasContent?: boolean }>(
   ({ theme, $active, $hasContent }) => ({
     background: 'none',
     border: 'none',
-    padding: theme.spacing(0.25, 0.75),
+    padding: theme.spacing(0.125, 0.5),
     margin: 0,
     fontFamily: 'inherit',
-    fontSize: '0.65rem',
+    fontSize: '0.6rem',
     fontWeight: $active ? 700 : 500,
     color: $hasContent
       ? $active
@@ -56,18 +56,18 @@ const Letter = styled('button')<{ $active?: boolean; $hasContent?: boolean }>(
         : theme.palette.text.primary
       : alpha(theme.palette.text.primary, 0.35),
     cursor: $hasContent ? 'pointer' : 'default',
-    lineHeight: 1.4,
-    // 28px column: the 44px guideline is for primary controls; a secondary
-    // navigation rail trades down for vertical density
-    minWidth: 28,
+    lineHeight: 1.3,
+    // Compact column: the bar overlays list rows (chevrons sit in MUI's
+    // 56px secondaryAction zone), so the rail stays as narrow as readable
+    minWidth: 22,
     touchAction: 'none',
     '&:focus-visible': {
       outline: `2px solid ${theme.palette.primary.light}`,
       borderRadius: theme.shape.borderRadius,
     },
     [theme.breakpoints.down('sm')]: {
-      minWidth: 24,
-      fontSize: '0.6rem',
+      minWidth: 20,
+      fontSize: '0.55rem',
     },
   }),
 );
@@ -84,6 +84,27 @@ const Indicator = styled(Box)(({ theme }) => ({
   pointerEvents: 'none',
   zIndex: theme.zIndex.tooltip + 1,
 }));
+
+// While dragging: a full-height, invisible hit column mirroring the bar's
+// letters. Real DOM targets for elementFromPoint — no geometry math that can
+// drift when the toolbar or scroll repositions things mid-drag. The pointer
+// is captured by the bar while dragging, so these cells receive no events
+// themselves; they only serve hit-testing.
+const HitStrip = styled('div')(({ theme }) => ({
+  position: 'fixed',
+  top: 0,
+  bottom: 0,
+  right: 0,
+  width: '100vw',
+  display: 'flex',
+  flexDirection: 'column',
+  // Above the list content, below the bar itself
+  zIndex: theme.zIndex.appBar,
+}));
+
+const HitCell = styled('div')({
+  flex: 1,
+});
 
 export default function IndexBar({
   indexes = ALPHABET,
@@ -104,17 +125,6 @@ export default function IndexBar({
   const [pointerY, setPointerY] = useState<number | null>(null);
   // Suppresses the synthetic click that follows a pointer activation
   const pointerActivatedRef = useRef(false);
-
-  // Drag anchor captured at pointerdown: which letter row the finger started
-  // on, at what Y, and the row height. Moves are mapped as deltas from this
-  // anchor, so toolbar collapse/expand and scroll jumps mid-drag (which
-  // reposition the fixed bar) can't skew the letter mapping.
-  const dragAnchorRef = useRef<{
-    letters: HTMLElement[];
-    y: number;
-    position: number;
-    rowHeight: number;
-  } | null>(null);
 
   const clearDrag = useCallback(() => {
     setDragIndex(null);
@@ -209,34 +219,7 @@ export default function IndexBar({
       e.currentTarget.setPointerCapture(e.pointerId);
       setPointerY(e.clientY);
       pointerActivatedRef.current = true;
-
-      // Anchor the drag: which letter row the finger is on at which Y. Moves
-      // map as deltas from this anchor, so toolbar collapse/expand and scroll
-      // jumps mid-drag (which reposition the fixed bar) can't skew the mapping
-      const letters = Array.from(
-        e.currentTarget.querySelectorAll<HTMLElement>('[data-index]'),
-      );
-      const first = letters[0]?.getBoundingClientRect();
-      const last = letters[letters.length - 1]?.getBoundingClientRect();
-      const rowHeight = first?.height ?? 0;
-      const hitIndex = findIndexAtPoint(e.clientX, e.clientY);
-      if (letters.length > 0 && first && last && rowHeight > 0) {
-        const hitRect = document
-          .elementFromPoint(e.clientX, e.clientY)
-          ?.closest('[data-index]')
-          ?.getBoundingClientRect();
-        const position = hitRect
-          ? Math.floor((hitRect.top + hitRect.height / 2 - first.top) / rowHeight)
-          : Math.floor(
-              (Math.min(Math.max(e.clientY, first.top), last.bottom - 1) - first.top) /
-                rowHeight,
-            );
-        dragAnchorRef.current = { letters, y: e.clientY, position, rowHeight };
-      } else {
-        dragAnchorRef.current = null;
-      }
-
-      activateIndex(hitIndex);
+      activateIndex(findIndexAtPoint(e.clientX, e.clientY));
     },
     [findIndexAtPoint, activateIndex],
   );
@@ -244,23 +227,15 @@ export default function IndexBar({
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLElement>) => {
       if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
-      setPointerY(e.clientY);
-
-      // The finger usually slides off the narrow bar mid-drag; elementFromPoint
-      // only hits while over the bar. Off the bar, map the finger's travel as
-      // row deltas from the pointerdown anchor: stable even when the bar moves
-      // under us (toolbar collapse, scroll jumps).
-      const anchor = dragAnchorRef.current;
-      const hit = findIndexAtPoint(e.clientX, e.clientY);
-      if (hit) {
-        activateIndex(hit);
-      } else if (anchor) {
-        const deltaRows = Math.round((e.clientY - anchor.y) / anchor.rowHeight);
-        const position = Math.min(
-          Math.max(anchor.position + deltaRows, 0),
-          anchor.letters.length - 1,
-        );
-        activateIndex(anchor.letters[position]?.getAttribute('data-index') ?? null);
+      // The captured pointer keeps firing moves anywhere on screen; the
+      // hit-strip (rendered only while dragging) provides real DOM targets
+      // covering the full column, so elementFromPoint stays exact without
+      // reconstructing where letters "should" be — that drift made
+      // selections jump when the toolbar or scroll moved the bar mid-drag.
+      const index = findIndexAtPoint(e.clientX, e.clientY);
+      if (index) {
+        setPointerY(e.clientY);
+        activateIndex(index);
       }
     },
     [findIndexAtPoint, activateIndex],
@@ -316,6 +291,21 @@ export default function IndexBar({
           );
         })}
       </Container>
+
+      {/* Drag hit-strip: while dragging, expand the bar's hit column across
+          the full viewport height with real (invisible) letter targets. The
+          pointer is captured, so moves anywhere hit these instead of the
+          list below, and elementFromPoint stays exact — no geometry math to
+          drift when the toolbar or scroll repositions the bar mid-drag.
+          pointer-events only while dragging so the idle bar never blocks
+          the page. */}
+      {isDragging && (
+        <HitStrip>
+          {indexes.map((index) => (
+            <HitCell key={index} data-index={index} />
+          ))}
+        </HitStrip>
+      )}
 
       {dragIndex && pointerY != null && (
         <Indicator
