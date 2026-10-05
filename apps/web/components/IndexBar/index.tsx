@@ -86,22 +86,23 @@ const Indicator = styled(Box)(({ theme }) => ({
   zIndex: theme.zIndex.tooltip + 1,
 }));
 
-// While dragging: a full-height, invisible hit column mirroring the bar's
-// letters. Real DOM targets for elementFromPoint — no geometry math that can
-// drift when the toolbar or scroll repositions things mid-drag. The pointer
-// is captured by the bar while dragging, so these cells receive no events
+// While dragging: an invisible hit column that extends the bar's reach
+// leftward across the screen (native iOS index-bar behavior) while keeping
+// the bar's vertical bounds: scrolling maps within the bar's height, not the
+// whole viewport. Rendered inside the bar container as an absolute overlay,
+// so it follows the bar if the toolbar or scroll repositions it mid-drag —
+// real DOM targets for elementFromPoint, no geometry math to drift. The
+// pointer is captured while dragging, so the cells receive no events
 // themselves; they only serve hit-testing.
-const HitStrip = styled('div')(({ theme }) => ({
-  position: 'fixed',
+const HitStrip = styled('div')({
+  position: 'absolute',
   top: 0,
   bottom: 0,
   right: 0,
   width: '100vw',
   display: 'flex',
   flexDirection: 'column',
-  // Above the list content, below the bar itself
-  zIndex: theme.zIndex.appBar,
-}));
+});
 
 const HitCell = styled('div')({
   flex: 1,
@@ -266,6 +267,11 @@ export default function IndexBar({
 
   return (
     <>
+      {/* Drag hit-strip: while dragging, extend the bar's reach leftward
+          across the screen (native iOS behavior) while keeping the bar's
+          vertical bounds — rendered inside the bar container so it follows
+          the bar if it repositions mid-drag. The pointer is captured, so the
+          strip never intercepts page events; it only serves hit-testing. */}
       <Container
         aria-label={ariaLabel}
         onPointerDown={handlePointerDown}
@@ -273,6 +279,13 @@ export default function IndexBar({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
+        {isDragging && (
+          <HitStrip>
+            {indexes.map((index) => (
+              <HitCell key={index} data-index={index} />
+            ))}
+          </HitStrip>
+        )}
         {indexes.map((index) => {
           const info = indexInfo?.(index);
 
@@ -292,21 +305,6 @@ export default function IndexBar({
           );
         })}
       </Container>
-
-      {/* Drag hit-strip: while dragging, expand the bar's hit column across
-          the full viewport height with real (invisible) letter targets. The
-          pointer is captured, so moves anywhere hit these instead of the
-          list below, and elementFromPoint stays exact — no geometry math to
-          drift when the toolbar or scroll repositions the bar mid-drag.
-          pointer-events only while dragging so the idle bar never blocks
-          the page. */}
-      {isDragging && (
-        <HitStrip>
-          {indexes.map((index) => (
-            <HitCell key={index} data-index={index} />
-          ))}
-        </HitStrip>
-      )}
 
       {dragIndex && pointerY != null && (
         <Indicator
