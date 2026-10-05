@@ -1,62 +1,73 @@
 # Desktop UX
 
-The app is a mobile-first single column stretched onto desktop. This documents the audit, the design we shipped for `>=md` (900px+), and what we deliberately left as follow-ups.
+The mobile-first index gains persistent wayfinding at `md` (900px), without changing its mobile reading column. This describes the revised design following [the review of PR #476](https://github.com/SBoudrias/cocktails/pull/476#pullrequestreview-5407257759), which evaluated head `78f25b1fb351`.
 
-## Audit (measured, not eyeballed)
+## Desktop shell
 
-Metrics captured with headless Chrome (playwright-core) against the live deploy at 1440x900 and 390x844, reading `getBoundingClientRect` on key elements (`out/*.json` in the PR description lists the numbers):
+- The centered shell is at most 1200px wide: a 272px navigation pane and a reading column at most 720px wide. Flex children use `minWidth: 0`; home grid tracks also have a zero minimum, so long names cannot push content past the 900px viewport.
+- The top bar remains viewport-wide, but its title and page filter align with the reading column rather than the viewport's center. Below `md`, its original geometry is retained.
+- The sidebar sticks 64px below the top bar and scrolls independently. Horizontal document overflow uses `clip`, not `hidden`: clipping does not introduce the overflow ancestor that previously broke sticky positioning.
+- A keyboard-visible **Skip to content** link bypasses the navigation and focuses the main landmark.
 
-| Page                     | Content column | Position at 1440 | Scroll height | List items |
-| ------------------------ | -------------- | ---------------- | ------------- | ---------- |
-| Home                     | 600px          | x=420            | 2194px        | 30         |
-| All Recipes              | 600px          | x=420            | 181,298px     | 2586       |
-| Category (gin)           | 600px          | x=420            | 26,725px      | 382        |
-| Authors list             | 600px          | x=420            | 14,102px      | 245        |
-| Search "dai"             | 600px          | x=420            | 5289px        | 70         |
-| Source (Minimalist Tiki) | 600px          | x=420            | 9843px        | 128        |
-| Saline calculator        | 600px          | x=420            | 900px         | 0          |
+## Navigation hierarchy
 
-At 1440px, 840px of the viewport (58%) is empty margin. The only wayfinding is the home icon in the top bar (and the OS back button); there is no persistent navigation, no hover/focus affordances beyond MUI defaults, and no keyboard path into search.
+**Browse** keeps All Recipes, Recently Added, Non-Alcoholic, and Milk-Clarified immediately available. **Calculators**, **Sources**, **Categories**, and **Lists** are disclosures rather than an always-expanded catalogue. Collapsed home navigation fits in the initial pane at both 1440×900 and 900×900.
 
-## Design
+Sources contain Books, YouTube Channels, and Podcasts. Categories contain the ingredient-type groups. Children are visibly indented; long labels wrap instead of losing their identifying suffixes. Calculator labels and order match home.
 
-### Persistent sidebar nav (>=md)
+The branch containing the current URL opens on direct navigation, reload, and client-side route changes. Links expose `aria-current="page"`; active branches remain highlighted even when the user closes them. Normally only root categories are listed, but a directly loaded subtype is included in its type group so it also has a current link.
 
-A fixed-width (272px) left sidebar, sticky below the top bar, with its own scroll:
+Every disclosure has `aria-expanded` and a stable `aria-controls` target. Controlled panel wrappers remain mounted, while closed panels unmount their links to avoid stray tab stops. Navigation subheaders explicitly disable sticky behavior; several transparent headers can no longer occupy the same top edge during pane scrolling.
 
-- **Search box** at the top; Enter navigates to the all-recipes list with the search term applied.
-- **Browse**: All Recipes, Recently Added, Non-Alcoholic, Milk-Clarified.
-- **Categories**: the 165 root categories grouped by `categoryType` (Spirits, Liqueurs, Wines, Beers, Bitters, Syrups, Sodas, Other) as collapsible groups, collapsed by default.
-- **Sources**: Books, YouTube Channels, Podcasts.
-- **Calculators** and **Other lists** (authors, bars, ingredients, bottles).
+## Search contract
 
-The top bar stays: it carries the current page title and remains the anchor on mobile. Below `md` the sidebar is not rendered at all — the mobile layout is byte-for-byte the same component tree as before.
+The two scopes have different visible labels and behavior:
 
-### Horizontal space
+- **Search all recipes** in the sidebar is a global form. Enter or its submit arrow opens All Recipes with the trimmed term. Typing is a draft, not a current-page filter. There is no sidebar Clear button that could be mistaken for resetting an active filter.
+- The top bar's **Filter this page** updates the URL-backed filter of the category, source, or list being viewed. Its Clear resets that filter. On All Recipes, this is labeled **All recipes** and the sidebar form is omitted: one editable search and one Clear own the global filter.
 
-- The content column grows from `maxWidth: 600` to `maxWidth: 720` at `md`+, centered in the space right of the sidebar (at 1440: sidebar 272px + content 720px, leaving ~224px breathing room each side instead of a 420px void).
-- Calculator forms inherit this width: the paired number inputs go from ~290px to ~350px each. No calculator-specific layout code needed.
-- Home page sections (All Recipes, Calculators, By Books, By YouTube, By Podcasts, Other lists) flow into a 2-column grid at `md`, each section keeping its paper card.
+Bare `/` prefers the current page's filter. On desktop pages without a filter, it focuses the global launcher and reveals it inside the navigation pane without moving the document. Hidden mobile navigation never supplies a target; mobile home still has no search input. Modified shortcuts, composing events, already-handled events, inputs, textareas, selects, and contenteditable text are ignored.
 
-### Two-column lists: deliberately not done
+## Home and reading width
 
-The long lists (all recipes: 181k px of scroll) are grouped by first letter with subheaders. CSS multi-columns on grouped lists either split groups across columns or strand tall groups (a letter group can be taller than the viewport, which `break-inside: avoid` cannot express). A real fix is the `IndexedList` work in PR #90 — noted as follow-up. Search-result pages (flat lists) are also left single-column for consistency with that follow-up.
+Home stays single-column at 900px. At `lg` (1200px), sections form a two-column grid, with the All Recipes/Recently Added card spanning both columns rather than leaving an empty cell beside a tall calculator card.
 
-### Hover / focus
+Source rows keep their original mobile layout. At desktop widths, counts and chevrons are non-shrinking, in-flow flex columns; source names can wrap in the remaining width. This reserves space for both `477` and its chevron and keeps full names readable. Reading pages and calculators use the 720px maximum without individual layout changes.
 
-- Global `:focus-visible` ring (2px, `info.light`) — keyboard nav becomes visible everywhere, which matters once `/` shortcuts exist.
-- Standalone links underline on hover (`MuiLink` override). List rows keep MUI's hover background.
+## Hover and keyboard focus
 
-### `/` focuses search
+Plain elements retain the global 2px cyan `:focus-visible` outline. MUI ButtonBase controls use MUI's `theme.focusVisible` configuration, which wins against their `outline: 0` reset. This covers navigation links, disclosures, and icon buttons without relying on a weak global selector. Plain links underline on hover; list rows retain their MUI hover background.
 
-A global keydown listener (ignored while typing in an input) focuses the first `input[type="search"]`: on desktop that's the sidebar search; on list pages without a sidebar (mobile) it's the page search box. If the current page has no search input, `/` does nothing (same as today).
+## Mobile parity: scope and correction
 
-## Mobile 390px: unchanged
+The original PR's blanket “byte-for-byte unchanged” claim was incorrect. Its block outer shell let the saline footer rise from y=494 to y=332.515625 at 390×844. The outer shell is again a viewport-height flex column on mobile, and the content grows above the footer. The corrected footer starts at **y=494**, with document height **844px**, matching the review's baseline geometry.
 
-All changes are gated behind `md` media queries via `sx`. The 390px metrics were captured before and after; the numbers are identical (see PR description).
+The navigation is CSS-hidden below `md`, **not unmounted**. Hidden controls are outside normal tab and accessibility navigation. Mobile toolbar, home ordering, source row layout, and calculator form styles are retained. The skip link and corrected shortcut/accessibility behavior are intentional additions; geometry checks do not establish equivalence of the entire DOM or coverage of every page.
 
-## Follow-ups (files owned by PR #90)
+The screenshot commit `78f25b1fb351` remains untouched. Its historical “after” images predate these fixes and must not be used as evidence of the corrected layout.
 
-- `SearchableList` / `LinkList`: adopt two-column layout for flat (searching) lists at `>=md`.
-- `IndexedList` / `IndexBar`: index-bar navigation on desktop, which replaces the need for multi-column grouped lists.
-- `BookSourceClient`: chapter list could use the same grid treatment as the home page.
+## Regression verification
+
+`apps/web/tools/check-desktop-ux.ts` drives headless Chrome through CDP using Node's built-in WebSocket, with a throwaway browser profile. It checks layout and interactions at 1440×900, 900×900, and 390×844: document/pane scrolling, actual text/count non-intersection, single-filter/Clear behavior, global submit, Back, direct category/source URLs, disclosure state, shortcut scope, skip navigation, computed MUI focus outlines, and the short-page mobile footer.
+
+Run against a local dev server (or a server mapping the production export to `/cocktails`):
+
+```sh
+# First terminal
+yarn dev
+
+# Second terminal, from the repo root
+BASE_URL=http://127.0.0.1:3000/cocktails node apps/web/tools/check-desktop-ux.ts
+```
+
+`CHROME_BINARY` overrides the macOS Chrome default. `SCREENSHOT_DIR` optionally saves captures. The script only accepts localhost URLs and never uses an existing browser profile.
+
+The fixes were checked against a local production export on 2026-10-05 with Chrome **154.0.8037.93** and installed Next **16.3.6**. The lockfile requests **16.3.7**: local Yarn fetch hit the environment's per-file write cap, so shared dependencies were copied and Vitest, all package TypeScript checks, oxlint, oxfmt, and the production build were invoked directly. CI must validate the locked versions with the usual `yarn lint` and `yarn vitest --run`. Safari, Firefox, physical devices, and screen-reader announcements were not tested.
+
+## Follow-ups (PR #90)
+
+- `SearchableList` / `LinkList`: two-column layout for flat search results.
+- `IndexedList` / `IndexBar`: long-list index navigation.
+- `BookSourceClient`: chapter layout.
+
+Those shared list components are deliberately not changed by these fixes.

@@ -47,10 +47,14 @@ export default async function RootLayout({
 }>) {
   const [categories, sources] = await Promise.all([getAllCategories(), getAllSources()]);
 
-  // Root categories only: subcategories are reachable from their parent's page.
-  const sidebarCategories = categories
-    .filter((category) => category.parents.length === 0)
-    .map(({ slug, name, categoryType }) => ({ slug, name, categoryType }));
+  // The sidebar shows roots plus the active subtype, so bookmarked category
+  // pages keep their location context without expanding the entire catalogue.
+  const sidebarCategories = categories.map(({ slug, name, categoryType, parents }) => ({
+    slug,
+    name,
+    categoryType,
+    parents: parents.map((parent) => parent.slug),
+  }));
 
   const sidebarSources = sources.map(({ slug, name, type }) => ({ slug, name, type }));
   return (
@@ -69,9 +73,26 @@ export default async function RootLayout({
             <CssBaseline />
             <NuqsAdapter>
               <Box
+                component="a"
+                href="#main-content"
                 sx={{
-                  display: { xs: 'block', md: 'flex' },
-                  flexDirection: { md: 'row' },
+                  position: 'fixed',
+                  top: 8,
+                  left: 8,
+                  zIndex: 'tooltip',
+                  px: 2,
+                  py: 1,
+                  bgcolor: 'background.paper',
+                  transform: 'translateY(-200%)',
+                  '&:focus-visible': { transform: 'none' },
+                }}
+              >
+                Skip to content
+              </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: { xs: 'column', md: 'row' },
                   maxWidth: { xs: 600, md: 1200 },
                   mx: 'auto',
                   minHeight: '100vh',
@@ -81,6 +102,7 @@ export default async function RootLayout({
                 <Box
                   sx={{
                     flexGrow: 1,
+                    minWidth: 0,
                     display: 'flex',
                     flexDirection: 'column',
                     position: 'relative',
@@ -91,8 +113,13 @@ export default async function RootLayout({
                   }}
                 >
                   <Box
+                    component="main"
+                    id="main-content"
+                    tabIndex={-1}
                     sx={{
                       flexGrow: 1,
+                      minWidth: 0,
+                      scrollMarginTop: 80,
                       maxWidth: { xs: 600, md: 720 },
                       width: '100%',
                       mx: 'auto',

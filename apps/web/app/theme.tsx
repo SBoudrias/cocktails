@@ -16,6 +16,12 @@ const LinkBehaviour = forwardRef(function LinkBehaviour(
 const theme = createTheme({
   cssVariables: true,
   defaultColorScheme: 'dark',
+  // Applied by ButtonBase-based controls (ListItemButton, IconButton, …) on
+  // `:focus-visible` through the `.Mui-focusVisible` class, where their own
+  // `outline: 0` rule would otherwise win against a global selector.
+  focusVisible: {
+    outlineColor: '#8DD4ED',
+  },
   typography: {
     fontFamily: 'var(--font-roboto)',
   },
@@ -116,16 +122,6 @@ const theme = createTheme({
         },
       },
     },
-    MuiListSubheader: {
-      styleOverrides: {
-        root: {
-          lineHeight: '1.4rem',
-          paddingTop: 16,
-          paddingBottom: 16,
-          backgroundColor: 'transparent',
-        },
-      },
-    },
     MuiCssBaseline: {
       styleOverrides: {
         ':focus-visible': {
@@ -136,6 +132,16 @@ const theme = createTheme({
           ':hover': {
             textDecoration: 'underline',
           },
+        },
+      },
+    },
+    MuiListSubheader: {
+      styleOverrides: {
+        root: {
+          lineHeight: '1.4rem',
+          paddingTop: 16,
+          paddingBottom: 16,
+          backgroundColor: 'transparent',
         },
       },
     },

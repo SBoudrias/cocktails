@@ -90,6 +90,10 @@ export function getRecipeListUrl(): Route {
   return '/list/recipes';
 }
 
+export function getRecipeSearchUrl(searchTerm: string): Route {
+  return `/list/recipes?search=${encodeURIComponent(searchTerm)}`;
+}
+
 export function getRecentlyAddedUrl(): Route {
   return '/list/recently-added';
 }
