@@ -79,8 +79,19 @@ export function getSourceUrl(source: Source): Route<`/source/${string}/${string}
   return `/source/${source.type}/${source.slug}`;
 }
 
+export function getSourceNavUrl(source: {
+  type: Source['type'];
+  slug: string;
+}): Route<`/source/${string}/${string}`> {
+  return `/source/${source.type}/${source.slug}`;
+}
+
 export function getRecipeListUrl(): Route {
   return '/list/recipes';
+}
+
+export function getRecipeSearchUrl(searchTerm: string): Route {
+  return `/list/recipes?search=${encodeURIComponent(searchTerm)}`;
 }
 
 export function getRecentlyAddedUrl(): Route {
