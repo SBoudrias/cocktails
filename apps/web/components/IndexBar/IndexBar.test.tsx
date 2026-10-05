@@ -120,12 +120,13 @@ describe('IndexBar', () => {
       );
 
       const nav = screen.getByRole('navigation', { name: 'Alphabet index' });
+      const rail = screen.getByTestId('index-bar-rail');
       const aButton = screen.getByRole('button', { name: 'Jump to A' });
 
       const fromPoint = vi.spyOn(document, 'elementFromPoint').mockReturnValue(aButton);
 
       fireEvent.pointerDown(nav, { pointerId: 1, clientX: 100, clientY: 100 });
-      expect(nav.hasPointerCapture(1)).toBe(true);
+      expect(rail.hasPointerCapture(1)).toBe(true);
 
       // Pointer captured: moves outside the bar still track
       fromPoint.mockReturnValue(null);
@@ -136,7 +137,7 @@ describe('IndexBar', () => {
       fireEvent.pointerUp(nav, { pointerId: 1, clientX: 500, clientY: 500 });
 
       expect(screen.queryByRole('status')).not.toBeInTheDocument();
-      expect(nav.hasPointerCapture(1)).toBe(false);
+      expect(rail.hasPointerCapture(1)).toBe(false);
 
       fromPoint.mockRestore();
     });
