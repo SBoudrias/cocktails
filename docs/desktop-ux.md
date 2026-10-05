@@ -62,7 +62,9 @@ BASE_URL=http://127.0.0.1:3000/cocktails node apps/web/tools/check-desktop-ux.ts
 
 `CHROME_BINARY` overrides the macOS Chrome default. `SCREENSHOT_DIR` optionally saves captures. The script only accepts localhost URLs and never uses an existing browser profile.
 
-The fixes were checked against a local production export on 2026-10-05 with Chrome **154.0.8037.93** and installed Next **16.3.6**. The lockfile requests **16.3.7**: local Yarn fetch hit the environment's per-file write cap, so shared dependencies were copied and Vitest, all package TypeScript checks, oxlint, oxfmt, and the production build were invoked directly. CI must validate the locked versions with the usual `yarn lint` and `yarn vitest --run`. Safari, Firefox, physical devices, and screen-reader announcements were not tested.
+The fixes were checked against a local production export on 2026-10-05 with Chrome **154.0.8037.93**: **50 browser checks** and **503 tests across 51 files** passed. All workspace TypeScript checks, oxlint, oxfmt, and the production build also passed.
+
+Installed Next was **16.3.6**, while the lockfile requests **16.3.7**. Local Yarn fetch hit the environment's per-file write cap, so shared dependencies were copied. Direct binaries were used initially; exporting the worktree's `node_modules/.bin` in `PATH` also enabled the normal pre-push checks: `yarn lint`, `yarn test` (with coverage), and `yarn check-data` all passed. CI must still validate the locked dependency versions. Safari, Firefox, physical devices, and screen-reader announcements were not tested.
 
 ## Follow-ups (PR #90)
 
