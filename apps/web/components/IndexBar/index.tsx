@@ -9,11 +9,31 @@ const ALPHABET = [
   ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)),
 ];
 
-const Container = styled('nav')(({ theme }) => {
+// Fixed positioning rail: holds the viewport centering and the drag
+// hit-strip. It does not clip (default overflow), so the strip can extend
+// leftward across the screen while the inner bar keeps its own
+// overflow-scroll for tall letter sets.
+const Rail = styled('div')(({ theme }) => {
   const toolbarMinHeight = Number(theme.mixins.toolbar.minHeight ?? 56);
 
   return {
     position: 'fixed',
+    right: 0,
+    // Center on the content area (viewport minus the fixed toolbar), not the
+    // full viewport, so the bar reads as centered next to the list on mobile
+    top: `calc(50% + ${toolbarMinHeight / 2}px)`,
+    transform: 'translateY(-50%)',
+    // Above page content (rows, toggle) but below the app bar
+    zIndex: theme.zIndex.appBar,
+    touchAction: 'none',
+    userSelect: 'none',
+  };
+});
+
+const Container = styled('nav')(({ theme }) => {
+  const toolbarMinHeight = Number(theme.mixins.toolbar.minHeight ?? 56);
+
+  return {
     // Muted overlay, but distinct: a dark glass reads as its own layer
     // against both the page background and the lighter list cards, unlike
     // paper-tinted translucency which blends into the rows
@@ -22,11 +42,6 @@ const Container = styled('nav')(({ theme }) => {
     // Above page content (rows, toggle) but below the app bar
     zIndex: theme.zIndex.appBar + 1,
     backdropFilter: 'blur(6px)',
-    right: 0,
-    // Center on the content area (viewport minus the fixed toolbar), not the
-    // full viewport, so the bar reads as centered next to the list on mobile
-    top: `calc(50% + ${toolbarMinHeight / 2}px)`,
-    transform: 'translateY(-50%)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -267,13 +282,14 @@ export default function IndexBar({
 
   return (
     <>
-      {/* Drag hit-strip: while dragging, extend the bar's reach leftward
-          across the screen (native iOS behavior) while keeping the bar's
-          vertical bounds — rendered inside the bar container so it follows
-          the bar if it repositions mid-drag. The pointer is captured, so the
+      {/* The rail holds the viewport positioning; the drag hit-strip lives
+          here (not inside the scrolling bar) so it extends leftward across
+          the screen without being clipped by the bar's overflow — native iOS
+          behavior: hit-testing anywhere left of the bar, within the bar's
+          vertical extent. The pointer is captured while dragging, so the
           strip never intercepts page events; it only serves hit-testing. */}
-      <Container
-        aria-label={ariaLabel}
+      <Rail
+        data-testid="index-bar-rail"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={endDrag}
@@ -286,25 +302,27 @@ export default function IndexBar({
             ))}
           </HitStrip>
         )}
-        {indexes.map((index) => {
-          const info = indexInfo?.(index);
+        <Container aria-label={ariaLabel}>
+          {indexes.map((index) => {
+            const info = indexInfo?.(index);
 
-          return (
-            <Letter
-              key={index}
-              data-index={index}
-              $active={activeIndex === index}
-              $hasContent={availableIndexes.has(index)}
-              onClick={handleClick}
-              tabIndex={availableIndexes.has(index) ? 0 : -1}
-              aria-label={`Jump to ${info ?? (index === '#' ? 'numbers' : index)}`}
-              aria-current={activeIndex === index ? 'true' : undefined}
-            >
-              {index}
-            </Letter>
-          );
-        })}
-      </Container>
+            return (
+              <Letter
+                key={index}
+                data-index={index}
+                $active={activeIndex === index}
+                $hasContent={availableIndexes.has(index)}
+                onClick={handleClick}
+                tabIndex={availableIndexes.has(index) ? 0 : -1}
+                aria-label={`Jump to ${info ?? (index === '#' ? 'numbers' : index)}`}
+                aria-current={activeIndex === index ? 'true' : undefined}
+              >
+                {index}
+              </Letter>
+            );
+          })}
+        </Container>
+      </Rail>
 
       {dragIndex && pointerY != null && (
         <Indicator
