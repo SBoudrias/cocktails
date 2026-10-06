@@ -9,8 +9,12 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { match, P } from 'ts-pattern';
 
 const baseUrl = process.env.BASE_URL ?? 'http://127.0.0.1:8123/cocktails';
+if (!URL.canParse(baseUrl)) {
+  throw new Error(`Invalid BASE_URL: ${baseUrl}`);
+}
+const hostname = new URL(baseUrl).hostname;
 assert.ok(
-  new URL(baseUrl).hostname === '127.0.0.1' || new URL(baseUrl).hostname === 'localhost',
+  hostname === '127.0.0.1' || hostname === 'localhost',
   'Run browser regressions against a local test server',
 );
 const binary =
@@ -88,12 +92,17 @@ async function verify(name: string, expression: string) {
 }
 
 async function navigate(route: string) {
-  await send('Page.navigate', { url: `${baseUrl}${route}` });
+  const url = `${baseUrl}${route}`;
+  if (!URL.canParse(url)) {
+    throw new Error(`Invalid navigation URL: ${url}`);
+  }
+  const pathname = new URL(url).pathname;
+  await send('Page.navigate', { url });
   for (let i = 0; i < 100; i++) {
     await delay(100);
     if (
       (await evaluate(
-        `location.pathname === ${JSON.stringify(new URL(`${baseUrl}${route}`).pathname)} && document.readyState === 'complete' && !!document.querySelector('main')`,
+        `location.pathname === ${JSON.stringify(pathname)} && document.readyState === 'complete' && !!document.querySelector('main')`,
       )) === true
     )
       break;
@@ -156,9 +165,15 @@ try {
   }
   assert.ok(browserWs, `Chrome did not start: ${stderr}`);
   const debuggingOrigin = browserWs.replace('ws://', 'http://').split('/devtools/')[0];
-  const response: unknown = await (
-    await fetch(`${debuggingOrigin}/json/new?about:blank`, { method: 'PUT' })
-  ).json();
+  const targetResponse = await fetch(`${debuggingOrigin}/json/new?about:blank`, {
+    method: 'PUT',
+  });
+  if (!targetResponse.ok) {
+    throw new Error(
+      `Chrome page target request failed: ${targetResponse.status} ${targetResponse.statusText}`,
+    );
+  }
+  const response: unknown = await targetResponse.json();
   const targetWs = match(response)
     .with({ webSocketDebuggerUrl: P.string }, (value) => value.webSocketDebuggerUrl)
     .otherwise(() => {
