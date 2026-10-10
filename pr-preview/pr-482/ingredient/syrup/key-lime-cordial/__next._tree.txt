@@ -1,4 +1,8 @@
-:HL["/cocktails/pr-preview/pr-482/_next/static/chunks/1hef0c7r2r6ew.css","style"]
+:HL["/cocktails/pr-preview/pr-482/_next/static/chunks/09xv-vqariy6c.css","style"]
 :HL["/cocktails/pr-preview/pr-482/_next/static/media/ce62453a442c7f35-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/cocktails/pr-preview/pr-482/_next/static/chunks/2_diiozivt4bo.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"ingredient","param":null,"prefetchHints":4192,"slots":{"children":{"name":"type","param":{"type":"d","key":"syrup","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"key-lime-cordial","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}},"staleTime":300,"buildId":"Ff364ISYaiK-Czl9pEPix"}
+:HL["/cocktails/pr-preview/pr-482/_next/static/chunks/149efjd4w79nj.css","style"]
+4:[["children",{"s":"__PAGE__","h":160}]]
+3:[["children",{"s":{"n":"slug","t":"d","k":"key-lime-cordial","s":[]},"h":96,"c":"$Q4"}]]
+2:[["children",{"s":{"n":"type","t":"d","k":"syrup","s":[]},"h":96,"c":"$Q3"}]]
+1:[["children",{"s":"ingredient","h":96,"c":"$Q2"}]]
+0:{"b":"K5a6IQKfVoK12_10bY0BP","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
