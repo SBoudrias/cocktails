@@ -268,7 +268,7 @@ __metadata:
     "@cocktails/data": "workspace:*"
     "@sindresorhus/slugify": "npm:^3.0.1"
     commander: "npm:^15.0.0"
-    iso8601-duration: "npm:^2.1.4"
+    iso8601-duration: "npm:^2.2.0"
   languageName: unknown
   linkType: soft
 
@@ -2512,10 +2512,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iso8601-duration@npm:^2.1.4":
-  version: 2.1.4
-  resolution: "iso8601-duration@npm:2.1.4"
-  checksum: 10c0/5dc89a2a542b29af36b6b1834cf831166a35cb57bd9af3530c36ac2c01897890f46756f8f184131003d20abf7d9c18b326e8167e4285cc3a3519f70d1edcf581
+"iso8601-duration@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "iso8601-duration@npm:2.2.0"
+  checksum: 10c0/d6db5f72eeaf3f50b3748296d531ed6ab9467adfc10363ce56298a37343d773e9f9c08dbe15a51219b1005cad9a87a969cfd5d3f58217bae923f5a56985f87d0
   languageName: node
   linkType: hard
 
