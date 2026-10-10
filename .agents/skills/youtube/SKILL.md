@@ -151,7 +151,7 @@ When processing an inventory batch:
    the channel authored the recipe. Only versions that **diverge from the
    accepted/common industry recipe** need disambiguation — the accepted recipe
    itself uses the plain name directly (e.g. `Ramos Gin Fizz` + `Ramos Gin
-Fizz (7 Up)`, `Nui Nui` + `Nui Nui (Holiday)`). Disambiguate divergent
+   Fizz (7 Up)`, `Nui Nui` + `Nui Nui (Holiday)`). Disambiguate divergent
    versions with numbering (`no. 1`, `no. 2`), provenance (the bar, book, or
    author behind that version), or a date only when the date is a meaningful
    version identifier (e.g. a historical recipe year like `Zombie (1930)`) —

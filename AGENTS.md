@@ -203,7 +203,6 @@ The data package has multiple entry points via subpath exports:
 ```ts
 // Import types from the main entry point
 import type { Recipe, Category, RootIngredient } from '@cocktails/data';
-
 // Import from original packages, not re-exports
 import { compareIngredients } from '@cocktails/ingredient-sorting';
 ```
@@ -211,10 +210,10 @@ import { compareIngredients } from '@cocktails/ingredient-sorting';
 ### Data Loading Functions (Server Components Only)
 
 ```ts
+import { getCategory, getAllCategories } from '@cocktails/data/categories';
+import { getIngredient, getAllIngredients } from '@cocktails/data/ingredients';
 // Server components import data-loading functions from subpaths
 import { getAllRecipes, getRecipe } from '@cocktails/data/recipes';
-import { getIngredient, getAllIngredients } from '@cocktails/data/ingredients';
-import { getCategory, getAllCategories } from '@cocktails/data/categories';
 import { getAllSources, getSource } from '@cocktails/data/sources';
 ```
 
