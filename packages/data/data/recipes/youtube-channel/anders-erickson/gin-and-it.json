@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Gin & It",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "Beefeater London Dry Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir the gin and vermouth with ice until chilled and diluted.",
+    "Strain into a chilled cocktail glass.",
+    "Express lemon oil over the drink."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "7VbOe6Weox4",
+      "channel": "anders-erickson",
+      "start": 580
+    }
+  ]
+}

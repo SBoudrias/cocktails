@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Canasta Crush",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange sherbet",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Crush",
+      "type": "soda",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger ale",
+      "type": "soda",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build the lime juice, gin, Orange Crush, and ginger ale in a glass with ice.",
+    "Add the orange sherbet."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Fiesta Orange Crush"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "md99yqTm8mo",
+      "channel": "make-and-drink",
+      "start": 578
+    }
+  ]
+}

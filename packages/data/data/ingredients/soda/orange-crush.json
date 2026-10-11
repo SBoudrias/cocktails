@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Orange Crush",
+  "type": "soda",
+  "description": "Orange-flavored carbonated soft drink from Crush."
+}

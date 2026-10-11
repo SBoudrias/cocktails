@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hully-Gully",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Crush",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Build in a glass with ice.", "Garnish with an orange slice."],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Fiesta Orange Crush"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "md99yqTm8mo",
+      "channel": "make-and-drink",
+      "start": 99
+    }
+  ]
+}

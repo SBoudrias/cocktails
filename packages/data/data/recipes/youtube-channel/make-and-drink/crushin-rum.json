@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Crushin’ Rum",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Crush",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": ["Build in a glass with ice.", "Garnish with a mint sprig."],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Fiesta Orange Crush"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "md99yqTm8mo",
+      "channel": "make-and-drink",
+      "start": 461
+    }
+  ]
+}
