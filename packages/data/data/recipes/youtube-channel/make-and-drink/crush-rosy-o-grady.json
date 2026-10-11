@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Crush Rosy O’Grady",
+  "preparation": "built",
+  "served_on": "ice cubes",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Grenadine",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Vodka",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange Crush",
+      "type": "soda",
+      "quantity": {
+        "amount": 4,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build in a glass with ice.",
+    "Garnish with a maraschino cherry.",
+    "The published recipe uses 0.75 oz grenadine and vodka; the video demonstration uses 0.5 oz grenadine and gin."
+  ],
+  "attributions": [
+    {
+      "relation": "book",
+      "source": "Fiesta Orange Crush"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "md99yqTm8mo",
+      "channel": "make-and-drink",
+      "start": 289
+    }
+  ]
+}

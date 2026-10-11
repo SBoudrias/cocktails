@@ -95,6 +95,11 @@
       "type": "book",
       "title": "Minimalist Tiki",
       "page": 171
+    },
+    {
+      "type": "youtube",
+      "videoId": "79oZi18VKd8",
+      "channel": "spike-breezeway-cocktail-hour"
     }
   ]
 }
