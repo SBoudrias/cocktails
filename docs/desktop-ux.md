@@ -4,7 +4,7 @@ The mobile-first index gains persistent wayfinding at `md` (900px), without chan
 
 ## Desktop shell
 
-- The centered shell is at most 1200px wide: a 272px navigation pane and a reading column at most 720px wide. Flex children use `minWidth: 0`; home grid tracks also have a zero minimum, so long names cannot push content past the 900px viewport.
+- The centered shell is at most 1200px wide: a 272px navigation pane and a reading column at most 720px wide. Flex children use `minWidth: 0`; home names wrap beside non-shrinking counts, so long names cannot push content past the 900px viewport.
 - The top bar remains viewport-wide, but its title and page filter align with the reading column rather than the viewport's center. Below `md`, its original geometry is retained.
 - The sidebar sticks 64px below the top bar and scrolls independently. Horizontal document overflow uses `clip`, not `hidden`: clipping does not introduce the overflow ancestor that previously broke sticky positioning.
 - A keyboard-visible **Skip to content** link bypasses the navigation and focuses the main landmark.
@@ -30,7 +30,11 @@ Bare `/` prefers the current page's filter. On desktop pages without a filter, i
 
 ## Home and reading width
 
-Home stays single-column at 900px. At `lg` (1200px), sections form a two-column grid, with the All Recipes/Recently Added card spanning both columns rather than leaving an empty cell beside a tall calculator card.
+At `md` (900px), home uses two balanced CSS columns for whole sections. The All Recipes/Recently Added card spans both columns; each following section uses `break-inside: avoid` and a 16px bottom gap. Headings stay with their rows, and source lists are never split across columns. This is a masonry-like section composition, not a masonry layout for individual recipe rows.
+
+Most rows have uniform heights, but section lengths differ substantially: the measured Podcasts section was 105px tall, versus 570px for Books at 1440px. Removing shared grid-row heights reduced the home list from 1381px to 968px at 1440px and from 1715px to 1016px at 900px in the local comparison against `23176007ef84` on 2026-10-12. The compact arrangement therefore removes actual interior gaps, not just a ragged bottom edge.
+
+CSS columns keep natural reading and keyboard order down the left column, then down the right; no dense-grid reordering, JavaScript measurement, or browser-experimental masonry property is needed. Below `md`, column and section-spacing styles do not apply. The 390×844 full-page home PNG before and after this change was byte-identical.
 
 Source rows keep their original mobile layout. At desktop widths, counts and chevrons are non-shrinking, in-flow flex columns; source names can wrap in the remaining width. This reserves space for both `477` and its chevron and keeps full names readable. Reading pages and calculators use the 720px maximum without individual layout changes.
 
@@ -48,7 +52,7 @@ The screenshot commit `78f25b1fb351` remains untouched. Its historical “after�
 
 ## Regression verification
 
-`apps/web/tools/check-desktop-ux.ts` drives headless Chrome through CDP using Node's built-in WebSocket, with a throwaway browser profile. It checks layout and interactions at 1440×900, 900×900, and 390×844: document/pane scrolling, actual text/count non-intersection, single-filter/Clear behavior, global submit, Back, direct category/source URLs, disclosure state, shortcut scope, skip navigation, computed MUI focus outlines, and the short-page mobile footer.
+`apps/web/tools/check-desktop-ux.ts` drives headless Chrome through CDP using Node's built-in WebSocket, with a throwaway browser profile. It checks layout and interactions at 1440×900, 900×900, and 390×844: whole-section column packing and mobile single-column layout, document/pane scrolling, actual text/count non-intersection, single-filter/Clear behavior, global submit, Back, direct category/source URLs, disclosure state, shortcut scope, skip navigation, computed MUI focus outlines, and the short-page mobile footer.
 
 Run against a local dev server (or a server mapping the production export to `/cocktails`):
 
@@ -62,7 +66,9 @@ BASE_URL=http://127.0.0.1:3000/cocktails node apps/web/tools/check-desktop-ux.ts
 
 `CHROME_BINARY` overrides the macOS Chrome default. `SCREENSHOT_DIR` optionally saves captures. The script only accepts localhost URLs and never uses an existing browser profile.
 
-The fixes were checked against a local production export on 2026-10-05 with Chrome **154.0.8037.93**: **50 browser checks** and **503 tests across 51 files** passed. All workspace TypeScript checks, oxlint, oxfmt, and the production build also passed.
+The initial fixes were checked against a local production export on 2026-10-05 with Chrome **154.0.8037.93**: **50 browser checks** and **503 tests across 51 files** passed. All workspace TypeScript checks, oxlint, oxfmt, and the production build also passed.
+
+The section-column refinement was rechecked on 2026-10-12 with Chrome **155.0.8059.39**: **55 browser checks**, the same **503 tests**, `yarn lint`, file-level oxlint, and the production export passed. Full-page 390px home captures were compared with `cmp` against the pre-change layout and were byte-identical.
 
 Installed Next was **16.3.6**, while the lockfile requests **16.3.7**. Local Yarn fetch hit the environment's per-file write cap, so shared dependencies were copied. Direct binaries were used initially; exporting the worktree's `node_modules/.bin` in `PATH` also enabled the normal pre-push checks: `yarn lint`, `yarn test` (with coverage), and `yarn check-data` all passed. CI must still validate the locked dependency versions. Safari, Firefox, physical devices, and screen-reader announcements were not tested.
 

@@ -92,13 +92,18 @@ export default async function HomePage() {
       <List
         sx={{
           mt: 2,
-          display: { xs: 'block', lg: 'grid' },
-          gridTemplateColumns: { lg: 'repeat(2, minmax(0, 1fr))' },
-          gap: { lg: 2 },
-          alignItems: 'start',
+          // Pack whole sections, not individual rows. Column-major reading
+          // follows DOM/tab order without a measured JavaScript masonry grid.
+          columnCount: { md: 2 },
+          columnGap: { md: 2 },
+          '& > li': {
+            breakInside: { md: 'avoid' },
+            display: { md: 'flow-root' },
+            mb: { md: 2 },
+          },
         }}
       >
-        <Paper square sx={{ gridColumn: { lg: '1 / -1' } }}>
+        <Paper square sx={{ columnSpan: { md: 'all' }, mb: { md: 2 } }}>
           <Link href={getRecipeListUrl()}>
             <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
               <ListItemButton>

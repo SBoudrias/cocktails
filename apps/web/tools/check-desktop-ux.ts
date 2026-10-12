@@ -225,6 +225,44 @@ try {
       });
     })()`,
     );
+    if (width >= 900) {
+      await verify(
+        `home keeps whole sections in two columns at ${width}`,
+        `(() => {
+          const list = document.querySelector('main > ul');
+          const sections = [...list.children].slice(1);
+          const browse = list.firstElementChild.getBoundingClientRect();
+          return getComputedStyle(list).columnCount === '2' &&
+            browse.width === list.getBoundingClientRect().width &&
+            sections.every(section => section.getClientRects().length === 1 &&
+              section.getBoundingClientRect().width < browse.width / 2 &&
+              section.getBoundingClientRect().top >= browse.bottom);
+        })()`,
+      );
+      await verify(
+        `home packs sections without grid-row gaps at ${width}`,
+        `(() => {
+          const sections = [...document.querySelector('main > ul').children].slice(1);
+          const columns = Object.values(Object.groupBy(sections,
+            section => Math.round(section.getBoundingClientRect().left)));
+          return columns.length === 2 && columns.every(column =>
+            column.every((section, index) => index === 0 ||
+              Math.abs(section.getBoundingClientRect().top -
+                column[index - 1].getBoundingClientRect().bottom - 16) <= 1));
+        })()`,
+      );
+    } else {
+      await verify(
+        'mobile home keeps its single-column section geometry',
+        `(() => {
+          const list = document.querySelector('main > ul');
+          return getComputedStyle(list).columnCount === 'auto' &&
+            [...list.children].slice(1).every(section =>
+              section.getBoundingClientRect().left === list.getBoundingClientRect().left &&
+              getComputedStyle(section).marginBottom === '0px');
+        })()`,
+      );
+    }
     await screenshot(`home-${width}`);
 
     await navigate('/list/recipes?search=dai');
