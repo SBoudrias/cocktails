@@ -91,6 +91,42 @@ async function verify(name: string, expression: string) {
   console.log(`PASS ${name}`);
 }
 
+async function verifyFooter(width: number, page: string) {
+  await verify(
+    `${page} footer stays inside the tiki background at ${width}`,
+    `(() => {
+      const footer = document.querySelector('footer').getBoundingClientRect();
+      const zone = document.querySelector('footer').parentElement.getBoundingClientRect();
+      const backgroundWidth = Math.min(zone.width, 750);
+      const left = zone.left + (zone.width - backgroundWidth) / 2;
+      return footer.left >= left && footer.right <= left + backgroundWidth &&
+        footer.width === Math.min(zone.width, ${width >= 900 ? 720 : 600});
+    })()`,
+  );
+}
+
+async function verifyVideoLayout(
+  title: string,
+  columns: number,
+  count: number,
+  width: number,
+) {
+  await verify(
+    `${title} keeps ${count} videos in ${columns} columns at ${width}`,
+    `(() => {
+      const list = document.querySelector('ul[aria-label=${JSON.stringify(title)}]');
+      const items = [...list.children].map(item => item.getBoundingClientRect());
+      return items.length === ${count} &&
+        new Set(items.map(item => Math.round(item.left))).size === ${columns} &&
+        new Set(items.map(item => Math.round(item.top))).size === Math.ceil(${count} / ${columns}) &&
+        [...list.querySelectorAll('lite-youtube')].every(video => {
+          const rect = video.getBoundingClientRect();
+          return rect.width > 0 && Math.abs(rect.width / rect.height - 16 / 9) < 0.01;
+        }) && document.documentElement.scrollWidth <= innerWidth;
+    })()`,
+  );
+}
+
 async function navigate(route: string) {
   const url = `${baseUrl}${route}`;
   if (!URL.canParse(url)) {
@@ -264,6 +300,9 @@ try {
       );
     }
     await screenshot(`home-${width}`);
+    await verifyFooter(width, 'home');
+    await evaluate('window.scrollTo(0, document.documentElement.scrollHeight); true');
+    await screenshot(`home-footer-${width}`);
 
     await navigate('/list/recipes?search=dai');
     await verify(
@@ -417,7 +456,66 @@ try {
         `document.activeElement === document.querySelector('nav input[type="search"]') && document.querySelector('nav').scrollTop === 0 && window.scrollY === ${JSON.stringify(documentY)}`,
       );
     }
+    await navigate('/recipes/youtube-channel/mixing-up-tiki/mai-tai');
+    await verify(
+      `Mai Tai has only its page-header title at ${width}`,
+      `(() => {
+        const titles = [...document.querySelectorAll('body *')].filter(element =>
+          element.childNodes.length === 1 && element.firstChild.nodeType === Node.TEXT_NODE &&
+          element.textContent.trim() === 'Mai Tai');
+        return titles.length === 1 && titles[0].closest('header') != null;
+      })()`,
+    );
+    await verify(
+      `Mai Tai groups all three references without duplicate embeds at ${width}`,
+      `(() => {
+        const ids = [...document.querySelectorAll('lite-youtube')].map(video => video.getAttribute('videoid'));
+        return JSON.stringify(ids) === JSON.stringify(['doJSytmNhbc', 'NrIGVhjOmvE', '9YffN1YOnoU']) &&
+          document.querySelector('ul[aria-label="Videos"] lite-youtube') != null;
+      })()`,
+    );
+    await verifyVideoLayout(
+      'Videos',
+      width === 1440 ? 3 : width === 900 ? 2 : 1,
+      3,
+      width,
+    );
+    await verify(
+      `About and attribution composition at ${width}`,
+      `(() => {
+        const attribution = document.querySelector('table[aria-label="Recipe attributions"]').closest('.MuiCard-root');
+        const about = attribution.previousElementSibling;
+        const a = attribution.getBoundingClientRect();
+        const b = about.getBoundingClientRect();
+        return ${
+          width >= 900
+            ? 'a.width <= 280 && a.top === b.top && a.left - b.right === 16'
+            : 'a.top - b.bottom === 8 && a.width === b.width'
+        } &&
+          [...attribution.querySelectorAll('th, td')].every(cell => cell.scrollWidth <= cell.clientWidth);
+      })()`,
+    );
+    await evaluate(
+      `window.scrollTo(0, document.querySelector('table[aria-label="Recipe attributions"]').closest('.MuiCard-root').parentElement.offsetTop - 80); true`,
+    );
+    await screenshot(`mai-tai-cards-${width}`);
+
+    await navigate('/category/orgeat');
+    await verifyVideoLayout('Other videos', width >= 900 ? 2 : 1, 2, width);
+    await evaluate(
+      `window.scrollTo(0, document.querySelector('ul[aria-label="Other videos"]').closest('.MuiCard-root').offsetTop - 80); true`,
+    );
+    await screenshot(`other-videos-${width}`);
+
+    await navigate('/ingredient/syrup/latitude-29-orgeat');
+    await verifyVideoLayout('Other videos', width >= 900 ? 2 : 1, 2, width);
+    await evaluate(
+      `window.scrollTo(0, document.querySelector('ul[aria-label="Other videos"]').closest('.MuiCard-root').offsetTop - 80); true`,
+    );
+    await screenshot(`ingredient-other-videos-${width}`);
+
     await navigate('/calculators/saline');
+    await verifyFooter(width, 'saline');
     if (width === 390) {
       await verify(
         'mobile saline footer matches pinned main geometry (390×844)',

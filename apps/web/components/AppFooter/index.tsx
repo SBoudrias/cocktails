@@ -7,8 +7,12 @@ import { Link, Stack } from '@mui/material';
 export default function AppFooter() {
   return (
     <Stack
+      component="footer"
       direction="row"
       sx={{
+        width: '100%',
+        maxWidth: { md: 720 },
+        mx: 'auto',
         py: 2,
         px: 2,
         minHeight: '350px',

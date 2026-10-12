@@ -29,6 +29,35 @@ describe('RecipePage', () => {
     expect(screen.getByText('The Tiki Revival · page 96')).toBeInTheDocument();
   });
 
+  it('groups all recipe videos once, with attribution and a header-only title', async () => {
+    setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: 'youtube-channel',
+          source: 'mixing-up-tiki',
+          recipe: 'mai-tai',
+        }),
+      }),
+    );
+
+    expect(screen.getByRole('banner')).toHaveTextContent('Mai Tai');
+    expect(screen.getByRole('main')).not.toHaveTextContent('Mai Tai');
+    expect(screen.getByRole('table', { name: 'Recipe attributions' })).toHaveTextContent(
+      'Created byTrader Vic',
+    );
+    expect(screen.getByRole('link', { name: /go to channel/i })).toBeInTheDocument();
+
+    const videos = within(screen.getByRole('list', { name: 'Videos' })).getAllByRole(
+      'listitem',
+    );
+    expect(
+      videos.map((item) => item.querySelector('lite-youtube')?.getAttribute('videoid')),
+    ).toEqual(['doJSytmNhbc', 'NrIGVhjOmvE', '9YffN1YOnoU']);
+    expect(screen.getByRole('main').querySelectorAll('lite-youtube')).toHaveLength(
+      videos.length,
+    );
+  });
+
   it('renders whole-recipe clarification in a scalable technique section', async () => {
     const clarifiedRecipe = await getRecipe(
       { type: 'youtube-channel', slug: 'truffles-on-the-rocks' },
@@ -47,6 +76,11 @@ describe('RecipePage', () => {
 
     const recipeContent = screen.getByRole('main');
     expect(recipeContent).toHaveTextContent('stirred');
+    expect(screen.queryByRole('list', { name: 'Video' })).not.toBeInTheDocument();
+    expect(recipeContent.querySelector('lite-youtube')).toHaveAttribute(
+      'videoid',
+      'xa9eKNBde74',
+    );
     expect(screen.queryByText('Whole milk clarified')).not.toBeInTheDocument();
 
     const technique = screen.getByRole('list', { name: 'Milk clarification' });
