@@ -5,19 +5,21 @@ import Video from '#/components/Video';
 
 export default function VideoListCard({
   refs,
-  title = refs.length > 1 ? 'Videos' : 'Video',
+  title,
   sx,
 }: {
   refs: YoutubeRef[];
   title?: string;
   sx?: SxProps;
 }) {
+  const galleryTitle = title ?? (refs.length > 1 ? 'Videos' : 'Video');
+
   return (
     <Card sx={sx}>
-      <CardHeader title={title} />
+      <CardHeader title={galleryTitle} />
       <Box
         component="ul"
-        aria-label={title}
+        aria-label={galleryTitle}
         sx={{
           listStyle: 'none',
           m: 0,
