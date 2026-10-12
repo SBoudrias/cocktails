@@ -1,7 +1,6 @@
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, Paper, Stack } from '@mui/material';
 import type { ListItemTextProps } from '@mui/material/ListItemText';
-import { styled } from '@mui/material/styles';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import { useId, useMemo } from 'react';
@@ -11,9 +10,9 @@ import type { ListConfig } from '#/modules/lists/type';
 // A group is the scroll-jump target rather than its sticky subheader: a stuck
 // subheader reports its stuck position, so jumping to the current group would
 // not reach its start. The margin keeps the group clear of the fixed app bar
-const GroupItem = styled('li')(({ theme }) => ({
-  scrollMarginTop: Number(theme.mixins.toolbar.minHeight ?? 56) + 8,
-}));
+// (56px toolbar + 8px). A plain style: LinkList also renders on the server,
+// where MUI's styled() is unavailable
+const groupStyle = { scrollMarginTop: 64 };
 
 export function LinkListItem<RouteType>({
   href,
@@ -92,7 +91,7 @@ export function LinkList<const T>({
         const headerId = `${idPrefix}-group-${position}`;
 
         return (
-          <GroupItem key={header} data-header={header || undefined}>
+          <li key={header} data-header={header || undefined} style={groupStyle}>
             <List role="group" aria-labelledby={header ? headerId : undefined}>
               {header && <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>}
               <Paper square>
@@ -100,7 +99,7 @@ export function LinkList<const T>({
                 {footer && position === groups.length - 1 && footer}
               </Paper>
             </List>
-          </GroupItem>
+          </li>
         );
       })}
     </List>
