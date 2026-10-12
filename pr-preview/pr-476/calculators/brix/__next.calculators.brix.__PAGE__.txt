@@ -1,7 +1,7 @@
 2:"$Sreact.fragment"
 3:"/cocktails/pr-preview/pr-476/_next/static/chunks/3n4x_4pc0e_ck.js"
 4:"/cocktails/pr-preview/pr-476/_next/static/chunks/2xjb1t7yi5lge.js"
-5:"/cocktails/pr-preview/pr-476/_next/static/chunks/0k894lw6pcxq_.js"
+5:"/cocktails/pr-preview/pr-476/_next/static/chunks/33x4vy6gwyn4p.js"
 6:"/cocktails/pr-preview/pr-476/_next/static/chunks/1nkrvcgfiw5nu.js"
 7:I[339756,["$3","$4","$5","$6"],"default"]
 8:I[837457,["$3","$4","$5","$6"],"default"]
@@ -23,7 +23,7 @@ b:X
 e:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","$f",null,{"children":[["$","$L13",null,{"title":"Sugar Adjusting"}],["$","$L14",null,{"sx":{"m":1}}]]}],[["$","script","script-0",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3-br20rtqtf-0.js","async":true}],["$","script","script-1",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1rlv_edt453c-.js","async":true}],["$","script","script-2",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1dv7ns9cfeb62.js","async":true}]],["$","$L15",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]]}],"p":"$@17","v":null,"s":"$b"}}]]
 c:[["children",{"s":"brix","h":96,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@d","v":"$a","s":"$b"},"c":"$Qe"}]]
 1:[["children",{"s":"calculators","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@9","v":"$a","s":"$b"},"c":"$Qc"}]]
-0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}]]}],["$","$L1b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Cocktail Index | Sugar Adjusting Calculator"}],["$","link","1",{"rel":"manifest","href":"/cocktails/manifest.webmanifest"}],["$","link","2",{"rel":"icon","href":"/cocktails/pr-preview/pr-476/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1c","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1d","v":null,"s":"$b"}},"a":"$@1e","u":"$@1f","b":"7L5oCo0rej9rf8fpyfbb3"}
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}]]}],["$","$L1b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Cocktail Index | Sugar Adjusting Calculator"}],["$","link","1",{"rel":"manifest","href":"/cocktails/manifest.webmanifest"}],["$","link","2",{"rel":"icon","href":"/cocktails/pr-preview/pr-476/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1c","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1d","v":null,"s":"$b"}},"a":"$@1e","u":"$@1f","b":"HheroBkI3Hqf2OyZ-D7NN"}
 16:null
 1f:true
 b:300

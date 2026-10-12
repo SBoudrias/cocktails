@@ -1,7 +1,7 @@
 2:"$Sreact.fragment"
 3:"/cocktails/pr-preview/pr-476/_next/static/chunks/3n4x_4pc0e_ck.js"
 4:"/cocktails/pr-preview/pr-476/_next/static/chunks/2xjb1t7yi5lge.js"
-5:"/cocktails/pr-preview/pr-476/_next/static/chunks/0k894lw6pcxq_.js"
+5:"/cocktails/pr-preview/pr-476/_next/static/chunks/33x4vy6gwyn4p.js"
 6:"/cocktails/pr-preview/pr-476/_next/static/chunks/1nkrvcgfiw5nu.js"
 7:I[339756,["$3","$4","$5","$6"],"default"]
 8:I[837457,["$3","$4","$5","$6"],"default"]
@@ -16,59 +16,58 @@
 1b:I[910874,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
 1c:I[141317,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
 1d:I[966052,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-2b:"ViewportBoundary"
-2c:I[897367,["$3","$4","$5","$6"],"$2b"]
-2d:"MetadataBoundary"
-2e:I[897367,["$3","$4","$5","$6"],"$2d"]
-2f:"$Sreact.suspense"
-30:I[27201,["$3","$4","$5","$6"],"IconMark"]
+2a:"ViewportBoundary"
+2b:I[897367,["$3","$4","$5","$6"],"$2a"]
+2c:"MetadataBoundary"
+2d:I[897367,["$3","$4","$5","$6"],"$2c"]
+2e:"$Sreact.suspense"
+2f:I[27201,["$3","$4","$5","$6"],"IconMark"]
 a:X
 a:C
 b:X
-12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[[["$","$L17",null,{"title":"Basic Beach"}],["$","$L18",null,{"component":"main","children":[["$","$L19",null,{"container":true,"columns":3,"sx":{"textAlign":"center","my":1},"children":[["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"shaken"}]}],["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"crushed ice"}]}],["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"hurricane"}]}]]}],["$","$L1a",null,{"ingredients":[{"$schema":"../../../schemas/ingredient.schema.json","name":"Lime juice","type":"juice","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Lime juice","type":"juice"},"slug":"lime-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Pineapple juice","type":"juice","acidity":0.8,"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Pineapple juice","type":"juice","acidity":0.8},"slug":"pineapple-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":1.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Midori melon liqueur","type":"liqueur","categories":[{"$schema":"../../schemas/category.schema.json","name":"Melon liqueur","categoryType":"liqueur","default":{"$schema":"../../schemas/category.schema.json","name":"Melon liqueur","categoryType":"liqueur"},"refs":[],"parents":[],"slug":"melon-liqueur","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Midori melon liqueur","type":"liqueur","categories":["Melon liqueur"]},"slug":"midori-melon-liqueur","refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Giffard banane du Brésil","type":"liqueur","categories":[{"$schema":"../../schemas/category.schema.json","name":"Banana liqueur","categoryType":"liqueur","refs":[{"type":"youtube","videoId":"0D1rcq4_XKw","channel":"make-and-drink"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Banana liqueur","categoryType":"liqueur","refs":[{"type":"youtube","videoId":"0D1rcq4_XKw","channel":"make-and-drink"}]},"parents":[],"slug":"banana-liqueur","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Giffard banane du Brésil","type":"liqueur","categories":["Banana liqueur"]},"slug":"giffard-banane-du-bresil","refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Don Q Cristal Rum","type":"spirit","categories":[{"$schema":"../../schemas/category.schema.json","name":"Column still lightly aged rum","categoryType":"spirit","parents":[{"$schema":"../../schemas/category.schema.json","name":"Blended lightly-aged rum","categoryType":"spirit","parents":[{"$schema":"../../schemas/category.schema.json","name":"Rum","categoryType":"spirit","default":{"$schema":"../../schemas/category.schema.json","name":"Rum","categoryType":"spirit"},"refs":[],"parents":[],"slug":"rum","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Blended lightly-aged rum","categoryType":"spirit","parents":["Rum"]},"refs":[],"slug":"blended-lightly-aged-rum","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Column still lightly aged rum","categoryType":"spirit","parents":["Blended lightly-aged rum"]},"refs":[],"slug":"column-still-lightly-aged-rum","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Don Q Cristal Rum","type":"spirit","categories":["Column still lightly aged rum"]},"slug":"don-q-cristal-rum","refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}}]}],["$","$L1b",null,{"children":[["$","$L1c",null,{"children":"Instructions"}],["$","$L1d",null,{"square":true,"children":["$L1e","$L1f","$L20"]}]]}],"$L21","$L22",false,"$L23"]}]],["$L24","$L25","$L26","$L27","$L28"],"$L29"]}],"p":"$@2a","v":null,"s":"$b"}}]]
+12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[[["$","$L17",null,{"title":"Basic Beach"}],["$","$L18",null,{"component":"main","children":[["$","$L19",null,{"container":true,"columns":3,"sx":{"textAlign":"center","my":1},"children":[["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"shaken"}]}],["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"crushed ice"}]}],["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"hurricane"}]}]]}],["$","$L1a",null,{"ingredients":[{"$schema":"../../../schemas/ingredient.schema.json","name":"Lime juice","type":"juice","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Lime juice","type":"juice"},"slug":"lime-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Pineapple juice","type":"juice","acidity":0.8,"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Pineapple juice","type":"juice","acidity":0.8},"slug":"pineapple-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":1.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Midori melon liqueur","type":"liqueur","categories":[{"$schema":"../../schemas/category.schema.json","name":"Melon liqueur","categoryType":"liqueur","default":{"$schema":"../../schemas/category.schema.json","name":"Melon liqueur","categoryType":"liqueur"},"refs":[],"parents":[],"slug":"melon-liqueur","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Midori melon liqueur","type":"liqueur","categories":["Melon liqueur"]},"slug":"midori-melon-liqueur","refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Giffard banane du Brésil","type":"liqueur","categories":[{"$schema":"../../schemas/category.schema.json","name":"Banana liqueur","categoryType":"liqueur","refs":[{"type":"youtube","videoId":"0D1rcq4_XKw","channel":"make-and-drink"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Banana liqueur","categoryType":"liqueur","refs":[{"type":"youtube","videoId":"0D1rcq4_XKw","channel":"make-and-drink"}]},"parents":[],"slug":"banana-liqueur","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Giffard banane du Brésil","type":"liqueur","categories":["Banana liqueur"]},"slug":"giffard-banane-du-bresil","refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Don Q Cristal Rum","type":"spirit","categories":[{"$schema":"../../schemas/category.schema.json","name":"Column still lightly aged rum","categoryType":"spirit","parents":[{"$schema":"../../schemas/category.schema.json","name":"Blended lightly-aged rum","categoryType":"spirit","parents":[{"$schema":"../../schemas/category.schema.json","name":"Rum","categoryType":"spirit","default":{"$schema":"../../schemas/category.schema.json","name":"Rum","categoryType":"spirit"},"refs":[],"parents":[],"slug":"rum","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Blended lightly-aged rum","categoryType":"spirit","parents":["Rum"]},"refs":[],"slug":"blended-lightly-aged-rum","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Column still lightly aged rum","categoryType":"spirit","parents":["Blended lightly-aged rum"]},"refs":[],"slug":"column-still-lightly-aged-rum","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Don Q Cristal Rum","type":"spirit","categories":["Column still lightly aged rum"]},"slug":"don-q-cristal-rum","refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}}]}],["$","$L1b",null,{"children":[["$","$L1c",null,{"children":"Instructions"}],["$","$L1d",null,{"square":true,"children":["$L1e","$L1f","$L20"]}]]}],"$L21",false,"$L22"]}]],["$L23","$L24","$L25","$L26","$L27"],"$L28"]}],"p":"$@29","v":null,"s":"$b"}}]]
 10:[["children",{"s":{"n":"recipe","t":"d","k":"basic-beach","s":[]},"h":96,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@11","v":"$a","s":"$b"},"c":"$Q12"}]]
 e:[["children",{"s":{"n":"source","t":"d","k":"minimalist-tiki","s":[]},"h":96,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@f","v":"$a","s":"$b"},"c":"$Q10"}]]
 c:[["children",{"s":{"n":"type","t":"d","k":"book","s":[]},"h":96,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@d","v":"$a","s":"$b"},"c":"$Qe"}]]
 1:[["children",{"s":"recipes","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@9","v":"$a","s":"$b"},"c":"$Qc"}]]
-0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Cocktail Index | Basic Beach from Minimalist Tiki"}],["$","link","1",{"rel":"manifest","href":"/cocktails/manifest.webmanifest"}],["$","link","2",{"rel":"icon","href":"/cocktails/pr-preview/pr-476/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L30","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@31","v":null,"s":"$b"}},"a":"$@32","u":"$@33","b":"7L5oCo0rej9rf8fpyfbb3"}
-34:I[28754,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-35:I[919344,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-36:I[421435,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-37:I[977210,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-38:I[121960,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-39:I[517050,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3a:I[253488,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3b:I[926044,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3c:I[618863,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3d:I[889436,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3e:I[432431,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3f:I[264533,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-40:I[534800,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-41:I[611971,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-42:I[264550,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-43:I[183142,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-44:I[897367,["$3","$4","$5","$6"],"OutletBoundary"]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$L2b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}]]}],["$","$L2d",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Cocktail Index | Basic Beach from Minimalist Tiki"}],["$","link","1",{"rel":"manifest","href":"/cocktails/manifest.webmanifest"}],["$","link","2",{"rel":"icon","href":"/cocktails/pr-preview/pr-476/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2f","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":null,"s":"$b"}},"a":"$@31","u":"$@32","b":"HheroBkI3Hqf2OyZ-D7NN"}
+33:I[28754,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+34:I[919344,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+35:I[421435,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+36:I[977210,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+37:I[121960,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+38:I[517050,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+39:I[253488,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3a:I[926044,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3b:I[618863,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3c:I[889436,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3d:I[432431,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3e:I[264533,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3f:I[534800,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+40:I[611971,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+41:I[264550,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+42:I[183142,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+43:I[897367,["$3","$4","$5","$6"],"OutletBoundary"]
 :HL["/cocktails/pr-preview/pr-476/_next/static/chunks/149efjd4w79nj.css","style"]
-1e:["$","$L34","Build ingredients in shaker. Hard shake with cubed ice, double strain into a hurricane glass.",{"divider":true,"children":["$","$L35",null,{"children":[1,". ","Build ingredients in shaker. Hard shake with cubed ice, double strain into a hurricane glass."]}]}]
-1f:["$","$L34","Fill with fresh crushed ice and swizzle.",{"divider":true,"children":["$","$L35",null,{"children":[2,". ","Fill with fresh crushed ice and swizzle."]}]}]
-20:["$","$L34","Garnish with two banana chips resting on two pineapple leaves on the inner edge of the glass.",{"divider":true,"children":["$","$L35",null,{"children":[3,". ","Garnish with two banana chips resting on two pineapple leaves on the inner edge of the glass."]}]}]
-21:["$","$L36",null,{"sx":{"m":1},"children":[["$","$L37",null,{"title":[["$","$L38",null,{}]," ","Minimalist Tiki"],"subheader":"The Next Wave · page 260"}],["$","$L39",null,{"children":["$","$L3a",null,{"variant":"body2","sx":{"color":"text.secondary"},"children":"Minimalist Tiki takes you on a fun four-part expedition through the ingredients and skills needed to achieve tiki drink mastery without buying hundreds of rums, syrups, and liqueurs. Also includes 130 recipes from bars including Pagan Idol, Dirty Dick, and Laki Kane, and bartenders including Marie King, Doc Parks, and Kevin Beary."}]}],["$","$L3b",null,{"sx":{"justifyContent":"end"},"children":["$","$L3c",null,{"href":"https://www.wonkpress.com/products/minimalist-tiki","target":"_blank","rel":"noreferrer","color":"inherit","children":["Learn more",["$","$L3d",null,{}]]}]}]]}]
-22:["$","$L36",null,{"sx":{"m":1},"children":[["$","$L37",null,{"title":"Attributions"}],["$","$L39",null,{"sx":{"px":1,"py":0,":last-child":{"pb":0}},"children":["$","$L3e",null,{"children":["$","$L3f",null,{"children":[["$","$L40","Trailer Happiness",{"sx":{"&:last-child td, &:last-child th":{"border":0}},"children":[["$","$L41",null,{"component":"th","children":"Served at"}],["$","$L41",null,{"children":"Trailer Happiness, London, UK"}]]}]]}]}]}]]}]
-23:["$","$L36",null,{"sx":{"m":1},"children":["$","$L39",null,{"children":["$","$L42",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L43",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L3c",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/book/minimalist-tiki/03_The%20Next%20Wave/basic-beach.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}]
-24:["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-476/_next/static/chunks/149efjd4w79nj.css","precedence":"next"}]
-25:["$","script","script-0",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3cef1ozj-rk9l.js","async":true}]
-26:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1sgwsiajvze_z.js","async":true}]
-27:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3pahbafc5vya6.js","async":true}]
-28:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1rlv_edt453c-.js","async":true}]
-29:["$","$L44",null,{"children":["$","$2f",null,{"name":"Next.MetadataOutlet","children":"$@45"}]}]
-33:true
+1e:["$","$L33","Build ingredients in shaker. Hard shake with cubed ice, double strain into a hurricane glass.",{"divider":true,"children":["$","$L34",null,{"children":[1,". ","Build ingredients in shaker. Hard shake with cubed ice, double strain into a hurricane glass."]}]}]
+1f:["$","$L33","Fill with fresh crushed ice and swizzle.",{"divider":true,"children":["$","$L34",null,{"children":[2,". ","Fill with fresh crushed ice and swizzle."]}]}]
+20:["$","$L33","Garnish with two banana chips resting on two pineapple leaves on the inner edge of the glass.",{"divider":true,"children":["$","$L34",null,{"children":[3,". ","Garnish with two banana chips resting on two pineapple leaves on the inner edge of the glass."]}]}]
+21:["$","$L18",null,{"sx":{"m":1,"display":{"md":"grid"},"gridTemplateColumns":{"md":"minmax(0, 1fr) 280px"},"gap":2,"alignItems":"start"},"children":[["$","$L35",null,{"sx":{"minWidth":0},"children":[["$","$L36",null,{"title":[["$","$L37",null,{}]," ","Minimalist Tiki"],"subheader":"The Next Wave · page 260"}],["$","$L38",null,{"children":["$","$L39",null,{"variant":"body2","sx":{"color":"text.secondary"},"children":"Minimalist Tiki takes you on a fun four-part expedition through the ingredients and skills needed to achieve tiki drink mastery without buying hundreds of rums, syrups, and liqueurs. Also includes 130 recipes from bars including Pagan Idol, Dirty Dick, and Laki Kane, and bartenders including Marie King, Doc Parks, and Kevin Beary."}]}],["$","$L3a",null,{"sx":{"justifyContent":"end"},"children":["$","$L3b",null,{"href":"https://www.wonkpress.com/products/minimalist-tiki","target":"_blank","rel":"noreferrer","color":"inherit","children":["Learn more",["$","$L3c",null,{}]]}]}]]}],["$","$L35",null,{"sx":{"minWidth":0,"maxWidth":{"md":280},"mt":{"xs":1,"md":0}},"children":[["$","$L36",null,{"title":"Attributions"}],["$","$L38",null,{"sx":{"px":1,"py":0,":last-child":{"pb":0}},"children":["$","$L3d",null,{"aria-label":"Recipe attributions","sx":{"tableLayout":{"md":"fixed"},"& th, & td":{"overflowWrap":"anywhere","px":{"md":1}}},"children":["$","$L3e",null,{"children":[["$","$L3f","Trailer Happiness",{"sx":{"&:last-child td, &:last-child th":{"border":0}},"children":[["$","$L40",null,{"component":"th","children":"Served at"}],["$","$L40",null,{"children":"Trailer Happiness, London, UK"}]]}]]}]}]}]]}]]}]
+22:["$","$L35",null,{"sx":{"m":1},"children":["$","$L38",null,{"children":["$","$L41",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L42",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L3b",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/book/minimalist-tiki/03_The%20Next%20Wave/basic-beach.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}]
+23:["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-476/_next/static/chunks/149efjd4w79nj.css","precedence":"next"}]
+24:["$","script","script-0",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3cef1ozj-rk9l.js","async":true}]
+25:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1sgwsiajvze_z.js","async":true}]
+26:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3pahbafc5vya6.js","async":true}]
+27:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1rlv_edt453c-.js","async":true}]
+28:["$","$L43",null,{"children":["$","$2e",null,{"name":"Next.MetadataOutlet","children":"$@44"}]}]
+32:true
 b:300
-45:null
+44:null
 b:C
-32:0
+31:0
 11:"$undefined"
 f:"$undefined"
 d:"$undefined"
 9:"$undefined"
-31:"$undefined"
-2a:"$undefined"
+30:"$undefined"
+29:"$undefined"

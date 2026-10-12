@@ -1,7 +1,7 @@
 2:"$Sreact.fragment"
 3:"/cocktails/pr-preview/pr-476/_next/static/chunks/3n4x_4pc0e_ck.js"
 4:"/cocktails/pr-preview/pr-476/_next/static/chunks/2xjb1t7yi5lge.js"
-5:"/cocktails/pr-preview/pr-476/_next/static/chunks/0k894lw6pcxq_.js"
+5:"/cocktails/pr-preview/pr-476/_next/static/chunks/33x4vy6gwyn4p.js"
 6:"/cocktails/pr-preview/pr-476/_next/static/chunks/1nkrvcgfiw5nu.js"
 7:I[339756,["$3","$4","$5","$6"],"default"]
 8:I[837457,["$3","$4","$5","$6"],"default"]
@@ -22,52 +22,52 @@
 21:I[977210,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
 22:I[670236,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
 23:I[517050,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-24:I[30512,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-25:I[253488,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-26:I[926044,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-27:I[618863,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-33:"ViewportBoundary"
-34:I[897367,["$3","$4","$5","$6"],"$33"]
-35:"MetadataBoundary"
-36:I[897367,["$3","$4","$5","$6"],"$35"]
-37:"$Sreact.suspense"
-38:I[27201,["$3","$4","$5","$6"],"IconMark"]
+24:I[253488,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+25:I[926044,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+26:I[618863,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+32:"ViewportBoundary"
+33:I[897367,["$3","$4","$5","$6"],"$32"]
+34:"MetadataBoundary"
+35:I[897367,["$3","$4","$5","$6"],"$34"]
+36:"$Sreact.suspense"
+37:I[27201,["$3","$4","$5","$6"],"IconMark"]
 a:X
 a:C
 b:X
-12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[[["$","$L17",null,{"title":"La Siesta"}],["$","$L18",null,{"component":"main","children":[["$","$L19",null,{"container":true,"columns":3,"sx":{"textAlign":"center","my":1},"children":[["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"shaken"}]}],["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"up"}]}],["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"coupe"}]}]]}],["$","$L1a",null,{"ingredients":[{"$schema":"../../../schemas/ingredient.schema.json","name":"Grapefruit juice","type":"juice","acidity":2,"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Grapefruit juice","type":"juice","acidity":2},"slug":"grapefruit-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.5,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Lime juice","type":"juice","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Lime juice","type":"juice"},"slug":"lime-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Simple syrup","type":"syrup","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Simple syrup","type":"syrup"},"slug":"simple-syrup","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Campari","type":"liqueur","categories":[{"$schema":"../../schemas/category.schema.json","name":"Italian bitter apéritif","categoryType":"liqueur","parents":[{"$schema":"../../schemas/category.schema.json","name":"Bitter apéritif","categoryType":"liqueur","default":{"$schema":"../../schemas/category.schema.json","name":"Bitter apéritif","categoryType":"liqueur"},"refs":[],"parents":[],"slug":"bitter-aperitif","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Italian bitter apéritif","categoryType":"liqueur","parents":["Bitter apéritif"]},"refs":[],"slug":"italian-bitter-aperitif","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Campari","type":"liqueur","categories":["Italian bitter apéritif"]},"slug":"campari","refs":[],"ingredients":[],"quantity":{"amount":0.25,"unit":"oz"}},{"$schema":"../../schemas/category.schema.json","name":"Tequila (blanco)","categoryType":"spirit","parents":[{"$schema":"../../schemas/category.schema.json","name":"Tequila","categoryType":"spirit","default":{"$schema":"../../schemas/category.schema.json","name":"Tequila","categoryType":"spirit"},"refs":[],"parents":[],"slug":"tequila","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Tequila (blanco)","categoryType":"spirit","parents":["Tequila"]},"refs":[],"slug":"tequila-blanco","type":"category","quantity":{"amount":1.5,"unit":"oz"}}]}],["$","$L1b",null,{"children":[["$","$L1c",null,{"children":"Instructions"}],["$","$L1d",null,{"square":true,"children":[["$","$L1e","Garnish with grapefruit zest",{"divider":true,"children":["$","$L1f",null,{"children":[1,". ","Garnish with grapefruit zest"]}]}]]}]]}],["$","$L20",null,{"sx":{"m":1},"children":[["$","$L21",null,{"title":[["$","$L22",null,{}]," ","Truffles On The Rocks"]}],["$","$L23",null,{"children":["$","$L24",null,{"id":"e6ir4Wj4u9Q"}]}],["$","$L23",null,{"children":["$","$L25",null,{"variant":"body2","color":"text.secondary","children":"Hi! I'm Jean-Félix, the cocktail guy at Truffles On The Rocks. I been working in the hospitality for about a decade now and I believe what I love the most about it is to share. Sharing recipes, my passion, stories... hopefully you'll enjoy me sharing my love for cocktails here on the channel."}]}],["$","$L26",null,{"sx":{"justifyContent":"end"},"children":["$","$L27",null,{"href":"https://www.youtube.com/@TrufflesOnTheRocks","target":"_blank","rel":"noreferrer noopener","color":"inherit","children":["Go to channel","$L28"]}]}]]}],"$L29","$L2a","$L2b"]}]],["$L2c","$L2d","$L2e","$L2f","$L30"],"$L31"]}],"p":"$@32","v":null,"s":"$b"}}]]
+12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[[["$","$L17",null,{"title":"La Siesta"}],["$","$L18",null,{"component":"main","children":[["$","$L19",null,{"container":true,"columns":3,"sx":{"textAlign":"center","my":1},"children":[["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"shaken"}]}],["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"up"}]}],["$","$L19",null,{"size":1,"children":["$","div",null,{"className":"-MxmjW_badge","children":"coupe"}]}]]}],["$","$L1a",null,{"ingredients":[{"$schema":"../../../schemas/ingredient.schema.json","name":"Grapefruit juice","type":"juice","acidity":2,"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Grapefruit juice","type":"juice","acidity":2},"slug":"grapefruit-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.5,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Lime juice","type":"juice","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Lime juice","type":"juice"},"slug":"lime-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Simple syrup","type":"syrup","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Simple syrup","type":"syrup"},"slug":"simple-syrup","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Campari","type":"liqueur","categories":[{"$schema":"../../schemas/category.schema.json","name":"Italian bitter apéritif","categoryType":"liqueur","parents":[{"$schema":"../../schemas/category.schema.json","name":"Bitter apéritif","categoryType":"liqueur","default":{"$schema":"../../schemas/category.schema.json","name":"Bitter apéritif","categoryType":"liqueur"},"refs":[],"parents":[],"slug":"bitter-aperitif","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Italian bitter apéritif","categoryType":"liqueur","parents":["Bitter apéritif"]},"refs":[],"slug":"italian-bitter-aperitif","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Campari","type":"liqueur","categories":["Italian bitter apéritif"]},"slug":"campari","refs":[],"ingredients":[],"quantity":{"amount":0.25,"unit":"oz"}},{"$schema":"../../schemas/category.schema.json","name":"Tequila (blanco)","categoryType":"spirit","parents":[{"$schema":"../../schemas/category.schema.json","name":"Tequila","categoryType":"spirit","default":{"$schema":"../../schemas/category.schema.json","name":"Tequila","categoryType":"spirit"},"refs":[],"parents":[],"slug":"tequila","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Tequila (blanco)","categoryType":"spirit","parents":["Tequila"]},"refs":[],"slug":"tequila-blanco","type":"category","quantity":{"amount":1.5,"unit":"oz"}}]}],["$","$L1b",null,{"children":[["$","$L1c",null,{"children":"Instructions"}],["$","$L1d",null,{"square":true,"children":[["$","$L1e","Garnish with grapefruit zest",{"divider":true,"children":["$","$L1f",null,{"children":[1,". ","Garnish with grapefruit zest"]}]}]]}]]}],["$","$L18",null,{"sx":{"m":1,"display":{"md":"grid"},"gridTemplateColumns":{"md":"minmax(0, 1fr) 280px"},"gap":2,"alignItems":"start"},"children":[["$","$L20",null,{"sx":{"minWidth":0},"children":[["$","$L21",null,{"title":[["$","$L22",null,{}]," ","Truffles On The Rocks"]}],"$undefined",["$","$L23",null,{"children":["$","$L24",null,{"variant":"body2","color":"text.secondary","children":"Hi! I'm Jean-Félix, the cocktail guy at Truffles On The Rocks. I been working in the hospitality for about a decade now and I believe what I love the most about it is to share. Sharing recipes, my passion, stories... hopefully you'll enjoy me sharing my love for cocktails here on the channel."}]}],["$","$L25",null,{"sx":{"justifyContent":"end"},"children":["$","$L26",null,{"href":"https://www.youtube.com/@TrufflesOnTheRocks","target":"_blank","rel":"noreferrer noopener","color":"inherit","children":["Go to channel","$L27"]}]}]]}],"$L28"]}],"$L29","$L2a"]}]],["$L2b","$L2c","$L2d","$L2e","$L2f"],"$L30"]}],"p":"$@31","v":null,"s":"$b"}}]]
 10:[["children",{"s":{"n":"recipe","t":"d","k":"la-siesta","s":[]},"h":96,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@11","v":"$a","s":"$b"},"c":"$Q12"}]]
 e:[["children",{"s":{"n":"source","t":"d","k":"truffles-on-the-rocks","s":[]},"h":96,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@f","v":"$a","s":"$b"},"c":"$Q10"}]]
 c:[["children",{"s":{"n":"type","t":"d","k":"youtube-channel","s":[]},"h":96,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@d","v":"$a","s":"$b"},"c":"$Qe"}]]
 1:[["children",{"s":"recipes","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@9","v":"$a","s":"$b"},"c":"$Qc"}]]
-0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$L34",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}]]}],["$","$L36",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$37",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Cocktail Index | La Siesta from Truffles On The Rocks"}],["$","link","1",{"rel":"manifest","href":"/cocktails/manifest.webmanifest"}],["$","link","2",{"rel":"icon","href":"/cocktails/pr-preview/pr-476/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L38","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@39","v":null,"s":"$b"}},"a":"$@3a","u":"$@3b","b":"7L5oCo0rej9rf8fpyfbb3"}
-3c:I[889436,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3d:I[432431,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3e:I[264533,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-3f:I[534800,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
-40:I[611971,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$L33",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}]]}],["$","$L35",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$36",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Cocktail Index | La Siesta from Truffles On The Rocks"}],["$","link","1",{"rel":"manifest","href":"/cocktails/manifest.webmanifest"}],["$","link","2",{"rel":"icon","href":"/cocktails/pr-preview/pr-476/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L37","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@38","v":null,"s":"$b"}},"a":"$@39","u":"$@3a","b":"HheroBkI3Hqf2OyZ-D7NN"}
+3b:I[889436,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3c:I[432431,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3d:I[264533,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3e:I[534800,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+3f:I[611971,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
+40:I[30512,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
 41:I[264550,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
 42:I[183142,["$3","$4","$5","$6","$13","$14","$15","$16"],"default"]
 43:I[897367,["$3","$4","$5","$6"],"OutletBoundary"]
 :HL["/cocktails/pr-preview/pr-476/_next/static/chunks/149efjd4w79nj.css","style"]
-28:["$","$L3c",null,{}]
-29:["$","$L20",null,{"sx":{"m":1},"children":[["$","$L21",null,{"title":"Attributions"}],["$","$L23",null,{"sx":{"px":1,"py":0,":last-child":{"pb":0}},"children":["$","$L3d",null,{"children":["$","$L3e",null,{"children":[["$","$L3f","Katie Stipe",{"sx":{"&:last-child td, &:last-child th":{"border":0}},"children":[["$","$L40",null,{"component":"th","children":"Created by"}],["$","$L40",null,{"children":"Katie Stipe"}]]}]]}]}]}]]}]
-2a:["$","$L20",null,{"sx":{"m":1},"children":[["$","$L21",null,{"title":"Video"}],[["$","$L23","lHhTXziSBIU",{"children":["$","$L24",null,{"id":"lHhTXziSBIU"}]}]]]}]
-2b:["$","$L20",null,{"sx":{"m":1},"children":["$","$L23",null,{"children":["$","$L41",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L42",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L27",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/youtube-channel/truffles-on-the-rocks/la-siesta.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}]
-2c:["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-476/_next/static/chunks/149efjd4w79nj.css","precedence":"next"}]
-2d:["$","script","script-0",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3cef1ozj-rk9l.js","async":true}]
-2e:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1sgwsiajvze_z.js","async":true}]
-2f:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3pahbafc5vya6.js","async":true}]
-30:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1rlv_edt453c-.js","async":true}]
-31:["$","$L43",null,{"children":["$","$37",null,{"name":"Next.MetadataOutlet","children":"$@44"}]}]
-3b:true
+27:["$","$L3b",null,{}]
+28:["$","$L20",null,{"sx":{"minWidth":0,"maxWidth":{"md":280},"mt":{"xs":1,"md":0}},"children":[["$","$L21",null,{"title":"Attributions"}],["$","$L23",null,{"sx":{"px":1,"py":0,":last-child":{"pb":0}},"children":["$","$L3c",null,{"aria-label":"Recipe attributions","sx":{"tableLayout":{"md":"fixed"},"& th, & td":{"overflowWrap":"anywhere","px":{"md":1}}},"children":["$","$L3d",null,{"children":[["$","$L3e","Katie Stipe",{"sx":{"&:last-child td, &:last-child th":{"border":0}},"children":[["$","$L3f",null,{"component":"th","children":"Created by"}],["$","$L3f",null,{"children":"Katie Stipe"}]]}]]}]}]}]]}]
+29:["$","$L20",null,{"sx":{"m":1},"children":[["$","$L21",null,{"title":"Videos"}],["$","$L18",null,{"component":"ul","aria-label":"Videos","sx":{"listStyle":"none","m":0,"p":{"xs":0,"md":2},"pt":{"md":0},"display":{"md":"grid"},"gridTemplateColumns":{"md":"repeat(auto-fit, minmax(min(100%, 200px), 1fr))"},"gap":2},"children":[["$","$L23","e6ir4Wj4u9Q",{"component":"li","sx":{"pt":0,"p":{"md":0},":last-child":{"pb":{"md":0}}},"children":["$","$L40",null,{"id":"e6ir4Wj4u9Q"}]}],["$","$L23","lHhTXziSBIU",{"component":"li","sx":{"pt":0,"p":{"md":0},":last-child":{"pb":{"md":0}}},"children":["$","$L40",null,{"id":"lHhTXziSBIU"}]}]]}]]}]
+2a:["$","$L20",null,{"sx":{"m":1},"children":["$","$L23",null,{"children":["$","$L41",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L42",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L26",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/youtube-channel/truffles-on-the-rocks/la-siesta.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}]
+2b:["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-476/_next/static/chunks/149efjd4w79nj.css","precedence":"next"}]
+2c:["$","script","script-0",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3cef1ozj-rk9l.js","async":true}]
+2d:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1sgwsiajvze_z.js","async":true}]
+2e:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/3pahbafc5vya6.js","async":true}]
+2f:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-476/_next/static/chunks/1rlv_edt453c-.js","async":true}]
+30:["$","$L43",null,{"children":["$","$36",null,{"name":"Next.MetadataOutlet","children":"$@44"}]}]
+3a:true
 b:300
 44:null
 b:C
-3a:0
+39:0
 11:"$undefined"
 f:"$undefined"
 d:"$undefined"
 9:"$undefined"
-39:"$undefined"
-32:"$undefined"
+38:"$undefined"
+31:"$undefined"
