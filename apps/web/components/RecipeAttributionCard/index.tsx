@@ -33,7 +33,13 @@ export default function RecipeAttributionCard({
         // Reduce padding given the table already includes a lot of whitespace
         sx={{ px: 1, py: 0, ':last-child': { pb: 0 } }}
       >
-        <Table>
+        <Table
+          aria-label="Recipe attributions"
+          sx={{
+            tableLayout: { md: 'fixed' },
+            '& th, & td': { overflowWrap: 'anywhere', px: { md: 1 } },
+          }}
+        >
           <TableBody>
             {recipe.attributions.map((attribution) => {
               let name = attribution.source;

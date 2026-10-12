@@ -16,6 +16,12 @@ const LinkBehaviour = forwardRef(function LinkBehaviour(
 const theme = createTheme({
   cssVariables: true,
   defaultColorScheme: 'dark',
+  // Applied by ButtonBase-based controls (ListItemButton, IconButton, …) on
+  // `:focus-visible` through the `.Mui-focusVisible` class, where their own
+  // `outline: 0` rule would otherwise win against a global selector.
+  focusVisible: {
+    outlineColor: '#8DD4ED',
+  },
   typography: {
     fontFamily: 'var(--font-roboto)',
   },
@@ -113,6 +119,19 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: 'rgba(10, 20, 32, 0.9)',
+        },
+      },
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        ':focus-visible': {
+          outline: '2px solid #8DD4ED',
+          outlineOffset: 2,
+        },
+        a: {
+          ':hover': {
+            textDecoration: 'underline',
+          },
         },
       },
     },

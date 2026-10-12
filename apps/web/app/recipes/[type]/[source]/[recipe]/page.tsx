@@ -11,6 +11,7 @@ import {
   Paper,
 } from '@mui/material';
 import { notFound, unstable_rethrow } from 'next/navigation';
+import { isMatching } from 'ts-pattern';
 import AppHeader from '#/components/AppHeader';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
@@ -46,10 +47,8 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
   const recipe = await getRecipe({ type: type, slug: source }, recipeSlug);
 
   const videos = recipe.refs.filter((ref) => ref.type === 'youtube');
-  if (recipe.source.type === 'youtube-channel') {
-    // For youtube channels, the first video is always in the source card.
-    videos.shift();
-  }
+  const hasSourceVideo =
+    isMatching({ type: 'youtube-channel' }, recipe.source) && videos.length === 1;
 
   return (
     <>
@@ -85,16 +84,37 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
             </Paper>
           </List>
         )}
-        <SourceAboutCard
-          source={recipe.source}
-          chapterName={recipe.chapter?.name}
-          refs={recipe.refs}
-          sx={{ m: 1 }}
-        />
-        {recipe.attributions.length > 0 && (
-          <RecipeAttributionCard recipe={recipe} sx={{ m: 1 }} />
+        <Box
+          sx={{
+            m: 1,
+            display: { md: 'grid' },
+            gridTemplateColumns: {
+              md:
+                recipe.attributions.length > 0
+                  ? 'minmax(0, 1fr) 280px'
+                  : 'minmax(0, 1fr)',
+            },
+            gap: 2,
+            alignItems: 'start',
+          }}
+        >
+          <SourceAboutCard
+            source={recipe.source}
+            chapterName={recipe.chapter?.name}
+            refs={recipe.refs}
+            showVideo={hasSourceVideo}
+            sx={{ minWidth: 0 }}
+          />
+          {recipe.attributions.length > 0 && (
+            <RecipeAttributionCard
+              recipe={recipe}
+              sx={{ minWidth: 0, maxWidth: { md: 280 }, mt: { xs: 1, md: 0 } }}
+            />
+          )}
+        </Box>
+        {videos.length > 0 && !hasSourceVideo && (
+          <VideoListCard refs={videos} sx={{ m: 1 }} />
         )}
-        {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
         <FixBugCard fixUrl={getRecipeEditUrl(recipe)} sx={{ m: 1 }} />
       </Box>
     </>

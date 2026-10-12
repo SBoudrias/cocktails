@@ -1,7 +1,7 @@
 'use client';
 
 import { LocalBar } from '@mui/icons-material';
-import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import SearchInput from '#/components/SearchInput';
 
@@ -20,19 +20,35 @@ export default function SearchHeader({
   return (
     <>
       <AppBar>
-        <Toolbar>
-          {isHome ? (
-            <IconButton size="large" edge="start" disabled>
-              <Icon />
-            </IconButton>
-          ) : (
-            <IconButton size="large" edge="start" aria-label="Go to home" href="/">
-              <LocalBar />
-            </IconButton>
-          )}
+        <Box
+          sx={{ width: '100%', maxWidth: { md: 1200 }, mx: 'auto', pl: { md: '272px' } }}
+        >
+          <Toolbar sx={{ width: '100%', maxWidth: { md: 720 }, mx: 'auto' }}>
+            {isHome ? (
+              <IconButton size="large" edge="start" disabled>
+                <Icon />
+              </IconButton>
+            ) : (
+              <IconButton size="large" edge="start" aria-label="Go to home" href="/">
+                <LocalBar />
+              </IconButton>
+            )}
 
-          <SearchInput value={searchTerm ?? ''} onChangeAction={onSearchChange} />
-        </Toolbar>
+            <Typography
+              variant="body2"
+              sx={{ display: { xs: 'none', md: 'block' }, mr: 1, whiteSpace: 'nowrap' }}
+            >
+              {title === 'All Recipes' ? 'All recipes' : 'Filter this page'}
+            </Typography>
+            <SearchInput
+              ariaLabel={
+                title === 'All Recipes' ? 'Search all recipes' : 'Filter this page'
+              }
+              value={searchTerm ?? ''}
+              onChangeAction={onSearchChange}
+            />
+          </Toolbar>
+        </Box>
       </AppBar>
       <Toolbar />
       {!searchTerm && title && (
