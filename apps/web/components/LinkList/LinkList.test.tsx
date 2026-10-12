@@ -96,31 +96,28 @@ describe('LinkList', () => {
       expect(groups[2]).toHaveTextContent('Zebra');
     });
 
-    it('reports mounted group headers through onHeaderMount', () => {
-      const onHeaderMount = vi.fn();
+    it('labels groups whose headers contain spaces or symbols', () => {
+      const items: TestItem[] = [
+        { id: '1', name: 'Zombie', category: 'The Golden Era' },
+        { id: '2', name: '1942', category: '#' },
+      ];
 
       render(
         <LinkList
-          items={testItems}
+          items={items}
           config={{
             groupBy: (item: TestItem) => item.category,
             sortItemBy: () => 0,
             sortHeaderBy: (a: string, b: string) => a.localeCompare(b),
           }}
           renderItem={renderItem}
-          onHeaderMount={onHeaderMount}
         />,
       );
 
-      expect(onHeaderMount).toHaveBeenCalledTimes(2);
-      const headers = onHeaderMount.mock.calls.map(([header]) => header);
-      expect(headers).toEqual(['A', 'B']);
-
-      // Reported nodes are the mounted subheader elements
-      for (const [, node] of onHeaderMount.mock.calls) {
-        expect(node).toBeInstanceOf(HTMLElement);
-        expect(node.dataset.header).toBeDefined();
-      }
+      expect(screen.getByRole('group', { name: 'The Golden Era' })).toHaveTextContent(
+        'Zombie',
+      );
+      expect(screen.getByRole('group', { name: '#' })).toHaveTextContent('1942');
     });
   });
 });

@@ -1,177 +1,293 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import IndexBar from './index';
 
+const ALPHABET = [
+  '#',
+  ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)),
+];
 const availableIndexes = new Set(['A', 'D', 'M']);
+
+// The drag maps the pointer onto the rail's rect: give each letter 10px of a
+// rail starting at the top of the viewport
+const LETTER_HEIGHT = 10;
+const letterY = (index: string) =>
+  ALPHABET.indexOf(index) * LETTER_HEIGHT + LETTER_HEIGHT / 2;
+
+function mockRailRect() {
+  vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(
+    DOMRect.fromRect({ x: 0, y: 0, width: 20, height: ALPHABET.length * LETTER_HEIGHT }),
+  );
+}
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 describe('IndexBar', () => {
   it('renders all alphabet letters plus #', () => {
-    render(<IndexBar availableIndexes={availableIndexes} onIndexSelect={vi.fn()} />);
+    render(
+      <IndexBar
+        indexes={ALPHABET}
+        availableIndexes={availableIndexes}
+        onIndexSelect={vi.fn()}
+      />,
+    );
 
     const nav = screen.getByRole('navigation', { name: 'Alphabet index' });
-    expect(nav).toBeInTheDocument();
     expect(nav).toHaveTextContent('#');
     expect(nav).toHaveTextContent('A');
     expect(nav).toHaveTextContent('Z');
   });
 
-  it('calls onIndexSelect when clicking a letter with content', () => {
-    const onIndexSelect = vi.fn();
-    render(
-      <IndexBar availableIndexes={availableIndexes} onIndexSelect={onIndexSelect} />,
-    );
+  describe('keyboard activation', () => {
+    it('selects a letter with content and asks for focus to follow', () => {
+      const onIndexSelect = vi.fn();
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={onIndexSelect}
+        />,
+      );
 
-    const aButton = screen.getByRole('button', { name: 'Jump to A' });
-    fireEvent.click(aButton);
+      // A click without a pointer behind it (detail 0) is a keyboard activation
+      fireEvent.click(screen.getByRole('button', { name: 'Jump to A' }), { detail: 0 });
 
-    expect(onIndexSelect).toHaveBeenCalledWith('A');
-  });
+      expect(onIndexSelect).toHaveBeenLastCalledWith('A', { focus: true });
+    });
 
-  it('jumps to next available letter when clicking empty letter', () => {
-    const onIndexSelect = vi.fn();
-    render(
-      <IndexBar availableIndexes={availableIndexes} onIndexSelect={onIndexSelect} />,
-    );
+    it('jumps to the next available letter from an empty one', () => {
+      const onIndexSelect = vi.fn();
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={onIndexSelect}
+        />,
+      );
 
-    // B has no content, should jump to D (next available)
-    const bButton = screen.getByRole('button', { name: 'Jump to B' });
-    fireEvent.click(bButton);
+      fireEvent.click(screen.getByRole('button', { name: 'Jump to B' }), { detail: 0 });
 
-    expect(onIndexSelect).toHaveBeenCalledWith('D');
-  });
+      expect(onIndexSelect).toHaveBeenLastCalledWith('D', { focus: true });
+    });
 
-  it('jumps backward to the last available letter when clicking Z-like trailing empty letters', () => {
-    const onIndexSelect = vi.fn();
-    render(
-      <IndexBar availableIndexes={availableIndexes} onIndexSelect={onIndexSelect} />,
-    );
+    it('falls back to the previous available letter after the last one', () => {
+      const onIndexSelect = vi.fn();
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={onIndexSelect}
+        />,
+      );
 
-    // T, U, ... Z have no content and nothing follows them: the search
-    // falls back to the nearest available index backwards (M)
-    const zButton = screen.getByRole('button', { name: 'Jump to Z' });
-    fireEvent.click(zButton);
+      fireEvent.click(screen.getByRole('button', { name: 'Jump to Z' }), { detail: 0 });
 
-    expect(onIndexSelect).toHaveBeenCalledWith('M');
+      expect(onIndexSelect).toHaveBeenLastCalledWith('M', { focus: true });
+    });
+
+    it('ignores the click that follows a pointer tap', () => {
+      const onIndexSelect = vi.fn();
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={onIndexSelect}
+        />,
+      );
+
+      // The pointer handlers already activated; a pointer click has detail >= 1
+      fireEvent.click(screen.getByRole('button', { name: 'Jump to A' }), { detail: 1 });
+
+      expect(onIndexSelect).not.toHaveBeenCalled();
+    });
   });
 
   it('highlights the active index', () => {
     render(
       <IndexBar
+        indexes={ALPHABET}
         activeIndex="M"
         availableIndexes={availableIndexes}
         onIndexSelect={vi.fn()}
       />,
     );
 
-    const mButton = screen.getByRole('button', { name: 'Jump to M' });
-    expect(mButton).toHaveAttribute('aria-current', 'true');
+    expect(screen.getByRole('button', { name: 'Jump to M' })).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
   });
 
-  it('makes letters without content non-focusable', () => {
-    render(<IndexBar availableIndexes={availableIndexes} onIndexSelect={vi.fn()} />);
+  describe('roving focus', () => {
+    it('has a single tab stop on the active letter', () => {
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          activeIndex="M"
+          availableIndexes={availableIndexes}
+          onIndexSelect={vi.fn()}
+        />,
+      );
 
-    // A has content, should be focusable
-    const aButton = screen.getByRole('button', { name: 'Jump to A' });
-    expect(aButton).toHaveAttribute('tabIndex', '0');
+      expect(screen.getByRole('button', { name: 'Jump to M' })).toHaveAttribute(
+        'tabIndex',
+        '0',
+      );
+      expect(screen.getByRole('button', { name: 'Jump to A' })).toHaveAttribute(
+        'tabIndex',
+        '-1',
+      );
+    });
 
-    // B has no content, should not be focusable
-    const bButton = screen.getByRole('button', { name: 'Jump to B' });
-    expect(bButton).toHaveAttribute('tabIndex', '-1');
+    it('falls back to the first letter with content without an active one', () => {
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={vi.fn()}
+        />,
+      );
+
+      expect(screen.getByRole('button', { name: 'Jump to A' })).toHaveAttribute(
+        'tabIndex',
+        '0',
+      );
+      expect(screen.getByRole('button', { name: 'Jump to B' })).toHaveAttribute(
+        'tabIndex',
+        '-1',
+      );
+    });
+
+    it('moves focus between letters with content using the arrow keys', () => {
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={vi.fn()}
+        />,
+      );
+
+      const aButton = screen.getByRole('button', { name: 'Jump to A' });
+      aButton.focus();
+
+      fireEvent.keyDown(aButton, { key: 'ArrowDown' });
+      expect(screen.getByRole('button', { name: 'Jump to D' })).toHaveFocus();
+
+      fireEvent.keyDown(document.activeElement ?? aButton, { key: 'End' });
+      expect(screen.getByRole('button', { name: 'Jump to M' })).toHaveFocus();
+
+      fireEvent.keyDown(document.activeElement ?? aButton, { key: 'ArrowDown' });
+      expect(screen.getByRole('button', { name: 'Jump to M' })).toHaveFocus();
+
+      fireEvent.keyDown(document.activeElement ?? aButton, { key: 'Home' });
+      expect(aButton).toHaveFocus();
+    });
   });
 
   describe('drag', () => {
-    it('activates indexes during a pointer drag and shows the indicator tracking the pointer', () => {
+    it('scrubs through letters, scrolling only when the target changes', () => {
+      mockRailRect();
       const onIndexSelect = vi.fn();
       render(
-        <IndexBar availableIndexes={availableIndexes} onIndexSelect={onIndexSelect} />,
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={onIndexSelect}
+        />,
       );
 
       const nav = screen.getByRole('navigation', { name: 'Alphabet index' });
-      const aButton = screen.getByRole('button', { name: 'Jump to A' });
-      const mButton = screen.getByRole('button', { name: 'Jump to M' });
+      const status = screen.getByRole('status');
 
-      // Hit-test through elementFromPoint like a real drag
-      const fromPoint = vi.spyOn(document, 'elementFromPoint').mockReturnValue(aButton);
+      fireEvent.pointerDown(nav, { pointerId: 1, button: 0, clientY: letterY('A') });
+      expect(onIndexSelect).toHaveBeenLastCalledWith('A', { focus: false });
+      expect(status).toHaveTextContent('A');
 
-      fireEvent.pointerDown(nav, { pointerId: 1, clientX: 100, clientY: 100 });
-      expect(onIndexSelect).toHaveBeenCalledWith('A');
+      fireEvent.pointerMove(nav, { pointerId: 1, clientY: letterY('M') });
+      expect(onIndexSelect).toHaveBeenLastCalledWith('M', { focus: false });
+      expect(status).toHaveTextContent('M');
 
-      // Indicator appears and follows the pointer's Y position
+      // Still on M, then on N (empty, resolves to M): no new scroll
+      fireEvent.pointerMove(nav, { pointerId: 1, clientY: letterY('M') + 1 });
+      fireEvent.pointerMove(nav, { pointerId: 1, clientY: letterY('N') });
+      expect(onIndexSelect).toHaveBeenCalledTimes(['A', 'M'].length);
+      expect(status).toHaveTextContent('N');
+    });
+
+    it('clamps to the first and last letters past the ends of the rail', () => {
+      mockRailRect();
+      const onIndexSelect = vi.fn();
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={onIndexSelect}
+        />,
+      );
+
+      const nav = screen.getByRole('navigation', { name: 'Alphabet index' });
+
+      fireEvent.pointerDown(nav, { pointerId: 1, button: 0, clientY: letterY('D') });
+      fireEvent.pointerMove(nav, { pointerId: 1, clientY: -100 });
+      expect(screen.getByRole('status')).toHaveTextContent('#');
+      expect(onIndexSelect).toHaveBeenLastCalledWith('A', { focus: false });
+
+      fireEvent.pointerMove(nav, { pointerId: 1, clientY: 10_000 });
+      expect(screen.getByRole('status')).toHaveTextContent('Z');
+      expect(onIndexSelect).toHaveBeenLastCalledWith('M', { focus: false });
+    });
+
+    it('ends the drag when the pointer capture is lost', () => {
+      mockRailRect();
+      const onIndexSelect = vi.fn();
+      render(
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={onIndexSelect}
+        />,
+      );
+
+      const nav = screen.getByRole('navigation', { name: 'Alphabet index' });
+
+      fireEvent.pointerDown(nav, { pointerId: 1, button: 0, clientY: letterY('A') });
       expect(screen.getByRole('status')).toHaveTextContent('A');
 
-      fromPoint.mockReturnValue(mButton);
-      fireEvent.pointerMove(nav, { pointerId: 1, clientX: 100, clientY: 300 });
+      // The browser fires lostpointercapture however the drag ends
+      fireEvent.lostPointerCapture(nav, { pointerId: 1 });
+      expect(screen.getByRole('status')).toBeEmptyDOMElement();
 
-      expect(onIndexSelect).toHaveBeenCalledWith('M');
-      expect(screen.getByRole('status')).toHaveTextContent('M');
-
-      // Drag ends on release: indicator disappears, capture released
-      fireEvent.pointerUp(nav, { pointerId: 1, clientX: 100, clientY: 300 });
-
-      expect(screen.queryByRole('status')).not.toBeInTheDocument();
-      expect(nav.hasPointerCapture(1)).toBe(false);
-
-      fromPoint.mockRestore();
+      // Moves after the drag no longer scrub
+      fireEvent.pointerMove(nav, { pointerId: 1, clientY: letterY('M') });
+      expect(onIndexSelect).toHaveBeenCalledTimes(1);
     });
 
-    it('ends the drag even when the pointer is released outside the bar (pointer capture)', () => {
+    it('does not start a drag from a hover or a right click', () => {
+      mockRailRect();
       const onIndexSelect = vi.fn();
       render(
-        <IndexBar availableIndexes={availableIndexes} onIndexSelect={onIndexSelect} />,
+        <IndexBar
+          indexes={ALPHABET}
+          availableIndexes={availableIndexes}
+          onIndexSelect={onIndexSelect}
+        />,
       );
 
       const nav = screen.getByRole('navigation', { name: 'Alphabet index' });
-      const rail = screen.getByTestId('index-bar-rail');
-      const aButton = screen.getByRole('button', { name: 'Jump to A' });
 
-      const fromPoint = vi.spyOn(document, 'elementFromPoint').mockReturnValue(aButton);
+      fireEvent.pointerMove(nav, { pointerId: 1, clientY: letterY('M') });
+      fireEvent.pointerDown(nav, { pointerId: 1, button: 2, clientY: letterY('A') });
 
-      fireEvent.pointerDown(nav, { pointerId: 1, clientX: 100, clientY: 100 });
-      expect(rail.hasPointerCapture(1)).toBe(true);
-
-      // Pointer captured: moves outside the bar still track
-      fromPoint.mockReturnValue(null);
-      fireEvent.pointerMove(nav, { pointerId: 1, clientX: 500, clientY: 500 });
-      expect(onIndexSelect).toHaveBeenCalledTimes(1);
-
-      // Release outside the bar still ends the drag
-      fireEvent.pointerUp(nav, { pointerId: 1, clientX: 500, clientY: 500 });
-
-      expect(screen.queryByRole('status')).not.toBeInTheDocument();
-      expect(rail.hasPointerCapture(1)).toBe(false);
-
-      fromPoint.mockRestore();
-    });
-
-    it('does not double-activate from the click following a pointer activation', async () => {
-      const onIndexSelect = vi.fn();
-      render(
-        <IndexBar availableIndexes={availableIndexes} onIndexSelect={onIndexSelect} />,
-      );
-
-      const nav = screen.getByRole('navigation', { name: 'Alphabet index' });
-      const aButton = screen.getByRole('button', { name: 'Jump to A' });
-
-      const fromPoint = vi.spyOn(document, 'elementFromPoint').mockReturnValue(aButton);
-
-      // Full pointer sequence, then the synthetic click a browser fires
-      // after a touch/pointer tap
-      fireEvent.pointerDown(nav, { pointerId: 1, clientX: 100, clientY: 100 });
-      fireEvent.pointerUp(nav, { pointerId: 1, clientX: 100, clientY: 100 });
-      fireEvent.click(aButton);
-
-      expect(onIndexSelect).toHaveBeenCalledTimes(1);
-
-      fromPoint.mockRestore();
-
-      // The suppression re-arms so a later real click still works
-      await waitFor(() => {
-        fireEvent.click(screen.getByRole('button', { name: 'Jump to D' }));
-        expect(onIndexSelect).toHaveBeenCalledWith('D');
-      });
+      expect(onIndexSelect).not.toHaveBeenCalled();
+      expect(screen.getByRole('status')).toBeEmptyDOMElement();
     });
   });
 
-  it('supports a custom index list with labels', () => {
+  it('labels a custom index list and announces the label while dragging', () => {
+    vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(
+      DOMRect.fromRect({ x: 0, y: 0, width: 20, height: 3 * LETTER_HEIGHT }),
+    );
     render(
       <IndexBar
         indexes={['01', '02', '03']}
@@ -185,9 +301,10 @@ describe('IndexBar', () => {
     const nav = screen.getByRole('navigation', { name: 'Chapter index' });
     expect(nav).toHaveTextContent('01');
     expect(nav).toHaveTextContent('02');
-
-    // Chapter name in the aria-label, number in the bubble text
     expect(screen.getByRole('button', { name: 'Jump to Rum' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Jump to Tiki' })).toBeInTheDocument();
+
+    fireEvent.pointerDown(nav, { pointerId: 1, button: 0, clientY: LETTER_HEIGHT * 1.5 });
+    expect(screen.getByRole('status')).toHaveTextContent('Tiki');
   });
 });

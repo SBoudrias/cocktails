@@ -17,7 +17,7 @@ const getSearchText = (item: TestItem) => item.name.toLowerCase();
 const renderItem = (item: TestItem) => <li key={item.name}>{item.name}</li>;
 
 const emptyState = (
-  <div role="status">
+  <div role="status" aria-label="No results">
     <p>No results found</p>
   </div>
 );
@@ -106,8 +106,9 @@ describe('SearchableList', () => {
       />,
     );
 
-    expect(screen.getByRole('status')).toBeInTheDocument();
-    expect(screen.getByText('No results found')).toBeInTheDocument();
+    expect(screen.getByRole('status', { name: 'No results' })).toHaveTextContent(
+      'No results found',
+    );
   });
 
   it('calls renderItem for each group when displaying grouped items', () => {
@@ -164,6 +165,7 @@ describe('SearchableList', () => {
 
     // Should show grouped items, not empty state
     expect(screen.getByRole('group', { name: 'D' })).toBeInTheDocument();
-    expect(screen.queryByRole('status')).not.toBeInTheDocument();
+    // (the index bar's drag announcer is a status region too, so match by name)
+    expect(screen.queryByRole('status', { name: 'No results' })).not.toBeInTheDocument();
   });
 });

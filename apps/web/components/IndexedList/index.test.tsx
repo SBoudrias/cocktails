@@ -1,9 +1,13 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import IndexedList from './index';
 
 type TestItem = { id: string; name: string };
 
-const renderItem = (item: TestItem) => <li key={item.id}>{item.name}</li>;
+const renderItem = (item: TestItem) => (
+  <li key={item.id}>
+    <a href={`/${item.id}`}>{item.name}</a>
+  </li>
+);
 
 const letterConfig = {
   groupBy: (item: TestItem) => item.name[0]!.toUpperCase(),
@@ -11,26 +15,40 @@ const letterConfig = {
   sortHeaderBy: (a: string, b: string) => a.localeCompare(b),
 };
 
+const fruits = [
+  { id: '1', name: 'Apple' },
+  { id: '2', name: 'Avocado' },
+  { id: '3', name: 'Banana' },
+];
+
+// Keyboard activation: a click without a pointer behind it
+const pressLetter = (name: string) =>
+  fireEvent.click(screen.getByRole('button', { name }), { detail: 0 });
+
+function spyOnScrolls() {
+  const scrolled: Array<string | undefined> = [];
+  vi.spyOn(HTMLElement.prototype, 'scrollIntoView').mockImplementation(function (
+    this: HTMLElement,
+  ) {
+    scrolled.push(this.dataset.header);
+  });
+  return scrolled;
+}
+
+afterEach(() => {
+  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
+});
+
 describe('IndexedList', () => {
-  it('derives the available letter indexes from the grouped items', () => {
-    render(
-      <IndexedList
-        items={[
-          { id: '1', name: 'Apple' },
-          { id: '2', name: 'Avocado' },
-          { id: '3', name: 'Banana' },
-        ]}
-        renderItem={renderItem}
-        config={letterConfig}
-      />,
-    );
+  it('jumps from an empty letter to the nearest letter with content', () => {
+    const scrolled = spyOnScrolls();
+    render(<IndexedList items={fruits} renderItem={renderItem} config={letterConfig} />);
 
-    const nav = screen.getByRole('navigation', { name: 'Alphabet index' });
+    // Nothing under C or after it: falls back to B
+    pressLetter('Jump to C');
 
-    // Only letters with content are focusable
-    expect(nav.querySelector('[data-index="A"]')).toHaveAttribute('tabIndex', '0');
-    expect(nav.querySelector('[data-index="B"]')).toHaveAttribute('tabIndex', '0');
-    expect(nav.querySelector('[data-index="C"]')).toHaveAttribute('tabIndex', '-1');
+    expect(scrolled).toEqual(['B']);
   });
 
   it('shows chapter numbers as the bar index domain when the config provides one', () => {
@@ -58,40 +76,22 @@ describe('IndexedList', () => {
     expect(nav.textContent).not.toMatch(/[A-Z]/);
   });
 
-  it('scrolls to the matching group header when a letter is selected', () => {
-    const scrolled: Array<string | undefined> = [];
-    vi.spyOn(HTMLElement.prototype, 'scrollIntoView').mockImplementation(function (
-      this: HTMLElement,
-    ) {
-      scrolled.push(this.dataset.header);
-    });
+  it('scrolls to the group and moves focus into it on a keyboard jump', () => {
+    const scrolled = spyOnScrolls();
+    render(<IndexedList items={fruits} renderItem={renderItem} config={letterConfig} />);
 
-    render(
-      <IndexedList
-        items={[
-          { id: '1', name: 'Apple' },
-          { id: '2', name: 'Banana' },
-        ]}
-        renderItem={renderItem}
-        config={letterConfig}
-      />,
-    );
-
-    fireEvent.click(screen.getByRole('button', { name: 'Jump to B' }));
+    pressLetter('Jump to B');
 
     expect(scrolled).toEqual(['B']);
-
-    vi.restoreAllMocks();
+    expect(screen.getByRole('link', { name: 'Banana' })).toHaveFocus();
+    expect(screen.getByRole('button', { name: 'Jump to B' })).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
   });
 
-  it('scrolls to the mapped chapter header when a numeric index is selected', () => {
-    const scrolled: Array<string | undefined> = [];
-    vi.spyOn(HTMLElement.prototype, 'scrollIntoView').mockImplementation(function (
-      this: HTMLElement,
-    ) {
-      scrolled.push(this.dataset.header);
-    });
-
+  it('scrolls to the mapped chapter group when a numeric index is selected', () => {
+    const scrolled = spyOnScrolls();
     render(
       <IndexedList
         items={[
@@ -110,10 +110,53 @@ describe('IndexedList', () => {
       />,
     );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Jump to The Golden Era' }));
+    pressLetter('Jump to The Golden Era');
 
     expect(scrolled).toEqual(['The Golden Era']);
+  });
 
-    vi.restoreAllMocks();
+  it('highlights the topmost group crossing the viewport band', () => {
+    let reportIntersections:
+      | ((entries: Array<{ target: Element; isIntersecting: boolean }>) => void)
+      | undefined;
+    vi.stubGlobal(
+      'IntersectionObserver',
+      class {
+        constructor(callback: typeof reportIntersections) {
+          reportIntersections = callback;
+        }
+        observe() {}
+        disconnect() {}
+      },
+    );
+
+    render(<IndexedList items={fruits} renderItem={renderItem} config={letterConfig} />);
+
+    const groupA = screen.getByRole('group', { name: 'A' }).closest('[data-header]');
+    const groupB = screen.getByRole('group', { name: 'B' }).closest('[data-header]');
+    const report = (target: Element | null, isIntersecting: boolean) =>
+      act(() => {
+        if (target) reportIntersections?.([{ target, isIntersecting }]);
+      });
+
+    report(groupB, true);
+    expect(screen.getByRole('button', { name: 'Jump to B' })).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+
+    // Scrolling up: A's bottom enters the band while B's top is still in it
+    report(groupA, true);
+    expect(screen.getByRole('button', { name: 'Jump to A' })).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+
+    // Back down: A leaves, B is the only group crossing
+    report(groupA, false);
+    expect(screen.getByRole('button', { name: 'Jump to B' })).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
   });
 });
