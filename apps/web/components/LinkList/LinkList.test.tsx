@@ -95,6 +95,33 @@ describe('LinkList', () => {
       expect(groups[1]).toHaveTextContent('Mango');
       expect(groups[2]).toHaveTextContent('Zebra');
     });
+
+    it('reports mounted group headers through onHeaderMount', () => {
+      const onHeaderMount = vi.fn();
+
+      render(
+        <LinkList
+          items={testItems}
+          config={{
+            groupBy: (item: TestItem) => item.category,
+            sortItemBy: () => 0,
+            sortHeaderBy: (a: string, b: string) => a.localeCompare(b),
+          }}
+          renderItem={renderItem}
+          onHeaderMount={onHeaderMount}
+        />,
+      );
+
+      expect(onHeaderMount).toHaveBeenCalledTimes(2);
+      const headers = onHeaderMount.mock.calls.map(([header]) => header);
+      expect(headers).toEqual(['A', 'B']);
+
+      // Reported nodes are the mounted subheader elements
+      for (const [, node] of onHeaderMount.mock.calls) {
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node.dataset.header).toBeDefined();
+      }
+    });
   });
 });
 

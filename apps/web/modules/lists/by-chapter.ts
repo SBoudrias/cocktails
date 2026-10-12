@@ -1,4 +1,5 @@
 import type { Recipe } from '@cocktails/data';
+import { createChapterIndexMap } from './chapter-index';
 
 /**
  * Get the chapter display name for a recipe.
@@ -65,11 +66,16 @@ export function createChapterHeaderComparator(
 
 /**
  * Create a list config with proper chapter ordering based on recipe data.
+ * The index bar shows chapter order numbers (`01`..`N`, `Etc` last).
  */
 export function createByChapterListConfig(recipes: Recipe[]) {
+  const { indexes, headerIndex } = createChapterIndexMap(recipes);
+
   return {
     groupBy: getChapterName,
     sortItemBy: compareByPage,
     sortHeaderBy: createChapterHeaderComparator(recipes),
+    indexes,
+    groupByIndex: (header: string) => headerIndex.get(header) ?? '',
   };
 }

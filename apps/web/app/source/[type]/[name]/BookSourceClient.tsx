@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
-import { LinkList } from '#/components/LinkList';
+import IndexedList from '#/components/IndexedList';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
@@ -99,7 +99,7 @@ export default function BookSourceClient({
           <GroupModeToggle value={groupMode} onChange={setGroupMode} />
         </Stack>
       )}
-      <LinkList items={recipes} config={listConfig} renderItem={renderRecipe} />
+      <IndexedList items={recipes} config={listConfig} renderItem={renderRecipe} />
     </>
   );
 }
