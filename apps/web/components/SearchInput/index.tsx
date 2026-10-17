@@ -40,11 +40,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchInput({
   value,
   onChangeAction,
+  ariaLabel = 'search',
   placeholder = 'Search…',
   autoFocus = false,
 }: {
   value: string;
   onChangeAction: (value: string | null) => void;
+  ariaLabel?: string;
   placeholder?: string;
   autoFocus?: boolean;
 }) {
@@ -59,13 +61,13 @@ export default function SearchInput({
         <StyledInputBase
           ref={inputRef}
           placeholder={placeholder}
-          inputProps={{ 'aria-label': 'search' }}
+          inputProps={{ 'aria-label': ariaLabel }}
           value={value}
           onChange={(e) => onChangeAction(e.currentTarget.value)}
           type="search"
           autoFocus={autoFocus}
           onKeyUp={(e) => {
-            if (e.code === 'Enter') {
+            if (e.code === 'Enter' && !e.nativeEvent.isComposing) {
               e.currentTarget.blur();
             }
           }}

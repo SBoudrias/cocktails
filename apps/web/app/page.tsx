@@ -43,16 +43,32 @@ function SourceListItem({ source }: { source: Source }) {
     <Link href={getSourceUrl(source)} key={source.name}>
       <ListItem
         divider
+        sx={{ pr: { md: 2 } }}
         secondaryAction={
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flexShrink: 0 }}>
             <Typography color="textSecondary" component="span">
               {source.recipeAmount}
             </Typography>
             <ChevronRightIcon />
           </Stack>
         }
+        // Keep the original mobile geometry. On desktop the secondary action
+        // becomes an in-flow flex column, so full names can wrap beside counts.
+        slotProps={{
+          secondaryAction: {
+            sx: {
+              position: { md: 'static' },
+              transform: { md: 'none' },
+              flexShrink: 0,
+              ml: { md: 1 },
+            },
+          },
+        }}
       >
-        <ListItemText primary={source.name} />
+        <ListItemText
+          primary={source.name}
+          sx={{ minWidth: 0, overflowWrap: { md: 'anywhere' } }}
+        />
       </ListItem>
     </Link>
   );
@@ -73,8 +89,21 @@ export default async function HomePage() {
   return (
     <Suspense>
       <AppHeader title="Cocktail Index" />
-      <List sx={{ mt: 2 }}>
-        <Paper square>
+      <List
+        sx={{
+          mt: 2,
+          // Pack whole sections, not individual rows. Column-major reading
+          // follows DOM/tab order without a measured JavaScript masonry grid.
+          columnCount: { md: 2 },
+          columnGap: { md: 2 },
+          '& > li': {
+            breakInside: { md: 'avoid' },
+            display: { md: 'flow-root' },
+            mb: { md: 2 },
+          },
+        }}
+      >
+        <Paper square sx={{ columnSpan: { md: 'all' }, mb: { md: 2 } }}>
           <Link href={getRecipeListUrl()}>
             <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
               <ListItemButton>

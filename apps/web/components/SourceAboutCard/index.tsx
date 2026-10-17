@@ -12,11 +12,13 @@ export default function SourceAboutCard({
   source,
   chapterName,
   refs = EMPTY_REFS,
+  showVideo = true,
   sx,
 }: {
   source: Source;
   chapterName?: string;
   refs?: Ref[];
+  showVideo?: boolean;
   sx?: SxProps;
 }) {
   return match(source)
@@ -36,7 +38,13 @@ export default function SourceAboutCard({
     })
     .with({ type: 'youtube-channel' }, (source) => {
       const ref = refs.find((ref): ref is YoutubeRef => ref.type === 'youtube');
-      return <YoutubeAboutCard source={source} videoRef={ref} sx={sx} />;
+      return (
+        <YoutubeAboutCard
+          source={source}
+          videoRef={showVideo ? ref : undefined}
+          sx={sx}
+        />
+      );
     })
     .with({ type: 'podcast' }, (source) => {
       const ref = refs.find((ref): ref is PodcastRef => ref.type === 'podcast');
