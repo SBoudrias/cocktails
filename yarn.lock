@@ -253,7 +253,7 @@ __metadata:
     next: "npm:16.4.0"
     next-router-mock: "npm:^1.0.5"
     next-sitemap: "npm:^4.2.3"
-    nuqs: "npm:^2.10.1"
+    nuqs: "npm:^2.10.2"
     react: "npm:19.3.0"
     react-dom: "npm:19.3.0"
     ts-pattern: "npm:^5.9.0"
@@ -2950,9 +2950,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuqs@npm:^2.10.1":
-  version: 2.10.1
-  resolution: "nuqs@npm:2.10.1"
+"nuqs@npm:^2.10.2":
+  version: 2.10.2
+  resolution: "nuqs@npm:2.10.2"
   dependencies:
     "@standard-schema/spec": "npm:1.1.0"
   peerDependencies:
@@ -2973,7 +2973,7 @@ __metadata:
       optional: true
     react-router-dom:
       optional: true
-  checksum: 10c0/e1f59c87b9d59daedeb9bf39c00c7e7d6d614ea53d441a139b3be279bd10b6215941b02f3ac7e7ff6bcdf1532cda797745781b451c0ae1cf849a064d52d32bfa
+  checksum: 10c0/75974d7b332a7eefe45353c80de4360e608779f951fa7a71e312f32975753a6fc17524499f1e6f318f67c7232189bacf4e4075f6739f16bbfa8408b22e11dea3
   languageName: node
   linkType: hard
 
