@@ -82,8 +82,7 @@
   "attributions": [
     {
       "relation": "adapted by",
-      "source": "The Atomic Grog",
-      "url": "https://www.slammie.com/atomicgrog/blog/2012/03/05/mai-kai-cocktail-review-double-your-pleasure-with-the-exotic-and-delicious-zula/"
+      "source": "The Atomic Grog"
     }
   ],
   "refs": [
@@ -91,6 +90,11 @@
       "type": "youtube",
       "videoId": "aQq0eLv4Emo",
       "channel": "make-and-drink"
+    },
+    {
+      "type": "website",
+      "name": "The Atomic Grog",
+      "url": "https://www.slammie.com/atomicgrog/blog/2012/03/05/mai-kai-cocktail-review-double-your-pleasure-with-the-exotic-and-delicious-zula/"
     }
   ]
 }

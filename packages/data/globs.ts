@@ -20,6 +20,8 @@ const jsonLoaders: Record<string, () => Promise<unknown>> = {
   ...import.meta.glob('./data/categories/*.json'),
   ...import.meta.glob('./data/ingredients/**/*.json'),
   ...import.meta.glob('./data/recipes/**/*.json'),
+  ...import.meta.glob('./data/authors/*.json'),
+  ...import.meta.glob('./data/bars/*.json'),
 };
 
 /**

@@ -66,8 +66,7 @@
   "attributions": [
     {
       "relation": "recipe author",
-      "source": "Jeffrey Morgenthaler",
-      "url": "https://jeffreymorgenthaler.com/grasshopper/"
+      "source": "Jeffrey Morgenthaler"
     }
   ],
   "refs": [
@@ -76,6 +75,11 @@
       "videoId": "MBXO2UUjLw4",
       "channel": "make-and-drink",
       "start": 156
+    },
+    {
+      "type": "website",
+      "name": "Jeffrey Morgenthaler",
+      "url": "https://jeffreymorgenthaler.com/grasshopper/"
     }
   ]
 }

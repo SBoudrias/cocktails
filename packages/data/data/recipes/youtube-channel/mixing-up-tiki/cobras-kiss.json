@@ -90,8 +90,7 @@
     },
     {
       "relation": "adapted by",
-      "source": "The Atomic Grog",
-      "url": "http://www.slammie.com/atomicgrog/blog/2011/11/20/mai-kai-cocktail-review-cobra-kiss-is-an-exotic-taste-explosion-guaranteed-to-strike-your-fancy/"
+      "source": "The Atomic Grog"
     }
   ],
   "refs": [
@@ -99,6 +98,11 @@
       "type": "youtube",
       "videoId": "O6VlUu8FKVk",
       "channel": "mixing-up-tiki"
+    },
+    {
+      "type": "website",
+      "name": "The Atomic Grog",
+      "url": "http://www.slammie.com/atomicgrog/blog/2011/11/20/mai-kai-cocktail-review-cobra-kiss-is-an-exotic-taste-explosion-guaranteed-to-strike-your-fancy/"
     }
   ]
 }
