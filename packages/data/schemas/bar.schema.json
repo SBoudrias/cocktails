@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./bar.schema.json",
+  "title": "Bar",
+  "description": "A bar credited in recipe attributions, one file per name and location",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": {
+      "description": "The bar's name, exactly as credited in recipe attributions",
+      "type": "string"
+    },
+    "location": {
+      "description": "The 'City, ST' string attributions use, when known",
+      "type": "string"
+    },
+    "links": {
+      "description": "Links to the bar's website or profile pages",
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "description": {
+      "description": "One-line description, only when verified",
+      "type": "string"
+    }
+  },
+  "required": ["name"],
+  "additionalProperties": false
+}

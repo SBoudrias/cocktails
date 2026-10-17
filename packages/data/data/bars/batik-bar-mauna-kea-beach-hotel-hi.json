@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Batik Bar",
+  "location": "Mauna Kea Beach Hotel, HI"
+}

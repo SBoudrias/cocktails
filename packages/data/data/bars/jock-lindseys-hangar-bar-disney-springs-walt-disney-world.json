@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Jock Lindsey's Hangar Bar",
+  "location": "Disney Springs, Walt Disney World"
+}

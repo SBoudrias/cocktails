@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Jon Feuersanger",
+  "description": "Death & Co bartender"
+}

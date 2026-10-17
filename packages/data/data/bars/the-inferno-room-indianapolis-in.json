@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "The Inferno Room",
+  "location": "Indianapolis, IN",
+  "links": ["https://theinfernoroom.com"]
+}

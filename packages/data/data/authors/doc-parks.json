@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Doc Parks",
+  "description": "Minimalist-tiki bartender alongside Marie King and Kevin Beary"
+}

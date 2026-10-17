@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Truffles On The Rocks",
+  "links": ["https://www.youtube.com/@TrufflesOnTheRocks"]
+}

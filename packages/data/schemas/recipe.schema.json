@@ -149,8 +149,7 @@
             "type": "object",
             "properties": {
               "relation": { "enum": ["recipe author", "adapted by"] },
-              "source": { "type": "string" },
-              "url": { "type": "string" }
+              "source": { "type": "string" }
             },
             "required": ["source", "relation"],
             "additionalProperties": false
@@ -160,8 +159,7 @@
             "properties": {
               "relation": { "const": "bar" },
               "source": { "type": "string" },
-              "location": { "type": "string" },
-              "url": { "type": "string" }
+              "location": { "type": "string" }
             },
             "required": ["source", "relation"],
             "additionalProperties": false

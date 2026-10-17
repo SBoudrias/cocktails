@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Sunken Harbor Club",
+  "location": "Brooklyn, NY",
+  "description": "Tiki bar above Gage & Tollner, downtown Brooklyn"
+}

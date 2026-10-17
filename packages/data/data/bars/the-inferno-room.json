@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "The Inferno Room",
+  "links": ["https://theinfernoroom.com"]
+}

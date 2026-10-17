@@ -156,6 +156,66 @@ for (const entry of await fs.readdir(youtubeChannelRoot)) {
 }
 logger.item(`Found ${youtubeChannelSlugs.size} youtube channels`);
 
+// Entity files backing the author/bar list pages. Every attribution source
+// must resolve to one — entities are credited in recipes before anything is
+// known about them, so missing files are created name-only (links and
+// descriptions are added only once verified, never generated here).
+logger.header('👥 Collecting author and bar entities');
+const authorEntitySlugs = new Set<string>();
+const barEntitySlugs = new Set<string>();
+
+for (const [entityDir, entitySlugs] of [
+  ['authors', authorEntitySlugs],
+  ['bars', barEntitySlugs],
+] as const) {
+  for await (const entityFile of fs.glob(
+    path.join(PACKAGE_ROOT, `data/${entityDir}/*.json`),
+  )) {
+    entitySlugs.add(path.basename(entityFile, '.json'));
+  }
+}
+
+const createdEntities: string[] = [];
+for await (const recipeFile of fs.glob(
+  path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'),
+)) {
+  const recipe = JSON.parse(await fs.readFile(recipeFile, 'utf-8'));
+
+  for (const attribution of recipe.attributions ?? []) {
+    const isAuthor =
+      attribution.relation === 'recipe author' || attribution.relation === 'adapted by';
+
+    if (!isAuthor && attribution.relation !== 'bar') continue;
+
+    const slug = isAuthor
+      ? slugify(attribution.source)
+      : slugify(`${attribution.source} ${attribution.location ?? ''}`);
+    const entitySlugs = isAuthor ? authorEntitySlugs : barEntitySlugs;
+
+    if (entitySlugs.has(slug)) continue;
+    entitySlugs.add(slug);
+
+    const entityDir = isAuthor ? 'authors' : 'bars';
+    const entityPath = path.join(PACKAGE_ROOT, `data/${entityDir}`, `${slug}.json`);
+    await writeJSON(entityPath, {
+      $schema: path.relative(
+        path.dirname(entityPath),
+        path.resolve(PACKAGE_ROOT, `schemas/${isAuthor ? 'author' : 'bar'}.schema.json`),
+      ),
+      name: attribution.source,
+      ...(attribution.relation === 'bar' && attribution.location
+        ? { location: attribution.location }
+        : {}),
+    });
+    createdEntities.push(path.relative(REPO_ROOT, entityPath));
+  }
+}
+logger.item(`Found ${authorEntitySlugs.size} authors, ${barEntitySlugs.size} bars`);
+for (const entityPath of createdEntities) {
+  logger.change(`Created ${entityPath}`);
+}
+logger.footer('Done!');
+
 const categoriesGlob = path.join(PACKAGE_ROOT, 'data/categories/*.json');
 const categoryCanonicalNames = new Map<string, string>(); // slug -> canonical name
 const allCategories: Array<{
@@ -307,9 +367,10 @@ for await (const sourceFile of fs.glob(dataGlob)) {
     console.error(validate.errors);
   }
 
-  // Enforce filename should be the name of the data.
+  // Enforce filename should be the name of the data. Bar entity files are the
+  // exception: their slug is the name *and* location, matching the list pages.
   const basename = path.basename(sourceFile, '.json');
-  if (basename !== '_source') {
+  if (basename !== '_source' && schemaBasename !== 'bar.schema.json') {
     const expectedName = slugify(data.name);
     if (basename !== expectedName) {
       const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);

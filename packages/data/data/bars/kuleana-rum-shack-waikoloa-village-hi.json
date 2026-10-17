@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Kuleana Rum Shack",
+  "location": "Waikoloa Village, HI"
+}

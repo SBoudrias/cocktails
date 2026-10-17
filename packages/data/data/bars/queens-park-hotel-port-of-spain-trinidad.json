@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Queen's Park Hotel",
+  "location": "Port of Spain, Trinidad"
+}

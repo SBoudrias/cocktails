@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Shore Leave",
+  "location": "Boston, MA"
+}

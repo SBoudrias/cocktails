@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Don the Beachcomber",
+  "description": "Donn Beach’s foundational tiki bar, Hollywood 1933"
+}

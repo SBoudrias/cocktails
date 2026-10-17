@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Garret Richard",
+  "description": "Master mixologist, tropical-canon modernizer (Tropical Standard)"
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Caribe Hilton Hotel",
+  "location": "San Juan, Puerto Rico"
+}

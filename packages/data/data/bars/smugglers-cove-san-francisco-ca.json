@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Smuggler's Cove",
+  "location": "San Francisco, CA",
+  "description": "Hayes Valley tiki bar of the modern revival, Martin & Rebecca Cate"
+}

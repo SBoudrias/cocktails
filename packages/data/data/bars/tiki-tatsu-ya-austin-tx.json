@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Tiki Tatsu-ya",
+  "location": "Austin, TX"
+}

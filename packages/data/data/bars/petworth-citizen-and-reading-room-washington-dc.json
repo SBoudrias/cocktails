@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Petworth Citizen & Reading Room",
+  "location": "Washington, DC"
+}

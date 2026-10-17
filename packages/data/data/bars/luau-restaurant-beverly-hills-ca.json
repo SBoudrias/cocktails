@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Luau Restaurant",
+  "location": "Beverly Hills, CA"
+}

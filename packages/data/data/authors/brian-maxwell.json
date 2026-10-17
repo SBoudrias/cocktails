@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Brian Maxwell",
+  "links": ["https://shakerofspirits.com"],
+  "description": "Tiki blogger behind Shaker of Spirits"
+}

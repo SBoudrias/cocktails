@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Bootlegger Tiki",
+  "location": "Palm Springs, CA"
+}

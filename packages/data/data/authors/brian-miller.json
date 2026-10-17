@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Brian Miller",
+  "description": "Death & Co bartender; co-created Speed Rack with Lynnette Marrero"
+}

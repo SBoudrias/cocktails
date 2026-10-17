@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Cane & Table",
+  "location": "New Orleans, LA"
+}

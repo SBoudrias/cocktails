@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Subtle Tiki",
+  "links": ["https://subtletiki.com"]
+}
