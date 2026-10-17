@@ -1,4 +1,5 @@
 import type { Recipe } from '@cocktails/data';
+import { getBar } from '@cocktails/data/bars';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
@@ -88,9 +89,15 @@ export default async function BarRecipesPage({ params }: Props) {
     notFound();
   }
 
+  const barEntity = await getBar(slugify(`${bar.name} ${bar.location ?? ''}`));
+
   return (
     <Suspense>
-      <BarRecipesClient barName={formatBarName(bar)} recipes={barRecipes} />
+      <BarRecipesClient
+        barName={formatBarName(bar)}
+        bar={barEntity}
+        recipes={barRecipes}
+      />
     </Suspense>
   );
 }

@@ -1,4 +1,5 @@
 import type { Recipe } from '@cocktails/data';
+import { getAuthor } from '@cocktails/data/authors';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
@@ -81,9 +82,15 @@ export default async function AuthorRecipesPage({ params }: Props) {
     notFound();
   }
 
+  const author = await getAuthor(slugify(authorName));
+
   return (
     <Suspense>
-      <AuthorRecipesClient authorName={authorName} recipes={authorRecipes} />
+      <AuthorRecipesClient
+        authorName={authorName}
+        author={author}
+        recipes={authorRecipes}
+      />
     </Suspense>
   );
 }
