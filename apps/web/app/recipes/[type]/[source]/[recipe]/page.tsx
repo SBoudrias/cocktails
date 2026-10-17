@@ -14,7 +14,7 @@ import { notFound, unstable_rethrow } from 'next/navigation';
 import AppHeader from '#/components/AppHeader';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
-import RecipeAttributionCard from '#/components/RecipeAttributionCard';
+import RecipeAttributionList from '#/components/RecipeAttributionList';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import VideoListCard from '#/components/VideoListCard';
 import { getRecipeEditUrl } from '#/modules/url';
@@ -92,7 +92,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           sx={{ m: 1 }}
         />
         {recipe.attributions.length > 0 && (
-          <RecipeAttributionCard recipe={recipe} sx={{ m: 1 }} />
+          <RecipeAttributionList attributions={recipe.attributions} />
         )}
         {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
         <FixBugCard fixUrl={getRecipeEditUrl(recipe)} sx={{ m: 1 }} />
