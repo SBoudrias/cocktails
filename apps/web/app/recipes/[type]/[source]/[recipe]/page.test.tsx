@@ -1,13 +1,42 @@
 import { getRecipe } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { getMilkClarificationCalculatorUrl } from '#/modules/url';
+import {
+  getAuthorRecipesUrl,
+  getBarRecipesUrl,
+  getMilkClarificationCalculatorUrl,
+} from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
 import RecipePage from './page';
 
 describe('RecipePage', () => {
   beforeEach(() => {
     window.localStorage.clear();
+  });
+
+  it('links author and bar attributions to their list pages', async () => {
+    const recipe = await getRecipe({ type: 'book', slug: 'sippin-safari' }, 'last-rites');
+
+    setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: recipe.source.type,
+          source: recipe.source.slug,
+          recipe: recipe.slug,
+        }),
+      }),
+    );
+
+    const authorLink = screen.getByRole('link', { name: /mariano licudine/i });
+    expect(authorLink).toHaveAttribute('href', getAuthorRecipesUrl('Mariano Licudine'));
+
+    const barLink = screen.getByRole('link', { name: /mai-kai/i });
+    expect(barLink).toHaveAttribute(
+      'href',
+      getBarRecipesUrl({ name: 'Mai-Kai', location: 'Fort Lauderdale, FL' }),
+    );
+    expect(barLink).toHaveTextContent('served at Mai-Kai');
+    expect(barLink).toHaveTextContent('Fort Lauderdale, FL');
   });
 
   it('renders book chapter beside the page number when available', async () => {
