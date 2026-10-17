@@ -10,6 +10,6 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "ts-pattern": "^5.9.0"
+    "ts-pattern": "^5.9.2"
   }
 }

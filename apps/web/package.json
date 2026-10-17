@@ -32,7 +32,7 @@
     "nuqs": "^2.10.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "ts-pattern": "^5.9.0"
+    "ts-pattern": "^5.9.2"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.2",
