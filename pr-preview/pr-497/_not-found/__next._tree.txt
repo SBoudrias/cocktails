@@ -1,4 +1,4 @@
 :HL["/cocktails/pr-preview/pr-497/_next/static/chunks/09xv-vqariy6c.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"OM7qzNv05KEokK5HxXt_9","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"4SD9_5bjcCkiQHTa6BsOV","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
