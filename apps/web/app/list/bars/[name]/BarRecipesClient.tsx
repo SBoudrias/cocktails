@@ -15,12 +15,10 @@ import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
 
 export default function BarRecipesClient({
-  barName,
   bar,
   recipes,
 }: {
-  barName: string;
-  bar: Bar | undefined;
+  bar: Bar;
   recipes: Recipe[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
@@ -50,7 +48,7 @@ export default function BarRecipesClient({
   return (
     <>
       <SearchHeader
-        title={`Recipes from ${barName}`}
+        title={`Recipes from ${bar.name}${bar.location ? `, ${bar.location}` : ''}`}
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
       />

@@ -17,16 +17,37 @@ const secondaryTypographyProps = {
   sx: { lineHeight: 1.35 },
 } as const;
 
-function getAttributionHref(attribution: Attribution) {
-  return match(attribution)
-    .with({ relation: P.union('recipe author', 'adapted by') }, ({ source }) =>
-      getAuthorRecipesUrl(source),
-    )
-    .with({ relation: 'bar' }, ({ source, location }) =>
-      getBarRecipesUrl({ name: source, location }),
-    )
-    .with({ relation: 'book' }, () => undefined)
-    .exhaustive();
+function getAttributionView(attribution: Attribution) {
+  return (
+    match(attribution)
+      .with(
+        { relation: P.union('recipe author', 'adapted by') },
+        ({ relation, source }) => ({
+          key: `${relation}:${source}`,
+          href: getAuthorRecipesUrl(source),
+          label: attributionRelationLabels[relation],
+          location: undefined,
+          externalUrl: undefined,
+        }),
+      )
+      .with({ relation: 'bar' }, ({ relation, source, location }) => ({
+        key: `${relation}:${source}`,
+        href: getBarRecipesUrl({ name: source, location }),
+        label: attributionRelationLabels[relation],
+        location,
+        externalUrl: undefined,
+      }))
+      // Only book attributions keep an external url — author and bar urls
+      // live on the entity files and their list pages.
+      .with({ relation: 'book' }, ({ relation, source, url }) => ({
+        key: `${relation}:${source}`,
+        href: undefined,
+        label: attributionRelationLabels[relation],
+        location: undefined,
+        externalUrl: url,
+      }))
+      .exhaustive()
+  );
 }
 
 export default function RecipeAttributionList({
@@ -39,14 +60,8 @@ export default function RecipeAttributionList({
       <ListSubheader>Attributions</ListSubheader>
       <Paper square>
         {attributions.map((attribution) => {
-          const href = getAttributionHref(attribution);
-          const label = attributionRelationLabels[attribution.relation];
-          const location =
-            attribution.relation === 'bar' ? attribution.location : undefined;
-          // Only book attributions keep an external url — author and bar
-          // urls live on the entity files and their list pages.
-          const externalUrl =
-            attribution.relation === 'book' ? attribution.url : undefined;
+          const { key, href, label, location, externalUrl } =
+            getAttributionView(attribution);
 
           const content = (
             <Typography component="span" sx={{ textTransform: 'none' }}>
@@ -59,7 +74,7 @@ export default function RecipeAttributionList({
 
           return (
             <LinkListItem
-              key={`${attribution.relation}:${attribution.source}`}
+              key={key}
               href={href}
               primary={
                 href == null && externalUrl ? (

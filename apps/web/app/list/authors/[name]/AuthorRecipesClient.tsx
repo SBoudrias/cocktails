@@ -15,12 +15,10 @@ import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
 
 export default function AuthorRecipesClient({
-  authorName,
   author,
   recipes,
 }: {
-  authorName: string;
-  author: Author | undefined;
+  author: Author;
   recipes: Recipe[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
@@ -50,7 +48,7 @@ export default function AuthorRecipesClient({
   return (
     <>
       <SearchHeader
-        title={`Recipes by ${authorName}`}
+        title={`Recipes by ${author.name}`}
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
       />

@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/bar.schema.json",
   "name": "Don the Beachcomber",
-  "location": "Las Vegas, NV"
+  "location": "Las Vegas, NV",
+  "description": "Donn Beach’s foundational tiki bar, Hollywood 1933"
 }

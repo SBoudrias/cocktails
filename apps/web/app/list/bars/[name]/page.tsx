@@ -1,4 +1,4 @@
-import type { Recipe } from '@cocktails/data';
+import type { Bar, Recipe } from '@cocktails/data';
 import { getBar } from '@cocktails/data/bars';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
@@ -38,8 +38,9 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
-  const bar = findBarNameFromSlug(name, allRecipes);
+  const { name } = await params;
+  const [allRecipes, barEntity] = await Promise.all([getAllRecipes(), getBar(name)]);
+  const bar = barEntity ?? findBarNameFromSlug(name, allRecipes);
 
   if (!bar) {
     return {
@@ -68,8 +69,13 @@ export async function generateStaticParams() {
 }
 
 export default async function BarRecipesPage({ params }: Props) {
-  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
-  const bar = findBarNameFromSlug(name, allRecipes);
+  const { name } = await params;
+  const [allRecipes, barEntity] = await Promise.all([getAllRecipes(), getBar(name)]);
+
+  // Entity files exist for every bar credited in a recipe (check-data
+  // creates them), so the load normally resolves. If a file is ever missing,
+  // fall back to the attribution scan so the recipes still render.
+  const bar = barEntity ?? findBarNameFromSlug(name, allRecipes);
 
   if (!bar) {
     notFound();
@@ -89,15 +95,11 @@ export default async function BarRecipesPage({ params }: Props) {
     notFound();
   }
 
-  const barEntity = await getBar(slugify(`${bar.name} ${bar.location ?? ''}`));
+  const barWithSlug: Bar = { ...bar, slug: name };
 
   return (
     <Suspense>
-      <BarRecipesClient
-        barName={formatBarName(bar)}
-        bar={barEntity}
-        recipes={barRecipes}
-      />
+      <BarRecipesClient bar={barWithSlug} recipes={barRecipes} />
     </Suspense>
   );
 }

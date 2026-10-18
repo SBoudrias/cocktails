@@ -1,4 +1,4 @@
-import type { Recipe } from '@cocktails/data';
+import type { Author, Recipe } from '@cocktails/data';
 import { getAuthor } from '@cocktails/data/authors';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
@@ -28,8 +28,12 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
-  const authorName = findAuthorNameFromSlug(name, allRecipes);
+  const { name } = await params;
+  const [allRecipes, authorEntity] = await Promise.all([
+    getAllRecipes(),
+    getAuthor(name),
+  ]);
+  const authorName = authorEntity?.name ?? findAuthorNameFromSlug(name, allRecipes);
 
   if (!authorName) {
     return {
@@ -61,8 +65,16 @@ export async function generateStaticParams() {
 }
 
 export default async function AuthorRecipesPage({ params }: Props) {
-  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
-  const authorName = findAuthorNameFromSlug(name, allRecipes);
+  const { name } = await params;
+  const [allRecipes, authorEntity] = await Promise.all([
+    getAllRecipes(),
+    getAuthor(name),
+  ]);
+
+  // Entity files exist for every author credited in a recipe (check-data
+  // creates them), so the load normally resolves. If a file is ever missing,
+  // fall back to the attribution scan so the recipes still render.
+  const authorName = authorEntity?.name ?? findAuthorNameFromSlug(name, allRecipes);
 
   if (!authorName) {
     notFound();
@@ -82,15 +94,11 @@ export default async function AuthorRecipesPage({ params }: Props) {
     notFound();
   }
 
-  const author = await getAuthor(slugify(authorName));
+  const author: Author = authorEntity ?? { name: authorName, slug: name };
 
   return (
     <Suspense>
-      <AuthorRecipesClient
-        authorName={authorName}
-        author={author}
-        recipes={authorRecipes}
-      />
+      <AuthorRecipesClient author={author} recipes={authorRecipes} />
     </Suspense>
   );
 }
