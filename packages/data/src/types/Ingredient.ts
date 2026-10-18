@@ -158,4 +158,5 @@ export type RecipeIngredient = (RootIngredient | CategoryIngredient) & {
   quantity: QuantityDetails;
   technique?: Technique | Technique[];
   brix?: number;
+  optional?: boolean;
 };

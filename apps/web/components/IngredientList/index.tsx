@@ -55,7 +55,10 @@ function IngredientLine({
     <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
       <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />{' '}
       <div>
-        <div className={styles.name}>{formatIngredientName(ingredient)}</div>
+        <div className={styles.name}>
+          {formatIngredientName(ingredient)}
+          {ingredient.optional && <span className={styles.optional}> (optional)</span>}
+        </div>
         {category}
         {brix}
       </div>

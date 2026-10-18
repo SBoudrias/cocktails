@@ -58,6 +58,35 @@ describe('RecipePage', () => {
     expect(screen.getByText('The Tiki Revival · page 96')).toBeInTheDocument();
   });
 
+  it('marks optional ingredients and preserves the marker when servings change', async () => {
+    const { user } = setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: 'youtube-channel',
+          source: 'anders-erickson',
+          recipe: 'mantini',
+        }),
+      }),
+    );
+
+    const absinthe = screen.getByRole('link', {
+      name: /St\. George Absinthe Verte \(optional\)/i,
+    });
+    const rye = screen.getByRole('link', { name: /Rittenhouse Rye/i });
+    expect(absinthe).toHaveTextContent('2 dash');
+    expect(rye).not.toHaveTextContent('(optional)');
+
+    await user.click(screen.getByRole('button', { name: 'Increment' }));
+
+    expect(absinthe).toHaveTextContent('4 dash');
+    expect(absinthe).toHaveAccessibleName(/St\. George Absinthe Verte \(optional\)/i);
+    expect(rye).not.toHaveTextContent('(optional)');
+
+    await user.click(screen.getByRole('button', { name: 'ml' }));
+
+    expect(absinthe).toHaveAccessibleName(/St\. George Absinthe Verte \(optional\)/i);
+  });
+
   it('renders whole-recipe clarification in a scalable technique section', async () => {
     const clarifiedRecipe = await getRecipe(
       { type: 'youtube-channel', slug: 'truffles-on-the-rocks' },

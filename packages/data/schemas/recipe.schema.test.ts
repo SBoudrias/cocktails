@@ -21,6 +21,65 @@ async function getRecipeValidator() {
 }
 
 describe('recipe schema', () => {
+  it.each(['syrup', 'spirit', 'category'])(
+    'accepts omitted or boolean optional metadata on %s ingredients',
+    async (type) => {
+      const validate = await getRecipeValidator();
+
+      for (const metadata of [{}, { optional: true }, { optional: false }]) {
+        expect(
+          validate({
+            name: 'Optional Ingredient',
+            preparation: 'stirred',
+            served_on: 'up',
+            glassware: 'coupe',
+            ingredients: [
+              {
+                name: 'Test ingredient',
+                type,
+                quantity: { amount: 1, unit: 'oz' },
+                ...metadata,
+              },
+            ],
+          }),
+        ).toBe(true);
+      }
+    },
+  );
+
+  it.each(['syrup', 'spirit', 'category'])(
+    'rejects non-boolean optional metadata on %s ingredients',
+    async (type) => {
+      const validate = await getRecipeValidator();
+
+      for (const optional of ['optional', 1, null]) {
+        expect(
+          validate({
+            name: 'Invalid Optional Ingredient',
+            preparation: 'stirred',
+            served_on: 'up',
+            glassware: 'coupe',
+            ingredients: [
+              {
+                name: 'Test ingredient',
+                type,
+                quantity: { amount: 1, unit: 'oz' },
+                optional,
+              },
+            ],
+          }),
+        ).toBe(false);
+        expect(validate.errors).toContainEqual(
+          expect.objectContaining({
+            instancePath: '/ingredients/0/optional',
+            keyword: 'type',
+            params: { type: 'boolean' },
+          }),
+        );
+      }
+    },
+  );
+
   it('requires whole-recipe techniques to use the plural array field', async () => {
     const validate = await getRecipeValidator();
 
