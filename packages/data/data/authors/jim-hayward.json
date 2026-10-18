@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "The Atomic Grog",
+  "name": "Jim Hayward",
   "links": ["https://www.slammie.com/atomicgrog/", "https://www.youtube.com/@atomicgrog"],
-  "description": "Tiki blog by Jim “Hurricane Hayward” Hayward"
+  "description": "Tiki blogger behind The Atomic Grog, writing as Hurricane Hayward"
 }

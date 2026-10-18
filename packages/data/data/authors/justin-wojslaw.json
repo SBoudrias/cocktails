@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Justin Wojslaw",
-  "description": "Seattle tiki bartender (Coconuts & Carnage)"
+  "links": ["https://www.wonkpress.com/products/coconuts-carnage"],
+  "description": "Seattle tiki bartender, author of Coconuts & Carnage"
 }

@@ -50,7 +50,12 @@
     },
     {
       "relation": "bar",
-      "source": "Tacoma Cabana and Devil's Reef",
+      "source": "Tacoma Cabana",
+      "location": "Tacoma, WA"
+    },
+    {
+      "relation": "bar",
+      "source": "Devil's Reef",
       "location": "Tacoma, WA"
     }
   ],
