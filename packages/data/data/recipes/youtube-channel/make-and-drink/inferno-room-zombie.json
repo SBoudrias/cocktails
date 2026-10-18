@@ -101,7 +101,8 @@
     },
     {
       "relation": "bar",
-      "source": "The Inferno Room"
+      "source": "The Inferno Room",
+      "location": "Indianapolis, IN"
     }
   ],
   "refs": [

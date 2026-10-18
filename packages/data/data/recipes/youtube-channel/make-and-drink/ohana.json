@@ -77,7 +77,8 @@
     },
     {
       "relation": "bar",
-      "source": "Existing Conditions"
+      "source": "Existing Conditions",
+      "location": "New York, NY"
     }
   ],
   "refs": [

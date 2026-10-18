@@ -1,5 +1,0 @@
-{
-  "$schema": "../../schemas/bar.schema.json",
-  "name": "Trader Sam's",
-  "location": "Anaheim, CA"
-}

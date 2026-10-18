@@ -73,7 +73,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Raffles Hotel"
+      "source": "Raffles Hotel",
+      "location": "Singapore"
     }
   ],
   "refs": [

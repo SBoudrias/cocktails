@@ -56,7 +56,8 @@
     },
     {
       "relation": "bar",
-      "source": "Death & Co"
+      "source": "Death & Co",
+      "location": "New York, NY"
     }
   ],
   "refs": [
