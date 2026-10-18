@@ -70,7 +70,8 @@ export default async function AuthorRecipesPage({ params }: Props) {
   }
 
   // The author entity may reference bars (where they worked) and catalog
-  // sources (channel host, book author); resolve both for the About card.
+  // sources (channel host, book author); resolve both so the client renders
+  // every dimension of the author from its single object.
   const [bars, sources] = await Promise.all([
     Promise.all((author.bars ?? []).map((slug) => getBar(slug))),
     Promise.all(
@@ -78,14 +79,15 @@ export default async function AuthorRecipesPage({ params }: Props) {
     ),
   ]);
 
+  const authorWithRefs = {
+    ...author,
+    bars: bars.filter((bar) => bar !== undefined),
+    sources,
+  };
+
   return (
     <Suspense>
-      <AuthorRecipesClient
-        author={author}
-        bars={bars.filter((bar) => bar !== undefined)}
-        sources={sources}
-        recipes={authorRecipes}
-      />
+      <AuthorRecipesClient author={authorWithRefs} recipes={authorRecipes} />
     </Suspense>
   );
 }
