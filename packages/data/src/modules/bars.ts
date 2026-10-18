@@ -1,9 +1,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import slugify from '@sindresorhus/slugify';
 import type { Bar } from '../types/Entity.ts';
 import { BAR_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import memo from './memo';
+import { getAllRecipes } from './recipes';
 
 /**
  * Read a bar entity file, keyed by the slug of its name and location
@@ -20,8 +22,35 @@ async function readBarFile(slug: string): Promise<Bar | undefined> {
   return { ...data, slug };
 }
 
+/**
+ * Derive a name-only bar from the recipes' attributions. The list pages'
+ * fallback when no entity file exists — check-data creates a file for every
+ * credited bar, so this only covers files gone missing.
+ */
+async function findBarFromAttributions(slug: string): Promise<Bar | undefined> {
+  const allRecipes = await getAllRecipes();
+
+  for (const recipe of allRecipes) {
+    for (const attribution of recipe.attributions) {
+      if (
+        attribution.relation === 'bar' &&
+        slugify(`${attribution.source} ${attribution.location ?? ''}`) === slug
+      ) {
+        return {
+          name: attribution.source,
+          slug,
+          ...(attribution.location ? { location: attribution.location } : {}),
+        };
+      }
+    }
+  }
+
+  return undefined;
+}
+
 export const getBar = memo(async (slug: string): Promise<Bar | undefined> => {
-  return readBarFile(slug);
+  const bar = await readBarFile(slug);
+  return bar ?? findBarFromAttributions(slug);
 });
 
 export const getAllBars = memo(async (): Promise<Bar[]> => {

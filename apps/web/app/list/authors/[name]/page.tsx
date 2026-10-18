@@ -1,4 +1,3 @@
-import type { Author, Recipe } from '@cocktails/data';
 import { getAuthor } from '@cocktails/data/authors';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
@@ -7,42 +6,22 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import AuthorRecipesClient from './AuthorRecipesClient';
 
-// Helper function to find the actual author name from the slug
-function findAuthorNameFromSlug(slug: string, recipes: Recipe[]): string | null {
-  for (const recipe of recipes) {
-    for (const attribution of recipe.attributions) {
-      if (
-        (attribution.relation === 'recipe author' ||
-          attribution.relation === 'adapted by') &&
-        slugify(attribution.source) === slug
-      ) {
-        return attribution.source;
-      }
-    }
-  }
-  return null;
-}
-
 type Props = {
   params: Promise<{ name: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { name } = await params;
-  const [allRecipes, authorEntity] = await Promise.all([
-    getAllRecipes(),
-    getAuthor(name),
-  ]);
-  const authorName = authorEntity?.name ?? findAuthorNameFromSlug(name, allRecipes);
+  const author = await getAuthor(name);
 
-  if (!authorName) {
+  if (!author) {
     return {
       title: 'Author Not Found',
     };
   }
 
   return {
-    title: `Cocktail Index | Recipes by ${authorName}`,
+    title: `Cocktail Index | Recipes by ${author.name}`,
   };
 }
 
@@ -66,17 +45,11 @@ export async function generateStaticParams() {
 
 export default async function AuthorRecipesPage({ params }: Props) {
   const { name } = await params;
-  const [allRecipes, authorEntity] = await Promise.all([
-    getAllRecipes(),
-    getAuthor(name),
-  ]);
+  const [allRecipes, author] = await Promise.all([getAllRecipes(), getAuthor(name)]);
 
-  // Entity files exist for every author credited in a recipe (check-data
-  // creates them), so the load normally resolves. If a file is ever missing,
-  // fall back to the attribution scan so the recipes still render.
-  const authorName = authorEntity?.name ?? findAuthorNameFromSlug(name, allRecipes);
-
-  if (!authorName) {
+  // getAuthor falls back to the recipes' attributions when the entity file is
+  // missing, so no match means no author by that slug is credited anywhere.
+  if (!author) {
     notFound();
   }
 
@@ -86,15 +59,13 @@ export default async function AuthorRecipesPage({ params }: Props) {
       (attribution) =>
         (attribution.relation === 'recipe author' ||
           attribution.relation === 'adapted by') &&
-        attribution.source === authorName,
+        attribution.source === author.name,
     ),
   );
 
   if (authorRecipes.length === 0) {
     notFound();
   }
-
-  const author: Author = authorEntity ?? { name: authorName, slug: name };
 
   return (
     <Suspense>

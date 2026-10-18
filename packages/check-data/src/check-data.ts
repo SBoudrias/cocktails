@@ -16,6 +16,7 @@ import {
   validateApprovedOverlaps,
   type ApprovedOverlaps,
 } from './approved-overlaps.ts';
+import { findInconsistentBarLocations, type BarLocationUsage } from './bar-locations.ts';
 import { normalizeCategoryCasing } from './category-casing.ts';
 import { findRedundantCategoryPairs } from './category-similarity.ts';
 import { logger } from './cli-util.ts';
@@ -173,6 +174,15 @@ for (const [entityDir, entitySlugs] of [
   )) {
     entitySlugs.add(path.basename(entityFile, '.json'));
   }
+}
+
+// Bar locations, from the entity files here and the recipe attributions in
+// the validation pass below, feed the inconsistent-location check (same bar
+// name credited with different or missing locations).
+const barLocationUsages: BarLocationUsage[] = [];
+for await (const barFile of fs.glob(path.join(PACKAGE_ROOT, 'data/bars/*.json'))) {
+  const bar = JSON.parse(await fs.readFile(barFile, 'utf-8'));
+  barLocationUsages.push({ name: bar.name, location: bar.location, filepath: barFile });
 }
 
 const createdEntities: string[] = [];
@@ -452,6 +462,12 @@ for await (const sourceFile of fs.glob(dataGlob)) {
           casings.set(attribution.source, []);
         }
         casings.get(attribution.source)!.push(sourceFile);
+
+        barLocationUsages.push({
+          name: attribution.source,
+          location: attribution.location,
+          filepath: sourceFile,
+        });
       }
 
       // Check for combined author names (should be separate attributions)
@@ -713,6 +729,32 @@ for (const [, casings] of barNameCasings) {
       .join(', ');
     fail(`Bar name has inconsistent casing: ${variants}`);
   }
+}
+logger.footer('Done!');
+
+// Check for bars credited under the same name with inconsistent locations —
+// two different locations, or the same name with and without one. Usually a
+// drifted "City, ST" on one attribution; the approved overlaps registry hides
+// names reviewed as genuinely multi-venue bars.
+logger.header('📍 Checking bar locations...');
+const approvedBarNames = new Set(
+  (approvedOverlaps.bar ?? []).map((name) => normalizeName(name)),
+);
+for (const { name, variants } of findInconsistentBarLocations(barLocationUsages)) {
+  if (approvedBarNames.has(normalizeName(name))) continue;
+
+  const summary = variants
+    .map(
+      (variant) =>
+        `"${variant.location ?? 'no location'}" (${variant.count} use(s), e.g. ${path.relative(REPO_ROOT, variant.exampleFile)})`,
+    )
+    .join(', ');
+  logger.warn(
+    `Bar "${name}" is credited with inconsistent locations:`,
+    summary,
+    `Standardize the location across attributions and entity files. ` +
+      `If these are genuinely different venues, register the name in the "bar" list of approved-overlaps.json.`,
+  );
 }
 logger.footer('Done!');
 
