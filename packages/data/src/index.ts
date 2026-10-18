@@ -22,4 +22,4 @@ export type {
 export type { Attribution, Chapter, Recipe, RecipeTechnique } from './types/Recipe.ts';
 export type { BookRef, PodcastRef, Ref, WebsiteRef, YoutubeRef } from './types/Ref.ts';
 export type { Book, Podcast, Source, YoutubeChannel } from './types/Source.ts';
-export type { Author, AuthorSourceRef, Bar, ResolvedAuthor } from './types/Entity.ts';
+export type { Author, Bar } from './types/Entity.ts';

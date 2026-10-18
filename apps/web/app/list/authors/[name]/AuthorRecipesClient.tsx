@@ -1,6 +1,6 @@
 'use client';
 
-import type { Recipe, ResolvedAuthor } from '@cocktails/data';
+import type { Author, Recipe } from '@cocktails/data';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
@@ -18,7 +18,7 @@ export default function AuthorRecipesClient({
   author,
   recipes,
 }: {
-  author: ResolvedAuthor;
+  author: Author;
   recipes: Recipe[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');

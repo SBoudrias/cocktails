@@ -1,4 +1,4 @@
-import type { Bar, ResolvedAuthor } from '@cocktails/data';
+import type { Author, Bar } from '@cocktails/data';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import MapIcon from '@mui/icons-material/Map';
@@ -44,10 +44,11 @@ export function AuthorAboutCard({
   author,
   sx,
 }: {
-  author: ResolvedAuthor | undefined;
+  author: Author | undefined;
   sx?: SxProps;
 }) {
-  const { bars, sources } = author ?? { bars: [], sources: [] };
+  const bars = author?.bars ?? [];
+  const sources = author?.sources ?? [];
 
   if (
     !author ||
