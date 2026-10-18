@@ -1,0 +1,95 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Caribbean Ember",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 5,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger beer",
+      "type": "soda",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 2,
+        "maximum": 3,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Use dark rum and dark maple syrup.",
+    "Shake all ingredients except the ginger beer with ice.",
+    "Strain into a collins glass filled with ice cubes.",
+    "Top with 2 to 3 oz ginger beer and garnish with mint."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Tyler Malone"
+    },
+    {
+      "relation": "bar",
+      "source": "Zasu",
+      "location": "New Orleans, Louisiana"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Ynza9iNe1zg",
+      "channel": "make-and-drink",
+      "start": 121
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mantini",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "martini",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Regan's Orange Bitters No. 6",
+      "type": "bitter",
+      "quantity": {
+        "amount": 1,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "St. George Absinthe Verte",
+      "type": "spirit",
+      "optional": true,
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cocchi Vermouth di Torino",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Dolin Dry Vermouth de Chambéry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rittenhouse Rye",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Martin Miller's Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "The absinthe is optional.",
+    "Stir all ingredients with ice until chilled and diluted.",
+    "Strain into a chilled martini glass.",
+    "Express lemon oil over the drink and garnish with a lemon peel and cherry."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "4sQvWZTQInA",
+      "channel": "anders-erickson",
+      "start": 714
+    }
+  ]
+}

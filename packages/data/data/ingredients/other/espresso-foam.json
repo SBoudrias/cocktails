@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Espresso foam",
+  "type": "other",
+  "ingredients": [
+    {
+      "name": "Instant coffee",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Powdered sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Use instant espresso, such as Nescafé Gold Espresso, rather than ground coffee.",
+    "Heat the water to 180 to 190°F. Its quantity is not specified in the source; add it gradually to the instant espresso and powdered sugar.",
+    "Beat with an electric hand mixer, starting on low and gradually increasing the speed, until fluffy."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mJt2VJrZ8FU",
+      "channel": "educated-barfly",
+      "start": 165
+    }
+  ]
+}

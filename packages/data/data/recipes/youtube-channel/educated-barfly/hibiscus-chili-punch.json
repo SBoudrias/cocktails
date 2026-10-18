@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hibiscus Chili Punch",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "serrano pepper",
+      "type": "fruit",
+      "technique": {
+        "technique": "muddled"
+      },
+      "quantity": {
+        "amount": 0.5,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "brix": 50,
+      "technique": {
+        "technique": "infusion",
+        "agent": "dried hibiscus flowers and cracked black pepper",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Blended lightly-aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "For the black pepper hibiscus syrup, combine 250 g sugar and 250 g water over low to medium heat. Add 0.5 tbsp cracked black pepper and 15 g dried hibiscus flowers. Simmer gently for 5 minutes, remove from the heat, and infuse for another 5 minutes. Strain, cool, and refrigerate; the source recommends using it within 3 weeks.",
+    "Use blended light rum; the demonstration uses Saison Pale.",
+    "Adjust the serrano pepper to taste, removing its seeds for less heat. Muddle it with the lemon juice and syrup.",
+    "Add the rum and ice, then shake and strain into a chilled nick & nora glass.",
+    "Garnish with a freeze-dried lemon slice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Leandro DiMonriva"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mJt2VJrZ8FU",
+      "channel": "educated-barfly",
+      "start": 372
+    }
+  ]
+}

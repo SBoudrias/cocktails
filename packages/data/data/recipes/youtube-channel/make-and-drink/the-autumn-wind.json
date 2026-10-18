@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Autumn Wind",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Falernum",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila (blanco)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "float"
+      },
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake the lime juice, falernum, and tequila with crushed ice.",
+    "Pour unstrained into an old fashioned glass and add more crushed ice.",
+    "Float the Cruzan Black Strap rum over the top.",
+    "Garnish with a lime wheel and mint sprigs, and serve with a straw."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Martin Delgado"
+    },
+    {
+      "relation": "bar",
+      "source": "Prizefighter",
+      "location": "Emeryville, California"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "rNX3oDw53gQ",
+      "channel": "make-and-drink",
+      "start": 107
+    }
+  ]
+}
