@@ -65,3 +65,75 @@ export function findInconsistentBarLocations(
     .filter((bar) => bar.variants.size > 1)
     .map((bar) => ({ name: bar.display, variants: Array.from(bar.variants.values()) }));
 }
+
+export interface SimilarBarNames {
+  /** The shorter name, whose distinctive words all appear in the other. */
+  shortName: string;
+  /** The longer name, one or two words beyond the shorter one. */
+  longName: string;
+  /** The words the longer name adds — the drift to review. */
+  extras: string[];
+}
+
+// Words so generic they carry no identity; dropping them before comparing
+// keeps "The Zam Zam" and "Zam Zam" a single name, not a similar pair.
+const GENERIC_NAME_WORDS = new Set(['the', 'a', 'an', 'and', '&', 'of', 'at']);
+
+function getDistinctiveNameTokens(name: string): Set<string> {
+  return new Set(
+    name
+      .toLowerCase()
+      .replace(/\d+/g, '')
+      .split(/[^a-z0-9']+/)
+      .filter((word) => word.length > 0 && !GENERIC_NAME_WORDS.has(word)),
+  );
+}
+
+/**
+ * Find bar names that look like the same venue recorded at two precisions —
+ * one name's distinctive words all appear inside the other, which adds only
+ * one or two of its own ("Disney's Polynesian Resort" inside "…Village
+ * Resort", "Caribe Hilton" inside "Caribe Hilton Hotel"). Renames and
+ * short-form credits look like this; genuinely different venues rarely do.
+ * Same suppression path as the location check: the approved overlaps registry.
+ */
+export function findSimilarBarNames(
+  usages: readonly BarLocationUsage[],
+): SimilarBarNames[] {
+  const names = new Map<string, string>();
+  for (const usage of usages) {
+    if (!names.has(normalizeName(usage.name))) {
+      names.set(normalizeName(usage.name), usage.name);
+    }
+  }
+
+  const tokensByName = new Map(
+    Array.from(names.entries(), ([key, name]) => [key, getDistinctiveNameTokens(name)]),
+  );
+
+  const pairs: SimilarBarNames[] = [];
+  const keys = Array.from(names.keys());
+
+  for (const shortKey of keys) {
+    for (const longKey of keys) {
+      if (shortKey === longKey) continue;
+
+      const shortTokens = tokensByName.get(shortKey)!;
+      const longTokens = tokensByName.get(longKey)!;
+      if (shortTokens.size === 0) continue;
+
+      const extras = Array.from(longTokens).filter((token) => !shortTokens.has(token));
+      const isContained = Array.from(shortTokens).every((token) => longTokens.has(token));
+
+      if (isContained && extras.length > 0 && extras.length <= 2) {
+        pairs.push({
+          shortName: names.get(shortKey)!,
+          longName: names.get(longKey)!,
+          extras,
+        });
+      }
+    }
+  }
+
+  return pairs;
+}

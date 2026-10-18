@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { findInconsistentBarLocations } from './bar-locations.ts';
+import { findInconsistentBarLocations, findSimilarBarNames } from './bar-locations.ts';
 
 describe('findInconsistentBarLocations', () => {
   it('flags a name used with two different locations', () => {
@@ -64,5 +64,72 @@ describe('findInconsistentBarLocations', () => {
 
   it('returns nothing for an empty list', () => {
     expect(findInconsistentBarLocations([])).toEqual([]);
+  });
+});
+
+describe('findSimilarBarNames', () => {
+  it('flags a name contained inside another with one or two extra words', () => {
+    const result = findSimilarBarNames([
+      { name: "Disney's Polynesian Resort", filepath: 'a.json' },
+      { name: "Disney's Polynesian Village Resort", filepath: 'b.json' },
+    ]);
+
+    expect(result).toEqual([
+      {
+        shortName: "Disney's Polynesian Resort",
+        longName: "Disney's Polynesian Village Resort",
+        extras: ['village'],
+      },
+    ]);
+  });
+
+  it('flags short-form credits of the same venue', () => {
+    const result = findSimilarBarNames([
+      { name: 'Caribe Hilton', location: 'San Juan, Puerto Rico', filepath: 'a.json' },
+      {
+        name: 'Caribe Hilton Hotel',
+        location: 'San Juan, Puerto Rico',
+        filepath: 'b.json',
+      },
+    ]);
+
+    expect(result).toEqual([
+      {
+        shortName: 'Caribe Hilton',
+        longName: 'Caribe Hilton Hotel',
+        extras: ['hotel'],
+      },
+    ]);
+  });
+
+  it('ignores generic words like articles when comparing', () => {
+    const result = findSimilarBarNames([
+      { name: 'The Zam Zam', location: 'San Francisco, CA', filepath: 'a.json' },
+      { name: 'Zam Zam', location: 'San Francisco, CA', filepath: 'b.json' },
+    ]);
+
+    expect(result).toEqual([]);
+  });
+
+  it('does not flag names sharing only a generic word', () => {
+    const result = findSimilarBarNames([
+      { name: 'Accomplice Bar', location: 'Mar Vista, CA', filepath: 'a.json' },
+      { name: 'Aviary Bar', location: 'Kuala Lumpur, Malaysia', filepath: 'b.json' },
+    ]);
+
+    expect(result).toEqual([]);
+  });
+
+  it('does not flag names with three or more extra words', () => {
+    const result = findSimilarBarNames([
+      { name: 'Mai-Kai', location: 'Fort Lauderdale, FL', filepath: 'a.json' },
+      {
+        name: 'Hawaiian Village Motel and Restaurant',
+        location: 'Tampa, FL',
+        filepath: 'b.json',
+      },
+    ]);
+
+    expect(result).toEqual([]);
   });
 });

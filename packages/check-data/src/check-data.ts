@@ -16,7 +16,11 @@ import {
   validateApprovedOverlaps,
   type ApprovedOverlaps,
 } from './approved-overlaps.ts';
-import { findInconsistentBarLocations, type BarLocationUsage } from './bar-locations.ts';
+import {
+  findInconsistentBarLocations,
+  findSimilarBarNames,
+  type BarLocationUsage,
+} from './bar-locations.ts';
 import { normalizeCategoryCasing } from './category-casing.ts';
 import { findRedundantCategoryPairs } from './category-similarity.ts';
 import { logger } from './cli-util.ts';
@@ -754,6 +758,23 @@ for (const { name, variants } of findInconsistentBarLocations(barLocationUsages)
     summary,
     `Standardize the location across attributions and entity files. ` +
       `If these are genuinely different venues, register the name in the "bar" list of approved-overlaps.json.`,
+  );
+}
+logger.footer('Done!');
+
+// Check for bar names that look like one venue recorded at two precisions —
+// one name contained inside the other plus one or two extra words. Renames
+// and short-form credits ("Caribe Hilton" vs "Caribe Hilton Hotel") look
+// like this; the approved overlaps registry hides reviewed pairs.
+logger.header('📍 Checking for similar bar names...');
+for (const { shortName, longName, extras } of findSimilarBarNames(barLocationUsages)) {
+  if (isApprovedOverlap(approvedOverlaps, 'bar', shortName, longName)) continue;
+
+  logger.warn(
+    `Similar bar names — possible duplicate:`,
+    `"${shortName}" vs "${longName}" (adds: ${extras.join(', ')})`,
+    `Review whether these are the same venue recorded at two precisions. ` +
+      `If genuinely different venues, register both names in the "bar" list of approved-overlaps.json.`,
   );
 }
 logger.footer('Done!');
