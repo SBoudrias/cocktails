@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Mariano Licudine"
+  "name": "Mariano Licudine",
+  "bars": ["mai-kai-fort-lauderdale-fl"]
 }

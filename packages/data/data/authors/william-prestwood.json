@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "William Prestwood"
+  "name": "William Prestwood",
+  "bars": ["pagan-idol-san-francisco-ca"]
 }

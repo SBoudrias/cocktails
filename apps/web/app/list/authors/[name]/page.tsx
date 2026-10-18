@@ -1,5 +1,7 @@
 import { getAuthor } from '@cocktails/data/authors';
+import { getBar } from '@cocktails/data/bars';
 import { getAllRecipes } from '@cocktails/data/recipes';
+import { getSource } from '@cocktails/data/sources';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -67,9 +69,23 @@ export default async function AuthorRecipesPage({ params }: Props) {
     notFound();
   }
 
+  // The author entity may reference bars (where they worked) and catalog
+  // sources (channel host, book author); resolve both for the About card.
+  const [bars, sources] = await Promise.all([
+    Promise.all((author.bars ?? []).map((slug) => getBar(slug))),
+    Promise.all(
+      (author.sources ?? []).map((source) => getSource(source.type, source.slug)),
+    ),
+  ]);
+
   return (
     <Suspense>
-      <AuthorRecipesClient author={author} recipes={authorRecipes} />
+      <AuthorRecipesClient
+        author={author}
+        bars={bars.filter((bar) => bar !== undefined)}
+        sources={sources}
+        recipes={authorRecipes}
+      />
     </Suspense>
   );
 }

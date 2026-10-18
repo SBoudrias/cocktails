@@ -1,4 +1,4 @@
-import type { Author, Bar } from '@cocktails/data';
+import type { Author, Bar, Source } from '@cocktails/data';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import MapIcon from '@mui/icons-material/Map';
@@ -9,9 +9,11 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Link,
   Typography,
   type SxProps,
 } from '@mui/material';
+import { getBarRecipesUrl, getSourceUrl } from '#/modules/url';
 
 function getHostname(url: string): string {
   return new URL(url).hostname.replace(/^www\./, '');
@@ -40,12 +42,21 @@ function LinkButtons({ links }: { links?: [string, ...string[]] }) {
  */
 export function AuthorAboutCard({
   author,
+  bars,
+  sources,
   sx,
 }: {
   author: Author | undefined;
+  bars: Bar[];
+  sources: Source[];
   sx?: SxProps;
 }) {
-  if (!author || (!author.links && !author.description)) return null;
+  if (
+    !author ||
+    (!author.links && !author.description && bars.length === 0 && sources.length === 0)
+  ) {
+    return null;
+  }
 
   return (
     <Card sx={sx}>
@@ -62,6 +73,36 @@ export function AuthorAboutCard({
           <Typography variant="body2" color="text.secondary">
             {author.description}
           </Typography>
+        </CardContent>
+      )}
+      {(bars.length > 0 || sources.length > 0) && (
+        <CardContent>
+          {bars.length > 0 && (
+            <Typography variant="body2" color="text.secondary">
+              Worked at{' '}
+              {bars.map((bar, index) => (
+                <span key={bar.slug}>
+                  {index > 0 && ' · '}
+                  <Link href={getBarRecipesUrl(bar)}>{bar.name}</Link>
+                </span>
+              ))}
+            </Typography>
+          )}
+          {sources.length > 0 && (
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ mt: bars.length > 0 ? 0.5 : 0 }}
+            >
+              Behind{' '}
+              {sources.map((source, index) => (
+                <span key={`${source.type}:${source.slug}`}>
+                  {index > 0 && ' · '}
+                  <Link href={getSourceUrl(source)}>{source.name}</Link>
+                </span>
+              ))}
+            </Typography>
+          )}
         </CardContent>
       )}
       <CardActions sx={{ justifyContent: 'end' }}>

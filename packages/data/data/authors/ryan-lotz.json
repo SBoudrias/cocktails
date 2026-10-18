@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Ryan Lotz"
+  "name": "Ryan Lotz",
+  "bars": ["shore-leave-boston-ma"]
 }

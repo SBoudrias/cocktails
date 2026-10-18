@@ -33,4 +33,27 @@ describe('AuthorRecipesPage', () => {
     // Name-only entities have no external links on their page.
     expect(screen.queryByRole('link', { name: /\.com/i })).not.toBeInTheDocument();
   });
+
+  it('links the bars the author worked at and the sources behind them', async () => {
+    setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'anders-erickson' }),
+      }),
+    );
+
+    const channelLink = screen.getByRole('link', { name: 'Anders Erickson' });
+    expect(channelLink).toHaveAttribute(
+      'href',
+      '/source/youtube-channel/anders-erickson',
+    );
+
+    // The bars/sources lines interleave text and links, so match on the
+    // typography element that carries exactly the full line.
+    expect(
+      screen.getByText(
+        (_, element) =>
+          element?.tagName === 'P' && element?.textContent === 'Behind Anders Erickson',
+      ),
+    ).toBeInTheDocument();
+  });
 });

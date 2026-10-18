@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Toby Maloney"
+  "name": "Toby Maloney",
+  "bars": ["the-violet-hour-chicago"]
 }

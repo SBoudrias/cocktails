@@ -2,5 +2,11 @@
   "$schema": "../../schemas/author.schema.json",
   "name": "Leandro DiMonriva",
   "links": ["https://www.youtube.com/@TheEducatedBarfly"],
-  "description": "Veteran bartender hosting The Educated Barfly"
+  "description": "Veteran bartender hosting The Educated Barfly",
+  "sources": [
+    {
+      "type": "youtube-channel",
+      "slug": "educated-barfly"
+    }
+  ]
 }

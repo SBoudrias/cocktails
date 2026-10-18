@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Jason Littrell"
+  "name": "Jason Littrell",
+  "bars": ["death-and-co-new-york-ny"]
 }

@@ -19,6 +19,26 @@
     "description": {
       "description": "One-line bio, only when verified",
       "type": "string"
+    },
+    "bars": {
+      "description": "Slugs of bar entities where the author worked, when verified",
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "sources": {
+      "description": "Catalog sources the author is behind (channel host, book author)",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "enum": ["book", "youtube-channel", "podcast"] },
+          "slug": { "type": "string" }
+        },
+        "required": ["type", "slug"],
+        "additionalProperties": false
+      },
+      "minItems": 1
     }
   },
   "required": ["name"],

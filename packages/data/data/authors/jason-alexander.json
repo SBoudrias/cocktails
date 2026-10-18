@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Jason Alexander",
-  "description": "Tiki bartender at Devil’s Reef, Tacoma"
+  "description": "Tiki bartender at Devil’s Reef, Tacoma",
+  "bars": ["devils-reef-tacoma-wa"]
 }

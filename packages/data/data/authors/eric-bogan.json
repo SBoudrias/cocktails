@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Eric Bogan"
+  "name": "Eric Bogan",
+  "bars": ["the-inferno-room-indianapolis-in"]
 }

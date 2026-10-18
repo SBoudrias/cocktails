@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Eli Sanchez"
+  "name": "Eli Sanchez",
+  "bars": ["the-inferno-room-indianapolis-in"]
 }

@@ -1,4 +1,11 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Jeff 'Beachbum' Berry"
+  "name": "Jeff 'Beachbum' Berry",
+  "bars": ["latitude-29-new-orleans-la"],
+  "sources": [
+    {
+      "type": "book",
+      "slug": "sippin-safari"
+    }
+  ]
 }

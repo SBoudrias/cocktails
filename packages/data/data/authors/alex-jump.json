@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Alex Jump",
-  "description": "Death & Co bartender"
+  "description": "Death & Co bartender",
+  "bars": ["death-and-co-new-york-ny", "death-and-co-denver-co"]
 }

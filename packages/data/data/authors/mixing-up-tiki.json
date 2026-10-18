@@ -2,5 +2,11 @@
   "$schema": "../../schemas/author.schema.json",
   "name": "Mixing Up Tiki",
   "links": ["https://www.youtube.com/@MixingUpTiki"],
-  "description": "Teaching world-class tropical and tiki cocktails at home"
+  "description": "Teaching world-class tropical and tiki cocktails at home",
+  "sources": [
+    {
+      "type": "youtube-channel",
+      "slug": "mixing-up-tiki"
+    }
+  ]
 }

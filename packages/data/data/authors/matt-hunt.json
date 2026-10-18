@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Matt Hunt"
+  "name": "Matt Hunt",
+  "bars": ["death-and-co-new-york-ny"]
 }

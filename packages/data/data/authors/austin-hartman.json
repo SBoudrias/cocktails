@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Austin Hartman"
+  "name": "Austin Hartman",
+  "bars": ["paradise-lounge-new-york-ny"]
 }

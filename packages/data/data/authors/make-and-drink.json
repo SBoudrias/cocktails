@@ -2,5 +2,11 @@
   "$schema": "../../schemas/author.schema.json",
   "name": "Make and Drink",
   "links": ["https://www.youtube.com/@makeanddrink"],
-  "description": "Tropical, tiki and rum cocktails, their history and stories"
+  "description": "Tropical, tiki and rum cocktails, their history and stories",
+  "sources": [
+    {
+      "type": "youtube-channel",
+      "slug": "make-and-drink"
+    }
+  ]
 }

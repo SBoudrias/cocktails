@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Kevin Beary"
+  "name": "Kevin Beary",
+  "bars": ["three-dots-and-a-dash-chicago-il"]
 }

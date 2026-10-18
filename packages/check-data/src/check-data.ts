@@ -76,6 +76,8 @@ interface DataWithSchema {
   categories?: string[];
   parents?: string[];
   refs?: Array<{ type: string; channel?: string }>;
+  bars?: string[];
+  sources?: Array<{ type: string; slug: string }>;
   techniques?: Array<{
     technique: 'clarification';
     method: 'milk';
@@ -160,6 +162,20 @@ for (const entry of await fs.readdir(youtubeChannelRoot)) {
   if (entryStat.isDirectory()) youtubeChannelSlugs.add(entry);
 }
 logger.item(`Found ${youtubeChannelSlugs.size} youtube channels`);
+
+// Source slugs per type, used to validate the sources refs on author
+// entities (channel host, book author...).
+const sourceSlugsByType = new Map<string, Set<string>>([
+  ['youtube-channel', new Set(youtubeChannelSlugs)],
+]);
+for (const sourceType of ['book', 'podcast']) {
+  const slugs = new Set<string>();
+  const sourceRoot = path.join(PACKAGE_ROOT, `data/recipes/${sourceType}`);
+  for (const entry of await fs.readdir(sourceRoot)) {
+    if ((await fs.stat(path.join(sourceRoot, entry))).isDirectory()) slugs.add(entry);
+  }
+  sourceSlugsByType.set(sourceType, slugs);
+}
 
 // Entity files backing the author/bar list pages. Every attribution source
 // must resolve to one — entities are credited in recipes before anything is
@@ -435,6 +451,28 @@ for await (const sourceFile of fs.glob(dataGlob)) {
         untrackedRefChannels.set(
           ref.channel,
           (untrackedRefChannels.get(ref.channel) ?? 0) + 1,
+        );
+      }
+    }
+  }
+
+  // Author entities reference bar entities (where the author worked) and
+  // catalog sources (channel host, book author); both must resolve.
+  if (schemaPath === 'schemas/author.schema.json') {
+    for (const barSlug of data.bars ?? []) {
+      if (!barEntitySlugs.has(barSlug)) {
+        fail(
+          `Author "${data.name}" references unknown bar "${barSlug}" in ${path.basename(sourceFile)}. ` +
+            `Use the slug of a bar entity file (name and location).`,
+        );
+      }
+    }
+
+    for (const source of data.sources ?? []) {
+      const slugs = sourceSlugsByType.get(source.type);
+      if (!slugs || !slugs.has(source.slug)) {
+        fail(
+          `Author "${data.name}" references unknown ${source.type} source "${source.slug}" in ${path.basename(sourceFile)}.`,
         );
       }
     }

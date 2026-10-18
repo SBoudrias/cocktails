@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Nathan Hazard"
+  "name": "Nathan Hazard",
+  "bars": ["coconut-club-los-angeles-ca"]
 }

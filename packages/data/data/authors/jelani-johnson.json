@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Jelani Johnson"
+  "name": "Jelani Johnson",
+  "bars": ["clover-club-brooklyn-ny"]
 }

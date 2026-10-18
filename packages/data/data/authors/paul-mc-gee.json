@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Paul McGee"
+  "name": "Paul McGee",
+  "bars": ["lost-lake-chicago-il"]
 }
