@@ -2,4 +2,4 @@
 :HL["/cocktails/pr-preview/pr-497/_next/static/media/ce62453a442c7f35-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"search","h":96,"c":"$Q2"}]]
-0:{"b":"mtJSXxrSzYiMRiVupYJdi","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"N6d-g1zh9xfoR3BYugxRS","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
