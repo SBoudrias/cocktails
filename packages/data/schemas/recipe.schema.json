@@ -77,6 +77,7 @@
               "name": { "type": "string" },
               "type": { "const": "syrup" },
               "brix": { "type": "number" },
+              "optional": { "type": "boolean" },
               "technique": {
                 "oneOf": [
                   { "$ref": "./technique.schema.json" },
@@ -115,6 +116,7 @@
                 ]
               },
               "brix": { "type": "number" },
+              "optional": { "type": "boolean" },
               "technique": {
                 "oneOf": [
                   { "$ref": "./technique.schema.json" },

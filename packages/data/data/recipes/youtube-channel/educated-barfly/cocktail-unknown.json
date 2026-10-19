@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cocktail Unknown",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Espresso foam",
+      "type": "other",
+      "technique": {
+        "technique": "application",
+        "method": "top"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients except the espresso foam with ice.",
+    "Strain into a large chilled coupe, leaving enough space for the topping.",
+    "Spoon the whipped espresso foam over the drink."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Leandro DiMonriva"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mJt2VJrZ8FU",
+      "channel": "educated-barfly",
+      "start": 165
+    }
+  ]
+}

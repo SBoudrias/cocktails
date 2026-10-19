@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "The Princess' Donut",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "punch",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whole milk",
+      "type": "other",
+      "technique": {
+        "technique": "infusion",
+        "agent": "glazed donuts",
+        "agent_quantity": {
+          "amount": 2,
+          "unit": "unit"
+        },
+        "spirit_quantity": {
+          "amount": 500,
+          "unit": "ml"
+        },
+        "duration": "5 minutes",
+        "method": "hot"
+      },
+      "quantity": {
+        "amount": 3,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Crème de Cacao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Brandy (grapes)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "For the donut milk, cut 2 large glazed donuts into pieces and combine with 500 ml whole milk. Bring gently to a light simmer over medium-low heat without scalding the milk. Let sit for about 5 minutes, blend until smooth, and double strain to remove any large pieces. Measure 3 oz of the prepared milk for one cocktail.",
+    "Shake all ingredients with ice and strain into a Georgian punch glass.",
+    "Garnish with freshly grated nutmeg."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Leandro DiMonriva"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "mJt2VJrZ8FU",
+      "channel": "educated-barfly",
+      "start": 579
+    }
+  ]
+}
