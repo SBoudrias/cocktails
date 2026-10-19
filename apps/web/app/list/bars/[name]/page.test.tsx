@@ -12,6 +12,9 @@ describe('BarRecipesPage', () => {
     );
 
     expect(screen.getByText('Fort Lauderdale, FL')).toBeInTheDocument();
+    // The recipe list title carries the bar's short name; the location stays
+    // in the card.
+    expect(screen.getByText('Recipes from Mai-Kai')).toBeInTheDocument();
     expect(
       screen.getByText(/Polynesian-themed restaurant and tiki bar/i),
     ).toBeInTheDocument();

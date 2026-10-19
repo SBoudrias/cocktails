@@ -59,7 +59,11 @@ export default function BarRecipesClient({
       ) : (
         <>
           <BarAboutCard bar={bar} sx={{ m: 2 }} />
-          <LinkList header="All Recipes" items={recipes} renderItem={renderRecipe} />
+          <LinkList
+            header={`Recipes from ${bar.name}`}
+            items={recipes}
+            renderItem={renderRecipe}
+          />
         </>
       )}
     </>

@@ -13,6 +13,8 @@ describe('AuthorRecipesPage', () => {
 
     // The About card's header is the page's title — the name shows once.
     expect(screen.getAllByText('Brian Maxwell')).toHaveLength(1);
+    // The recipe list carries the author's name, without duplication of the card's content.
+    expect(screen.getByText('Recipes by Brian Maxwell')).toBeInTheDocument();
     expect(screen.getByText('Tiki blogger behind Shaker of Spirits')).toBeInTheDocument();
 
     const websiteLink = screen.getByRole('link', { name: /shakerofspirits\.com/i });

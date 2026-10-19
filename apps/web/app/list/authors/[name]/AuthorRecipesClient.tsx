@@ -59,7 +59,11 @@ export default function AuthorRecipesClient({
       ) : (
         <>
           <AuthorAboutCard author={author} sx={{ m: 2 }} />
-          <LinkList header="All Recipes" items={recipes} renderItem={renderItem} />
+          <LinkList
+            header={`Recipes by ${author.name}`}
+            items={recipes}
+            renderItem={renderItem}
+          />
         </>
       )}
     </>
