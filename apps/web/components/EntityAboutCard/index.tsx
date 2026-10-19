@@ -78,7 +78,7 @@ export function AuthorAboutCard({
         <CardContent>
           {bars.length > 0 && (
             <Typography variant="body2" color="text.secondary">
-              Worked at{' '}
+              Known for their work at{' '}
               {bars.map((bar, index) => (
                 <span key={bar.slug}>
                   {index > 0 && ' · '}

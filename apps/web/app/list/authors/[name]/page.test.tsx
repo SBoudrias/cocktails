@@ -34,7 +34,7 @@ describe('AuthorRecipesPage', () => {
     expect(screen.queryByRole('link', { name: /\.com/i })).not.toBeInTheDocument();
   });
 
-  it('links the bars the author worked at and the sources behind them', async () => {
+  it("links the author's known-for bars and the sources behind them", async () => {
     setupApp(
       await AuthorRecipesPage({
         params: Promise.resolve({ name: 'anders-erickson' }),
