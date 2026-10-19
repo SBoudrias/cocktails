@@ -21,17 +21,42 @@ type AuthorFile = Omit<Author, 'slug' | 'bars' | 'sources'> & {
 };
 
 /**
+ * Bars the catalog has recipes for. The bar list pages render nothing for a
+ * bar with an entity file but no recipe attributions, so an author's
+ * 'Worked at' line only shows bars a visitor can actually navigate to.
+ */
+const getBarSlugsWithRecipes = memo(async (): Promise<Set<string>> => {
+  const slugs = new Set<string>();
+
+  for (const recipe of await getAllRecipes()) {
+    for (const attribution of recipe.attributions) {
+      if (attribution.relation === 'bar') {
+        slugs.add(slugify(`${attribution.source} ${attribution.location ?? ''}`));
+      }
+    }
+  }
+
+  return slugs;
+});
+
+/**
  * Resolve the file's bars/sources refs into the full entities, so consumers
- * always see the one Author type. check-data guarantees every ref resolves,
- * but a missing entity is skipped rather than crashing the page.
+ * always see the one Author type. check-data guarantees every ref resolves;
+ * bars the catalog has no recipes for are dropped rather than linking to an
+ * empty page.
  */
 async function resolveAuthorRefs(data: AuthorFile & { slug: string }): Promise<Author> {
   const { bars: barRefs, sources: sourceRefs, ...rest } = data;
 
   const [bars, sources] = await Promise.all([
     barRefs
-      ? Promise.all(barRefs.map((slug) => getBar(slug))).then((bars) =>
-          bars.filter((bar): bar is Bar => bar !== undefined),
+      ? Promise.all([
+          getBarSlugsWithRecipes(),
+          Promise.all(barRefs.map((slug) => getBar(slug))),
+        ]).then(([withRecipes, bars]) =>
+          bars.filter(
+            (bar): bar is Bar => bar !== undefined && withRecipes.has(bar.slug),
+          ),
         )
       : undefined,
     sourceRefs

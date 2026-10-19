@@ -54,4 +54,33 @@ describe('author and bar entities', () => {
     expect(await getAuthor('no-such-author')).toBeUndefined();
     expect(await getBar('no-such-bar')).toBeUndefined();
   });
+
+  it("only shows an author's worked-at bars that have recipes in the catalog", async () => {
+    const allRecipes = await getAllRecipes();
+
+    const barsWithRecipes = new Set(
+      allRecipes.flatMap((recipe) =>
+        recipe.attributions
+          .filter((attribution) => attribution.relation === 'bar')
+          .map((attribution) =>
+            slugify(`${attribution.source} ${attribution.location ?? ''}`),
+          ),
+      ),
+    );
+
+    const authorsWithBars = (await getAllAuthors()).filter(
+      (author) => author.bars !== undefined,
+    );
+
+    expect(authorsWithBars.length).toBeGreaterThan(10);
+
+    for (const author of authorsWithBars) {
+      for (const bar of author.bars ?? []) {
+        expect(
+          barsWithRecipes.has(bar.slug),
+          `"${bar.name}" on ${author.name}'s worked-at list has no recipes`,
+        ).toBe(true);
+      }
+    }
+  });
 });
