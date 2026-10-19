@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Doc Parks",
+  "links": ["https://www.instagram.com/doc_parks"],
   "description": "Minimalist-tiki bartender alongside Marie King and Kevin Beary"
 }

@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Oriol Elias"
+  "name": "Oriol Elias",
+  "links": ["https://threeofstrong.com/", "https://www.instagram.com/threeofstrong"]
 }

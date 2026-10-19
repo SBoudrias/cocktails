@@ -1,6 +1,10 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Garret Richard",
+  "links": [
+    "https://www.tropicalstandard.com/",
+    "https://www.instagram.com/garretjrichard"
+  ],
   "description": "Master mixologist, tropical-canon modernizer (Tropical Standard)",
   "bars": ["sunken-harbor-club-brooklyn-ny", "existing-conditions-new-york-ny"],
   "sources": [

@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Paul McGee",
+  "links": ["https://www.instagram.com/bagchatter"],
   "bars": ["lost-lake-chicago-il"]
 }

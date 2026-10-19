@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Marie King"
+  "name": "Marie King",
+  "links": ["https://www.instagram.com/mariekingofdtb"]
 }

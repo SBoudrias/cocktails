@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Joaquín Simó",
+  "links": ["https://www.instagram.com/simojoaquin"],
   "description": "Death & Co bartender",
   "bars": ["death-and-co-new-york-ny"]
 }

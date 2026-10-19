@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Jim Meehan"
+  "name": "Jim Meehan",
+  "links": ["https://www.instagram.com/mixography"]
 }

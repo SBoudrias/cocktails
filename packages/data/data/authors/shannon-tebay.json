@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Shannon Tebay",
+  "links": ["https://www.instagram.com/shannontebay"],
   "description": "Death & Co bartender",
   "bars": ["death-and-co-new-york-ny"]
 }

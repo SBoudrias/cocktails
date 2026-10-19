@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Matt Pietrek"
+  "name": "Matt Pietrek",
+  "links": ["https://cocktailwonk.com/", "https://www.instagram.com/cocktailwonk"]
 }

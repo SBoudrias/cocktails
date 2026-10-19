@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Jeff 'Beachbum' Berry",
+  "links": ["https://beachbumberry.com/"],
   "bars": ["latitude-29-new-orleans-la"],
   "sources": [
     {

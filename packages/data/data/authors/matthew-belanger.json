@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Matthew Belanger",
+  "links": ["https://www.instagram.com/matthewjbelanger"],
   "description": "Death & Co bartender",
   "bars": ["death-and-co-new-york-ny"]
 }

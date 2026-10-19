@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Alex Day",
+  "links": ["https://www.instagram.com/apday"],
   "description": "Death & Co bartender",
   "bars": ["death-and-co-new-york-ny"]
 }
