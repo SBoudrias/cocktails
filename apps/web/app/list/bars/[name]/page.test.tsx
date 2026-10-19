@@ -23,13 +23,14 @@ describe('BarRecipesPage', () => {
     expect(mapLink.getAttribute('href')).toContain('https://www.google.com/maps/search/');
   });
 
-  it('renders no About card for a name-only bar', async () => {
+  it('renders the card header for a name-only bar, without extra links', async () => {
     setupApp(
       await BarRecipesPage({
         params: Promise.resolve({ name: 'trader-vics' }),
       }),
     );
 
+    expect(screen.getAllByText("Trader Vic's")).toHaveLength(1);
     expect(screen.queryByRole('link', { name: /map/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /\.com/i })).not.toBeInTheDocument();
   });

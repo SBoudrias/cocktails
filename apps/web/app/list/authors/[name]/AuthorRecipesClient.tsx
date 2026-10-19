@@ -47,11 +47,7 @@ export default function AuthorRecipesClient({
 
   return (
     <>
-      <SearchHeader
-        title={`Recipes by ${author.name}`}
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-      />
+      <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       {isSearching ? (
         <SearchableList
           items={recipes}

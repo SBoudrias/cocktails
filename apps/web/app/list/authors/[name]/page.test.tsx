@@ -11,25 +11,22 @@ describe('AuthorRecipesPage', () => {
       }),
     );
 
-    expect(
-      screen.getByRole('heading', { name: 'Recipes by Brian Maxwell' }),
-    ).toBeInTheDocument();
+    // The About card's header is the page's title — the name shows once.
+    expect(screen.getAllByText('Brian Maxwell')).toHaveLength(1);
     expect(screen.getByText('Tiki blogger behind Shaker of Spirits')).toBeInTheDocument();
 
     const websiteLink = screen.getByRole('link', { name: /shakerofspirits\.com/i });
     expect(websiteLink).toHaveAttribute('href', 'https://shakerofspirits.com');
   });
 
-  it('renders no About card for a name-only author', async () => {
+  it('renders the card header for a name-only author, without extra links', async () => {
     setupApp(
       await AuthorRecipesPage({
         params: Promise.resolve({ name: 'aj-stocak' }),
       }),
     );
 
-    expect(
-      screen.getByRole('heading', { name: 'Recipes by AJ Stocak' }),
-    ).toBeInTheDocument();
+    expect(screen.getAllByText('AJ Stocak')).toHaveLength(1);
     // Name-only entities have no external links on their page.
     expect(screen.queryByRole('link', { name: /\.com/i })).not.toBeInTheDocument();
   });

@@ -47,11 +47,7 @@ export default function BarRecipesClient({
 
   return (
     <>
-      <SearchHeader
-        title={`Recipes from ${bar.name}${bar.location ? `, ${bar.location}` : ''}`}
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-      />
+      <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       {isSearching ? (
         <SearchableList
           items={recipes}

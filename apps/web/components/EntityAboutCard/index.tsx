@@ -40,6 +40,11 @@ function LinkButtons({ links }: { links?: [string, ...string[]] }) {
  * About card for an author entity. Renders nothing until the entity file has
  * a verified link or description — most authors are a name only.
  */
+/**
+ * About card for an author entity. The card header (the author's name) always
+ * renders — it is the page's title, shown once; description, known-for bars,
+ * sources, and links appear only when the entity has them.
+ */
 export function AuthorAboutCard({
   author,
   sx,
@@ -47,15 +52,10 @@ export function AuthorAboutCard({
   author: Author | undefined;
   sx?: SxProps;
 }) {
-  const bars = author?.bars ?? [];
-  const sources = author?.sources ?? [];
+  if (!author) return null;
 
-  if (
-    !author ||
-    (!author.links && !author.description && bars.length === 0 && sources.length === 0)
-  ) {
-    return null;
-  }
+  const bars = author.bars ?? [];
+  const sources = author.sources ?? [];
 
   return (
     <Card sx={sx}>
@@ -113,11 +113,12 @@ export function AuthorAboutCard({
 
 /**
  * About card for a bar entity. The map link is derived from name and location
- * at render time — never stored. Renders nothing until the entity file has
- * a location, verified link, or description.
+ * at render time — never stored. The card header (the bar's name) always
+ * renders — it is the page's title, shown once; location, description, and
+ * links appear only when the entity has them.
  */
 export function BarAboutCard({ bar, sx }: { bar: Bar | undefined; sx?: SxProps }) {
-  if (!bar || (!bar.links && !bar.description && !bar.location)) return null;
+  if (!bar) return null;
 
   const mapUrl = bar.location
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${bar.name} ${bar.location}`)}`
