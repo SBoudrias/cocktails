@@ -55,4 +55,23 @@ describe('AuthorRecipesPage', () => {
       ),
     ).toBeInTheDocument();
   });
+
+  it('renders social links as brand icons with hostname labels', async () => {
+    setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'sam-ross' }),
+      }),
+    );
+
+    // Social links render their brand mark; the accessible label carries
+    // the hostname so the link still reads correctly.
+    const instagramLink = screen.getByRole('link', { name: 'instagram.com' });
+    expect(instagramLink).toHaveAttribute(
+      'href',
+      'https://www.instagram.com/samueljoelross',
+    );
+
+    const xLink = screen.getByRole('link', { name: 'x.com' });
+    expect(xLink).toHaveAttribute('href', 'https://x.com/samueljoelross');
+  });
 });

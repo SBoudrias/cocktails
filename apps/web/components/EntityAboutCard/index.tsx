@@ -13,27 +13,48 @@ import {
   Typography,
   type SxProps,
 } from '@mui/material';
+import { match, P } from 'ts-pattern';
 import { getBarRecipesUrl, getSourceUrl } from '#/modules/url';
+import { FacebookIcon, InstagramIcon, XIcon, YouTubeIcon } from './socialIcons';
 
 function getHostname(url: string): string {
   return new URL(url).hostname.replace(/^www\./, '');
 }
 
+// Social platforms get their brand mark instead of a typed-out domain;
+// everything else keeps its hostname and the external-arrow affordance. The
+// button's aria-label carries the full hostname either way.
+function getLinkIcon(url: string) {
+  return match(getHostname(url))
+    .returnType<React.ReactNode>()
+    .with('instagram.com', () => <InstagramIcon />)
+    .with('youtube.com', () => <YouTubeIcon />)
+    .with(P.union('x.com', 'twitter.com'), () => <XIcon />)
+    .with('facebook.com', () => <FacebookIcon />)
+    .otherwise(() => null);
+}
+
 function LinkButtons({ links }: { links?: [string, ...string[]] }) {
   if (!links) return null;
 
-  return links.map((link) => (
-    <Button
-      key={link}
-      href={link}
-      target="_blank"
-      rel="noreferrer noopener"
-      color="inherit"
-    >
-      {getHostname(link)}
-      <ArrowOutwardIcon />
-    </Button>
-  ));
+  return links.map((link) => {
+    const hostname = getHostname(link);
+    const icon = getLinkIcon(link);
+
+    return (
+      <Button
+        key={link}
+        href={link}
+        target="_blank"
+        rel="noreferrer noopener"
+        color="inherit"
+        aria-label={hostname}
+      >
+        {icon ?? hostname}
+        <ArrowOutwardIcon />
+      </Button>
+    );
+  });
 }
 
 /**
