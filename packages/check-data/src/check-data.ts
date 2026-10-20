@@ -12,57 +12,27 @@ import {
   normalizeName,
   validateApprovedOverlaps,
 } from './approved-overlaps.ts';
+import { checkAttributions } from './attributions.ts';
+import { checkAuthorSources } from './author-sources.ts';
 import { findInconsistentBarLocations, findSimilarBarNames } from './bar-locations.ts';
 import { findRedundantCategoryPairs } from './category-similarity.ts';
 import { logger } from './cli-util.ts';
 import { loadDataContext } from './data-context.ts';
+import { checkFileIntegrity } from './file-integrity.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
 import { findSimilarIngredientPairs } from './ingredient-similarity.ts';
-import {
-  getMilkClarificationIngredientSlugs,
-  validateMilkClarification,
-} from './milk-clarification.ts';
 import { areSimilarNames } from './name-similarity.ts';
 import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT, REPO_ROOT } from './paths.ts';
+import { checkRefs } from './refs.ts';
 import { createReport, type Report } from './report.ts';
 import { loadSchemas } from './schemas.ts';
+import type { DataWithSchema, Ingredient } from './types.ts';
 import { createWriteJSON } from './write-json.ts';
 
 const startTime = performance.now();
 
 function isChapterFolder(folder: string): boolean {
   return /^\d+_.+$/.test(folder);
-}
-
-interface Ingredient extends SortableIngredient {
-  type: string;
-  name: string;
-  brix?: number;
-}
-
-interface Attribution {
-  relation: string;
-  source: string;
-  location?: string;
-}
-
-interface DataWithSchema {
-  $schema: string;
-  name: string;
-  type?: string;
-  ingredients?: Ingredient[];
-  attributions?: Attribution[];
-  categories?: string[];
-  parents?: string[];
-  refs?: Array<{ type: string; channel?: string }>;
-  sources?: Array<{ type: string; slug: string }>;
-
-  techniques?: Array<{
-    technique: 'clarification';
-    method: 'milk';
-    milk_type: string;
-    quantity: { amount: number; unit: string };
-  }>;
 }
 
 function addCategoryType(
@@ -100,13 +70,11 @@ const fail: Report['fail'] = report.fail;
 const { ajv, formatter } = await loadSchemas();
 const writeJSON = createWriteJSON({ formatter, report });
 
+const ctx = await loadDataContext({ writeJSON, report });
 const {
   categorySlugs,
   canonicalNames,
   categoryTypes,
-  youtubeChannelSlugs,
-  sourceSlugsByType,
-  barEntitySlugs,
   barLocationUsages,
   categoryCanonicalNames,
   allCategories,
@@ -120,7 +88,7 @@ const {
   authorNameUsages,
   untrackedRefChannels,
   referencedIngredientSlugs,
-} = await loadDataContext({ writeJSON, report });
+} = ctx;
 
 logger.header('🔍 Validating data files...');
 const dataGlob = path.join(PACKAGE_ROOT, 'data/**/*.json');
@@ -133,180 +101,29 @@ for await (const sourceFile of fs.glob(dataGlob)) {
     continue;
   }
 
-  if (!data.$schema) {
-    fail(`$schema not defined in ${sourceFile}`);
-    continue;
-  }
+  const integrity = await checkFileIntegrity({
+    sourceFile,
+    data,
+    ajv,
+    ctx,
+    report,
+    writeJSON,
+  });
+  if (!integrity) continue;
+  const { schemaPath, isValid } = integrity;
+  const fileInput = {
+    data,
+    file: sourceFile,
+    schemaPath,
+    isValid,
+    ctx,
+    report,
+    writeJSON,
+  };
 
-  const schemaBasename = path.basename(data.$schema);
-  const validate = ajv.getSchema(schemaBasename);
-
-  if (!validate) {
-    fail(`Schema not found for ${sourceFile} at ${data.$schema ?? 'undefined'}`);
-    continue;
-  }
-
-  const expectedSchemaPath = path.relative(
-    path.dirname(sourceFile),
-    path.resolve(PACKAGE_ROOT, 'schemas', schemaBasename),
-  );
-  if (data.$schema !== expectedSchemaPath) {
-    logger.change(
-      `Fixing $schema in ${path.basename(sourceFile)}: "${data.$schema}" → "${expectedSchemaPath}"`,
-    );
-    data.$schema = expectedSchemaPath;
-    await writeJSON(sourceFile, data);
-  }
-
-  const schemaPath = `schemas/${schemaBasename}`;
-
-  const isValid = validate(data);
-  if (!isValid) {
-    fail(`Validation failed for ${sourceFile}`);
-    console.error(validate.errors);
-  }
-
-  // Enforce filename should be the name of the data. Bar entity files are the
-  // exception: their slug is the name *and* location, matching the list pages.
-  const basename = path.basename(sourceFile, '.json');
-  if (basename !== '_source' && schemaBasename !== 'bar.schema.json') {
-    const expectedName = slugify(data.name);
-    if (basename !== expectedName) {
-      const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);
-      logger.change(`Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`);
-      await fs.rename(sourceFile, newPath);
-    }
-  }
-
-  // Ensure no ingredient file has the same name as a category
-  if (schemaPath === 'schemas/ingredient.schema.json') {
-    const ingredientSlug = slugify(data.name);
-    if (categorySlugs.has(ingredientSlug)) {
-      fail(
-        `Ingredient "${data.name}" duplicates category "${ingredientSlug}". ` +
-          `Remove the ingredient file and use type: "category" in recipes instead.`,
-      );
-    }
-
-    // Ensure the ingredient's type matches its folder — auto-move if not
-    const folderType = path.basename(path.dirname(sourceFile));
-    if (data.type && data.type !== folderType) {
-      const correctPath = path.join(
-        path.dirname(path.dirname(sourceFile)),
-        data.type,
-        path.basename(sourceFile),
-      );
-      logger.change(
-        `Moving "${path.basename(sourceFile)}" from "${folderType}/" to "${data.type}/"`,
-      );
-      await fs.mkdir(path.dirname(correctPath), { recursive: true });
-      await fs.rename(sourceFile, correctPath);
-      // Update ingredientFolders so cross-folder checks use the new location
-      ingredientFolders.set(slugify(data.name), data.type);
-    }
-  }
-
-  // Youtube ref channels power the per-channel recipe lists, so track them
-  // for the untracked-channel report below.
-  if (
-    schemaPath === 'schemas/recipe.schema.json' ||
-    schemaPath === 'schemas/category.schema.json' ||
-    schemaPath === 'schemas/ingredient.schema.json'
-  ) {
-    for (const ref of data.refs ?? []) {
-      if (ref.type !== 'youtube' || !ref.channel) continue;
-
-      if (!youtubeChannelSlugs.has(ref.channel)) {
-        untrackedRefChannels.set(
-          ref.channel,
-          (untrackedRefChannels.get(ref.channel) ?? 0) + 1,
-        );
-      }
-    }
-  }
-
-  // Author entities carry one sources array of typed refs — bars they worked
-  // at alongside books/channels/podcasts they are behind; every ref must
-  // resolve.
-  if (schemaPath === 'schemas/author.schema.json') {
-    for (const source of data.sources ?? []) {
-      if (source.type === 'bar') {
-        if (!barEntitySlugs.has(source.slug)) {
-          fail(
-            `Author "${data.name}" references unknown bar "${source.slug}" in ${path.basename(sourceFile)}. ` +
-              `Use the slug of a bar entity file (name and location).`,
-          );
-        }
-        continue;
-      }
-
-      const slugs = sourceSlugsByType.get(source.type);
-      if (!slugs || !slugs.has(source.slug)) {
-        fail(
-          `Author "${data.name}" references unknown ${source.type} source "${source.slug}" in ${path.basename(sourceFile)}.`,
-        );
-      }
-    }
-  }
-
-  // Collect bar attributions for case consistency check
-  if (schemaPath === 'schemas/recipe.schema.json') {
-    if (isValid) {
-      for (const message of validateMilkClarification(
-        { ingredients: data.ingredients ?? [], techniques: data.techniques },
-        canonicalNames,
-        ingredientFolders,
-      )) {
-        fail(`${message} in ${path.basename(sourceFile)}`);
-      }
-      for (const ingredientSlug of getMilkClarificationIngredientSlugs(data)) {
-        referencedIngredientSlugs.add(ingredientSlug);
-      }
-    }
-
-    for (const attribution of data.attributions ?? []) {
-      if (attribution.relation === 'bar') {
-        const lowerName = attribution.source.toLowerCase();
-        if (!barNameCasings.has(lowerName)) {
-          barNameCasings.set(lowerName, new Map());
-        }
-        const casings = barNameCasings.get(lowerName)!;
-        if (!casings.has(attribution.source)) {
-          casings.set(attribution.source, []);
-        }
-        casings.get(attribution.source)!.push(sourceFile);
-
-        barLocationUsages.push({
-          name: attribution.source,
-          location: attribution.location,
-          filepath: sourceFile,
-        });
-      }
-
-      // Check for combined author names (should be separate attributions)
-      // We require 4+ words to avoid false positives on valid names like "Make and Drink".
-      // This means rare cases like "Cher and Madonna" (3 words) won't be caught,
-      // but most combined authors have at least one full name (e.g. "Cher and John Smith").
-      if (
-        attribution.relation === 'recipe author' ||
-        attribution.relation === 'adapted by'
-      ) {
-        const hasConnector = / (and|&) /i.test(attribution.source);
-        const wordCount = attribution.source.split(/\s+/).length;
-        if (hasConnector && wordCount >= 4) {
-          fail(
-            `Combined authors in ${path.basename(sourceFile)}: "${attribution.source}". ` +
-              `Split into separate attributions, one per person.`,
-          );
-        }
-
-        if (!authorNameUsages.has(attribution.source)) {
-          authorNameUsages.set(attribution.source, []);
-        }
-        authorNameUsages.get(attribution.source)!.push(sourceFile);
-      }
-    }
-  }
+  checkRefs(fileInput);
+  checkAuthorSources(fileInput);
+  checkAttributions(fileInput);
 
   if (
     schemaPath === 'schemas/recipe.schema.json' ||
