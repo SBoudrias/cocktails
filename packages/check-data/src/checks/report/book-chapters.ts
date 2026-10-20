@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { logger } from '../../cli-util.ts';
 import { PACKAGE_ROOT } from '../../infra/paths.ts';
-import type { Report } from '../../infra/report.ts';
+import { report } from '../../infra/report.ts';
 
 function isChapterFolder(folder: string): boolean {
   return /^\d+_.+$/.test(folder);
@@ -13,7 +13,7 @@ function isChapterFolder(folder: string): boolean {
  * pattern, chapters must not be empty, recipe slugs must be unique within a
  * book, and a book is either all chapters or all flat recipes — never both.
  */
-export async function reportBookChapters(report: Report): Promise<void> {
+export async function reportBookChapters(): Promise<void> {
   logger.header('📚 Validating book chapter structure...');
   const bookRoot = path.join(PACKAGE_ROOT, 'data/recipes/book');
   for await (const bookSlug of await fs.readdir(bookRoot)) {

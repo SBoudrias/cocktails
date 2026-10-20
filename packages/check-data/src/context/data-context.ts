@@ -5,8 +5,8 @@ import type { ApprovedOverlaps } from '../checks/report/approved-overlaps.ts';
 import type { BarLocationUsage } from '../checks/report/bar-locations.ts';
 import { logger } from '../cli-util.ts';
 import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT, REPO_ROOT } from '../infra/paths.ts';
-import type { Report } from '../infra/report.ts';
-import type { WriteJSON } from '../infra/write-json.ts';
+import { report } from '../infra/report.ts';
+import { writeJSON } from '../infra/write-json.ts';
 import { normalizeCategoryCasing } from './category-casing.ts';
 
 interface Attribution {
@@ -47,8 +47,9 @@ export interface IngredientRef {
 
 /**
  * The mutable data indexes every check reads and writes: canonical names,
- * slugs, usage maps. Loaded once before the per-file pass; the creation
- * autofixes mutate these maps mid-run so later files see the new values.
+ * slugs, usage maps. Filled once by {@link loadContext} before the per-file
+ * pass; the creation autofixes mutate these maps mid-run so later files see
+ * the new values.
  */
 export interface DataContext {
   /** All category slugs, including ones created as stubs during the run. */
@@ -88,24 +89,53 @@ export interface DataContext {
   referencedIngredientSlugs: Set<string>;
 }
 
+/** The single shared context; every check imports this object. */
+export const ctx: DataContext = {
+  categorySlugs: new Set<string>(),
+  canonicalNames: new Map<string, string>(),
+  categoryTypes: new Map<string, string>(),
+  youtubeChannelSlugs: new Set<string>(),
+  sourceSlugsByType: new Map<string, Set<string>>(),
+  authorEntitySlugs: new Set<string>(),
+  barEntitySlugs: new Set<string>(),
+  barLocationUsages: [],
+  categoryCanonicalNames: new Map<string, string>(),
+  allCategories: [],
+  ingredientFolders: new Map<string, string>(),
+  ingredientFiles: new Map<string, string>(),
+  ingredients: [],
+  ingredientNames: [],
+  ingredientFilesByName: new Map<string, string>(),
+  barNameCasings: new Map<string, Map<string, string[]>>(),
+  approvedOverlaps: { author: [], bar: [], ingredient: [] },
+  authorNameUsages: new Map<string, string[]>(),
+  untrackedRefChannels: new Map<string, number>(),
+  referencedIngredientSlugs: new Set<string>(),
+};
+
 /**
  * Collects every data index the checks need: youtube channels and sources,
  * author/bar entities (creating name-only files for uncredited ones),
  * categories (with sentence-casing autofix), and ingredients.
  */
-export async function loadDataContext({
-  writeJSON,
-  report,
-}: {
-  writeJSON: WriteJSON;
-  report: Report;
-}): Promise<DataContext> {
-  const categorySlugs = new Set<string>();
-  const canonicalNames = new Map<string, string>();
-  const categoryTypes = new Map<string, string>();
+export async function loadContext(): Promise<void> {
+  const {
+    categorySlugs,
+    canonicalNames,
+    categoryTypes,
+    youtubeChannelSlugs,
+    sourceSlugsByType,
+    authorEntitySlugs,
+    barEntitySlugs,
+    barLocationUsages,
+    categoryCanonicalNames,
+    allCategories,
+    ingredientFolders,
+    ingredientFiles,
+    ingredients,
+  } = ctx;
 
   logger.header('📦 Collecting category and ingredient data');
-  const youtubeChannelSlugs = new Set<string>();
   const youtubeChannelRoot = path.join(PACKAGE_ROOT, 'data/recipes/youtube-channel');
   for (const entry of await fs.readdir(youtubeChannelRoot)) {
     const entryStat = await fs.stat(path.join(youtubeChannelRoot, entry));
@@ -113,9 +143,7 @@ export async function loadDataContext({
   }
   logger.item(`Found ${youtubeChannelSlugs.size} youtube channels`);
 
-  const sourceSlugsByType = new Map<string, Set<string>>([
-    ['youtube-channel', new Set(youtubeChannelSlugs)],
-  ]);
+  sourceSlugsByType.set('youtube-channel', new Set(youtubeChannelSlugs));
   for (const sourceType of ['book', 'podcast']) {
     const slugs = new Set<string>();
     const sourceRoot = path.join(PACKAGE_ROOT, `data/recipes/${sourceType}`);
@@ -130,9 +158,6 @@ export async function loadDataContext({
   // known about them, so missing files are created name-only (links and
   // descriptions are added only once verified, never generated here).
   logger.header('👥 Collecting author and bar entities');
-  const authorEntitySlugs = new Set<string>();
-  const barEntitySlugs = new Set<string>();
-
   for (const [entityDir, entitySlugs] of [
     ['authors', authorEntitySlugs],
     ['bars', barEntitySlugs],
@@ -144,7 +169,6 @@ export async function loadDataContext({
     }
   }
 
-  const barLocationUsages: BarLocationUsage[] = [];
   for await (const barFile of fs.glob(path.join(PACKAGE_ROOT, 'data/bars/*.json'))) {
     const bar: BarEntity = JSON.parse(await fs.readFile(barFile, 'utf-8'));
     barLocationUsages.push({ name: bar.name, location: bar.location, filepath: barFile });
@@ -196,8 +220,6 @@ export async function loadDataContext({
   }
   logger.footer('Done!');
 
-  const categoryCanonicalNames = new Map<string, string>();
-  const allCategories: CollectedCategory[] = [];
   for await (const categoryFile of fs.glob(
     path.join(PACKAGE_ROOT, 'data/categories/*.json'),
   )) {
@@ -231,9 +253,6 @@ export async function loadDataContext({
   }
   logger.item(`Found ${categorySlugs.size} categories`);
 
-  const ingredientFolders = new Map<string, string>();
-  const ingredientFiles = new Map<string, string>();
-  const ingredients: IngredientRef[] = [];
   for await (const ingredientFile of fs.glob(
     path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json'),
   )) {
@@ -264,39 +283,14 @@ export async function loadDataContext({
 
   // Names of authors and bars known to be valid, so their similar-name
   // overlaps are suppressed. Loaded from packages/data/approved-overlaps.json.
-  let approvedOverlaps: ApprovedOverlaps = {
-    author: [],
-    bar: [],
-    ingredient: [],
-  };
   try {
-    approvedOverlaps = JSON.parse(await fs.readFile(APPROVED_OVERLAPS_PATH, 'utf-8'));
+    ctx.approvedOverlaps = JSON.parse(await fs.readFile(APPROVED_OVERLAPS_PATH, 'utf-8'));
   } catch (error) {
     report.fail(`Could not read approved overlaps registry: ${(error as Error).message}`);
   }
 
-  return {
-    categorySlugs,
-    canonicalNames,
-    categoryTypes,
-    youtubeChannelSlugs,
-    sourceSlugsByType,
-    authorEntitySlugs,
-    barEntitySlugs,
-    barLocationUsages,
-    categoryCanonicalNames,
-    allCategories,
-    ingredientFolders,
-    ingredientFiles,
-    ingredients,
-    ingredientNames: ingredients.map((ingredient) => ingredient.name),
-    ingredientFilesByName: new Map(
-      ingredients.map((ingredient) => [ingredient.name, ingredient.filepath] as const),
-    ),
-    barNameCasings: new Map<string, Map<string, string[]>>(),
-    approvedOverlaps,
-    authorNameUsages: new Map<string, string[]>(),
-    untrackedRefChannels: new Map<string, number>(),
-    referencedIngredientSlugs: new Set<string>(),
-  };
+  ctx.ingredientNames = ingredients.map((ingredient) => ingredient.name);
+  ctx.ingredientFilesByName = new Map(
+    ingredients.map((ingredient) => [ingredient.name, ingredient.filepath] as const),
+  );
 }

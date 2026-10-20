@@ -1,7 +1,10 @@
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
+import { ctx } from '../../context/data-context.ts';
 import { PACKAGE_ROOT } from '../../infra/paths.ts';
+import { report } from '../../infra/report.ts';
 import type { FileCheckInput, Ingredient } from '../../infra/types.ts';
+import { writeJSON } from '../../infra/write-json.ts';
 
 /**
  * Creates stub metadata files for anything referenced but not yet tracked:
@@ -13,17 +16,13 @@ import type { FileCheckInput, Ingredient } from '../../infra/types.ts';
  * original monolith pass: the sort step replaces `data.ingredients`, and the
  * creation messages keep their pre-sort order.
  */
-export async function createMissingMetadata({
-  data,
-  file,
-  schemaPath,
-  ctx,
-  report,
-  writeJSON,
-  preCanonicalizationIngredients,
-}: FileCheckInput & {
-  preCanonicalizationIngredients: Ingredient[];
-}): Promise<void> {
+export async function createMissingMetadata(
+  input: FileCheckInput & {
+    preCanonicalizationIngredients: Ingredient[];
+  },
+): Promise<void> {
+  const { data, file, schemaPath, preCanonicalizationIngredients } = input;
+
   if (
     schemaPath === 'schemas/recipe.schema.json' ||
     schemaPath === 'schemas/ingredient.schema.json'

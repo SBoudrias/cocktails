@@ -9,27 +9,17 @@ import { reportRedundantCategories } from './checks/report/redundant-categories.
 import { reportSimilarNames } from './checks/report/similar-names.ts';
 import { reportUntrackedChannels } from './checks/report/untracked-channels.ts';
 import { logger } from './cli-util.ts';
-import { loadDataContext } from './context/data-context.ts';
-import { Report } from './infra/report.ts';
-import { loadSchemas } from './infra/schemas.ts';
-import { createWriteJSON } from './infra/write-json.ts';
+import { ctx, loadContext } from './context/data-context.ts';
+import { report } from './infra/report.ts';
+import { startTime } from './infra/start.ts';
 
-const startTime = performance.now();
-
-const report = new Report();
-
-const { ajv, formatter } = await loadSchemas();
-const writeJSON = createWriteJSON({ formatter, report });
-
-const ctx = await loadDataContext({ writeJSON, report });
-const { ingredients, referencedIngredientSlugs } = ctx;
-
-await validateFiles({ ajv, formatter, ctx, report, writeJSON });
+await loadContext();
+await validateFiles();
 
 logger.header('🛟 Checking for floating ingredients...');
 for (const ingredient of findFloatingIngredients(
-  ingredients,
-  referencedIngredientSlugs,
+  ctx.ingredients,
+  ctx.referencedIngredientSlugs,
 )) {
   report.fail(
     `Floating ingredient "${ingredient.name}" in ${ingredient.filepath} is not referenced by any recipe`,
@@ -37,12 +27,12 @@ for (const ingredient of findFloatingIngredients(
 }
 logger.footer('Done!');
 
-reportUntrackedChannels({ ctx });
-reportBarCasing({ ctx, report });
-reportBarLocations({ ctx, report });
-reportSimilarNames({ ctx, report });
-reportRedundantCategories(ctx);
-await reportBookChapters(report);
+reportUntrackedChannels();
+reportBarCasing();
+reportBarLocations();
+reportSimilarNames();
+reportRedundantCategories();
+await reportBookChapters();
 
 const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
 const exitCode = report.getExitCode();

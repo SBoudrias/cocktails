@@ -1,8 +1,7 @@
 import path from 'node:path';
 import { logger } from '../../cli-util.ts';
-import type { DataContext } from '../../context/data-context.ts';
+import { ctx } from '../../context/data-context.ts';
 import { REPO_ROOT } from '../../infra/paths.ts';
-import type { Report } from '../../infra/report.ts';
 import { isApprovedOverlap, normalizeName } from './approved-overlaps.ts';
 import { findInconsistentBarLocations, findSimilarBarNames } from './bar-locations.ts';
 
@@ -12,7 +11,7 @@ import { findInconsistentBarLocations, findSimilarBarNames } from './bar-locatio
  * overlaps registry hides names reviewed as genuinely multi-venue bars or
  * distinct venues.
  */
-export function reportBarLocations({ ctx }: { ctx: DataContext; report: Report }): void {
+export function reportBarLocations(): void {
   // Check for bars credited under the same name with inconsistent locations —
   // two different locations, or the same name with and without one. Usually a
   // drifted "City, ST" on one attribution; the approved overlaps registry hides

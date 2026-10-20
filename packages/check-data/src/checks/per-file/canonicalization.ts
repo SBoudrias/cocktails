@@ -5,7 +5,9 @@ import {
 } from '@cocktails/ingredient-sorting';
 import slugify from '@sindresorhus/slugify';
 import { logger } from '../../cli-util.ts';
+import { ctx } from '../../context/data-context.ts';
 import type { FileCheckInput, Ingredient } from '../../infra/types.ts';
+import { writeJSON } from '../../infra/write-json.ts';
 
 function addCategoryType(
   ingredient: Ingredient,
@@ -46,8 +48,6 @@ export async function canonicalizeFile({
   data,
   file,
   schemaPath,
-  ctx,
-  writeJSON,
 }: FileCheckInput): Promise<void> {
   if (
     schemaPath === 'schemas/recipe.schema.json' ||

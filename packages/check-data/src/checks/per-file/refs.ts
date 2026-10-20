@@ -1,3 +1,4 @@
+import { ctx } from '../../context/data-context.ts';
 import type { FileCheckInput } from '../../infra/types.ts';
 
 /**
@@ -6,7 +7,7 @@ import type { FileCheckInput } from '../../infra/types.ts';
  * linked) but they get no channel page or listing. Youtube ref channels power
  * the per-channel recipe lists, so track them for the report below.
  */
-export function checkRefs({ data, schemaPath, ctx }: FileCheckInput): void {
+export function checkRefs({ data, schemaPath }: FileCheckInput): void {
   if (
     schemaPath !== 'schemas/recipe.schema.json' &&
     schemaPath !== 'schemas/category.schema.json' &&

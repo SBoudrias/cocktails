@@ -1,52 +1,23 @@
-import { describe, expect, it, vi } from 'vitest';
-import type { DataContext } from '../../context/data-context.ts';
-import { Report } from '../../infra/report.ts';
+import { describe, expect, it } from 'vitest';
+import { ctx } from '../../context/data-context.ts';
+import type { FileCheckInput } from '../../infra/types.ts';
 import { checkRefs } from './refs.ts';
 
-vi.mock('../../cli-util.ts', () => ({
-  logger: {
-    header: vi.fn(),
-    item: vi.fn(),
-    footer: vi.fn(),
-    error: vi.fn(),
-    change: vi.fn(),
-    success: vi.fn(),
-    warn: vi.fn(),
-    failure: vi.fn(),
-  },
-}));
-
-function makeCtx(overrides: Partial<DataContext> = {}): DataContext {
-  return {
-    categorySlugs: new Set(),
-    canonicalNames: new Map(),
-    categoryTypes: new Map(),
-    youtubeChannelSlugs: new Set(['educated-barfly']),
-    sourceSlugsByType: new Map(),
-    authorEntitySlugs: new Set(),
-    barEntitySlugs: new Set(),
-    barLocationUsages: [],
-    categoryCanonicalNames: new Map(),
-    allCategories: [],
-    ingredientFolders: new Map(),
-    ingredientFiles: new Map(),
-    ingredients: [],
-    ingredientNames: [],
-    ingredientFilesByName: new Map(),
-    barNameCasings: new Map(),
-    approvedOverlaps: { author: [], bar: [], ingredient: [] },
-    authorNameUsages: new Map(),
-    untrackedRefChannels: new Map(),
-    referencedIngredientSlugs: new Set(),
-    ...overrides,
-  };
+function runCheck(data: FileCheckInput['data'], schemaPath: string): void {
+  checkRefs({
+    data,
+    file: 'recipe.json',
+    schemaPath,
+    isValid: true,
+  });
 }
 
 describe('checkRefs', () => {
   it('counts untracked channels', () => {
-    const ctx = makeCtx();
-    checkRefs({
-      data: {
+    ctx.youtubeChannelSlugs = new Set(['educated-barfly']);
+    ctx.untrackedRefChannels = new Map();
+    runCheck(
+      {
         $schema: '',
         name: 'Recipe',
         refs: [
@@ -54,49 +25,35 @@ describe('checkRefs', () => {
           { type: 'youtube', channel: 'totally-untracked' },
         ],
       },
-      file: 'recipe.json',
-      schemaPath: 'schemas/recipe.schema.json',
-      isValid: true,
-      ctx,
-      report: new Report(),
-      writeJSON: vi.fn(async () => {}),
-    });
+      'schemas/recipe.schema.json',
+    );
     expect(ctx.untrackedRefChannels.get('totally-untracked')).toBe(2);
   });
 
   it('ignores tracked channels', () => {
-    const ctx = makeCtx();
-    checkRefs({
-      data: {
+    ctx.youtubeChannelSlugs = new Set(['educated-barfly']);
+    ctx.untrackedRefChannels = new Map();
+    runCheck(
+      {
         $schema: '',
         name: 'Recipe',
         refs: [{ type: 'youtube', channel: 'educated-barfly' }],
       },
-      file: 'recipe.json',
-      schemaPath: 'schemas/recipe.schema.json',
-      isValid: true,
-      ctx,
-      report: new Report(),
-      writeJSON: vi.fn(async () => {}),
-    });
+      'schemas/recipe.schema.json',
+    );
     expect(ctx.untrackedRefChannels.size).toBe(0);
   });
 
   it('ignores files outside recipe, category and ingredient schemas', () => {
-    const ctx = makeCtx();
-    checkRefs({
-      data: {
+    ctx.untrackedRefChannels = new Map();
+    runCheck(
+      {
         $schema: '',
         name: 'Someone',
         refs: [{ type: 'youtube', channel: 'totally-untracked' }],
       },
-      file: 'author.json',
-      schemaPath: 'schemas/author.schema.json',
-      isValid: true,
-      ctx,
-      report: new Report(),
-      writeJSON: vi.fn(async () => {}),
-    });
+      'schemas/author.schema.json',
+    );
     expect(ctx.untrackedRefChannels.size).toBe(0);
   });
 });

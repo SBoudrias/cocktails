@@ -1,4 +1,6 @@
 import path from 'node:path';
+import { ctx } from '../../context/data-context.ts';
+import { report } from '../../infra/report.ts';
 import type { FileCheckInput } from '../../infra/types.ts';
 import {
   getMilkClarificationIngredientSlugs,
@@ -16,8 +18,6 @@ export function checkAttributions({
   file,
   schemaPath,
   isValid,
-  ctx,
-  report,
 }: FileCheckInput): void {
   if (schemaPath !== 'schemas/recipe.schema.json') return;
 

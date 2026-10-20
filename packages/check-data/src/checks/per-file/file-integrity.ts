@@ -1,10 +1,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
-import type Ajv from 'ajv/dist/2020.js';
 import { logger } from '../../cli-util.ts';
+import { ctx } from '../../context/data-context.ts';
 import { PACKAGE_ROOT } from '../../infra/paths.ts';
-import type { FileCheckInput } from '../../infra/types.ts';
+import { report } from '../../infra/report.ts';
+import { ajv } from '../../infra/schemas.ts';
+import type { DataWithSchema } from '../../infra/types.ts';
+import { writeJSON } from '../../infra/write-json.ts';
 
 /**
  * Schema, filename and folder integrity: validates the file against its
@@ -15,21 +18,10 @@ import type { FileCheckInput } from '../../infra/types.ts';
  * Returns false when the file is unprocessable (invalid JSON, missing or
  * unknown schema) so the caller can skip the remaining checks.
  */
-export async function checkFileIntegrity({
-  sourceFile,
-  data,
-  ajv,
-  ctx,
-  report,
-  writeJSON,
-}: {
-  sourceFile: string;
-  data: FileCheckInput['data'];
-  ajv: Ajv;
-  ctx: FileCheckInput['ctx'];
-  report: FileCheckInput['report'];
-  writeJSON: FileCheckInput['writeJSON'];
-}) {
+export async function checkFileIntegrity(
+  sourceFile: string,
+  data: DataWithSchema,
+): Promise<{ schemaPath: string; isValid: boolean | Promise<unknown> } | null> {
   if (!data.$schema) {
     report.fail(`$schema not defined in ${sourceFile}`);
     return null;

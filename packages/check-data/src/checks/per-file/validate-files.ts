@@ -1,13 +1,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import type { SchemaFormatter } from '@cocktails/jsonschema-formatter';
-import type Ajv from 'ajv/dist/2020.js';
 import { logger } from '../../cli-util.ts';
-import type { DataContext } from '../../context/data-context.ts';
 import { PACKAGE_ROOT } from '../../infra/paths.ts';
-import type { Report } from '../../infra/report.ts';
+import { report } from '../../infra/report.ts';
 import type { DataWithSchema, Ingredient } from '../../infra/types.ts';
-import type { WriteJSON } from '../../infra/write-json.ts';
 import { checkAttributions } from './attributions.ts';
 import { checkAuthorSources } from './author-sources.ts';
 import { canonicalizeFile } from './canonicalization.ts';
@@ -22,21 +18,7 @@ import { checkRefs } from './refs.ts';
  * sources and attributions checks, the canonicalization and metadata-creation
  * autofixes, and the silent key-ordering rewrite.
  */
-export async function validateFiles({
-  ajv,
-  formatter,
-  ctx,
-  report,
-  writeJSON,
-}: {
-  ajv: Ajv;
-  formatter: SchemaFormatter;
-  ctx: DataContext;
-  report: Report;
-  writeJSON: WriteJSON;
-}): Promise<void> {
-  const fail = report.fail;
-
+export async function validateFiles(): Promise<void> {
   logger.header('🔍 Validating data files...');
   const dataGlob = path.join(PACKAGE_ROOT, 'data/**/*.json');
   for await (const sourceFile of fs.glob(dataGlob)) {
@@ -44,29 +26,14 @@ export async function validateFiles({
     try {
       data = JSON.parse(await fs.readFile(sourceFile, 'utf-8'));
     } catch (error) {
-      fail(`Invalid JSON in ${sourceFile} ${(error as Error).message}`);
+      report.fail(`Invalid JSON in ${sourceFile} ${(error as Error).message}`);
       continue;
     }
 
-    const integrity = await checkFileIntegrity({
-      sourceFile,
-      data,
-      ajv,
-      ctx,
-      report,
-      writeJSON,
-    });
+    const integrity = await checkFileIntegrity(sourceFile, data);
     if (!integrity) continue;
-    const { schemaPath, isValid } = integrity;
-    const fileInput = {
-      data,
-      file: sourceFile,
-      schemaPath,
-      isValid,
-      ctx,
-      report,
-      writeJSON,
-    };
+
+    const fileInput = { data, file: sourceFile, ...integrity };
 
     checkRefs(fileInput);
     checkAuthorSources(fileInput);
@@ -74,13 +41,10 @@ export async function validateFiles({
 
     const preCanonicalizationIngredients: Ingredient[] = data.ingredients ?? [];
     await canonicalizeFile(fileInput);
-    await createMissingMetadata({
-      ...fileInput,
-      preCanonicalizationIngredients,
-    });
+    await createMissingMetadata({ ...fileInput, preCanonicalizationIngredients });
 
     // Apply key ordering to all data files (silently)
-    await applyKeyOrdering({ data, file: sourceFile, formatter, writeJSON });
+    await applyKeyOrdering(data, sourceFile);
   }
   logger.footer('Done!');
 }

@@ -1,21 +1,15 @@
-import type { SchemaFormatter } from '@cocktails/jsonschema-formatter';
-import type { WriteJSON } from '../../infra/write-json.ts';
+import { formatter } from '../../infra/schemas.ts';
+import type { DataWithSchema } from '../../infra/types.ts';
+import { writeJSON } from '../../infra/write-json.ts';
 
 /**
  * Applies schema key ordering to a data file, silently rewriting it when the
  * current key order drifts from the schema-defined order.
  */
-export async function applyKeyOrdering({
-  data,
-  file,
-  formatter,
-  writeJSON,
-}: {
-  data: object;
-  file: string;
-  formatter: SchemaFormatter;
-  writeJSON: WriteJSON;
-}): Promise<void> {
+export async function applyKeyOrdering(
+  data: DataWithSchema,
+  file: string,
+): Promise<void> {
   const originalJson = JSON.stringify(data, null, 2);
   const sortedData = formatter.format(data);
   const sortedJson = JSON.stringify(sortedData, null, 2);

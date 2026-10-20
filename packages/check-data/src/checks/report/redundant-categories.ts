@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { logger } from '../../cli-util.ts';
-import type { DataContext } from '../../context/data-context.ts';
+import { ctx } from '../../context/data-context.ts';
 import { REPO_ROOT } from '../../infra/paths.ts';
 import { findRedundantCategoryPairs } from './category-similarity.ts';
 
@@ -8,7 +8,7 @@ import { findRedundantCategoryPairs } from './category-similarity.ts';
  * Reports category names that look like the same product registered under
  * two names — both same-type, one name close to the other.
  */
-export function reportRedundantCategories(ctx: DataContext): void {
+export function reportRedundantCategories(): void {
   logger.header('🏷️ Checking for redundant category names...');
 
   for (const { a, b } of findRedundantCategoryPairs(ctx.allCategories)) {

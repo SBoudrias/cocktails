@@ -25,3 +25,6 @@ export class Report {
     return this.#failed ? 1 : 0;
   }
 }
+
+/** The single report for the run; every check imports this instance. */
+export const report = new Report();

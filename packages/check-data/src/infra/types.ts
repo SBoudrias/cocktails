@@ -1,7 +1,4 @@
 import type { SortableIngredient } from '@cocktails/ingredient-sorting';
-import type { DataContext } from '../context/data-context.ts';
-import type { Report } from './report.ts';
-import type { WriteJSON } from './write-json.ts';
 
 export interface Ingredient extends SortableIngredient {
   type: string;
@@ -34,7 +31,7 @@ export interface DataWithSchema {
   }>;
 }
 
-/** The parsed file plus everything the per-file checks need. */
+/** The per-file data bundle every per-file check receives. */
 export interface FileCheckInput {
   data: DataWithSchema;
   /** The file's original glob path, even if a rename autofix moved it. */
@@ -43,7 +40,4 @@ export interface FileCheckInput {
   schemaPath: string;
   /** Whether the ajv validation passed; some checks only run on valid files. */
   isValid: boolean | Promise<unknown>;
-  ctx: DataContext;
-  report: Report;
-  writeJSON: WriteJSON;
 }

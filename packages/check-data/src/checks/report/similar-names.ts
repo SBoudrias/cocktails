@@ -1,8 +1,8 @@
 import path from 'node:path';
 import { logger } from '../../cli-util.ts';
-import type { DataContext } from '../../context/data-context.ts';
+import { ctx } from '../../context/data-context.ts';
 import { APPROVED_OVERLAPS_PATH, REPO_ROOT } from '../../infra/paths.ts';
-import type { Report } from '../../infra/report.ts';
+import { report } from '../../infra/report.ts';
 import {
   isApprovedOverlap,
   normalizeName,
@@ -17,13 +17,7 @@ import { areSimilarNames } from './name-similarity.ts';
  * fatal), and validation of the approved overlaps registry against the names
  * actually in use.
  */
-export function reportSimilarNames({
-  ctx,
-  report,
-}: {
-  ctx: DataContext;
-  report: Report;
-}): void {
+export function reportSimilarNames(): void {
   const { approvedOverlaps, authorNameUsages, barNameCasings } = ctx;
 
   // Validate the approved overlaps registry against the names actually in use.

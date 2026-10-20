@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { type SchemaFormatter } from '@cocktails/jsonschema-formatter';
 import { format as formatWithOxfmt, type FormatConfig } from 'oxfmt';
-import type { Report } from './report.ts';
+import { report } from './report.ts';
+import { formatter } from './schemas.ts';
 
 // The `oxfmt` API does not discover `.oxfmtrc.json` like the CLI does, so the
 // repo config is loaded and passed explicitly. Without it, files written by
@@ -18,27 +18,21 @@ const oxfmtConfig: FormatConfig = JSON.parse(
   }),
 );
 
-/** The canonical JSON writer, as created by {@link createWriteJSON}. */
-export type WriteJSON = (filepath: string, data: object) => Promise<void>;
-
 /**
- * Creates the canonical JSON writer: sorts keys through the schema formatter,
- * formats through the repo oxfmt config, and creates parent folders as
- * needed. On oxfmt failure the raw JSON is written and the run is failed.
+ * The canonical JSON writer, shared by every autofix and stub creation:
+ * sorts keys through the schema formatter, formats through the repo oxfmt
+ * config, creates parent folders as needed, and fails the run through the
+ * shared report when oxfmt cannot format.
  */
-export function createWriteJSON(input: { formatter: SchemaFormatter; report: Report }) {
-  return async function writeJSON(filepath: string, data: object): Promise<void> {
-    await fs.mkdir(path.dirname(filepath), { recursive: true });
-    const sortedData = input.formatter.format(data);
-    const jsonContent = JSON.stringify(sortedData, null, 2) + '\n';
-    const formattedJson = await formatWithOxfmt(filepath, jsonContent, oxfmtConfig);
-    if (formattedJson.errors.length > 0) {
-      input.report.fail(
-        `Could not format ${filepath}: ${formattedJson.errors[0]?.message}`,
-      );
-      await fs.writeFile(filepath, jsonContent);
-      return;
-    }
-    await fs.writeFile(filepath, formattedJson.code);
-  };
+export async function writeJSON(filepath: string, data: object): Promise<void> {
+  await fs.mkdir(path.dirname(filepath), { recursive: true });
+  const sortedData = formatter.format(data);
+  const jsonContent = JSON.stringify(sortedData, null, 2) + '\n';
+  const formattedJson = await formatWithOxfmt(filepath, jsonContent, oxfmtConfig);
+  if (formattedJson.errors.length > 0) {
+    report.fail(`Could not format ${filepath}: ${formattedJson.errors[0]?.message}`);
+    await fs.writeFile(filepath, jsonContent);
+    return;
+  }
+  await fs.writeFile(filepath, formattedJson.code);
 }
