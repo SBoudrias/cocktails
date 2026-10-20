@@ -15,7 +15,14 @@ import type { FileCheckInput } from '../../infra/types.ts';
  * Returns false when the file is unprocessable (invalid JSON, missing or
  * unknown schema) so the caller can skip the remaining checks.
  */
-export async function checkFileIntegrity(input: {
+export async function checkFileIntegrity({
+  sourceFile,
+  data,
+  ajv,
+  ctx,
+  report,
+  writeJSON,
+}: {
   sourceFile: string;
   data: FileCheckInput['data'];
   ajv: Ajv;
@@ -23,8 +30,6 @@ export async function checkFileIntegrity(input: {
   report: FileCheckInput['report'];
   writeJSON: FileCheckInput['writeJSON'];
 }) {
-  const { sourceFile, data, ajv, ctx, report, writeJSON } = input;
-
   if (!data.$schema) {
     report.fail(`$schema not defined in ${sourceFile}`);
     return null;

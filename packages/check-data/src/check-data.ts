@@ -10,13 +10,13 @@ import { reportSimilarNames } from './checks/report/similar-names.ts';
 import { reportUntrackedChannels } from './checks/report/untracked-channels.ts';
 import { logger } from './cli-util.ts';
 import { loadDataContext } from './context/data-context.ts';
-import { createReport } from './infra/report.ts';
+import { Report } from './infra/report.ts';
 import { loadSchemas } from './infra/schemas.ts';
 import { createWriteJSON } from './infra/write-json.ts';
 
 const startTime = performance.now();
 
-const { report, getExitCode } = createReport();
+const report = new Report();
 
 const { ajv, formatter } = await loadSchemas();
 const writeJSON = createWriteJSON({ formatter, report });
@@ -37,7 +37,7 @@ for (const ingredient of findFloatingIngredients(
 }
 logger.footer('Done!');
 
-reportUntrackedChannels({ ctx, report });
+reportUntrackedChannels({ ctx });
 reportBarCasing({ ctx, report });
 reportBarLocations({ ctx, report });
 reportSimilarNames({ ctx, report });
@@ -45,7 +45,7 @@ reportRedundantCategories(ctx);
 await reportBookChapters(report);
 
 const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
-const exitCode = getExitCode();
+const exitCode = report.getExitCode();
 if (exitCode > 0) {
   logger.failure(`❌ Validation failed! ⏱️ ${elapsed}s`);
 } else {

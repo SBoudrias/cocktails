@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import type { DataContext } from '../../context/data-context.ts';
+import { Report } from '../../infra/report.ts';
 import { checkRefs } from './refs.ts';
 
 vi.mock('../../cli-util.ts', () => ({
@@ -57,7 +58,7 @@ describe('checkRefs', () => {
       schemaPath: 'schemas/recipe.schema.json',
       isValid: true,
       ctx,
-      report: { fail: vi.fn(), warn: vi.fn(), change: vi.fn() },
+      report: new Report(),
       writeJSON: vi.fn(async () => {}),
     });
     expect(ctx.untrackedRefChannels.get('totally-untracked')).toBe(2);
@@ -75,7 +76,7 @@ describe('checkRefs', () => {
       schemaPath: 'schemas/recipe.schema.json',
       isValid: true,
       ctx,
-      report: { fail: vi.fn(), warn: vi.fn(), change: vi.fn() },
+      report: new Report(),
       writeJSON: vi.fn(async () => {}),
     });
     expect(ctx.untrackedRefChannels.size).toBe(0);
@@ -93,7 +94,7 @@ describe('checkRefs', () => {
       schemaPath: 'schemas/author.schema.json',
       isValid: true,
       ctx,
-      report: { fail: vi.fn(), warn: vi.fn(), change: vi.fn() },
+      report: new Report(),
       writeJSON: vi.fn(async () => {}),
     });
     expect(ctx.untrackedRefChannels.size).toBe(0);

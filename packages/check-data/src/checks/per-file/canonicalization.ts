@@ -42,9 +42,13 @@ function sortRecipeIngredients(
  * ingredients to the app display order. Writes the file back when anything
  * changed.
  */
-export async function canonicalizeFile(input: FileCheckInput): Promise<void> {
-  const { data, file, schemaPath, ctx, writeJSON } = input;
-
+export async function canonicalizeFile({
+  data,
+  file,
+  schemaPath,
+  ctx,
+  writeJSON,
+}: FileCheckInput): Promise<void> {
   if (
     schemaPath === 'schemas/recipe.schema.json' ||
     schemaPath === 'schemas/ingredient.schema.json'

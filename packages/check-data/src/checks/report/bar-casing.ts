@@ -7,9 +7,13 @@ import type { Report } from '../../infra/report.ts';
  * casing across recipe files — one lowercase name keyed to several exact
  * spellings.
  */
-export function reportBarCasing(input: { ctx: DataContext; report: Report }): void {
-  const { ctx, report } = input;
-
+export function reportBarCasing({
+  ctx,
+  report,
+}: {
+  ctx: DataContext;
+  report: Report;
+}): void {
   logger.header('🍸 Checking bar name consistency...');
   for (const [, casings] of ctx.barNameCasings) {
     if (casings.size > 1) {

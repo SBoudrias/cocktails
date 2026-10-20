@@ -12,9 +12,7 @@ import { findInconsistentBarLocations, findSimilarBarNames } from './bar-locatio
  * overlaps registry hides names reviewed as genuinely multi-venue bars or
  * distinct venues.
  */
-export function reportBarLocations(input: { ctx: DataContext; report: Report }): void {
-  const { ctx } = input;
-
+export function reportBarLocations({ ctx }: { ctx: DataContext; report: Report }): void {
   // Check for bars credited under the same name with inconsistent locations —
   // two different locations, or the same name with and without one. Usually a
   // drifted "City, ST" on one attribution; the approved overlaps registry hides

@@ -17,8 +17,13 @@ import { areSimilarNames } from './name-similarity.ts';
  * fatal), and validation of the approved overlaps registry against the names
  * actually in use.
  */
-export function reportSimilarNames(input: { ctx: DataContext; report: Report }): void {
-  const { ctx, report } = input;
+export function reportSimilarNames({
+  ctx,
+  report,
+}: {
+  ctx: DataContext;
+  report: Report;
+}): void {
   const { approvedOverlaps, authorNameUsages, barNameCasings } = ctx;
 
   // Validate the approved overlaps registry against the names actually in use.

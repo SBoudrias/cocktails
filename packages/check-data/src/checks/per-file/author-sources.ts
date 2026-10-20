@@ -6,9 +6,13 @@ import type { FileCheckInput } from '../../infra/types.ts';
  * alongside books/channels/podcasts they are behind. Every ref must resolve
  * to an entity file or a source folder.
  */
-export function checkAuthorSources(input: FileCheckInput): void {
-  const { data, file, schemaPath, ctx, report } = input;
-
+export function checkAuthorSources({
+  data,
+  file,
+  schemaPath,
+  ctx,
+  report,
+}: FileCheckInput): void {
   if (schemaPath !== 'schemas/author.schema.json') return;
 
   for (const source of data.sources ?? []) {

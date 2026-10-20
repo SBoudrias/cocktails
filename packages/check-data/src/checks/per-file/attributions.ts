@@ -11,9 +11,14 @@ import {
  * author attributions for the cross-file checks — bar name casings and
  * locations, author name usages — and fails on combined author names.
  */
-export function checkAttributions(input: FileCheckInput): void {
-  const { data, file, schemaPath, isValid, ctx, report } = input;
-
+export function checkAttributions({
+  data,
+  file,
+  schemaPath,
+  isValid,
+  ctx,
+  report,
+}: FileCheckInput): void {
   if (schemaPath !== 'schemas/recipe.schema.json') return;
 
   if (isValid) {

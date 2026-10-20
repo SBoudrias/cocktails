@@ -93,12 +93,13 @@ export interface DataContext {
  * author/bar entities (creating name-only files for uncredited ones),
  * categories (with sentence-casing autofix), and ingredients.
  */
-export async function loadDataContext(input: {
+export async function loadDataContext({
+  writeJSON,
+  report,
+}: {
   writeJSON: WriteJSON;
   report: Report;
 }): Promise<DataContext> {
-  const { writeJSON, report } = input;
-
   const categorySlugs = new Set<string>();
   const canonicalNames = new Map<string, string>();
   const categoryTypes = new Map<string, string>();

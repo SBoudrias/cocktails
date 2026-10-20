@@ -13,18 +13,22 @@ import type { FileCheckInput, Ingredient } from '../../infra/types.ts';
  * original monolith pass: the sort step replaces `data.ingredients`, and the
  * creation messages keep their pre-sort order.
  */
-export async function createMissingMetadata(
-  input: FileCheckInput & {
-    preCanonicalizationIngredients: Ingredient[];
-  },
-): Promise<void> {
-  const { data, file, schemaPath, ctx, report, writeJSON } = input;
-
+export async function createMissingMetadata({
+  data,
+  file,
+  schemaPath,
+  ctx,
+  report,
+  writeJSON,
+  preCanonicalizationIngredients,
+}: FileCheckInput & {
+  preCanonicalizationIngredients: Ingredient[];
+}): Promise<void> {
   if (
     schemaPath === 'schemas/recipe.schema.json' ||
     schemaPath === 'schemas/ingredient.schema.json'
   ) {
-    const ingredients = input.preCanonicalizationIngredients;
+    const ingredients = preCanonicalizationIngredients;
     const { categories = [] } = data;
 
     // Make sure all ingredients listed somewhere have a metadata file

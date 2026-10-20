@@ -22,14 +22,19 @@ import { checkRefs } from './refs.ts';
  * sources and attributions checks, the canonicalization and metadata-creation
  * autofixes, and the silent key-ordering rewrite.
  */
-export async function validateFiles(input: {
+export async function validateFiles({
+  ajv,
+  formatter,
+  ctx,
+  report,
+  writeJSON,
+}: {
   ajv: Ajv;
   formatter: SchemaFormatter;
   ctx: DataContext;
   report: Report;
   writeJSON: WriteJSON;
 }): Promise<void> {
-  const { ajv, formatter, ctx, report, writeJSON } = input;
   const fail = report.fail;
 
   logger.header('🔍 Validating data files...');
