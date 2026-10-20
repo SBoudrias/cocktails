@@ -18,6 +18,9 @@ const oxfmtConfig: FormatConfig = JSON.parse(
   }),
 );
 
+/** The canonical JSON writer, as created by {@link createWriteJSON}. */
+export type WriteJSON = (filepath: string, data: object) => Promise<void>;
+
 /**
  * Creates the canonical JSON writer: sorts keys through the schema formatter,
  * formats through the repo oxfmt config, and creates parent folders as

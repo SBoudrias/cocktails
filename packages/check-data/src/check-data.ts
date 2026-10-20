@@ -11,16 +11,11 @@ import {
   isApprovedOverlap,
   normalizeName,
   validateApprovedOverlaps,
-  type ApprovedOverlaps,
 } from './approved-overlaps.ts';
-import {
-  findInconsistentBarLocations,
-  findSimilarBarNames,
-  type BarLocationUsage,
-} from './bar-locations.ts';
-import { normalizeCategoryCasing } from './category-casing.ts';
+import { findInconsistentBarLocations, findSimilarBarNames } from './bar-locations.ts';
 import { findRedundantCategoryPairs } from './category-similarity.ts';
 import { logger } from './cli-util.ts';
+import { loadDataContext } from './data-context.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
 import { findSimilarIngredientPairs } from './ingredient-similarity.ts';
 import {
@@ -105,210 +100,27 @@ const fail: Report['fail'] = report.fail;
 const { ajv, formatter } = await loadSchemas();
 const writeJSON = createWriteJSON({ formatter, report });
 
-// Collect all category slugs and canonical names for duplicate detection and name matching
-logger.header('📦 Collecting category and ingredient data');
-const categorySlugs = new Set<string>();
-const canonicalNames = new Map<string, string>(); // slug -> canonical name
-const categoryTypes = new Map<string, string>(); // slug -> categoryType
-
-// Slugs of tracked youtube channels, used to validate ref channel fields
-const youtubeChannelSlugs = new Set<string>();
-const youtubeChannelRoot = path.join(PACKAGE_ROOT, 'data/recipes/youtube-channel');
-for (const entry of await fs.readdir(youtubeChannelRoot)) {
-  const entryStat = await fs.stat(path.join(youtubeChannelRoot, entry));
-  if (entryStat.isDirectory()) youtubeChannelSlugs.add(entry);
-}
-logger.item(`Found ${youtubeChannelSlugs.size} youtube channels`);
-
-// Source slugs per type, used to validate the sources refs on author
-// entities (channel host, book author...).
-const sourceSlugsByType = new Map<string, Set<string>>([
-  ['youtube-channel', new Set(youtubeChannelSlugs)],
-]);
-for (const sourceType of ['book', 'podcast']) {
-  const slugs = new Set<string>();
-  const sourceRoot = path.join(PACKAGE_ROOT, `data/recipes/${sourceType}`);
-  for (const entry of await fs.readdir(sourceRoot)) {
-    if ((await fs.stat(path.join(sourceRoot, entry))).isDirectory()) slugs.add(entry);
-  }
-  sourceSlugsByType.set(sourceType, slugs);
-}
-
-// Entity files backing the author/bar list pages. Every attribution source
-// must resolve to one — entities are credited in recipes before anything is
-// known about them, so missing files are created name-only (links and
-// descriptions are added only once verified, never generated here).
-logger.header('👥 Collecting author and bar entities');
-const authorEntitySlugs = new Set<string>();
-const barEntitySlugs = new Set<string>();
-
-for (const [entityDir, entitySlugs] of [
-  ['authors', authorEntitySlugs],
-  ['bars', barEntitySlugs],
-] as const) {
-  for await (const entityFile of fs.glob(
-    path.join(PACKAGE_ROOT, `data/${entityDir}/*.json`),
-  )) {
-    entitySlugs.add(path.basename(entityFile, '.json'));
-  }
-}
-
-// Bar locations, from the entity files here and the recipe attributions in
-// the validation pass below, feed the inconsistent-location check (same bar
-// name credited with different or missing locations).
-const barLocationUsages: BarLocationUsage[] = [];
-for await (const barFile of fs.glob(path.join(PACKAGE_ROOT, 'data/bars/*.json'))) {
-  const bar = JSON.parse(await fs.readFile(barFile, 'utf-8'));
-  barLocationUsages.push({ name: bar.name, location: bar.location, filepath: barFile });
-}
-
-const createdEntities: string[] = [];
-for await (const recipeFile of fs.glob(
-  path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'),
-)) {
-  const recipe = JSON.parse(await fs.readFile(recipeFile, 'utf-8'));
-
-  for (const attribution of recipe.attributions ?? []) {
-    const isAuthor =
-      attribution.relation === 'recipe author' || attribution.relation === 'adapted by';
-
-    if (!isAuthor && attribution.relation !== 'bar') continue;
-
-    const slug = isAuthor
-      ? slugify(attribution.source)
-      : slugify(`${attribution.source} ${attribution.location ?? ''}`);
-    const entitySlugs = isAuthor ? authorEntitySlugs : barEntitySlugs;
-
-    if (entitySlugs.has(slug)) continue;
-    entitySlugs.add(slug);
-
-    const entityDir = isAuthor ? 'authors' : 'bars';
-    const entityPath = path.join(PACKAGE_ROOT, `data/${entityDir}`, `${slug}.json`);
-    await writeJSON(entityPath, {
-      $schema: path.relative(
-        path.dirname(entityPath),
-        path.resolve(PACKAGE_ROOT, `schemas/${isAuthor ? 'author' : 'bar'}.schema.json`),
-      ),
-      name: attribution.source,
-      ...(attribution.relation === 'bar' && attribution.location
-        ? { location: attribution.location }
-        : {}),
-    });
-    createdEntities.push(path.relative(REPO_ROOT, entityPath));
-  }
-}
-logger.item(`Found ${authorEntitySlugs.size} authors, ${barEntitySlugs.size} bars`);
-for (const entityPath of createdEntities) {
-  logger.change(`Created ${entityPath}`);
-}
-logger.footer('Done!');
-
-const categoriesGlob = path.join(PACKAGE_ROOT, 'data/categories/*.json');
-const categoryCanonicalNames = new Map<string, string>(); // slug -> canonical name
-const allCategories: Array<{
-  name: string;
-  categoryType: string;
-  parents?: string[];
-  filepath: string;
-}> = [];
-for await (const categoryFile of fs.glob(categoriesGlob)) {
-  const slug = path.basename(categoryFile, '.json');
-  categorySlugs.add(slug);
-  const data = JSON.parse(await fs.readFile(categoryFile, 'utf-8'));
-
-  // Auto-fix category names to the sentence-case convention. Casing changes
-  // don't affect the slug, so references resolve and get canonicalized by
-  // the per-file pass below.
-  const normalizedCasing = normalizeCategoryCasing(data.name);
-  if (normalizedCasing !== data.name) {
-    logger.change(
-      `Fixing category name casing "${data.name}" → "${normalizedCasing}" in ${path.basename(categoryFile)}`,
-    );
-    data.name = normalizedCasing;
-    await writeJSON(categoryFile, data);
-  }
-
-  canonicalNames.set(slugify(data.name), data.name);
-  categoryCanonicalNames.set(slugify(data.name), data.name);
-  if (data.categoryType) {
-    categoryTypes.set(slugify(data.name), data.categoryType);
-    allCategories.push({
-      name: data.name,
-      categoryType: data.categoryType,
-      parents: data.parents,
-      filepath: categoryFile,
-    });
-  }
-}
-logger.item(`Found ${categorySlugs.size} categories`);
-
-const ingredientFolders = new Map<string, string>(); // slug -> folder type
-const ingredientFiles = new Map<string, string>(); // slug -> filepath
-const ingredients: Array<{
-  name: string;
-  type: string;
-  slug: string;
-  filepath: string;
-}> = [];
-const ingredientsGlob = path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json');
-for await (const ingredientFile of fs.glob(ingredientsGlob)) {
-  const data = JSON.parse(await fs.readFile(ingredientFile, 'utf-8'));
-  const folderType = path.basename(path.dirname(ingredientFile));
-  const ingredientSlug = slugify(data.name);
-
-  const existingIngredientFile = ingredientFiles.get(ingredientSlug);
-  if (existingIngredientFile) {
-    fail(
-      `Duplicate ingredient slug "${ingredientSlug}" in ${ingredientFile} and ${existingIngredientFile}`,
-    );
-    continue;
-  }
-
-  canonicalNames.set(ingredientSlug, data.name);
-  ingredientFolders.set(ingredientSlug, folderType);
-  ingredientFiles.set(ingredientSlug, ingredientFile);
-  ingredients.push({
-    name: data.name,
-    type: data.type,
-    slug: ingredientSlug,
-    filepath: ingredientFile,
-  });
-}
-logger.item(`Collected ${canonicalNames.size} canonical names`);
-logger.footer('Done!');
-
-// Ingredient names for similar-name detection (possible misspellings).
-const ingredientNames = ingredients.map((ingredient) => ingredient.name);
-const ingredientFilesByName = new Map(
-  ingredients.map((ingredient) => [ingredient.name, ingredient.filepath] as const),
-);
-
-// Track bar names for case-insensitive duplicate detection
-// Maps lowercase name -> Map of exact casing -> list of files using that casing
-const barNameCasings = new Map<string, Map<string, string[]>>();
-
-// Names of authors and bars known to be valid, so their similar-name overlaps
-// are suppressed. Loaded from packages/data/approved-overlaps.json.
-let approvedOverlaps: ApprovedOverlaps = {
-  author: [],
-  bar: [],
-  ingredient: [],
-};
-
-try {
-  approvedOverlaps = JSON.parse(await fs.readFile(APPROVED_OVERLAPS_PATH, 'utf-8'));
-} catch (error) {
-  fail(`Could not read approved overlaps registry: ${(error as Error).message}`);
-}
-
-// Track author/adapted-by names for similarity detection
-// Maps name -> list of recipe files using that name
-const authorNameUsages = new Map<string, string[]>();
-
-// Youtube ref channels that are not tracked sources. Their slugs are kept in
-// the data (the video stays linked) but they get no channel page or listing.
-const untrackedRefChannels = new Map<string, number>();
-const referencedIngredientSlugs = new Set<string>();
+const {
+  categorySlugs,
+  canonicalNames,
+  categoryTypes,
+  youtubeChannelSlugs,
+  sourceSlugsByType,
+  barEntitySlugs,
+  barLocationUsages,
+  categoryCanonicalNames,
+  allCategories,
+  ingredientFolders,
+  ingredientFiles,
+  ingredients,
+  ingredientNames,
+  ingredientFilesByName,
+  barNameCasings,
+  approvedOverlaps,
+  authorNameUsages,
+  untrackedRefChannels,
+  referencedIngredientSlugs,
+} = await loadDataContext({ writeJSON, report });
 
 logger.header('🔍 Validating data files...');
 const dataGlob = path.join(PACKAGE_ROOT, 'data/**/*.json');
