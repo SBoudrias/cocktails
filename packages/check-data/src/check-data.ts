@@ -3,11 +3,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
-  compareIngredients,
-  type SortableIngredient,
-} from '@cocktails/ingredient-sorting';
-import slugify from '@sindresorhus/slugify';
-import {
   isApprovedOverlap,
   normalizeName,
   validateApprovedOverlaps,
@@ -20,7 +15,10 @@ import { logger } from './cli-util.ts';
 import { loadDataContext } from './data-context.ts';
 import { checkFileIntegrity } from './file-integrity.ts';
 import { findFloatingIngredients } from './floating-ingredients.ts';
+import { canonicalizeFile } from './ingredient-canonicalization.ts';
 import { findSimilarIngredientPairs } from './ingredient-similarity.ts';
+import { applyKeyOrdering } from './key-order.ts';
+import { createMissingMetadata } from './metadata-creation.ts';
 import { areSimilarNames } from './name-similarity.ts';
 import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT, REPO_ROOT } from './paths.ts';
 import { checkRefs } from './refs.ts';
@@ -35,34 +33,6 @@ function isChapterFolder(folder: string): boolean {
   return /^\d+_.+$/.test(folder);
 }
 
-function addCategoryType(
-  ingredient: Ingredient,
-  categoryTypes: Map<string, string>,
-): SortableIngredient {
-  return {
-    type: ingredient.type,
-    categoryType:
-      ingredient.type === 'category'
-        ? categoryTypes.get(slugify(ingredient.name))
-        : undefined,
-    quantity: ingredient.quantity!,
-    technique: ingredient.technique,
-  };
-}
-
-function sortRecipeIngredients(
-  ingredients: Ingredient[],
-  categoryTypes: Map<string, string>,
-): Ingredient[] {
-  return ingredients.toSorted((a, b) => {
-    if (!a.quantity || !b.quantity) return 0;
-    return compareIngredients(
-      addCategoryType(a, categoryTypes),
-      addCategoryType(b, categoryTypes),
-    );
-  });
-}
-
 // Schema formatter - auto-infers key ordering from registered schemas
 const { report, getExitCode } = createReport();
 const fail: Report['fail'] = report.fail;
@@ -72,14 +42,8 @@ const writeJSON = createWriteJSON({ formatter, report });
 
 const ctx = await loadDataContext({ writeJSON, report });
 const {
-  categorySlugs,
-  canonicalNames,
-  categoryTypes,
   barLocationUsages,
-  categoryCanonicalNames,
   allCategories,
-  ingredientFolders,
-  ingredientFiles,
   ingredients,
   ingredientNames,
   ingredientFilesByName,
@@ -125,206 +89,15 @@ for await (const sourceFile of fs.glob(dataGlob)) {
   checkAuthorSources(fileInput);
   checkAttributions(fileInput);
 
-  if (
-    schemaPath === 'schemas/recipe.schema.json' ||
-    schemaPath === 'schemas/ingredient.schema.json'
-  ) {
-    const { ingredients = [], categories = [] } = data;
-    let fileModified = false;
-
-    // Auto-fix ingredients that should be categories
-    for (const ingredient of ingredients) {
-      const ingredientSlug = slugify(ingredient.name);
-      if (ingredient.type !== 'category' && categorySlugs.has(ingredientSlug)) {
-        logger.change(
-          `Fixing "${ingredient.name}" in ${path.basename(sourceFile)}: ` +
-            `type "${ingredient.type}" → "category"`,
-        );
-        ingredient.type = 'category';
-        fileModified = true;
-      }
-    }
-
-    // Auto-fix ingredient name capitalization to match canonical names
-    for (const ingredient of ingredients) {
-      const ingredientSlug = slugify(ingredient.name);
-      const canonical = canonicalNames.get(ingredientSlug);
-      if (canonical && canonical !== ingredient.name) {
-        logger.change(
-          `Fixing "${ingredient.name}" → "${canonical}" in ${path.basename(sourceFile)}`,
-        );
-        ingredient.name = canonical;
-        fileModified = true;
-      }
-    }
-
-    // Auto-fix category names on ingredient files to match the canonical
-    // category names, so variants like "Tequila Blanco" vs "Tequila (Blanco)"
-    // or "Orange liqueur" vs "Orange Liqueur" don't accumulate.
-    if (schemaPath === 'schemas/ingredient.schema.json') {
-      for (const [i, category] of categories.entries()) {
-        const canonical = categoryCanonicalNames.get(slugify(category));
-        if (canonical && canonical !== category) {
-          logger.change(
-            `Fixing category "${category}" → "${canonical}" in ${path.basename(sourceFile)}`,
-          );
-          categories[i] = canonical;
-          fileModified = true;
-        }
-      }
-    }
-
-    // Sort recipe ingredients to match app display order
-    if (schemaPath === 'schemas/recipe.schema.json' && ingredients.length > 1) {
-      const sortedIngredients = sortRecipeIngredients(ingredients, categoryTypes);
-      const ingredientsChanged = ingredients.some(
-        (ing, i) => ing.name !== sortedIngredients[i]?.name,
-      );
-      if (ingredientsChanged) {
-        data.ingredients = sortedIngredients;
-        fileModified = true;
-      }
-    }
-
-    if (fileModified) {
-      await writeJSON(sourceFile, data);
-    }
-
-    // Make sure all ingredients listed somewhere have a metadata file
-    for (const ingredient of ingredients) {
-      const ingredientSlug = slugify(ingredient.name);
-
-      if (ingredient.type === 'category') {
-        if (categorySlugs.has(ingredientSlug)) continue;
-
-        const categoryPath = path.join(
-          PACKAGE_ROOT,
-          'data/categories',
-          `${ingredientSlug}.json`,
-        );
-
-        await writeJSON(categoryPath, {
-          $schema: path.relative(
-            path.dirname(categoryPath),
-            path.resolve(PACKAGE_ROOT, 'schemas/category.schema.json'),
-          ),
-          name: ingredient.name,
-          categoryType: 'FIXME',
-        });
-        categorySlugs.add(ingredientSlug);
-        fail(`Created ${categoryPath} - review and set categoryType`);
-      } else {
-        referencedIngredientSlugs.add(ingredientSlug);
-
-        // Check if the ingredient exists in a different type folder
-        const existingFolderType = ingredientFolders.get(ingredientSlug);
-        if (existingFolderType === ingredient.type) continue;
-
-        if (existingFolderType) {
-          fail(
-            `Ingredient "${ingredient.name}" in ${path.basename(sourceFile)} ` +
-              `has type "${ingredient.type}" but the ingredient file is in folder "${existingFolderType}". ` +
-              `Use type: "${existingFolderType}" in the recipe.`,
-          );
-          continue;
-        }
-
-        const ingredientPath = path.join(
-          PACKAGE_ROOT,
-          'data/ingredients',
-          ingredient.type,
-          `${ingredientSlug}.json`,
-        );
-
-        await writeJSON(ingredientPath, {
-          $schema: path.relative(
-            path.dirname(ingredientPath),
-            path.resolve(PACKAGE_ROOT, 'schemas/ingredient.schema.json'),
-          ),
-          name: ingredient.name,
-          type: ingredient.type,
-        });
-        ingredientFolders.set(ingredientSlug, ingredient.type);
-        ingredientFiles.set(ingredientSlug, ingredientPath);
-        fail(`Created ${ingredientPath} - review and add details if needed`);
-      }
-    }
-
-    // Make sure all categories have a metadata file
-    for (const category of categories) {
-      const categorySlug = slugify(category);
-      if (categorySlugs.has(categorySlug)) continue;
-
-      const categoryPath = path.join(
-        PACKAGE_ROOT,
-        'data/categories',
-        `${categorySlug}.json`,
-      );
-
-      await writeJSON(categoryPath, {
-        $schema: path.relative(
-          path.dirname(categoryPath),
-          path.resolve(PACKAGE_ROOT, 'schemas/category.schema.json'),
-        ),
-        name: category,
-        categoryType: data.type ?? 'FIXME',
-      });
-      categorySlugs.add(categorySlug);
-      fail(`Created ${categoryPath} - review and set categoryType`);
-    }
-  }
-
-  // Make sure there's all parent categories have their metadata files
-  if (schemaPath === 'schemas/category.schema.json') {
-    let fileModified = false;
-
-    // Auto-fix parent names to match the canonical category names
-    const parents = data.parents ?? [];
-    for (const [i, parent] of parents.entries()) {
-      const canonical = categoryCanonicalNames.get(slugify(parent));
-      if (canonical && canonical !== parent) {
-        logger.change(
-          `Fixing parent "${parent}" → "${canonical}" in ${path.basename(sourceFile)}`,
-        );
-        parents[i] = canonical;
-        fileModified = true;
-      }
-    }
-
-    if (fileModified) {
-      await writeJSON(sourceFile, data);
-    }
-
-    for (const category of data.parents ?? []) {
-      const categorySlug = slugify(category);
-      if (categorySlugs.has(categorySlug)) continue;
-
-      const categoryPath = path.join(
-        PACKAGE_ROOT,
-        'data/categories',
-        `${categorySlug}.json`,
-      );
-
-      await writeJSON(categoryPath, {
-        $schema: path.relative(
-          path.dirname(categoryPath),
-          path.resolve(PACKAGE_ROOT, 'schemas/category.schema.json'),
-        ),
-        name: category,
-        categoryType: 'FIXME',
-      });
-      categorySlugs.add(categorySlug);
-      fail(`Created ${categoryPath} - review and set categoryType`);
-    }
-  }
+  const preCanonicalizationIngredients: Ingredient[] = data.ingredients ?? [];
+  await canonicalizeFile(fileInput);
+  await createMissingMetadata({
+    ...fileInput,
+    preCanonicalizationIngredients,
+  });
 
   // Apply key ordering to all data files (silently)
-  const originalJson = JSON.stringify(data, null, 2);
-  const sortedData = formatter.format(data);
-  const sortedJson = JSON.stringify(sortedData, null, 2);
-  if (originalJson !== sortedJson) {
-    await writeJSON(sourceFile, data);
-  }
+  await applyKeyOrdering({ data, file: sourceFile, formatter, writeJSON });
 }
 logger.footer('Done!');
 

@@ -1,22 +1,31 @@
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import { PACKAGE_ROOT } from './paths.ts';
-import type { FileCheckInput } from './types.ts';
+import type { FileCheckInput, Ingredient } from './types.ts';
 
 /**
  * Creates stub metadata files for anything referenced but not yet tracked:
  * ingredients and categories used in recipe/ingredient files, and parent
  * categories on category files. Stubs fail the run so they get reviewed, and
  * the shared indexes are mutated so later files treat them as existing.
+ *
+ * Iterates the ingredient list captured before canonicalization, like the
+ * original monolith pass: the sort step replaces `data.ingredients`, and the
+ * creation messages keep their pre-sort order.
  */
-export async function createMissingMetadata(input: FileCheckInput): Promise<void> {
+export async function createMissingMetadata(
+  input: FileCheckInput & {
+    preCanonicalizationIngredients: Ingredient[];
+  },
+): Promise<void> {
   const { data, file, schemaPath, ctx, report, writeJSON } = input;
 
   if (
     schemaPath === 'schemas/recipe.schema.json' ||
     schemaPath === 'schemas/ingredient.schema.json'
   ) {
-    const { ingredients = [], categories = [] } = data;
+    const ingredients = input.preCanonicalizationIngredients;
+    const { categories = [] } = data;
 
     // Make sure all ingredients listed somewhere have a metadata file
     for (const ingredient of ingredients) {

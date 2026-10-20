@@ -5,7 +5,7 @@ import {
 } from '@cocktails/ingredient-sorting';
 import slugify from '@sindresorhus/slugify';
 import { logger } from './cli-util.ts';
-import type { Ingredient } from './types.ts';
+import type { FileCheckInput, Ingredient } from './types.ts';
 
 function addCategoryType(
   ingredient: Ingredient,
@@ -36,102 +36,100 @@ function sortRecipeIngredients(
 }
 
 /**
- * Auto-fixes recipe and ingredient files: flips ingredients that name a
- * category to `type: "category"`, canonicalizes ingredient and category
- * names to their canonical spellings, and sorts recipe ingredients to the
- * app display order. Writes the file back when anything changed.
+ * Auto-fixes before metadata creation: flips recipe ingredients that name a
+ * category to `type: "category"`, canonicalizes ingredient names, category
+ * names and category parents to their canonical spellings, and sorts recipe
+ * ingredients to the app display order. Writes the file back when anything
+ * changed.
  */
-export async function canonicalizeFile(input: {
-  data: {
-    name: string;
-    type?: string;
-    ingredients?: Ingredient[];
-    categories?: string[];
-  };
-  file: string;
-  schemaPath: string;
-  categorySlugs: ReadonlySet<string>;
-  canonicalNames: ReadonlyMap<string, string>;
-  categoryCanonicalNames: ReadonlyMap<string, string>;
-  categoryTypes: ReadonlyMap<string, string>;
-  writeJSON: (filepath: string, data: object) => Promise<void>;
-}): Promise<void> {
-  const {
-    data,
-    file,
-    schemaPath,
-    categorySlugs,
-    canonicalNames,
-    categoryCanonicalNames,
-    categoryTypes,
-    writeJSON,
-  } = input;
+export async function canonicalizeFile(input: FileCheckInput): Promise<void> {
+  const { data, file, schemaPath, ctx, writeJSON } = input;
 
   if (
-    schemaPath !== 'schemas/recipe.schema.json' &&
-    schemaPath !== 'schemas/ingredient.schema.json'
+    schemaPath === 'schemas/recipe.schema.json' ||
+    schemaPath === 'schemas/ingredient.schema.json'
   ) {
-    return;
-  }
+    const { ingredients = [], categories = [] } = data;
+    let fileModified = false;
 
-  const { ingredients = [], categories = [] } = data;
-  let fileModified = false;
-
-  // Auto-fix ingredients that should be categories
-  for (const ingredient of ingredients) {
-    const ingredientSlug = slugify(ingredient.name);
-    if (ingredient.type !== 'category' && categorySlugs.has(ingredientSlug)) {
-      logger.change(
-        `Fixing "${ingredient.name}" in ${path.basename(file)}: ` +
-          `type "${ingredient.type}" → "category"`,
-      );
-      ingredient.type = 'category';
-      fileModified = true;
-    }
-  }
-
-  // Auto-fix ingredient name capitalization to match canonical names
-  for (const ingredient of ingredients) {
-    const ingredientSlug = slugify(ingredient.name);
-    const canonical = canonicalNames.get(ingredientSlug);
-    if (canonical && canonical !== ingredient.name) {
-      logger.change(
-        `Fixing "${ingredient.name}" → "${canonical}" in ${path.basename(file)}`,
-      );
-      ingredient.name = canonical;
-      fileModified = true;
-    }
-  }
-
-  // Auto-fix category names on ingredient files to match the canonical
-  // category names, so variants like "Tequila Blanco" vs "Tequila (Blanco)"
-  // or "Orange liqueur" vs "Orange Liqueur" don't accumulate.
-  if (schemaPath === 'schemas/ingredient.schema.json') {
-    for (const [i, category] of categories.entries()) {
-      const canonical = categoryCanonicalNames.get(slugify(category));
-      if (canonical && canonical !== category) {
+    // Auto-fix ingredients that should be categories
+    for (const ingredient of ingredients) {
+      const ingredientSlug = slugify(ingredient.name);
+      if (ingredient.type !== 'category' && ctx.categorySlugs.has(ingredientSlug)) {
         logger.change(
-          `Fixing category "${category}" → "${canonical}" in ${path.basename(file)}`,
+          `Fixing "${ingredient.name}" in ${path.basename(file)}: ` +
+            `type "${ingredient.type}" → "category"`,
         );
-        categories[i] = canonical;
+        ingredient.type = 'category';
         fileModified = true;
       }
     }
-  }
 
-  // Sort recipe ingredients to match app display order
-  if (schemaPath === 'schemas/recipe.schema.json' && ingredients.length > 1) {
-    const sortedIngredients = sortRecipeIngredients(ingredients, categoryTypes);
-    const ingredientsChanged = ingredients.some(
-      (ing, i) => ing.name !== sortedIngredients[i]?.name,
-    );
-    if (ingredientsChanged) {
-      data.ingredients = sortedIngredients;
-      fileModified = true;
+    // Auto-fix ingredient name capitalization to match canonical names
+    for (const ingredient of ingredients) {
+      const ingredientSlug = slugify(ingredient.name);
+      const canonical = ctx.canonicalNames.get(ingredientSlug);
+      if (canonical && canonical !== ingredient.name) {
+        logger.change(
+          `Fixing "${ingredient.name}" → "${canonical}" in ${path.basename(file)}`,
+        );
+        ingredient.name = canonical;
+        fileModified = true;
+      }
+    }
+
+    // Auto-fix category names on ingredient files to match the canonical
+    // category names, so variants like "Tequila Blanco" vs "Tequila (Blanco)"
+    // or "Orange liqueur" vs "Orange Liqueur" don't accumulate.
+    if (schemaPath === 'schemas/ingredient.schema.json') {
+      for (const [i, category] of categories.entries()) {
+        const canonical = ctx.categoryCanonicalNames.get(slugify(category));
+        if (canonical && canonical !== category) {
+          logger.change(
+            `Fixing category "${category}" → "${canonical}" in ${path.basename(file)}`,
+          );
+          categories[i] = canonical;
+          fileModified = true;
+        }
+      }
+    }
+
+    // Sort recipe ingredients to match app display order
+    if (schemaPath === 'schemas/recipe.schema.json' && ingredients.length > 1) {
+      const sortedIngredients = sortRecipeIngredients(ingredients, ctx.categoryTypes);
+      const ingredientsChanged = ingredients.some(
+        (ing, i) => ing.name !== sortedIngredients[i]?.name,
+      );
+      if (ingredientsChanged) {
+        data.ingredients = sortedIngredients;
+        fileModified = true;
+      }
+    }
+
+    if (fileModified) {
+      await writeJSON(file, data);
     }
   }
 
-  if (fileModified) {
-    await writeJSON(file, data);
+  // Auto-fix parent names on category files to match the canonical category
+  // names.
+  if (schemaPath === 'schemas/category.schema.json') {
+    let fileModified = false;
+
+    const parents = data.parents ?? [];
+    for (const [i, parent] of parents.entries()) {
+      const canonical = ctx.categoryCanonicalNames.get(slugify(parent));
+      if (canonical && canonical !== parent) {
+        logger.change(
+          `Fixing parent "${parent}" → "${canonical}" in ${path.basename(file)}`,
+        );
+        parents[i] = canonical;
+        fileModified = true;
+      }
+    }
+
+    if (fileModified) {
+      await writeJSON(file, data);
+    }
   }
 }
