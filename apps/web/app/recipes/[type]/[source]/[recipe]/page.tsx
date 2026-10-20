@@ -109,15 +109,15 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
             </Paper>
           </List>
         )}
+        {recipe.attributions.length > 0 && (
+          <RecipeAttributionList attributions={recipe.attributions} />
+        )}
         <SourceAboutCard
           source={recipe.source}
           chapterName={recipe.chapter?.name}
           refs={recipe.refs}
           sx={{ m: 1 }}
         />
-        {recipe.attributions.length > 0 && (
-          <RecipeAttributionList attributions={recipe.attributions} />
-        )}
         {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
         {websites.length > 0 && <WebsiteListCard refs={websites} sx={{ m: 1 }} />}
         <FixBugCard fixUrl={getRecipeEditUrl(recipe)} sx={{ m: 1 }} />
