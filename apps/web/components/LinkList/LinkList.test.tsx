@@ -95,6 +95,30 @@ describe('LinkList', () => {
       expect(groups[1]).toHaveTextContent('Mango');
       expect(groups[2]).toHaveTextContent('Zebra');
     });
+
+    it('labels groups whose headers contain spaces or symbols', () => {
+      const items: TestItem[] = [
+        { id: '1', name: 'Zombie', category: 'The Golden Era' },
+        { id: '2', name: '1942', category: '#' },
+      ];
+
+      render(
+        <LinkList
+          items={items}
+          config={{
+            groupBy: (item: TestItem) => item.category,
+            sortItemBy: () => 0,
+            sortHeaderBy: (a: string, b: string) => a.localeCompare(b),
+          }}
+          renderItem={renderItem}
+        />,
+      );
+
+      expect(screen.getByRole('group', { name: 'The Golden Era' })).toHaveTextContent(
+        'Zombie',
+      );
+      expect(screen.getByRole('group', { name: '#' })).toHaveTextContent('1942');
+    });
   });
 });
 
