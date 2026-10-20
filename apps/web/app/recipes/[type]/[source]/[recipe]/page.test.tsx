@@ -145,4 +145,22 @@ describe('RecipePage', () => {
     expect(techniqueDetails).toHaveTextContent('165 ml Whole milk');
     expect(calculatorLink).toHaveTextContent(/^Calculate milk for a batch$/);
   });
+
+  it('renders website refs in an also-documented-at card', async () => {
+    setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: 'youtube-channel',
+          source: 'mixing-up-tiki',
+          recipe: 'deep-blue-sea',
+        }),
+      }),
+    );
+
+    // The card names the site; the accessible name carries the full url.
+    const websiteLink = screen.getByRole('link', {
+      name: 'https://www.shakerofspirits.com/single-post/day-81-deep-blue-sea',
+    });
+    expect(websiteLink).toHaveTextContent('Shaker of Spirits');
+  });
 });

@@ -1,4 +1,4 @@
-import type { Source } from '@cocktails/data';
+import type { Source, WebsiteRef } from '@cocktails/data';
 import { getRecipePageParams } from '@cocktails/data/params';
 import { getRecipe } from '@cocktails/data/recipes';
 import {
@@ -17,6 +17,7 @@ import IngredientList from '#/components/IngredientList';
 import RecipeAttributionList from '#/components/RecipeAttributionList';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import VideoListCard from '#/components/VideoListCard';
+import WebsiteListCard from '#/components/WebsiteListCard';
 import { getRecipeEditUrl } from '#/modules/url';
 import styles from './style.module.css';
 
@@ -50,6 +51,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
     // For youtube channels, the first video is always in the source card.
     videos.shift();
   }
+  const websites = recipe.refs.filter((ref): ref is WebsiteRef => ref.type === 'website');
 
   return (
     <>
@@ -95,6 +97,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           <RecipeAttributionList attributions={recipe.attributions} />
         )}
         {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
+        {websites.length > 0 && <WebsiteListCard refs={websites} sx={{ m: 1 }} />}
         <FixBugCard fixUrl={getRecipeEditUrl(recipe)} sx={{ m: 1 }} />
       </Box>
     </>
