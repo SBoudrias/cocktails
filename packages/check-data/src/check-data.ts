@@ -6,10 +6,7 @@ import {
   compareIngredients,
   type SortableIngredient,
 } from '@cocktails/ingredient-sorting';
-import { createSchemaFormatter } from '@cocktails/jsonschema-formatter';
 import slugify from '@sindresorhus/slugify';
-import Ajv from 'ajv/dist/2020.js';
-import { format as formatWithOxfmt, type FormatConfig } from 'oxfmt';
 import {
   isApprovedOverlap,
   normalizeName,
@@ -31,25 +28,12 @@ import {
   validateMilkClarification,
 } from './milk-clarification.ts';
 import { areSimilarNames } from './name-similarity.ts';
+import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT, REPO_ROOT } from './paths.ts';
+import { createReport, type Report } from './report.ts';
+import { loadSchemas } from './schemas.ts';
+import { createWriteJSON } from './write-json.ts';
 
 const startTime = performance.now();
-const PACKAGE_ROOT = path.join(import.meta.dirname, '../../data');
-const REPO_ROOT = path.join(PACKAGE_ROOT, '..');
-const APPROVED_OVERLAPS_PATH = path.join(PACKAGE_ROOT, 'approved-overlaps.json');
-
-// The `oxfmt` API does not discover `.oxfmtrc.json` like the CLI does, so the
-// repo config is loaded and passed explicitly. Without it, files written by
-// `writeJSON` drift away from `yarn oxfmt` formatting.
-const OXFMT_CONFIG_PATH = path.join(import.meta.dirname, '../../../.oxfmtrc.json');
-const oxfmtConfig: FormatConfig = JSON.parse(
-  await fs.readFile(OXFMT_CONFIG_PATH, 'utf-8').catch((error: unknown) => {
-    throw new Error(
-      `Could not read the oxfmt config at ${OXFMT_CONFIG_PATH}: ${
-        error instanceof Error ? error.message : String(error)
-      }`,
-    );
-  }),
-);
 
 function isChapterFolder(folder: string): boolean {
   return /^\d+_.+$/.test(folder);
@@ -115,38 +99,11 @@ function sortRecipeIngredients(
 }
 
 // Schema formatter - auto-infers key ordering from registered schemas
-const formatter = createSchemaFormatter();
+const { report, getExitCode } = createReport();
+const fail: Report['fail'] = report.fail;
 
-async function writeJSON(filepath: string, data: object): Promise<void> {
-  await fs.mkdir(path.dirname(filepath), { recursive: true });
-  const sortedData = formatter.format(data);
-  const jsonContent = JSON.stringify(sortedData, null, 2) + '\n';
-  const formattedJson = await formatWithOxfmt(filepath, jsonContent, oxfmtConfig);
-  if (formattedJson.errors.length > 0) {
-    fail(`Could not format ${filepath}: ${formattedJson.errors[0]?.message}`);
-    await fs.writeFile(filepath, jsonContent);
-    return;
-  }
-  await fs.writeFile(filepath, formattedJson.code);
-}
-
-let exitCode = 0;
-function fail(message: string): void {
-  logger.error(message);
-  exitCode = 1;
-}
-
-const ajv = new Ajv();
-logger.header('📝 Registering schemas');
-const schemasGlob = path.join(PACKAGE_ROOT, 'schemas/*.schema.json');
-for await (const schemaFile of fs.glob(schemasGlob)) {
-  const schema = JSON.parse(await fs.readFile(schemaFile, 'utf-8'));
-  const schemaId = path.basename(schemaFile);
-  logger.item(schemaId);
-  ajv.addSchema(schema, schemaId);
-  formatter.addSchema(schema);
-}
-logger.footer('Done!');
+const { ajv, formatter } = await loadSchemas();
+const writeJSON = createWriteJSON({ formatter, report });
 
 // Collect all category slugs and canonical names for duplicate detection and name matching
 logger.header('📦 Collecting category and ingredient data');
@@ -979,6 +936,7 @@ for await (const bookSlug of await fs.readdir(bookRoot)) {
 logger.footer('Done!');
 
 const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
+const exitCode = getExitCode();
 if (exitCode > 0) {
   logger.failure(`❌ Validation failed! ⏱️ ${elapsed}s`);
 } else {
