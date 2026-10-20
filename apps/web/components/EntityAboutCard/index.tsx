@@ -1,5 +1,5 @@
 import type { Author, Bar } from '@cocktails/data';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import LanguageIcon from '@mui/icons-material/Language';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import MapIcon from '@mui/icons-material/Map';
 import PersonIcon from '@mui/icons-material/Person';
@@ -21,25 +21,38 @@ function getHostname(url: string): string {
   return new URL(url).hostname.replace(/^www\./, '');
 }
 
-// Social platforms get their brand mark instead of a typed-out domain;
-// everything else keeps its hostname and the external-arrow affordance. The
-// button's aria-label carries the full hostname either way.
-function getLinkIcon(url: string) {
+// Social links show their brand mark plus the handle from the url path
+// (@erynreece reads better than instagram.com); every other link shows a
+// globe and its domain. The button's aria-label carries the full url.
+function getLinkView(url: string) {
   return match(getHostname(url))
-    .returnType<React.ReactNode>()
-    .with('instagram.com', () => <InstagramIcon />)
-    .with('youtube.com', () => <YouTubeIcon />)
-    .with(P.union('x.com', 'twitter.com'), () => <XIcon />)
-    .with('facebook.com', () => <FacebookIcon />)
-    .otherwise(() => null);
+    .returnType<{ icon: React.ReactNode; label: string }>()
+    .with('instagram.com', (host) => {
+      const handle = new URL(url).pathname.replace('/', '').split('/')[0];
+      return { icon: <InstagramIcon />, label: handle ? `@${handle}` : host };
+    })
+    .with('youtube.com', (host) => {
+      const handle = new URL(url).pathname.replace('/', '').split('/')[0];
+      return handle
+        ? { icon: <YouTubeIcon />, label: handle }
+        : { icon: <YouTubeIcon />, label: host };
+    })
+    .with(P.union('x.com', 'twitter.com'), (host) => {
+      const handle = new URL(url).pathname.replace('/', '').split('/')[0];
+      return { icon: <XIcon />, label: handle ? `@${handle}` : host };
+    })
+    .with('facebook.com', (host) => {
+      const handle = new URL(url).pathname.replace('/', '').split('/')[0];
+      return { icon: <FacebookIcon />, label: handle ? handle : host };
+    })
+    .otherwise((host) => ({ icon: <LanguageIcon />, label: host }));
 }
 
 function LinkButtons({ links }: { links?: [string, ...string[]] }) {
   if (!links) return null;
 
   return links.map((link) => {
-    const hostname = getHostname(link);
-    const icon = getLinkIcon(link);
+    const { icon, label } = getLinkView(link);
 
     return (
       <Button
@@ -48,19 +61,15 @@ function LinkButtons({ links }: { links?: [string, ...string[]] }) {
         target="_blank"
         rel="noreferrer noopener"
         color="inherit"
-        aria-label={hostname}
+        aria-label={link}
       >
-        {icon ?? hostname}
-        <ArrowOutwardIcon />
+        {icon}
+        {label}
       </Button>
     );
   });
 }
 
-/**
- * About card for an author entity. Renders nothing until the entity file has
- * a verified link or description — most authors are a name only.
- */
 /**
  * About card for an author entity. The card header (the author's name) always
  * renders — it is the page's title, shown once; description, known-for bars,
