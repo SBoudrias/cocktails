@@ -145,4 +145,44 @@ describe('RecipePage', () => {
     expect(techniqueDetails).toHaveTextContent('165 ml Whole milk');
     expect(calculatorLink).toHaveTextContent(/^Calculate milk for a batch$/);
   });
+
+  it('renders the attribution list before the source card, keeping lists and cards apart', async () => {
+    setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: 'youtube-channel',
+          source: 'educated-barfly',
+          recipe: 'little-tokyo',
+        }),
+      }),
+    );
+
+    const attributionList = screen.getByRole('list', { name: 'Attributions' });
+    const aboutCard = screen.getByRole('link', { name: /go to channel/i });
+
+    // The list layout precedes the card flow: no jumpiness when attributions
+    // render between list-styled sections and the mui cards.
+    expect(
+      attributionList.compareDocumentPosition(aboutCard) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it('renders website refs in an also-documented-at card', async () => {
+    setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: 'youtube-channel',
+          source: 'mixing-up-tiki',
+          recipe: 'deep-blue-sea',
+        }),
+      }),
+    );
+
+    // The card names the site; the accessible name carries the full url.
+    const websiteLink = screen.getByRole('link', {
+      name: 'https://www.shakerofspirits.com/single-post/day-81-deep-blue-sea',
+    });
+    expect(websiteLink).toHaveTextContent('Shaker of Spirits');
+  });
 });

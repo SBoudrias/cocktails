@@ -56,8 +56,8 @@ export default function RecipeAttributionList({
   attributions: Attribution[];
 }) {
   return (
-    <List>
-      <ListSubheader>Attributions</ListSubheader>
+    <List aria-labelledby="attributions-subheader">
+      <ListSubheader id="attributions-subheader">Attributions</ListSubheader>
       <Paper square>
         {attributions.map((attribution) => {
           const { key, href, label, location, externalUrl } =
