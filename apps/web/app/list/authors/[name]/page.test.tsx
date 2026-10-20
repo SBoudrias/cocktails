@@ -68,10 +68,10 @@ describe('AuthorRecipesPage', () => {
     const instagramLink = screen.getByRole('link', {
       name: 'https://www.instagram.com/samueljoelross',
     });
-    expect(instagramLink).toHaveTextContent('@samueljoelross');
+    expect(instagramLink).toHaveTextContent('samueljoelross');
 
     const xLink = screen.getByRole('link', { name: 'https://x.com/samueljoelross' });
-    expect(xLink).toHaveTextContent('@samueljoelross');
+    expect(xLink).toHaveTextContent('samueljoelross');
   });
 
   it('renders website links as globe icon with domain label', async () => {

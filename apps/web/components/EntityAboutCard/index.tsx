@@ -32,7 +32,7 @@ function getLinkView(url: string) {
     .returnType<{ icon: React.ReactNode; label: string }>()
     .with('instagram.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
-      return { icon: <InstagramIcon />, label: handle ? `@${handle}` : host };
+      return { icon: <InstagramIcon />, label: handle ? handle : host };
     })
     .with('youtube.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
@@ -42,7 +42,7 @@ function getLinkView(url: string) {
     })
     .with(P.union('x.com', 'twitter.com'), (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
-      return { icon: <XIcon />, label: handle ? `@${handle}` : host };
+      return { icon: <XIcon />, label: handle ? handle : host };
     })
     .with('facebook.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
@@ -67,7 +67,7 @@ function LinkButtons({ links }: { links?: [string, ...string[]] }) {
         aria-label={link}
       >
         {icon}
-        {label}
+        &nbsp;{label}
       </Button>
     );
   });
