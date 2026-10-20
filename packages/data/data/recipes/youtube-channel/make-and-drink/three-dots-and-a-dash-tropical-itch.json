@@ -65,7 +65,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Three Dots and a Dash"
+      "source": "Three Dots and a Dash",
+      "location": "Chicago, IL"
     }
   ],
   "refs": [

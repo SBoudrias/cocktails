@@ -1,9 +1,10 @@
 'use client';
 
-import type { Recipe } from '@cocktails/data';
+import type { Author, Recipe } from '@cocktails/data';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
+import { AuthorAboutCard } from '#/components/EntityAboutCard';
 import { LinkList } from '#/components/LinkList';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
@@ -14,10 +15,10 @@ import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
 
 export default function AuthorRecipesClient({
-  authorName,
+  author,
   recipes,
 }: {
-  authorName: string;
+  author: Author;
   recipes: Recipe[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
@@ -46,11 +47,7 @@ export default function AuthorRecipesClient({
 
   return (
     <>
-      <SearchHeader
-        title={`Recipes by ${authorName}`}
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-      />
+      <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       {isSearching ? (
         <SearchableList
           items={recipes}
@@ -60,7 +57,14 @@ export default function AuthorRecipesClient({
           emptyState={emptyState}
         />
       ) : (
-        <LinkList header="All Recipes" items={recipes} renderItem={renderItem} />
+        <>
+          <AuthorAboutCard author={author} sx={{ m: 2 }} />
+          <LinkList
+            header={`Recipes by ${author.name}`}
+            items={recipes}
+            renderItem={renderItem}
+          />
+        </>
       )}
     </>
   );

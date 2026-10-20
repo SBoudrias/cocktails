@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Arizona Biltmore Resort",
+  "location": "Phoenix, Arizona"
+}

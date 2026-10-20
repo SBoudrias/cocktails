@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Don the Beachcomber",
+  "description": "Donn Beach — tiki's founding father, behind the Don the Beachcomber name"
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Shannon Tebay",
+  "links": ["https://www.instagram.com/shannontebay"],
+  "description": "Death & Co bartender",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
+}

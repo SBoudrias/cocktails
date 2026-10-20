@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Oldfields Liquor Room",
+  "location": "Los Angeles, CA"
+}

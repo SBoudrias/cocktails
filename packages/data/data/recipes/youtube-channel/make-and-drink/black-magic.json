@@ -118,12 +118,12 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Mai-Kai"
+      "source": "Mai-Kai",
+      "location": "Fort Lauderdale, FL"
     },
     {
       "relation": "adapted by",
-      "source": "The Atomic Grog",
-      "url": "https://www.slammie.com/atomicgrog/blog/2012/04/04/mai-kai-cocktail-review-the-black-magic-emerges-from-the-shadows-as-a-true-classic/"
+      "source": "Jim Hayward"
     }
   ],
   "refs": [
@@ -131,6 +131,11 @@
       "type": "youtube",
       "videoId": "iKip_xCPNWU",
       "channel": "make-and-drink"
+    },
+    {
+      "type": "website",
+      "name": "The Atomic Grog",
+      "url": "https://www.slammie.com/atomicgrog/blog/2012/04/04/mai-kai-cocktail-review-the-black-magic-emerges-from-the-shadows-as-a-true-classic/"
     }
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Martin Cate",
+  "sources": [
+    {
+      "type": "book",
+      "slug": "smugglers-cove"
+    },
+    {
+      "type": "bar",
+      "slug": "smugglers-cove-san-francisco-ca"
+    }
+  ]
+}

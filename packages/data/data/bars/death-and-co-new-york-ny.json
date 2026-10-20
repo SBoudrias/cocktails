@@ -1,0 +1,6 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Death & Co",
+  "location": "New York, NY",
+  "description": "East Village cocktail bar that shaped the craft revival"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Alex Jump",
+  "description": "Death & Co bartender",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    },
+    {
+      "type": "bar",
+      "slug": "death-and-co-denver-co"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import type { Recipe } from '@cocktails/data';
+import { getAuthor } from '@cocktails/data/authors';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
@@ -6,38 +6,22 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import AuthorRecipesClient from './AuthorRecipesClient';
 
-// Helper function to find the actual author name from the slug
-function findAuthorNameFromSlug(slug: string, recipes: Recipe[]): string | null {
-  for (const recipe of recipes) {
-    for (const attribution of recipe.attributions) {
-      if (
-        (attribution.relation === 'recipe author' ||
-          attribution.relation === 'adapted by') &&
-        slugify(attribution.source) === slug
-      ) {
-        return attribution.source;
-      }
-    }
-  }
-  return null;
-}
-
 type Props = {
   params: Promise<{ name: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
-  const authorName = findAuthorNameFromSlug(name, allRecipes);
+  const { name } = await params;
+  const author = await getAuthor(name);
 
-  if (!authorName) {
+  if (!author) {
     return {
       title: 'Author Not Found',
     };
   }
 
   return {
-    title: `Cocktail Index | Recipes by ${authorName}`,
+    title: `Cocktail Index | Recipes by ${author.name}`,
   };
 }
 
@@ -60,10 +44,12 @@ export async function generateStaticParams() {
 }
 
 export default async function AuthorRecipesPage({ params }: Props) {
-  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
-  const authorName = findAuthorNameFromSlug(name, allRecipes);
+  const { name } = await params;
+  const [allRecipes, author] = await Promise.all([getAllRecipes(), getAuthor(name)]);
 
-  if (!authorName) {
+  // getAuthor falls back to the recipes' attributions when the entity file is
+  // missing, so no match means no author by that slug is credited anywhere.
+  if (!author) {
     notFound();
   }
 
@@ -73,7 +59,7 @@ export default async function AuthorRecipesPage({ params }: Props) {
       (attribution) =>
         (attribution.relation === 'recipe author' ||
           attribution.relation === 'adapted by') &&
-        attribution.source === authorName,
+        attribution.source === author.name,
     ),
   );
 
@@ -81,9 +67,11 @@ export default async function AuthorRecipesPage({ params }: Props) {
     notFound();
   }
 
+  // getAuthor resolves the entity's bars/sources refs into full entities, so
+  // the client renders every dimension of the author from its one object.
   return (
     <Suspense>
-      <AuthorRecipesClient authorName={authorName} recipes={authorRecipes} />
+      <AuthorRecipesClient author={author} recipes={authorRecipes} />
     </Suspense>
   );
 }

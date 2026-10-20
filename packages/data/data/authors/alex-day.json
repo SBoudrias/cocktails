@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Alex Day",
+  "links": ["https://www.instagram.com/apday"],
+  "description": "Death & Co bartender",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
+}

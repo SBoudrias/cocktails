@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Keely Sutherland",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
+}

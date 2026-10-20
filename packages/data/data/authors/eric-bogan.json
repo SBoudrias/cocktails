@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Eric Bogan",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "the-inferno-room-indianapolis-in"
+    }
+  ]
+}

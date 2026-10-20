@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Jason Littrell",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Nightmoves",
+  "location": "New York, NY"
+}

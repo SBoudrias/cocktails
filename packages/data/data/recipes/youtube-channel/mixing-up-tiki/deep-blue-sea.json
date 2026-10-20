@@ -70,8 +70,7 @@
   "attributions": [
     {
       "relation": "recipe author",
-      "source": "Brian Maxwell",
-      "url": "https://www.shakerofspirits.com/single-post/day-81-deep-blue-sea"
+      "source": "Brian Maxwell"
     }
   ],
   "refs": [
@@ -79,6 +78,11 @@
       "type": "youtube",
       "videoId": "WsMBw1O80mo",
       "channel": "mixing-up-tiki"
+    },
+    {
+      "type": "website",
+      "name": "Shaker of Spirits",
+      "url": "https://www.shakerofspirits.com/single-post/day-81-deep-blue-sea"
     }
   ]
 }

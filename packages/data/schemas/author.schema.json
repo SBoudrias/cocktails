@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./author.schema.json",
+  "title": "Author",
+  "description": "A recipe author or adapter in the catalog",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": {
+      "description": "The author's name, exactly as credited in recipe attributions",
+      "type": "string"
+    },
+    "links": {
+      "description": "Links to the author's website, channel, or profile pages",
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "description": {
+      "description": "One-line bio, only when verified",
+      "type": "string"
+    },
+    "sources": {
+      "description": "Catalog sources tied to the author: where they worked (bars) and what they are behind (books, channels, podcasts)",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "enum": ["bar", "book", "youtube-channel", "podcast"] },
+          "slug": { "type": "string" }
+        },
+        "required": ["type", "slug"],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["name"],
+  "additionalProperties": false
+}

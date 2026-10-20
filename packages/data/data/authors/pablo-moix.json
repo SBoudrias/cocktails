@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Pablo Moix",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "dama-los-angeles-ca"
+    }
+  ]
+}

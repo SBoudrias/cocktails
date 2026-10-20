@@ -74,12 +74,12 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Mai-Kai"
+      "source": "Mai-Kai",
+      "location": "Fort Lauderdale, FL"
     },
     {
       "relation": "adapted by",
-      "source": "The Atomic Grog",
-      "url": "https://www.slammie.com/atomicgrog/blog/2011/08/03/mai-kai-cocktail-review-robust-flavors-and-potency-are-hallmark-of-151-swizzle/"
+      "source": "Jim Hayward"
     }
   ],
   "refs": [
@@ -87,6 +87,11 @@
       "type": "youtube",
       "videoId": "EaFb_6zlM6U",
       "channel": "make-and-drink"
+    },
+    {
+      "type": "website",
+      "name": "The Atomic Grog",
+      "url": "https://www.slammie.com/atomicgrog/blog/2011/08/03/mai-kai-cocktail-review-robust-flavors-and-potency-are-hallmark-of-151-swizzle/"
     }
   ]
 }

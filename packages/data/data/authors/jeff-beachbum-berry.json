@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Jeff 'Beachbum' Berry",
+  "links": ["https://beachbumberry.com/"],
+  "sources": [
+    {
+      "type": "book",
+      "slug": "sippin-safari"
+    },
+    {
+      "type": "bar",
+      "slug": "latitude-29-new-orleans-la"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Pali Society",
+  "location": "Los Angeles, CA"
+}

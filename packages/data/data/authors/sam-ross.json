@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Sam Ross",
+  "links": ["https://www.instagram.com/samueljoelross", "https://x.com/samueljoelross"]
+}

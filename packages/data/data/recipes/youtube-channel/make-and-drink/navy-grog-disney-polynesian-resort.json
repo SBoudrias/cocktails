@@ -74,7 +74,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Disney's Polynesian Resort"
+      "source": "Disney's Polynesian Village Resort",
+      "location": "Orlando, FL"
     },
     {
       "relation": "book",

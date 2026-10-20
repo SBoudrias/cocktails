@@ -57,11 +57,12 @@
     },
     {
       "relation": "bar",
-      "source": "Mai-Kai"
+      "source": "Mai-Kai",
+      "location": "Fort Lauderdale, FL"
     },
     {
       "relation": "adapted by",
-      "source": "The Atomic Grog"
+      "source": "Jim Hayward"
     }
   ],
   "refs": [

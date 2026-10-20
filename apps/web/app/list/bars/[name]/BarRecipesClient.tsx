@@ -1,9 +1,10 @@
 'use client';
 
-import type { Recipe } from '@cocktails/data';
+import type { Bar, Recipe } from '@cocktails/data';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
+import { BarAboutCard } from '#/components/EntityAboutCard';
 import { LinkList } from '#/components/LinkList';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
@@ -14,10 +15,10 @@ import { getRecipeSearchText } from '#/modules/searchText';
 import { getRecipeUrl } from '#/modules/url';
 
 export default function BarRecipesClient({
-  barName,
+  bar,
   recipes,
 }: {
-  barName: string;
+  bar: Bar;
   recipes: Recipe[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
@@ -46,11 +47,7 @@ export default function BarRecipesClient({
 
   return (
     <>
-      <SearchHeader
-        title={`Recipes from ${barName}`}
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-      />
+      <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       {isSearching ? (
         <SearchableList
           items={recipes}
@@ -60,7 +57,14 @@ export default function BarRecipesClient({
           emptyState={emptyState}
         />
       ) : (
-        <LinkList header="All Recipes" items={recipes} renderItem={renderRecipe} />
+        <>
+          <BarAboutCard bar={bar} sx={{ m: 2 }} />
+          <LinkList
+            header={`Recipes from ${bar.name}`}
+            items={recipes}
+            renderItem={renderRecipe}
+          />
+        </>
       )}
     </>
   );

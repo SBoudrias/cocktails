@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Toby Maloney",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "the-violet-hour-chicago"
+    }
+  ]
+}

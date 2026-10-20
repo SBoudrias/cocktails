@@ -41,7 +41,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Kon-Tiki"
+      "source": "Kon-Tiki",
+      "location": "Oakland, CA"
     }
   ],
   "refs": [

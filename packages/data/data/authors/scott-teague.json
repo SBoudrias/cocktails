@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Scott Teague",
+  "description": "Death & Co bartender",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
+}

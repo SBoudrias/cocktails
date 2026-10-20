@@ -86,12 +86,12 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Mai-Kai"
+      "source": "Mai-Kai",
+      "location": "Fort Lauderdale, FL"
     },
     {
       "relation": "adapted by",
-      "source": "The Atomic Grog",
-      "url": "http://www.slammie.com/atomicgrog/blog/2011/11/20/mai-kai-cocktail-review-cobra-kiss-is-an-exotic-taste-explosion-guaranteed-to-strike-your-fancy/"
+      "source": "Jim Hayward"
     }
   ],
   "refs": [
@@ -99,6 +99,11 @@
       "type": "youtube",
       "videoId": "O6VlUu8FKVk",
       "channel": "mixing-up-tiki"
+    },
+    {
+      "type": "website",
+      "name": "The Atomic Grog",
+      "url": "http://www.slammie.com/atomicgrog/blog/2011/11/20/mai-kai-cocktail-review-cobra-kiss-is-an-exotic-taste-explosion-guaranteed-to-strike-your-fancy/"
     }
   ]
 }

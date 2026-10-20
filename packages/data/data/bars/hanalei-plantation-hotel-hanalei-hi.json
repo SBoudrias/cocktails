@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Hanalei Plantation Hotel",
+  "location": "Hanalei, HI"
+}

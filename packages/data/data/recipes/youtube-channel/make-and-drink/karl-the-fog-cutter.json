@@ -74,8 +74,7 @@
   "attributions": [
     {
       "relation": "recipe author",
-      "source": "Subtle Tiki",
-      "url": "https://subtletiki.com/karl-the-fog-cutter-recipe/"
+      "source": "Subtle Tiki"
     }
   ],
   "refs": [
@@ -84,6 +83,11 @@
       "videoId": "JmJSahT7_cg",
       "channel": "make-and-drink",
       "start": 145
+    },
+    {
+      "type": "website",
+      "name": "Subtle Tiki",
+      "url": "https://subtletiki.com/karl-the-fog-cutter-recipe/"
     }
   ]
 }

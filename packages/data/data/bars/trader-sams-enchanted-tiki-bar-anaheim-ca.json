@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Trader Sam's Enchanted Tiki Bar",
+  "location": "Anaheim, CA"
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Kon-Tiki Restaurant",
+  "location": "Chicago, IL"
+}

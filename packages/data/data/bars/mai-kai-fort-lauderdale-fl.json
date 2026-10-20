@@ -1,0 +1,7 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Mai-Kai",
+  "location": "Fort Lauderdale, FL",
+  "links": ["https://mai-kai.com"],
+  "description": "Polynesian-themed restaurant and tiki bar, Oakland Park FL, since 1956"
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Trader Vic",
+  "description": "Victor Bergeron — tiki’s other founding father, Trader Vic’s"
+}

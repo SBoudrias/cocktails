@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Disney's Polynesian Village Resort",
+  "location": "Orlando, FL"
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Jen Akin",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "rumba-seattle-wa"
+    }
+  ]
+}

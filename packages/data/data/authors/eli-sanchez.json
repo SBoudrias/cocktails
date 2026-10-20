@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Eli Sanchez",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "the-inferno-room-indianapolis-in"
+    }
+  ]
+}

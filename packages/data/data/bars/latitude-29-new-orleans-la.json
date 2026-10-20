@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Latitude 29",
+  "location": "New Orleans, LA"
+}

@@ -6,7 +6,6 @@ type BarAttribution = {
   relation: 'bar';
   source: string;
   location?: string;
-  url?: string;
 };
 
 type BookAttribution = {
@@ -22,7 +21,6 @@ export type Attribution =
   | {
       relation: 'recipe author' | 'adapted by';
       source: string;
-      url?: string;
     };
 
 export type Chapter = {

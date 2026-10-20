@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Paul McGee",
+  "links": ["https://www.instagram.com/bagchatter"],
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "lost-lake-chicago-il"
+    }
+  ]
+}

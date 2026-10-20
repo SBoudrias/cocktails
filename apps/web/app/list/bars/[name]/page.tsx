@@ -1,32 +1,10 @@
-import type { Recipe } from '@cocktails/data';
+import { getBar } from '@cocktails/data/bars';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import BarRecipesClient from './BarRecipesClient';
-
-// Helper function to find the actual bar name from the slug
-function findBarNameFromSlug(
-  slug: string,
-  recipes: Recipe[],
-): { name: string; location?: string } | null {
-  for (const recipe of recipes) {
-    for (const attribution of recipe.attributions) {
-      if (
-        attribution.relation === 'bar' &&
-        slugify(attribution.source + (attribution.location ?? '')) === slug
-      ) {
-        return {
-          name: attribution.source,
-          location: attribution.location,
-        };
-      }
-    }
-  }
-
-  return null;
-}
 
 function formatBarName(bar: { name: string; location?: string }) {
   return `${bar.name}${bar.location ? `, ${bar.location}` : ''}`;
@@ -37,8 +15,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
-  const bar = findBarNameFromSlug(name, allRecipes);
+  const { name } = await params;
+  const bar = await getBar(name);
 
   if (!bar) {
     return {
@@ -67,9 +45,11 @@ export async function generateStaticParams() {
 }
 
 export default async function BarRecipesPage({ params }: Props) {
-  const [{ name }, allRecipes] = await Promise.all([params, getAllRecipes()]);
-  const bar = findBarNameFromSlug(name, allRecipes);
+  const { name } = await params;
+  const [allRecipes, bar] = await Promise.all([getAllRecipes(), getBar(name)]);
 
+  // getBar falls back to the recipes' attributions when the entity file is
+  // missing, so no match means no bar by that slug is credited anywhere.
   if (!bar) {
     notFound();
   }
@@ -90,7 +70,7 @@ export default async function BarRecipesPage({ params }: Props) {
 
   return (
     <Suspense>
-      <BarRecipesClient barName={formatBarName(bar)} recipes={barRecipes} />
+      <BarRecipesClient bar={bar} recipes={barRecipes} />
     </Suspense>
   );
 }

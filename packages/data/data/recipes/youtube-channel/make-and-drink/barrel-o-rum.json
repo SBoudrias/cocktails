@@ -90,12 +90,12 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Mai-Kai"
+      "source": "Mai-Kai",
+      "location": "Fort Lauderdale, FL"
     },
     {
       "relation": "adapted by",
-      "source": "The Atomic Grog",
-      "url": "https://www.slammie.com/atomicgrog/blog/2011/06/27/the-rum-barrel-the-rodney-dangerfield-of-tropical-drinks/"
+      "source": "Jim Hayward"
     }
   ],
   "refs": [
@@ -103,6 +103,11 @@
       "type": "youtube",
       "videoId": "i7ovdT1w4yU",
       "channel": "make-and-drink"
+    },
+    {
+      "type": "website",
+      "name": "The Atomic Grog",
+      "url": "https://www.slammie.com/atomicgrog/blog/2011/06/27/the-rum-barrel-the-rodney-dangerfield-of-tropical-drinks/"
     }
   ]
 }

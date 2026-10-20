@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Spike",
+  "links": ["https://www.youtube.com/@BreezewayCocktailHour"]
+}

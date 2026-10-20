@@ -16,6 +16,11 @@ import {
   validateApprovedOverlaps,
   type ApprovedOverlaps,
 } from './approved-overlaps.ts';
+import {
+  findInconsistentBarLocations,
+  findSimilarBarNames,
+  type BarLocationUsage,
+} from './bar-locations.ts';
 import { normalizeCategoryCasing } from './category-casing.ts';
 import { findRedundantCategoryPairs } from './category-similarity.ts';
 import { logger } from './cli-util.ts';
@@ -71,6 +76,8 @@ interface DataWithSchema {
   categories?: string[];
   parents?: string[];
   refs?: Array<{ type: string; channel?: string }>;
+  sources?: Array<{ type: string; slug: string }>;
+
   techniques?: Array<{
     technique: 'clarification';
     method: 'milk';
@@ -155,6 +162,89 @@ for (const entry of await fs.readdir(youtubeChannelRoot)) {
   if (entryStat.isDirectory()) youtubeChannelSlugs.add(entry);
 }
 logger.item(`Found ${youtubeChannelSlugs.size} youtube channels`);
+
+// Source slugs per type, used to validate the sources refs on author
+// entities (channel host, book author...).
+const sourceSlugsByType = new Map<string, Set<string>>([
+  ['youtube-channel', new Set(youtubeChannelSlugs)],
+]);
+for (const sourceType of ['book', 'podcast']) {
+  const slugs = new Set<string>();
+  const sourceRoot = path.join(PACKAGE_ROOT, `data/recipes/${sourceType}`);
+  for (const entry of await fs.readdir(sourceRoot)) {
+    if ((await fs.stat(path.join(sourceRoot, entry))).isDirectory()) slugs.add(entry);
+  }
+  sourceSlugsByType.set(sourceType, slugs);
+}
+
+// Entity files backing the author/bar list pages. Every attribution source
+// must resolve to one — entities are credited in recipes before anything is
+// known about them, so missing files are created name-only (links and
+// descriptions are added only once verified, never generated here).
+logger.header('👥 Collecting author and bar entities');
+const authorEntitySlugs = new Set<string>();
+const barEntitySlugs = new Set<string>();
+
+for (const [entityDir, entitySlugs] of [
+  ['authors', authorEntitySlugs],
+  ['bars', barEntitySlugs],
+] as const) {
+  for await (const entityFile of fs.glob(
+    path.join(PACKAGE_ROOT, `data/${entityDir}/*.json`),
+  )) {
+    entitySlugs.add(path.basename(entityFile, '.json'));
+  }
+}
+
+// Bar locations, from the entity files here and the recipe attributions in
+// the validation pass below, feed the inconsistent-location check (same bar
+// name credited with different or missing locations).
+const barLocationUsages: BarLocationUsage[] = [];
+for await (const barFile of fs.glob(path.join(PACKAGE_ROOT, 'data/bars/*.json'))) {
+  const bar = JSON.parse(await fs.readFile(barFile, 'utf-8'));
+  barLocationUsages.push({ name: bar.name, location: bar.location, filepath: barFile });
+}
+
+const createdEntities: string[] = [];
+for await (const recipeFile of fs.glob(
+  path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'),
+)) {
+  const recipe = JSON.parse(await fs.readFile(recipeFile, 'utf-8'));
+
+  for (const attribution of recipe.attributions ?? []) {
+    const isAuthor =
+      attribution.relation === 'recipe author' || attribution.relation === 'adapted by';
+
+    if (!isAuthor && attribution.relation !== 'bar') continue;
+
+    const slug = isAuthor
+      ? slugify(attribution.source)
+      : slugify(`${attribution.source} ${attribution.location ?? ''}`);
+    const entitySlugs = isAuthor ? authorEntitySlugs : barEntitySlugs;
+
+    if (entitySlugs.has(slug)) continue;
+    entitySlugs.add(slug);
+
+    const entityDir = isAuthor ? 'authors' : 'bars';
+    const entityPath = path.join(PACKAGE_ROOT, `data/${entityDir}`, `${slug}.json`);
+    await writeJSON(entityPath, {
+      $schema: path.relative(
+        path.dirname(entityPath),
+        path.resolve(PACKAGE_ROOT, `schemas/${isAuthor ? 'author' : 'bar'}.schema.json`),
+      ),
+      name: attribution.source,
+      ...(attribution.relation === 'bar' && attribution.location
+        ? { location: attribution.location }
+        : {}),
+    });
+    createdEntities.push(path.relative(REPO_ROOT, entityPath));
+  }
+}
+logger.item(`Found ${authorEntitySlugs.size} authors, ${barEntitySlugs.size} bars`);
+for (const entityPath of createdEntities) {
+  logger.change(`Created ${entityPath}`);
+}
+logger.footer('Done!');
 
 const categoriesGlob = path.join(PACKAGE_ROOT, 'data/categories/*.json');
 const categoryCanonicalNames = new Map<string, string>(); // slug -> canonical name
@@ -307,9 +397,10 @@ for await (const sourceFile of fs.glob(dataGlob)) {
     console.error(validate.errors);
   }
 
-  // Enforce filename should be the name of the data.
+  // Enforce filename should be the name of the data. Bar entity files are the
+  // exception: their slug is the name *and* location, matching the list pages.
   const basename = path.basename(sourceFile, '.json');
-  if (basename !== '_source') {
+  if (basename !== '_source' && schemaBasename !== 'bar.schema.json') {
     const expectedName = slugify(data.name);
     if (basename !== expectedName) {
       const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);
@@ -365,6 +456,30 @@ for await (const sourceFile of fs.glob(dataGlob)) {
     }
   }
 
+  // Author entities carry one sources array of typed refs — bars they worked
+  // at alongside books/channels/podcasts they are behind; every ref must
+  // resolve.
+  if (schemaPath === 'schemas/author.schema.json') {
+    for (const source of data.sources ?? []) {
+      if (source.type === 'bar') {
+        if (!barEntitySlugs.has(source.slug)) {
+          fail(
+            `Author "${data.name}" references unknown bar "${source.slug}" in ${path.basename(sourceFile)}. ` +
+              `Use the slug of a bar entity file (name and location).`,
+          );
+        }
+        continue;
+      }
+
+      const slugs = sourceSlugsByType.get(source.type);
+      if (!slugs || !slugs.has(source.slug)) {
+        fail(
+          `Author "${data.name}" references unknown ${source.type} source "${source.slug}" in ${path.basename(sourceFile)}.`,
+        );
+      }
+    }
+  }
+
   // Collect bar attributions for case consistency check
   if (schemaPath === 'schemas/recipe.schema.json') {
     if (isValid) {
@@ -391,6 +506,12 @@ for await (const sourceFile of fs.glob(dataGlob)) {
           casings.set(attribution.source, []);
         }
         casings.get(attribution.source)!.push(sourceFile);
+
+        barLocationUsages.push({
+          name: attribution.source,
+          location: attribution.location,
+          filepath: sourceFile,
+        });
       }
 
       // Check for combined author names (should be separate attributions)
@@ -652,6 +773,49 @@ for (const [, casings] of barNameCasings) {
       .join(', ');
     fail(`Bar name has inconsistent casing: ${variants}`);
   }
+}
+logger.footer('Done!');
+
+// Check for bars credited under the same name with inconsistent locations —
+// two different locations, or the same name with and without one. Usually a
+// drifted "City, ST" on one attribution; the approved overlaps registry hides
+// names reviewed as genuinely multi-venue bars.
+logger.header('📍 Checking bar locations...');
+const approvedBarNames = new Set(
+  (approvedOverlaps.bar ?? []).map((name) => normalizeName(name)),
+);
+for (const { name, variants } of findInconsistentBarLocations(barLocationUsages)) {
+  if (approvedBarNames.has(normalizeName(name))) continue;
+
+  const summary = variants
+    .map(
+      (variant) =>
+        `"${variant.location ?? 'no location'}" (${variant.count} use(s), e.g. ${path.relative(REPO_ROOT, variant.exampleFile)})`,
+    )
+    .join(', ');
+  logger.warn(
+    `Bar "${name}" is credited with inconsistent locations:`,
+    summary,
+    `Standardize the location across attributions and entity files. ` +
+      `If these are genuinely different venues, register the name in the "bar" list of approved-overlaps.json.`,
+  );
+}
+logger.footer('Done!');
+
+// Check for bar names that look like one venue recorded at two precisions —
+// one name contained inside the other plus one or two extra words. Renames
+// and short-form credits ("Caribe Hilton" vs "Caribe Hilton Hotel") look
+// like this; the approved overlaps registry hides reviewed pairs.
+logger.header('📍 Checking for similar bar names...');
+for (const { shortName, longName, extras } of findSimilarBarNames(barLocationUsages)) {
+  if (isApprovedOverlap(approvedOverlaps, 'bar', shortName, longName)) continue;
+
+  logger.warn(
+    `Similar bar names — possible duplicate:`,
+    `"${shortName}" vs "${longName}" (adds: ${extras.join(', ')})`,
+    `Review whether these are the same venue recorded at two precisions. ` +
+      `If genuinely different venues, register both names in the "bar" list of approved-overlaps.json.`,
+  );
 }
 logger.footer('Done!');
 
