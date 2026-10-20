@@ -1,5 +1,10 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Mariano Licudine",
-  "bars": ["mai-kai-fort-lauderdale-fl"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "mai-kai-fort-lauderdale-fl"
+    }
+  ]
 }

@@ -3,5 +3,10 @@
   "name": "Tyson Buhler",
   "links": ["https://www.instagram.com/tbuhler1"],
   "description": "Death & Co bartender",
-  "bars": ["death-and-co-new-york-ny"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
 }

@@ -1,5 +1,10 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Ryan Lotz",
-  "bars": ["shore-leave-boston-ma"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "shore-leave-boston-ma"
+    }
+  ]
 }

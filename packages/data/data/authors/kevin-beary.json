@@ -2,5 +2,10 @@
   "$schema": "../../schemas/author.schema.json",
   "name": "Kevin Beary",
   "links": ["https://www.instagram.com/headstotails"],
-  "bars": ["three-dots-and-a-dash-chicago-il"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "three-dots-and-a-dash-chicago-il"
+    }
+  ]
 }

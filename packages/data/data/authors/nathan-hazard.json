@@ -1,5 +1,10 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Nathan Hazard",
-  "bars": ["coconut-club-los-angeles-ca"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "coconut-club-los-angeles-ca"
+    }
+  ]
 }

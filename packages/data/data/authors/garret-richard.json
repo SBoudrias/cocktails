@@ -6,11 +6,18 @@
     "https://www.instagram.com/garretjrichard"
   ],
   "description": "Master mixologist, tropical-canon modernizer (Tropical Standard)",
-  "bars": ["sunken-harbor-club-brooklyn-ny", "existing-conditions-new-york-ny"],
   "sources": [
     {
       "type": "book",
       "slug": "tropical-standard"
+    },
+    {
+      "type": "bar",
+      "slug": "sunken-harbor-club-brooklyn-ny"
+    },
+    {
+      "type": "bar",
+      "slug": "existing-conditions-new-york-ny"
     }
   ]
 }

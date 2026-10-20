@@ -1,5 +1,10 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Jelani Johnson",
-  "bars": ["clover-club-brooklyn-ny"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "clover-club-brooklyn-ny"
+    }
+  ]
 }

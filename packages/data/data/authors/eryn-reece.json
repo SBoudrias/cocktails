@@ -3,5 +3,10 @@
   "name": "Eryn Reece",
   "links": ["https://www.instagram.com/erynreece"],
   "description": "Bar director at Banzarbar and Freemans, NYC; Speed Rack champion 2013",
-  "bars": ["death-and-co-new-york-ny"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
 }

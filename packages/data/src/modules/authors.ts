@@ -10,13 +10,13 @@ import memo from './memo';
 import { getAllRecipes } from './recipes';
 import { getSource } from './sources';
 
-// The shape on disk: bars and sources are slug refs, resolved to full
-// entities by getAuthor before anything consumes them.
+// The shape on disk: one uniform sources array of typed refs — bars the
+// author worked at alongside books/channels/podcasts they are behind. The
+// loader splits them back out when resolving.
 type AuthorFile = Omit<Author, 'slug' | 'bars' | 'sources'> & {
-  bars?: [string, ...string[]];
   sources?: [
-    { type: Source['type']; slug: string },
-    ...{ type: Source['type']; slug: string }[],
+    { type: 'bar' | Source['type']; slug: string },
+    ...{ type: 'bar' | Source['type']; slug: string }[],
   ];
 };
 
@@ -40,27 +40,33 @@ const getBarSlugsWithRecipes = memo(async (): Promise<Set<string>> => {
 });
 
 /**
- * Resolve the file's bars/sources refs into the full entities, so consumers
- * always see the one Author type. check-data guarantees every ref resolves;
- * bars the catalog has no recipes for are dropped rather than linking to an
+ * Resolve the file's typed refs into the full entities, so consumers always
+ * see the one Author type. check-data guarantees every ref resolves; bars
+ * the catalog has no recipes for are dropped rather than linking to an
  * empty page.
  */
 async function resolveAuthorRefs(data: AuthorFile & { slug: string }): Promise<Author> {
-  const { bars: barRefs, sources: sourceRefs, ...rest } = data;
+  const { sources: refs, ...rest } = data;
+
+  const barRefs = refs?.filter((ref) => ref.type === 'bar') ?? [];
+  const otherRefs =
+    refs?.filter(
+      (ref): ref is { type: Source['type']; slug: string } => ref.type !== 'bar',
+    ) ?? [];
 
   const [bars, sources] = await Promise.all([
-    barRefs
+    barRefs.length > 0
       ? Promise.all([
           getBarSlugsWithRecipes(),
-          Promise.all(barRefs.map((slug) => getBar(slug))),
+          Promise.all(barRefs.map((ref) => getBar(ref.slug))),
         ]).then(([withRecipes, bars]) =>
           bars.filter(
             (bar): bar is Bar => bar !== undefined && withRecipes.has(bar.slug),
           ),
         )
       : undefined,
-    sourceRefs
-      ? Promise.all(sourceRefs.map((ref) => getSource(ref.type, ref.slug)))
+    otherRefs.length > 0
+      ? Promise.all(otherRefs.map((ref) => getSource(ref.type, ref.slug)))
       : undefined,
   ]);
 

@@ -1,5 +1,14 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "Jonnie Long",
-  "bars": ["death-and-co-new-york-ny", "death-and-co-denver-co"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    },
+    {
+      "type": "bar",
+      "slug": "death-and-co-denver-co"
+    }
+  ]
 }

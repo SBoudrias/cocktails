@@ -1,5 +1,10 @@
 {
   "$schema": "../../schemas/author.schema.json",
   "name": "William Prestwood",
-  "bars": ["pagan-idol-san-francisco-ca"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "pagan-idol-san-francisco-ca"
+    }
+  ]
 }

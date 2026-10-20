@@ -2,5 +2,10 @@
   "$schema": "../../schemas/author.schema.json",
   "name": "Jason Alexander",
   "description": "Tiki bartender at Devil’s Reef, Tacoma",
-  "bars": ["devils-reef-tacoma-wa"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "devils-reef-tacoma-wa"
+    }
+  ]
 }

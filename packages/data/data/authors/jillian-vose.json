@@ -3,5 +3,10 @@
   "name": "Jillian Vose",
   "links": ["https://www.instagram.com/jillianvose"],
   "description": "Death & Co bartender",
-  "bars": ["death-and-co-new-york-ny"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
 }

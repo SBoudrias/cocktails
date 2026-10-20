@@ -3,5 +3,10 @@
   "name": "Shannon Tebay",
   "links": ["https://www.instagram.com/shannontebay"],
   "description": "Death & Co bartender",
-  "bars": ["death-and-co-new-york-ny"]
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "death-and-co-new-york-ny"
+    }
+  ]
 }

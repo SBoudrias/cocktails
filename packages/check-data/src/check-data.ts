@@ -76,8 +76,8 @@ interface DataWithSchema {
   categories?: string[];
   parents?: string[];
   refs?: Array<{ type: string; channel?: string }>;
-  bars?: string[];
   sources?: Array<{ type: string; slug: string }>;
+
   techniques?: Array<{
     technique: 'clarification';
     method: 'milk';
@@ -456,19 +456,21 @@ for await (const sourceFile of fs.glob(dataGlob)) {
     }
   }
 
-  // Author entities reference bar entities (where the author worked) and
-  // catalog sources (channel host, book author); both must resolve.
+  // Author entities carry one sources array of typed refs — bars they worked
+  // at alongside books/channels/podcasts they are behind; every ref must
+  // resolve.
   if (schemaPath === 'schemas/author.schema.json') {
-    for (const barSlug of data.bars ?? []) {
-      if (!barEntitySlugs.has(barSlug)) {
-        fail(
-          `Author "${data.name}" references unknown bar "${barSlug}" in ${path.basename(sourceFile)}. ` +
-            `Use the slug of a bar entity file (name and location).`,
-        );
-      }
-    }
-
     for (const source of data.sources ?? []) {
+      if (source.type === 'bar') {
+        if (!barEntitySlugs.has(source.slug)) {
+          fail(
+            `Author "${data.name}" references unknown bar "${source.slug}" in ${path.basename(sourceFile)}. ` +
+              `Use the slug of a bar entity file (name and location).`,
+          );
+        }
+        continue;
+      }
+
       const slugs = sourceSlugsByType.get(source.type);
       if (!slugs || !slugs.has(source.slug)) {
         fail(
