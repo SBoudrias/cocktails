@@ -4,8 +4,8 @@ import {
   type SortableIngredient,
 } from '@cocktails/ingredient-sorting';
 import slugify from '@sindresorhus/slugify';
-import { logger } from './cli-util.ts';
-import type { FileCheckInput, Ingredient } from './types.ts';
+import { logger } from '../../cli-util.ts';
+import type { FileCheckInput, Ingredient } from '../../infra/types.ts';
 
 function addCategoryType(
   ingredient: Ingredient,

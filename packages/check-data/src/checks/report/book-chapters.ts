@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { logger } from './cli-util.ts';
-import { PACKAGE_ROOT } from './paths.ts';
-import type { Report } from './report.ts';
+import { logger } from '../../cli-util.ts';
+import { PACKAGE_ROOT } from '../../infra/paths.ts';
+import type { Report } from '../../infra/report.ts';
 
 function isChapterFolder(folder: string): boolean {
   return /^\d+_.+$/.test(folder);

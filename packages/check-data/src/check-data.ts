@@ -1,18 +1,18 @@
 #!/usr/bin/env -S node --no-warnings
 
-import { reportBarCasing } from './bar-casing.ts';
-import { reportBarLocations } from './bar-locations-check.ts';
-import { reportBookChapters } from './book-chapters.ts';
+import { validateFiles } from './checks/per-file/validate-files.ts';
+import { reportBarCasing } from './checks/report/bar-casing.ts';
+import { reportBarLocations } from './checks/report/bar-locations-check.ts';
+import { reportBookChapters } from './checks/report/book-chapters.ts';
+import { findFloatingIngredients } from './checks/report/floating-ingredients.ts';
+import { reportRedundantCategories } from './checks/report/redundant-categories.ts';
+import { reportSimilarNames } from './checks/report/similar-names.ts';
+import { reportUntrackedChannels } from './checks/report/untracked-channels.ts';
 import { logger } from './cli-util.ts';
-import { loadDataContext } from './data-context.ts';
-import { findFloatingIngredients } from './floating-ingredients.ts';
-import { reportRedundantCategories } from './redundant-categories.ts';
-import { createReport } from './report.ts';
-import { loadSchemas } from './schemas.ts';
-import { reportSimilarNames } from './similar-names.ts';
-import { reportUntrackedChannels } from './untracked-channels.ts';
-import { validateFiles } from './validate-files.ts';
-import { createWriteJSON } from './write-json.ts';
+import { loadDataContext } from './context/data-context.ts';
+import { createReport } from './infra/report.ts';
+import { loadSchemas } from './infra/schemas.ts';
+import { createWriteJSON } from './infra/write-json.ts';
 
 const startTime = performance.now();
 

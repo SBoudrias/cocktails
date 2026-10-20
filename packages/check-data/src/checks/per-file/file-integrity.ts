@@ -2,9 +2,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import type Ajv from 'ajv/dist/2020.js';
-import { logger } from './cli-util.ts';
-import { PACKAGE_ROOT } from './paths.ts';
-import type { FileCheckInput } from './types.ts';
+import { logger } from '../../cli-util.ts';
+import { PACKAGE_ROOT } from '../../infra/paths.ts';
+import type { FileCheckInput } from '../../infra/types.ts';
 
 /**
  * Schema, filename and folder integrity: validates the file against its

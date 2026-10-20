@@ -1,15 +1,15 @@
 import path from 'node:path';
+import { logger } from '../../cli-util.ts';
+import type { DataContext } from '../../context/data-context.ts';
+import { APPROVED_OVERLAPS_PATH, REPO_ROOT } from '../../infra/paths.ts';
+import type { Report } from '../../infra/report.ts';
 import {
   isApprovedOverlap,
   normalizeName,
   validateApprovedOverlaps,
 } from './approved-overlaps.ts';
-import { logger } from './cli-util.ts';
-import type { DataContext } from './data-context.ts';
 import { findSimilarIngredientPairs } from './ingredient-similarity.ts';
 import { areSimilarNames } from './name-similarity.ts';
-import { APPROVED_OVERLAPS_PATH, REPO_ROOT } from './paths.ts';
-import type { Report } from './report.ts';
 
 /**
  * Similar-name checks: author and bar names that look like misspellings of

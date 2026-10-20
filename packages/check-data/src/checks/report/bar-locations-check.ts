@@ -1,10 +1,10 @@
 import path from 'node:path';
+import { logger } from '../../cli-util.ts';
+import type { DataContext } from '../../context/data-context.ts';
+import { REPO_ROOT } from '../../infra/paths.ts';
+import type { Report } from '../../infra/report.ts';
 import { isApprovedOverlap, normalizeName } from './approved-overlaps.ts';
 import { findInconsistentBarLocations, findSimilarBarNames } from './bar-locations.ts';
-import { logger } from './cli-util.ts';
-import type { DataContext } from './data-context.ts';
-import { REPO_ROOT } from './paths.ts';
-import type { Report } from './report.ts';
 
 /**
  * Reports bars credited under the same name with inconsistent locations, and

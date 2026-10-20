@@ -1,4 +1,4 @@
-import type { FileCheckInput } from './types.ts';
+import type { FileCheckInput } from '../../infra/types.ts';
 
 /**
  * Tracks youtube ref channels that are not tracked sources, for the

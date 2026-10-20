@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
-import type { DataContext } from './data-context.ts';
+import type { DataContext } from '../../context/data-context.ts';
 import { checkRefs } from './refs.ts';
 
-vi.mock('./cli-util.ts', () => ({
+vi.mock('../../cli-util.ts', () => ({
   logger: {
     header: vi.fn(),
     item: vi.fn(),

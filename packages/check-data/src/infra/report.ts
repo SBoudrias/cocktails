@@ -1,4 +1,4 @@
-import { logger } from './cli-util.ts';
+import { logger } from '../cli-util.ts';
 
 export interface Report {
   /** Records a failure: logs it and marks the run as failed (exit code 1). */

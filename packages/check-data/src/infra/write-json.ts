@@ -7,7 +7,7 @@ import type { Report } from './report.ts';
 // The `oxfmt` API does not discover `.oxfmtrc.json` like the CLI does, so the
 // repo config is loaded and passed explicitly. Without it, files written by
 // `writeJSON` drift away from `yarn oxfmt` formatting.
-const OXFMT_CONFIG_PATH = path.join(import.meta.dirname, '../../../.oxfmtrc.json');
+const OXFMT_CONFIG_PATH = path.join(import.meta.dirname, '../../../../.oxfmtrc.json');
 const oxfmtConfig: FormatConfig = JSON.parse(
   await fs.readFile(OXFMT_CONFIG_PATH, 'utf-8').catch((error: unknown) => {
     throw new Error(

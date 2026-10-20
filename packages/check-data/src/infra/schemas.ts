@@ -5,7 +5,7 @@ import {
   type SchemaFormatter,
 } from '@cocktails/jsonschema-formatter';
 import Ajv from 'ajv/dist/2020.js';
-import { logger } from './cli-util.ts';
+import { logger } from '../cli-util.ts';
 import { PACKAGE_ROOT } from './paths.ts';
 
 /**

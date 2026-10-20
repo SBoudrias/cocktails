@@ -1,6 +1,6 @@
-import { logger } from './cli-util.ts';
-import type { DataContext } from './data-context.ts';
-import type { Report } from './report.ts';
+import { logger } from '../../cli-util.ts';
+import type { DataContext } from '../../context/data-context.ts';
+import type { Report } from '../../infra/report.ts';
 
 /**
  * Fails when one bar is credited under the same name with inconsistent

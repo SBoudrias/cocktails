@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { FileCheckInput } from './types.ts';
+import type { FileCheckInput } from '../../infra/types.ts';
 
 /**
  * Validates the typed source refs on author entities — bars they worked at

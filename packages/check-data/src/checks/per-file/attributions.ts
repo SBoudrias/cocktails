@@ -1,9 +1,9 @@
 import path from 'node:path';
+import type { FileCheckInput } from '../../infra/types.ts';
 import {
   getMilkClarificationIngredientSlugs,
   validateMilkClarification,
 } from './milk-clarification.ts';
-import type { FileCheckInput } from './types.ts';
 
 /**
  * Recipe-file pass: validates milk clarification against canonical names

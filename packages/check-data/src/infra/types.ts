@@ -1,5 +1,5 @@
 import type { SortableIngredient } from '@cocktails/ingredient-sorting';
-import type { DataContext } from './data-context.ts';
+import type { DataContext } from '../context/data-context.ts';
 import type { Report } from './report.ts';
 import type { WriteJSON } from './write-json.ts';
 

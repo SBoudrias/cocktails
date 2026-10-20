@@ -1,7 +1,7 @@
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
-import { PACKAGE_ROOT } from './paths.ts';
-import type { FileCheckInput, Ingredient } from './types.ts';
+import { PACKAGE_ROOT } from '../../infra/paths.ts';
+import type { FileCheckInput, Ingredient } from '../../infra/types.ts';
 
 /**
  * Creates stub metadata files for anything referenced but not yet tracked:

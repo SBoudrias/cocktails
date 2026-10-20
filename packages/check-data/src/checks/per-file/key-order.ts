@@ -1,5 +1,5 @@
 import type { SchemaFormatter } from '@cocktails/jsonschema-formatter';
-import type { WriteJSON } from './write-json.ts';
+import type { WriteJSON } from '../../infra/write-json.ts';
 
 /**
  * Applies schema key ordering to a data file, silently rewriting it when the

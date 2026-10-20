@@ -1,8 +1,8 @@
 import path from 'node:path';
+import { logger } from '../../cli-util.ts';
+import type { DataContext } from '../../context/data-context.ts';
+import { REPO_ROOT } from '../../infra/paths.ts';
 import { findRedundantCategoryPairs } from './category-similarity.ts';
-import { logger } from './cli-util.ts';
-import type { DataContext } from './data-context.ts';
-import { REPO_ROOT } from './paths.ts';
 
 /**
  * Reports category names that look like the same product registered under

@@ -1,13 +1,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
-import type { ApprovedOverlaps } from './approved-overlaps.ts';
-import type { BarLocationUsage } from './bar-locations.ts';
+import type { ApprovedOverlaps } from '../checks/report/approved-overlaps.ts';
+import type { BarLocationUsage } from '../checks/report/bar-locations.ts';
+import { logger } from '../cli-util.ts';
+import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT, REPO_ROOT } from '../infra/paths.ts';
+import type { Report } from '../infra/report.ts';
+import type { WriteJSON } from '../infra/write-json.ts';
 import { normalizeCategoryCasing } from './category-casing.ts';
-import { logger } from './cli-util.ts';
-import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT, REPO_ROOT } from './paths.ts';
-import type { Report } from './report.ts';
-import type { WriteJSON } from './write-json.ts';
 
 interface Attribution {
   relation: string;
