@@ -64,10 +64,10 @@ function LinkButtons({ links }: { links?: [string, ...string[]] }) {
         target="_blank"
         rel="noreferrer noopener"
         color="inherit"
+        startIcon={icon}
         aria-label={link}
       >
-        {icon}
-        &nbsp;{label}
+        {label}
       </Button>
     );
   });
