@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tropic Like It's Hot",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aperol",
+      "type": "liqueur",
+      "technique": {
+        "technique": "infusion",
+        "agent": "pineapple sage leaves",
+        "agent_quantity": {
+          "amount": 0.125,
+          "maximum": 0.25,
+          "unit": "cup"
+        },
+        "spirit_quantity": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "duration": "3 hours"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Yellow Chartreuse",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton White Stache",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "For the infusion, muddle 1/8 to 1/4 cup of pineapple sage leaves per 100 ml Aperol, add the Aperol, cover and steep for 3 hours, then strain.",
+    "Shake all cocktail ingredients with ice.",
+    "Strain into a footed pilsner glass over nugget or crushed ice.",
+    "Garnish with a pineapple sage sprig."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Cynthia Tran"
+    },
+    {
+      "relation": "bar",
+      "source": "Tratto",
+      "location": "San Francisco, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "P95wzmiKQvs",
+      "channel": "make-and-drink",
+      "start": 92
+    }
+  ]
+}

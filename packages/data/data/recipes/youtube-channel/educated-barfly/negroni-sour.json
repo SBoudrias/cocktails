@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Negroni Sour",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "technique": {
+        "technique": "acid-adjustment"
+      },
+      "quantity": {
+        "amount": 25,
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Gin",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "For the acid-adjusted orange juice, dissolve 3 g citric acid and 2 g malic acid in 100 ml freshly squeezed orange juice.",
+    "Use a fat 3/4 oz of the acid-adjusted orange juice, given as 25 ml in the source.",
+    "Dry shake all ingredients for about 30 seconds to emulsify the egg white, then shake with ice.",
+    "Strain into a chilled coupe and garnish with a freeze-dried orange half-wheel."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "LTQ81BF_2Us",
+      "channel": "educated-barfly",
+      "start": 690
+    }
+  ]
+}
