@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Flannel Shirt",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "collins",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Brown sugar syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "unfiltered apple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Allspice dram",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Amaro Averna",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whisky (blended Scotch)",
+      "type": "category",
+      "quantity": {
+        "amount": 1.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Use cloudy, non-alcoholic apple cider, not hard cider.",
+    "Whip shake all ingredients with a small amount of pebble ice until the ice melts.",
+    "Pour unstrained into a chilled collins glass and fill with pebble or crushed ice.",
+    "Garnish with an orange twist and an apple fan."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jeffrey Morgenthaler"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "LTQ81BF_2Us",
+      "channel": "educated-barfly",
+      "start": 354
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Frozen Espresso Martini",
+  "preparation": "blended",
+  "served_on": "blended",
+  "glassware": "highball",
+  "ingredients": [
+    {
+      "name": "Cold-brewed Coffee Concentrate",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cream of coconut",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Oat milk",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Mr. Black coffee liqueur",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rum",
+      "type": "category",
+      "technique": {
+        "technique": "infusion",
+        "agent": "cacao nibs"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "xanthan gum",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Salt",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "The source calls for Copalli Cacao Rum and Coco López cream of coconut.",
+    "Blend all ingredients with 1 cup of nugget or crushed ice until smooth.",
+    "Pour into a highball glass and garnish with toasted coconut."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Will Krepop"
+    },
+    {
+      "relation": "bar",
+      "source": "Wiggle Room",
+      "location": "New York, NY"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "IYmNql3--VY",
+      "channel": "make-and-drink",
+      "start": 80
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mollymock",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Simple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Montenegro",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Black blended rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "The original calls for Bacardi Black; Make and Drink uses a blend of Coruba and Goslings, without specifying the blend proportions in the description.",
+    "Shake all ingredients with ice.",
+    "Strain into a chilled coupe and garnish with an orange twist."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Juan Coronado"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "BmKJNDD9cVI",
+      "channel": "make-and-drink",
+      "start": 152
+    }
+  ]
+}
