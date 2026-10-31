@@ -1,0 +1,9 @@
+:HL["/cocktails/pr-preview/pr-512/_next/static/chunks/24ayuaqjpv5qa.css","style"]
+:HL["/cocktails/pr-preview/pr-512/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/cocktails/pr-preview/pr-512/_next/static/chunks/3-06jao35dxqx.css","style"]
+5:[["children",{"s":"__PAGE__","h":160}]]
+4:[["children",{"s":{"n":"recipe","t":"d","k":"hyde-park-swizzle","s":[]},"h":96,"c":"$Q5"}]]
+3:[["children",{"s":{"n":"source","t":"d","k":"death-and-co","s":[]},"h":96,"c":"$Q4"}]]
+2:[["children",{"s":{"n":"type","t":"d","k":"book","s":[]},"h":96,"c":"$Q3"}]]
+1:[["children",{"s":"recipes","h":96,"c":"$Q2"}]]
+0:{"b":"2Gs_gvPfH_VwMblcR2Jt7","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
