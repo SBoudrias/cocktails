@@ -5,10 +5,6 @@ import Ajv from 'ajv/dist/2020.js';
 import { logger } from '../cli-util.ts';
 import { PACKAGE_ROOT } from './paths.ts';
 
-// Captured before the registration work below so the run summary measures the
-// whole run, as the original script did.
-export const startTime = performance.now();
-
 // Loaded once at import time: this is a single-run CLI, and the validator,
 // the key-ordering writer and the per-file checks all share one schema
 // registry. Registering here (rather than in the bin) lets every module grab

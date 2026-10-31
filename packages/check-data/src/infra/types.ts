@@ -6,18 +6,12 @@ export interface Ingredient extends SortableIngredient {
   brix?: number;
 }
 
-export interface Attribution {
-  relation: string;
-  source: string;
-  location?: string;
-}
-
 export interface DataWithSchema {
   $schema: string;
   name: string;
   type?: string;
   ingredients?: Ingredient[];
-  attributions?: Attribution[];
+  attributions?: Array<{ relation: string; source: string; location?: string }>;
   categories?: string[];
   parents?: string[];
   refs?: Array<{ type: string; channel?: string }>;
