@@ -4,9 +4,10 @@ import { createSchemaFormatter } from '@cocktails/jsonschema-formatter';
 import Ajv from 'ajv/dist/2020.js';
 import { logger } from '../cli-util.ts';
 import { PACKAGE_ROOT } from './paths.ts';
-// Side-effect import: captures the run's start time before the registration
-// loop below, keeping the summary's elapsed time faithful to the whole run.
-import './start.ts';
+
+// Captured before the registration work below so the run summary measures the
+// whole run, as the original script did.
+export const startTime = performance.now();
 
 // Loaded once at import time: this is a single-run CLI, and the validator,
 // the key-ordering writer and the per-file checks all share one schema

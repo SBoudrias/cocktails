@@ -11,7 +11,7 @@ import { reportUntrackedChannels } from './checks/report/untracked-channels.ts';
 import { logger } from './cli-util.ts';
 import { ctx, loadContext } from './context/data-context.ts';
 import { report } from './infra/report.ts';
-import { startTime } from './infra/start.ts';
+import { startTime } from './infra/schemas.ts';
 
 await loadContext();
 await validateFiles();

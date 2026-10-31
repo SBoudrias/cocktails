@@ -28,11 +28,11 @@ export async function writeJSON(filepath: string, data: object): Promise<void> {
   await fs.mkdir(path.dirname(filepath), { recursive: true });
   const sortedData = formatter.format(data);
   const jsonContent = JSON.stringify(sortedData, null, 2) + '\n';
-  const formattedJson = await formatWithOxfmt(filepath, jsonContent, oxfmtConfig);
-  if (formattedJson.errors.length > 0) {
-    report.fail(`Could not format ${filepath}: ${formattedJson.errors[0]?.message}`);
+  const { errors, code } = await formatWithOxfmt(filepath, jsonContent, oxfmtConfig);
+  if (errors.length > 0) {
+    report.fail(`Could not format ${filepath}: ${errors[0]?.message}`);
     await fs.writeFile(filepath, jsonContent);
     return;
   }
-  await fs.writeFile(filepath, formattedJson.code);
+  await fs.writeFile(filepath, code);
 }
