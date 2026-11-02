@@ -3,6 +3,7 @@
  * Docs: https://developers.google.com/youtube/v3/docs
  */
 import { parse, toSeconds } from 'iso8601-duration';
+import { isUnairedBroadcast } from './live-broadcast.ts';
 
 export interface Video {
   id: string;
@@ -45,9 +46,14 @@ interface YouTubeVideoContentDetails {
   duration: string; // ISO 8601 duration, e.g. "PT1M30S"
 }
 
+interface YouTubeVideoSnippet {
+  liveBroadcastContent: 'live' | 'upcoming' | 'none';
+}
+
 interface YouTubeVideoItem {
   id: string;
   contentDetails: YouTubeVideoContentDetails;
+  snippet: YouTubeVideoSnippet;
 }
 
 interface YouTubeVideosResponse {
@@ -55,10 +61,14 @@ interface YouTubeVideosResponse {
 }
 
 /**
- * Fetch video durations in batch using the Videos API
- * The API allows up to 50 IDs per request
+ * Fetch video durations in batch using the Videos API, dropping entries for
+ * live broadcasts that have not aired yet ('live' | 'upcoming'). An upcoming
+ * stream that has since aired as a regular VOD comes back as 'none' and is
+ * kept.
+ *
+ * The API allows up to 50 IDs per request.
  */
-async function fetchVideoDurations(
+async function fetchAiredVideoDurations(
   apiKey: string,
   videoIds: string[],
 ): Promise<Map<string, number>> {
@@ -68,7 +78,7 @@ async function fetchVideoDurations(
   for (let i = 0; i < videoIds.length; i += 50) {
     const batch = videoIds.slice(i, i + 50);
     const params = new URLSearchParams({
-      part: 'contentDetails',
+      part: 'contentDetails,snippet',
       id: batch.join(','),
       key: apiKey,
     });
@@ -84,6 +94,8 @@ async function fetchVideoDurations(
     const data = (await response.json()) as YouTubeVideosResponse;
 
     for (const item of data.items) {
+      if (isUnairedBroadcast(item.snippet.liveBroadcastContent)) continue;
+
       durations.set(item.id, toSeconds(parse(item.contentDetails.duration)));
     }
   }
@@ -207,15 +219,15 @@ async function fetchPlaylistVideos(
     if (!pageToken) break;
   }
 
-  // Fetch durations for all videos in batch
+  // Fetch durations for all videos in batch; live/upcoming broadcasts are
+  // dropped from the result map, so only aired videos are kept.
   const videoIds = videos.map((v) => v.id);
-  const durations = await fetchVideoDurations(apiKey, videoIds);
+  const durations = await fetchAiredVideoDurations(apiKey, videoIds);
 
-  for (const video of videos) {
+  return videos.filter((video) => {
     video.duration = durations.get(video.id);
-  }
-
-  return videos;
+    return video.duration !== undefined;
+  });
 }
 
 /**

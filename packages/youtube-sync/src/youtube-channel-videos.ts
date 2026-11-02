@@ -2,6 +2,7 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { YOUTUBE_CHANNEL_ROOT } from '@cocktails/data/constants';
+import { isUnairedBroadcast } from './live-broadcast.ts';
 import * as YouTubeAPI from './youtube-api.ts';
 
 export type Video = YouTubeAPI.Video;
@@ -182,6 +183,9 @@ export function fetchChannelVideosYtDlp(channelUrl: string, maxResults = 100): V
     const title = readString(entry, 'title');
     const uploadDate = readString(entry, 'upload_date');
     if (!id || !title || !uploadDate) return undefined;
+
+    // Live broadcasts that have not aired yet carry no usable content.
+    if (isUnairedBroadcast(readString(entry, 'live_status'))) return undefined;
 
     return {
       id,
