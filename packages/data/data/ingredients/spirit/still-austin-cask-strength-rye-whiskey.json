@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Still Austin Cask Strength Rye Whiskey",
+  "type": "spirit",
+  "categories": ["Whiskey (rye)"]
+}
