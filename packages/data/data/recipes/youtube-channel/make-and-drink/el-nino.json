@@ -1,0 +1,92 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "El Niño",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "goblet",
+  "ingredients": [
+    {
+      "name": "Coffee bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "coconut cream",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Worthy Park Estate 109 Dark Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Uruapan Charanda Blanco Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Nixta",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Tequila reposado",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rim a goblet with Tajin.",
+    "Shake all ingredients with ice.",
+    "Strain into the prepared glass over pebble ice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Make and Drink"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "NqTUVqCoSjM",
+      "channel": "make-and-drink",
+      "start": 338
+    }
+  ]
+}
