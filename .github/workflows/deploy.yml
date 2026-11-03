@@ -30,11 +30,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      # Prune the .txt payload twins: static export duplicates every route's
-      # RSC payload as .html, .rsc and .txt. The .txt files are pure
-      # duplicates (~55% of the output size). Trade-off: client-side
-      # navigation to these routes falls back to a full page load via the
-      # .html/.rsc payloads — no functional loss, just slower soft-navs.
+      # Prune the .txt payload twins: static export emits each route as a
+      # .html file plus duplicate .txt payload files (~55% of the output
+      # size, measured). Trade-off: client-side navigation to these routes
+      # falls back to a full page load via the .html files — no functional
+      # loss, just slower soft-navs.
       - name: Prune payload twins 🧹
         run: find apps/web/out -name '*.txt' -type f -delete
 
