@@ -33,6 +33,19 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
 
+      # Prune the __next._full.txt payloads: static export emits each route
+      # as a .html plus several .txt RSC payload variants. Browser-session
+      # instrumentation shows the client router only ever requests
+      # __next._tree.txt, *__PAGE__.txt (prefetch) and plain route.txt
+      # (?_rsc navigation) — the _full route-tree payload is never fetched,
+      # so it is dead weight (~81 MB / 4,767 files on a full export). The
+      # requested variants stay: deleting them would break soft navigation
+      # (every click would fall back to a full page load and 404 the
+      # router's prefetches).
+      - name: Prune payload twins 🧹
+        if: github.event.action != 'closed'
+        run: find apps/web/out -name '__next._full.txt' -type f -delete
+
       - name: Deploy PR Preview 🚀
         uses: rossjrw/pr-preview-action@v1
         with:
