@@ -33,7 +33,9 @@ jobs:
         uses: actions/cache@v6
         with:
           path: .turbo/cache
-          key: turbo-check-data-${{ runner.os }}-${{ github.sha }}
+          # Key on the lockfile so the exact key can match a prior run;
+          # a sha-keyed cache never hits twice and every run was a miss.
+          key: turbo-check-data-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             turbo-check-data-${{ runner.os }}-
 
