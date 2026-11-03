@@ -4,6 +4,7 @@ import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import { toRecipeCards } from '#/modules/recipeCard';
 import AuthorRecipesClient from './AuthorRecipesClient';
 
 type Props = {
@@ -71,7 +72,7 @@ export default async function AuthorRecipesPage({ params }: Props) {
   // the client renders every dimension of the author from its one object.
   return (
     <Suspense>
-      <AuthorRecipesClient author={author} recipes={authorRecipes} />
+      <AuthorRecipesClient author={author} recipes={toRecipeCards(authorRecipes)} />
     </Suspense>
   );
 }

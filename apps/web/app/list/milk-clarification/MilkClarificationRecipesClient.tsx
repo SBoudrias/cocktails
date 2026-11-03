@@ -1,6 +1,5 @@
 'use client';
 
-import type { Recipe } from '@cocktails/data';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
@@ -9,14 +8,12 @@ import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
-import { getRecipeSource } from '#/modules/getRecipeSource';
-import { getRecipeSearchText } from '#/modules/searchText';
-import { getRecipeUrl } from '#/modules/url';
+import type { RecipeCardItem } from '#/modules/recipeCard';
 
 export default function MilkClarificationRecipesClient({
   recipes,
 }: {
-  recipes: Recipe[];
+  recipes: RecipeCardItem[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
@@ -30,14 +27,13 @@ export default function MilkClarificationRecipesClient({
     </>
   );
 
-  const renderRecipe = useCallback((recipe: Recipe) => {
-    const href = getRecipeUrl(recipe);
+  const renderRecipe = useCallback((recipe: RecipeCardItem) => {
     return (
       <RecipeLinkListItem
-        key={href}
-        href={href}
+        key={recipe.href}
+        href={recipe.href}
         name={recipe.name}
-        source={getRecipeSource(recipe)}
+        source={recipe.source}
       />
     );
   }, []);
@@ -52,7 +48,7 @@ export default function MilkClarificationRecipesClient({
       {isSearching ? (
         <SearchableList
           items={recipes}
-          getSearchText={getRecipeSearchText}
+          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}

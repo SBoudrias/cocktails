@@ -7,8 +7,8 @@ import { getIngredientPageParams } from '@cocktails/data/params';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { Suspense } from 'react';
+import { toRecipeCards } from '#/modules/recipeCard';
 import IngredientClient from './IngredientClient';
-import { toRecipeCards } from './recipeCard';
 
 type Params = { type: string; slug: string };
 
@@ -49,7 +49,11 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       <IngredientClient
         ingredient={ingredient}
         substitutes={substitutes}
-        relatedRecipes={toRecipeCards(relatedRecipes, ingredient)}
+        relatedRecipes={toRecipeCards(
+          relatedRecipes,
+          (recipe) =>
+            recipe.ingredients.find((i) => i.slug === ingredient.slug)?.quantity,
+        )}
       />
     </Suspense>
   );

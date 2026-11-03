@@ -1,30 +1,19 @@
-import type { Recipe } from '@cocktails/data';
+import type { RecipeCardItem } from '#/modules/recipeCard';
 
 /**
- * Get the chapter display name for a recipe.
+ * Get the chapter display name for a recipe card.
  * Returns 'Etc' for recipes without a valid chapter.
  */
-export function getChapterName(recipe: Recipe): string {
-  return recipe.chapter?.name ?? 'Etc';
+export function getChapterName(item: RecipeCardItem): string {
+  return item.chapter?.name ?? 'Etc';
 }
 
 /**
- * Get the page number from a recipe's book ref.
- * Returns Infinity if no page number is found (sorts to end).
+ * Compare recipe cards by their page number within a chapter.
+ * Cards without a page number sort to the end.
  */
-function getPageNumber(recipe: Recipe): number {
-  const bookRef = recipe.refs.find((ref) => ref.type === 'book');
-  if (bookRef && 'page' in bookRef) {
-    return bookRef.page;
-  }
-  return Infinity;
-}
-
-/**
- * Compare recipes by their page number within a chapter.
- */
-export function compareByPage(a: Recipe, b: Recipe): number {
-  return getPageNumber(a) - getPageNumber(b);
+export function compareByPage(a: RecipeCardItem, b: RecipeCardItem): number {
+  return (a.page ?? Infinity) - (b.page ?? Infinity);
 }
 
 /**
@@ -40,17 +29,17 @@ export function compareChapterHeaders(a: string, b: string): number {
 }
 
 /**
- * Create a chapter-aware header comparator that uses recipe data
+ * Create a chapter-aware header comparator that uses recipe card data
  * to determine chapter order.
  */
 export function createChapterHeaderComparator(
-  recipes: Recipe[],
+  items: RecipeCardItem[],
 ): (a: string, b: string) => number {
   // Build a map of chapter display name -> order
   const chapterOrderMap = new Map<string, number>();
-  for (const recipe of recipes) {
-    if (recipe.chapter) {
-      chapterOrderMap.set(recipe.chapter.name, recipe.chapter.order);
+  for (const item of items) {
+    if (item.chapter) {
+      chapterOrderMap.set(item.chapter.name, item.chapter.order);
     }
   }
 
@@ -64,12 +53,12 @@ export function createChapterHeaderComparator(
 }
 
 /**
- * Create a list config with proper chapter ordering based on recipe data.
+ * Create a list config with proper chapter ordering based on recipe card data.
  */
-export function createByChapterListConfig(recipes: Recipe[]) {
+export function createByChapterListConfig(items: RecipeCardItem[]) {
   return {
     groupBy: getChapterName,
     sortItemBy: compareByPage,
-    sortHeaderBy: createChapterHeaderComparator(recipes),
+    sortHeaderBy: createChapterHeaderComparator(items),
   };
 }

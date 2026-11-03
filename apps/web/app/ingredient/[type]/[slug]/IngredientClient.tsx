@@ -31,9 +31,9 @@ import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
+import type { RecipeCardItem } from '#/modules/recipeCard';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 import IngredientCalculators from './IngredientCalculators';
-import type { RecipeCardItem } from './recipeCard';
 
 export default function IngredientClient({
   ingredient,

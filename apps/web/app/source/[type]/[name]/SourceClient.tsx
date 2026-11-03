@@ -1,6 +1,6 @@
 'use client';
 
-import type { Recipe, Source } from '@cocktails/data';
+import type { Source } from '@cocktails/data';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
@@ -10,16 +10,14 @@ import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
-import { getRecipeSource } from '#/modules/getRecipeSource';
-import { getRecipeSearchText } from '#/modules/searchText';
-import { getRecipeUrl } from '#/modules/url';
+import type { RecipeCardItem } from '#/modules/recipeCard';
 
 export default function SourceClient({
   source,
   recipes,
 }: {
   source: Source;
-  recipes: Recipe[];
+  recipes: RecipeCardItem[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
@@ -33,14 +31,13 @@ export default function SourceClient({
     </>
   );
 
-  const renderRecipe = useCallback((recipe: Recipe) => {
-    const href = getRecipeUrl(recipe);
+  const renderRecipe = useCallback((recipe: RecipeCardItem) => {
     return (
       <RecipeLinkListItem
-        key={href}
-        href={href}
+        key={recipe.href}
+        href={recipe.href}
         name={recipe.name}
-        source={getRecipeSource(recipe)}
+        source={recipe.source}
       />
     );
   }, []);
@@ -51,7 +48,7 @@ export default function SourceClient({
       {isSearching ? (
         <SearchableList
           items={recipes}
-          getSearchText={getRecipeSearchText}
+          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}
