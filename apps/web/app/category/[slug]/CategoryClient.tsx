@@ -1,6 +1,6 @@
 'use client';
 
-import type { Category, Recipe, RootIngredient } from '@cocktails/data';
+import type { Category, RootIngredient } from '@cocktails/data';
 import { Card, CardContent, CardHeader, Stack } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
@@ -15,10 +15,9 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
-import { getRecipeSource } from '#/modules/getRecipeSource';
 import { ingredientHasData } from '#/modules/hasData';
-import { getRecipeSearchText } from '#/modules/searchText';
-import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '#/modules/url';
+import type { RecipeCardItem } from '#/modules/recipeCard';
+import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 
 export default function CategoryClient({
   category,
@@ -30,16 +29,11 @@ export default function CategoryClient({
   category: Category;
   members: RootIngredient[];
   substitutes: RootIngredient[];
-  relatedRecipes: Recipe[];
+  relatedRecipes: RecipeCardItem[];
   childCategories: Category[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
-
-  const categorySlugs = useMemo(
-    () => [category.slug, ...childCategories.map((c) => c.slug)],
-    [category.slug, childCategories],
-  );
 
   const { firstVideo, additionalVideos } = useMemo(() => {
     const videos = category.refs.filter((ref) => ref.type === 'youtube');
@@ -58,29 +52,19 @@ export default function CategoryClient({
     </>
   );
 
-  const renderRecipe = useCallback(
-    (recipe: Recipe) => {
-      // Find the first ingredient that matches this category
-      const ing = recipe.ingredients.find((ingredient) => {
-        if (ingredient.type === 'category') {
-          return ingredient.slug === category.slug;
+  const renderRecipe = useCallback((recipe: RecipeCardItem) => {
+    return (
+      <RecipeLinkListItem
+        key={recipe.href}
+        href={recipe.href}
+        name={recipe.name}
+        source={recipe.source}
+        tertiary={
+          recipe.quantity && <Quantity quantity={recipe.quantity} preferredUnit="oz" />
         }
-        return ingredient.categories.some((c) => categorySlugs.includes(c.slug));
-      });
-      const recipeUrl = getRecipeUrl(recipe);
-
-      return (
-        <RecipeLinkListItem
-          key={recipeUrl}
-          href={recipeUrl}
-          name={recipe.name}
-          source={getRecipeSource(recipe)}
-          tertiary={ing && <Quantity quantity={ing.quantity} preferredUnit="oz" />}
-        />
-      );
-    },
-    [category.slug, categorySlugs],
-  );
+      />
+    );
+  }, []);
 
   return (
     <>
@@ -96,7 +80,7 @@ export default function CategoryClient({
       {isSearching ? (
         <SearchableList
           items={relatedRecipes}
-          getSearchText={getRecipeSearchText}
+          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}

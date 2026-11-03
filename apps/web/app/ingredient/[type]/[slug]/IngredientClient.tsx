@@ -1,6 +1,6 @@
 'use client';
 
-import type { Recipe, RootIngredient } from '@cocktails/data';
+import type { RootIngredient } from '@cocktails/data';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import {
   Button,
@@ -30,10 +30,9 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
-import { getRecipeSource } from '#/modules/getRecipeSource';
 import { ingredientHasData } from '#/modules/hasData';
-import { getRecipeSearchText } from '#/modules/searchText';
-import { getCategoryUrl, getIngredientUrl, getRecipeUrl } from '#/modules/url';
+import type { RecipeCardItem } from '#/modules/recipeCard';
+import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 import IngredientCalculators from './IngredientCalculators';
 
 export default function IngredientClient({
@@ -43,7 +42,7 @@ export default function IngredientClient({
 }: {
   ingredient: RootIngredient;
   substitutes: RootIngredient[];
-  relatedRecipes: Recipe[];
+  relatedRecipes: RecipeCardItem[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const topCategory = ingredient.categories[0];
@@ -73,23 +72,19 @@ export default function IngredientClient({
     </>
   );
 
-  const renderRecipe = useCallback(
-    (recipe: Recipe) => {
-      const ing = recipe.ingredients.find((i) => i.slug === ingredient.slug);
-      const href = getRecipeUrl(recipe);
-
-      return (
-        <RecipeLinkListItem
-          key={href}
-          href={href}
-          name={recipe.name}
-          source={getRecipeSource(recipe)}
-          tertiary={ing && <Quantity quantity={ing.quantity} preferredUnit="oz" />}
-        />
-      );
-    },
-    [ingredient.slug],
-  );
+  const renderRecipe = useCallback((recipe: RecipeCardItem) => {
+    return (
+      <RecipeLinkListItem
+        key={recipe.href}
+        href={recipe.href}
+        name={recipe.name}
+        source={recipe.source}
+        tertiary={
+          recipe.quantity && <Quantity quantity={recipe.quantity} preferredUnit="oz" />
+        }
+      />
+    );
+  }, []);
 
   let descriptionCard;
   if (!ingredient.description && topCategory?.description) {
@@ -147,7 +142,7 @@ export default function IngredientClient({
       {isSearching ? (
         <SearchableList
           items={relatedRecipes}
-          getSearchText={getRecipeSearchText}
+          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}

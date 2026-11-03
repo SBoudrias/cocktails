@@ -1,6 +1,7 @@
 import { getMilkClarifiedRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { toRecipeCards } from '#/modules/recipeCard';
 import MilkClarificationRecipesClient from './MilkClarificationRecipesClient';
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function MilkClarificationRecipesPage() {
-  const recipes = await getMilkClarifiedRecipes();
+  const recipes = toRecipeCards(await getMilkClarifiedRecipes());
 
   return (
     <Suspense>

@@ -1,6 +1,7 @@
 import { getNonAlcoholicRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { toRecipeCards } from '#/modules/recipeCard';
 import NonAlcoholicRecipesClient from './NonAlcoholicRecipesClient';
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function NonAlcoholicRecipesPage() {
-  const recipes = await getNonAlcoholicRecipes();
+  const recipes = toRecipeCards(await getNonAlcoholicRecipes());
 
   return (
     <Suspense>

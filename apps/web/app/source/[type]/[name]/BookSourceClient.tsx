@@ -1,6 +1,6 @@
 'use client';
 
-import type { Book, Recipe } from '@cocktails/data';
+import type { Book } from '@cocktails/data';
 import {
   Card,
   CardContent,
@@ -19,11 +19,9 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import useLocalStorage from '#/hooks/useLocalStorage';
-import { getRecipeSource } from '#/modules/getRecipeSource';
 import { createByChapterListConfig } from '#/modules/lists/by-chapter';
 import { byNameListConfig } from '#/modules/lists/by-name';
-import { getRecipeSearchText } from '#/modules/searchText';
-import { getRecipeUrl } from '#/modules/url';
+import type { RecipeCardItem } from '#/modules/recipeCard';
 
 type GroupMode = 'chapter' | 'alphabetical';
 
@@ -32,7 +30,7 @@ export default function BookSourceClient({
   recipes,
 }: {
   source: Book;
-  recipes: Recipe[];
+  recipes: RecipeCardItem[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const [groupMode, setGroupMode] = useLocalStorage<GroupMode>(
@@ -45,14 +43,13 @@ export default function BookSourceClient({
 
   const chapterConfig = useMemo(() => createByChapterListConfig(recipes), [recipes]);
 
-  const renderRecipe = useCallback((recipe: Recipe): React.ReactNode => {
-    const href = getRecipeUrl(recipe);
+  const renderRecipe = useCallback((recipe: RecipeCardItem): React.ReactNode => {
     return (
       <RecipeLinkListItem
-        key={href}
-        href={href}
+        key={recipe.href}
+        href={recipe.href}
         name={recipe.name}
-        source={getRecipeSource(recipe)}
+        source={recipe.source}
       />
     );
   }, []);
@@ -78,7 +75,7 @@ export default function BookSourceClient({
         <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         <SearchableList
           items={recipes}
-          getSearchText={getRecipeSearchText}
+          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}
