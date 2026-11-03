@@ -15,5 +15,4 @@ runs:
 
     - name: Install dependencies 🔧
       shell: bash
-      if: steps.cache_dependencies.outputs.cache-hit != 'true'
       run: yarn install --immutable
