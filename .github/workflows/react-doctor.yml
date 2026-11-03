@@ -19,6 +19,7 @@ concurrency:
 jobs:
   react-doctor:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       # The action fetches the PR base commit itself, but depth 1 is still not
       # enough: react-doctor diffs `base...HEAD`, and the merge-ref commit's
