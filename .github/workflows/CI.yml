@@ -2,7 +2,10 @@ name: CI
 
 # One live run per ref: a newer push to the same branch cancels the run
 # testing a commit nobody waits on. Runs on main always finish.
-on: push
+on:
+  push:
+    branches: ['main']
+  pull_request:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
