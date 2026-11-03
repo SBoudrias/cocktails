@@ -33,6 +33,15 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
 
+      # Prune the .txt payload twins: static export duplicates every route's
+      # RSC payload as .html, .rsc and .txt. The .txt files are pure
+      # duplicates (~55% of the output size). Trade-off: client-side
+      # navigation to these routes falls back to a full page load via the
+      # .html/.rsc payloads — no functional loss, just slower soft-navs.
+      - name: Prune payload twins 🧹
+        if: github.event.action != 'closed'
+        run: find apps/web/out -name '*.txt' -type f -delete
+
       - name: Deploy PR Preview 🚀
         uses: rossjrw/pr-preview-action@v1
         with:
