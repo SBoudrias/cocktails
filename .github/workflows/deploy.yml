@@ -30,13 +30,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      # Prune the .txt payload twins: static export emits each route as a
-      # .html file plus duplicate .txt payload files (~55% of the output
-      # size, measured). Trade-off: client-side navigation to these routes
-      # falls back to a full page load via the .html files — no functional
-      # loss, just slower soft-navs.
+      # Prune the __next._full.txt payloads: static export emits each route
+      # as a .html plus several .txt RSC payload variants. Browser-session
+      # instrumentation shows the client router only ever requests
+      # __next._tree.txt, *__PAGE__.txt (prefetch) and plain route.txt
+      # (?_rsc navigation) — the _full route-tree payload is never fetched,
+      # so it is dead weight (~81 MB / 4,767 files on a full export). The
+      # requested variants stay: deleting them would break soft navigation
+      # (every click would fall back to a full page load and 404 the
+      # router's prefetches).
       - name: Prune payload twins 🧹
-        run: find apps/web/out -name '*.txt' -type f -delete
+        run: find apps/web/out -name '__next._full.txt' -type f -delete
 
       - name: Deploy to gh-pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
