@@ -43,7 +43,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
     getChildCategories(category),
   ]);
 
-  const categorySlugs = [category.slug, ...childCategories.map((c) => c.slug)];
+  const categorySlugs = new Set([category.slug, ...childCategories.map((c) => c.slug)]);
 
   return (
     <Suspense>
@@ -58,7 +58,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
               if (ingredient.type === 'category') {
                 return ingredient.slug === category.slug;
               }
-              return ingredient.categories.some((c) => categorySlugs.includes(c.slug));
+              return ingredient.categories.some((c) => categorySlugs.has(c.slug));
             })?.quantity,
         )}
         childCategories={childCategories}
