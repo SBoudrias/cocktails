@@ -14,6 +14,7 @@ concurrency:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
@@ -24,6 +25,7 @@ jobs:
 
   schema:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
@@ -44,6 +46,7 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧

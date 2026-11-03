@@ -20,6 +20,7 @@ concurrency:
 jobs:
   cleanup:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout gh-pages branch
         uses: actions/checkout@v7
