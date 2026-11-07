@@ -20,15 +20,15 @@
     "@types/lodash": "^4.17.27",
     "@types/node": "^26.6.5",
     "@vitejs/plugin-react": "^6.2.1",
-    "@vitest/browser": "^5.0.5",
-    "@vitest/coverage-v8": "^5.0.5",
+    "@vitest/browser": "^5.1.0",
+    "@vitest/coverage-v8": "^5.1.0",
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.75.0",
     "oxlint": "^1.90.0",
     "turbo": "^2.11.10",
     "typescript": "7.0.2",
     "vite": "^8.3.5",
-    "vitest": "^5.0.5"
+    "vitest": "^5.1.0"
   },
   "dependenciesMeta": {
     "core-js": {
