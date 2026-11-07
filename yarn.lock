@@ -240,7 +240,7 @@ __metadata:
     "@mui/material": "npm:^9.5.0"
     "@mui/material-nextjs": "npm:^9.5.0"
     "@next/third-parties": "npm:^16.4.5"
-    "@sindresorhus/transliterate": "npm:^2.3.1"
+    "@sindresorhus/transliterate": "npm:^3.0.0"
     "@testing-library/dom": "npm:^10.4.2"
     "@testing-library/jest-dom": "npm:^7.0.1"
     "@testing-library/react": "npm:^16.3.3"
@@ -1435,13 +1435,6 @@ __metadata:
     "@sindresorhus/transliterate": "npm:^3.0.0"
     escape-string-regexp: "npm:^5.0.0"
   checksum: 10c0/ad718f2e5f095d155f587d80b680e909fc87a6926f802b458ca635d2b9d1aeb2e45239353d6ac5dc4e1074de94da9561cac838507627f1c59f43ca1093340ec6
-  languageName: node
-  linkType: hard
-
-"@sindresorhus/transliterate@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "@sindresorhus/transliterate@npm:2.3.1"
-  checksum: 10c0/36f065fb03212dd9815f99ee53f0333488fd59223d7933695a1cd10b869aa7d56db2cf36094bde36319f153abcc5d2cdd74fc6915327d2852a53e56688f11f6e
   languageName: node
   linkType: hard
 

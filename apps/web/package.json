@@ -24,7 +24,7 @@
     "@mui/material": "^9.5.0",
     "@mui/material-nextjs": "^9.5.0",
     "@next/third-parties": "^16.4.5",
-    "@sindresorhus/transliterate": "^2.3.1",
+    "@sindresorhus/transliterate": "^3.0.0",
     "core-js": "^3.51.0",
     "lite-youtube-embed": "^0.3.4",
     "next": "16.4.5",
