@@ -12,6 +12,6 @@
     "@cocktails/jsonschema-formatter": "workspace:*",
     "@sindresorhus/slugify": "^4.0.0",
     "ajv": "^8.20.0",
-    "oxfmt": "^0.75.0"
+    "oxfmt": "^0.76.0"
   }
 }
