@@ -2,7 +2,7 @@
  * Post-deploy smoke test: fetch a deployed copy of the site and fail loudly
  * if it is not live, or if its pages are broken.
  *
- *   node apps/web/tools/smoke.ts <deployed-base-url> [local-out-dir]
+ *   node scripts/smoke.ts <deployed-base-url> [local-out-dir]
  *
  * With a local out dir, the script first waits until the deployed home page
  * references the same hashed `/_next/static/` assets as the local build, so a
@@ -37,7 +37,8 @@ async function get(path: string): Promise<{ status: number; body: string }> {
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     headers: { 'Cache-Control': 'no-cache' },
   });
-  return { status: res.status, body: await res.text() };
+  // Only read the body of a successful response: an error page proves nothing.
+  return { status: res.status, body: res.ok ? await res.text() : '' };
 }
 
 function assetsOf(html: string) {
@@ -75,6 +76,10 @@ async function waitUntilLive() {
 
 const failures: string[] = [];
 
+function hasMarker(body: string, marker: string | RegExp) {
+  return typeof marker === 'string' ? body.includes(marker) : marker.test(body);
+}
+
 async function checkPage(path: string, markers: (string | RegExp)[]) {
   const label = `/${path}`;
   try {
@@ -83,8 +88,8 @@ async function checkPage(path: string, markers: (string | RegExp)[]) {
     if (body.length < MIN_HTML_BYTES) {
       return failures.push(`${label}: only ${body.length} bytes`);
     }
-    const missing = ['<header', /<title>Cocktail Index/, ...markers].filter((m) =>
-      typeof m === 'string' ? !body.includes(m) : !m.test(body),
+    const missing = ['<header', /<title>Cocktail Index/, ...markers].filter(
+      (marker) => !hasMarker(body, marker),
     );
     if (missing.length > 0) {
       return failures.push(`${label}: missing marker(s) ${missing.join(', ')}`);
