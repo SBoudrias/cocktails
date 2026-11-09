@@ -28,6 +28,9 @@ export async function generateMetadata({
 
     return {
       title: `Cocktail Index | Learn about ${ingredient.name}`,
+      description:
+        ingredient.description ??
+        `Learn about ${ingredient.name} and find cocktail recipes that use it.`,
     };
   } catch (error) {
     unstable_rethrow(error);

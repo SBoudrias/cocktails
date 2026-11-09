@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 
     return {
       title: `Cocktail Index | ${recipe.name} from ${recipe.source.name}`,
+      description: `${recipe.name} cocktail recipe from ${recipe.source.name}: ${recipe.ingredients
+        .map((ingredient) => ingredient.name)
+        .join(', ')}.`,
     };
   } catch (error) {
     unstable_rethrow(error);
