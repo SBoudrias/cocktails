@@ -2,10 +2,12 @@ import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import { act, render, screen, within } from '@testing-library/react';
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import { NuqsAdapter } from 'nuqs/adapters/react';
 import type { ReactNode } from 'react';
 import { renderToString } from 'react-dom/server';
 import { vi, afterEach, beforeEach, describe, it } from 'vitest';
-import NuqsAdapter from '#/components/NuqsAdapter';
+// The app's client setup: enables nuqs history sync, as in the browser.
+import '#/instrumentation-client';
 import { getRecipeUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
 import RecipesPage from './page';
