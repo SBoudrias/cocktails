@@ -228,6 +228,8 @@ __metadata:
 "@cocktails/smoke@workspace:packages/smoke":
   version: 0.0.0-use.local
   resolution: "@cocktails/smoke@workspace:packages/smoke"
+  bin:
+    smoke: ./src/smoke.ts
   languageName: unknown
   linkType: soft
 
