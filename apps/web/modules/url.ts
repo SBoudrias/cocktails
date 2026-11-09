@@ -83,6 +83,18 @@ export function getRecipeListUrl(): Route {
   return '/list/recipes';
 }
 
+export function getRecipeLetterUrl(letterSlug: string): Route<`/list/recipes/${string}`> {
+  return `/list/recipes/${letterSlug}`;
+}
+
+/**
+ * Whether a string is a recipe page path, as built by `getRecipeUrl` (e.g. a
+ * key of the search index, which JSON hands back as a plain string).
+ */
+export function isRecipeUrl(href: string): href is ReturnType<typeof getRecipeUrl> {
+  return /^\/recipes\/[^/]+\/[^/]+\/[^/]+$/.test(href);
+}
+
 export function getRecentlyAddedUrl(): Route {
   return '/list/recently-added';
 }

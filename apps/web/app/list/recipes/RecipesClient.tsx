@@ -1,54 +1,76 @@
 'use client';
 
-import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { useCallback } from 'react';
+import AllRecipesSearch from '#/components/AllRecipesSearch';
+import LetterNav from '#/components/LetterNav';
+import { LinkList, LinkListItem } from '#/components/LinkList';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchHeader from '#/components/SearchHeader';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import type { RecipeListItem } from '#/modules/recipeListItem';
+import { getRecipeLetterUrl } from '#/modules/url';
 
-export default function RecipesClient({ recipes }: { recipes: RecipeListItem[] }) {
+type Letter = { slug: string; label: string; count: number };
+
+function renderLetter(letter: Letter) {
+  return (
+    <LinkListItem
+      key={letter.slug}
+      href={getRecipeLetterUrl(letter.slug)}
+      primary={letter.label}
+      secondary={`${letter.count} ${letter.count === 1 ? 'recipe' : 'recipes'}`}
+    />
+  );
+}
+
+function renderRecipe(recipe: RecipeListItem) {
+  return (
+    <RecipeLinkListItem
+      key={recipe.href}
+      href={recipe.href}
+      name={recipe.name}
+      source={recipe.source}
+    />
+  );
+}
+
+/**
+ * The recipe list, split in letter pages. Without `page` it is the index of
+ * letters. A search always covers every recipe, from the shared search index.
+ */
+export default function RecipesClient({
+  title,
+  letters,
+  page,
+}: {
+  title: string;
+  letters: Letter[];
+  page?: { letter: string; recipes: RecipeListItem[] };
+}) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
-
-  const renderRecipe = useCallback(
-    (recipe: RecipeListItem): React.ReactNode => (
-      <RecipeLinkListItem
-        key={recipe.href}
-        href={recipe.href}
-        name={recipe.name}
-        source={recipe.source}
-      />
-    ),
-    [],
-  );
-
-  const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
-      <CardContent>
-        <Typography variant="body2">
-          No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
-        </Typography>
-      </CardContent>
-    </Card>
-  );
+  const isSearching = searchTerm != null && searchTerm.trim() !== '';
 
   return (
     <>
       <SearchHeader
-        title="All Recipes"
+        title={title}
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
       />
-      <RecipeSearchableList
-        items={recipes}
-        config={byNameListConfig}
-        renderItem={renderRecipe}
-        searchTerm={searchTerm}
-        emptyState={emptyState}
-      />
+      {isSearching ? (
+        <AllRecipesSearch searchTerm={searchTerm} />
+      ) : page ? (
+        <>
+          <LetterNav letters={letters} current={page.letter} />
+          <LinkList
+            items={page.recipes}
+            config={byNameListConfig}
+            renderItem={renderRecipe}
+          />
+        </>
+      ) : (
+        <LinkList header="Recipes by letter" items={letters} renderItem={renderLetter} />
+      )}
     </>
   );
 }
