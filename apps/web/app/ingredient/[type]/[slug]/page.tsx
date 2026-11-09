@@ -7,6 +7,8 @@ import { getIngredientPageParams } from '@cocktails/data/params';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { Suspense } from 'react';
+import AppHeader from '#/components/AppHeader';
+import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import IngredientClient from './IngredientClient';
 
@@ -48,7 +50,15 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   ]);
 
   return (
-    <Suspense>
+    <Suspense
+      fallback={
+        relatedRecipes.length > 0 ? (
+          <SearchHeaderFallback title={ingredient.name} />
+        ) : (
+          <AppHeader title={ingredient.name} />
+        )
+      }
+    >
       <IngredientClient
         ingredient={ingredient}
         substitutes={substitutes}

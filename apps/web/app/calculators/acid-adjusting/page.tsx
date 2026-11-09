@@ -9,9 +9,11 @@ export const metadata: Metadata = {
 
 export default async function CalculatorsPage() {
   return (
-    <Suspense>
+    <>
       <AppHeader title="Acid Adjusting" />
-      <AcidAdjustingCalculator defaultAcidity={1} sx={{ m: 1 }} />
-    </Suspense>
+      <Suspense>
+        <AcidAdjustingCalculator defaultAcidity={1} sx={{ m: 1 }} />
+      </Suspense>
+    </>
   );
 }

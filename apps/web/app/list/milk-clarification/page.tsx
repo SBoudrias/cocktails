@@ -1,6 +1,7 @@
 import { getMilkClarifiedRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import MilkClarificationRecipesClient from './MilkClarificationRecipesClient';
 
@@ -12,7 +13,7 @@ export default async function MilkClarificationRecipesPage() {
   const recipes = toRecipeListItems(await getMilkClarifiedRecipes());
 
   return (
-    <Suspense>
+    <Suspense fallback={<SearchHeaderFallback title="Milk-Clarified Recipes" />}>
       <MilkClarificationRecipesClient recipes={recipes} />
     </Suspense>
   );
