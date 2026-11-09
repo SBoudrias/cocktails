@@ -4,6 +4,7 @@ import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import { toRecipeListItems } from '#/modules/recipeListItem';
 import BarRecipesClient from './BarRecipesClient';
 
 function formatBarName(bar: { name: string; location?: string }) {
@@ -70,7 +71,7 @@ export default async function BarRecipesPage({ params }: Props) {
 
   return (
     <Suspense>
-      <BarRecipesClient bar={bar} recipes={barRecipes} />
+      <BarRecipesClient bar={bar} recipes={toRecipeListItems(barRecipes)} />
     </Suspense>
   );
 }
