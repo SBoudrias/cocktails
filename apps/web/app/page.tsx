@@ -21,7 +21,6 @@ import {
 } from '@mui/material';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';
 import {
   getAuthorListUrl,
@@ -71,7 +70,7 @@ export default async function HomePage() {
   } = Object.groupBy(sources, (source) => source.type);
 
   return (
-    <Suspense>
+    <>
       <AppHeader title="Cocktail Index" />
       <List sx={{ mt: 2 }}>
         <Paper square>
@@ -213,6 +212,6 @@ export default async function HomePage() {
           </ul>
         </li>
       </List>
-    </Suspense>
+    </>
   );
 }
