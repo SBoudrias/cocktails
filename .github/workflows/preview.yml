@@ -39,7 +39,7 @@ concurrency:
 jobs:
   preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
@@ -84,7 +84,7 @@ jobs:
       # marker (packages/smoke).
       - name: Smoke test the preview 🔥
         if: github.event.action != 'closed'
-        timeout-minutes: 8
+        timeout-minutes: 14
         run: yarn workspace @cocktails/smoke smoke "${{ steps.preview.outputs.preview-url }}" "$GITHUB_WORKSPACE/apps/web/out"
         env:
-          SMOKE_LIVE_TIMEOUT_S: '420'
+          SMOKE_LIVE_TIMEOUT_S: '720'

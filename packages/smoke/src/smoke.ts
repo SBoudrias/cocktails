@@ -9,7 +9,8 @@
  * With a local out dir, the script first waits until the deployed home page
  * references the same hashed `/_next/static/` assets as the local build, so a
  * stale copy of the previous deploy (GitHub Pages lags the push by a minute or
- * two) can never pass for the new one.
+ * two, and a push by another PR cancels the publish in flight, so under load it
+ * can take several minutes) can never pass for the new one.
  */
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
