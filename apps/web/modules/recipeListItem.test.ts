@@ -2,7 +2,7 @@ import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import { describe, expect, it } from 'vitest';
 import { getRecipeUrl } from '#/modules/url';
-import { toRecipeCards } from './recipeCard';
+import { toRecipeListItems } from './recipeListItem';
 
 const recipe: Recipe = {
   name: 'Indexed Recipe',
@@ -43,11 +43,11 @@ const recipe: Recipe = {
   refs: [{ type: 'book', title: 'Test Book', page: 12 }],
 };
 
-describe('toRecipeCards', () => {
-  it('projects only the fields the card lists render', () => {
-    const bareCards = toRecipeCards([recipe]);
+describe('toRecipeListItems', () => {
+  it('projects only the fields the recipe lists render', () => {
+    const bareItems = toRecipeListItems([recipe]);
 
-    expect(bareCards).toEqual([
+    expect(bareItems).toEqual([
       {
         name: 'Indexed Recipe',
         href: getRecipeUrl(recipe),
@@ -57,22 +57,22 @@ describe('toRecipeCards', () => {
         page: 12,
       },
     ]);
-    // Bare cards have no quantity key at all, not just an undefined one.
-    expect(Object.hasOwn(bareCards[0]!, 'quantity')).toBe(false);
+    // Bare items have no quantity key at all, not just an undefined one.
+    expect(Object.hasOwn(bareItems[0]!, 'quantity')).toBe(false);
   });
 
-  it('carries the picked ingredient quantity to the card', () => {
-    const quantityCards = toRecipeCards(
+  it('carries the picked ingredient quantity to the item', () => {
+    const quantityItems = toRecipeListItems(
       [recipe],
       (r) => r.ingredients.find((i) => i.slug === 'appleton-signature')?.quantity,
     );
 
-    expect(quantityCards[0]?.quantity).toEqual({ amount: 2, unit: 'oz' });
+    expect(quantityItems[0]?.quantity).toEqual({ amount: 2, unit: 'oz' });
   });
 
-  it('keeps the average serialized card below 500 bytes', async () => {
-    const cards = toRecipeCards(await getAllRecipes());
-    const averageSize = Buffer.byteLength(JSON.stringify(cards)) / cards.length;
+  it('keeps the average serialized item below 500 bytes', async () => {
+    const items = toRecipeListItems(await getAllRecipes());
+    const averageSize = Buffer.byteLength(JSON.stringify(items)) / items.length;
 
     expect(averageSize).toBeLessThan(500);
   });

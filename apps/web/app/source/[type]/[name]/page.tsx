@@ -4,7 +4,7 @@ import { getRecipesFromSource } from '@cocktails/data/recipes';
 import { getSource } from '@cocktails/data/sources';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { Suspense } from 'react';
-import { toRecipeCards } from '#/modules/recipeCard';
+import { toRecipeListItems } from '#/modules/recipeListItem';
 import BookSourceClient from './BookSourceClient';
 import SourceClient from './SourceClient';
 
@@ -33,7 +33,7 @@ export default async function SourcePage({ params }: { params: Promise<Params> }
   const { type, name } = await params;
 
   const source = await getSource(type, name);
-  const recipes = toRecipeCards(await getRecipesFromSource(source));
+  const recipes = toRecipeListItems(await getRecipesFromSource(source));
 
   return (
     <Suspense>

@@ -1,10 +1,10 @@
-import type { RecipeCardItem } from '#/modules/recipeCard';
+import type { RecipeListItem } from '#/modules/recipeListItem';
 
 /**
  * Get the chapter display name for a recipe card.
  * Returns 'Etc' for recipes without a valid chapter.
  */
-export function getChapterName(item: RecipeCardItem): string {
+export function getChapterName(item: RecipeListItem): string {
   return item.chapter?.name ?? 'Etc';
 }
 
@@ -12,7 +12,7 @@ export function getChapterName(item: RecipeCardItem): string {
  * Compare recipe cards by their page number within a chapter.
  * Cards without a page number sort to the end.
  */
-export function compareByPage(a: RecipeCardItem, b: RecipeCardItem): number {
+export function compareByPage(a: RecipeListItem, b: RecipeListItem): number {
   return (a.page ?? Infinity) - (b.page ?? Infinity);
 }
 
@@ -33,7 +33,7 @@ export function compareChapterHeaders(a: string, b: string): number {
  * to determine chapter order.
  */
 export function createChapterHeaderComparator(
-  items: RecipeCardItem[],
+  items: RecipeListItem[],
 ): (a: string, b: string) => number {
   // Build a map of chapter display name -> order
   const chapterOrderMap = new Map<string, number>();
@@ -55,7 +55,7 @@ export function createChapterHeaderComparator(
 /**
  * Create a list config with proper chapter ordering based on recipe card data.
  */
-export function createByChapterListConfig(items: RecipeCardItem[]) {
+export function createByChapterListConfig(items: RecipeListItem[]) {
   return {
     groupBy: getChapterName,
     sortItemBy: compareByPage,

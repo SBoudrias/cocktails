@@ -21,7 +21,7 @@ import SourceAboutCard from '#/components/SourceAboutCard';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { createByChapterListConfig } from '#/modules/lists/by-chapter';
 import { byNameListConfig } from '#/modules/lists/by-name';
-import type { RecipeCardItem } from '#/modules/recipeCard';
+import type { RecipeListItem } from '#/modules/recipeListItem';
 
 type GroupMode = 'chapter' | 'alphabetical';
 
@@ -30,7 +30,7 @@ export default function BookSourceClient({
   recipes,
 }: {
   source: Book;
-  recipes: RecipeCardItem[];
+  recipes: RecipeListItem[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const [groupMode, setGroupMode] = useLocalStorage<GroupMode>(
@@ -43,7 +43,7 @@ export default function BookSourceClient({
 
   const chapterConfig = useMemo(() => createByChapterListConfig(recipes), [recipes]);
 
-  const renderRecipe = useCallback((recipe: RecipeCardItem): React.ReactNode => {
+  const renderRecipe = useCallback((recipe: RecipeListItem): React.ReactNode => {
     return (
       <RecipeLinkListItem
         key={recipe.href}

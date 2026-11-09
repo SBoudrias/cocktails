@@ -5,7 +5,7 @@ import { getRecipeByCategory } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { Suspense } from 'react';
-import { toRecipeCards } from '#/modules/recipeCard';
+import { toRecipeListItems } from '#/modules/recipeListItem';
 import CategoryClient from './CategoryClient';
 
 type Params = { slug: string };
@@ -51,7 +51,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
         category={category}
         members={members}
         substitutes={substitutes}
-        relatedRecipes={toRecipeCards(
+        relatedRecipes={toRecipeListItems(
           relatedRecipes,
           (recipe) =>
             recipe.ingredients.find((ingredient) => {

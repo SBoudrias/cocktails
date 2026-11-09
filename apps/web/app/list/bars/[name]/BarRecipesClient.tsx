@@ -10,14 +10,14 @@ import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
-import type { RecipeCardItem } from '#/modules/recipeCard';
+import type { RecipeListItem } from '#/modules/recipeListItem';
 
 export default function BarRecipesClient({
   bar,
   recipes,
 }: {
   bar: Bar;
-  recipes: RecipeCardItem[];
+  recipes: RecipeListItem[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
@@ -31,7 +31,7 @@ export default function BarRecipesClient({
     </>
   );
 
-  const renderRecipe = useCallback((recipe: RecipeCardItem) => {
+  const renderRecipe = useCallback((recipe: RecipeListItem) => {
     return (
       <RecipeLinkListItem
         key={recipe.href}

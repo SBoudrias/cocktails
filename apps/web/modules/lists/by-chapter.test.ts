@@ -1,6 +1,6 @@
 import type { Chapter, Recipe } from '@cocktails/data';
 import { describe, expect, it } from 'vitest';
-import { toRecipeCards } from '#/modules/recipeCard';
+import { toRecipeListItems } from '#/modules/recipeListItem';
 import {
   compareByPage,
   compareChapterHeaders,
@@ -29,7 +29,7 @@ const recipeFixture: Recipe = {
 };
 
 const createCard = (name: string, chapter?: Chapter, page?: number) =>
-  toRecipeCards([
+  toRecipeListItems([
     {
       ...recipeFixture,
       name,

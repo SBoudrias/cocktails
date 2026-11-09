@@ -7,13 +7,13 @@ import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
 import { byNameListConfig } from '#/modules/lists/by-name';
-import type { RecipeCardItem } from '#/modules/recipeCard';
+import type { RecipeListItem } from '#/modules/recipeListItem';
 
-export default function RecipesClient({ recipes }: { recipes: RecipeCardItem[] }) {
+export default function RecipesClient({ recipes }: { recipes: RecipeListItem[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const renderRecipe = useCallback(
-    (recipe: RecipeCardItem): React.ReactNode => (
+    (recipe: RecipeListItem): React.ReactNode => (
       <RecipeLinkListItem
         key={recipe.href}
         href={recipe.href}

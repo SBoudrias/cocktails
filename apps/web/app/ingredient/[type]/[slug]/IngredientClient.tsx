@@ -31,7 +31,7 @@ import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
-import type { QuantityRecipeCardItem } from '#/modules/recipeCard';
+import type { QuantityRecipeListItem } from '#/modules/recipeListItem';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 import IngredientCalculators from './IngredientCalculators';
 
@@ -42,7 +42,7 @@ export default function IngredientClient({
 }: {
   ingredient: RootIngredient;
   substitutes: RootIngredient[];
-  relatedRecipes: QuantityRecipeCardItem[];
+  relatedRecipes: QuantityRecipeListItem[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const topCategory = ingredient.categories[0];
@@ -72,7 +72,7 @@ export default function IngredientClient({
     </>
   );
 
-  const renderRecipe = useCallback((recipe: QuantityRecipeCardItem) => {
+  const renderRecipe = useCallback((recipe: QuantityRecipeListItem) => {
     return (
       <RecipeLinkListItem
         key={recipe.href}
