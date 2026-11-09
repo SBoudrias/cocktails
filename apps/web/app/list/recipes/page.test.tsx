@@ -59,6 +59,16 @@ beforeEach(() => {
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
 });
 
+/** 300 "A" recipes (the prerendered rows) and one "Z" recipe past them. */
+function mockLongList() {
+  const firstApple = mockRecipe('Apple 1');
+  const moreApples = Array.from({ length: 299 }, (_, index) =>
+    mockRecipe(`Apple ${index + 2}`),
+  );
+  const zombie = mockRecipe('Zombie');
+  return { firstApple, zombie, recipes: [firstApple, ...moreApples, zombie] };
+}
+
 /**
  * The A–Z list as read top to bottom: each letter heading, then its recipe
  * names. The virtualized list lays its headings and rows out flat.
@@ -285,21 +295,11 @@ describe('RecipesPage', () => {
   });
 
   it('lists recipes beyond the prerendered letters from the search index', async () => {
-    const firstApple = mockRecipe('Apple 1');
-    const moreApples = Array.from({ length: 299 }, (_, index) =>
-      mockRecipe(`Apple ${index + 2}`),
-    );
-    const zombie = mockRecipe('Zombie');
-    const recipes = [firstApple, ...moreApples, zombie];
+    const { zombie, recipes } = mockLongList();
     vi.mocked(getAllRecipes).mockResolvedValue(recipes);
     vi.mocked(fetch).mockResolvedValue(
       Response.json(buildSearchIndex(toSearchIndexItems(recipes))),
     );
-
-    // The static HTML stops after the letters filling the first 300 rows.
-    const html = renderToString(<NuqsAdapter>{await RecipesPage()}</NuqsAdapter>);
-    expect(html).toContain(`href="${getRecipeUrl(firstApple)}"`);
-    expect(html).not.toContain(`href="${getRecipeUrl(zombie)}"`);
 
     setupApp(await RecipesPage());
     await waitFor(() => {
@@ -314,7 +314,8 @@ describe('RecipesPage', () => {
 
 // The app's own URL adapter (not nuqs's testing adapter): it reads
 // `location.search`, renders "no search" on the server, and follows Next
-// router navigations through the patched History API.
+// router navigations through the patched History API. setupApp mounts nuqs's
+// testing adapter, which fakes exactly that, so these tests mount the real one.
 describe('RecipesPage with the app URL adapter', () => {
   function withAppAdapter(ui: ReactNode) {
     return (
@@ -326,6 +327,16 @@ describe('RecipesPage with the app URL adapter', () => {
 
   afterEach(() => {
     window.history.replaceState(null, '', '/');
+  });
+
+  it('prerenders the first letters only; the rest waits for the index', async () => {
+    const { firstApple, zombie, recipes } = mockLongList();
+    vi.mocked(getAllRecipes).mockResolvedValue(recipes);
+
+    // The static HTML stops after the letters filling the first 300 rows.
+    const html = renderToString(withAppAdapter(await RecipesPage()));
+    expect(html).toContain(`href="${getRecipeUrl(firstApple)}"`);
+    expect(html).not.toContain(`href="${getRecipeUrl(zombie)}"`);
   });
 
   it('prerenders the list even when the URL has a search', async () => {
