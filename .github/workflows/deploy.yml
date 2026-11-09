@@ -15,7 +15,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
@@ -49,3 +49,12 @@ jobs:
           branch: gh-pages
           clean-exclude: pr-preview/
           force: false
+
+      # Waits for GitHub Pages to serve this build, then fetches the home
+      # page and a page of each type and fails on any non-200 or missing
+      # marker (apps/web/tools/smoke.ts).
+      - name: Smoke test production 🔥
+        timeout-minutes: 8
+        run: node apps/web/tools/smoke.ts "https://${{ github.repository_owner }}.github.io/cocktails/" apps/web/out
+        env:
+          SMOKE_LIVE_TIMEOUT_S: '420'

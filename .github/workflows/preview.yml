@@ -27,14 +27,19 @@ permissions:
   contents: write
   pull-requests: write
 
+# Never cancel a running preview job: it may be mid-push to gh-pages. A
+# cancelled job's push can still land after the next run fetched the branch,
+# and when that next run is the PR-closed removal, the rebase conflicts
+# (modify/delete in pr-preview/pr-N) and the job fails (PR #540's merge run).
+# Queued runs still collapse to the newest one.
 concurrency:
   group: preview-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
@@ -66,9 +71,20 @@ jobs:
         run: find apps/web/out -name '__next._full.txt' -type f -delete
 
       - name: Deploy PR Preview 🚀
+        id: preview
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: ./apps/web/out/
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto
+
+      # Waits for GitHub Pages to serve this build, then fetches the home
+      # page and a page of each type and fails on any non-200 or missing
+      # marker (apps/web/tools/smoke.ts).
+      - name: Smoke test the preview 🔥
+        if: github.event.action != 'closed'
+        timeout-minutes: 8
+        run: node apps/web/tools/smoke.ts "${{ steps.preview.outputs.preview-url }}" apps/web/out
+        env:
+          SMOKE_LIVE_TIMEOUT_S: '420'
