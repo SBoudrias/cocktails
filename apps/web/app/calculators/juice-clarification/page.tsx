@@ -9,9 +9,11 @@ export const metadata: Metadata = {
 
 export default function JuiceClarificationCalculatorPage() {
   return (
-    <Suspense>
+    <>
       <AppHeader title="Juice Clarification" />
-      <JuiceClarificationCalculator sx={{ m: 1 }} />
-    </Suspense>
+      <Suspense>
+        <JuiceClarificationCalculator sx={{ m: 1 }} />
+      </Suspense>
+    </>
   );
 }

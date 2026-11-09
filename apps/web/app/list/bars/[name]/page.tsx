@@ -4,6 +4,7 @@ import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import BarRecipesClient from './BarRecipesClient';
 
@@ -71,7 +72,7 @@ export default async function BarRecipesPage({ params }: Props) {
   }
 
   return (
-    <Suspense>
+    <Suspense fallback={<SearchHeaderFallback />}>
       <BarRecipesClient bar={bar} recipes={toRecipeListItems(barRecipes)} />
     </Suspense>
   );

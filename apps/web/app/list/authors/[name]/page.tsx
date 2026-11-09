@@ -4,6 +4,7 @@ import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import AuthorRecipesClient from './AuthorRecipesClient';
 
@@ -73,7 +74,7 @@ export default async function AuthorRecipesPage({ params }: Props) {
   // getAuthor resolves the entity's bars/sources refs into full entities, so
   // the client renders every dimension of the author from its one object.
   return (
-    <Suspense>
+    <Suspense fallback={<SearchHeaderFallback />}>
       <AuthorRecipesClient author={author} recipes={toRecipeListItems(authorRecipes)} />
     </Suspense>
   );

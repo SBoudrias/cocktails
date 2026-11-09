@@ -2,6 +2,7 @@ import { getAllCategories } from '@cocktails/data/categories';
 import { getAllIngredients } from '@cocktails/data/ingredients';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import IngredientsClient from './IngredientsClient';
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default async function IngredientListPage() {
   });
 
   return (
-    <Suspense>
+    <Suspense fallback={<SearchHeaderFallback title="All Ingredients" />}>
       <IngredientsClient ingredients={[...ingredients, ...allCategories]} />
     </Suspense>
   );

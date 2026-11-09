@@ -1,6 +1,7 @@
 import { getAllIngredients } from '@cocktails/data/ingredients';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import BottlesClient from './BottlesClient';
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default async function BottlesPage() {
   });
 
   return (
-    <Suspense>
+    <Suspense fallback={<SearchHeaderFallback title="All Bottles" />}>
       <BottlesClient bottles={bottles} />
     </Suspense>
   );
