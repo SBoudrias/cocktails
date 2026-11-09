@@ -32,7 +32,11 @@ export default defineConfig({
         extends: true,
         test: {
           name: 'unit',
-          include: ['packages/**/*.test.ts', 'apps/web/modules/**/*.test.ts'],
+          include: [
+            'packages/**/*.test.ts',
+            'apps/web/modules/**/*.test.ts',
+            'apps/web/tools/**/*.test.ts',
+          ],
           environment: 'node',
           setupFiles: [path.join(__dirname, 'apps/web/testing/mswSetup.ts')],
         },
@@ -43,7 +47,12 @@ export default defineConfig({
           name: 'dom',
           include: ['apps/web/**/*.test.{ts,tsx}'],
           // Node-environment tests of the web app belong to the unit project.
-          exclude: ['node_modules', '.worktrees', 'apps/web/modules/**'],
+          exclude: [
+            'node_modules',
+            '.worktrees',
+            'apps/web/modules/**',
+            'apps/web/tools/**',
+          ],
           environment: 'happy-dom',
           environmentOptions: {
             happyDOM: { settings: { disableIframePageLoading: true } },
