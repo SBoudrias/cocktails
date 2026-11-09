@@ -5,6 +5,7 @@ import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { getCategoryUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
@@ -231,11 +232,11 @@ describe('CategoryPage', () => {
     });
 
     it('loads with search term from URL', async () => {
+      mockRouter.setCurrentUrl('?search=fog');
       setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
-        { nuqsOptions: { searchParams: '?search=fog' } },
       );
 
       const input = screen.getByRole('searchbox');
@@ -247,11 +248,11 @@ describe('CategoryPage', () => {
     });
 
     it('clearing search shows all content', async () => {
+      mockRouter.setCurrentUrl('?search=fog');
       const { user } = setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
-        { nuqsOptions: { searchParams: '?search=fog' } },
       );
 
       // Initially filtered - examples should be hidden

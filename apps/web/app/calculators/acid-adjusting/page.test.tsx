@@ -1,15 +1,14 @@
 import { screen, within } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { setupApp } from '#/vitest.setup';
 import AcidAdjustingPage from './page';
 
 describe('AcidAdjustingPage', () => {
   it('reads and updates the juice amount URL parameter', async () => {
+    mockRouter.setCurrentUrl('?juiceAmount=2');
     const onUrlUpdate = vi.fn();
     const { user } = setupApp(await AcidAdjustingPage(), {
-      nuqsOptions: {
-        searchParams: '?juiceAmount=2',
-        onUrlUpdate,
-      },
+      nuqsOptions: { onUrlUpdate },
     });
 
     const juiceAmount = screen.getByRole('spinbutton', { name: 'Juice amount' });

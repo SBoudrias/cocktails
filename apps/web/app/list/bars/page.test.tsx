@@ -1,6 +1,7 @@
 import { getAllRecipes, getRecipe } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { getBarRecipesUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
@@ -61,9 +62,8 @@ describe('BarListPage', () => {
   });
 
   it('clearing search shows all bars grouped by letter', async () => {
-    const { user } = setupApp(await BarListPage(), {
-      nuqsOptions: { searchParams: { search: 'sunken' } },
-    });
+    mockRouter.setCurrentUrl('?search=sunken');
+    const { user } = setupApp(await BarListPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('sunken');
@@ -117,9 +117,8 @@ describe('BarListPage', () => {
   });
 
   it('loads with search term from URL', async () => {
-    setupApp(await BarListPage(), {
-      nuqsOptions: { searchParams: { search: 'sunken' } },
-    });
+    mockRouter.setCurrentUrl('?search=sunken');
+    setupApp(await BarListPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('sunken');

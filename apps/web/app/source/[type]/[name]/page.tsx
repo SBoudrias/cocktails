@@ -3,9 +3,6 @@ import { getSourcePageParams } from '@cocktails/data/params';
 import { getRecipesFromSource } from '@cocktails/data/recipes';
 import { getSource } from '@cocktails/data/sources';
 import { notFound, unstable_rethrow } from 'next/navigation';
-import { Suspense } from 'react';
-import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
-import SourceAboutCard from '#/components/SourceAboutCard';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import BookSourceClient from './BookSourceClient';
 import SourceClient from './SourceClient';
@@ -38,20 +35,9 @@ export default async function SourcePage({ params }: { params: Promise<Params> }
   const source = await getSource(type, name);
   const recipes = toRecipeListItems(await getRecipesFromSource(source));
 
-  return (
-    <Suspense
-      fallback={
-        <>
-          <SearchHeaderFallback />
-          <SourceAboutCard source={source} sx={{ m: 2 }} />
-        </>
-      }
-    >
-      {source.type === 'book' ? (
-        <BookSourceClient source={source} recipes={recipes} />
-      ) : (
-        <SourceClient source={source} recipes={recipes} />
-      )}
-    </Suspense>
+  return source.type === 'book' ? (
+    <BookSourceClient source={source} recipes={recipes} />
+  ) : (
+    <SourceClient source={source} recipes={recipes} />
   );
 }

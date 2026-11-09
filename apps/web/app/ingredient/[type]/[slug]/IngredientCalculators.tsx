@@ -1,7 +1,7 @@
 'use client';
 
 import type { RootIngredient } from '@cocktails/data';
-import { useSearchParams } from 'next/navigation';
+import { parseAsNativeArrayOf, parseAsString, useQueryState } from 'nuqs';
 import AcidAdjustingCalculator from '#/components/AcidAdjustingCalculator';
 import JuiceClarificationCalculator from '#/components/JuiceClarificationCalculator';
 
@@ -16,12 +16,10 @@ export default function IngredientCalculators({
 }: {
   ingredient: RootIngredient;
 }) {
-  const searchParams = useSearchParams();
+  const [techniques] = useQueryState('technique', parseAsNativeArrayOf(parseAsString));
   if (ingredient.type !== 'juice') {
     return null;
   }
-
-  const techniques = searchParams.getAll('technique');
 
   return (
     <>

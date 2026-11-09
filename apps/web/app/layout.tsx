@@ -7,7 +7,12 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Roboto } from 'next/font/google';
 import 'core-js/modules/es.object.group-by.js';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
+// Not nuqs/adapters/next/app: it reads useSearchParams(), which makes every
+// page that reads a query param render client-only under `output: 'export'`.
+// The React adapter reads location.search after hydration and renders the
+// "no params" state on the server, so pages prerender their full content.
+// instrumentation-client.ts makes it follow Next router navigations.
+import { NuqsAdapter } from 'nuqs/adapters/react';
 import AppFooter from '#/components/AppFooter';
 import FullscreenHelper from '#/components/FullscreenHelper';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';

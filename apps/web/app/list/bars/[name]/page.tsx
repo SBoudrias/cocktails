@@ -3,8 +3,6 @@ import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import BarRecipesClient from './BarRecipesClient';
 
@@ -71,9 +69,5 @@ export default async function BarRecipesPage({ params }: Props) {
     notFound();
   }
 
-  return (
-    <Suspense fallback={<SearchHeaderFallback />}>
-      <BarRecipesClient bar={bar} recipes={toRecipeListItems(barRecipes)} />
-    </Suspense>
-  );
+  return <BarRecipesClient bar={bar} recipes={toRecipeListItems(barRecipes)} />;
 }

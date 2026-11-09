@@ -1,7 +1,6 @@
 import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import { List, Paper } from '@mui/material';
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import { getRecipeSource } from '#/modules/getRecipeSource';
@@ -15,7 +14,7 @@ export default async function RecentlyAddedPage() {
   const recipes = await getRecentlyAddedRecipes();
 
   return (
-    <Suspense>
+    <>
       <AppHeader title="Recently Added" />
       <List sx={{ mt: 2 }}>
         <Paper square>
@@ -29,6 +28,6 @@ export default async function RecentlyAddedPage() {
           ))}
         </Paper>
       </List>
-    </Suspense>
+    </>
   );
 }

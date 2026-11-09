@@ -176,10 +176,8 @@ describe('IngredientPage', () => {
     });
 
     it('prefills and resets acid adjustment from the juice amount URL', async () => {
-      mockRouter.setCurrentUrl('?technique=acid-adjustment');
-      const { user } = setupApp(ingredientPageJSX, {
-        nuqsOptions: { searchParams: '?juiceAmount=0.5' },
-      });
+      mockRouter.setCurrentUrl('?technique=acid-adjustment&juiceAmount=0.5');
+      const { user } = setupApp(ingredientPageJSX);
 
       const juiceAmount = screen.getByRole('spinbutton', { name: 'Juice amount' });
       expect(juiceAmount).toHaveValue(0.5);
@@ -325,20 +323,15 @@ describe('IngredientPage', () => {
 
     it('hides contextual calculators when searching', () => {
       mockRouter.setCurrentUrl('?search=chartreuse&technique=clarification');
-      setupApp(ingredientPageJSX, {
-        nuqsOptions: {
-          searchParams: '?search=chartreuse&technique=clarification',
-        },
-      });
+      setupApp(ingredientPageJSX);
 
       expect(screen.queryByText('Acid Adjusting')).not.toBeInTheDocument();
       expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
     });
 
     it('loads with search term from URL', () => {
-      setupApp(ingredientPageJSX, {
-        nuqsOptions: { searchParams: '?search=chartreuse' },
-      });
+      mockRouter.setCurrentUrl('?search=chartreuse');
+      setupApp(ingredientPageJSX);
 
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('chartreuse');
@@ -348,9 +341,8 @@ describe('IngredientPage', () => {
     });
 
     it('clearing search restores full page content', async () => {
-      const { user } = setupApp(spiritPageJSX, {
-        nuqsOptions: { searchParams: '?search=cloister' },
-      });
+      mockRouter.setCurrentUrl('?search=cloister');
+      const { user } = setupApp(spiritPageJSX);
 
       // Initially filtered and content hidden
       expect(screen.queryByText(/categor/i)).not.toBeInTheDocument();
