@@ -1,9 +1,11 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
+import { byNameListConfig, getNameFirstLetter } from '#/modules/lists/by-name';
 import { getLetterSlug, getLetters } from '#/modules/lists/letters';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import ProgressiveRecipesClient from './ProgressiveRecipesClient';
 import RecipesClient from './RecipesClient';
+import VirtuosoRecipesClient from './VirtuosoRecipesClient';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index | All Recipes',
@@ -28,12 +30,18 @@ export default async function RecipesPage() {
     rows += letter.count;
   }
 
-  return (
-    <ProgressiveRecipesClient
-      initialRecipes={toRecipeListItems(
-        recipes.filter((recipe) => prerendered.has(getLetterSlug(recipe))),
-      ).map(({ href, name, source }) => ({ href, name, source }))}
-      letters={letters}
-    />
-  );
+  const initialRecipes = toRecipeListItems(
+    recipes.filter((recipe) => prerendered.has(getLetterSlug(recipe))),
+  )
+    .toSorted(byNameListConfig.sortItemBy)
+    .toSorted((a, b) =>
+      byNameListConfig.sortHeaderBy(getNameFirstLetter(a), getNameFirstLetter(b)),
+    )
+    .map(({ href, name, source }) => ({ href, name, source }));
+
+  if (process.env.LIST_MODE === 'virtuoso') {
+    return <VirtuosoRecipesClient initialRecipes={initialRecipes} letters={letters} />;
+  }
+
+  return <ProgressiveRecipesClient initialRecipes={initialRecipes} letters={letters} />;
 }

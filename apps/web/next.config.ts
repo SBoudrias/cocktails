@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   reactCompiler: true,
   typedRoutes: true,
+  turbopack: { root: '/Users/simon.boudrias' }, // LOCAL-ONLY, never commit
   experimental: {
     cpus: 8,
     staticGenerationMaxConcurrency: 4,
