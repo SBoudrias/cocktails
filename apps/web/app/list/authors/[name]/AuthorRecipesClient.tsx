@@ -7,7 +7,7 @@ import { useCallback } from 'react';
 import { AuthorAboutCard } from '#/components/EntityAboutCard';
 import { LinkList } from '#/components/LinkList';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import SearchableList from '#/components/SearchableList';
+import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import type { RecipeListItem } from '#/modules/recipeListItem';
@@ -46,9 +46,8 @@ export default function AuthorRecipesClient({
     <>
       <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       {isSearching ? (
-        <SearchableList
+        <RecipeSearchableList
           items={recipes}
-          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderItem}
           searchTerm={searchTerm}
           emptyState={emptyState}

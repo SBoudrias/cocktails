@@ -52,7 +52,6 @@ describe('toRecipeListItems', () => {
         name: 'Indexed Recipe',
         href: getRecipeUrl(recipe),
         source: 'Test Book · Rum Drinks',
-        searchText: 'indexed recipe appleton signature jamaican rum recipe author',
         chapter: { order: 2, name: 'Rum Drinks' },
         page: 12,
       },

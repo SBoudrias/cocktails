@@ -10,7 +10,7 @@ import FixBugCard from '#/components/FixBugCard';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import Quantity from '#/components/Quantity';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import SearchableList from '#/components/SearchableList';
+import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
@@ -78,9 +78,8 @@ export default function CategoryClient({
         <AppHeader title={category.name} />
       )}
       {isSearching ? (
-        <SearchableList
+        <RecipeSearchableList
           items={relatedRecipes}
-          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}

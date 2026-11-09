@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { SearchIndex } from './buildSearchIndex';
 import {
-  getSearchTexts,
+  getIndexedSearchText,
   loadSearchIndex,
   preloadSearchIndex,
   resetSearchIndexCache,
@@ -79,20 +79,23 @@ describe('preloadSearchIndex', () => {
   });
 });
 
-describe('getSearchTexts', () => {
+describe('getIndexedSearchText', () => {
   const items = [
     { href: '/recipes/a/daiquiri', name: 'Daiquiri' },
     { href: '/recipes/a/Unknown', name: 'Unknown Sour' },
   ];
 
-  it('returns the indexed search text, aligned with the items', () => {
-    expect(getSearchTexts(items, index)).toEqual([
+  it('returns the indexed search text, or the name for an unknown href', () => {
+    expect(items.map((item) => getIndexedSearchText(item, index))).toEqual([
       'daiquiri white rum lime',
       'unknown sour',
     ]);
   });
 
   it('falls back to the lowercased name while the index is not loaded', () => {
-    expect(getSearchTexts(items, undefined)).toEqual(['daiquiri', 'unknown sour']);
+    expect(items.map((item) => getIndexedSearchText(item, undefined))).toEqual([
+      'daiquiri',
+      'unknown sour',
+    ]);
   });
 });

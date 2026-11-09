@@ -46,15 +46,15 @@ export function preloadSearchIndex(): void {
 }
 
 /**
- * Search strings aligned with `items`, for the fuzzy search haystack. While
- * the index is not loaded (or lacks the href) the item's name stands in, so
- * typing before the fetch lands still filters by name.
+ * An item's search string, for the fuzzy search haystack. While the index is
+ * not loaded (or lacks the href) the item's name stands in, so typing before
+ * the fetch lands still filters by name.
  */
-export function getSearchTexts(
-  items: { href: string; name: string }[],
+export function getIndexedSearchText(
+  item: { href: string; name: string },
   index: SearchIndex | undefined,
-): string[] {
-  return items.map((item) => index?.[item.href]?.searchText ?? item.name.toLowerCase());
+): string {
+  return index?.[item.href]?.searchText ?? item.name.toLowerCase();
 }
 
 /** Test seam: forget the cached index. */

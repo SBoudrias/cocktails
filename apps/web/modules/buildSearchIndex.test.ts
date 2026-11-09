@@ -1,7 +1,10 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import { describe, expect, it } from 'vitest';
-import { buildSearchIndex, getSerializedSearchIndex } from './buildSearchIndex';
-import { toRecipeListItems } from './recipeListItem';
+import {
+  buildSearchIndex,
+  getSerializedSearchIndex,
+  toSearchIndexItems,
+} from './buildSearchIndex';
 
 const items = [
   { href: '/recipes/b/zz', name: 'Zed', source: 'Book B', searchText: 'zed gin' },
@@ -48,12 +51,12 @@ describe('getSerializedSearchIndex', () => {
     const recipes = await getAllRecipes();
     const serialized = await getSerializedSearchIndex();
     const shuffled = JSON.stringify(
-      buildSearchIndex(toRecipeListItems(recipes.toReversed())),
+      buildSearchIndex(toSearchIndexItems(recipes.toReversed())),
     );
 
     expect(serialized).toBe(shuffled);
     expect(Object.keys(JSON.parse(serialized))).toHaveLength(
-      new Set(toRecipeListItems(recipes).map((item) => item.href)).size,
+      new Set(toSearchIndexItems(recipes).map((item) => item.href)).size,
     );
   });
 });

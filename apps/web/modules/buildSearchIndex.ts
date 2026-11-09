@@ -1,12 +1,15 @@
+import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
-import { toRecipeListItems } from '#/modules/recipeListItem';
-import type { RecipeListItem } from '#/modules/recipeListItem';
+import { getRecipeSource } from '#/modules/getRecipeSource';
+import { getRecipeSearchText } from '#/modules/searchText';
+import { getRecipeUrl } from '#/modules/url';
 
 /**
  * What global search needs to match and render a recipe that is not on the
- * current page.
+ * current page. `searchText` lives only here: list pages ship display fields
+ * and look their recipes' search text up by href.
  */
-export type SearchIndexEntry = Pick<RecipeListItem, 'name' | 'source' | 'searchText'>;
+export type SearchIndexEntry = { name: string; source: string; searchText: string };
 
 /**
  * Every recipe, keyed by recipe href. The key makes the file deploy-skew
@@ -41,5 +44,19 @@ export function buildSearchIndex(
  * the file is only ever read by `fetch`.
  */
 export async function getSerializedSearchIndex(): Promise<string> {
-  return JSON.stringify(buildSearchIndex(toRecipeListItems(await getAllRecipes())));
+  return JSON.stringify(buildSearchIndex(toSearchIndexItems(await getAllRecipes())));
+}
+
+/**
+ * Project recipes into the index's entries, with the href they are keyed by.
+ */
+export function toSearchIndexItems(
+  recipes: Recipe[],
+): (SearchIndexEntry & { href: string })[] {
+  return recipes.map((recipe) => ({
+    href: getRecipeUrl(recipe),
+    name: recipe.name,
+    source: getRecipeSource(recipe),
+    searchText: getRecipeSearchText(recipe),
+  }));
 }

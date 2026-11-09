@@ -1,6 +1,6 @@
 import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
-import { act, render, screen, within } from '@testing-library/react';
+import { act, render, screen, waitFor, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { NuqsAdapter } from 'nuqs/adapters/react';
@@ -9,6 +9,8 @@ import { renderToString } from 'react-dom/server';
 import { vi, afterEach, beforeEach, describe, it } from 'vitest';
 // The app's client setup: enables nuqs history sync, as in the browser.
 import '#/instrumentation-client';
+import { buildSearchIndex, toSearchIndexItems } from '#/modules/buildSearchIndex';
+import { resetSearchIndexCache } from '#/modules/searchIndex';
 import { getRecipeUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
 import RecipesPage from './page';
@@ -53,6 +55,7 @@ const testRecipes: Recipe[] = [
 
 beforeEach(() => {
   recipeCounter = 0;
+  resetSearchIndexCache();
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
 });
 
@@ -174,6 +177,26 @@ describe('RecipesPage', () => {
     expect(onUrlUpdate).toHaveBeenLastCalledWith(
       expect.objectContaining({ queryString: '?search=dai' }),
     );
+  });
+
+  it('matches beyond the name through the shared search index', async () => {
+    const bartenderRecipe = mockRecipe('Bartender Special', {
+      attributions: [{ relation: 'recipe author', source: 'Jane Doe' }],
+    });
+    const recipes = [...testRecipes, bartenderRecipe];
+    vi.mocked(getAllRecipes).mockResolvedValue(recipes);
+    vi.mocked(fetch).mockResolvedValue(
+      Response.json(buildSearchIndex(toSearchIndexItems(recipes))),
+    );
+
+    mockRouter.setCurrentUrl('?search=jane%20doe');
+    setupApp(await RecipesPage());
+
+    // An active search loads the index right away; until then names stand in.
+    await waitFor(() => {
+      expect(screen.getByRole('list')).toHaveTextContent('Bartender Special');
+    });
+    expect(fetch).toHaveBeenCalledOnce();
   });
 
   it('shows no results when search has no matches', async () => {

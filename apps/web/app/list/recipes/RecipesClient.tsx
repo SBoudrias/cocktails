@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback } from 'react';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import SearchableList from '#/components/SearchableList';
+import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchHeader from '#/components/SearchHeader';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import type { RecipeListItem } from '#/modules/recipeListItem';
@@ -42,9 +42,8 @@ export default function RecipesClient({ recipes }: { recipes: RecipeListItem[] }
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
       />
-      <SearchableList
+      <RecipeSearchableList
         items={recipes}
-        getSearchText={(recipe) => recipe.searchText}
         config={byNameListConfig}
         renderItem={renderRecipe}
         searchTerm={searchTerm}

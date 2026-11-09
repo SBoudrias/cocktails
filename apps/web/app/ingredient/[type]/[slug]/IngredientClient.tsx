@@ -25,7 +25,7 @@ import IngredientList from '#/components/IngredientList';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import Quantity from '#/components/Quantity';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import SearchableList from '#/components/SearchableList';
+import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
@@ -140,9 +140,8 @@ export default function IngredientClient({
         <AppHeader title={ingredient.name} />
       )}
       {isSearching ? (
-        <SearchableList
+        <RecipeSearchableList
           items={relatedRecipes}
-          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}
