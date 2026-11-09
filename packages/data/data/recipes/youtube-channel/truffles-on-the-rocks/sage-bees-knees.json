@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Sage Bee's Knees",
+  "preparation": "shaken",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Sage Leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 3,
+        "maximum": 4,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Egg white",
+      "type": "emulsifier",
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Grapefruit bitters",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Empress 1908 Elderflower Rose Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the sage leaves in the shaker.",
+    "Add the remaining ingredients and shake with ice.",
+    "Double strain into a coupe glass.",
+    "Garnish with cracked pepper."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "-Dlh5Umchmk",
+      "channel": "truffles-on-the-rocks"
+    }
+  ]
+}
