@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Pineapple, Cinnamon, and Spice",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Averna",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a double old fashioned glass over crushed ice.",
+    "Garnish with a pineapple wedge, mint, an edible flower and a flamed cinnamon stick."
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "12-q71Ei0js",
+      "channel": "make-and-drink",
+      "start": 161
+    }
+  ]
+}
