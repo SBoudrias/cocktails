@@ -15,7 +15,6 @@ import tikiLeavesTop from '../../../public/tiki-leaves-top.png';
 import theme from './theme';
 
 const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-roboto',
@@ -76,8 +75,8 @@ export default function RootLayout({
           </ThemeProvider>
         </AppRouterCacheProvider>
         <FullscreenHelper />
+        <GoogleAnalytics gaId="G-XSDN5REM9F" />
       </body>
-      <GoogleAnalytics gaId="G-XSDN5REM9F" />
     </html>
   );
 }
