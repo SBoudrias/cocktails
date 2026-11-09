@@ -3,15 +3,22 @@ import type { RenderOptions } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Storage } from 'happy-dom';
+import mockRouter from 'next-router-mock';
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
 import type { ComponentProps, ReactNode } from 'react';
 import { createElement } from 'react';
-import { vi } from 'vitest';
+import { beforeEach, vi } from 'vitest';
 
 vi.mock('next/router', async () => import('next-router-mock'));
 vi.mock('next/navigation', async () => import('next-router-mock/navigation'));
 vi.mock('lite-youtube-embed', () => ({}));
+
+// The mock router is a singleton: start every test from a clean URL, so a
+// query set by one test (mockRouter.setCurrentUrl) never leaks into the next.
+beforeEach(() => {
+  mockRouter.setCurrentUrl('/');
+});
 
 // In Node.js 25+, the global localStorage is a built-in that lacks the full
 // Web Storage API (e.g. no clear()). Replace it with happy-dom's implementation.
@@ -41,6 +48,9 @@ export function setupApp(
       createElement(MemoryRouterProvider, {
         ...routerOptions,
         children: createElement(NuqsTestingAdapter, {
+          // In the app, nuqs and Next's router read the same URL: start nuqs
+          // from the query the test set with mockRouter.setCurrentUrl.
+          searchParams: new URL(mockRouter.asPath, 'http://localhost').search,
           ...nuqsOptions,
           children: ui,
         }),

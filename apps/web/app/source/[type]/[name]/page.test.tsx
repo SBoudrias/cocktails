@@ -1,6 +1,7 @@
 import { getRecipe, getRecipesFromSource } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { setupApp } from '#/vitest.setup';
 import SourcePage from './page';
@@ -165,11 +166,11 @@ describe('SourcePage', () => {
     });
 
     it('loads with search term from URL', async () => {
+      mockRouter.setCurrentUrl('?search=margarita');
       setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
-        { nuqsOptions: { searchParams: '?search=margarita' } },
       );
 
       const input = screen.getByRole('searchbox');
@@ -180,11 +181,11 @@ describe('SourcePage', () => {
     });
 
     it('clearing search restores full page content', async () => {
+      mockRouter.setCurrentUrl('?search=margarita');
       const { user } = setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
-        { nuqsOptions: { searchParams: '?search=margarita' } },
       );
 
       // Clear the search

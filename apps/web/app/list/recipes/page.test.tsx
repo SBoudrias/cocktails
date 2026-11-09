@@ -1,6 +1,7 @@
 import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import { act, render, screen, within } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { NuqsAdapter } from 'nuqs/adapters/react';
 import type { ReactNode } from 'react';
@@ -139,9 +140,8 @@ describe('RecipesPage', () => {
   });
 
   it('clearing search shows all recipes grouped by letter', async () => {
-    const { user } = setupApp(await RecipesPage(), {
-      nuqsOptions: { searchParams: '?search=moj' },
-    });
+    mockRouter.setCurrentUrl('?search=moj');
+    const { user } = setupApp(await RecipesPage());
 
     // Initially filtered
     const resultList = screen.getByRole('list');
@@ -196,9 +196,8 @@ describe('RecipesPage', () => {
   });
 
   it('loads with search term from URL', async () => {
-    setupApp(await RecipesPage(), {
-      nuqsOptions: { searchParams: '?search=margarita' },
-    });
+    mockRouter.setCurrentUrl('?search=margarita');
+    setupApp(await RecipesPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('margarita');

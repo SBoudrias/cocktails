@@ -1,6 +1,7 @@
 import { getAllIngredients, getIngredient } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { setupApp } from '#/vitest.setup';
 import BottlesPage from './page';
@@ -56,9 +57,8 @@ describe('BottlesPage', () => {
   });
 
   it('clearing search shows all bottles grouped by letter', async () => {
-    const { user } = setupApp(await BottlesPage(), {
-      nuqsOptions: { searchParams: { search: 'rum' } },
-    });
+    mockRouter.setCurrentUrl('?search=rum');
+    const { user } = setupApp(await BottlesPage());
 
     // Initially filtered through a real category name on Appleton Signature.
     const resultList = screen.getByRole('list');
@@ -118,9 +118,8 @@ describe('BottlesPage', () => {
   });
 
   it('loads with search term from URL', async () => {
-    setupApp(await BottlesPage(), {
-      nuqsOptions: { searchParams: { search: 'vodka' } },
-    });
+    mockRouter.setCurrentUrl('?search=vodka');
+    setupApp(await BottlesPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('vodka');

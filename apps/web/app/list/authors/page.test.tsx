@@ -1,6 +1,7 @@
 import { getAllRecipes, getRecipe } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { getAuthorRecipesUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
@@ -51,9 +52,8 @@ describe('AuthorListPage', () => {
   });
 
   it('clearing search shows all authors grouped by letter', async () => {
-    const { user } = setupApp(await AuthorListPage(), {
-      nuqsOptions: { searchParams: { search: 'garret' } },
-    });
+    mockRouter.setCurrentUrl('?search=garret');
+    const { user } = setupApp(await AuthorListPage());
 
     const input = screen.getByRole('searchbox');
     await user.clear(input);
@@ -105,9 +105,8 @@ describe('AuthorListPage', () => {
   });
 
   it('loads with search term from URL', async () => {
-    setupApp(await AuthorListPage(), {
-      nuqsOptions: { searchParams: { search: 'garret' } },
-    });
+    mockRouter.setCurrentUrl('?search=garret');
+    setupApp(await AuthorListPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('garret');

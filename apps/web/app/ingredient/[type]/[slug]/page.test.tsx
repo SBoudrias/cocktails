@@ -117,20 +117,16 @@ describe('IngredientPage', () => {
     });
 
     it('renders acid adjusting for acid-adjusted juice with acidity', () => {
-      setupApp(ingredientPageJSX, {
-        nuqsOptions: { searchParams: '?technique=acid-adjustment' },
-      });
+      mockRouter.setCurrentUrl('?technique=acid-adjustment');
+      setupApp(ingredientPageJSX);
 
       expect(screen.getByText('Acid Adjusting')).toBeInTheDocument();
       expect(screen.getByRole('spinbutton', { name: 'Juice amount' })).toHaveValue(1);
     });
 
     it('renders applicable calculators in alphabetical order', () => {
-      setupApp(ingredientPageJSX, {
-        nuqsOptions: {
-          searchParams: '?technique=clarification&technique=acid-adjustment',
-        },
-      });
+      mockRouter.setCurrentUrl('?technique=clarification&technique=acid-adjustment');
+      setupApp(ingredientPageJSX);
 
       const acidAdjusting = screen.getByText('Acid Adjusting');
       const juiceClarification = screen.getByText('Juice Clarification');
@@ -146,21 +142,16 @@ describe('IngredientPage', () => {
     it.each(['clarification:agar', 'clarification:agar-agar'])(
       'renders clarification for %s context',
       (technique) => {
-        setupApp(ingredientPageJSX, {
-          nuqsOptions: { searchParams: `?technique=${technique}` },
-        });
+        mockRouter.setCurrentUrl(`?technique=${technique}`);
+        setupApp(ingredientPageJSX);
 
         expect(screen.getByText('Juice Clarification')).toBeInTheDocument();
       },
     );
 
     it('prefills clarification from a recipe quantity above the contextual minimum', () => {
-      // The calculator reads amount/unit through Next's useSearchParams, and the
-      // technique that shows it through nuqs.
       mockRouter.setCurrentUrl('?technique=clarification&amount=500&unit=gram');
-      setupApp(ingredientPageJSX, {
-        nuqsOptions: { searchParams: '?technique=clarification&amount=500&unit=gram' },
-      });
+      setupApp(ingredientPageJSX);
 
       expect(screen.getByRole('spinbutton', { name: 'Raw juice weight' })).toHaveValue(
         500,
@@ -170,26 +161,23 @@ describe('IngredientPage', () => {
     it.each(['clarification:milk', 'clarification:bentonite'])(
       'does not render clarification for %s context',
       (technique) => {
-        setupApp(ingredientPageJSX, {
-          nuqsOptions: { searchParams: `?technique=${technique}` },
-        });
+        mockRouter.setCurrentUrl(`?technique=${technique}`);
+        setupApp(ingredientPageJSX);
 
         expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
       },
     );
 
     it('does not render clarification for non-juice ingredients', () => {
-      setupApp(spiritPageJSX, {
-        nuqsOptions: { searchParams: '?technique=clarification' },
-      });
+      mockRouter.setCurrentUrl('?technique=clarification');
+      setupApp(spiritPageJSX);
 
       expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
     });
 
     it('prefills and resets acid adjustment from the juice amount URL', async () => {
-      const { user } = setupApp(ingredientPageJSX, {
-        nuqsOptions: { searchParams: '?technique=acid-adjustment&juiceAmount=0.5' },
-      });
+      mockRouter.setCurrentUrl('?technique=acid-adjustment&juiceAmount=0.5');
+      const { user } = setupApp(ingredientPageJSX);
 
       const juiceAmount = screen.getByRole('spinbutton', { name: 'Juice amount' });
       expect(juiceAmount).toHaveValue(0.5);
@@ -334,20 +322,16 @@ describe('IngredientPage', () => {
     });
 
     it('hides contextual calculators when searching', () => {
-      setupApp(ingredientPageJSX, {
-        nuqsOptions: {
-          searchParams: '?search=chartreuse&technique=clarification',
-        },
-      });
+      mockRouter.setCurrentUrl('?search=chartreuse&technique=clarification');
+      setupApp(ingredientPageJSX);
 
       expect(screen.queryByText('Acid Adjusting')).not.toBeInTheDocument();
       expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
     });
 
     it('loads with search term from URL', () => {
-      setupApp(ingredientPageJSX, {
-        nuqsOptions: { searchParams: '?search=chartreuse' },
-      });
+      mockRouter.setCurrentUrl('?search=chartreuse');
+      setupApp(ingredientPageJSX);
 
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('chartreuse');
@@ -357,9 +341,8 @@ describe('IngredientPage', () => {
     });
 
     it('clearing search restores full page content', async () => {
-      const { user } = setupApp(spiritPageJSX, {
-        nuqsOptions: { searchParams: '?search=cloister' },
-      });
+      mockRouter.setCurrentUrl('?search=cloister');
+      const { user } = setupApp(spiritPageJSX);
 
       // Initially filtered and content hidden
       expect(screen.queryByText(/categor/i)).not.toBeInTheDocument();

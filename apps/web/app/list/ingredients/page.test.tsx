@@ -3,6 +3,7 @@ import type * as CategoriesModule from '@cocktails/data/categories';
 import { getAllIngredients, getIngredient } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
 import { getCategoryUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
@@ -55,9 +56,8 @@ describe('IngredientsPage', () => {
   });
 
   it('clearing search shows all ingredients grouped by letter', async () => {
-    const { user } = setupApp(await IngredientsPage(), {
-      nuqsOptions: { searchParams: { search: 'lime' } },
-    });
+    mockRouter.setCurrentUrl('?search=lime');
+    const { user } = setupApp(await IngredientsPage());
 
     // Initially filtered
     const resultList = screen.getByRole('list');
@@ -117,9 +117,8 @@ describe('IngredientsPage', () => {
   });
 
   it('loads with search term from URL', async () => {
-    setupApp(await IngredientsPage(), {
-      nuqsOptions: { searchParams: { search: 'lime' } },
-    });
+    mockRouter.setCurrentUrl('?search=lime');
+    setupApp(await IngredientsPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('lime');
