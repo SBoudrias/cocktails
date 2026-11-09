@@ -1,10 +1,18 @@
 'use client';
 
-import { Box, Button, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import {
+  Box,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  Paper,
+} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type {
   GroupedVirtuosoHandle,
   StateSnapshot,
@@ -79,27 +87,35 @@ export default function VirtualGroupedList<const T extends { href: string }>({
   const groupCounts = groups.map((group) => group.count);
   const totalCount = groupCounts.reduce((a, b) => a + b, 0);
 
-  // Right before a click navigates away.
-  const savePosition = () => {
-    const anchor = [
-      ...document.querySelectorAll<HTMLElement>('[data-item-index] a[href]'),
-    ]
-      .map((link) => ({
-        href: link.getAttribute('href'),
-        top: link.getBoundingClientRect().top,
-      }))
-      .find((link) => link.top > getAppBarHeight());
-    ref.current?.getState((state) => {
-      if (anchor?.href)
-        positions.set(pathname, { state, href: anchor.href, top: anchor.top });
-    });
-  };
+  // Save the position right before a click on a row navigates away (a
+  // capture listener runs before the link's own navigation).
+  const listRef = useRef<HTMLUListElement>(null);
+  useEffect(() => {
+    const list = listRef.current;
+    if (list == null) return;
+
+    const savePosition = () => {
+      const anchor = [...list.querySelectorAll<HTMLElement>('[data-item-index] a[href]')]
+        .map((link) => ({
+          href: link.getAttribute('href'),
+          top: link.getBoundingClientRect().top,
+        }))
+        .find((link) => link.top > getAppBarHeight());
+      ref.current?.getState((state) => {
+        if (anchor?.href)
+          positions.set(pathname, { state, href: anchor.href, top: anchor.top });
+      });
+    };
+
+    list.addEventListener('click', savePosition, { capture: true });
+    return () => list.removeEventListener('click', savePosition, { capture: true });
+  }, [pathname]);
 
   // While the restored list settles (measurements, rows swapping in), keep
   // the anchor row where it was.
   const keepRestoredPosition = () => {
     if (restore == null) return;
-    mountedAt.current ||= performance.now();
+    if (mountedAt.current === 0) mountedAt.current = performance.now();
     if (performance.now() - mountedAt.current > 1500) return;
     const link = document.querySelector(`[data-item-index] a[href="${restore.href}"]`);
     if (link == null) return;
@@ -133,7 +149,7 @@ export default function VirtualGroupedList<const T extends { href: string }>({
       </Box>
       {/* One list around the rows and the sticky header virtuoso renders
           apart from them. */}
-      <div role="list" onClickCapture={savePosition}>
+      <List ref={listRef} disablePadding>
         <GroupedVirtuoso
           ref={ref}
           useWindowScroll
@@ -154,7 +170,7 @@ export default function VirtualGroupedList<const T extends { href: string }>({
             return <Paper square>{item ? renderItem(item) : placeholder}</Paper>;
           }}
         />
-      </div>
+      </List>
     </>
   );
 }
