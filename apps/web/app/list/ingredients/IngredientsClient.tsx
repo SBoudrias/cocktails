@@ -1,30 +1,32 @@
 'use client';
 
-import type { BaseIngredient, Category } from '@cocktails/data';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
+import type { IngredientListItem } from '#/modules/ingredientListItem';
 import { byNameListConfig } from '#/modules/lists/by-name';
-import { getIngredientOrCategorySearchText } from '#/modules/searchText';
-import { getIngredientUrl } from '#/modules/url';
 
-function renderIngredient(ingredient: BaseIngredient | Category) {
+function renderIngredient(ingredient: IngredientListItem) {
   return (
     <LinkListItem
-      key={ingredient.slug}
-      href={getIngredientUrl(ingredient)}
+      key={ingredient.href}
+      href={ingredient.href}
       primary={ingredient.name}
     />
   );
 }
 
+function getSearchText(ingredient: IngredientListItem) {
+  return ingredient.searchText;
+}
+
 export default function IngredientsClient({
   ingredients,
 }: {
-  ingredients: (BaseIngredient | Category)[];
+  ingredients: IngredientListItem[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
@@ -46,7 +48,7 @@ export default function IngredientsClient({
       />
       <SearchableList
         items={ingredients}
-        getSearchText={getIngredientOrCategorySearchText}
+        getSearchText={getSearchText}
         config={byNameListConfig}
         renderItem={renderIngredient}
         searchTerm={searchTerm}

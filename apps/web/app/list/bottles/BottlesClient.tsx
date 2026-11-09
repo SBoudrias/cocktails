@@ -1,26 +1,22 @@
 'use client';
 
-import type { BaseIngredient } from '@cocktails/data';
 import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
+import type { IngredientListItem } from '#/modules/ingredientListItem';
 import { byNameListConfig } from '#/modules/lists/by-name';
-import { getIngredientOrCategorySearchText } from '#/modules/searchText';
-import { getIngredientUrl } from '#/modules/url';
 
-function renderBottle(bottle: BaseIngredient) {
-  return (
-    <LinkListItem
-      key={bottle.slug}
-      href={getIngredientUrl(bottle)}
-      primary={bottle.name}
-    />
-  );
+function renderBottle(bottle: IngredientListItem) {
+  return <LinkListItem key={bottle.href} href={bottle.href} primary={bottle.name} />;
 }
 
-export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }) {
+function getSearchText(bottle: IngredientListItem) {
+  return bottle.searchText;
+}
+
+export default function BottlesClient({ bottles }: { bottles: IngredientListItem[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
@@ -38,7 +34,7 @@ export default function BottlesClient({ bottles }: { bottles: BaseIngredient[] }
       />
       <SearchableList
         items={bottles}
-        getSearchText={getIngredientOrCategorySearchText}
+        getSearchText={getSearchText}
         config={byNameListConfig}
         renderItem={renderBottle}
         searchTerm={searchTerm}

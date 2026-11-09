@@ -1,7 +1,5 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import AuthorsClient from './AuthorsClient';
 
 export const metadata: Metadata = {
@@ -35,9 +33,5 @@ export default async function AuthorListPage() {
   // Convert to array
   const authors = Array.from(authorsMap.values());
 
-  return (
-    <Suspense fallback={<SearchHeaderFallback title="All Authors" />}>
-      <AuthorsClient authors={authors} />
-    </Suspense>
-  );
+  return <AuthorsClient authors={authors} />;
 }

@@ -1,7 +1,5 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import BarsClient from './BarsClient';
 
 export const metadata: Metadata = {
@@ -37,9 +35,5 @@ export default async function BarListPage() {
     a.name.localeCompare(b.name),
   );
 
-  return (
-    <Suspense fallback={<SearchHeaderFallback title="All Bars" />}>
-      <BarsClient bars={bars} />
-    </Suspense>
-  );
+  return <BarsClient bars={bars} />;
 }

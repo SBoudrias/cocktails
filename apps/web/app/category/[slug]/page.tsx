@@ -4,9 +4,6 @@ import { getCategoryPageParams } from '@cocktails/data/params';
 import { getRecipeByCategory } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
-import { Suspense } from 'react';
-import AppHeader from '#/components/AppHeader';
-import SearchHeaderFallback from '#/components/SearchHeader/Fallback';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import CategoryClient from './CategoryClient';
 
@@ -51,31 +48,21 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   const categorySlugs = new Set([category.slug, ...childCategories.map((c) => c.slug)]);
 
   return (
-    <Suspense
-      fallback={
-        relatedRecipes.length > 0 ? (
-          <SearchHeaderFallback title={category.name} />
-        ) : (
-          <AppHeader title={category.name} />
-        )
-      }
-    >
-      <CategoryClient
-        category={category}
-        members={members}
-        substitutes={substitutes}
-        relatedRecipes={toRecipeListItems(
-          relatedRecipes,
-          (recipe) =>
-            recipe.ingredients.find((ingredient) => {
-              if (ingredient.type === 'category') {
-                return ingredient.slug === category.slug;
-              }
-              return ingredient.categories.some((c) => categorySlugs.has(c.slug));
-            })?.quantity,
-        )}
-        childCategories={childCategories}
-      />
-    </Suspense>
+    <CategoryClient
+      category={category}
+      members={members}
+      substitutes={substitutes}
+      relatedRecipes={toRecipeListItems(
+        relatedRecipes,
+        (recipe) =>
+          recipe.ingredients.find((ingredient) => {
+            if (ingredient.type === 'category') {
+              return ingredient.slug === category.slug;
+            }
+            return ingredient.categories.some((c) => categorySlugs.has(c.slug));
+          })?.quantity,
+      )}
+      childCategories={childCategories}
+    />
   );
 }

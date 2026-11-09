@@ -1,7 +1,11 @@
 import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
-import { screen, within } from '@testing-library/react';
-import { vi, beforeEach, describe, it } from 'vitest';
+import { act, render, screen, within } from '@testing-library/react';
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import type { ReactNode } from 'react';
+import { renderToString } from 'react-dom/server';
+import { vi, afterEach, beforeEach, describe, it } from 'vitest';
+import NuqsAdapter from '#/components/NuqsAdapter';
 import { getRecipeUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
 import RecipesPage from './page';
@@ -216,5 +220,63 @@ describe('RecipesPage', () => {
     expect(mGroup).toHaveTextContent('Mojito');
     expect(mGroup).toHaveTextContent('Margarita');
     expect(mGroup).toHaveTextContent('Mai Tai');
+  });
+});
+
+// The app's own URL adapter (not nuqs's testing adapter): it reads
+// `location.search`, renders "no search" on the server, and follows Next
+// router navigations through the patched History API.
+describe('RecipesPage with the app URL adapter', () => {
+  function withAppAdapter(ui: ReactNode) {
+    return (
+      <MemoryRouterProvider>
+        <NuqsAdapter>{ui}</NuqsAdapter>
+      </MemoryRouterProvider>
+    );
+  }
+
+  afterEach(() => {
+    window.history.replaceState(null, '', '/');
+  });
+
+  it('prerenders every recipe even when the URL has a search', async () => {
+    window.history.replaceState(null, '', '/list/recipes?search=margarita');
+
+    const html = renderToString(withAppAdapter(await RecipesPage()));
+
+    for (const recipe of testRecipes) {
+      expect(html).toContain(`href="${getRecipeUrl(recipe)}"`);
+    }
+  });
+
+  it('applies ?search= when landing on the page', async () => {
+    window.history.replaceState(null, '', '/list/recipes?search=margarita');
+
+    render(withAppAdapter(await RecipesPage()));
+
+    expect(screen.getByRole('searchbox')).toHaveValue('margarita');
+    const resultList = screen.getByRole('list');
+    expect(resultList).toHaveTextContent('Margarita');
+    expect(resultList).not.toHaveTextContent('Mojito');
+  });
+
+  it('follows router navigations and back/forward', async () => {
+    window.history.replaceState(null, '', '/list/recipes');
+    render(withAppAdapter(await RecipesPage()));
+    expect(screen.getByRole('group', { name: 'M' })).toHaveTextContent('Mojito');
+
+    // Next's router changes the URL through history.pushState.
+    act(() => {
+      window.history.pushState(null, '', '/list/recipes?search=daiquiri');
+    });
+    expect(screen.getByRole('searchbox')).toHaveValue('daiquiri');
+    expect(screen.getByRole('list')).not.toHaveTextContent('Mojito');
+
+    act(() => {
+      window.history.replaceState(null, '', '/list/recipes');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    });
+    expect(screen.getByRole('searchbox')).toHaveValue('');
+    expect(screen.getByRole('group', { name: 'M' })).toHaveTextContent('Mojito');
   });
 });
