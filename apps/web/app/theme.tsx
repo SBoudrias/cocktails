@@ -4,6 +4,7 @@ import type { LinkProps } from 'next/link';
 import NextLink from 'next/link';
 import type { Ref } from 'react';
 import { forwardRef } from 'react';
+import { belowAppBar } from '#/modules/belowAppBar';
 
 const LinkBehaviour = forwardRef(function LinkBehaviour(
   props: LinkProps<string>,
@@ -117,6 +118,9 @@ const theme = createTheme({
       },
     },
     MuiListSubheader: {
+      // Section headers scroll with their content; the A–Z group headers of
+      // long lists opt in to sticking.
+      defaultProps: { disableSticky: true },
       styleOverrides: {
         root: {
           lineHeight: '1.4rem',
@@ -124,6 +128,11 @@ const theme = createTheme({
           paddingBottom: 16,
           backgroundColor: 'transparent',
         },
+        // Right below the fixed app bar, and opaque: the rows scroll under it.
+        sticky: ({ theme }) => ({
+          ...belowAppBar(theme.mixins.toolbar),
+          backgroundColor: (theme.vars ?? theme).palette.background.default,
+        }),
       },
     },
     MuiListItemText: {

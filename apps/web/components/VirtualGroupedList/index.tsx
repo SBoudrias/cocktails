@@ -11,6 +11,7 @@ import type {
   TopItemListProps,
 } from 'react-virtuoso';
 import { GroupedVirtuoso } from 'react-virtuoso';
+import { belowAppBar } from '#/modules/belowAppBar';
 
 /**
  * Where each list was when the user left it, for a soft navigation back:
@@ -21,24 +22,8 @@ import { GroupedVirtuoso } from 'react-virtuoso';
 const positions = new Map<string, { state: StateSnapshot; href: string; top: number }>();
 
 // The fixed app bar covers the top of the window: the sticky group header
-// sits right below it. Same breakpoints as MUI's toolbar mixin.
-const TopItemList = styled('div')(({ theme }) => {
-  const { minHeight, ...breakpoints } = theme.mixins.toolbar;
-  return {
-    top: minHeight,
-    ...Object.fromEntries(
-      Object.entries(breakpoints).map(([query, value]) => [
-        query,
-        {
-          top:
-            typeof value === 'object' && value != null && 'minHeight' in value
-              ? value.minHeight
-              : minHeight,
-        },
-      ]),
-    ),
-  };
-});
+// sits right below it.
+const TopItemList = styled('div')(({ theme }) => belowAppBar(theme.mixins.toolbar));
 
 function StickyTopItemList({ children, style }: TopItemListProps) {
   return <TopItemList style={{ ...style, top: undefined }}>{children}</TopItemList>;
@@ -129,7 +114,13 @@ export default function VirtualGroupedList<const T extends { href: string }>({
           computeItemKey={(index) => items[index]?.href ?? `placeholder-${index}`}
           components={{ TopItemList: StickyTopItemList }}
           groupContent={(groupIndex) => (
-            <ListSubheader component="div" role="heading" aria-level={2}>
+            <ListSubheader
+              component="div"
+              role="heading"
+              aria-level={2}
+              // Opaque: the rows scroll under it while it sticks.
+              sx={{ bgcolor: 'background.default' }}
+            >
               {groups[groupIndex]?.label}
             </ListSubheader>
           )}

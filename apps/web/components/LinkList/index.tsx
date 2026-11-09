@@ -78,7 +78,11 @@ export function LinkList<const T>({
         return (
           <li key={header}>
             <List role="group" aria-labelledby={header ? headerId : undefined}>
-              {header && <ListSubheader id={headerId}>{header}</ListSubheader>}
+              {header && (
+                <ListSubheader id={headerId} disableSticky={false}>
+                  {header}
+                </ListSubheader>
+              )}
               <Paper square>{groupItems.map((item) => renderItem(item))}</Paper>
             </List>
           </li>
