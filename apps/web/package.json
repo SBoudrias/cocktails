@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack && next-sitemap",
+    "build": "next build --turbopack && next-sitemap && node tools/extract-css.ts out",
     "lint": "next typegen && tsc --noEmit"
   },
   "dependencies": {

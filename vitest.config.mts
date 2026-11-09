@@ -32,7 +32,11 @@ export default defineConfig({
         extends: true,
         test: {
           name: 'unit',
-          include: ['packages/**/*.test.ts', 'apps/web/modules/**/*.test.ts'],
+          include: [
+            'packages/**/*.test.ts',
+            'apps/web/modules/**/*.test.ts',
+            'apps/web/tools/**/*.test.ts',
+          ],
           environment: 'node',
         },
       },
