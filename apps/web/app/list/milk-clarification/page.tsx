@@ -1,7 +1,7 @@
 import { getMilkClarifiedRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
+import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { toRecipeListItems } from '#/modules/recipeListItem';
-import MilkClarificationRecipesClient from './MilkClarificationRecipesClient';
 
 export const metadata: Metadata = {
   title: 'Cocktail Index | Milk-Clarified Recipes',
@@ -10,5 +10,11 @@ export const metadata: Metadata = {
 export default async function MilkClarificationRecipesPage() {
   const recipes = toRecipeListItems(await getMilkClarifiedRecipes());
 
-  return <MilkClarificationRecipesClient recipes={recipes} />;
+  return (
+    <SearchableRecipePage
+      title="Milk-Clarified Recipes"
+      recipes={recipes}
+      listHeader="All Recipes"
+    />
+  );
 }

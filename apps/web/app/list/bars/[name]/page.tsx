@@ -3,8 +3,9 @@ import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { BarAboutCard } from '#/components/EntityAboutCard';
+import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { toRecipeListItems } from '#/modules/recipeListItem';
-import BarRecipesClient from './BarRecipesClient';
 
 function formatBarName(bar: { name: string; location?: string }) {
   return `${bar.name}${bar.location ? `, ${bar.location}` : ''}`;
@@ -69,5 +70,12 @@ export default async function BarRecipesPage({ params }: Props) {
     notFound();
   }
 
-  return <BarRecipesClient bar={bar} recipes={toRecipeListItems(barRecipes)} />;
+  return (
+    <SearchableRecipePage
+      recipes={toRecipeListItems(barRecipes)}
+      listHeader={`Recipes from ${bar.name}`}
+    >
+      <BarAboutCard bar={bar} sx={{ m: 2 }} />
+    </SearchableRecipePage>
+  );
 }

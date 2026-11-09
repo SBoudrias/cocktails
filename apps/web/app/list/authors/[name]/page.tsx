@@ -3,8 +3,9 @@ import { getAllRecipes } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { AuthorAboutCard } from '#/components/EntityAboutCard';
+import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { toRecipeListItems } from '#/modules/recipeListItem';
-import AuthorRecipesClient from './AuthorRecipesClient';
 
 type Props = {
   params: Promise<{ name: string }>;
@@ -70,8 +71,13 @@ export default async function AuthorRecipesPage({ params }: Props) {
   }
 
   // getAuthor resolves the entity's bars/sources refs into full entities, so
-  // the client renders every dimension of the author from its one object.
+  // the card renders every dimension of the author from its one object.
   return (
-    <AuthorRecipesClient author={author} recipes={toRecipeListItems(authorRecipes)} />
+    <SearchableRecipePage
+      recipes={toRecipeListItems(authorRecipes)}
+      listHeader={`Recipes by ${author.name}`}
+    >
+      <AuthorAboutCard author={author} sx={{ m: 2 }} />
+    </SearchableRecipePage>
   );
 }
