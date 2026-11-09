@@ -2,7 +2,7 @@
 const config = {
   siteUrl: 'https://sboudrias.github.io/cocktails',
   generateRobotsTxt: true,
-  outDir: 'public',
+  outDir: 'out',
 };
 
 export default config;

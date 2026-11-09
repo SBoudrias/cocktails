@@ -8,8 +8,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "postbuild": "next-sitemap",
+    "build": "next build --turbopack && next-sitemap",
     "lint": "next typegen && tsc --noEmit"
   },
   "dependencies": {
