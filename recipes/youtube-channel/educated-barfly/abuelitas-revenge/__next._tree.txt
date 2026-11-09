@@ -1,4 +1,4 @@
-:HL["/cocktails/_next/static/chunks/24ayuaqjpv5qa.css","style"]
+:HL["/cocktails/_next/static/chunks/3rtvdz1ujuq0h.css","style"]
 :HL["/cocktails/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/cocktails/_next/static/chunks/3-06jao35dxqx.css","style"]
 5:[["children",{"s":"__PAGE__","h":160}]]
@@ -6,4 +6,4 @@
 3:[["children",{"s":{"n":"source","t":"d","k":"educated-barfly","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"type","t":"d","k":"youtube-channel","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"recipes","h":96,"c":"$Q2"}]]
-0:{"b":"KLCb4XNTKLDVkEDKheju_","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"Xy778_97Jqyy4T6eHit9L","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
