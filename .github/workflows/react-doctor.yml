@@ -31,3 +31,5 @@ jobs:
         with:
           fetch-depth: 5
       - uses: millionco/react-doctor@v2.2.9
+        with:
+          comment-on-clean: false
