@@ -3,9 +3,10 @@ import { getSourcePageParams } from '@cocktails/data/params';
 import { getRecipesFromSource } from '@cocktails/data/recipes';
 import { getSource } from '@cocktails/data/sources';
 import { notFound, unstable_rethrow } from 'next/navigation';
+import SearchableRecipePage from '#/components/SearchableRecipePage';
+import SourceAboutCard from '#/components/SourceAboutCard';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 import BookSourceClient from './BookSourceClient';
-import SourceClient from './SourceClient';
 
 type Params = { type: Source['type']; name: string };
 
@@ -38,6 +39,8 @@ export default async function SourcePage({ params }: { params: Promise<Params> }
   return source.type === 'book' ? (
     <BookSourceClient source={source} recipes={recipes} />
   ) : (
-    <SourceClient source={source} recipes={recipes} />
+    <SearchableRecipePage recipes={recipes} listHeader="All Recipes">
+      <SourceAboutCard source={source} sx={{ m: 2 }} />
+    </SearchableRecipePage>
   );
 }
