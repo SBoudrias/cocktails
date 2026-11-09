@@ -10,8 +10,8 @@ import 'core-js/modules/es.object.group-by.js';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import AppFooter from '#/components/AppFooter';
 import FullscreenHelper from '#/components/FullscreenHelper';
-import tikiBeachDivider from '../../../public/tiki-beach-divider.png';
-import tikiLeavesTop from '../../../public/tiki-leaves-top.png';
+import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';
+import tikiLeavesTop from '../../../public/tiki-leaves-top.webp';
 import theme from './theme';
 
 const roboto = Roboto({
