@@ -69,6 +69,8 @@ type RecentRecipeEntry = {
   recipeSlug: string;
   chapter?: string;
   date: Date;
+  /** Calendar day (YYYY-MM-DD) of the commit, in the committer's own timezone. */
+  day: string;
 };
 
 const recentlyAddedRecipeLimit = 30;
@@ -83,8 +85,10 @@ function isSourceType(sourceType: string | undefined): sourceType is Source['typ
 function parseRecentRecipePath(
   recipeRelPath: string,
   filename: string,
-  date: Date,
+  commitDate: string,
 ): RecentRecipeEntry | null {
+  const date = new Date(commitDate);
+  const day = commitDate.slice(0, 10);
   if (!filename.startsWith(`${recipeRelPath}/`)) return null;
   if (!filename.endsWith('.json') || filename.includes('_source.json')) return null;
 
@@ -103,6 +107,7 @@ function parseRecentRecipePath(
       sourceSlug,
       recipeSlug: path.basename(recipeFilename, '.json'),
       date,
+      day,
     };
   }
 
@@ -117,6 +122,7 @@ function parseRecentRecipePath(
       recipeSlug: path.basename(recipeFilename, '.json'),
       chapter,
       date,
+      day,
     };
   }
 
@@ -193,13 +199,11 @@ async function fetchGitHubJson(url: URL): Promise<unknown> {
   return response.json();
 }
 
-function getGitHubCommitDate(commit: unknown): Date | null {
+function getGitHubCommitDate(commit: unknown): string | null {
   const commitData = getObjectProperty(commit, 'commit');
   const committer = getObjectProperty(commitData, 'committer');
   const date = getStringProperty(committer, 'date');
-  if (!date) return null;
-
-  return new Date(date);
+  return date ?? null;
 }
 
 async function getRecentlyAddedRecipesFromGit({
@@ -227,14 +231,14 @@ async function getRecentlyAddedRecipesFromGit({
 
   const recent: RecentRecipeEntry[] = [];
   const seen = new Set<string>();
-  let currentDate: Date | null = null;
+  let currentDate: string | null = null;
 
   for (const raw of gitLog.split('\n')) {
     const line = raw.trim();
     if (!line) continue;
 
     if (line.startsWith('COMMIT ')) {
-      currentDate = new Date(line.slice(7));
+      currentDate = line.slice(7);
     } else if (currentDate) {
       const entry = parseRecentRecipePath(recipeRelPath, line, currentDate);
       if (!entry) continue;
@@ -510,29 +514,50 @@ function isMissingRecipeError(error: unknown): boolean {
   return error instanceof Error && error.message.startsWith('Recipe not found: ');
 }
 
-export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
-  const { repoRoot, recipeRelPath } = await resolveGitRecipeContext();
-  const recent = (await hasFullGitHistory(repoRoot))
-    ? await getRecentlyAddedRecipesFromGit({ repoRoot, recipeRelPath })
-    : await getRecentlyAddedRecipesFromGitHub(recipeRelPath);
+/**
+ * The most recently added recipes, newest first, with the calendar day
+ * (YYYY-MM-DD) each was first committed. The date of a recipe is the commit
+ * that first introduced its file path, so a recipe that is later edited keeps
+ * its date. The list is cut off at a day boundary: once the limit is reached,
+ * the rest of that day's recipes are still included so no day is split.
+ */
+export const getRecentlyAddedRecipeEntries = memo(
+  async (): Promise<{ recipe: Recipe; day: string }[]> => {
+    const { repoRoot, recipeRelPath } = await resolveGitRecipeContext();
+    const recent = (await hasFullGitHistory(repoRoot))
+      ? await getRecentlyAddedRecipesFromGit({ repoRoot, recipeRelPath })
+      : await getRecentlyAddedRecipesFromGitHub(recipeRelPath);
 
-  const recipes: Recipe[] = [];
+    const entries: { recipe: Recipe; day: string }[] = [];
 
-  for (const { sourceType, sourceSlug, recipeSlug, chapter } of recent.toSorted(
-    (a, b) => b.date.getTime() - a.date.getTime(),
-  )) {
-    try {
-      recipes.push(
-        await getRecipe({ type: sourceType, slug: sourceSlug }, recipeSlug, chapter),
-      );
-    } catch (error) {
-      if (!isMissingRecipeError(error)) throw error;
+    for (const { sourceType, sourceSlug, recipeSlug, chapter, day } of recent.toSorted(
+      (a, b) => b.date.getTime() - a.date.getTime(),
+    )) {
+      if (entries.length >= recentlyAddedRecipeLimit && entries.at(-1)?.day !== day) {
+        break;
+      }
+
+      try {
+        entries.push({
+          recipe: await getRecipe(
+            { type: sourceType, slug: sourceSlug },
+            recipeSlug,
+            chapter,
+          ),
+          day,
+        });
+      } catch (error) {
+        if (!isMissingRecipeError(error)) throw error;
+      }
     }
 
-    if (recipes.length >= recentlyAddedRecipeLimit) break;
-  }
+    return entries;
+  },
+);
 
-  return recipes;
+export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
+  const entries = await getRecentlyAddedRecipeEntries();
+  return entries.map(({ recipe }) => recipe);
 });
 
 export const getNonAlcoholicRecipes = memo(async (): Promise<Recipe[]> => {

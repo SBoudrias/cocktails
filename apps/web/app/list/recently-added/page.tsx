@@ -1,9 +1,10 @@
-import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
-import { List, Paper } from '@mui/material';
+import { getRecentlyAddedRecipeEntries } from '@cocktails/data/recipes';
+import { List, ListSubheader, Paper } from '@mui/material';
 import type { Metadata } from 'next';
 import AppHeader from '#/components/AppHeader';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import { getRecipeSource } from '#/modules/getRecipeSource';
+import { groupByAddedDay } from '#/modules/groupByAddedDay';
 import { getRecipeUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
@@ -11,22 +12,38 @@ export const metadata: Metadata = {
 };
 
 export default async function RecentlyAddedPage() {
-  const recipes = await getRecentlyAddedRecipes();
+  const entries = await getRecentlyAddedRecipeEntries();
+  const groups = groupByAddedDay(
+    entries.map(({ recipe, day }) => ({ day, item: recipe })),
+  );
 
   return (
     <>
       <AppHeader title="Recently Added" />
       <List sx={{ mt: 2 }}>
-        <Paper square>
-          {recipes.map((recipe) => (
-            <RecipeLinkListItem
-              key={getRecipeUrl(recipe)}
-              href={getRecipeUrl(recipe)}
-              name={recipe.name}
-              source={getRecipeSource(recipe)}
-            />
-          ))}
-        </Paper>
+        {groups.map(({ day, label, items }) => {
+          const headerId = `group-header-${day}`;
+
+          return (
+            <li key={day}>
+              <List role="group" aria-labelledby={headerId}>
+                <ListSubheader id={headerId} disableSticky={false}>
+                  {label}
+                </ListSubheader>
+                <Paper square>
+                  {items.map((recipe) => (
+                    <RecipeLinkListItem
+                      key={getRecipeUrl(recipe)}
+                      href={getRecipeUrl(recipe)}
+                      name={recipe.name}
+                      source={getRecipeSource(recipe)}
+                    />
+                  ))}
+                </Paper>
+              </List>
+            </li>
+          );
+        })}
       </List>
     </>
   );
