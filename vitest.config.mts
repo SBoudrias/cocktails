@@ -39,20 +39,10 @@ export default defineConfig({
       {
         extends: true,
         test: {
-          name: 'component',
-          include: ['apps/web/components/**/*.test.tsx'],
-          environment: 'happy-dom',
-          environmentOptions: {
-            happyDOM: { settings: { disableIframePageLoading: true } },
-          },
-          setupFiles: [path.join(__dirname, 'apps/web/vitest.setup.ts')],
-        },
-      },
-      {
-        extends: true,
-        test: {
-          name: 'page',
-          include: ['apps/web/app/**/*.test.tsx'],
+          name: 'dom',
+          include: ['apps/web/**/*.test.{ts,tsx}'],
+          // Node-environment tests of the web app belong to the unit project.
+          exclude: ['node_modules', '.worktrees', 'apps/web/modules/**'],
           environment: 'happy-dom',
           environmentOptions: {
             happyDOM: { settings: { disableIframePageLoading: true } },
