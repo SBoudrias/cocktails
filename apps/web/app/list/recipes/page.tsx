@@ -1,6 +1,7 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import { getLetters } from '#/modules/lists/letters';
+import { toRecipeListItems } from '#/modules/recipeListItem';
 import RecipesClient from './RecipesClient';
 
 export const metadata: Metadata = {
@@ -10,5 +11,7 @@ export const metadata: Metadata = {
 export default async function RecipesPage() {
   const recipes = await getAllRecipes();
 
-  return <RecipesClient title="All Recipes" letters={getLetters(recipes)} />;
+  return (
+    <RecipesClient recipes={toRecipeListItems(recipes)} letters={getLetters(recipes)} />
+  );
 }

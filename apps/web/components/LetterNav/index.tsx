@@ -3,14 +3,15 @@ import Link from 'next/link';
 import { getRecipeLetterUrl } from '#/modules/url';
 
 /**
- * Links to every letter page of the recipe list, the current one marked.
+ * Links to every letter page of the recipe list, the current one (if any)
+ * marked.
  */
 export default function LetterNav({
   letters,
   current,
 }: {
   letters: { slug: string; label: string }[];
-  current: string;
+  current?: string;
 }) {
   return (
     <Box

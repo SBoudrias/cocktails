@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLetterSlug, getLetters } from '#/modules/lists/letters';
 import { toRecipeListItems } from '#/modules/recipeListItem';
-import RecipesClient from '../RecipesClient';
+import LetterRecipesClient from './LetterRecipesClient';
 
 type Params = { letter: string };
 
@@ -43,15 +43,13 @@ export default async function RecipesLetterPage({ params }: { params: Promise<Pa
   }
 
   return (
-    <RecipesClient
+    <LetterRecipesClient
       title={getTitle(letter)}
       letters={letters}
-      page={{
-        letter: slug,
-        recipes: toRecipeListItems(
-          recipes.filter((recipe) => getLetterSlug(recipe) === slug),
-        ),
-      }}
+      letter={slug}
+      recipes={toRecipeListItems(
+        recipes.filter((recipe) => getLetterSlug(recipe) === slug),
+      )}
     />
   );
 }
