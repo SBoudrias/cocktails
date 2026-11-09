@@ -12,7 +12,7 @@ import '#/instrumentation-client';
 import { buildSearchIndex, toSearchIndexItems } from '#/modules/buildSearchIndex';
 import { resetSearchIndexCache } from '#/modules/searchIndex';
 import { getRecipeUrl } from '#/modules/url';
-import { setupApp } from '#/vitest.setup';
+import { setupApp, withVirtuosoViewport } from '#/vitest.setup';
 import RecipesPage from './page';
 
 vi.mock('@cocktails/data/recipes', async () => {
@@ -59,18 +59,40 @@ beforeEach(() => {
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
 });
 
+/** 300 "A" recipes (the prerendered rows) and one "Z" recipe past them. */
+function mockLongList() {
+  const firstApple = mockRecipe('Apple 1');
+  const moreApples = Array.from({ length: 299 }, (_, index) =>
+    mockRecipe(`Apple ${index + 2}`),
+  );
+  const zombie = mockRecipe('Zombie');
+  return { firstApple, zombie, recipes: [firstApple, ...moreApples, zombie] };
+}
+
+/**
+ * The A–Z list as read top to bottom: each letter heading, then its recipe
+ * names. The virtualized list lays its headings and rows out flat.
+ */
+function getListOutline(): string[] {
+  const list = screen.getByRole('list');
+  return [...within(list).getAllByRole('heading'), ...within(list).getAllByRole('link')]
+    .toSorted((a, b) =>
+      a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1,
+    )
+    .map((element) =>
+      element.tagName === 'A'
+        ? `  ${within(element).getAllByText(/.+/)[0]?.textContent}`
+        : `${element.textContent}`,
+    );
+}
+
 describe('RecipesPage', () => {
   it('renders search input and recipe list', async () => {
     setupApp(await RecipesPage());
 
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
-
-    const mGroup = screen.getByRole('group', { name: 'M' });
-    expect(mGroup).toHaveTextContent('Mojito');
-
-    const dGroup = screen.getByRole('group', { name: 'D' });
-    expect(dGroup).toHaveTextContent('Daiquiri');
-
+    expect(screen.getByRole('list')).toHaveTextContent('Mojito');
+    expect(screen.getByRole('list')).toHaveTextContent('Daiquiri');
     expect(screen.getAllByText('Test Source')).toHaveLength(testRecipes.length);
   });
 
@@ -156,12 +178,18 @@ describe('RecipesPage', () => {
     await user.click(clearButton);
 
     // All recipes should be visible, grouped by letter
-    const mGroup = screen.getByRole('group', { name: 'M' });
-    expect(mGroup).toHaveTextContent('Mojito');
-    expect(mGroup).toHaveTextContent('Mai Tai');
-
-    const dGroup = screen.getByRole('group', { name: 'D' });
-    expect(dGroup).toHaveTextContent('Daiquiri');
+    expect(getListOutline()).toMatchInlineSnapshot(`
+      [
+        "D",
+        "  Daiquiri",
+        "L",
+        "  The Last Word",
+        "M",
+        "  Mai Tai",
+        "  Margarita",
+        "  Mojito",
+      ]
+    `);
   });
 
   it('URL updates with search param when typing', async () => {
@@ -234,27 +262,48 @@ describe('RecipesPage', () => {
   it('groups recipes by first letter when not searching', async () => {
     setupApp(await RecipesPage());
 
-    // Groups are identified by aria-labelledby pointing to their header
-    const dGroup = screen.getByRole('group', { name: 'D' });
-    const lGroup = screen.getByRole('group', { name: 'L' });
-    const mGroup = screen.getByRole('group', { name: 'M' });
+    // Leading articles are skipped: "The Last Word" files under L.
+    expect(getListOutline()).toMatchInlineSnapshot(`
+      [
+        "D",
+        "  Daiquiri",
+        "L",
+        "  The Last Word",
+        "M",
+        "  Mai Tai",
+        "  Margarita",
+        "  Mojito",
+      ]
+    `);
+  });
 
-    expect(dGroup).toHaveTextContent('Daiquiri');
-    expect(lGroup).toHaveTextContent('The Last Word');
-    expect(mGroup).toHaveTextContent('Mojito');
-    expect(mGroup).toHaveTextContent('Margarita');
-    expect(mGroup).toHaveTextContent('Mai Tai');
+  it('lists recipes beyond the prerendered letters from the search index', async () => {
+    const { zombie, recipes } = mockLongList();
+    vi.mocked(getAllRecipes).mockResolvedValue(recipes);
+    vi.mocked(fetch).mockResolvedValue(
+      Response.json(buildSearchIndex(toSearchIndexItems(recipes))),
+    );
+
+    setupApp(await RecipesPage());
+    await waitFor(() => {
+      expect(screen.getByRole('link', { name: /zombie/i })).toHaveAttribute(
+        'href',
+        getRecipeUrl(zombie),
+      );
+    });
+    expect(fetch).toHaveBeenCalledOnce();
   });
 });
 
 // The app's own URL adapter (not nuqs's testing adapter): it reads
 // `location.search`, renders "no search" on the server, and follows Next
-// router navigations through the patched History API.
+// router navigations through the patched History API. setupApp mounts nuqs's
+// testing adapter, which fakes exactly that, so these tests mount the real one.
 describe('RecipesPage with the app URL adapter', () => {
   function withAppAdapter(ui: ReactNode) {
     return (
       <MemoryRouterProvider>
-        <NuqsAdapter>{ui}</NuqsAdapter>
+        <NuqsAdapter>{withVirtuosoViewport(ui)}</NuqsAdapter>
       </MemoryRouterProvider>
     );
   }
@@ -263,7 +312,17 @@ describe('RecipesPage with the app URL adapter', () => {
     window.history.replaceState(null, '', '/');
   });
 
-  it('prerenders every recipe even when the URL has a search', async () => {
+  it('prerenders the first letters only; the rest waits for the index', async () => {
+    const { firstApple, zombie, recipes } = mockLongList();
+    vi.mocked(getAllRecipes).mockResolvedValue(recipes);
+
+    // The static HTML stops after the letters filling the first 300 rows.
+    const html = renderToString(withAppAdapter(await RecipesPage()));
+    expect(html).toContain(`href="${getRecipeUrl(firstApple)}"`);
+    expect(html).not.toContain(`href="${getRecipeUrl(zombie)}"`);
+  });
+
+  it('prerenders the list even when the URL has a search', async () => {
     window.history.replaceState(null, '', '/list/recipes?search=margarita');
 
     const html = renderToString(withAppAdapter(await RecipesPage()));
@@ -287,7 +346,7 @@ describe('RecipesPage with the app URL adapter', () => {
   it('follows router navigations and back/forward', async () => {
     window.history.replaceState(null, '', '/list/recipes');
     render(withAppAdapter(await RecipesPage()));
-    expect(screen.getByRole('group', { name: 'M' })).toHaveTextContent('Mojito');
+    expect(screen.getByRole('list')).toHaveTextContent('Mojito');
 
     // Next's router changes the URL through history.pushState.
     act(() => {
@@ -301,6 +360,6 @@ describe('RecipesPage with the app URL adapter', () => {
       window.dispatchEvent(new PopStateEvent('popstate'));
     });
     expect(screen.getByRole('searchbox')).toHaveValue('');
-    expect(screen.getByRole('group', { name: 'M' })).toHaveTextContent('Mojito');
+    expect(screen.getByRole('list')).toHaveTextContent('Mojito');
   });
 });

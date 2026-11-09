@@ -2,18 +2,53 @@
 
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchHeader from '#/components/SearchHeader';
+import VirtualGroupedList from '#/components/VirtualGroupedList';
+import { useSearchIndex } from '#/hooks/useSearchIndex';
 import { byNameListConfig } from '#/modules/lists/by-name';
-import type { RecipeListItem } from '#/modules/recipeListItem';
+import { groupByName } from '#/modules/lists/groupByName';
+import type { getRecipeUrl } from '#/modules/url';
+import { isRecipeUrl } from '#/modules/url';
 
-export default function RecipesClient({ recipes }: { recipes: RecipeListItem[] }) {
+type Row = { href: ReturnType<typeof getRecipeUrl>; name: string; source: string };
+
+/**
+ * The whole A–Z list of recipes, as one virtualized list. The static HTML
+ * carries the first letters; every other row comes from the shared search
+ * index, which this page loads right away.
+ */
+export default function RecipesClient({
+  groups: initialGroups,
+  initialRecipes,
+}: {
+  groups: { label: string; count: number }[];
+  initialRecipes: Row[];
+}) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
+  const index = useSearchIndex({ urgent: true });
+
+  const { groups, recipes } = useMemo(() => {
+    if (index == null) return { groups: initialGroups, recipes: initialRecipes };
+
+    const indexGroups = groupByName(
+      Object.entries(index).flatMap(([href, { name, source }]) =>
+        isRecipeUrl(href) ? [{ href, name, source }] : [],
+      ),
+    );
+    return {
+      groups: indexGroups.map((group) => ({
+        label: group.label,
+        count: group.items.length,
+      })),
+      recipes: indexGroups.flatMap((group) => group.items),
+    };
+  }, [index, initialGroups, initialRecipes]);
 
   const renderRecipe = useCallback(
-    (recipe: RecipeListItem): React.ReactNode => (
+    (recipe: Row): React.ReactNode => (
       <RecipeLinkListItem
         key={recipe.href}
         href={recipe.href}
@@ -42,13 +77,17 @@ export default function RecipesClient({ recipes }: { recipes: RecipeListItem[] }
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
       />
-      <RecipeSearchableList
-        items={recipes}
-        config={byNameListConfig}
-        renderItem={renderRecipe}
-        searchTerm={searchTerm}
-        emptyState={emptyState}
-      />
+      {searchTerm ? (
+        <RecipeSearchableList
+          items={recipes}
+          config={byNameListConfig}
+          renderItem={renderRecipe}
+          searchTerm={searchTerm}
+          emptyState={emptyState}
+        />
+      ) : (
+        <VirtualGroupedList groups={groups} items={recipes} renderItem={renderRecipe} />
+      )}
     </>
   );
 }
