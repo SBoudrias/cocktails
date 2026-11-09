@@ -3,6 +3,25 @@ name: PR Preview
 on:
   pull_request:
     types: [opened, reopened, synchronize, closed]
+    # Only build a preview when the site itself can change: the web app, the
+    # workspace packages it imports (data, conversion, ingredient-sorting),
+    # static assets, dependency manifests, and this workflow. The filter is
+    # evaluated against the whole PR diff, so a PR that ever touched these
+    # keeps getting previews and its `closed` run still removes the directory.
+    # A PR that never matched has no preview dir to remove; the hourly
+    # cleanup-previews.yml also sweeps any leftover for closed PRs.
+    paths:
+      - apps/web/**
+      - packages/data/**
+      - packages/conversion/**
+      - packages/ingredient-sorting/**
+      - public/**
+      - package.json
+      - yarn.lock
+      - .yarnrc.yml
+      - tsconfig.json
+      - .github/workflows/preview.yml
+      - .github/workflows/setup-node/**
 
 permissions:
   contents: write
