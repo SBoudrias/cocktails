@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { SearchIndex } from './buildSearchIndex';
 import {
   getIndexedSearchText,
+  getLoadedSearchIndex,
   loadSearchIndex,
   preloadSearchIndex,
   resetSearchIndexCache,
@@ -50,6 +51,19 @@ describe('loadSearchIndex', () => {
     fetchMock.mockResolvedValueOnce(Response.json(index));
     await expect(loadSearchIndex()).resolves.toEqual(index);
     expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('hands a loaded index back synchronously', async () => {
+    fetchMock.mockResolvedValue(Response.json(index));
+    expect(getLoadedSearchIndex()).toBeUndefined();
+
+    const pending = loadSearchIndex();
+    expect(getLoadedSearchIndex()).toBeUndefined();
+    const loaded = await pending;
+    expect(getLoadedSearchIndex()).toBe(loaded);
+
+    resetSearchIndexCache();
+    expect(getLoadedSearchIndex()).toBeUndefined();
   });
 
   it('retries after a network error', async () => {

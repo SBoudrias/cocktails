@@ -264,6 +264,7 @@ __metadata:
     nuqs: "npm:^2.10.2"
     react: "npm:19.3.1"
     react-dom: "npm:19.3.1"
+    react-virtuoso: "npm:^4.18.20"
     ts-pattern: "npm:^5.9.2"
     typescript: "npm:7.0.2"
   languageName: unknown
@@ -3341,6 +3342,16 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 10c0/2ba754ba748faefa15f87c96dfa700d5525054a0141de8c75763aae6734af0740e77e11261a1e8f4ffc08fd9ab78510122e05c21c2d79066c38bb6861a886c82
+  languageName: node
+  linkType: hard
+
+"react-virtuoso@npm:^4.18.20":
+  version: 4.18.20
+  resolution: "react-virtuoso@npm:4.18.20"
+  peerDependencies:
+    react: ">=16 || >=17 || >= 18 || >= 19"
+    react-dom: ">=16 || >=17 || >= 18 || >=19"
+  checksum: 10c0/b85199075a158cba77a6a3ad99cc6d76b9e12fa7aadfc2cbffd69aaa519fbc08f0847b156a389a132e934c23fbbb3f3ebb636b464caed36cf5eb53bc27b9edb6
   languageName: node
   linkType: hard
 

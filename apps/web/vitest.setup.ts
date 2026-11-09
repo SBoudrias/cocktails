@@ -8,6 +8,7 @@ import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
 import type { ComponentProps, ReactNode } from 'react';
 import { createElement } from 'react';
+import { VirtuosoMockContext } from 'react-virtuoso';
 import { beforeEach, vi } from 'vitest';
 
 vi.mock('next/router', async () => import('next-router-mock'));
@@ -32,6 +33,18 @@ beforeEach(() => {
 // Web Storage API (e.g. no clear()). Replace it with happy-dom's implementation.
 if (typeof localStorage?.clear !== 'function') {
   vi.stubGlobal('localStorage', new Storage());
+}
+
+/**
+ * happy-dom lays nothing out, so virtualized lists (react-virtuoso) would
+ * measure a zero-height viewport and render no rows. Give them a viewport tall
+ * enough to render every row of a test's data.
+ */
+export function withVirtuosoViewport(ui: ReactNode) {
+  return createElement(VirtuosoMockContext.Provider, {
+    value: { viewportHeight: 100_000, itemHeight: 50 },
+    children: ui,
+  });
 }
 
 export function setupApp(
@@ -60,7 +73,7 @@ export function setupApp(
           // from the query the test set with mockRouter.setCurrentUrl.
           searchParams: new URL(mockRouter.asPath, 'http://localhost').search,
           ...nuqsOptions,
-          children: ui,
+          children: withVirtuosoViewport(ui),
         }),
       }),
       renderOptions,
