@@ -1,0 +1,11 @@
+{
+  "name": "@cocktails/smoke",
+  "version": "0.0.0",
+  "private": true,
+  "bin": "./src/smoke.ts",
+  "type": "module",
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "smoke": "node src/smoke.ts"
+  }
+}

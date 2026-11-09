@@ -81,10 +81,10 @@ jobs:
 
       # Waits for GitHub Pages to serve this build, then fetches the home
       # page and a page of each type and fails on any non-200 or missing
-      # marker (scripts/smoke.ts).
+      # marker (packages/smoke).
       - name: Smoke test the preview 🔥
         if: github.event.action != 'closed'
         timeout-minutes: 8
-        run: node scripts/smoke.ts "${{ steps.preview.outputs.preview-url }}" apps/web/out
+        run: yarn workspace @cocktails/smoke smoke "${{ steps.preview.outputs.preview-url }}" "$GITHUB_WORKSPACE/apps/web/out"
         env:
           SMOKE_LIVE_TIMEOUT_S: '420'

@@ -1,8 +1,10 @@
+#!/usr/bin/env -S node --no-warnings
+
 /**
  * Post-deploy smoke test: fetch a deployed copy of the site and fail loudly
  * if it is not live, or if its pages are broken.
  *
- *   node scripts/smoke.ts <deployed-base-url> [local-out-dir]
+ *   yarn workspace @cocktails/smoke smoke <deployed-base-url> [absolute-local-out-dir]
  *
  * With a local out dir, the script first waits until the deployed home page
  * references the same hashed `/_next/static/` assets as the local build, so a
@@ -20,7 +22,7 @@ const MIN_SEARCH_INDEX_ENTRIES = 100;
 
 const [baseArg, outDir] = process.argv.slice(2);
 if (!baseArg) {
-  console.error('usage: node smoke.ts <deployed-base-url> [local-out-dir]');
+  console.error('usage: smoke <deployed-base-url> [local-out-dir]');
   process.exit(2);
 }
 

@@ -225,6 +225,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@cocktails/smoke@workspace:packages/smoke":
+  version: 0.0.0-use.local
+  resolution: "@cocktails/smoke@workspace:packages/smoke"
+  languageName: unknown
+  linkType: soft
+
 "@cocktails/web@workspace:apps/web":
   version: 0.0.0-use.local
   resolution: "@cocktails/web@workspace:apps/web"
