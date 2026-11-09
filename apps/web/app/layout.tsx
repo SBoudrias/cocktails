@@ -21,9 +21,21 @@ const roboto = Roboto({
   variable: '--font-roboto',
 });
 
+const description =
+  'Browse thousands of cocktail recipes from books, bars, YouTube channels and podcasts, with ingredients, substitutes and calculators.';
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://sboudrias.github.io/cocktails/'),
   manifest: `/cocktails/manifest.webmanifest`,
   title: 'Cocktail Index',
+  description,
+  alternates: { canonical: './' },
+  openGraph: {
+    siteName: 'Cocktail Index',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: { card: 'summary' },
 };
 
 export const viewport: Viewport = {

@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 
     return {
       title: `Cocktail Index | ${source.name}`,
+      description: source.description,
     };
   } catch (error) {
     unstable_rethrow(error);

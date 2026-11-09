@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `Cocktail Index | Recipes by ${author.name}`,
+    description:
+      author.description ?? `Cocktail recipes created or adapted by ${author.name}.`,
   };
 }
 
