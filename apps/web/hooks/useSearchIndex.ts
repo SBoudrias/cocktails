@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { SearchIndex } from '#/modules/buildSearchIndex';
-import { loadSearchIndex } from '#/modules/searchIndex';
+import { getLoadedSearchIndex, loadSearchIndex } from '#/modules/searchIndex';
 
 /**
  * The search index, or `undefined` until it has loaded. It loads when the
@@ -11,7 +11,7 @@ import { loadSearchIndex } from '#/modules/searchIndex';
  * `preloadSearchIndex` to jump the idle wait.
  */
 export function useSearchIndex({ urgent }: { urgent: boolean }): SearchIndex | undefined {
-  const [index, setIndex] = useState<SearchIndex>();
+  const [index, setIndex] = useState<SearchIndex | undefined>(getLoadedSearchIndex);
 
   useEffect(() => {
     let active = true;

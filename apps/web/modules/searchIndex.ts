@@ -15,6 +15,16 @@ function getSearchIndexUrl(): string {
 }
 
 let cached: Promise<SearchIndex> | undefined;
+let loaded: SearchIndex | undefined;
+
+/**
+ * The index if it has already loaded this session, synchronously: a list
+ * mounted again (soft navigation back) renders in full on its first render,
+ * so the browser restores the scroll position onto the same content.
+ */
+export function getLoadedSearchIndex(): SearchIndex | undefined {
+  return loaded;
+}
 
 /**
  * Fetch the search index once per page session. Concurrent and later callers
@@ -28,6 +38,10 @@ export function loadSearchIndex(): Promise<SearchIndex> {
         throw new Error(`Search index request failed: ${response.status}`);
       }
       return response.json();
+    })
+    .then((index: SearchIndex) => {
+      loaded = index;
+      return index;
     })
     .catch((error: unknown) => {
       cached = undefined;
@@ -60,4 +74,5 @@ export function getIndexedSearchText(
 /** Test seam: forget the cached index. */
 export function resetSearchIndexCache(): void {
   cached = undefined;
+  loaded = undefined;
 }
