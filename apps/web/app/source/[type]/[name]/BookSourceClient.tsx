@@ -14,7 +14,7 @@ import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
 import { LinkList } from '#/components/LinkList';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import SearchableList from '#/components/SearchableList';
+import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
@@ -73,9 +73,8 @@ export default function BookSourceClient({
     return (
       <>
         <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-        <SearchableList
+        <RecipeSearchableList
           items={recipes}
-          getSearchText={(recipe) => recipe.searchText}
           renderItem={renderRecipe}
           searchTerm={searchTerm}
           emptyState={emptyState}

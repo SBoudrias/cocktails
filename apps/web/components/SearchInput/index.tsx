@@ -42,11 +42,13 @@ export default function SearchInput({
   onChangeAction,
   placeholder = 'Search…',
   autoFocus = false,
+  onFocusAction,
 }: {
   value: string;
   onChangeAction: (value: string | null) => void;
   placeholder?: string;
   autoFocus?: boolean;
+  onFocusAction?: () => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -64,6 +66,7 @@ export default function SearchInput({
           onChange={(e) => onChangeAction(e.currentTarget.value)}
           type="search"
           autoFocus={autoFocus}
+          onFocus={onFocusAction}
           onKeyUp={(e) => {
             if (e.code === 'Enter') {
               e.currentTarget.blur();

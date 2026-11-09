@@ -4,6 +4,7 @@ import { LocalBar } from '@mui/icons-material';
 import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import SearchInput from '#/components/SearchInput';
+import { preloadSearchIndex } from '#/modules/searchIndex';
 
 export default function SearchHeader({
   title,
@@ -31,7 +32,13 @@ export default function SearchHeader({
             </IconButton>
           )}
 
-          <SearchInput value={searchTerm ?? ''} onChangeAction={onSearchChange} />
+          {/* Searches beyond names need the shared index: start loading it as
+              soon as the user reaches for the search box. */}
+          <SearchInput
+            value={searchTerm ?? ''}
+            onChangeAction={onSearchChange}
+            onFocusAction={preloadSearchIndex}
+          />
         </Toolbar>
       </AppBar>
       <Toolbar />
