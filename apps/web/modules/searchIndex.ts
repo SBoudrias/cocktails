@@ -1,10 +1,18 @@
 import type { SearchIndex } from '#/modules/buildSearchIndex';
 
 /**
+ * The index URL under the app's base path, resolved against the page's origin.
  * next.config.ts sets `basePath` from the same expression; a client module
  * cannot import the config, so the default is mirrored here.
  */
-const SEARCH_INDEX_URL = `${process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails'}/data/search-index.json`;
+function getSearchIndexUrl(): string {
+  const basePath = new URL(
+    `${process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails'}/`,
+    location.origin,
+  );
+
+  return new URL('data/search-index.json', basePath).href;
+}
 
 let cached: Promise<SearchIndex> | undefined;
 
@@ -14,7 +22,7 @@ let cached: Promise<SearchIndex> | undefined;
  * retries. The browser's HTTP cache covers repeat sessions.
  */
 export function loadSearchIndex(): Promise<SearchIndex> {
-  cached ??= fetch(SEARCH_INDEX_URL)
+  cached ??= fetch(getSearchIndexUrl())
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Search index request failed: ${response.status}`);

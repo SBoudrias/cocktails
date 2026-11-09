@@ -20,6 +20,7 @@ const fetchMock = vi.fn<typeof fetch>();
 beforeEach(() => {
   resetSearchIndexCache();
   vi.stubGlobal('fetch', fetchMock);
+  vi.stubGlobal('location', { origin: 'https://cocktails.test' });
 });
 
 afterEach(() => {
@@ -37,7 +38,9 @@ describe('loadSearchIndex', () => {
     expect(second).toBe(first);
     expect(third).toBe(first);
     expect(fetchMock).toHaveBeenCalledOnce();
-    expect(fetchMock).toHaveBeenCalledWith('/cocktails/data/search-index.json');
+    expect(fetchMock).toHaveBeenCalledWith(
+      'https://cocktails.test/cocktails/data/search-index.json',
+    );
   });
 
   it('rejects on a failed response and retries on the next call', async () => {
