@@ -40,7 +40,7 @@ export default defineConfig({
         extends: true,
         test: {
           name: 'component',
-          include: ['apps/web/components/**/*.test.tsx'],
+          include: ['apps/web/components/**/*.test.tsx', 'apps/web/hooks/**/*.test.ts'],
           environment: 'happy-dom',
           environmentOptions: {
             happyDOM: { settings: { disableIframePageLoading: true } },
