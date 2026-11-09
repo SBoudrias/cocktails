@@ -45,26 +45,29 @@ const recipe: Recipe = {
 
 describe('toRecipeCards', () => {
   it('projects only the fields the card lists render', () => {
-    expect(toRecipeCards([recipe])).toEqual([
+    const bareCards = toRecipeCards([recipe]);
+
+    expect(bareCards).toEqual([
       {
         name: 'Indexed Recipe',
         href: getRecipeUrl(recipe),
         source: 'Test Book · Rum Drinks',
-        quantity: undefined,
         searchText: 'indexed recipe appleton signature jamaican rum recipe author',
         chapter: { order: 2, name: 'Rum Drinks' },
         page: 12,
       },
     ]);
+    // Bare cards have no quantity key at all, not just an undefined one.
+    expect(Object.hasOwn(bareCards[0]!, 'quantity')).toBe(false);
   });
 
   it('carries the picked ingredient quantity to the card', () => {
-    const [card] = toRecipeCards(
+    const quantityCards = toRecipeCards(
       [recipe],
       (r) => r.ingredients.find((i) => i.slug === 'appleton-signature')?.quantity,
     );
 
-    expect(card?.quantity).toEqual({ amount: 2, unit: 'oz' });
+    expect(quantityCards[0]?.quantity).toEqual({ amount: 2, unit: 'oz' });
   });
 
   it('keeps the average serialized card below 500 bytes', async () => {

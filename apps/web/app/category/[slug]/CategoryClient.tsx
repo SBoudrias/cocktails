@@ -16,7 +16,7 @@ import SearchHeader from '#/components/SearchHeader';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
-import type { RecipeCardItem } from '#/modules/recipeCard';
+import type { QuantityRecipeCardItem } from '#/modules/recipeCard';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 
 export default function CategoryClient({
@@ -29,7 +29,7 @@ export default function CategoryClient({
   category: Category;
   members: RootIngredient[];
   substitutes: RootIngredient[];
-  relatedRecipes: RecipeCardItem[];
+  relatedRecipes: QuantityRecipeCardItem[];
   childCategories: Category[];
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
@@ -52,7 +52,7 @@ export default function CategoryClient({
     </>
   );
 
-  const renderRecipe = useCallback((recipe: RecipeCardItem) => {
+  const renderRecipe = useCallback((recipe: QuantityRecipeCardItem) => {
     return (
       <RecipeLinkListItem
         key={recipe.href}

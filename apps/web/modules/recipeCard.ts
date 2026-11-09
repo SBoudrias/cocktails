@@ -8,33 +8,46 @@ import { getRecipeUrl } from '#/modules/url';
  * object (about 913 bytes serialized) used to ship in the client payload of
  * every card list; the card needs a fraction of that.
  *
- * `quantity` carries the ingredient quantity when the list is rendered from
- * one ingredient/category perspective (ingredient and category pages).
- * `chapter` and `page` are only set on book source pages, which group their
- * cards by chapter.
+ * `chapter` and `page` are only consumed on book source pages, which group
+ * their cards by chapter; other routes carry them unused.
  */
 export type RecipeCardItem = {
   name: string;
   href: ReturnType<typeof getRecipeUrl>;
   source: string;
-  quantity: RecipeIngredient['quantity'] | undefined;
   searchText: string;
   chapter: Chapter | undefined;
   page: number | undefined;
 };
 
 /**
- * Project recipes into card items, precomputing everything the client
- * renders: url, source label, and search text. `pickQuantity` receives each
- * recipe's ingredients and returns the quantity to display (or nothing when
- * the route has no per-recipe quantity).
+ * A card from a list rendered from one ingredient/category perspective
+ * (ingredient and category pages), where each card also shows that
+ * ingredient's quantity in the recipe. `quantity` stays optional per card:
+ * the picker resolves the matching ingredient line, and a recipe reaching
+ * the page without one is a data bug the render guards against.
  */
+export type QuantityRecipeCardItem = RecipeCardItem & {
+  quantity: RecipeIngredient['quantity'] | undefined;
+};
+
+/**
+ * Project recipes into card items, precomputing everything the client
+ * renders: url, source label, and search text. Passing `pickQuantity` (the
+ * ingredient/category routes do) returns cards that carry the quantity to
+ * display; omitting it returns bare cards for routes with no per-recipe
+ * quantity.
+ */
+export function toRecipeCards(recipes: Recipe[]): RecipeCardItem[];
 export function toRecipeCards(
   recipes: Recipe[],
-  pickQuantity: (recipe: Recipe) => RecipeIngredient['quantity'] | undefined = () =>
-    undefined,
-): RecipeCardItem[] {
-  return recipes.map((recipe) => {
+  pickQuantity: (recipe: Recipe) => RecipeIngredient['quantity'] | undefined,
+): QuantityRecipeCardItem[];
+export function toRecipeCards(
+  recipes: Recipe[],
+  pickQuantity?: (recipe: Recipe) => RecipeIngredient['quantity'] | undefined,
+) {
+  const toBareCard = (recipe: Recipe): RecipeCardItem => {
     const bookRef = recipe.refs.find(
       (ref): ref is Extract<typeof ref, { type: 'book' }> => ref.type === 'book',
     );
@@ -43,10 +56,18 @@ export function toRecipeCards(
       name: recipe.name,
       href: getRecipeUrl(recipe),
       source: getRecipeSource(recipe),
-      quantity: pickQuantity(recipe),
       searchText: getRecipeSearchText(recipe),
       chapter: recipe.chapter,
       page: bookRef?.page,
     };
-  });
+  };
+
+  if (pickQuantity == null) {
+    return recipes.map(toBareCard);
+  }
+
+  return recipes.map((recipe) => ({
+    ...toBareCard(recipe),
+    quantity: pickQuantity(recipe),
+  }));
 }
