@@ -277,23 +277,6 @@ describe('RecipesPage', () => {
     `);
   });
 
-  it('offers a jump to each letter of the list', async () => {
-    setupApp(await RecipesPage());
-
-    const jumpNav = screen.getByRole('navigation', { name: 'Jump to letter' });
-    expect(
-      within(jumpNav)
-        .getAllByRole('button')
-        .map((button) => button.textContent),
-    ).toMatchInlineSnapshot(`
-        [
-          "D",
-          "L",
-          "M",
-        ]
-      `);
-  });
-
   it('lists recipes beyond the prerendered letters from the search index', async () => {
     const { zombie, recipes } = mockLongList();
     vi.mocked(getAllRecipes).mockResolvedValue(recipes);

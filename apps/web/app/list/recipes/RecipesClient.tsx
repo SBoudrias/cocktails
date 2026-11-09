@@ -86,12 +86,7 @@ export default function RecipesClient({
           emptyState={emptyState}
         />
       ) : (
-        <VirtualGroupedList
-          groups={groups}
-          items={recipes}
-          renderItem={renderRecipe}
-          jumpLabel="Jump to letter"
-        />
+        <VirtualGroupedList groups={groups} items={recipes} renderItem={renderRecipe} />
       )}
     </>
   );

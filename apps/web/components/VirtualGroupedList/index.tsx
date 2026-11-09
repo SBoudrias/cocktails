@@ -1,14 +1,6 @@
 'use client';
 
-import {
-  Box,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Paper,
-} from '@mui/material';
+import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
@@ -64,7 +56,7 @@ const placeholder = (
  * against the window scroll: only the rows near the viewport are in the DOM.
  *
  * `groups` gives the shape of the whole list up front, so its full height
- * exists from the first render and a jump to any group lands right away.
+ * exists from the first render and rows loading later never move the page.
  * `items` holds the rows in list order; it may be shorter than the list (rows
  * still loading render as placeholders), and the first `items` are rendered
  * in the static HTML.
@@ -73,12 +65,10 @@ export default function VirtualGroupedList<const T extends { href: string }>({
   groups,
   items,
   renderItem,
-  jumpLabel,
 }: {
   groups: { label: string; count: number }[];
   items: T[];
   renderItem: (item: T) => ReactNode;
-  jumpLabel: string;
 }) {
   const pathname = usePathname();
   const ref = useRef<GroupedVirtuosoHandle>(null);
@@ -125,28 +115,6 @@ export default function VirtualGroupedList<const T extends { href: string }>({
 
   return (
     <>
-      <Box
-        component="nav"
-        aria-label={jumpLabel}
-        sx={{ display: 'flex', flexWrap: 'wrap', mx: 1, my: 1 }}
-      >
-        {groups.map((group, groupIndex) => (
-          <Button
-            key={group.label}
-            size="small"
-            sx={{ minWidth: 32, px: 0 }}
-            onClick={() =>
-              ref.current?.scrollToIndex({
-                groupIndex,
-                align: 'start',
-                offset: -getAppBarHeight(),
-              })
-            }
-          >
-            {group.label}
-          </Button>
-        ))}
-      </Box>
       {/* One list around the rows and the sticky header virtuoso renders
           apart from them. */}
       <List ref={listRef} disablePadding>
