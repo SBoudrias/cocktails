@@ -59,6 +59,34 @@ describe('getRecentlyAddedRecipes', () => {
     ]);
   });
 
+  it('reports the committer-local day each recipe was first added', async () => {
+    const repoRoot = process.cwd();
+    const gitLog = [
+      'COMMIT 2026-05-18T23:30:00-04:00',
+      'packages/data/data/recipes/youtube-channel/educated-barfly/snake-eyes.json',
+      'COMMIT 2026-05-16T13:10:12-04:00',
+      'packages/data/data/recipes/youtube-channel/educated-barfly/9th-wonder.json',
+    ].join('\n');
+
+    execFileMocks.promise.mockImplementation((command, args) => {
+      if (args.includes('--show-toplevel')) {
+        return Promise.resolve({ stdout: `${repoRoot}\n`, stderr: '' });
+      }
+      if (args.includes('--is-shallow-repository')) {
+        return Promise.resolve({ stdout: 'false\n', stderr: '' });
+      }
+      return Promise.resolve({ stdout: gitLog, stderr: '' });
+    });
+
+    const { getRecentlyAddedRecipeEntries } = await import('./recipes');
+    const entries = await getRecentlyAddedRecipeEntries();
+
+    expect(entries.map(({ recipe, day }) => [recipe.name, day])).toEqual([
+      ['Snake Eyes', '2026-05-18'],
+      ['9th Wonder', '2026-05-16'],
+    ]);
+  });
+
   it('skips recently added recipes that have since been deleted', async () => {
     const repoRoot = process.cwd();
     const gitLog = [
