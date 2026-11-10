@@ -5,9 +5,12 @@
 // placeholder (empty precache, 'dev' version) also serves `next dev`, where
 // the SW is inert by design.
 
-const VERSION = 'e4a18080d6ea';
+const VERSION = '27f1529bcd5b';
 const PRECACHE = [
   "./",
+  "./_next/static/-pncAPfEPhgbX4kgIeNYH/_buildManifest.js",
+  "./_next/static/-pncAPfEPhgbX4kgIeNYH/_clientMiddlewareManifest.js",
+  "./_next/static/-pncAPfEPhgbX4kgIeNYH/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/0_015ri66bwd2.js",
@@ -67,9 +70,6 @@ const PRECACHE = [
   "./_next/static/media/favicon.2vob68tjqpejf.ico",
   "./_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp",
   "./_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp",
-  "./_next/static/oZQUzg1l1jPWyB_vG-2oU/_buildManifest.js",
-  "./_next/static/oZQUzg1l1jPWyB_vG-2oU/_clientMiddlewareManifest.js",
-  "./_next/static/oZQUzg1l1jPWyB_vG-2oU/_ssgManifest.js",
   "./data/search-index.json",
   "./icons/apple-touch-icon.png",
   "./icons/icon-192.png",
