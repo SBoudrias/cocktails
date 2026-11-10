@@ -12,9 +12,11 @@ enableHistorySync();
 // Register the service worker (public/sw.js). Same scope as the app: with the
 // /cocktails basePath the SW lives at /cocktails/sw.js and controls the app's
 // pages and assets only. Registration is the same under a preview basePath,
-// since the base path is mirrored in this module too.
+// since the base path is mirrored in this module too. Next runs this file in
+// the browser only, but the navigator read stays guarded so the module also
+// loads cleanly outside a browser (static analysis, SSR-ish tooling).
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
-if ('serviceWorker' in navigator) {
+if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
   navigator.serviceWorker
     .register(`${basePath}/sw.js`)
     .catch((error: unknown) =>

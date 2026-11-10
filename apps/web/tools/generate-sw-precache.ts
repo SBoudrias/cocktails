@@ -65,10 +65,18 @@ const sw = await readFile(swPath, 'utf8');
 
 // Version by content: any precached asset changing changes the hash, so the
 // next deploy installs a fresh cache and the old one is deleted on activate.
+// Per-file hashes are computed in parallel, then folded in list order so the
+// result is deterministic.
+const digests = await Promise.all(
+  precache.map((file) =>
+    readFile(path.join(outDir, file)).then((content) =>
+      createHash('sha256').update(file).update(content).digest(),
+    ),
+  ),
+);
 const hash = createHash('sha256');
-for (const file of precache) {
-  hash.update(file);
-  hash.update(await readFile(path.join(outDir, file)));
+for (const digest of digests) {
+  hash.update(digest);
 }
 const version = hash.digest('hex').slice(0, 12);
 
