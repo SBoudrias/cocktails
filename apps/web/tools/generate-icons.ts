@@ -25,32 +25,35 @@ const TEAL = '#5DBDBD'; // umbrella canopy: turquoise ocean water
 const TEAL_DARK = '#2A8A8A'; // canopy ribs
 
 /**
- * The scene, drawn in a 512x512 box centered on (256, 256). `scale` shrinks
- * the whole composition around the center for the maskable safe zone.
+ * The scene, drawn in a 512x512 box centered on (256, 256): a large carved
+ * tiki mug, with a paper umbrella tucked into the drink on its right
+ * shoulder — shaft ending under the rum surface, canopy overlapping the mug
+ * so nothing floats. `scale` shrinks the whole composition around the center
+ * for the maskable safe zone.
  */
 function scene(scale: number): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
   <rect width="512" height="512" fill="${BACKGROUND}"/>
   <g transform="translate(256 256) scale(${scale}) translate(-256 -256)">
-    <circle cx="256" cy="265" r="215" fill="${MOON_DISC}"/>
-    <path d="M 330 124 L 285 205" stroke="${GOLD_DARK}" stroke-width="9" stroke-linecap="round"/>
-    <path d="M 262 124 q 17 16 34 0 q 17 16 34 0 q 17 16 34 0 q 17 16 34 0 A 69 69 0 1 0 262 124 Z" fill="${TEAL}"/>
-    <path d="M 330 67 L 296 124 M 330 67 L 364 124" stroke="${TEAL_DARK}" stroke-width="5" stroke-linecap="round"/>
-    <path d="M 330 66 L 330 42" stroke="${TEAL}" stroke-width="9" stroke-linecap="round"/>
-    <path d="M 146 210 L 366 210 L 346 416 Q 346 430 332 430 L 180 430 Q 166 430 166 416 Z" fill="${GOLD}" stroke="${GOLD_DARK}" stroke-width="6"/>
-    <path d="M 182 246 l 14 12 l 14 -12 l 14 12 l 14 -12 l 14 12 l 14 -12 l 14 12 l 14 -12 l 14 12 l 14 -12 l 14 12" fill="none" stroke="${GROOVE}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 172 292 Q 204 274 236 292 Q 204 312 172 292 Z" fill="${BACKGROUND}"/>
-    <path d="M 276 292 Q 308 274 340 292 Q 308 312 276 292 Z" fill="${BACKGROUND}"/>
-    <path d="M 244 268 L 268 268 L 272 330 Q 256 340 240 330 Z" fill="${BACKGROUND}"/>
-    <rect x="196" y="352" width="120" height="38" rx="10" fill="${BACKGROUND}"/>
-    <rect x="206" y="352" width="14" height="38" fill="${GOLD}"/>
-    <rect x="230" y="352" width="14" height="38" fill="${GOLD}"/>
-    <rect x="254" y="352" width="14" height="38" fill="${GOLD}"/>
-    <rect x="278" y="352" width="14" height="38" fill="${GOLD}"/>
-    <rect x="302" y="352" width="14" height="38" fill="${GOLD}"/>
-    <path d="M 192 408 Q 256 400 320 408" stroke="${GROOVE}" stroke-width="8" stroke-linecap="round" fill="none"/>
-    <ellipse cx="256" cy="210" rx="110" ry="20" fill="${GOLD_DARK}"/>
-    <ellipse cx="256" cy="210" rx="92" ry="13" fill="${RUM}"/>
+    <circle cx="256" cy="270" r="205" fill="${MOON_DISC}"/>
+    <path d="M 322 128 L 285 200" stroke="${GOLD_DARK}" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 254 128 q 17 16 34 0 q 17 16 34 0 q 17 16 34 0 q 17 16 34 0 A 68 68 0 1 0 254 128 Z" fill="${TEAL}"/>
+    <path d="M 322 62 L 288 126 M 322 62 L 356 126" stroke="${TEAL_DARK}" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 322 60 L 322 50" stroke="${TEAL}" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 126 195 L 386 195 L 364 448 Q 364 460 350 460 L 162 460 Q 148 460 148 448 Z" fill="${GOLD}" stroke="${GOLD_DARK}" stroke-width="6"/>
+    <path d="M 168 232 l 13 12 l 13 -12 l 13 12 l 13 -12 l 13 12 l 13 -12 l 13 12 l 13 -12 l 13 12 l 13 -12 l 13 12 l 13 -12 l 13 12 l 13 -12 l 13 12" fill="none" stroke="${GROOVE}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 166 280 q 34 -20 68 0 q -34 24 -68 0 Z" fill="${BACKGROUND}"/>
+    <path d="M 278 280 q 34 -20 68 0 q -34 24 -68 0 Z" fill="${BACKGROUND}"/>
+    <path d="M 242 252 L 270 252 L 274 318 Q 256 328 238 318 Z" fill="${BACKGROUND}"/>
+    <rect x="196" y="338" width="120" height="40" rx="10" fill="${BACKGROUND}"/>
+    <rect x="206" y="338" width="14" height="40" fill="${GOLD}"/>
+    <rect x="230" y="338" width="14" height="40" fill="${GOLD}"/>
+    <rect x="254" y="338" width="14" height="40" fill="${GOLD}"/>
+    <rect x="278" y="338" width="14" height="40" fill="${GOLD}"/>
+    <rect x="302" y="338" width="14" height="40" fill="${GOLD}"/>
+    <path d="M 190 418 Q 256 408 322 418" stroke="${GROOVE}" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <ellipse cx="256" cy="195" rx="130" ry="24" fill="${GOLD_DARK}"/>
+    <ellipse cx="256" cy="195" rx="108" ry="15" fill="${RUM}"/>
   </g>
 </svg>`;
 }
