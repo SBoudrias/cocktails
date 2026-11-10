@@ -40,6 +40,16 @@ export const metadata: Metadata = {
     locale: 'en_US',
   },
   twitter: { card: 'summary' },
+  icons: {
+    icon: [{ url: '/cocktails/favicon.ico', sizes: '48x48', type: 'image/x-icon' }],
+    apple: [
+      {
+        url: '/cocktails/icons/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
@@ -50,6 +60,7 @@ export const viewport: Viewport = {
   userScalable: false,
   viewportFit: 'cover',
   interactiveWidget: 'overlays-content',
+  themeColor: '#0A1420',
 };
 
 export default function RootLayout({
