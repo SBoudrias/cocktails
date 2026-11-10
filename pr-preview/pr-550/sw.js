@@ -5,12 +5,12 @@
 // placeholder (empty precache, 'dev' version) also serves `next dev`, where
 // the SW is inert by design.
 
-const VERSION = '27f1529bcd5b';
+const VERSION = '0552c63575e8';
 const PRECACHE = [
   "./",
-  "./_next/static/-pncAPfEPhgbX4kgIeNYH/_buildManifest.js",
-  "./_next/static/-pncAPfEPhgbX4kgIeNYH/_clientMiddlewareManifest.js",
-  "./_next/static/-pncAPfEPhgbX4kgIeNYH/_ssgManifest.js",
+  "./_next/static/0v9g3viSF7ZsrBDBsbVNL/_buildManifest.js",
+  "./_next/static/0v9g3viSF7ZsrBDBsbVNL/_clientMiddlewareManifest.js",
+  "./_next/static/0v9g3viSF7ZsrBDBsbVNL/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/0_015ri66bwd2.js",
