@@ -5,12 +5,12 @@
 // placeholder (empty precache, 'dev' version) also serves `next dev`, where
 // the SW is inert by design.
 
-const VERSION = '0552c63575e8';
+const VERSION = '151f397a156a';
 const PRECACHE = [
   "./",
-  "./_next/static/0v9g3viSF7ZsrBDBsbVNL/_buildManifest.js",
-  "./_next/static/0v9g3viSF7ZsrBDBsbVNL/_clientMiddlewareManifest.js",
-  "./_next/static/0v9g3viSF7ZsrBDBsbVNL/_ssgManifest.js",
+  "./_next/static/-TFlkwHbwAu-dmY4pO7Cc/_buildManifest.js",
+  "./_next/static/-TFlkwHbwAu-dmY4pO7Cc/_clientMiddlewareManifest.js",
+  "./_next/static/-TFlkwHbwAu-dmY4pO7Cc/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/0_015ri66bwd2.js",
@@ -33,9 +33,9 @@ const PRECACHE = [
   "./_next/static/chunks/1myxbybgdmv23.js",
   "./_next/static/chunks/1tf4etm58a6li.css",
   "./_next/static/chunks/1ubcoj_row524.js",
+  "./_next/static/chunks/218fy8idclhhb.js",
   "./_next/static/chunks/224uaqx1ep466.js",
   "./_next/static/chunks/24i4uqkup96c4.js",
-  "./_next/static/chunks/26cfkllmwztk9.js",
   "./_next/static/chunks/28acq618ge7y2.js",
   "./_next/static/chunks/28yvg3ostn72e.js",
   "./_next/static/chunks/2cmlta-lm2x4n.js",
