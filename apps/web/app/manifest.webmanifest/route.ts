@@ -9,7 +9,7 @@ const manifest: MetadataRoute.Manifest = {
   short_name: 'Cocktail Index',
   description:
     'Browse thousands of cocktail recipes from books, bars, YouTube channels and podcasts, with ingredients, substitutes and calculators.',
-  id: '/cocktails/',
+  id: `${basePath}/`,
   start_url: `${basePath}/`,
   scope: `${basePath}/`,
   display: 'standalone',
