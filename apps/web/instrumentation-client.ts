@@ -25,7 +25,11 @@ enableHistorySync();
 // resolves to a chunk URL, not the site root; and the deploy root moves with
 // the basePath (/cocktails, or /cocktails/pr-preview/pr-N on PRs).
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+if (
+  process.env.NODE_ENV === 'production' &&
+  typeof navigator !== 'undefined' &&
+  'serviceWorker' in navigator
+) {
   navigator.serviceWorker
     .register(`${basePath}/sw.js`, { updateViaCache: 'none' })
     .catch((error: unknown) =>
