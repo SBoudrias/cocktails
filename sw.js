@@ -5,8 +5,11 @@
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = '177b4836b605';
+const VERSION = 'ae8890df2581';
 const PRECACHE = [
+  "./_next/static/T1ywFNdtOxvk62fMjs7eC/_buildManifest.js",
+  "./_next/static/T1ywFNdtOxvk62fMjs7eC/_clientMiddlewareManifest.js",
+  "./_next/static/T1ywFNdtOxvk62fMjs7eC/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/07vy1nalhdt3h.js",
@@ -54,9 +57,6 @@ const PRECACHE = [
   "./_next/static/chunks/3xfdo5qp25y68.js",
   "./_next/static/chunks/43go7536q7xo3.js",
   "./_next/static/chunks/turbopack-3bqzqujcvv5j2.js",
-  "./_next/static/dENEgDsyWKrgtaXPV1VPx/_buildManifest.js",
-  "./_next/static/dENEgDsyWKrgtaXPV1VPx/_clientMiddlewareManifest.js",
-  "./_next/static/dENEgDsyWKrgtaXPV1VPx/_ssgManifest.js",
   "./_next/static/media/194ba805cef72e7e-s.0lvk2smlqz3yc.woff2",
   "./_next/static/media/2443b96ca66c6483-s.0fd-fjxmcxcjd.woff2",
   "./_next/static/media/2617c56fc138c6bf-s.42l_3z3944ji5.woff2",
