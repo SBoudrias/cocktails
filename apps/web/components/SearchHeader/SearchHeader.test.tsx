@@ -4,8 +4,8 @@ import { setupApp } from '#/vitest.setup';
 import SearchHeader from './index';
 
 describe('SearchHeader', () => {
-  it('renders title and search input together', () => {
-    setupApp(
+  it('renders title and search input together', async () => {
+    await setupApp(
       <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
     );
 
@@ -13,16 +13,16 @@ describe('SearchHeader', () => {
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
   });
 
-  it('shows searchTerm value in search input', () => {
-    setupApp(
+  it('shows searchTerm value in search input', async () => {
+    await setupApp(
       <SearchHeader title="All Recipes" searchTerm="mojito" onSearchChange={vi.fn()} />,
     );
 
     expect(screen.getByRole('searchbox')).toHaveValue('mojito');
   });
 
-  it('hides title when search is active', () => {
-    setupApp(
+  it('hides title when search is active', async () => {
+    await setupApp(
       <SearchHeader title="All Recipes" searchTerm="mojito" onSearchChange={vi.fn()} />,
     );
 
@@ -31,8 +31,8 @@ describe('SearchHeader', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('shows title when search is cleared', () => {
-    setupApp(
+  it('shows title when search is cleared', async () => {
+    await setupApp(
       <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
     );
 
@@ -42,7 +42,7 @@ describe('SearchHeader', () => {
   it('calls onSearchChange when typing in search input', async () => {
     const onSearchChange = vi.fn();
 
-    const { user } = setupApp(
+    const { user } = await setupApp(
       <SearchHeader title="All Recipes" searchTerm="" onSearchChange={onSearchChange} />,
     );
 
@@ -55,7 +55,7 @@ describe('SearchHeader', () => {
   it('home button is visible on pages and links to home', async () => {
     mockRouter.setCurrentUrl('/list/recipes');
 
-    setupApp(
+    await setupApp(
       <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
     );
 
@@ -66,7 +66,7 @@ describe('SearchHeader', () => {
 
   it("home button isn't available on home page", async () => {
     mockRouter.setCurrentUrl('/');
-    setupApp(
+    await setupApp(
       <SearchHeader title="All Recipes" searchTerm={null} onSearchChange={vi.fn()} />,
     );
 

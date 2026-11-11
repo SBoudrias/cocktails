@@ -1,11 +1,17 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { http, HttpResponse } from 'msw';
+import { describe, expect, it, vi } from 'vitest';
+import {
+  failJson,
+  serveJson,
+  sharedJsonServer,
+  sharedJsonUrl,
+} from '#/testing/sharedJsonServer';
 import type { SearchIndex } from './buildSearchIndex';
 import {
   getIndexedSearchText,
   getLoadedSearchIndex,
   loadSearchIndex,
   preloadSearchIndex,
-  resetSearchIndexCache,
 } from './searchIndex';
 
 const index: SearchIndex = {
@@ -16,21 +22,10 @@ const index: SearchIndex = {
   },
 };
 
-const fetchMock = vi.fn<typeof fetch>();
-
-beforeEach(() => {
-  resetSearchIndexCache();
-  vi.stubGlobal('fetch', fetchMock);
-  vi.stubGlobal('location', { origin: 'https://cocktails.test' });
-});
-
-afterEach(() => {
-  vi.unstubAllGlobals();
-});
-
 describe('loadSearchIndex', () => {
   it('fetches the static index once for concurrent and later callers', async () => {
-    fetchMock.mockResolvedValue(Response.json(index));
+    const respond = vi.fn(() => HttpResponse.json(index));
+    sharedJsonServer.use(http.get(sharedJsonUrl('/data/search-index.json'), respond));
 
     const [first, second] = await Promise.all([loadSearchIndex(), loadSearchIndex()]);
     const third = await loadSearchIndex();
@@ -38,58 +33,60 @@ describe('loadSearchIndex', () => {
     expect(first).toEqual(index);
     expect(second).toBe(first);
     expect(third).toBe(first);
-    expect(fetchMock).toHaveBeenCalledOnce();
-    expect(fetchMock).toHaveBeenCalledWith(
-      'https://cocktails.test/cocktails/data/search-index.json',
-    );
+    expect(respond).toHaveBeenCalledOnce();
   });
 
   it('rejects on a failed response and retries on the next call', async () => {
-    fetchMock.mockResolvedValueOnce(new Response('nope', { status: 500 }));
+    sharedJsonServer.use(failJson('/data/search-index.json', 500));
     await expect(loadSearchIndex()).rejects.toThrow('500');
 
-    fetchMock.mockResolvedValueOnce(Response.json(index));
+    sharedJsonServer.use(serveJson('/data/search-index.json', index));
     await expect(loadSearchIndex()).resolves.toEqual(index);
-    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
   it('hands a loaded index back synchronously', async () => {
-    fetchMock.mockResolvedValue(Response.json(index));
+    sharedJsonServer.use(serveJson('/data/search-index.json', index));
     expect(getLoadedSearchIndex()).toBeUndefined();
 
     const pending = loadSearchIndex();
     expect(getLoadedSearchIndex()).toBeUndefined();
     const loaded = await pending;
     expect(getLoadedSearchIndex()).toBe(loaded);
-
-    resetSearchIndexCache();
-    expect(getLoadedSearchIndex()).toBeUndefined();
   });
 
   it('retries after a network error', async () => {
-    fetchMock.mockRejectedValueOnce(new TypeError('offline'));
-    await expect(loadSearchIndex()).rejects.toThrow('offline');
+    sharedJsonServer.use(
+      http.get(sharedJsonUrl('/data/search-index.json'), () => HttpResponse.error()),
+    );
+    await expect(loadSearchIndex()).rejects.toThrow();
 
-    fetchMock.mockResolvedValueOnce(Response.json(index));
+    sharedJsonServer.use(serveJson('/data/search-index.json', index));
     await expect(loadSearchIndex()).resolves.toEqual(index);
   });
 });
 
 describe('preloadSearchIndex', () => {
   it('starts the fetch that loadSearchIndex then reuses', async () => {
-    fetchMock.mockResolvedValue(Response.json(index));
+    const respond = vi.fn(() => HttpResponse.json(index));
+    sharedJsonServer.use(http.get(sharedJsonUrl('/data/search-index.json'), respond));
 
     preloadSearchIndex();
     await loadSearchIndex();
 
-    expect(fetchMock).toHaveBeenCalledOnce();
+    expect(respond).toHaveBeenCalledOnce();
   });
 
   it('does not throw an unhandled rejection when the fetch fails', async () => {
-    fetchMock.mockRejectedValue(new TypeError('offline'));
+    const requests: unknown[] = [];
+    sharedJsonServer.use(
+      http.get(sharedJsonUrl('/data/search-index.json'), () => {
+        requests.push(null);
+        return HttpResponse.error();
+      }),
+    );
 
     expect(() => preloadSearchIndex()).not.toThrow();
-    await vi.waitFor(() => expect(fetchMock).toHaveBeenCalledOnce());
+    await vi.waitFor(() => expect(requests).toHaveLength(1));
   });
 });
 

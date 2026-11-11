@@ -7,7 +7,7 @@ describe('AcidAdjustingPage', () => {
   it('reads and updates the juice amount URL parameter', async () => {
     mockRouter.setCurrentUrl('?juiceAmount=2');
     const onUrlUpdate = vi.fn();
-    const { user } = setupApp(await AcidAdjustingPage(), {
+    const { user } = await setupApp(await AcidAdjustingPage(), {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -23,7 +23,7 @@ describe('AcidAdjustingPage', () => {
   });
 
   it('calculates solution dosing and a scalable Lime solution recipe', async () => {
-    const { user } = setupApp(await AcidAdjustingPage());
+    const { user } = await setupApp(await AcidAdjustingPage());
 
     expect(screen.getByRole('textbox', { name: 'Acid solution to add' })).toHaveValue(
       '5',
@@ -52,7 +52,7 @@ describe('AcidAdjustingPage', () => {
   });
 
   it('scales the Lemon solution recipe without estimating water weight', async () => {
-    const { user } = setupApp(await AcidAdjustingPage());
+    const { user } = await setupApp(await AcidAdjustingPage());
     const solutionRecipe = screen.getByRole('region', { name: 'Make the solution' });
 
     await user.click(within(solutionRecipe).getByRole('button', { name: 'Lemon' }));
@@ -69,7 +69,7 @@ describe('AcidAdjustingPage', () => {
   });
 
   it('calculates direct powder adjustments for Lime and Lemon profiles', async () => {
-    const { user } = setupApp(await AcidAdjustingPage());
+    const { user } = await setupApp(await AcidAdjustingPage());
 
     await user.click(screen.getByRole('button', { name: 'Powder' }));
 
@@ -92,7 +92,7 @@ describe('AcidAdjustingPage', () => {
   });
 
   it('does not recommend removing solution when target acidity is too low', async () => {
-    const { user } = setupApp(await AcidAdjustingPage());
+    const { user } = await setupApp(await AcidAdjustingPage());
     const targetAcidity = screen.getByRole('spinbutton', { name: 'Target acidity' });
 
     await user.clear(targetAcidity);
@@ -103,7 +103,7 @@ describe('AcidAdjustingPage', () => {
   });
 
   it('resets the adjustment and solution recipe independently without changing the profile', async () => {
-    const { user } = setupApp(await AcidAdjustingPage());
+    const { user } = await setupApp(await AcidAdjustingPage());
     const juiceAmount = screen.getByRole('spinbutton', { name: 'Juice amount' });
     const bottleSize = screen.getByRole('spinbutton', { name: 'Bottle size' });
 

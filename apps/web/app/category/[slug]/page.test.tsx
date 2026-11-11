@@ -1,3 +1,4 @@
+import type { Recipe } from '@cocktails/data';
 import { getCategory, getChildCategories } from '@cocktails/data/categories';
 import type * as CategoriesModule from '@cocktails/data/categories';
 import { getIngredient, getIngredientsForCategory } from '@cocktails/data/ingredients';
@@ -6,8 +7,15 @@ import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import { vi, beforeEach, describe, it, expect } from 'vitest';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
+import { buildCatalog } from '#/modules/buildCatalog';
 import { getCategoryUrl } from '#/modules/url';
+import {
+  failJson,
+  hangJson,
+  serveJson,
+  sharedJsonServer,
+} from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import CategoryPage from './page';
 
@@ -33,16 +41,34 @@ const { getChildCategories: getActualChildCategories } = await vi.importActual<
   typeof CategoriesModule
 >('@cocktails/data/categories');
 
+/** The catalog as the category pages read it: testRecipes keyed for this page. */
+const testCatalog = buildCatalog([
+  {
+    key: 'category/london-dry-gin',
+    recipes: testRecipes,
+    pickQuantity: (recipe) =>
+      recipe.ingredients.find((ingredient) => {
+        if (ingredient.type === 'category') {
+          return ingredient.slug === 'london-dry-gin';
+        }
+        return ingredient.categories.some((c) => c.slug === 'london-dry-gin');
+      })?.quantity,
+  },
+]);
+
+/** Serve the test catalog from the fetch the pages issue. */
+
 beforeEach(() => {
   vi.mocked(getChildCategories).mockResolvedValue([]);
   vi.mocked(getIngredientsForCategory).mockResolvedValue([testMembers, []]);
   vi.mocked(getRecipeByCategory).mockResolvedValue(testRecipes);
+  sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
 });
 
 describe('CategoryPage', () => {
   describe('basic rendering', () => {
     it('renders parent category information', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -57,7 +83,7 @@ describe('CategoryPage', () => {
     });
 
     it('renders example ingredients for the category', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -80,7 +106,7 @@ describe('CategoryPage', () => {
       ]);
       vi.mocked(getChildCategories).mockImplementation(getActualChildCategories);
 
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'rum' }),
         }),
@@ -96,7 +122,7 @@ describe('CategoryPage', () => {
     });
 
     it('renders search header with title', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -111,19 +137,15 @@ describe('CategoryPage', () => {
 
   describe('recipe list', () => {
     it('renders recipes using the category with header', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
       );
 
-      // Recipes section has a header
+      // setupApp flushes the catalog load: the rows and header are already there.
       expect(screen.getByText('Recipes using London dry gin')).toBeInTheDocument();
-
-      // Fog Cutter uses London dry gin as a category ingredient
       expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
-
-      // Cloister uses Beefeater London Dry Gin (a specific bottle in the category)
       expect(screen.getByRole('link', { name: /Cloister/ })).toHaveTextContent(
         'Anders Erickson',
       );
@@ -132,7 +154,7 @@ describe('CategoryPage', () => {
 
   describe('recipe list quantity display', () => {
     it('displays ingredient quantity for each recipe', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -150,7 +172,7 @@ describe('CategoryPage', () => {
 
   describe('search functionality', () => {
     it('search filters recipes within category', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -166,7 +188,7 @@ describe('CategoryPage', () => {
 
     it('URL updates with search param', async () => {
       const onUrlUpdate = vi.fn();
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -182,7 +204,7 @@ describe('CategoryPage', () => {
     });
 
     it('shows SearchAllLink in no results state', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -198,7 +220,7 @@ describe('CategoryPage', () => {
     });
 
     it('hides category description when searching', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -215,7 +237,7 @@ describe('CategoryPage', () => {
     });
 
     it('hides ingredient members list when searching', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -233,7 +255,7 @@ describe('CategoryPage', () => {
 
     it('loads with search term from URL', async () => {
       mockRouter.setCurrentUrl('?search=fog');
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -242,6 +264,7 @@ describe('CategoryPage', () => {
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('fog');
 
+      // With a search active, setupApp still flushes the catalog load.
       const resultList = screen.getByRole('list');
       expect(resultList).toHaveTextContent('Fog Cutter');
       expect(resultList).not.toHaveTextContent('Cloister');
@@ -249,7 +272,7 @@ describe('CategoryPage', () => {
 
     it('clearing search shows all content', async () => {
       mockRouter.setCurrentUrl('?search=fog');
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -269,6 +292,122 @@ describe('CategoryPage', () => {
       // Recipes should be grouped alphabetically
       expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /Cloister/ })).toBeInTheDocument();
+    });
+  });
+
+  describe('catalog-driven recipe list', () => {
+    const catalogRecipe = (name: string): Recipe => ({
+      ...testRecipes[0],
+      name,
+      slug: name.toLowerCase().replaceAll(' ', '-'),
+    });
+
+    /** Two recipes from the catalog: enough for loading, loaded and failed. */
+    const catalogRecipes = [catalogRecipe('Zebra Tail'), catalogRecipe('Alpha Yeti')];
+
+    const catalog = buildCatalog([
+      {
+        key: 'category/london-dry-gin',
+        recipes: catalogRecipes,
+        pickQuantity: () => undefined,
+      },
+    ]);
+
+    /**
+     * The recipe rows' list group, however many other lists the page shows.
+     * Its aria-labelledby id has spaces, which breaks the accessible name, so
+     * walk up from the subheader text instead.
+     */
+    function getRecipeList(): HTMLElement {
+      const subheader = screen.getByText('Recipes using London dry gin');
+      const list = subheader.closest('[role="group"]');
+      if (!(list instanceof HTMLElement)) {
+        throw new Error('recipe list group not found');
+      }
+      return list;
+    }
+
+    beforeEach(() => {
+      vi.mocked(getRecipeByCategory).mockResolvedValue(catalogRecipes);
+    });
+
+    it('shows the loading state before the catalog lands', async () => {
+      sharedJsonServer.use(hangJson('/data/catalog.json'));
+
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      // The reserved space is there at once; the skeleton rows wait out
+      // their grace period.
+      expect(screen.getByLabelText(/loading recipes/i)).toBeInTheDocument();
+      expect(screen.queryByText('Alpha Yeti')).not.toBeInTheDocument();
+    });
+
+    it('renders the full list from the catalog once loaded', async () => {
+      sharedJsonServer.use(serveJson('/data/catalog.json', catalog));
+
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      const list = getRecipeList();
+      expect(list).toHaveTextContent('Zebra Tail');
+      expect(list).toHaveTextContent('Alpha Yeti');
+    });
+
+    it('shows the loading state while searching, not a false no-results', async () => {
+      sharedJsonServer.use(hangJson('/data/catalog.json'));
+      mockRouter.setCurrentUrl('?search=zebra');
+
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      // While the catalog loads, a search shows the loading state — the
+      // full list it must match is not there yet — never "No results found".
+      expect(screen.getByLabelText(/loading recipes/i)).toBeInTheDocument();
+      expect(screen.queryByText('No results found')).not.toBeInTheDocument();
+    });
+
+    it('offers a reload when a search outlives a failed catalog fetch', async () => {
+      sharedJsonServer.use(failJson('/data/catalog.json', 500));
+      mockRouter.setCurrentUrl('?search=zebra');
+
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      // The reload affordance lives in the search branch too. setupApp's
+      // flush settles the rejected load, so the failure state is already up.
+      expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: /reload the page/i }),
+      ).toBeInTheDocument();
+    });
+
+    it('offers a reload when the catalog fails to load', async () => {
+      sharedJsonServer.use(failJson('/data/catalog.json', 500));
+
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: /reload the page/i }),
+      ).toBeInTheDocument();
+      expect(screen.queryByText('Alpha Yeti')).not.toBeInTheDocument();
     });
   });
 });

@@ -44,7 +44,7 @@ beforeEach(() => {
 
 describe('NonAlcoholicRecipesPage', () => {
   it('renders the searchable non-alcoholic recipe list', async () => {
-    setupApp(await NonAlcoholicRecipesPage());
+    await setupApp(await NonAlcoholicRecipesPage());
 
     expect(
       screen.getByRole('heading', { level: 1, name: 'Non-Alcoholic Recipes' }),
@@ -59,7 +59,7 @@ describe('NonAlcoholicRecipesPage', () => {
     const recipe = mockRecipe('Test Recipe');
     vi.mocked(getNonAlcoholicRecipes).mockResolvedValue([recipe]);
 
-    setupApp(await NonAlcoholicRecipesPage());
+    await setupApp(await NonAlcoholicRecipesPage());
 
     expect(screen.getByRole('link', { name: /test recipe/i })).toHaveAttribute(
       'href',

@@ -9,8 +9,8 @@ describe('JuiceClarificationCalculatorPage', () => {
     mockRouter.setCurrentUrl('/');
   });
 
-  it('calculates the water and agar agar required for the default juice weight', () => {
-    setupApp(<JuiceClarificationCalculatorPage />);
+  it('calculates the water and agar agar required for the default juice weight', async () => {
+    await setupApp(<JuiceClarificationCalculatorPage />);
 
     expect(screen.getByRole('spinbutton', { name: 'Raw juice weight' })).toHaveValue(250);
     expect(screen.getByRole('textbox', { name: 'Water' })).toHaveValue('75');
@@ -19,7 +19,7 @@ describe('JuiceClarificationCalculatorPage', () => {
   });
 
   it('recalculates the ingredients when the juice weight changes', async () => {
-    const { user } = setupApp(<JuiceClarificationCalculatorPage />);
+    const { user } = await setupApp(<JuiceClarificationCalculatorPage />);
     const juiceWeight = screen.getByRole('spinbutton', { name: 'Raw juice weight' });
 
     await user.clear(juiceWeight);
@@ -32,25 +32,25 @@ describe('JuiceClarificationCalculatorPage', () => {
   it.each([
     ['grams', '?amount=500&unit=gram', 500],
     ['volume', '?amount=10&unit=oz', 300],
-  ])('uses a contextual recipe amount in %s', (_, url, expectedWeight) => {
+  ])('uses a contextual recipe amount in %s', async (_, url, expectedWeight) => {
     mockRouter.setCurrentUrl(url);
-    setupApp(<JuiceClarificationCalculatorPage />);
+    await setupApp(<JuiceClarificationCalculatorPage />);
 
     expect(screen.getByRole('spinbutton', { name: 'Raw juice weight' })).toHaveValue(
       expectedWeight,
     );
   });
 
-  it('uses the minimum contextual default for smaller recipe amounts', () => {
+  it('uses the minimum contextual default for smaller recipe amounts', async () => {
     mockRouter.setCurrentUrl('?amount=4&unit=oz');
-    setupApp(<JuiceClarificationCalculatorPage />);
+    await setupApp(<JuiceClarificationCalculatorPage />);
 
     expect(screen.getByRole('spinbutton', { name: 'Raw juice weight' })).toHaveValue(250);
   });
 
   it('does not overwrite user input when the URL changes', async () => {
     mockRouter.setCurrentUrl('?amount=500&unit=gram');
-    const { user } = setupApp(<JuiceClarificationCalculatorPage />);
+    const { user } = await setupApp(<JuiceClarificationCalculatorPage />);
     const juiceWeight = screen.getByRole('spinbutton', { name: 'Raw juice weight' });
 
     await user.clear(juiceWeight);
@@ -61,7 +61,7 @@ describe('JuiceClarificationCalculatorPage', () => {
   });
 
   it('does not calculate ingredients for an empty or invalid juice weight', async () => {
-    const { user } = setupApp(<JuiceClarificationCalculatorPage />);
+    const { user } = await setupApp(<JuiceClarificationCalculatorPage />);
     const juiceWeight = screen.getByRole('spinbutton', { name: 'Raw juice weight' });
     const water = screen.getByRole('textbox', { name: 'Water' });
     const agarAgar = screen.getByRole('textbox', { name: 'Agar agar' });
@@ -81,7 +81,7 @@ describe('JuiceClarificationCalculatorPage', () => {
 
   it('resets the calculator to the contextual recipe default', async () => {
     mockRouter.setCurrentUrl('?amount=500&unit=gram');
-    const { user } = setupApp(<JuiceClarificationCalculatorPage />);
+    const { user } = await setupApp(<JuiceClarificationCalculatorPage />);
     const juiceWeight = screen.getByRole('spinbutton', { name: 'Raw juice weight' });
 
     await user.clear(juiceWeight);
@@ -93,8 +93,8 @@ describe('JuiceClarificationCalculatorPage', () => {
     expect(screen.getByRole('textbox', { name: 'Agar agar' })).toHaveValue('1.5');
   });
 
-  it('shows the clarification procedure and source attribution', () => {
-    setupApp(<JuiceClarificationCalculatorPage />);
+  it('shows the clarification procedure and source attribution', async () => {
+    await setupApp(<JuiceClarificationCalculatorPage />);
 
     const instructions = screen.getByRole('list', { name: 'Instructions' });
     expect(within(instructions).getAllByRole('listitem')).toHaveLength(7);

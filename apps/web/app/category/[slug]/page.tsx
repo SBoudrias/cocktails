@@ -13,7 +13,6 @@ import SearchableRecipePage from '#/components/SearchableRecipePage';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
-import { toRecipeListItems } from '#/modules/recipeListItem';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 
 type Params = { slug: string };
@@ -54,24 +53,14 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
     getChildCategories(category),
   ]);
 
-  const categorySlugs = new Set([category.slug, ...childCategories.map((c) => c.slug)]);
-
   const videos = category.refs.filter((ref) => ref.type === 'youtube');
   const [firstVideo, ...additionalVideos] = videos;
 
   return (
     <SearchableRecipePage
       title={category.name}
-      recipes={toRecipeListItems(
-        relatedRecipes,
-        (recipe) =>
-          recipe.ingredients.find((ingredient) => {
-            if (ingredient.type === 'category') {
-              return ingredient.slug === category.slug;
-            }
-            return ingredient.categories.some((c) => categorySlugs.has(c.slug));
-          })?.quantity,
-      )}
+      catalogKey={relatedRecipes.length > 0 ? `category/${category.slug}` : undefined}
+      recipeCount={relatedRecipes.length}
       listHeader={`Recipes using ${category.name}`}
       footer={
         <FixBugCard

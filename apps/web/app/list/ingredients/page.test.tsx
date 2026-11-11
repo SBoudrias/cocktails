@@ -35,7 +35,7 @@ beforeEach(() => {
 
 describe('IngredientsPage', () => {
   it('shows search input, title and list', async () => {
-    setupApp(await IngredientsPage());
+    await setupApp(await IngredientsPage());
 
     // Both title and search input are always visible
     expect(screen.getByText('All Ingredients')).toBeInTheDocument();
@@ -46,7 +46,7 @@ describe('IngredientsPage', () => {
   });
 
   it('typing filters ingredient list', async () => {
-    const { user } = setupApp(await IngredientsPage());
+    const { user } = await setupApp(await IngredientsPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'lime juice');
@@ -57,7 +57,7 @@ describe('IngredientsPage', () => {
 
   it('clearing search shows all ingredients grouped by letter', async () => {
     mockRouter.setCurrentUrl('?search=lime');
-    const { user } = setupApp(await IngredientsPage());
+    const { user } = await setupApp(await IngredientsPage());
 
     // Initially filtered
     const resultList = screen.getByRole('list');
@@ -75,7 +75,7 @@ describe('IngredientsPage', () => {
 
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
-    const { user } = setupApp(await IngredientsPage(), {
+    const { user } = await setupApp(await IngredientsPage(), {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -88,7 +88,7 @@ describe('IngredientsPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupApp(await IngredientsPage());
+    const { user } = await setupApp(await IngredientsPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -99,7 +99,7 @@ describe('IngredientsPage', () => {
   });
 
   it('ingredient items link to correct ingredient detail pages', async () => {
-    setupApp(await IngredientsPage());
+    await setupApp(await IngredientsPage());
 
     // Use a hardcoded known ingredient with getByText to avoid expensive
     // accessible name computation over the full ingredient list
@@ -108,7 +108,7 @@ describe('IngredientsPage', () => {
   });
 
   it('category items link to correct category pages', async () => {
-    setupApp(await IngredientsPage());
+    await setupApp(await IngredientsPage());
 
     // Use a hardcoded known category with getByText to avoid expensive
     // accessible name computation over the full ingredient list
@@ -118,7 +118,7 @@ describe('IngredientsPage', () => {
 
   it('loads with search term from URL', async () => {
     mockRouter.setCurrentUrl('?search=lime');
-    setupApp(await IngredientsPage());
+    await setupApp(await IngredientsPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('lime');
@@ -128,7 +128,7 @@ describe('IngredientsPage', () => {
   });
 
   it('groups ingredients by first letter when not searching', async () => {
-    setupApp(await IngredientsPage());
+    await setupApp(await IngredientsPage());
 
     // Real data has ingredients starting with various letters
     // Just verify that letter groups exist
@@ -142,7 +142,7 @@ describe('IngredientsPage', () => {
   });
 
   it('filters out liqueur and spirit type ingredients', async () => {
-    setupApp(await IngredientsPage());
+    await setupApp(await IngredientsPage());
 
     // Get all displayed ingredient names
     const allIngredients = await getAllIngredients();
@@ -159,7 +159,7 @@ describe('IngredientsPage', () => {
   });
 
   it('combines ingredients and categories in the list', async () => {
-    setupApp(await IngredientsPage());
+    await setupApp(await IngredientsPage());
 
     // Get real data
     const allIngredients = await getAllIngredients();

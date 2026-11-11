@@ -34,7 +34,7 @@ beforeEach(() => {
 
 describe('AuthorListPage', () => {
   it('shows search input, title and list', async () => {
-    setupApp(await AuthorListPage());
+    await setupApp(await AuthorListPage());
 
     expect(screen.getByText('All Authors')).toBeInTheDocument();
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe('AuthorListPage', () => {
   });
 
   it('typing filters author list', async () => {
-    const { user } = setupApp(await AuthorListPage());
+    const { user } = await setupApp(await AuthorListPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'garret');
@@ -53,7 +53,7 @@ describe('AuthorListPage', () => {
 
   it('clearing search shows all authors grouped by letter', async () => {
     mockRouter.setCurrentUrl('?search=garret');
-    const { user } = setupApp(await AuthorListPage());
+    const { user } = await setupApp(await AuthorListPage());
 
     const input = screen.getByRole('searchbox');
     await user.clear(input);
@@ -64,7 +64,7 @@ describe('AuthorListPage', () => {
 
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
-    const { user } = setupApp(await AuthorListPage(), {
+    const { user } = await setupApp(await AuthorListPage(), {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -77,7 +77,7 @@ describe('AuthorListPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupApp(await AuthorListPage());
+    const { user } = await setupApp(await AuthorListPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -86,7 +86,7 @@ describe('AuthorListPage', () => {
   });
 
   it('does not show SearchAllLink when no results (not searching recipes)', async () => {
-    const { user } = setupApp(await AuthorListPage());
+    const { user } = await setupApp(await AuthorListPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -98,7 +98,7 @@ describe('AuthorListPage', () => {
   });
 
   it('author items link to correct author recipes pages', async () => {
-    setupApp(await AuthorListPage());
+    await setupApp(await AuthorListPage());
 
     const link = screen.getByRole('link', { name: new RegExp(KNOWN_AUTHOR, 'i') });
     expect(link).toHaveAttribute('href', getAuthorRecipesUrl(KNOWN_AUTHOR));
@@ -106,7 +106,7 @@ describe('AuthorListPage', () => {
 
   it('loads with search term from URL', async () => {
     mockRouter.setCurrentUrl('?search=garret');
-    setupApp(await AuthorListPage());
+    await setupApp(await AuthorListPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('garret');
@@ -116,7 +116,7 @@ describe('AuthorListPage', () => {
   });
 
   it('groups authors by first letter when not searching', async () => {
-    setupApp(await AuthorListPage());
+    await setupApp(await AuthorListPage());
 
     const groups = screen.getAllByRole('group');
     expect(groups.length).toBeGreaterThan(0);
@@ -127,7 +127,7 @@ describe('AuthorListPage', () => {
   });
 
   it('shows recipe count for each author', async () => {
-    setupApp(await AuthorListPage());
+    await setupApp(await AuthorListPage());
 
     const link = screen.getByRole('link', { name: new RegExp(KNOWN_AUTHOR, 'i') });
     expect(link).toHaveTextContent(/\d+/);

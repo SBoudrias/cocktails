@@ -17,7 +17,7 @@ describe('RecipePage', () => {
   it('links author and bar attributions to their list pages', async () => {
     const recipe = await getRecipe({ type: 'book', slug: 'sippin-safari' }, 'last-rites');
 
-    setupApp(
+    await setupApp(
       await RecipePage({
         params: Promise.resolve({
           type: recipe.source.type,
@@ -45,7 +45,7 @@ describe('RecipePage', () => {
       'jungle-bird',
     );
 
-    setupApp(
+    await setupApp(
       await RecipePage({
         params: Promise.resolve({
           type: bookRecipe.source.type,
@@ -59,7 +59,7 @@ describe('RecipePage', () => {
   });
 
   it('marks optional ingredients and preserves the marker when servings change', async () => {
-    const { user } = setupApp(
+    const { user } = await setupApp(
       await RecipePage({
         params: Promise.resolve({
           type: 'youtube-channel',
@@ -93,7 +93,7 @@ describe('RecipePage', () => {
       'clarified-new-york-sour',
     );
 
-    const { user } = setupApp(
+    const { user } = await setupApp(
       await RecipePage({
         params: Promise.resolve({
           type: clarifiedRecipe.source.type,
@@ -147,7 +147,7 @@ describe('RecipePage', () => {
   });
 
   it('renders the attribution list before the source card, keeping lists and cards apart', async () => {
-    setupApp(
+    await setupApp(
       await RecipePage({
         params: Promise.resolve({
           type: 'youtube-channel',
@@ -169,7 +169,7 @@ describe('RecipePage', () => {
   });
 
   it('renders website refs in an also-documented-at card', async () => {
-    setupApp(
+    await setupApp(
       await RecipePage({
         params: Promise.resolve({
           type: 'youtube-channel',

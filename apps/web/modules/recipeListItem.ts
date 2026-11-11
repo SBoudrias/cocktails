@@ -10,14 +10,15 @@ import { getRecipeUrl } from '#/modules/url';
  * `href`).
  *
  * `chapter` and `page` are only consumed on book source pages, which group
- * their items by chapter; other routes carry them unused.
+ * their items by chapter; other routes carry them unused, and catalog cards
+ * (resolved at runtime) never do.
  */
 export type RecipeListItem = {
   name: string;
   href: ReturnType<typeof getRecipeUrl>;
   source: string;
-  chapter: Chapter | undefined;
-  page: number | undefined;
+  chapter?: Chapter;
+  page?: number;
 };
 
 /**

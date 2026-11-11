@@ -8,6 +8,8 @@ import { getRecipe } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { buildCatalog } from '#/modules/buildCatalog';
+import { serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import IngredientPage from './page';
 
@@ -68,6 +70,22 @@ vi.mocked(getSubstitutesForIngredient).mockImplementation(async (ingredient) => 
   return [];
 });
 
+/** The catalog as the ingredient pages read it: both test lists keyed by page. */
+const testCatalog = buildCatalog([
+  {
+    key: `ingredient/${TEST_INGREDIENT.type}/${TEST_INGREDIENT.slug}`,
+    recipes: pineappleRecipes,
+    pickQuantity: (recipe) =>
+      recipe.ingredients.find((i) => i.slug === TEST_INGREDIENT.slug)?.quantity,
+  },
+  {
+    key: `ingredient/${TEST_SPIRIT.type}/${TEST_SPIRIT.slug}`,
+    recipes: spiritRecipes,
+    pickQuantity: (recipe) =>
+      recipe.ingredients.find((i) => i.slug === TEST_SPIRIT.slug)?.quantity,
+  },
+]);
+
 // Cache page JSX once for the entire file to avoid repeated async data loading
 const [ingredientPageJSX, spiritPageJSX] = await Promise.all([
   IngredientPage({
@@ -81,11 +99,12 @@ const [ingredientPageJSX, spiritPageJSX] = await Promise.all([
 describe('IngredientPage', () => {
   beforeEach(() => {
     mockRouter.setCurrentUrl('/');
+    sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
   });
 
   describe('basic rendering', () => {
-    it('renders SearchHeader showing ingredient name as title', () => {
-      setupApp(ingredientPageJSX);
+    it('renders SearchHeader showing ingredient name as title', async () => {
+      await setupApp(ingredientPageJSX);
 
       expect(
         screen.getByRole('heading', { level: 1, name: TEST_INGREDIENT.name }),
@@ -93,8 +112,8 @@ describe('IngredientPage', () => {
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
 
-    it('renders category information for spirits', () => {
-      setupApp(spiritPageJSX);
+    it('renders category information for spirits', async () => {
+      await setupApp(spiritPageJSX);
 
       // Beefeater categories are shown
       expect(screen.getByText(/categor/i)).toBeInTheDocument();
@@ -104,29 +123,29 @@ describe('IngredientPage', () => {
       );
     });
 
-    it('renders substitutes section for spirits', () => {
-      setupApp(spiritPageJSX);
+    it('renders substitutes section for spirits', async () => {
+      await setupApp(spiritPageJSX);
 
       expect(screen.getByText('Some substitution option')).toBeInTheDocument();
     });
 
-    it('does not render acid adjusting without acid-adjustment context', () => {
-      setupApp(ingredientPageJSX);
+    it('does not render acid adjusting without acid-adjustment context', async () => {
+      await setupApp(ingredientPageJSX);
 
       expect(screen.queryByText('Acid Adjusting')).not.toBeInTheDocument();
     });
 
-    it('renders acid adjusting for acid-adjusted juice with acidity', () => {
+    it('renders acid adjusting for acid-adjusted juice with acidity', async () => {
       mockRouter.setCurrentUrl('?technique=acid-adjustment');
-      setupApp(ingredientPageJSX);
+      await setupApp(ingredientPageJSX);
 
       expect(screen.getByText('Acid Adjusting')).toBeInTheDocument();
       expect(screen.getByRole('spinbutton', { name: 'Juice amount' })).toHaveValue(1);
     });
 
-    it('renders applicable calculators in alphabetical order', () => {
+    it('renders applicable calculators in alphabetical order', async () => {
       mockRouter.setCurrentUrl('?technique=clarification&technique=acid-adjustment');
-      setupApp(ingredientPageJSX);
+      await setupApp(ingredientPageJSX);
 
       const acidAdjusting = screen.getByText('Acid Adjusting');
       const juiceClarification = screen.getByText('Juice Clarification');
@@ -141,17 +160,17 @@ describe('IngredientPage', () => {
 
     it.each(['clarification:agar', 'clarification:agar-agar'])(
       'renders clarification for %s context',
-      (technique) => {
+      async (technique) => {
         mockRouter.setCurrentUrl(`?technique=${technique}`);
-        setupApp(ingredientPageJSX);
+        await setupApp(ingredientPageJSX);
 
         expect(screen.getByText('Juice Clarification')).toBeInTheDocument();
       },
     );
 
-    it('prefills clarification from a recipe quantity above the contextual minimum', () => {
+    it('prefills clarification from a recipe quantity above the contextual minimum', async () => {
       mockRouter.setCurrentUrl('?technique=clarification&amount=500&unit=gram');
-      setupApp(ingredientPageJSX);
+      await setupApp(ingredientPageJSX);
 
       expect(screen.getByRole('spinbutton', { name: 'Raw juice weight' })).toHaveValue(
         500,
@@ -160,24 +179,24 @@ describe('IngredientPage', () => {
 
     it.each(['clarification:milk', 'clarification:bentonite'])(
       'does not render clarification for %s context',
-      (technique) => {
+      async (technique) => {
         mockRouter.setCurrentUrl(`?technique=${technique}`);
-        setupApp(ingredientPageJSX);
+        await setupApp(ingredientPageJSX);
 
         expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
       },
     );
 
-    it('does not render clarification for non-juice ingredients', () => {
+    it('does not render clarification for non-juice ingredients', async () => {
       mockRouter.setCurrentUrl('?technique=clarification');
-      setupApp(spiritPageJSX);
+      await setupApp(spiritPageJSX);
 
       expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
     });
 
     it('prefills and resets acid adjustment from the juice amount URL', async () => {
       mockRouter.setCurrentUrl('?technique=acid-adjustment&juiceAmount=0.5');
-      const { user } = setupApp(ingredientPageJSX);
+      const { user } = await setupApp(ingredientPageJSX);
 
       const juiceAmount = screen.getByRole('spinbutton', { name: 'Juice amount' });
       expect(juiceAmount).toHaveValue(0.5);
@@ -209,23 +228,21 @@ describe('IngredientPage', () => {
   });
 
   describe('recipe list', () => {
-    it('renders recipes using the ingredient with header', () => {
-      setupApp(ingredientPageJSX);
+    it('renders recipes using the ingredient with header', async () => {
+      await setupApp(ingredientPageJSX);
 
-      // Recipes section has a header
+      // setupApp flushes the catalog load: the rows and header are already there.
+      // Use getByText instead of getByRole to avoid expensive accessible name computation
       expect(
         screen.getByText(`Recipes using ${TEST_INGREDIENT.name}`),
       ).toBeInTheDocument();
-
-      // Chartreuse swizzle uses pineapple juice
-      // Use getByText instead of getByRole to avoid expensive accessible name computation
       expect(screen.getByText('Chartreuse swizzle').closest('a')).toBeInTheDocument();
     });
   });
 
   describe('recipe list quantity display', () => {
-    it('displays ingredient quantity for each recipe', () => {
-      setupApp(ingredientPageJSX);
+    it('displays ingredient quantity for each recipe', async () => {
+      await setupApp(ingredientPageJSX);
 
       const allListItems = screen.getAllByRole('listitem');
 
@@ -245,8 +262,8 @@ describe('IngredientPage', () => {
       expect(chartreuse).toHaveTextContent("Smuggler's Cove");
     });
 
-    it('displays quantity with sources for duplicate recipe names', () => {
-      setupApp(ingredientPageJSX);
+    it('displays quantity with sources for duplicate recipe names', async () => {
+      await setupApp(ingredientPageJSX);
 
       const allListItems = screen.getAllByRole('listitem');
 
@@ -272,7 +289,7 @@ describe('IngredientPage', () => {
 
   describe('search functionality', () => {
     it('search filters recipes within ingredient', async () => {
-      const { user } = setupApp(ingredientPageJSX);
+      const { user } = await setupApp(ingredientPageJSX);
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'chartreuse swizzle');
@@ -284,7 +301,9 @@ describe('IngredientPage', () => {
 
     it('URL updates with search param', async () => {
       const onUrlUpdate = vi.fn();
-      const { user } = setupApp(ingredientPageJSX, { nuqsOptions: { onUrlUpdate } });
+      const { user } = await setupApp(ingredientPageJSX, {
+        nuqsOptions: { onUrlUpdate },
+      });
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'jungle');
@@ -295,7 +314,7 @@ describe('IngredientPage', () => {
     });
 
     it('shows SearchAllLink in no results state', async () => {
-      const { user } = setupApp(ingredientPageJSX);
+      const { user } = await setupApp(ingredientPageJSX);
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'xyznonexistent');
@@ -307,7 +326,7 @@ describe('IngredientPage', () => {
     });
 
     it('hides non-recipe content when searching', async () => {
-      const { user } = setupApp(spiritPageJSX);
+      const { user } = await setupApp(spiritPageJSX);
 
       // Category info is visible initially
       expect(screen.getByText(/categor/i)).toBeInTheDocument();
@@ -321,28 +340,29 @@ describe('IngredientPage', () => {
       expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
     });
 
-    it('hides contextual calculators when searching', () => {
+    it('hides contextual calculators when searching', async () => {
       mockRouter.setCurrentUrl('?search=chartreuse&technique=clarification');
-      setupApp(ingredientPageJSX);
+      await setupApp(ingredientPageJSX);
 
       expect(screen.queryByText('Acid Adjusting')).not.toBeInTheDocument();
       expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
     });
 
-    it('loads with search term from URL', () => {
+    it('loads with search term from URL', async () => {
       mockRouter.setCurrentUrl('?search=chartreuse');
-      setupApp(ingredientPageJSX);
+      await setupApp(ingredientPageJSX);
 
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('chartreuse');
 
+      // With a search active, setupApp still flushes the catalog load.
       const resultList = screen.getByRole('list');
       expect(resultList).toHaveTextContent('Chartreuse swizzle');
     });
 
     it('clearing search restores full page content', async () => {
       mockRouter.setCurrentUrl('?search=cloister');
-      const { user } = setupApp(spiritPageJSX);
+      const { user } = await setupApp(spiritPageJSX);
 
       // Initially filtered and content hidden
       expect(screen.queryByText(/categor/i)).not.toBeInTheDocument();

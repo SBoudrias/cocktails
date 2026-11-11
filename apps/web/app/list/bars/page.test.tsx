@@ -34,7 +34,7 @@ beforeEach(() => {
 
 describe('BarListPage', () => {
   it('shows search input, title and list', async () => {
-    setupApp(await BarListPage());
+    await setupApp(await BarListPage());
 
     expect(screen.getByText('All Bars')).toBeInTheDocument();
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe('BarListPage', () => {
   });
 
   it('typing filters bar list', async () => {
-    const { user } = setupApp(await BarListPage());
+    const { user } = await setupApp(await BarListPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'sunken');
@@ -52,7 +52,7 @@ describe('BarListPage', () => {
   });
 
   it('filters bars by location', async () => {
-    const { user } = setupApp(await BarListPage());
+    const { user } = await setupApp(await BarListPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'brooklyn');
@@ -63,7 +63,7 @@ describe('BarListPage', () => {
 
   it('clearing search shows all bars grouped by letter', async () => {
     mockRouter.setCurrentUrl('?search=sunken');
-    const { user } = setupApp(await BarListPage());
+    const { user } = await setupApp(await BarListPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('sunken');
@@ -76,7 +76,7 @@ describe('BarListPage', () => {
 
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
-    const { user } = setupApp(await BarListPage(), {
+    const { user } = await setupApp(await BarListPage(), {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -89,7 +89,7 @@ describe('BarListPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupApp(await BarListPage());
+    const { user } = await setupApp(await BarListPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -98,7 +98,7 @@ describe('BarListPage', () => {
   });
 
   it('does not show SearchAllLink when no results (not searching recipes)', async () => {
-    const { user } = setupApp(await BarListPage());
+    const { user } = await setupApp(await BarListPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -110,7 +110,7 @@ describe('BarListPage', () => {
   });
 
   it('bar items link to correct bar recipes pages', async () => {
-    setupApp(await BarListPage());
+    await setupApp(await BarListPage());
 
     const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
     expect(link).toHaveAttribute('href', getBarRecipesUrl(TEST_BAR));
@@ -118,7 +118,7 @@ describe('BarListPage', () => {
 
   it('loads with search term from URL', async () => {
     mockRouter.setCurrentUrl('?search=sunken');
-    setupApp(await BarListPage());
+    await setupApp(await BarListPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('sunken');
@@ -128,7 +128,7 @@ describe('BarListPage', () => {
   });
 
   it('groups bars by first letter when not searching', async () => {
-    setupApp(await BarListPage());
+    await setupApp(await BarListPage());
 
     const groups = screen.getAllByRole('group');
     expect(groups.length).toBeGreaterThan(0);
@@ -139,14 +139,14 @@ describe('BarListPage', () => {
   });
 
   it('shows recipe count for each bar', async () => {
-    setupApp(await BarListPage());
+    await setupApp(await BarListPage());
 
     const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
     expect(link).toHaveTextContent(/\d+/);
   });
 
   it('shows bar location as secondary text', async () => {
-    setupApp(await BarListPage());
+    await setupApp(await BarListPage());
 
     const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
     expect(link).toHaveTextContent(TEST_BAR.location);

@@ -5,7 +5,7 @@ import BarRecipesPage from './page';
 
 describe('BarRecipesPage', () => {
   it('renders the About card with location, description, website and map links', async () => {
-    setupApp(
+    await setupApp(
       await BarRecipesPage({
         params: Promise.resolve({ name: 'mai-kai-fort-lauderdale-fl' }),
       }),
@@ -27,7 +27,7 @@ describe('BarRecipesPage', () => {
   });
 
   it('renders the card header for a name-only bar, without extra links', async () => {
-    setupApp(
+    await setupApp(
       await BarRecipesPage({
         params: Promise.resolve({ name: 'trader-vics' }),
       }),
