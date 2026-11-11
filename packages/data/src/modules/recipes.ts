@@ -9,6 +9,7 @@ import slugify from '@sindresorhus/slugify';
 import uniqBy from 'lodash/uniqBy';
 import { match } from 'ts-pattern';
 import type { Category } from '../types/Category.ts';
+import type { Author, Bar } from '../types/Entity.ts';
 import type { IngredientType, RecipeIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import type { Source } from '../types/Source.ts';
@@ -595,4 +596,40 @@ export const getRecipeByCategory = memo(
     return toAlphaSort(uniqBy(relatedRecipes, 'slug'));
   },
   (category) => category.slug,
+);
+
+export const getRecipesByAuthor = memo(
+  async (author: Author): Promise<Recipe[]> => {
+    const recipes = await getAllRecipes();
+
+    return toAlphaSort(
+      recipes.filter((recipe) =>
+        recipe.attributions.some(
+          (attribution) =>
+            (attribution.relation === 'recipe author' ||
+              attribution.relation === 'adapted by') &&
+            attribution.source === author.name,
+        ),
+      ),
+    );
+  },
+  (author) => author.slug,
+);
+
+export const getRecipesByBar = memo(
+  async (bar: Bar): Promise<Recipe[]> => {
+    const recipes = await getAllRecipes();
+
+    return toAlphaSort(
+      recipes.filter((recipe) =>
+        recipe.attributions.some(
+          (attribution) =>
+            attribution.relation === 'bar' &&
+            attribution.source === bar.name &&
+            attribution.location === bar.location,
+        ),
+      ),
+    );
+  },
+  (bar) => bar.slug,
 );
