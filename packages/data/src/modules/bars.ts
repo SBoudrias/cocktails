@@ -24,8 +24,8 @@ async function readBarFile(slug: string): Promise<Bar | undefined> {
 
 /**
  * Derive a name-only bar from the recipes' attributions. The list pages'
- * fallback when no entity file exists — check-data creates a file for every
- * credited bar, so this only covers files gone missing.
+ * fallback when no entity file exists — check-data fails on a credit with no
+ * file, so this only covers files gone missing.
  */
 async function findBarFromAttributions(slug: string): Promise<Bar | undefined> {
   const allRecipes = await getAllRecipes();

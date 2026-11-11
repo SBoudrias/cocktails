@@ -1,0 +1,7 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Prizefighter",
+  "location": "Emeryville, CA",
+  "links": ["https://prizefighterbar.com"],
+  "description": "Cocktail bar in Emeryville, CA, from the team behind Clover Club"
+}

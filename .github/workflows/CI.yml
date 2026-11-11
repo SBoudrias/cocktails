@@ -44,6 +44,18 @@ jobs:
       - name: JSON Schema 💽
         run: yarn check-data
 
+      # check-data autofixes some drift (key order, $schema paths, casing).
+      # In CI it must never write silently: a tree it would change fails the
+      # build, so the fix is committed instead of regenerated on every run —
+      # the bug that swept generated stub files into unrelated PRs (#549, #551).
+      - name: No data drift 🧾
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git status --porcelain
+            echo "::error::yarn check-data modified files — run it locally and commit the results"
+            exit 1
+          fi
+
   tests:
     runs-on: ubuntu-latest
     timeout-minutes: 10
