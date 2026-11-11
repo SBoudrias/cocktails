@@ -5,7 +5,7 @@ import {
 } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe } from '@cocktails/data/recipes';
-import { screen, waitFor, within } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
@@ -231,14 +231,12 @@ describe('IngredientPage', () => {
     it('renders recipes using the ingredient with header', async () => {
       await setupApp(ingredientPageJSX);
 
-      // Rows land from the catalog, with the list header above them.
+      // setupApp flushes the catalog load: the rows and header are already there.
       // Use getByText instead of getByRole to avoid expensive accessible name computation
-      await waitFor(() => {
-        expect(
-          screen.getByText(`Recipes using ${TEST_INGREDIENT.name}`),
-        ).toBeInTheDocument();
-        expect(screen.getByText('Chartreuse swizzle').closest('a')).toBeInTheDocument();
-      });
+      expect(
+        screen.getByText(`Recipes using ${TEST_INGREDIENT.name}`),
+      ).toBeInTheDocument();
+      expect(screen.getByText('Chartreuse swizzle').closest('a')).toBeInTheDocument();
     });
   });
 
@@ -246,9 +244,6 @@ describe('IngredientPage', () => {
     it('displays ingredient quantity for each recipe', async () => {
       await setupApp(ingredientPageJSX);
 
-      await waitFor(() => {
-        expect(screen.getAllByRole('listitem').length).toBeGreaterThan(0);
-      });
       const allListItems = screen.getAllByRole('listitem');
 
       // Jungle bird (Smuggler's Cove) uses 2 oz pineapple juice
@@ -270,9 +265,6 @@ describe('IngredientPage', () => {
     it('displays quantity with sources for duplicate recipe names', async () => {
       await setupApp(ingredientPageJSX);
 
-      await waitFor(() => {
-        expect(screen.getAllByRole('listitem').length).toBeGreaterThan(0);
-      });
       const allListItems = screen.getAllByRole('listitem');
 
       // Smuggler's Cove version: 2 oz, attributed to Smuggler's Cove book
@@ -363,11 +355,9 @@ describe('IngredientPage', () => {
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('chartreuse');
 
-      // With a search active, the catalog loads right away.
-      const resultList = await screen.findByRole('list');
-      await waitFor(() => {
-        expect(resultList).toHaveTextContent('Chartreuse swizzle');
-      });
+      // With a search active, setupApp still flushes the catalog load.
+      const resultList = screen.getByRole('list');
+      expect(resultList).toHaveTextContent('Chartreuse swizzle');
     });
 
     it('clearing search restores full page content', async () => {

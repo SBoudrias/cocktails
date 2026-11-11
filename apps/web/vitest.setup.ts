@@ -29,6 +29,29 @@ if (typeof localStorage?.clear !== 'function') {
 }
 
 /**
+ * Flush the shared-JSON loads the mounted page started, so tests assert on
+ * complete lists without waiting per call site: resolves once no load is
+ * pending AND the page no longer shows its loading state — a fetch can
+ * settle before React commits its result, and the DOM is the visible truth.
+ * Pages that load nothing return on the first check; a fetch that never
+ * settles (a test asserting the loading state) is cut off by the attempt
+ * cap instead of a fixed sleep every test pays.
+ */
+const LOADING_SKELETON_SELECTOR = '[aria-label="Loading recipes"]';
+const POLL_INTERVAL_MS = 5;
+const POLL_ATTEMPTS = 20;
+
+async function flushSharedJsonLoads(): Promise<void> {
+  for (let attempt = 0; attempt < POLL_ATTEMPTS; attempt++) {
+    const settled = getPendingSharedJsonLoads().length === 0;
+    const committed = !document.querySelector(LOADING_SKELETON_SELECTOR);
+    if (settled && committed) return;
+
+    await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
+  }
+}
+
+/**
  * happy-dom lays nothing out, so virtualized lists (react-virtuoso) would
  * measure a zero-height viewport and render no rows. Give them a viewport tall
  * enough to render every row of a test's data.
@@ -69,14 +92,12 @@ export async function setupApp(
 
   // Pages load their shared JSON (catalog, search index) right after mount;
   // flush those loads before handing the page back, so tests assert on
-  // complete lists without waitFor at each call site. A failed load settles
-  // too — the page shows its failure state, which is what a test may assert.
-  // A load that never settles (a test asserting the loading state) must not
-  // hold the flush hostage, so cap the wait.
-  await Promise.race([
-    Promise.allSettled(getPendingSharedJsonLoads()),
-    new Promise((resolve) => setTimeout(resolve, 100)),
-  ]);
+  // complete lists without waitFor at each call site: as soon as no loading
+  // state is left in the DOM (happy path: immediately after the loads
+  // settle), on to a short bounded poll for slower environments. A fetch
+  // that never settles (a test asserting the loading state) is cut off by
+  // the attempt cap, not by a fixed sleep every test pays.
+  await flushSharedJsonLoads();
 
   return {
     get user() {

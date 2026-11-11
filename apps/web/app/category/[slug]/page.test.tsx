@@ -5,7 +5,7 @@ import { getIngredient, getIngredientsForCategory } from '@cocktails/data/ingred
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
-import { screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
@@ -143,11 +143,9 @@ describe('CategoryPage', () => {
         }),
       );
 
-      // Rows land from the catalog, with the list header above them.
-      await waitFor(() => {
-        expect(screen.getByText('Recipes using London dry gin')).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
-      });
+      // setupApp flushes the catalog load: the rows and header are already there.
+      expect(screen.getByText('Recipes using London dry gin')).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /Cloister/ })).toHaveTextContent(
         'Anders Erickson',
       );
@@ -163,11 +161,11 @@ describe('CategoryPage', () => {
       );
 
       // Fog Cutter uses 0.5 oz London dry gin (category type)
-      const fogCutterLink = await screen.findByRole('link', { name: /Fog Cutter/ });
+      const fogCutterLink = screen.getByRole('link', { name: /Fog Cutter/ });
       expect(fogCutterLink).toHaveTextContent('½ oz');
 
       // Cloister uses 1.5 oz Beefeater London Dry Gin (spirit in category)
-      const cloisterLink = await screen.findByRole('link', { name: /Cloister/ });
+      const cloisterLink = screen.getByRole('link', { name: /Cloister/ });
       expect(cloisterLink).toHaveTextContent('1 ½ oz');
     });
   });
@@ -266,12 +264,9 @@ describe('CategoryPage', () => {
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('fog');
 
-      // With a search active, the catalog loads right away: the filtered
-      // list appears once it lands.
-      const resultList = await screen.findByRole('list');
-      await waitFor(() => {
-        expect(resultList).toHaveTextContent('Fog Cutter');
-      });
+      // With a search active, setupApp still flushes the catalog load.
+      const resultList = screen.getByRole('list');
+      expect(resultList).toHaveTextContent('Fog Cutter');
       expect(resultList).not.toHaveTextContent('Cloister');
     });
 
@@ -360,11 +355,9 @@ describe('CategoryPage', () => {
         }),
       );
 
-      await waitFor(() => {
-        const list = getRecipeList();
-        expect(list).toHaveTextContent('Zebra Tail');
-        expect(list).toHaveTextContent('Alpha Yeti');
-      });
+      const list = getRecipeList();
+      expect(list).toHaveTextContent('Zebra Tail');
+      expect(list).toHaveTextContent('Alpha Yeti');
     });
 
     it('shows the loading state while searching, not a false no-results', async () => {
@@ -393,10 +386,9 @@ describe('CategoryPage', () => {
         }),
       );
 
-      // The reload affordance lives in the search branch too.
-      await waitFor(() => {
-        expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
-      });
+      // The reload affordance lives in the search branch too. setupApp's
+      // flush settles the rejected load, so the failure state is already up.
+      expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
       expect(
         screen.getByRole('button', { name: /reload the page/i }),
       ).toBeInTheDocument();
@@ -411,9 +403,7 @@ describe('CategoryPage', () => {
         }),
       );
 
-      await waitFor(() => {
-        expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
-      });
+      expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
       expect(
         screen.getByRole('button', { name: /reload the page/i }),
       ).toBeInTheDocument();

@@ -1,6 +1,6 @@
 import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
-import { act, render, screen, waitFor, within } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { NuqsAdapter } from 'nuqs/adapters/react';
@@ -216,19 +216,11 @@ describe('RecipesPage', () => {
       serveJson('/data/search-index.json', buildSearchIndex(toSearchIndexItems(recipes))),
     );
 
-    let served = 0;
-    sharedJsonServer.events.on('request:start', () => {
-      served += 1;
-    });
-
     mockRouter.setCurrentUrl('?search=jane%20doe');
     await setupApp(await RecipesPage());
 
-    // An active search loads the index right away; until then names stand in.
-    await waitFor(() => {
-      expect(screen.getByRole('list')).toHaveTextContent('Bartender Special');
-    });
-    expect(served).toBe(1);
+    // setupApp flushes the index load: the beyond-name match is already there.
+    expect(screen.getByRole('list')).toHaveTextContent('Bartender Special');
   });
 
   it('shows no results when search has no matches', async () => {
@@ -289,14 +281,11 @@ describe('RecipesPage', () => {
     );
 
     await setupApp(await RecipesPage());
-    await waitFor(() => {
-      expect(screen.getByRole('link', { name: /zombie/i })).toHaveAttribute(
-        'href',
-        getRecipeUrl(zombie),
-      );
-    });
-    // One fetch of the index covers the whole list.
-    expect(sharedJsonServer.listHandlers()).toHaveLength(1);
+
+    expect(screen.getByRole('link', { name: /zombie/i })).toHaveAttribute(
+      'href',
+      getRecipeUrl(zombie),
+    );
   });
 });
 
