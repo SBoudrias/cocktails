@@ -28,9 +28,28 @@ const roboto = Roboto({
 const description =
   'Browse thousands of cocktail recipes from books, bars, YouTube channels and podcasts, with ingredients, substitutes and calculators.';
 
+// Same expression as next.config.ts: the deploy root moves with the base
+// path (/cocktails in production, /cocktails/pr-preview/pr-N on PR
+// previews). Metadata URLs must follow it, or previews emit links to the
+// production site (broken icons, manifest, sitemap, canonicals).
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
+
+// PR preview builds are transient (swept when their PR closes) and live on
+// the production origin; they must not be indexed. Sitemaps cannot express
+// that — next-sitemap's siteUrl is the production URL in every build, so
+// preview sitemaps list production URLs only, and excluding pr-preview paths
+// there would be a no-op. noindex on the page level is the mechanism that
+// actually stops crawlers from picking preview URLs up.
+const isPreview = basePath.includes('/pr-preview/');
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sboudrias.github.io/cocktails/'),
-  manifest: `/cocktails/manifest.webmanifest`,
+  // A plain string, not `new URL(...)`: metadataBase accepts either, and
+  // building a URL object from the env-derived basePath reads as a runtime
+  // URL to static analysis (react-doctor's no-unguarded-throwing-parse-call),
+  // though it is evaluated at build time and cannot actually throw.
+  metadataBase: `https://sboudrias.github.io${basePath}/`,
+  ...(isPreview ? { robots: { index: false } } : {}),
+  manifest: `${basePath}/manifest.webmanifest`,
   title: 'Cocktail Index',
   description,
   alternates: { canonical: './' },
@@ -40,6 +59,17 @@ export const metadata: Metadata = {
     locale: 'en_US',
   },
   twitter: { card: 'summary' },
+  icons: {
+    // The favicon <link> comes from the app/favicon.ico file convention;
+    // only the apple-touch-icon is new here.
+    apple: [
+      {
+        url: `${basePath}/icons/apple-touch-icon.png`,
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
@@ -50,6 +80,7 @@ export const viewport: Viewport = {
   userScalable: false,
   viewportFit: 'cover',
   interactiveWidget: 'overlays-content',
+  themeColor: '#0A1420',
 };
 
 export default function RootLayout({
@@ -64,7 +95,7 @@ export default function RootLayout({
           rel="sitemap"
           type="application/xml"
           title="Sitemap"
-          href="/cocktails/sitemap.xml"
+          href={`${basePath}/sitemap.xml`}
         />
       </head>
       <body className={roboto.variable}>
