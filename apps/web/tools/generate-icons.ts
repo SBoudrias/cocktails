@@ -84,6 +84,7 @@ for (const { file, size, scale } of targets) {
   } catch (error) {
     throw new Error(
       `failed to generate ${target}: ${error instanceof Error ? error.message : error}`,
+      { cause: error },
     );
   }
 
