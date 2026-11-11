@@ -1,7 +1,14 @@
 import type { Recipe, RecipeIngredient } from '@cocktails/data';
+import { getAllAuthors } from '@cocktails/data/authors';
+import { getAllBars } from '@cocktails/data/bars';
 import { getAllCategories, getChildCategories } from '@cocktails/data/categories';
 import { getAllIngredients, getRecipesForIngredient } from '@cocktails/data/ingredients';
-import { getNonAlcoholicRecipes, getRecipeByCategory } from '@cocktails/data/recipes';
+import {
+  getNonAlcoholicRecipes,
+  getRecipeByCategory,
+  getRecipesByAuthor,
+  getRecipesByBar,
+} from '@cocktails/data/recipes';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeUrl } from '#/modules/url';
 
@@ -20,11 +27,12 @@ type CatalogCard = [name: string, source: string];
 type CatalogEntry = [href: string, quantity: RecipeIngredient['quantity'] | null];
 
 /**
- * The recipe lists of every ingredient and category page, keyed the way those
- * pages address them (`category/<slug>`, `ingredient/<type>/<slug>`). Like the
- * search index, entries and cards are keyed by recipe href, so a page and a
- * catalog built from slightly different data still agree on whatever hrefs
- * they share (deploy skew between the two files).
+ * The recipe lists of every list-driven page, keyed the way those pages
+ * address them (`category/<slug>`, `ingredient/<type>/<slug>`,
+ * `list/authors/<slug>`, `list/bars/<slug>`). Like the search index, entries
+ * and cards are keyed by recipe href, so a page and a catalog built from
+ * slightly different data still agree on whatever hrefs they share (deploy
+ * skew between the two files).
  */
 export type Catalog = {
   cards: Record<string, CatalogCard>;
@@ -106,55 +114,79 @@ export function buildCatalog(listInputs: CatalogListInput[]): Catalog {
 }
 
 /**
- * The catalog of every ingredient and category page, serialized minified —
- * the file is only ever read by `fetch`.
+ * The catalog of every catalog-driven page, serialized minified — the file is
+ * only ever read by `fetch`.
  */
 export async function getSerializedCatalog(): Promise<string> {
-  const [categories, ingredients] = await Promise.all([
+  const [categories, ingredients, authors, bars] = await Promise.all([
     getAllCategories(),
     getAllIngredients(),
+    getAllAuthors(),
+    getAllBars(),
   ]);
 
-  const [categoryLists, ingredientLists, curatedLists] = await Promise.all([
-    Promise.all(
-      categories.map(async (category) => {
-        const [recipes, childCategories] = await Promise.all([
-          getRecipeByCategory(category),
-          getChildCategories(category),
-        ]);
+  const [categoryLists, ingredientLists, curatedLists, authorLists, barLists] =
+    await Promise.all([
+      Promise.all(
+        categories.map(async (category) => {
+          const [recipes, childCategories] = await Promise.all([
+            getRecipeByCategory(category),
+            getChildCategories(category),
+          ]);
 
-        return {
-          key: `category/${category.slug}`,
-          recipes,
-          pickQuantity: getCategoryQuantityPicker(category, childCategories),
-        };
-      }),
-    ),
-    Promise.all(
-      ingredients.map(async (ingredient) => {
-        const recipes = await getRecipesForIngredient(ingredient);
+          return {
+            key: `category/${category.slug}`,
+            recipes,
+            pickQuantity: getCategoryQuantityPicker(category, childCategories),
+          };
+        }),
+      ),
+      Promise.all(
+        ingredients.map(async (ingredient) => {
+          const recipes = await getRecipesForIngredient(ingredient);
 
-        return {
-          key: `ingredient/${ingredient.type}/${ingredient.slug}`,
+          return {
+            key: `ingredient/${ingredient.type}/${ingredient.slug}`,
+            recipes,
+            pickQuantity: getIngredientQuantityPicker(ingredient),
+          };
+        }),
+      ),
+      Promise.all([
+        getNonAlcoholicRecipes().then((recipes) => ({
+          key: 'list/non-alcoholic',
           recipes,
-          pickQuantity: getIngredientQuantityPicker(ingredient),
-        };
-      }),
-    ),
-    Promise.all([
-      getNonAlcoholicRecipes().then((recipes) => ({
-        key: 'list/non-alcoholic',
-        recipes,
-        // The curated list pages show no per-recipe quantity.
-        pickQuantity: () => undefined,
-      })),
-    ]),
-  ]);
+          // The curated list pages show no per-recipe quantity.
+          pickQuantity: () => undefined,
+        })),
+      ]),
+      // Entity files cover the author and bar pages that list recipes —
+      // check-data fails on a credit with no entity file. Author and bar cards
+      // show no per-recipe quantity, so their lists carry none.
+      Promise.all(
+        authors.map(async (author) => ({
+          key: `list/authors/${author.slug}`,
+          recipes: await getRecipesByAuthor(author),
+          pickQuantity: () => undefined,
+        })),
+      ),
+      Promise.all(
+        bars.map(async (bar) => ({
+          key: `list/bars/${bar.slug}`,
+          recipes: await getRecipesByBar(bar),
+          pickQuantity: () => undefined,
+        })),
+      ),
+    ]);
 
   const catalog = buildCatalog(
-    [...categoryLists, ...ingredientLists, ...curatedLists].filter(
-      (list) => list.recipes.length > 0,
-    ),
+    [
+      ...categoryLists,
+      ...ingredientLists,
+      ...curatedLists,
+      ...authorLists,
+      ...barLists,
+    ].filter((list) => list.recipes.length > 0),
   );
 
   return JSON.stringify(catalog);

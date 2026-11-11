@@ -1,11 +1,10 @@
 import { getAuthor } from '@cocktails/data/authors';
-import { getAllRecipes } from '@cocktails/data/recipes';
+import { getAllRecipes, getRecipesByAuthor } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { AuthorAboutCard } from '#/components/EntityAboutCard';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
-import { toRecipeListItems } from '#/modules/recipeListItem';
 
 type Props = {
   params: Promise<{ name: string }>;
@@ -48,7 +47,7 @@ export async function generateStaticParams() {
 
 export default async function AuthorRecipesPage({ params }: Props) {
   const { name } = await params;
-  const [allRecipes, author] = await Promise.all([getAllRecipes(), getAuthor(name)]);
+  const author = await getAuthor(name);
 
   // getAuthor falls back to the recipes' attributions when the entity file is
   // missing, so no match means no author by that slug is credited anywhere.
@@ -56,15 +55,7 @@ export default async function AuthorRecipesPage({ params }: Props) {
     notFound();
   }
 
-  // Filter recipes by author
-  const authorRecipes = allRecipes.filter((recipe) =>
-    recipe.attributions.some(
-      (attribution) =>
-        (attribution.relation === 'recipe author' ||
-          attribution.relation === 'adapted by') &&
-        attribution.source === author.name,
-    ),
-  );
+  const authorRecipes = await getRecipesByAuthor(author);
 
   if (authorRecipes.length === 0) {
     notFound();
@@ -74,7 +65,8 @@ export default async function AuthorRecipesPage({ params }: Props) {
   // the card renders every dimension of the author from its one object.
   return (
     <SearchableRecipePage
-      recipes={toRecipeListItems(authorRecipes)}
+      catalogKey={`list/authors/${author.slug}`}
+      recipeCount={authorRecipes.length}
       listHeader={`Recipes by ${author.name}`}
     >
       <AuthorAboutCard author={author} sx={{ m: 2 }} />

@@ -1,11 +1,10 @@
 import { getBar } from '@cocktails/data/bars';
-import { getAllRecipes } from '@cocktails/data/recipes';
+import { getAllRecipes, getRecipesByBar } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { BarAboutCard } from '#/components/EntityAboutCard';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
-import { toRecipeListItems } from '#/modules/recipeListItem';
 
 function formatBarName(bar: { name: string; location?: string }) {
   return `${bar.name}${bar.location ? `, ${bar.location}` : ''}`;
@@ -48,7 +47,7 @@ export async function generateStaticParams() {
 
 export default async function BarRecipesPage({ params }: Props) {
   const { name } = await params;
-  const [allRecipes, bar] = await Promise.all([getAllRecipes(), getBar(name)]);
+  const bar = await getBar(name);
 
   // getBar falls back to the recipes' attributions when the entity file is
   // missing, so no match means no bar by that slug is credited anywhere.
@@ -57,14 +56,7 @@ export default async function BarRecipesPage({ params }: Props) {
   }
 
   // Filter recipes by bar
-  const barRecipes = allRecipes.filter((recipe) =>
-    recipe.attributions.some(
-      (attribution) =>
-        attribution.relation === 'bar' &&
-        attribution.source === bar.name &&
-        attribution.location === bar.location,
-    ),
-  );
+  const barRecipes = await getRecipesByBar(bar);
 
   if (barRecipes.length === 0) {
     notFound();
@@ -72,7 +64,8 @@ export default async function BarRecipesPage({ params }: Props) {
 
   return (
     <SearchableRecipePage
-      recipes={toRecipeListItems(barRecipes)}
+      catalogKey={`list/bars/${bar.slug}`}
+      recipeCount={barRecipes.length}
       listHeader={`Recipes from ${bar.name}`}
     >
       <BarAboutCard bar={bar} sx={{ m: 2 }} />
