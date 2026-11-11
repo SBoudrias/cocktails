@@ -28,9 +28,15 @@ const roboto = Roboto({
 const description =
   'Browse thousands of cocktail recipes from books, bars, YouTube channels and podcasts, with ingredients, substitutes and calculators.';
 
+// Same expression as next.config.ts: the deploy root moves with the base
+// path (/cocktails in production, /cocktails/pr-preview/pr-N on PR
+// previews). Metadata URLs must follow it, or previews emit links to the
+// production site (broken icons, manifest, sitemap, canonicals).
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sboudrias.github.io/cocktails/'),
-  manifest: `/cocktails/manifest.webmanifest`,
+  metadataBase: new URL(`https://sboudrias.github.io${basePath}/`),
+  manifest: `${basePath}/manifest.webmanifest`,
   title: 'Cocktail Index',
   description,
   alternates: { canonical: './' },
@@ -45,7 +51,7 @@ export const metadata: Metadata = {
     // only the apple-touch-icon is new here.
     apple: [
       {
-        url: '/cocktails/icons/apple-touch-icon.png',
+        url: `${basePath}/icons/apple-touch-icon.png`,
         sizes: '180x180',
         type: 'image/png',
       },
@@ -76,7 +82,7 @@ export default function RootLayout({
           rel="sitemap"
           type="application/xml"
           title="Sitemap"
-          href="/cocktails/sitemap.xml"
+          href={`${basePath}/sitemap.xml`}
         />
       </head>
       <body className={roboto.variable}>
