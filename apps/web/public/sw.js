@@ -34,9 +34,7 @@ self.addEventListener('activate', (event) => {
         names
           .filter(
             (name) =>
-              name.startsWith(PREFIX) &&
-              name !== PRECACHE_NAME &&
-              name !== RUNTIME_NAME,
+              name.startsWith(PREFIX) && name !== PRECACHE_NAME && name !== RUNTIME_NAME,
           )
           .map((name) => caches.delete(name)),
       );
@@ -116,8 +114,6 @@ self.addEventListener('fetch', (event) => {
   }
 
   event.respondWith(
-    networkFirst(request).then(
-      (response) => response ?? Response.error(),
-    ),
+    networkFirst(request).then((response) => response ?? Response.error()),
   );
 });
