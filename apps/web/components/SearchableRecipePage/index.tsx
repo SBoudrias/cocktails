@@ -107,7 +107,10 @@ function CatalogListState({
   const skeletonRows = Math.max(1, Math.min(recipeCount ?? 1, SKELETON_ROWS));
 
   return (
-    <div aria-label="Loading recipes">
+    // data-loading marks any element whose content is still loading, for
+    // tests (the flush in vitest.setup waits on it) and future test tooling.
+    // The aria-label stays for the accessible name.
+    <div aria-label="Loading recipes" data-loading>
       <LinkList
         header={listHeader}
         items={Array.from({ length: skeletonRows }, (_, row) => row)}

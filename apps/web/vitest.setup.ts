@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom/vitest';
 import type { RenderOptions } from '@testing-library/react';
 import { render } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Storage } from 'happy-dom';
 import mockRouter from 'next-router-mock';
@@ -9,7 +10,7 @@ import { NuqsTestingAdapter } from 'nuqs/adapters/testing';
 import type { ComponentProps, ReactNode } from 'react';
 import { createElement } from 'react';
 import { VirtuosoMockContext } from 'react-virtuoso';
-import { beforeEach, vi } from 'vitest';
+import { beforeEach, expect, vi } from 'vitest';
 import { getPendingSharedJsonLoads } from '#/modules/sharedJson';
 
 vi.mock('next/router', async () => import('next-router-mock'));
@@ -30,25 +31,23 @@ if (typeof localStorage?.clear !== 'function') {
 
 /**
  * Flush the shared-JSON loads the mounted page started, so tests assert on
- * complete lists without waiting per call site: resolves once no load is
- * pending AND the page no longer shows its loading state — a fetch can
+ * complete lists without waiting per call site. Resolves once no load is
+ * pending AND no [data-loading] element is left in the DOM — a fetch can
  * settle before React commits its result, and the DOM is the visible truth.
- * Pages that load nothing return on the first check; a fetch that never
- * settles (a test asserting the loading state) is cut off by the attempt
- * cap instead of a fixed sleep every test pays.
+ *
+ * RTL's waitFor does the polling (interval below its default timeout): a
+ * deliberately hung load — a test asserting the loading state — is allowed
+ * to outlast it, so catch and move on with the loader still on screen
+ * rather than failing the test here.
  */
-const LOADING_SKELETON_SELECTOR = '[aria-label="Loading recipes"]';
-const POLL_INTERVAL_MS = 5;
-const POLL_ATTEMPTS = 20;
-
 async function flushSharedJsonLoads(): Promise<void> {
-  for (let attempt = 0; attempt < POLL_ATTEMPTS; attempt++) {
-    const settled = getPendingSharedJsonLoads().length === 0;
-    const committed = !document.querySelector(LOADING_SKELETON_SELECTOR);
-    if (settled && committed) return;
+  const nothingPending = () => getPendingSharedJsonLoads().length === 0;
+  const nothingLoading = () => !document.querySelector('[data-loading]');
 
-    await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
-  }
+  await waitFor(() => {
+    expect(nothingPending()).toBe(true);
+    expect(nothingLoading()).toBe(true);
+  }).catch(() => {});
 }
 
 /**
