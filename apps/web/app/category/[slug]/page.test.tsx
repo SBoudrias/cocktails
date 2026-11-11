@@ -368,9 +368,7 @@ describe('CategoryPage', () => {
     });
 
     it('shows the loading state while searching, not a false no-results', async () => {
-      vi.mocked(globalThis.fetch).mockImplementation(
-        async () => new Promise(() => {}),
-      );
+      vi.mocked(globalThis.fetch).mockImplementation(async () => new Promise(() => {}));
       mockRouter.setCurrentUrl('?search=zebra');
 
       setupApp(
@@ -399,9 +397,7 @@ describe('CategoryPage', () => {
 
       // The reload affordance lives in the search branch too.
       await waitFor(() => {
-        expect(
-          screen.getByText('Recipes could not be loaded'),
-        ).toBeInTheDocument();
+        expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
       });
       expect(
         screen.getByRole('button', { name: /reload the page/i }),

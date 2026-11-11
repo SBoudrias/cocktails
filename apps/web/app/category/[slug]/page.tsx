@@ -59,9 +59,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   return (
     <SearchableRecipePage
       title={category.name}
-      catalogKey={
-        relatedRecipes.length > 0 ? `category/${category.slug}` : undefined
-      }
+      catalogKey={relatedRecipes.length > 0 ? `category/${category.slug}` : undefined}
       listHeader={`Recipes using ${category.name}`}
       footer={
         <FixBugCard

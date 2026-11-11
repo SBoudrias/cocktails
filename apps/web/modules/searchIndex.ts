@@ -1,55 +1,11 @@
 import type { SearchIndex } from '#/modules/buildSearchIndex';
+import { createSharedJson } from '#/modules/sharedJson';
 
-/**
- * The index URL under the app's base path, resolved against the page's origin.
- * next.config.ts sets `basePath` from the same expression; a client module
- * cannot import the config, so the default is mirrored here.
- */
-function getSearchIndexUrl(): string {
-  const basePath = new URL(
-    `${process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails'}/`,
-    location.origin,
-  );
-
-  return new URL('data/search-index.json', basePath).href;
-}
-
-let cached: Promise<SearchIndex> | undefined;
-let loaded: SearchIndex | undefined;
-
-/**
- * The index if it has already loaded this session, synchronously. A list
- * mounted again by a soft navigation back renders its loaded rows on the
- * first render, so its scroll position comes back onto the same content.
- */
-export function getLoadedSearchIndex(): SearchIndex | undefined {
-  return loaded;
-}
-
-/**
- * Fetch the search index once per page session. Concurrent and later callers
- * share the same promise; a failed fetch is forgotten so the next call
- * retries. The browser's HTTP cache covers repeat sessions.
- */
-export function loadSearchIndex(): Promise<SearchIndex> {
-  cached ??= fetch(getSearchIndexUrl())
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Search index request failed: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((index: SearchIndex) => {
-      loaded = index;
-      return index;
-    })
-    .catch((error: unknown) => {
-      cached = undefined;
-      throw error;
-    });
-
-  return cached;
-}
+export const {
+  load: loadSearchIndex,
+  getLoaded: getLoadedSearchIndex,
+  reset: resetSearchIndexCache,
+} = createSharedJson<SearchIndex>('data/search-index.json');
 
 /**
  * Start loading without waiting for the result (search box focus, idle time).
@@ -69,10 +25,4 @@ export function getIndexedSearchText(
   index: SearchIndex | undefined,
 ): string {
   return index?.[item.href]?.searchText ?? item.name.toLowerCase();
-}
-
-/** Test seam: forget the cached index. */
-export function resetSearchIndexCache(): void {
-  cached = undefined;
-  loaded = undefined;
 }
