@@ -1,16 +1,15 @@
 // Service worker for the Cocktail Index static export.
 //
 // The precache manifest and build version are baked into out/sw.js after the
-// static export by apps/web/tools/generate-sw-precache.ts. This committed
-// placeholder (empty precache, 'dev' version) also serves `next dev`, where
-// the SW is inert by design.
+// static export by apps/web/tools/generate-sw-precache.ts; this committed
+// placeholder is never served to browsers unbaked (registration is
+// production-only, see instrumentation-client.ts).
 
-const VERSION = '151f397a156a';
+const VERSION = '465b91649c25';
 const PRECACHE = [
-  "./",
-  "./_next/static/-TFlkwHbwAu-dmY4pO7Cc/_buildManifest.js",
-  "./_next/static/-TFlkwHbwAu-dmY4pO7Cc/_clientMiddlewareManifest.js",
-  "./_next/static/-TFlkwHbwAu-dmY4pO7Cc/_ssgManifest.js",
+  "./_next/static/T8psn1zsTpyyfA_AxoeED/_buildManifest.js",
+  "./_next/static/T8psn1zsTpyyfA_AxoeED/_clientMiddlewareManifest.js",
+  "./_next/static/T8psn1zsTpyyfA_AxoeED/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/0_015ri66bwd2.js",
@@ -33,9 +32,9 @@ const PRECACHE = [
   "./_next/static/chunks/1myxbybgdmv23.js",
   "./_next/static/chunks/1tf4etm58a6li.css",
   "./_next/static/chunks/1ubcoj_row524.js",
-  "./_next/static/chunks/218fy8idclhhb.js",
   "./_next/static/chunks/224uaqx1ep466.js",
   "./_next/static/chunks/24i4uqkup96c4.js",
+  "./_next/static/chunks/26qedufz4u2eq.js",
   "./_next/static/chunks/28acq618ge7y2.js",
   "./_next/static/chunks/28yvg3ostn72e.js",
   "./_next/static/chunks/2cmlta-lm2x4n.js",
@@ -75,11 +74,17 @@ const PRECACHE = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/maskable-512.png",
+  "./",
   "./offline.html"
 ];
 
-const PRECACHE_NAME = `cocktail-index-precache-${VERSION}`;
-const RUNTIME_NAME = 'cocktail-index-runtime';
+// Caches are per-origin, not per-scope, and PR previews share this origin
+// with production. Every cache name is prefixed with the SW's own scope so a
+// preview's SW can never see, fill, or delete a production cache (and vice
+// versa), and the activate cleanup below only ever touches its own namespace.
+const PREFIX = `cocktail-index:${self.registration.scope}:`;
+const PRECACHE_NAME = `${PREFIX}precache-${VERSION}`;
+const RUNTIME_NAME = `${PREFIX}runtime-${VERSION}`;
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -97,7 +102,10 @@ self.addEventListener('activate', (event) => {
       const names = await caches.keys();
       await Promise.all(
         names
-          .filter((name) => name !== PRECACHE_NAME && name !== RUNTIME_NAME)
+          .filter(
+            (name) =>
+              name.startsWith(PREFIX) && name !== PRECACHE_NAME && name !== RUNTIME_NAME,
+          )
           .map((name) => caches.delete(name)),
       );
       await self.clients.claim();
@@ -112,7 +120,11 @@ async function cachePut(cacheName, request, response) {
 
 // Network-first with cached fallback: for navigations, and for same-origin
 // files that are not content-hashed (the search index, icons, the manifest).
-// Fresh when online; the last cached response when not.
+// Fresh when online; the last cached response when offline. Returns
+// `undefined` on a miss so each caller picks its own fallback. The global
+// `caches.match` is safe here: cache names are namespaced per scope, and a
+// URL embeds its scope's base path, so it can only match this SW's own
+// entries.
 async function networkFirst(request, matchOptions) {
   try {
     const response = await fetch(request);
@@ -121,13 +133,7 @@ async function networkFirst(request, matchOptions) {
     }
     return response;
   } catch {
-    const runtime = await caches.open(RUNTIME_NAME);
-    const cached =
-      (await runtime.match(request, matchOptions)) ||
-      (await runtime.match(request)) ||
-      (await caches.match(request));
-    if (cached) return cached;
-    return Response.error();
+    return (await caches.match(request, matchOptions)) ?? undefined;
   }
 }
 
@@ -157,14 +163,16 @@ self.addEventListener('fetch', (event) => {
   }
 
   if (request.mode === 'navigate') {
-    // Offline: the page if it was visited before (exact URL, or the
-    // extensionless/HTML variant of it), otherwise the offline fallback.
+    // Offline: the page if it was visited before (ignoring the query
+    // string), otherwise the offline fallback page. A real network response,
+    // 404 included, is always passed through as-is: only an offline miss
+    // (undefined) falls back.
     const offline = new URL('offline.html', scope).href;
     event.respondWith(
-      networkFirst(request, { ignoreSearch: true }).then((response) =>
-        response.ok
-          ? response
-          : caches.match(offline).then((fallback) => fallback ?? Response.error()),
+      networkFirst(request, { ignoreSearch: true }).then(
+        (response) =>
+          response ??
+          caches.match(offline).then((fallback) => fallback ?? Response.error()),
       ),
     );
     return;
@@ -175,5 +183,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  event.respondWith(networkFirst(request));
+  event.respondWith(
+    networkFirst(request).then((response) => response ?? Response.error()),
+  );
 });
