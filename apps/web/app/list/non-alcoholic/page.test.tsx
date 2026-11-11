@@ -2,7 +2,14 @@ import type { Recipe } from '@cocktails/data';
 import { getNonAlcoholicRecipes } from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
 import { vi, beforeEach, describe, expect, it } from 'vitest';
+import { buildCatalog } from '#/modules/buildCatalog';
 import { getRecipeUrl } from '#/modules/url';
+import {
+  failJson,
+  hangJson,
+  serveJson,
+  sharedJsonServer,
+} from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import NonAlcoholicRecipesPage from './page';
 
@@ -37,9 +44,19 @@ const mockRecipe = (name: string): Recipe => ({
 
 const testRecipes: Recipe[] = [mockRecipe('Bitters and Soda'), mockRecipe('Ginger Lime')];
 
+/** The catalog as the page reads it: testRecipes keyed for this page. */
+const testCatalog = buildCatalog([
+  {
+    key: 'list/non-alcoholic',
+    recipes: testRecipes,
+    pickQuantity: () => undefined,
+  },
+]);
+
 beforeEach(() => {
   recipeCounter = 0;
   vi.mocked(getNonAlcoholicRecipes).mockResolvedValue(testRecipes);
+  sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
 });
 
 describe('NonAlcoholicRecipesPage', () => {
@@ -58,6 +75,14 @@ describe('NonAlcoholicRecipesPage', () => {
   it('links to recipe detail pages', async () => {
     const recipe = mockRecipe('Test Recipe');
     vi.mocked(getNonAlcoholicRecipes).mockResolvedValue([recipe]);
+    sharedJsonServer.use(
+      serveJson(
+        '/data/catalog.json',
+        buildCatalog([
+          { key: 'list/non-alcoholic', recipes: [recipe], pickQuantity: () => undefined },
+        ]),
+      ),
+    );
 
     await setupApp(await NonAlcoholicRecipesPage());
 
@@ -65,5 +90,31 @@ describe('NonAlcoholicRecipesPage', () => {
       'href',
       getRecipeUrl(recipe),
     );
+  });
+
+  it('shows the loading state before the catalog lands', async () => {
+    sharedJsonServer.use(hangJson('/data/catalog.json'));
+
+    await setupApp(await NonAlcoholicRecipesPage());
+
+    expect(screen.getByLabelText(/loading recipes/i)).toBeInTheDocument();
+    expect(screen.queryByText('Bitters and Soda')).not.toBeInTheDocument();
+  });
+
+  it('offers a reload when the catalog fails to load', async () => {
+    sharedJsonServer.use(failJson('/data/catalog.json', 500));
+
+    await setupApp(await NonAlcoholicRecipesPage());
+
+    expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /reload the page/i })).toBeInTheDocument();
+  });
+
+  it('renders no recipe rows when the catalog lacks the page key', async () => {
+    sharedJsonServer.use(serveJson('/data/catalog.json', buildCatalog([])));
+
+    await setupApp(await NonAlcoholicRecipesPage());
+
+    expect(screen.queryByText('Bitters and Soda')).not.toBeInTheDocument();
   });
 });

@@ -1,7 +1,7 @@
 import type { Recipe, RecipeIngredient } from '@cocktails/data';
 import { getAllCategories, getChildCategories } from '@cocktails/data/categories';
 import { getAllIngredients, getRecipesForIngredient } from '@cocktails/data/ingredients';
-import { getRecipeByCategory } from '@cocktails/data/recipes';
+import { getNonAlcoholicRecipes, getRecipeByCategory } from '@cocktails/data/recipes';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeUrl } from '#/modules/url';
 
@@ -115,7 +115,7 @@ export async function getSerializedCatalog(): Promise<string> {
     getAllIngredients(),
   ]);
 
-  const [categoryLists, ingredientLists] = await Promise.all([
+  const [categoryLists, ingredientLists, curatedLists] = await Promise.all([
     Promise.all(
       categories.map(async (category) => {
         const [recipes, childCategories] = await Promise.all([
@@ -141,10 +141,20 @@ export async function getSerializedCatalog(): Promise<string> {
         };
       }),
     ),
+    Promise.all([
+      getNonAlcoholicRecipes().then((recipes) => ({
+        key: 'list/non-alcoholic',
+        recipes,
+        // The curated list pages show no per-recipe quantity.
+        pickQuantity: () => undefined,
+      })),
+    ]),
   ]);
 
   const catalog = buildCatalog(
-    [...categoryLists, ...ingredientLists].filter((list) => list.recipes.length > 0),
+    [...categoryLists, ...ingredientLists, ...curatedLists].filter(
+      (list) => list.recipes.length > 0,
+    ),
   );
 
   return JSON.stringify(catalog);
