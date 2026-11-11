@@ -34,8 +34,21 @@ const description =
 // production site (broken icons, manifest, sitemap, canonicals).
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
 
+// PR preview builds are transient (swept when their PR closes) and live on
+// the production origin; they must not be indexed. Sitemaps cannot express
+// that — next-sitemap's siteUrl is the production URL in every build, so
+// preview sitemaps list production URLs only, and excluding pr-preview paths
+// there would be a no-op. noindex on the page level is the mechanism that
+// actually stops crawlers from picking preview URLs up.
+const isPreview = basePath.includes('/pr-preview/');
+
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://sboudrias.github.io${basePath}/`),
+  // A plain string, not `new URL(...)`: metadataBase accepts either, and
+  // building a URL object from the env-derived basePath reads as a runtime
+  // URL to static analysis (react-doctor's no-unguarded-throwing-parse-call),
+  // though it is evaluated at build time and cannot actually throw.
+  metadataBase: `https://sboudrias.github.io${basePath}/`,
+  ...(isPreview ? { robots: { index: false } } : {}),
   manifest: `${basePath}/manifest.webmanifest`,
   title: 'Cocktail Index',
   description,
