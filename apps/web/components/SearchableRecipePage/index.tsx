@@ -10,7 +10,7 @@ import {
   Stack,
 } from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type { ReactNode } from 'react';
 import AppHeader from '#/components/AppHeader';
 import { LinkList } from '#/components/LinkList';
@@ -38,55 +38,53 @@ function renderRecipe(recipe: RecipeListItem | QuantityRecipeListItem) {
 }
 
 /**
- * How long a catalog fetch may take before the skeleton shows. The list is
- * session-cached and HTTP-cached, so most visits render at once; flashing a
- * placeholder for those would be its own jank.
+ * How many skeleton rows the placeholder renders at most: enough to fill the
+ * first screens and match the typical list, without rendering a thousand
+ * placeholders for the giants. The real list replaces it wholesale.
  */
-const LOADING_SKELETON_DELAY_MS = 300;
+const LOADING_SKELETON_MAX_ROWS = 20;
 
 /**
- * The list area while the catalog loads, or after it failed. The space is
- * reserved from the first paint (nothing below the list jumps); the skeleton
- * rows show only once the fetch has gone on long enough to warrant them. A
- * failed fetch surfaces its reload affordance right away.
+ * The list area while the catalog loads, or after it failed: one skeleton row
+ * per recipe the page knows it has (the server counts them; the number ships
+ * with the page), so the reserved height matches the list that lands on it
+ * and nothing below the list jumps. A failed fetch surfaces its reload
+ * affordance right away.
  */
-function CatalogListState({ failed, visible }: { failed: boolean; visible: boolean }) {
+function CatalogListState({
+  failed,
+  recipeCount,
+}: {
+  failed: boolean;
+  recipeCount: number | undefined;
+}) {
   if (failed) {
     return (
-      <Box sx={{ m: 1, minHeight: 160 }}>
-        <Card>
-          <CardHeader title="Recipes could not be loaded" />
-          <CardContent>
-            <Button onClick={() => window.location.reload()}>Reload the page</Button>
-          </CardContent>
-        </Card>
-      </Box>
+      <Card sx={{ m: 1 }}>
+        <CardHeader title="Recipes could not be loaded" />
+        <CardContent>
+          <Button onClick={() => window.location.reload()}>Reload the page</Button>
+        </CardContent>
+      </Card>
     );
   }
 
+  const skeletonRows = Math.max(1, Math.min(recipeCount ?? 1, LOADING_SKELETON_MAX_ROWS));
+
   return (
-    <Box sx={{ m: 1, minHeight: 216 }} aria-label="Loading recipes">
-      {visible && (
-        <Card>
-          <CardContent>
-            <Stack spacing={2}>
-              {[0, 1, 2].map((row) => (
-                <Stack
-                  key={row}
-                  direction="row"
-                  spacing={2}
-                  sx={{ alignItems: 'center' }}
-                >
-                  <Skeleton variant="text" sx={{ fontSize: '1rem', flex: 1 }} />
-                  <Skeleton variant="text" sx={{ fontSize: '0.75rem', width: 48 }} />
-                  <Skeleton variant="circular" width={20} height={20} />
-                </Stack>
-              ))}
+    <Card sx={{ m: 1 }} aria-label="Loading recipes">
+      <CardContent>
+        <Stack spacing={2}>
+          {Array.from({ length: skeletonRows }, (_, row) => (
+            <Stack key={row} direction="row" spacing={2} sx={{ alignItems: 'center' }}>
+              <Skeleton variant="text" sx={{ fontSize: '1rem', flex: 1 }} />
+              <Skeleton variant="text" sx={{ fontSize: '0.75rem', width: 48 }} />
+              <Skeleton variant="circular" width={20} height={20} />
             </Stack>
-          </CardContent>
-        </Card>
-      )}
-    </Box>
+          ))}
+        </Stack>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -110,6 +108,7 @@ export default function SearchableRecipePage({
   title,
   recipes,
   catalogKey,
+  recipeCount,
   listHeader,
   children,
   footer,
@@ -119,6 +118,8 @@ export default function SearchableRecipePage({
   recipes?: (RecipeListItem | QuantityRecipeListItem)[];
   /** The page's key in the shared catalog, to render its list from there. */
   catalogKey?: string;
+  /** How many recipes the page has, known from the data without any rows. */
+  recipeCount?: number;
   listHeader: string;
   children?: ReactNode;
   footer?: ReactNode;
@@ -144,18 +145,8 @@ export default function SearchableRecipePage({
 
   const catalogLoading = fromCatalog && catalog == null;
 
-  // The skeleton waits a beat before showing, so a fast fetch never flashes
-  // it; the reserved space below needs no wait.
-  const [skeletonVisible, setSkeletonVisible] = useState(false);
-  useEffect(() => {
-    if (!catalogLoading || failed) return;
-
-    const timer = setTimeout(() => setSkeletonVisible(true), LOADING_SKELETON_DELAY_MS);
-    return () => clearTimeout(timer);
-  }, [catalogLoading, failed]);
-
   const body = catalogLoading ? (
-    <CatalogListState failed={failed} visible={skeletonVisible} />
+    <CatalogListState failed={failed} recipeCount={recipeCount} />
   ) : allRecipes.length > 0 ? (
     isSearching ? (
       <RecipeSearchableList

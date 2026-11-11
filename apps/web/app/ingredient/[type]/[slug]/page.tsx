@@ -85,6 +85,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           ? `ingredient/${ingredient.type}/${ingredient.slug}`
           : undefined
       }
+      recipeCount={relatedRecipes.length}
       listHeader={`Recipes using ${ingredient.name}`}
       footer={
         <FixBugCard

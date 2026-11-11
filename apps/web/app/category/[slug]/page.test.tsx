@@ -7,16 +7,7 @@ import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen, waitFor } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  it,
-  expect,
-  vi,
-} from 'vitest';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
 import { resetCatalogCache } from '#/modules/catalog';
 import { getCategoryUrl } from '#/modules/url';
@@ -72,22 +63,13 @@ function serveCatalog() {
   sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
 }
 
-beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
-afterAll(() => sharedJsonServer.close());
 
 beforeEach(() => {
   vi.mocked(getChildCategories).mockResolvedValue([]);
   vi.mocked(getIngredientsForCategory).mockResolvedValue([testMembers, []]);
   vi.mocked(getRecipeByCategory).mockResolvedValue(testRecipes);
   resetCatalogCache();
-  // vitest.setup.ts rejects all fetches; msw replaces it here. An unhandled
-  // request errors loudly instead of reaching the network.
-  vi.unstubAllGlobals();
   serveCatalog();
-});
-
-afterEach(() => {
-  sharedJsonServer.resetHandlers();
 });
 
 describe('CategoryPage', () => {
