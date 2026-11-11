@@ -15,14 +15,6 @@ vi.mock('next/router', async () => import('next-router-mock'));
 vi.mock('next/navigation', async () => import('next-router-mock/navigation'));
 vi.mock('lite-youtube-embed', () => ({}));
 
-// Recipe lists fetch the shared search index on mount. Tests never reach the
-// network: lists fall back to matching names, and tests that exercise the
-// index stub `fetch` with one built from their own recipes.
-vi.stubGlobal(
-  'fetch',
-  vi.fn(() => Promise.reject(new TypeError('fetch is disabled in tests'))),
-);
-
 // The mock router is a singleton: start every test from a clean URL, so a
 // query set by one test (mockRouter.setCurrentUrl) never leaks into the next.
 beforeEach(() => {

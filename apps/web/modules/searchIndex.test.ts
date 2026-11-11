@@ -1,14 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   failJson,
   serveJson,
@@ -32,17 +23,8 @@ const index: SearchIndex = {
   },
 };
 
-beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
-afterAll(() => sharedJsonServer.close());
-
 beforeEach(() => {
   resetSearchIndexCache();
-  vi.stubGlobal('location', { origin: 'https://cocktails.test' });
-});
-
-afterEach(() => {
-  vi.unstubAllGlobals();
-  sharedJsonServer.resetHandlers();
 });
 
 describe('loadSearchIndex', () => {

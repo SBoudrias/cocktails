@@ -1,15 +1,6 @@
 import { act, cleanup, renderHook, waitFor } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { SearchIndex } from '#/modules/buildSearchIndex';
 import { preloadSearchIndex, resetSearchIndexCache } from '#/modules/searchIndex';
 import { failJson, sharedJsonServer, sharedJsonUrl } from '#/testing/sharedJsonServer';
@@ -46,9 +37,6 @@ function serveIndex() {
   );
 }
 
-beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
-afterAll(() => sharedJsonServer.close());
-
 beforeEach(() => {
   resetSearchIndexCache();
   indexRequests.length = 0;
@@ -61,7 +49,6 @@ afterEach(() => {
   // Unmount while the idle-callback stubs still exist; the hook cancels on unmount.
   cleanup();
   vi.unstubAllGlobals();
-  sharedJsonServer.resetHandlers();
 });
 
 describe('useSearchIndex', () => {

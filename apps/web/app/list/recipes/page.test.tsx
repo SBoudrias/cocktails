@@ -6,7 +6,7 @@ import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { NuqsAdapter } from 'nuqs/adapters/react';
 import type { ReactNode } from 'react';
 import { renderToString } from 'react-dom/server';
-import { vi, afterAll, afterEach, beforeAll, beforeEach, describe, it } from 'vitest';
+import { vi, beforeEach, describe, it } from 'vitest';
 // The app's client setup: enables nuqs history sync, as in the browser.
 import '#/instrumentation-client';
 import { buildSearchIndex, toSearchIndexItems } from '#/modules/buildSearchIndex';
@@ -54,17 +54,10 @@ const testRecipes: Recipe[] = [
   mockRecipe('The Last Word'),
 ];
 
-beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
-afterAll(() => sharedJsonServer.close());
-
 beforeEach(() => {
   recipeCounter = 0;
   resetSearchIndexCache();
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
-});
-
-afterEach(() => {
-  sharedJsonServer.resetHandlers();
 });
 
 /** 300 "A" recipes (the prerendered rows) and one "Z" recipe past them. */
@@ -221,8 +214,6 @@ describe('RecipesPage', () => {
     });
     const recipes = [...testRecipes, bartenderRecipe];
     vi.mocked(getAllRecipes).mockResolvedValue(recipes);
-    // vitest.setup.ts rejects all fetches; msw replaces it for this test.
-    vi.unstubAllGlobals();
     sharedJsonServer.use(
       serveJson('/data/search-index.json', buildSearchIndex(toSearchIndexItems(recipes))),
     );
@@ -295,8 +286,6 @@ describe('RecipesPage', () => {
   it('lists recipes beyond the prerendered letters from the search index', async () => {
     const { zombie, recipes } = mockLongList();
     vi.mocked(getAllRecipes).mockResolvedValue(recipes);
-    // vitest.setup.ts rejects all fetches; msw replaces it for this test.
-    vi.unstubAllGlobals();
     sharedJsonServer.use(
       serveJson('/data/search-index.json', buildSearchIndex(toSearchIndexItems(recipes))),
     );

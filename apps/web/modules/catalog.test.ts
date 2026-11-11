@@ -27,7 +27,6 @@ const catalog: Catalog = {
   },
 };
 
-
 beforeEach(() => {
   resetCatalogCache();
 });

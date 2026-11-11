@@ -63,7 +63,6 @@ function serveCatalog() {
   sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
 }
 
-
 beforeEach(() => {
   vi.mocked(getChildCategories).mockResolvedValue([]);
   vi.mocked(getIngredientsForCategory).mockResolvedValue([testMembers, []]);

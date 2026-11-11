@@ -7,16 +7,7 @@ import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe } from '@cocktails/data/recipes';
 import { screen, waitFor, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
 import { resetCatalogCache } from '#/modules/catalog';
 import { serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
@@ -107,20 +98,10 @@ const [ingredientPageJSX, spiritPageJSX] = await Promise.all([
 ]);
 
 describe('IngredientPage', () => {
-  beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
-  afterAll(() => sharedJsonServer.close());
-
   beforeEach(() => {
     mockRouter.setCurrentUrl('/');
     resetCatalogCache();
-    // vitest.setup.ts rejects all fetches; msw replaces it here. An unhandled
-    // request errors loudly instead of reaching the network.
-    vi.unstubAllGlobals();
     sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
-  });
-
-  afterEach(() => {
-    sharedJsonServer.resetHandlers();
   });
 
   describe('basic rendering', () => {

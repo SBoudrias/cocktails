@@ -1,14 +1,6 @@
 'use client';
 
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Skeleton,
-  Stack,
-} from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Skeleton, Stack } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useMemo } from 'react';
 import type { ReactNode } from 'react';
