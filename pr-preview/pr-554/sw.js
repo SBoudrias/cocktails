@@ -5,11 +5,11 @@
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = '9cad14dd2667';
+const VERSION = 'f2f51536722d';
 const PRECACHE = [
-  "./_next/static/6nvi5SVnbQrOC-a5gspmz/_buildManifest.js",
-  "./_next/static/6nvi5SVnbQrOC-a5gspmz/_clientMiddlewareManifest.js",
-  "./_next/static/6nvi5SVnbQrOC-a5gspmz/_ssgManifest.js",
+  "./_next/static/Kv8C-DNGfgMmVoh_gITYq/_buildManifest.js",
+  "./_next/static/Kv8C-DNGfgMmVoh_gITYq/_clientMiddlewareManifest.js",
+  "./_next/static/Kv8C-DNGfgMmVoh_gITYq/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/07vy1nalhdt3h.js",
