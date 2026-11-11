@@ -1,12 +1,15 @@
+import type { Recipe } from '@cocktails/data';
 import { getCategory, getChildCategories } from '@cocktails/data/categories';
 import type * as CategoriesModule from '@cocktails/data/categories';
 import { getIngredient, getIngredientsForCategory } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { vi, beforeEach, describe, it, expect } from 'vitest';
+import { buildCatalog } from '#/modules/buildCatalog';
+import { resetCatalogCache } from '#/modules/catalog';
 import { getCategoryUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
 import CategoryPage from './page';
@@ -33,10 +36,32 @@ const { getChildCategories: getActualChildCategories } = await vi.importActual<
   typeof CategoriesModule
 >('@cocktails/data/categories');
 
+/** The catalog as the category pages read it: testRecipes keyed for this page. */
+const testCatalog = buildCatalog([
+  {
+    key: 'category/london-dry-gin',
+    recipes: testRecipes,
+    pickQuantity: (recipe) =>
+      recipe.ingredients.find((ingredient) => {
+        if (ingredient.type === 'category') {
+          return ingredient.slug === 'london-dry-gin';
+        }
+        return ingredient.categories.some((c) => c.slug === 'london-dry-gin');
+      })?.quantity,
+  },
+]);
+
+/** Serve the test catalog from the fetch the pages issue. */
+function stubCatalogFetch() {
+  vi.mocked(globalThis.fetch).mockImplementation(async () => Response.json(testCatalog));
+}
+
 beforeEach(() => {
   vi.mocked(getChildCategories).mockResolvedValue([]);
   vi.mocked(getIngredientsForCategory).mockResolvedValue([testMembers, []]);
   vi.mocked(getRecipeByCategory).mockResolvedValue(testRecipes);
+  resetCatalogCache();
+  stubCatalogFetch();
 });
 
 describe('CategoryPage', () => {
@@ -117,13 +142,11 @@ describe('CategoryPage', () => {
         }),
       );
 
-      // Recipes section has a header
-      expect(screen.getByText('Recipes using London dry gin')).toBeInTheDocument();
-
-      // Fog Cutter uses London dry gin as a category ingredient
-      expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
-
-      // Cloister uses Beefeater London Dry Gin (a specific bottle in the category)
+      // Rows land from the catalog, with the list header above them.
+      await waitFor(() => {
+        expect(screen.getByText('Recipes using London dry gin')).toBeInTheDocument();
+        expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
+      });
       expect(screen.getByRole('link', { name: /Cloister/ })).toHaveTextContent(
         'Anders Erickson',
       );
@@ -139,11 +162,11 @@ describe('CategoryPage', () => {
       );
 
       // Fog Cutter uses 0.5 oz London dry gin (category type)
-      const fogCutterLink = screen.getByRole('link', { name: /Fog Cutter/ });
+      const fogCutterLink = await screen.findByRole('link', { name: /Fog Cutter/ });
       expect(fogCutterLink).toHaveTextContent('½ oz');
 
       // Cloister uses 1.5 oz Beefeater London Dry Gin (spirit in category)
-      const cloisterLink = screen.getByRole('link', { name: /Cloister/ });
+      const cloisterLink = await screen.findByRole('link', { name: /Cloister/ });
       expect(cloisterLink).toHaveTextContent('1 ½ oz');
     });
   });
@@ -242,8 +265,12 @@ describe('CategoryPage', () => {
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('fog');
 
-      const resultList = screen.getByRole('list');
-      expect(resultList).toHaveTextContent('Fog Cutter');
+      // With a search active, the catalog loads right away: the filtered
+      // list appears once it lands.
+      const resultList = await screen.findByRole('list');
+      await waitFor(() => {
+        expect(resultList).toHaveTextContent('Fog Cutter');
+      });
       expect(resultList).not.toHaveTextContent('Cloister');
     });
 
@@ -269,6 +296,100 @@ describe('CategoryPage', () => {
       // Recipes should be grouped alphabetically
       expect(screen.getByRole('link', { name: /Fog Cutter/ })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /Cloister/ })).toBeInTheDocument();
+    });
+  });
+
+  describe('catalog-driven recipe list', () => {
+    const prefixRecipe = (name: string): Recipe => ({
+      ...testRecipes[0],
+      name,
+      slug: name.toLowerCase().replaceAll(' ', '-'),
+    });
+
+    /** 102 recipes: all of them come from the catalog, none baked. */
+    const longRecipes = [
+      ...Array.from({ length: 100 }, (_, i) => prefixRecipe(`Prefix ${i + 1}`)),
+      prefixRecipe('Zebra Tail'),
+      prefixRecipe('Alpha Yeti'),
+    ];
+
+    const catalog = buildCatalog([
+      {
+        key: 'category/london-dry-gin',
+        recipes: longRecipes,
+        pickQuantity: () => undefined,
+      },
+    ]);
+
+    /**
+     * The recipe rows' list group, however many other lists the page shows.
+     * Its aria-labelledby id has spaces, which breaks the accessible name, so
+     * walk up from the subheader text instead.
+     */
+    function getRecipeList(): HTMLElement {
+      const subheader = screen.getByText('Recipes using London dry gin');
+      const list = subheader.closest('[role="group"]');
+      if (!(list instanceof HTMLElement)) {
+        throw new Error('recipe list group not found');
+      }
+      return list;
+    }
+
+    beforeEach(() => {
+      vi.mocked(getRecipeByCategory).mockResolvedValue(longRecipes);
+    });
+
+    it('shows the loading state before the catalog lands', async () => {
+      vi.mocked(globalThis.fetch).mockImplementation(async () => new Promise(() => {}));
+
+      setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      expect(screen.getByText(/loading recipes/i)).toBeInTheDocument();
+      expect(screen.queryByText('Zebra Tail')).not.toBeInTheDocument();
+    });
+
+    it('renders the full list from the catalog once loaded', async () => {
+      vi.mocked(globalThis.fetch).mockImplementation(async () => Response.json(catalog));
+
+      setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      await waitFor(() => {
+        const list = getRecipeList();
+        expect(list).toHaveTextContent('Prefix 1');
+        expect(list).toHaveTextContent('Zebra Tail');
+        expect(list).toHaveTextContent('Alpha Yeti');
+      });
+      expect(fetch).toHaveBeenCalledWith(
+        expect.stringContaining('/cocktails/data/catalog.json'),
+      );
+    });
+
+    it('offers a reload when the catalog fails to load', async () => {
+      vi.mocked(globalThis.fetch).mockResolvedValue(
+        new Response('nope', { status: 500 }),
+      );
+
+      setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      await waitFor(() => {
+        expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
+      });
+      expect(
+        screen.getByRole('button', { name: /reload the page/i }),
+      ).toBeInTheDocument();
+      expect(screen.queryByText('Zebra Tail')).not.toBeInTheDocument();
     });
   });
 });

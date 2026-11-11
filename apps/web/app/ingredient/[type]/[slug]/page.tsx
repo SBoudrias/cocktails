@@ -29,7 +29,6 @@ import SearchableRecipePage from '#/components/SearchableRecipePage';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
-import { toRecipeListItems } from '#/modules/recipeListItem';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 import IngredientCalculators from './IngredientCalculators';
 
@@ -81,10 +80,8 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   return (
     <SearchableRecipePage
       title={ingredient.name}
-      recipes={toRecipeListItems(
-        relatedRecipes,
-        (recipe) => recipe.ingredients.find((i) => i.slug === ingredient.slug)?.quantity,
-      )}
+      catalogKey={`ingredient/${ingredient.type}/${ingredient.slug}`}
+      hasRecipes={relatedRecipes.length > 0}
       listHeader={`Recipes using ${ingredient.name}`}
       footer={
         <FixBugCard

@@ -5,9 +5,11 @@ import {
 } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe } from '@cocktails/data/recipes';
-import { screen, within } from '@testing-library/react';
+import { screen, waitFor, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { buildCatalog } from '#/modules/buildCatalog';
+import { resetCatalogCache } from '#/modules/catalog';
 import { setupApp } from '#/vitest.setup';
 import IngredientPage from './page';
 
@@ -68,6 +70,22 @@ vi.mocked(getSubstitutesForIngredient).mockImplementation(async (ingredient) => 
   return [];
 });
 
+/** The catalog as the ingredient pages read it: both test lists keyed by page. */
+const testCatalog = buildCatalog([
+  {
+    key: `ingredient/${TEST_INGREDIENT.type}/${TEST_INGREDIENT.slug}`,
+    recipes: pineappleRecipes,
+    pickQuantity: (recipe) =>
+      recipe.ingredients.find((i) => i.slug === TEST_INGREDIENT.slug)?.quantity,
+  },
+  {
+    key: `ingredient/${TEST_SPIRIT.type}/${TEST_SPIRIT.slug}`,
+    recipes: spiritRecipes,
+    pickQuantity: (recipe) =>
+      recipe.ingredients.find((i) => i.slug === TEST_SPIRIT.slug)?.quantity,
+  },
+]);
+
 // Cache page JSX once for the entire file to avoid repeated async data loading
 const [ingredientPageJSX, spiritPageJSX] = await Promise.all([
   IngredientPage({
@@ -81,6 +99,10 @@ const [ingredientPageJSX, spiritPageJSX] = await Promise.all([
 describe('IngredientPage', () => {
   beforeEach(() => {
     mockRouter.setCurrentUrl('/');
+    resetCatalogCache();
+    vi.mocked(globalThis.fetch).mockImplementation(async () =>
+      Response.json(testCatalog),
+    );
   });
 
   describe('basic rendering', () => {
@@ -209,24 +231,27 @@ describe('IngredientPage', () => {
   });
 
   describe('recipe list', () => {
-    it('renders recipes using the ingredient with header', () => {
+    it('renders recipes using the ingredient with header', async () => {
       setupApp(ingredientPageJSX);
 
-      // Recipes section has a header
-      expect(
-        screen.getByText(`Recipes using ${TEST_INGREDIENT.name}`),
-      ).toBeInTheDocument();
-
-      // Chartreuse swizzle uses pineapple juice
+      // Rows land from the catalog, with the list header above them.
       // Use getByText instead of getByRole to avoid expensive accessible name computation
-      expect(screen.getByText('Chartreuse swizzle').closest('a')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(
+          screen.getByText(`Recipes using ${TEST_INGREDIENT.name}`),
+        ).toBeInTheDocument();
+        expect(screen.getByText('Chartreuse swizzle').closest('a')).toBeInTheDocument();
+      });
     });
   });
 
   describe('recipe list quantity display', () => {
-    it('displays ingredient quantity for each recipe', () => {
+    it('displays ingredient quantity for each recipe', async () => {
       setupApp(ingredientPageJSX);
 
+      await waitFor(() => {
+        expect(screen.getAllByRole('listitem').length).toBeGreaterThan(0);
+      });
       const allListItems = screen.getAllByRole('listitem');
 
       // Jungle bird (Smuggler's Cove) uses 2 oz pineapple juice
@@ -245,9 +270,12 @@ describe('IngredientPage', () => {
       expect(chartreuse).toHaveTextContent("Smuggler's Cove");
     });
 
-    it('displays quantity with sources for duplicate recipe names', () => {
+    it('displays quantity with sources for duplicate recipe names', async () => {
       setupApp(ingredientPageJSX);
 
+      await waitFor(() => {
+        expect(screen.getAllByRole('listitem').length).toBeGreaterThan(0);
+      });
       const allListItems = screen.getAllByRole('listitem');
 
       // Smuggler's Cove version: 2 oz, attributed to Smuggler's Cove book
@@ -329,15 +357,18 @@ describe('IngredientPage', () => {
       expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
     });
 
-    it('loads with search term from URL', () => {
+    it('loads with search term from URL', async () => {
       mockRouter.setCurrentUrl('?search=chartreuse');
       setupApp(ingredientPageJSX);
 
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('chartreuse');
 
-      const resultList = screen.getByRole('list');
-      expect(resultList).toHaveTextContent('Chartreuse swizzle');
+      // With a search active, the catalog loads right away.
+      const resultList = await screen.findByRole('list');
+      await waitFor(() => {
+        expect(resultList).toHaveTextContent('Chartreuse swizzle');
+      });
     });
 
     it('clearing search restores full page content', async () => {

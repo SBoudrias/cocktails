@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSharedJson } from '#/hooks/useSharedJson';
 import type { SearchIndex } from '#/modules/buildSearchIndex';
 import { getLoadedSearchIndex, loadSearchIndex } from '#/modules/searchIndex';
 
@@ -11,40 +11,9 @@ import { getLoadedSearchIndex, loadSearchIndex } from '#/modules/searchIndex';
  * `preloadSearchIndex` to jump the idle wait.
  */
 export function useSearchIndex({ urgent }: { urgent: boolean }): SearchIndex | undefined {
-  const [index, setIndex] = useState<SearchIndex | undefined>(getLoadedSearchIndex);
-
-  useEffect(() => {
-    let active = true;
-    const load = () => {
-      loadSearchIndex()
-        .then((loaded) => {
-          if (active) setIndex(loaded);
-        })
-        .catch(() => {});
-    };
-
-    if (urgent) {
-      load();
-      return () => {
-        active = false;
-      };
-    }
-
-    // Safari has no requestIdleCallback.
-    if (typeof requestIdleCallback !== 'function') {
-      const timer = setTimeout(load, 1000);
-      return () => {
-        active = false;
-        clearTimeout(timer);
-      };
-    }
-
-    const handle = requestIdleCallback(load, { timeout: 3000 });
-    return () => {
-      active = false;
-      cancelIdleCallback(handle);
-    };
-  }, [urgent]);
-
-  return index;
+  return useSharedJson({
+    load: loadSearchIndex,
+    getLoaded: getLoadedSearchIndex,
+    urgent,
+  });
 }
