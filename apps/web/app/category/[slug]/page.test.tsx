@@ -7,10 +7,25 @@ import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen, waitFor } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import { vi, beforeEach, describe, it, expect } from 'vitest';
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  it,
+  expect,
+  vi,
+} from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
 import { resetCatalogCache } from '#/modules/catalog';
 import { getCategoryUrl } from '#/modules/url';
+import {
+  failJson,
+  hangJson,
+  serveJson,
+  sharedJsonServer,
+} from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import CategoryPage from './page';
 
@@ -52,16 +67,27 @@ const testCatalog = buildCatalog([
 ]);
 
 /** Serve the test catalog from the fetch the pages issue. */
-function stubCatalogFetch() {
-  vi.mocked(globalThis.fetch).mockImplementation(async () => Response.json(testCatalog));
+/** Serve the test catalog from the route the pages fetch. */
+function serveCatalog() {
+  sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
 }
+
+beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
+afterAll(() => sharedJsonServer.close());
 
 beforeEach(() => {
   vi.mocked(getChildCategories).mockResolvedValue([]);
   vi.mocked(getIngredientsForCategory).mockResolvedValue([testMembers, []]);
   vi.mocked(getRecipeByCategory).mockResolvedValue(testRecipes);
   resetCatalogCache();
-  stubCatalogFetch();
+  // vitest.setup.ts rejects all fetches; msw replaces it here. An unhandled
+  // request errors loudly instead of reaching the network.
+  vi.unstubAllGlobals();
+  serveCatalog();
+});
+
+afterEach(() => {
+  sharedJsonServer.resetHandlers();
 });
 
 describe('CategoryPage', () => {
@@ -336,7 +362,7 @@ describe('CategoryPage', () => {
     });
 
     it('shows the loading state before the catalog lands', async () => {
-      vi.mocked(globalThis.fetch).mockImplementation(async () => new Promise(() => {}));
+      sharedJsonServer.use(hangJson('/data/catalog.json'));
 
       setupApp(
         await CategoryPage({
@@ -344,12 +370,14 @@ describe('CategoryPage', () => {
         }),
       );
 
-      expect(screen.getByText(/loading recipes/i)).toBeInTheDocument();
+      // The reserved space is there at once; the skeleton rows wait out
+      // their grace period.
+      expect(screen.getByLabelText(/loading recipes/i)).toBeInTheDocument();
       expect(screen.queryByText('Alpha Yeti')).not.toBeInTheDocument();
     });
 
     it('renders the full list from the catalog once loaded', async () => {
-      vi.mocked(globalThis.fetch).mockImplementation(async () => Response.json(catalog));
+      sharedJsonServer.use(serveJson('/data/catalog.json', catalog));
 
       setupApp(
         await CategoryPage({
@@ -362,13 +390,10 @@ describe('CategoryPage', () => {
         expect(list).toHaveTextContent('Zebra Tail');
         expect(list).toHaveTextContent('Alpha Yeti');
       });
-      expect(fetch).toHaveBeenCalledWith(
-        expect.stringContaining('/cocktails/data/catalog.json'),
-      );
     });
 
     it('shows the loading state while searching, not a false no-results', async () => {
-      vi.mocked(globalThis.fetch).mockImplementation(async () => new Promise(() => {}));
+      sharedJsonServer.use(hangJson('/data/catalog.json'));
       mockRouter.setCurrentUrl('?search=zebra');
 
       setupApp(
@@ -379,14 +404,12 @@ describe('CategoryPage', () => {
 
       // While the catalog loads, a search shows the loading state — the
       // full list it must match is not there yet — never "No results found".
-      expect(screen.getByText(/loading recipes/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/loading recipes/i)).toBeInTheDocument();
       expect(screen.queryByText('No results found')).not.toBeInTheDocument();
     });
 
     it('offers a reload when a search outlives a failed catalog fetch', async () => {
-      vi.mocked(globalThis.fetch).mockResolvedValue(
-        new Response('nope', { status: 500 }),
-      );
+      sharedJsonServer.use(failJson('/data/catalog.json', 500));
       mockRouter.setCurrentUrl('?search=zebra');
 
       setupApp(
@@ -405,9 +428,7 @@ describe('CategoryPage', () => {
     });
 
     it('offers a reload when the catalog fails to load', async () => {
-      vi.mocked(globalThis.fetch).mockResolvedValue(
-        new Response('nope', { status: 500 }),
-      );
+      sharedJsonServer.use(failJson('/data/catalog.json', 500));
 
       setupApp(
         await CategoryPage({

@@ -1,8 +1,16 @@
 'use client';
 
-import { Button, Card, CardContent, CardHeader, CircularProgress } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Skeleton,
+  Stack,
+} from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import AppHeader from '#/components/AppHeader';
 import { LinkList } from '#/components/LinkList';
@@ -29,22 +37,56 @@ function renderRecipe(recipe: RecipeListItem | QuantityRecipeListItem) {
   );
 }
 
-/** The state of a catalog-driven list: fetching, failed, or neither. */
-function CatalogListState({ failed }: { failed: boolean }) {
-  return failed ? (
-    <Card sx={{ m: 1 }}>
-      <CardHeader title="Recipes could not be loaded" />
-      <CardContent>
-        <Button onClick={() => window.location.reload()}>Reload the page</Button>
-      </CardContent>
-    </Card>
-  ) : (
-    <Card sx={{ m: 1 }}>
-      <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <CircularProgress size={20} aria-label="Loading recipes" />
-        Loading recipes…
-      </CardContent>
-    </Card>
+/**
+ * How long a catalog fetch may take before the skeleton shows. The list is
+ * session-cached and HTTP-cached, so most visits render at once; flashing a
+ * placeholder for those would be its own jank.
+ */
+const LOADING_SKELETON_DELAY_MS = 300;
+
+/**
+ * The list area while the catalog loads, or after it failed. The space is
+ * reserved from the first paint (nothing below the list jumps); the skeleton
+ * rows show only once the fetch has gone on long enough to warrant them. A
+ * failed fetch surfaces its reload affordance right away.
+ */
+function CatalogListState({ failed, visible }: { failed: boolean; visible: boolean }) {
+  if (failed) {
+    return (
+      <Box sx={{ m: 1, minHeight: 160 }}>
+        <Card>
+          <CardHeader title="Recipes could not be loaded" />
+          <CardContent>
+            <Button onClick={() => window.location.reload()}>Reload the page</Button>
+          </CardContent>
+        </Card>
+      </Box>
+    );
+  }
+
+  return (
+    <Box sx={{ m: 1, minHeight: 216 }} aria-label="Loading recipes">
+      {visible && (
+        <Card>
+          <CardContent>
+            <Stack spacing={2}>
+              {[0, 1, 2].map((row) => (
+                <Stack
+                  key={row}
+                  direction="row"
+                  spacing={2}
+                  sx={{ alignItems: 'center' }}
+                >
+                  <Skeleton variant="text" sx={{ fontSize: '1rem', flex: 1 }} />
+                  <Skeleton variant="text" sx={{ fontSize: '0.75rem', width: 48 }} />
+                  <Skeleton variant="circular" width={20} height={20} />
+                </Stack>
+              ))}
+            </Stack>
+          </CardContent>
+        </Card>
+      )}
+    </Box>
   );
 }
 
@@ -102,8 +144,21 @@ export default function SearchableRecipePage({
 
   const catalogLoading = fromCatalog && catalog == null;
 
+  // The skeleton waits a beat before showing, so a fast fetch never flashes
+  // it; the reserved space below needs no wait.
+  const [skeletonVisible, setSkeletonVisible] = useState(false);
+  useEffect(() => {
+    if (!catalogLoading || failed) {
+      setSkeletonVisible(false);
+      return;
+    }
+
+    const timer = setTimeout(() => setSkeletonVisible(true), LOADING_SKELETON_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [catalogLoading, failed]);
+
   const body = catalogLoading ? (
-    <CatalogListState failed={failed} />
+    <CatalogListState failed={failed} visible={skeletonVisible} />
   ) : allRecipes.length > 0 ? (
     isSearching ? (
       <RecipeSearchableList

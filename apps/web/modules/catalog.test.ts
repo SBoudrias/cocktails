@@ -1,4 +1,20 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { http, HttpResponse } from 'msw';
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from 'vitest';
+import {
+  failJson,
+  serveJson,
+  sharedJsonServer,
+  sharedJsonUrl,
+} from '#/testing/sharedJsonServer';
 import type { Catalog } from './buildCatalog';
 import {
   getCatalogList,
@@ -20,21 +36,23 @@ const catalog: Catalog = {
   },
 };
 
-const fetchMock = vi.fn<typeof fetch>();
+beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
+afterAll(() => sharedJsonServer.close());
 
 beforeEach(() => {
   resetCatalogCache();
-  vi.stubGlobal('fetch', fetchMock);
   vi.stubGlobal('location', { origin: 'https://cocktails.test' });
 });
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  sharedJsonServer.resetHandlers();
 });
 
 describe('loadCatalog', () => {
   it('fetches the static catalog once for concurrent and later callers', async () => {
-    fetchMock.mockResolvedValue(Response.json(catalog));
+    const respond = vi.fn(() => HttpResponse.json(catalog));
+    sharedJsonServer.use(http.get(sharedJsonUrl('/data/catalog.json'), respond));
 
     const [first, second] = await Promise.all([loadCatalog(), loadCatalog()]);
     const third = await loadCatalog();
@@ -42,29 +60,34 @@ describe('loadCatalog', () => {
     expect(first).toEqual(catalog);
     expect(second).toBe(first);
     expect(third).toBe(first);
-    expect(fetchMock).toHaveBeenCalledOnce();
-    expect(fetchMock).toHaveBeenCalledWith(
-      'https://cocktails.test/cocktails/data/catalog.json',
-    );
+    expect(respond).toHaveBeenCalledOnce();
     expect(getLoadedCatalog()).toBe(first);
   });
 
   it('rejects on a failed response and retries on the next call', async () => {
-    fetchMock.mockResolvedValueOnce(new Response('nope', { status: 500 }));
+    sharedJsonServer.use(failJson('/data/catalog.json', 500));
     await expect(loadCatalog()).rejects.toThrow('500');
 
-    fetchMock.mockResolvedValueOnce(Response.json(catalog));
+    sharedJsonServer.use(serveJson('/data/catalog.json', catalog));
     await expect(loadCatalog()).resolves.toEqual(catalog);
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('rejects on a network error and retries on the next call', async () => {
+    // HttpResponse.error() is msw's network failure: the fetch itself rejects,
+    // no response ever arrives.
+    sharedJsonServer.use(
+      http.get(sharedJsonUrl('/data/catalog.json'), () => HttpResponse.error()),
+    );
+    await expect(loadCatalog()).rejects.toThrow();
+
+    sharedJsonServer.use(serveJson('/data/catalog.json', catalog));
+    await expect(loadCatalog()).resolves.toEqual(catalog);
   });
 });
 
 describe('getCatalogList', () => {
   it('resolves a page list against the catalog cards', () => {
-    const list = getCatalogList(catalog, 'category/rum');
-    expect(list).toBeDefined();
-
-    const [daiquiri, maiTai] = list ?? [];
+    const [daiquiri, maiTai] = getCatalogList(catalog, 'category/rum');
 
     expect(daiquiri).toEqual({
       href: '/recipes/book/a/daiquiri',
