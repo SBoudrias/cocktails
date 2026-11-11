@@ -1,0 +1,7 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Zasu",
+  "location": "New Orleans, LA",
+  "links": ["https://www.zasunola.com"],
+  "description": "Mid-City New Orleans restaurant and bar by chef Sue Zemanick"
+}

@@ -87,8 +87,8 @@ async function readAuthorFile(slug: string): Promise<Author | undefined> {
 
 /**
  * Derive a name-only author from the recipes' attributions. The list pages'
- * fallback when no entity file exists — check-data creates a file for every
- * credited author, so this only covers files gone missing.
+ * fallback when no entity file exists — check-data fails on a credit with no
+ * file, so this only covers files gone missing.
  */
 async function findAuthorFromAttributions(slug: string): Promise<Author | undefined> {
   const allRecipes = await getAllRecipes();

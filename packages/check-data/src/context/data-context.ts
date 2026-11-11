@@ -3,8 +3,12 @@ import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import type { ApprovedOverlaps } from '../checks/report/approved-overlaps.ts';
 import type { BarLocationUsage } from '../checks/report/bar-locations.ts';
+import {
+  findMissingEntities,
+  type RecipeAttributions,
+} from '../checks/report/missing-entities.ts';
 import { logger } from '../cli-util.ts';
-import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT, REPO_ROOT } from '../infra/paths.ts';
+import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT } from '../infra/paths.ts';
 import { report } from '../infra/report.ts';
 import { writeJSON } from '../infra/write-json.ts';
 import { normalizeCategoryCasing } from './category-casing.ts';
@@ -115,8 +119,8 @@ export const ctx: DataContext = {
 
 /**
  * Collects every data index the checks need: youtube channels and sources,
- * author/bar entities (creating name-only files for uncredited ones),
- * categories (with sentence-casing autofix), and ingredients.
+ * author/bar entities (failing on credits with no entity file), categories
+ * (with sentence-casing autofix), and ingredients.
  */
 export async function loadContext(): Promise<void> {
   const {
@@ -155,8 +159,9 @@ export async function loadContext(): Promise<void> {
 
   // Entity files backing the author/bar list pages. Every attribution source
   // must resolve to one — entities are credited in recipes before anything is
-  // known about them, so missing files are created name-only (links and
-  // descriptions are added only once verified, never generated here).
+  // known about them, so a credit with no file fails the run with the exact
+  // file to add (name-only is fine; links and descriptions are added only
+  // once verified, never generated here).
   logger.header('👥 Collecting author and bar entities');
   for (const [entityDir, entitySlugs] of [
     ['authors', authorEntitySlugs],
@@ -174,49 +179,38 @@ export async function loadContext(): Promise<void> {
     barLocationUsages.push({ name: bar.name, location: bar.location, filepath: barFile });
   }
 
-  const createdEntities: string[] = [];
+  const recipeAttributions: RecipeAttributions[] = [];
   for await (const recipeFile of fs.glob(
     path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'),
   )) {
     const recipe: { attributions?: Attribution[] } = JSON.parse(
       await fs.readFile(recipeFile, 'utf-8'),
     );
+    recipeAttributions.push({
+      filepath: recipeFile,
+      attributions: recipe.attributions ?? [],
+    });
+  }
 
-    for (const attribution of recipe.attributions ?? []) {
-      const isAuthor =
-        attribution.relation === 'recipe author' || attribution.relation === 'adapted by';
-
-      if (!isAuthor && attribution.relation !== 'bar') continue;
-
-      const slug = isAuthor
-        ? slugify(attribution.source)
-        : slugify(`${attribution.source} ${attribution.location ?? ''}`);
-      const entitySlugs = isAuthor ? authorEntitySlugs : barEntitySlugs;
-
-      if (entitySlugs.has(slug)) continue;
-      entitySlugs.add(slug);
-
-      const entityDir = isAuthor ? 'authors' : 'bars';
-      const entityPath = path.join(PACKAGE_ROOT, `data/${entityDir}`, `${slug}.json`);
-      await writeJSON(entityPath, {
-        $schema: path.relative(
-          path.dirname(entityPath),
-          path.resolve(
-            PACKAGE_ROOT,
-            `schemas/${isAuthor ? 'author' : 'bar'}.schema.json`,
-          ),
-        ),
-        name: attribution.source,
-        ...(attribution.relation === 'bar' && attribution.location
-          ? { location: attribution.location }
-          : {}),
-      });
-      createdEntities.push(path.relative(REPO_ROOT, entityPath));
-    }
+  // Missing entities fail the run instead of being created silently: writing
+  // name-only stubs on every run left generated files lying around on clean
+  // trees, and the pre-commit hook swept them into unrelated commits (#549,
+  // #551). The fail message names the exact file to add — name-only is fine,
+  // richer fields (links, description, sources) only once verified.
+  const missingEntities = findMissingEntities(recipeAttributions, {
+    authors: authorEntitySlugs,
+    bars: barEntitySlugs,
+  });
+  for (const entity of missingEntities.values()) {
+    (entity.kind === 'author' ? authorEntitySlugs : barEntitySlugs).add(entity.slug);
   }
   logger.item(`Found ${authorEntitySlugs.size} authors, ${barEntitySlugs.size} bars`);
-  for (const entityPath of createdEntities) {
-    logger.change(`Created ${entityPath}`);
+  for (const entity of missingEntities.values()) {
+    report.fail(
+      `Missing ${entity.kind} entity for the attribution(s) in ${entity.recipeFiles.join(', ')}: ` +
+        `create data/${entity.kind}s/${entity.slug}.json, e.g. ` +
+        `{"$schema": "../../schemas/${entity.kind}.schema.json", "name": "..."}`,
+    );
   }
   logger.footer('Done!');
 
