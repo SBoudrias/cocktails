@@ -6,12 +6,13 @@ import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { NuqsAdapter } from 'nuqs/adapters/react';
 import type { ReactNode } from 'react';
 import { renderToString } from 'react-dom/server';
-import { vi, afterEach, beforeEach, describe, it } from 'vitest';
+import { vi, afterAll, afterEach, beforeAll, beforeEach, describe, it } from 'vitest';
 // The app's client setup: enables nuqs history sync, as in the browser.
 import '#/instrumentation-client';
 import { buildSearchIndex, toSearchIndexItems } from '#/modules/buildSearchIndex';
 import { resetSearchIndexCache } from '#/modules/searchIndex';
 import { getRecipeUrl } from '#/modules/url';
+import { serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp, withVirtuosoViewport } from '#/vitest.setup';
 import RecipesPage from './page';
 
@@ -53,10 +54,17 @@ const testRecipes: Recipe[] = [
   mockRecipe('The Last Word'),
 ];
 
+beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
+afterAll(() => sharedJsonServer.close());
+
 beforeEach(() => {
   recipeCounter = 0;
   resetSearchIndexCache();
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
+});
+
+afterEach(() => {
+  sharedJsonServer.resetHandlers();
 });
 
 /** 300 "A" recipes (the prerendered rows) and one "Z" recipe past them. */
@@ -213,9 +221,16 @@ describe('RecipesPage', () => {
     });
     const recipes = [...testRecipes, bartenderRecipe];
     vi.mocked(getAllRecipes).mockResolvedValue(recipes);
-    vi.mocked(fetch).mockResolvedValue(
-      Response.json(buildSearchIndex(toSearchIndexItems(recipes))),
+    // vitest.setup.ts rejects all fetches; msw replaces it for this test.
+    vi.unstubAllGlobals();
+    sharedJsonServer.use(
+      serveJson('/data/search-index.json', buildSearchIndex(toSearchIndexItems(recipes))),
     );
+
+    let served = 0;
+    sharedJsonServer.events.on('request:start', () => {
+      served += 1;
+    });
 
     mockRouter.setCurrentUrl('?search=jane%20doe');
     setupApp(await RecipesPage());
@@ -224,7 +239,7 @@ describe('RecipesPage', () => {
     await waitFor(() => {
       expect(screen.getByRole('list')).toHaveTextContent('Bartender Special');
     });
-    expect(fetch).toHaveBeenCalledOnce();
+    expect(served).toBe(1);
   });
 
   it('shows no results when search has no matches', async () => {
@@ -280,8 +295,10 @@ describe('RecipesPage', () => {
   it('lists recipes beyond the prerendered letters from the search index', async () => {
     const { zombie, recipes } = mockLongList();
     vi.mocked(getAllRecipes).mockResolvedValue(recipes);
-    vi.mocked(fetch).mockResolvedValue(
-      Response.json(buildSearchIndex(toSearchIndexItems(recipes))),
+    // vitest.setup.ts rejects all fetches; msw replaces it for this test.
+    vi.unstubAllGlobals();
+    sharedJsonServer.use(
+      serveJson('/data/search-index.json', buildSearchIndex(toSearchIndexItems(recipes))),
     );
 
     setupApp(await RecipesPage());
@@ -291,7 +308,8 @@ describe('RecipesPage', () => {
         getRecipeUrl(zombie),
       );
     });
-    expect(fetch).toHaveBeenCalledOnce();
+    // One fetch of the index covers the whole list.
+    expect(sharedJsonServer.listHandlers()).toHaveLength(1);
   });
 });
 

@@ -148,10 +148,7 @@ export default function SearchableRecipePage({
   // it; the reserved space below needs no wait.
   const [skeletonVisible, setSkeletonVisible] = useState(false);
   useEffect(() => {
-    if (!catalogLoading || failed) {
-      setSkeletonVisible(false);
-      return;
-    }
+    if (!catalogLoading || failed) return;
 
     const timer = setTimeout(() => setSkeletonVisible(true), LOADING_SKELETON_DELAY_MS);
     return () => clearTimeout(timer);
