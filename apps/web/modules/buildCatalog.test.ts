@@ -81,6 +81,12 @@ describe('getSerializedCatalog', () => {
         100,
       );
 
+      // The curated non-alcoholic list is in too, with no per-recipe quantity.
+      expect((catalog.lists['list/non-alcoholic'] ?? []).length).toBeGreaterThan(10);
+      for (const [, quantity] of catalog.lists['list/non-alcoholic'] ?? []) {
+        expect(quantity).toBeNull();
+      }
+
       // Cards are keyed by recipe URLs; every entry's href resolves to a card.
       for (const [href, card] of Object.entries(catalog.cards)) {
         expect(href).toMatch(/^\/recipes\/[^/]+\/[^/]+\/[^/]+$/);
