@@ -43,7 +43,7 @@ beforeEach(() => {
 
 describe('RecentlyAddedPage', () => {
   it('groups recipes under the day they were added, newest day first', async () => {
-    setupApp(await RecentlyAddedPage());
+    await setupApp(await RecentlyAddedPage());
 
     const newest = screen.getByRole('group', { name: 'May 18, 2026' });
     const oldest = screen.getByRole('group', { name: 'May 16, 2026' });
@@ -59,7 +59,7 @@ describe('RecentlyAddedPage', () => {
   });
 
   it('links to recipe detail pages', async () => {
-    setupApp(await RecentlyAddedPage());
+    await setupApp(await RecentlyAddedPage());
 
     expect(screen.getByRole('link', { name: /negroni/i })).toHaveAttribute(
       'href',
@@ -70,7 +70,7 @@ describe('RecentlyAddedPage', () => {
   it('renders no groups without recent recipes', async () => {
     vi.mocked(getRecentlyAddedRecipeEntries).mockResolvedValue([]);
 
-    setupApp(await RecentlyAddedPage());
+    await setupApp(await RecentlyAddedPage());
 
     expect(screen.queryAllByRole('group')).toEqual([]);
   });

@@ -4,7 +4,7 @@ import BrixCalculatorPage from './page';
 
 describe('Sugar adjusting calculator', () => {
   it('defaults to 100 grams of juice and restores it on reset', async () => {
-    const { user } = setupApp(<BrixCalculatorPage />);
+    const { user } = await setupApp(<BrixCalculatorPage />);
     const juiceWeight = screen.getByRole('spinbutton', { name: 'Juice weight' });
 
     expect(juiceWeight).toHaveValue(100);

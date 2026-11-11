@@ -10,7 +10,6 @@ import { vi, beforeEach, describe, it } from 'vitest';
 // The app's client setup: enables nuqs history sync, as in the browser.
 import '#/instrumentation-client';
 import { buildSearchIndex, toSearchIndexItems } from '#/modules/buildSearchIndex';
-import { resetSearchIndexCache } from '#/modules/searchIndex';
 import { getRecipeUrl } from '#/modules/url';
 import { serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp, withVirtuosoViewport } from '#/vitest.setup';
@@ -56,7 +55,6 @@ const testRecipes: Recipe[] = [
 
 beforeEach(() => {
   recipeCounter = 0;
-  resetSearchIndexCache();
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
 });
 
@@ -89,7 +87,7 @@ function getListOutline(): string[] {
 
 describe('RecipesPage', () => {
   it('renders search input and recipe list', async () => {
-    setupApp(await RecipesPage());
+    await setupApp(await RecipesPage());
 
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
     expect(screen.getByRole('list')).toHaveTextContent('Mojito');
@@ -129,7 +127,7 @@ describe('RecipesPage', () => {
       }),
     ]);
 
-    setupApp(await RecipesPage());
+    await setupApp(await RecipesPage());
 
     expect(
       within(screen.getByRole('link', { name: /book chapter recipe/i })).getByText(
@@ -154,7 +152,7 @@ describe('RecipesPage', () => {
   });
 
   it('typing in search filters the recipe list', async () => {
-    const { user } = setupApp(await RecipesPage());
+    const { user } = await setupApp(await RecipesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'moj');
@@ -167,7 +165,7 @@ describe('RecipesPage', () => {
 
   it('clearing search shows all recipes grouped by letter', async () => {
     mockRouter.setCurrentUrl('?search=moj');
-    const { user } = setupApp(await RecipesPage());
+    const { user } = await setupApp(await RecipesPage());
 
     // Initially filtered
     const resultList = screen.getByRole('list');
@@ -195,7 +193,7 @@ describe('RecipesPage', () => {
 
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
-    const { user } = setupApp(await RecipesPage(), {
+    const { user } = await setupApp(await RecipesPage(), {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -224,7 +222,7 @@ describe('RecipesPage', () => {
     });
 
     mockRouter.setCurrentUrl('?search=jane%20doe');
-    setupApp(await RecipesPage());
+    await setupApp(await RecipesPage());
 
     // An active search loads the index right away; until then names stand in.
     await waitFor(() => {
@@ -234,7 +232,7 @@ describe('RecipesPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupApp(await RecipesPage());
+    const { user } = await setupApp(await RecipesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -246,7 +244,7 @@ describe('RecipesPage', () => {
   it('recipe items link to correct recipe detail pages', async () => {
     const mojito = mockRecipe('Test Recipe');
     vi.mocked(getAllRecipes).mockResolvedValue([mojito]);
-    setupApp(await RecipesPage());
+    await setupApp(await RecipesPage());
 
     const link = screen.getByRole('link', { name: /test recipe/i });
     expect(link).toHaveAttribute('href', getRecipeUrl(mojito));
@@ -254,7 +252,7 @@ describe('RecipesPage', () => {
 
   it('loads with search term from URL', async () => {
     mockRouter.setCurrentUrl('?search=margarita');
-    setupApp(await RecipesPage());
+    await setupApp(await RecipesPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('margarita');
@@ -266,7 +264,7 @@ describe('RecipesPage', () => {
   });
 
   it('groups recipes by first letter when not searching', async () => {
-    setupApp(await RecipesPage());
+    await setupApp(await RecipesPage());
 
     // Leading articles are skipped: "The Last Word" files under L.
     expect(getListOutline()).toMatchInlineSnapshot(`
@@ -290,7 +288,7 @@ describe('RecipesPage', () => {
       serveJson('/data/search-index.json', buildSearchIndex(toSearchIndexItems(recipes))),
     );
 
-    setupApp(await RecipesPage());
+    await setupApp(await RecipesPage());
     await waitFor(() => {
       expect(screen.getByRole('link', { name: /zombie/i })).toHaveAttribute(
         'href',

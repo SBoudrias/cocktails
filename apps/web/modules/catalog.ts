@@ -3,11 +3,8 @@ import type { QuantityRecipeListItem } from '#/modules/recipeListItem';
 import { createSharedJson } from '#/modules/sharedJson';
 import { isRecipeUrl } from '#/modules/url';
 
-export const {
-  load: loadCatalog,
-  getLoaded: getLoadedCatalog,
-  reset: resetCatalogCache,
-} = createSharedJson<Catalog>('data/catalog.json');
+export const { load: loadCatalog, getLoaded: getLoadedCatalog } =
+  createSharedJson<Catalog>('data/catalog.json');
 
 /**
  * A page's list out of a catalog: each entry resolved against the catalog's

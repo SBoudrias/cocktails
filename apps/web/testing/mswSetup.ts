@@ -1,4 +1,5 @@
 import { afterAll, afterEach, beforeAll, vi } from 'vitest';
+import { resetSharedJson } from '#/modules/sharedJson';
 import { sharedJsonServer } from './sharedJsonServer';
 
 /**
@@ -19,6 +20,7 @@ beforeAll(() => sharedJsonServer.listen({ onUnhandledFrame: 'error' }));
 
 afterEach(() => {
   sharedJsonServer.resetHandlers();
+  resetSharedJson();
 });
 
 afterAll(() => sharedJsonServer.close());

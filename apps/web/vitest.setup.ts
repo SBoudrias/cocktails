@@ -10,6 +10,7 @@ import type { ComponentProps, ReactNode } from 'react';
 import { createElement } from 'react';
 import { VirtuosoMockContext } from 'react-virtuoso';
 import { beforeEach, vi } from 'vitest';
+import { getPendingSharedJsonLoads } from '#/modules/sharedJson';
 
 vi.mock('next/router', async () => import('next-router-mock'));
 vi.mock('next/navigation', async () => import('next-router-mock/navigation'));
@@ -39,7 +40,7 @@ export function withVirtuosoViewport(ui: ReactNode) {
   });
 }
 
-export function setupApp(
+export async function setupApp(
   ui: ReactNode,
   {
     nuqsOptions,
@@ -52,23 +53,36 @@ export function setupApp(
 ) {
   let user: ReturnType<typeof userEvent.setup> | undefined;
 
+  const rendered = render(
+    createElement(MemoryRouterProvider, {
+      ...routerOptions,
+      children: createElement(NuqsTestingAdapter, {
+        // In the app, nuqs and Next's router read the same URL: start nuqs
+        // from the query the test set with mockRouter.setCurrentUrl.
+        searchParams: new URL(mockRouter.asPath, 'http://localhost').search,
+        ...nuqsOptions,
+        children: withVirtuosoViewport(ui),
+      }),
+    }),
+    renderOptions,
+  );
+
+  // Pages load their shared JSON (catalog, search index) right after mount;
+  // flush those loads before handing the page back, so tests assert on
+  // complete lists without waitFor at each call site. A failed load settles
+  // too — the page shows its failure state, which is what a test may assert.
+  // A load that never settles (a test asserting the loading state) must not
+  // hold the flush hostage, so cap the wait.
+  await Promise.race([
+    Promise.allSettled(getPendingSharedJsonLoads()),
+    new Promise((resolve) => setTimeout(resolve, 100)),
+  ]);
+
   return {
     get user() {
       user ??= userEvent.setup();
       return user;
     },
-    ...render(
-      createElement(MemoryRouterProvider, {
-        ...routerOptions,
-        children: createElement(NuqsTestingAdapter, {
-          // In the app, nuqs and Next's router read the same URL: start nuqs
-          // from the query the test set with mockRouter.setCurrentUrl.
-          searchParams: new URL(mockRouter.asPath, 'http://localhost').search,
-          ...nuqsOptions,
-          children: withVirtuosoViewport(ui),
-        }),
-      }),
-      renderOptions,
-    ),
+    ...rendered,
   };
 }

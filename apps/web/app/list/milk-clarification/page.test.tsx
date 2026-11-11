@@ -55,7 +55,7 @@ beforeEach(() => {
 
 describe('MilkClarificationRecipesPage', () => {
   it('renders the searchable milk-clarified recipe list', async () => {
-    setupApp(await MilkClarificationRecipesPage());
+    await setupApp(await MilkClarificationRecipesPage());
 
     expect(
       screen.getByRole('heading', { level: 1, name: 'Milk-Clarified Recipes' }),
@@ -72,7 +72,7 @@ describe('MilkClarificationRecipesPage', () => {
     const recipe = mockRecipe('Test Recipe');
     vi.mocked(getMilkClarifiedRecipes).mockResolvedValue([recipe]);
 
-    setupApp(await MilkClarificationRecipesPage());
+    await setupApp(await MilkClarificationRecipesPage());
 
     expect(screen.getByRole('link', { name: /test recipe/i })).toHaveAttribute(
       'href',

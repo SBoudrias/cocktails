@@ -94,7 +94,7 @@ beforeEach(() => {
 describe('SourcePage', () => {
   describe('basic rendering', () => {
     it('renders SearchHeader with searchbox', async () => {
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
@@ -104,7 +104,7 @@ describe('SourcePage', () => {
     });
 
     it('renders recipe list with header', async () => {
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
@@ -119,7 +119,7 @@ describe('SourcePage', () => {
 
   describe('search functionality', () => {
     it('search filters recipes within source', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
@@ -134,7 +134,7 @@ describe('SourcePage', () => {
 
     it('URL updates with search param', async () => {
       const onUrlUpdate = vi.fn();
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
@@ -150,7 +150,7 @@ describe('SourcePage', () => {
     });
 
     it('shows SearchAllLink in no results state', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
@@ -167,7 +167,7 @@ describe('SourcePage', () => {
 
     it('loads with search term from URL', async () => {
       mockRouter.setCurrentUrl('?search=margarita');
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
@@ -182,7 +182,7 @@ describe('SourcePage', () => {
 
     it('clearing search restores full page content', async () => {
       mockRouter.setCurrentUrl('?search=margarita');
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({ type: TEST_YOUTUBE.type, name: TEST_YOUTUBE.slug }),
         }),
@@ -198,7 +198,7 @@ describe('SourcePage', () => {
 
   describe('with alternate youtube-channel source', () => {
     it('search works with alternate youtube channel recipes', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_YOUTUBE_ALT.type,
@@ -237,7 +237,7 @@ describe('SourcePage - Book sources', () => {
 
   describe('book with chapters', () => {
     it('renders grouping toggle for books with chapters', async () => {
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITH_CHAPTERS.type,
@@ -252,7 +252,7 @@ describe('SourcePage - Book sources', () => {
     });
 
     it('defaults to chapter grouping view', async () => {
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITH_CHAPTERS.type,
@@ -272,7 +272,7 @@ describe('SourcePage - Book sources', () => {
     });
 
     it('switches to alphabetical view when A-Z is clicked', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITH_CHAPTERS.type,
@@ -291,7 +291,7 @@ describe('SourcePage - Book sources', () => {
     });
 
     it('persists grouping preference in localStorage', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITH_CHAPTERS.type,
@@ -309,7 +309,7 @@ describe('SourcePage - Book sources', () => {
     it('loads grouping preference from localStorage', async () => {
       localStorage.setItem('book-grouping', '"alphabetical"');
 
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITH_CHAPTERS.type,
@@ -325,7 +325,7 @@ describe('SourcePage - Book sources', () => {
     });
 
     it('hides grouping toggle when searching', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITH_CHAPTERS.type,
@@ -347,7 +347,7 @@ describe('SourcePage - Book sources', () => {
     });
 
     it('shows recipes grouped by chapter with correct sorting', async () => {
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITH_CHAPTERS.type,
@@ -376,7 +376,7 @@ describe('SourcePage - Book sources', () => {
 
   describe('book without chapters', () => {
     it('does not render grouping toggle for books without chapters', async () => {
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITHOUT_CHAPTERS.type,
@@ -391,7 +391,7 @@ describe('SourcePage - Book sources', () => {
     });
 
     it('shows recipes grouped alphabetically by default', async () => {
-      setupApp(
+      await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITHOUT_CHAPTERS.type,

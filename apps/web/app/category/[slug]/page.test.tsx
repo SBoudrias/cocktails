@@ -9,7 +9,6 @@ import { screen, waitFor } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
-import { resetCatalogCache } from '#/modules/catalog';
 import { getCategoryUrl } from '#/modules/url';
 import {
   failJson,
@@ -58,23 +57,18 @@ const testCatalog = buildCatalog([
 ]);
 
 /** Serve the test catalog from the fetch the pages issue. */
-/** Serve the test catalog from the route the pages fetch. */
-function serveCatalog() {
-  sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
-}
 
 beforeEach(() => {
   vi.mocked(getChildCategories).mockResolvedValue([]);
   vi.mocked(getIngredientsForCategory).mockResolvedValue([testMembers, []]);
   vi.mocked(getRecipeByCategory).mockResolvedValue(testRecipes);
-  resetCatalogCache();
-  serveCatalog();
+  sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
 });
 
 describe('CategoryPage', () => {
   describe('basic rendering', () => {
     it('renders parent category information', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -89,7 +83,7 @@ describe('CategoryPage', () => {
     });
 
     it('renders example ingredients for the category', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -112,7 +106,7 @@ describe('CategoryPage', () => {
       ]);
       vi.mocked(getChildCategories).mockImplementation(getActualChildCategories);
 
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'rum' }),
         }),
@@ -128,7 +122,7 @@ describe('CategoryPage', () => {
     });
 
     it('renders search header with title', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -143,7 +137,7 @@ describe('CategoryPage', () => {
 
   describe('recipe list', () => {
     it('renders recipes using the category with header', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -162,7 +156,7 @@ describe('CategoryPage', () => {
 
   describe('recipe list quantity display', () => {
     it('displays ingredient quantity for each recipe', async () => {
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -180,7 +174,7 @@ describe('CategoryPage', () => {
 
   describe('search functionality', () => {
     it('search filters recipes within category', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -196,7 +190,7 @@ describe('CategoryPage', () => {
 
     it('URL updates with search param', async () => {
       const onUrlUpdate = vi.fn();
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -212,7 +206,7 @@ describe('CategoryPage', () => {
     });
 
     it('shows SearchAllLink in no results state', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -228,7 +222,7 @@ describe('CategoryPage', () => {
     });
 
     it('hides category description when searching', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -245,7 +239,7 @@ describe('CategoryPage', () => {
     });
 
     it('hides ingredient members list when searching', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -263,7 +257,7 @@ describe('CategoryPage', () => {
 
     it('loads with search term from URL', async () => {
       mockRouter.setCurrentUrl('?search=fog');
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -283,7 +277,7 @@ describe('CategoryPage', () => {
 
     it('clearing search shows all content', async () => {
       mockRouter.setCurrentUrl('?search=fog');
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -345,7 +339,7 @@ describe('CategoryPage', () => {
     it('shows the loading state before the catalog lands', async () => {
       sharedJsonServer.use(hangJson('/data/catalog.json'));
 
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -360,7 +354,7 @@ describe('CategoryPage', () => {
     it('renders the full list from the catalog once loaded', async () => {
       sharedJsonServer.use(serveJson('/data/catalog.json', catalog));
 
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -377,7 +371,7 @@ describe('CategoryPage', () => {
       sharedJsonServer.use(hangJson('/data/catalog.json'));
       mockRouter.setCurrentUrl('?search=zebra');
 
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -393,7 +387,7 @@ describe('CategoryPage', () => {
       sharedJsonServer.use(failJson('/data/catalog.json', 500));
       mockRouter.setCurrentUrl('?search=zebra');
 
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
@@ -411,7 +405,7 @@ describe('CategoryPage', () => {
     it('offers a reload when the catalog fails to load', async () => {
       sharedJsonServer.use(failJson('/data/catalog.json', 500));
 
-      setupApp(
+      await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),

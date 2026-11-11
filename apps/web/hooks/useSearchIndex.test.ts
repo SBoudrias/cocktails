@@ -2,7 +2,7 @@ import { act, cleanup, renderHook, waitFor } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { SearchIndex } from '#/modules/buildSearchIndex';
-import { preloadSearchIndex, resetSearchIndexCache } from '#/modules/searchIndex';
+import { preloadSearchIndex } from '#/modules/searchIndex';
 import { failJson, sharedJsonServer, sharedJsonUrl } from '#/testing/sharedJsonServer';
 import { useSearchIndex } from './useSearchIndex';
 
@@ -38,7 +38,6 @@ function serveIndex() {
 }
 
 beforeEach(() => {
-  resetSearchIndexCache();
   indexRequests.length = 0;
   requestIdleCallbackMock.mockReturnValue(7);
   vi.stubGlobal('requestIdleCallback', requestIdleCallbackMock);

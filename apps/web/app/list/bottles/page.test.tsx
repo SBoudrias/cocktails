@@ -27,7 +27,7 @@ beforeEach(() => {
 
 describe('BottlesPage', () => {
   it('shows search input, title and list', async () => {
-    setupApp(await BottlesPage());
+    await setupApp(await BottlesPage());
 
     expect(screen.getByText('All Bottles')).toBeInTheDocument();
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe('BottlesPage', () => {
   });
 
   it('typing filters bottle list', async () => {
-    const { user } = setupApp(await BottlesPage());
+    const { user } = await setupApp(await BottlesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'campari');
@@ -45,7 +45,7 @@ describe('BottlesPage', () => {
   });
 
   it('filters bottles by category name', async () => {
-    const { user } = setupApp(await BottlesPage());
+    const { user } = await setupApp(await BottlesPage());
 
     const input = screen.getByRole('searchbox');
     // Search by category - "Jamaican" is a category for several rums
@@ -58,7 +58,7 @@ describe('BottlesPage', () => {
 
   it('clearing search shows all bottles grouped by letter', async () => {
     mockRouter.setCurrentUrl('?search=rum');
-    const { user } = setupApp(await BottlesPage());
+    const { user } = await setupApp(await BottlesPage());
 
     // Initially filtered through a real category name on Appleton Signature.
     const resultList = screen.getByRole('list');
@@ -75,7 +75,7 @@ describe('BottlesPage', () => {
 
   it('URL updates with search param when typing', async () => {
     const onUrlUpdate = vi.fn();
-    const { user } = setupApp(await BottlesPage(), {
+    const { user } = await setupApp(await BottlesPage(), {
       nuqsOptions: { onUrlUpdate },
     });
 
@@ -88,7 +88,7 @@ describe('BottlesPage', () => {
   });
 
   it('shows no results when search has no matches', async () => {
-    const { user } = setupApp(await BottlesPage());
+    const { user } = await setupApp(await BottlesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -97,7 +97,7 @@ describe('BottlesPage', () => {
   });
 
   it('does not show SearchAllLink when no results (not searching recipes)', async () => {
-    const { user } = setupApp(await BottlesPage());
+    const { user } = await setupApp(await BottlesPage());
 
     const input = screen.getByRole('searchbox');
     await user.type(input, 'xyznonexistent');
@@ -109,7 +109,7 @@ describe('BottlesPage', () => {
   });
 
   it('bottle items link to correct ingredient detail pages', async () => {
-    setupApp(await BottlesPage());
+    await setupApp(await BottlesPage());
 
     // Use a hardcoded known bottle with getByText to avoid expensive
     // accessible name computation over the full bottles list
@@ -119,7 +119,7 @@ describe('BottlesPage', () => {
 
   it('loads with search term from URL', async () => {
     mockRouter.setCurrentUrl('?search=vodka');
-    setupApp(await BottlesPage());
+    await setupApp(await BottlesPage());
 
     const input = screen.getByRole('searchbox');
     expect(input).toHaveValue('vodka');
@@ -129,7 +129,7 @@ describe('BottlesPage', () => {
   });
 
   it('groups bottles by first letter when not searching', async () => {
-    setupApp(await BottlesPage());
+    await setupApp(await BottlesPage());
 
     const groups = screen.getAllByRole('group');
     expect(groups.length).toBeGreaterThan(0);
@@ -140,7 +140,7 @@ describe('BottlesPage', () => {
   });
 
   it('only shows liqueur and spirit type ingredients', async () => {
-    setupApp(await BottlesPage());
+    await setupApp(await BottlesPage());
 
     const allIngredients = await getAllIngredients();
     const nonBottles = allIngredients.filter(
@@ -156,7 +156,7 @@ describe('BottlesPage', () => {
   });
 
   it('shows both spirits and liqueurs in the list', async () => {
-    setupApp(await BottlesPage());
+    await setupApp(await BottlesPage());
 
     const allIngredients = await getAllIngredients();
     const spirits = allIngredients.filter((i) => i.type === 'spirit');

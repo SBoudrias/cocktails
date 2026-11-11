@@ -30,11 +30,20 @@ function renderRecipe(recipe: RecipeListItem | QuantityRecipeListItem) {
 }
 
 /**
- * How many skeleton rows the placeholder renders at most: enough to fill the
- * first screens and match the typical list, without rendering a thousand
- * placeholders for the giants. The real list replaces it wholesale.
+ * How tall one skeleton row is, in px — kept in step with the row it stands
+ * in for (name + source + quantity chip, plus the stack's spacing).
  */
-const LOADING_SKELETON_MAX_ROWS = 20;
+const SKELETON_ROW_HEIGHT_PX = 56;
+
+/**
+ * How many skeleton rows fill the viewport: roughly its height over one row's,
+ * so a list long enough to scroll reserves matching space. Derived at render
+ * time from the viewport, with a floor of one screenful for small viewports.
+ */
+function getViewportSkeletonRows(): number {
+  const viewportHeight = typeof window === 'undefined' ? 800 : window.innerHeight;
+  return Math.ceil(viewportHeight / SKELETON_ROW_HEIGHT_PX);
+}
 
 /**
  * The list area while the catalog loads, or after it failed: one skeleton row
@@ -61,7 +70,9 @@ function CatalogListState({
     );
   }
 
-  const skeletonRows = Math.max(1, Math.min(recipeCount ?? 1, LOADING_SKELETON_MAX_ROWS));
+  // Enough placeholders to cover the viewport (or the shorter list, whichever
+  // is smaller) — the real list replaces them wholesale.
+  const skeletonRows = Math.max(1, Math.min(recipeCount ?? 1, getViewportSkeletonRows()));
 
   return (
     <Card sx={{ m: 1 }} aria-label="Loading recipes">
@@ -137,28 +148,6 @@ export default function SearchableRecipePage({
 
   const catalogLoading = fromCatalog && catalog == null;
 
-  const body = catalogLoading ? (
-    <CatalogListState failed={failed} recipeCount={recipeCount} />
-  ) : allRecipes.length > 0 ? (
-    isSearching ? (
-      <RecipeSearchableList
-        items={allRecipes}
-        renderItem={renderRecipe}
-        searchTerm={searchTerm}
-        emptyState={
-          <>
-            <Card sx={{ m: 2 }}>
-              <CardHeader title="No results found" />
-            </Card>
-            <SearchAllLink searchTerm={searchTerm} />
-          </>
-        }
-      />
-    ) : (
-      <LinkList header={listHeader} items={allRecipes} renderItem={renderRecipe} />
-    )
-  ) : null;
-
   return (
     <>
       {!fromCatalog && allRecipes.length === 0 && title != null ? (
@@ -170,15 +159,30 @@ export default function SearchableRecipePage({
           onSearchChange={setSearchTerm}
         />
       )}
-      {isSearching ? (
-        body
+      {!isSearching && children}
+      {catalogLoading ? (
+        <CatalogListState failed={failed} recipeCount={recipeCount} />
       ) : (
-        <>
-          {children}
-          {body}
-          {footer}
-        </>
+        allRecipes.length > 0 &&
+        (isSearching ? (
+          <RecipeSearchableList
+            items={allRecipes}
+            renderItem={renderRecipe}
+            searchTerm={searchTerm}
+            emptyState={
+              <>
+                <Card sx={{ m: 2 }}>
+                  <CardHeader title="No results found" />
+                </Card>
+                <SearchAllLink searchTerm={searchTerm} />
+              </>
+            }
+          />
+        ) : (
+          <LinkList header={listHeader} items={allRecipes} renderItem={renderRecipe} />
+        ))
       )}
+      {!isSearching && footer}
     </>
   );
 }

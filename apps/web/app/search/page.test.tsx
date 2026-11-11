@@ -7,7 +7,7 @@ import SearchPage from './page';
 describe('SearchPage', () => {
   it('redirects to all recipes with the search term', async () => {
     mockRouter.setCurrentUrl('/search?search=mai%20tai');
-    setupApp(SearchPage());
+    await setupApp(SearchPage());
 
     await waitFor(() => {
       expect(mockRouter).toMatchObject({
@@ -19,7 +19,7 @@ describe('SearchPage', () => {
 
   it('redirects to all recipes without a search term', async () => {
     mockRouter.setCurrentUrl('/search');
-    setupApp(SearchPage());
+    await setupApp(SearchPage());
 
     await waitFor(() => {
       expect(mockRouter).toMatchObject({ pathname: '/list/recipes', query: {} });

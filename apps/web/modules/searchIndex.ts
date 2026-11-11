@@ -1,11 +1,8 @@
 import type { SearchIndex } from '#/modules/buildSearchIndex';
 import { createSharedJson } from '#/modules/sharedJson';
 
-export const {
-  load: loadSearchIndex,
-  getLoaded: getLoadedSearchIndex,
-  reset: resetSearchIndexCache,
-} = createSharedJson<SearchIndex>('data/search-index.json');
+export const { load: loadSearchIndex, getLoaded: getLoadedSearchIndex } =
+  createSharedJson<SearchIndex>('data/search-index.json');
 
 /**
  * Start loading without waiting for the result (search box focus, idle time).

@@ -5,7 +5,7 @@ import AuthorRecipesPage from './page';
 
 describe('AuthorRecipesPage', () => {
   it('renders the About card with link and description for a verified author', async () => {
-    setupApp(
+    await setupApp(
       await AuthorRecipesPage({
         params: Promise.resolve({ name: 'brian-maxwell' }),
       }),
@@ -22,7 +22,7 @@ describe('AuthorRecipesPage', () => {
   });
 
   it('renders the card header for a name-only author, without extra links', async () => {
-    setupApp(
+    await setupApp(
       await AuthorRecipesPage({
         params: Promise.resolve({ name: 'aj-stocak' }),
       }),
@@ -34,7 +34,7 @@ describe('AuthorRecipesPage', () => {
   });
 
   it("links the author's known-for bars and the sources behind them", async () => {
-    setupApp(
+    await setupApp(
       await AuthorRecipesPage({
         params: Promise.resolve({ name: 'anders-erickson' }),
       }),
@@ -57,7 +57,7 @@ describe('AuthorRecipesPage', () => {
   });
 
   it('renders social links as brand icons with @handle labels', async () => {
-    setupApp(
+    await setupApp(
       await AuthorRecipesPage({
         params: Promise.resolve({ name: 'sam-ross' }),
       }),
@@ -75,7 +75,7 @@ describe('AuthorRecipesPage', () => {
   });
 
   it('renders website links as globe icon with domain label', async () => {
-    setupApp(
+    await setupApp(
       await AuthorRecipesPage({
         params: Promise.resolve({ name: 'garret-richard' }),
       }),

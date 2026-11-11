@@ -42,7 +42,7 @@ beforeEach(() => {
 
 describe('HomePage', () => {
   it('lists calculators alphabetically', async () => {
-    setupApp(await HomePage());
+    await setupApp(await HomePage());
 
     const calculators = screen.getByText('Calculators').closest('ul');
     if (calculators == null) {
@@ -68,7 +68,7 @@ describe('HomePage', () => {
     ).toHaveAttribute('href', '/calculators/milk-clarification');
   });
   it('links to recently added recipes when recent recipe data is available', async () => {
-    setupApp(await HomePage());
+    await setupApp(await HomePage());
 
     expect(screen.getByRole('link', { name: /recently added/i })).toHaveAttribute(
       'href',
@@ -79,7 +79,7 @@ describe('HomePage', () => {
   it('hides the recently added link when recent recipe data is unavailable', async () => {
     vi.mocked(getRecentlyAddedRecipes).mockResolvedValue([]);
 
-    setupApp(await HomePage());
+    await setupApp(await HomePage());
 
     expect(
       screen.queryByRole('link', { name: /recently added/i }),
@@ -87,7 +87,7 @@ describe('HomePage', () => {
   });
 
   it('links to the non-alcoholic recipe list', async () => {
-    setupApp(await HomePage());
+    await setupApp(await HomePage());
 
     expect(screen.getByRole('link', { name: 'Non-Alcoholic Recipes' })).toHaveAttribute(
       'href',

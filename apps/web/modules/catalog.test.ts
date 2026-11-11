@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   failJson,
   serveJson,
@@ -7,12 +7,7 @@ import {
   sharedJsonUrl,
 } from '#/testing/sharedJsonServer';
 import type { Catalog } from './buildCatalog';
-import {
-  getCatalogList,
-  getLoadedCatalog,
-  loadCatalog,
-  resetCatalogCache,
-} from './catalog';
+import { getCatalogList, getLoadedCatalog, loadCatalog } from './catalog';
 
 const catalog: Catalog = {
   cards: {
@@ -26,10 +21,6 @@ const catalog: Catalog = {
     ],
   },
 };
-
-beforeEach(() => {
-  resetCatalogCache();
-});
 
 describe('loadCatalog', () => {
   it('fetches the static catalog once for concurrent and later callers', async () => {

@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   failJson,
   serveJson,
@@ -12,7 +12,6 @@ import {
   getLoadedSearchIndex,
   loadSearchIndex,
   preloadSearchIndex,
-  resetSearchIndexCache,
 } from './searchIndex';
 
 const index: SearchIndex = {
@@ -22,10 +21,6 @@ const index: SearchIndex = {
     searchText: 'daiquiri white rum lime',
   },
 };
-
-beforeEach(() => {
-  resetSearchIndexCache();
-});
 
 describe('loadSearchIndex', () => {
   it('fetches the static index once for concurrent and later callers', async () => {
@@ -57,9 +52,6 @@ describe('loadSearchIndex', () => {
     expect(getLoadedSearchIndex()).toBeUndefined();
     const loaded = await pending;
     expect(getLoadedSearchIndex()).toBe(loaded);
-
-    resetSearchIndexCache();
-    expect(getLoadedSearchIndex()).toBeUndefined();
   });
 
   it('retries after a network error', async () => {
