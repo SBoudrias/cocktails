@@ -42,12 +42,6 @@ jobs:
       - name: Prune payload twins 🧹
         run: find apps/web/out -name '__next._full.txt' -type f -delete
 
-      # Bake the service worker's precache manifest (app shell: home page,
-      # offline fallback, hashed _next assets, search index, icons) and its
-      # content-hash version into out/sw.js.
-      - name: Bake service worker precache 🔧
-        run: node apps/web/tools/generate-sw-precache.ts
-
       - name: Deploy to gh-pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:

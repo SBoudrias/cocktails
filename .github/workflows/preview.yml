@@ -70,13 +70,6 @@ jobs:
         if: github.event.action != 'closed'
         run: find apps/web/out -name '__next._full.txt' -type f -delete
 
-      # Bake the service worker's precache manifest (app shell: home page,
-      # offline fallback, hashed _next assets, search index, icons) and its
-      # content-hash version into out/sw.js.
-      - name: Bake service worker precache 🔧
-        if: github.event.action != 'closed'
-        run: node apps/web/tools/generate-sw-precache.ts
-
       - name: Deploy PR Preview 🚀
         id: preview
         uses: rossjrw/pr-preview-action@v1

@@ -11,6 +11,10 @@ import sharp from 'sharp';
  * maskable variant fits the 80% safe-zone circle. Sizes: maskable 512,
  * plain 512 and 192, and 180 apple-touch-icon. All PNG, opaque.
  *
+ * This script FAILS LOUDLY: if any icon cannot be written, or what lands on
+ * disk is not the exact size and PNG format expected, it exits non-zero with
+ * a message naming the file and the problem.
+ *
  * Run from the repo root: node apps/web/tools/generate-icons.ts
  * Writes into apps/web/public/icons/. Commit the result.
  */
@@ -73,9 +77,22 @@ const targets: { file: string; size: number; scale: number }[] = [
 
 await mkdir(iconsDir, { recursive: true });
 for (const { file, size, scale } of targets) {
-  const svg = Buffer.from(scene(scale));
-  await writeFile(
-    path.join(iconsDir, file),
-    await sharp(svg).resize(size, size).png().toBuffer(),
-  );
+  const target = path.join(iconsDir, file);
+  try {
+    const svg = Buffer.from(scene(scale));
+    await writeFile(target, await sharp(svg).resize(size, size).png().toBuffer());
+  } catch (error) {
+    throw new Error(
+      `failed to generate ${target}: ${error instanceof Error ? error.message : error}`,
+    );
+  }
+
+  // Verify what landed on disk: exact size and PNG format. A wrong-size or
+  // wrong-format icon breaks installability silently otherwise.
+  const meta = await sharp(target).metadata();
+  if (meta.format !== 'png' || meta.width !== size || meta.height !== size) {
+    throw new Error(
+      `verification failed for ${target}: expected ${size}x${size} PNG, got ${meta.width}x${meta.height} ${meta.format ?? 'unknown'}`,
+    );
+  }
 }

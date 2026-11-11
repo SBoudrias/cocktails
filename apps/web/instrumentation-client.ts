@@ -9,16 +9,25 @@ import { enableHistorySync } from 'nuqs/adapters/react';
 // navigations too.
 enableHistorySync();
 
-// Register the service worker (public/sw.js). Same scope as the app: with the
-// /cocktails basePath the SW lives at /cocktails/sw.js and controls the app's
-// pages and assets only. Registration is the same under a preview basePath,
-// since the base path is mirrored in this module too. Next runs this file in
-// the browser only, but the navigator read stays guarded so the module also
-// loads cleanly outside a browser (static analysis, SSR-ish tooling).
+// Register the service worker (public/sw.js), production only: under
+// `next dev` the fetch handler would cache-first Turbopack's dev chunks
+// (keyed by module path, not content), serving stale code after edits —
+// painful to debug and persistent across dev sessions on localhost.
+//
+// Same scope as the app: with the /cocktails basePath the SW lives at
+// /cocktails/sw.js and controls the app's pages and assets only.
+// Registration is the same under a preview basePath, since the base path is
+// mirrored in this module too.
+//
+// The explicit path (not the Next.js guide's `new URL('../sw.js',
+// import.meta.url)`) is required by the static export: this module ships in
+// hashed chunks under /cocktails/_next/static/chunks/, so import.meta.url
+// resolves to a chunk URL, not the site root; and the deploy root moves with
+// the basePath (/cocktails, or /cocktails/pr-preview/pr-N on PRs).
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
-if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register(`${basePath}/sw.js`)
+    .register(`${basePath}/sw.js`, { updateViaCache: 'none' })
     .catch((error: unknown) =>
       console.error('service worker registration failed', error),
     );

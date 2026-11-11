@@ -1,14 +1,19 @@
 import { createHash } from 'node:crypto';
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { access, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { Script } from 'node:vm';
 
 /**
  * Bake the service worker's precache manifest and build version into the
- * built export's out/sw.js. Run AFTER `next build`, BEFORE deploy.
+ * built export's out/sw.js. Chained onto the workspace build script (after
+ * `next build` and `next-sitemap`), so a local `yarn build` produces exactly
+ * the SW that deploys.
  *
- * The committed public/sw.js holds empty placeholders (also serving `next
- * dev`, where the SW is inert by design); the build copies it to out/, and
- * this pass fills the placeholders from the built output.
+ * The committed public/sw.js holds empty placeholders; the build copies it
+ * to out/, and this pass fills the placeholders from the built output. The
+ * placeholder SW is never served to browsers unbaked: registration is
+ * production-only (see instrumentation-client.ts), and in production this
+ * pass always runs as part of the build.
  *
  * Precache is deliberately conservative — the app shell, not the site:
  * - the home page and the offline fallback HTML
@@ -19,7 +24,12 @@ import path from 'node:path';
  * Per-recipe/per-ingredient pages (~4,700) are NEVER precached; a follow-up
  * will add the catalog data files here. Navigations are network-first with a
  * cached fallback at runtime, so visited pages work offline without being
- * precached.
+ * precached (offline = what was visited since the last deploy).
+ *
+ * This script FAILS LOUDLY: a missing build output, a missing required
+ * file, an unbaked or already-baked sw.js, or a baked result that does not
+ * parse exits non-zero with a message naming the problem, so CI never ships
+ * a silently-broken offline experience.
  *
  * Run from the repo root: node apps/web/tools/generate-sw-precache.ts
  */
@@ -29,8 +39,20 @@ const outDir = path.join(repoRoot, 'apps', 'web', 'out');
 const swPath = path.join(outDir, 'sw.js');
 
 // App pages served at the site root of the export. The home page is the
-// fallback shell for uncached navigation URLs.
+// precached app shell; offline.html is the offline fallback for uncached
+// navigations.
 const PAGE_ENTRIES = ['index.html', 'offline.html'];
+
+// Files the offline experience depends on: if any is missing from the
+// export, the deploy would silently ship a broken PWA, so their absence is
+// fatal here.
+const REQUIRED_FILES = [
+  ...PAGE_ENTRIES,
+  path.join('data', 'search-index.json'),
+  path.join('icons', 'icon-192.png'),
+  path.join('icons', 'icon-512.png'),
+  path.join('icons', 'maskable-512.png'),
+];
 
 async function listFiles(dir: string): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -43,69 +65,144 @@ async function listFiles(dir: string): Promise<string[]> {
   return nested.flat();
 }
 
-const outFiles = await listFiles(outDir);
-const relative = outFiles.map((file) => path.relative(outDir, file));
-
-const precache = relative.filter((file) => {
-  if (PAGE_ENTRIES.includes(file)) return true;
-  // Hashed build assets: JS chunks, extracted CSS, fonts, bundled media.
-  if (file.startsWith(`_next${path.sep}`)) return true;
-  // Shared data already served as static files.
-  if (file === path.join('data', 'search-index.json')) return true;
-  // PWA icons referenced by the manifest.
-  if (file.startsWith(path.join('icons') + path.sep)) return true;
-  return false;
-});
-
-// index.html is served as /, not /index.html. Everything else keeps its
-// path, using the served URL form (no .html suffix for route pages).
-const urls = precache.map((file) => (file === 'index.html' ? './' : `./${file}`)).sort();
-
-const sw = await readFile(swPath, 'utf8');
-
-// Version by content: any precached asset changing changes the hash, so the
-// next deploy installs a fresh cache and the old one is deleted on activate.
-// Per-file hashes are computed in parallel, then folded in list order so the
-// result is deterministic.
-const digests = await Promise.all(
-  precache.map((file) =>
-    readFile(path.join(outDir, file)).then((content) =>
-      createHash('sha256').update(file).update(content).digest(),
-    ),
-  ),
-);
-const hash = createHash('sha256');
-for (const digest of digests) {
-  hash.update(digest);
-}
-const version = hash.digest('hex').slice(0, 12);
-
-// Match the committed placeholders in public/sw.js.
-const replaceOrThrow = (source: string, pattern: RegExp, replacement: string) => {
-  const updated = source.replace(pattern, replacement);
-  if (updated === source) {
-    throw new Error(`placeholder ${pattern} not found in ${swPath}`);
+async function main(): Promise<void> {
+  // The build output must exist: this pass runs after `next build`.
+  try {
+    await access(outDir);
+  } catch {
+    throw new Error(
+      `build output not found: ${outDir} — run \`yarn workspace @cocktails/web build\` before this script`,
+    );
   }
-  return updated;
-};
 
-const withPrecache = replaceOrThrow(
-  sw,
-  /const PRECACHE = \[\];/,
-  `const PRECACHE = ${JSON.stringify(urls, null, 2)};`,
-);
-const withVersion = replaceOrThrow(
-  withPrecache,
-  /const VERSION = '__SW_VERSION__';/,
-  `const VERSION = '${version}';`,
-);
-await writeFile(swPath, withVersion);
+  // The build must have copied the placeholder SW into the export.
+  let sw: string;
+  try {
+    sw = await readFile(swPath, 'utf8');
+  } catch {
+    throw new Error(
+      `${swPath} not found — the build should copy public/sw.js into out/; check that apps/web/public/sw.js is committed and the build ran to completion`,
+    );
+  }
 
-const bytes = (
-  await Promise.all(precache.map((file) => readFile(path.join(outDir, file))))
-).reduce((total, buffer) => total + buffer.length, 0);
+  const outFiles = await listFiles(outDir);
+  const relative = outFiles.map((file) => path.relative(outDir, file));
 
-console.log(`precache: ${urls.length} URLs, ~${(bytes / 1024 / 1024).toFixed(1)} MB`);
-for (const url of urls) {
-  console.log(`  ${url}`);
+  // Every file the offline experience needs must be present in the export.
+  const missing = REQUIRED_FILES.filter((file) => !relative.includes(file));
+  if (missing.length > 0) {
+    throw new Error(
+      `required export files missing from out/: ${missing.join(', ')} — the build output is incomplete; refusing to bake a service worker that would ship a broken offline experience`,
+    );
+  }
+
+  // There must be build assets to precache: a manifest without the app's
+  // JS/CSS chunks means the export is broken, not merely small.
+  const assetCount = relative.filter((file) =>
+    file.startsWith(`_next${path.sep}`),
+  ).length;
+  if (assetCount === 0) {
+    throw new Error(
+      'no _next/ build assets found in out/ — the static export produced no hashed assets, which should never happen; check the build logs',
+    );
+  }
+
+  // Sorted once, up front: the URL list, the hash fold, and the printed
+  // manifest all follow a stable order (readdir's is not guaranteed stable),
+  // so two builds of identical content bake byte-identical SWs.
+  const precache = relative
+    .filter((file) => {
+      if (PAGE_ENTRIES.includes(file)) return true;
+      // Hashed build assets: JS chunks, extracted CSS, fonts, bundled media.
+      if (file.startsWith(`_next${path.sep}`)) return true;
+      // Shared data already served as static files.
+      if (file === path.join('data', 'search-index.json')) return true;
+      // PWA icons referenced by the manifest.
+      if (file.startsWith(path.join('icons') + path.sep)) return true;
+      return false;
+    })
+    .toSorted();
+
+  // index.html is served as /, not /index.html. Every other entry keeps its
+  // file path — including the .html suffix for route pages, which is exactly
+  // the form the SW's own `caches.match(offline)` looks up.
+  const urls = precache.map((file) => (file === 'index.html' ? './' : `./${file}`));
+
+  // Read each precached file once. The hash folds the pairs in list order
+  // (not resolution order), so the version is deterministic across builds
+  // of identical content.
+  const entries = await Promise.all(
+    precache.map(async (file) => {
+      const content = await readFile(path.join(outDir, file));
+      return [file, content] as const;
+    }),
+  );
+  const hash = createHash('sha256');
+  let bytes = 0;
+  for (const [file, content] of entries) {
+    hash.update(file);
+    hash.update(content);
+    bytes += content.length;
+  }
+  const version = hash.digest('hex').slice(0, 12);
+
+  // Match the committed placeholders in public/sw.js. An already-baked SW
+  // (e.g. this pass ran twice without a rebuild) fails loudly here. The
+  // replacement goes through a function, so `$`/`$&` sequences in the inserted
+  // JSON are kept literal instead of being interpreted as replace patterns.
+  const replaceOrThrow = (
+    source: string,
+    pattern: RegExp,
+    replacement: string,
+    what: string,
+  ) => {
+    const updated = source.replace(pattern, () => replacement);
+    if (updated === source) {
+      throw new Error(
+        `${what} placeholder not found in ${swPath} — the SW is missing or already baked; rebuild (public/sw.js must carry the placeholders) before running this pass again`,
+      );
+    }
+    return updated;
+  };
+
+  const withPrecache = replaceOrThrow(
+    sw,
+    /const PRECACHE = \[\];/,
+    `const PRECACHE = ${JSON.stringify(urls, null, 2)};`,
+    'precache list',
+  );
+  const baked = replaceOrThrow(
+    withPrecache,
+    /const VERSION = '__SW_VERSION__';/,
+    `const VERSION = '${version}';`,
+    'version',
+  );
+
+  // The baked SW must parse: a template mistake that ships a SyntaxError
+  // takes the whole site offline, so check before writing.
+  new Script(baked, { filename: swPath });
+
+  await writeFile(swPath, baked);
+
+  // Verify what actually landed on disk matches the bake, byte for byte.
+  const written = await readFile(swPath, 'utf8');
+  if (written !== baked) {
+    throw new Error(
+      `verification failed: ${swPath} on disk does not match the baked content — the write was interrupted or the file was modified concurrently`,
+    );
+  }
+
+  console.log(`precache: ${urls.length} URLs, ~${(bytes / 1024 / 1024).toFixed(1)} MB`);
+  for (const url of urls) {
+    console.log(`  ${url}`);
+  }
+}
+
+try {
+  await main();
+} catch (error) {
+  console.error(
+    `generate-sw-precache failed: ${error instanceof Error ? error.message : error}`,
+  );
+  process.exit(1);
 }

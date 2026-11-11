@@ -41,7 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary' },
   icons: {
-    icon: [{ url: '/cocktails/favicon.ico', sizes: '48x48', type: 'image/x-icon' }],
+    // The favicon <link> comes from the app/favicon.ico file convention;
+    // only the apple-touch-icon is new here.
     apple: [
       {
         url: '/cocktails/icons/apple-touch-icon.png',

@@ -6,12 +6,16 @@ import AppHeader from '#/components/AppHeader';
 
 export const metadata: Metadata = {
   title: 'Offline | Cocktail Index',
+  // The offline fallback is an internal SW page, not site content: keep it
+  // out of search indexes and the sitemap (also excluded in
+  // next-sitemap.config.js).
+  robots: { index: false },
 };
 
 /**
  * The offline fallback the service worker serves for navigations that are
- * neither reachable nor cached. Kept free of client JS so it renders with
- * nothing precached beyond the shell.
+ * neither reachable nor cached. A server-rendered page like any other: it
+ * works offline because every _next/ asset it loads is precached.
  */
 export default function OfflinePage() {
   return (
