@@ -10,14 +10,14 @@ import { getRecipeUrl } from '#/modules/url';
  * and `page` are not here: only book source pages group by them, and those
  * pages keep their lists baked.
  */
-export type CatalogCard = [name: string, source: string];
+type CatalogCard = [name: string, source: string];
 
 /**
  * One row of an ingredient/category page's list: the recipe's href, and the
  * quantity of that page's ingredient in it (`null` when the data lacks one —
  * the render guard against that drops the quantity, not the row).
  */
-export type CatalogEntry = [href: string, quantity: RecipeIngredient['quantity'] | null];
+type CatalogEntry = [href: string, quantity: RecipeIngredient['quantity'] | null];
 
 /**
  * The recipe lists of every ingredient and category page, keyed the way those
@@ -36,7 +36,7 @@ export type Catalog = {
  * the page renders them, and how to pick each recipe's quantity for that
  * page.
  */
-export type CatalogListInput = {
+type CatalogListInput = {
   key: string;
   recipes: Recipe[];
   pickQuantity: (recipe: Recipe) => RecipeIngredient['quantity'] | undefined;
@@ -44,8 +44,7 @@ export type CatalogListInput = {
 
 /**
  * The quantity of the category (or one of its child categories, or a bottle
- * of it) in a recipe — what a category page's cards display. Shared by the
- * page (for its baked rows) and the catalog (for the full list).
+ * of it) in a recipe — what a category page's cards display.
  */
 export function getCategoryQuantityPicker(
   category: { slug: string },

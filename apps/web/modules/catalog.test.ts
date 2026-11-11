@@ -76,9 +76,9 @@ describe('getCatalogList', () => {
     expect(maiTai?.quantity).toBeUndefined();
   });
 
-  it('hands undefined back for an unknown key, so the caller keeps its rows', () => {
-    expect(getCatalogList(catalog, 'category/new-page')).toBeUndefined();
-    expect(getCatalogList(undefined, 'category/rum')).toBeUndefined();
+  it('renders no rows for a key the catalog does not carry', () => {
+    expect(getCatalogList(catalog, 'category/new-page')).toEqual([]);
+    expect(getCatalogList(undefined, 'category/rum')).toEqual([]);
   });
 
   it('skips entries whose card the catalog does not know, never mislabels one', () => {

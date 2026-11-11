@@ -80,8 +80,11 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   return (
     <SearchableRecipePage
       title={ingredient.name}
-      catalogKey={`ingredient/${ingredient.type}/${ingredient.slug}`}
-      hasRecipes={relatedRecipes.length > 0}
+      catalogKey={
+        relatedRecipes.length > 0
+          ? `ingredient/${ingredient.type}/${ingredient.slug}`
+          : undefined
+      }
       listHeader={`Recipes using ${ingredient.name}`}
       footer={
         <FixBugCard

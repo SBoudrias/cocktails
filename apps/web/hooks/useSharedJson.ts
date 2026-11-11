@@ -12,7 +12,8 @@ import { useEffect, useState } from 'react';
  * `urgent` loads right away (e.g. landing with `?search=` active); otherwise
  * loading waits for browser idle time with a 3 s fallback, so it never
  * competes with the first paint. A disabled hook (a page that needs no
- * resource) fetches nothing.
+ * resource) fetches nothing. A failed fetch is tracked in `failed` for the
+ * caller to surface, and forgotten so the next call retries.
  */
 export function useSharedJson<T>({
   load,
@@ -24,8 +25,9 @@ export function useSharedJson<T>({
   getLoaded: () => T | undefined;
   enabled?: boolean;
   urgent: boolean;
-}): T | undefined {
+}): { value: T | undefined; failed: boolean } {
   const [value, setValue] = useState<T | undefined>(getLoaded);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     if (!enabled) return;
@@ -34,9 +36,13 @@ export function useSharedJson<T>({
     const loadNow = () => {
       load()
         .then((loaded) => {
-          if (active) setValue(loaded);
+          if (!active) return;
+          setFailed(false);
+          setValue(loaded);
         })
-        .catch(() => {});
+        .catch(() => {
+          if (active) setFailed(true);
+        });
     };
 
     if (urgent) {
@@ -62,5 +68,5 @@ export function useSharedJson<T>({
     };
   }, [load, getLoaded, enabled, urgent]);
 
-  return value;
+  return { value, failed };
 }

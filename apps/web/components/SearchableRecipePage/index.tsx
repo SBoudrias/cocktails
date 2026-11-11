@@ -2,7 +2,7 @@
 
 import { Button, Card, CardContent, CardHeader, CircularProgress } from '@mui/material';
 import { useQueryState } from 'nuqs';
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type { ReactNode } from 'react';
 import AppHeader from '#/components/AppHeader';
 import { LinkList } from '#/components/LinkList';
@@ -29,6 +29,25 @@ function renderRecipe(recipe: RecipeListItem | QuantityRecipeListItem) {
   );
 }
 
+/** The state of a catalog-driven list: fetching, failed, or neither. */
+function CatalogListState({ failed }: { failed: boolean }) {
+  return failed ? (
+    <Card sx={{ m: 1 }}>
+      <CardHeader title="Recipes could not be loaded" />
+      <CardContent>
+        <Button onClick={() => window.location.reload()}>Reload the page</Button>
+      </CardContent>
+    </Card>
+  ) : (
+    <Card sx={{ m: 1 }}>
+      <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <CircularProgress size={20} aria-label="Loading recipes" />
+        Loading recipes…
+      </CardContent>
+    </Card>
+  );
+}
+
 /**
  * The search island of a page listing recipes: the search header, and the
  * page's recipes, searchable through the shared search index.
@@ -39,17 +58,16 @@ function renderRecipe(recipe: RecipeListItem | QuantityRecipeListItem) {
  *
  * Where the page passes `recipes`, those rows ship baked in the static HTML.
  * Where it passes `catalogKey` instead, the whole list resolves at runtime
- * from the shared catalog (fetched once per session, shared across pages):
- * a loading state stands in until it lands, and a failed fetch surfaces a
- * reload affordance rather than an empty list. `hasRecipes` (server-known
- * from the data, no rows shipped) keeps zero-recipe pages free of the search
- * header and the fetch.
+ * from the shared catalog (fetched once per session, shared across pages) —
+ * including inside a search, which matches the full list rather than a partial
+ * one. Until the fetch lands a loading state stands in (a failed fetch
+ * surfaces a reload affordance); a page whose catalog key the catalog does
+ * not carry renders no list.
  */
 export default function SearchableRecipePage({
   title,
   recipes,
   catalogKey,
-  hasRecipes = true,
   listHeader,
   children,
   footer,
@@ -59,8 +77,6 @@ export default function SearchableRecipePage({
   recipes?: (RecipeListItem | QuantityRecipeListItem)[];
   /** The page's key in the shared catalog, to render its list from there. */
   catalogKey?: string;
-  /** Whether a catalog-driven page has any recipes at all. */
-  hasRecipes?: boolean;
   listHeader: string;
   children?: ReactNode;
   footer?: ReactNode;
@@ -69,20 +85,10 @@ export default function SearchableRecipePage({
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
   const fromCatalog = catalogKey != null;
 
-  const [loadFailed, setLoadFailed] = useState(false);
-  const load = useCallback(() => {
-    setLoadFailed(false);
-
-    return loadCatalog().catch((error: unknown) => {
-      setLoadFailed(true);
-      throw error;
-    });
-  }, []);
-
-  const catalog = useSharedJson({
-    load,
+  const { value: catalog, failed } = useSharedJson({
+    load: loadCatalog,
     getLoaded: getLoadedCatalog,
-    enabled: fromCatalog && hasRecipes,
+    enabled: fromCatalog,
     // The list is the page's main content, so it loads right away rather
     // than waiting for idle time (search on it covers only the catalog).
     urgent: true,
@@ -91,66 +97,50 @@ export default function SearchableRecipePage({
   const allRecipes = useMemo(() => {
     if (catalogKey == null) return recipes ?? [];
 
-    return getCatalogList(catalog, catalogKey) ?? [];
+    return getCatalogList(catalog, catalogKey);
   }, [recipes, catalogKey, catalog]);
 
-  const showSearchHeader = fromCatalog ? hasRecipes : (recipes?.length ?? 0) > 0;
+  const catalogLoading = fromCatalog && catalog == null;
+
+  const body = catalogLoading ? (
+    <CatalogListState failed={failed} />
+  ) : allRecipes.length > 0 ? (
+    isSearching ? (
+      <RecipeSearchableList
+        items={allRecipes}
+        renderItem={renderRecipe}
+        searchTerm={searchTerm}
+        emptyState={
+          <>
+            <Card sx={{ m: 2 }}>
+              <CardHeader title="No results found" />
+            </Card>
+            <SearchAllLink searchTerm={searchTerm} />
+          </>
+        }
+      />
+    ) : (
+      <LinkList header={listHeader} items={allRecipes} renderItem={renderRecipe} />
+    )
+  ) : null;
 
   return (
     <>
-      {showSearchHeader ? (
+      {!fromCatalog && allRecipes.length === 0 && title != null ? (
+        <AppHeader title={title} />
+      ) : (
         <SearchHeader
           title={title}
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
         />
-      ) : (
-        <AppHeader title={title} />
       )}
       {isSearching ? (
-        <RecipeSearchableList
-          items={allRecipes}
-          renderItem={renderRecipe}
-          searchTerm={searchTerm}
-          emptyState={
-            <>
-              <Card sx={{ m: 2 }}>
-                <CardHeader title="No results found" />
-              </Card>
-              <SearchAllLink searchTerm={searchTerm} />
-            </>
-          }
-        />
+        body
       ) : (
         <>
           {children}
-          {fromCatalog && hasRecipes && catalog == null ? (
-            loadFailed ? (
-              <Card sx={{ m: 1 }}>
-                <CardHeader title="Recipes could not be loaded" />
-                <CardContent>
-                  <Button onClick={() => window.location.reload()}>
-                    Reload the page
-                  </Button>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card sx={{ m: 1 }}>
-                <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <CircularProgress size={20} aria-label="Loading recipes" />
-                  Loading recipes…
-                </CardContent>
-              </Card>
-            )
-          ) : (
-            allRecipes.length > 0 && (
-              <LinkList
-                header={listHeader}
-                items={allRecipes}
-                renderItem={renderRecipe}
-              />
-            )
-          )}
+          {body}
           {footer}
         </>
       )}

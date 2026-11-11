@@ -5,7 +5,7 @@ import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { getRecipeListUrl } from '#/modules/url';
 
-export default function AppHeader({ title }: { title?: string }) {
+export default function AppHeader({ title }: { title: string }) {
   const pathname = usePathname();
   const isHome = pathname === '/';
 

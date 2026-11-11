@@ -300,23 +300,19 @@ describe('CategoryPage', () => {
   });
 
   describe('catalog-driven recipe list', () => {
-    const prefixRecipe = (name: string): Recipe => ({
+    const catalogRecipe = (name: string): Recipe => ({
       ...testRecipes[0],
       name,
       slug: name.toLowerCase().replaceAll(' ', '-'),
     });
 
-    /** 102 recipes: all of them come from the catalog, none baked. */
-    const longRecipes = [
-      ...Array.from({ length: 100 }, (_, i) => prefixRecipe(`Prefix ${i + 1}`)),
-      prefixRecipe('Zebra Tail'),
-      prefixRecipe('Alpha Yeti'),
-    ];
+    /** Two recipes from the catalog: enough for loading, loaded and failed. */
+    const catalogRecipes = [catalogRecipe('Zebra Tail'), catalogRecipe('Alpha Yeti')];
 
     const catalog = buildCatalog([
       {
         key: 'category/london-dry-gin',
-        recipes: longRecipes,
+        recipes: catalogRecipes,
         pickQuantity: () => undefined,
       },
     ]);
@@ -336,7 +332,7 @@ describe('CategoryPage', () => {
     }
 
     beforeEach(() => {
-      vi.mocked(getRecipeByCategory).mockResolvedValue(longRecipes);
+      vi.mocked(getRecipeByCategory).mockResolvedValue(catalogRecipes);
     });
 
     it('shows the loading state before the catalog lands', async () => {
@@ -349,7 +345,7 @@ describe('CategoryPage', () => {
       );
 
       expect(screen.getByText(/loading recipes/i)).toBeInTheDocument();
-      expect(screen.queryByText('Zebra Tail')).not.toBeInTheDocument();
+      expect(screen.queryByText('Alpha Yeti')).not.toBeInTheDocument();
     });
 
     it('renders the full list from the catalog once loaded', async () => {
@@ -363,13 +359,53 @@ describe('CategoryPage', () => {
 
       await waitFor(() => {
         const list = getRecipeList();
-        expect(list).toHaveTextContent('Prefix 1');
         expect(list).toHaveTextContent('Zebra Tail');
         expect(list).toHaveTextContent('Alpha Yeti');
       });
       expect(fetch).toHaveBeenCalledWith(
         expect.stringContaining('/cocktails/data/catalog.json'),
       );
+    });
+
+    it('shows the loading state while searching, not a false no-results', async () => {
+      vi.mocked(globalThis.fetch).mockImplementation(
+        async () => new Promise(() => {}),
+      );
+      mockRouter.setCurrentUrl('?search=zebra');
+
+      setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      // While the catalog loads, a search shows the loading state — the
+      // full list it must match is not there yet — never "No results found".
+      expect(screen.getByText(/loading recipes/i)).toBeInTheDocument();
+      expect(screen.queryByText('No results found')).not.toBeInTheDocument();
+    });
+
+    it('offers a reload when a search outlives a failed catalog fetch', async () => {
+      vi.mocked(globalThis.fetch).mockResolvedValue(
+        new Response('nope', { status: 500 }),
+      );
+      mockRouter.setCurrentUrl('?search=zebra');
+
+      setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      // The reload affordance lives in the search branch too.
+      await waitFor(() => {
+        expect(
+          screen.getByText('Recipes could not be loaded'),
+        ).toBeInTheDocument();
+      });
+      expect(
+        screen.getByRole('button', { name: /reload the page/i }),
+      ).toBeInTheDocument();
     });
 
     it('offers a reload when the catalog fails to load', async () => {
@@ -389,7 +425,7 @@ describe('CategoryPage', () => {
       expect(
         screen.getByRole('button', { name: /reload the page/i }),
       ).toBeInTheDocument();
-      expect(screen.queryByText('Zebra Tail')).not.toBeInTheDocument();
+      expect(screen.queryByText('Alpha Yeti')).not.toBeInTheDocument();
     });
   });
 });
