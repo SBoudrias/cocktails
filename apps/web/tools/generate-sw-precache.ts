@@ -18,13 +18,16 @@ import { Script } from 'node:vm';
  * Precache is deliberately conservative — the app shell, not the site:
  * - the home page and the offline fallback HTML
  * - all _next/ static assets (JS/CSS chunks, fonts, media), hashed and safe
- * - the shared search index (data/search-index.json)
+ * - the shared catalog (data/catalog.json) and search index
+ *   (data/search-index.json): the two files every catalog-rendered list and
+ *   the search page fetch at runtime, so offline browsing of those lists
+ *   does not depend on having visited them online first
  * - the PWA icons
  *
- * Per-recipe/per-ingredient pages (~4,700) are NEVER precached; a follow-up
- * will add the catalog data files here. Navigations are network-first with a
- * cached fallback at runtime, so visited pages work offline without being
- * precached (offline = what was visited since the last deploy).
+ * Per-recipe/per-ingredient pages (~4,700) are NEVER precached. Navigations
+ * are network-first with a cached fallback at runtime, so visited pages work
+ * offline without being precached (offline = everything ever visited, across
+ * deploys — the runtime cache is kept from one version to the next).
  *
  * This script FAILS LOUDLY: a missing build output, a missing required
  * file, an unbaked or already-baked sw.js, or a baked result that does not
@@ -38,17 +41,42 @@ const repoRoot = path.resolve(import.meta.dirname, '..', '..', '..');
 const outDir = path.join(repoRoot, 'apps', 'web', 'out');
 const swPath = path.join(outDir, 'sw.js');
 
+/** A route's file form in the export: /list/recipes is emitted as recipes.html. */
+const toHtmlFile = (route: string) => `${route}.html`;
+
 // App pages served at the site root of the export. The home page is the
 // precached app shell; offline.html is the offline fallback for uncached
-// navigations.
-const PAGE_ENTRIES = ['index.html', 'offline.html'];
+// navigations. The /list/ hub pages are precached so the offline fallback's
+// "Go to all recipes" link (and every nav destination) is a real page offline
+// even on a fresh install that never visited it — each is tens of KB.
+const LIST_ENTRIES = [
+  'list/recipes',
+  'list/ingredients',
+  'list/bottles',
+  'list/recently-added',
+  'list/authors',
+  'list/bars',
+  'list/non-alcoholic',
+  'list/milk-clarification',
+] as const;
+
+const PAGE_ENTRIES = ['index.html', 'offline.html', ...LIST_ENTRIES.map(toHtmlFile)];
+
+// Shared data files served from /data/: precached in full so the lists that
+// render from them work offline on a fresh install. catalog.json is ~3 MB
+// raw (~280 KB gz over the wire) — the cost of the install-time cache.addAll
+// is accepted for a real offline catalog.
+const DATA_FILES = [
+  path.join('data', 'catalog.json'),
+  path.join('data', 'search-index.json'),
+];
 
 // Files the offline experience depends on: if any is missing from the
 // export, the deploy would silently ship a broken PWA, so their absence is
 // fatal here.
 const REQUIRED_FILES = [
   ...PAGE_ENTRIES,
-  path.join('data', 'search-index.json'),
+  ...DATA_FILES,
   path.join('icons', 'icon-192.png'),
   path.join('icons', 'icon-512.png'),
   path.join('icons', 'maskable-512.png'),
@@ -116,7 +144,7 @@ async function main(): Promise<void> {
       // Hashed build assets: JS chunks, extracted CSS, fonts, bundled media.
       if (file.startsWith(`_next${path.sep}`)) return true;
       // Shared data already served as static files.
-      if (file === path.join('data', 'search-index.json')) return true;
+      if (DATA_FILES.includes(file)) return true;
       // PWA icons referenced by the manifest.
       if (file.startsWith(path.join('icons') + path.sep)) return true;
       return false;
