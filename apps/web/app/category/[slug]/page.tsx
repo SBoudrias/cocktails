@@ -1,3 +1,4 @@
+import type { RootIngredient } from '@cocktails/data';
 import {
   getCategory,
   getChildCategories,
@@ -13,10 +14,11 @@ import CategoryName from '#/components/CategoryName';
 import FixBugCard from '#/components/FixBugCard';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
-import SubstitutionLists from '#/components/SubstitutionLists';
+import { RelatedCategoriesList } from '#/components/SubstitutionLists';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
-import { getCategoryBottlesUrl, getCategoryUrl } from '#/modules/url';
+import { ingredientHasData } from '#/modules/hasData';
+import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 
 type Params = { slug: string };
 
@@ -108,18 +110,27 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
           )}
         />
       )}
-      <SubstitutionLists
-        primaryHeader={`Examples of ${category.name}`}
-        substitutes={members}
-        seeAll={{
-          href: getCategoryBottlesUrl(category),
-          label: `${category.name} bottles`,
-        }}
-        relatedCategories={relatedCategories}
-      />
+      {members.length > 0 && (
+        <LinkList
+          header={`Examples of ${category.name}`}
+          items={members}
+          renderItem={renderIngredient}
+        />
+      )}
+      <RelatedCategoriesList categories={relatedCategories} />
       {additionalVideos.length > 0 && (
         <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
       )}
     </SearchableRecipePage>
+  );
+}
+
+function renderIngredient(ingredient: RootIngredient) {
+  return (
+    <LinkListItem
+      key={ingredient.slug}
+      href={ingredientHasData(ingredient) ? getIngredientUrl(ingredient) : undefined}
+      primary={ingredient.name}
+    />
   );
 }

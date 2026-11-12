@@ -77,8 +77,13 @@ describe('CategoryPage', () => {
       );
     });
 
-    it('caps the members list at 15 links with a see-all link last when capped', async () => {
-      // Rum's category page: 98 member bottles across its child categories.
+    it('lists every member bottle, uncapped, as the primary list', async () => {
+      // Rum's category page: 98 member bottles across its child categories —
+      // a long list of direct members is fine and expected, so unlike the
+      // ingredient page there is no cap and no see-all link.
+      const rumCategory = await getCategory('rum');
+      const expectedMembers = await getActualIngredientsForCategory(rumCategory);
+
       await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'rum' }),
@@ -89,29 +94,9 @@ describe('CategoryPage', () => {
         name: 'Examples of Rum',
       });
 
-      const links = within(membersGroup).getAllByRole('link');
-      expect(links).toHaveLength(15);
-
-      // The see-all link closes the list and points at the category's full
-      // bottles route.
-      const seeAllLink = within(membersGroup).getByRole('link', {
-        name: /see all/i,
-      });
-      expect(seeAllLink).toHaveAttribute('href', '/category/rum/bottles');
-      expect(seeAllLink).toBe(links.at(-1));
-    });
-
-    it('renders no see-all link when the category fits under the cap', async () => {
-      await setupApp(
-        await CategoryPage({
-          params: Promise.resolve({ slug: 'london-dry-gin' }),
-        }),
+      expect(within(membersGroup).getAllByRole('link')).toHaveLength(
+        expectedMembers.length,
       );
-
-      const membersGroup = screen.getByRole('group', {
-        name: 'Examples of London dry gin',
-      });
-
       expect(
         within(membersGroup).queryByRole('link', { name: /see all/i }),
       ).not.toBeInTheDocument();
@@ -155,7 +140,7 @@ describe('CategoryPage', () => {
       );
 
       expect(
-        screen.queryByRole('group', { name: /Examples of Falernum/ }),
+        screen.queryByRole('group', { name: /Examples of Coffee bitters/ }),
       ).not.toBeInTheDocument();
       expect(
         screen.queryByRole('group', { name: 'Substitution-friendly categories' }),

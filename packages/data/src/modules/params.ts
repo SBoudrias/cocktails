@@ -1,10 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { Source } from '../types/Source.ts';
-import { getAllCategories } from './categories';
 import { isChapterFolder } from './chapters';
 import { CATEGORY_ROOT, INGREDIENT_ROOT, RECIPE_ROOT } from './constants';
-import { getIngredientsForCategory } from './ingredients';
 
 export async function getRecipePageParams(): Promise<
   {
@@ -93,26 +91,6 @@ export async function getCategoryPageParams(): Promise<{ slug: string }[]> {
   for await (const dataFilePath of await fs.readdir(CATEGORY_ROOT)) {
     const categorySlug = path.basename(dataFilePath, '.json');
     params.push({ slug: categorySlug });
-  }
-
-  return params;
-}
-
-/**
- * Categories holding at least `minBottles` bottles of their own (direct
- * members plus members of child categories): those are the ones whose
- * category page needs a full bottles route to link out to.
- */
-export async function getCategoryBottlesPageParams(
-  minBottles: number,
-): Promise<{ slug: string }[]> {
-  const params = [];
-
-  for (const category of await getAllCategories()) {
-    const members = await getIngredientsForCategory(category);
-    if (members.length >= minBottles) {
-      params.push({ slug: category.slug });
-    }
   }
 
   return params;

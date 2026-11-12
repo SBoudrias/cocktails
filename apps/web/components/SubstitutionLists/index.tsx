@@ -39,6 +39,29 @@ function SeeAllLink({
 }
 
 /**
+ * The secondary substitution list: the substitution-friendly related
+ * categories, each linking to its category page. Also rendered on its own
+ * by the category pages, whose full member list is uncapped.
+ */
+export function RelatedCategoriesList({ categories }: { categories: Category[] }) {
+  if (categories.length === 0) return null;
+
+  return (
+    <LinkList
+      header="Substitution-friendly categories"
+      items={categories}
+      renderItem={(relatedCategory) => (
+        <LinkListItem
+          key={relatedCategory.slug}
+          href={getCategoryUrl(relatedCategory)}
+          primary={relatedCategory.name}
+        />
+      )}
+    />
+  );
+}
+
+/**
  * The substitution lists shared by the ingredient and category pages:
  *
  * - The primary list holds specific bottles from a single category, capped
@@ -90,19 +113,7 @@ export default function SubstitutionLists({
           footer={isCapped && <SeeAllLink href={seeAll.href} label={seeAll.label} />}
         />
       )}
-      {relatedCategories.length > 0 && (
-        <LinkList
-          header="Substitution-friendly categories"
-          items={relatedCategories}
-          renderItem={(relatedCategory) => (
-            <LinkListItem
-              key={relatedCategory.slug}
-              href={getCategoryUrl(relatedCategory)}
-              primary={relatedCategory.name}
-            />
-          )}
-        />
-      )}
+      <RelatedCategoriesList categories={relatedCategories} />
     </>
   );
 }
