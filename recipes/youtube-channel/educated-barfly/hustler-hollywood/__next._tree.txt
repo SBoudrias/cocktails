@@ -1,11 +1,10 @@
 :HL["/cocktails/_next/static/chunks/1tf4etm58a6li.css","style"]
 :HL["/cocktails/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/cocktails/_next/static/chunks/3hsbq7h_aggve.css","style"]
+:HL["/cocktails/_next/static/chunks/26m2pb8t0d_w3.css","style"]
 :HL["/cocktails/_next/static/chunks/34xf9m6qcd2jc.css","style"]
-:HL["/cocktails/_next/static/chunks/0d3-u__x65tx0.css","style"]
 5:[["children",{"s":"__PAGE__","h":160}]]
 4:[["children",{"s":{"n":"recipe","t":"d","k":"hustler-hollywood","s":[]},"h":96,"c":"$Q5"}]]
 3:[["children",{"s":{"n":"source","t":"d","k":"educated-barfly","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"type","t":"d","k":"youtube-channel","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"recipes","h":96,"c":"$Q2"}]]
-0:{"b":"oHOtNvgavUR9kDiPaK31f","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"nmQYnJyNrBiKQi9YBoKbd","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
