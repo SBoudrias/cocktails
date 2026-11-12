@@ -114,13 +114,7 @@ export default function VirtualGroupedList<const T extends { href: string }>({
           computeItemKey={(index) => items[index]?.href ?? `placeholder-${index}`}
           components={{ TopItemList: StickyTopItemList }}
           groupContent={(groupIndex) => (
-            <ListSubheader
-              component="div"
-              role="heading"
-              aria-level={2}
-              // Opaque: the rows scroll under it while it sticks.
-              sx={{ bgcolor: 'background.default' }}
-            >
+            <ListSubheader component="div" role="heading" aria-level={2}>
               {groups[groupIndex]?.label}
             </ListSubheader>
           )}
