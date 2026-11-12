@@ -59,6 +59,7 @@ describe('HomePage', () => {
       'Milk Clarification',
       'Saline Solution Calculator',
       'Sugar Adjusting (Brix calculator)',
+      'Super Juice',
     ]);
     expect(
       within(calculators).getByRole('link', { name: 'Juice Clarification' }),

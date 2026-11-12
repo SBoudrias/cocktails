@@ -131,6 +131,11 @@ export default async function HomePage() {
                   <ListItemText primary="Sugar Adjusting (Brix calculator)" />
                 </ListItem>
               </Link>
+              <Link href="/calculators/super-juice">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Super Juice" />
+                </ListItem>
+              </Link>
             </Paper>
           </ul>
         </li>
