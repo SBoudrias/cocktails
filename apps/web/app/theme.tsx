@@ -128,10 +128,10 @@ const theme = createTheme({
           paddingBottom: 16,
           backgroundColor: 'transparent',
         },
-        // Right below the fixed app bar, and opaque: the rows scroll under it.
+        // Right below the fixed app bar; the rows scroll under it while it
+        // sticks (no background: the user prefers the see-through look).
         sticky: ({ theme }) => ({
           ...belowAppBar(theme.mixins.toolbar),
-          backgroundColor: (theme.vars ?? theme).palette.background.default,
         }),
       },
     },
