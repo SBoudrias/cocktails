@@ -117,6 +117,7 @@ function main(): void {
 
 const invokedAsScript =
   process.argv[1] !== undefined &&
+  URL.canParse(`file://${process.argv[1]}`) &&
   import.meta.url === new URL(`file://${process.argv[1]}`).href;
 
 if (invokedAsScript) main();
