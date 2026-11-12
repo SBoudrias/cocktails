@@ -34,10 +34,16 @@ function cube(cx: number, y: number, a: number) {
   };
 }
 
-// Closed polygon through `points`, turned `deg` clockwise around (cx, cy).
-function rotated(points: [number, number][], deg: number, cx: number, cy: number) {
+// Closed polygon through `points`, scaled and turned `deg` clockwise around (cx, cy).
+function rotated(
+  points: [number, number][],
+  deg: number,
+  cx: number,
+  cy: number,
+  scale: number,
+) {
   const rad = (deg * Math.PI) / 180;
-  const [cos, sin] = [Math.cos(rad), Math.sin(rad)];
+  const [cos, sin] = [Math.cos(rad) * scale, Math.sin(rad) * scale];
   const turned = points.map(([x, y]) => {
     const [dx, dy] = [x - cx, y - cy];
     return `${(cx + dx * cos - dy * sin).toFixed(2)} ${(cy + dx * sin + dy * cos).toFixed(2)}`;
@@ -58,6 +64,7 @@ const bostonSmallTin = rotated(
   bostonTilt,
   12,
   12.25,
+  0.85,
 );
 const bostonBigTin = rotated(
   [
@@ -69,6 +76,7 @@ const bostonBigTin = rotated(
   bostonTilt,
   12,
   12.25,
+  0.85,
 );
 const bigRock = cube(12, 2.5, 8);
 const iceCubes = [cube(7.5, 11.25, 4.5), cube(16.5, 11.25, 4.5), cube(12, 4.5, 4.5)];
@@ -78,9 +86,10 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
   shaken: {
     body: `${bostonSmallTin} ${bostonBigTin}`,
     material: 'silver',
-    // short strokes parallel to the tilted shaker, clear of its outline
+    // rocking arcs: two arcs around each end, centered on the shaker, so the
+    // ends read as swinging back and forth
     motion:
-      'M9 7.35 Q9.23 4.95 11.2 3.55 M3.8 14.35 Q4.03 11.95 6 10.55 M17.8 12.35 Q19.77 10.95 20 8.55 M14.3 20.35 Q16.27 18.95 16.5 16.55',
+      'M13.65 3.1 A9.3 9.3 0 0 1 19.14 6.3 M15.25 1.74 A11 11 0 0 1 19.53 4.23 M10.35 21.4 A9.3 9.3 0 0 1 4.86 18.2 M8.75 22.76 A11 11 0 0 1 4.47 20.27',
   },
   // yarai mixing glass: thick base, spout, diamond cut, with a bar spoon
   stirred: {
@@ -163,12 +172,15 @@ export const servedOnShapes: Record<Recipe['served_on'], Shape> = {
     ].join(' '),
     facets: 'M4.8 15.6 L5.6 18.6 M11.4 9.4 L12.4 12.4 M10 5.4 L10 9.6',
   },
-  // frozen drink: a full glass crowned with a soft-serve swirl of slush
+  // frozen drink: the drink itself whipped into a soft-serve swirl, all of
+  // it inside the glass
   blended: {
-    body: 'M5.5 11.5 H18.5 L17.2 20.2 Q17 21.5 15.6 21.5 H8.4 Q7 21.5 6.8 20.2 Z',
-    level: 11.5,
-    ice: 'M4.8 11.5 C4.8 9.8 6 8.8 7.4 8.8 H16.6 C18 8.8 19.2 9.8 19.2 11.5 Z M7.2 8.8 C7.2 7.2 8.4 6 9.8 6 H14.2 C15.6 6 16.8 7.2 16.8 8.8 Z M9.6 6 C9.6 4.4 10.8 3.4 12 2.4 C13.2 3.4 14.4 4.4 14.4 6 Z',
-    parts: 'M15.6 7.6 L19.6 2.2',
+    body: 'M5 3.5 H19 L17.8 20 Q17.6 21.5 16 21.5 H8 Q6.4 21.5 6.2 20 Z',
+    // the drink fills the bottom of the glass and the three swirl tiers
+    liquid:
+      'M5.85 15 H18.15 L17.8 20 Q17.6 21.5 16 21.5 H8 Q6.4 21.5 6.2 20 Z M6.6 15 C6.6 13.2 7.8 12.2 9.2 12.2 H14.8 C16.2 12.2 17.4 13.2 17.4 15 Z M8.4 12.2 C8.4 10.6 9.6 9.4 11 9.4 H13 C14.4 9.4 15.6 10.6 15.6 12.2 Z M10.2 9.4 C10.2 7.8 11 6.6 12 5.6 C13 6.6 13.8 7.8 13.8 9.4 Z',
+    level: 5.6,
+    facets: 'M6 15 H18 M8.4 12.2 H15.6 M10.2 9.4 H13.8',
   },
 };
 
