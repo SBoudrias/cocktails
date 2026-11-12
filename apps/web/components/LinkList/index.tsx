@@ -1,4 +1,3 @@
-import ChevronRight from '@mui/icons-material/ChevronRight';
 import { List, ListItem, ListItemText, Paper, Stack } from '@mui/material';
 import type { ListItemTextProps } from '@mui/material/ListItemText';
 import type { LinkProps } from 'next/link';
@@ -6,6 +5,7 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 import StickyGroupHeader from '#/components/StickyGroupHeader';
 import type { ListConfig } from '#/modules/lists/type';
+import LinkRowAction from './LinkRowAction';
 
 export function LinkListItem<RouteType>({
   href,
@@ -21,7 +21,7 @@ export function LinkListItem<RouteType>({
   tertiary?: React.ReactNode;
 }) {
   const item = (
-    <ListItem divider secondaryAction={href ? <ChevronRight /> : undefined}>
+    <ListItem divider secondaryAction={href ? <LinkRowAction /> : undefined}>
       <Stack
         direction="row"
         sx={{ justifyContent: 'space-between', alignItems: 'center', width: '100%' }}

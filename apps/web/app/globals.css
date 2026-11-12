@@ -12,6 +12,33 @@ html {
   color-scheme: dark;
 }
 
+/* viewport-fit=cover (set in layout.tsx) lets the page paint under the
+   notch/home-indicator areas on iOS, so the standalone app can use the
+   full screen; these padding guard rails keep interactive elements out of
+   those areas. The variable form lets MUI components consume them
+   (e.g. sx={{ top: 'var(--safe-area-inset-top)' }}) and lets media queries
+   kick in the small-viewport fallback, all without repeating env() at every
+   call site. */
+:root {
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+}
+
+@media (max-width: 300px) {
+  /* Small-viewport note from the spec: env(safe-area-inset-*) is reliably
+     reported only when the viewport is at least as large as the layout
+     including insets; below that the browser may report 0 while content
+     still sits under the notch. The guard rail is the safe side. */
+  :root {
+    --safe-area-inset-top: 20px;
+    --safe-area-inset-bottom: 20px;
+    --safe-area-inset-left: 20px;
+    --safe-area-inset-right: 20px;
+  }
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
