@@ -3,11 +3,13 @@
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
+import EntitySuggestions from '#/components/EntitySuggestions';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchHeader from '#/components/SearchHeader';
 import VirtualGroupedList from '#/components/VirtualGroupedList';
 import { useSearchIndex } from '#/hooks/useSearchIndex';
+import { getEntitySuggestions } from '#/modules/entitySuggestions';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import { groupByName } from '#/modules/lists/groupByName';
 import type { getRecipeUrl } from '#/modules/url';
@@ -34,8 +36,10 @@ export default function RecipesClient({
     if (index == null) return { groups: initialGroups, recipes: initialRecipes };
 
     const indexGroups = groupByName(
-      Object.entries(index).flatMap(([href, { name, source }]) =>
-        isRecipeUrl(href) ? [{ href, name, source }] : [],
+      Object.entries(index).flatMap(([href, entry]) =>
+        isRecipeUrl(href) && 'source' in entry
+          ? [{ href, name: entry.name, source: entry.source }]
+          : [],
       ),
     );
     return {
@@ -46,6 +50,13 @@ export default function RecipesClient({
       recipes: indexGroups.flatMap((group) => group.items),
     };
   }, [index, initialGroups, initialRecipes]);
+
+  // While the index has not loaded, no suggestions: the recipes below still
+  // match by name, and the section appears once the index lands.
+  const entitySuggestions = useMemo(
+    () => getEntitySuggestions(index, searchTerm),
+    [index, searchTerm],
+  );
 
   const renderRecipe = useCallback(
     (recipe: Row): React.ReactNode => (
@@ -78,13 +89,16 @@ export default function RecipesClient({
         onSearchChange={setSearchTerm}
       />
       {searchTerm ? (
-        <RecipeSearchableList
-          items={recipes}
-          config={byNameListConfig}
-          renderItem={renderRecipe}
-          searchTerm={searchTerm}
-          emptyState={emptyState}
-        />
+        <>
+          <EntitySuggestions suggestions={entitySuggestions} />
+          <RecipeSearchableList
+            items={recipes}
+            config={byNameListConfig}
+            renderItem={renderRecipe}
+            searchTerm={searchTerm}
+            emptyState={emptyState}
+          />
+        </>
       ) : (
         <VirtualGroupedList groups={groups} items={recipes} renderItem={renderRecipe} />
       )}

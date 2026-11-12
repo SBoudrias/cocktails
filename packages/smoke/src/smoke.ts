@@ -119,7 +119,7 @@ async function main() {
   try {
     const { status, body } = await get('data/search-index.json');
     if (status !== 200) throw new Error(`HTTP ${status}`);
-    const index: Record<string, { name?: string; searchText?: string }> =
+    const index: Record<string, { name?: string; searchText?: string; kind?: string }> =
       JSON.parse(body);
     const entries = Object.entries(index);
     if (entries.length < MIN_SEARCH_INDEX_ENTRIES) {
@@ -128,8 +128,14 @@ async function main() {
     if (entries.some(([, v]) => !v.name || !v.searchText)) {
       throw new Error('entries without a name or searchText');
     }
-    // A recipe whose name has no HTML-escaped characters, to look up in its page.
-    const plain = entries.find(([, v]) => /^[A-Za-z0-9 ]+$/.test(v.name ?? ''));
+    // Recipes are the entries with no entity kind: pick one with a plain name
+    // (no HTML-escaped characters), to look up in its page.
+    const plain = entries.find(
+      ([href, v]) =>
+        v.kind == null &&
+        href.startsWith('/recipes/') &&
+        /^[A-Za-z0-9 ]+$/.test(v.name ?? ''),
+    );
     recipePath = plain?.[0].replace(/^\//, '');
     recipeName = plain?.[1].name;
     console.log(`ok  /data/search-index.json (${entries.length} recipes)`);
