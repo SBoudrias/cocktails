@@ -86,10 +86,10 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
   shaken: {
     body: `${bostonSmallTin} ${bostonBigTin}`,
     material: 'silver',
-    // rocking arcs: two arcs around each end, centered on the shaker, so the
-    // ends read as swinging back and forth
+    // a pair of curved motion lines beside the shaker's top-left side and
+    // another beside its bottom-right side
     motion:
-      'M13.65 3.1 A9.3 9.3 0 0 1 19.14 6.3 M15.25 1.74 A11 11 0 0 1 19.53 4.23 M10.35 21.4 A9.3 9.3 0 0 1 4.86 18.2 M8.75 22.76 A11 11 0 0 1 4.47 20.27',
+      'M11.4 4.45 Q9.78 6.06 9.2 8.27 M9.02 3.77 Q7.79 4.91 7.42 6.55 M16.07 15.74 Q15.49 17.95 13.87 19.56 M17.85 17.46 Q17.48 19.1 16.25 20.24',
   },
   // yarai mixing glass: thick base, spout, diamond cut, with a bar spoon
   stirred: {
@@ -172,15 +172,16 @@ export const servedOnShapes: Record<Recipe['served_on'], Shape> = {
     ].join(' '),
     facets: 'M4.8 15.6 L5.6 18.6 M11.4 9.4 L12.4 12.4 M10 5.4 L10 9.6',
   },
-  // frozen drink: the drink itself whipped into a soft-serve swirl, all of
-  // it inside the glass
+  // frozen drink just after serving: the slush heaps a little above the
+  // drink in a soft, slumping mound, all of it inside the glass
   blended: {
     body: 'M5 3.5 H19 L17.8 20 Q17.6 21.5 16 21.5 H8 Q6.4 21.5 6.2 20 Z',
-    // the drink fills the bottom of the glass and the three swirl tiers
+    // the drink up to y 11, and the soft mound on top of it
     liquid:
-      'M5.85 15 H18.15 L17.8 20 Q17.6 21.5 16 21.5 H8 Q6.4 21.5 6.2 20 Z M6.6 15 C6.6 13.2 7.8 12.2 9.2 12.2 H14.8 C16.2 12.2 17.4 13.2 17.4 15 Z M8.4 12.2 C8.4 10.6 9.6 9.4 11 9.4 H13 C14.4 9.4 15.6 10.6 15.6 12.2 Z M10.2 9.4 C10.2 7.8 11 6.6 12 5.6 C13 6.6 13.8 7.8 13.8 9.4 Z',
-    level: 5.6,
-    facets: 'M6 15 H18 M8.4 12.2 H15.6 M10.2 9.4 H13.8',
+      'M5.55 11 H18.45 L17.8 20 Q17.6 21.5 16 21.5 H8 Q6.4 21.5 6.2 20 Z M5.6 11 C5.8 9.4 7 8.8 8.4 9 C9 7.6 10.6 7 12 7.4 C12.6 6.4 14.2 6.4 14.8 7.6 C16.4 7.6 17.8 8.6 18.4 10.2 L18.35 11 Z',
+    level: 6.5,
+    // where the slush settles into the drink
+    facets: 'M6.4 11.2 Q9.2 12.2 12 11.2 T17.6 11.2',
   },
 };
 
