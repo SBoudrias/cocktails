@@ -69,27 +69,28 @@ describe('toSearchIndexEntityItems', () => {
     'carries every entity kind, keyed by its page href',
     { timeout: 60_000 },
     async () => {
-    const recipes = await getAllRecipes();
-    const entities = await toSearchIndexEntityItems(recipes);
-    const kinds = Object.groupBy(entities, (entity) => entity.kind);
+      const recipes = await getAllRecipes();
+      const entities = await toSearchIndexEntityItems(recipes);
+      const kinds = Object.groupBy(entities, (entity) => entity.kind);
 
-    // The catalog has all of these — the assertions also pin the href shape
-    // per kind to the page routes they link to. Podcasts are absent: the
-    // one podcast source carries fewer recipes than the reference bar.
-    expect(Object.keys(kinds).toSorted()).toEqual([
-      'author',
-      'bar',
-      'book',
-      'category',
-      'ingredient',
-      'youtube-channel',
-    ]);
-    expect(entities.map((entity) => entity.href)).toSatisfy((hrefs: string[]) =>
-      hrefs.every((href) =>
-        /^\/(category|ingredient|list\/authors|list\/bars|source)\//.test(href),
-      ),
-    );
-  });
+      // The catalog has all of these — the assertions also pin the href shape
+      // per kind to the page routes they link to. Podcasts are absent: the
+      // one podcast source carries fewer recipes than the reference bar.
+      expect(Object.keys(kinds).toSorted()).toEqual([
+        'author',
+        'bar',
+        'book',
+        'category',
+        'ingredient',
+        'youtube-channel',
+      ]);
+      expect(entities.map((entity) => entity.href)).toSatisfy((hrefs: string[]) =>
+        hrefs.every((href) =>
+          /^\/(category|ingredient|list\/authors|list\/bars|source)\//.test(href),
+        ),
+      );
+    },
+  );
 
   it('derives authors and bars from attributions, deduplicated per recipe', async () => {
     const recipe = (name: string, attributions: Recipe['attributions']): Recipe => ({
@@ -150,17 +151,18 @@ describe('getSerializedSearchIndex', () => {
     'covers every recipe and entity, and is byte-identical when the input order changes',
     { timeout: 60_000 },
     async () => {
-    const recipes = await getAllRecipes();
-    const [recipeItems, entityItems] = await Promise.all([
-      toSearchIndexItems(recipes),
-      toSearchIndexEntityItems(recipes),
-    ]);
-    const allItems = [...recipeItems, ...entityItems];
-    const serialized = await getSerializedSearchIndex();
+      const recipes = await getAllRecipes();
+      const [recipeItems, entityItems] = await Promise.all([
+        toSearchIndexItems(recipes),
+        toSearchIndexEntityItems(recipes),
+      ]);
+      const allItems = [...recipeItems, ...entityItems];
+      const serialized = await getSerializedSearchIndex();
 
-    expect(JSON.stringify(buildSearchIndex(allItems.toReversed()))).toBe(serialized);
-    expect(Object.keys(JSON.parse(serialized))).toHaveLength(
-      new Set(allItems.map((item) => item.href)).size,
-    );
-  });
+      expect(JSON.stringify(buildSearchIndex(allItems.toReversed()))).toBe(serialized);
+      expect(Object.keys(JSON.parse(serialized))).toHaveLength(
+        new Set(allItems.map((item) => item.href)).size,
+      );
+    },
+  );
 });
