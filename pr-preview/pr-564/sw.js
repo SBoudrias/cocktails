@@ -1,26 +1,23 @@
-// Service worker for the Cocktail Index static export.
+// Service worker for the Indexotica static export.
 //
 // The precache manifest and build version are baked into out/sw.js after the
 // static export by apps/web/tools/generate-sw-precache.ts; this committed
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = 'f88c3cb74a48';
+const VERSION = '80d146bad59f';
 const PRECACHE = [
-  "./_next/static/6zTMT-k2L6Hx6CL6Yv_Mb/_buildManifest.js",
-  "./_next/static/6zTMT-k2L6Hx6CL6Yv_Mb/_clientMiddlewareManifest.js",
-  "./_next/static/6zTMT-k2L6Hx6CL6Yv_Mb/_ssgManifest.js",
+  "./_next/static/YNKeCPey2oS6AnLis65fK/_buildManifest.js",
+  "./_next/static/YNKeCPey2oS6AnLis65fK/_clientMiddlewareManifest.js",
+  "./_next/static/YNKeCPey2oS6AnLis65fK/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
-  "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/07vy1nalhdt3h.js",
   "./_next/static/chunks/0cz1d0mv5g_q7.js",
   "./_next/static/chunks/0d3-u__x65tx0.css",
   "./_next/static/chunks/0j0yqy1myvfc2.js",
   "./_next/static/chunks/0jocoa7g3h96d.js",
-  "./_next/static/chunks/0mliq1ksuxt6h.js",
   "./_next/static/chunks/0ncgl-ykehkhv.js",
   "./_next/static/chunks/0v4bwg3y452cf.js",
-  "./_next/static/chunks/0zqmaxk7cjpaz.js",
   "./_next/static/chunks/12cy4r9qmsu1g.js",
   "./_next/static/chunks/13ng7jw-4bxi4.js",
   "./_next/static/chunks/148jepf6ue7sv.js",
@@ -30,30 +27,33 @@ const PRECACHE = [
   "./_next/static/chunks/184hh0tc6d9pz.js",
   "./_next/static/chunks/1__8svdd-ks7o.js",
   "./_next/static/chunks/1cp19a1m5egwz.js",
+  "./_next/static/chunks/1cyf5zfaprs0u.js",
   "./_next/static/chunks/1f-601e-bv12l.js",
   "./_next/static/chunks/1i8z1_fokh7co.js",
   "./_next/static/chunks/1iz9o8s16-x-p.js",
   "./_next/static/chunks/1j4ks7_-vw_ie.js",
   "./_next/static/chunks/1ktxt5b29ydf3.js",
+  "./_next/static/chunks/1rvhq7k9gnn-f.js",
   "./_next/static/chunks/1tf4etm58a6li.css",
   "./_next/static/chunks/1zp6az11y69c2.js",
   "./_next/static/chunks/26e5a7y2l-6uh.js",
   "./_next/static/chunks/26j6c470ttdgu.js",
   "./_next/static/chunks/26umr713e3-0v.js",
   "./_next/static/chunks/2cmlta-lm2x4n.js",
-  "./_next/static/chunks/2cwa46cdx2sr5.js",
   "./_next/static/chunks/2flqqbaywepyl.js",
   "./_next/static/chunks/2g-5isrz18yde.js",
-  "./_next/static/chunks/2mp234xta14c0.js",
   "./_next/static/chunks/2zjyfkzc0nujr.js",
   "./_next/static/chunks/312r0qkeh2a6k.js",
   "./_next/static/chunks/34xf9m6qcd2jc.css",
   "./_next/static/chunks/3cef1ozj-rk9l.js",
+  "./_next/static/chunks/3ebdui634y13c.js",
   "./_next/static/chunks/3hsbq7h_aggve.css",
   "./_next/static/chunks/3kcw25c0i5tf5.js",
   "./_next/static/chunks/3m2tou2n9gic2.js",
   "./_next/static/chunks/3oer7fzk43a1k.js",
   "./_next/static/chunks/3qdu33eidxc8k.js",
+  "./_next/static/chunks/3ryg5wav0gap8.js",
+  "./_next/static/chunks/3u7-grbdk14yy.js",
   "./_next/static/chunks/3xfdo5qp25y68.js",
   "./_next/static/chunks/43go7536q7xo3.js",
   "./_next/static/chunks/turbopack-1__20i7zf6f95.js",
