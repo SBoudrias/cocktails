@@ -62,7 +62,13 @@ describe('buildSearchIndex', () => {
 });
 
 describe('toSearchIndexEntityItems', () => {
-  it('carries every entity kind, keyed by its page href', async () => {
+  // Building the index counts every entity's recipes (the same walk the
+  // catalog does); coverage instrumentation roughly doubles that, past the
+  // 10s default.
+  it(
+    'carries every entity kind, keyed by its page href',
+    { timeout: 60_000 },
+    async () => {
     const recipes = await getAllRecipes();
     const entities = await toSearchIndexEntityItems(recipes);
     const kinds = Object.groupBy(entities, (entity) => entity.kind);
@@ -140,7 +146,10 @@ describe('toSearchIndexEntityItems', () => {
 });
 
 describe('getSerializedSearchIndex', () => {
-  it('covers every recipe and entity, and is byte-identical when the input order changes', async () => {
+  it(
+    'covers every recipe and entity, and is byte-identical when the input order changes',
+    { timeout: 60_000 },
+    async () => {
     const recipes = await getAllRecipes();
     const [recipeItems, entityItems] = await Promise.all([
       toSearchIndexItems(recipes),
