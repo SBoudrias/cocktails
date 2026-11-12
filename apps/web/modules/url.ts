@@ -15,6 +15,12 @@ export function getCategoryUrl(category: { slug: string }): Route<`/category/${s
   return `/category/${category.slug}`;
 }
 
+export function getCategoryBottlesUrl(category: {
+  slug: string;
+}): Route<`/category/${string}/bottles`> {
+  return `/category/${category.slug}/bottles`;
+}
+
 export function getIngredientUrl(
   ingredient: Omit<RecipeIngredient, 'quantity'>,
 ): Route<`/category/${string}`> | Route<`/ingredient/${string}/${string}`> {

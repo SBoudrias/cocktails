@@ -5,7 +5,7 @@ import { getIngredient, getIngredientsForCategory } from '@cocktails/data/ingred
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe, getRecipeByCategory } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
@@ -40,6 +40,8 @@ const testRecipes = await Promise.all([
 const { getChildCategories: getActualChildCategories } = await vi.importActual<
   typeof CategoriesModule
 >('@cocktails/data/categories');
+const { getIngredientsForCategory: getActualIngredientsForCategory } =
+  await vi.importActual<typeof IngredientsModule>('@cocktails/data/ingredients');
 
 /** The catalog as the category pages read it: testRecipes keyed for this page. */
 const testCatalog = buildCatalog([
@@ -60,12 +62,107 @@ const testCatalog = buildCatalog([
 
 beforeEach(() => {
   vi.mocked(getChildCategories).mockResolvedValue([]);
-  vi.mocked(getIngredientsForCategory).mockResolvedValue([testMembers, []]);
+  vi.mocked(getIngredientsForCategory).mockResolvedValue(testMembers);
   vi.mocked(getRecipeByCategory).mockResolvedValue(testRecipes);
   sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
 });
 
 describe('CategoryPage', () => {
+  describe('substitution lists', () => {
+    // These tests need the real member lists (rum: 98 bottles), not the
+    // file-wide single-member mock.
+    beforeEach(() => {
+      vi.mocked(getIngredientsForCategory).mockImplementation(
+        getActualIngredientsForCategory,
+      );
+    });
+
+    it('caps the members list at 15 links with a see-all link last when capped', async () => {
+      // Rum's category page: 98 member bottles across its child categories.
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'rum' }),
+        }),
+      );
+
+      const membersGroup = screen.getByRole('group', {
+        name: 'Examples of Rum',
+      });
+
+      const links = within(membersGroup).getAllByRole('link');
+      expect(links).toHaveLength(15);
+
+      // The see-all link closes the list and points at the category's full
+      // bottles route.
+      const seeAllLink = within(membersGroup).getByRole('link', {
+        name: /see all/i,
+      });
+      expect(seeAllLink).toHaveAttribute('href', '/category/rum/bottles');
+      expect(seeAllLink).toBe(links.at(-1));
+    });
+
+    it('renders no see-all link when the category fits under the cap', async () => {
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      const membersGroup = screen.getByRole('group', {
+        name: 'Examples of London dry gin',
+      });
+
+      expect(
+        within(membersGroup).queryByRole('link', { name: /see all/i }),
+      ).not.toBeInTheDocument();
+    });
+
+    it('lists related categories, not bottles, as secondary substitutions', async () => {
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'blended-aged-rum-jamaica' }),
+        }),
+      );
+
+      const relatedGroup = screen.getByRole('group', {
+        name: 'Substitution-friendly categories',
+      });
+
+      // Blended aged rum (Jamaica) sits under two parents: Blended aged rum
+      // and Jamaican rum — so its neighbors are those parents and their other
+      // children, the other aged-rum and Jamaican-rum cuts.
+      for (const name of [
+        'Blended aged rum',
+        'Jamaican rum',
+        'Blended aged rum (Barbados)',
+        'Blended lightly-aged rum (Jamaica)',
+        'Navy strength Jamaican rum',
+      ]) {
+        expect(within(relatedGroup).getByRole('link', { name })).toBeInTheDocument();
+      }
+
+      // Category links, not bottle rows.
+      expect(relatedGroup).not.toHaveTextContent(/appleton|hampden|worthy park/i);
+    });
+
+    it('renders no substitution lists for a category without members or neighbors', async () => {
+      // Coffee bitters is an empty leaf category: no bottles of its own, no
+      // children, no parents — nothing to list.
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'coffee-bitters' }),
+        }),
+      );
+
+      expect(
+        screen.queryByRole('group', { name: /Examples of Falernum/ }),
+      ).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('group', { name: 'Substitution-friendly categories' }),
+      ).not.toBeInTheDocument();
+    });
+  });
+
   describe('basic rendering', () => {
     it('renders parent category information', async () => {
       await setupApp(
@@ -76,10 +173,14 @@ describe('CategoryPage', () => {
 
       // London dry gin is a subset of Dry Gin
       expect(screen.getByText(/is a subset of/)).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: /^Dry gin/ })).toHaveAttribute(
-        'href',
-        '/category/dry-gin',
-      );
+
+      // The parent links from both the subset card and the related-categories
+      // list, always to its category page.
+      const dryGinLinks = screen.getAllByRole('link', { name: /^Dry gin/ });
+      expect(dryGinLinks.length).toBeGreaterThan(0);
+      for (const link of dryGinLinks) {
+        expect(link).toHaveAttribute('href', '/category/dry-gin');
+      }
     });
 
     it('renders example ingredients for the category', async () => {

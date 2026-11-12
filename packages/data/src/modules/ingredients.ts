@@ -7,7 +7,7 @@ import type { Category } from '../types/Category.ts';
 import type { RootIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import type { Ref } from '../types/Ref.ts';
-import { getCategoriesPerParent, getCategory } from './categories';
+import { getCategoriesPerParent, getCategory, getRelatedCategories } from './categories';
 import { INGREDIENT_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import memo from './memo';
@@ -94,15 +94,18 @@ export const getIngredientPerCategories = memo(
   },
 );
 
+/**
+ * Every bottle that belongs to a category: the ones declaring it directly
+ * plus the ones from its child categories, each once, alphabetically.
+ */
 export const getIngredientsForCategory = async (
   category: Category,
-): Promise<[RootIngredient[], RootIngredient[]]> => {
+): Promise<RootIngredient[]> => {
   const ingredientsByCategories = await getIngredientPerCategories();
   const categoriesByParent = await getCategoriesPerParent();
   const bottleSlugs = new Set<string>();
 
-  // Members are all bottles from the main category and related child categories.
-  const members = [
+  return [
     // Main category
     category,
     // Child categories
@@ -113,38 +116,8 @@ export const getIngredientsForCategory = async (
       const isUnique = !bottleSlugs.has(slug);
       bottleSlugs.add(slug);
       return isUnique;
-    });
-
-  // Add ingredients from the parent categories.
-  const substitutes: RootIngredient[] = category.parents
-    .flatMap((parent) => ingredientsByCategories[parent.slug] ?? [])
-    .filter(({ slug }) => {
-      const isUnique = !bottleSlugs.has(slug);
-      bottleSlugs.add(slug);
-      return isUnique;
-    });
-
-  if (substitutes.length < 5) {
-    const siblingCategories = category.parents.flatMap(
-      (parent) => categoriesByParent[parent.slug] ?? [],
-    );
-
-    for (const category of siblingCategories) {
-      if (substitutes.length >= 5) break;
-
-      const categoryMembers = ingredientsByCategories[category.slug] ?? [];
-      for (const bottle of categoryMembers) {
-        if (substitutes.length >= 5) break;
-
-        if (!bottleSlugs.has(bottle.slug)) {
-          substitutes.push(bottle);
-        }
-        bottleSlugs.add(bottle.slug);
-      }
-    }
-  }
-
-  return [toAlphaSort(members), toAlphaSort(substitutes)];
+    })
+    .toSorted((a, b) => a.name.localeCompare(b.name));
 };
 
 type IngredientSubstitutions = {
@@ -199,10 +172,7 @@ export const getSubstitutesForIngredient = memo(
   async (ingredient: RootIngredient): Promise<IngredientSubstitutions | undefined> => {
     if (ingredient.categories.length === 0) return undefined;
 
-    const [ingredientsByCategories, categoriesByParent] = await Promise.all([
-      getIngredientPerCategories(),
-      getCategoriesPerParent(),
-    ]);
+    const ingredientsByCategories = await getIngredientPerCategories();
 
     const rankedCategories = ingredient.categories
       .map((category, declaredOrder) => ({
@@ -229,22 +199,14 @@ export const getSubstitutesForIngredient = memo(
     ).filter(({ slug }) => slug !== ingredient.slug);
 
     const declaredSlugs = new Set(ingredient.categories.map(({ slug }) => slug));
-    const relatedCategories = [
-      // Parents: broader categories the bottle could fall back to
-      ...substitutionCategory.category.parents,
-      // Siblings: the other children of those parents
-      ...substitutionCategory.category.parents.flatMap(
-        ({ slug }) => categoriesByParent[slug] ?? [],
-      ),
-    ].filter(
-      ({ slug }) =>
-        slug !== substitutionCategory.category.slug && !declaredSlugs.has(slug),
-    );
+    const relatedCategories = (
+      await getRelatedCategories(substitutionCategory.category)
+    ).filter(({ slug }) => !declaredSlugs.has(slug));
 
     return {
       category: substitutionCategory.category,
       substitutes: toAlphaSort(substitutes),
-      relatedCategories: toAlphaSort(uniqBy(relatedCategories, 'slug')),
+      relatedCategories,
     };
   },
   (ingredient) => ingredient.slug,
