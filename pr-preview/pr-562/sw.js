@@ -5,7 +5,7 @@
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = 'fe91422c8fa6';
+const VERSION = '0e3085bf86f3';
 const PRECACHE = [
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/07vy1nalhdt3h.js",
@@ -56,9 +56,6 @@ const PRECACHE = [
   "./_next/static/chunks/42tud5in-b5ar.js",
   "./_next/static/chunks/43go7536q7xo3.js",
   "./_next/static/chunks/turbopack-3lbg57a16zsbo.js",
-  "./_next/static/g3f4YlgtjnV2LoC_gMlZt/_buildManifest.js",
-  "./_next/static/g3f4YlgtjnV2LoC_gMlZt/_clientMiddlewareManifest.js",
-  "./_next/static/g3f4YlgtjnV2LoC_gMlZt/_ssgManifest.js",
   "./_next/static/media/194ba805cef72e7e-s.0lvk2smlqz3yc.woff2",
   "./_next/static/media/2443b96ca66c6483-s.0fd-fjxmcxcjd.woff2",
   "./_next/static/media/2617c56fc138c6bf-s.42l_3z3944ji5.woff2",
@@ -71,6 +68,9 @@ const PRECACHE = [
   "./_next/static/media/favicon.2vob68tjqpejf.ico",
   "./_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp",
   "./_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp",
+  "./_next/static/tzLWJ80cjA-ZVl0ymSrsm/_buildManifest.js",
+  "./_next/static/tzLWJ80cjA-ZVl0ymSrsm/_clientMiddlewareManifest.js",
+  "./_next/static/tzLWJ80cjA-ZVl0ymSrsm/_ssgManifest.js",
   "./data/catalog.json",
   "./data/search-index.json",
   "./icons/apple-touch-icon.png",
