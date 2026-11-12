@@ -35,11 +35,14 @@ if (typeof localStorage?.clear !== 'function') {
  * pending AND no [data-loading] element is left in the DOM — a fetch can
  * settle before React commits its result, and the DOM is the visible truth.
  *
- * RTL's waitFor does the polling (interval below its default timeout): a
- * deliberately hung load — a test asserting the loading state — is allowed
- * to outlast it, so catch and move on with the loader still on screen
- * rather than failing the test here.
+ * RTL's waitFor does the polling, under a short cap: loads settle in-process
+ * (msw, local React commits) or never — a deliberately hung load, a test
+ * asserting the loading state — which the cap lets outlast the flush without
+ * paying the full 1s default per such test. The catch moves on with the
+ * loader still on screen rather than failing the test here.
  */
+const flushPoll = { timeout: 350, interval: 50 } as const;
+
 async function flushSharedJsonLoads(): Promise<void> {
   const nothingPending = () => getPendingSharedJsonLoads().length === 0;
   const nothingLoading = () => !document.querySelector('[data-loading]');
@@ -47,7 +50,7 @@ async function flushSharedJsonLoads(): Promise<void> {
   await waitFor(() => {
     expect(nothingPending()).toBe(true);
     expect(nothingLoading()).toBe(true);
-  }).catch(() => {});
+  }, flushPoll).catch(() => {});
 }
 
 /**

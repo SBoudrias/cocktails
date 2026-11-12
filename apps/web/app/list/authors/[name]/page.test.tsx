@@ -4,12 +4,7 @@ import { screen } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
-import {
-  failJson,
-  hangJson,
-  serveJson,
-  sharedJsonServer,
-} from '#/testing/sharedJsonServer';
+import { hangJson, serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import AuthorRecipesPage from './page';
 
@@ -211,33 +206,7 @@ describe('AuthorRecipesPage catalog-driven recipe list', () => {
     expect(resultList).not.toHaveTextContent('The Death Star');
   });
 
-  it('shows the loading state while searching, not a false no-results', async () => {
-    sharedJsonServer.use(hangJson('/data/catalog.json'));
-    mockRouter.setCurrentUrl('?search=toe');
-
-    await setupApp(
-      await AuthorRecipesPage({
-        params: Promise.resolve({ name: 'brian-maxwell' }),
-      }),
-    );
-
-    // While the catalog loads, a search shows the loading state — the
-    // full list it must match is not there yet — never "No results found".
-    expect(screen.getByLabelText(/loading recipes/i)).toBeInTheDocument();
-    expect(screen.queryByText('No results found')).not.toBeInTheDocument();
-  });
-
-  it('offers a reload when the catalog fails to load', async () => {
-    sharedJsonServer.use(failJson('/data/catalog.json', 500));
-
-    await setupApp(
-      await AuthorRecipesPage({
-        params: Promise.resolve({ name: 'brian-maxwell' }),
-      }),
-    );
-
-    expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /reload the page/i })).toBeInTheDocument();
-    expect(screen.queryByText('By the Toe')).not.toBeInTheDocument();
-  });
+  // The catalog list's other states — loading while a search is active, the
+  // reload affordance after a failed fetch — are shared SearchableRecipePage
+  // behavior, covered once on the category page.
 });

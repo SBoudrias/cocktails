@@ -23,41 +23,29 @@ const emptyState = (
 );
 
 describe('SearchableList', () => {
-  it('renders all items grouped by first letter when searchTerm is empty', () => {
-    render(
-      <SearchableList
-        items={testItems}
-        getSearchText={getSearchText}
-        config={byNameListConfig}
-        renderItem={renderItem}
-        searchTerm=""
-        emptyState={emptyState}
-      />,
-    );
+  it.each([
+    { searchTerm: '', reason: 'empty' },
+    { searchTerm: null, reason: 'null' },
+  ])(
+    'renders all items grouped by first letter when searchTerm is $reason',
+    ({ searchTerm }) => {
+      render(
+        <SearchableList
+          items={testItems}
+          getSearchText={getSearchText}
+          config={byNameListConfig}
+          renderItem={renderItem}
+          searchTerm={searchTerm}
+          emptyState={emptyState}
+        />,
+      );
 
-    // Should have groups for D, L (from "The Last Word"), M
-    expect(screen.getByRole('group', { name: 'D' })).toBeInTheDocument();
-    expect(screen.getByRole('group', { name: 'L' })).toBeInTheDocument();
-    expect(screen.getByRole('group', { name: 'M' })).toBeInTheDocument();
-  });
-
-  it('renders all items grouped by first letter when searchTerm is null', () => {
-    render(
-      <SearchableList
-        items={testItems}
-        getSearchText={getSearchText}
-        config={byNameListConfig}
-        renderItem={renderItem}
-        searchTerm={null}
-        emptyState={emptyState}
-      />,
-    );
-
-    // All groups should be present
-    expect(screen.getByRole('group', { name: 'D' })).toBeInTheDocument();
-    expect(screen.getByRole('group', { name: 'L' })).toBeInTheDocument();
-    expect(screen.getByRole('group', { name: 'M' })).toBeInTheDocument();
-  });
+      // Should have groups for D, L (from "The Last Word"), M
+      expect(screen.getByRole('group', { name: 'D' })).toBeInTheDocument();
+      expect(screen.getByRole('group', { name: 'L' })).toBeInTheDocument();
+      expect(screen.getByRole('group', { name: 'M' })).toBeInTheDocument();
+    },
+  );
 
   it('strips articles (the/an/a) when grouping by first letter', () => {
     render(
