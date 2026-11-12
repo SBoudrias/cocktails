@@ -1,3 +1,4 @@
+import { MantineProvider } from '@mantine/core';
 import { Box } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,6 +18,7 @@ import AppFooter from '#/components/AppFooter';
 import FullscreenHelper from '#/components/FullscreenHelper';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';
 import tikiLeavesTop from '../../../public/tiki-leaves-top.webp';
+import mantineTheme from './mantineTheme';
 import theme from './theme';
 
 const roboto = Roboto({
@@ -89,7 +91,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-prefers-color-scheme="dark" style={{ colorScheme: 'dark' }}>
+    <html
+      lang="en"
+      data-prefers-color-scheme="dark"
+      // Set here rather than by Mantine's ColorSchemeScript: the app is
+      // dark-only, so no inline script is needed to pick the scheme.
+      data-mantine-color-scheme="dark"
+      style={{ colorScheme: 'dark' }}
+    >
       <head>
         <link
           rel="sitemap"
@@ -102,24 +111,26 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme} defaultMode="dark" storageManager={null}>
             <CssBaseline />
-            <NuqsAdapter>
-              <Box
-                sx={{
-                  maxWidth: 600,
-                  mx: 'auto',
-                  minHeight: '100vh',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
-                  backgroundSize: `min(100%, ${tikiLeavesTop.width}px) auto, min(100%, ${tikiBeachDivider.width}px) auto`,
-                  backgroundPosition: 'center 40px, bottom center',
-                  backgroundRepeat: 'no-repeat, no-repeat',
-                }}
-              >
-                <Box sx={{ flexGrow: 1 }}>{children}</Box>
-                <AppFooter />
-              </Box>
-            </NuqsAdapter>
+            <MantineProvider theme={mantineTheme} forceColorScheme="dark">
+              <NuqsAdapter>
+                <Box
+                  sx={{
+                    maxWidth: 600,
+                    mx: 'auto',
+                    minHeight: '100vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
+                    backgroundSize: `min(100%, ${tikiLeavesTop.width}px) auto, min(100%, ${tikiBeachDivider.width}px) auto`,
+                    backgroundPosition: 'center 40px, bottom center',
+                    backgroundRepeat: 'no-repeat, no-repeat',
+                  }}
+                >
+                  <Box sx={{ flexGrow: 1 }}>{children}</Box>
+                  <AppFooter />
+                </Box>
+              </NuqsAdapter>
+            </MantineProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
         <FullscreenHelper />

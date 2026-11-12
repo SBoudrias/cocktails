@@ -1,7 +1,10 @@
 import type { Recipe } from '@cocktails/data';
-import { render, screen, fireEvent, within } from '@testing-library/react';
+import { render as rtlRender, screen, fireEvent, within } from '@testing-library/react';
 import { beforeEach } from 'vitest';
+import { MantineWrapper } from '#/vitest.setup';
 import IngredientList from './index';
+
+const render = (ui: React.ReactElement) => rtlRender(ui, { wrapper: MantineWrapper });
 
 function getLinkSearchParams(name: string | RegExp) {
   const href = screen.getByRole('link', { name }).getAttribute('href');
@@ -137,7 +140,7 @@ describe('IngredientList', () => {
 
     render(<IngredientList ingredients={ingredients} />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'ml' }));
+    fireEvent.click(screen.getByRole('radio', { name: 'ml' }));
 
     const ingredientList = screen.getByRole('list');
     expect(ingredientList).toHaveTextContent('2 dash');

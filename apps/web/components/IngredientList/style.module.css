@@ -5,12 +5,12 @@
 
 .category {
   font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
+  color: var(--mantine-color-dimmed);
   text-transform: capitalize;
 }
 
 .optional {
   font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
+  color: var(--mantine-color-dimmed);
   text-transform: none;
 }

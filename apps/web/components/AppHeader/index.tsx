@@ -1,9 +1,11 @@
 'use client';
 
-import { LocalBar, Search } from '@mui/icons-material';
-import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
+import { ActionIcon, Box, Group, Text } from '@mantine/core';
+import { IconGlassCocktail, IconSearch } from '@tabler/icons-react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { getRecipeListUrl } from '#/modules/url';
+import styles from './style.module.css';
 
 export default function AppHeader({ title }: { title: string }) {
   const pathname = usePathname();
@@ -11,36 +13,40 @@ export default function AppHeader({ title }: { title: string }) {
 
   return (
     <>
-      <AppBar>
-        <Toolbar>
+      <Box component="header" className={styles.header}>
+        <Group h="100%" px="xs" gap={0} wrap="nowrap">
           {isHome ? (
-            <IconButton size="large" edge="start" disabled>
-              <Icon />
-            </IconButton>
+            <Box w={48} />
           ) : (
-            <IconButton size="large" edge="start" aria-label="Go to home" href="/">
-              <LocalBar />
-            </IconButton>
+            <ActionIcon
+              component={Link}
+              href="/"
+              aria-label="Go to home"
+              variant="subtle"
+              color="gray"
+              size={48}
+              radius="xl"
+            >
+              <IconGlassCocktail />
+            </ActionIcon>
           )}
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, flexShrink: 1, textAlign: 'center' }}
-          >
+          <Text flex={1} ta="center" size="xl" fw={500} truncate>
             {title}
-          </Typography>
-          <IconButton
-            size="large"
-            edge="end"
-            aria-label="Search"
+          </Text>
+          <ActionIcon
+            component={Link}
             href={getRecipeListUrl()}
+            aria-label="Search"
+            variant="subtle"
+            color="gray"
+            size={48}
+            radius="xl"
           >
-            <Search />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Toolbar />
+            <IconSearch />
+          </ActionIcon>
+        </Group>
+      </Box>
+      <Box h="var(--app-bar-height)" />
     </>
   );
 }

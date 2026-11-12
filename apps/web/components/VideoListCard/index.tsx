@@ -1,25 +1,27 @@
 import type { YoutubeRef } from '@cocktails/data';
-import type { SxProps } from '@mui/material';
-import { Card, CardContent, CardHeader } from '@mui/material';
+import type { MantineSpacing } from '@mantine/core';
+import { Card, Stack, Title } from '@mantine/core';
 import Video from '#/components/Video';
 
 export default function VideoListCard({
   refs,
   title = 'Video',
-  sx,
+  m,
 }: {
   refs: YoutubeRef[];
   title?: string;
-  sx?: SxProps;
+  m?: MantineSpacing;
 }) {
   return (
-    <Card sx={sx}>
-      <CardHeader title={title} />
-      {refs.map((ref) => (
-        <CardContent key={ref.videoId}>
-          <Video id={ref.videoId} start={ref.start} />
-        </CardContent>
-      ))}
+    <Card m={m} padding="md">
+      <Title order={2} size="h3" fw={400} mb="sm">
+        {title}
+      </Title>
+      <Stack gap="md">
+        {refs.map((ref) => (
+          <Video key={ref.videoId} id={ref.videoId} start={ref.start} />
+        ))}
+      </Stack>
     </Card>
   );
 }

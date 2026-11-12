@@ -82,7 +82,7 @@ describe('RecipePage', () => {
     expect(absinthe).toHaveAccessibleName(/St\. George Absinthe Verte \(optional\)/i);
     expect(rye).not.toHaveTextContent('(optional)');
 
-    await user.click(screen.getByRole('button', { name: 'ml' }));
+    await user.click(screen.getByRole('radio', { name: 'ml' }));
 
     expect(absinthe).toHaveAccessibleName(/St\. George Absinthe Verte \(optional\)/i);
   });
@@ -135,7 +135,7 @@ describe('RecipePage', () => {
       ['ratio', '0.2632'],
     ]);
 
-    await user.click(screen.getByRole('button', { name: 'ml' }));
+    await user.click(screen.getByRole('radio', { name: 'ml' }));
 
     expect(techniqueDetails).toHaveTextContent('150 ml Whole milk');
 

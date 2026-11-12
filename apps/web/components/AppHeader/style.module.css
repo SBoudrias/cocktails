@@ -1,0 +1,10 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1100;
+  height: var(--app-bar-height);
+  background-color: var(--app-header);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--mantine-shadow-md);
+  color: var(--mantine-color-text);
+}

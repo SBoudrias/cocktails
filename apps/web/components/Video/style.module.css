@@ -1,4 +1,7 @@
 .wrapper {
+  /* Fills a flex column parent too (Mantine's Card), where auto margins
+     would otherwise shrink the player to zero width. */
+  width: 100%;
   max-width: 720px;
   margin: 0 auto;
 }

@@ -1,19 +1,29 @@
-import BugReportIcon from '@mui/icons-material/BugReport';
-import type { SxProps } from '@mui/material';
-import { Button, Card, CardContent, Stack } from '@mui/material';
+import type { MantineSpacing } from '@mantine/core';
+import { Button, Card, Group, Text } from '@mantine/core';
+import { IconBug } from '@tabler/icons-react';
 
-export default function FixBugCard({ fixUrl, sx }: { fixUrl: string; sx?: SxProps }) {
+export default function FixBugCard({
+  fixUrl,
+  m,
+}: {
+  fixUrl: string;
+  m?: MantineSpacing;
+}) {
   return (
-    <Card sx={sx}>
-      <CardContent>
-        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-          <BugReportIcon />
-          <span>Found an error?</span>
-          <Button href={fixUrl} target="_blank" rel="noopener nofollow">
-            Fix it over here!
-          </Button>
-        </Stack>
-      </CardContent>
+    <Card m={m} padding="md">
+      <Group gap="xs">
+        <IconBug />
+        <Text>Found an error?</Text>
+        <Button
+          component="a"
+          href={fixUrl}
+          target="_blank"
+          rel="noopener nofollow"
+          variant="subtle"
+        >
+          Fix it over here!
+        </Button>
+      </Group>
     </Card>
   );
 }

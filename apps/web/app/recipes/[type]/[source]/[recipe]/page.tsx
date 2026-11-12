@@ -1,18 +1,11 @@
 import type { Source, WebsiteRef, YoutubeRef } from '@cocktails/data';
 import { getRecipePageParams } from '@cocktails/data/params';
 import { getRecipe } from '@cocktails/data/recipes';
-import {
-  Box,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Paper,
-} from '@mui/material';
+import { SimpleGrid } from '@mantine/core';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { match, P } from 'ts-pattern';
 import AppHeader from '#/components/AppHeader';
+import { List, ListRow, ListSubheader } from '#/components/AppList';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
 import RecipeAttributionList from '#/components/RecipeAttributionList';
@@ -81,36 +74,34 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
   return (
     <>
       <AppHeader title={recipe.name} />
-      <Box component="main">
-        <Grid container columns={3} sx={{ textAlign: 'center', my: 1 }}>
-          <Grid size={1}>
+      <main>
+        <SimpleGrid cols={3} spacing={0} ta="center" my={8}>
+          <div>
             <div className={styles.badge}>{recipe.preparation}</div>
-          </Grid>
-          <Grid size={1}>
+          </div>
+          <div>
             <div className={styles.badge}>{recipe.served_on}</div>
-          </Grid>
-          <Grid size={1}>
+          </div>
+          <div>
             <div className={styles.badge}>{recipe.glassware}</div>
-          </Grid>
-        </Grid>
+          </div>
+        </SimpleGrid>
         <IngredientList
           ingredients={recipe.ingredients}
           techniques={recipe.techniques}
           defaultServings={recipe.servings}
         />
         {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
-          <List>
-            <ListSubheader>Instructions</ListSubheader>
-            <Paper square>
+          <section>
+            <ListSubheader id="instructions-subheader">Instructions</ListSubheader>
+            <List aria-labelledby="instructions-subheader">
               {recipe.instructions.map((instruction, index) => (
-                <ListItem divider key={instruction}>
-                  <ListItemText>
-                    {index + 1}. {instruction}
-                  </ListItemText>
-                </ListItem>
+                <ListRow key={instruction}>
+                  {index + 1}. {instruction}
+                </ListRow>
               ))}
-            </Paper>
-          </List>
+            </List>
+          </section>
         )}
         {recipe.attributions.length > 0 && (
           <RecipeAttributionList attributions={recipe.attributions} />
@@ -119,12 +110,12 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           source={recipe.source}
           chapterName={recipe.chapter?.name}
           refs={recipe.refs}
-          sx={{ m: 1 }}
+          m={8}
         />
-        {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
-        {websites.length > 0 && <WebsiteListCard refs={websites} sx={{ m: 1 }} />}
-        <FixBugCard fixUrl={getRecipeEditUrl(recipe)} sx={{ m: 1 }} />
-      </Box>
+        {videos.length > 0 && <VideoListCard refs={videos} m={8} />}
+        {websites.length > 0 && <WebsiteListCard refs={websites} m={8} />}
+        <FixBugCard fixUrl={getRecipeEditUrl(recipe)} m={8} />
+      </main>
     </>
   );
 }

@@ -90,7 +90,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       footer={
         <FixBugCard
           fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
-          sx={{ m: 1 }}
+          m={8}
         />
       }
     >
@@ -165,7 +165,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         />
       )}
       {additionalVideos.length > 0 && (
-        <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
+        <VideoListCard title="Other videos" refs={additionalVideos} m={8} />
       )}
     </SearchableRecipePage>
   );

@@ -1,15 +1,23 @@
+.wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 4px;
+  align-items: baseline;
+}
+
 .quantity {
   font-size: 1em;
 }
 
 .modifier {
   font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
+  color: var(--mantine-color-dimmed);
   text-transform: lowercase;
 }
 
 .unit {
   font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
+  color: var(--mantine-color-dimmed);
   text-transform: lowercase;
 }

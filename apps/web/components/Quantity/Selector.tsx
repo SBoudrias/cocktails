@@ -1,6 +1,6 @@
 'use client';
 
-import { ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { SegmentedControl } from '@mantine/core';
 
 export type Unit = 'oz' | 'ml';
 
@@ -12,15 +12,12 @@ export default function UnitSelector({
   onChange: (unit: Unit) => void;
 }) {
   return (
-    <ToggleButtonGroup
+    <SegmentedControl
       value={value}
-      onChange={(_, newVal) => onChange(newVal === 'oz' ? 'oz' : 'ml')}
-      size="small"
+      onChange={(newVal) => onChange(newVal === 'oz' ? 'oz' : 'ml')}
+      data={['oz', 'ml']}
+      size="sm"
       aria-label="Preferred measurement unit"
-      exclusive
-    >
-      <ToggleButton value="oz">oz</ToggleButton>
-      <ToggleButton value="ml">ml</ToggleButton>
-    </ToggleButtonGroup>
+    />
   );
 }

@@ -2,21 +2,12 @@
 
 import type { Recipe, RecipeTechnique } from '@cocktails/data';
 import { compareIngredients } from '@cocktails/ingredient-sorting';
-import CalculateIcon from '@mui/icons-material/Calculate';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import {
-  Stack,
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Link as MuiLink,
-  Paper,
-  Toolbar,
-} from '@mui/material';
+import { Anchor, Group } from '@mantine/core';
+import { IconCalculator } from '@tabler/icons-react';
 import Link from 'next/link';
 import { Fragment, useMemo, useState } from 'react';
 import { match } from 'ts-pattern';
+import { List, ListRow, ListSubheader } from '#/components/AppList';
 import Quantity from '#/components/Quantity';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import ServingSelector from '#/components/ServingSelector';
@@ -52,7 +43,7 @@ function IngredientLine({
   }
 
   return (
-    <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
+    <Group gap={4} align="baseline" wrap="nowrap">
       <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />{' '}
       <div>
         <div className={styles.name}>
@@ -62,7 +53,7 @@ function IngredientLine({
         {category}
         {brix}
       </div>
-    </Stack>
+    </Group>
   );
 }
 
@@ -75,10 +66,10 @@ function TechniqueDetails({
 }) {
   return match(technique)
     .with({ technique: 'clarification', method: 'milk' }, (milkClarification) => (
-      <Stack direction="row" spacing={0.5} sx={{ alignItems: 'baseline' }}>
+      <Group gap={4} align="baseline" wrap="nowrap">
         <Quantity preferredUnit={preferredUnit} quantity={milkClarification.quantity} />{' '}
         <div className={styles.name}>{milkClarification.milk_type}</div>
-      </Stack>
+      </Group>
     ))
     .exhaustive();
 }
@@ -119,25 +110,16 @@ export default function IngredientList({
 
   return (
     <>
-      <List>
-        <ListSubheader>Ingredients</ListSubheader>
-        <Paper square>
-          {scaledIngredients.toSorted(compareIngredients).map((ingredient) => {
-            return (
-              <Link key={ingredient.slug} href={getRecipeIngredientUrl(ingredient)}>
-                <ListItem divider secondaryAction={<ChevronRightIcon />}>
-                  <ListItemText>
-                    <IngredientLine
-                      ingredient={ingredient}
-                      preferredUnit={preferredUnit}
-                    />
-                  </ListItemText>
-                </ListItem>
-              </Link>
-            );
-          })}
-        </Paper>
-      </List>
+      <section>
+        <ListSubheader id="ingredients-subheader">Ingredients</ListSubheader>
+        <List aria-labelledby="ingredients-subheader">
+          {scaledIngredients.toSorted(compareIngredients).map((ingredient) => (
+            <ListRow key={ingredient.slug} href={getRecipeIngredientUrl(ingredient)}>
+              <IngredientLine ingredient={ingredient} preferredUnit={preferredUnit} />
+            </ListRow>
+          ))}
+        </List>
+      </section>
       {scaledTechniques.map((recipeTechnique) => {
         const headingId = `recipe-technique-${recipeTechnique.technique}-heading`;
         const calculatorUrl = match(recipeTechnique)
@@ -155,49 +137,39 @@ export default function IngredientList({
 
         return (
           <Fragment key={recipeTechnique.technique}>
-            <ListSubheader component="div">
-              <Stack
-                direction="row"
-                sx={{ alignItems: 'center', justifyContent: 'space-between' }}
-              >
+            <ListSubheader>
+              <Group justify="space-between">
                 <span id={headingId}>{formatRecipeTechniqueName(recipeTechnique)}</span>
-                <MuiLink
+                <Anchor
                   component={Link}
                   href={calculatorUrl}
-                  underline="none"
-                  sx={{
-                    color: '#FFFFFF',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 0.5,
-                  }}
+                  underline="never"
+                  c="white"
+                  size="sm"
+                  inline
                 >
-                  {/* The Calculate glyph sits low in its viewBox; lift it into
-                      the text cap band */}
-                  <CalculateIcon sx={{ fontSize: 13, transform: 'translateY(-1.5px)' }} />
-                  Calculate milk for a batch
-                </MuiLink>
-              </Stack>
+                  <Group gap={4} component="span">
+                    <IconCalculator size={14} />
+                    Calculate milk for a batch
+                  </Group>
+                </Anchor>
+              </Group>
             </ListSubheader>
             <List aria-labelledby={headingId}>
-              <Paper square>
-                <ListItem divider>
-                  <ListItemText>
-                    <TechniqueDetails
-                      technique={recipeTechnique}
-                      preferredUnit={preferredUnit}
-                    />
-                  </ListItemText>
-                </ListItem>
-              </Paper>
+              <ListRow>
+                <TechniqueDetails
+                  technique={recipeTechnique}
+                  preferredUnit={preferredUnit}
+                />
+              </ListRow>
             </List>
           </Fragment>
         );
       })}
-      <Toolbar sx={{ justifyContent: 'space-between', px: 1 }}>
+      <Group justify="space-between" align="flex-end" px="xs" py="sm">
         <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
         <ServingSelector servings={servings} onChange={setServings} />
-      </Toolbar>
+      </Group>
     </>
   );
 }
