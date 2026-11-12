@@ -1,0 +1,6 @@
+:HL["/cocktails/pr-preview/pr-564/_next/static/chunks/1tf4etm58a6li.css","style"]
+:HL["/cocktails/pr-preview/pr-564/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+3:[["children",{"s":"__PAGE__","h":160}]]
+2:[["children",{"s":"bottles","h":96,"c":"$Q3"}]]
+1:[["children",{"s":"list","h":96,"c":"$Q2"}]]
+0:{"b":"gYnDMmkTQFZyD6MWJUIt6","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
