@@ -1,6 +1,6 @@
 .badge {
   border-radius: 50%;
-  border: 1px solid var(--mui-palette-primary-dark);
+  border: 1px solid var(--mantine-color-tiki-9);
   width: 70px;
   height: 70px;
   display: inline-flex;

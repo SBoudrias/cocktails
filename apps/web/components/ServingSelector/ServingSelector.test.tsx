@@ -1,7 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render as rtlRender, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
+import { MantineWrapper } from '#/vitest.setup';
 import ServingSelector from './index';
+
+const render = (ui: React.ReactElement) => rtlRender(ui, { wrapper: MantineWrapper });
 
 function StatefulServingSelector({ initialServings = 2 }: { initialServings?: number }) {
   const [servings, setServings] = useState(initialServings);

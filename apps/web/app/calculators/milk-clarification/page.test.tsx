@@ -56,10 +56,7 @@ describe('MilkClarificationCalculatorPage', () => {
       name: 'Cocktail batch volume',
     });
     expect(batchVolume).toHaveValue(19.5);
-    expect(screen.getByRole('button', { name: 'oz' })).toHaveAttribute(
-      'aria-pressed',
-      'true',
-    );
+    expect(screen.getByRole('radio', { name: 'oz' })).toBeChecked();
     expect(screen.getByRole('status')).toHaveTextContent('Add 5 oz of whole milk');
 
     const recipeRatio = screen.getByRole('textbox', {
@@ -111,12 +108,12 @@ describe('MilkClarificationCalculatorPage', () => {
       name: 'Cocktail batch volume',
     });
 
-    await user.click(screen.getByRole('button', { name: 'oz' }));
+    await user.click(screen.getByRole('radio', { name: 'oz' }));
 
     expect(batchVolume).toHaveValue(33.25);
     expect(screen.getByRole('status')).toHaveTextContent('Add 8.25 oz of whole milk');
 
-    await user.click(screen.getByRole('button', { name: 'ml' }));
+    await user.click(screen.getByRole('radio', { name: 'ml' }));
 
     expect(batchVolume).toHaveValue(1000);
     expect(screen.getByRole('status')).toHaveTextContent('Add 250 ml of whole milk');
@@ -165,16 +162,16 @@ describe('MilkClarificationCalculatorPage', () => {
       name: 'Cocktail batch volume',
     });
 
-    await user.click(screen.getByRole('button', { name: 'oz' }));
+    await user.click(screen.getByRole('radio', { name: 'oz' }));
     await user.clear(batchVolume);
     await user.type(batchVolume, '12.5');
     expect(screen.getByRole('status')).toHaveTextContent('Add 3.25 oz of whole milk');
 
-    await user.click(screen.getByRole('button', { name: 'ml' }));
+    await user.click(screen.getByRole('radio', { name: 'ml' }));
     expect(batchVolume).toHaveValue(375);
     expect(screen.getByRole('status')).toHaveTextContent('Add 95 ml of whole milk');
 
-    await user.click(screen.getByRole('button', { name: 'oz' }));
+    await user.click(screen.getByRole('radio', { name: 'oz' }));
     expect(batchVolume).toHaveValue(12.5);
     expect(screen.getByRole('status')).toHaveTextContent('Add 3.25 oz of whole milk');
   });
@@ -192,7 +189,7 @@ describe('MilkClarificationCalculatorPage', () => {
       }
 
       for (const unit of ['oz', 'ml', 'oz']) {
-        await user.click(screen.getByRole('button', { name: unit }));
+        await user.click(screen.getByRole('radio', { name: unit }));
         expect(batchVolume).toHaveValue(value === '' ? null : Number(value));
         expect(batchVolume).toHaveAccessibleDescription('Must be greater than 0');
         expect(screen.getByRole('status')).toHaveTextContent(
@@ -203,7 +200,7 @@ describe('MilkClarificationCalculatorPage', () => {
       await user.clear(batchVolume);
       await user.type(batchVolume, '4');
       expect(screen.getByRole('status')).toHaveTextContent('Add 1 oz of whole milk');
-      await user.click(screen.getByRole('button', { name: 'ml' }));
+      await user.click(screen.getByRole('radio', { name: 'ml' }));
       expect(batchVolume).toHaveValue(120);
       expect(screen.getByRole('status')).toHaveTextContent('Add 30 ml of whole milk');
     },

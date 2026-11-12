@@ -1,0 +1,29 @@
+.list {
+  background-color: var(--app-paper);
+  list-style: none;
+}
+
+.row {
+  border-bottom: 1px solid var(--app-divider);
+}
+
+.static {
+  padding: 8px 16px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  padding: 8px 16px;
+  min-height: 48px;
+}
+
+.label {
+  font-size: var(--mantine-font-size-md);
+}
+
+.subheader {
+  padding: 16px;
+  line-height: 1.4rem;
+}

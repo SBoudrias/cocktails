@@ -1,57 +1,43 @@
 import type { YoutubeRef, YoutubeChannel } from '@cocktails/data';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Typography,
-  type SxProps,
-} from '@mui/material';
+import type { MantineSpacing } from '@mantine/core';
+import { Button, Card, Group, Text, Title } from '@mantine/core';
+import { IconArrowUpRight, IconBrandYoutubeFilled } from '@tabler/icons-react';
 import Video from '#/components/Video';
 
 export default function YoutubeAboutCard({
   source,
   videoRef,
-  sx,
+  m,
 }: {
   source: YoutubeChannel;
   videoRef?: YoutubeRef;
-  sx?: SxProps;
+  m?: MantineSpacing;
 }) {
   return (
-    <Card sx={sx}>
-      <CardHeader
-        title={
-          <>
-            <YouTubeIcon />
-            &nbsp;{source.name}
-          </>
-        }
-      />
-      {videoRef && (
-        <CardContent>
-          <Video id={videoRef.videoId} start={videoRef.start} />
-        </CardContent>
-      )}
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {source.description}
-        </Typography>
-      </CardContent>
-      <CardActions sx={{ justifyContent: 'end' }}>
+    <Card m={m} padding="md">
+      <Group gap="xs" mb="sm">
+        <IconBrandYoutubeFilled />
+        <Title order={2} size="h3" fw={400}>
+          {source.name}
+        </Title>
+      </Group>
+      {videoRef && <Video id={videoRef.videoId} start={videoRef.start} />}
+      <Text size="sm" c="dimmed" mt="sm">
+        {source.description}
+      </Text>
+      <Group justify="flex-end" mt="sm">
         <Button
+          component="a"
           href={source.links[0]}
           target="_blank"
           rel="noreferrer noopener"
-          color="inherit"
+          variant="subtle"
+          color="gray"
+          rightSection={<IconArrowUpRight size={18} />}
         >
           Go to channel
-          <ArrowOutwardIcon />
         </Button>
-      </CardActions>
+      </Group>
     </Card>
   );
 }

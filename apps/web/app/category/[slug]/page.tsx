@@ -65,7 +65,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       footer={
         <FixBugCard
           fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${category.slug}.json`}
-          sx={{ m: 1 }}
+          m={8}
         />
       }
     >
@@ -117,7 +117,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
         />
       )}
       {additionalVideos.length > 0 && (
-        <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
+        <VideoListCard title="Other videos" refs={additionalVideos} m={8} />
       )}
     </SearchableRecipePage>
   );

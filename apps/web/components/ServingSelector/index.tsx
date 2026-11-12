@@ -1,7 +1,7 @@
 'use client';
 
-import { Add, Remove } from '@mui/icons-material';
-import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { ActionIcon, TextInput } from '@mantine/core';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
@@ -67,47 +67,43 @@ export default function ServingSelector({
   };
 
   return (
-    <TextField
+    <TextInput
       type="number"
-      size="small"
       label="Servings"
+      size="sm"
+      w={140}
       value={inputValue ?? servings}
       onChange={handleChange}
       onBlur={handleBlur}
-      slotProps={{
-        input: {
-          startAdornment: (
-            <InputAdornment position="start">
-              <IconButton
-                onClick={handleDecrement}
-                disabled={servings <= MIN_SERVINGS}
-                size="small"
-                aria-label="Decrement"
-              >
-                <Remove fontSize="small" />
-              </IconButton>
-            </InputAdornment>
-          ),
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                onClick={handleIncrement}
-                disabled={servings >= MAX_SERVINGS}
-                size="small"
-                aria-label="Increment"
-              >
-                <Add fontSize="small" />
-              </IconButton>
-            </InputAdornment>
-          ),
-        },
-        htmlInput: {
-          min: MIN_SERVINGS,
-          max: MAX_SERVINGS,
-          step: MIN_SERVINGS,
-          'aria-label': 'Number of servings',
-        },
-      }}
+      min={MIN_SERVINGS}
+      max={MAX_SERVINGS}
+      step={MIN_SERVINGS}
+      aria-label="Number of servings"
+      styles={{ input: { textAlign: 'center' } }}
+      leftSectionPointerEvents="all"
+      rightSectionPointerEvents="all"
+      leftSection={
+        <ActionIcon
+          variant="subtle"
+          color="gray"
+          onClick={handleDecrement}
+          disabled={servings <= MIN_SERVINGS}
+          aria-label="Decrement"
+        >
+          <IconMinus size={16} />
+        </ActionIcon>
+      }
+      rightSection={
+        <ActionIcon
+          variant="subtle"
+          color="gray"
+          onClick={handleIncrement}
+          disabled={servings >= MAX_SERVINGS}
+          aria-label="Increment"
+        >
+          <IconPlus size={16} />
+        </ActionIcon>
+      }
     />
   );
 }
