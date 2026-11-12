@@ -1,17 +1,13 @@
-// Service worker for the Cocktail Index static export.
+// Service worker for the Indexotica static export.
 //
 // The precache manifest and build version are baked into out/sw.js after the
 // static export by apps/web/tools/generate-sw-precache.ts; this committed
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = '7ee50c8a5b5b';
+const VERSION = '49bf57601a4a';
 const PRECACHE = [
-  "./_next/static/PAnwlClEQ_B2WLDRufyAM/_buildManifest.js",
-  "./_next/static/PAnwlClEQ_B2WLDRufyAM/_clientMiddlewareManifest.js",
-  "./_next/static/PAnwlClEQ_B2WLDRufyAM/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
-  "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/07vy1nalhdt3h.js",
   "./_next/static/chunks/0cz1d0mv5g_q7.js",
   "./_next/static/chunks/0d3-u__x65tx0.css",
@@ -27,6 +23,7 @@ const PRECACHE = [
   "./_next/static/chunks/184hh0tc6d9pz.js",
   "./_next/static/chunks/19rydouqv-g86.js",
   "./_next/static/chunks/1__8svdd-ks7o.js",
+  "./_next/static/chunks/1cyf5zfaprs0u.js",
   "./_next/static/chunks/1i8z1_fokh7co.js",
   "./_next/static/chunks/1iz9o8s16-x-p.js",
   "./_next/static/chunks/1ktxt5b29ydf3.js",
@@ -69,6 +66,9 @@ const PRECACHE = [
   "./_next/static/media/favicon.2vob68tjqpejf.ico",
   "./_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp",
   "./_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp",
+  "./_next/static/oHOtNvgavUR9kDiPaK31f/_buildManifest.js",
+  "./_next/static/oHOtNvgavUR9kDiPaK31f/_clientMiddlewareManifest.js",
+  "./_next/static/oHOtNvgavUR9kDiPaK31f/_ssgManifest.js",
   "./data/catalog.json",
   "./data/search-index.json",
   "./icons/apple-touch-icon.png",
