@@ -79,7 +79,8 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
     body: `${bostonSmallTin} ${bostonBigTin}`,
     material: 'silver',
     // short strokes parallel to the tilted shaker, clear of its outline
-    motion: 'M9.2 7 L11 3.9 M4 14 L5.8 10.9 M18 12 L19.8 8.9 M14.5 20 L16.3 16.9',
+    motion:
+      'M9 7.35 Q9.23 4.95 11.2 3.55 M3.8 14.35 Q4.03 11.95 6 10.55 M17.8 12.35 Q19.77 10.95 20 8.55 M14.3 20.35 Q16.27 18.95 16.5 16.55',
   },
   // yarai mixing glass: thick base, spout, diamond cut, with a bar spoon
   stirred: {
@@ -124,7 +125,7 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
     parts: 'M12 1.8 V17.6 M12 17.6 L9.6 19.2 M12 17.6 L14.4 19.2 M12 17.6 V19.8',
     // the arrowhead opens wide and tilts up, clear of the curve behind it
     motion:
-      'M6.8 4.6 A5.2 1.9 0 1 0 14.98 3.04 M14.98 3.04 l1.63 -1.16 M14.98 3.04 l1.16 1.63',
+      'M16.5 3.65 A5.2 1.9 0 0 0 12.9 2.73 M11.1 2.73 A5.2 1.9 0 1 0 15.68 5.94 M15.68 5.94 l-1.69 -0.62 M15.68 5.94 l-0.9 1.56',
   },
   other: {
     solid:
@@ -162,12 +163,12 @@ export const servedOnShapes: Record<Recipe['served_on'], Shape> = {
     ].join(' '),
     facets: 'M4.8 15.6 L5.6 18.6 M11.4 9.4 L12.4 12.4 M10 5.4 L10 9.6',
   },
-  // frozen slush: a lumpy heap of fine ice grains with a straw
+  // frozen drink: a full glass crowned with a soft-serve swirl of slush
   blended: {
-    ice: 'M3 20.5 V17 C3 14.5 4.5 13 6 13.2 C6.8 11.4 8.6 10.6 10.2 11.2 C11.2 9.6 13.4 9.4 14.6 10.8 C16.4 10.4 18 11.6 18.2 13.4 C20 13.6 21 15.2 21 17 V20.5 Z',
-    facets:
-      'M6 16.6 l0.9 -0.5 M9 14.4 l0.9 0.4 M8.4 18.4 l0.8 -0.6 M11.6 16.6 l0.9 0.2 M12.4 13.2 l0.7 -0.6 M14.6 18.2 l0.9 -0.4 M16.6 15.2 l0.8 0.5 M18.6 18.4 l0.7 -0.6 M5 19.2 l0.8 0.3',
-    parts: 'M14.2 11 L18.4 2.4',
+    body: 'M5.5 11.5 H18.5 L17.2 20.2 Q17 21.5 15.6 21.5 H8.4 Q7 21.5 6.8 20.2 Z',
+    level: 11.5,
+    ice: 'M4.8 11.5 C4.8 9.8 6 8.8 7.4 8.8 H16.6 C18 8.8 19.2 9.8 19.2 11.5 Z M7.2 8.8 C7.2 7.2 8.4 6 9.8 6 H14.2 C15.6 6 16.8 7.2 16.8 8.8 Z M9.6 6 C9.6 4.4 10.8 3.4 12 2.4 C13.2 3.4 14.4 4.4 14.4 6 Z',
+    parts: 'M15.6 7.6 L19.6 2.2',
   },
 };
 
@@ -224,15 +225,18 @@ export const glasswareShapes: Record<Recipe['glassware'], Shape> = {
     facets:
       'M5.8 6.5 H18.2 M9.2 10 V12 M12 11 V13 M14.8 10 V12 M10.6 14.6 V16.4 M13.4 14.6 V16.4',
   },
-  // straight copper mug: rolled rim, riveted brass strap handle, a shine
+  // moscow mule mug: hammered copper barrel with rounded sides, ridged near
+  // the rim and the base, riveted strap handle
   mule: {
-    body: 'M4 3.5 H15.5 V20 Q15.5 21.5 14 21.5 H5.5 Q4 21.5 4 20 Z',
+    body: 'M4.8 3.5 H15.2 C16.8 8 16.8 17 15.2 21.5 H4.8 C3.2 17 3.2 8 4.8 3.5 Z',
     material: 'copper',
     parts:
-      'M15.5 7 H18.6 Q20.2 7 20.2 8.6 V15.4 Q20.2 17 18.6 17 H15.5 M15.5 9.2 H17.4 Q18 9.2 18 9.8 V14.2 Q18 14.8 17.4 14.8 H15.5',
-    facets: 'M4 5.8 H15.5 M6.6 8 V18.6',
+      'M16.1 7.5 H18.4 Q20 7.5 20 9.1 V14.9 Q20 16.5 18.4 16.5 H16.1 M16.2 9.5 H17.4 Q18 9.5 18 10.1 V13.9 Q18 14.5 17.4 14.5 H16.2',
+    // ridges, then hammer dimples
+    facets:
+      'M4.3 5.6 H15.7 M4.3 19.4 H15.7 M7.4 9.4 q0.7 0.3 1.4 0 M11 8.8 q0.7 0.3 1.4 0 M12.8 11.4 q0.7 0.3 1.4 0 M9.2 12.4 q0.7 0.3 1.4 0 M6.4 14.4 q0.7 0.3 1.4 0 M11.8 14.8 q0.7 0.3 1.4 0 M8.6 16.8 q0.7 0.3 1.4 0',
     solid:
-      'M16.6 7.4 a0.75 0.75 0 1 1 0 1.5 a0.75 0.75 0 1 1 0 -1.5 Z M16.6 15.1 a0.75 0.75 0 1 1 0 1.5 a0.75 0.75 0 1 1 0 -1.5 Z',
+      'M17 7.8 a0.7 0.7 0 1 1 0 1.4 a0.7 0.7 0 1 1 0 -1.4 Z M17 14.8 a0.7 0.7 0 1 1 0 1.4 a0.7 0.7 0 1 1 0 -1.4 Z',
   },
   // carved ceramic mug, the app icon's tiki
   tiki: {

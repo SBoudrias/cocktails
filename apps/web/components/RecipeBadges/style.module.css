@@ -46,8 +46,13 @@
 }
 
 .copper {
-  fill: var(--mui-palette-warning-main);
-  fill-opacity: 0.8;
+  /* pinkish copper: the orange accent warmed toward the palm magenta */
+  fill: color-mix(
+    in srgb,
+    var(--mui-palette-warning-main) 65%,
+    var(--mui-palette-error-light)
+  );
+  fill-opacity: 0.85;
 }
 
 .ceramic {
