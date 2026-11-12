@@ -64,11 +64,13 @@ function isStrongMatch(searchText: string, query: string): boolean {
 /**
  * The entities worth surfacing for a search term: strong matches from the
  * shared search index, at most `MAX_ENTITY_SUGGESTIONS`, name-prefix matches
- * first and shorter (more specific) names before longer ones — and none at
- * all when more than `MAX_ENTITY_SUGGESTION_MATCHES` entities match, where
- * the term is too broad to pick from. While the index has not loaded, or the
- * query is below the character threshold, there are none — recipe search
- * alone still works in the meantime.
+ * first and shorter (more specific) names before longer ones. A query that
+ * is an entity's whole name is always suggested — "rum" is the Rum category,
+ * whatever else starts with those letters — while a broader term with more
+ * than `MAX_ENTITY_SUGGESTION_MATCHES` non-exact matches shows nothing: it
+ * still names a crowd, and recipes-only is the honest answer. While the
+ * index has not loaded, or the query is below the character threshold, there
+ * are none — recipe search alone still works in the meantime.
  */
 export function getEntitySuggestions(
   index: SearchIndex | undefined,
@@ -87,9 +89,16 @@ export function getEntitySuggestions(
   const matches = candidates.filter((candidate) =>
     isStrongMatch(candidate.searchText, query),
   );
-  if (matches.length > MAX_ENTITY_SUGGESTION_MATCHES) return [];
+  // The exact name (a bar's name plus location included) is never gated:
+  // however many entities merely start with the query, the term named this
+  // one outright.
+  const exact = matches.filter((candidate) => candidate.searchText === query);
+  const nonExact = matches.filter((candidate) => candidate.searchText !== query);
+  if (nonExact.length > MAX_ENTITY_SUGGESTION_MATCHES) {
+    return exact.slice(0, MAX_ENTITY_SUGGESTIONS);
+  }
 
-  return matches
+  return [...exact, ...nonExact]
     .toSorted(
       (a, b) =>
         Number(b.searchText.startsWith(query)) - Number(a.searchText.startsWith(query)) ||

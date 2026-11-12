@@ -136,6 +136,37 @@ describe('getEntitySuggestions', () => {
     );
   });
 
+  it('always suggests an exact name match, however broad the term', () => {
+    // "rum" matches dozens of rum categories and bottles, but it is also the
+    // Rum category's whole name: that one entity surfaces, the crowd of
+    // partial matches stays hidden.
+    const rumCrowd: SearchIndex = {
+      '/category/rum': {
+        name: 'Rum',
+        kind: 'category',
+        searchText: 'rum',
+      },
+      ...Object.fromEntries(
+        Array.from({ length: MAX_ENTITY_SUGGESTION_MATCHES + 1 }, (_, i) => [
+          `/category/blended-rum-${i}`,
+          {
+            name: `Blended rum ${i}`,
+            kind: 'category',
+            searchText: `blended rum ${i}`,
+          },
+        ]),
+      ),
+    };
+
+    const suggestions = getEntitySuggestions(rumCrowd, 'rum');
+
+    expect(suggestions.map((suggestion) => suggestion.name)).toEqual(['Rum']);
+    expect(suggestions[0]).toMatchObject({
+      href: '/category/rum',
+      kind: 'category',
+    });
+  });
+
   it('caps the suggestions at the limit, prefix matches and shorter names first', () => {
     const manyJeffs: SearchIndex = {
       ...index,
