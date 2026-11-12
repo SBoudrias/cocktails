@@ -264,7 +264,11 @@ if (referencedChunks.length < 2) {
 }
 const droppedChunks = referencedChunks.slice(0, 2);
 const deployBPrecache = precacheUrls.filter((url) => !droppedChunks.includes(url));
-const deployBVersion = `b${deployAVersion.slice(1)}`;
+// Appended, never substituted: a version like 'b175…' would otherwise
+// rewrite to itself ('b' + '175…' === deployAVersion), deploy B would
+// reuse deploy A's precache cache name, and the retirement check below
+// could never pass.
+const deployBVersion = `${deployAVersion}-b`;
 await writeFile(
   path.join(overlayDir, 'sw.js'),
   swSource
