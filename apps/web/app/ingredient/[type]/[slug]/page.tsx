@@ -34,6 +34,12 @@ import IngredientCalculators from './IngredientCalculators';
 
 type Params = { type: string; slug: string };
 
+/**
+ * The primary substitution list caps at this many links: a capped list holds
+ * 14 bottles plus the see-all link to the category page as its last item.
+ */
+const MAX_SUBSTITUTION_LINKS = 15;
+
 export async function generateStaticParams(): Promise<Params[]> {
   return getIngredientPageParams();
 }
@@ -64,7 +70,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const { type, slug } = await params;
 
   const ingredient = await getIngredient(type, slug);
-  const [substitutes, relatedRecipes] = await Promise.all([
+  const [substitution, relatedRecipes] = await Promise.all([
     getSubstitutesForIngredient(ingredient),
     getRecipesForIngredient(ingredient),
   ]);
@@ -149,20 +155,56 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         </List>
       )}
       <IngredientCalculators ingredient={ingredient} />
-      {substitutes.length > 0 && (
-        <LinkList
-          header="Some substitution option"
-          items={substitutes.slice(0, 10)}
-          renderItem={(substitute) => (
-            <LinkListItem
-              key={substitute.slug}
-              href={
-                ingredientHasData(substitute) ? getIngredientUrl(substitute) : undefined
+      {substitution && (
+        <>
+          {substitution.substitutes.length > 0 && (
+            <LinkList
+              header="Some substitution option"
+              items={substitution.substitutes.slice(0, MAX_SUBSTITUTION_LINKS - 1)}
+              renderItem={(substitute) => (
+                <LinkListItem
+                  key={substitute.slug}
+                  href={
+                    ingredientHasData(substitute)
+                      ? getIngredientUrl(substitute)
+                      : undefined
+                  }
+                  primary={substitute.name}
+                />
+              )}
+              footer={
+                substitution.substitutes.length >= MAX_SUBSTITUTION_LINKS && (
+                  <LinkListItem
+                    href={getCategoryUrl(substitution.category)}
+                    primary={
+                      <span>
+                        <LocalOfferIcon
+                          fontSize="small"
+                          sx={{ mr: 1, verticalAlign: 'text-bottom' }}
+                        />
+                        {substitution.category.name}
+                      </span>
+                    }
+                    secondary="See all options"
+                  />
+                )
               }
-              primary={substitute.name}
             />
           )}
-        />
+          {substitution.relatedCategories.length > 0 && (
+            <LinkList
+              header="Substitution-friendly categories"
+              items={substitution.relatedCategories}
+              renderItem={(relatedCategory) => (
+                <LinkListItem
+                  key={relatedCategory.slug}
+                  href={getCategoryUrl(relatedCategory)}
+                  primary={relatedCategory.name}
+                />
+              )}
+            />
+          )}
+        </>
       )}
       {additionalVideos.length > 0 && (
         <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />

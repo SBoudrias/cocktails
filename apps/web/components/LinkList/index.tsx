@@ -43,11 +43,14 @@ export function LinkList<const T>({
   renderItem,
   config,
   header = '',
+  footer,
 }: {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
   config?: ListConfig<T>;
   header?: string;
+  /** Rendered after the last group's items, inside its paper. */
+  footer?: React.ReactNode;
 }) {
   const groups = useMemo(() => {
     const {
@@ -72,7 +75,7 @@ export function LinkList<const T>({
 
   return (
     <List>
-      {groups.map(([header, groupItems]) => {
+      {groups.map(([header, groupItems], groupIndex) => {
         // Spaces would split aria-labelledby into dead id references, so the
         // header's id keeps them out.
         const headerId = `group-header-${header.replace(/\s+/g, '-')}`;
@@ -85,7 +88,10 @@ export function LinkList<const T>({
                   {header}
                 </ListSubheader>
               )}
-              <Paper square>{groupItems.map((item) => renderItem(item))}</Paper>
+              <Paper square>
+                {groupItems.map((item) => renderItem(item))}
+                {footer && groupIndex === groups.length - 1 && footer}
+              </Paper>
             </List>
           </li>
         );

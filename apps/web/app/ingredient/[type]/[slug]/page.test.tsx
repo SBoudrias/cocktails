@@ -1,14 +1,11 @@
-import {
-  getIngredient,
-  getRecipesForIngredient,
-  getSubstitutesForIngredient,
-} from '@cocktails/data/ingredients';
+import { getIngredient, getRecipesForIngredient } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
+import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 import { serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import IngredientPage from './page';
@@ -16,7 +13,6 @@ import IngredientPage from './page';
 vi.mock('@cocktails/data/ingredients', async (importOriginal) => ({
   ...(await importOriginal<typeof IngredientsModule>()),
   getRecipesForIngredient: vi.fn(),
-  getSubstitutesForIngredient: vi.fn(),
 }));
 
 // Using real pineapple-juice ingredient which has:
@@ -36,7 +32,24 @@ const TEST_SPIRIT = {
   name: 'Beefeater London Dry Gin',
 };
 
-const [pineappleRecipes, spiritRecipes, substitutes] = await Promise.all([
+// A Jamaican aged rum: its most specific category (Blended aged rum
+// (Jamaica)) holds 6 other bottles, and its tree has substitution-friendly
+// neighboring categories.
+const TEST_JAMAICAN_RUM = {
+  type: 'spirit',
+  slug: 'appleton-12',
+  name: 'Appleton 12',
+};
+
+// A bourbon bottle: its Whiskey (Bourbon) category holds 33 bottles, past
+// the substitution-list cap, so its page exercises the capped list.
+const TEST_CAPPED_SPIRIT = {
+  type: 'spirit',
+  slug: 'bulleit-bourbon',
+  name: 'Bulleit Bourbon',
+};
+
+const [pineappleRecipes, spiritRecipes, appleton21] = await Promise.all([
   Promise.all([
     getRecipe(
       { type: 'book', slug: 'smugglers-cove' },
@@ -57,16 +70,12 @@ const [pineappleRecipes, spiritRecipes, substitutes] = await Promise.all([
   Promise.all([
     getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'cloister'),
   ]),
-  Promise.all([getIngredient('spirit', 'fords-gin')]),
+  getIngredient('spirit', 'appleton-21'),
 ]);
 
 vi.mocked(getRecipesForIngredient).mockImplementation(async (ingredient) => {
   if (ingredient.slug === TEST_INGREDIENT.slug) return pineappleRecipes;
   if (ingredient.slug === TEST_SPIRIT.slug) return spiritRecipes;
-  return [];
-});
-vi.mocked(getSubstitutesForIngredient).mockImplementation(async (ingredient) => {
-  if (ingredient.slug === TEST_SPIRIT.slug) return substitutes;
   return [];
 });
 
@@ -87,14 +96,30 @@ const testCatalog = buildCatalog([
 ]);
 
 // Cache page JSX once for the entire file to avoid repeated async data loading
-const [ingredientPageJSX, spiritPageJSX] = await Promise.all([
-  IngredientPage({
-    params: Promise.resolve({ type: TEST_INGREDIENT.type, slug: TEST_INGREDIENT.slug }),
-  }),
-  IngredientPage({
-    params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
-  }),
-]);
+const [ingredientPageJSX, spiritPageJSX, jamaicanRumPageJSX, cappedSpiritPageJSX] =
+  await Promise.all([
+    IngredientPage({
+      params: Promise.resolve({
+        type: TEST_INGREDIENT.type,
+        slug: TEST_INGREDIENT.slug,
+      }),
+    }),
+    IngredientPage({
+      params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
+    }),
+    IngredientPage({
+      params: Promise.resolve({
+        type: TEST_JAMAICAN_RUM.type,
+        slug: TEST_JAMAICAN_RUM.slug,
+      }),
+    }),
+    IngredientPage({
+      params: Promise.resolve({
+        type: TEST_CAPPED_SPIRIT.type,
+        slug: TEST_CAPPED_SPIRIT.slug,
+      }),
+    }),
+  ]);
 
 describe('IngredientPage', () => {
   beforeEach(() => {
@@ -116,7 +141,7 @@ describe('IngredientPage', () => {
       await setupApp(spiritPageJSX);
 
       // Beefeater categories are shown
-      expect(screen.getByText(/categor/i)).toBeInTheDocument();
+      expect(screen.getByText(/category is/i)).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /^London Dry Gin/i })).toHaveAttribute(
         'href',
         '/category/london-dry-gin',
@@ -227,6 +252,116 @@ describe('IngredientPage', () => {
     });
   });
 
+  describe('substitution lists', () => {
+    it('only lists bottles from the same category in the primary list', async () => {
+      await setupApp(jamaicanRumPageJSX);
+
+      // Appleton 12's most specific category is Blended aged rum (Jamaica):
+      // only the 6 other bottles from that category appear.
+      const substitutionGroup = screen.getByRole('group', {
+        name: 'Some substitution option',
+      });
+
+      expect(substitutionGroup).toHaveTextContent('Appleton 21');
+      expect(substitutionGroup).toHaveTextContent('Hampden Estate 46');
+      expect(substitutionGroup).toHaveTextContent('Worthy Park Single Estate');
+      // Jamaican rums from other categories stay out.
+      expect(substitutionGroup).not.toHaveTextContent('Rum-Bar Silver');
+      expect(substitutionGroup).not.toHaveTextContent('Smith & Cross');
+
+      expect(
+        within(substitutionGroup).getByRole('link', { name: 'Appleton 21' }),
+      ).toHaveAttribute('href', getIngredientUrl(appleton21));
+    });
+
+    it('lists related categories, not bottles, in the secondary list', async () => {
+      await setupApp(jamaicanRumPageJSX);
+
+      const relatedGroup = screen.getByRole('group', {
+        name: 'Substitution-friendly categories',
+      });
+
+      // Neighboring categories of Blended aged rum (Jamaica): its parents and
+      // their other children, each linking to its category page.
+      const relatedNames = [
+        ['Blended aged rum', 'blended-aged-rum'],
+        ['Blended aged rum (Barbados)', 'blended-aged-rum-barbados'],
+        ['Blended aged rum (Demerara)', 'blended-aged-rum-demerara'],
+        ['Blended lightly-aged rum (Jamaica)', 'blended-lightly-aged-rum-jamaica'],
+        ['Jamaican overproof rum', 'jamaican-overproof-rum'],
+        ['Navy strength Jamaican rum', 'navy-strength-jamaican-rum'],
+      ] as const;
+
+      for (const [name, slug] of relatedNames) {
+        expect(within(relatedGroup).getByRole('link', { name })).toHaveAttribute(
+          'href',
+          getCategoryUrl({ slug }),
+        );
+      }
+
+      // No bottle names in the category list.
+      expect(relatedGroup).not.toHaveTextContent('Appleton');
+      // The bottle's own broader category is linked elsewhere already.
+      expect(
+        within(relatedGroup).queryByRole('link', { name: 'Jamaican rum' }),
+      ).not.toBeInTheDocument();
+    });
+
+    it('caps the primary list at 15 links with a see-all link last when capped', async () => {
+      await setupApp(cappedSpiritPageJSX);
+
+      // Bulleit Bourbon's category holds 32 other bottles: the list shows 14
+      // of them, plus the see-all link to the category page.
+      const substitutionGroup = screen.getByRole('group', {
+        name: 'Some substitution option',
+      });
+
+      const links = within(substitutionGroup).getAllByRole('link');
+      expect(links).toHaveLength(15);
+
+      expect(substitutionGroup).toHaveTextContent("Baker's Bourbon");
+      expect(substitutionGroup).toHaveTextContent('Four Roses Bourbon');
+      // The 15th bottle onward is cut off.
+      expect(substitutionGroup).not.toHaveTextContent('Four Roses Single Barrel');
+
+      // The see-all link closes the list and points at the category page.
+      const seeAllLink = within(substitutionGroup).getByRole('link', {
+        name: /see all/i,
+      });
+      expect(seeAllLink).toHaveAttribute(
+        'href',
+        getCategoryUrl({ slug: 'whiskey-bourbon' }),
+      );
+      // It is the last row of the list.
+      expect(seeAllLink).toBe(links.at(-1));
+    });
+
+    it('renders no see-all link when the category fits under the cap', async () => {
+      await setupApp(jamaicanRumPageJSX);
+
+      const substitutionGroup = screen.getByRole('group', {
+        name: 'Some substitution option',
+      });
+
+      expect(
+        within(substitutionGroup).queryByRole('link', { name: /see all/i }),
+      ).not.toBeInTheDocument();
+      // All 6 same-category bottles fit under the cap.
+      expect(within(substitutionGroup).getAllByRole('link')).toHaveLength(6);
+    });
+
+    it('renders no substitution section for an ingredient without categories', async () => {
+      await setupApp(ingredientPageJSX);
+
+      expect(
+        screen.queryByRole('group', { name: 'Some substitution option' }),
+      ).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('group', { name: 'Substitution-friendly categories' }),
+      ).not.toBeInTheDocument();
+    });
+  });
+
   describe('recipe list', () => {
     it('renders recipes using the ingredient with header', async () => {
       await setupApp(ingredientPageJSX);
@@ -329,14 +464,14 @@ describe('IngredientPage', () => {
       const { user } = await setupApp(spiritPageJSX);
 
       // Category info is visible initially
-      expect(screen.getByText(/categor/i)).toBeInTheDocument();
+      expect(screen.getByText(/category is/i)).toBeInTheDocument();
       expect(screen.getByText('Some substitution option')).toBeInTheDocument();
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'cloister');
 
       // Non-recipe content should be hidden when searching
-      expect(screen.queryByText(/categor/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/category is/i)).not.toBeInTheDocument();
       expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
     });
 
@@ -365,7 +500,7 @@ describe('IngredientPage', () => {
       const { user } = await setupApp(spiritPageJSX);
 
       // Initially filtered and content hidden
-      expect(screen.queryByText(/categor/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/category is/i)).not.toBeInTheDocument();
       expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
 
       // Clear the search
@@ -373,7 +508,7 @@ describe('IngredientPage', () => {
       await user.click(clearButton);
 
       // Content should be restored
-      expect(screen.getByText(/categor/i)).toBeInTheDocument();
+      expect(screen.getByText(/category is/i)).toBeInTheDocument();
       expect(screen.getByText('Some substitution option')).toBeInTheDocument();
       expect(screen.getByText(`Recipes using ${TEST_SPIRIT.name}`)).toBeInTheDocument();
     });
