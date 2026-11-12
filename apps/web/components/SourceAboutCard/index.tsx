@@ -1,5 +1,4 @@
 import type { Ref, BookRef, YoutubeRef, PodcastRef, Source } from '@cocktails/data';
-import { type SxProps } from '@mui/material';
 import slugify from '@sindresorhus/slugify';
 import { match } from 'ts-pattern';
 import BookAboutCard from './Book';
@@ -12,12 +11,12 @@ export default function SourceAboutCard({
   source,
   chapterName,
   refs = EMPTY_REFS,
-  sx,
+  className,
 }: {
   source: Source;
   chapterName?: string;
   refs?: Ref[];
-  sx?: SxProps;
+  className?: string;
 }) {
   return match(source)
     .with({ type: 'book' }, (source) => {
@@ -30,13 +29,13 @@ export default function SourceAboutCard({
           source={source}
           chapterName={chapterName}
           page={ref?.page}
-          sx={sx}
+          className={className}
         />
       );
     })
     .with({ type: 'youtube-channel' }, (source) => {
       const ref = refs.find((ref): ref is YoutubeRef => ref.type === 'youtube');
-      return <YoutubeAboutCard source={source} videoRef={ref} sx={sx} />;
+      return <YoutubeAboutCard source={source} videoRef={ref} className={className} />;
     })
     .with({ type: 'podcast' }, (source) => {
       const ref = refs.find((ref): ref is PodcastRef => ref.type === 'podcast');
@@ -45,7 +44,7 @@ export default function SourceAboutCard({
           source={source}
           episodeTitle={ref?.episodeTitle}
           episodeLink={ref?.episodeLink}
-          sx={sx}
+          className={className}
         />
       );
     })
