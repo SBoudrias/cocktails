@@ -140,9 +140,10 @@ describe('IngredientPage', () => {
     it('renders category information for spirits', async () => {
       await setupApp(spiritPageJSX);
 
-      // Beefeater categories are shown
-      expect(screen.getByText(/category is/i)).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: /^London Dry Gin/i })).toHaveAttribute(
+      // Beefeater categories are shown. The exact name keeps this distinct
+      // from the see-all row, whose accessible name also starts with the
+      // category ("London dry gin See all options").
+      expect(screen.getByRole('link', { name: 'London dry gin' })).toHaveAttribute(
         'href',
         '/category/london-dry-gin',
       );
@@ -307,22 +308,24 @@ describe('IngredientPage', () => {
       ).not.toBeInTheDocument();
     });
 
-    it('caps the primary list at 15 links with a see-all link last when capped', async () => {
+    it('caps the primary list at 10 links with a see-all link last when capped', async () => {
       await setupApp(cappedSpiritPageJSX);
 
-      // Bulleit Bourbon's category holds 32 other bottles: the list shows 14
+      // Bulleit Bourbon's category holds 32 other bottles: the list shows 9
       // of them, plus the see-all link to the category page.
       const substitutionGroup = screen.getByRole('group', {
         name: 'Some substitution option',
       });
 
       const links = within(substitutionGroup).getAllByRole('link');
-      expect(links).toHaveLength(15);
+      expect(links).toHaveLength(10);
 
       expect(substitutionGroup).toHaveTextContent("Baker's Bourbon");
-      expect(substitutionGroup).toHaveTextContent('Four Roses Bourbon');
-      // The 15th bottle onward is cut off.
-      expect(substitutionGroup).not.toHaveTextContent('Four Roses Single Barrel');
+      expect(substitutionGroup).toHaveTextContent(
+        'Evan Williams 1783 Small Batch Bourbon',
+      );
+      // The 10th bottle onward is cut off.
+      expect(substitutionGroup).not.toHaveTextContent('Evan Williams Black Label');
 
       // The see-all link closes the list and points at the category page.
       const seeAllLink = within(substitutionGroup).getByRole('link', {

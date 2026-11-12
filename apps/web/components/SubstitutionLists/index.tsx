@@ -1,6 +1,9 @@
 import type { Category, RootIngredient } from '@cocktails/data';
+import ChevronRight from '@mui/icons-material/ChevronRight';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import { ListItem, ListItemText, Stack } from '@mui/material';
 import type { Route } from 'next';
+import Link from 'next/link';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import { ingredientHasData } from '#/modules/hasData';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
@@ -9,13 +12,37 @@ import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
  * The primary substitution list caps at this many links: a capped list holds
  * one fewer bottle plus the see-all link below as its last item.
  */
-const MAX_SUBSTITUTION_LINKS = 15;
+const MAX_SUBSTITUTION_LINKS = 10;
+
+/**
+ * The last row of a capped primary list: the category icon vertically
+ * centered to the left of both texts, the category name and the "see all"
+ * label stacked as one block beside it.
+ */
+function SeeAllLink({
+  href,
+  label,
+}: {
+  href: Route<`/category/${string}`>;
+  label: string;
+}) {
+  return (
+    <Link href={href}>
+      <ListItem divider secondaryAction={<ChevronRight />}>
+        <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', width: '100%' }}>
+          <LocalOfferIcon fontSize="small" />
+          <ListItemText primary={label} secondary="See all options" />
+        </Stack>
+      </ListItem>
+    </Link>
+  );
+}
 
 /**
  * The substitution lists shared by the ingredient and category pages:
  *
  * - The primary list holds specific bottles from a single category, capped
- *   at 15 links. A capped list shows 14 bottles and closes with a see-all
+ *   at 10 links. A capped list shows 9 bottles and closes with a see-all
  *   link, rendered with the category icon so it reads as a jump-off point
  *   rather than one more row.
  * - The secondary list holds the substitution-friendly related categories,
@@ -35,7 +62,7 @@ export default function SubstitutionLists({
   substitutes: RootIngredient[];
   /** Where the see-all link of a capped primary list goes, with its label. */
   seeAll: {
-    href: Route<`/category/${string}`> | Route<`/category/${string}/bottles`>;
+    href: Route<`/category/${string}`>;
     label: string;
   };
   /** Related categories, listed after the primary list. */
@@ -60,23 +87,7 @@ export default function SubstitutionLists({
               primary={substitute.name}
             />
           )}
-          footer={
-            isCapped && (
-              <LinkListItem
-                href={seeAll.href}
-                primary={
-                  <span>
-                    <LocalOfferIcon
-                      fontSize="small"
-                      sx={{ mr: 1, verticalAlign: 'text-bottom' }}
-                    />
-                    {seeAll.label}
-                  </span>
-                }
-                secondary="See all options"
-              />
-            )
-          }
+          footer={isCapped && <SeeAllLink href={seeAll.href} label={seeAll.label} />}
         />
       )}
       {relatedCategories.length > 0 && (
