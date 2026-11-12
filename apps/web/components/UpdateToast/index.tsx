@@ -73,6 +73,21 @@ export default function UpdateToast() {
       open={waiting != null && !offline}
       autoHideDuration={20_000}
       message="A new version is available."
+      slotProps={{
+        // The app's surfaces are translucent dark navy with a blur (the
+        // app bar and papers); the default snackbar's flat black does not
+        // belong to this app.
+        content: {
+          sx: (theme) => ({
+            backgroundColor: 'rgba(10, 20, 32, 0.9)',
+            backdropFilter: 'blur(8px)',
+            backgroundImage: 'none',
+            color: (theme.vars ?? theme).palette.text.primary,
+            border: 1,
+            borderColor: (theme.vars ?? theme).palette.divider,
+          }),
+        },
+      }}
       action={
         <Button color="primary" size="small" onClick={reload}>
           Update

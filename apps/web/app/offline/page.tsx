@@ -21,7 +21,6 @@ export default function OfflinePage() {
   return (
     <>
       <AppHeader title="Indexotica" />
-      {/* A plain Box: the root layout already provides the <main> landmark. */}
       <Box
         sx={{
           display: 'flex',

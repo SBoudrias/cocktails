@@ -36,7 +36,6 @@ export default function AppHeader({ title }: { title: string }) {
               aria-label="Cocktail Index"
             >
               <TikiMark sx={{ fontSize: 32 }} />
->>>>>>> 655bf764c487c (fix(web): a11y landmarks and labels from the PWA audit)
             </IconButton>
           ) : (
             <IconButton

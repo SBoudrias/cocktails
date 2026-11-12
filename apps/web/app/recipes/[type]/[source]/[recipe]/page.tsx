@@ -73,7 +73,6 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
   return (
     <>
       <AppHeader title={recipe.name} />
-      {/* A plain Box: the root layout already provides the <main> landmark. */}
       <Box>
         <RecipeBadges recipe={recipe} />
         <IngredientList
