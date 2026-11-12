@@ -67,25 +67,20 @@ describe('ServingSelector', () => {
       expect(onChange).toHaveBeenCalledWith(3);
     });
 
-    it('should jump to 1 when incrementing from fractional values', () => {
-      const onChange = vi.fn();
-      render(<ServingSelector servings={0.5} onChange={onChange} />);
+    it.each([
+      { servings: 0.5, expected: 1, label: 'fractional values' },
+      { servings: 0.25, expected: 1, label: '0.25' },
+    ])(
+      'should jump to $expected when incrementing from $label',
+      ({ servings, expected }) => {
+        const onChange = vi.fn();
+        render(<ServingSelector servings={servings} onChange={onChange} />);
 
-      const incrementButton = screen.getByLabelText('Increment');
-      fireEvent.click(incrementButton);
+        fireEvent.click(screen.getByLabelText('Increment'));
 
-      expect(onChange).toHaveBeenCalledWith(1);
-    });
-
-    it('should jump to 1 when incrementing from 0.25', () => {
-      const onChange = vi.fn();
-      render(<ServingSelector servings={0.25} onChange={onChange} />);
-
-      const incrementButton = screen.getByLabelText('Increment');
-      fireEvent.click(incrementButton);
-
-      expect(onChange).toHaveBeenCalledWith(1);
-    });
+        expect(onChange).toHaveBeenCalledWith(expected);
+      },
+    );
 
     it('should be disabled when servings is at maximum (50)', () => {
       const onChange = vi.fn();
@@ -93,15 +88,9 @@ describe('ServingSelector', () => {
 
       const incrementButton = screen.getByLabelText('Increment');
       expect(incrementButton).toBeDisabled();
-    });
 
-    it('should not increment beyond maximum', () => {
-      const onChange = vi.fn();
-      render(<ServingSelector servings={50} onChange={onChange} />);
-
-      const incrementButton = screen.getByLabelText('Increment');
+      // A disabled button never fires its handler.
       fireEvent.click(incrementButton);
-
       expect(onChange).not.toHaveBeenCalled();
     });
   });
@@ -117,24 +106,16 @@ describe('ServingSelector', () => {
       expect(onChange).toHaveBeenCalledWith(2);
     });
 
-    it('should go from 1 to 0.5', () => {
+    it.each([
+      { servings: 1, expected: 0.5 },
+      { servings: 0.5, expected: 0.25 },
+    ])('should go from $servings to $expected', ({ servings, expected }) => {
       const onChange = vi.fn();
-      render(<ServingSelector servings={1} onChange={onChange} />);
+      render(<ServingSelector servings={servings} onChange={onChange} />);
 
-      const decrementButton = screen.getByLabelText('Decrement');
-      fireEvent.click(decrementButton);
+      fireEvent.click(screen.getByLabelText('Decrement'));
 
-      expect(onChange).toHaveBeenCalledWith(0.5);
-    });
-
-    it('should go from 0.5 to 0.25', () => {
-      const onChange = vi.fn();
-      render(<ServingSelector servings={0.5} onChange={onChange} />);
-
-      const decrementButton = screen.getByLabelText('Decrement');
-      fireEvent.click(decrementButton);
-
-      expect(onChange).toHaveBeenCalledWith(0.25);
+      expect(onChange).toHaveBeenCalledWith(expected);
     });
 
     it('should be disabled when servings is at minimum (0.25)', () => {
@@ -143,15 +124,9 @@ describe('ServingSelector', () => {
 
       const decrementButton = screen.getByLabelText('Decrement');
       expect(decrementButton).toBeDisabled();
-    });
 
-    it('should not decrement below minimum', () => {
-      const onChange = vi.fn();
-      render(<ServingSelector servings={0.25} onChange={onChange} />);
-
-      const decrementButton = screen.getByLabelText('Decrement');
+      // A disabled button never fires its handler.
       fireEvent.click(decrementButton);
-
       expect(onChange).not.toHaveBeenCalled();
     });
   });

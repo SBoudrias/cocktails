@@ -113,36 +113,18 @@ describe('formatIngredientName', () => {
   });
 
   describe('temperature technique', () => {
-    it('should format chilled ingredients', () => {
+    // Every method prefixes the ingredient name with its past participle.
+    it.each([
+      { name: 'coffee', method: 'chilled', expected: 'chilled coffee' },
+      { name: 'water', method: 'hot', expected: 'hot water' },
+      { name: 'strawberries', method: 'frozen', expected: 'frozen strawberries' },
+      { name: 'pear', method: 'roasted', expected: 'roasted pear' },
+    ] as const)('should format $method ingredients', ({ name, method, expected }) => {
       const ingredient = createIngredient({
-        name: 'coffee',
-        technique: { technique: 'temperature', method: 'chilled' },
+        name,
+        technique: { technique: 'temperature', method },
       });
-      expect(formatIngredientName(ingredient)).toBe('chilled coffee');
-    });
-
-    it('should format hot ingredients', () => {
-      const ingredient = createIngredient({
-        name: 'water',
-        technique: { technique: 'temperature', method: 'hot' },
-      });
-      expect(formatIngredientName(ingredient)).toBe('hot water');
-    });
-
-    it('should format frozen ingredients', () => {
-      const ingredient = createIngredient({
-        name: 'strawberries',
-        technique: { technique: 'temperature', method: 'frozen' },
-      });
-      expect(formatIngredientName(ingredient)).toBe('frozen strawberries');
-    });
-
-    it('should format roasted ingredients', () => {
-      const ingredient = createIngredient({
-        name: 'pear',
-        technique: { technique: 'temperature', method: 'roasted' },
-      });
-      expect(formatIngredientName(ingredient)).toBe('roasted pear');
+      expect(formatIngredientName(ingredient)).toBe(expected);
     });
   });
 
@@ -157,22 +139,17 @@ describe('formatIngredientName', () => {
   });
 
   describe('cut technique', () => {
-    it('should format sliced ingredients (singular)', () => {
+    // The noun pluralizes with the count, whatever the unit amount is.
+    it.each([
+      { amount: 1, expected: 'cucumber slice' },
+      { amount: 3, expected: 'cucumber slices' },
+    ])('should format sliced ingredients ($amount)', ({ amount, expected }) => {
       const ingredient = createIngredient({
         name: 'cucumber',
-        quantity: { amount: 1, unit: 'unit' },
+        quantity: { amount, unit: 'unit' },
         technique: { technique: 'cut', type: 'sliced' },
       });
-      expect(formatIngredientName(ingredient)).toBe('cucumber slice');
-    });
-
-    it('should format sliced ingredients (plural)', () => {
-      const ingredient = createIngredient({
-        name: 'cucumber',
-        quantity: { amount: 3, unit: 'unit' },
-        technique: { technique: 'cut', type: 'sliced' },
-      });
-      expect(formatIngredientName(ingredient)).toBe('cucumber slices');
+      expect(formatIngredientName(ingredient)).toBe(expected);
     });
 
     it('should format cubed ingredients with size', () => {

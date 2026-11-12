@@ -4,12 +4,7 @@ import { screen } from '@testing-library/react';
 import { vi, beforeEach, describe, expect, it } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
 import { getRecipeUrl } from '#/modules/url';
-import {
-  failJson,
-  hangJson,
-  serveJson,
-  sharedJsonServer,
-} from '#/testing/sharedJsonServer';
+import { hangJson, serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import NonAlcoholicRecipesPage from './page';
 
@@ -101,14 +96,9 @@ describe('NonAlcoholicRecipesPage', () => {
     expect(screen.queryByText('Bitters and Soda')).not.toBeInTheDocument();
   });
 
-  it('offers a reload when the catalog fails to load', async () => {
-    sharedJsonServer.use(failJson('/data/catalog.json', 500));
-
-    await setupApp(await NonAlcoholicRecipesPage());
-
-    expect(screen.getByText('Recipes could not be loaded')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /reload the page/i })).toBeInTheDocument();
-  });
+  // The catalog list's other states — the reload affordance after a failed
+  // fetch — are shared SearchableRecipePage behavior, covered once on the
+  // category page.
 
   it('renders no recipe rows when the catalog lacks the page key', async () => {
     sharedJsonServer.use(serveJson('/data/catalog.json', buildCatalog([])));

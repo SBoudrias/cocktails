@@ -9,18 +9,12 @@ describe('SearchAllLink', () => {
     expect(link).toHaveAttribute('href', '/search?search=mai+tai');
   });
 
-  it('does not render when searchTerm is null', () => {
-    const { container } = render(<SearchAllLink searchTerm={null} />);
-    expect(container).toBeEmptyDOMElement();
-  });
-
-  it('does not render when searchTerm is empty string', () => {
-    const { container } = render(<SearchAllLink searchTerm="" />);
-    expect(container).toBeEmptyDOMElement();
-  });
-
-  it('does not render when searchTerm is whitespace only', () => {
-    const { container } = render(<SearchAllLink searchTerm="   " />);
+  it.each([
+    { searchTerm: null, reason: 'null' },
+    { searchTerm: '', reason: 'an empty string' },
+    { searchTerm: '   ', reason: 'whitespace only' },
+  ])('does not render when searchTerm is $reason', ({ searchTerm }) => {
+    const { container } = render(<SearchAllLink searchTerm={searchTerm} />);
     expect(container).toBeEmptyDOMElement();
   });
 
