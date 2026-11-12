@@ -86,10 +86,10 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
   shaken: {
     body: `${bostonSmallTin} ${bostonBigTin}`,
     material: 'silver',
-    // a pair of curved motion lines beside the shaker's top-left side and
-    // another beside its bottom-right side
+    // a pair of swing trails off each end, top-left and bottom-right: arcs
+    // centered on the shaker, so they follow the path its ends shake along
     motion:
-      'M11.4 4.45 Q9.78 6.06 9.2 8.27 M9.02 3.77 Q7.79 4.91 7.42 6.55 M16.07 15.74 Q15.49 17.95 13.87 19.56 M17.85 17.46 Q17.48 19.1 16.25 20.24',
+      'M12.59 3.87 A8.4 8.4 0 0 0 7.8 4.98 M12.37 1.66 A10.6 10.6 0 0 0 7.69 2.57 M12 21.05 A8.8 8.8 0 0 0 16.92 19.55 M12.38 23.14 A10.9 10.9 0 0 0 16.43 22.21',
   },
   // yarai mixing glass: thick base, spout, diamond cut, with a bar spoon
   stirred: {
