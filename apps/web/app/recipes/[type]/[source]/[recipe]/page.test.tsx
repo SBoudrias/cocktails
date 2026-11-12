@@ -39,6 +39,29 @@ describe('RecipePage', () => {
     expect(barLink).toHaveTextContent('Fort Lauderdale, FL');
   });
 
+  it('captions the preparation, ice and glassware badges', async () => {
+    const recipe = await getRecipe({ type: 'book', slug: 'sippin-safari' }, 'last-rites');
+
+    await setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: recipe.source.type,
+          source: recipe.source.slug,
+          recipe: recipe.slug,
+        }),
+      }),
+    );
+
+    const badges = within(
+      screen.getByRole('list', { name: 'Preparation, ice and glassware' }),
+    ).getAllByRole('listitem');
+    expect(badges.map((badge) => badge.textContent)).toEqual([
+      recipe.preparation,
+      recipe.served_on,
+      recipe.glassware,
+    ]);
+  });
+
   it('renders book chapter beside the page number when available', async () => {
     const bookRecipe = await getRecipe(
       { type: 'book', slug: 'smugglers-cove' },

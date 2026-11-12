@@ -1,26 +1,18 @@
 import type { Source, WebsiteRef, YoutubeRef } from '@cocktails/data';
 import { getRecipePageParams } from '@cocktails/data/params';
 import { getRecipe } from '@cocktails/data/recipes';
-import {
-  Box,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Paper,
-} from '@mui/material';
+import { Box, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { match, P } from 'ts-pattern';
 import AppHeader from '#/components/AppHeader';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
 import RecipeAttributionList from '#/components/RecipeAttributionList';
+import RecipeBadges from '#/components/RecipeBadges';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import VideoListCard from '#/components/VideoListCard';
 import WebsiteListCard from '#/components/WebsiteListCard';
 import { getRecipeEditUrl } from '#/modules/url';
-import styles from './style.module.css';
 
 type Params = { type: Source['type']; source: string; recipe: string };
 
@@ -82,17 +74,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
     <>
       <AppHeader title={recipe.name} />
       <Box component="main">
-        <Grid container columns={3} sx={{ textAlign: 'center', my: 1 }}>
-          <Grid size={1}>
-            <div className={styles.badge}>{recipe.preparation}</div>
-          </Grid>
-          <Grid size={1}>
-            <div className={styles.badge}>{recipe.served_on}</div>
-          </Grid>
-          <Grid size={1}>
-            <div className={styles.badge}>{recipe.glassware}</div>
-          </Grid>
-        </Grid>
+        <RecipeBadges recipe={recipe} />
         <IngredientList
           ingredients={recipe.ingredients}
           techniques={recipe.techniques}
