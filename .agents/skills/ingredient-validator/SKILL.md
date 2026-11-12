@@ -1,6 +1,6 @@
 ---
 name: ingredient-validator
-description: Validate cocktail ingredient names, types, categories, and recipe ingredient references against the Cocktail Index data. Use when creating or modifying recipes or ingredients to prevent duplicates, reuse canonical names, and avoid modeling techniques as bottles.
+description: Validate cocktail ingredient names, types, categories, and recipe ingredient references against the Indexotica data. Use when creating or modifying recipes or ingredients to prevent duplicates, reuse canonical names, and avoid modeling techniques as bottles.
 ---
 
 # Ingredient Validator

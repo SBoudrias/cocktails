@@ -8,7 +8,7 @@ import { groupByAddedDay } from '#/modules/groupByAddedDay';
 import { getRecipeUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Recently Added',
+  title: 'Indexotica | Recently Added',
 };
 
 export default async function RecentlyAddedPage() {

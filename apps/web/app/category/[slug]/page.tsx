@@ -32,7 +32,7 @@ export async function generateMetadata({
     const category = await getCategory(slug);
 
     return {
-      title: `Cocktail Index | Learn about ${category.name}`,
+      title: `Indexotica | Learn about ${category.name}`,
       description:
         category.description ??
         `Learn about ${category.name}, its bottles and the cocktail recipes that use it.`,

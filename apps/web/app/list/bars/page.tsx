@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import BarsClient from './BarsClient';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Bars list',
+  title: 'Indexotica | Bars list',
 };
 
 export default async function BarListPage() {

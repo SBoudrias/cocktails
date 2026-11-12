@@ -5,7 +5,7 @@ import Link from 'next/link';
 import AppHeader from '#/components/AppHeader';
 
 export const metadata: Metadata = {
-  title: 'Offline | Cocktail Index',
+  title: 'Offline | Indexotica',
   // The offline fallback is an internal SW page, not site content: keep it
   // out of search indexes and the sitemap (also excluded in
   // next-sitemap.config.js).
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function OfflinePage() {
   return (
     <>
-      <AppHeader title="Cocktail Index" />
+      <AppHeader title="Indexotica" />
       <Box
         component="main"
         sx={{

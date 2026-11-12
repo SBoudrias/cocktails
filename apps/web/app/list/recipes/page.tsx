@@ -6,7 +6,7 @@ import { getRecipeUrl } from '#/modules/url';
 import RecipesClient from './RecipesClient';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | All Recipes',
+  title: 'Indexotica | All Recipes',
 };
 
 // The static HTML holds whole letters, up to at least this many rows: enough

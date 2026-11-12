@@ -34,7 +34,7 @@ import {
 } from '#/modules/url';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index',
+  title: 'Indexotica: Tiki & Cocktails',
 };
 
 function SourceListItem({ source }: { source: Source }) {
@@ -71,7 +71,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <AppHeader title="Cocktail Index" />
+      <AppHeader title="Indexotica" />
       <List sx={{ mt: 2 }}>
         <Paper square>
           <Link href={getRecipeListUrl()}>

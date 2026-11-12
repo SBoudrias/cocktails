@@ -4,7 +4,7 @@ import AcidAdjustingCalculator from '#/components/AcidAdjustingCalculator';
 import AppHeader from '#/components/AppHeader';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Acid Adjusting',
+  title: 'Indexotica | Acid Adjusting',
 };
 
 export default async function CalculatorsPage() {

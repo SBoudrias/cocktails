@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
     const source = await getSource(type, name);
 
     return {
-      title: `Cocktail Index | ${source.name}`,
+      title: `Indexotica | ${source.name}`,
       description: source.description,
     };
   } catch (error) {

@@ -616,7 +616,7 @@ setOnline(false);
 
 await check('the home page renders offline', async () => {
   await navigateTo('/');
-  await untilTrue('the home page to render', 'document.title.includes("Cocktail Index")');
+  await untilTrue('the home page to render', 'document.title.includes("Indexotica")');
 });
 
 await check('a list hub renders its rows offline (baked list)', async () => {

@@ -4,7 +4,7 @@ import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { toRecipeListItems } from '#/modules/recipeListItem';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Milk-Clarified Recipes',
+  title: 'Indexotica | Milk-Clarified Recipes',
 };
 
 export default async function MilkClarificationRecipesPage() {

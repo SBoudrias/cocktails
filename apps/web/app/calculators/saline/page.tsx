@@ -4,7 +4,7 @@ import AppHeader from '#/components/AppHeader';
 import SalineCalculator from '#/components/SalineCalculator';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Saline Solution Calculator',
+  title: 'Indexotica | Saline Solution Calculator',
 };
 
 export default function SalineCalculatorPage() {

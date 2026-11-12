@@ -21,7 +21,7 @@ export default function AppFooter() {
         underline="none"
         sx={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 0.5 }}
       >
-        <LocalBarIcon /> Cocktail Index
+        <LocalBarIcon /> Indexotica
       </Link>
       <Link
         href="https://github.com/SBoudrias/cocktails/"

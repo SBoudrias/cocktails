@@ -50,11 +50,11 @@ export const metadata: Metadata = {
   metadataBase: `https://sboudrias.github.io${basePath}/`,
   ...(isPreview ? { robots: { index: false } } : {}),
   manifest: `${basePath}/manifest.webmanifest`,
-  title: 'Cocktail Index',
+  title: 'Indexotica: Tiki & Cocktails',
   description,
   alternates: { canonical: './' },
   openGraph: {
-    siteName: 'Cocktail Index',
+    siteName: 'Indexotica',
     type: 'website',
     locale: 'en_US',
   },

@@ -91,7 +91,7 @@ async function checkPage(path: string, markers: (string | RegExp)[]) {
     if (body.length < MIN_HTML_BYTES) {
       return failures.push(`${label}: only ${body.length} bytes`);
     }
-    const missing = ['<header', /<title>Cocktail Index/, ...markers].filter(
+    const missing = ['<header', /<title>Indexotica/, ...markers].filter(
       (marker) => !hasMarker(body, marker),
     );
     if (missing.length > 0) {

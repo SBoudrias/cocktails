@@ -49,7 +49,7 @@ export async function generateMetadata({
     const ingredient = await getIngredient(type, slug);
 
     return {
-      title: `Cocktail Index | Learn about ${ingredient.name}`,
+      title: `Indexotica | Learn about ${ingredient.name}`,
       description:
         ingredient.description ??
         `Learn about ${ingredient.name} and find cocktail recipes that use it.`,

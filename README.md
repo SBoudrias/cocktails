@@ -1,4 +1,4 @@
-# Cocktail Index
+# Indexotica: Tiki & Cocktails
 
 Hobbyist bartender web app. Project initiated from my slight frustration towards the lack of indexes in most cocktail books.
 

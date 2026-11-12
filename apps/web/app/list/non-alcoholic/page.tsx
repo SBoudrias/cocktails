@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Non-Alcoholic Recipes',
+  title: 'Indexotica | Non-Alcoholic Recipes',
 };
 
 export default async function NonAlcoholicRecipesPage() {
