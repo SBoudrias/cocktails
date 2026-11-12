@@ -116,14 +116,18 @@ describe('RecipePage', () => {
       'clarified-new-york-sour',
     );
 
+    // The root layout wraps every page's content in a <main> landmark;
+    // this test renders the page standalone, so mirror that wrapper.
     const { user } = await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: clarifiedRecipe.source.type,
-          source: clarifiedRecipe.source.slug,
-          recipe: clarifiedRecipe.slug,
-        }),
-      }),
+      <main>
+        {await RecipePage({
+          params: Promise.resolve({
+            type: clarifiedRecipe.source.type,
+            source: clarifiedRecipe.source.slug,
+            recipe: clarifiedRecipe.slug,
+          }),
+        })}
+      </main>,
     );
 
     const recipeContent = screen.getByRole('main');

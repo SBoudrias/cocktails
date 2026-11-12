@@ -119,7 +119,9 @@ export default function RootLayout({
                   backgroundRepeat: 'no-repeat, no-repeat',
                 }}
               >
-                <Box sx={{ flexGrow: 1 }}>{children}</Box>
+                <Box component="main" sx={{ flexGrow: 1 }}>
+                  {children}
+                </Box>
                 <AppFooter />
               </Box>
             </NuqsAdapter>
