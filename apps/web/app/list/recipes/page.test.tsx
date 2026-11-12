@@ -255,7 +255,7 @@ describe('RecipesPage', () => {
     mockRouter.setCurrentUrl('?search=gin');
     await setupApp(await RecipesPage());
 
-    const entitySection = screen.getByRole('group', { name: 'Matching entities' });
+    const entitySection = screen.getByRole('list', { name: 'Matching entities' });
     expect(entitySection).toHaveTextContent('Gin');
     // Only the strong match surfaces: "cove" is not part of the query.
     expect(entitySection).not.toHaveTextContent("Smuggler's Cove");
@@ -291,7 +291,7 @@ describe('RecipesPage', () => {
     mockRouter.setCurrentUrl('?search=gin');
     await setupApp(await RecipesPage());
 
-    const entitySection = screen.getByRole('group', { name: 'Matching entities' });
+    const entitySection = screen.getByRole('list', { name: 'Matching entities' });
     // The three matches cap at two: the prefix matches Gin and Gin Blossom
     // Syrup, shorter (more specific) first — the whole-word-only Sloe Gin
     // ranks below a prefix match even though its name is shorter.
@@ -314,7 +314,7 @@ describe('RecipesPage', () => {
     await setupApp(await RecipesPage());
 
     // "gi" is a prefix of Gin, but two characters are not enough signal.
-    expect(screen.queryByRole('group', { name: 'Matching entities' })).toBeNull();
+    expect(screen.queryByRole('list', { name: 'Matching entities' })).toBeNull();
   });
 
   it('shows no entity section for a weak substring match', async () => {
@@ -333,7 +333,7 @@ describe('RecipesPage', () => {
     await setupApp(await RecipesPage());
 
     // "uggl" sits inside "Smuggler's" — neither prefix nor whole word.
-    expect(screen.queryByRole('group', { name: 'Matching entities' })).toBeNull();
+    expect(screen.queryByRole('list', { name: 'Matching entities' })).toBeNull();
   });
 
   it('recipe items link to correct recipe detail pages', async () => {

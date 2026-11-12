@@ -7,15 +7,16 @@ import {
   Podcasts as PodcastsIcon,
   YouTube as YouTubeIcon,
 } from '@mui/icons-material';
-import { Box } from '@mui/material';
+import { Box, List, Paper } from '@mui/material';
 import { match } from 'ts-pattern';
-import { LinkList, LinkListItem } from '#/components/LinkList';
+import { LinkListItem } from '#/components/LinkList';
 import type { EntitySuggestion } from '#/modules/entitySuggestions';
 import { isEntityUrl } from '#/modules/url';
 
 function getEntityView(kind: EntitySuggestion['kind']) {
   // Icon-only in the visible row; the label rides on the icon for screen
-  // readers (SvgIcon renders role="img" with its aria-label).
+  // readers (SvgIcon renders role="img" with its aria-label). Categories use
+  // the tag the ingredient pages and CategoryName render for categories.
   return match(kind)
     .returnType<{ icon: React.ReactNode }>()
     .with('category', () => ({ icon: <LocalOfferIcon aria-label="Category" /> }))
@@ -31,9 +32,10 @@ function getEntityView(kind: EntitySuggestion['kind']) {
 }
 
 /**
- * The entities strongly matching the search term, above the recipe results:
- * each row leads with its kind's icon, so it never reads as a recipe. The
- * list header separates the section from the recipes below.
+ * The entities strongly matching the search term, above the recipe results.
+ * No visible subheader: the icon-led rows set the section apart, an
+ * aria-label keeps the list addressable for screen readers, and the bottom
+ * padding separates it from the recipe results below.
  */
 export default function EntitySuggestions({
   suggestions,
@@ -49,11 +51,9 @@ export default function EntitySuggestions({
   if (links.length === 0) return null;
 
   return (
-    <Box sx={{ pb: 2 }}>
-      <LinkList
-        header="Matching entities"
-        items={links}
-        renderItem={(suggestion) => {
+    <List aria-label="Matching entities" sx={{ pb: 2 }}>
+      <Paper square>
+        {links.map((suggestion) => {
           const { icon } = getEntityView(suggestion.kind);
 
           return (
@@ -61,15 +61,20 @@ export default function EntitySuggestions({
               key={suggestion.href}
               href={suggestion.href}
               primary={
-                <>
+                // Inline flex centers the icon's box on the text's line
+                // instead of sitting it on the baseline like a bare SvgIcon.
+                <Box
+                  component="span"
+                  sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}
+                >
                   {icon}
-                  &nbsp;{suggestion.name}
-                </>
+                  {suggestion.name}
+                </Box>
               }
             />
           );
-        }}
-      />
-    </Box>
+        })}
+      </Paper>
+    </List>
   );
 }
