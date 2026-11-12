@@ -5,11 +5,11 @@
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = '25b419032e04';
+const VERSION = '7381ddac4d79';
 const PRECACHE = [
-  "./_next/static/2uOKsP-S2cH0QHrmcWtTR/_buildManifest.js",
-  "./_next/static/2uOKsP-S2cH0QHrmcWtTR/_clientMiddlewareManifest.js",
-  "./_next/static/2uOKsP-S2cH0QHrmcWtTR/_ssgManifest.js",
+  "./_next/static/Vpv_hCj_a_25cAxq25Zpd/_buildManifest.js",
+  "./_next/static/Vpv_hCj_a_25cAxq25Zpd/_clientMiddlewareManifest.js",
+  "./_next/static/Vpv_hCj_a_25cAxq25Zpd/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/04fevq3-u7g1d.js",
   "./_next/static/chunks/07vy1nalhdt3h.js",
@@ -30,6 +30,7 @@ const PRECACHE = [
   "./_next/static/chunks/184hh0tc6d9pz.js",
   "./_next/static/chunks/1__8svdd-ks7o.js",
   "./_next/static/chunks/1cp19a1m5egwz.js",
+  "./_next/static/chunks/1fwlmi1k_74nc.js",
   "./_next/static/chunks/1i8z1_fokh7co.js",
   "./_next/static/chunks/1iz9o8s16-x-p.js",
   "./_next/static/chunks/1j4ks7_-vw_ie.js",
@@ -44,7 +45,6 @@ const PRECACHE = [
   "./_next/static/chunks/2mp234xta14c0.js",
   "./_next/static/chunks/2zjyfkzc0nujr.js",
   "./_next/static/chunks/312r0qkeh2a6k.js",
-  "./_next/static/chunks/34ia7i6542h56.js",
   "./_next/static/chunks/34xf9m6qcd2jc.css",
   "./_next/static/chunks/3cef1ozj-rk9l.js",
   "./_next/static/chunks/3gba6z7-39y7-.js",
