@@ -1,0 +1,97 @@
+1:"$Sreact.fragment"
+2:"/cocktails/pr-preview/pr-565/_next/static/chunks/04fevq3-u7g1d.js"
+3:"/cocktails/pr-preview/pr-565/_next/static/chunks/41qriqf348mrx.js"
+4:"/cocktails/pr-preview/pr-565/_next/static/chunks/07vy1nalhdt3h.js"
+5:I[926321,["$2","$3","$4"],"default"]
+6:I[190516,["$2","$3","$4"],"default"]
+7:I[692164,["$2","$3","$4"],"default"]
+8:I[757390,["$2","$3","$4"],"default"]
+9:I[278332,["$2","$3","$4"],"NuqsAdapter"]
+a:"/cocktails/pr-preview/pr-565/_next/static/chunks/3cef1ozj-rk9l.js"
+b:"/cocktails/pr-preview/pr-565/_next/static/chunks/3oer7fzk43a1k.js"
+c:"/cocktails/pr-preview/pr-565/_next/static/chunks/2flqqbaywepyl.js"
+d:"/cocktails/pr-preview/pr-565/_next/static/chunks/1__8svdd-ks7o.js"
+e:"/cocktails/pr-preview/pr-565/_next/static/chunks/25s_tlyt9ja5e.js"
+f:I[36729,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+10:I[339756,["$2","$3","$4"],"default"]
+11:I[837457,["$2","$3","$4"],"default"]
+12:I[883360,["$2","$3","$4"],"default"]
+13:I[26663,["$2","$3","$4"],"default"]
+14:I[654576,["$2","$3","$4"],"GoogleAnalytics"]
+21:I[516924,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+22:I[586157,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+23:I[872976,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+39:"ViewportBoundary"
+3a:I[897367,["$2","$3","$4"],"$39"]
+3b:"MetadataBoundary"
+3c:I[897367,["$2","$3","$4"],"$3b"]
+3d:"$Sreact.suspense"
+:HL["/cocktails/pr-preview/pr-565/_next/static/chunks/1tf4etm58a6li.css","style"]
+16:X
+19:X
+19:C
+20:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[[["$","$L21",null,{"title":"Bitter Giuseppe"}],["$","$Lf",null,{"component":"main","children":[["$","$L22",null,{"container":true,"component":"ul","aria-label":"Preparation, ice and glassware","columns":3,"className":"YaAHAW_badges","sx":{"my":1},"children":[["$","$L22","preparation",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L23",null,{"className":"YaAHAW_icon","children":[["$","defs",null,{"children":[["$","linearGradient",null,{"id":"recipe-icon-preparation-drink","x1":"0","y1":"0","x2":"0","y2":"1","children":[["$","stop",null,{"offset":"0","className":"YaAHAW_drinkTop"}],["$","stop",null,{"offset":"1","className":"YaAHAW_drinkBottom"}]]}],["$","clipPath",null,{"id":"recipe-icon-preparation-liquid","children":["$","path",null,{"d":"M4.5 8 H16.5 V19.5 Q16.5 21 15 21 H6 Q4.5 21 4.5 19.5 Z"}]}]]}],["$","path",null,{"d":"M4.5 8 H16.5 V19.5 Q16.5 21 15 21 H6 Q4.5 21 4.5 19.5 Z","className":"YaAHAW_glass"}],["$","g",null,{"clipPath":"url(#recipe-icon-preparation-liquid)","children":[["$","rect",null,{"y":12,"width":"24","height":"24","fill":"url(#recipe-icon-preparation-drink)","className":"YaAHAW_drink"}],"$L24"]}],"$undefined","$L25","$L26","$undefined","$L27","$L28"]}]}],"$L29"]}],"$L2a","$L2b"]}],"$L2c","$L2d",false,"$L2e",false,false,"$L2f"]}]],["$L30","$L31","$L32","$L33","$L34","$L35","$L36"],"$L37"]}],"p":"$@38","v":null,"s":"$16"}}]]
+1e:[["children",{"s":{"n":"recipe","t":"d","k":"bitter-giuseppe","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L10",null,{"parallelRouterKey":"children","template":["$","$L11",null,{}]}]]}],"p":"$@1f","v":"$19","s":"$16"},"c":"$Q20"}]]
+1c:[["children",{"s":{"n":"source","t":"d","k":"anders-erickson","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L10",null,{"parallelRouterKey":"children","template":["$","$L11",null,{}]}]]}],"p":"$@1d","v":"$19","s":"$16"},"c":"$Q1e"}]]
+1a:[["children",{"s":{"n":"type","t":"d","k":"youtube-channel","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L10",null,{"parallelRouterKey":"children","template":["$","$L11",null,{}]}]]}],"p":"$@1b","v":"$19","s":"$16"},"c":"$Q1c"}]]
+17:[["children",{"s":"recipes","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L10",null,{"parallelRouterKey":"children","template":["$","$L11",null,{}]}]]}],"p":"$@18","v":"$19","s":"$16"},"c":"$Q1a"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-565/_next/static/chunks/1tf4etm58a6li.css","precedence":"next"}],["$","script","script-0",{"src":"/cocktails/pr-preview/pr-565/_next/static/chunks/04fevq3-u7g1d.js","async":true}],["$","script","script-1",{"src":"/cocktails/pr-preview/pr-565/_next/static/chunks/41qriqf348mrx.js","async":true}],["$","script","script-2",{"src":"/cocktails/pr-preview/pr-565/_next/static/chunks/07vy1nalhdt3h.js","async":true}]],["$","html",null,{"lang":"en","data-prefers-color-scheme":"dark","style":{"colorScheme":"dark"},"children":[["$","head",null,{"children":["$","link",null,{"rel":"sitemap","type":"application/xml","title":"Sitemap","href":"/cocktails/pr-preview/pr-565/sitemap.xml"}]}],["$","body",null,{"className":"iLW5_a_variable","children":[["$","$L5",null,{"children":["$","$L6",null,{"theme":"$7","defaultMode":"dark","storageManager":null,"children":[["$","$L8",null,{}],["$","$L9",null,{"children":["$","$Lf",null,{"sx":{"maxWidth":600,"mx":"auto","minHeight":"100vh","display":"flex","flexDirection":"column","backgroundImage":"url(/cocktails/pr-preview/pr-565/_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp), url(/cocktails/pr-preview/pr-565/_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp)","backgroundSize":"min(100%, 750px) auto, min(100%, 750px) auto","backgroundPosition":"center 40px, bottom center","backgroundRepeat":"no-repeat, no-repeat"},"children":[["$","$Lf",null,{"sx":{"flexGrow":1},"children":["$","$L10",null,{"parallelRouterKey":"children","template":["$","$L11",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$L12",null,{}]]}]}]]}]}],["$","$L13",null,{}],["$","$L14",null,{"gaId":"G-XSDN5REM9F"}]]}]]}]]}],"p":"$@15","v":null,"s":"$16"},"c":"$Q17"},"h":{"r":["$","$1","h",{"children":[null,["$","$L3a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}],["$","meta","2",{"name":"theme-color","content":"#0A1420"}]]}],["$","$L3c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$3d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Cocktail Index | Bitter Giuseppe from Anders Erickson"}],["$","meta","1",{"name":"description","content":"Bitter Giuseppe cocktail recipe from Anders Erickson: Regan's Orange Bitters No. 6, Lemon juice, Cocchi Vermouth di Torino, Cynar."}],["$","link","2",{"rel":"manifest","href":"/cocktails/pr-preview/pr-565/manifest.webmanifest"}],["$","meta","3",{"name":"robots","content":"noindex"}],["$","link","4",{"rel":"canonical","href":"https://sboudrias.github.io/cocktails/pr-preview/pr-565/recipes/youtube-channel/anders-erickson/bitter-giuseppe"}],["$","meta","5",{"property":"og:title","content":"Cocktail Index | Bitter Giuseppe from Anders Erickson"}],["$","meta","6",{"property":"og:description","content":"Bitter Giuseppe cocktail recipe from Anders Erickson: Regan's Orange Bitters No. 6, Lemon juice, Cocchi Vermouth di Torino, Cynar."}],["$","meta","7",{"property":"og:site_name","content":"Cocktail Index"}],["$","meta","8",{"property":"og:locale","content":"en_US"}],["$","meta","9",{"property":"og:type","content":"website"}],"$L3e","$L3f","$L40","$L41","$L42"]}]}],null]}],"$L43"]}],"p":"$@44","v":null,"s":"$16"}},"a":"$@45","u":"$@46","b":"X8ctyHoSRJJm2hAX-dz96"}
+47:I[253488,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+48:I[430071,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+49:I[910874,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+4a:I[141317,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+4b:I[966052,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+4c:I[28754,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+4d:I[919344,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+4e:I[421435,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+4f:I[977210,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+50:I[670236,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+51:I[517050,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+52:I[30512,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+53:I[926044,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+54:I[618863,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+55:I[889436,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+56:I[264550,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+57:I[183142,["$2","$3","$4","$a","$b","$c","$d","$e"],"default"]
+58:I[897367,["$2","$3","$4"],"OutletBoundary"]
+5a:I[27201,["$2","$3","$4"],"IconMark"]
+:HL["/cocktails/pr-preview/pr-565/_next/static/chunks/2u2-hcj-zhu7k.css","style"]
+:HL["/cocktails/pr-preview/pr-565/_next/static/chunks/34xf9m6qcd2jc.css","style"]
+24:["$","path",null,{"d":"M0 12 H24","className":"YaAHAW_surface"}]
+25:["$","path",null,{"d":"M4.5 8 H16.5 V19.5 Q16.5 21 15 21 H6 Q4.5 21 4.5 19.5 Z","className":"YaAHAW_outline"}]
+26:["$","path",null,{"d":"M9.5 18 L18.6 3.2","className":"YaAHAW_outline"}]
+27:["$","path",null,{"d":"M3.6 6.2 Q7 1 10.4 6.2 M10.4 6.2 L10.6 4.2 M10.4 6.2 L8.5 5.6","className":"YaAHAW_motion"}]
+28:["$","path",null,{"d":"M18.9 1.6 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 Z","className":"YaAHAW_solid"}]
+29:["$","$L47",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"stirred"}]
+2a:["$","$L22","served-on",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L23",null,{"className":"YaAHAW_icon","children":[["$","defs",null,{"children":[["$","linearGradient",null,{"id":"recipe-icon-served-on-drink","x1":"0","y1":"0","x2":"0","y2":"1","children":[["$","stop",null,{"offset":"0","className":"YaAHAW_drinkTop"}],["$","stop",null,{"offset":"1","className":"YaAHAW_drinkBottom"}]]}],["$","clipPath",null,{"id":"recipe-icon-served-on-liquid","children":["$","path",null,{"d":"M10 4 C10 4 4.5 10.5 4.5 15 A5.5 5.5 0 0 0 15.5 15 C15.5 10.5 10 4 10 4 Z"}]}]]}],["$","path",null,{"d":"M10 4 C10 4 4.5 10.5 4.5 15 A5.5 5.5 0 0 0 15.5 15 C15.5 10.5 10 4 10 4 Z","className":"YaAHAW_glass"}],["$","g",null,{"clipPath":"url(#recipe-icon-served-on-liquid)","children":[["$","rect",null,{"y":4,"width":"24","height":"24","fill":"url(#recipe-icon-served-on-drink)","className":"YaAHAW_drink"}],["$","path",null,{"d":"M0 4 H24","className":"YaAHAW_surface"}]]}],"$undefined",["$","path",null,{"d":"M10 4 C10 4 4.5 10.5 4.5 15 A5.5 5.5 0 0 0 15.5 15 C15.5 10.5 10 4 10 4 Z","className":"YaAHAW_outline"}],"$undefined",["$","path",null,{"d":"M7.6 15.2 Q7.8 17.6 9.8 18.4","className":"YaAHAW_facet"}],["$","path",null,{"d":"M18.5 2.5 V8.5 M15.9 4 L21.1 7 M15.9 7 L21.1 4","className":"YaAHAW_motion"}],"$undefined"]}]}],["$","$L47",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"up"}]]}]
+2b:["$","$L22","glassware",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L23",null,{"className":"YaAHAW_icon","children":[["$","defs",null,{"children":[["$","linearGradient",null,{"id":"recipe-icon-glassware-drink","x1":"0","y1":"0","x2":"0","y2":"1","children":[["$","stop",null,{"offset":"0","className":"YaAHAW_drinkTop"}],["$","stop",null,{"offset":"1","className":"YaAHAW_drinkBottom"}]]}],["$","clipPath",null,{"id":"recipe-icon-glassware-liquid","children":["$","path",null,{"d":"M3 5.5 H21 C21 10 17 12.5 12 12.5 C7 12.5 3 10 3 5.5 Z"}]}]]}],["$","path",null,{"d":"M3 5.5 H21 C21 10 17 12.5 12 12.5 C7 12.5 3 10 3 5.5 Z","className":"YaAHAW_glass"}],["$","g",null,{"clipPath":"url(#recipe-icon-glassware-liquid)","children":[["$","rect",null,{"y":7.5,"width":"24","height":"24","fill":"url(#recipe-icon-glassware-drink)","className":"YaAHAW_drink"}],["$","path",null,{"d":"M0 7.5 H24","className":"YaAHAW_surface"}]]}],"$undefined",["$","path",null,{"d":"M3 5.5 H21 C21 10 17 12.5 12 12.5 C7 12.5 3 10 3 5.5 Z","className":"YaAHAW_outline"}],["$","path",null,{"d":"M12 12.5 V20.5 M8 21 H16","className":"YaAHAW_outline"}],"$undefined","$undefined","$undefined"]}]}],["$","$L47",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"coupe"}]]}]
+2c:["$","$L48",null,{"ingredients":[{"$schema":"../../../schemas/ingredient.schema.json","name":"Regan's Orange Bitters No. 6","type":"bitter","categories":[{"$schema":"../../schemas/category.schema.json","name":"Orange bitters","categoryType":"bitter","default":{"$schema":"../../schemas/category.schema.json","name":"Orange bitters","categoryType":"bitter"},"refs":[],"parents":[],"slug":"orange-bitters","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Regan's Orange Bitters No. 6","type":"bitter","categories":["Orange bitters"]},"slug":"regans-orange-bitters-no-6","refs":[],"ingredients":[],"quantity":{"amount":4,"unit":"dash"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Lemon juice","type":"juice","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Lemon juice","type":"juice"},"slug":"lemon-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.25,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Cocchi Vermouth di Torino","type":"wine","categories":[{"$schema":"../../schemas/category.schema.json","name":"Sweet vermouth","categoryType":"wine","default":{"$schema":"../../schemas/category.schema.json","name":"Sweet vermouth","categoryType":"wine"},"refs":[],"parents":[],"slug":"sweet-vermouth","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Cocchi Vermouth di Torino","type":"wine","categories":["Sweet vermouth"]},"slug":"cocchi-vermouth-di-torino","refs":[],"ingredients":[],"quantity":{"amount":1,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Cynar","type":"liqueur","categories":[{"$schema":"../../schemas/category.schema.json","name":"Amaro","categoryType":"liqueur","default":{"$schema":"../../schemas/category.schema.json","name":"Amaro","categoryType":"liqueur"},"refs":[],"parents":[],"slug":"amaro","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Cynar","type":"liqueur","categories":["Amaro"]},"slug":"cynar","refs":[],"ingredients":[],"quantity":{"amount":2,"unit":"oz"}}]}]
+2d:["$","$L49",null,{"children":[["$","$L4a",null,{"children":"Instructions"}],["$","$L4b",null,{"square":true,"children":[["$","$L4c","Add lemon peel swath to mixing glass.",{"divider":true,"children":["$","$L4d",null,{"children":[1,". ","Add lemon peel swath to mixing glass."]}]}],["$","$L4c","Add all ingredients and stir with ice.",{"divider":true,"children":["$","$L4d",null,{"children":[2,". ","Add all ingredients and stir with ice."]}]}],["$","$L4c","Strain into a coupe glass.",{"divider":true,"children":["$","$L4d",null,{"children":[3,". ","Strain into a coupe glass."]}]}],["$","$L4c","Express lemon oil over the drink and garnish with lemon peel.",{"divider":true,"children":["$","$L4d",null,{"children":[4,". ","Express lemon oil over the drink and garnish with lemon peel."]}]}]]}]]}]
+2e:["$","$L4e",null,{"sx":{"m":1},"children":[["$","$L4f",null,{"title":[["$","$L50",null,{}]," ","Anders Erickson"]}],["$","$L51",null,{"children":["$","$L52",null,{"id":"5w6eLckHwWg"}]}],["$","$L51",null,{"children":["$","$L47",null,{"variant":"body2","color":"text.secondary","children":"Hi 👋 I'm Anders and I worked professionally behind bars for 20 years. I've decided to combine my passion for making good drinks with my love of teaching, storytelling, and videography by creating this channel!"}]}],["$","$L53",null,{"sx":{"justifyContent":"end"},"children":["$","$L54",null,{"href":"https://www.youtube.com/@AndersErickson","target":"_blank","rel":"noreferrer noopener","color":"inherit","children":["Go to channel",["$","$L55",null,{}]]}]}]]}]
+2f:["$","$L4e",null,{"sx":{"m":1},"children":["$","$L51",null,{"children":["$","$L56",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L57",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L54",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/youtube-channel/anders-erickson/bitter-giuseppe.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}]
+30:["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-565/_next/static/chunks/2u2-hcj-zhu7k.css","precedence":"next"}]
+31:["$","link","1",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-565/_next/static/chunks/34xf9m6qcd2jc.css","precedence":"next"}]
+32:["$","script","script-0",{"src":"/cocktails/pr-preview/pr-565/_next/static/chunks/3cef1ozj-rk9l.js","async":true}]
+33:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-565/_next/static/chunks/3oer7fzk43a1k.js","async":true}]
+34:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-565/_next/static/chunks/2flqqbaywepyl.js","async":true}]
+35:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-565/_next/static/chunks/1__8svdd-ks7o.js","async":true}]
+36:["$","script","script-4",{"src":"/cocktails/pr-preview/pr-565/_next/static/chunks/25s_tlyt9ja5e.js","async":true}]
+37:["$","$L58",null,{"children":["$","$3d",null,{"name":"Next.MetadataOutlet","children":"$@59"}]}]
+3e:["$","meta","10",{"name":"twitter:card","content":"summary"}]
+3f:["$","meta","11",{"name":"twitter:title","content":"Cocktail Index | Bitter Giuseppe from Anders Erickson"}]
+40:["$","meta","12",{"name":"twitter:description","content":"Bitter Giuseppe cocktail recipe from Anders Erickson: Regan's Orange Bitters No. 6, Lemon juice, Cocchi Vermouth di Torino, Cynar."}]
+41:["$","link","13",{"rel":"apple-touch-icon","href":"/cocktails/pr-preview/pr-565/icons/apple-touch-icon.png","sizes":"180x180","type":"image/png"}]
+42:["$","$L5a","14",{}]
+43:["$","meta",null,{"name":"next-size-adjust","content":""}]
+16:300
+59:null
+46:true
+16:C
+45:0
+1f:"$undefined"
+1d:"$undefined"
+1b:"$undefined"
+18:"$undefined"
+15:"$undefined"
+44:"$undefined"
+38:"$undefined"
