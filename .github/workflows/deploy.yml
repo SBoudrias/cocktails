@@ -42,6 +42,13 @@ jobs:
       - name: Prune payload twins 🧹
         run: find apps/web/out -name '__next._full.txt' -type f -delete
 
+      # The offline gate: same check as the PR preview — the production
+      # deploy's PWA must keep its offline story (precache contents, offline
+      # browsing, fallbacks, redeploy survival) or the deploy fails.
+      - name: Verify offline PWA 📴
+        timeout-minutes: 10
+        run: node apps/web/tools/verify-offline.ts
+
       - name: Deploy to gh-pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:

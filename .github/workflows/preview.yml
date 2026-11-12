@@ -70,6 +70,17 @@ jobs:
         if: github.event.action != 'closed'
         run: find apps/web/out -name '__next._full.txt' -type f -delete
 
+      # The offline gate: drives headless Chrome (installed on the runner)
+      # against the built export and fails the preview if the PWA's offline
+      # story breaks — precache contents, offline browsing, fallbacks, and
+      # survival of a simulated redeploy (apps/web/tools/verify-offline.ts).
+      - name: Verify offline PWA 📴
+        if: github.event.action != 'closed'
+        timeout-minutes: 10
+        run: node apps/web/tools/verify-offline.ts
+        env:
+          NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
+
       - name: Deploy PR Preview 🚀
         id: preview
         uses: rossjrw/pr-preview-action@v1

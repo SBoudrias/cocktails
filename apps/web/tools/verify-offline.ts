@@ -108,6 +108,12 @@ const catalog = JSON.parse(
 const VISITED_CATEGORY = 'category/rum';
 const UNVISITED_CATEGORY = 'category/absinthe';
 const VISITED_INGREDIENT = 'ingredient/juice/lime-juice';
+// The author/bar pages became catalog-rendered (#554); the non-alcoholic
+// list (#553) bakes no rows at all, so it can only render through the
+// precached catalog — the strongest fresh-install offline check there is.
+const NON_ALCOHOLIC_HUB = 'list/non-alcoholic';
+const VISITED_AUTHOR = 'list/authors/anders-erickson';
+const VISITED_BAR = 'list/bars/death-and-co-new-york-ny';
 const rumList = catalog.lists[VISITED_CATEGORY];
 const absintheList = catalog.lists[UNVISITED_CATEGORY];
 if (!rumList || rumList.length < 100) {
@@ -115,6 +121,15 @@ if (!rumList || rumList.length < 100) {
 }
 if (!absintheList || absintheList.length === 0) {
   throw new Error(`catalog carries no list for ${UNVISITED_CATEGORY}`);
+}
+if (!catalog.lists[NON_ALCOHOLIC_HUB]?.length) {
+  throw new Error(`catalog carries no list for ${NON_ALCOHOLIC_HUB}`);
+}
+for (const route of [VISITED_AUTHOR, VISITED_BAR]) {
+  const list = catalog.lists[route];
+  if (!list || list.length < 20) {
+    throw new Error(`catalog carries no usable list for ${route}`);
+  }
 }
 const visitedRecipeHref = rumList[0]![0];
 const visitedRecipeName = catalog.cards[visitedRecipeHref]?.[0];
@@ -128,6 +143,8 @@ await assertFile(`${unvisitedRecipeHref.replace(/^\//, '')}.html`);
 await assertFile(`${VISITED_CATEGORY}.html`);
 await assertFile(`${VISITED_INGREDIENT}.html`);
 await assertFile(`${UNVISITED_CATEGORY}.html`);
+await assertFile(`${VISITED_AUTHOR}.html`);
+await assertFile(`${VISITED_BAR}.html`);
 
 // ---------------------------------------------------------------------------
 // Chrome discovery, before anything else runs.
@@ -631,6 +648,21 @@ await check('a list hub renders its rows offline (baked list)', async () => {
 });
 
 await check(
+  'a catalog-only list hub renders offline on a fresh install (no baked rows)',
+  async () => {
+    // The non-alcoholic hub bakes no rows at all (#553): every row comes
+    // from the catalog fetch, so this only renders offline through the
+    // precached data — a plain (non-virtualized) list, so rows count high.
+    await navigateTo(`/${NON_ALCOHOLIC_HUB}`);
+    await untilCount(
+      'non-alcoholic rows',
+      recipeRowsExpr,
+      (count) => count >= catalog.lists[NON_ALCOHOLIC_HUB]!.length,
+    );
+  },
+);
+
+await check(
   'offline search filters rows through the precached search index',
   async () => {
     // "flip" is rare enough to cut the list hard (a handful of the ~2,600
@@ -700,6 +732,24 @@ await check('a category page renders its rows online', async () => {
 await check('an ingredient page renders its rows online', async () => {
   await navigateTo(`/${VISITED_INGREDIENT}`);
   await untilCount('ingredient rows', recipeRowsExpr, (count) => count > 100);
+});
+
+await check('an author page renders its rows online from the catalog', async () => {
+  await navigateTo(`/${VISITED_AUTHOR}`);
+  await untilCount(
+    'author rows',
+    recipeRowsExpr,
+    (count) => count >= catalog.lists[VISITED_AUTHOR]!.length,
+  );
+});
+
+await check('a bar page renders its rows online from the catalog', async () => {
+  await navigateTo(`/${VISITED_BAR}`);
+  await untilCount(
+    'bar rows',
+    recipeRowsExpr,
+    (count) => count >= catalog.lists[VISITED_BAR]!.length,
+  );
 });
 
 await check('a recipe page opens online', async () => {
@@ -825,6 +875,23 @@ await check('a list hub renders offline from the new deploy precache', async () 
     throw new Error(`same-origin load failures: ${criticalFailures.join('; ')}`);
   }
 });
+
+await check(
+  'the author page visited before the redeploy still renders offline',
+  async () => {
+    criticalFailures.length = 0;
+    await navigateTo(`/${VISITED_AUTHOR}`);
+    await untilCount(
+      'author rows',
+      recipeRowsExpr,
+      (count) => count >= catalog.lists[VISITED_AUTHOR]!.length,
+    );
+    await sleep(2000);
+    if (criticalFailures.length > 0) {
+      throw new Error(`same-origin load failures: ${criticalFailures.join('; ')}`);
+    }
+  },
+);
 
 // ---------------------------------------------------------------------------
 // Report and clean up.
