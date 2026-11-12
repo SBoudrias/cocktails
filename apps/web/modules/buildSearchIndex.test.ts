@@ -1,3 +1,4 @@
+import type { Recipe } from '@cocktails/data';
 import { getAllRecipes } from '@cocktails/data/recipes';
 import { describe, expect, it } from 'vitest';
 import {
@@ -67,14 +68,14 @@ describe('toSearchIndexEntityItems', () => {
     const kinds = Object.groupBy(entities, (entity) => entity.kind);
 
     // The catalog has all of these — the assertions also pin the href shape
-    // per kind to the page routes they link to.
+    // per kind to the page routes they link to. Podcasts are absent: the
+    // one podcast source carries fewer recipes than the reference bar.
     expect(Object.keys(kinds).toSorted()).toEqual([
       'author',
       'bar',
       'book',
       'category',
       'ingredient',
-      'podcast',
       'youtube-channel',
     ]);
     expect(entities.map((entity) => entity.href)).toSatisfy((hrefs: string[]) =>
@@ -84,43 +85,57 @@ describe('toSearchIndexEntityItems', () => {
     );
   });
 
-  it('derives authors and bars from attributions, deduplicated per page', async () => {
-    const entities = await toSearchIndexEntityItems([
-      {
-        name: 'R1',
-        slug: 'r1',
-        source: {
-          type: 'book',
-          name: 'S',
-          slug: 's',
-          link: '',
-          description: '',
-          recipeAmount: 1,
-        },
-        attributions: [
-          { relation: 'recipe author', source: 'Jeff Berry' },
-          { relation: 'recipe author', source: 'Jeff Berry' },
-          { relation: 'bar', source: 'Smuggler', location: 'San Francisco' },
-        ],
-        ingredients: [],
-        preparation: 'shaken',
-        served_on: 'up',
-        glassware: 'coupe',
-        refs: [],
+  it('derives authors and bars from attributions, deduplicated per recipe', async () => {
+    const recipe = (name: string, attributions: Recipe['attributions']): Recipe => ({
+      name,
+      slug: name,
+      source: {
+        type: 'book',
+        name: 'S',
+        slug: 's',
+        link: '',
+        description: '',
+        recipeAmount: 1,
       },
+      attributions,
+      ingredients: [],
+      preparation: 'shaken',
+      served_on: 'up',
+      glassware: 'coupe',
+      refs: [],
+    });
+
+    // One recipe credits Jeff Berry twice (writer and adapter) — one
+    // reference, like the three distinct recipes crediting Smuggler.
+    const entities = await toSearchIndexEntityItems([
+      recipe('R1', [
+        { relation: 'recipe author', source: 'Jeff Berry' },
+        { relation: 'adapted by', source: 'Jeff Berry' },
+      ]),
+      recipe('R2', [{ relation: 'recipe author', source: 'Jeff Berry' }]),
+      recipe('R3', [{ relation: 'recipe author', source: 'Jeff Berry' }]),
+      recipe('R1', [{ relation: 'bar', source: 'Smuggler', location: 'San Francisco' }]),
+      recipe('R2', [{ relation: 'bar', source: 'Smuggler', location: 'San Francisco' }]),
+      recipe('R3', [{ relation: 'bar', source: 'Smuggler', location: 'San Francisco' }]),
+      // Credited once: below the reference bar, never indexed.
+      recipe('R4', [{ relation: 'recipe author', source: 'One Hit Wonder' }]),
+      recipe('R4', [{ relation: 'bar', source: 'Quiet Bar', location: 'Paris' }]),
     ]);
 
-    const names = entities
-      .filter((entity) => entity.kind === 'author' || entity.kind === 'bar')
-      .map((entity) => entity.name);
-    expect(names).toContain('Jeff Berry');
-    expect(names.filter((name) => name === 'Jeff Berry')).toHaveLength(1);
+    expect(entities).toContainEqual({
+      href: '/list/authors/jeff-berry',
+      name: 'Jeff Berry',
+      kind: 'author',
+      searchText: 'jeff berry',
+    });
     expect(entities).toContainEqual({
       href: '/list/bars/smuggler-san-francisco',
       name: 'Smuggler',
       kind: 'bar',
       searchText: 'smuggler san francisco',
     });
+    expect(entities.map((entity) => entity.name)).not.toContain('One Hit Wonder');
+    expect(entities.map((entity) => entity.name)).not.toContain('Quiet Bar');
   });
 });
 

@@ -1,7 +1,7 @@
 import type { Recipe, Source } from '@cocktails/data';
 import { getAllCategories } from '@cocktails/data/categories';
-import { getAllIngredients } from '@cocktails/data/ingredients';
-import { getAllRecipes } from '@cocktails/data/recipes';
+import { getAllIngredients, getRecipesForIngredient } from '@cocktails/data/ingredients';
+import { getAllRecipes, getRecipeByCategory } from '@cocktails/data/recipes';
 import { getAllSources } from '@cocktails/data/sources';
 import slugify from '@sindresorhus/slugify';
 import { P, match } from 'ts-pattern';
@@ -101,12 +101,23 @@ export function toSearchIndexItems(
 }
 
 /**
+ * An entity makes the index only when at least this many recipes reference
+ * it. A suggestion row is promoted above the recipe results, and an entity
+ * worth that is one the catalog leans on (Rum, not a bottle a single recipe
+ * lists once), so low-reference names never surface as suggestions.
+ */
+export const MIN_ENTITY_REFERENCES = 3;
+
+/**
  * Project every navigable entity — categories, ingredients, authors, bars,
  * and catalog sources — into the index's entity entries, keyed by their
  * pages' hrefs. Authors and bars derive from recipe attributions, exactly
  * like their pages' routes do, so a suggestion never links to a page that
  * does not exist; ingredients, categories, and sources come from the loaders
- * that enumerate the same files their pages are built from.
+ * that enumerate the same files their pages are built from. Each entity must
+ * also clear `MIN_ENTITY_REFERENCES`: the counts mirror what the entity's
+ * own page lists (a category counts its child categories' recipes too, a
+ * source counts every recipe it carries).
  */
 export async function toSearchIndexEntityItems(
   recipes: Recipe[],
@@ -118,60 +129,105 @@ export async function toSearchIndexEntityItems(
   ]);
 
   // Authors and bars keyed by the slug of their page href — the attribution
-  // pass deduplicates there, and the key keeps distinct locations apart.
-  const authors = new Map<string, { name: string }>();
-  const bars = new Map<string, { name: string; location?: string }>();
+  // pass counts references there, and the key keeps distinct locations apart.
+  // One recipe credits a name at most once: the same author as both writer
+  // and adapter is one reference, not two.
+  const authors = new Map<string, { name: string; count: number }>();
+  const bars = new Map<string, { name: string; location?: string; count: number }>();
 
   for (const { attributions } of recipes) {
+    const creditedAuthors = new Map<string, string>();
+    const creditedBars = new Map<string, { name: string; location?: string }>();
+
     for (const attribution of attributions) {
       match(attribution)
         .with({ relation: P.union('recipe author', 'adapted by') }, ({ source }) => {
-          authors.set(slugify(source), { name: source });
+          creditedAuthors.set(slugify(source), source);
         })
         .with({ relation: 'bar' }, ({ source, location }) => {
-          bars.set(slugify(`${source} ${location ?? ''}`), {
+          creditedBars.set(slugify(`${source} ${location ?? ''}`), {
             name: source,
             ...(location ? { location } : {}),
           });
         })
         .otherwise(() => undefined);
     }
+
+    for (const [slug, name] of creditedAuthors) {
+      const author = authors.get(slug);
+      authors.set(slug, { name: author?.name ?? name, count: (author?.count ?? 0) + 1 });
+    }
+    for (const [slug, { name, location }] of creditedBars) {
+      const bar = bars.get(slug);
+      bars.set(slug, {
+        name: bar?.name ?? name,
+        ...((location ?? bar?.location) ? { location: location ?? bar?.location } : {}),
+        count: (bar?.count ?? 0) + 1,
+      });
+    }
   }
 
-  // The annotation keeps each literal kind narrow (a bare map's object
-  // literal widens to string without a contextual type).
+  const [citedCategories, citedIngredients] = await Promise.all([
+    toCitedEntries(categories, 'category', getCategoryUrl, (category) =>
+      getRecipeByCategory(category),
+    ),
+    toCitedEntries(ingredients, 'ingredient', getIngredientUrl, (ingredient) =>
+      getRecipesForIngredient(ingredient),
+    ),
+  ]);
+
   const entries: (SearchIndexEntityEntry & { href: string })[] = [
-    ...categories.map((category): SearchIndexEntityEntry & { href: string } => ({
-      href: getCategoryUrl(category),
-      name: category.name,
-      kind: 'category',
-      searchText: normalizeEntityText(category.name),
-    })),
-    ...ingredients.map((ingredient): SearchIndexEntityEntry & { href: string } => ({
-      href: getIngredientUrl(ingredient),
-      name: ingredient.name,
-      kind: 'ingredient',
-      searchText: normalizeEntityText(ingredient.name),
-    })),
-    ...[...authors.values()].map((author): SearchIndexEntityEntry & { href: string } => ({
-      href: getAuthorRecipesUrl(author.name),
-      name: author.name,
-      kind: 'author',
-      searchText: normalizeEntityText(author.name),
-    })),
-    ...[...bars.values()].map((bar): SearchIndexEntityEntry & { href: string } => ({
-      href: getBarRecipesUrl(bar),
-      name: bar.name,
-      kind: 'bar',
-      searchText: normalizeEntityText(`${bar.name} ${bar.location ?? ''}`),
-    })),
-    ...sources.map((source): SearchIndexEntityEntry & { href: string } => ({
-      href: getSourceUrl(source),
-      name: source.name,
-      kind: source.type,
-      searchText: normalizeEntityText(source.name),
-    })),
+    ...citedCategories,
+    ...citedIngredients,
+    ...[...authors]
+      .filter(([, author]) => author.count >= MIN_ENTITY_REFERENCES)
+      .map(([, author]): SearchIndexEntityEntry & { href: string } => ({
+        href: getAuthorRecipesUrl(author.name),
+        name: author.name,
+        kind: 'author',
+        searchText: normalizeEntityText(author.name),
+      })),
+    ...[...bars]
+      .filter(([, bar]) => bar.count >= MIN_ENTITY_REFERENCES)
+      .map(([, bar]): SearchIndexEntityEntry & { href: string } => ({
+        href: getBarRecipesUrl(bar),
+        name: bar.name,
+        kind: 'bar',
+        searchText: normalizeEntityText(`${bar.name} ${bar.location ?? ''}`),
+      })),
+    ...sources
+      .filter((source) => source.recipeAmount >= MIN_ENTITY_REFERENCES)
+      .map((source): SearchIndexEntityEntry & { href: string } => ({
+        href: getSourceUrl(source),
+        name: source.name,
+        kind: source.type,
+        searchText: normalizeEntityText(source.name),
+      })),
   ];
 
   return entries;
+}
+
+/** The entities of a list that enough recipes reference, as index entries. */
+async function toCitedEntries<T extends { name: string }>(
+  entities: T[],
+  kind: SearchIndexEntityKind,
+  getHref: (entity: T) => string,
+  listRecipes: (entity: T) => Promise<unknown[]>,
+): Promise<(SearchIndexEntityEntry & { href: string })[]> {
+  const cited = await Promise.all(
+    entities.map(async (entity) => ({
+      entity,
+      count: (await listRecipes(entity)).length,
+    })),
+  );
+
+  return cited
+    .filter(({ count }) => count >= MIN_ENTITY_REFERENCES)
+    .map(({ entity }): SearchIndexEntityEntry & { href: string } => ({
+      href: getHref(entity),
+      name: entity.name,
+      kind,
+      searchText: normalizeEntityText(entity.name),
+    }));
 }

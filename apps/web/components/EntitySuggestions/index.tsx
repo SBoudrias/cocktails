@@ -14,23 +14,26 @@ import type { EntitySuggestion } from '#/modules/entitySuggestions';
 import { isEntityUrl } from '#/modules/url';
 
 function getEntityView(kind: EntitySuggestion['kind']) {
+  // Icon-only in the visible row; the label rides on the icon for screen
+  // readers (SvgIcon renders role="img" with its aria-label).
   return match(kind)
-    .returnType<{ icon: React.ReactNode; label: string }>()
-    .with('category', () => ({ icon: <CategoryIcon />, label: 'Category' }))
-    .with('ingredient', () => ({ icon: <LiquorIcon />, label: 'Ingredient' }))
-    .with('author', () => ({ icon: <PersonIcon />, label: 'Author' }))
-    .with('bar', () => ({ icon: <LocalBarIcon />, label: 'Bar' }))
-    .with('book', () => ({ icon: <MenuBookIcon />, label: 'Book' }))
-    .with('youtube-channel', () => ({ icon: <YouTubeIcon />, label: 'YouTube channel' }))
-    .with('podcast', () => ({ icon: <PodcastsIcon />, label: 'Podcast' }))
+    .returnType<{ icon: React.ReactNode }>()
+    .with('category', () => ({ icon: <CategoryIcon aria-label="Category" /> }))
+    .with('ingredient', () => ({ icon: <LiquorIcon aria-label="Ingredient" /> }))
+    .with('author', () => ({ icon: <PersonIcon aria-label="Author" /> }))
+    .with('bar', () => ({ icon: <LocalBarIcon aria-label="Bar" /> }))
+    .with('book', () => ({ icon: <MenuBookIcon aria-label="Book" /> }))
+    .with('youtube-channel', () => ({
+      icon: <YouTubeIcon aria-label="YouTube channel" />,
+    }))
+    .with('podcast', () => ({ icon: <PodcastsIcon aria-label="Podcast" /> }))
     .exhaustive();
 }
 
 /**
  * The entities strongly matching the search term, above the recipe results:
- * each row leads with its kind's icon (so it never reads as a recipe) and
- * names the kind on its secondary line. The list header separates the
- * section from the recipes below.
+ * each row leads with its kind's icon, so it never reads as a recipe. The
+ * list header separates the section from the recipes below.
  */
 export default function EntitySuggestions({
   suggestions,
@@ -51,7 +54,7 @@ export default function EntitySuggestions({
         header="Matching entities"
         items={links}
         renderItem={(suggestion) => {
-          const { icon, label } = getEntityView(suggestion.kind);
+          const { icon } = getEntityView(suggestion.kind);
 
           return (
             <LinkListItem
@@ -63,7 +66,6 @@ export default function EntitySuggestions({
                   &nbsp;{suggestion.name}
                 </>
               }
-              secondary={label}
             />
           );
         }}

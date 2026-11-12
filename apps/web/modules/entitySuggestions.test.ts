@@ -3,6 +3,7 @@ import type { SearchIndex } from './buildSearchIndex';
 import {
   ENTITY_SUGGESTION_MIN_CHARS,
   MAX_ENTITY_SUGGESTIONS,
+  MAX_ENTITY_SUGGESTION_MATCHES,
   getEntitySuggestions,
   normalizeEntityText,
 } from './entitySuggestions';
@@ -107,6 +108,32 @@ describe('getEntitySuggestions', () => {
 
   it('shows nothing while the index has not loaded', () => {
     expect(getEntitySuggestions(undefined, 'app')).toEqual([]);
+  });
+
+  it('shows nothing when the term is too broad: more strong matches than the gate', () => {
+    // A crowd of prefix matches ("sun" → Suntory Toki, Kakubin, ...): the
+    // term names many entities, so promoting an arbitrary two of them would
+    // be noise. Recipes-only stays the answer until the term narrows.
+    const suntoryCrowd: SearchIndex = Object.fromEntries(
+      Array.from({ length: MAX_ENTITY_SUGGESTION_MATCHES + 1 }, (_, i) => [
+        `/ingredient/spirit/suntory-${i}`,
+        {
+          name: `Suntory Bottle ${i}`,
+          kind: 'ingredient',
+          searchText: `suntory bottle ${i}`,
+        },
+      ]),
+    );
+
+    expect(getEntitySuggestions(suntoryCrowd, 'suntory')).toEqual([]);
+
+    // One match short of the gate: the section shows, capped at two rows.
+    const narrowCrowd: SearchIndex = Object.fromEntries(
+      Object.entries(suntoryCrowd).slice(0, MAX_ENTITY_SUGGESTION_MATCHES),
+    );
+    expect(getEntitySuggestions(narrowCrowd, 'suntory')).toHaveLength(
+      MAX_ENTITY_SUGGESTIONS,
+    );
   });
 
   it('caps the suggestions at the limit, prefix matches and shorter names first', () => {

@@ -17,6 +17,16 @@ export const ENTITY_SUGGESTION_MIN_CHARS = 3;
 export const MAX_ENTITY_SUGGESTIONS = 2;
 
 /**
+ * A query with more strong matches than this is too broad to surface any:
+ * the typed term still names a crowd ("sun" hits Suntory Toki, Suntory
+ * Kakubin…), and promoting an arbitrary two of them above the recipe
+ * results reads as noise. Recipes-only stays the honest answer until the
+ * term narrows ("sunk" → Sunkist). The gate sits above the display cap so
+ * an unambiguous term with a handful of matches still shows its two best.
+ */
+export const MAX_ENTITY_SUGGESTION_MATCHES = 5;
+
+/**
  * The text strong matching runs on, for names and queries alike: transliterated
  * and lowercased (accents and case never gate a match), apostrophes folded away
  * ("Smuggler's" ≡ "Smugglers"), attached punctuation dropped and dashes spaced
@@ -54,9 +64,11 @@ function isStrongMatch(searchText: string, query: string): boolean {
 /**
  * The entities worth surfacing for a search term: strong matches from the
  * shared search index, at most `MAX_ENTITY_SUGGESTIONS`, name-prefix matches
- * first and shorter (more specific) names before longer ones. While the
- * index has not loaded, or the query is below the character threshold, there
- * are none — recipe search alone still works in the meantime.
+ * first and shorter (more specific) names before longer ones — and none at
+ * all when more than `MAX_ENTITY_SUGGESTION_MATCHES` entities match, where
+ * the term is too broad to pick from. While the index has not loaded, or the
+ * query is below the character threshold, there are none — recipe search
+ * alone still works in the meantime.
  */
 export function getEntitySuggestions(
   index: SearchIndex | undefined,
@@ -72,8 +84,12 @@ export function getEntitySuggestions(
       : [],
   );
 
-  return candidates
-    .filter((candidate) => isStrongMatch(candidate.searchText, query))
+  const matches = candidates.filter((candidate) =>
+    isStrongMatch(candidate.searchText, query),
+  );
+  if (matches.length > MAX_ENTITY_SUGGESTION_MATCHES) return [];
+
+  return matches
     .toSorted(
       (a, b) =>
         Number(b.searchText.startsWith(query)) - Number(a.searchText.startsWith(query)) ||
