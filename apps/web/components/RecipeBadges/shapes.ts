@@ -34,25 +34,61 @@ function cube(cx: number, y: number, a: number) {
   };
 }
 
+// Closed polygon through `points`, turned `deg` clockwise around (cx, cy).
+function rotated(points: [number, number][], deg: number, cx: number, cy: number) {
+  const rad = (deg * Math.PI) / 180;
+  const [cos, sin] = [Math.cos(rad), Math.sin(rad)];
+  const turned = points.map(([x, y]) => {
+    const [dx, dy] = [x - cx, y - cy];
+    return `${(cx + dx * cos - dy * sin).toFixed(2)} ${(cy + dx * sin + dy * cos).toFixed(2)}`;
+  });
+  return `M${turned.join(' L')} Z`;
+}
+
 const stem = (top: number) => `M12 ${top} V20.5 M8 21 H16`;
+// Boston shaker, tilted mid-shake: the small tin sealed mouth-down into the big one.
+const bostonTilt = 30;
+const bostonSmallTin = rotated(
+  [
+    [9.9, 3.5],
+    [14.1, 3.5],
+    [15.6, 11],
+    [8.4, 11],
+  ],
+  bostonTilt,
+  12,
+  12.25,
+);
+const bostonBigTin = rotated(
+  [
+    [7.6, 11],
+    [16.4, 11],
+    [15.3, 21],
+    [8.7, 21],
+  ],
+  bostonTilt,
+  12,
+  12.25,
+);
 const bigRock = cube(12, 2.5, 8);
 const iceCubes = [cube(7.5, 11.25, 4.5), cube(16.5, 11.25, 4.5), cube(12, 4.5, 4.5)];
 
 export const preparationShapes: Record<Recipe['preparation'], Shape> = {
-  // cobbler shaker with motion marks
+  // tilted boston shaker with motion marks
   shaken: {
-    body: 'M10.5 2.5 H13.5 V6 H10.5 Z M10 6 H14 L16.6 10.5 H7.4 Z M7 10.5 H17 L16 21 H8 Z',
-    facets: 'M8 15 H16',
+    body: `${bostonSmallTin} ${bostonBigTin}`,
+    material: 'silver',
     motion:
-      'M4.5 12 Q3.2 14.5 4.5 17 M19.5 12 Q20.8 14.5 19.5 17 M3.5 5.5 Q2.6 7 3.5 8.5 M20.5 5.5 Q21.4 7 20.5 8.5',
+      'M3.4 9.4 Q2.6 12 3.6 14.6 M5.6 16.6 Q5 18.4 5.8 20 M20.6 9.6 Q21.4 7 20.4 4.4 M18.4 2.6 Q19 4 18.6 5.2',
   },
-  // mixing glass, bar spoon and a stirring arrow
+  // yarai mixing glass: thick base, spout, diamond cut, with a bar spoon
   stirred: {
-    body: 'M4.5 8 H16.5 V19.5 Q16.5 21 15 21 H6 Q4.5 21 4.5 19.5 Z',
-    level: 12,
-    parts: 'M9.5 18 L18.6 3.2',
-    solid: 'M18.9 1.6 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 Z',
-    motion: 'M3.6 6.2 Q7 1 10.4 6.2 M10.4 6.2 L10.6 4.2 M10.4 6.2 L8.5 5.6',
+    body: 'M5 6.5 H17 V19.6 Q17 21.2 15.4 21.2 H6.6 Q5 21.2 5 19.6 Z',
+    level: 10,
+    parts: 'M5 6.6 L3.6 5.6 M9.2 17.5 L19 2.4',
+    facets:
+      'M5.2 13.4 L7.2 17 L9.2 13.4 L11.2 17 L13.2 13.4 L15.2 17 L16.8 14.2 M5.2 17 L7.2 13.4 L9.2 17 L11.2 13.4 L13.2 17 L15.2 13.4 L16.8 16.2 M5.2 18.6 H16.8',
+    solid: 'M19.3 0.9 a1.3 1.3 0 1 1 0 2.6 a1.3 1.3 0 1 1 0 -2.6 Z',
   },
   // poured straight into the glass, in layers
   built: {
@@ -68,20 +104,23 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
     level: 7,
     facets: 'M10 12 L14 10.6 M11 18 a1 1 0 1 0 2 0 a1 1 0 1 0 -2 0',
   },
-  // spindle drink mixer, the tool flash blending uses
+  // Hamilton Beach-style drink mixer: bullet motor head on a column, the
+  // spindle down into a hanging tin, the column on a round foot
   'flash blended': {
-    body: 'M4.5 3 H17.5 Q19.5 3 19.5 5 V6 Q19.5 8 17.5 8 H4.5 Z M5 8 H8 V19.5 H5 Z M3.5 19.5 H20.5 V21.5 H3.5 Z M12 10.5 H20 L19.3 19.5 H12.7 Z',
-    liquid: 'M12 10.5 H20 L19.3 19.5 H12.7 Z',
-    level: 13,
-    parts: 'M16 8 V16.5',
-    facets: 'M15 16.5 H17',
+    body: 'M5 2.5 H14.5 C18.2 2.5 20.5 3.8 20.5 5.5 C20.5 7.2 18.2 8.5 14.5 8.5 H5 Q3.5 8.5 3.5 7 V4 Q3.5 2.5 5 2.5 Z M4.6 8.5 H7.6 V19 H4.6 Z M2.6 21.5 Q2.6 19 6.1 19 Q9.6 19 9.6 21.5 Z M11.6 11 H19.6 L18.7 21 H12.5 Z',
+    liquid: 'M11.6 11 H19.6 L18.7 21 H12.5 Z',
+    level: 14,
+    parts: 'M15.6 8.5 V17.5 M7.6 12 H11.6',
+    facets: 'M14.6 17.5 H16.6 M8.5 5.5 H12.5',
+    solid: 'M17.6 4.7 a0.8 0.8 0 1 1 0 1.6 a0.8 0.8 0 1 1 0 -1.6 Z',
   },
-  // swizzle stick spun between the palms
+  // lele swizzle stick spun in the glass
   swizzled: {
-    body: 'M7 8 H17 L16.2 21.5 H7.8 Z',
-    level: 10.5,
-    parts: 'M12 3 V17 M12 17 L9.6 18.8 M12 17 L14.4 18.8 M12 17 V19.4',
-    motion: 'M9.5 4.5 H4.5 M6 3 L4.5 4.5 L6 6 M14.5 4.5 H19.5 M18 3 L19.5 4.5 L18 6',
+    body: 'M7 9 H17 L16.2 21.5 H7.8 Z',
+    level: 11.5,
+    parts: 'M12 1.8 V17.6 M12 17.6 L9.6 19.2 M12 17.6 L14.4 19.2 M12 17.6 V19.8',
+    motion:
+      'M6.8 4.6 A5.2 1.9 0 1 0 14.98 3.04 M14.98 3.04 l1.11 1.3 M14.98 3.04 l1.6 -0.6',
   },
   other: {
     solid:
