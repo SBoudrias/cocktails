@@ -1,0 +1,10 @@
+/* MUI's outlined ToggleButton look; the sizes are props on the button */
+.unit {
+  color: #ffffff;
+  background-color: transparent;
+  border-color: rgb(255 255 255 / 0.12);
+}
+
+.unit[aria-pressed='true'] {
+  background-color: rgb(255 255 255 / 0.16);
+}

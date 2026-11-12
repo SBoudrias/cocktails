@@ -1,9 +1,10 @@
 'use client';
 
-import { Add, Remove } from '@mui/icons-material';
-import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { ActionIcon, TextInput } from '@mantine/core';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
+import styles from './style.module.css';
 
 const MIN_SERVINGS = 0.25;
 const MAX_SERVINGS = 50;
@@ -67,47 +68,51 @@ export default function ServingSelector({
   };
 
   return (
-    <TextField
-      type="number"
-      size="small"
-      label="Servings"
-      value={inputValue ?? servings}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      slotProps={{
-        input: {
-          startAdornment: (
-            <InputAdornment position="start">
-              <IconButton
-                onClick={handleDecrement}
-                disabled={servings <= MIN_SERVINGS}
-                size="small"
-                aria-label="Decrement"
-              >
-                <Remove fontSize="small" />
-              </IconButton>
-            </InputAdornment>
-          ),
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                onClick={handleIncrement}
-                disabled={servings >= MAX_SERVINGS}
-                size="small"
-                aria-label="Increment"
-              >
-                <Add fontSize="small" />
-              </IconButton>
-            </InputAdornment>
-          ),
-        },
-        htmlInput: {
-          min: MIN_SERVINGS,
-          max: MAX_SERVINGS,
-          step: MIN_SERVINGS,
-          'aria-label': 'Number of servings',
-        },
-      }}
-    />
+    // An outlined field with its label notched into the border, the way the
+    // MUI TextField drew it: the fieldset is the outline, its legend the
+    // notch. Mantine's own inputs only put the label above.
+    <div className={styles.field}>
+      <fieldset aria-hidden="true" className={styles.outline}>
+        <legend className={styles.legend}>Servings</legend>
+      </fieldset>
+      <TextInput
+        type="number"
+        variant="unstyled"
+        size="sm"
+        h={40}
+        value={inputValue ?? servings}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        min={MIN_SERVINGS}
+        max={MAX_SERVINGS}
+        step={MIN_SERVINGS}
+        aria-label="Number of servings"
+        styles={{ input: { textAlign: 'center' } }}
+        leftSectionPointerEvents="all"
+        rightSectionPointerEvents="all"
+        leftSection={
+          <ActionIcon
+            variant="subtle"
+            color="gray"
+            onClick={handleDecrement}
+            disabled={servings <= MIN_SERVINGS}
+            aria-label="Decrement"
+          >
+            <IconMinus size={16} />
+          </ActionIcon>
+        }
+        rightSection={
+          <ActionIcon
+            variant="subtle"
+            color="gray"
+            onClick={handleIncrement}
+            disabled={servings >= MAX_SERVINGS}
+            aria-label="Increment"
+          >
+            <IconPlus size={16} />
+          </ActionIcon>
+        }
+      />
+    </div>
   );
 }

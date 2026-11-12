@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/vitest';
+import { MantineProvider } from '@mantine/core';
 import type { RenderOptions } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import { waitFor } from '@testing-library/react';
@@ -11,6 +12,7 @@ import type { ComponentProps, ReactNode } from 'react';
 import { createElement } from 'react';
 import { VirtuosoMockContext } from 'react-virtuoso';
 import { beforeEach, expect, vi } from 'vitest';
+import mantineTheme from '#/app/mantineTheme';
 import { getPendingSharedJsonLoads } from '#/modules/sharedJson';
 
 vi.mock('next/router', async () => import('next-router-mock'));
@@ -65,6 +67,14 @@ export function withVirtuosoViewport(ui: ReactNode) {
   });
 }
 
+export function MantineWrapper({ children }: { children: ReactNode }) {
+  return createElement(MantineProvider, {
+    theme: mantineTheme,
+    forceColorScheme: 'dark',
+    children,
+  });
+}
+
 export async function setupApp(
   ui: ReactNode,
   {
@@ -89,7 +99,9 @@ export async function setupApp(
         children: withVirtuosoViewport(ui),
       }),
     }),
-    renderOptions,
+    // Mantine components throw outside a MantineProvider (MUI falls back to
+    // its default theme): every render needs the app's provider.
+    { wrapper: MantineWrapper, ...renderOptions },
   );
 
   // Pages load their shared JSON (catalog, search index) right after mount;

@@ -1,5 +1,5 @@
 import type { Recipe } from '@cocktails/data';
-import { Grid, Typography } from '@mui/material';
+import { SimpleGrid, Text } from '@mantine/core';
 import RecipeIcon from './RecipeIcon';
 import { glasswareShapes, preparationShapes, servedOnShapes } from './shapes';
 import styles from './style.module.css';
@@ -28,24 +28,31 @@ export default function RecipeBadges({
   ];
 
   return (
-    <Grid
-      container
+    <SimpleGrid
       component="ul"
+      cols={3}
+      spacing={0}
+      my={8}
       aria-label="Preparation, ice and glassware"
-      columns={3}
       className={styles.badges}
-      sx={{ my: 1 }}
     >
       {badges.map(({ field, value, shape }) => (
-        <Grid size={1} component="li" key={field} className={styles.badge}>
+        <li key={field} className={styles.badge}>
           <div className={styles.bubble}>
             <RecipeIcon shape={shape} id={`recipe-icon-${field}`} />
           </div>
-          <Typography variant="caption" color="text.secondary" className={styles.caption}>
+          {/* MUI's caption type: 12px, 1.66 line height, 0.4px tracking */}
+          <Text
+            component="span"
+            size="xs"
+            lh={1.66}
+            lts="0.03333em"
+            className={styles.caption}
+          >
             {value}
-          </Typography>
-        </Grid>
+          </Text>
+        </li>
       ))}
-    </Grid>
+    </SimpleGrid>
   );
 }

@@ -1,7 +1,10 @@
 import type { Recipe } from '@cocktails/data';
-import { render, screen, fireEvent, within } from '@testing-library/react';
+import { render as rtlRender, screen, fireEvent, within } from '@testing-library/react';
 import { beforeEach } from 'vitest';
+import { MantineWrapper } from '#/vitest.setup';
 import IngredientList from './index';
+
+const render = (ui: React.ReactElement) => rtlRender(ui, { wrapper: MantineWrapper });
 
 function getLinkSearchParams(name: string | RegExp) {
   const href = screen.getByRole('link', { name }).getAttribute('href');

@@ -1,0 +1,20 @@
+.field {
+  position: relative;
+  width: 151px;
+}
+
+.outline {
+  position: absolute;
+  inset: -5px 0 0;
+  padding-inline: 8px;
+  border: 1px solid rgb(255 255 255 / 0.23);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.legend {
+  padding-inline: 4px;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--mantine-color-dimmed);
+}

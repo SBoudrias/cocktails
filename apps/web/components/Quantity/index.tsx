@@ -2,7 +2,6 @@
 
 import { tryConvertVolume } from '@cocktails/conversion';
 import type { RecipeIngredient } from '@cocktails/data';
-import { Box } from '@mui/material';
 import { match } from 'ts-pattern';
 import { roundToFriendlyFraction, roundToFriendlyMl } from '#/modules/friendly-rounding';
 import styles from './style.module.css';
@@ -108,16 +107,7 @@ export default function Quantity({
     .exhaustive();
 
   return (
-    <Box
-      component="span"
-      sx={{
-        display: 'inline-flex',
-        flexDirection: 'row',
-        gap: 0.5,
-        alignItems: 'baseline',
-        flexShrink: 0,
-      }}
-    >
+    <span className={styles.wrapper}>
       {modifier != null && (
         <>
           <span className={styles.modifier}>{modifier}</span>{' '}
@@ -137,6 +127,6 @@ export default function Quantity({
           <span className={styles.unit}>{unit}</span>
         </>
       )}
-    </Box>
+    </span>
   );
 }

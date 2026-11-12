@@ -5,12 +5,24 @@
 
 .category {
   font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
+  color: var(--mantine-color-dimmed);
   text-transform: capitalize;
 }
 
 .optional {
   font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
+  color: var(--mantine-color-dimmed);
   text-transform: none;
+}
+
+/* MUI Toolbar: 56px (64px from 600px wide), 8px side padding */
+.toolbar {
+  min-height: 56px;
+  padding-inline: 8px;
+}
+
+@media (min-width: 600px) {
+  .toolbar {
+    min-height: 64px;
+  }
 }

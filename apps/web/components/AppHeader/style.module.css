@@ -1,0 +1,27 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1100;
+  height: var(--app-bar-height);
+  background-color: var(--app-header);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--mantine-shadow-md);
+  color: var(--mantine-color-text);
+}
+
+/* MUI Toolbar gutters minus the IconButtons' -12px edge margins */
+.bar {
+  padding-inline: 4px;
+}
+
+@media (min-width: 600px) {
+  .bar {
+    padding-inline: 12px;
+  }
+}
+
+.homeMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

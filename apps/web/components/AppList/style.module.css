@@ -1,0 +1,37 @@
+/* MUI List padding: 8px above and below a group */
+.section {
+  padding-block: 8px;
+}
+
+.list {
+  background-color: var(--app-paper);
+  list-style: none;
+}
+
+/* MUI ListItem metrics: 8px padding + ListItemText's 4px margins, and
+   capitalized like every ListItemText in the app's theme. */
+.row {
+  border-bottom: 1px solid var(--app-divider);
+  text-transform: capitalize;
+}
+
+.static {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.link {
+  padding: 12px 16px;
+}
+
+.label {
+  font-size: var(--mantine-font-size-md);
+  line-height: 1.5;
+}
+
+.subheader {
+  padding: 16px;
+  line-height: 1.4rem;
+}
