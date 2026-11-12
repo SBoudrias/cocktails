@@ -4,7 +4,7 @@ import AppHeader from '#/components/AppHeader';
 import BrixCalculator from '#/components/BrixCalculator';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Sugar Adjusting Calculator',
+  title: 'Indexotica | Sugar Adjusting Calculator',
 };
 
 export default function BrixCalculatorPage() {

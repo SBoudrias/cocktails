@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import AuthorsClient from './AuthorsClient';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Authors list',
+  title: 'Indexotica | Authors list',
 };
 
 export default async function AuthorListPage() {

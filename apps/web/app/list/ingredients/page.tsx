@@ -5,7 +5,7 @@ import { toIngredientListItems } from '#/modules/ingredientListItem';
 import IngredientsClient from './IngredientsClient';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Ingredient list',
+  title: 'Indexotica | Ingredient list',
 };
 
 export default async function IngredientListPage() {

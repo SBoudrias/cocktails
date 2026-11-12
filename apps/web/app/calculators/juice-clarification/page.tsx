@@ -4,7 +4,7 @@ import AppHeader from '#/components/AppHeader';
 import JuiceClarificationCalculator from '#/components/JuiceClarificationCalculator';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Juice Clarification Calculator',
+  title: 'Indexotica | Juice Clarification Calculator',
 };
 
 export default function JuiceClarificationCalculatorPage() {

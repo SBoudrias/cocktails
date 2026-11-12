@@ -4,7 +4,7 @@ import { toIngredientListItems } from '#/modules/ingredientListItem';
 import BottlesClient from './BottlesClient';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Bottle list',
+  title: 'Indexotica | Bottle list',
 };
 
 export default async function BottlesPage() {

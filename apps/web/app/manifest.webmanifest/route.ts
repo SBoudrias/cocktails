@@ -5,8 +5,8 @@ export const dynamic = 'force-static';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
 
 const manifest: MetadataRoute.Manifest = {
-  name: 'Cocktail Index',
-  short_name: 'Cocktail Index',
+  name: 'Indexotica: Tiki & Cocktails',
+  short_name: 'Indexotica',
   description:
     'Browse thousands of cocktail recipes from books, bars, YouTube channels and podcasts, with ingredients, substitutes and calculators.',
   id: `${basePath}/`,

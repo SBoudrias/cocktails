@@ -1,4 +1,4 @@
-// Service worker for the Cocktail Index static export.
+// Service worker for the Indexotica static export.
 //
 // The precache manifest and build version are baked into out/sw.js after the
 // static export by apps/web/tools/generate-sw-precache.ts; this committed

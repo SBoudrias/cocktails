@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
     const recipe = await getRecipe({ type: type, slug: source }, recipeSlug);
 
     return {
-      title: `Cocktail Index | ${recipe.name} from ${recipe.source.name}`,
+      title: `Indexotica | ${recipe.name} from ${recipe.source.name}`,
       description: `${recipe.name} cocktail recipe from ${recipe.source.name}: ${recipe.ingredients
         .map((ingredient) => ingredient.name)
         .join(', ')}.`,

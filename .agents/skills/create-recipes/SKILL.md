@@ -1,6 +1,6 @@
 ---
 name: create-recipes
-description: Create cocktail recipe JSON files for the Cocktail Index from user-provided recipes, batches, books, videos, or notes. Use when adding new recipes, converting recipe text into data files, or backfilling recipes from YouTube or another source.
+description: Create cocktail recipe JSON files for Indexotica from user-provided recipes, batches, books, videos, or notes. Use when adding new recipes, converting recipe text into data files, or backfilling recipes from YouTube or another source.
 ---
 
 # Create Cocktail Recipes

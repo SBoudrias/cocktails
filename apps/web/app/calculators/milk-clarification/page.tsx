@@ -4,7 +4,7 @@ import AppHeader from '#/components/AppHeader';
 import MilkClarificationCalculator from '#/components/MilkClarificationCalculator';
 
 export const metadata: Metadata = {
-  title: 'Cocktail Index | Milk Clarification Calculator',
+  title: 'Indexotica | Milk Clarification Calculator',
 };
 
 export default function MilkClarificationCalculatorPage() {
