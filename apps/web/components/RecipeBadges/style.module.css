@@ -47,7 +47,7 @@
 
 .copper {
   fill: var(--mui-palette-warning-main);
-  fill-opacity: 0.55;
+  fill-opacity: 0.8;
 }
 
 .ceramic {

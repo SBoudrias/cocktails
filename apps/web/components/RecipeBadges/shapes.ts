@@ -78,16 +78,19 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
   shaken: {
     body: `${bostonSmallTin} ${bostonBigTin}`,
     material: 'silver',
-    motion:
-      'M3.4 9.4 Q2.6 12 3.6 14.6 M5.6 16.6 Q5 18.4 5.8 20 M20.6 9.6 Q21.4 7 20.4 4.4 M18.4 2.6 Q19 4 18.6 5.2',
+    // short strokes parallel to the tilted shaker, clear of its outline
+    motion: 'M9.2 7 L11 3.9 M4 14 L5.8 10.9 M18 12 L19.8 8.9 M14.5 20 L16.3 16.9',
   },
   // yarai mixing glass: thick base, spout, diamond cut, with a bar spoon
   stirred: {
-    body: 'M5 6.5 H17 V19.6 Q17 21.2 15.4 21.2 H6.6 Q5 21.2 5 19.6 Z',
+    body: 'M2.8 5.4 Q4.6 5.8 5 7.4 V19.6 Q5 21.2 6.6 21.2 H15.4 Q17 21.2 17 19.6 V6.5 H6.6 Q4.8 6.5 2.8 5.4 Z',
     level: 10,
-    parts: 'M5 6.6 L3.6 5.6 M9.2 17.5 L19 2.4',
+    // bar spoon: shaft out of the glass, its bowl resting at the bottom
+    parts:
+      'M9.2 17.4 L19 2.4 M9.31 17.33 A1.8 1.1 -57 1 0 7.35 20.35 A1.8 1.1 -57 1 0 9.31 17.33 Z',
+    // the diamond cut sits above the spoon bowl so the bowl reads clearly
     facets:
-      'M5.2 13.4 L7.2 17 L9.2 13.4 L11.2 17 L13.2 13.4 L15.2 17 L16.8 14.2 M5.2 17 L7.2 13.4 L9.2 17 L11.2 13.4 L13.2 17 L15.2 13.4 L16.8 16.2 M5.2 18.6 H16.8',
+      'M5.2 11.8 L7.2 14.8 L9.2 11.8 L11.2 14.8 L13.2 11.8 L15.2 14.8 L16.8 12.4 M5.2 14.8 L7.2 11.8 L9.2 14.8 L11.2 11.8 L13.2 14.8 L15.2 11.8 L16.8 14.2',
     solid: 'M19.3 0.9 a1.3 1.3 0 1 1 0 2.6 a1.3 1.3 0 1 1 0 -2.6 Z',
   },
   // poured straight into the glass, in layers
@@ -119,8 +122,9 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
     body: 'M7 9 H17 L16.2 21.5 H7.8 Z',
     level: 11.5,
     parts: 'M12 1.8 V17.6 M12 17.6 L9.6 19.2 M12 17.6 L14.4 19.2 M12 17.6 V19.8',
+    // the arrowhead opens wide and tilts up, clear of the curve behind it
     motion:
-      'M6.8 4.6 A5.2 1.9 0 1 0 14.98 3.04 M14.98 3.04 l1.11 1.3 M14.98 3.04 l1.6 -0.6',
+      'M6.8 4.6 A5.2 1.9 0 1 0 14.98 3.04 M14.98 3.04 l1.63 -1.16 M14.98 3.04 l1.16 1.63',
   },
   other: {
     solid:
@@ -142,26 +146,28 @@ export const servedOnShapes: Record<Recipe['served_on'], Shape> = {
     ice: iceCubes.map((c) => c.outline).join(' '),
     facets: iceCubes.map((c) => c.facets).join(' '),
   },
+  // a loose heap of irregular chunks and shards
   'crushed ice': {
     ice: [
-      'M2.8 16.4 L6.6 15.8 L7.4 20.6 L3.2 21 Z',
-      'M8.4 16 L12 15.4 L12.6 20.8 L8.8 21 Z',
-      'M13.8 15.6 L17.2 16.2 L16.8 21 L13.6 20.8 Z',
-      'M18.4 16.6 L21.4 17.4 L21 21 L18.2 21 Z',
-      'M5 11.6 L8.8 10.8 L9.6 14.4 L5.4 14.8 Z',
-      'M10.6 10.6 L14 11 L13.6 14.2 L10.8 14 Z',
-      'M15.4 11.4 L19 12 L18.4 15.2 L15 14.6 Z',
-      'M8.6 6.6 L12 6 L12.6 9.4 L9 9.6 Z',
-      'M13.4 7.2 L16.2 7.8 L15.6 10 L13.6 9.8 Z',
-      'M11 2.6 L13.6 3 L13.2 5 L11.2 4.8 Z',
+      'M2.6 18.2 L4.8 15.6 L7.8 16.4 L8 20.2 L4 21.2 Z',
+      'M8.8 21.2 L11 15.6 L13.8 20.8 Z',
+      'M14.4 17.2 L17.8 15.6 L19.4 19 L15.8 21.2 Z',
+      'M19.8 21.2 L20.6 17.6 L22 20.6 Z',
+      'M4.4 12.6 L6.6 10.6 L9.4 11.6 L9.2 14.6 L6.2 15 Z',
+      'M10.4 14.4 L11.4 9.4 L14.4 10.6 L13.4 14.6 Z',
+      'M15.2 14.4 L16.8 10.2 L19.6 13.8 Z',
+      'M7.6 8 L10 5.4 L12.4 7.6 L10 9.6 Z',
+      'M13.4 6.4 L15.6 5.4 L17 7.4 L15.8 9.4 L13.8 9 Z',
+      'M11.2 2.4 L13.2 3.2 L12 4.8 Z',
     ].join(' '),
+    facets: 'M4.8 15.6 L5.6 18.6 M11.4 9.4 L12.4 12.4 M10 5.4 L10 9.6',
   },
-  // a frozen slush dome
+  // frozen slush: a lumpy heap of fine ice grains with a straw
   blended: {
-    ice: 'M3 20 C3 12 6.8 6.5 12 6.5 C17.2 6.5 21 12 21 20 Z',
+    ice: 'M3 20.5 V17 C3 14.5 4.5 13 6 13.2 C6.8 11.4 8.6 10.6 10.2 11.2 C11.2 9.6 13.4 9.4 14.6 10.8 C16.4 10.4 18 11.6 18.2 13.4 C20 13.6 21 15.2 21 17 V20.5 Z',
     facets:
-      'M5.2 15 Q7.2 13.6 9.2 15 T13.2 15 T17.2 15 T19.4 14.6 M7.6 10.8 Q9.8 9.6 12 10.8 T16.4 10.8',
-    solid: 'M12 2 a1.3 1.3 0 1 1 0 2.6 a1.3 1.3 0 1 1 0 -2.6 Z',
+      'M6 16.6 l0.9 -0.5 M9 14.4 l0.9 0.4 M8.4 18.4 l0.8 -0.6 M11.6 16.6 l0.9 0.2 M12.4 13.2 l0.7 -0.6 M14.6 18.2 l0.9 -0.4 M16.6 15.2 l0.8 0.5 M18.6 18.4 l0.7 -0.6 M5 19.2 l0.8 0.3',
+    parts: 'M14.2 11 L18.4 2.4',
   },
 };
 
@@ -187,7 +193,7 @@ export const glasswareShapes: Record<Recipe['glassware'], Shape> = {
     parts: 'M12 17.5 V20.5 M8 21 H16',
   },
   coupe: {
-    body: 'M3 5.5 H21 C21 10 17 12.5 12 12.5 C7 12.5 3 10 3 5.5 Z',
+    body: 'M4.2 5.5 H19.8 C19.8 10 16.4 12.5 12 12.5 C7.6 12.5 4.2 10 4.2 5.5 Z',
     level: 7.5,
     parts: stem(12.5),
   },
@@ -199,10 +205,10 @@ export const glasswareShapes: Record<Recipe['glassware'], Shape> = {
   },
   // footed glass mug, cream floated on top
   irish: {
-    body: 'M5 3 H15.5 L14.8 14.2 Q14.6 15.6 13 15.6 H7.5 Q5.9 15.6 5.7 14.2 Z',
+    body: 'M5 3 H15.5 L14.8 14.2 Q14.6 15.6 13 15.6 H7.5 Q5.9 15.6 5.7 14.2 Z M8.6 15.6 H11.9 L11.3 18.8 H9.2 Z M6.6 18.8 H13.9 Q14.8 18.8 14.8 19.8 V20.2 Q14.8 21.2 13.9 21.2 H6.6 Q5.7 21.2 5.7 20.2 V19.8 Q5.7 18.8 6.6 18.8 Z',
+    liquid: 'M5 3 H15.5 L14.8 14.2 Q14.6 15.6 13 15.6 H7.5 Q5.9 15.6 5.7 14.2 Z',
     level: 4.8,
-    parts:
-      'M10.25 15.6 V19.6 M6.5 20.6 H14 M15.3 6 H17.2 Q18.8 6 18.8 7.6 V10 Q18.8 11.6 17.2 11.6 H14.9',
+    parts: 'M15.3 6 H17.2 Q18.8 6 18.8 7.6 V10 Q18.8 11.6 17.2 11.6 H14.9',
     facets: 'M5.2 7.6 H15.2',
   },
   hurricane: {
@@ -218,12 +224,15 @@ export const glasswareShapes: Record<Recipe['glassware'], Shape> = {
     facets:
       'M5.8 6.5 H18.2 M9.2 10 V12 M12 11 V13 M14.8 10 V12 M10.6 14.6 V16.4 M13.4 14.6 V16.4',
   },
-  // copper mug
+  // straight copper mug: rolled rim, riveted brass strap handle, a shine
   mule: {
-    body: 'M4.6 4 H15.4 C16.4 8.5 16.4 16.5 15.4 21 H4.6 C3.6 16.5 3.6 8.5 4.6 4 Z',
+    body: 'M4 3.5 H15.5 V20 Q15.5 21.5 14 21.5 H5.5 Q4 21.5 4 20 Z',
     material: 'copper',
-    parts: 'M16.2 8 H18 Q20 8 20 10 V14 Q20 16 18 16 H16.2',
-    facets: 'M4.4 6.8 H15.6 M4.4 18.2 H15.6',
+    parts:
+      'M15.5 7 H18.6 Q20.2 7 20.2 8.6 V15.4 Q20.2 17 18.6 17 H15.5 M15.5 9.2 H17.4 Q18 9.2 18 9.8 V14.2 Q18 14.8 17.4 14.8 H15.5',
+    facets: 'M4 5.8 H15.5 M6.6 8 V18.6',
+    solid:
+      'M16.6 7.4 a0.75 0.75 0 1 1 0 1.5 a0.75 0.75 0 1 1 0 -1.5 Z M16.6 15.1 a0.75 0.75 0 1 1 0 1.5 a0.75 0.75 0 1 1 0 -1.5 Z',
   },
   // carved ceramic mug, the app icon's tiki
   tiki: {
@@ -232,11 +241,16 @@ export const glasswareShapes: Record<Recipe['glassware'], Shape> = {
     facets:
       'M7.5 6.6 L9 7.8 L10.5 6.6 L12 7.8 L13.5 6.6 L15 7.8 L16.5 6.6 M8 11 H10.6 M13.4 11 H16 M12 9.8 V13.6 M8.8 15.6 H15.2 V18 H8.8 Z M10.95 15.6 V18 M13.05 15.6 V18',
   },
-  // footed punch bowl and its ladle
+  // ceramic scorpion bowl: carved band, a flaming volcano in the middle and
+  // long straws to share
   punch: {
-    body: 'M2.5 9 H21.5 C21.5 14.5 17.5 17.5 12 17.5 C6.5 17.5 2.5 14.5 2.5 9 Z',
-    level: 11,
-    parts: 'M9.8 17.5 L8.6 20.5 H15.4 L14.2 17.5 M15 12.5 L18.2 3.5 H20.5',
+    body: 'M2.5 11.5 H21.5 C21.5 16.4 17.5 19 12 19 C6.5 19 2.5 16.4 2.5 11.5 Z M9.4 19 H14.6 L15.4 21.2 H8.6 Z',
+    material: 'ceramic',
+    parts: 'M9.6 11.5 L10.8 8.6 H13.2 L14.4 11.5 M6.4 11.5 L3.4 2.6 M17.6 11.5 L20.6 2.6',
+    facets:
+      'M4.8 14.6 L6.4 15.8 L8 14.6 L9.6 15.8 L11.2 14.6 L12.8 15.8 L14.4 14.6 L16 15.8 L17.6 14.6 L19.2 15.8',
+    solid:
+      'M12 3.6 C12.9 4.8 13.4 5.6 13.4 6.6 A1.4 1.4 0 0 1 10.6 6.6 C10.6 5.6 11.1 4.8 12 3.6 Z',
   },
   flute: {
     body: 'M9 2 H15 L14.6 11 C14.4 13.2 13.4 14 12 14 C10.6 14 9.6 13.2 9.4 11 Z',
