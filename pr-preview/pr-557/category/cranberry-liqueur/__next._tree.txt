@@ -1,0 +1,8 @@
+:HL["/cocktails/pr-preview/pr-557/_next/static/chunks/04d1i6aooqu7y.css","style"]
+:HL["/cocktails/pr-preview/pr-557/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/cocktails/pr-preview/pr-557/_next/static/chunks/3hsbq7h_aggve.css","style"]
+:HL["/cocktails/pr-preview/pr-557/_next/static/chunks/34xf9m6qcd2jc.css","style"]
+3:[["children",{"s":"__PAGE__","h":160}]]
+2:[["children",{"s":{"n":"slug","t":"d","k":"cranberry-liqueur","s":[]},"h":96,"c":"$Q3"}]]
+1:[["children",{"s":"category","h":96,"c":"$Q2"}]]
+0:{"b":"FSAFd9sv5xIMWmGED_JW-","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
