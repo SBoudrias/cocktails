@@ -39,7 +39,14 @@ export type Recipe = {
   name: string;
   slug: string;
   chapter?: Chapter;
-  preparation: 'built' | 'shaken' | 'stirred' | 'blended' | 'flash blended' | 'swizzled';
+  preparation:
+    | 'built'
+    | 'shaken'
+    | 'stirred'
+    | 'blended'
+    | 'flash blended'
+    | 'swizzled'
+    | 'other';
   techniques?: RecipeTechnique[];
   served_on: 'big rock' | 'up' | 'crushed ice' | 'blended' | 'ice cubes';
   glassware:
@@ -57,8 +64,9 @@ export type Recipe = {
     | 'tiki'
     | 'punch'
     | 'flute'
-    | 'footer pilsner'
-    | 'goblet';
+    | 'footed pilsner'
+    | 'goblet'
+    | 'wine glass';
   ingredients: RecipeIngredient[];
   instructions?: string[];
   source: Source;

@@ -1,0 +1,120 @@
+.badges {
+  list-style: none;
+  text-align: center;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.bubble {
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--mui-palette-info-light) 35%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--mui-palette-background-paper) 70%,
+    transparent
+  );
+  width: 70px;
+  height: 70px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caption {
+  text-transform: capitalize;
+}
+
+.icon {
+  font-size: 44px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.glass {
+  fill: var(--mui-palette-text-primary);
+  fill-opacity: 0.08;
+}
+
+.silver {
+  fill: var(--mui-palette-text-secondary);
+  fill-opacity: 0.55;
+}
+
+.copper {
+  /* pinkish copper: the orange accent warmed toward the palm magenta */
+  fill: color-mix(
+    in srgb,
+    var(--mui-palette-warning-main) 65%,
+    var(--mui-palette-error-light)
+  );
+  fill-opacity: 0.85;
+}
+
+.ceramic {
+  fill: var(--mui-palette-secondary-main);
+}
+
+.drinkTop {
+  stop-color: var(--mui-palette-secondary-light);
+}
+
+.drinkBottom {
+  stop-color: var(--mui-palette-secondary-dark);
+}
+
+.drink {
+  opacity: 0.92;
+}
+
+.surface {
+  fill: none;
+  stroke: var(--mui-palette-secondary-light);
+  stroke-width: 1;
+}
+
+.ice {
+  fill: color-mix(in srgb, var(--mui-palette-info-light) 28%, transparent);
+  stroke: var(--mui-palette-info-light);
+  stroke-width: 1.4;
+}
+
+.outline {
+  fill: none;
+  stroke: var(--mui-palette-text-primary);
+  stroke-width: 1.5;
+}
+
+.facet,
+.iceFacet,
+.carvedFacet {
+  fill: none;
+  stroke-width: 1.1;
+  stroke-opacity: 0.85;
+}
+
+.facet {
+  stroke: var(--mui-palette-text-primary);
+}
+
+.iceFacet {
+  stroke: var(--mui-palette-info-light);
+}
+
+.carvedFacet {
+  stroke: var(--mui-palette-background-default);
+}
+
+.motion {
+  fill: none;
+  stroke: var(--mui-palette-info-light);
+  stroke-width: 1.4;
+}
+
+.solid {
+  fill: var(--mui-palette-secondary-main);
+}
