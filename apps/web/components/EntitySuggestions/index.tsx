@@ -1,7 +1,7 @@
 import {
-  Category as CategoryIcon,
   Liquor as LiquorIcon,
   LocalBar as LocalBarIcon,
+  LocalOffer as LocalOfferIcon,
   MenuBook as MenuBookIcon,
   Person as PersonIcon,
   Podcasts as PodcastsIcon,
@@ -18,7 +18,7 @@ function getEntityView(kind: EntitySuggestion['kind']) {
   // readers (SvgIcon renders role="img" with its aria-label).
   return match(kind)
     .returnType<{ icon: React.ReactNode }>()
-    .with('category', () => ({ icon: <CategoryIcon aria-label="Category" /> }))
+    .with('category', () => ({ icon: <LocalOfferIcon aria-label="Category" /> }))
     .with('ingredient', () => ({ icon: <LiquorIcon aria-label="Ingredient" /> }))
     .with('author', () => ({ icon: <PersonIcon aria-label="Author" /> }))
     .with('bar', () => ({ icon: <LocalBarIcon aria-label="Bar" /> }))
