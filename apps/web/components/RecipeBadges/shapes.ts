@@ -34,26 +34,28 @@ function cube(cx: number, y: number, a: number) {
   };
 }
 
-// Closed polygon through `points`, scaled and turned `deg` clockwise around (cx, cy).
+// Closed polygon through `points`, scaled and turned `deg` clockwise around
+// (cx, cy), then moved by `shift` to recenter it on the grid.
 function rotated(
   points: [number, number][],
   deg: number,
   cx: number,
   cy: number,
   scale: number,
+  shift: [number, number],
 ) {
   const rad = (deg * Math.PI) / 180;
   const [cos, sin] = [Math.cos(rad) * scale, Math.sin(rad) * scale];
   const turned = points.map(([x, y]) => {
     const [dx, dy] = [x - cx, y - cy];
-    return `${(cx + dx * cos - dy * sin).toFixed(2)} ${(cy + dx * sin + dy * cos).toFixed(2)}`;
+    return `${(cx + shift[0] + dx * cos - dy * sin).toFixed(2)} ${(cy + shift[1] + dx * sin + dy * cos).toFixed(2)}`;
   });
   return `M${turned.join(' L')} Z`;
 }
 
 const stem = (top: number) => `M12 ${top} V20.5 M8 21 H16`;
 // Boston shaker, tilted mid-shake: the small tin sealed mouth-down into the big one.
-const bostonTilt = 30;
+const bostonTilt = 45;
 const bostonSmallTin = rotated(
   [
     [9.9, 3.5],
@@ -64,7 +66,8 @@ const bostonSmallTin = rotated(
   bostonTilt,
   12,
   12.25,
-  0.85,
+  1,
+  [0.42, -0.68],
 );
 const bostonBigTin = rotated(
   [
@@ -76,7 +79,8 @@ const bostonBigTin = rotated(
   bostonTilt,
   12,
   12.25,
-  0.85,
+  1,
+  [0.42, -0.68],
 );
 const bigRock = cube(12, 2.5, 8);
 const iceCubes = [cube(7.5, 11.25, 4.5), cube(16.5, 11.25, 4.5), cube(12, 4.5, 4.5)];
@@ -86,10 +90,10 @@ export const preparationShapes: Record<Recipe['preparation'], Shape> = {
   shaken: {
     body: `${bostonSmallTin} ${bostonBigTin}`,
     material: 'silver',
-    // a pair of swing trails off each end, top-left and bottom-right: arcs
-    // centered on the shaker, so they follow the path its ends shake along
+    // secondary to the shaker: a short pair of curved strokes beside each
+    // end, top-left and bottom-right
     motion:
-      'M12.59 3.87 A8.4 8.4 0 0 0 7.8 4.98 M12.37 1.66 A10.6 10.6 0 0 0 7.69 2.57 M12 21.05 A8.8 8.8 0 0 0 16.92 19.55 M12.38 23.14 A10.9 10.9 0 0 0 16.43 22.21',
+      'M14.93 2.63 Q13.52 3.48 12.67 4.89 M12.95 1.35 Q11.89 1.85 11.39 2.91 M13.47 18.48 Q12.62 19.89 11.21 20.74 M14.75 20.46 Q14.25 21.52 13.19 22.02',
   },
   // yarai mixing glass: thick base, spout, diamond cut, with a bar spoon
   stirred: {
