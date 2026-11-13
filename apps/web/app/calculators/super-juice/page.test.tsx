@@ -48,22 +48,6 @@ describe('SuperJuiceCalculatorPage', () => {
     expect(screen.queryByRole('textbox', { name: 'Malic acid' })).not.toBeInTheDocument();
   });
 
-  it('shows the calamansi ratios and its extrapolation note', async () => {
-    const { user } = await setupApp(<SuperJuiceCalculatorPage />);
-
-    await user.click(screen.getByRole('button', { name: 'Calamansi' }));
-
-    expect(screen.getByRole('spinbutton', { name: 'Calamansi peel weight' })).toHaveValue(
-      100,
-    );
-    expect(screen.getByRole('textbox', { name: 'Citric acid' })).toHaveValue('66');
-    expect(screen.getByRole('textbox', { name: 'Malic acid' })).toHaveValue('33');
-    expect(screen.getByRole('textbox', { name: 'Water' })).toHaveValue('1,666');
-    expect(
-      screen.getByText(/No published calamansi super juice recipe exists/),
-    ).toBeInTheDocument();
-  });
-
   it('adds rounded MSG to the grapefruit batch', async () => {
     const { user } = await setupApp(<SuperJuiceCalculatorPage />);
 

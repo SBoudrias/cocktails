@@ -1,10 +1,4 @@
-export type SuperJuiceCitrus =
-  | 'lemon'
-  | 'lime'
-  | 'calamansi'
-  | 'orange'
-  | 'grapefruit'
-  | 'kumquat';
+export type SuperJuiceCitrus = 'lemon' | 'lime' | 'orange' | 'grapefruit' | 'kumquat';
 
 /**
  * Acid, MSG and water additions per gram of input weight, from the published
@@ -18,9 +12,6 @@ const SUPER_JUICE_RATIOS: Record<
 > = {
   lemon: { citric: 1, malic: 0, msg: 0, water: 16.66 },
   lime: { citric: 0.66, malic: 0.33, msg: 0, water: 16.66 },
-  // No published calamansi recipe exists; the lime formula is the closest
-  // match to calamansi's citric-forward, lime-like acidity.
-  calamansi: { citric: 0.66, malic: 0.33, msg: 0, water: 16.66 },
   orange: { citric: 0.9, malic: 0.1, msg: 0, water: 16.66 },
   grapefruit: { citric: 0.8, malic: 0.2, msg: 0.033, water: 16.66 },
   kumquat: { citric: 0.25, malic: 0, msg: 0, water: 16.66 * 0.25 },

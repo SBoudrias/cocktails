@@ -4,7 +4,6 @@ import { calculateSuperJuice } from './superJuice';
 describe('calculateSuperJuice', () => {
   it.each([
     ['lime', 100, { citricAcid: 66, malicAcid: 33, msg: 0, water: 1666 }],
-    ['calamansi', 100, { citricAcid: 66, malicAcid: 33, msg: 0, water: 1666 }],
     ['lemon', 100, { citricAcid: 100, malicAcid: 0, msg: 0, water: 1666 }],
     ['orange', 200, { citricAcid: 180, malicAcid: 20, msg: 0, water: 3332 }],
     ['grapefruit', 100, { citricAcid: 80, malicAcid: 20, water: 1666 }],

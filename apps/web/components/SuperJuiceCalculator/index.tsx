@@ -26,7 +26,6 @@ const DEFAULT_PEEL_WEIGHT = 100;
 const CITRUS_INPUT_LABELS: Record<SuperJuiceCitrus, string> = {
   lemon: 'Lemon peel weight',
   lime: 'Lime peel weight',
-  calamansi: 'Calamansi peel weight',
   orange: 'Orange peel weight',
   grapefruit: 'Grapefruit peel weight',
   kumquat: 'Kumquat weight',
@@ -46,7 +45,6 @@ function CitrusSelector({
         match(value)
           .with('lemon', () => onChange('lemon'))
           .with('lime', () => onChange('lime'))
-          .with('calamansi', () => onChange('calamansi'))
           .with('orange', () => onChange('orange'))
           .with('grapefruit', () => onChange('grapefruit'))
           .with('kumquat', () => onChange('kumquat'))
@@ -59,7 +57,6 @@ function CitrusSelector({
     >
       <ToggleButton value="lemon">Lemon</ToggleButton>
       <ToggleButton value="lime">Lime</ToggleButton>
-      <ToggleButton value="calamansi">Calamansi</ToggleButton>
       <ToggleButton value="orange">Orange</ToggleButton>
       <ToggleButton value="grapefruit">Grapefruit</ToggleButton>
       <ToggleButton value="kumquat">Kumquat</ToggleButton>
@@ -96,9 +93,8 @@ export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
   const inputWeight = Number(inputWeightValue);
   const isInputWeightValid = Number.isFinite(inputWeight) && inputWeight > 0;
   const isKumquat = citrus === 'kumquat';
-  const isCalamansi = citrus === 'calamansi';
   const showsMalic = match(citrus)
-    .with('lime', 'calamansi', 'orange', 'grapefruit', () => true)
+    .with('lime', 'orange', 'grapefruit', () => true)
     .otherwise(() => false);
   const showsMsg = citrus === 'grapefruit';
 
@@ -141,13 +137,6 @@ export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
           )}
           {showsMsg && <ResultField label="MSG" value={formatGrams(superJuice.msg)} />}
           <ResultField label="Water" value={formatGrams(superJuice.water)} />
-          {isCalamansi && isInputWeightValid && (
-            <Alert severity="info">
-              No published calamansi super juice recipe exists; these ratios follow the
-              lime formula, the closest match to calamansi’s citric-forward, lime-like
-              acidity.
-            </Alert>
-          )}
           {isKumquat && isInputWeightValid && (
             <Alert severity="info">
               Kumquats are used whole: the citric acid stands in for the missing peel
