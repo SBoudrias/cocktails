@@ -5,11 +5,8 @@
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = '0be825a69f64';
+const VERSION = 'd23a018fc597';
 const PRECACHE = [
-  "./_next/static/AP0mGVmBA_6kOHZQlLpu7/_buildManifest.js",
-  "./_next/static/AP0mGVmBA_6kOHZQlLpu7/_clientMiddlewareManifest.js",
-  "./_next/static/AP0mGVmBA_6kOHZQlLpu7/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/03tc-v7o6q2vb.js",
   "./_next/static/chunks/073-xixpjvvr4.js",
@@ -33,7 +30,6 @@ const PRECACHE = [
   "./_next/static/chunks/1j4ks7_-vw_ie.js",
   "./_next/static/chunks/1ktxt5b29ydf3.js",
   "./_next/static/chunks/1lb4rctwuahw_.js",
-  "./_next/static/chunks/1n3x6sbzqi5ec.css",
   "./_next/static/chunks/1rt933xt82a1z.js",
   "./_next/static/chunks/1rvhq7k9gnn-f.js",
   "./_next/static/chunks/1tf4etm58a6li.css",
@@ -45,6 +41,7 @@ const PRECACHE = [
   "./_next/static/chunks/2b2u4b2bjivvk.js",
   "./_next/static/chunks/2cmlta-lm2x4n.js",
   "./_next/static/chunks/2g-5isrz18yde.js",
+  "./_next/static/chunks/327x-x7ne-dy9.css",
   "./_next/static/chunks/34xf9m6qcd2jc.css",
   "./_next/static/chunks/35q-80y3v-2r0.js",
   "./_next/static/chunks/3cef1ozj-rk9l.js",
@@ -68,6 +65,9 @@ const PRECACHE = [
   "./_next/static/media/favicon.2vob68tjqpejf.ico",
   "./_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp",
   "./_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp",
+  "./_next/static/qVNqW8q0xHYZ_VBqClm40/_buildManifest.js",
+  "./_next/static/qVNqW8q0xHYZ_VBqClm40/_clientMiddlewareManifest.js",
+  "./_next/static/qVNqW8q0xHYZ_VBqClm40/_ssgManifest.js",
   "./data/catalog.json",
   "./data/search-index.json",
   "./icons/apple-touch-icon.png",
