@@ -1,0 +1,92 @@
+1:"$Sreact.fragment"
+2:"/cocktails/pr-preview/pr-571/_next/static/chunks/3e7x3trcj62au.js"
+3:"/cocktails/pr-preview/pr-571/_next/static/chunks/41qriqf348mrx.js"
+4:"/cocktails/pr-preview/pr-571/_next/static/chunks/07vy1nalhdt3h.js"
+5:I[926321,["$2","$3","$4"],"default"]
+6:I[190516,["$2","$3","$4"],"default"]
+7:I[692164,["$2","$3","$4"],"default"]
+8:I[757390,["$2","$3","$4"],"default"]
+9:I[278332,["$2","$3","$4"],"NuqsAdapter"]
+a:"/cocktails/pr-preview/pr-571/_next/static/chunks/3cef1ozj-rk9l.js"
+b:"/cocktails/pr-preview/pr-571/_next/static/chunks/3oer7fzk43a1k.js"
+c:"/cocktails/pr-preview/pr-571/_next/static/chunks/0do6h5tb-018x.js"
+d:"/cocktails/pr-preview/pr-571/_next/static/chunks/1__8svdd-ks7o.js"
+e:"/cocktails/pr-preview/pr-571/_next/static/chunks/2rdmtb5lnzd7z.js"
+f:"/cocktails/pr-preview/pr-571/_next/static/chunks/2flqqbaywepyl.js"
+10:I[36729,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+11:I[339756,["$2","$3","$4"],"default"]
+12:I[837457,["$2","$3","$4"],"default"]
+13:I[883360,["$2","$3","$4"],"default"]
+14:I[26663,["$2","$3","$4"],"default"]
+15:I[654576,["$2","$3","$4"],"GoogleAnalytics"]
+22:I[516924,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+23:I[586157,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+24:I[872976,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+25:I[253488,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+36:"ViewportBoundary"
+37:I[897367,["$2","$3","$4"],"$36"]
+38:"MetadataBoundary"
+39:I[897367,["$2","$3","$4"],"$38"]
+3a:"$Sreact.suspense"
+:HL["/cocktails/pr-preview/pr-571/_next/static/chunks/1tf4etm58a6li.css","style"]
+17:X
+1a:X
+1a:C
+21:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[[["$","$L22",null,{"title":"French 95"}],["$","$L10",null,{"component":"main","children":[["$","$L23",null,{"container":true,"component":"ul","aria-label":"Preparation, ice and glassware","columns":3,"className":"YaAHAW_badges","sx":{"my":1},"children":[["$","$L23","preparation",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L24",null,{"className":"YaAHAW_icon","children":[false,["$","path",null,{"d":"M17.12 3.90 L20.09 6.87 L15.85 13.23 L10.76 8.14 Z M10.19 7.57 L16.42 13.80 L8.57 20.09 L3.90 15.42 Z","className":"YaAHAW_silver"}],false,"$undefined",["$","path",null,{"d":"M17.12 3.90 L20.09 6.87 L15.85 13.23 L10.76 8.14 Z M10.19 7.57 L16.42 13.80 L8.57 20.09 L3.90 15.42 Z","className":"YaAHAW_outline"}],"$undefined","$undefined",["$","path",null,{"d":"M14.93 2.63 Q13.52 3.48 12.67 4.89 M12.95 1.35 Q11.89 1.85 11.39 2.91 M13.47 18.48 Q12.62 19.89 11.21 20.74 M14.75 20.46 Q14.25 21.52 13.19 22.02","className":"YaAHAW_motion"}],"$undefined"]}]}],["$","$L25",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"shaken"}]]}],"$L26","$L27"]}],"$L28","$L29",false,"$L2a",false,false,"$L2b"]}]],["$L2c","$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33"],"$L34"]}],"p":"$@35","v":null,"s":"$17"}}]]
+1f:[["children",{"s":{"n":"recipe","t":"d","k":"french-95","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}]}]]}],"p":"$@20","v":"$1a","s":"$17"},"c":"$Q21"}]]
+1d:[["children",{"s":{"n":"source","t":"d","k":"death-and-co","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}]}]]}],"p":"$@1e","v":"$1a","s":"$17"},"c":"$Q1f"}]]
+1b:[["children",{"s":{"n":"type","t":"d","k":"book","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}]}]]}],"p":"$@1c","v":"$1a","s":"$17"},"c":"$Q1d"}]]
+18:[["children",{"s":"recipes","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}]}]]}],"p":"$@19","v":"$1a","s":"$17"},"c":"$Q1b"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-571/_next/static/chunks/1tf4etm58a6li.css","precedence":"next"}],["$","script","script-0",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/3e7x3trcj62au.js","async":true}],["$","script","script-1",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/41qriqf348mrx.js","async":true}],["$","script","script-2",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/07vy1nalhdt3h.js","async":true}]],["$","html",null,{"lang":"en","data-prefers-color-scheme":"dark","style":{"colorScheme":"dark"},"children":[["$","head",null,{"children":["$","link",null,{"rel":"sitemap","type":"application/xml","title":"Sitemap","href":"/cocktails/pr-preview/pr-571/sitemap.xml"}]}],["$","body",null,{"className":"iLW5_a_variable","children":[["$","$L5",null,{"children":["$","$L6",null,{"theme":"$7","defaultMode":"dark","storageManager":null,"children":[["$","$L8",null,{}],["$","$L9",null,{"children":["$","$L10",null,{"sx":{"maxWidth":600,"mx":"auto","minHeight":"100vh","display":"flex","flexDirection":"column","backgroundImage":"url(/cocktails/pr-preview/pr-571/_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp), url(/cocktails/pr-preview/pr-571/_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp)","backgroundSize":"min(100%, 750px) auto, min(100%, 750px) auto","backgroundPosition":"center 40px, bottom center","backgroundRepeat":"no-repeat, no-repeat"},"children":[["$","$L10",null,{"sx":{"flexGrow":1},"children":["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$L13",null,{}]]}]}]]}]}],["$","$L14",null,{}],["$","$L15",null,{"gaId":"G-XSDN5REM9F"}]]}]]}]]}],"p":"$@16","v":null,"s":"$17"},"c":"$Q18"},"h":{"r":["$","$1","h",{"children":[null,["$","$L37",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}],["$","meta","2",{"name":"theme-color","content":"#0A1420"}]]}],["$","$L39",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$3a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Indexotica | French 95 from Death & Co: Modern Classic Cocktails"}],["$","meta","1",{"name":"description","content":"French 95 cocktail recipe from Death & Co: Modern Classic Cocktails: Cane syrup, Lemon juice, Buffalo Trace Bourbon, Champagne."}],["$","link","2",{"rel":"manifest","href":"/cocktails/pr-preview/pr-571/manifest.webmanifest"}],["$","meta","3",{"name":"robots","content":"noindex"}],["$","link","4",{"rel":"canonical","href":"https://sboudrias.github.io/cocktails/pr-preview/pr-571/recipes/book/death-and-co/french-95"}],["$","meta","5",{"property":"og:title","content":"Indexotica | French 95 from Death & Co: Modern Classic Cocktails"}],["$","meta","6",{"property":"og:description","content":"French 95 cocktail recipe from Death & Co: Modern Classic Cocktails: Cane syrup, Lemon juice, Buffalo Trace Bourbon, Champagne."}],["$","meta","7",{"property":"og:site_name","content":"Indexotica"}],["$","meta","8",{"property":"og:locale","content":"en_US"}],["$","meta","9",{"property":"og:type","content":"website"}],"$L3b","$L3c","$L3d","$L3e","$L3f"]}]}],null]}],"$L40"]}],"p":"$@41","v":null,"s":"$17"}},"a":"$@42","u":"$@43","b":"As-WcwGyDr7N1Qz2iGRGW"}
+44:I[430071,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+45:I[910874,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+46:I[141317,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+47:I[966052,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+48:I[28754,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+49:I[919344,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+4a:I[421435,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+4b:I[977210,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+4c:I[121960,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+4d:I[517050,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+4e:I[926044,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+4f:I[618863,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+50:I[889436,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+51:I[264550,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+52:I[183142,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+53:I[897367,["$2","$3","$4"],"OutletBoundary"]
+55:I[27201,["$2","$3","$4"],"IconMark"]
+:HL["/cocktails/pr-preview/pr-571/_next/static/chunks/26m2pb8t0d_w3.css","style"]
+:HL["/cocktails/pr-preview/pr-571/_next/static/chunks/34xf9m6qcd2jc.css","style"]
+26:["$","$L23","served-on",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L24",null,{"className":"YaAHAW_icon","children":[false,"$undefined",false,["$","path",null,{"d":"M7.5 11.25 L12 13.5 V18 L7.5 20.25 L3 18 V13.5 Z M16.5 11.25 L21 13.5 V18 L16.5 20.25 L12 18 V13.5 Z M12 4.5 L16.5 6.75 V11.25 L12 13.5 L7.5 11.25 V6.75 Z","className":"YaAHAW_ice"}],"$undefined","$undefined",["$","path",null,{"d":"M3 13.5 L7.5 15.75 L12 13.5 M7.5 15.75 V20.25 M12 13.5 L16.5 15.75 L21 13.5 M16.5 15.75 V20.25 M7.5 6.75 L12 9 L16.5 6.75 M12 9 V13.5","className":"YaAHAW_iceFacet"}],"$undefined","$undefined"]}]}],["$","$L25",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"ice cubes"}]]}]
+27:["$","$L23","glassware",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L24",null,{"className":"YaAHAW_icon","children":[["$","defs",null,{"children":[["$","linearGradient",null,{"id":"recipe-icon-glassware-drink","x1":"0","y1":"0","x2":"0","y2":"1","children":[["$","stop",null,{"offset":"0","className":"YaAHAW_drinkTop"}],["$","stop",null,{"offset":"1","className":"YaAHAW_drinkBottom"}]]}],["$","clipPath",null,{"id":"recipe-icon-glassware-liquid","children":["$","path",null,{"d":"M6 5 H18 L17.2 20 Q17.1 21.5 15.6 21.5 H8.4 Q6.9 21.5 6.8 20 Z"}]}]]}],["$","path",null,{"d":"M6 5 H18 L17.2 20 Q17.1 21.5 15.6 21.5 H8.4 Q6.9 21.5 6.8 20 Z","className":"YaAHAW_glass"}],["$","g",null,{"clipPath":"url(#recipe-icon-glassware-liquid)","children":[["$","rect",null,{"y":8.5,"width":"24","height":"24","fill":"url(#recipe-icon-glassware-drink)","className":"YaAHAW_drink"}],["$","path",null,{"d":"M0 8.5 H24","className":"YaAHAW_surface"}]]}],"$undefined",["$","path",null,{"d":"M6 5 H18 L17.2 20 Q17.1 21.5 15.6 21.5 H8.4 Q6.9 21.5 6.8 20 Z","className":"YaAHAW_outline"}],"$undefined",["$","path",null,{"d":"M6.9 19.2 H17.1","className":"YaAHAW_facet"}],"$undefined","$undefined"]}]}],["$","$L25",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"highball"}]]}]
+28:["$","$L44",null,{"ingredients":[{"$schema":"../../../schemas/ingredient.schema.json","name":"Cane syrup","type":"syrup","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Cane syrup","type":"syrup"},"slug":"cane-syrup","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.5,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Lemon juice","type":"juice","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Lemon juice","type":"juice"},"slug":"lemon-juice","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":0.75,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Buffalo Trace Bourbon","type":"spirit","categories":[{"$schema":"../../schemas/category.schema.json","name":"Whiskey (Bourbon)","categoryType":"spirit","parents":[{"$schema":"../../schemas/category.schema.json","name":"Whiskey","categoryType":"spirit","default":{"$schema":"../../schemas/category.schema.json","name":"Whiskey","categoryType":"spirit"},"refs":[],"parents":[],"slug":"whiskey","type":"category"}],"refs":[{"type":"youtube","videoId":"uGGDZgPHSas","channel":"anders-erickson"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Whiskey (Bourbon)","categoryType":"spirit","parents":["Whiskey"],"refs":[{"type":"youtube","videoId":"uGGDZgPHSas","channel":"anders-erickson"}]},"slug":"whiskey-bourbon","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Buffalo Trace Bourbon","type":"spirit","categories":["Whiskey (Bourbon)"]},"slug":"buffalo-trace-bourbon","refs":[],"ingredients":[],"quantity":{"amount":2,"unit":"oz"}},{"$schema":"../../schemas/category.schema.json","name":"Champagne","categoryType":"wine","default":{"$schema":"../../schemas/category.schema.json","name":"Champagne","categoryType":"wine"},"refs":[],"parents":[],"slug":"champagne","type":"category","technique":{"technique":"application","method":"top"},"quantity":{"amount":1,"unit":"unit"}}]}]
+29:["$","$L45",null,{"children":[["$","$L46",null,{"children":"Instructions"}],["$","$L47",null,{"square":true,"children":[["$","$L48","Short shake all the ingredients (except the champagne) with 3 ice cubes, then strain into a fizz glass over 2 ice cubes. Top with champagne. No garnish.",{"divider":true,"children":["$","$L49",null,{"children":[1,". ","Short shake all the ingredients (except the champagne) with 3 ice cubes, then strain into a fizz glass over 2 ice cubes. Top with champagne. No garnish."]}]}]]}]]}]
+2a:["$","$L4a",null,{"sx":{"m":1},"children":[["$","$L4b",null,{"title":[["$","$L4c",null,{}]," ","Death & Co: Modern Classic Cocktails"],"subheader":"Classic and Vintage"}],["$","$L4d",null,{"children":["$","$L25",null,{"variant":"body2","sx":{"color":"text.secondary"},"children":"The first Death & Co cocktail book, published in 2014, featuring more than 500 recipes from the bar's New York City location alongside guidance on spirits, cocktail theory, and bartending techniques."}]}],["$","$L4e",null,{"sx":{"justifyContent":"end"},"children":["$","$L4f",null,{"href":"https://www.deathandcompanymarket.com/products/autographed-death-co-book","target":"_blank","rel":"noreferrer","color":"inherit","children":["Learn more",["$","$L50",null,{}]]}]}]]}]
+2b:["$","$L4a",null,{"sx":{"m":1},"children":["$","$L4d",null,{"children":["$","$L51",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L52",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L4f",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/book/death-and-co/01_Classic%20and%20Vintage/french-95.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}]
+2c:["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-571/_next/static/chunks/26m2pb8t0d_w3.css","precedence":"next"}]
+2d:["$","link","1",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-571/_next/static/chunks/34xf9m6qcd2jc.css","precedence":"next"}]
+2e:["$","script","script-0",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/3cef1ozj-rk9l.js","async":true}]
+2f:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/3oer7fzk43a1k.js","async":true}]
+30:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/0do6h5tb-018x.js","async":true}]
+31:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/1__8svdd-ks7o.js","async":true}]
+32:["$","script","script-4",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/2rdmtb5lnzd7z.js","async":true}]
+33:["$","script","script-5",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/2flqqbaywepyl.js","async":true}]
+34:["$","$L53",null,{"children":["$","$3a",null,{"name":"Next.MetadataOutlet","children":"$@54"}]}]
+3b:["$","meta","10",{"name":"twitter:card","content":"summary"}]
+3c:["$","meta","11",{"name":"twitter:title","content":"Indexotica | French 95 from Death & Co: Modern Classic Cocktails"}]
+3d:["$","meta","12",{"name":"twitter:description","content":"French 95 cocktail recipe from Death & Co: Modern Classic Cocktails: Cane syrup, Lemon juice, Buffalo Trace Bourbon, Champagne."}]
+3e:["$","link","13",{"rel":"apple-touch-icon","href":"/cocktails/pr-preview/pr-571/icons/apple-touch-icon.png","sizes":"180x180","type":"image/png"}]
+3f:["$","$L55","14",{}]
+40:["$","meta",null,{"name":"next-size-adjust","content":""}]
+17:300
+54:null
+43:true
+17:C
+42:0
+20:"$undefined"
+1e:"$undefined"
+1c:"$undefined"
+19:"$undefined"
+16:"$undefined"
+41:"$undefined"
+35:"$undefined"

@@ -1,0 +1,106 @@
+1:"$Sreact.fragment"
+2:"/cocktails/pr-preview/pr-571/_next/static/chunks/3e7x3trcj62au.js"
+3:"/cocktails/pr-preview/pr-571/_next/static/chunks/41qriqf348mrx.js"
+4:"/cocktails/pr-preview/pr-571/_next/static/chunks/07vy1nalhdt3h.js"
+5:I[926321,["$2","$3","$4"],"default"]
+6:I[190516,["$2","$3","$4"],"default"]
+7:I[692164,["$2","$3","$4"],"default"]
+8:I[757390,["$2","$3","$4"],"default"]
+9:I[278332,["$2","$3","$4"],"NuqsAdapter"]
+a:"/cocktails/pr-preview/pr-571/_next/static/chunks/3cef1ozj-rk9l.js"
+b:"/cocktails/pr-preview/pr-571/_next/static/chunks/3oer7fzk43a1k.js"
+c:"/cocktails/pr-preview/pr-571/_next/static/chunks/0do6h5tb-018x.js"
+d:"/cocktails/pr-preview/pr-571/_next/static/chunks/1__8svdd-ks7o.js"
+e:"/cocktails/pr-preview/pr-571/_next/static/chunks/2rdmtb5lnzd7z.js"
+f:"/cocktails/pr-preview/pr-571/_next/static/chunks/2flqqbaywepyl.js"
+10:I[36729,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+11:I[339756,["$2","$3","$4"],"default"]
+12:I[837457,["$2","$3","$4"],"default"]
+13:I[883360,["$2","$3","$4"],"default"]
+14:I[26663,["$2","$3","$4"],"default"]
+15:I[654576,["$2","$3","$4"],"GoogleAnalytics"]
+22:I[516924,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+23:I[586157,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+24:I[872976,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+3e:"ViewportBoundary"
+3f:I[897367,["$2","$3","$4"],"$3e"]
+40:"MetadataBoundary"
+41:I[897367,["$2","$3","$4"],"$40"]
+42:"$Sreact.suspense"
+:HL["/cocktails/pr-preview/pr-571/_next/static/chunks/1tf4etm58a6li.css","style"]
+17:X
+1a:X
+1a:C
+21:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[[["$","$L22",null,{"title":"Oaxaca Old-Fashioned"}],["$","$L10",null,{"component":"main","children":[["$","$L23",null,{"container":true,"component":"ul","aria-label":"Preparation, ice and glassware","columns":3,"className":"YaAHAW_badges","sx":{"my":1},"children":[["$","$L23","preparation",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L24",null,{"className":"YaAHAW_icon","children":[["$","defs",null,{"children":[["$","linearGradient",null,{"id":"recipe-icon-preparation-drink","x1":"0","y1":"0","x2":"0","y2":"1","children":[["$","stop",null,{"offset":"0","className":"YaAHAW_drinkTop"}],["$","stop",null,{"offset":"1","className":"YaAHAW_drinkBottom"}]]}],["$","clipPath",null,{"id":"recipe-icon-preparation-liquid","children":["$","path",null,{"d":"M2.8 5.4 Q4.6 5.8 5 7.4 V19.6 Q5 21.2 6.6 21.2 H15.4 Q17 21.2 17 19.6 V6.5 H6.6 Q4.8 6.5 2.8 5.4 Z"}]}]]}],["$","path",null,{"d":"M2.8 5.4 Q4.6 5.8 5 7.4 V19.6 Q5 21.2 6.6 21.2 H15.4 Q17 21.2 17 19.6 V6.5 H6.6 Q4.8 6.5 2.8 5.4 Z","className":"YaAHAW_glass"}],["$","g",null,{"clipPath":"url(#recipe-icon-preparation-liquid)","children":["$L25","$L26"]}],"$undefined","$L27","$L28","$L29","$undefined","$L2a"]}]}],"$L2b"]}],"$L2c","$L2d"]}],"$L2e","$L2f","$L30","$L31","$L32",false,"$L33"]}]],["$L34","$L35","$L36","$L37","$L38","$L39","$L3a","$L3b"],"$L3c"]}],"p":"$@3d","v":null,"s":"$17"}}]]
+1f:[["children",{"s":{"n":"recipe","t":"d","k":"oaxaca-old-fashioned","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}]}]]}],"p":"$@20","v":"$1a","s":"$17"},"c":"$Q21"}]]
+1d:[["children",{"s":{"n":"source","t":"d","k":"death-and-co","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}]}]]}],"p":"$@1e","v":"$1a","s":"$17"},"c":"$Q1f"}]]
+1b:[["children",{"s":{"n":"type","t":"d","k":"book","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}]}]]}],"p":"$@1c","v":"$1a","s":"$17"},"c":"$Q1d"}]]
+18:[["children",{"s":"recipes","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}]}]]}],"p":"$@19","v":"$1a","s":"$17"},"c":"$Q1b"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-571/_next/static/chunks/1tf4etm58a6li.css","precedence":"next"}],["$","script","script-0",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/3e7x3trcj62au.js","async":true}],["$","script","script-1",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/41qriqf348mrx.js","async":true}],["$","script","script-2",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/07vy1nalhdt3h.js","async":true}]],["$","html",null,{"lang":"en","data-prefers-color-scheme":"dark","style":{"colorScheme":"dark"},"children":[["$","head",null,{"children":["$","link",null,{"rel":"sitemap","type":"application/xml","title":"Sitemap","href":"/cocktails/pr-preview/pr-571/sitemap.xml"}]}],["$","body",null,{"className":"iLW5_a_variable","children":[["$","$L5",null,{"children":["$","$L6",null,{"theme":"$7","defaultMode":"dark","storageManager":null,"children":[["$","$L8",null,{}],["$","$L9",null,{"children":["$","$L10",null,{"sx":{"maxWidth":600,"mx":"auto","minHeight":"100vh","display":"flex","flexDirection":"column","backgroundImage":"url(/cocktails/pr-preview/pr-571/_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp), url(/cocktails/pr-preview/pr-571/_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp)","backgroundSize":"min(100%, 750px) auto, min(100%, 750px) auto","backgroundPosition":"center 40px, bottom center","backgroundRepeat":"no-repeat, no-repeat"},"children":[["$","$L10",null,{"sx":{"flexGrow":1},"children":["$","$L11",null,{"parallelRouterKey":"children","template":["$","$L12",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$L13",null,{}]]}]}]]}]}],["$","$L14",null,{}],["$","$L15",null,{"gaId":"G-XSDN5REM9F"}]]}]]}]]}],"p":"$@16","v":null,"s":"$17"},"c":"$Q18"},"h":{"r":["$","$1","h",{"children":[null,["$","$L3f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}],["$","meta","2",{"name":"theme-color","content":"#0A1420"}]]}],["$","$L41",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$42",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Indexotica | Oaxaca Old-Fashioned from Death & Co: Modern Classic Cocktails"}],["$","meta","1",{"name":"description","content":"Oaxaca Old-Fashioned cocktail recipe from Death & Co: Modern Classic Cocktails: Angostura bitters, Agave nectar, Del Maguey San Luis del Rio Mezcal, El Tesoro Reposado."}],["$","link","2",{"rel":"manifest","href":"/cocktails/pr-preview/pr-571/manifest.webmanifest"}],["$","meta","3",{"name":"robots","content":"noindex"}],["$","link","4",{"rel":"canonical","href":"https://sboudrias.github.io/cocktails/pr-preview/pr-571/recipes/book/death-and-co/oaxaca-old-fashioned"}],["$","meta","5",{"property":"og:title","content":"Indexotica | Oaxaca Old-Fashioned from Death & Co: Modern Classic Cocktails"}],["$","meta","6",{"property":"og:description","content":"Oaxaca Old-Fashioned cocktail recipe from Death & Co: Modern Classic Cocktails: Angostura bitters, Agave nectar, Del Maguey San Luis del Rio Mezcal, El Tesoro Reposado."}],["$","meta","7",{"property":"og:site_name","content":"Indexotica"}],"$L43","$L44","$L45","$L46","$L47","$L48","$L49"]}]}],null]}],"$L4a"]}],"p":"$@4b","v":null,"s":"$17"}},"a":"$@4c","u":"$@4d","b":"As-WcwGyDr7N1Qz2iGRGW"}
+4e:I[253488,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+4f:I[430071,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+50:I[910874,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+51:I[141317,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+52:I[966052,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+53:I[28754,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+54:I[919344,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+55:I[522016,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],""]
+56:I[270676,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+57:I[264550,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+58:I[421435,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+59:I[977210,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+5a:I[121960,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+5b:I[517050,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+5c:I[926044,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+5d:I[618863,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+5e:I[889436,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+5f:I[30512,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+60:I[183142,["$2","$3","$4","$a","$b","$c","$d","$e","$f"],"default"]
+61:I[897367,["$2","$3","$4"],"OutletBoundary"]
+63:I[27201,["$2","$3","$4"],"IconMark"]
+:HL["/cocktails/pr-preview/pr-571/_next/static/chunks/26m2pb8t0d_w3.css","style"]
+:HL["/cocktails/pr-preview/pr-571/_next/static/chunks/34xf9m6qcd2jc.css","style"]
+25:["$","rect",null,{"y":10,"width":"24","height":"24","fill":"url(#recipe-icon-preparation-drink)","className":"YaAHAW_drink"}]
+26:["$","path",null,{"d":"M0 10 H24","className":"YaAHAW_surface"}]
+27:["$","path",null,{"d":"M2.8 5.4 Q4.6 5.8 5 7.4 V19.6 Q5 21.2 6.6 21.2 H15.4 Q17 21.2 17 19.6 V6.5 H6.6 Q4.8 6.5 2.8 5.4 Z","className":"YaAHAW_outline"}]
+28:["$","path",null,{"d":"M9.2 17.4 L19 2.4 M9.31 17.33 A1.8 1.1 -57 1 0 7.35 20.35 A1.8 1.1 -57 1 0 9.31 17.33 Z","className":"YaAHAW_outline"}]
+29:["$","path",null,{"d":"M5.2 11.8 L7.2 14.8 L9.2 11.8 L11.2 14.8 L13.2 11.8 L15.2 14.8 L16.8 12.4 M5.2 14.8 L7.2 11.8 L9.2 14.8 L11.2 11.8 L13.2 14.8 L15.2 11.8 L16.8 14.2","className":"YaAHAW_facet"}]
+2a:["$","path",null,{"d":"M19.3 0.9 a1.3 1.3 0 1 1 0 2.6 a1.3 1.3 0 1 1 0 -2.6 Z","className":"YaAHAW_solid"}]
+2b:["$","$L4e",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"stirred"}]
+2c:["$","$L23","served-on",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L24",null,{"className":"YaAHAW_icon","children":[false,"$undefined",false,["$","path",null,{"d":"M12 2.5 L20 6.5 V14.5 L12 18.5 L4 14.5 V6.5 Z","className":"YaAHAW_ice"}],"$undefined","$undefined",["$","path",null,{"d":"M4 6.5 L12 10.5 L20 6.5 M12 10.5 V18.5","className":"YaAHAW_iceFacet"}],"$undefined","$undefined"]}]}],["$","$L4e",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"big rock"}]]}]
+2d:["$","$L23","glassware",{"size":1,"component":"li","className":"YaAHAW_badge","children":[["$","div",null,{"className":"YaAHAW_bubble","children":["$","$L24",null,{"className":"YaAHAW_icon","children":[["$","defs",null,{"children":[["$","linearGradient",null,{"id":"recipe-icon-glassware-drink","x1":"0","y1":"0","x2":"0","y2":"1","children":[["$","stop",null,{"offset":"0","className":"YaAHAW_drinkTop"}],["$","stop",null,{"offset":"1","className":"YaAHAW_drinkBottom"}]]}],["$","clipPath",null,{"id":"recipe-icon-glassware-liquid","children":["$","path",null,{"d":"M4.5 8 H19.5 L18.6 19.6 Q18.5 21 17 21 H7 Q5.5 21 5.4 19.6 Z"}]}]]}],["$","path",null,{"d":"M4.5 8 H19.5 L18.6 19.6 Q18.5 21 17 21 H7 Q5.5 21 5.4 19.6 Z","className":"YaAHAW_glass"}],["$","g",null,{"clipPath":"url(#recipe-icon-glassware-liquid)","children":[["$","rect",null,{"y":12,"width":"24","height":"24","fill":"url(#recipe-icon-glassware-drink)","className":"YaAHAW_drink"}],["$","path",null,{"d":"M0 12 H24","className":"YaAHAW_surface"}]]}],"$undefined",["$","path",null,{"d":"M4.5 8 H19.5 L18.6 19.6 Q18.5 21 17 21 H7 Q5.5 21 5.4 19.6 Z","className":"YaAHAW_outline"}],"$undefined",["$","path",null,{"d":"M5.6 18.4 H18.4","className":"YaAHAW_facet"}],"$undefined","$undefined"]}]}],["$","$L4e",null,{"variant":"caption","color":"text.secondary","className":"YaAHAW_caption","children":"old fashioned"}]]}]
+2e:["$","$L4f",null,{"ingredients":[{"$schema":"../../../schemas/ingredient.schema.json","name":"Angostura bitters","type":"bitter","categories":[{"$schema":"../../schemas/category.schema.json","name":"Aromatic bitters","categoryType":"bitter","default":{"$schema":"../../schemas/category.schema.json","name":"Aromatic bitters","categoryType":"bitter"},"refs":[],"parents":[],"slug":"aromatic-bitters","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Angostura bitters","type":"bitter","categories":["Aromatic bitters"]},"slug":"angostura-bitters","refs":[],"ingredients":[],"quantity":{"amount":2,"unit":"dash"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Agave nectar","type":"syrup","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Agave nectar","type":"syrup"},"slug":"agave-nectar","categories":[],"refs":[],"ingredients":[],"quantity":{"amount":1,"unit":"tsp"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"Del Maguey San Luis del Rio Mezcal","type":"spirit","categories":[{"$schema":"../../schemas/category.schema.json","name":"Mezcal","categoryType":"spirit","default":{"$schema":"../../schemas/category.schema.json","name":"Mezcal","categoryType":"spirit"},"refs":[],"parents":[],"slug":"mezcal","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Del Maguey San Luis del Rio Mezcal","type":"spirit","categories":["Mezcal"]},"slug":"del-maguey-san-luis-del-rio-mezcal","refs":[],"ingredients":[],"quantity":{"amount":0.5,"unit":"oz"}},{"$schema":"../../../schemas/ingredient.schema.json","name":"El Tesoro Reposado","type":"spirit","categories":[{"$schema":"../../schemas/category.schema.json","name":"Tequila reposado","categoryType":"spirit","parents":[{"$schema":"../../schemas/category.schema.json","name":"Tequila","categoryType":"spirit","default":{"$schema":"../../schemas/category.schema.json","name":"Tequila","categoryType":"spirit"},"refs":[],"parents":[],"slug":"tequila","type":"category"}],"default":{"$schema":"../../schemas/category.schema.json","name":"Tequila reposado","categoryType":"spirit","parents":["Tequila"]},"refs":[],"slug":"tequila-reposado","type":"category"}],"default":{"$schema":"../../../schemas/ingredient.schema.json","name":"El Tesoro Reposado","type":"spirit","categories":["Tequila reposado"]},"slug":"el-tesoro-reposado","refs":[],"ingredients":[],"quantity":{"amount":1.5,"unit":"oz"}}]}]
+2f:["$","$L50",null,{"children":[["$","$L51",null,{"children":"Instructions"}],["$","$L52",null,{"square":true,"children":[["$","$L53","Stir all the ingredients over ice, then strain into a double rocks glass over 1 large ice cube.",{"divider":true,"children":["$","$L54",null,{"children":[1,". ","Stir all the ingredients over ice, then strain into a double rocks glass over 1 large ice cube."]}]}],["$","$L53","To garnish, flame the orange twist over the drink, then drop it in.",{"divider":true,"children":["$","$L54",null,{"children":[2,". ","To garnish, flame the orange twist over the drink, then drop it in."]}]}]]}]]}]
+30:["$","$L50",null,{"aria-labelledby":"attributions-subheader","children":[["$","$L51",null,{"id":"attributions-subheader","children":"Attributions"}],["$","$L52",null,{"square":true,"children":[["$","$L55","recipe author:Phil Ward",{"href":"/list/authors/phil-ward","children":["$","$L53",null,{"divider":true,"secondaryAction":["$","$L56",null,{}],"children":["$","$L57",null,{"direction":"row","sx":{"justifyContent":"space-between","alignItems":"center","width":"100%"},"children":[["$","$L54",null,{"primary":["$","$L4e",null,{"component":"span","sx":{"textTransform":"none"},"children":[["$","$L4e",null,{"component":"span","color":"textSecondary","children":"created by "}],"Phil Ward"]}],"slotProps":{"secondary":{"variant":"caption","sx":{"lineHeight":1.35}}}}],"$undefined"]}]}]}]]}]]}]
+31:["$","$L58",null,{"sx":{"m":1},"children":[["$","$L59",null,{"title":[["$","$L5a",null,{}]," ","Death & Co: Modern Classic Cocktails"],"subheader":"Old-Fashioned Variations"}],["$","$L5b",null,{"children":["$","$L4e",null,{"variant":"body2","sx":{"color":"text.secondary"},"children":"The first Death & Co cocktail book, published in 2014, featuring more than 500 recipes from the bar's New York City location alongside guidance on spirits, cocktail theory, and bartending techniques."}]}],["$","$L5c",null,{"sx":{"justifyContent":"end"},"children":["$","$L5d",null,{"href":"https://www.deathandcompanymarket.com/products/autographed-death-co-book","target":"_blank","rel":"noreferrer","color":"inherit","children":["Learn more",["$","$L5e",null,{}]]}]}]]}]
+32:["$","$L58",null,{"sx":{"m":1},"children":[["$","$L59",null,{"title":"Video"}],[["$","$L5b","LkXW1diKOvs",{"children":["$","$L5f",null,{"id":"LkXW1diKOvs"}]}],["$","$L5b","0rnil0_xFnM",{"children":["$","$L5f",null,{"id":"0rnil0_xFnM","start":1000}]}],["$","$L5b","WAbJ7oOPSG4",{"children":["$","$L5f",null,{"id":"WAbJ7oOPSG4","start":17}]}]]]}]
+33:["$","$L58",null,{"sx":{"m":1},"children":["$","$L5b",null,{"children":["$","$L57",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L60",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L5d",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/book/death-and-co/24_Old-Fashioned%20Variations/oaxaca-old-fashioned.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}]
+34:["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-571/_next/static/chunks/26m2pb8t0d_w3.css","precedence":"next"}]
+35:["$","link","1",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-571/_next/static/chunks/34xf9m6qcd2jc.css","precedence":"next"}]
+36:["$","script","script-0",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/3cef1ozj-rk9l.js","async":true}]
+37:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/3oer7fzk43a1k.js","async":true}]
+38:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/0do6h5tb-018x.js","async":true}]
+39:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/1__8svdd-ks7o.js","async":true}]
+3a:["$","script","script-4",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/2rdmtb5lnzd7z.js","async":true}]
+3b:["$","script","script-5",{"src":"/cocktails/pr-preview/pr-571/_next/static/chunks/2flqqbaywepyl.js","async":true}]
+3c:["$","$L61",null,{"children":["$","$42",null,{"name":"Next.MetadataOutlet","children":"$@62"}]}]
+43:["$","meta","8",{"property":"og:locale","content":"en_US"}]
+44:["$","meta","9",{"property":"og:type","content":"website"}]
+45:["$","meta","10",{"name":"twitter:card","content":"summary"}]
+46:["$","meta","11",{"name":"twitter:title","content":"Indexotica | Oaxaca Old-Fashioned from Death & Co: Modern Classic Cocktails"}]
+47:["$","meta","12",{"name":"twitter:description","content":"Oaxaca Old-Fashioned cocktail recipe from Death & Co: Modern Classic Cocktails: Angostura bitters, Agave nectar, Del Maguey San Luis del Rio Mezcal, El Tesoro Reposado."}]
+48:["$","link","13",{"rel":"apple-touch-icon","href":"/cocktails/pr-preview/pr-571/icons/apple-touch-icon.png","sizes":"180x180","type":"image/png"}]
+49:["$","$L63","14",{}]
+4a:["$","meta",null,{"name":"next-size-adjust","content":""}]
+17:300
+62:null
+4d:true
+17:C
+4c:0
+20:"$undefined"
+1e:"$undefined"
+1c:"$undefined"
+19:"$undefined"
+16:"$undefined"
+4b:"$undefined"
+3d:"$undefined"
