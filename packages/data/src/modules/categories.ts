@@ -77,3 +77,31 @@ export const getChildCategories = memo(
   },
   (category) => category.slug,
 );
+
+/**
+ * The substitution-friendly neighbors of a category in the category tree:
+ * its direct parents and its siblings (the other children of those parents),
+ * e.g. for a Jamaican aged rum category, the other aged-rum categories.
+ * The category itself is never included.
+ */
+export const getRelatedCategories = memo(
+  async (category: Category): Promise<Category[]> => {
+    const categoriesByParent = await getCategoriesPerParent();
+
+    const relatedCategories = [
+      ...category.parents,
+      ...category.parents.flatMap(({ slug }) => categoriesByParent[slug] ?? []),
+    ].filter(({ slug }) => slug !== category.slug);
+
+    const seen = new Set<string>();
+
+    return relatedCategories
+      .filter(({ slug }) => {
+        const isDuplicate = seen.has(slug);
+        seen.add(slug);
+        return !isDuplicate;
+      })
+      .toSorted((a, b) => a.name.localeCompare(b.name));
+  },
+  (category) => category.slug,
+);

@@ -24,12 +24,11 @@ import { notFound, unstable_rethrow } from 'next/navigation';
 import CategoryName from '#/components/CategoryName';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
-import { LinkList, LinkListItem } from '#/components/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
+import SubstitutionLists from '#/components/SubstitutionLists';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
-import { ingredientHasData } from '#/modules/hasData';
-import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
+import { getCategoryUrl } from '#/modules/url';
 import IngredientCalculators from './IngredientCalculators';
 
 type Params = { type: string; slug: string };
@@ -64,7 +63,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const { type, slug } = await params;
 
   const ingredient = await getIngredient(type, slug);
-  const [substitutes, relatedRecipes] = await Promise.all([
+  const [substitution, relatedRecipes] = await Promise.all([
     getSubstitutesForIngredient(ingredient),
     getRecipesForIngredient(ingredient),
   ]);
@@ -149,19 +148,15 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         </List>
       )}
       <IngredientCalculators ingredient={ingredient} />
-      {substitutes.length > 0 && (
-        <LinkList
-          header="Some substitution option"
-          items={substitutes.slice(0, 10)}
-          renderItem={(substitute) => (
-            <LinkListItem
-              key={substitute.slug}
-              href={
-                ingredientHasData(substitute) ? getIngredientUrl(substitute) : undefined
-              }
-              primary={substitute.name}
-            />
-          )}
+      {substitution && (
+        <SubstitutionLists
+          primaryHeader="Some substitution option"
+          substitutes={substitution.substitutes}
+          seeAll={{
+            href: getCategoryUrl(substitution.category),
+            label: substitution.category.name,
+          }}
+          relatedCategories={substitution.relatedCategories}
         />
       )}
       {additionalVideos.length > 0 && (

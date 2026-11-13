@@ -1,5 +1,9 @@
 import type { RootIngredient } from '@cocktails/data';
-import { getCategory, getChildCategories } from '@cocktails/data/categories';
+import {
+  getCategory,
+  getChildCategories,
+  getRelatedCategories,
+} from '@cocktails/data/categories';
 import { getIngredientsForCategory } from '@cocktails/data/ingredients';
 import { getCategoryPageParams } from '@cocktails/data/params';
 import { getRecipeByCategory } from '@cocktails/data/recipes';
@@ -10,6 +14,7 @@ import CategoryName from '#/components/CategoryName';
 import FixBugCard from '#/components/FixBugCard';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
+import { RelatedCategoriesList } from '#/components/SubstitutionLists';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
@@ -47,11 +52,14 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   const { slug } = await params;
 
   const category = await getCategory(slug);
-  const [[members, substitutes], relatedRecipes, childCategories] = await Promise.all([
-    getIngredientsForCategory(category),
-    getRecipeByCategory(category),
-    getChildCategories(category),
-  ]);
+  const [members, relatedRecipes, childCategories, relatedCategories] = await Promise.all(
+    [
+      getIngredientsForCategory(category),
+      getRecipeByCategory(category),
+      getChildCategories(category),
+      getRelatedCategories(category),
+    ],
+  );
 
   const videos = category.refs.filter((ref) => ref.type === 'youtube');
   const [firstVideo, ...additionalVideos] = videos;
@@ -109,13 +117,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
           renderItem={renderIngredient}
         />
       )}
-      {substitutes.length > 0 && (
-        <LinkList
-          header={`Potential substitutes for ${category.name}`}
-          items={substitutes}
-          renderItem={renderIngredient}
-        />
-      )}
+      <RelatedCategoriesList categories={relatedCategories} />
       {additionalVideos.length > 0 && (
         <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
       )}

@@ -7,7 +7,7 @@ import type { Category } from '../types/Category.ts';
 import type { RootIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import type { Ref } from '../types/Ref.ts';
-import { getCategoriesPerParent, getCategory } from './categories';
+import { getCategoriesPerParent, getCategory, getRelatedCategories } from './categories';
 import { INGREDIENT_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import memo from './memo';
@@ -94,15 +94,18 @@ export const getIngredientPerCategories = memo(
   },
 );
 
+/**
+ * Every bottle that belongs to a category: the ones declaring it directly
+ * plus the ones from its child categories, each once, alphabetically.
+ */
 export const getIngredientsForCategory = async (
   category: Category,
-): Promise<[RootIngredient[], RootIngredient[]]> => {
+): Promise<RootIngredient[]> => {
   const ingredientsByCategories = await getIngredientPerCategories();
   const categoriesByParent = await getCategoriesPerParent();
   const bottleSlugs = new Set<string>();
 
-  // Members are all bottles from the main category and related child categories.
-  const members = [
+  return [
     // Main category
     category,
     // Child categories
@@ -113,51 +116,98 @@ export const getIngredientsForCategory = async (
       const isUnique = !bottleSlugs.has(slug);
       bottleSlugs.add(slug);
       return isUnique;
-    });
-
-  // Add ingredients from the parent categories.
-  const substitutes: RootIngredient[] = category.parents
-    .flatMap((parent) => ingredientsByCategories[parent.slug] ?? [])
-    .filter(({ slug }) => {
-      const isUnique = !bottleSlugs.has(slug);
-      bottleSlugs.add(slug);
-      return isUnique;
-    });
-
-  if (substitutes.length < 5) {
-    const siblingCategories = category.parents.flatMap(
-      (parent) => categoriesByParent[parent.slug] ?? [],
-    );
-
-    for (const category of siblingCategories) {
-      if (substitutes.length >= 5) break;
-
-      const categoryMembers = ingredientsByCategories[category.slug] ?? [];
-      for (const bottle of categoryMembers) {
-        if (substitutes.length >= 5) break;
-
-        if (!bottleSlugs.has(bottle.slug)) {
-          substitutes.push(bottle);
-        }
-        bottleSlugs.add(bottle.slug);
-      }
-    }
-  }
-
-  return [toAlphaSort(members), toAlphaSort(substitutes)];
+    })
+    .toSorted((a, b) => a.name.localeCompare(b.name));
 };
 
+type IngredientSubstitutions = {
+  /**
+   * The category the primary substitutions come from: the bottle's most
+   * specific declared category (see `getSubstitutesForIngredient`).
+   */
+  category: Category;
+  /** Bottles from that category, the bottle itself excluded. */
+  substitutes: RootIngredient[];
+  /** Categories sharing an ancestor with `category`, except the bottle's own. */
+  relatedCategories: Category[];
+};
+
+/**
+ * How deep a category sits in the category hierarchy: 0 for a root category,
+ * one more than its deepest parent otherwise. Parents come fully resolved
+ * from the category files, so this is a synchronous walk; a cycle in the
+ * data would be clipped instead of looping forever.
+ */
+function getCategoryDepth(category: Category, ancestors = new Set<string>()): number {
+  if (category.parents.length === 0 || ancestors.has(category.slug)) return 0;
+
+  const includingSelf = new Set(ancestors).add(category.slug);
+
+  return (
+    Math.max(
+      ...category.parents.map((parent) => getCategoryDepth(parent, includingSelf)),
+    ) + 1
+  );
+}
+
+/**
+ * Substitution options for a bottle, as two lists:
+ *
+ * - The primary list holds only bottles from the bottle's most specific
+ *   category — the deepest of its declared categories, ties broken by
+ *   declaration order (e.g. for a Jamaican aged rum, only other bottles in
+ *   Blended aged rum (Jamaica), not rums from other categories). A category
+ *   holding no other bottle cannot supply substitutions, so the most specific
+ *   category with members is chosen; a bottle alone in its tightest category
+ *   falls back to a broader category it declares.
+ * - The secondary list holds the related categories: the substitution-friendly
+ *   neighbors of the chosen category in the category tree — its direct
+ *   parents and its siblings (the other children of those parents), e.g. the
+ *   other aged-rum categories for a Jamaican aged rum — minus the categories
+ *   the bottle declares itself.
+ *
+ * Returns undefined when the bottle declares no category at all.
+ */
 export const getSubstitutesForIngredient = memo(
-  async (ingredient: RootIngredient): Promise<RootIngredient[]> => {
+  async (ingredient: RootIngredient): Promise<IngredientSubstitutions | undefined> => {
+    if (ingredient.categories.length === 0) return undefined;
+
     const ingredientsByCategories = await getIngredientPerCategories();
 
-    const substitutions = ingredient.categories
-      .flatMap(({ slug }) => {
-        return ingredientsByCategories[slug] ?? [];
-      })
-      .filter(({ slug }) => slug !== ingredient.slug);
+    const rankedCategories = ingredient.categories
+      .map((category, declaredOrder) => ({
+        category,
+        declaredOrder,
+        depth: getCategoryDepth(category),
+      }))
+      .toSorted((a, b) => b.depth - a.depth || a.declaredOrder - b.declaredOrder);
 
-    return toAlphaSort(uniqBy(substitutions, 'slug'));
+    const [mostSpecific] = rankedCategories;
+    if (mostSpecific === undefined) return undefined;
+
+    // The primary list comes from the most specific category that holds at
+    // least one other bottle.
+    const substitutionCategory =
+      rankedCategories.find(({ category }) =>
+        (ingredientsByCategories[category.slug] ?? []).some(
+          ({ slug }) => slug !== ingredient.slug,
+        ),
+      ) ?? mostSpecific;
+
+    const substitutes = (
+      ingredientsByCategories[substitutionCategory.category.slug] ?? []
+    ).filter(({ slug }) => slug !== ingredient.slug);
+
+    const declaredSlugs = new Set(ingredient.categories.map(({ slug }) => slug));
+    const relatedCategories = (
+      await getRelatedCategories(substitutionCategory.category)
+    ).filter(({ slug }) => !declaredSlugs.has(slug));
+
+    return {
+      category: substitutionCategory.category,
+      substitutes: toAlphaSort(substitutes),
+      relatedCategories,
+    };
   },
   (ingredient) => ingredient.slug,
 );
