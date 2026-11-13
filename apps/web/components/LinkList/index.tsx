@@ -3,9 +3,16 @@ import { List, ListItem, ListItemText, Paper, Stack } from '@mui/material';
 import type { ListItemTextProps } from '@mui/material/ListItemText';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useId, useMemo } from 'react';
 import StickyGroupHeader from '#/components/StickyGroupHeader';
 import type { ListConfig } from '#/modules/lists/type';
+
+// A group is the scroll-jump target rather than its sticky subheader: a stuck
+// subheader reports its stuck position, so jumping to the current group would
+// not reach its start. The margin keeps the group clear of the fixed app bar
+// (56px toolbar + 8px). A plain style: LinkList also renders on the server,
+// where MUI's styled() is unavailable
+const groupStyle = { scrollMarginTop: 64 };
 
 export function LinkListItem<RouteType>({
   href,
@@ -54,10 +61,14 @@ export function LinkList<const T>({
   footer?: React.ReactNode;
 }) {
   const groups = useMemo(() => {
+    // Defaults hoisted out of the destructuring: React Compiler can't lower
+    // arrow functions inside a destructuring pattern's defaults
+    const groupByAll = (): string => header;
+    const sortHeaderAlphabetically = (a: string, b: string) => a.localeCompare(b);
     const {
-      groupBy = () => header,
+      groupBy = groupByAll,
       sortItemBy = () => 0,
-      sortHeaderBy = (a: string, b: string) => a.localeCompare(b),
+      sortHeaderBy = sortHeaderAlphabetically,
     } = config ?? {};
 
     const groupedItems = Object.groupBy(items, groupBy);
@@ -74,20 +85,22 @@ export function LinkList<const T>({
     );
   }, [items, config, header]);
 
+  // Headers can hold spaces (chapter names), so ids come from the group's
+  // position: aria-labelledby is a space-separated id list
+  const idPrefix = useId();
+
   return (
     <List>
-      {groups.map(([header, groupItems], groupIndex) => {
-        // Spaces would split aria-labelledby into dead id references, so the
-        // header's id keeps them out.
-        const headerId = `group-header-${header.replace(/\s+/g, '-')}`;
+      {groups.map(([header, groupItems], position) => {
+        const headerId = `${idPrefix}-group-${position}`;
 
         return (
-          <li key={header}>
+          <li key={header} data-header={header || undefined} style={groupStyle}>
             <List role="group" aria-labelledby={header ? headerId : undefined}>
               {header && <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>}
               <Paper square>
                 {groupItems.map((item) => renderItem(item))}
-                {footer && groupIndex === groups.length - 1 && footer}
+                {footer && position === groups.length - 1 && footer}
               </Paper>
             </List>
           </li>
