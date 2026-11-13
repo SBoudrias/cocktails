@@ -1,6 +1,6 @@
 'use client';
 
-import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import SearchInput from '#/components/SearchInput';
 import TikiMark from '#/components/TikiMark';
@@ -24,7 +24,7 @@ export default function SearchHeader({
         <Toolbar>
           {isHome ? (
             <IconButton size="large" edge="start" disabled>
-              <Icon />
+              <TikiMark />
             </IconButton>
           ) : (
             <IconButton size="large" edge="start" aria-label="Go to home" href="/">
