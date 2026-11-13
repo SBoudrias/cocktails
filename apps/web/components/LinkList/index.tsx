@@ -1,9 +1,10 @@
 import ChevronRight from '@mui/icons-material/ChevronRight';
-import { List, ListItem, ListItemText, ListSubheader, Paper, Stack } from '@mui/material';
+import { List, ListItem, ListItemText, Paper, Stack } from '@mui/material';
 import type { ListItemTextProps } from '@mui/material/ListItemText';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import { useMemo } from 'react';
+import StickyGroupHeader from '#/components/StickyGroupHeader';
 import type { ListConfig } from '#/modules/lists/type';
 
 export function LinkListItem<RouteType>({
@@ -83,11 +84,7 @@ export function LinkList<const T>({
         return (
           <li key={header}>
             <List role="group" aria-labelledby={header ? headerId : undefined}>
-              {header && (
-                <ListSubheader id={headerId} disableSticky={false}>
-                  {header}
-                </ListSubheader>
-              )}
+              {header && <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>}
               <Paper square>
                 {groupItems.map((item) => renderItem(item))}
                 {footer && groupIndex === groups.length - 1 && footer}

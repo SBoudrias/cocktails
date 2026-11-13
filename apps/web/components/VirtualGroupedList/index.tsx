@@ -11,7 +11,9 @@ import type {
   TopItemListProps,
 } from 'react-virtuoso';
 import { GroupedVirtuoso } from 'react-virtuoso';
+import { useStuck } from '#/hooks/useStuck';
 import { belowAppBar } from '#/modules/belowAppBar';
+import { stuckGlass } from '#/modules/stuckGlass';
 
 /**
  * Where each list was when the user left it, for a soft navigation back:
@@ -21,12 +23,23 @@ import { belowAppBar } from '#/modules/belowAppBar';
  */
 const positions = new Map<string, { state: StateSnapshot; href: string; top: number }>();
 
-// The fixed app bar covers the top of the window: the sticky group header
-// sits right below it.
+// The fixed app bar covers the top of the window: this wrapper is the sticky
+// element — it carries the theme's top offset and, once pinned, the moonlit
+// glass that keeps the rows scrolling beneath it from bleeding through.
 const TopItemList = styled('div')(({ theme }) => belowAppBar(theme.mixins.toolbar));
 
 function StickyTopItemList({ children, style }: TopItemListProps) {
-  return <TopItemList style={{ ...style, top: undefined }}>{children}</TopItemList>;
+  const ref = useRef<HTMLDivElement>(null);
+  const stuck = useStuck(ref);
+
+  return (
+    <TopItemList
+      ref={ref}
+      style={{ ...style, top: undefined, ...(stuck ? stuckGlass : null) }}
+    >
+      {children}
+    </TopItemList>
+  );
 }
 
 // Same footprint as a two-line link row, until the row's data loads.

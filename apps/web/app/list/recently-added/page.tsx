@@ -1,8 +1,9 @@
 import { getRecentlyAddedRecipeEntries } from '@cocktails/data/recipes';
-import { List, ListSubheader, Paper } from '@mui/material';
+import { List, Paper } from '@mui/material';
 import type { Metadata } from 'next';
 import AppHeader from '#/components/AppHeader';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
+import StickyGroupHeader from '#/components/StickyGroupHeader';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { groupByAddedDay } from '#/modules/groupByAddedDay';
 import { getRecipeUrl } from '#/modules/url';
@@ -27,9 +28,7 @@ export default async function RecentlyAddedPage() {
           return (
             <li key={day}>
               <List role="group" aria-labelledby={headerId}>
-                <ListSubheader id={headerId} disableSticky={false}>
-                  {label}
-                </ListSubheader>
+                <StickyGroupHeader id={headerId}>{label}</StickyGroupHeader>
                 <Paper square>
                   {items.map((recipe) => (
                     <RecipeLinkListItem

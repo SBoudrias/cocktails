@@ -129,7 +129,8 @@ const theme = createTheme({
           backgroundColor: 'transparent',
         },
         // Right below the fixed app bar; the rows scroll under it while it
-        // sticks (no background: the user prefers the see-through look).
+        // sticks. The background comes separately (see useStuck): the header
+        // stays see-through in flow and only wears glass once pinned.
         sticky: ({ theme }) => ({
           ...belowAppBar(theme.mixins.toolbar),
         }),
