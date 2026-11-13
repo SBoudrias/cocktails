@@ -29,7 +29,11 @@ export default function RecipeIcon({ shape, id }: { shape: Shape; id: string }) 
     .otherwise(() => styles.facet);
 
   return (
-    <SvgIcon className={styles.icon}>
+    // Sized through sx, not the CSS module: emotion injects the base
+    // `.MuiSvgIcon-*` font-size at runtime, after the external stylesheet, so
+    // a module rule loses the cascade. sx wins it back (it is inserted after
+    // the base styles) and `styles.icon` keeps only the stroke properties.
+    <SvgIcon className={styles.icon} sx={{ fontSize: 56 }}>
       {shape.level !== undefined && liquid && (
         <defs>
           <linearGradient id={`${id}-drink`} x1="0" y1="0" x2="0" y2="1">
