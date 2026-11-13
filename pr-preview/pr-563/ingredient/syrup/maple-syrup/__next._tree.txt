@@ -1,9 +1,0 @@
-:HL["/cocktails/pr-preview/pr-563/_next/static/chunks/1tf4etm58a6li.css","style"]
-:HL["/cocktails/pr-preview/pr-563/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/cocktails/pr-preview/pr-563/_next/static/chunks/26m2pb8t0d_w3.css","style"]
-:HL["/cocktails/pr-preview/pr-563/_next/static/chunks/34xf9m6qcd2jc.css","style"]
-4:[["children",{"s":"__PAGE__","h":160}]]
-3:[["children",{"s":{"n":"slug","t":"d","k":"maple-syrup","s":[]},"h":96,"c":"$Q4"}]]
-2:[["children",{"s":{"n":"type","t":"d","k":"syrup","s":[]},"h":96,"c":"$Q3"}]]
-1:[["children",{"s":"ingredient","h":96,"c":"$Q2"}]]
-0:{"b":"Ka4LovAPyqoE2UF1hCJQD","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
