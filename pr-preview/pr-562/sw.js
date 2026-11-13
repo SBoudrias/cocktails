@@ -5,7 +5,7 @@
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = '27ef8a970ed7';
+const VERSION = 'a42503846746';
 const PRECACHE = [
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/06-f1sor_6bcz.js",
@@ -33,19 +33,19 @@ const PRECACHE = [
   "./_next/static/chunks/1nsym2rbk-dum.js",
   "./_next/static/chunks/1tf4etm58a6li.css",
   "./_next/static/chunks/1zp6az11y69c2.js",
+  "./_next/static/chunks/26h_92nm9-bvn.js",
   "./_next/static/chunks/26m2pb8t0d_w3.css",
   "./_next/static/chunks/26umr713e3-0v.js",
   "./_next/static/chunks/28g_ot7rpiztz.js",
   "./_next/static/chunks/2flqqbaywepyl.js",
   "./_next/static/chunks/2t7-k206dz8uu.js",
-  "./_next/static/chunks/2vp3rk664051g.js",
   "./_next/static/chunks/2zjyfkzc0nujr.js",
   "./_next/static/chunks/312r0qkeh2a6k.js",
-  "./_next/static/chunks/33j1o7x4yycm1.js",
   "./_next/static/chunks/34xf9m6qcd2jc.css",
   "./_next/static/chunks/3cef1ozj-rk9l.js",
   "./_next/static/chunks/3e7x3trcj62au.js",
   "./_next/static/chunks/3kcw25c0i5tf5.js",
+  "./_next/static/chunks/3km1d3tzok20b.js",
   "./_next/static/chunks/3m2tou2n9gic2.js",
   "./_next/static/chunks/3oer7fzk43a1k.js",
   "./_next/static/chunks/3qdu33eidxc8k.js",
@@ -55,9 +55,6 @@ const PRECACHE = [
   "./_next/static/chunks/41qriqf348mrx.js",
   "./_next/static/chunks/43go7536q7xo3.js",
   "./_next/static/chunks/turbopack-3lbg57a16zsbo.js",
-  "./_next/static/mQmpWokFr-WPwnBythBJc/_buildManifest.js",
-  "./_next/static/mQmpWokFr-WPwnBythBJc/_clientMiddlewareManifest.js",
-  "./_next/static/mQmpWokFr-WPwnBythBJc/_ssgManifest.js",
   "./_next/static/media/194ba805cef72e7e-s.0lvk2smlqz3yc.woff2",
   "./_next/static/media/2443b96ca66c6483-s.0fd-fjxmcxcjd.woff2",
   "./_next/static/media/2617c56fc138c6bf-s.42l_3z3944ji5.woff2",
@@ -70,6 +67,9 @@ const PRECACHE = [
   "./_next/static/media/favicon.2vob68tjqpejf.ico",
   "./_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp",
   "./_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp",
+  "./_next/static/n1DbhQYba9nCKf0qpBpR1/_buildManifest.js",
+  "./_next/static/n1DbhQYba9nCKf0qpBpR1/_clientMiddlewareManifest.js",
+  "./_next/static/n1DbhQYba9nCKf0qpBpR1/_ssgManifest.js",
   "./data/catalog.json",
   "./data/search-index.json",
   "./icons/apple-touch-icon.png",
