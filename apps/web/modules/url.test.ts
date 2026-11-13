@@ -4,6 +4,7 @@ import {
   getMilkClarificationCalculatorUrl,
   getRecipeEditUrl,
   getRecipeIngredientUrl,
+  isEntityUrl,
 } from './url';
 
 describe('getMilkClarificationCalculatorUrl', () => {
@@ -218,5 +219,22 @@ describe('getRecipeIngredientUrl', () => {
         unit: 'gram',
       },
     });
+  });
+});
+
+describe('isEntityUrl', () => {
+  it('accepts the entity page hrefs the search index keys entities by', () => {
+    expect(isEntityUrl('/category/gin')).toBe(true);
+    expect(isEntityUrl('/ingredient/spirit/appleton-estate')).toBe(true);
+    expect(isEntityUrl('/list/authors/jeff-berry')).toBe(true);
+    expect(isEntityUrl('/list/bars/smugglers-cove')).toBe(true);
+    expect(isEntityUrl('/source/book/sippin-safari')).toBe(true);
+  });
+
+  it('rejects everything else, recipes included', () => {
+    expect(isEntityUrl('/recipes/book/source/recipe')).toBe(false);
+    expect(isEntityUrl('/list/recipes')).toBe(false);
+    expect(isEntityUrl('/category/gin/extra')).toBe(false);
+    expect(isEntityUrl('https://example.com/category/gin')).toBe(false);
   });
 });

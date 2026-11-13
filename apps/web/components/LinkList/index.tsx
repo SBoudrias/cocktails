@@ -73,7 +73,9 @@ export function LinkList<const T>({
   return (
     <List>
       {groups.map(([header, groupItems]) => {
-        const headerId = `group-header-${header}`;
+        // Spaces would split aria-labelledby into dead id references, so the
+        // header's id keeps them out.
+        const headerId = `group-header-${header.replace(/\s+/g, '-')}`;
 
         return (
           <li key={header}>

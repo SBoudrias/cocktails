@@ -91,6 +91,21 @@ export function isRecipeUrl(href: string): href is ReturnType<typeof getRecipeUr
   return /^\/recipes\/[^/]+\/[^/]+\/[^/]+$/.test(href);
 }
 
+/**
+ * Whether a string is an entity page path — a category, ingredient, author,
+ * bar or source page — as keyed by the search index's entity entries (JSON
+ * hands those keys back as plain strings).
+ */
+export function isEntityUrl(href: string): href is Route {
+  return (
+    /^\/category\/[^/]+$/.test(href) ||
+    /^\/ingredient\/[^/]+\/[^/]+$/.test(href) ||
+    /^\/list\/authors\/[^/]+$/.test(href) ||
+    /^\/list\/bars\/[^/]+$/.test(href) ||
+    /^\/source\/[^/]+\/[^/]+$/.test(href)
+  );
+}
+
 export function getRecentlyAddedUrl(): Route {
   return '/list/recently-added';
 }

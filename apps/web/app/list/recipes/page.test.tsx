@@ -233,6 +233,109 @@ describe('RecipesPage', () => {
     expect(screen.getByText(/No recipes or ingredients matched/)).toBeInTheDocument();
   });
 
+  it('suggests strongly matching entities above the recipe results', async () => {
+    const ginRecipes = [...testRecipes, mockRecipe('Gin Rickey')];
+    vi.mocked(getAllRecipes).mockResolvedValue(ginRecipes);
+    sharedJsonServer.use(
+      serveJson('/data/search-index.json', {
+        ...buildSearchIndex(toSearchIndexItems(ginRecipes)),
+        '/category/gin': {
+          name: 'Gin',
+          kind: 'category',
+          searchText: 'gin',
+        },
+        '/list/bars/smugglers-cove': {
+          name: "Smuggler's Cove",
+          kind: 'bar',
+          searchText: 'smugglers cove',
+        },
+      }),
+    );
+
+    mockRouter.setCurrentUrl('?search=gin');
+    await setupApp(await RecipesPage());
+
+    const entitySection = screen.getByRole('list', { name: 'Matching entities' });
+    expect(entitySection).toHaveTextContent('Gin');
+    // Only the strong match surfaces: "cove" is not part of the query.
+    expect(entitySection).not.toHaveTextContent("Smuggler's Cove");
+
+    const entityLink = within(entitySection).getByRole('link', { name: /gin/i });
+    expect(entityLink).toHaveAttribute('href', '/category/gin');
+
+    // The recipe results keep rendering below the entity section.
+    const recipeLink = screen.getByRole('link', { name: /gin rickey/i });
+    expect(
+      entityLink.compareDocumentPosition(recipeLink) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it('suggests at most two entities, prefix matches first', async () => {
+    sharedJsonServer.use(
+      serveJson('/data/search-index.json', {
+        ...buildSearchIndex(toSearchIndexItems(testRecipes)),
+        '/category/gin': { name: 'Gin', kind: 'category', searchText: 'gin' },
+        '/ingredient/other/gin-blossom': {
+          name: 'Gin Blossom Syrup',
+          kind: 'ingredient',
+          searchText: 'gin blossom syrup',
+        },
+        '/ingredient/liqueur/sloe-gin': {
+          name: 'Sloe Gin',
+          kind: 'ingredient',
+          searchText: 'sloe gin',
+        },
+      }),
+    );
+
+    mockRouter.setCurrentUrl('?search=gin');
+    await setupApp(await RecipesPage());
+
+    const entitySection = screen.getByRole('list', { name: 'Matching entities' });
+    // The three matches cap at two: the prefix matches Gin and Gin Blossom
+    // Syrup, shorter (more specific) first — the whole-word-only Sloe Gin
+    // ranks below a prefix match even though its name is shorter.
+    const entityLinks = within(entitySection).getAllByRole('link');
+    expect(entityLinks).toHaveLength(2);
+    expect(entitySection).toHaveTextContent('Gin');
+    expect(entitySection).toHaveTextContent('Gin Blossom Syrup');
+    expect(entitySection).not.toHaveTextContent('Sloe Gin');
+  });
+
+  it('shows no entity section below the character threshold', async () => {
+    sharedJsonServer.use(
+      serveJson('/data/search-index.json', {
+        ...buildSearchIndex(toSearchIndexItems(testRecipes)),
+        '/category/gin': { name: 'Gin', kind: 'category', searchText: 'gin' },
+      }),
+    );
+
+    mockRouter.setCurrentUrl('?search=gi');
+    await setupApp(await RecipesPage());
+
+    // "gi" is a prefix of Gin, but two characters are not enough signal.
+    expect(screen.queryByRole('list', { name: 'Matching entities' })).toBeNull();
+  });
+
+  it('shows no entity section for a weak substring match', async () => {
+    sharedJsonServer.use(
+      serveJson('/data/search-index.json', {
+        ...buildSearchIndex(toSearchIndexItems(testRecipes)),
+        '/list/bars/smugglers-cove': {
+          name: "Smuggler's Cove",
+          kind: 'bar',
+          searchText: 'smugglers cove',
+        },
+      }),
+    );
+
+    mockRouter.setCurrentUrl('?search=uggl');
+    await setupApp(await RecipesPage());
+
+    // "uggl" sits inside "Smuggler's" — neither prefix nor whole word.
+    expect(screen.queryByRole('list', { name: 'Matching entities' })).toBeNull();
+  });
+
   it('recipe items link to correct recipe detail pages', async () => {
     const mojito = mockRecipe('Test Recipe');
     vi.mocked(getAllRecipes).mockResolvedValue([mojito]);
