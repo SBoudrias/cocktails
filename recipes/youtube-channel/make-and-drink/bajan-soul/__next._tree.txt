@@ -1,10 +1,10 @@
 :HL["/cocktails/_next/static/chunks/1tf4etm58a6li.css","style"]
+:HL["/cocktails/_next/static/chunks/0f9phqa2psfsr.css","style"]
 :HL["/cocktails/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/cocktails/_next/static/chunks/0t-p1m91oemnx.css","style"]
 :HL["/cocktails/_next/static/chunks/34xf9m6qcd2jc.css","style"]
 5:[["children",{"s":"__PAGE__","h":160}]]
 4:[["children",{"s":{"n":"recipe","t":"d","k":"bajan-soul","s":[]},"h":96,"c":"$Q5"}]]
 3:[["children",{"s":{"n":"source","t":"d","k":"make-and-drink","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"type","t":"d","k":"youtube-channel","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"recipes","h":96,"c":"$Q2"}]]
-0:{"b":"fO_eCY6ixgMPpnUyL0Wut","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"xhyeDKUoaAqWXgJz2Bc9Z","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
