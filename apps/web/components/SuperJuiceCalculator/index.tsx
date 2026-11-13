@@ -15,7 +15,6 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material';
-import Link from 'next/link';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
 import Video from '#/components/Video';
@@ -27,6 +26,7 @@ const DEFAULT_PEEL_WEIGHT = 100;
 const CITRUS_INPUT_LABELS: Record<SuperJuiceCitrus, string> = {
   lemon: 'Lemon peel weight',
   lime: 'Lime peel weight',
+  calamansi: 'Calamansi peel weight',
   orange: 'Orange peel weight',
   grapefruit: 'Grapefruit peel weight',
   kumquat: 'Kumquat weight',
@@ -46,6 +46,7 @@ function CitrusSelector({
         match(value)
           .with('lemon', () => onChange('lemon'))
           .with('lime', () => onChange('lime'))
+          .with('calamansi', () => onChange('calamansi'))
           .with('orange', () => onChange('orange'))
           .with('grapefruit', () => onChange('grapefruit'))
           .with('kumquat', () => onChange('kumquat'))
@@ -58,6 +59,7 @@ function CitrusSelector({
     >
       <ToggleButton value="lemon">Lemon</ToggleButton>
       <ToggleButton value="lime">Lime</ToggleButton>
+      <ToggleButton value="calamansi">Calamansi</ToggleButton>
       <ToggleButton value="orange">Orange</ToggleButton>
       <ToggleButton value="grapefruit">Grapefruit</ToggleButton>
       <ToggleButton value="kumquat">Kumquat</ToggleButton>
@@ -90,24 +92,17 @@ export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
   const [inputWeightValue, setInputWeight] = useState<string | number>(
     DEFAULT_PEEL_WEIGHT,
   );
-  const [juiceWeightValue, setJuiceWeight] = useState<string | number>('');
 
   const inputWeight = Number(inputWeightValue);
-  const juiceWeightRaw = juiceWeightValue === '' ? undefined : Number(juiceWeightValue);
   const isInputWeightValid = Number.isFinite(inputWeight) && inputWeight > 0;
-  const isJuiceWeightValid =
-    juiceWeightRaw == null || (Number.isFinite(juiceWeightRaw) && juiceWeightRaw >= 0);
   const isKumquat = citrus === 'kumquat';
+  const isCalamansi = citrus === 'calamansi';
   const showsMalic = match(citrus)
-    .with('lime', 'orange', 'grapefruit', () => true)
+    .with('lime', 'calamansi', 'orange', 'grapefruit', () => true)
     .otherwise(() => false);
   const showsMsg = citrus === 'grapefruit';
 
-  const superJuice = calculateSuperJuice({
-    citrus,
-    inputWeight,
-    juiceWeight: juiceWeightRaw,
-  });
+  const superJuice = calculateSuperJuice({ citrus, inputWeight });
 
   return (
     <Card sx={sx}>
@@ -123,55 +118,35 @@ export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
       <CardContent>
         <Stack spacing={2}>
           <CitrusSelector citrus={citrus} onChange={setCitrus} />
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
-            <TextField
-              label={CITRUS_INPUT_LABELS[citrus]}
-              value={inputWeightValue}
-              type="number"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setInputWeight(event.target.value);
-              }}
-              error={!isInputWeightValid}
-              helperText={!isInputWeightValid ? 'Must be greater than 0' : ''}
-              fullWidth
-              slotProps={{
-                htmlInput: { min: 0, step: 'any' },
-                input: {
-                  endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-                },
-              }}
-            />
-            {!isKumquat && (
-              <TextField
-                label="Fresh juice (optional)"
-                value={juiceWeightValue}
-                type="number"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setJuiceWeight(event.target.value);
-                }}
-                error={!isJuiceWeightValid}
-                helperText={!isJuiceWeightValid ? 'Must be zero or greater' : ''}
-                fullWidth
-                slotProps={{
-                  htmlInput: { min: 0, step: 'any' },
-                  input: {
-                    endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-                  },
-                }}
-              />
-            )}
-          </Stack>
+          <TextField
+            label={CITRUS_INPUT_LABELS[citrus]}
+            value={inputWeightValue}
+            type="number"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setInputWeight(event.target.value);
+            }}
+            error={!isInputWeightValid}
+            helperText={!isInputWeightValid ? 'Must be greater than 0' : ''}
+            fullWidth
+            slotProps={{
+              htmlInput: { min: 0, step: 'any' },
+              input: {
+                endAdornment: <InputAdornment position="end">grams</InputAdornment>,
+              },
+            }}
+          />
           <ResultField label="Citric acid" value={formatGrams(superJuice.citricAcid)} />
           {showsMalic && (
             <ResultField label="Malic acid" value={formatGrams(superJuice.malicAcid)} />
           )}
-          {showsMsg && <ResultField label="MSG" value={formatGrams(superJuice.msg, 3)} />}
+          {showsMsg && <ResultField label="MSG" value={formatGrams(superJuice.msg)} />}
           <ResultField label="Water" value={formatGrams(superJuice.water)} />
-          {superJuice.approximateYield != null && (
-            <ResultField
-              label="Approximate yield"
-              value={formatGrams(superJuice.approximateYield)}
-            />
+          {isCalamansi && isInputWeightValid && (
+            <Alert severity="info">
+              No published calamansi super juice recipe exists; these ratios follow the
+              lime formula, the closest match to calamansi’s citric-forward, lime-like
+              acidity.
+            </Alert>
           )}
           {isKumquat && isInputWeightValid && (
             <Alert severity="info">
@@ -186,34 +161,12 @@ export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
             role="group"
             aria-label="Super juice calculator actions"
             spacing={1}
-            sx={{ justifyContent: 'space-between' }}
+            sx={{ justifyContent: 'flex-end' }}
           >
-            <Link
-              href={{ pathname: '/calculators/acid-adjusting' }}
-              style={{ textDecoration: 'none' }}
-            >
-              <Typography
-                component="span"
-                variant="button"
-                color="primary"
-                sx={{
-                  alignItems: 'center',
-                  borderRadius: 1,
-                  display: 'inline-flex',
-                  minHeight: 36,
-                  px: 1.25,
-                  py: 0.75,
-                  '&:hover': { backgroundColor: 'action.hover' },
-                }}
-              >
-                Acid adjust instead
-              </Typography>
-            </Link>
             <Button
               color="secondary"
               onClick={() => {
                 setInputWeight(DEFAULT_PEEL_WEIGHT);
-                setJuiceWeight('');
               }}
             >
               Reset to defaults

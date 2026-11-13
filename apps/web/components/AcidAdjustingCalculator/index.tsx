@@ -580,28 +580,6 @@ export default function AcidAdjustingCalculator({
           />
         ))
         .exhaustive()}
-      {!compact && (
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            Super juice — peel oleation plus acid adjustment for a shelf-stable,
-            higher-yield citrus juice — has its own{' '}
-            <Link
-              href={{ pathname: '/calculators/super-juice' }}
-              style={{ textDecoration: 'none' }}
-            >
-              <Typography
-                component="span"
-                variant="body2"
-                color="primary"
-                sx={{ '&:hover': { textDecoration: 'underline' } }}
-              >
-                Super Juice calculator
-              </Typography>
-            </Link>
-            .
-          </Typography>
-        </CardContent>
-      )}
     </Card>
   );
 }
