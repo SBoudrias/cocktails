@@ -1,4 +1,4 @@
-import type { Recipe } from '@cocktails/data';
+import type { Chapter } from '@cocktails/data';
 
 const ETC = 'Etc';
 
@@ -6,14 +6,15 @@ const ETC = 'Etc';
  * Build the index-bar domain for chapter grouping: chapter order numbers
  * (`01`..`NN`, from `chapter.order`), with `Etc` always last.
  * Returns the ordered index list and a chapter-name -> index lookup.
+ * Takes recipe cards (or recipes) — only `chapter` is read.
  */
-export function createChapterIndexMap(recipes: Recipe[]) {
+export function createChapterIndexMap(items: readonly { chapter?: Chapter }[]) {
   const orders = new Set<number>();
   let hasEtc = false;
 
-  for (const recipe of recipes) {
-    if (recipe.chapter) {
-      orders.add(recipe.chapter.order);
+  for (const item of items) {
+    if (item.chapter) {
+      orders.add(item.chapter.order);
     } else {
       hasEtc = true;
     }
@@ -25,8 +26,7 @@ export function createChapterIndexMap(recipes: Recipe[]) {
   const indexes = sortedOrders.map(toIndex);
   const headerIndex = new Map<string, string>();
 
-  for (const recipe of recipes) {
-    const { chapter } = recipe;
+  for (const { chapter } of items) {
     if (chapter && !headerIndex.has(chapter.name)) {
       headerIndex.set(chapter.name, toIndex(chapter.order));
     }

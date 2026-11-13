@@ -342,7 +342,7 @@ describe('SourcePage - Book sources', () => {
     });
 
     it('switches the index bar domain when toggling grouping mode', async () => {
-      const { user } = setupApp(
+      const { user } = await setupApp(
         await SourcePage({
           params: Promise.resolve({
             type: TEST_BOOK_WITH_CHAPTERS.type,

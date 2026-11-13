@@ -61,10 +61,14 @@ export function LinkList<const T>({
   footer?: React.ReactNode;
 }) {
   const groups = useMemo(() => {
+    // Defaults hoisted out of the destructuring: React Compiler can't lower
+    // arrow functions inside a destructuring pattern's defaults
+    const groupByAll = (): string => header;
+    const sortHeaderAlphabetically = (a: string, b: string) => a.localeCompare(b);
     const {
-      groupBy = () => header,
+      groupBy = groupByAll,
       sortItemBy = () => 0,
-      sortHeaderBy = (a: string, b: string) => a.localeCompare(b),
+      sortHeaderBy = sortHeaderAlphabetically,
     } = config ?? {};
 
     const groupedItems = Object.groupBy(items, groupBy);
