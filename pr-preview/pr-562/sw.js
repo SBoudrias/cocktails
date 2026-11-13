@@ -5,8 +5,11 @@
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = '0e3085bf86f3';
+const VERSION = '1c7edf09b5b0';
 const PRECACHE = [
+  "./_next/static/HYGr-HMeCdKr8EP2ndNz-/_buildManifest.js",
+  "./_next/static/HYGr-HMeCdKr8EP2ndNz-/_clientMiddlewareManifest.js",
+  "./_next/static/HYGr-HMeCdKr8EP2ndNz-/_ssgManifest.js",
   "./_next/static/chunks/015yxrvhsuulq.js",
   "./_next/static/chunks/07vy1nalhdt3h.js",
   "./_next/static/chunks/0cz1d0mv5g_q7.js",
@@ -68,9 +71,6 @@ const PRECACHE = [
   "./_next/static/media/favicon.2vob68tjqpejf.ico",
   "./_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp",
   "./_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp",
-  "./_next/static/tzLWJ80cjA-ZVl0ymSrsm/_buildManifest.js",
-  "./_next/static/tzLWJ80cjA-ZVl0ymSrsm/_clientMiddlewareManifest.js",
-  "./_next/static/tzLWJ80cjA-ZVl0ymSrsm/_ssgManifest.js",
   "./data/catalog.json",
   "./data/search-index.json",
   "./icons/apple-touch-icon.png",
