@@ -1,6 +1,12 @@
 /* Brand mark colors straight from the theme tokens — the tiki-night palette
    the PWA icon set was painted from. */
 
+/* The umbrella tip rises past the viewBox top once the mug is centered on
+   the box; the bare mark must not clip it. */
+.mark {
+  overflow: visible;
+}
+
 .night {
   fill: var(--mui-palette-background-default);
 }

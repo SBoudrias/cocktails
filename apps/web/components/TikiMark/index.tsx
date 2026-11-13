@@ -12,10 +12,19 @@ import styles from './style.module.css';
  */
 export default function TikiMark({
   variant = 'mark',
+  className,
   ...props
 }: SvgIconProps & { variant?: 'mark' | 'detailed' }) {
   return (
-    <SvgIcon viewBox="0 0 24 24" {...props}>
+    <SvgIcon
+      viewBox="0 0 24 24"
+      className={
+        variant === 'mark'
+          ? [styles.mark, className].filter(Boolean).join(' ')
+          : className
+      }
+      {...props}
+    >
       {variant === 'detailed' && (
         <g>
           <rect
@@ -36,16 +45,17 @@ export default function TikiMark({
         </g>
       )}
 
-      {/* The umbrella leans over the mug's right shoulder, so the drawing
-          is scaled about its ink center to fill the viewBox — matching the
-          visual weight of neighboring glyphs like the GitHub icon in the
-          footer — and shifted so the ink reads centered. The detailed
-          variant keeps the mug on the moon disc's center, like the PWA
-          icon. */}
+      {/* The eye reads the mug — the mark's mass — not the thin umbrella's
+          bounding box, so the mug is scaled about its own center onto the
+          viewBox center, matching how neighboring glyphs like the GitHub
+          icon center their mass. The umbrella tip then rises past the top
+          edge: the mark variant's svg overflows visibly for it. The
+          detailed variant keeps the mug on the moon disc's center, like
+          the PWA icon. */}
       <g
         transform={
           variant === 'mark'
-            ? 'translate(12 11.9) scale(1.09) translate(-13.5 -11.5)'
+            ? 'translate(12 12) scale(1.09) translate(-12 -13.6)'
             : undefined
         }
       >
