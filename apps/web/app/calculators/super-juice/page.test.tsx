@@ -1,9 +1,13 @@
 import { screen, within } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import mockRouter from 'next-router-mock';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { setupApp } from '#/vitest.setup';
 import SuperJuiceCalculatorPage from './page';
 
 describe('SuperJuiceCalculatorPage', () => {
+  beforeEach(() => {
+    mockRouter.setCurrentUrl('/');
+  });
   it('calculates the default lime batch', async () => {
     await setupApp(<SuperJuiceCalculatorPage />);
 
@@ -48,6 +52,37 @@ describe('SuperJuiceCalculatorPage', () => {
     expect(screen.queryByRole('textbox', { name: 'Malic acid' })).not.toBeInTheDocument();
   });
 
+  it('syncs the selected citrus to the URL', async () => {
+    const onUrlUpdate = vi.fn();
+    const { user } = await setupApp(<SuperJuiceCalculatorPage />, {
+      nuqsOptions: { onUrlUpdate },
+    });
+
+    await user.click(screen.getByRole('button', { name: 'Grapefruit' }));
+
+    expect(onUrlUpdate).toHaveBeenLastCalledWith(
+      expect.objectContaining({ queryString: '?citrus=grapefruit' }),
+    );
+  });
+
+  it('reads the citrus from the URL', async () => {
+    mockRouter.setCurrentUrl('?citrus=orange');
+    await setupApp(<SuperJuiceCalculatorPage />);
+
+    expect(screen.getByRole('spinbutton', { name: 'Orange peel weight' })).toHaveValue(
+      100,
+    );
+    expect(screen.getByRole('textbox', { name: 'Citric acid' })).toHaveValue('90');
+    expect(screen.getByRole('textbox', { name: 'Malic acid' })).toHaveValue('10');
+  });
+
+  it('falls back to lime for an unknown citrus in the URL', async () => {
+    mockRouter.setCurrentUrl('?citrus=pomelo');
+    await setupApp(<SuperJuiceCalculatorPage />);
+
+    expect(screen.getByRole('spinbutton', { name: 'Lime peel weight' })).toHaveValue(100);
+  });
+
   it('adds rounded MSG to the grapefruit batch', async () => {
     const { user } = await setupApp(<SuperJuiceCalculatorPage />);
 
@@ -90,5 +125,17 @@ describe('SuperJuiceCalculatorPage', () => {
       'rest at room temperature for up to two hours',
     );
     expect(instructions).toHaveTextContent('strain through a cheesecloth');
+  });
+
+  it('adapts the instructions to whole-fruit kumquats', async () => {
+    const { user } = await setupApp(<SuperJuiceCalculatorPage />);
+
+    await user.click(screen.getByRole('button', { name: 'Kumquat' }));
+
+    const instructions = screen.getByRole('list', { name: 'Instructions' });
+    expect(within(instructions).getAllByRole('listitem')).toHaveLength(5);
+    expect(instructions).toHaveTextContent('Weigh the kumquats whole');
+    expect(instructions).toHaveTextContent('Muddle the kumquats with the citric acid');
+    expect(instructions).toHaveTextContent('ascorbic acid');
   });
 });

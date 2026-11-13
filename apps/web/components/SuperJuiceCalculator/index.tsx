@@ -2,7 +2,6 @@
 
 import type { SxProps } from '@mui/material';
 import {
-  Alert,
   Box,
   Button,
   Card,
@@ -15,6 +14,7 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material';
+import { parseAsString, useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
 import Video from '#/components/Video';
@@ -22,6 +22,13 @@ import { formatAmount } from '#/modules/formatAmount';
 import { type SuperJuiceCitrus, calculateSuperJuice } from '#/modules/superJuice';
 
 const DEFAULT_PEEL_WEIGHT = 100;
+const DEFAULT_CITRUS: SuperJuiceCitrus = 'lime';
+
+const isSuperJuiceCitrus = (value: string | null): value is SuperJuiceCitrus =>
+  value != null &&
+  match(value)
+    .with('lemon', 'lime', 'orange', 'grapefruit', 'kumquat', () => true)
+    .otherwise(() => false);
 
 const CITRUS_INPUT_LABELS: Record<SuperJuiceCitrus, string> = {
   lemon: 'Lemon peel weight',
@@ -85,20 +92,38 @@ function formatGrams(value: number, fractionDigits = 2) {
 }
 
 export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
-  const [citrus, setCitrus] = useState<SuperJuiceCitrus>('lime');
+  const [citrusParam, setCitrus] = useQueryState('citrus', parseAsString);
+  const citrus = isSuperJuiceCitrus(citrusParam) ? citrusParam : DEFAULT_CITRUS;
   const [inputWeightValue, setInputWeight] = useState<string | number>(
     DEFAULT_PEEL_WEIGHT,
   );
 
   const inputWeight = Number(inputWeightValue);
   const isInputWeightValid = Number.isFinite(inputWeight) && inputWeight > 0;
-  const isKumquat = citrus === 'kumquat';
   const showsMalic = match(citrus)
     .with('lime', 'orange', 'grapefruit', () => true)
     .otherwise(() => false);
   const showsMsg = citrus === 'grapefruit';
 
   const superJuice = calculateSuperJuice({ citrus, inputWeight });
+
+  // Whole-fruit kumquats get their own procedure (Kevin Kos's kumquat recipe);
+  // every other citrus is peeled and measured by peel weight.
+  const instructions = match(citrus)
+    .with('kumquat', () => [
+      'Weigh the kumquats whole — there is no need to peel fruit this small. The citric acid stands in for the missing peel weight (a quarter of the fruit).',
+      'Muddle the kumquats with the citric acid and let the mix rest for about an hour; it will be very acidic and bursting with kumquat flavor.',
+      'Add the water and blend long enough to pulverize every part of the fruit.',
+      'Strain through a cloth filter and squeeze out all the juice. Optionally stir in ascorbic acid (vitamin C) at 0.04% of the strained weight to hold the aroma longer.',
+      'Bottle and refrigerate; use within a week for peak flavor.',
+    ])
+    .otherwise(() => [
+      'Peel the citrus and weigh the peels.',
+      'Combine the peels with the calculated acids in a jar. Shake well and rest at room temperature for up to two hours to draw out the oils into an oleo citrate.',
+      'Transfer everything to a blender, add the water (rinse the jar with it to carry over every last bit of oleo citrate) and the fresh juice.',
+      'Blend for about half a minute, then strain through a cheesecloth.',
+      'Bottle and refrigerate; use within a week for peak flavor.',
+    ]);
 
   return (
     <Card sx={sx}>
@@ -137,14 +162,6 @@ export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
           )}
           {showsMsg && <ResultField label="MSG" value={formatGrams(superJuice.msg)} />}
           <ResultField label="Water" value={formatGrams(superJuice.water)} />
-          {isKumquat && isInputWeightValid && (
-            <Alert severity="info">
-              Kumquats are used whole: the citric acid stands in for the missing peel
-              weight (25% of the fruit), and the water scales with the acid. Optionally
-              add ascorbic acid (vitamin C) at 0.04% of the strained yield to hold the
-              aroma longer.
-            </Alert>
-          )}
           <Stack
             direction="row"
             role="group"
@@ -172,35 +189,11 @@ export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
           aria-labelledby="super-juice-instructions"
           sx={{ mt: 0, mb: 0, pl: 3 }}
         >
-          <li>
-            <Typography>
-              Peel the citrus and weigh the peels. Kumquats skip this step: weigh the
-              whole fruit and muddle it with the citric acid instead.
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Combine the peels with the calculated acids in a jar. Shake well and rest at
-              room temperature for up to two hours to draw out the oils into an oleo
-              citrate.
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Transfer everything to a blender, add the water (rinse the jar with it to
-              carry over every last bit of oleo citrate) and the fresh juice.
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Blend for about half a minute, then strain through a cheesecloth.
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Bottle and refrigerate; use within a week for peak flavor.
-            </Typography>
-          </li>
+          {instructions.map((step) => (
+            <li key={step}>
+              <Typography>{step}</Typography>
+            </li>
+          ))}
         </Box>
       </CardContent>
       <CardContent>
