@@ -16,11 +16,11 @@ export default function AppHeader({ title }: { title: string }) {
         <Toolbar>
           {isHome ? (
             <IconButton size="large" edge="start" disabled>
-              <TikiMark />
+              <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           ) : (
             <IconButton size="large" edge="start" aria-label="Go to home" href="/">
-              <TikiMark />
+              <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           )}
           <Typography

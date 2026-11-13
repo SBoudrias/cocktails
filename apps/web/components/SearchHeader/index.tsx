@@ -24,11 +24,11 @@ export default function SearchHeader({
         <Toolbar>
           {isHome ? (
             <IconButton size="large" edge="start" disabled>
-              <TikiMark />
+              <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           ) : (
             <IconButton size="large" edge="start" aria-label="Go to home" href="/">
-              <TikiMark />
+              <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           )}
 

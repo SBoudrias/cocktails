@@ -36,12 +36,19 @@ export default function TikiMark({
         </g>
       )}
 
-      {/* The umbrella leans over the mug's right shoulder, so the ink's
-          optical center sits ~1.5 units right of the viewBox center; the
-          bare mark is shifted back so it reads centered next to text and
-          inside the header button. The detailed variant keeps the mug on
-          the moon disc's center, like the PWA icon. */}
-      <g transform={variant === 'mark' ? 'translate(-1.49 0.4)' : undefined}>
+      {/* The umbrella leans over the mug's right shoulder, so the drawing
+          is scaled about its ink center to fill the viewBox — matching the
+          visual weight of neighboring glyphs like the GitHub icon in the
+          footer — and shifted so the ink reads centered. The detailed
+          variant keeps the mug on the moon disc's center, like the PWA
+          icon. */}
+      <g
+        transform={
+          variant === 'mark'
+            ? 'translate(12 11.9) scale(1.09) translate(-13.5 -11.5)'
+            : undefined
+        }
+      >
         {/* Paper umbrella, tilted 16° over the mug's right shoulder, its stem
             tucked into the drink (the mug body drawn below covers the base). */}
         <g transform="translate(15.9 6.6) rotate(16)">
