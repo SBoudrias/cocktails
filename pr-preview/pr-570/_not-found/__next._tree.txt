@@ -2,4 +2,4 @@
 :HL["/cocktails/pr-preview/pr-570/_next/static/chunks/327x-x7ne-dy9.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"qVNqW8q0xHYZ_VBqClm40","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"zinFHAvfkBQM4_INUC-gJ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
