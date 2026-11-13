@@ -1,8 +1,9 @@
 'use client';
 
-import { LocalBar, Search } from '@mui/icons-material';
-import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
+import { Search } from '@mui/icons-material';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
+import TikiMark from '#/components/TikiMark';
 import { getRecipeListUrl } from '#/modules/url';
 
 export default function AppHeader({ title }: { title: string }) {
@@ -15,11 +16,11 @@ export default function AppHeader({ title }: { title: string }) {
         <Toolbar>
           {isHome ? (
             <IconButton size="large" edge="start" disabled>
-              <Icon />
+              <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           ) : (
             <IconButton size="large" edge="start" aria-label="Go to home" href="/">
-              <LocalBar />
+              <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           )}
           <Typography
