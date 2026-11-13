@@ -1,9 +1,9 @@
 'use client';
 
-import { LocalBar } from '@mui/icons-material';
 import { AppBar, Icon, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import SearchInput from '#/components/SearchInput';
+import TikiMark from '#/components/TikiMark';
 import { preloadSearchIndex } from '#/modules/searchIndex';
 
 export default function SearchHeader({
@@ -28,7 +28,7 @@ export default function SearchHeader({
             </IconButton>
           ) : (
             <IconButton size="large" edge="start" aria-label="Go to home" href="/">
-              <LocalBar />
+              <TikiMark />
             </IconButton>
           )}
 

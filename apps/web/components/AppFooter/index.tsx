@@ -1,8 +1,8 @@
 'use client';
 
 import GitHubIcon from '@mui/icons-material/GitHub';
-import LocalBarIcon from '@mui/icons-material/LocalBar';
 import { Link, Stack } from '@mui/material';
+import TikiMark from '#/components/TikiMark';
 
 export default function AppFooter() {
   return (
@@ -21,7 +21,7 @@ export default function AppFooter() {
         underline="none"
         sx={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 0.5 }}
       >
-        <LocalBarIcon /> Indexotica
+        <TikiMark /> Indexotica
       </Link>
       <Link
         href="https://github.com/SBoudrias/cocktails/"

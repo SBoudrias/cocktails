@@ -1,0 +1,53 @@
+/* Brand mark colors straight from the theme tokens — the tiki-night palette
+   the PWA icon set was painted from. */
+
+.night {
+  fill: var(--mui-palette-background-default);
+}
+
+.moon {
+  fill: var(--mui-palette-background-paper);
+}
+
+.star {
+  fill: var(--mui-palette-secondary-light);
+}
+
+.mug {
+  fill: var(--mui-palette-secondary-main);
+}
+
+.mugShade {
+  fill: var(--mui-palette-secondary-dark);
+}
+
+.drink {
+  fill: var(--mui-palette-warning-dark);
+}
+
+.carved {
+  fill: var(--mui-palette-background-default);
+}
+
+.groove {
+  fill: none;
+  stroke: var(--mui-palette-warning-dark);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.canopy {
+  fill: var(--mui-palette-primary-light);
+}
+
+.canopyRib {
+  fill: none;
+  stroke: var(--mui-palette-primary-main);
+  stroke-linecap: round;
+}
+
+.stem {
+  fill: none;
+  stroke: var(--mui-palette-secondary-dark);
+  stroke-linecap: round;
+}

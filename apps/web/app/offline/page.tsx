@@ -1,8 +1,8 @@
-import { LocalBar } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import AppHeader from '#/components/AppHeader';
+import TikiMark from '#/components/TikiMark';
 
 export const metadata: Metadata = {
   title: 'Offline | Indexotica',
@@ -33,7 +33,7 @@ export default function OfflinePage() {
           textAlign: 'center',
         }}
       >
-        <LocalBar sx={{ fontSize: 64, opacity: 0.5 }} />
+        <TikiMark variant="detailed" sx={{ fontSize: 64, opacity: 0.5 }} />
         <Typography variant="h5" component="h1">
           You are offline
         </Typography>
