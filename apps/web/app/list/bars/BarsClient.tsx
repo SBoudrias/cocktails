@@ -12,7 +12,7 @@ import { parseAsStringEnum, useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
-import { createByLocationListConfig } from '#/modules/lists/by-location';
+import { byLocationListConfig } from '#/modules/lists/by-location';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import { getBarSearchText } from '#/modules/searchText';
 import { getBarRecipesUrl } from '#/modules/url';
@@ -42,8 +42,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
     parseAsStringEnum(groupModes).withDefault('alpha'),
   );
 
-  const listConfig =
-    groupMode === 'city' ? createByLocationListConfig() : byNameListConfig;
+  const listConfig = groupMode === 'city' ? byLocationListConfig : byNameListConfig;
 
   // City-mode groups carry the full location in their header, so the item
   // sub-label would only repeat it. Keep it anywhere the list is flat.

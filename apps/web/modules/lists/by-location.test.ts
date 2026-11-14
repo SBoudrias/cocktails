@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createByLocationListConfig, getBarLocationLabel } from './by-location';
+import { byLocationListConfig, getBarLocationLabel } from './by-location';
 
 describe('getBarLocationLabel', () => {
   it('returns the full location, state included', () => {
@@ -34,7 +34,7 @@ describe('getBarLocationLabel', () => {
   });
 });
 
-describe('createByLocationListConfig', () => {
+describe('byLocationListConfig', () => {
   const bars = [
     { name: 'Bar Three', location: 'Chicago, IL' },
     { name: 'Bar Four', location: 'New York, NY' },
@@ -43,27 +43,27 @@ describe('createByLocationListConfig', () => {
     { name: 'Mystery Bar' },
   ];
 
-  const config = createByLocationListConfig();
-
   it('groups bars by their location label', () => {
-    expect(config.groupBy(bars[0]!)).toBe('Chicago, IL');
-    expect(config.groupBy(bars[4]!)).toBe('Unknown');
+    expect(byLocationListConfig.groupBy(bars[0]!)).toBe('Chicago, IL');
+    expect(byLocationListConfig.groupBy(bars[4]!)).toBe('Unknown');
   });
 
   it('orders locations alphabetically regardless of bar count', () => {
     const headers = ['Brooklyn, NY', 'Chicago, IL', 'New York, NY', 'Unknown'].toSorted(
-      config.sortHeaderBy,
+      byLocationListConfig.sortHeaderBy,
     );
     expect(headers).toEqual(['Brooklyn, NY', 'Chicago, IL', 'New York, NY', 'Unknown']);
   });
 
   it('always puts Unknown last', () => {
-    expect(config.sortHeaderBy('Unknown', 'New York, NY')).toBeGreaterThan(0);
-    expect(config.sortHeaderBy('New York, NY', 'Unknown')).toBeLessThan(0);
+    expect(byLocationListConfig.sortHeaderBy('Unknown', 'New York, NY')).toBeGreaterThan(
+      0,
+    );
+    expect(byLocationListConfig.sortHeaderBy('New York, NY', 'Unknown')).toBeLessThan(0);
   });
 
   it('sorts bars within a location alphabetically', () => {
-    const city = [bars[1]!, bars[2]!].toSorted(config.sortItemBy);
+    const city = [bars[1]!, bars[2]!].toSorted(byLocationListConfig.sortItemBy);
     expect(city.map((bar) => bar.name)).toEqual(['Bar Four', 'Bar One']);
   });
 });

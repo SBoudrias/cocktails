@@ -12,18 +12,16 @@ export function getBarLocationLabel(bar: { location?: string }): string {
 }
 
 /**
- * Create a list config grouping bars by location. Locations are ordered
- * alphabetically, 'Unknown' last. Bars within a location keep the
- * alphabetical order of the A-Z list.
+ * List config grouping bars by location. Locations are ordered alphabetically,
+ * 'Unknown' last. Bars within a location keep the alphabetical order of the
+ * A-Z list.
  */
-export function createByLocationListConfig() {
-  return {
-    groupBy: getBarLocationLabel,
-    sortItemBy: compareByName,
-    sortHeaderBy: (locationA: string, locationB: string): number => {
-      if (locationA === UNKNOWN_CITY) return 1;
-      if (locationB === UNKNOWN_CITY) return -1;
-      return locationA.localeCompare(locationB);
-    },
-  };
-}
+export const byLocationListConfig = {
+  groupBy: getBarLocationLabel,
+  sortItemBy: compareByName,
+  sortHeaderBy: (locationA: string, locationB: string): number => {
+    if (locationA === UNKNOWN_CITY) return 1;
+    if (locationB === UNKNOWN_CITY) return -1;
+    return locationA.localeCompare(locationB);
+  },
+};
