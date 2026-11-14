@@ -19,7 +19,7 @@
     "@types/json-schema": "^7.0.15",
     "@types/lodash": "^4.17.27",
     "@types/node": "^26.6.6",
-    "@vitejs/plugin-react": "^6.2.1",
+    "@vitejs/plugin-react": "^6.3.0",
     "@vitest/browser": "^5.1.0",
     "@vitest/coverage-v8": "^5.1.0",
     "msw": "^3.0.4",
