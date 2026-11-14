@@ -22,7 +22,7 @@
     "@vitejs/plugin-react": "^6.3.0",
     "@vitest/browser": "^5.1.0",
     "@vitest/coverage-v8": "^5.1.0",
-    "msw": "^3.0.4",
+    "msw": "^3.0.5",
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.78.0",
     "oxlint": "^1.93.0",
