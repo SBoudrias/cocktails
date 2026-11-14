@@ -23,6 +23,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-header: var(--header);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -48,6 +49,12 @@
   --input: rgb(255 255 255 / 0.23);
   --ring: #5dbdbd;
   --radius: 0.25rem; /* MUI's shape.borderRadius */
+  /* The fixed app bar: its glass fill (MUI's MuiPaper override) and its
+     height per orientation and breakpoint — MUI's toolbar mixin, which
+     sticky headers offset from (the --header color mirrors MuiPaper's
+     rgba(10,20,32,.9) surface alpha). */
+  --header: rgb(10 20 32 / 0.9);
+  --app-bar-height: 56px;
   /* Icon-art palette (TikiMark, RecipeBadges): the shade steps MUI computed
      from the theme, mirrored from app/theme.tsx. --paper is the solid
      palette background.paper; --card carries the MuiPaper surface alpha. */
@@ -59,6 +66,21 @@
   --warning: #d4883d;
   --warning-dark: #a66628;
   --error-light: #c98aa3;
+}
+
+/* The app bar's height on the same breakpoints as MUI's toolbar mixin:
+   landscape phones are shorter (only below sm — wide screens take the 64px),
+   and 600px+ grows to 64px. */
+@media (orientation: landscape) and (max-width: 599.95px) {
+  :root {
+    --app-bar-height: 48px;
+  }
+}
+
+@media (min-width: 600px) {
+  :root {
+    --app-bar-height: 64px;
+  }
 }
 
 @layer base {
