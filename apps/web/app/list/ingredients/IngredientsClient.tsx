@@ -8,13 +8,14 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import type { IngredientListItem } from '#/modules/ingredientListItem';
 import { byNameListConfig } from '#/modules/lists/by-name';
+import styles from './style.module.css';
 
 function renderIngredient(ingredient: IngredientListItem) {
   return (
     <LinkListItem
       key={ingredient.href}
       href={ingredient.href}
-      primary={ingredient.name}
+      primary={<span className={styles.name}>{ingredient.name}</span>}
     />
   );
 }

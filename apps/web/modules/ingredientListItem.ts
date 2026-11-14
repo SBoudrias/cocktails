@@ -1,6 +1,5 @@
 import type { BaseIngredient, Category } from '@cocktails/data';
 import { getIngredientOrCategorySearchText } from '#/modules/searchText';
-import { sentenceCase } from '#/modules/sentenceCase';
 import { getIngredientUrl } from '#/modules/url';
 
 /**
@@ -16,15 +15,13 @@ export type IngredientListItem = {
 
 /**
  * Project ingredients and categories into list items, precomputing what the
- * client renders and searches: url and search text. Generic ingredient names
- * ship lowercase ("lime"); rows start them with a capital like every other
- * list label.
+ * client renders and searches: url and search text.
  */
 export function toIngredientListItems(
   items: (BaseIngredient | Category)[],
 ): IngredientListItem[] {
   return items.map((item) => ({
-    name: sentenceCase(item.name),
+    name: item.name,
     href: getIngredientUrl(item),
     searchText: getIngredientOrCategorySearchText(item),
   }));
