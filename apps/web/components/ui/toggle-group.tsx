@@ -8,16 +8,21 @@ import * as React from 'react';
 
 // The app's only use is a single-choice unit picker (Quantity/Selector)
 // rendered as one fused pill: outline variant, zero spacing between items.
+// Metrics measured from the MUI ToggleButtonGroup size=small it replaces:
+// 7px padding (≈38.75px tall), 13px uppercase label, the theme's 1px
+// divider border, selected at foreground/16 like MUI's standard toggle.
 const toggleVariants = cva(
-  "uppercase group/toggle inline-flex items-center justify-center gap-1 rounded-lg text-sm font-medium whitespace-nowrap transition-all outline-none hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-pressed:bg-muted data-[state=on]:bg-muted [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "uppercase group/toggle inline-flex items-center justify-center rounded-lg text-[13px] leading-[1.75] font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: 'bg-transparent',
-        outline: 'border border-input bg-transparent hover:bg-muted',
+        default:
+          'bg-transparent text-white hover:text-foreground aria-pressed:bg-foreground/16 aria-pressed:text-foreground',
+        outline:
+          'border border-border bg-transparent text-white hover:text-foreground aria-pressed:bg-foreground/16 aria-pressed:text-foreground',
       },
       size: {
-        default: 'h-8 min-w-8 px-2.5',
+        default: 'min-w-8 px-[7px] py-[7px]',
       },
     },
     defaultVariants: {
@@ -83,7 +88,9 @@ function ToggleGroupItem({
       data-size={context.size || size}
       data-spacing={context.spacing}
       className={cn(
-        'shrink-0 focus:z-10 focus-visible:z-10 group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-end]:pr-1.5 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-start]:pl-1.5 group-data-[spacing=0]/toggle-group:first:rounded-l-lg group-data-[spacing=0]/toggle-group:last:rounded-r-lg group-data-[spacing=0]/toggle-group:data-[variant=outline]:border-l-0 group-data-[spacing=0]/toggle-group:data-[variant=outline]:first:border-l',
+        // MUI's joined ToggleButtonGroup: no radius between items, the
+        // divider border dropped on every item but the first.
+        'shrink-0 focus:z-10 focus-visible:z-10 group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:first:rounded-s-lg group-data-[spacing=0]/toggle-group:last:rounded-e-lg group-data-[spacing=0]/toggle-group:data-[variant=outline]:border-l-0 group-data-[spacing=0]/toggle-group:data-[variant=outline]:first:border-l',
         toggleVariants({
           variant: context.variant || variant,
           size: context.size || size,

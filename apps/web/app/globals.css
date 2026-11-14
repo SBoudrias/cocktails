@@ -47,7 +47,7 @@
 :root {
   --background: #0a1420; /* Dark starry night sky */
   --foreground: #e8f4f4; /* Pale cyan-tinted white */
-  --card: rgb(21 37 53 / 0.9); /* Slightly lighter for cards */
+  --card: rgb(10 20 32 / 0.9); /* The glass MuiPaper's styleOverride paints */
   --card-foreground: #e8f4f4;
   --primary: #2a8a8a; /* Turquoise ocean water */
   --primary-foreground: #ffffff;

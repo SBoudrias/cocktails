@@ -5,20 +5,9 @@ import {
   getSubstitutesForIngredient,
 } from '@cocktails/data/ingredients';
 import { getIngredientPageParams } from '@cocktails/data/params';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Paper,
-} from '@mui/material';
+import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import uniqBy from 'lodash/uniqBy';
+import { Tag } from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import CategoryChips from '#/components/CategoryChips';
@@ -26,6 +15,14 @@ import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import SubstitutionLists from '#/components/SubstitutionLists';
+import { buttonVariants } from '#/components/ui/button-variants';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '#/components/ui/card';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { getCategoryUrl } from '#/modules/url';
@@ -48,10 +45,10 @@ export async function generateMetadata({
     const ingredient = await getIngredient(type, slug);
 
     return {
-      title: `Indexotica | Learn about ${ingredient.name}`,
+      title: `Indexotica | ${ingredient.name}`,
       description:
         ingredient.description ??
-        `Learn about ${ingredient.name} and find cocktail recipes that use it.`,
+        `Learn about ${ingredient.name} and the cocktail recipes that use it.`,
     };
   } catch (error) {
     unstable_rethrow(error);
@@ -91,31 +88,36 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       footer={
         <FixBugCard
           fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
-          sx={{ m: 1 }}
+          className="m-2"
         />
       }
     >
       {firstVideo && <Video id={firstVideo.videoId} start={firstVideo.start} />}
       {!ingredient.description && topCategory?.description ? (
-        <Card sx={{ m: 1 }}>
-          <CardHeader
-            title={
-              <>
-                <LocalOfferIcon />
-                &nbsp;{topCategory.name}
-              </>
-            }
-            slotProps={{ title: 'h6' }}
-          />
+        <Card className="m-2">
+          <CardHeader>
+            <CardTitle className="text-xl leading-8 font-normal">
+              <Tag className="mr-1 inline size-5 align-text-bottom" aria-hidden="true" />
+              {topCategory.name}
+            </CardTitle>
+          </CardHeader>
           <CardContent>{topCategory.description}</CardContent>
-          <CardActions sx={{ justifyContent: 'end' }}>
-            <Button href={getCategoryUrl(topCategory)}>Learn more</Button>
+          <CardActions>
+            <a
+              href={getCategoryUrl(topCategory)}
+              aria-label="Learn more about this category"
+              className={buttonVariants({ variant: 'text' })}
+            >
+              Learn more
+            </a>
           </CardActions>
         </Card>
       ) : (
         ingredient.description && (
-          <Card sx={{ m: 1 }}>
-            <CardContent>{ingredient.description}</CardContent>
+          <Card className="m-2">
+            <CardContent>
+              <p>{ingredient.description}</p>
+            </CardContent>
           </Card>
         )
       )}
@@ -150,7 +152,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         />
       )}
       {additionalVideos.length > 0 && (
-        <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
+        <VideoListCard title="Other videos" refs={additionalVideos} className="m-2" />
       )}
     </SearchableRecipePage>
   );

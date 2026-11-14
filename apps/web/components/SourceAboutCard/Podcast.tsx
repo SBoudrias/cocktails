@@ -1,53 +1,51 @@
-import type { Podcast } from '@cocktails/data';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import PodcastsIcon from '@mui/icons-material/Podcasts';
+import type { Podcast as PodcastType } from '@cocktails/data';
+import { ArrowUpRight, Podcast as PodcastIcon } from 'lucide-react';
+import { buttonVariants } from '#/components/ui/button-variants';
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  Typography,
-  type SxProps,
-} from '@mui/material';
+  CardSubheader,
+  CardTitle,
+} from '#/components/ui/card';
 
 export default function PodcastAboutCard({
   source,
   episodeTitle,
   episodeLink,
-  sx,
+  className,
 }: {
-  source: Podcast;
+  source: PodcastType;
   episodeTitle?: string;
   episodeLink?: string;
-  sx?: SxProps;
+  className?: string;
 }) {
   return (
-    <Card sx={sx}>
-      <CardHeader
-        title={
-          <>
-            <PodcastsIcon />
-            &nbsp;{source.name}
-          </>
-        }
-        subheader={episodeTitle ? `Episode: ${episodeTitle}` : undefined}
-      />
+    <Card className={className}>
+      <CardHeader>
+        <CardTitle>
+          <PodcastIcon
+            className="mr-1 inline size-6 align-text-bottom"
+            aria-hidden="true"
+          />
+          {source.name}
+        </CardTitle>
+        {episodeTitle && <CardSubheader>Episode: {episodeTitle}</CardSubheader>}
+      </CardHeader>
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {source.description}
-        </Typography>
+        <p className="text-muted-foreground">{source.description}</p>
       </CardContent>
-      <CardActions sx={{ justifyContent: 'end' }}>
-        <Button
+      <CardActions>
+        <a
           href={episodeLink || source.link}
           target="_blank"
           rel="noreferrer noopener"
-          color="inherit"
+          className={buttonVariants({ variant: 'text-inherit' })}
         >
           {episodeLink ? 'Listen to episode' : 'Listen to podcast'}
-          <ArrowOutwardIcon />
-        </Button>
+          <ArrowUpRight className="-mr-1 ml-2 size-6" aria-hidden="true" />
+        </a>
       </CardActions>
     </Card>
   );

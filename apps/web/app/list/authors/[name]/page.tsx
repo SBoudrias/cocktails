@@ -69,7 +69,7 @@ export default async function AuthorRecipesPage({ params }: Props) {
       recipeCount={authorRecipes.length}
       listHeader={`Recipes by ${author.name}`}
     >
-      <AuthorAboutCard author={author} sx={{ m: 2 }} />
+      <AuthorAboutCard author={author} className="m-4" />
     </SearchableRecipePage>
   );
 }

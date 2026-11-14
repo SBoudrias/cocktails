@@ -1,12 +1,12 @@
 'use client';
 
-import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
 import EntitySuggestions from '#/components/EntitySuggestions';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchHeader from '#/components/SearchHeader';
+import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import VirtualGroupedList from '#/components/VirtualGroupedList';
 import { useSearchIndex } from '#/hooks/useSearchIndex';
 import { getEntitySuggestions } from '#/modules/entitySuggestions';
@@ -71,12 +71,14 @@ export default function RecipesClient({
   );
 
   const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
+    <Card className="m-4">
+      <CardHeader>
+        <CardTitle>No results found</CardTitle>
+      </CardHeader>
       <CardContent>
-        <Typography variant="body2">
+        <p className="text-muted-foreground">
           No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
-        </Typography>
+        </p>
       </CardContent>
     </Card>
   );

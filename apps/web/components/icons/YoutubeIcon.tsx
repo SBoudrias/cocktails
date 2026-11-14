@@ -4,9 +4,9 @@
 // library's, not our own.
 import { siYoutube } from 'simple-icons';
 
-export default function YoutubeIcon() {
+export default function YoutubeIcon({ className = 'size-6' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-6">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
       <path d={siYoutube.path} />
     </svg>
   );
