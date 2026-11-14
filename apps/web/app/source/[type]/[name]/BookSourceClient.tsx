@@ -54,6 +54,23 @@ export default function BookSourceClient({
     );
   }, []);
 
+  // Chapter-grouped rows sit under a header that already names the chapter;
+  // repeating it in each row's secondary line is noise, so rows only carry
+  // the book name there.
+  const renderRecipeWithoutChapter = useCallback(
+    (recipe: RecipeListItem): React.ReactNode => {
+      return (
+        <RecipeLinkListItem
+          key={recipe.href}
+          href={recipe.href}
+          name={recipe.name}
+          source={source.name}
+        />
+      );
+    },
+    [source.name],
+  );
+
   const emptyState = (
     <>
       <Card sx={{ m: 2 }}>
@@ -83,8 +100,10 @@ export default function BookSourceClient({
     );
   }
 
-  const listConfig =
-    hasChapters && groupMode === 'chapter' ? chapterConfig : byNameListConfig;
+  const isChapterGrouped = hasChapters && groupMode === 'chapter';
+
+  const listConfig = isChapterGrouped ? chapterConfig : byNameListConfig;
+  const listRenderRecipe = isChapterGrouped ? renderRecipeWithoutChapter : renderRecipe;
 
   return (
     <>
@@ -95,7 +114,7 @@ export default function BookSourceClient({
           <GroupModeToggle value={groupMode} onChange={setGroupMode} />
         </Stack>
       )}
-      <LinkList items={recipes} config={listConfig} renderItem={renderRecipe} />
+      <LinkList items={recipes} config={listConfig} renderItem={listRenderRecipe} />
     </>
   );
 }
