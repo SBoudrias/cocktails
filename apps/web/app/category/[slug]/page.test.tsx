@@ -178,10 +178,48 @@ describe('CategoryPage', () => {
       // Should show examples of London dry gin
       expect(screen.getByText(/Examples of.*London dry gin/)).toBeInTheDocument();
 
-      // Beefeater is a London dry gin
+      // Beefeater is a London dry gin; its 56 recipes lead the list, so the
+      // count trails the name in the row's accessible name.
       expect(
-        screen.getByRole('link', { name: 'Beefeater London Dry Gin' }),
+        screen.getByRole('link', { name: /Beefeater London Dry Gin 56/ }),
       ).toBeInTheDocument();
+    });
+
+    it('orders members by recipe count and shows the count', async () => {
+      // These tests need the real member lists, not the file-wide mock.
+      vi.mocked(getIngredientsForCategory).mockImplementation(
+        getActualIngredientsForCategory,
+      );
+
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      const membersGroup = screen.getByRole('group', {
+        name: /Examples of London dry gin/,
+      });
+
+      // Recipe counts in the London dry gin shelf: Beefeater (56) leads,
+      // Tanqueray (26), Fords (13), Tanqueray No. Ten (12)...
+      const hrefs = within(membersGroup)
+        .getAllByRole('link')
+        .map((link) => link.getAttribute('href'));
+
+      const order = (slug: string) =>
+        hrefs.indexOf(`/cocktails/ingredient/spirit/${slug}`) >= 0
+          ? hrefs.indexOf(`/cocktails/ingredient/spirit/${slug}`)
+          : hrefs.indexOf(`/ingredient/spirit/${slug}`);
+      expect(order('beefeater-london-dry-gin')).toBe(0);
+      expect(order('tanqueray-london-dry-gin')).toBe(1);
+      expect(order('fords-gin')).toBe(2);
+      expect(order('tanqueray-no-ten')).toBe(3);
+
+      // Every member row carries its recipe count next to the name.
+      expect(membersGroup).toHaveTextContent('56');
+      expect(membersGroup).toHaveTextContent('26');
+      expect(membersGroup).toHaveTextContent('13');
     });
 
     it('renders links to nested child categories', async () => {

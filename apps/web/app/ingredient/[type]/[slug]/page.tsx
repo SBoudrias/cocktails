@@ -1,5 +1,6 @@
 import {
   getIngredient,
+  getIngredientRecipeCounts,
   getRecipesForIngredient,
   getSubstitutesForIngredient,
 } from '@cocktails/data/ingredients';
@@ -63,9 +64,10 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const { type, slug } = await params;
 
   const ingredient = await getIngredient(type, slug);
-  const [substitution, relatedRecipes] = await Promise.all([
+  const [substitution, relatedRecipes, recipeCounts] = await Promise.all([
     getSubstitutesForIngredient(ingredient),
     getRecipesForIngredient(ingredient),
+    getIngredientRecipeCounts(),
   ]);
 
   const topCategory = ingredient.categories[0];
@@ -152,6 +154,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <SubstitutionLists
           primaryHeader="Some substitution option"
           substitutes={substitution.substitutes}
+          recipeCounts={recipeCounts}
           seeAll={{
             href: getCategoryUrl(substitution.category),
             label: substitution.category.name,

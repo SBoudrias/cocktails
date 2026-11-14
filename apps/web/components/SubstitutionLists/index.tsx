@@ -1,7 +1,7 @@
 import type { Category, RootIngredient } from '@cocktails/data';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import { ListItem, ListItemText, Stack } from '@mui/material';
+import { ListItem, ListItemText, Stack, Typography } from '@mui/material';
 import type { Route } from 'next';
 import Link from 'next/link';
 import { LinkList, LinkListItem } from '#/components/LinkList';
@@ -65,9 +65,11 @@ export function RelatedCategoriesList({ categories }: { categories: Category[] }
  * The substitution lists shared by the ingredient and category pages:
  *
  * - The primary list holds specific bottles from a single category, capped
- *   at 10 links. A capped list shows 9 bottles and closes with a see-all
- *   link, rendered with the category icon so it reads as a jump-off point
- *   rather than one more row.
+ *   at 10 links, ordered by how many recipes reference each bottle (the
+ *   common bottles lead as recommendations) with the recipe count shown
+ *   next to each name. A capped list shows 9 bottles and closes with a
+ *   see-all link, rendered with the category icon so it reads as a
+ *   jump-off point rather than one more row.
  * - The secondary list holds the substitution-friendly related categories,
  *   each linking to its category page.
  *
@@ -76,6 +78,7 @@ export function RelatedCategoriesList({ categories }: { categories: Category[] }
 export default function SubstitutionLists({
   primaryHeader,
   substitutes,
+  recipeCounts,
   seeAll,
   relatedCategories,
 }: {
@@ -83,6 +86,8 @@ export default function SubstitutionLists({
   primaryHeader: string;
   /** Bottles to list, expected to come from a single category. */
   substitutes: RootIngredient[];
+  /** Recipe reference counts by ingredient slug, shown next to each bottle. */
+  recipeCounts: Map<string, number>;
   /** Where the see-all link of a capped primary list goes, with its label. */
   seeAll: {
     href: Route<`/category/${string}`>;
@@ -108,6 +113,11 @@ export default function SubstitutionLists({
                 ingredientHasData(substitute) ? getIngredientUrl(substitute) : undefined
               }
               primary={substitute.name}
+              tertiary={
+                <Typography color="textSecondary">
+                  {recipeCounts.get(substitute.slug) ?? 0}
+                </Typography>
+              }
             />
           )}
           footer={isCapped && <SeeAllLink href={seeAll.href} label={seeAll.label} />}

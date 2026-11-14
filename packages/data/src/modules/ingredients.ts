@@ -17,6 +17,16 @@ function toAlphaSort<I extends { name: string }>(arr: I[]) {
   return arr.toSorted((a, b) => a.name.localeCompare(b.name));
 }
 
+/**
+ * Most-referenced bottle first (the common bottles lead as recommendations),
+ * ties broken alphabetically so the order is stable.
+ */
+function byRecipeCountThenName(recipeCounts: Map<string, number>) {
+  return (a: { name: string; slug: string }, b: { name: string; slug: string }) =>
+    (recipeCounts.get(b.slug) ?? 0) - (recipeCounts.get(a.slug) ?? 0) ||
+    a.name.localeCompare(b.name);
+}
+
 export const getIngredient = memo(
   async (type: string, slug: string): Promise<RootIngredient> => {
     const filepath = path.join(INGREDIENT_ROOT, type, `${slug}.json`);
@@ -96,13 +106,16 @@ export const getIngredientPerCategories = memo(
 
 /**
  * Every bottle that belongs to a category: the ones declaring it directly
- * plus the ones from its child categories, each once, alphabetically.
+ * plus the ones from its child categories, each once. Ordered by how many
+ * recipes reference each bottle (most-used first — the common bottles lead
+ * as recommendations), ties broken alphabetically.
  */
 export const getIngredientsForCategory = async (
   category: Category,
 ): Promise<RootIngredient[]> => {
   const ingredientsByCategories = await getIngredientPerCategories();
   const categoriesByParent = await getCategoriesPerParent();
+  const recipeCounts = await getIngredientRecipeCounts();
   const bottleSlugs = new Set<string>();
 
   return [
@@ -117,7 +130,7 @@ export const getIngredientsForCategory = async (
       bottleSlugs.add(slug);
       return isUnique;
     })
-    .toSorted((a, b) => a.name.localeCompare(b.name));
+    .toSorted(byRecipeCountThenName(recipeCounts));
 };
 
 type IngredientSubstitutions = {
@@ -205,7 +218,9 @@ export const getSubstitutesForIngredient = memo(
 
     return {
       category: substitutionCategory.category,
-      substitutes: toAlphaSort(substitutes),
+      substitutes: substitutes.toSorted(
+        byRecipeCountThenName(await getIngredientRecipeCounts()),
+      ),
       relatedCategories,
     };
   },
@@ -235,3 +250,33 @@ export const getRecipesForIngredient = memo(
   },
   (ingredient) => ingredient.slug,
 );
+
+/**
+ * How many recipes reference each ingredient, keyed by slug. A recipe counts
+ * once per ingredient: as a direct ingredient, or as a milk-clarification
+ * material — the same references `getRecipesForIngredient` lists per bottle.
+ * Popularity ordering of substitution and category-member lists comes from
+ * these counts.
+ */
+export const getIngredientRecipeCounts = memo(async (): Promise<Map<string, number>> => {
+  const allRecipes = await getAllRecipes();
+  const counts = new Map<string, number>();
+
+  for (const recipe of allRecipes) {
+    const citedSlugs = new Set(recipe.ingredients.map(({ slug }) => slug));
+
+    for (const technique of recipe.techniques ?? []) {
+      match(technique)
+        .with({ technique: 'clarification', method: 'milk' }, ({ milk_type: milkType }) =>
+          citedSlugs.add(slugify(milkType)),
+        )
+        .otherwise(() => undefined);
+    }
+
+    for (const slug of citedSlugs) {
+      counts.set(slug, (counts.get(slug) ?? 0) + 1);
+    }
+  }
+
+  return counts;
+});

@@ -4,10 +4,13 @@ import {
   getChildCategories,
   getRelatedCategories,
 } from '@cocktails/data/categories';
-import { getIngredientsForCategory } from '@cocktails/data/ingredients';
+import {
+  getIngredientRecipeCounts,
+  getIngredientsForCategory,
+} from '@cocktails/data/ingredients';
 import { getCategoryPageParams } from '@cocktails/data/params';
 import { getRecipeByCategory } from '@cocktails/data/recipes';
-import { Card, CardContent, Stack } from '@mui/material';
+import { Card, CardContent, Stack, Typography } from '@mui/material';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import CategoryName from '#/components/CategoryName';
@@ -52,14 +55,14 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   const { slug } = await params;
 
   const category = await getCategory(slug);
-  const [members, relatedRecipes, childCategories, relatedCategories] = await Promise.all(
-    [
+  const [members, relatedRecipes, childCategories, relatedCategories, recipeCounts] =
+    await Promise.all([
       getIngredientsForCategory(category),
       getRecipeByCategory(category),
       getChildCategories(category),
       getRelatedCategories(category),
-    ],
-  );
+      getIngredientRecipeCounts(),
+    ]);
 
   const videos = category.refs.filter((ref) => ref.type === 'youtube');
   const [firstVideo, ...additionalVideos] = videos;
@@ -114,7 +117,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
         <LinkList
           header={`Examples of ${category.name}`}
           items={members}
-          renderItem={renderIngredient}
+          renderItem={(member) => renderIngredient(member, recipeCounts)}
         />
       )}
       <RelatedCategoriesList categories={relatedCategories} />
@@ -125,12 +128,17 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   );
 }
 
-function renderIngredient(ingredient: RootIngredient) {
+function renderIngredient(ingredient: RootIngredient, recipeCounts: Map<string, number>) {
   return (
     <LinkListItem
       key={ingredient.slug}
       href={ingredientHasData(ingredient) ? getIngredientUrl(ingredient) : undefined}
       primary={ingredient.name}
+      tertiary={
+        <Typography color="textSecondary">
+          {recipeCounts.get(ingredient.slug) ?? 0}
+        </Typography>
+      }
     />
   );
 }
