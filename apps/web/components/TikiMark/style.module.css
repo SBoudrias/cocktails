@@ -8,52 +8,52 @@
 }
 
 .night {
-  fill: var(--mui-palette-background-default);
+  fill: var(--background);
 }
 
 .moon {
-  fill: var(--mui-palette-background-paper);
+  fill: var(--paper);
 }
 
 .star {
-  fill: var(--mui-palette-secondary-light);
+  fill: var(--secondary-light);
 }
 
 .mug {
-  fill: var(--mui-palette-secondary-main);
+  fill: var(--secondary);
 }
 
 .mugShade {
-  fill: var(--mui-palette-secondary-dark);
+  fill: var(--secondary-dark);
 }
 
 .drink {
-  fill: var(--mui-palette-warning-dark);
+  fill: var(--warning-dark);
 }
 
 .carved {
-  fill: var(--mui-palette-background-default);
+  fill: var(--background);
 }
 
 .groove {
   fill: none;
-  stroke: var(--mui-palette-warning-dark);
+  stroke: var(--warning-dark);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .canopy {
-  fill: var(--mui-palette-primary-light);
+  fill: var(--primary-light);
 }
 
 .canopyRib {
   fill: none;
-  stroke: var(--mui-palette-primary-main);
+  stroke: var(--primary);
   stroke-linecap: round;
 }
 
 .stem {
   fill: none;
-  stroke: var(--mui-palette-secondary-dark);
+  stroke: var(--secondary-dark);
   stroke-linecap: round;
 }

@@ -1,4 +1,3 @@
-import { SvgIcon } from '@mui/material';
 import { match } from 'ts-pattern';
 import type { Shape } from './shapes';
 import styles from './style.module.css';
@@ -9,7 +8,16 @@ import styles from './style.module.css';
  * vessels in their material. `id` must be unique per shape on the page: it
  * names the drink's clip path and gradient.
  */
-export default function RecipeIcon({ shape, id }: { shape: Shape; id: string }) {
+export default function RecipeIcon({
+  shape,
+  id,
+  size = 56,
+}: {
+  shape: Shape;
+  id: string;
+  /** Rendered size in px; MUI's SvgIcon was sized via sx fontSize. */
+  size?: number;
+}) {
   const liquid = shape.liquid ?? shape.body;
   const bodyClass = match(shape.material)
     .with('silver', () => styles.silver)
@@ -29,11 +37,14 @@ export default function RecipeIcon({ shape, id }: { shape: Shape; id: string }) 
     .otherwise(() => styles.facet);
 
   return (
-    // Sized through sx, not the CSS module: emotion injects the base
-    // `.MuiSvgIcon-*` font-size at runtime, after the external stylesheet, so
-    // a module rule loses the cascade. sx wins it back (it is inserted after
-    // the base styles) and `styles.icon` keeps only the stroke properties.
-    <SvgIcon className={styles.icon} sx={{ fontSize: 56 }}>
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      aria-hidden="true"
+      focusable="false"
+      className={styles.icon}
+    >
       {shape.level !== undefined && liquid && (
         <defs>
           <linearGradient id={`${id}-drink`} x1="0" y1="0" x2="0" y2="1">
@@ -64,6 +75,6 @@ export default function RecipeIcon({ shape, id }: { shape: Shape; id: string }) 
       {shape.facets && <path d={shape.facets} className={facetClass} />}
       {shape.motion && <path d={shape.motion} className={styles.motion} />}
       {shape.solid && <path d={shape.solid} className={styles.solid} />}
-    </SvgIcon>
+    </svg>
   );
 }

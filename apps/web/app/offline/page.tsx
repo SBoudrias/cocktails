@@ -33,7 +33,7 @@ export default function OfflinePage() {
           textAlign: 'center',
         }}
       >
-        <TikiMark variant="detailed" sx={{ fontSize: 64, opacity: 0.5 }} />
+        <TikiMark variant="detailed" size={64} opacity={0.5} />
         <Typography variant="h5" component="h1">
           You are offline
         </Typography>
