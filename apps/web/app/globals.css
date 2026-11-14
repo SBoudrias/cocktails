@@ -1,34 +1,122 @@
-html,
-body {
-  max-width: 100vw;
-  min-height: 100%;
-  /* clip, not hidden: hidden makes body a scroll container that never
-     scrolls, and position: sticky never engages under it. */
-  overflow-x: clip;
+/* No preflight: MUI's CssBaseline still resets the pages that are not
+   migrated, and the reset below lives in the base layer so utilities win. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-roboto);
+  --font-heading: var(--font-roboto);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-header: var(--header);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
 }
 
-html {
-  height: 100%;
-  color-scheme: dark;
+/* Tiki nighttime palette, the same values as app/theme.tsx */
+:root {
+  --background: #0a1420; /* Dark starry night sky */
+  --foreground: #e8f4f4; /* Pale cyan-tinted white */
+  --card: rgb(21 37 53 / 0.9); /* Slightly lighter for cards */
+  --card-foreground: #e8f4f4;
+  --header: rgb(10 20 32 / 0.9);
+  --primary: #2a8a8a; /* Turquoise ocean water */
+  --primary-foreground: #ffffff;
+  --secondary: #e8b84d; /* Warm moonlight glow */
+  --secondary-foreground: #000000;
+  --muted: rgb(255 255 255 / 0.08);
+  --muted-foreground: #9dc4c4; /* Muted teal */
+  --accent: rgb(255 255 255 / 0.08);
+  --accent-foreground: #e8f4f4;
+  --destructive: #a85b7a; /* Magenta purple from palm silhouettes */
+  --border: rgb(93 184 216 / 0.12); /* Subtle turquoise divider */
+  --input: rgb(255 255 255 / 0.23);
+  --ring: #5dbdbd;
+  --radius: 0.25rem; /* MUI's shape.borderRadius */
+  /* The app bar's height, per orientation and breakpoint */
+  --app-bar-height: 56px;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@media (orientation: landscape) {
+  :root {
+    --app-bar-height: 48px;
+  }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@media (min-width: 600px) {
+  :root {
+    --app-bar-height: 64px;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer base {
+  html,
+  body {
+    max-width: 100vw;
+    min-height: 100%;
+    /* clip, not hidden: hidden makes body a scroll container that never
+       scrolls, and position: sticky never engages under it. */
+    overflow-x: clip;
+  }
 
-svg {
-  vertical-align: text-top;
+  html {
+    height: 100%;
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0 solid;
+    border-color: var(--color-border);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* The slice of Tailwind's preflight the shadcn controls rely on */
+  button,
+  input {
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  svg {
+    vertical-align: text-top;
+  }
 }
