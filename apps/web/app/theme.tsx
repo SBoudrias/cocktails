@@ -138,13 +138,6 @@ const theme = createTheme({
         }),
       },
     },
-    MuiListItemText: {
-      styleOverrides: {
-        root: {
-          textTransform: 'capitalize',
-        },
-      },
-    },
   },
 });
 

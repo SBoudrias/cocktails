@@ -1,0 +1,6 @@
+/* Ingredient rows are short labels: generic ingredient names ship lowercase in
+ * the data ("lime", "green apple"), so the rows title-case them like the
+ * recipe ingredient list does (IngredientList's own module). */
+.name {
+  text-transform: capitalize;
+}

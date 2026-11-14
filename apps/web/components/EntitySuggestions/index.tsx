@@ -12,6 +12,7 @@ import { match } from 'ts-pattern';
 import { LinkListItem } from '#/components/LinkList';
 import type { EntitySuggestion } from '#/modules/entitySuggestions';
 import { isEntityUrl } from '#/modules/url';
+import styles from './style.module.css';
 
 function getEntityView(kind: EntitySuggestion['kind']) {
   // Icon-only in the visible row; the label rides on the icon for screen
@@ -68,7 +69,7 @@ export default function EntitySuggestions({
                   sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}
                 >
                   {icon}
-                  {suggestion.name}
+                  <span className={styles.name}>{suggestion.name}</span>
                 </Box>
               }
             />

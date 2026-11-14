@@ -1,0 +1,5 @@
+/* Entity names are short labels: generic ingredient names ship lowercase in
+ * the data ("lime"), so the row title-cases them like the ingredient lists do. */
+.name {
+  text-transform: capitalize;
+}
