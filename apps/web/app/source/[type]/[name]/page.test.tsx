@@ -368,6 +368,24 @@ describe('SourcePage - Book sources', () => {
         screen.getByRole('link', { name: /three dots and a dash/i }),
       ).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /pupule/i })).toBeInTheDocument();
+      // The chapter is the group header; rows must not repeat it under the name
+      const row = screen.getByRole('link', { name: /pupule/i });
+      expect(row).toHaveTextContent("Smuggler's Cove");
+      expect(row).not.toHaveTextContent('The Birth of Tiki');
+    });
+
+    it('keeps the chapter in the row secondary text in A-Z view', async () => {
+      const { user } = await setupApp(
+        await SourcePage({
+          params: Promise.resolve({
+            type: TEST_BOOK_WITH_CHAPTERS.type,
+            name: TEST_BOOK_WITH_CHAPTERS.slug,
+          }),
+        }),
+      );
+
+      await user.click(screen.getByRole('button', { name: /a-z/i }));
+
       expect(screen.getByRole('link', { name: /pupule/i })).toHaveTextContent(
         "Smuggler's Cove · The Birth of Tiki",
       );
