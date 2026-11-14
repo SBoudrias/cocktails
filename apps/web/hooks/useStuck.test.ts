@@ -1,95 +1,106 @@
-import { act, renderHook } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { act, renderHook, waitFor } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useStuck } from './useStuck';
 
-/** A minimal stand-in for the browser's IntersectionObserver: records the
- * observe setup so a test can play entries back, as the browser would. */
-class IntersectionObserverMock {
-  static instances: IntersectionObserverMock[] = [];
-
-  callback: IntersectionObserverCallback;
-  options: IntersectionObserverInit | undefined;
-
-  constructor(
-    callback: IntersectionObserverCallback,
-    options?: IntersectionObserverInit,
-  ) {
-    this.callback = callback;
-    this.options = options;
-    IntersectionObserverMock.instances.push(this);
-  }
-
-  observe = vi.fn();
-  disconnect = vi.fn();
-  unobserve = vi.fn();
-  takeRecords = vi.fn(() => []);
-  root = null;
-  rootMargin = '';
-  scrollMargin = '';
-  thresholds = [];
-}
-
-/** Fire an entry at the last observer created, as the browser would. */
-function intersect(isIntersecting: boolean) {
-  const observer = IntersectionObserverMock.instances.at(-1);
-  if (observer == null) throw new Error('no observer was created');
-  const entries = [{ isIntersecting } as IntersectionObserverEntry];
-  act(() => observer.callback(entries, observer));
-}
-
+// The hook measures inside the rAF the browser would run on scroll; a
+// microtask stub keeps it async like the real one, and act() flushes it.
 beforeEach(() => {
-  IntersectionObserverMock.instances.length = 0;
-  vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
+  vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) => {
+    queueMicrotask(() => cb(0));
+    return 1;
+  });
+  vi.stubGlobal('cancelAnimationFrame', () => {});
+});
+afterEach(() => {
+  vi.unstubAllGlobals();
 });
 
-/** A sticky element attached to the page, as the callers' refs always are. */
-function stickyElement(top?: string) {
+/** A sticky element attached to the page, reporting its top from the viewport. */
+function stickyElement(top: string, flowTop = 400) {
   const el = document.createElement('div');
-  if (top) el.style.top = top;
+  el.style.top = top;
+  let rectTop = flowTop;
+  Object.defineProperty(el, 'getBoundingClientRect', {
+    configurable: true,
+    value: () => ({ top: rectTop }),
+  });
   document.body.appendChild(el);
-  return el;
+  return {
+    el,
+    placeAt: (v: number) => {
+      rectTop = v;
+    },
+  };
+}
+
+/** Scroll, and let the scheduled measurement run. */
+async function scroll() {
+  await act(async () => {
+    window.dispatchEvent(new Event('scroll'));
+  });
+}
+
+async function resize() {
+  await act(async () => {
+    window.dispatchEvent(new Event('resize'));
+  });
 }
 
 describe('useStuck', () => {
-  it('is false until the browser reports the element pinned, then true', () => {
-    const el = stickyElement('56px');
+  it('is false until the header sits at its sticky offset, then true', async () => {
+    const { el, placeAt } = stickyElement('56px');
     const ref = { current: el };
     const { result } = renderHook(() => useStuck(ref));
 
+    // In flow: the header sits below the sticky offset.
     expect(result.current).toBe(false);
 
-    intersect(true);
+    placeAt(300);
+    await scroll();
+    expect(result.current).toBe(false);
+
+    // Pinned: the header's top is exactly its own sticky offset.
+    placeAt(56);
+    await scroll();
     expect(result.current).toBe(true);
 
-    intersect(false);
+    // Released by its group's bottom edge: the header slides up past it.
+    placeAt(20);
+    await scroll();
     expect(result.current).toBe(false);
   });
 
-  it('watches a one-pixel band at the element own sticky offset', () => {
-    const el = stickyElement('56px');
+  it('measures the actual sticky offset the theme sets, per breakpoint', async () => {
+    const { el, placeAt } = stickyElement('64px');
     const ref = { current: el };
-    renderHook(() => useStuck(ref));
+    const { result } = renderHook(() => useStuck(ref));
 
-    const observer = IntersectionObserverMock.instances.at(-1)!;
-    expect(observer.options).toEqual({
-      // 56px clipped off the top, everything but one pixel off the bottom:
-      // the band a pinned element at top 56px overlaps exactly.
-      rootMargin: '-56px 0px -711px 0px',
-    });
-    expect(observer.observe).toHaveBeenCalledWith(el);
+    // 56 would be a false positive from a hardcoded offset: the offset is 64.
+    placeAt(56);
+    await scroll();
+    expect(result.current).toBe(false);
+
+    placeAt(64);
+    await scroll();
+    expect(result.current).toBe(true);
   });
 
-  it('re-observes when the viewport (and so the band) changes size', () => {
-    const ref = { current: stickyElement('56px') };
-    renderHook(() => useStuck(ref));
+  it('re-reads the offset and re-measures when the viewport resizes', async () => {
+    const { el, placeAt } = stickyElement('56px', 56);
+    const ref = { current: el };
+    const { result } = renderHook(() => useStuck(ref));
 
-    expect(IntersectionObserverMock.instances).toHaveLength(1);
+    placeAt(56);
+    await scroll();
+    expect(result.current).toBe(true);
 
-    act(() => {
-      window.dispatchEvent(new Event('resize'));
-    });
+    // A breakpoint changes the app bar's height, and so the sticky offset.
+    el.style.top = '64px';
+    await resize();
+    await waitFor(() => expect(result.current).toBe(false));
 
-    expect(IntersectionObserverMock.instances).toHaveLength(2);
-    expect(IntersectionObserverMock.instances[0]!.disconnect).toHaveBeenCalled();
+    placeAt(64);
+    await scroll();
+    expect(result.current).toBe(true);
   });
 });
