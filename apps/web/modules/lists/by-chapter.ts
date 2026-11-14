@@ -1,4 +1,5 @@
 import type { RecipeListItem } from '#/modules/recipeListItem';
+import { createChapterIndexMap } from './chapter-index';
 
 /**
  * Get the chapter display name for a recipe card.
@@ -54,11 +55,16 @@ export function createChapterHeaderComparator(
 
 /**
  * Create a list config with proper chapter ordering based on recipe card data.
+ * The index bar shows chapter order numbers (`01`..`N`, `Etc` last).
  */
 export function createByChapterListConfig(items: RecipeListItem[]) {
+  const { indexes, headerIndex } = createChapterIndexMap(items);
+
   return {
     groupBy: getChapterName,
     sortItemBy: compareByPage,
     sortHeaderBy: createChapterHeaderComparator(items),
+    indexes,
+    groupByIndex: (header: string) => headerIndex.get(header) ?? '',
   };
 }
