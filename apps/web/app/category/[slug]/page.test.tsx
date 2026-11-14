@@ -149,17 +149,25 @@ describe('CategoryPage', () => {
   });
 
   describe('basic rendering', () => {
-    it('renders parent category information', async () => {
+    it('renders parent category chips under the title', async () => {
       await setupApp(
         await CategoryPage({
           params: Promise.resolve({ slug: 'london-dry-gin' }),
         }),
       );
 
-      // London dry gin is a subset of Dry Gin
-      expect(screen.getByText(/is a subset of/)).toBeInTheDocument();
+      // London dry gin sits under Dry gin, as pills right under the title.
+      const chipsGroup = screen.getByRole('group', { name: 'Parent categories' });
+      const parentLink = within(chipsGroup).getByRole('link', { name: 'Dry gin' });
+      expect(parentLink).toHaveAttribute('href', '/category/dry-gin');
 
-      // The parent links from both the subset card and the related-categories
+      // The chips sit between the title and the rest of the page content.
+      const title = screen.getByRole('heading', { level: 1, name: 'London dry gin' });
+      expect(
+        title.compareDocumentPosition(chipsGroup) & Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+
+      // The parent links from both the chips and the related-categories
       // list, always to its category page.
       const dryGinLinks = screen.getAllByRole('link', { name: /^Dry gin/ });
       expect(dryGinLinks.length).toBeGreaterThan(0);
@@ -350,14 +358,18 @@ describe('CategoryPage', () => {
         }),
       );
 
-      // Parent categories should be visible initially
-      expect(screen.getByText(/is a subset of/)).toBeInTheDocument();
+      // Parent category chips should be visible initially
+      expect(
+        screen.getByRole('group', { name: 'Parent categories' }),
+      ).toBeInTheDocument();
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'fog');
 
-      // Parent categories should be hidden during search
-      expect(screen.queryByText(/is a subset of/)).not.toBeInTheDocument();
+      // Parent category chips should be hidden during search
+      expect(
+        screen.queryByRole('group', { name: 'Parent categories' }),
+      ).not.toBeInTheDocument();
     });
 
     it('hides ingredient members list when searching', async () => {
@@ -410,7 +422,9 @@ describe('CategoryPage', () => {
       await user.click(clearButton);
 
       // All content should be visible again
-      expect(screen.getByText(/is a subset of/)).toBeInTheDocument();
+      expect(
+        screen.getByRole('group', { name: 'Parent categories' }),
+      ).toBeInTheDocument();
       expect(screen.getByText(/Examples of.*London dry gin/)).toBeInTheDocument();
 
       // Recipes should be grouped alphabetically

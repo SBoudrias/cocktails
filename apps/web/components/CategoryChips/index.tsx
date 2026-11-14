@@ -4,16 +4,24 @@ import { Link, Stack } from '@mui/material';
 import { getCategoryUrl } from '#/modules/url';
 
 /**
- * An ingredient's category membership, as pill chips right under the page
- * title — every category it belongs to, each linking to its category page.
+ * Category membership as pill chips right under the page title — every
+ * category passed in, each linking to its category page. Ingredient pages
+ * list the ingredient's categories; category pages list its parents.
  */
-export default function CategoryChips({ categories }: { categories: Category[] }) {
+export default function CategoryChips({
+  categories,
+  label = 'Categories',
+}: {
+  categories: Category[];
+  /** Accessible name of the chips group. */
+  label?: string;
+}) {
   if (categories.length === 0) return null;
 
   return (
     <Stack
       role="group"
-      aria-label="Categories"
+      aria-label={label}
       direction="row"
       spacing={0.75}
       sx={{
