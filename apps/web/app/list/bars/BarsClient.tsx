@@ -1,15 +1,27 @@
 'use client';
 
-import { Card, CardHeader, Typography } from '@mui/material';
-import { useQueryState } from 'nuqs';
+import {
+  Card,
+  CardHeader,
+  Stack,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from '@mui/material';
+import { parseAsStringEnum, useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
+import { createByLocationListConfig } from '#/modules/lists/by-location';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import { getBarSearchText } from '#/modules/searchText';
 import { getBarRecipesUrl } from '#/modules/url';
 
 type Bar = { name: string; location?: string; recipeCount: number };
+
+type GroupMode = 'alpha' | 'city';
+
+const groupModes: GroupMode[] = ['alpha', 'city'];
 
 function renderBar(bar: Bar) {
   return (
@@ -25,6 +37,13 @@ function renderBar(bar: Bar) {
 
 export default function BarsClient({ bars }: { bars: Bar[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
+  const [groupMode, setGroupMode] = useQueryState<GroupMode>(
+    'group',
+    parseAsStringEnum(groupModes).withDefault('alpha'),
+  );
+
+  const listConfig =
+    groupMode === 'city' ? createByLocationListConfig(bars) : byNameListConfig;
 
   const emptyState = (
     <Card sx={{ m: 2 }}>
@@ -39,10 +58,26 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
       />
+      {!searchTerm && (
+        <Stack direction="row-reverse" sx={{ mx: 2 }}>
+          <ToggleButtonGroup
+            value={groupMode}
+            exclusive
+            onChange={(_, newValue: GroupMode | null) => {
+              if (newValue) setGroupMode(newValue);
+            }}
+            size="small"
+            aria-label="Bar grouping"
+          >
+            <ToggleButton value="alpha">A-Z</ToggleButton>
+            <ToggleButton value="city">By City</ToggleButton>
+          </ToggleButtonGroup>
+        </Stack>
+      )}
       <SearchableList
         items={bars}
         getSearchText={getBarSearchText}
-        config={byNameListConfig}
+        config={listConfig}
         renderItem={renderBar}
         searchTerm={searchTerm}
         emptyState={emptyState}

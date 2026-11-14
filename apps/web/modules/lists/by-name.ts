@@ -20,7 +20,7 @@ export function getNameForSorting<T extends { name: string }>(item: T): string {
   return strippedName;
 }
 
-function compareByName<T extends { name: string }>(a: T, b: T) {
+export function compareByName<T extends { name: string }>(a: T, b: T) {
   return getNameForSorting(a).localeCompare(getNameForSorting(b), undefined, {
     numeric: true,
   });

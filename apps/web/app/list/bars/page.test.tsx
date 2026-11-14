@@ -1,3 +1,4 @@
+import type { Attribution } from '@cocktails/data';
 import { getAllRecipes, getRecipe } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
@@ -130,7 +131,10 @@ describe('BarListPage', () => {
   it('groups bars by first letter when not searching', async () => {
     await setupApp(await BarListPage());
 
-    const groups = screen.getAllByRole('group');
+    // The toggle group has aria-label; list groups are labeled by their header
+    const groups = screen
+      .getAllByRole('group')
+      .filter((group) => group.getAttribute('aria-labelledby') !== null);
     expect(groups.length).toBeGreaterThan(0);
 
     const firstGroup = groups[0]!;
@@ -150,5 +154,114 @@ describe('BarListPage', () => {
 
     const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
     expect(link).toHaveTextContent(TEST_BAR.location);
+  });
+
+  it('shows grouping toggle with A-Z selected by default', async () => {
+    await setupApp(await BarListPage());
+
+    expect(screen.getByRole('group', { name: /bar grouping/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /a-z/i })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    expect(screen.getByRole('button', { name: /by city/i })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
+  });
+
+  it('loads city grouping mode from URL param', async () => {
+    mockRouter.setCurrentUrl('?group=city');
+    await setupApp(await BarListPage());
+
+    expect(screen.getByRole('button', { name: /by city/i })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+  });
+
+  it('hides grouping toggle when searching', async () => {
+    const { user } = await setupApp(await BarListPage());
+
+    expect(screen.getByRole('group', { name: /bar grouping/i })).toBeInTheDocument();
+
+    await user.type(screen.getByRole('searchbox'), 'sunken');
+
+    expect(
+      screen.queryByRole('group', { name: /bar grouping/i }),
+    ).not.toBeInTheDocument();
+  });
+});
+
+const barAttribution = (source: string, location?: string): Attribution => ({
+  relation: 'bar',
+  source,
+  location,
+});
+
+const multiCityRecipes = testRecipes.flatMap((recipe) => [
+  recipe,
+  {
+    ...recipe,
+    slug: `${recipe.slug}-orleans`,
+    attributions: [barAttribution('Latitude 29', 'New Orleans, LA')],
+  },
+  {
+    ...recipe,
+    slug: `${recipe.slug}-unknown`,
+    attributions: [barAttribution('Mystery Bar')],
+  },
+]);
+
+describe('BarListPage city grouping', () => {
+  beforeEach(() => {
+    vi.mocked(getAllRecipes).mockResolvedValue(multiCityRecipes);
+  });
+
+  it('switches to city grouping when By City is clicked', async () => {
+    const { user } = await setupApp(await BarListPage());
+
+    await user.click(screen.getByRole('button', { name: /by city/i }));
+
+    const brooklynGroup = screen.getByRole('group', { name: 'Brooklyn' });
+    expect(brooklynGroup).toHaveTextContent(TEST_BAR.name);
+    expect(screen.getByRole('group', { name: 'New Orleans' })).toHaveTextContent(
+      'Latitude 29',
+    );
+  });
+
+  it('updates URL with group param when toggled', async () => {
+    const onUrlUpdate = vi.fn();
+    const { user } = await setupApp(await BarListPage(), {
+      nuqsOptions: { onUrlUpdate },
+    });
+
+    await user.click(screen.getByRole('button', { name: /by city/i }));
+
+    expect(onUrlUpdate).toHaveBeenLastCalledWith(
+      expect.objectContaining({ queryString: '?group=city' }),
+    );
+  });
+
+  it('orders cities by bar count descending, Unknown last', async () => {
+    mockRouter.setCurrentUrl('?group=city');
+    await setupApp(await BarListPage());
+
+    const groups = screen.getAllByRole('group');
+    const headerNames = groups.map((group) => group.getAttribute('aria-labelledby'));
+    const cityNames = headerNames
+      .map((id) => document.getElementById(id ?? ''))
+      .filter((node): node is HTMLElement => node !== null)
+      .map((node) => node.textContent);
+
+    expect(cityNames).toEqual(['Brooklyn', 'New Orleans', 'Unknown']);
+  });
+
+  it('groups bars without a location under Unknown', async () => {
+    mockRouter.setCurrentUrl('?group=city');
+    await setupApp(await BarListPage());
+
+    const unknownGroup = screen.getByRole('group', { name: 'Unknown' });
+    expect(unknownGroup).toHaveTextContent('Mystery Bar');
   });
 });
