@@ -2,7 +2,11 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { RootIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import type { Source } from '../types/Source.ts';
-import { getIngredient, getSubstitutesForIngredient } from './ingredients';
+import {
+  getIngredient,
+  getIngredientRecipeCounts,
+  getSubstitutesForIngredient,
+} from './ingredients';
 import { getAllRecipes } from './recipes';
 
 vi.mock('./recipes', () => ({ getAllRecipes: vi.fn() }));
@@ -163,5 +167,88 @@ describe('getSubstitutesForIngredient', () => {
     );
 
     expect(substitution).toBeUndefined();
+  });
+
+  it('orders substitutes by recipe count, most-used first', async () => {
+    // Spreading recipes[0] directly would carry noUncheckedIndexedAccess's
+    // `| undefined` into every property, so pin it to a definite object.
+    const [milkDrink] = recipes;
+    if (milkDrink === undefined) throw new Error('fixture recipe missing');
+
+    const appleton8Drink: Recipe = {
+      ...milkDrink,
+      name: 'Appleton 8 drink',
+      slug: 'appleton-8-drink',
+      ingredients: [
+        {
+          ...wholeMilk,
+          name: 'Appleton 8',
+          slug: 'appleton-8',
+          type: 'spirit',
+          quantity: { amount: 1, unit: 'oz' },
+        },
+      ],
+    };
+
+    // Two recipes reference Appleton 8, one references Appleton 21 (as a
+    // milk-clarification material): the more-used bottle leads the
+    // substitution list of Appleton 12.
+    vi.mocked(getAllRecipes).mockResolvedValue([
+      appleton8Drink,
+      {
+        ...appleton8Drink,
+        name: 'Another Appleton 8 drink',
+        slug: 'another-appleton-8-drink',
+      },
+      {
+        ...milkDrink,
+        name: 'Appleton 21 drink',
+        slug: 'appleton-21-drink',
+        ingredients: [],
+        techniques: [
+          {
+            technique: 'clarification',
+            method: 'milk',
+            milk_type: 'Appleton 21',
+            quantity: { amount: 4, unit: 'oz' },
+          },
+        ],
+      },
+    ]);
+
+    // The substitution result and the recipe counts are both memoized from
+    // the earlier tests: clear the shared data caches so this mock takes.
+    for (const cache of globalThis.__cocktailsDataCaches ?? []) {
+      cache.clear();
+    }
+
+    const substitution = await getSubstitutesForIngredient(
+      await getIngredient('spirit', 'appleton-12'),
+    );
+
+    expect(substitution?.substitutes.map(({ slug }) => slug).at(0)).toBe('appleton-8');
+
+    for (const cache of globalThis.__cocktailsDataCaches ?? []) {
+      cache.clear();
+    }
+    vi.mocked(getAllRecipes).mockResolvedValue(recipes);
+  });
+});
+
+describe('getIngredientRecipeCounts', () => {
+  beforeEach(() => {
+    vi.mocked(getAllRecipes).mockResolvedValue(recipes);
+  });
+
+  it('counts each recipe once per ingredient, including clarification materials', async () => {
+    const counts = await getIngredientRecipeCounts();
+
+    // Whole milk: the direct reference in Ordinary Milk Drink plus the
+    // milk-clarification material in Clarified Drink — two recipes, one
+    // count each.
+    expect(counts.get('whole-milk')).toBe(2);
+    expect(counts.get('coconut-milk')).toBe(1);
+    // Recipes with no reference to an ingredient never zero it out.
+    expect(counts.get('unheard-of-bottle')).toBeUndefined();
   });
 });

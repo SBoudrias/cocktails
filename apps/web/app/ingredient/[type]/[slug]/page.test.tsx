@@ -271,8 +271,36 @@ describe('IngredientPage', () => {
       expect(substitutionGroup).not.toHaveTextContent('Smith & Cross');
 
       expect(
-        within(substitutionGroup).getByRole('link', { name: 'Appleton 21' }),
+        within(substitutionGroup).getByRole('link', { name: /^Appleton 21/ }),
       ).toHaveAttribute('href', getIngredientUrl(appleton21));
+    });
+
+    it('orders the primary list by recipe count and shows the count', async () => {
+      await setupApp(jamaicanRumPageJSX);
+
+      const substitutionGroup = screen.getByRole('group', {
+        name: 'Some substitution option',
+      });
+
+      // Recipe counts on the Blended aged rum (Jamaica) shelf: Appleton 8
+      // leads with 17 recipes, then Hamilton's gold (5), Hampden Estate 46
+      // (3); Appleton 21 (1) trails with the other single-recipe bottles.
+      const hrefs = within(substitutionGroup)
+        .getAllByRole('link')
+        .map((link) => link.getAttribute('href'));
+
+      const order = (slug: string) => hrefs.indexOf(`/ingredient/spirit/${slug}`);
+      expect(order('appleton-8')).toBeLessThan(order('hamilton-jamaican-pot-still-gold'));
+      expect(order('hamilton-jamaican-pot-still-gold')).toBeLessThan(
+        order('hampden-estate-46'),
+      );
+      expect(order('hampden-estate-46')).toBeLessThan(order('appleton-21'));
+
+      // Every bottle row carries its recipe count next to the name.
+      expect(substitutionGroup).toHaveTextContent('17');
+      expect(substitutionGroup).toHaveTextContent('5');
+      expect(substitutionGroup).toHaveTextContent('3');
+      expect(substitutionGroup).toHaveTextContent('1');
     });
 
     it('lists related categories, not bottles, in the secondary list', async () => {
@@ -320,11 +348,12 @@ describe('IngredientPage', () => {
       const links = within(substitutionGroup).getAllByRole('link');
       expect(links).toHaveLength(10);
 
-      expect(substitutionGroup).toHaveTextContent("Baker's Bourbon");
-      expect(substitutionGroup).toHaveTextContent(
-        'Evan Williams 1783 Small Batch Bourbon',
-      );
-      // The 10th bottle onward is cut off.
+      // Popularity ordering: the most-used bourbons lead — Elijah Craig
+      // (27), Old Grand-Dad Bonded (19), Buffalo Trace (17)...
+      expect(substitutionGroup).toHaveTextContent('Elijah Craig bourbon');
+      expect(substitutionGroup).toHaveTextContent('Old Grand-Dad Bonded Bourbon');
+      expect(substitutionGroup).toHaveTextContent('Buffalo Trace Bourbon');
+      // The 10th most-used bourbon onward is cut off.
       expect(substitutionGroup).not.toHaveTextContent('Evan Williams Black Label');
 
       // The see-all link closes the list and points at the category page.
