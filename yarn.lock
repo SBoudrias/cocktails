@@ -329,6 +329,7 @@ __metadata:
     react: "npm:19.3.1"
     react-dom: "npm:19.3.1"
     react-virtuoso: "npm:^4.18.20"
+    simple-icons: "npm:15.10.0"
     tailwindcss: "npm:4.3.5"
     ts-pattern: "npm:^5.9.2"
     typescript: "npm:7.0.2"
@@ -4335,6 +4336,13 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 10c0/41602dce540e46d599edba9d9860193398d135f7ff72cab629db5171516cfae628d21e7bfccde1bbfdf11c48726bc2a6d1a8fb8701125852fbfda7cf19c6aa83
+  languageName: node
+  linkType: hard
+
+"simple-icons@npm:15.10.0":
+  version: 15.10.0
+  resolution: "simple-icons@npm:15.10.0"
+  checksum: 10c0/b2c6b53d19432a6b015553f6d75c9964084eb9e0933ebd5f89e1f75b8ebc57597d22507008d649fdc2aa64630fe8d36308dcac750361dbd6f34dfdd07b8a96b1
   languageName: node
   linkType: hard
 

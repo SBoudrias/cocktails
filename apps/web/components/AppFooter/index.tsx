@@ -1,7 +1,7 @@
 'use client';
 
-import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link, Stack } from '@mui/material';
+import GitHubIcon from '#/components/icons/GitHubIcon';
 import TikiMark from '#/components/TikiMark';
 
 export default function AppFooter() {

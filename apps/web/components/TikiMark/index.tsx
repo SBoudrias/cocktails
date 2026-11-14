@@ -1,4 +1,3 @@
-import { SvgIcon, type SvgIconProps } from '@mui/material';
 import styles from './style.module.css';
 
 /**
@@ -12,12 +11,21 @@ import styles from './style.module.css';
  */
 export default function TikiMark({
   variant = 'mark',
+  size = 24,
   className,
   ...props
-}: SvgIconProps & { variant?: 'mark' | 'detailed' }) {
+}: Omit<React.ComponentProps<'svg'>, 'children'> & {
+  variant?: 'mark' | 'detailed';
+  /** Rendered size in px; MUI's SvgIcon defaulted to 24. */
+  size?: number;
+}) {
   return (
-    <SvgIcon
+    <svg
       viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      aria-hidden="true"
+      focusable="false"
       className={
         variant === 'mark'
           ? [styles.mark, className].filter(Boolean).join(' ')
@@ -114,6 +122,6 @@ export default function TikiMark({
         <rect x="12.9" y="14.3" width="0.85" height="2" className={styles.mug} />
         <path d="M10 18.6 q2 0.7 4 0" className={styles.groove} strokeWidth={0.45} />
       </g>
-    </SvgIcon>
+    </svg>
   );
 }

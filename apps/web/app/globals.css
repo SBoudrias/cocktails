@@ -48,6 +48,17 @@
   --input: rgb(255 255 255 / 0.23);
   --ring: #5dbdbd;
   --radius: 0.25rem; /* MUI's shape.borderRadius */
+  /* Icon-art palette (TikiMark, RecipeBadges): the shade steps MUI computed
+     from the theme, mirrored from app/theme.tsx. --paper is the solid
+     palette background.paper; --card carries the MuiPaper surface alpha. */
+  --paper: #152535;
+  --primary-light: #5dbdbd;
+  --secondary-light: #ffd580;
+  --secondary-dark: #c89a2f;
+  --info-light: #8dd4ed;
+  --warning: #d4883d;
+  --warning-dark: #a66628;
+  --error-light: #c98aa3;
 }
 
 @layer base {

@@ -1,6 +1,4 @@
 import type { YoutubeRef, YoutubeChannel } from '@cocktails/data';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import {
   Button,
   Card,
@@ -10,6 +8,8 @@ import {
   Typography,
   type SxProps,
 } from '@mui/material';
+import { ArrowUpRight } from 'lucide-react';
+import YoutubeIcon from '#/components/icons/YoutubeIcon';
 import Video from '#/components/Video';
 
 export default function YoutubeAboutCard({
@@ -26,7 +26,7 @@ export default function YoutubeAboutCard({
       <CardHeader
         title={
           <>
-            <YouTubeIcon />
+            <YoutubeIcon />
             &nbsp;{source.name}
           </>
         }
@@ -49,7 +49,7 @@ export default function YoutubeAboutCard({
           color="inherit"
         >
           Go to channel
-          <ArrowOutwardIcon />
+          <ArrowUpRight className="size-6" />
         </Button>
       </CardActions>
     </Card>
