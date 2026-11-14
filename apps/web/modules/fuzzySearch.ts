@@ -1,3 +1,8 @@
+// Runs before the transliterate import below: it builds its replacement map
+// with iterator helpers at module scope, which only exist on Safari 18.4+ —
+// without this the client bundle dies at load on older iOS.
+import 'core-js/modules/es.iterator.constructor.js';
+import 'core-js/modules/es.iterator.to-array.js';
 import uFuzzy from '@leeoniya/ufuzzy';
 import transliterate from '@sindresorhus/transliterate';
 
