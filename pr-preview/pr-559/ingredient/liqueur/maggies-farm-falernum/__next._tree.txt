@@ -1,4 +1,4 @@
-:HL["/cocktails/pr-preview/pr-559/_next/static/chunks/053vunsdistb-.css","style"]
+:HL["/cocktails/pr-preview/pr-559/_next/static/chunks/28pz3z0zrfbgs.css","style"]
 :HL["/cocktails/pr-preview/pr-559/_next/static/chunks/0say_a-kw9lt1.css","style"]
 :HL["/cocktails/pr-preview/pr-559/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/cocktails/pr-preview/pr-559/_next/static/chunks/34xf9m6qcd2jc.css","style"]
@@ -6,4 +6,4 @@
 3:[["children",{"s":{"n":"slug","t":"d","k":"maggies-farm-falernum","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"type","t":"d","k":"liqueur","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"ingredient","h":96,"c":"$Q2"}]]
-0:{"b":"fvkGsGY3CT1EOp6tYWjJa","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"R0Em3jflHA7jVHztxsCH4","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

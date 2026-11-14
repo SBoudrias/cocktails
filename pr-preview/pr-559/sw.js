@@ -5,21 +5,24 @@
 // placeholder is never served to browsers unbaked (registration is
 // production-only, see instrumentation-client.ts).
 
-const VERSION = 'aa2de8a80215';
+const VERSION = 'f5d501003ad0';
 const PRECACHE = [
+  "./_next/static/R0Em3jflHA7jVHztxsCH4/_buildManifest.js",
+  "./_next/static/R0Em3jflHA7jVHztxsCH4/_clientMiddlewareManifest.js",
+  "./_next/static/R0Em3jflHA7jVHztxsCH4/_ssgManifest.js",
   "./_next/static/chunks/04opod52v9snt.js",
-  "./_next/static/chunks/053vunsdistb-.css",
   "./_next/static/chunks/0bl64xmvat-7b.js",
   "./_next/static/chunks/0chs-5y9p59y7.js",
   "./_next/static/chunks/0cz1d0mv5g_q7.js",
-  "./_next/static/chunks/0fg___tezt2k5.js",
   "./_next/static/chunks/0jocoa7g3h96d.js",
+  "./_next/static/chunks/0l5ugrmcgiknt.js",
   "./_next/static/chunks/0m0h2i2sc3qt5.js",
   "./_next/static/chunks/0qq8pdm0ec9d5.js",
   "./_next/static/chunks/0rhul97pdx7av.js",
   "./_next/static/chunks/0say_a-kw9lt1.css",
   "./_next/static/chunks/0sus7mgpocs3-.js",
   "./_next/static/chunks/0tuf70q-o95rp.js",
+  "./_next/static/chunks/10iqx22f_aq8o.js",
   "./_next/static/chunks/12bcdv-fnzt59.js",
   "./_next/static/chunks/12cy4r9qmsu1g.js",
   "./_next/static/chunks/13sgrbf38drip.js",
@@ -30,7 +33,6 @@ const PRECACHE = [
   "./_next/static/chunks/1gtfet_wzdus8.js",
   "./_next/static/chunks/1h6wf2uzy7yo-.js",
   "./_next/static/chunks/1hojn8tpam69h.js",
-  "./_next/static/chunks/1ithf1nmaowwg.js",
   "./_next/static/chunks/1j4ks7_-vw_ie.js",
   "./_next/static/chunks/1n32j3hq1jdr-.js",
   "./_next/static/chunks/1udo3icl4w0jl.js",
@@ -38,6 +40,7 @@ const PRECACHE = [
   "./_next/static/chunks/23vj1ga-fiuhw.js",
   "./_next/static/chunks/240p2dgw8q557.js",
   "./_next/static/chunks/28nq42vf4-n24.js",
+  "./_next/static/chunks/28pz3z0zrfbgs.css",
   "./_next/static/chunks/2_mbugm_cpd98.js",
   "./_next/static/chunks/2c2a1wbrf7vzu.js",
   "./_next/static/chunks/2chy_0ouqph5t.js",
@@ -59,9 +62,6 @@ const PRECACHE = [
   "./_next/static/chunks/43_wjexzqmpd2.js",
   "./_next/static/chunks/43go7536q7xo3.js",
   "./_next/static/chunks/turbopack-0wnbi4001n3m6.js",
-  "./_next/static/fvkGsGY3CT1EOp6tYWjJa/_buildManifest.js",
-  "./_next/static/fvkGsGY3CT1EOp6tYWjJa/_clientMiddlewareManifest.js",
-  "./_next/static/fvkGsGY3CT1EOp6tYWjJa/_ssgManifest.js",
   "./_next/static/media/194ba805cef72e7e-s.0lvk2smlqz3yc.woff2",
   "./_next/static/media/2443b96ca66c6483-s.0fd-fjxmcxcjd.woff2",
   "./_next/static/media/2617c56fc138c6bf-s.42l_3z3944ji5.woff2",

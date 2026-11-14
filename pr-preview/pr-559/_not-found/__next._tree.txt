@@ -1,5 +1,5 @@
-:HL["/cocktails/pr-preview/pr-559/_next/static/chunks/053vunsdistb-.css","style"]
+:HL["/cocktails/pr-preview/pr-559/_next/static/chunks/28pz3z0zrfbgs.css","style"]
 :HL["/cocktails/pr-preview/pr-559/_next/static/chunks/0say_a-kw9lt1.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"fvkGsGY3CT1EOp6tYWjJa","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"R0Em3jflHA7jVHztxsCH4","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
