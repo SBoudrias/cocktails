@@ -8,10 +8,11 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material';
-import { parseAsStringEnum, useQueryState } from 'nuqs';
+import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
+import useLocalStorage from '#/hooks/useLocalStorage';
 import { byLocationListConfig } from '#/modules/lists/by-location';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import { getBarSearchText } from '#/modules/searchText';
@@ -20,8 +21,6 @@ import { getBarRecipesUrl } from '#/modules/url';
 type Bar = { name: string; location?: string; recipeCount: number };
 
 type GroupMode = 'alpha' | 'city';
-
-const groupModes: GroupMode[] = ['alpha', 'city'];
 
 function renderBar(bar: Bar, showLocation: boolean) {
   return (
@@ -37,17 +36,17 @@ function renderBar(bar: Bar, showLocation: boolean) {
 
 export default function BarsClient({ bars }: { bars: Bar[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
-  const [groupMode, setGroupMode] = useQueryState<GroupMode>(
-    'group',
-    parseAsStringEnum(groupModes).withDefault('alpha'),
-  );
+  const [groupMode, setGroupMode] = useLocalStorage<GroupMode>('bars-grouping', 'alpha');
 
-  const listConfig = groupMode === 'city' ? byLocationListConfig : byNameListConfig;
+  const hasLocations = bars.some((bar) => bar.location);
+  const isSearching = searchTerm != null && searchTerm.trim() !== '';
+  const isCityMode = hasLocations && groupMode === 'city';
+
+  const listConfig = isCityMode ? byLocationListConfig : byNameListConfig;
 
   // City-mode groups carry the full location in their header, so the item
   // sub-label would only repeat it. Keep it anywhere the list is flat.
-  const isSearching = searchTerm != null && searchTerm.trim() !== '';
-  const showLocation = groupMode !== 'city' || isSearching;
+  const showLocation = !isCityMode || isSearching;
 
   const emptyState = (
     <Card sx={{ m: 2 }}>
@@ -62,7 +61,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
       />
-      {!searchTerm && (
+      {hasLocations && !isSearching && (
         <Stack direction="row-reverse" sx={{ mx: 2 }}>
           <ToggleButtonGroup
             value={groupMode}

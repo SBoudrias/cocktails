@@ -30,6 +30,7 @@ const testRecipes = await Promise.all([
 ]);
 
 beforeEach(() => {
+  localStorage.removeItem('bars-grouping');
   vi.mocked(getAllRecipes).mockResolvedValue(testRecipes);
 });
 
@@ -170,14 +171,22 @@ describe('BarListPage', () => {
     );
   });
 
-  it('loads city grouping mode from URL param', async () => {
-    mockRouter.setCurrentUrl('?group=city');
+  it('loads city grouping mode from localStorage', async () => {
+    localStorage.setItem('bars-grouping', '"city"');
     await setupApp(await BarListPage());
 
     expect(screen.getByRole('button', { name: /by city/i })).toHaveAttribute(
       'aria-pressed',
       'true',
     );
+  });
+
+  it('persists grouping preference in localStorage', async () => {
+    const { user } = await setupApp(await BarListPage());
+
+    await user.click(screen.getByRole('button', { name: /by city/i }));
+
+    expect(localStorage.getItem('bars-grouping')).toBe('"city"');
   });
 
   it('hides grouping toggle when searching', async () => {
@@ -246,21 +255,17 @@ describe('BarListPage city grouping', () => {
     expect(link).toHaveTextContent(TEST_BAR.location!);
   });
 
-  it('updates URL with group param when toggled', async () => {
-    const onUrlUpdate = vi.fn();
-    const { user } = await setupApp(await BarListPage(), {
-      nuqsOptions: { onUrlUpdate },
-    });
+  it('switches back to A-Z grouping when the toggle is clicked back', async () => {
+    localStorage.setItem('bars-grouping', '"city"');
+    const { user } = await setupApp(await BarListPage());
 
-    await user.click(screen.getByRole('button', { name: /by city/i }));
+    await user.click(screen.getByRole('button', { name: /a-z/i }));
 
-    expect(onUrlUpdate).toHaveBeenLastCalledWith(
-      expect.objectContaining({ queryString: '?group=city' }),
-    );
+    expect(localStorage.getItem('bars-grouping')).toBe('"alpha"');
   });
 
-  it('orders cities alphabetically, Unknown last', async () => {
-    mockRouter.setCurrentUrl('?group=city');
+  it('orders locations alphabetically, Unknown last', async () => {
+    localStorage.setItem('bars-grouping', '"city"');
     await setupApp(await BarListPage());
 
     const groups = screen.getAllByRole('group');
@@ -274,7 +279,7 @@ describe('BarListPage city grouping', () => {
   });
 
   it('groups bars without a location under Unknown', async () => {
-    mockRouter.setCurrentUrl('?group=city');
+    localStorage.setItem('bars-grouping', '"city"');
     await setupApp(await BarListPage());
 
     const unknownGroup = screen.getByRole('group', { name: 'Unknown' });
