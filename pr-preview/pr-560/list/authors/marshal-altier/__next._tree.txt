@@ -1,8 +1,8 @@
-:HL["/cocktails/pr-preview/pr-560/_next/static/chunks/1pzv6v0q7p1ur.css","style"]
+:HL["/cocktails/pr-preview/pr-560/_next/static/chunks/1060xmw-a61qm.css","style"]
 :HL["/cocktails/pr-preview/pr-560/_next/static/chunks/0say_a-kw9lt1.css","style"]
 :HL["/cocktails/pr-preview/pr-560/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 4:[["children",{"s":"__PAGE__","h":160}]]
 3:[["children",{"s":{"n":"name","t":"d","k":"marshal-altier","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"authors","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"list","h":96,"c":"$Q2"}]]
-0:{"b":"2S3E4kK3qYBIOVyEnAtJs","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"wARS-PLLu3yueROjAbGBL","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
