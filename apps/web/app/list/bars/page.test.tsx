@@ -243,7 +243,7 @@ describe('BarListPage city grouping', () => {
     );
   });
 
-  it('orders cities by bar count descending, Unknown last', async () => {
+  it('orders cities alphabetically, Unknown last', async () => {
     mockRouter.setCurrentUrl('?group=city');
     await setupApp(await BarListPage());
 

@@ -43,7 +43,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
   );
 
   const listConfig =
-    groupMode === 'city' ? createByLocationListConfig(bars) : byNameListConfig;
+    groupMode === 'city' ? createByLocationListConfig() : byNameListConfig;
 
   const emptyState = (
     <Card sx={{ m: 2 }}>

@@ -42,18 +42,18 @@ describe('createByLocationListConfig', () => {
     { name: 'Mystery Bar' },
   ];
 
-  const config = createByLocationListConfig(bars);
+  const config = createByLocationListConfig();
 
   it('groups bars by city', () => {
     expect(config.groupBy(bars[0]!)).toBe('Chicago');
     expect(config.groupBy(bars[4]!)).toBe('Unknown');
   });
 
-  it('orders cities by bar count descending, ties alphabetically', () => {
+  it('orders cities alphabetically regardless of bar count', () => {
     const headers = ['Brooklyn', 'Chicago', 'New York', 'Unknown'].toSorted(
       config.sortHeaderBy,
     );
-    expect(headers).toEqual(['New York', 'Brooklyn', 'Chicago', 'Unknown']);
+    expect(headers).toEqual(['Brooklyn', 'Chicago', 'New York', 'Unknown']);
   });
 
   it('always puts Unknown last', () => {
