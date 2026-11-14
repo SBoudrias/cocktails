@@ -73,7 +73,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
   return (
     <>
       <AppHeader title={recipe.name} />
-      <Box component="main">
+      <Box>
         <RecipeBadges recipe={recipe} />
         <IngredientList
           ingredients={recipe.ingredients}

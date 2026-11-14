@@ -2,6 +2,7 @@
 
 import { Search } from '@mui/icons-material';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import TikiMark from '#/components/TikiMark';
 import { getRecipeListUrl } from '#/modules/url';
@@ -12,14 +13,33 @@ export default function AppHeader({ title }: { title: string }) {
 
   return (
     <>
-      <AppBar>
+      <AppBar
+        sx={{
+          // viewport-fit=cover lets the page paint under the status bar on
+          // notched phones; the toolbar must sit below the safe area.
+          pt: 'var(--safe-area-inset-top)',
+          // Left/right edges overlap the curved screen corners in landscape.
+          pl: 'var(--safe-area-inset-left)',
+          pr: 'var(--safe-area-inset-right)',
+        }}
+      >
         <Toolbar>
           {isHome ? (
-            <IconButton size="large" edge="start" disabled>
+            // The placeholder keeps the title centered on the home page
+            // (the logo button's slot, with nothing to go back to). Labeled
+            // even though disabled: an unlabeled button fails the
+            // accessible-name audit either way.
+            <IconButton size="large" edge="start" disabled aria-label="Cocktail Index">
               <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           ) : (
-            <IconButton size="large" edge="start" aria-label="Go to home" href="/">
+            <IconButton
+              size="large"
+              edge="start"
+              aria-label="Go to home"
+              component={Link}
+              href="/"
+            >
               <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           )}
@@ -35,6 +55,7 @@ export default function AppHeader({ title }: { title: string }) {
             size="large"
             edge="end"
             aria-label="Search"
+            component={Link}
             href={getRecipeListUrl()}
           >
             <Search />

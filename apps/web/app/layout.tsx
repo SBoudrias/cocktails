@@ -15,6 +15,9 @@ import 'core-js/modules/es.object.group-by.js';
 import { NuqsAdapter } from 'nuqs/adapters/react';
 import AppFooter from '#/components/AppFooter';
 import FullscreenHelper from '#/components/FullscreenHelper';
+import InstallHint from '#/components/InstallHint';
+import OfflineBanner from '#/components/OfflineBanner';
+import UpdateToast from '#/components/UpdateToast';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';
 import tikiLeavesTop from '../../../public/tiki-leaves-top.webp';
 import theme from './theme';
@@ -116,13 +119,18 @@ export default function RootLayout({
                   backgroundRepeat: 'no-repeat, no-repeat',
                 }}
               >
-                <Box sx={{ flexGrow: 1 }}>{children}</Box>
+                <Box component="main" sx={{ flexGrow: 1 }}>
+                  {children}
+                </Box>
                 <AppFooter />
               </Box>
             </NuqsAdapter>
           </ThemeProvider>
         </AppRouterCacheProvider>
         <FullscreenHelper />
+        <OfflineBanner />
+        <UpdateToast />
+        <InstallHint />
         <GoogleAnalytics gaId="G-XSDN5REM9F" />
       </body>
     </html>

@@ -262,9 +262,13 @@ const referencedChunks = precacheUrls.filter(
 if (referencedChunks.length < 2) {
   throw new Error('the visited recipe page references fewer than two precached chunks');
 }
-const droppedChunks = referencedChunks.slice(0, 2);
-const deployBPrecache = precacheUrls.filter((url) => !droppedChunks.includes(url));
-const deployBVersion = `b${deployAVersion.slice(1)}`;
+const droppedChunks = new Set(referencedChunks.slice(0, 2));
+const deployBPrecache = precacheUrls.filter((url) => !droppedChunks.has(url));
+// Appended, never substituted: a version like 'b175…' would otherwise
+// rewrite to itself ('b' + '175…' === deployAVersion), deploy B would
+// reuse deploy A's precache cache name, and the retirement check below
+// could never pass.
+const deployBVersion = `${deployAVersion}-b`;
 await writeFile(
   path.join(overlayDir, 'sw.js'),
   swSource

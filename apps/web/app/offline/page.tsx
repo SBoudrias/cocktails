@@ -22,7 +22,6 @@ export default function OfflinePage() {
     <>
       <AppHeader title="Indexotica" />
       <Box
-        component="main"
         sx={{
           display: 'flex',
           flexDirection: 'column',

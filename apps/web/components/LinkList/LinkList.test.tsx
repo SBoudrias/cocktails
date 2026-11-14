@@ -117,6 +117,17 @@ describe('LinkListItem', () => {
     expect(link).toHaveAttribute('href', getRecipeListUrl());
   });
 
+  it('keeps the row a plain chevron until the navigation is pending', () => {
+    // The spinner only appears while Next's Link reports a pending
+    // navigation (a first visit whose prefetch has not landed); outside a
+    // pending navigation the row shows its chevron, which MUI renders as
+    // a decorative svg.
+    render(<LinkListItem primary="Test Item" href={getRecipeListUrl()} />);
+    const item = screen.getByRole('listitem');
+    expect(item.querySelector('svg')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Opening')).not.toBeInTheDocument();
+  });
+
   it('renders tertiary content when provided', () => {
     render(<LinkListItem primary="Test Item" tertiary={<span data-test>Extra</span>} />);
     const item = screen.getByRole('listitem');

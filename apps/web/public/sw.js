@@ -110,6 +110,13 @@ async function cacheFirst(request) {
   return response;
 }
 
+// The update toast (components/UpdateToast) sends this when the user picks
+// "Update": the waiting worker stops waiting and starts controlling the
+// page on the reload that follows.
+self.addEventListener('message', (event) => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+});
+
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET') return;
