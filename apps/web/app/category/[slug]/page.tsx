@@ -10,10 +10,10 @@ import {
 } from '@cocktails/data/ingredients';
 import { getCategoryPageParams } from '@cocktails/data/params';
 import { getRecipeByCategory } from '@cocktails/data/recipes';
-import { Card, CardContent, Stack, Typography } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
-import CategoryName from '#/components/CategoryName';
+import CategoryChips from '#/components/CategoryChips';
 import FixBugCard from '#/components/FixBugCard';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
@@ -73,6 +73,9 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       catalogKey={relatedRecipes.length > 0 ? `category/${category.slug}` : undefined}
       recipeCount={relatedRecipes.length}
       listHeader={`Recipes using ${category.name}`}
+      underTitle={
+        <CategoryChips categories={category.parents} label="Parent categories" />
+      }
       footer={
         <FixBugCard
           fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${category.slug}.json`}
@@ -81,23 +84,9 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       }
     >
       {firstVideo && <Video id={firstVideo.videoId} start={firstVideo.start} />}
-      {(category.description || category.parents.length > 0) && (
+      {category.description && (
         <Card sx={{ m: 1 }}>
-          {category.description && <CardContent>{category.description}</CardContent>}
-          {category.parents.length > 0 && (
-            <CardContent>
-              <b>{category.name}</b> is a subset of
-              <Stack
-                direction="row"
-                spacing={1}
-                sx={{ flexWrap: 'wrap', alignItems: 'baseline' }}
-              >
-                {category.parents.map((parentCategory) => (
-                  <CategoryName key={parentCategory.slug} category={parentCategory} />
-                ))}
-              </Stack>
-            </CardContent>
-          )}
+          <CardContent>{category.description}</CardContent>
         </Card>
       )}
       {childCategories.length > 0 && (

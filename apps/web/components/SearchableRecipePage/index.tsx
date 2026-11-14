@@ -144,6 +144,7 @@ export default function SearchableRecipePage({
   listHeader,
   children,
   footer,
+  underTitle,
 }: {
   title?: string;
   /** Rows baked into the static HTML; catalog-driven pages omit this. */
@@ -155,6 +156,8 @@ export default function SearchableRecipePage({
   listHeader: string;
   children?: ReactNode;
   footer?: ReactNode;
+  /** Rendered directly under the page title, hidden while a search is active. */
+  underTitle?: ReactNode;
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
@@ -180,12 +183,13 @@ export default function SearchableRecipePage({
   return (
     <>
       {!fromCatalog && allRecipes.length === 0 && title != null ? (
-        <AppHeader title={title} />
+        <AppHeader title={title} underTitle={underTitle} />
       ) : (
         <SearchHeader
           title={title}
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
+          underTitle={underTitle}
         />
       )}
       {!isSearching && children}
