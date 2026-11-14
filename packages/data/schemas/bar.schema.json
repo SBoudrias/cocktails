@@ -11,7 +11,7 @@
       "type": "string"
     },
     "location": {
-      "description": "The 'City, ST' string attributions use, when known",
+      "description": "The location string attributions use, when known: 'City, ST' with the 2-letter USPS code for US bars (or a Canadian province code), 'City, Country' elsewhere, a bare country when nothing more is known. A venue or neighborhood may lead the chain ('Disneyland, Anaheim, CA')",
       "type": "string"
     },
     "links": {

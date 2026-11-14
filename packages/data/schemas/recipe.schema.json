@@ -161,7 +161,10 @@
             "properties": {
               "relation": { "const": "bar" },
               "source": { "type": "string" },
-              "location": { "type": "string" }
+              "location": {
+                "description": "The bar's location: 'City, ST' (2-letter USPS or Canadian province code) for US/Canada, 'City, Country' elsewhere, a bare country when nothing more is known",
+                "type": "string"
+              }
             },
             "required": ["source", "relation"],
             "additionalProperties": false
