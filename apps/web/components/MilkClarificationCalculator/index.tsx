@@ -311,7 +311,7 @@ export default function MilkClarificationCalculator({ sx }: { sx?: SxProps }) {
           <Paper square>
             {instructions.map((instruction, index) => (
               <ListItem divider key={instruction}>
-                <ListItemText sx={{ textTransform: 'none' }}>
+                <ListItemText>
                   {index + 1}. {instruction}
                 </ListItemText>
               </ListItem>
@@ -323,10 +323,7 @@ export default function MilkClarificationCalculator({ sx }: { sx?: SxProps }) {
         <Paper square>
           <Link href={getMilkClarifiedRecipeListUrl()}>
             <ListItem divider secondaryAction={<ChevronRightIcon />}>
-              <ListItemText
-                primary="Browse milk-clarified recipes"
-                sx={{ textTransform: 'none' }}
-              />
+              <ListItemText primary="Browse milk-clarified recipes" />
             </ListItem>
           </Link>
         </Paper>

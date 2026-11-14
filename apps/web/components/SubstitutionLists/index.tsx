@@ -6,6 +6,7 @@ import type { Route } from 'next';
 import Link from 'next/link';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import { ingredientHasData } from '#/modules/hasData';
+import { sentenceCase } from '#/modules/sentenceCase';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 
 /**
@@ -112,7 +113,7 @@ export default function SubstitutionLists({
               href={
                 ingredientHasData(substitute) ? getIngredientUrl(substitute) : undefined
               }
-              primary={substitute.name}
+              primary={sentenceCase(substitute.name)}
               tertiary={
                 <Typography color="textSecondary">
                   {recipeCounts.get(substitute.slug) ?? 0}

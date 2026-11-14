@@ -22,4 +22,18 @@ describe('toIngredientListItems', () => {
       searchText: expect.stringContaining('aged rum'),
     });
   });
+
+  it('starts generic lowercase names with a capital, leaving the rest alone', async () => {
+    const banana = await getIngredient('fruit', 'banana');
+    const syrup = await getIngredient('syrup', 'strawberry-syrup');
+
+    const items = toIngredientListItems([banana, syrup]);
+
+    expect(items.map((item) => item.name)).toMatchInlineSnapshot(`
+      [
+        "Banana",
+        "Strawberry syrup",
+      ]
+    `);
+  });
 });

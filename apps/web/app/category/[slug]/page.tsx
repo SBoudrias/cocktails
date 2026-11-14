@@ -21,6 +21,7 @@ import { RelatedCategoriesList } from '#/components/SubstitutionLists';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
+import { sentenceCase } from '#/modules/sentenceCase';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 
 type Params = { slug: string };
@@ -133,7 +134,7 @@ function renderIngredient(ingredient: RootIngredient, recipeCounts: Map<string, 
     <LinkListItem
       key={ingredient.slug}
       href={ingredientHasData(ingredient) ? getIngredientUrl(ingredient) : undefined}
-      primary={ingredient.name}
+      primary={sentenceCase(ingredient.name)}
       tertiary={
         <Typography color="textSecondary">
           {recipeCounts.get(ingredient.slug) ?? 0}

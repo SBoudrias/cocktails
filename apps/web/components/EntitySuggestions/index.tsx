@@ -11,6 +11,7 @@ import { Box, List, Paper } from '@mui/material';
 import { match } from 'ts-pattern';
 import { LinkListItem } from '#/components/LinkList';
 import type { EntitySuggestion } from '#/modules/entitySuggestions';
+import { sentenceCase } from '#/modules/sentenceCase';
 import { isEntityUrl } from '#/modules/url';
 
 function getEntityView(kind: EntitySuggestion['kind']) {
@@ -68,7 +69,7 @@ export default function EntitySuggestions({
                   sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}
                 >
                   {icon}
-                  {suggestion.name}
+                  {sentenceCase(suggestion.name)}
                 </Box>
               }
             />

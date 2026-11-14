@@ -64,7 +64,7 @@ export default function RecipeAttributionList({
             getAttributionView(attribution);
 
           const content = (
-            <Typography component="span" sx={{ textTransform: 'none' }}>
+            <Typography component="span">
               <Typography component="span" color="textSecondary">
                 {`${label} `}
               </Typography>
