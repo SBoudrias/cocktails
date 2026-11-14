@@ -4,12 +4,12 @@
 
 .modifier {
   font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
+  color: var(--muted-foreground);
   text-transform: lowercase;
 }
 
 .unit {
   font-size: 0.8em;
-  color: var(--mui-palette-text-secondary);
+  color: var(--muted-foreground);
   text-transform: lowercase;
 }

@@ -137,7 +137,7 @@ describe('IngredientList', () => {
 
     render(<IngredientList ingredients={ingredients} />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'ml' }));
+    fireEvent.click(screen.getByRole('radio', { name: 'ml' }));
 
     const ingredientList = screen.getByRole('list');
     expect(ingredientList).toHaveTextContent('2 dash');

@@ -1,9 +1,14 @@
 'use client';
 
-import { Add, Remove } from '@mui/icons-material';
-import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { Minus, Plus } from 'lucide-react';
 import type { ChangeEvent } from 'react';
-import { useState } from 'react';
+import { useId, useState } from 'react';
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from '#/components/ui/input-group';
 
 const MIN_SERVINGS = 0.25;
 const MAX_SERVINGS = 50;
@@ -15,6 +20,7 @@ export default function ServingSelector({
   servings: number;
   onChange: (servings: number) => void;
 }) {
+  const labelId = useId();
   const [draft, setDraft] = useState<{
     base: number;
     text: string;
@@ -67,47 +73,53 @@ export default function ServingSelector({
   };
 
   return (
-    <TextField
-      type="number"
-      size="small"
-      label="Servings"
-      value={inputValue ?? servings}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      slotProps={{
-        input: {
-          startAdornment: (
-            <InputAdornment position="start">
-              <IconButton
-                onClick={handleDecrement}
-                disabled={servings <= MIN_SERVINGS}
-                size="small"
-                aria-label="Decrement"
-              >
-                <Remove fontSize="small" />
-              </IconButton>
-            </InputAdornment>
-          ),
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                onClick={handleIncrement}
-                disabled={servings >= MAX_SERVINGS}
-                size="small"
-                aria-label="Increment"
-              >
-                <Add fontSize="small" />
-              </IconButton>
-            </InputAdornment>
-          ),
-        },
-        htmlInput: {
-          min: MIN_SERVINGS,
-          max: MAX_SERVINGS,
-          step: MIN_SERVINGS,
-          'aria-label': 'Number of servings',
-        },
-      }}
-    />
+    // An outlined field with its label notched into the border, the way the
+    // MUI TextField drew it: the fieldset is the outline, its legend the notch.
+    <div className="relative w-[151px]">
+      <fieldset
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -top-[5px] rounded-sm border border-input px-2"
+      >
+        <legend id={labelId} className="px-1 text-xs leading-none text-muted-foreground">
+          Servings
+        </legend>
+      </fieldset>
+      <InputGroup
+        aria-labelledby={labelId}
+        className="h-10 border-0 has-[[data-slot=input-group-control]:focus-visible]:ring-0"
+      >
+        <InputGroupAddon>
+          <InputGroupButton
+            size="icon-sm"
+            onClick={handleDecrement}
+            disabled={servings <= MIN_SERVINGS}
+            aria-label="Decrement"
+          >
+            <Minus />
+          </InputGroupButton>
+        </InputGroupAddon>
+        <InputGroupInput
+          type="number"
+          className="text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+          value={inputValue ?? servings}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          min={MIN_SERVINGS}
+          max={MAX_SERVINGS}
+          step={MIN_SERVINGS}
+          aria-label="Number of servings"
+        />
+        <InputGroupAddon align="inline-end">
+          <InputGroupButton
+            size="icon-sm"
+            onClick={handleIncrement}
+            disabled={servings >= MAX_SERVINGS}
+            aria-label="Increment"
+          >
+            <Plus />
+          </InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
   );
 }
