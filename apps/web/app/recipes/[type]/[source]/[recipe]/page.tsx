@@ -1,7 +1,6 @@
 import type { Source, WebsiteRef, YoutubeRef } from '@cocktails/data';
 import { getRecipePageParams } from '@cocktails/data/params';
 import { getRecipe } from '@cocktails/data/recipes';
-import { Box, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { match, P } from 'ts-pattern';
 import AppHeader from '#/components/AppHeader';
@@ -10,6 +9,7 @@ import IngredientList from '#/components/IngredientList';
 import RecipeAttributionList from '#/components/RecipeAttributionList';
 import RecipeBadges from '#/components/RecipeBadges';
 import SourceAboutCard from '#/components/SourceAboutCard';
+import { List, ListRow, ListSubheader } from '#/components/ui/list';
 import VideoListCard from '#/components/VideoListCard';
 import WebsiteListCard from '#/components/WebsiteListCard';
 import { getRecipeEditUrl } from '#/modules/url';
@@ -73,7 +73,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
   return (
     <>
       <AppHeader title={recipe.name} />
-      <Box component="main">
+      <main>
         <RecipeBadges recipe={recipe} />
         <IngredientList
           ingredients={recipe.ingredients}
@@ -81,18 +81,16 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           defaultServings={recipe.servings}
         />
         {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
-          <List>
-            <ListSubheader>Instructions</ListSubheader>
-            <Paper square>
+          <section className="py-2">
+            <ListSubheader id="instructions-subheader">Instructions</ListSubheader>
+            <List aria-labelledby="instructions-subheader">
               {recipe.instructions.map((instruction, index) => (
-                <ListItem divider key={instruction}>
-                  <ListItemText>
-                    {index + 1}. {instruction}
-                  </ListItemText>
-                </ListItem>
+                <ListRow key={instruction}>
+                  {index + 1}. {instruction}
+                </ListRow>
               ))}
-            </Paper>
-          </List>
+            </List>
+          </section>
         )}
         {recipe.attributions.length > 0 && (
           <RecipeAttributionList attributions={recipe.attributions} />
@@ -101,12 +99,12 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           source={recipe.source}
           chapterName={recipe.chapter?.name}
           refs={recipe.refs}
-          sx={{ m: 1 }}
+          className="m-2"
         />
-        {videos.length > 0 && <VideoListCard refs={videos} sx={{ m: 1 }} />}
-        {websites.length > 0 && <WebsiteListCard refs={websites} sx={{ m: 1 }} />}
-        <FixBugCard fixUrl={getRecipeEditUrl(recipe)} sx={{ m: 1 }} />
-      </Box>
+        {videos.length > 0 && <VideoListCard refs={videos} className="m-2" />}
+        {websites.length > 0 && <WebsiteListCard refs={websites} className="m-2" />}
+        <FixBugCard fixUrl={getRecipeEditUrl(recipe)} className="m-2" />
+      </main>
     </>
   );
 }

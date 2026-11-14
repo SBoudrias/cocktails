@@ -1,54 +1,47 @@
 import type { Podcast } from '@cocktails/data';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import PodcastsIcon from '@mui/icons-material/Podcasts';
+import { ArrowUpRight, Podcast as PodcastIcon } from 'lucide-react';
+import { buttonVariants } from '#/components/ui/button-variants';
 import {
-  Button,
   Card,
-  CardActions,
   CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
-  Typography,
-  type SxProps,
-} from '@mui/material';
+  CardTitle,
+} from '#/components/ui/card';
 
 export default function PodcastAboutCard({
   source,
   episodeTitle,
   episodeLink,
-  sx,
+  className,
 }: {
   source: Podcast;
   episodeTitle?: string;
   episodeLink?: string;
-  sx?: SxProps;
+  className?: string;
 }) {
   return (
-    <Card sx={sx}>
-      <CardHeader
-        title={
-          <>
-            <PodcastsIcon />
-            &nbsp;{source.name}
-          </>
-        }
-        subheader={episodeTitle ? `Episode: ${episodeTitle}` : undefined}
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {source.description}
-        </Typography>
-      </CardContent>
-      <CardActions sx={{ justifyContent: 'end' }}>
-        <Button
+    <Card className={className}>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-2xl font-normal">
+          <PodcastIcon className="size-6" />
+          {source.name}
+        </CardTitle>
+        {episodeTitle && <CardDescription>Episode: {episodeTitle}</CardDescription>}
+      </CardHeader>
+      <CardContent className="text-muted-foreground">{source.description}</CardContent>
+      <CardFooter className="justify-end border-0 bg-transparent px-2 pt-0 pb-2">
+        <a
           href={episodeLink || source.link}
           target="_blank"
           rel="noreferrer noopener"
-          color="inherit"
+          className={buttonVariants({ variant: 'ghost' })}
         >
           {episodeLink ? 'Listen to episode' : 'Listen to podcast'}
-          <ArrowOutwardIcon />
-        </Button>
-      </CardActions>
+          <ArrowUpRight />
+        </a>
+      </CardFooter>
     </Card>
   );
 }
