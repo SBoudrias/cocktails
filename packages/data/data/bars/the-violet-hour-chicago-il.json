@@ -1,5 +1,5 @@
 {
   "$schema": "../../schemas/bar.schema.json",
   "name": "The Violet Hour",
-  "location": "Chicago"
+  "location": "Chicago, IL"
 }
