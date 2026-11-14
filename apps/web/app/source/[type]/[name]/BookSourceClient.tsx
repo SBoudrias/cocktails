@@ -89,7 +89,7 @@ export default function BookSourceClient({
   return (
     <>
       <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-      <SourceAboutCard source={source} sx={{ m: 2 }} />
+      <SourceAboutCard source={source} className="m-4" />
       {hasChapters && (
         <Stack direction="row-reverse" sx={{ mx: 2 }}>
           <GroupModeToggle value={groupMode} onChange={setGroupMode} />

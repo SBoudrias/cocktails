@@ -1,5 +1,4 @@
 import type { Recipe } from '@cocktails/data';
-import { Grid, Typography } from '@mui/material';
 import RecipeIcon from './RecipeIcon';
 import { glasswareShapes, preparationShapes, servedOnShapes } from './shapes';
 import styles from './style.module.css';
@@ -28,24 +27,23 @@ export default function RecipeBadges({
   ];
 
   return (
-    <Grid
-      container
-      component="ul"
+    <ul
       aria-label="Preparation, ice and glassware"
-      columns={3}
-      className={styles.badges}
-      sx={{ my: 1 }}
+      className={`${styles.badges} my-2 grid grid-cols-3`}
     >
       {badges.map(({ field, value, shape }) => (
-        <Grid size={1} component="li" key={field} className={styles.badge}>
+        <li key={field} className={styles.badge}>
           <div className={styles.bubble}>
             <RecipeIcon shape={shape} id={`recipe-icon-${field}`} />
           </div>
-          <Typography variant="caption" color="text.secondary" className={styles.caption}>
+          {/* MUI's caption type: 12px, 1.66 line height, 0.4px tracking */}
+          <span
+            className={`${styles.caption} text-xs leading-[1.66] tracking-[0.03333em]`}
+          >
             {value}
-          </Typography>
-        </Grid>
+          </span>
+        </li>
       ))}
-    </Grid>
+    </ul>
   );
 }
