@@ -23,13 +23,13 @@ type GroupMode = 'alpha' | 'city';
 
 const groupModes: GroupMode[] = ['alpha', 'city'];
 
-function renderBar(bar: Bar) {
+function renderBar(bar: Bar, showLocation: boolean) {
   return (
     <LinkListItem
       key={bar.name + (bar.location ?? '')}
       href={getBarRecipesUrl(bar)}
       primary={bar.name}
-      secondary={bar.location}
+      secondary={showLocation ? bar.location : undefined}
       tertiary={<Typography color="textSecondary">{bar.recipeCount}</Typography>}
     />
   );
@@ -44,6 +44,11 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
 
   const listConfig =
     groupMode === 'city' ? createByLocationListConfig() : byNameListConfig;
+
+  // City-mode groups carry the full location in their header, so the item
+  // sub-label would only repeat it. Keep it anywhere the list is flat.
+  const isSearching = searchTerm != null && searchTerm.trim() !== '';
+  const showLocation = groupMode !== 'city' || isSearching;
 
   const emptyState = (
     <Card sx={{ m: 2 }}>
@@ -78,7 +83,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         items={bars}
         getSearchText={getBarSearchText}
         config={listConfig}
-        renderItem={renderBar}
+        renderItem={(bar) => renderBar(bar, showLocation)}
         searchTerm={searchTerm}
         emptyState={emptyState}
       />

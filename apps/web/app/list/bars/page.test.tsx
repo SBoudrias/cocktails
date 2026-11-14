@@ -223,11 +223,27 @@ describe('BarListPage city grouping', () => {
 
     await user.click(screen.getByRole('button', { name: /by city/i }));
 
-    const brooklynGroup = screen.getByRole('group', { name: 'Brooklyn' });
+    const brooklynGroup = screen.getByRole('group', { name: 'Brooklyn, NY' });
     expect(brooklynGroup).toHaveTextContent(TEST_BAR.name);
-    expect(screen.getByRole('group', { name: 'New Orleans' })).toHaveTextContent(
+    expect(screen.getByRole('group', { name: 'New Orleans, LA' })).toHaveTextContent(
       'Latitude 29',
     );
+  });
+
+  it('hides the location sub-label in city mode: the header already carries it', async () => {
+    const { user } = await setupApp(await BarListPage());
+
+    await user.click(screen.getByRole('button', { name: /by city/i }));
+
+    const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
+    expect(link).not.toHaveTextContent(TEST_BAR.location!);
+  });
+
+  it('keeps the location sub-label in A-Z mode', async () => {
+    await setupApp(await BarListPage());
+
+    const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
+    expect(link).toHaveTextContent(TEST_BAR.location!);
   });
 
   it('updates URL with group param when toggled', async () => {
@@ -254,7 +270,7 @@ describe('BarListPage city grouping', () => {
       .filter((node): node is HTMLElement => node !== null)
       .map((node) => node.textContent);
 
-    expect(cityNames).toEqual(['Brooklyn', 'New Orleans', 'Unknown']);
+    expect(cityNames).toEqual(['Brooklyn, NY', 'New Orleans, LA', 'Unknown']);
   });
 
   it('groups bars without a location under Unknown', async () => {
