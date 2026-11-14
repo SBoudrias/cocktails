@@ -10,6 +10,11 @@ describe('getBarCity', () => {
     expect(getBarCity({ location: 'Paris, France' })).toBe('Paris');
   });
 
+  it('keys off the last segment: the one before it is the city', () => {
+    expect(getBarCity({ location: 'Disneyland, Anaheim, CA' })).toBe('Anaheim');
+    expect(getBarCity({ location: 'Waikiki, Honolulu, HI' })).toBe('Honolulu');
+  });
+
   it('returns the whole location when there is no comma', () => {
     expect(getBarCity({ location: 'Singapore' })).toBe('Singapore');
   });
@@ -21,6 +26,10 @@ describe('getBarCity', () => {
   it('returns Unknown for empty and whitespace locations', () => {
     expect(getBarCity({ location: '' })).toBe('Unknown');
     expect(getBarCity({ location: '  ' })).toBe('Unknown');
+  });
+
+  it('ignores trailing empty segments', () => {
+    expect(getBarCity({ location: 'Brooklyn, NY,' })).toBe('Brooklyn');
   });
 });
 
