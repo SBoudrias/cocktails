@@ -8,16 +8,7 @@ import styles from './style.module.css';
  * vessels in their material. `id` must be unique per shape on the page: it
  * names the drink's clip path and gradient.
  */
-export default function RecipeIcon({
-  shape,
-  id,
-  size = 56,
-}: {
-  shape: Shape;
-  id: string;
-  /** Rendered size in px; MUI's SvgIcon was sized via sx fontSize. */
-  size?: number;
-}) {
+export default function RecipeIcon({ shape, id }: { shape: Shape; id: string }) {
   const liquid = shape.liquid ?? shape.body;
   const bodyClass = match(shape.material)
     .with('silver', () => styles.silver)
@@ -39,8 +30,8 @@ export default function RecipeIcon({
   return (
     <svg
       viewBox="0 0 24 24"
-      width={size}
-      height={size}
+      width={56}
+      height={56}
       aria-hidden="true"
       focusable="false"
       className={styles.icon}

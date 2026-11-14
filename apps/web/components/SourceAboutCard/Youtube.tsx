@@ -49,7 +49,7 @@ export default function YoutubeAboutCard({
           color="inherit"
         >
           Go to channel
-          <ArrowUpRight className="size-4" aria-hidden="true" />
+          <ArrowUpRight className="size-6" />
         </Button>
       </CardActions>
     </Card>

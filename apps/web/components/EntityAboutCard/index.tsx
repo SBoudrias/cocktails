@@ -6,7 +6,6 @@ import LocalBarIcon from '@mui/icons-material/LocalBar';
 import MapIcon from '@mui/icons-material/Map';
 import PersonIcon from '@mui/icons-material/Person';
 import XIcon from '@mui/icons-material/X';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import {
   Button,
   Card,
@@ -18,6 +17,7 @@ import {
   type SxProps,
 } from '@mui/material';
 import { match, P } from 'ts-pattern';
+import YouTubeIcon from '#/components/icons/YoutubeIcon';
 import { getBarRecipesUrl, getSourceUrl } from '#/modules/url';
 
 function getHostname(url: string): string {

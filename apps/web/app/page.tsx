@@ -7,7 +7,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HistoryIcon from '@mui/icons-material/History';
 import PodcastIcon from '@mui/icons-material/Podcasts';
 import SearchIcon from '@mui/icons-material/Search';
-import YoutubeIcon from '@mui/icons-material/YouTube';
 import {
   List,
   ListItem,
@@ -22,6 +21,7 @@ import {
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import AppHeader from '#/components/AppHeader';
+import YoutubeIcon from '#/components/icons/YoutubeIcon';
 import {
   getAuthorListUrl,
   getBarListUrl,

@@ -8,7 +8,7 @@ export default function CategoryName({ category }: { category: Category }) {
   return (
     <Link href={getCategoryUrl(category)} className={styles.category}>
       {category.name}&nbsp;
-      <Tag className="size-5" aria-hidden="true" />
+      <Tag className="size-5" />
     </Link>
   );
 }
