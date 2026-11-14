@@ -2,6 +2,7 @@
 
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
+import type { ReactNode } from 'react';
 import SearchInput from '#/components/SearchInput';
 import TikiMark from '#/components/TikiMark';
 import { preloadSearchIndex } from '#/modules/searchIndex';
@@ -10,10 +11,13 @@ export default function SearchHeader({
   title,
   searchTerm,
   onSearchChange,
+  underTitle,
 }: {
   title?: string;
   searchTerm: string | null;
   onSearchChange: (value: string | null) => void;
+  /** Rendered directly under the page title, hidden while a search is active. */
+  underTitle?: ReactNode;
 }) {
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -47,6 +51,7 @@ export default function SearchHeader({
           {title}
         </Typography>
       )}
+      {!searchTerm && underTitle}
     </>
   );
 }

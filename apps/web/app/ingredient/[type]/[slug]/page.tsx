@@ -17,12 +17,11 @@ import {
   ListItemText,
   ListSubheader,
   Paper,
-  Stack,
 } from '@mui/material';
 import uniqBy from 'lodash/uniqBy';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
-import CategoryName from '#/components/CategoryName';
+import CategoryChips from '#/components/CategoryChips';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
@@ -88,6 +87,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       }
       recipeCount={relatedRecipes.length}
       listHeader={`Recipes using ${ingredient.name}`}
+      underTitle={<CategoryChips categories={ingredient.categories} />}
       footer={
         <FixBugCard
           fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
@@ -113,24 +113,11 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           </CardActions>
         </Card>
       ) : (
-        <Card sx={{ m: 1 }}>
-          {ingredient.description && <CardContent>{ingredient.description}</CardContent>}
-          {ingredient.categories.length > 0 && (
-            <CardContent>
-              <b>{ingredient.name}</b>{' '}
-              {ingredient.categories.length === 1 ? 'category is' : 'categories are'}:
-              <Stack
-                direction="row"
-                spacing={1}
-                sx={{ flexWrap: 'wrap', alignItems: 'baseline' }}
-              >
-                {ingredient.categories.map((category) => (
-                  <CategoryName key={category.slug} category={category} />
-                ))}
-              </Stack>
-            </CardContent>
-          )}
-        </Card>
+        ingredient.description && (
+          <Card sx={{ m: 1 }}>
+            <CardContent>{ingredient.description}</CardContent>
+          </Card>
+        )
       )}
       {ingredient.ingredients.length > 0 && (
         <IngredientList ingredients={ingredient.ingredients} />

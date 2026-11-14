@@ -137,16 +137,30 @@ describe('IngredientPage', () => {
       expect(screen.getByRole('searchbox')).toBeInTheDocument();
     });
 
-    it('renders category information for spirits', async () => {
+    it('renders category chips under the title for spirits', async () => {
       await setupApp(spiritPageJSX);
 
-      // Beefeater categories are shown. The exact name keeps this distinct
-      // from the see-all row, whose accessible name also starts with the
-      // category ("London dry gin See all options").
-      expect(screen.getByRole('link', { name: 'London dry gin' })).toHaveAttribute(
-        'href',
-        '/category/london-dry-gin',
-      );
+      // Beefeater's categories sit in the chips group right under the page
+      // title. The exact name keeps this distinct from the see-all row,
+      // whose accessible name also starts with the category ("London dry gin
+      // See all options").
+      const chipsGroup = screen.getByRole('group', { name: 'Categories' });
+      expect(
+        within(chipsGroup).getByRole('link', { name: 'London dry gin' }),
+      ).toHaveAttribute('href', '/category/london-dry-gin');
+
+      // The chips sit between the title and the rest of the page content.
+      const title = screen.getByRole('heading', {
+        level: 1,
+        name: TEST_SPIRIT.name,
+      });
+      expect(
+        title.compareDocumentPosition(chipsGroup) & Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+      expect(
+        chipsGroup.compareDocumentPosition(screen.getByText('Some substitution option')) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
     });
 
     it('renders substitutes section for spirits', async () => {
@@ -495,15 +509,15 @@ describe('IngredientPage', () => {
     it('hides non-recipe content when searching', async () => {
       const { user } = await setupApp(spiritPageJSX);
 
-      // Category info is visible initially
-      expect(screen.getByText(/category is/i)).toBeInTheDocument();
+      // Category chips are visible initially
+      expect(screen.getByRole('group', { name: 'Categories' })).toBeInTheDocument();
       expect(screen.getByText('Some substitution option')).toBeInTheDocument();
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'cloister');
 
       // Non-recipe content should be hidden when searching
-      expect(screen.queryByText(/category is/i)).not.toBeInTheDocument();
+      expect(screen.queryByRole('group', { name: 'Categories' })).not.toBeInTheDocument();
       expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
     });
 
@@ -532,7 +546,7 @@ describe('IngredientPage', () => {
       const { user } = await setupApp(spiritPageJSX);
 
       // Initially filtered and content hidden
-      expect(screen.queryByText(/category is/i)).not.toBeInTheDocument();
+      expect(screen.queryByRole('group', { name: 'Categories' })).not.toBeInTheDocument();
       expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
 
       // Clear the search
@@ -540,7 +554,7 @@ describe('IngredientPage', () => {
       await user.click(clearButton);
 
       // Content should be restored
-      expect(screen.getByText(/category is/i)).toBeInTheDocument();
+      expect(screen.getByRole('group', { name: 'Categories' })).toBeInTheDocument();
       expect(screen.getByText('Some substitution option')).toBeInTheDocument();
       expect(screen.getByText(`Recipes using ${TEST_SPIRIT.name}`)).toBeInTheDocument();
     });
