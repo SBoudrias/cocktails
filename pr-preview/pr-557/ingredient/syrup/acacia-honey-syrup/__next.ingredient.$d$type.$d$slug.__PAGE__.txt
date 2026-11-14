@@ -1,8 +1,8 @@
 1:"$Sreact.fragment"
-2:"/cocktails/pr-preview/pr-557/_next/static/chunks/0rmvtui6jqoz_.js"
-3:"/cocktails/pr-preview/pr-557/_next/static/chunks/0229188_e00iz.js"
-4:"/cocktails/pr-preview/pr-557/_next/static/chunks/12d19np495idf.js"
-5:"/cocktails/pr-preview/pr-557/_next/static/chunks/2kjjoscjaxcru.js"
+2:"/cocktails/pr-preview/pr-557/_next/static/chunks/12cy4r9qmsu1g.js"
+3:"/cocktails/pr-preview/pr-557/_next/static/chunks/3_ekypw29sn6u.js"
+4:"/cocktails/pr-preview/pr-557/_next/static/chunks/3hakq2d_cmng5.js"
+5:"/cocktails/pr-preview/pr-557/_next/static/chunks/0uzos_clxwob-.js"
 6:I[926321,["$2","$3","$4","$5"],"default"]
 7:I[190516,["$2","$3","$4","$5"],"default"]
 8:I[692164,["$2","$3","$4","$5"],"default"]
@@ -18,12 +18,12 @@ f:I[26663,["$2","$3","$4","$5"],"default"]
 12:I[477385,["$2","$3","$4","$5"],"default"]
 13:I[654576,["$2","$3","$4","$5"],"GoogleAnalytics"]
 1e:"/cocktails/pr-preview/pr-557/_next/static/chunks/3cef1ozj-rk9l.js"
-1f:"/cocktails/pr-preview/pr-557/_next/static/chunks/2d-va393mnafh.js"
-20:"/cocktails/pr-preview/pr-557/_next/static/chunks/3gba6z7-39y7-.js"
-21:"/cocktails/pr-preview/pr-557/_next/static/chunks/100oyqeuy9yky.js"
+1f:"/cocktails/pr-preview/pr-557/_next/static/chunks/10-h4hxj8ks2f.js"
+20:"/cocktails/pr-preview/pr-557/_next/static/chunks/26umr713e3-0v.js"
+21:"/cocktails/pr-preview/pr-557/_next/static/chunks/34aldka6762lv.js"
 22:"/cocktails/pr-preview/pr-557/_next/static/chunks/11xqwz03acz8-.js"
-23:"/cocktails/pr-preview/pr-557/_next/static/chunks/3f6a3mnhmy5_z.js"
-24:"/cocktails/pr-preview/pr-557/_next/static/chunks/0na_ggn-8--bl.js"
+23:"/cocktails/pr-preview/pr-557/_next/static/chunks/1rvbpq8tep69a.js"
+24:"/cocktails/pr-preview/pr-557/_next/static/chunks/1f-601e-bv12l.js"
 25:"/cocktails/pr-preview/pr-557/_next/static/chunks/1y4uh1imh68zi.js"
 26:I[998758,["$2","$3","$4","$5","$1e","$1f","$20","$21","$22","$23","$24","$25"],"default"]
 27:I[421435,["$2","$3","$4","$5","$1e","$1f","$20","$21","$22","$23","$24","$25"],"default"]
@@ -38,41 +38,43 @@ f:I[26663,["$2","$3","$4","$5"],"default"]
 3b:I[897367,["$2","$3","$4","$5"],"$3a"]
 3c:"$Sreact.suspense"
 :HL["/cocktails/pr-preview/pr-557/_next/static/chunks/04d1i6aooqu7y.css","style"]
-:HL["/cocktails/pr-preview/pr-557/_next/static/chunks/3hsbq7h_aggve.css","style"]
+:HL["/cocktails/pr-preview/pr-557/_next/static/chunks/0f9phqa2psfsr.css","style"]
 15:X
 18:X
 18:C
-1d:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","$L26",null,{"title":"Acacia honey syrup","catalogKey":"ingredient/syrup/acacia-honey-syrup","recipeCount":19,"listHeader":"Recipes using Acacia honey syrup","footer":["$","$L27",null,{"sx":{"m":1},"children":["$","$L28",null,{"children":["$","$L29",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L2a",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L2b",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/syrup/acacia-honey-syrup.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}],"children":["$undefined",["$","$L27",null,{"sx":{"m":1},"children":["$undefined",false]}],false,false,["$","$L2c",null,{"ingredient":{"$schema":"../../../schemas/ingredient.schema.json","name":"Acacia honey syrup","type":"syrup","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Acacia honey syrup","type":"syrup"},"slug":"acacia-honey-syrup","categories":[],"refs":[],"ingredients":[]}}],false,false]}],[["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-557/_next/static/chunks/3hsbq7h_aggve.css","precedence":"next"}],"$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33","$L34","$L35"],"$L36"]}],"p":"$@37","v":null,"s":"$15"}}]]
+1d:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","$L26",null,{"title":"Acacia honey syrup","catalogKey":"ingredient/syrup/acacia-honey-syrup","recipeCount":19,"listHeader":"Recipes using Acacia honey syrup","footer":["$","$L27",null,{"sx":{"m":1},"children":["$","$L28",null,{"children":["$","$L29",null,{"direction":"row","spacing":1,"sx":{"alignItems":"center"},"children":[["$","$L2a",null,{}],["$","span",null,{"children":"Found an error?"}],["$","$L2b",null,{"href":"https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/syrup/acacia-honey-syrup.json","target":"_blank","rel":"noopener nofollow","children":"Fix it over here!"}]]}]}]}],"children":["$undefined",["$","$L27",null,{"sx":{"m":1},"children":["$undefined",false]}],false,false,["$","$L2c",null,{"ingredient":{"$schema":"../../../schemas/ingredient.schema.json","name":"Acacia honey syrup","type":"syrup","default":{"$schema":"../../../schemas/ingredient.schema.json","name":"Acacia honey syrup","type":"syrup"},"slug":"acacia-honey-syrup","categories":[],"refs":[],"ingredients":[]}}],"$undefined",false]}],["$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33","$L34","$L35"],"$L36"]}],"p":"$@37","v":null,"s":"$15"}}]]
 1b:[["children",{"s":{"n":"slug","t":"d","k":"acacia-honey-syrup","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"p":"$@1c","v":"$18","s":"$15"},"c":"$Q1d"}]]
 19:[["children",{"s":{"n":"type","t":"d","k":"syrup","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"p":"$@1a","v":"$18","s":"$15"},"c":"$Q1b"}]]
 16:[["children",{"s":"ingredient","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"p":"$@17","v":"$18","s":"$15"},"c":"$Q19"}]]
-0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-557/_next/static/chunks/04d1i6aooqu7y.css","precedence":"next"}],["$","script","script-0",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/0rmvtui6jqoz_.js","async":true}],["$","script","script-1",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/0229188_e00iz.js","async":true}],["$","script","script-2",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/12d19np495idf.js","async":true}],["$","script","script-3",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/2kjjoscjaxcru.js","async":true}]],["$","html",null,{"lang":"en","data-prefers-color-scheme":"dark","style":{"colorScheme":"dark"},"children":[["$","head",null,{"children":["$","link",null,{"rel":"sitemap","type":"application/xml","title":"Sitemap","href":"/cocktails/pr-preview/pr-557/sitemap.xml"}]}],["$","body",null,{"className":"iLW5_a_variable","children":[["$","$L6",null,{"children":["$","$L7",null,{"theme":"$8","defaultMode":"dark","storageManager":null,"children":[["$","$L9",null,{}],["$","$La",null,{"children":["$","$Lb",null,{"sx":{"maxWidth":600,"mx":"auto","minHeight":"100vh","display":"flex","flexDirection":"column","backgroundImage":"url(/cocktails/pr-preview/pr-557/_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp), url(/cocktails/pr-preview/pr-557/_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp)","backgroundSize":"min(100%, 750px) auto, min(100%, 750px) auto","backgroundPosition":"center 40px, bottom center","backgroundRepeat":"no-repeat, no-repeat"},"children":[["$","$Lb",null,{"component":"main","sx":{"flexGrow":1},"children":["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$Le",null,{}]]}]}]]}]}],["$","$Lf",null,{}],["$","$L10",null,{}],["$","$L11",null,{}],["$","$L12",null,{}],["$","$L13",null,{"gaId":"G-XSDN5REM9F"}]]}]]}]]}],"p":"$@14","v":null,"s":"$15"},"c":"$Q16"},"h":{"r":["$","$1","h",{"children":[null,["$","$L39",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}],["$","meta","2",{"name":"theme-color","content":"#0A1420"}]]}],["$","$L3b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$3c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Cocktail Index | Learn about Acacia honey syrup"}],["$","meta","1",{"name":"description","content":"Learn about Acacia honey syrup and find cocktail recipes that use it."}],["$","link","2",{"rel":"manifest","href":"/cocktails/pr-preview/pr-557/manifest.webmanifest"}],["$","meta","3",{"name":"robots","content":"noindex"}],["$","link","4",{"rel":"canonical","href":"https://sboudrias.github.io/cocktails/pr-preview/pr-557/ingredient/syrup/acacia-honey-syrup"}],["$","meta","5",{"property":"og:title","content":"Cocktail Index | Learn about Acacia honey syrup"}],["$","meta","6",{"property":"og:description","content":"Learn about Acacia honey syrup and find cocktail recipes that use it."}],["$","meta","7",{"property":"og:site_name","content":"Cocktail Index"}],["$","meta","8",{"property":"og:locale","content":"en_US"}],["$","meta","9",{"property":"og:type","content":"website"}],["$","meta","10",{"name":"twitter:card","content":"summary"}],"$L3d","$L3e","$L3f","$L40"]}]}],null]}],"$L41"]}],"p":"$@42","v":null,"s":"$15"}},"a":"$@43","u":"$@44","b":"g6xsnNBn7EEhWz7--VHF7"}
-45:I[897367,["$2","$3","$4","$5"],"OutletBoundary"]
-47:I[27201,["$2","$3","$4","$5"],"IconMark"]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-557/_next/static/chunks/04d1i6aooqu7y.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-557/_next/static/chunks/0f9phqa2psfsr.css","precedence":"next"}],["$","script","script-0",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/12cy4r9qmsu1g.js","async":true}],["$","script","script-1",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/3_ekypw29sn6u.js","async":true}],["$","script","script-2",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/3hakq2d_cmng5.js","async":true}],["$","script","script-3",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/0uzos_clxwob-.js","async":true}]],["$","html",null,{"lang":"en","data-prefers-color-scheme":"dark","style":{"colorScheme":"dark"},"children":[["$","head",null,{"children":["$","link",null,{"rel":"sitemap","type":"application/xml","title":"Sitemap","href":"/cocktails/pr-preview/pr-557/sitemap.xml"}]}],["$","body",null,{"className":"iLW5_a_variable","children":[["$","$L6",null,{"children":["$","$L7",null,{"theme":"$8","defaultMode":"dark","storageManager":null,"children":[["$","$L9",null,{}],["$","$La",null,{"children":["$","$Lb",null,{"sx":{"maxWidth":600,"mx":"auto","minHeight":"100vh","display":"flex","flexDirection":"column","backgroundImage":"url(/cocktails/pr-preview/pr-557/_next/static/media/tiki-leaves-top.0hdkd5j86nsyg.webp), url(/cocktails/pr-preview/pr-557/_next/static/media/tiki-beach-divider.1v4p5zstk0e-x.webp)","backgroundSize":"min(100%, 750px) auto, min(100%, 750px) auto","backgroundPosition":"center 40px, bottom center","backgroundRepeat":"no-repeat, no-repeat"},"children":[["$","$Lb",null,{"component":"main","sx":{"flexGrow":1},"children":["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$Le",null,{}]]}]}]]}]}],["$","$Lf",null,{}],["$","$L10",null,{}],["$","$L11",null,{}],["$","$L12",null,{}],["$","$L13",null,{"gaId":"G-XSDN5REM9F"}]]}]]}]]}],"p":"$@14","v":null,"s":"$15"},"c":"$Q16"},"h":{"r":["$","$1","h",{"children":[null,["$","$L39",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content"}],["$","meta","2",{"name":"theme-color","content":"#0A1420"}]]}],["$","$L3b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$3c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Indexotica | Learn about Acacia honey syrup"}],["$","meta","1",{"name":"description","content":"Learn about Acacia honey syrup and find cocktail recipes that use it."}],["$","link","2",{"rel":"manifest","href":"/cocktails/pr-preview/pr-557/manifest.webmanifest"}],["$","meta","3",{"name":"robots","content":"noindex"}],["$","link","4",{"rel":"canonical","href":"https://sboudrias.github.io/cocktails/pr-preview/pr-557/ingredient/syrup/acacia-honey-syrup"}],["$","meta","5",{"property":"og:title","content":"Indexotica | Learn about Acacia honey syrup"}],["$","meta","6",{"property":"og:description","content":"Learn about Acacia honey syrup and find cocktail recipes that use it."}],["$","meta","7",{"property":"og:site_name","content":"Indexotica"}],["$","meta","8",{"property":"og:locale","content":"en_US"}],"$L3d","$L3e","$L3f","$L40","$L41","$L42"]}]}],null]}],"$L43"]}],"p":"$@44","v":null,"s":"$15"}},"a":"$@45","u":"$@46","b":"a8sUbXQUUuv7ACSkMTKYk"}
+47:I[897367,["$2","$3","$4","$5"],"OutletBoundary"]
+49:I[27201,["$2","$3","$4","$5"],"IconMark"]
 :HL["/cocktails/pr-preview/pr-557/_next/static/chunks/34xf9m6qcd2jc.css","style"]
-2d:["$","link","1",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-557/_next/static/chunks/34xf9m6qcd2jc.css","precedence":"next"}]
+2d:["$","link","0",{"rel":"stylesheet","href":"/cocktails/pr-preview/pr-557/_next/static/chunks/34xf9m6qcd2jc.css","precedence":"next"}]
 2e:["$","script","script-0",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/3cef1ozj-rk9l.js","async":true}]
-2f:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/2d-va393mnafh.js","async":true}]
-30:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/3gba6z7-39y7-.js","async":true}]
-31:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/100oyqeuy9yky.js","async":true}]
+2f:["$","script","script-1",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/10-h4hxj8ks2f.js","async":true}]
+30:["$","script","script-2",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/26umr713e3-0v.js","async":true}]
+31:["$","script","script-3",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/34aldka6762lv.js","async":true}]
 32:["$","script","script-4",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/11xqwz03acz8-.js","async":true}]
-33:["$","script","script-5",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/3f6a3mnhmy5_z.js","async":true}]
-34:["$","script","script-6",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/0na_ggn-8--bl.js","async":true}]
+33:["$","script","script-5",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/1rvbpq8tep69a.js","async":true}]
+34:["$","script","script-6",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/1f-601e-bv12l.js","async":true}]
 35:["$","script","script-7",{"src":"/cocktails/pr-preview/pr-557/_next/static/chunks/1y4uh1imh68zi.js","async":true}]
-36:["$","$L45",null,{"children":["$","$3c",null,{"name":"Next.MetadataOutlet","children":"$@46"}]}]
-3d:["$","meta","11",{"name":"twitter:title","content":"Cocktail Index | Learn about Acacia honey syrup"}]
-3e:["$","meta","12",{"name":"twitter:description","content":"Learn about Acacia honey syrup and find cocktail recipes that use it."}]
-3f:["$","link","13",{"rel":"apple-touch-icon","href":"/cocktails/pr-preview/pr-557/icons/apple-touch-icon.png","sizes":"180x180","type":"image/png"}]
-40:["$","$L47","14",{}]
-41:["$","meta",null,{"name":"next-size-adjust","content":""}]
+36:["$","$L47",null,{"children":["$","$3c",null,{"name":"Next.MetadataOutlet","children":"$@48"}]}]
+3d:["$","meta","9",{"property":"og:type","content":"website"}]
+3e:["$","meta","10",{"name":"twitter:card","content":"summary"}]
+3f:["$","meta","11",{"name":"twitter:title","content":"Indexotica | Learn about Acacia honey syrup"}]
+40:["$","meta","12",{"name":"twitter:description","content":"Learn about Acacia honey syrup and find cocktail recipes that use it."}]
+41:["$","link","13",{"rel":"apple-touch-icon","href":"/cocktails/pr-preview/pr-557/icons/apple-touch-icon.png","sizes":"180x180","type":"image/png"}]
+42:["$","$L49","14",{}]
+43:["$","meta",null,{"name":"next-size-adjust","content":""}]
 15:300
-46:null
-44:true
+48:null
+46:true
 15:C
-43:0
+45:0
 1c:"$undefined"
 1a:"$undefined"
 17:"$undefined"
 14:"$undefined"
-42:"$undefined"
+44:"$undefined"
 37:"$undefined"
