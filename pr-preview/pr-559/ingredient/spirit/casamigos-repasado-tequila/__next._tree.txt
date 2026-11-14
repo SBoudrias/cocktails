@@ -1,9 +1,9 @@
-:HL["/cocktails/pr-preview/pr-559/_next/static/chunks/3zq1olz9nek1c.css","style"]
+:HL["/cocktails/pr-preview/pr-559/_next/static/chunks/053vunsdistb-.css","style"]
+:HL["/cocktails/pr-preview/pr-559/_next/static/chunks/0say_a-kw9lt1.css","style"]
 :HL["/cocktails/pr-preview/pr-559/_next/static/media/c5f006ccf96c15fe-s.p.0a0h245ktd4x0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/cocktails/pr-preview/pr-559/_next/static/chunks/1cvdglv6ud1b1.css","style"]
 :HL["/cocktails/pr-preview/pr-559/_next/static/chunks/34xf9m6qcd2jc.css","style"]
 4:[["children",{"s":"__PAGE__","h":160}]]
 3:[["children",{"s":{"n":"slug","t":"d","k":"casamigos-repasado-tequila","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"type","t":"d","k":"spirit","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"ingredient","h":96,"c":"$Q2"}]]
-0:{"b":"gfZJGY2YPjjXQdrPRClz7","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"fvkGsGY3CT1EOp6tYWjJa","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
