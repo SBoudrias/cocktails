@@ -29,12 +29,7 @@ export default function AppHeader({ title }: { title: string }) {
             // (the logo button's slot, with nothing to go back to). Labeled
             // even though disabled: an unlabeled button fails the
             // accessible-name audit either way.
-            <IconButton
-              size="large"
-              edge="start"
-              disabled
-              aria-label="Cocktail Index"
-            >
+            <IconButton size="large" edge="start" disabled aria-label="Cocktail Index">
               <TikiMark sx={{ fontSize: 32 }} />
             </IconButton>
           ) : (
