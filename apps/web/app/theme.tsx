@@ -13,7 +13,9 @@ const LinkBehaviour = forwardRef(function LinkBehaviour(
   return <NextLink ref={ref} {...props} />;
 });
 
-// Tiki nighttime palette inspired by tropical night scene
+// Tiki nighttime palette inspired by tropical night scene.
+// The palette is mirrored in app/globals.css :root (the Tailwind v4 tokens);
+// edit both together while the migration is in flight.
 const theme = createTheme({
   cssVariables: true,
   defaultColorScheme: 'dark',
