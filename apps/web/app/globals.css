@@ -36,7 +36,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-header: var(--header);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -73,9 +72,8 @@
   --warning: #d4883d;
   --warning-dark: #a66628;
   --error-light: #c98aa3;
-  /* The fixed app bar: its glass fill (translucent night sky + blur) mirrors
-     MuiPaper's rgba(10, 20, 32, 0.9) surface alpha. */
-  --header: rgb(10 20 32 / 0.9);
+  /* The app bar's height, per orientation and breakpoint (MUI's toolbar
+     mixin; the sticky group headers sit at this top). */
   --app-bar-height: 56px;
 }
 

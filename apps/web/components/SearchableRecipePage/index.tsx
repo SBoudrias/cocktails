@@ -11,6 +11,8 @@ import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
+import { Button } from '#/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { Skeleton } from '#/components/ui/skeleton';
 import { useSharedJson } from '#/hooks/useSharedJson';
 import { getCatalogList, getLoadedCatalog, loadCatalog } from '#/modules/catalog';
@@ -44,10 +46,10 @@ function SkeletonListItem() {
   return (
     <li className="relative flex w-full items-center border-b px-4 py-3 pr-12">
       <span className="flex flex-1 flex-col gap-1">
-        <Skeleton className="h-4 w-[55%] animate-skeleton bg-foreground/13" />
-        <Skeleton className="h-3 w-[35%] animate-skeleton bg-foreground/13" />
+        <Skeleton className="h-4 w-[55%]" />
+        <Skeleton className="h-3 w-[35%]" />
       </span>
-      <Skeleton className="h-3.5 w-11 animate-skeleton bg-foreground/13" />
+      <Skeleton className="h-3.5 w-11" />
       <ChevronRight className="absolute top-1/2 right-4 size-6 -translate-y-1/2 text-foreground" />
     </li>
   );
@@ -72,18 +74,16 @@ function CatalogListState({
 }) {
   if (failed) {
     return (
-      <div className="m-1 overflow-hidden rounded-xl bg-card py-4 ring-1 ring-foreground/10">
-        <div className="px-4 font-medium">Recipes could not be loaded</div>
-        <div className="px-4 pt-2">
-          <button
-            type="button"
-            className="rounded-lg px-2 py-1 text-sm uppercase tracking-[0.02857em] transition-colors hover:bg-muted"
-            onClick={() => window.location.reload()}
-          >
+      <Card className="m-2">
+        <CardHeader>
+          <CardTitle>Recipes could not be loaded</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Button variant="ghost" onClick={() => window.location.reload()}>
             Reload the page
-          </button>
-        </div>
-      </div>
+          </Button>
+        </CardContent>
+      </Card>
     );
   }
 
@@ -194,9 +194,11 @@ export default function SearchableRecipePage({
             searchTerm={searchTerm}
             emptyState={
               <>
-                <div className="m-2 rounded-xl bg-card px-4 py-4 text-sm font-medium text-muted-foreground ring-1 ring-foreground/10">
-                  No results found
-                </div>
+                <Card className="m-4">
+                  <CardHeader>
+                    <CardTitle>No results found</CardTitle>
+                  </CardHeader>
+                </Card>
                 <SearchAllLink searchTerm={searchTerm} />
               </>
             }

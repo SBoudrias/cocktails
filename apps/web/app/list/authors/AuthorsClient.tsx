@@ -1,5 +1,6 @@
 'use client';
 
+import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
@@ -25,9 +26,9 @@ export default function AuthorsClient({ authors }: { authors: Author[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
-    <div className="m-2 rounded-xl bg-card px-4 py-4 text-sm font-medium text-muted-foreground ring-1 ring-foreground/10">
-      No results found
-    </div>
+    <Card sx={{ m: 2 }}>
+      <CardHeader title="No results found" />
+    </Card>
   );
 
   return (

@@ -11,7 +11,10 @@ export function Skeleton({ className, ...props }: React.ComponentProps<'span'>) 
   return (
     <span
       aria-hidden="true"
-      className={cn('block scale-y-60 origin-[0_55%] rounded-[4px/6.7px]', className)}
+      className={cn(
+        'animate-skeleton bg-foreground/13 block scale-y-60 origin-[0 55%] rounded-[4px/6.7px]',
+        className,
+      )}
       {...props}
     >
       {'\u00A0'}

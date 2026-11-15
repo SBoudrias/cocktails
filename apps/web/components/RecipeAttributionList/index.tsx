@@ -1,6 +1,5 @@
 import type { Attribution } from '@cocktails/data';
 import { ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
 import { P, match } from 'ts-pattern';
 import { LinkListItem } from '#/components/LinkList';
 import { ListSubheader } from '#/components/ui/list';

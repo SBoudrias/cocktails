@@ -129,16 +129,6 @@ const theme = createTheme({
           paddingBottom: 16,
           backgroundColor: 'transparent',
         },
-        // Right below the fixed app bar; the rows scroll under it while it
-        // sticks. The background comes separately (see useStuck): the header
-        // stays see-through in flow and only wears glass once pinned. The
-        // tops are MUI's toolbar mixin breakpoints, matching
-        // --app-bar-height in app/globals.css.
-        sticky: {
-          top: 56,
-          '@media (orientation: landscape)': { top: 48 },
-          '@media (min-width: 600px)': { top: 64 },
-        },
       },
     },
   },

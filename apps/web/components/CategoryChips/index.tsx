@@ -1,5 +1,4 @@
 import type { Category } from '@cocktails/data';
-import { cn } from 'cn';
 import { Tag } from 'lucide-react';
 import Link from 'next/link';
 import { getCategoryUrl } from '#/modules/url';
@@ -23,16 +22,13 @@ export default function CategoryChips({
     <div
       role="group"
       aria-label={label}
-      className="mx-2 -mt-0.5 mb-2 flex flex-wrap items-center gap-x-3 gap-y-3"
+      className="mx-4 -mt-1 mb-2 flex flex-wrap items-center gap-x-1.5 gap-y-1.5"
     >
       {categories.map((category) => (
         <Link
           key={category.slug}
           href={getCategoryUrl(category)}
-          className={cn(
-            'inline-flex items-center gap-1 rounded-full bg-primary/16 px-2 text-[0.8125rem] text-foreground',
-            'hover:bg-primary/30',
-          )}
+          className="inline-flex items-center gap-1 rounded-full bg-primary/16 px-2 text-[0.8125rem] text-foreground hover:bg-primary/30"
         >
           <Tag className="size-3.5 text-muted-foreground" />
           {category.name}

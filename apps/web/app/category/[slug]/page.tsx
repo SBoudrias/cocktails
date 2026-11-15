@@ -10,7 +10,7 @@ import {
 } from '@cocktails/data/ingredients';
 import { getCategoryPageParams } from '@cocktails/data/params';
 import { getRecipeByCategory } from '@cocktails/data/recipes';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent } from '@mui/material';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import CategoryChips from '#/components/CategoryChips';

@@ -16,7 +16,6 @@ export function LinkListItem<RouteType>({
   primary,
   secondary,
   tertiary,
-  className,
 }: {
   href?: LinkProps<RouteType>['href'];
   /** Leading icon, MUI's ListItemIcon slot (sized by the caller). */
@@ -24,7 +23,6 @@ export function LinkListItem<RouteType>({
   primary: React.ReactNode;
   secondary?: React.ReactNode;
   tertiary?: React.ReactNode;
-  className?: string;
 }) {
   // MUI ListItem metrics: 8px padding + ListItemText's 4px margins, with
   // the chevron MUI's secondaryAction drew.
@@ -34,12 +32,11 @@ export function LinkListItem<RouteType>({
   const rowClass = cn(
     'relative flex w-full items-center rounded-none border-x-0 border-t-0 border-b px-4 py-3 text-base outline-none transition-colors duration-100 [a]:hover:bg-muted focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
     href && 'pr-12',
-    className,
   );
 
   const content = (
     <>
-      {leading && <span className="flex shrink-0 items-center">{leading}</span>}
+      {leading && <span className="flex min-w-9 shrink-0 items-center">{leading}</span>}
       <span className="flex min-w-0 flex-1 flex-col gap-1 text-left">
         <span className="min-w-0">{primary}</span>
         {secondary && <span className={secondaryClass}>{secondary}</span>}

@@ -7,6 +7,7 @@ import { match, P } from 'ts-pattern';
 import AppHeader from '#/components/AppHeader';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
+import { LinkListItem } from '#/components/LinkList';
 import RecipeAttributionList from '#/components/RecipeAttributionList';
 import RecipeBadges from '#/components/RecipeBadges';
 import SourceAboutCard from '#/components/SourceAboutCard';
@@ -86,14 +87,10 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
             <ListSubheader>Instructions</ListSubheader>
             <div className="bg-card">
               {recipe.instructions.map((instruction, index) => (
-                <li
+                <LinkListItem
                   key={instruction}
-                  className="flex w-full items-center border-x-0 border-t-0 border-b px-4 py-3 text-base"
-                >
-                  <span className="min-w-0 flex-1">
-                    {index + 1}. {instruction}
-                  </span>
-                </li>
+                  primary={`${index + 1}. ${instruction}`}
+                />
               ))}
             </div>
           </ul>

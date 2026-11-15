@@ -1,10 +1,10 @@
 'use client';
 
+import { Card, CardHeader, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
-import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { byLocationListConfig } from '#/modules/lists/by-location';
 import { byNameListConfig } from '#/modules/lists/by-name';
@@ -42,9 +42,9 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
   const showLocation = !isCityMode || isSearching;
 
   const emptyState = (
-    <div className="m-2 rounded-xl bg-card px-4 py-4 text-sm font-medium text-muted-foreground ring-1 ring-foreground/10">
-      No results found
-    </div>
+    <Card sx={{ m: 2 }}>
+      <CardHeader title="No results found" />
+    </Card>
   );
 
   return (
@@ -56,18 +56,18 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
       />
       {hasLocations && !isSearching && (
         <div className="mx-4 flex flex-row-reverse">
-          <ToggleGroup
-            value={[groupMode]}
-            onValueChange={([newValue]) => {
+          <ToggleButtonGroup
+            value={groupMode}
+            exclusive
+            onChange={(_, newValue: GroupMode | null) => {
               if (newValue) setGroupMode(newValue);
             }}
-            variant="outline"
-            spacing={0}
+            size="small"
             aria-label="Bar grouping"
           >
-            <ToggleGroupItem value="alpha">A-Z</ToggleGroupItem>
-            <ToggleGroupItem value="city">By City</ToggleGroupItem>
-          </ToggleGroup>
+            <ToggleButton value="alpha">A-Z</ToggleButton>
+            <ToggleButton value="city">By City</ToggleButton>
+          </ToggleButtonGroup>
         </div>
       )}
       <SearchableList

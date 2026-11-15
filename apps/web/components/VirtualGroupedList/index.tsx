@@ -9,6 +9,7 @@ import type {
   TopItemListProps,
 } from 'react-virtuoso';
 import { GroupedVirtuoso } from 'react-virtuoso';
+import { ListSubheader } from '#/components/ui/list';
 import { useStuck } from '#/hooks/useStuck';
 import { stuckGlass } from '#/modules/stuckGlass';
 
@@ -41,7 +42,7 @@ function StickyTopItemList({ children, style }: TopItemListProps) {
 
 // Same footprint as a two-line link row, until the row's data loads.
 const placeholder = (
-  <li className="flex w-full items-center gap-2.5 border-x-0 border-t-0 border-b px-4 py-3 text-base">
+  <li className="flex w-full items-center border-x-0 border-t-0 border-b px-4 py-3 text-base">
     <span className="flex flex-1 flex-col gap-1">
       <span className="leading-[1.5]">…</span>
       <span className="text-xs leading-[1.35] text-muted-foreground">…</span>
@@ -114,7 +115,7 @@ export default function VirtualGroupedList<const T extends { href: string }>({
   return (
     // One list around the rows and the sticky header virtuoso renders apart
     // from them.
-    <ul ref={listRef} className="p-0">
+    <ul ref={listRef}>
       <GroupedVirtuoso
         ref={ref}
         useWindowScroll
@@ -126,15 +127,14 @@ export default function VirtualGroupedList<const T extends { href: string }>({
         computeItemKey={(index) => items[index]?.href ?? `placeholder-${index}`}
         components={{ TopItemList: StickyTopItemList }}
         groupContent={(groupIndex) => (
-          <h2 className="px-4 py-4 text-sm leading-[1.4rem] font-medium text-muted-foreground">
+          <ListSubheader role="heading" aria-level={2}>
             {groups[groupIndex]?.label}
-          </h2>
+          </ListSubheader>
         )}
-        itemContent={(index) => (
-          <div className="bg-card">
-            {items[index] ? renderItem(items[index]!) : placeholder}
-          </div>
-        )}
+        itemContent={(index) => {
+          const item = items[index];
+          return <div className="bg-card">{item ? renderItem(item) : placeholder}</div>;
+        }}
       />
     </ul>
   );

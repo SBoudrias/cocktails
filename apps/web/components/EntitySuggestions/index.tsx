@@ -28,7 +28,13 @@ function getEntityView(kind: EntitySuggestion['kind']) {
       icon: <BookOpen aria-label="Book" className="size-6" />,
     }))
     .with('youtube-channel', () => ({
-      icon: <YoutubeIcon />,
+      // YoutubeIcon is aria-hidden (decorative brand glyph): the row's
+      // label rides on this span instead, like every other kind.
+      icon: (
+        <span role="img" aria-label="YouTube channel" className="inline-flex">
+          <YoutubeIcon />
+        </span>
+      ),
     }))
     .with('podcast', () => ({
       icon: <Mic aria-label="Podcast" className="size-6" />,
@@ -68,7 +74,7 @@ export default function EntitySuggestions({
               primary={
                 // Inline flex centers the icon's box on the text's line
                 // instead of sitting it on the baseline like a bare svg.
-                <span className="inline-flex items-center gap-1">
+                <span className="inline-flex items-center gap-2">
                   {icon}
                   <span className={styles.name}>{suggestion.name}</span>
                 </span>

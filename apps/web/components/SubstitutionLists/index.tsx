@@ -1,7 +1,6 @@
 import type { Category, RootIngredient } from '@cocktails/data';
-import { ChevronRight, Tag } from 'lucide-react';
+import { Tag } from 'lucide-react';
 import type { Route } from 'next';
-import Link from 'next/link';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import { ingredientHasData } from '#/modules/hasData';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
@@ -25,19 +24,12 @@ function SeeAllLink({
   label: string;
 }) {
   return (
-    <Link
+    <LinkListItem
       href={href}
-      className="relative flex w-full items-center border-x-0 border-t-0 border-b px-4 py-3 pr-12 text-base outline-none transition-colors duration-100 hover:bg-muted focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
-    >
-      <Tag className="size-5 shrink-0" />
-      <span className="flex min-w-0 flex-1 flex-col gap-1 text-left">
-        <span className="min-w-0">{label}</span>
-        <span className="text-xs leading-[1.35] text-muted-foreground">
-          See all options
-        </span>
-      </span>
-      <ChevronRight className="absolute top-1/2 right-4 size-6 -translate-y-1/2 text-foreground" />
-    </Link>
+      leading={<Tag className="size-5" />}
+      primary={label}
+      secondary="See all options"
+    />
   );
 }
 

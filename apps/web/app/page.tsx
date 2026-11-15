@@ -1,17 +1,8 @@
 import type { Source } from '@cocktails/data';
 import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import { getAllSources } from '@cocktails/data/sources';
-import {
-  BookOpen,
-  Calculator,
-  ChevronRight,
-  History,
-  Martini,
-  Mic,
-  Search,
-} from 'lucide-react';
+import { BookOpen, Calculator, History, Mic, Search } from 'lucide-react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import AppHeader from '#/components/AppHeader';
 import YoutubeIcon from '#/components/icons/YoutubeIcon';
 import { LinkListItem } from '#/components/LinkList';
@@ -33,21 +24,9 @@ export const metadata: Metadata = {
 
 // MUI metrics verbatim: the subheader with its icon row, and the rows with
 // the chevron the secondaryAction drew.
-// The subheader row, with the section's leading icon: ui/list's
-// ListSubheader metrics + the icon the MUI Stack row carried.
-function SectionSubheader({
-  icon,
-  children,
-}: {
-  icon?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <ListSubheader className="flex items-center gap-2">
-      {icon}
-      {children}
-    </ListSubheader>
-  );
+// The section row: ListSubheader's metrics with the icon gap.
+function SectionSubheader({ children }: { children: React.ReactNode }) {
+  return <ListSubheader className="flex items-center gap-2">{children}</ListSubheader>;
 }
 
 function SourceListItem({ source }: { source: Source }) {

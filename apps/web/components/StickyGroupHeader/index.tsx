@@ -1,7 +1,7 @@
 'use client';
 
-import { cn } from 'cn';
 import { useRef } from 'react';
+import { ListSubheader } from '#/components/ui/list';
 import { useStuck } from '#/hooks/useStuck';
 import { stuckGlass } from '#/modules/stuckGlass';
 
@@ -31,10 +31,10 @@ export default function StickyGroupHeader({
       // position: sticky inside the group; the rows scroll under it. The
       // background comes separately (useStuck): the header stays
       // see-through in flow and only wears glass once pinned.
-      className="sticky z-[1] px-4 py-4 text-sm leading-[1.4rem] font-medium text-muted-foreground"
+      className="sticky z-[1]"
       style={{ top: 'var(--app-bar-height)', ...(stuck ? stuckGlass : null) }}
     >
-      <span className={cn('block')}>{children}</span>
+      <ListSubheader>{children}</ListSubheader>
     </li>
   );
 }
