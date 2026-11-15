@@ -66,7 +66,7 @@ export default function BookSourceClient({
 
   const emptyState = (
     <>
-      <Card className="m-4">
+      <Card m={2}>
         <CardHeader>
           <CardTitle>No results found</CardTitle>
         </CardHeader>
@@ -103,7 +103,7 @@ export default function BookSourceClient({
   return (
     <>
       <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-      <SourceAboutCard source={source} className="m-4" />
+      <SourceAboutCard source={source} m={2} />
       {hasChapters && (
         <div className="mx-4 flex justify-end">
           <GroupModeToggle value={groupMode} onChange={setGroupMode} />

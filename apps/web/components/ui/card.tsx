@@ -1,15 +1,28 @@
 import { cn } from 'cn';
 import * as React from 'react';
 
+// MUI's spacing scale: 1 unit = 8px. The family's call sites place cards in
+// the page flow with it (m={1} was sx m:1, m={2} was m:2).
+export type CardMargin = 1 | 2;
+
+export function cardMargin(m: CardMargin | undefined): string | undefined {
+  return m === undefined ? undefined : m === 1 ? 'm-2' : 'm-4';
+}
+
 // MUI Card's exact rendered geometry (measured, see the family's port notes):
 // the 4px radius on top of the shared `surface` utility (the Paper glass,
 // its overlay gradient and elevation-1 shadow).
-function Card({ className, ...props }: React.ComponentProps<'div'>) {
+function Card({
+  className,
+  m,
+  ...props
+}: React.ComponentProps<'div'> & { m?: CardMargin }) {
   return (
     <div
       data-slot="card"
       className={cn(
         'overflow-hidden rounded-lg text-base text-card-foreground surface',
+        cardMargin(m),
         className,
       )}
       {...props}

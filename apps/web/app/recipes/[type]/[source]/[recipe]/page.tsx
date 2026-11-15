@@ -102,11 +102,11 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           source={recipe.source}
           chapterName={recipe.chapter?.name}
           refs={recipe.refs}
-          className="m-2"
+          m={1}
         />
-        {videos.length > 0 && <VideoListCard refs={videos} className="m-2" />}
-        {websites.length > 0 && <WebsiteListCard refs={websites} className="m-2" />}
-        <FixBugCard fixUrl={getRecipeEditUrl(recipe)} className="m-2" />
+        {videos.length > 0 && <VideoListCard refs={videos} m={1} />}
+        {websites.length > 0 && <WebsiteListCard refs={websites} m={1} />}
+        <FixBugCard fixUrl={getRecipeEditUrl(recipe)} m={1} />
       </Box>
     </>
   );

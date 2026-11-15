@@ -2,6 +2,7 @@ import type { Podcast as PodcastType } from '@cocktails/data';
 import { ArrowUpRight, Podcast as PodcastIcon } from 'lucide-react';
 import { buttonVariants } from '#/components/ui/button-variants';
 import {
+  type CardMargin,
   Card,
   CardActions,
   CardContent,
@@ -14,19 +15,19 @@ export default function PodcastAboutCard({
   source,
   episodeTitle,
   episodeLink,
-  className,
+  m,
 }: {
   source: PodcastType;
   episodeTitle?: string;
   episodeLink?: string;
-  className?: string;
+  m?: CardMargin;
 }) {
   return (
-    <Card className={className}>
+    <Card m={m}>
       <CardHeader>
         <CardTitle>
           <PodcastIcon
-            className="mr-1 inline size-6 align-text-bottom"
+            className="mr-1.5 inline-block size-6 align-text-top"
             aria-hidden="true"
           />
           {source.name}

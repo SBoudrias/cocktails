@@ -8,7 +8,7 @@ export default function SearchAllLink({ searchTerm }: { searchTerm: string | nul
   }
 
   return (
-    <Card className="m-4">
+    <Card m={2}>
       <CardContent>
         <Link
           href={{ pathname: '/search', query: { search: searchTerm } }}

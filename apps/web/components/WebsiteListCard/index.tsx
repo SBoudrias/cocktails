@@ -1,21 +1,27 @@
 import type { WebsiteRef } from '@cocktails/data';
 import { Globe } from 'lucide-react';
 import { buttonVariants } from '#/components/ui/button-variants';
-import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  type CardMargin,
+} from '#/components/ui/card';
 
 // Website refs are links to pages about this one cocktail (blog reviews,
 // recipe posts); the card names the site and where it goes.
 export default function WebsiteListCard({
   refs,
   title = 'Also documented at',
-  className,
+  m,
 }: {
   refs: WebsiteRef[];
   title?: string;
-  className?: string;
+  m?: CardMargin;
 }) {
   return (
-    <Card className={className}>
+    <Card m={m}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>

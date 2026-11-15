@@ -38,7 +38,7 @@ function IngredientRow<RouteType>({
   children: React.ReactNode;
 }) {
   return (
-    <li>
+    <li className="list-none">
       <Link
         href={href}
         className="flex w-full items-center border-x-0 border-t-0 border-b border-border py-2 pr-12 pl-4 text-base capitalize outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
@@ -54,7 +54,7 @@ function IngredientRow<RouteType>({
 // or trailing zone.
 function TechniqueRow({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex w-full items-center border-x-0 border-t-0 border-b border-border py-2 pl-4 text-base capitalize outline-none">
+    <li className="flex w-full list-none items-center border-x-0 border-t-0 border-b border-border py-2 pl-4 text-base capitalize outline-none">
       <span className="my-1 flex-1 text-left">{children}</span>
     </li>
   );

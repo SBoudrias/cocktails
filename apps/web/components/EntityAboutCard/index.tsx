@@ -5,6 +5,7 @@ import { siFacebook, siInstagram, siX, siYoutube } from 'simple-icons';
 import { match, P } from 'ts-pattern';
 import BrandIcon from '#/components/icons/BrandIcon';
 import { buttonVariants } from '#/components/ui/button-variants';
+import type { CardMargin } from '#/components/ui/card';
 import {
   Card,
   CardActions,
@@ -85,10 +86,10 @@ function LinkButtons({ links }: { links?: [string, ...string[]] }) {
  */
 export function AuthorAboutCard({
   author,
-  className,
+  m,
 }: {
   author: Author | undefined;
-  className?: string;
+  m?: CardMargin;
 }) {
   if (!author) return null;
 
@@ -96,10 +97,13 @@ export function AuthorAboutCard({
   const sources = author.sources ?? [];
 
   return (
-    <Card className={className}>
+    <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <User className="mr-1 inline size-6 align-text-bottom" aria-hidden="true" />
+          <User
+            className="mr-1.5 inline-block size-6 align-text-top"
+            aria-hidden="true"
+          />
           {author.name}
         </CardTitle>
       </CardHeader>
@@ -157,13 +161,7 @@ export function AuthorAboutCard({
  * renders — it is the page's title, shown once; location, description, and
  * links appear only when the entity has them.
  */
-export function BarAboutCard({
-  bar,
-  className,
-}: {
-  bar: Bar | undefined;
-  className?: string;
-}) {
+export function BarAboutCard({ bar, m }: { bar: Bar | undefined; m?: CardMargin }) {
   if (!bar) return null;
 
   const mapUrl = bar.location
@@ -171,10 +169,13 @@ export function BarAboutCard({
     : undefined;
 
   return (
-    <Card className={className}>
+    <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <Martini className="mr-1 inline size-6 align-text-bottom" aria-hidden="true" />
+          <Martini
+            className="mr-1.5 inline-block size-6 align-text-top"
+            aria-hidden="true"
+          />
           {bar.name}
         </CardTitle>
         {bar.location && <CardSubheader>{bar.location}</CardSubheader>}

@@ -1,18 +1,24 @@
 import type { YoutubeRef } from '@cocktails/data';
-import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  type CardMargin,
+} from '#/components/ui/card';
 import Video from '#/components/Video';
 
 export default function VideoListCard({
   refs,
   title = 'Video',
-  className,
+  m,
 }: {
   refs: YoutubeRef[];
   title?: string;
-  className?: string;
+  m?: CardMargin;
 }) {
   return (
-    <Card className={className}>
+    <Card m={m}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>

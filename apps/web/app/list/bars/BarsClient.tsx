@@ -44,7 +44,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
   const showLocation = !isCityMode || isSearching;
 
   const emptyState = (
-    <Card className="m-4">
+    <Card m={2}>
       <CardHeader>
         <CardTitle>No results found</CardTitle>
       </CardHeader>

@@ -2,6 +2,7 @@ import type { Book } from '@cocktails/data';
 import { ArrowUpRight, BookOpen } from 'lucide-react';
 import { buttonVariants } from '#/components/ui/button-variants';
 import {
+  type CardMargin,
   Card,
   CardActions,
   CardContent,
@@ -14,22 +15,25 @@ export default function BookAboutCard({
   source,
   chapterName,
   page,
-  className,
+  m,
 }: {
   source: Book;
   chapterName?: string;
   page?: number;
-  className?: string;
+  m?: CardMargin;
 }) {
   const subheader = [chapterName, typeof page === 'number' ? `page ${page}` : undefined]
     .filter(Boolean)
     .join(' · ');
 
   return (
-    <Card className={className}>
+    <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <BookOpen className="mr-1 inline size-6 align-text-bottom" aria-hidden="true" />
+          <BookOpen
+            className="mr-1.5 inline-block size-6 align-text-top"
+            aria-hidden="true"
+          />
           {source.name}
         </CardTitle>
         {subheader && <CardSubheader>{subheader}</CardSubheader>}
