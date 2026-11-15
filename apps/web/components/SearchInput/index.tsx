@@ -1,42 +1,16 @@
 'use client';
 
-import SearchIcon from '@mui/icons-material/Search';
-import { Button, InputBase, Stack } from '@mui/material';
-import { styled, alpha } from '@mui/material/styles';
+import { Search } from 'lucide-react';
 import { useRef } from 'react';
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  width: '100%',
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  width: '100%',
-  height: '100%',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-  },
-}));
-
+// The searchbox as MUI styled it: a relative rounded field with the glassy
+// white/15 fill (white/25 hovered), the magnifier absolutely parked on the
+// left (pointer-events off), and the input padded 8px with its 48px left pad
+// spanning the icon, its line box 1.4375em like MUI's InputBase (23px at
+// 16px — taller than the text, so the field and the button beside it share
+// the row's height). The Clear button is MUI's text button: uppercase 14px
+// 500, 6px 8px padding in a 64px-min row, primary colored with a primary/8
+// hover fill, stretched to the row's height like MUI's Stack default.
 export default function SearchInput({
   value,
   onChangeAction,
@@ -53,36 +27,38 @@ export default function SearchInput({
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <Stack direction="row" sx={{ flexGrow: 1 }}>
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
+    <div className="flex grow items-stretch">
+      <div className="relative w-full rounded-lg bg-foreground/15 hover:bg-foreground/25">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center px-4">
+          <Search aria-hidden="true" className="size-6" />
+        </div>
+        <input
           ref={inputRef}
-          placeholder={placeholder}
-          inputProps={{ 'aria-label': 'search' }}
-          value={value}
-          onChange={(e) => onChangeAction(e.currentTarget.value)}
           type="search"
+          aria-label="search"
+          placeholder={placeholder}
+          value={value}
           autoFocus={autoFocus}
           onFocus={onFocusAction}
+          onChange={(e) => onChangeAction(e.currentTarget.value)}
           onKeyUp={(e) => {
             if (e.code === 'Enter') {
               e.currentTarget.blur();
             }
           }}
+          className="w-full py-2 pl-[calc(1em+2rem)] pr-2 font-sans text-base leading-[1.4375em] outline-none placeholder:text-foreground/50 [&::-webkit-search-decoration]:appearance-none"
         />
-      </Search>
-      <Button
+      </div>
+      <button
         type="reset"
         onClick={() => {
           onChangeAction(null);
-          inputRef.current?.querySelector('input')?.focus();
+          inputRef.current?.focus();
         }}
+        className="min-w-16 shrink-0 rounded-lg px-2 py-1.5 text-sm font-medium uppercase leading-[1.75] text-primary outline-none hover:bg-primary/8 focus-visible:bg-primary/12"
       >
         Clear
-      </Button>
-    </Stack>
+      </button>
+    </div>
   );
 }

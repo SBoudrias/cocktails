@@ -1,37 +1,23 @@
-'use client';
-
-import { Link, Stack } from '@mui/material';
+import Link from 'next/link';
 import GitHubIcon from '#/components/icons/GitHubIcon';
 import TikiMark from '#/components/TikiMark';
 
+// The footer: the two brand links pulled to the bottom edge of a tall flex
+// row — Indexotica's home on the left, the GitHub link on the right.
 export default function AppFooter() {
   return (
-    <Stack
-      direction="row"
-      sx={{
-        py: 2,
-        px: 2,
-        minHeight: '350px',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-      }}
-    >
-      <Link
-        href="/"
-        underline="none"
-        sx={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 0.5 }}
-      >
+    <div className="flex min-h-[350px] items-end justify-between p-4">
+      <Link href="/" className="flex items-center gap-1 text-white">
         <TikiMark /> Indexotica
       </Link>
-      <Link
+      <a
         href="https://github.com/SBoudrias/cocktails/"
         target="_blank"
         rel="noopener"
-        underline="none"
-        sx={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 0.5 }}
+        className="flex items-center gap-1 text-white"
       >
         <GitHubIcon /> Contribute on GitHub
-      </Link>
-    </Stack>
+      </a>
+    </div>
   );
 }
