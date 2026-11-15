@@ -5,6 +5,19 @@
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 @theme inline {
+  /* MUI's Skeleton pulse: 2s ease-in-out, 0.5s in, opacity 1→0.4→1 */
+  --animate-skeleton: skeleton-pulse 2s ease-in-out 0.5s infinite;
+
+  @keyframes skeleton-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
   --font-sans: var(--font-roboto);
   --font-heading: var(--font-roboto);
   --color-background: var(--background);
@@ -66,6 +79,23 @@
   --warning: #d4883d;
   --warning-dark: #a66628;
   --error-light: #c98aa3;
+  /* The app bar's height, per orientation and breakpoint (MUI's toolbar
+     mixin; the sticky group headers sit at this top). */
+  --app-bar-height: 56px;
+}
+
+/* The app bar's height, per orientation and breakpoint (MUI's toolbar mixin:
+   landscape-short applies only below the sm breakpoint) */
+@media (orientation: landscape) and (max-width: 599.95px) {
+  :root {
+    --app-bar-height: 48px;
+  }
+}
+
+@media (min-width: 600px) {
+  :root {
+    --app-bar-height: 64px;
+  }
 }
 
 /* The app bar's height on the same breakpoints as MUI's toolbar mixin:
@@ -110,6 +140,13 @@
     margin: 0;
     border: 0 solid;
     border-color: var(--color-border);
+  }
+
+  /* MUI's List drew every list in the app; the bare ul/ol the migration
+     renders need the same reset or the browser draws bullets on them. */
+  ul,
+  ol {
+    list-style: none;
   }
 
   a {

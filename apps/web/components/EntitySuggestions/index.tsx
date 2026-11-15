@@ -1,14 +1,6 @@
-import {
-  Liquor as LiquorIcon,
-  LocalBar as LocalBarIcon,
-  LocalOffer as LocalOfferIcon,
-  MenuBook as MenuBookIcon,
-  Person as PersonIcon,
-  Podcasts as PodcastsIcon,
-  YouTube as YouTubeIcon,
-} from '@mui/icons-material';
-import { Box, List, Paper } from '@mui/material';
+import { BookOpen, Martini, Mic, Tag, User, Wine } from 'lucide-react';
 import { match } from 'ts-pattern';
+import YoutubeIcon from '#/components/icons/YoutubeIcon';
 import { LinkListItem } from '#/components/LinkList';
 import type { EntitySuggestion } from '#/modules/entitySuggestions';
 import { isEntityUrl } from '#/modules/url';
@@ -16,19 +8,37 @@ import styles from './style.module.css';
 
 function getEntityView(kind: EntitySuggestion['kind']) {
   // Icon-only in the visible row; the label rides on the icon for screen
-  // readers (SvgIcon renders role="img" with its aria-label). Categories use
-  // the tag the ingredient pages and CategoryName render for categories.
+  // readers. Categories use the tag the ingredient pages and CategoryName
+  // render for categories.
   return match(kind)
     .returnType<{ icon: React.ReactNode }>()
-    .with('category', () => ({ icon: <LocalOfferIcon aria-label="Category" /> }))
-    .with('ingredient', () => ({ icon: <LiquorIcon aria-label="Ingredient" /> }))
-    .with('author', () => ({ icon: <PersonIcon aria-label="Author" /> }))
-    .with('bar', () => ({ icon: <LocalBarIcon aria-label="Bar" /> }))
-    .with('book', () => ({ icon: <MenuBookIcon aria-label="Book" /> }))
-    .with('youtube-channel', () => ({
-      icon: <YouTubeIcon aria-label="YouTube channel" />,
+    .with('category', () => ({
+      icon: <Tag aria-label="Category" className="size-6" />,
     }))
-    .with('podcast', () => ({ icon: <PodcastsIcon aria-label="Podcast" /> }))
+    .with('ingredient', () => ({
+      icon: <Wine aria-label="Ingredient" className="size-6" />,
+    }))
+    .with('author', () => ({
+      icon: <User aria-label="Author" className="size-6" />,
+    }))
+    .with('bar', () => ({
+      icon: <Martini aria-label="Bar" className="size-6" />,
+    }))
+    .with('book', () => ({
+      icon: <BookOpen aria-label="Book" className="size-6" />,
+    }))
+    .with('youtube-channel', () => ({
+      // YoutubeIcon is aria-hidden (decorative brand glyph): the row's
+      // label rides on this span instead, like every other kind.
+      icon: (
+        <span role="img" aria-label="YouTube channel" className="inline-flex">
+          <YoutubeIcon />
+        </span>
+      ),
+    }))
+    .with('podcast', () => ({
+      icon: <Mic aria-label="Podcast" className="size-6" />,
+    }))
     .exhaustive();
 }
 
@@ -52,8 +62,8 @@ export default function EntitySuggestions({
   if (links.length === 0) return null;
 
   return (
-    <List aria-label="Matching entities" sx={{ pb: 2 }}>
-      <Paper square>
+    <ul aria-label="Matching entities" className="pt-2 pb-4">
+      <div className="bg-card">
         {links.map((suggestion) => {
           const { icon } = getEntityView(suggestion.kind);
 
@@ -63,19 +73,16 @@ export default function EntitySuggestions({
               href={suggestion.href}
               primary={
                 // Inline flex centers the icon's box on the text's line
-                // instead of sitting it on the baseline like a bare SvgIcon.
-                <Box
-                  component="span"
-                  sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}
-                >
+                // instead of sitting it on the baseline like a bare svg.
+                <span className="inline-flex items-center gap-2">
                   {icon}
                   <span className={styles.name}>{suggestion.name}</span>
-                </Box>
+                </span>
               }
             />
           );
         })}
-      </Paper>
-    </List>
+      </div>
+    </ul>
   );
 }

@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  Card,
-  CardHeader,
-  Stack,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from '@mui/material';
+import { Card, CardHeader, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
@@ -29,7 +22,7 @@ function renderBar(bar: Bar, showLocation: boolean) {
       href={getBarRecipesUrl(bar)}
       primary={bar.name}
       secondary={showLocation ? bar.location : undefined}
-      tertiary={<Typography color="textSecondary">{bar.recipeCount}</Typography>}
+      tertiary={<span className="text-muted-foreground">{bar.recipeCount}</span>}
     />
   );
 }
@@ -62,7 +55,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         onSearchChange={setSearchTerm}
       />
       {hasLocations && !isSearching && (
-        <Stack direction="row-reverse" sx={{ mx: 2 }}>
+        <div className="mx-4 flex flex-row-reverse">
           <ToggleButtonGroup
             value={groupMode}
             exclusive
@@ -75,7 +68,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
             <ToggleButton value="alpha">A-Z</ToggleButton>
             <ToggleButton value="city">By City</ToggleButton>
           </ToggleButtonGroup>
-        </Stack>
+        </div>
       )}
       <SearchableList
         items={bars}

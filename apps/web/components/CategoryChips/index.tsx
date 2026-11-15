@@ -1,6 +1,6 @@
 import type { Category } from '@cocktails/data';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import { Link, Stack } from '@mui/material';
+import { Tag } from 'lucide-react';
+import Link from 'next/link';
 import { getCategoryUrl } from '#/modules/url';
 
 /**
@@ -19,43 +19,21 @@ export default function CategoryChips({
   if (categories.length === 0) return null;
 
   return (
-    <Stack
+    <div
       role="group"
       aria-label={label}
-      direction="row"
-      spacing={0.75}
-      sx={{
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        rowGap: 0.75,
-        mx: 2,
-        mt: -0.5,
-        mb: 1,
-      }}
+      className="mx-4 -mt-1 mb-2 flex flex-wrap items-center gap-x-1.5 gap-y-1.5"
     >
       {categories.map((category) => (
         <Link
           key={category.slug}
           href={getCategoryUrl(category)}
-          underline="none"
-          sx={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 0.5,
-            px: 1,
-            borderRadius: 999,
-            backgroundColor: 'rgba(42, 138, 138, 0.16)',
-            color: 'text.primary',
-            fontSize: '0.8125rem',
-            '&:hover': {
-              backgroundColor: 'rgba(42, 138, 138, 0.3)',
-            },
-          }}
+          className="inline-flex items-center gap-1 rounded-full bg-primary/16 px-2 text-[0.8125rem] text-foreground hover:bg-primary/30"
         >
-          <LocalOfferIcon sx={{ fontSize: 14, color: 'text.secondary' }} />
+          <Tag className="size-3.5 text-muted-foreground" />
           {category.name}
         </Link>
       ))}
-    </Stack>
+    </div>
   );
 }

@@ -1,7 +1,5 @@
 'use client';
 
-import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
@@ -11,8 +9,8 @@ import type {
   TopItemListProps,
 } from 'react-virtuoso';
 import { GroupedVirtuoso } from 'react-virtuoso';
+import { ListSubheader } from '#/components/ui/list';
 import { useStuck } from '#/hooks/useStuck';
-import { belowAppBar } from '#/modules/belowAppBar';
 import { stuckGlass } from '#/modules/stuckGlass';
 
 /**
@@ -24,29 +22,32 @@ import { stuckGlass } from '#/modules/stuckGlass';
 const positions = new Map<string, { state: StateSnapshot; href: string; top: number }>();
 
 // The fixed app bar covers the top of the window: this wrapper is the sticky
-// element — it carries the theme's top offset and, once pinned, the moonlit
-// glass that keeps the rows scrolling beneath it from bleeding through.
-const TopItemList = styled('div')(({ theme }) => belowAppBar(theme.mixins.toolbar));
-
+// element — it carries the app bar's height as its top offset (per
+// orientation and breakpoint) and, once pinned, the moonlit glass that keeps
+// the rows scrolling beneath it from bleeding through.
 function StickyTopItemList({ children, style }: TopItemListProps) {
   const ref = useRef<HTMLDivElement>(null);
   const stuck = useStuck(ref);
 
   return (
-    <TopItemList
+    <div
       ref={ref}
-      style={{ ...style, top: undefined, ...(stuck ? stuckGlass : null) }}
+      className="sticky z-[1]"
+      style={{ ...style, top: 'var(--app-bar-height)', ...(stuck ? stuckGlass : null) }}
     >
       {children}
-    </TopItemList>
+    </div>
   );
 }
 
 // Same footprint as a two-line link row, until the row's data loads.
 const placeholder = (
-  <ListItem divider aria-hidden>
-    <ListItemText primary="…" secondary="…" />
-  </ListItem>
+  <li className="flex w-full items-center border-x-0 border-t-0 border-b px-4 py-3 text-base">
+    <span className="flex flex-1 flex-col gap-1">
+      <span className="leading-[1.5]">…</span>
+      <span className="text-xs leading-[1.35] text-muted-foreground">…</span>
+    </span>
+  </li>
 );
 
 /**
@@ -112,32 +113,30 @@ export default function VirtualGroupedList<const T extends { href: string }>({
   };
 
   return (
-    <>
-      {/* One list around the rows and the sticky header virtuoso renders
-          apart from them. */}
-      <List ref={listRef} disablePadding>
-        <GroupedVirtuoso
-          ref={ref}
-          useWindowScroll
-          groupCounts={groupCounts}
-          initialItemCount={Math.min(items.length, totalCount)}
-          increaseViewportBy={800}
-          restoreStateFrom={restore?.state}
-          itemsRendered={keepRestoredPosition}
-          computeItemKey={(index) => items[index]?.href ?? `placeholder-${index}`}
-          components={{ TopItemList: StickyTopItemList }}
-          groupContent={(groupIndex) => (
-            <ListSubheader component="div" role="heading" aria-level={2}>
-              {groups[groupIndex]?.label}
-            </ListSubheader>
-          )}
-          itemContent={(index) => {
-            const item = items[index];
-            return <Paper square>{item ? renderItem(item) : placeholder}</Paper>;
-          }}
-        />
-      </List>
-    </>
+    // One list around the rows and the sticky header virtuoso renders apart
+    // from them.
+    <ul ref={listRef}>
+      <GroupedVirtuoso
+        ref={ref}
+        useWindowScroll
+        groupCounts={groupCounts}
+        initialItemCount={Math.min(items.length, totalCount)}
+        increaseViewportBy={800}
+        restoreStateFrom={restore?.state}
+        itemsRendered={keepRestoredPosition}
+        computeItemKey={(index) => items[index]?.href ?? `placeholder-${index}`}
+        components={{ TopItemList: StickyTopItemList }}
+        groupContent={(groupIndex) => (
+          <ListSubheader role="heading" aria-level={2}>
+            {groups[groupIndex]?.label}
+          </ListSubheader>
+        )}
+        itemContent={(index) => {
+          const item = items[index];
+          return <div className="bg-card">{item ? renderItem(item) : placeholder}</div>;
+        }}
+      />
+    </ul>
   );
 }
 

@@ -1,9 +1,6 @@
 import type { Category, RootIngredient } from '@cocktails/data';
-import ChevronRight from '@mui/icons-material/ChevronRight';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import { ListItem, ListItemText, Stack, Typography } from '@mui/material';
+import { Tag } from 'lucide-react';
 import type { Route } from 'next';
-import Link from 'next/link';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import { ingredientHasData } from '#/modules/hasData';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
@@ -27,14 +24,12 @@ function SeeAllLink({
   label: string;
 }) {
   return (
-    <Link href={href}>
-      <ListItem divider secondaryAction={<ChevronRight />}>
-        <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', width: '100%' }}>
-          <LocalOfferIcon fontSize="small" />
-          <ListItemText primary={label} secondary="See all options" />
-        </Stack>
-      </ListItem>
-    </Link>
+    <LinkListItem
+      href={href}
+      leading={<Tag className="size-5" />}
+      primary={label}
+      secondary="See all options"
+    />
   );
 }
 
@@ -114,9 +109,9 @@ export default function SubstitutionLists({
               }
               primary={substitute.name}
               tertiary={
-                <Typography color="textSecondary">
+                <span className="text-muted-foreground">
                   {recipeCounts.get(substitute.slug) ?? 0}
-                </Typography>
+                </span>
               }
             />
           )}
