@@ -101,6 +101,7 @@ const COUNTRIES = new Set([
   'british virgin islands',
   'china',
   'cuba',
+  'denmark',
   'france',
   'germany',
   'ireland',

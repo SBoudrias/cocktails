@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Tuscan Toucan",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "tiki",
+  "ingredients": [
+    {
+      "name": "Grapefruit juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cinnamon syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Jamaican overproof rum",
+      "type": "category",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Amaro Montenegro",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Shake all ingredients with ice.",
+    "Strain into a tiki mug filled with crushed ice.",
+    "Garnish with a mint sprig and a citrus slice."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anthony Schmidt"
+    },
+    {
+      "relation": "bar",
+      "source": "False Idol",
+      "location": "San Diego, CA"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "se9DMMdsmHE",
+      "channel": "make-and-drink",
+      "start": 88
+    }
+  ]
+}
