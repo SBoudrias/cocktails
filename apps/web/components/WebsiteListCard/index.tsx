@@ -29,9 +29,7 @@ export default function WebsiteListCard({
             aria-label={ref.url}
             className={buttonVariants({ variant: 'text-inherit' })}
           >
-            <span className="-ml-1 mr-2 flex">
-              <Globe className="size-5" />
-            </span>
+            <Globe className="-ml-1 mr-2" aria-hidden="true" />
             {ref.name}
           </a>
         ))}

@@ -20,14 +20,11 @@ import styles from './style.module.css';
 
 const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
 
-// The MUI Paper(square) block that held the rows: the same glass, gradient
-// overlay and elevation-1 shadow as a card, without the radius or clipping.
+// The MUI Paper(square) block that held the rows: the shared `surface`
+// utility (the Paper glass + overlay + elevation-1 shadow) without the
+// radius or clipping.
 function ListSurface({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="bg-card bg-[linear-gradient(rgb(255_255_255/0.05),rgb(255_255_255/0.05))] shadow-[0px_2px_1px_-1px_rgb(0_0_0/0.2),0px_1px_1px_0px_rgb(0_0_0/0.14),0px_1px_3px_0px_rgb(0_0_0/0.12)]">
-      {children}
-    </div>
-  );
+  return <div className="surface">{children}</div>;
 }
 
 // MUI's ingredient row: ListItem with the divider, 8px vertical padding,

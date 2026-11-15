@@ -2,16 +2,14 @@ import { cn } from 'cn';
 import * as React from 'react';
 
 // MUI Card's exact rendered geometry (measured, see the family's port notes):
-// the 4px radius, Paper's elevation-1 shadow and its white-5% overlay
-// gradient on top of the glass background. --radius-lg is 0.25rem here.
+// the 4px radius on top of the shared `surface` utility (the Paper glass,
+// its overlay gradient and elevation-1 shadow).
 function Card({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card"
       className={cn(
-        'block overflow-hidden rounded-lg bg-card text-base text-card-foreground',
-        'bg-[linear-gradient(rgb(255_255_255/0.05),rgb(255_255_255/0.05))]',
-        'shadow-[0px_2px_1px_-1px_rgb(0_0_0/0.2),0px_1px_1px_0px_rgb(0_0_0/0.14),0px_1px_3px_0px_rgb(0_0_0/0.12)]',
+        'overflow-hidden rounded-lg text-base text-card-foreground surface',
         className,
       )}
       {...props}
@@ -25,7 +23,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-header"
-      className={cn('flex flex-col justify-center px-4 py-4', className)}
+      className={cn('flex flex-col justify-center p-4', className)}
       {...props}
     />
   );
@@ -62,7 +60,7 @@ function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
         // The theme collapses the top padding of a content block that
         // follows the header or another content block (MuiCardContent
         // styleOverrides' sibling rules).
-        'p-4 pt-4 text-sm [[data-slot=card-header]+&]:pt-0 [[data-slot=card-content]+&]:pt-0',
+        'p-4 text-sm [[data-slot=card-header]+&]:pt-0 [[data-slot=card-content]+&]:pt-0',
         className,
       )}
       {...props}

@@ -1,7 +1,6 @@
 'use client';
 
 import type { Book } from '@cocktails/data';
-import { Stack } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
 import { LinkList } from '#/components/LinkList';
@@ -106,9 +105,9 @@ export default function BookSourceClient({
       <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <SourceAboutCard source={source} className="m-4" />
       {hasChapters && (
-        <Stack direction="row-reverse" sx={{ mx: 2 }}>
+        <div className="mx-4 flex justify-end">
           <GroupModeToggle value={groupMode} onChange={setGroupMode} />
-        </Stack>
+        </div>
       )}
       <LinkList items={recipes} config={listConfig} renderItem={listRenderRecipe} />
     </>
@@ -131,11 +130,8 @@ function GroupModeToggle({
           onChange(newValue);
         }
       }}
-      variant="outline"
-      spacing={0}
       aria-label="Recipe grouping"
     >
-      {/* MUI's small ToggleButton metrics live in the primitive. */}
       <ToggleGroupItem value="chapter">By Chapter</ToggleGroupItem>
       <ToggleGroupItem value="alphabetical">A-Z</ToggleGroupItem>
     </ToggleGroup>

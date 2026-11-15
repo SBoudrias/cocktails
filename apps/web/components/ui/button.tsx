@@ -5,7 +5,7 @@ import { buttonVariants } from '#/components/ui/button-variants';
 
 function Button({
   className,
-  variant = 'default',
+  variant = 'ghost',
   size = 'default',
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {

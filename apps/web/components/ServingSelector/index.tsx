@@ -78,14 +78,14 @@ export default function ServingSelector({
     // notch. The widths are MUI's measured intrinsic ones: the number
     // input's default width grows with the viewport (47/62px), so the field
     // is 151px on phones and 166px from 600px up.
-    <div className="relative w-[151px] min-[600px]:w-[166px]">
+    <div className="group relative w-[151px] min-[600px]:w-[166px]">
       <fieldset
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -top-[5px] rounded-sm border border-input px-[9px]"
+        className="pointer-events-none absolute inset-0 -top-[5px] rounded-sm border border-input px-[9px] group-focus-within:border-2 group-focus-within:border-primary"
       >
         <legend
           id={labelId}
-          className="px-[5px] text-xs leading-[1.4375] text-muted-foreground"
+          className="px-[5px] text-xs leading-[1.4375] text-muted-foreground group-focus-within:text-primary"
         >
           Servings
         </legend>

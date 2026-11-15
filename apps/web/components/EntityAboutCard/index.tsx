@@ -1,10 +1,9 @@
 import type { Author, Bar } from '@cocktails/data';
-import { Globe, Map as MapIcon, User, UtensilsCrossed } from 'lucide-react';
+import { cn } from 'cn';
+import { Globe, Map as MapIcon, Martini, User } from 'lucide-react';
+import { siFacebook, siInstagram, siX, siYoutube } from 'simple-icons';
 import { match, P } from 'ts-pattern';
-import FacebookIcon from '#/components/icons/FacebookIcon';
-import InstagramIcon from '#/components/icons/InstagramIcon';
-import XIcon from '#/components/icons/XIcon';
-import YoutubeIcon from '#/components/icons/YoutubeIcon';
+import BrandIcon from '#/components/icons/BrandIcon';
 import { buttonVariants } from '#/components/ui/button-variants';
 import {
   Card,
@@ -30,25 +29,31 @@ function getLinkView(url: string) {
     .with('instagram.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <InstagramIcon className="size-5" />,
+        icon: <BrandIcon icon={siInstagram} className="-ml-1 mr-2" />,
         label: handle ? handle : host,
       };
     })
     .with('youtube.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return handle
-        ? { icon: <YoutubeIcon className="size-5" />, label: handle }
-        : { icon: <YoutubeIcon className="size-5" />, label: host };
+        ? { icon: <BrandIcon icon={siYoutube} className="-ml-1 mr-2" />, label: handle }
+        : { icon: <BrandIcon icon={siYoutube} className="-ml-1 mr-2" />, label: host };
     })
     .with(P.union('x.com', 'twitter.com'), (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
-      return { icon: <XIcon className="size-5" />, label: handle ? handle : host };
+      return {
+        icon: <BrandIcon icon={siX} className="-ml-1 mr-2" />,
+        label: handle ? handle : host,
+      };
     })
     .with('facebook.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
-      return { icon: <FacebookIcon className="size-5" />, label: handle ? handle : host };
+      return {
+        icon: <BrandIcon icon={siFacebook} className="-ml-1 mr-2" />,
+        label: handle ? handle : host,
+      };
     })
-    .otherwise((host) => ({ icon: <Globe className="size-5" />, label: host }));
+    .otherwise((host) => ({ icon: <Globe className="-ml-1 mr-2" />, label: host }));
 }
 
 function LinkButtons({ links }: { links?: [string, ...string[]] }) {
@@ -66,7 +71,7 @@ function LinkButtons({ links }: { links?: [string, ...string[]] }) {
         aria-label={link}
         className={buttonVariants({ variant: 'text-inherit' })}
       >
-        <span className="-ml-1 mr-2 flex">{icon}</span>
+        {icon}
         {label}
       </a>
     );
@@ -111,7 +116,10 @@ export function AuthorAboutCard({
               {bars.map((bar, index) => (
                 <span key={bar.slug}>
                   {index > 0 && ' · '}
-                  <a className="text-primary" href={getBarRecipesUrl(bar)}>
+                  <a
+                    className="text-primary underline decoration-primary/40"
+                    href={getBarRecipesUrl(bar)}
+                  >
                     {bar.name}
                   </a>
                 </span>
@@ -119,16 +127,15 @@ export function AuthorAboutCard({
             </p>
           )}
           {sources.length > 0 && (
-            <p
-              className={
-                bars.length > 0 ? 'mt-0.5 text-muted-foreground' : 'text-muted-foreground'
-              }
-            >
+            <p className={cn('text-muted-foreground', bars.length > 0 && 'mt-0.5')}>
               Behind{' '}
               {sources.map((source, index) => (
                 <span key={`${source.type}:${source.slug}`}>
                   {index > 0 && ' · '}
-                  <a className="text-primary" href={getSourceUrl(source)}>
+                  <a
+                    className="text-primary underline decoration-primary/40"
+                    href={getSourceUrl(source)}
+                  >
                     {source.name}
                   </a>
                 </span>
@@ -167,10 +174,7 @@ export function BarAboutCard({
     <Card className={className}>
       <CardHeader>
         <CardTitle>
-          <UtensilsCrossed
-            className="mr-1 inline size-6 align-text-bottom"
-            aria-hidden="true"
-          />
+          <Martini className="mr-1 inline size-6 align-text-bottom" aria-hidden="true" />
           {bar.name}
         </CardTitle>
         {bar.location && <CardSubheader>{bar.location}</CardSubheader>}

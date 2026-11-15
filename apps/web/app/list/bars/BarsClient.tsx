@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
@@ -59,7 +59,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         onSearchChange={setSearchTerm}
       />
       {hasLocations && !isSearching && (
-        <Stack direction="row-reverse" sx={{ mx: 2 }}>
+        <div className="mx-4 flex justify-end">
           <ToggleGroup
             value={[groupMode]}
             onValueChange={([newValue]) => {
@@ -67,14 +67,12 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
                 setGroupMode(newValue);
               }
             }}
-            variant="outline"
-            spacing={0}
             aria-label="Bar grouping"
           >
             <ToggleGroupItem value="alpha">A-Z</ToggleGroupItem>
             <ToggleGroupItem value="city">By City</ToggleGroupItem>
           </ToggleGroup>
-        </Stack>
+        </div>
       )}
       <SearchableList
         items={bars}

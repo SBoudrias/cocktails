@@ -45,10 +45,10 @@ export async function generateMetadata({
     const ingredient = await getIngredient(type, slug);
 
     return {
-      title: `Indexotica | ${ingredient.name}`,
+      title: `Indexotica | Learn about ${ingredient.name}`,
       description:
         ingredient.description ??
-        `Learn about ${ingredient.name} and the cocktail recipes that use it.`,
+        `Learn about ${ingredient.name} and find cocktail recipes that use it.`,
     };
   } catch (error) {
     unstable_rethrow(error);
@@ -96,7 +96,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       {!ingredient.description && topCategory?.description ? (
         <Card className="m-2">
           <CardHeader>
-            <CardTitle className="text-xl leading-8 font-normal">
+            <CardTitle className="text-xl">
               <Tag className="mr-1 inline size-5 align-text-bottom" aria-hidden="true" />
               {topCategory.name}
             </CardTitle>

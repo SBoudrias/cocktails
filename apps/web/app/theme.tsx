@@ -106,7 +106,9 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(10, 20, 32, 0.9)',
+          // The glass card token from globals.css — one source for the
+          // surface, shared with ui/card's Card and the list blocks.
+          backgroundColor: 'var(--card)',
         },
       },
     },
