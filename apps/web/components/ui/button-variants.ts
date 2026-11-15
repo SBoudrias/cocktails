@@ -20,6 +20,10 @@ export const buttonVariants = cva(
         // actions use. No gap and no border — icon spacing comes from the
         // icon's own margins, like MUI's startIcon/endIcon slots.
         text: 'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 text-primary hover:bg-primary/8',
+        // MUI's variant=text color=secondary: the moonlight-yellow text
+        // button the calculators' "Reset to defaults" actions use.
+        'text-secondary':
+          'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 text-secondary hover:bg-secondary/8',
         // MUI's variant=text color=inherit: the card-action link buttons.
         'text-inherit':
           'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 hover:bg-foreground/8',

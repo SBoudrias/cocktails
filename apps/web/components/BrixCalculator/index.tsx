@@ -30,12 +30,15 @@ export default function BrixCalculator() {
 
   return (
     <Suspense>
-      <Card>
+      <Card m={1}>
         <CardHeader>
           <CardTitle>Sugar Adjusting</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <div className="flex flex-col gap-4 min-[600px]:flex-row min-[600px]:items-start">
+          {/* MUI's Stack was an unconditional row here (unlike the other
+              calculators' xs:column responsive rows) — cramped on phones,
+              but that is what it drew. */}
+          <div className="flex flex-row gap-2">
             <LabeledField
               label="Juice weight"
               unit="grams"
@@ -89,7 +92,7 @@ export default function BrixCalculator() {
           />
           <div className="flex justify-end">
             <Button
-              variant="secondary"
+              variant="text-secondary"
               onClick={() => {
                 setJuiceWeight(DEFAULT_JUICE_WEIGHT);
                 setCurrentBrix(0);
@@ -99,12 +102,17 @@ export default function BrixCalculator() {
               Reset to defaults
             </Button>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">
+          {/* MUI's Stack spacing put 16px between every child; the sx mt:2
+              on these notes overrode it (not added to it), so the gap is
+              the parent's, with no extra margin. body2 metrics: 14px on a
+              1.43 line box; the color stayed the foreground — MUI v9's
+              Typography ignored the color="text.secondary" prop here. */}
+          <p className="text-sm leading-[1.43]">
             Note: Use a refractometer to measure the current Brix level of your juice.
             Place a few drops of juice on the refractometer&apos;s prism, close the cover,
             and read the Brix value through the eyepiece.
           </p>
-          <p className="mt-4 text-sm text-muted-foreground">
+          <p className="text-sm leading-[1.43]">
             Degrees Brix (symbol °Bx) is a measure of the dissolved solids in a liquid. It
             is commonly used to measure dissolved sugar content of a solution. One degree
             Brix is 1 gram of sucrose solute dissolved in 100 grams of solution and

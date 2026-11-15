@@ -23,12 +23,15 @@ export default function SalineCalculator() {
 
   return (
     <Suspense>
-      <Card>
+      <Card m={1}>
         <CardHeader>
           <CardTitle>Saline Solution Calculator</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <div className="flex flex-col gap-4 min-[600px]:flex-row min-[600px]:items-start">
+          {/* MUI's Stack was an unconditional row here (spacing 1 = 8px),
+              the two fields stretching to equal height — alignItems:'top' in
+              the sx was invalid CSS the browser ignored. */}
+          <div className="flex flex-row gap-2">
             <LabeledField
               label="Water weight"
               unit="grams"
@@ -64,7 +67,7 @@ export default function SalineCalculator() {
           />
           <div className="flex justify-end">
             <Button
-              variant="secondary"
+              variant="text-secondary"
               onClick={() => {
                 setWaterWeight('');
                 setSalinity(20);

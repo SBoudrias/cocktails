@@ -126,12 +126,26 @@
   html {
     height: 100%;
     color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    /* MUI's CssBaseline + typography.body1 supplied these while it was
+       installed; probed from the last MUI build: Roboto from next/font's
+       variable, 16px/24px, the theme's text and background colors. The
+       smoothing rules came from CssBaseline's html styles — without them
+       every glyph rasterizes differently (subpixel vs grayscale AA). */
+    font-family: var(--font-roboto);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--foreground);
+    background-color: var(--background);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    &::backdrop {
+      background-color: var(--background);
+    }
   }
 
   * {
