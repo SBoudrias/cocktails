@@ -5,10 +5,6 @@ import * as React from 'react';
 // the page flow with it (m={1} was sx m:1, m={2} was m:2).
 export type CardMargin = 1 | 2;
 
-export function cardMargin(m: CardMargin | undefined): string | undefined {
-  return m === undefined ? undefined : m === 1 ? 'm-2' : 'm-4';
-}
-
 // MUI Card's exact rendered geometry (measured, see the family's port notes):
 // the 4px radius on top of the shared `surface` utility (the Paper glass,
 // its overlay gradient and elevation-1 shadow).
@@ -22,7 +18,7 @@ function Card({
       data-slot="card"
       className={cn(
         'overflow-hidden rounded-lg text-base text-card-foreground surface',
-        cardMargin(m),
+        m === undefined ? undefined : m === 1 ? 'm-2' : 'm-4',
         className,
       )}
       {...props}
