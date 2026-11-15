@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Ruby Bar",
+  "location": "Copenhagen, Denmark"
+}

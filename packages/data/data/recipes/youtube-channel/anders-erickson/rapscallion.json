@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Rapscallion",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "nick & nora",
+  "ingredients": [
+    {
+      "name": "Ricard Pastis de Marseille",
+      "type": "spirit",
+      "technique": {
+        "technique": "application",
+        "method": "rinse"
+      },
+      "quantity": {
+        "amount": 1,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Lustau Pedro Ximénez Sherry",
+      "type": "wine",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Talisker 10 Year Old Single Malt Scotch Whisky",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Rinse a chilled Nick & Nora glass with the pastis and discard the excess.",
+    "Stir the whisky and sherry with ice.",
+    "Strain into the prepared glass.",
+    "Express lemon oil over the drink and garnish with the lemon peel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Craig Harper"
+    },
+    {
+      "relation": "recipe author",
+      "source": "Adeline Shepherd"
+    },
+    {
+      "relation": "bar",
+      "source": "Ruby Bar",
+      "location": "Copenhagen, Denmark"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "qlVWR9XDCXA",
+      "channel": "anders-erickson",
+      "start": 384
+    }
+  ]
+}
