@@ -1,5 +1,4 @@
 import type { Recipe } from '@cocktails/data';
-import { Grid, Typography } from '@mui/material';
 import RecipeIcon from './RecipeIcon';
 import { glasswareShapes, preparationShapes, servedOnShapes } from './shapes';
 import styles from './style.module.css';
@@ -28,24 +27,20 @@ export default function RecipeBadges({
   ];
 
   return (
-    <Grid
-      container
-      component="ul"
+    <ul
       aria-label="Preparation, ice and glassware"
-      columns={3}
-      className={styles.badges}
-      sx={{ my: 1 }}
+      className={`${styles.badges} my-2 grid grid-cols-3`}
     >
       {badges.map(({ field, value, shape }) => (
-        <Grid size={1} component="li" key={field} className={styles.badge}>
+        <li key={field} className={styles.badge}>
           <div className={styles.bubble}>
             <RecipeIcon shape={shape} id={`recipe-icon-${field}`} />
           </div>
-          <Typography variant="caption" color="text.secondary" className={styles.caption}>
-            {value}
-          </Typography>
-        </Grid>
+          {/* MUI's caption variant: 12px/1.66 — the theme never applied the
+              text.secondary prop, so the baseline renders it foreground. */}
+          <span className={`${styles.caption} text-xs leading-[1.66]`}>{value}</span>
+        </li>
       ))}
-    </Grid>
+    </ul>
   );
 }

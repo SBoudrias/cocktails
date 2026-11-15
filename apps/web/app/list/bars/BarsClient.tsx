@@ -1,6 +1,5 @@
 'use client';
 
-import { Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
@@ -24,7 +23,7 @@ function renderBar(bar: Bar, showLocation: boolean) {
       href={getBarRecipesUrl(bar)}
       primary={bar.name}
       secondary={showLocation ? bar.location : undefined}
-      tertiary={<Typography color="textSecondary">{bar.recipeCount}</Typography>}
+      tertiary={<span className="text-muted-foreground">{bar.recipeCount}</span>}
     />
   );
 }

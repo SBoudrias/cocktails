@@ -1,6 +1,5 @@
 'use client';
 
-import { Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
@@ -18,7 +17,7 @@ function renderAuthor(author: Author) {
       key={author.name}
       href={getAuthorRecipesUrl(author.name)}
       primary={author.name}
-      tertiary={<Typography color="textSecondary">{author.recipeCount}</Typography>}
+      tertiary={<span className="text-muted-foreground">{author.recipeCount}</span>}
     />
   );
 }
