@@ -15,21 +15,28 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        ghost: 'hover:bg-muted hover:text-foreground',
+        ghost: 'h-9 gap-1.5 px-2 hover:bg-muted hover:text-foreground',
         // MUI's variant=text: the transparent text button the app's card
-        // actions use. No gap and no border — icon spacing comes from the
-        // icon's own margins, like MUI's startIcon/endIcon slots.
+        // actions use. No fixed height — MUI's text button is 6px padding
+        // over the 24.5px line box = 36.5px (probed). No gap and no border —
+        // icon spacing comes from the icon's own margins, like MUI's
+        // startIcon/endIcon slots.
         text: 'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 text-primary hover:bg-primary/8',
         // MUI's variant=text color=secondary: the moonlight-yellow text
-        // button the calculators' "Reset to defaults" actions use.
+        // button the calculators' "Reset to defaults" actions use. Same
+        // natural height as `text` — 36.5px, half a pixel taller than h-9.
         'text-secondary':
           'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 text-secondary hover:bg-secondary/8',
         // MUI's variant=text color=inherit: the card-action link buttons.
         'text-inherit':
           'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 hover:bg-foreground/8',
       },
+      // twMerge resolves conflicts by composition order (base, variant, size,
+      // className), so the size axis only carries what no variant sets:
+      // the default is bare (every current consumer passes a variant), and
+      // icon-sm pairs with ghost for the input-group's steppers.
       size: {
-        default: 'h-9 gap-1.5 px-2',
+        default: '',
         'icon-sm': 'size-7 rounded-[min(var(--radius-md),12px)]',
       },
     },
