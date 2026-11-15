@@ -40,7 +40,7 @@ export default async function SourcePage({ params }: { params: Promise<Params> }
     <BookSourceClient source={source} recipes={recipes} />
   ) : (
     <SearchableRecipePage recipes={recipes} listHeader="All Recipes">
-      <SourceAboutCard source={source} className="m-4" />
+      <SourceAboutCard source={source} m={2} />
     </SearchableRecipePage>
   );
 }

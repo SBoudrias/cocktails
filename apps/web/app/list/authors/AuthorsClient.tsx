@@ -27,7 +27,7 @@ export default function AuthorsClient({ authors }: { authors: Author[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
-    <Card className="m-4">
+    <Card m={2}>
       <CardHeader>
         <CardTitle>No results found</CardTitle>
       </CardHeader>

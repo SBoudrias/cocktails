@@ -4,6 +4,7 @@ import { siYoutube } from 'simple-icons';
 import BrandIcon from '#/components/icons/BrandIcon';
 import { buttonVariants } from '#/components/ui/button-variants';
 import {
+  type CardMargin,
   Card,
   CardActions,
   CardContent,
@@ -15,17 +16,20 @@ import Video from '#/components/Video';
 export default function YoutubeAboutCard({
   source,
   videoRef,
-  className,
+  m,
 }: {
   source: YoutubeChannel;
   videoRef?: YoutubeRef;
-  className?: string;
+  m?: CardMargin;
 }) {
   return (
-    <Card className={className}>
+    <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <BrandIcon icon={siYoutube} className="mr-1 inline size-6 align-text-bottom" />
+          <BrandIcon
+            icon={siYoutube}
+            className="mr-1.5 inline-block size-6 align-text-top"
+          />
           {source.name}
         </CardTitle>
       </CardHeader>
