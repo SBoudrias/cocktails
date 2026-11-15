@@ -1,20 +1,27 @@
 import type { YoutubeRef } from '@cocktails/data';
-import type { SxProps } from '@mui/material';
-import { Card, CardContent, CardHeader } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  type CardMargin,
+} from '#/components/ui/card';
 import Video from '#/components/Video';
 
 export default function VideoListCard({
   refs,
   title = 'Video',
-  sx,
+  m,
 }: {
   refs: YoutubeRef[];
   title?: string;
-  sx?: SxProps;
+  m?: CardMargin;
 }) {
   return (
-    <Card sx={sx}>
-      <CardHeader title={title} />
+    <Card m={m}>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
       {refs.map((ref) => (
         <CardContent key={ref.videoId}>
           <Video id={ref.videoId} start={ref.start} />

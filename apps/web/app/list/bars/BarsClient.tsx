@@ -1,10 +1,12 @@
 'use client';
 
-import { Card, CardHeader, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
+import { Card, CardHeader, CardTitle } from '#/components/ui/card';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { byLocationListConfig } from '#/modules/lists/by-location';
 import { byNameListConfig } from '#/modules/lists/by-name';
@@ -22,7 +24,7 @@ function renderBar(bar: Bar, showLocation: boolean) {
       href={getBarRecipesUrl(bar)}
       primary={bar.name}
       secondary={showLocation ? bar.location : undefined}
-      tertiary={<span className="text-muted-foreground">{bar.recipeCount}</span>}
+      tertiary={<Typography color="textSecondary">{bar.recipeCount}</Typography>}
     />
   );
 }
@@ -42,8 +44,10 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
   const showLocation = !isCityMode || isSearching;
 
   const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
+    <Card m={2}>
+      <CardHeader>
+        <CardTitle>No results found</CardTitle>
+      </CardHeader>
     </Card>
   );
 
@@ -55,19 +59,19 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         onSearchChange={setSearchTerm}
       />
       {hasLocations && !isSearching && (
-        <div className="mx-4 flex flex-row-reverse">
-          <ToggleButtonGroup
-            value={groupMode}
-            exclusive
-            onChange={(_, newValue: GroupMode | null) => {
-              if (newValue) setGroupMode(newValue);
+        <div className="mx-4 flex justify-end">
+          <ToggleGroup
+            value={[groupMode]}
+            onValueChange={([newValue]) => {
+              if (newValue === 'alpha' || newValue === 'city') {
+                setGroupMode(newValue);
+              }
             }}
-            size="small"
             aria-label="Bar grouping"
           >
-            <ToggleButton value="alpha">A-Z</ToggleButton>
-            <ToggleButton value="city">By City</ToggleButton>
-          </ToggleButtonGroup>
+            <ToggleGroupItem value="alpha">A-Z</ToggleGroupItem>
+            <ToggleGroupItem value="city">By City</ToggleGroupItem>
+          </ToggleGroup>
         </div>
       )}
       <SearchableList

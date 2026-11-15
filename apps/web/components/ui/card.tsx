@@ -1,12 +1,24 @@
 import { cn } from 'cn';
 import * as React from 'react';
 
-function Card({ className, ...props }: React.ComponentProps<'div'>) {
+// MUI's spacing scale: 1 unit = 8px. The family's call sites place cards in
+// the page flow with it (m={1} was sx m:1, m={2} was m:2).
+export type CardMargin = 1 | 2;
+
+// MUI Card's exact rendered geometry (measured, see the family's port notes):
+// the 4px radius on top of the shared `surface` utility (the Paper glass,
+// its overlay gradient and elevation-1 shadow).
+function Card({
+  className,
+  m,
+  ...props
+}: React.ComponentProps<'div'> & { m?: CardMargin }) {
   return (
     <div
       data-slot="card"
       className={cn(
-        'group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-card py-(--card-spacing) text-sm text-card-foreground ring-1 ring-foreground/10 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl',
+        'overflow-hidden rounded-lg text-base text-card-foreground surface',
+        m === undefined ? undefined : m === 1 ? 'm-2' : 'm-4',
         className,
       )}
       {...props}
@@ -14,34 +26,36 @@ function Card({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
+// MUI CardHeader: 16px padding, the title and subheader stacked (its
+// content column), vertically centered.
 function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-header"
-      className={cn(
-        'group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)',
-        className,
-      )}
+      className={cn('flex flex-col justify-center p-4', className)}
       {...props}
     />
   );
 }
 
+// MUI CardHeader title: this theme renders it on typography.h5 metrics
+// (24px/400, 32px line-height), not the 20px v5 default.
 function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-title"
-      className={cn('font-heading text-base leading-snug font-medium', className)}
+      className={cn('text-2xl leading-8 font-normal', className)}
       {...props}
     />
   );
 }
 
-function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
+// MUI CardHeader subheader: body1 metrics, muted teal.
+function CardSubheader({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
-      data-slot="card-description"
-      className={cn('text-sm text-muted-foreground', className)}
+      data-slot="card-subheader"
+      className={cn('text-base leading-6 text-muted-foreground', className)}
       {...props}
     />
   );
@@ -51,18 +65,11 @@ function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-content"
-      className={cn('px-(--card-spacing)', className)}
-      {...props}
-    />
-  );
-}
-
-function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="card-footer"
       className={cn(
-        'flex items-center rounded-b-xl border-t bg-muted/50 p-(--card-spacing)',
+        // The theme collapses the top padding of a content block that
+        // follows the header or another content block (MuiCardContent
+        // styleOverrides' sibling rules).
+        'p-4 text-sm [[data-slot=card-header]+&]:pt-0 [[data-slot=card-content]+&]:pt-0',
         className,
       )}
       {...props}
@@ -70,4 +77,20 @@ function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
+// MUI CardActions: 8px padding, children spaced 8px apart, pushed to the
+// end by the app's usage (justify-content: 'end'). The theme drops its top
+// padding when it follows a content block.
+function CardActions({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      data-slot="card-actions"
+      className={cn(
+        'flex items-center justify-end gap-2 p-2 [[data-slot=card-content]+&]:pt-0',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export { Card, CardHeader, CardTitle, CardSubheader, CardContent, CardActions };

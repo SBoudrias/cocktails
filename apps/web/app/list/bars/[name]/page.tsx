@@ -68,7 +68,7 @@ export default async function BarRecipesPage({ params }: Props) {
       recipeCount={barRecipes.length}
       listHeader={`Recipes from ${bar.name}`}
     >
-      <BarAboutCard bar={bar} sx={{ m: 2 }} />
+      <BarAboutCard bar={bar} m={2} />
     </SearchableRecipePage>
   );
 }

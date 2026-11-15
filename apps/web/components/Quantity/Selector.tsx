@@ -1,6 +1,6 @@
 'use client';
 
-import { ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 
 export type Unit = 'oz' | 'ml';
 
@@ -12,15 +12,16 @@ export default function UnitSelector({
   onChange: (unit: Unit) => void;
 }) {
   return (
-    <ToggleButtonGroup
-      value={value}
-      onChange={(_, newVal) => onChange(newVal === 'oz' ? 'oz' : 'ml')}
-      size="small"
+    <ToggleGroup
+      value={[value]}
+      // A single-choice group: pressing the active unit again keeps it.
+      onValueChange={([newVal]) => {
+        if (newVal != null) onChange(newVal === 'oz' ? 'oz' : 'ml');
+      }}
       aria-label="Preferred measurement unit"
-      exclusive
     >
-      <ToggleButton value="oz">oz</ToggleButton>
-      <ToggleButton value="ml">ml</ToggleButton>
-    </ToggleButtonGroup>
+      <ToggleGroupItem value="oz">oz</ToggleGroupItem>
+      <ToggleGroupItem value="ml">ml</ToggleGroupItem>
+    </ToggleGroup>
   );
 }

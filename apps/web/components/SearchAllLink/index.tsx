@@ -1,6 +1,6 @@
-import { ChevronRight } from '@mui/icons-material';
-import { Card, CardContent, Typography } from '@mui/material';
+import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { Card, CardContent } from '#/components/ui/card';
 
 export default function SearchAllLink({ searchTerm }: { searchTerm: string | null }) {
   if (!searchTerm || searchTerm.trim() === '') {
@@ -8,20 +8,14 @@ export default function SearchAllLink({ searchTerm }: { searchTerm: string | nul
   }
 
   return (
-    <Card sx={{ m: 2 }}>
+    <Card m={2}>
       <CardContent>
-        <Link href={{ pathname: '/search', query: { search: searchTerm } }}>
-          <Typography
-            variant="body2"
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            Not finding what you&apos;re looking for? Search all recipes
-            <ChevronRight />
-          </Typography>
+        <Link
+          href={{ pathname: '/search', query: { search: searchTerm } }}
+          className="flex items-center justify-between text-sm text-muted-foreground"
+        >
+          Not finding what you&apos;re looking for? Search all recipes
+          <ChevronRight className="size-6" aria-hidden="true" />
         </Link>
       </CardContent>
     </Card>

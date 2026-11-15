@@ -1,56 +1,56 @@
 import type { YoutubeRef, YoutubeChannel } from '@cocktails/data';
+import { ArrowUpRight } from 'lucide-react';
+import { siYoutube } from 'simple-icons';
+import BrandIcon from '#/components/icons/BrandIcon';
+import { buttonVariants } from '#/components/ui/button-variants';
 import {
-  Button,
+  type CardMargin,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  Typography,
-  type SxProps,
-} from '@mui/material';
-import { ArrowUpRight } from 'lucide-react';
-import YoutubeIcon from '#/components/icons/YoutubeIcon';
+  CardTitle,
+} from '#/components/ui/card';
 import Video from '#/components/Video';
 
 export default function YoutubeAboutCard({
   source,
   videoRef,
-  sx,
+  m,
 }: {
   source: YoutubeChannel;
   videoRef?: YoutubeRef;
-  sx?: SxProps;
+  m?: CardMargin;
 }) {
   return (
-    <Card sx={sx}>
-      <CardHeader
-        title={
-          <>
-            <YoutubeIcon />
-            &nbsp;{source.name}
-          </>
-        }
-      />
+    <Card m={m}>
+      <CardHeader>
+        <CardTitle>
+          <BrandIcon
+            icon={siYoutube}
+            className="mr-1.5 inline-block size-6 align-text-top"
+          />
+          {source.name}
+        </CardTitle>
+      </CardHeader>
       {videoRef && (
         <CardContent>
           <Video id={videoRef.videoId} start={videoRef.start} />
         </CardContent>
       )}
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {source.description}
-        </Typography>
+        <p className="text-muted-foreground">{source.description}</p>
       </CardContent>
-      <CardActions sx={{ justifyContent: 'end' }}>
-        <Button
+      <CardActions>
+        <a
           href={source.links[0]}
           target="_blank"
           rel="noreferrer noopener"
-          color="inherit"
+          className={buttonVariants({ variant: 'text-inherit' })}
         >
           Go to channel
-          <ArrowUpRight className="size-6" />
-        </Button>
+          <ArrowUpRight className="-mr-1 ml-2 size-6" aria-hidden="true" />
+        </a>
       </CardActions>
     </Card>
   );

@@ -10,7 +10,6 @@ import {
 } from '@cocktails/data/ingredients';
 import { getCategoryPageParams } from '@cocktails/data/params';
 import { getRecipeByCategory } from '@cocktails/data/recipes';
-import { Card, CardContent } from '@mui/material';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import CategoryChips from '#/components/CategoryChips';
@@ -18,6 +17,7 @@ import FixBugCard from '#/components/FixBugCard';
 import { LinkList, LinkListItem } from '#/components/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { RelatedCategoriesList } from '#/components/SubstitutionLists';
+import { Card, CardContent } from '#/components/ui/card';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
@@ -79,14 +79,16 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       footer={
         <FixBugCard
           fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${category.slug}.json`}
-          sx={{ m: 1 }}
+          m={1}
         />
       }
     >
       {firstVideo && <Video id={firstVideo.videoId} start={firstVideo.start} />}
       {category.description && (
-        <Card sx={{ m: 1 }}>
-          <CardContent>{category.description}</CardContent>
+        <Card m={1}>
+          <CardContent>
+            <p>{category.description}</p>
+          </CardContent>
         </Card>
       )}
       {childCategories.length > 0 && (
@@ -111,7 +113,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       )}
       <RelatedCategoriesList categories={relatedCategories} />
       {additionalVideos.length > 0 && (
-        <VideoListCard title="Other videos" refs={additionalVideos} sx={{ m: 1 }} />
+        <VideoListCard title="Other videos" refs={additionalVideos} m={1} />
       )}
     </SearchableRecipePage>
   );

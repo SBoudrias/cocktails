@@ -1,6 +1,7 @@
 import { BookOpen, Martini, Mic, Tag, User, Wine } from 'lucide-react';
+import { siYoutube } from 'simple-icons';
 import { match } from 'ts-pattern';
-import YoutubeIcon from '#/components/icons/YoutubeIcon';
+import BrandIcon from '#/components/icons/BrandIcon';
 import { LinkListItem } from '#/components/LinkList';
 import type { EntitySuggestion } from '#/modules/entitySuggestions';
 import { isEntityUrl } from '#/modules/url';
@@ -32,7 +33,7 @@ function getEntityView(kind: EntitySuggestion['kind']) {
       // label rides on this span instead, like every other kind.
       icon: (
         <span role="img" aria-label="YouTube channel" className="inline-flex">
-          <YoutubeIcon />
+          <BrandIcon icon={siYoutube} className="size-6" />
         </span>
       ),
     }))

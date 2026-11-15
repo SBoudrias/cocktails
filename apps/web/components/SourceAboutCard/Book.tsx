@@ -1,52 +1,57 @@
 import type { Book } from '@cocktails/data';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import BookIcon from '@mui/icons-material/Book';
+import { ArrowUpRight, BookOpen } from 'lucide-react';
+import { buttonVariants } from '#/components/ui/button-variants';
 import {
-  Button,
+  type CardMargin,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  Typography,
-  type SxProps,
-} from '@mui/material';
+  CardSubheader,
+  CardTitle,
+} from '#/components/ui/card';
 
 export default function BookAboutCard({
   source,
   chapterName,
   page,
-  sx,
+  m,
 }: {
   source: Book;
   chapterName?: string;
   page?: number;
-  sx?: SxProps;
+  m?: CardMargin;
 }) {
   const subheader = [chapterName, typeof page === 'number' ? `page ${page}` : undefined]
     .filter(Boolean)
     .join(' · ');
 
   return (
-    <Card sx={sx}>
-      <CardHeader
-        title={
-          <>
-            <BookIcon />
-            &nbsp;{source.name}
-          </>
-        }
-        subheader={subheader || undefined}
-      />
+    <Card m={m}>
+      <CardHeader>
+        <CardTitle>
+          <BookOpen
+            className="mr-1.5 inline-block size-6 align-text-top"
+            aria-hidden="true"
+          />
+          {source.name}
+        </CardTitle>
+        {subheader && <CardSubheader>{subheader}</CardSubheader>}
+      </CardHeader>
       <CardContent>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          {source.description}
-        </Typography>
+        <p className="text-muted-foreground">{source.description}</p>
       </CardContent>
-      <CardActions sx={{ justifyContent: 'end' }}>
-        <Button href={source.link} target="_blank" rel="noreferrer" color="inherit">
+      <CardActions>
+        <a
+          href={source.link}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Learn more about this book"
+          className={buttonVariants({ variant: 'text-inherit' })}
+        >
           Learn more
-          <ArrowOutwardIcon />
-        </Button>
+          <ArrowUpRight className="-mr-1 ml-2 size-6" aria-hidden="true" />
+        </a>
       </CardActions>
     </Card>
   );

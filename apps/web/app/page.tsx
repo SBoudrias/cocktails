@@ -1,12 +1,28 @@
 import type { Source } from '@cocktails/data';
 import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import { getAllSources } from '@cocktails/data/sources';
-import { BookOpen, Calculator, History, Mic, Search } from 'lucide-react';
+import BookIcon from '@mui/icons-material/Book';
+import CalculatorIcon from '@mui/icons-material/Calculate';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import HistoryIcon from '@mui/icons-material/History';
+import PodcastIcon from '@mui/icons-material/Podcasts';
+import SearchIcon from '@mui/icons-material/Search';
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material';
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { siYoutube } from 'simple-icons';
 import AppHeader from '#/components/AppHeader';
-import YoutubeIcon from '#/components/icons/YoutubeIcon';
-import { LinkListItem } from '#/components/LinkList';
-import { ListSubheader } from '#/components/ui/list';
+import BrandIcon from '#/components/icons/BrandIcon';
 import {
   getAuthorListUrl,
   getBarListUrl,
@@ -22,21 +38,23 @@ export const metadata: Metadata = {
   title: 'Indexotica: Tiki & Cocktails',
 };
 
-// MUI metrics verbatim: the subheader with its icon row, and the rows with
-// the chevron the secondaryAction drew.
-// The section row: ListSubheader's metrics with the icon gap.
-function SectionSubheader({ children }: { children: React.ReactNode }) {
-  return <ListSubheader className="flex items-center gap-2">{children}</ListSubheader>;
-}
-
 function SourceListItem({ source }: { source: Source }) {
   return (
-    <LinkListItem
-      key={source.name}
-      href={getSourceUrl(source)}
-      primary={source.name}
-      tertiary={<span className="text-muted-foreground">{source.recipeAmount}</span>}
-    />
+    <Link href={getSourceUrl(source)} key={source.name}>
+      <ListItem
+        divider
+        secondaryAction={
+          <Stack direction="row" spacing={1}>
+            <Typography color="textSecondary" component="span">
+              {source.recipeAmount}
+            </Typography>
+            <ChevronRightIcon />
+          </Stack>
+        }
+      >
+        <ListItemText primary={source.name} />
+      </ListItem>
+    </Link>
   );
 }
 
@@ -55,106 +73,151 @@ export default async function HomePage() {
   return (
     <>
       <AppHeader title="Indexotica" />
-      <ul className="mt-4 py-2">
-        <li>
-          <div className="bg-card">
-            <LinkListItem
-              href={getRecipeListUrl()}
-              primary="All Recipes"
-              leading={<Search aria-hidden="true" className="size-6" />}
-            />
-            {recentlyAddedRecipes.length > 0 && (
-              <LinkListItem
-                href={getRecentlyAddedUrl()}
-                primary="Recently Added"
-                leading={<History aria-hidden="true" className="size-6" />}
-              />
-            )}
-          </div>
-        </li>
+      <List sx={{ mt: 2 }}>
+        <Paper square>
+          <Link href={getRecipeListUrl()}>
+            <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SearchIcon />
+                </ListItemIcon>
+                <ListItemText primary="All Recipes" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          {recentlyAddedRecipes.length > 0 && (
+            <Link href={getRecentlyAddedUrl()}>
+              <ListItem disablePadding divider secondaryAction={<ChevronRightIcon />}>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <HistoryIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Recently Added" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+          )}
+        </Paper>
         <li>
           <ul>
-            <SectionSubheader>
-              <Calculator aria-hidden="true" className="size-6" />
-              Calculators
-            </SectionSubheader>
-            <div className="bg-card">
-              <LinkListItem href="/calculators/acid-adjusting" primary="Acid Adjusting" />
-              <LinkListItem
-                href="/calculators/juice-clarification"
-                primary="Juice Clarification"
-              />
-              <LinkListItem
-                href="/calculators/milk-clarification"
-                primary="Milk Clarification"
-              />
-              <LinkListItem
-                href="/calculators/saline"
-                primary="Saline Solution Calculator"
-              />
-              <LinkListItem
-                href="/calculators/brix"
-                primary="Sugar Adjusting (Brix calculator)"
-              />
-              <LinkListItem href="/calculators/super-juice" primary="Super Juice" />
-            </div>
+            <ListSubheader>
+              <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                <CalculatorIcon />
+                Calculators
+              </Stack>
+            </ListSubheader>
+            <Paper square>
+              <Link href="/calculators/acid-adjusting">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Acid Adjusting" />
+                </ListItem>
+              </Link>
+              <Link href="/calculators/juice-clarification">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Juice Clarification" />
+                </ListItem>
+              </Link>
+              <Link href="/calculators/milk-clarification">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Milk Clarification" />
+                </ListItem>
+              </Link>
+              <Link href="/calculators/saline">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Saline Solution Calculator" />
+                </ListItem>
+              </Link>
+              <Link href="/calculators/brix">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Sugar Adjusting (Brix calculator)" />
+                </ListItem>
+              </Link>
+              <Link href="/calculators/super-juice">
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Super Juice" />
+                </ListItem>
+              </Link>
+            </Paper>
           </ul>
         </li>
         <li>
           <ul>
-            <SectionSubheader>
-              <BookOpen aria-hidden="true" className="size-6" />
-              By Books
-            </SectionSubheader>
-            <div className="bg-card">
+            <ListSubheader>
+              <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                <BookIcon />
+                By Books
+              </Stack>
+            </ListSubheader>
+            <Paper square>
               {books.map((source) => (
                 <SourceListItem source={source} key={source.name} />
               ))}
-            </div>
+            </Paper>
           </ul>
         </li>
         <li>
           <ul>
-            <SectionSubheader>
-              <YoutubeIcon />
-              By Youtube Channels
-            </SectionSubheader>
-            <div className="bg-card">
+            <ListSubheader>
+              <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                <BrandIcon icon={siYoutube} className="size-6" />
+                By Youtube Channels
+              </Stack>
+            </ListSubheader>
+            <Paper square>
               {ytChannels.map((source) => (
                 <SourceListItem source={source} key={source.name} />
               ))}
-            </div>
+            </Paper>
           </ul>
         </li>
         <li>
           <ul>
-            <SectionSubheader>
-              <Mic aria-hidden="true" className="size-6" />
-              By Podcasts
-            </SectionSubheader>
-            <div className="bg-card">
+            <ListSubheader>
+              <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                <PodcastIcon />
+                By Podcasts
+              </Stack>
+            </ListSubheader>
+            <Paper square>
               {podcasts.map((source) => (
                 <SourceListItem source={source} key={source.name} />
               ))}
-            </div>
+            </Paper>
           </ul>
         </li>
         <li>
           <ul>
-            <SectionSubheader>Other lists</SectionSubheader>
-            <div className="bg-card">
-              <LinkListItem href={getAuthorListUrl()} primary="By Authors" />
-              <LinkListItem href={getBarListUrl()} primary="By Bars" />
-              <LinkListItem href={getIngredientListUrl()} primary="All Ingredients" />
-              <LinkListItem
-                href={getNonAlcoholicRecipeListUrl()}
-                primary="Non-Alcoholic Recipes"
-              />
-              <LinkListItem href={getBottleListUrl()} primary="All Bottles" />
-            </div>
+            <ListSubheader>Other lists</ListSubheader>
+            <Paper square>
+              <Link href={getAuthorListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="By Authors" />
+                </ListItem>
+              </Link>
+              <Link href={getBarListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="By Bars" />
+                </ListItem>
+              </Link>
+              <Link href={getIngredientListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="All Ingredients" />
+                </ListItem>
+              </Link>
+              <Link href={getNonAlcoholicRecipeListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="Non-Alcoholic Recipes" />
+                </ListItem>
+              </Link>
+              <Link href={getBottleListUrl()}>
+                <ListItem divider secondaryAction={<ChevronRightIcon />}>
+                  <ListItemText primary="All Bottles" />
+                </ListItem>
+              </Link>
+            </Paper>
           </ul>
         </li>
-      </ul>
+      </List>
     </>
   );
 }

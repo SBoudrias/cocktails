@@ -1,15 +1,6 @@
 'use client';
 
 import type { Book } from '@cocktails/data';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  Stack,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
 import { LinkList } from '#/components/LinkList';
@@ -18,6 +9,8 @@ import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
+import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { createByChapterListConfig } from '#/modules/lists/by-chapter';
 import { byNameListConfig } from '#/modules/lists/by-name';
@@ -73,12 +66,14 @@ export default function BookSourceClient({
 
   const emptyState = (
     <>
-      <Card sx={{ m: 2 }}>
-        <CardHeader title="No results found" />
+      <Card m={2}>
+        <CardHeader>
+          <CardTitle>No results found</CardTitle>
+        </CardHeader>
         <CardContent>
-          <Typography variant="body2">
+          <p className="text-muted-foreground">
             No recipes matched the search term &quot;{searchTerm}&quot;
-          </Typography>
+          </p>
         </CardContent>
       </Card>
       <SearchAllLink searchTerm={searchTerm} />
@@ -108,11 +103,11 @@ export default function BookSourceClient({
   return (
     <>
       <SearchHeader searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-      <SourceAboutCard source={source} sx={{ m: 2 }} />
+      <SourceAboutCard source={source} m={2} />
       {hasChapters && (
-        <Stack direction="row-reverse" sx={{ mx: 2 }}>
+        <div className="mx-4 flex justify-end">
           <GroupModeToggle value={groupMode} onChange={setGroupMode} />
-        </Stack>
+        </div>
       )}
       <LinkList items={recipes} config={listConfig} renderItem={listRenderRecipe} />
     </>
@@ -127,17 +122,18 @@ function GroupModeToggle({
   onChange: (value: GroupMode) => void;
 }) {
   return (
-    <ToggleButtonGroup
-      value={value}
-      exclusive
-      onChange={(_, newValue: GroupMode | null) => {
-        if (newValue) onChange(newValue);
+    <ToggleGroup
+      value={[value]}
+      onValueChange={([newValue]) => {
+        // A single-choice group: the pressed value is the new mode.
+        if (newValue === 'chapter' || newValue === 'alphabetical') {
+          onChange(newValue);
+        }
       }}
-      size="small"
       aria-label="Recipe grouping"
     >
-      <ToggleButton value="chapter">By Chapter</ToggleButton>
-      <ToggleButton value="alphabetical">A-Z</ToggleButton>
-    </ToggleButtonGroup>
+      <ToggleGroupItem value="chapter">By Chapter</ToggleGroupItem>
+      <ToggleGroupItem value="alphabetical">A-Z</ToggleGroupItem>
+    </ToggleGroup>
   );
 }

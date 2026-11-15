@@ -1,9 +1,14 @@
 'use client';
 
-import { Add, Remove } from '@mui/icons-material';
-import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { Minus, Plus } from 'lucide-react';
 import type { ChangeEvent } from 'react';
-import { useState } from 'react';
+import { useId, useState } from 'react';
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from '#/components/ui/input-group';
 
 const MIN_SERVINGS = 0.25;
 const MAX_SERVINGS = 50;
@@ -15,6 +20,7 @@ export default function ServingSelector({
   servings: number;
   onChange: (servings: number) => void;
 }) {
+  const labelId = useId();
   const [draft, setDraft] = useState<{
     base: number;
     text: string;
@@ -67,47 +73,59 @@ export default function ServingSelector({
   };
 
   return (
-    <TextField
-      type="number"
-      size="small"
-      label="Servings"
-      value={inputValue ?? servings}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      slotProps={{
-        input: {
-          startAdornment: (
-            <InputAdornment position="start">
-              <IconButton
-                onClick={handleDecrement}
-                disabled={servings <= MIN_SERVINGS}
-                size="small"
-                aria-label="Decrement"
-              >
-                <Remove fontSize="small" />
-              </IconButton>
-            </InputAdornment>
-          ),
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                onClick={handleIncrement}
-                disabled={servings >= MAX_SERVINGS}
-                size="small"
-                aria-label="Increment"
-              >
-                <Add fontSize="small" />
-              </IconButton>
-            </InputAdornment>
-          ),
-        },
-        htmlInput: {
-          min: MIN_SERVINGS,
-          max: MAX_SERVINGS,
-          step: MIN_SERVINGS,
-          'aria-label': 'Number of servings',
-        },
-      }}
-    />
+    // An outlined field with its label notched into the border, the way the
+    // MUI TextField drew it: the fieldset is the outline, its legend the
+    // notch. The widths are MUI's measured intrinsic ones: the number
+    // input's default width grows with the viewport (47/62px), so the field
+    // is 151px on phones and 166px from 600px up.
+    <div className="group relative w-[151px] min-[600px]:w-[166px]">
+      <fieldset
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -top-[5px] rounded-sm border border-input px-[9px] group-focus-within:border-2 group-focus-within:border-primary"
+      >
+        <legend
+          id={labelId}
+          className="px-[5px] text-xs leading-[1.4375] text-muted-foreground group-focus-within:text-primary"
+        >
+          Servings
+        </legend>
+      </fieldset>
+      <InputGroup
+        aria-labelledby={labelId}
+        className="h-10 border-0 px-[14px] has-[[data-slot=input-group-control]:focus-visible]:ring-0"
+      >
+        <InputGroupAddon className="mr-2">
+          <InputGroupButton
+            className="size-[30px]"
+            onClick={handleDecrement}
+            disabled={servings <= MIN_SERVINGS}
+            aria-label="Decrement"
+          >
+            <Minus className="size-5" />
+          </InputGroupButton>
+        </InputGroupAddon>
+        <InputGroupInput
+          type="number"
+          className="h-auto w-[47px] flex-none self-stretch py-[8.5px] pl-0 leading-[23px] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+          value={inputValue ?? servings}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          min={MIN_SERVINGS}
+          max={MAX_SERVINGS}
+          step={MIN_SERVINGS}
+          aria-label="Number of servings"
+        />
+        <InputGroupAddon align="inline-end" className="ml-2">
+          <InputGroupButton
+            className="size-[30px]"
+            onClick={handleIncrement}
+            disabled={servings >= MAX_SERVINGS}
+            aria-label="Increment"
+          >
+            <Plus className="size-5" />
+          </InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
   );
 }

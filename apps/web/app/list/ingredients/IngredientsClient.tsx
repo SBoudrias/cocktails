@@ -1,11 +1,11 @@
 'use client';
 
-import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
+import { Card, CardHeader, CardTitle } from '#/components/ui/card';
 import type { IngredientListItem } from '#/modules/ingredientListItem';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import styles from './style.module.css';
@@ -33,8 +33,10 @@ export default function IngredientsClient({
 
   const emptyState = (
     <>
-      <Card sx={{ m: 2 }}>
-        <CardHeader title="No results found" />
+      <Card m={2}>
+        <CardHeader>
+          <CardTitle>No results found</CardTitle>
+        </CardHeader>
       </Card>
       <SearchAllLink searchTerm={searchTerm} />
     </>
