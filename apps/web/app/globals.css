@@ -120,6 +120,13 @@
     border-color: var(--color-border);
   }
 
+  /* MUI's List drew every list in the app; the bare ul/ol the migration
+     renders need the same reset or the browser draws bullets on them. */
+  ul,
+  ol {
+    list-style: none;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
