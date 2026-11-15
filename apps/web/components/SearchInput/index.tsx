@@ -6,9 +6,11 @@ import { useRef } from 'react';
 // The searchbox as MUI styled it: a relative rounded field with the glassy
 // white/15 fill (white/25 hovered), the magnifier absolutely parked on the
 // left (pointer-events off), and the input padded 8px with its 48px left pad
-// spanning the icon. The Clear button is MUI's text button: uppercase 14px
-// 500, 6px 8px padding in a 64px-min row, primary colored, stretching to
-// the input's height.
+// spanning the icon, its line box 1.4375em like MUI's InputBase (23px at
+// 16px — taller than the text, so the field and the button beside it share
+// the row's height). The Clear button is MUI's text button: uppercase 14px
+// 500, 6px 8px padding in a 64px-min row, primary colored with a primary/8
+// hover fill, stretched to the row's height like MUI's Stack default.
 export default function SearchInput({
   value,
   onChangeAction,
@@ -25,10 +27,10 @@ export default function SearchInput({
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="flex grow items-center">
-      <div className="relative w-full rounded-[var(--radius)] bg-foreground/15 hover:bg-foreground/25">
+    <div className="flex grow items-stretch">
+      <div className="relative w-full rounded-lg bg-foreground/15 hover:bg-foreground/25">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center px-4">
-          <Search aria-hidden="true" className="size-[1.5em]" />
+          <Search aria-hidden="true" className="size-6" />
         </div>
         <input
           ref={inputRef}
@@ -44,7 +46,7 @@ export default function SearchInput({
               e.currentTarget.blur();
             }
           }}
-          className="w-full border-0 bg-transparent py-2 pl-[calc(1em+2rem)] pr-2 font-sans text-base text-foreground caret-foreground outline-none placeholder:text-foreground/50 [&::-webkit-search-decoration]:-webkit-appearance-none"
+          className="w-full py-2 pl-[calc(1em+2rem)] pr-2 font-sans text-base leading-[1.4375em] outline-none placeholder:text-foreground/50 [&::-webkit-search-decoration]:appearance-none"
         />
       </div>
       <button
@@ -53,7 +55,7 @@ export default function SearchInput({
           onChangeAction(null);
           inputRef.current?.focus();
         }}
-        className="h-full min-w-16 shrink-0 self-stretch rounded-[var(--radius)] px-2 py-1.5 text-sm font-medium uppercase tracking-normal text-primary outline-none"
+        className="min-w-16 shrink-0 rounded-lg px-2 py-1.5 text-sm font-medium uppercase leading-[1.75] text-primary outline-none hover:bg-primary/8 focus-visible:bg-primary/12"
       >
         Clear
       </button>
