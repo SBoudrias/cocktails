@@ -1,16 +1,6 @@
 'use client';
 
-import ChevronRight from '@mui/icons-material/ChevronRight';
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  ListItem,
-  ListItemText,
-  Skeleton,
-  Stack,
-} from '@mui/material';
+import { ChevronRight } from 'lucide-react';
 import { useQueryState } from 'nuqs';
 import { useMemo } from 'react';
 import type { ReactNode } from 'react';
@@ -21,6 +11,7 @@ import RecipeLinkListItem from '#/components/RecipeLinkListItem';
 import RecipeSearchableList from '#/components/RecipeSearchableList';
 import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
+import { Skeleton } from '#/components/ui/skeleton';
 import { useSharedJson } from '#/hooks/useSharedJson';
 import { getCatalogList, getLoadedCatalog, loadCatalog } from '#/modules/catalog';
 import type { QuantityRecipeListItem, RecipeListItem } from '#/modules/recipeListItem';
@@ -47,29 +38,18 @@ function renderRecipe(recipe: RecipeListItem | QuantityRecipeListItem) {
  */
 const SKELETON_ROWS = 20;
 
-const skeletonTypographyProps = {
-  variant: 'caption',
-  sx: { lineHeight: 1.35 },
-} as const;
-
-/** One row of the loading skeleton, shaped like the recipe card it stands in for. */
+/** One row of the loading skeleton, shaped like the recipe card it stands in
+ * for: MUI's text-skeleton look over the same two-line metrics. */
 function SkeletonListItem() {
   return (
-    <ListItem divider secondaryAction={<ChevronRight />}>
-      <Stack
-        direction="row"
-        sx={{ justifyContent: 'space-between', alignItems: 'center', width: '100%' }}
-      >
-        <ListItemText
-          primary={<Skeleton variant="text" sx={{ fontSize: '1rem', width: '55%' }} />}
-          secondary={
-            <Skeleton variant="text" sx={{ fontSize: '0.75rem', width: '35%' }} />
-          }
-          slotProps={{ secondary: skeletonTypographyProps }}
-        />
-        <Skeleton variant="text" sx={{ fontSize: '0.875rem', width: 44 }} />
-      </Stack>
-    </ListItem>
+    <li className="relative flex w-full items-center border-b px-4 py-3 pr-12">
+      <span className="flex flex-1 flex-col gap-1">
+        <Skeleton className="h-4 w-[55%] animate-skeleton bg-foreground/13" />
+        <Skeleton className="h-3 w-[35%] animate-skeleton bg-foreground/13" />
+      </span>
+      <Skeleton className="h-3.5 w-11 animate-skeleton bg-foreground/13" />
+      <ChevronRight className="absolute top-1/2 right-4 size-6 -translate-y-1/2 text-foreground" />
+    </li>
   );
 }
 
@@ -92,12 +72,18 @@ function CatalogListState({
 }) {
   if (failed) {
     return (
-      <Card sx={{ m: 1 }}>
-        <CardHeader title="Recipes could not be loaded" />
-        <CardContent>
-          <Button onClick={() => window.location.reload()}>Reload the page</Button>
-        </CardContent>
-      </Card>
+      <div className="m-1 overflow-hidden rounded-xl bg-card py-4 ring-1 ring-foreground/10">
+        <div className="px-4 font-medium">Recipes could not be loaded</div>
+        <div className="px-4 pt-2">
+          <button
+            type="button"
+            className="rounded-lg px-2 py-1 text-sm uppercase tracking-[0.02857em] transition-colors hover:bg-muted"
+            onClick={() => window.location.reload()}
+          >
+            Reload the page
+          </button>
+        </div>
+      </div>
     );
   }
 
@@ -142,11 +128,13 @@ export default function SearchableRecipePage({
   catalogKey,
   recipeCount,
   listHeader,
+  underTitle,
   children,
   footer,
-  underTitle,
 }: {
   title?: string;
+  /** Rendered under the header's title (the category page's pill row). */
+  underTitle?: ReactNode;
   /** Rows baked into the static HTML; catalog-driven pages omit this. */
   recipes?: (RecipeListItem | QuantityRecipeListItem)[];
   /** The page's key in the shared catalog, to render its list from there. */
@@ -156,8 +144,6 @@ export default function SearchableRecipePage({
   listHeader: string;
   children?: ReactNode;
   footer?: ReactNode;
-  /** Rendered directly under the page title, hidden while a search is active. */
-  underTitle?: ReactNode;
 }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const isSearching = searchTerm != null && searchTerm.trim() !== '';
@@ -208,9 +194,9 @@ export default function SearchableRecipePage({
             searchTerm={searchTerm}
             emptyState={
               <>
-                <Card sx={{ m: 2 }}>
-                  <CardHeader title="No results found" />
-                </Card>
+                <div className="m-2 rounded-xl bg-card px-4 py-4 text-sm font-medium text-muted-foreground ring-1 ring-foreground/10">
+                  No results found
+                </div>
                 <SearchAllLink searchTerm={searchTerm} />
               </>
             }

@@ -1,6 +1,5 @@
 'use client';
 
-import { Card, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
@@ -17,7 +16,7 @@ function renderAuthor(author: Author) {
       key={author.name}
       href={getAuthorRecipesUrl(author.name)}
       primary={author.name}
-      tertiary={<Typography color="textSecondary">{author.recipeCount}</Typography>}
+      tertiary={<span className="text-muted-foreground">{author.recipeCount}</span>}
     />
   );
 }
@@ -26,9 +25,9 @@ export default function AuthorsClient({ authors }: { authors: Author[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
-    </Card>
+    <div className="m-2 rounded-xl bg-card px-4 py-4 text-sm font-medium text-muted-foreground ring-1 ring-foreground/10">
+      No results found
+    </div>
   );
 
   return (

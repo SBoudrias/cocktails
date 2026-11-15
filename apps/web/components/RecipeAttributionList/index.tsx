@@ -1,8 +1,9 @@
 import type { Attribution } from '@cocktails/data';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { Link, List, ListSubheader, Paper, Typography } from '@mui/material';
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 import { P, match } from 'ts-pattern';
 import { LinkListItem } from '#/components/LinkList';
+import { ListSubheader } from '#/components/ui/list';
 import { getAuthorRecipesUrl, getBarRecipesUrl } from '#/modules/url';
 
 const attributionRelationLabels = {
@@ -10,11 +11,6 @@ const attributionRelationLabels = {
   'adapted by': 'adapted by',
   bar: 'served at',
   book: 'documented by',
-} as const;
-
-const secondaryTypographyProps = {
-  variant: 'caption',
-  sx: { lineHeight: 1.35 },
 } as const;
 
 function getAttributionView(attribution: Attribution) {
@@ -56,20 +52,18 @@ export default function RecipeAttributionList({
   attributions: Attribution[];
 }) {
   return (
-    <List aria-labelledby="attributions-subheader">
+    <ul aria-labelledby="attributions-subheader" className="py-2">
       <ListSubheader id="attributions-subheader">Attributions</ListSubheader>
-      <Paper square>
+      <div className="bg-card">
         {attributions.map((attribution) => {
           const { key, href, label, location, externalUrl } =
             getAttributionView(attribution);
 
           const content = (
-            <Typography component="span">
-              <Typography component="span" color="textSecondary">
-                {`${label} `}
-              </Typography>
+            <span>
+              <span className="text-muted-foreground">{`${label} `}</span>
               {attribution.source}
-            </Typography>
+            </span>
           );
 
           return (
@@ -78,20 +72,24 @@ export default function RecipeAttributionList({
               href={href}
               primary={
                 href == null && externalUrl ? (
-                  <Link href={externalUrl} target="_blank" rel="noopener nofollow">
+                  <a
+                    href={externalUrl}
+                    target="_blank"
+                    rel="noopener nofollow"
+                    className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
+                  >
                     {content}
-                    <ArrowOutwardIcon sx={{ fontSize: 'medium' }} />
-                  </Link>
+                    <ArrowUpRight className="size-6" />
+                  </a>
                 ) : (
                   content
                 )
               }
               secondary={location}
-              secondaryTypographyProps={secondaryTypographyProps}
             />
           );
         })}
-      </Paper>
-    </List>
+      </div>
+    </ul>
   );
 }

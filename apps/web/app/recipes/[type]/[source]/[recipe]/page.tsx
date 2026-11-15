@@ -1,7 +1,7 @@
 import type { Source, WebsiteRef, YoutubeRef } from '@cocktails/data';
 import { getRecipePageParams } from '@cocktails/data/params';
 import { getRecipe } from '@cocktails/data/recipes';
-import { Box, List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
+import { Box } from '@mui/material';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { match, P } from 'ts-pattern';
 import AppHeader from '#/components/AppHeader';
@@ -10,6 +10,7 @@ import IngredientList from '#/components/IngredientList';
 import RecipeAttributionList from '#/components/RecipeAttributionList';
 import RecipeBadges from '#/components/RecipeBadges';
 import SourceAboutCard from '#/components/SourceAboutCard';
+import { ListSubheader } from '#/components/ui/list';
 import VideoListCard from '#/components/VideoListCard';
 import WebsiteListCard from '#/components/WebsiteListCard';
 import { getRecipeEditUrl } from '#/modules/url';
@@ -81,18 +82,21 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           defaultServings={recipe.servings}
         />
         {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
-          <List>
+          <ul className="py-2">
             <ListSubheader>Instructions</ListSubheader>
-            <Paper square>
+            <div className="bg-card">
               {recipe.instructions.map((instruction, index) => (
-                <ListItem divider key={instruction}>
-                  <ListItemText>
+                <li
+                  key={instruction}
+                  className="flex w-full items-center border-x-0 border-t-0 border-b px-4 py-3 text-base"
+                >
+                  <span className="min-w-0 flex-1">
                     {index + 1}. {instruction}
-                  </ListItemText>
-                </ListItem>
+                  </span>
+                </li>
               ))}
-            </Paper>
-          </List>
+            </div>
+          </ul>
         )}
         {recipe.attributions.length > 0 && (
           <RecipeAttributionList attributions={recipe.attributions} />

@@ -4,7 +4,6 @@ import type { LinkProps } from 'next/link';
 import NextLink from 'next/link';
 import type { Ref } from 'react';
 import { forwardRef } from 'react';
-import { belowAppBar } from '#/modules/belowAppBar';
 
 const LinkBehaviour = forwardRef(function LinkBehaviour(
   props: LinkProps<string>,
@@ -132,10 +131,14 @@ const theme = createTheme({
         },
         // Right below the fixed app bar; the rows scroll under it while it
         // sticks. The background comes separately (see useStuck): the header
-        // stays see-through in flow and only wears glass once pinned.
-        sticky: ({ theme }) => ({
-          ...belowAppBar(theme.mixins.toolbar),
-        }),
+        // stays see-through in flow and only wears glass once pinned. The
+        // tops are MUI's toolbar mixin breakpoints, matching
+        // --app-bar-height in app/globals.css.
+        sticky: {
+          top: 56,
+          '@media (orientation: landscape)': { top: 48 },
+          '@media (min-width: 600px)': { top: 64 },
+        },
       },
     },
   },

@@ -1,17 +1,10 @@
 'use client';
 
-import {
-  Card,
-  CardHeader,
-  Stack,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { byLocationListConfig } from '#/modules/lists/by-location';
 import { byNameListConfig } from '#/modules/lists/by-name';
@@ -29,7 +22,7 @@ function renderBar(bar: Bar, showLocation: boolean) {
       href={getBarRecipesUrl(bar)}
       primary={bar.name}
       secondary={showLocation ? bar.location : undefined}
-      tertiary={<Typography color="textSecondary">{bar.recipeCount}</Typography>}
+      tertiary={<span className="text-muted-foreground">{bar.recipeCount}</span>}
     />
   );
 }
@@ -49,9 +42,9 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
   const showLocation = !isCityMode || isSearching;
 
   const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
-    </Card>
+    <div className="m-2 rounded-xl bg-card px-4 py-4 text-sm font-medium text-muted-foreground ring-1 ring-foreground/10">
+      No results found
+    </div>
   );
 
   return (
@@ -62,20 +55,20 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         onSearchChange={setSearchTerm}
       />
       {hasLocations && !isSearching && (
-        <Stack direction="row-reverse" sx={{ mx: 2 }}>
-          <ToggleButtonGroup
-            value={groupMode}
-            exclusive
-            onChange={(_, newValue: GroupMode | null) => {
+        <div className="mx-4 flex flex-row-reverse">
+          <ToggleGroup
+            value={[groupMode]}
+            onValueChange={([newValue]) => {
               if (newValue) setGroupMode(newValue);
             }}
-            size="small"
+            variant="outline"
+            spacing={0}
             aria-label="Bar grouping"
           >
-            <ToggleButton value="alpha">A-Z</ToggleButton>
-            <ToggleButton value="city">By City</ToggleButton>
-          </ToggleButtonGroup>
-        </Stack>
+            <ToggleGroupItem value="alpha">A-Z</ToggleGroupItem>
+            <ToggleGroupItem value="city">By City</ToggleGroupItem>
+          </ToggleGroup>
+        </div>
       )}
       <SearchableList
         items={bars}

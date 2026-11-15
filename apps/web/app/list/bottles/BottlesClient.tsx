@@ -1,6 +1,5 @@
 'use client';
 
-import { Card, CardHeader } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
@@ -20,9 +19,9 @@ export default function BottlesClient({ bottles }: { bottles: IngredientListItem
   const [searchTerm, setSearchTerm] = useQueryState('search');
 
   const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
-    </Card>
+    <div className="m-2 rounded-xl bg-card px-4 py-4 text-sm font-medium text-muted-foreground ring-1 ring-foreground/10">
+      No results found
+    </div>
   );
 
   return (

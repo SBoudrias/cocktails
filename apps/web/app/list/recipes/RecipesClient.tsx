@@ -1,6 +1,5 @@
 'use client';
 
-import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
 import EntitySuggestions from '#/components/EntitySuggestions';
@@ -71,14 +70,12 @@ export default function RecipesClient({
   );
 
   const emptyState = (
-    <Card sx={{ m: 2 }}>
-      <CardHeader title="No results found" />
-      <CardContent>
-        <Typography variant="body2">
-          No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
-        </Typography>
-      </CardContent>
-    </Card>
+    <div className="m-2 overflow-hidden rounded-xl bg-card py-4 text-sm ring-1 ring-foreground/10">
+      <div className="px-4 font-medium">No results found</div>
+      <div className="px-4 pt-1 text-muted-foreground">
+        No recipes or ingredients matched the search term &quot;{searchTerm}&quot;
+      </div>
+    </div>
   );
 
   return (

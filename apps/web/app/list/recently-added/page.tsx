@@ -1,5 +1,4 @@
 import { getRecentlyAddedRecipeEntries } from '@cocktails/data/recipes';
-import { List, Paper } from '@mui/material';
 import type { Metadata } from 'next';
 import AppHeader from '#/components/AppHeader';
 import RecipeLinkListItem from '#/components/RecipeLinkListItem';
@@ -21,15 +20,15 @@ export default async function RecentlyAddedPage() {
   return (
     <>
       <AppHeader title="Recently Added" />
-      <List sx={{ mt: 2 }}>
+      <ul className="mt-4 py-2">
         {groups.map(({ day, label, items }) => {
           const headerId = `group-header-${day}`;
 
           return (
             <li key={day}>
-              <List role="group" aria-labelledby={headerId}>
+              <ul role="group" aria-labelledby={headerId} className="py-2">
                 <StickyGroupHeader id={headerId}>{label}</StickyGroupHeader>
-                <Paper square>
+                <div className="bg-card">
                   {items.map((recipe) => (
                     <RecipeLinkListItem
                       key={getRecipeUrl(recipe)}
@@ -38,12 +37,12 @@ export default async function RecentlyAddedPage() {
                       source={getRecipeSource(recipe)}
                     />
                   ))}
-                </Paper>
-              </List>
+                </div>
+              </ul>
             </li>
           );
         })}
-      </List>
+      </ul>
     </>
   );
 }
