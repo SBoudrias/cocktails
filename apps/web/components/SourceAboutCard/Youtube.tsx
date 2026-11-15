@@ -1,6 +1,7 @@
 import type { YoutubeRef, YoutubeChannel } from '@cocktails/data';
 import { ArrowUpRight } from 'lucide-react';
-import YoutubeIcon from '#/components/icons/YoutubeIcon';
+import { siYoutube } from 'simple-icons';
+import BrandIcon from '#/components/icons/BrandIcon';
 import { buttonVariants } from '#/components/ui/button-variants';
 import {
   Card,
@@ -24,7 +25,7 @@ export default function YoutubeAboutCard({
     <Card className={className}>
       <CardHeader>
         <CardTitle>
-          <YoutubeIcon className="mr-1 inline size-6 align-text-bottom" />
+          <BrandIcon icon={siYoutube} className="mr-1 inline size-6 align-text-bottom" />
           {source.name}
         </CardTitle>
       </CardHeader>
