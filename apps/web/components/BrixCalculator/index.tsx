@@ -1,21 +1,13 @@
 'use client';
 
-import type { SxProps } from '@mui/material';
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  InputAdornment,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
 import { Suspense, useState } from 'react';
+import { Button } from '#/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
+import { LabeledField } from '#/components/ui/labeled-field';
 
 const DEFAULT_JUICE_WEIGHT = 100;
 
-export default function BrixCalculator({ sx }: { sx?: SxProps }) {
+export default function BrixCalculator() {
   const [juiceWeightValue, setJuiceWeight] = useState<string | number>(
     DEFAULT_JUICE_WEIGHT,
   );
@@ -38,103 +30,86 @@ export default function BrixCalculator({ sx }: { sx?: SxProps }) {
 
   return (
     <Suspense>
-      <Card sx={sx}>
-        <CardHeader title="Sugar Adjusting" />
-        <CardContent>
-          <Stack spacing={2}>
-            <Stack direction="row" spacing={1} sx={{ alignItems: 'top' }}>
-              <TextField
-                label="Juice weight"
-                value={juiceWeightValue}
-                type="number"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setJuiceWeight(event.target.value);
-                }}
-                fullWidth
-                slotProps={{
-                  input: {
-                    endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-                  },
-                }}
-              />
-              <TextField
-                label="Juice Brix"
-                value={currentBrixValue}
-                type="number"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setCurrentBrix(event.target.value);
-                }}
-                error={!isCurrentBrixValid}
-                helperText={
-                  !isCurrentBrixValid
-                    ? currentBrix >= 100
-                      ? 'Must be less than 100'
-                      : 'Must be lower than target Brix'
-                    : ''
-                }
-                fullWidth
-                slotProps={{
-                  input: {
-                    endAdornment: <InputAdornment position="end">brix</InputAdornment>,
-                  },
-                }}
-              />
-              <TextField
-                label="Target Brix"
-                value={targetBrixValue}
-                type="number"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setTargetBrix(event.target.value);
-                }}
-                error={!isTargetBrixValid}
-                helperText={!isTargetBrixValid ? 'Must be less than 100' : ''}
-                fullWidth
-                slotProps={{
-                  input: {
-                    endAdornment: <InputAdornment position="end">brix</InputAdornment>,
-                  },
-                }}
-              />
-            </Stack>
-            <TextField
-              label="Sugar to add"
-              value={
-                isNaN(sugarWeight)
-                  ? ''
-                  : `${sugarWeight.toLocaleString('en', { maximumFractionDigits: 2 })}`
-              }
-              fullWidth
-              slotProps={{
-                input: {
-                  readOnly: true,
-                  endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-                },
+      <Card>
+        <CardHeader>
+          <CardTitle>Sugar Adjusting</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 min-[600px]:flex-row min-[600px]:items-start">
+            <LabeledField
+              label="Juice weight"
+              unit="grams"
+              value={juiceWeightValue}
+              type="number"
+              onChange={(event) => {
+                setJuiceWeight(event.target.value);
               }}
+              className="min-w-0 flex-1"
             />
-            <Stack direction="row" spacing={1} sx={{ justifyContent: 'flex-end' }}>
-              <Button
-                color="secondary"
-                onClick={() => {
-                  setJuiceWeight(DEFAULT_JUICE_WEIGHT);
-                  setCurrentBrix(0);
-                  setTargetBrix(50);
-                }}
-              >
-                Reset to defaults
-              </Button>
-            </Stack>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-              Note: Use a refractometer to measure the current Brix level of your juice.
-              Place a few drops of juice on the refractometer&apos;s prism, close the
-              cover, and read the Brix value through the eyepiece.
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-              Degrees Brix (symbol °Bx) is a measure of the dissolved solids in a liquid.
-              It is commonly used to measure dissolved sugar content of a solution. One
-              degree Brix is 1 gram of sucrose solute dissolved in 100 grams of solution
-              and represents the strength of the solution as percentage by mass.
-            </Typography>
-          </Stack>
+            <LabeledField
+              label="Juice Brix"
+              unit="brix"
+              value={currentBrixValue}
+              type="number"
+              onChange={(event) => {
+                setCurrentBrix(event.target.value);
+              }}
+              error={!isCurrentBrixValid}
+              helperText={
+                !isCurrentBrixValid
+                  ? currentBrix >= 100
+                    ? 'Must be less than 100'
+                    : 'Must be lower than target Brix'
+                  : undefined
+              }
+              className="min-w-0 flex-1"
+            />
+            <LabeledField
+              label="Target Brix"
+              unit="brix"
+              value={targetBrixValue}
+              type="number"
+              onChange={(event) => {
+                setTargetBrix(event.target.value);
+              }}
+              error={!isTargetBrixValid}
+              helperText={!isTargetBrixValid ? 'Must be less than 100' : undefined}
+              className="min-w-0 flex-1"
+            />
+          </div>
+          <LabeledField
+            label="Sugar to add"
+            unit="grams"
+            value={
+              isNaN(sugarWeight)
+                ? ''
+                : `${sugarWeight.toLocaleString('en', { maximumFractionDigits: 2 })}`
+            }
+            readOnly
+          />
+          <div className="flex justify-end">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setJuiceWeight(DEFAULT_JUICE_WEIGHT);
+                setCurrentBrix(0);
+                setTargetBrix(50);
+              }}
+            >
+              Reset to defaults
+            </Button>
+          </div>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Note: Use a refractometer to measure the current Brix level of your juice.
+            Place a few drops of juice on the refractometer&apos;s prism, close the cover,
+            and read the Brix value through the eyepiece.
+          </p>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Degrees Brix (symbol °Bx) is a measure of the dissolved solids in a liquid. It
+            is commonly used to measure dissolved sugar content of a solution. One degree
+            Brix is 1 gram of sucrose solute dissolved in 100 grams of solution and
+            represents the strength of the solution as percentage by mass.
+          </p>
         </CardContent>
       </Card>
     </Suspense>
