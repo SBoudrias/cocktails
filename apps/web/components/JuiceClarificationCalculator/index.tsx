@@ -2,21 +2,13 @@
 
 import { tryConvertVolume } from '@cocktails/conversion';
 import type { RecipeIngredient } from '@cocktails/data';
-import type { SxProps } from '@mui/material';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  InputAdornment,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
+import { InstructionSteps } from '#/components/InstructionSteps';
+import { Button } from '#/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
+import { LabeledField } from '#/components/ui/labeled-field';
 import Video from '#/components/Video';
 import { formatAmount } from '#/modules/formatAmount';
 
@@ -49,7 +41,7 @@ function getDefaultJuiceWeight(searchParams: Pick<URLSearchParams, 'get'>) {
   return Math.max(approximateWeight, MINIMUM_CONTEXTUAL_JUICE_WEIGHT);
 }
 
-export default function JuiceClarificationCalculator({ sx }: { sx?: SxProps }) {
+export default function JuiceClarificationCalculator() {
   const searchParams = useSearchParams();
   const [defaultJuiceWeight] = useState(() => getDefaultJuiceWeight(searchParams));
   const [juiceWeightValue, setJuiceWeight] = useState<string | number>(
@@ -62,114 +54,67 @@ export default function JuiceClarificationCalculator({ sx }: { sx?: SxProps }) {
   const agarWeight = isJuiceWeightValid ? juiceWeight * AGAR_RATIO : NaN;
 
   return (
-    <Card sx={sx}>
-      <CardHeader title="Juice Clarification" />
-      <CardContent>
-        <Stack spacing={2}>
-          <TextField
-            label="Raw juice weight"
-            value={juiceWeightValue}
-            type="number"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setJuiceWeight(event.target.value);
-            }}
-            error={!isJuiceWeightValid}
-            helperText={!isJuiceWeightValid ? 'Must be greater than 0' : ''}
-            fullWidth
-            slotProps={{
-              htmlInput: {
-                min: 0,
-                step: 'any',
-              },
-              input: {
-                endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-              },
-            }}
+    <Card m={1}>
+      <CardHeader>
+        <CardTitle>Juice Clarification</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4">
+        <LabeledField
+          label="Raw juice weight"
+          unit="grams"
+          value={juiceWeightValue}
+          type="number"
+          onChange={(event) => {
+            setJuiceWeight(event.target.value);
+          }}
+          error={!isJuiceWeightValid}
+          helperText={!isJuiceWeightValid ? 'Must be greater than 0' : undefined}
+          min={0}
+          step="any"
+        />
+        <div className="flex flex-col gap-2 min-[600px]:flex-row">
+          <LabeledField
+            label="Water"
+            unit="grams"
+            value={isNaN(waterWeight) ? '' : formatAmount(waterWeight, 2)}
+            readOnly
+            className="min-w-0 flex-1"
           />
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
-            <TextField
-              label="Water"
-              value={isNaN(waterWeight) ? '' : formatAmount(waterWeight, 2)}
-              fullWidth
-              slotProps={{
-                input: {
-                  readOnly: true,
-                  endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-                },
-              }}
-            />
-            <TextField
-              label="Agar agar"
-              value={isNaN(agarWeight) ? '' : formatAmount(agarWeight, 3)}
-              fullWidth
-              slotProps={{
-                input: {
-                  readOnly: true,
-                  endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-                },
-              }}
-            />
-          </Stack>
-          <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
-            <Button
-              color="secondary"
-              onClick={() => {
-                setJuiceWeight(defaultJuiceWeight);
-              }}
-            >
-              Reset to defaults
-            </Button>
-          </Stack>
-        </Stack>
+          <LabeledField
+            label="Agar agar"
+            unit="grams"
+            value={isNaN(agarWeight) ? '' : formatAmount(agarWeight, 3)}
+            readOnly
+            className="min-w-0 flex-1"
+          />
+        </div>
+        <div className="flex justify-end">
+          <Button
+            variant="text-secondary"
+            onClick={() => {
+              setJuiceWeight(defaultJuiceWeight);
+            }}
+          >
+            Reset to defaults
+          </Button>
+        </div>
       </CardContent>
       <CardContent>
-        <Typography id="juice-clarification-instructions" variant="h6" gutterBottom>
-          Instructions
-        </Typography>
-        <Box
-          component="ol"
-          aria-labelledby="juice-clarification-instructions"
-          sx={{ mt: 0, mb: 0, pl: 3 }}
-        >
-          <li>
-            <Typography>
-              Stir the agar agar into the water and let it bloom for a couple of minutes.
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Heat the mixture gently until it boils to activate the agar agar.
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Transfer it to a heatproof container and let it cool to room temperature
-              until fully set.
-            </Typography>
-          </li>
-          <li>
-            <Typography>Break the agar gel into smaller pieces.</Typography>
-          </li>
-          <li>
-            <Typography>Blend the gel while slowly pouring in the raw juice.</Typography>
-          </li>
-          <li>
-            <Typography>
-              Pour the mixture into a drip filter lined with two coffee filters.
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Let the juice filter without disturbing the gel raft. The first liquid may
-              be cloudy while the raft forms.
-            </Typography>
-          </li>
-        </Box>
+        <InstructionSteps
+          id="juice-clarification-instructions"
+          steps={[
+            'Stir the agar agar into the water and let it bloom for a couple of minutes.',
+            'Heat the mixture gently until it boils to activate the agar agar.',
+            'Transfer it to a heatproof container and let it cool to room temperature until fully set.',
+            'Break the agar gel into smaller pieces.',
+            'Blend the gel while slowly pouring in the raw juice.',
+            'Pour the mixture into a drip filter lined with two coffee filters.',
+            'Let the juice filter without disturbing the gel raft. The first liquid may be cloudy while the raft forms.',
+          ]}
+        />
       </CardContent>
       <CardContent>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-          Juice clarification technique by Kate McGraw.
-        </Typography>
+        <p className="mb-4 text-sm">Juice clarification technique by Kate McGraw.</p>
         <Video id="_5iicQymdTU" start={193} />
       </CardContent>
     </Card>

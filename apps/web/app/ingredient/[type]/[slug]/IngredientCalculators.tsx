@@ -26,15 +26,11 @@ export default function IngredientCalculators({
       {techniques.includes('acid-adjustment') &&
         'acidity' in ingredient &&
         ingredient.acidity != null && (
-          <AcidAdjustingCalculator
-            defaultAcidity={ingredient.acidity}
-            sx={{ m: 1 }}
-            compact
-          />
+          <AcidAdjustingCalculator defaultAcidity={ingredient.acidity} compact />
         )}
       {techniques.some((technique) =>
         AGAR_CLARIFICATION_TECHNIQUES.includes(technique),
-      ) && <JuiceClarificationCalculator sx={{ m: 1 }} />}
+      ) && <JuiceClarificationCalculator />}
     </>
   );
 }
