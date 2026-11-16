@@ -28,7 +28,7 @@ export default async function RecentlyAddedPage() {
             <li key={day}>
               <ul role="group" aria-labelledby={headerId} className="py-2">
                 <StickyGroupHeader id={headerId}>{label}</StickyGroupHeader>
-                <div className="bg-card">
+                <div className="surface">
                   {items.map((recipe) => (
                     <RecipeLinkListItem
                       key={getRecipeUrl(recipe)}

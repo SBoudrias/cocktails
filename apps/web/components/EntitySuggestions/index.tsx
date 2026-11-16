@@ -64,7 +64,7 @@ export default function EntitySuggestions({
 
   return (
     <ul aria-label="Matching entities" className="pt-2 pb-4">
-      <div className="bg-card">
+      <div className="surface">
         {links.map((suggestion) => {
           const { icon } = getEntityView(suggestion.kind);
 
