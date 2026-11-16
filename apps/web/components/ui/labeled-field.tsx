@@ -17,11 +17,18 @@ import { useId } from 'react';
 export function OutlinedField({
   label,
   error = false,
+  notched = true,
   className,
   children,
 }: {
   label: string;
   error?: boolean;
+  /** Whether the label sits in the border's notch. MUI shrinks the label
+      up while the field is filled or focused and un-shrinks it into the
+      field when it empties — 16px text at the input's own position, the
+      notch closed (probed: clearing a field drops its label y 119 → 144).
+      Selects always have a value, so they stay notched. */
+  notched?: boolean;
   className?: string;
   /** The control; receives the label span's id for aria-labelledby. */
   children: (labelId: string) => React.ReactNode;
@@ -36,7 +43,12 @@ export function OutlinedField({
         id={labelId}
         className={cn(
           'absolute top-0 left-0 origin-top-left text-[16px] leading-[23px] whitespace-nowrap',
-          '[transform:matrix(0.75,0,0,0.75,14,-9)]',
+          notched
+            ? '[transform:matrix(0.75,0,0,0.75,14,-9)]'
+            : // Un-shrunk: the label rides at the input's own text
+              // position (16px down, 14px in), unscaled; focus shrinks it
+              // back into the notch.
+              'top-4 left-3.5 group-focus-within:top-0 group-focus-within:left-0 group-focus-within:[transform:matrix(0.75,0,0,0.75,14,-9)]',
           'text-muted-foreground group-focus-within:text-primary',
           error && 'text-destructive group-focus-within:text-destructive',
         )}
@@ -53,8 +65,11 @@ export function OutlinedField({
       >
         {/* The invisible sizer: its width is the notch. MUI keeps it even
             when the border is notched so the gap is 5px wider than the
-            text on each side. */}
-        <legend className="block h-[11px] max-w-full p-0">
+            text on each side; when the label un-shrinks it collapses to
+            nearly nothing, closing the border. */}
+        <legend
+          className={cn('block h-[11px] max-w-full p-0', !notched && 'max-w-[0.01px]')}
+        >
           <span
             aria-hidden="true"
             className="block px-[5px] text-xs leading-[23px] whitespace-nowrap opacity-0"
@@ -95,13 +110,17 @@ export function LabeledField({
   className?: string;
 }) {
   const describedBy = useId();
+  // MUI's notched state: the label sits in the notch while the field has
+  // a value (a computed result counts; a NaN result renders as '') and
+  // un-shrinks when it empties.
+  const notched = String(props.value ?? '') !== '';
 
   return (
     // The outer div flows: the 56px field box, then the helper line under
     // it (MUI's FormControl stacked them; the wrapper's height grows with
     // the helper, which keeps an always-on helper from being overlapped).
     <div className={className}>
-      <OutlinedField label={label} error={error}>
+      <OutlinedField label={label} error={error} notched={notched}>
         {(labelId) => (
           <>
             <input
@@ -129,6 +148,9 @@ export function LabeledField({
         <span
           id={describedBy}
           className={cn(
+            // MUI's FormHelperText: 14px in from both edges of the field —
+            // the right inset narrows the wrap box (probed on the desktop
+            // error state: without it the helper un-wraps a line early).
             'mt-[3px] block px-3.5 text-xs leading-[1.66]',
             error ? 'text-destructive' : 'text-muted-foreground',
           )}
