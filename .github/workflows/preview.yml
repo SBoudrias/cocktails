@@ -1,5 +1,21 @@
 name: PR Preview
 
+# Per-PR live previews on Netlify, uploaded directly from this workflow (no
+# build minutes, no gh-pages branch). The Pages artifact API has no per-PR
+# story: a repo gets exactly one live Pages deployment at a time (the
+# deploy-pages `preview` input is an internal alpha, not public), and
+# folding previews into the production deploy would eat the 1 GB
+# published-site cap in two concurrent ~547 MB previews. Cloudflare Pages
+# caps free sites at 20,000 files — 4% above our current 19,160-file
+# export. Netlify caps us nowhere and gives each deploy a stable alias
+# URL: PR N lives at
+#   https://pr-N--indexotica-previews.netlify.app/pr-preview/pr-N/
+# — the same /pr-preview/pr-N basePath shape the app already derives
+# everything from (the noindex heuristic, service-worker scope, manifest,
+# smoke's path parsing), so only the origin changes (layout.tsx reads it
+# from NEXT_PUBLIC_SITE_ORIGIN). Cleanup: Netlify deletes deploys 30 days
+# after their creation on the free plan, and the closed-PR run deletes the
+# alias's deploys immediately — cleanup-previews.yml is gone.
 on:
   pull_request:
     types: [opened, reopened, synchronize, closed]
@@ -7,9 +23,7 @@ on:
     # workspace packages it imports (data, conversion, ingredient-sorting),
     # static assets, dependency manifests, and this workflow. The filter is
     # evaluated against the whole PR diff, so a PR that ever touched these
-    # keeps getting previews and its `closed` run still removes the directory.
-    # A PR that never matched has no preview dir to remove; the hourly
-    # cleanup-previews.yml also sweeps any leftover for closed PRs.
+    # keeps getting previews and its `closed` run still deletes its deploys.
     paths:
       - apps/web/**
       - packages/data/**
@@ -24,24 +38,33 @@ on:
       - .github/workflows/setup-node/**
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
 
-# Never cancel a running preview job: it may be mid-push to gh-pages. A
-# cancelled job's push can still land after the next run fetched the branch,
-# and when that next run is the PR-closed removal, the rebase conflicts
-# (modify/delete in pr-preview/pr-N) and the job fails (PR #540's merge run).
-# Queued runs still collapse to the newest one.
+# Never cancel a running preview job: it may be mid-upload to Netlify. A
+# cancelled run's upload can still land after the next run started, and
+# when that next run is the PR-closed deletion, the alias would be deleted
+# under a deploy that is still going live. Queued runs still collapse to
+# the newest one.
 concurrency:
   group: preview-${{ github.event.pull_request.number }}
   cancel-in-progress: false
 
+env:
+  # The app's deploy root under the alias URL. Same shape as the old
+  # gh-pages previews (/pr-preview/pr-N), without the /cocktails repo
+  # segment: the preview site is a dedicated Netlify project rooted at /,
+  # not a subdirectory of the production Pages site.
+  PREVIEW_BASE_PATH: /pr-preview/pr-${{ github.event.number }}
+  NETLIFY_SITE_NAME: indexotica-previews
+
 jobs:
   preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout 🛎️
+        if: github.event.action != 'closed'
         uses: actions/checkout@v7
         with:
           fetch-depth: 1
@@ -55,7 +78,10 @@ jobs:
         run: yarn workspace @cocktails/web build
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
+          NEXT_PUBLIC_BASE_PATH: ${{ env.PREVIEW_BASE_PATH }}
+          # Canonical/OG URLs derive from the actual preview host, not the
+          # production Pages origin (layout.tsx).
+          NEXT_PUBLIC_SITE_ORIGIN: https://pr-${{ github.event.number }}--${{ env.NETLIFY_SITE_NAME }}.netlify.app
 
       # Prune the __next._full.txt payloads: static export emits each route
       # as a .html plus several .txt RSC payload variants. Browser-session
@@ -79,23 +105,169 @@ jobs:
         timeout-minutes: 10
         run: node apps/web/tools/verify-offline.ts
         env:
-          NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
+          NEXT_PUBLIC_BASE_PATH: ${{ env.PREVIEW_BASE_PATH }}
 
-      - name: Deploy PR Preview 🚀
-        id: preview
-        uses: rossjrw/pr-preview-action@v1
-        with:
-          source-dir: ./apps/web/out/
-          preview-branch: gh-pages
-          umbrella-dir: pr-preview
-          action: auto
+      # The app is built with the /pr-preview/pr-N basePath, but the CLI
+      # uploads the deploy directory as the site root. Stage the export
+      # under its basePath so the built URLs resolve as-is on the alias —
+      # no rebuild, and every derived path (sw.js scope, manifest,
+      # canonicals) keeps working. Netlify serves a deploy's root 404.html
+      # for unknown routes; the export's own 404 page fills that slot (it
+      # was built with the same basePath, so its assets still resolve).
+      # The _headers file forces X-Robots-Tag: noindex on every response —
+      # the page-level robots meta (layout.tsx's isPreview) covers crawlers
+      # that execute pages, the header covers everything else.
+      - name: Stage export under its basePath 🗂️
+        if: github.event.action != 'closed'
+        run: |
+          mkdir -p "apps/web/deploy${PREVIEW_BASE_PATH}"
+          mv apps/web/out/* "apps/web/deploy${PREVIEW_BASE_PATH}/"
+          mv "apps/web/deploy${PREVIEW_BASE_PATH}/404.html" apps/web/deploy/404.html
+          cat > apps/web/deploy/_headers <<'EOF'
+          /*
+            X-Robots-Tag: noindex, nofollow
+          EOF
 
-      # Waits for GitHub Pages to serve this build, then fetches the home
+      # Upload the staged export as a per-PR alias deploy: --alias makes
+      # the deploy draft (never production) and pins its URL to
+      # https://pr-N--<site>.netlify.app. The CLI uploads only files whose
+      # digest is not already on the site, so later pushes on the same PR
+      # (and PRs sharing unchanged chunks) upload a fraction of the export.
+      # The first run falls back to creating the site on the token's team.
+      - name: Deploy preview to Netlify 🚀
+        if: github.event.action != 'closed'
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo "::error::NETLIFY_AUTH_TOKEN secret is not set — see the PR body's one-time setup"
+            exit 1
+          fi
+          DEPLOY_ARGS=(--site "$NETLIFY_SITE_NAME"
+            --dir apps/web/deploy
+            --alias "pr-${{ github.event.number }}"
+            --message "PR #${{ github.event.number }} @ ${{ github.event.pull_request.head.sha }}"
+            --json)
+          if ! OUTPUT=$(npx --yes netlify-cli@27.19.0 deploy "${DEPLOY_ARGS[@]}"); then
+            echo "$OUTPUT"
+            # The site may not exist yet (first run): create it on the
+            # token's default team, then retry once. A site whose name is
+            # taken by anyone fails here with a 422 — that name is simply
+            # unavailable, and the workflow env names it.
+            curl -sSf -X POST -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+              -d "{\"name\":\"$NETLIFY_SITE_NAME\"}" \
+              "https://api.netlify.com/api/v1/sites" >/dev/null
+            OUTPUT=$(npx --yes netlify-cli@27.19.0 deploy "${DEPLOY_ARGS[@]}")
+          fi
+          # Log the deploy result for the run summary; the alias URL is
+          # deterministic, so nothing needs parsing out of it.
+          echo "$OUTPUT" | jq .
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      # Waits for the preview to serve this build, then fetches the home
       # page and a page of each type and fails on any non-200 or missing
-      # marker (packages/smoke).
+      # marker (packages/smoke). The staged dir is the local build to
+      # compare hashed assets against (apps/web/out was moved into it).
       - name: Smoke test the preview 🔥
         if: github.event.action != 'closed'
         timeout-minutes: 14
-        run: yarn workspace @cocktails/smoke smoke "${{ steps.preview.outputs.preview-url }}" "$GITHUB_WORKSPACE/apps/web/out"
+        run: yarn workspace @cocktails/smoke smoke "https://pr-${{ github.event.number }}--$NETLIFY_SITE_NAME.netlify.app$PREVIEW_BASE_PATH/" "$GITHUB_WORKSPACE/apps/web/deploy${PREVIEW_BASE_PATH}"
         env:
           SMOKE_LIVE_TIMEOUT_S: '720'
+
+      # One sticky comment per PR, updated by every run: the link, the
+      # gates that passed, and the exact commit that was deployed.
+      - name: Comment preview link on the PR 💬
+        if: github.event.action != 'closed'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const previewUrl = `https://pr-${context.issue.number}--${process.env.NETLIFY_SITE_NAME}.netlify.app${process.env.PREVIEW_BASE_PATH}/`;
+            const sha = context.payload.pull_request.head.sha;
+            const marker = '<!-- pr-preview-comment -->';
+            const body = [
+              marker,
+              '### 🍹 Live preview',
+              '',
+              `**${previewUrl}**`,
+              '',
+              `Deployed from ${sha.slice(0, 7)} — gates passed: offline PWA ✅ · smoke ✅ · noindex ✅ (robots meta on every page + X-Robots-Tag header).`,
+              '',
+              'Closing this PR deletes its preview immediately; untouched preview deploys expire after 30 days (Netlify deploy retention).',
+            ].join('\n');
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find((c) => c.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      # The PR-closed run: delete this PR's deploys so the preview URL
+      # stops serving. Netlify's 30-day retention covers everything else —
+      # no hourly sweep is needed (cleanup-previews.yml is gone).
+      - name: Delete preview deploys 🧹
+        if: github.event.action == 'closed'
+        run: |
+          set -euo pipefail
+          SITE_ID=$(curl -sSf -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_NAME" | jq -r '.id')
+          DEPLOYS=$(curl -sSf -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            "https://api.netlify.com/api/v1/sites/$SITE_ID/deploys" \
+            | jq -r --arg alias "pr-${{ github.event.number }}" \
+              '[.[] | select(.branch == $alias) | .id] | join("\n")')
+          if [ -z "$DEPLOYS" ]; then
+            echo "No deploys to delete for pr-${{ github.event.number }}"
+            exit 0
+          fi
+          for id in $DEPLOYS; do
+            echo "Deleting deploy $id"
+            curl -sSf -X DELETE -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+              "https://api.netlify.com/api/v1/deploys/$id" >/dev/null
+          done
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      # Update the sticky comment to say the preview is gone. Update-only:
+      # a PR that never matched the preview paths has no comment to touch.
+      - name: Comment preview removal on the PR 💬
+        if: github.event.action == 'closed'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const marker = '<!-- pr-preview-comment -->';
+            const body = [
+              marker,
+              '### 🍹 Preview removed',
+              '',
+              'This PR is closed — its preview deploy was deleted.',
+            ].join('\n');
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find((c) => c.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            }
