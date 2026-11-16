@@ -6,8 +6,8 @@ import { useMemo } from 'react';
 import StickyGroupHeader from '#/components/StickyGroupHeader';
 import type { ListConfig } from '#/modules/lists/type';
 
-// The secondary line's metrics, MUI's caption with the 1.35 line height the
-// app passed in slotProps: 12px, muted teal.
+// The secondary line's metrics: 12px caption, muted teal, 1.35 line
+// height.
 const secondaryClass = 'text-xs leading-[1.35] text-muted-foreground';
 
 export function LinkListItem<RouteType>({
@@ -19,7 +19,7 @@ export function LinkListItem<RouteType>({
   count,
 }: {
   href?: LinkProps<RouteType>['href'];
-  /** Leading icon, MUI's ListItemIcon slot (sized by the caller). */
+  /** Leading icon (sized by the caller). */
   leading?: React.ReactNode;
   primary: React.ReactNode;
   secondary?: React.ReactNode;
@@ -27,13 +27,11 @@ export function LinkListItem<RouteType>({
   /** Muted trailing count — the recipe-count tertiary every list draws. */
   count?: number;
 }) {
-  // MUI ListItem metrics: 8px padding + ListItemText's 4px margins, with
-  // the chevron MUI's secondaryAction drew.
-  // MUI ListItem metrics: 8px padding + ListItemText's 4px margins; the
-  // chevron is the secondaryAction — absolutely positioned at the right, the
-  // row reserving its 56px so text wraps exactly where MUI's did.
+  // A row: 12px vertical padding, 16px sides, the bottom divider (its color
+  // from the base reset). The chevron sits absolutely at the right, the row
+  // reserving its 48px so text wraps clear of it.
   const rowClass = cn(
-    'relative flex w-full items-center rounded-none border-x-0 border-t-0 border-b px-4 py-3 text-base outline-none transition-colors duration-100 [a]:hover:bg-muted focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
+    'relative flex w-full items-center border-b px-4 py-3 text-base outline-none transition-colors duration-100 [a]:hover:bg-muted focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50',
     href && 'pr-12',
   );
 

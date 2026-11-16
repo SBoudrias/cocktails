@@ -42,7 +42,7 @@ function StickyTopItemList({ children, style }: TopItemListProps) {
 
 // Same footprint as a two-line link row, until the row's data loads.
 const placeholder = (
-  <li className="flex w-full items-center border-x-0 border-t-0 border-b px-4 py-3 text-base">
+  <li className="flex w-full items-center border-b px-4 py-3 text-base">
     <span className="flex flex-1 flex-col gap-1">
       <span className="leading-[1.5]">…</span>
       <span className="text-xs leading-[1.35] text-muted-foreground">…</span>

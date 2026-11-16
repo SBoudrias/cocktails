@@ -1,11 +1,11 @@
-/* No preflight: MUI's CssBaseline still resets the pages that are not
-   migrated, and the reset below lives in the base layer so utilities win. */
+/* No preflight: the app carries its own reset below, sized to what it
+   actually renders — the base layer keeps utilities winning over it. */
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 @theme inline {
-  /* MUI's Skeleton pulse: 2s ease-in-out, 0.5s in, opacity 1→0.4→1 */
+  /* The skeleton's pulse: 2s ease-in-out, 0.5s in, opacity 1→0.4→1 */
   --animate-skeleton: skeleton-pulse 2s ease-in-out 0.5s infinite;
 
   @keyframes skeleton-pulse {
@@ -47,7 +47,7 @@
 :root {
   --background: #0a1420; /* Dark starry night sky */
   --foreground: #e8f4f4; /* Pale cyan-tinted white */
-  --card: rgb(10 20 32 / 0.9); /* The glass MuiPaper's styleOverride paints */
+  --card: rgb(10 20 32 / 0.9); /* The glass card surface: night sky at 90% */
   --card-foreground: #e8f4f4;
   --primary: #2a8a8a; /* Turquoise ocean water */
   --primary-foreground: #ffffff;
@@ -61,16 +61,14 @@
   --border: rgb(93 184 216 / 0.12); /* Subtle turquoise divider */
   --input: rgb(255 255 255 / 0.23);
   --ring: #5dbdbd;
-  --radius: 0.25rem; /* MUI's shape.borderRadius */
-  /* The fixed app bar: its glass fill (MUI's MuiPaper override) and its
-     height per orientation and breakpoint — MUI's toolbar mixin, which
-     sticky headers offset from (the --header color mirrors MuiPaper's
-     rgba(10,20,32,.9) surface alpha). */
+  --radius: 0.25rem; /* The theme's corner radius */
+  /* The fixed app bar: its glass fill (--header) and its height per
+     orientation and breakpoint — the sticky headers offset from it. */
   --header: rgb(10 20 32 / 0.9);
   --app-bar-height: 56px;
-  /* Icon-art palette (TikiMark, RecipeBadges): the shade steps MUI computed
-     from the theme, mirrored from app/theme.tsx. --paper is the solid
-     palette background.paper; --card carries the MuiPaper surface alpha. */
+  /* Icon-art palette (TikiMark, RecipeBadges): fixed shade steps for the
+     icon art. --paper is the solid surface color; --card carries the glass
+     surface alpha. */
   --paper: #152535;
   --primary-light: #5dbdbd;
   --secondary-light: #ffd580;
@@ -79,28 +77,11 @@
   --warning: #d4883d;
   --warning-dark: #a66628;
   --error-light: #c98aa3;
-  /* The app bar's height, per orientation and breakpoint (MUI's toolbar
-     mixin; the sticky group headers sit at this top). */
-  --app-bar-height: 56px;
 }
 
-/* The app bar's height, per orientation and breakpoint (MUI's toolbar mixin:
-   landscape-short applies only below the sm breakpoint) */
-@media (orientation: landscape) and (max-width: 599.95px) {
-  :root {
-    --app-bar-height: 48px;
-  }
-}
-
-@media (min-width: 600px) {
-  :root {
-    --app-bar-height: 64px;
-  }
-}
-
-/* The app bar's height on the same breakpoints as MUI's toolbar mixin:
-   landscape phones are shorter (only below sm — wide screens take the 64px),
-   and 600px+ grows to 64px. */
+/* The app bar's height per orientation and breakpoint: landscape phones
+   are shorter (only below sm — wide screens take the 64px), and 600px+
+   grows to 64px. The sticky group headers sit at this top. */
 @media (orientation: landscape) and (max-width: 599.95px) {
   :root {
     --app-bar-height: 48px;
@@ -130,10 +111,8 @@
   }
 
   body {
-    /* MUI's CssBaseline + typography.body1 supplied these while it was
-       installed; probed from the last MUI build: Roboto from next/font's
-       variable, 16px/24px, the theme's text and background colors. The
-       smoothing rules came from CssBaseline's html styles — without them
+    /* The base text: Roboto from next/font's variable, 16px/24px, the
+       theme's text and background colors. Without the smoothing rules
        every glyph rasterizes differently (subpixel vs grayscale AA). */
     font-family: var(--font-roboto);
     font-size: 1rem;
@@ -156,8 +135,8 @@
     border-color: var(--color-border);
   }
 
-  /* MUI's List drew every list in the app; the bare ul/ol the migration
-     renders need the same reset or the browser draws bullets on them. */
+  /* The app renders every list bare; without this reset the browser draws
+     bullets and numbers on them. */
   ul,
   ol {
     list-style: none;
@@ -185,9 +164,8 @@
   }
 }
 
-/* The MuiPaper glass: background + its 5% white overlay gradient + the
-   elevation-1 shadow. One source for Card (ui/card) and the list blocks
-   (what MUI's Paper square drew) — both measured from the MUI build. */
+/* The moonlit-glass surface: background + its 5% white overlay gradient +
+   elevation-1 shadow. One source for cards and the list blocks. */
 @utility surface {
   background-color: var(--card);
   background-image: linear-gradient(rgb(255 255 255 / 0.05), rgb(255 255 255 / 0.05));

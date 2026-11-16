@@ -41,7 +41,7 @@ function renderRecipe(recipe: RecipeListItem | QuantityRecipeListItem) {
 const SKELETON_ROWS = 20;
 
 /** One row of the loading skeleton, shaped like the recipe card it stands in
- * for: MUI's text-skeleton look over the same two-line metrics. */
+ * for: a text-skeleton look over the same two-line metrics. */
 function SkeletonListItem() {
   return (
     <li className="relative flex w-full items-center border-b px-4 py-3 pr-12">

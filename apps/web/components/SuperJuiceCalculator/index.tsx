@@ -107,9 +107,8 @@ export default function SuperJuiceCalculator() {
     <Card m={1}>
       <CardHeader>
         <CardTitle>Super Juice</CardTitle>
-        {/* CardHeader subheader: body2 metrics, inheriting the foreground
-            (probed on the baseline: this MUI build's Typography never
-            resolved the subheader slot's text.secondary color prop). */}
+        {/* CardHeader subheader: body2 metrics, inheriting the
+            foreground. */}
         <CardSubheader className="text-sm text-foreground">
           Acid-adjusted, peel-oleated citrus juice. Technique by Nickle Morris; ratios
           after Kevin Kos’s published recipes.

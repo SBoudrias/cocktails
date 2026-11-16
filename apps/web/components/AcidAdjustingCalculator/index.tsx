@@ -220,7 +220,7 @@ function SolutionRecipe({
 
   return (
     <section aria-labelledby="make-acid-solution-heading" className="flex flex-col gap-4">
-      {/* MUI's Typography variant=h6 rendered as an h3: 20px/500/32px. */}
+      {/* The section heading, rendered as an h3: 20px/500/32px. */}
       <h3 id="make-acid-solution-heading" className="text-xl leading-8 font-medium">
         Make the solution
       </h3>
@@ -414,8 +414,7 @@ function SolutionCalculator({
   );
 }
 
-// MUI's variant=button Typography rendered inside a Link: the text button
-// shape on the link itself.
+// A text button shape rendered on the link itself.
 function FullCalculatorLink() {
   const [juiceAmount] = useQueryState('juiceAmount', { defaultValue: '1' });
 
@@ -444,8 +443,7 @@ export default function AcidAdjustingCalculator({
 
   return (
     <Card m={1}>
-      {/* MUI's CardHeader with its action slot and the app's sx pb: 3
-          (24px bottom padding, probed on the baseline): the slot is flex
+      {/* The header's action slot (24px bottom padding): the slot is flex
           0 0 auto, aligned to the start, pulled into the header's 16px
           padding by its -4/-8/-4 margins. */}
       <CardHeader className="flex-row items-center pb-6">

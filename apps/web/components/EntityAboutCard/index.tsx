@@ -23,7 +23,7 @@ function getHostname(url: string): string {
 // Social links show their brand mark plus the handle from the url path
 // (@erynreece reads better than instagram.com); every other link shows a
 // globe and its domain. The button's aria-label carries the full url. The
-// marks render at 20px, MUI's startIcon glyph size.
+// marks render at 20px, the start-icon glyph size.
 function getLinkView(url: string) {
   return match(getHostname(url))
     .returnType<{ icon: React.ReactNode; label: string }>()

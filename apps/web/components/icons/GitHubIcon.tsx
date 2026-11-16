@@ -1,7 +1,7 @@
 // lucide-react ships no brand logos (removed in its 1.x line), so the two
-// brand marks the app needs come from simple-icons. The wrapper keeps MUI
-// SvgIcon's 24px default and a11y handling; the glyph itself is the
-// library's, not our own.
+// brand marks the app needs come from simple-icons. The wrapper is always
+// aria-hidden — the surrounding control carries the accessible name — with
+// a 24px default; the glyph itself is the library's, not our own.
 import { siGithub } from 'simple-icons';
 
 export default function GitHubIcon() {

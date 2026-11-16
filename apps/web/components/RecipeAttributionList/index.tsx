@@ -54,8 +54,7 @@ export default function RecipeAttributionList({
     <ul aria-labelledby="attributions-subheader" className="py-2">
       <ListSubheader id="attributions-subheader">Attributions</ListSubheader>
       {/* The card block holds LinkListItem rows (li's), so it is a ul to
-          keep the list content model valid — MUI's List drew it as a div
-          Paper. */}
+          keep the list content model valid. */}
       <ul className="bg-card">
         {attributions.map((attribution) => {
           const { key, href, label, location, externalUrl } =

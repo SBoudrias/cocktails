@@ -2,14 +2,11 @@ import { cn } from 'cn';
 import { CircleAlert, TriangleAlert } from 'lucide-react';
 import { match } from 'ts-pattern';
 
-// MUI's Alert, standard variant, dark mode (probed on the baseline): body2
-// metrics on a 4px-radius block of darken(<channel>.light, 0.9) with
-// 6px/16px padding, its text lighten(<channel>.light, 0.6); the icon column
-// is <channel>.main (22px glyphs at 90% opacity, 12px right margin, 7px
-// vertical padding) and the message 8px vertical padding. The two computed
-// colors MUI derived from its palette stay as literal hexes (they are not
-// theme tokens); the icons carry the tokens. The glyphs are lucide's
-// (stroke, not MUI's fills) — the accepted icon-rule trade.
+// A dark-theme alert: small text on a 4px-radius block tinted near-black
+// toward the channel's hue (the literal hexes are derived colors, not theme
+// tokens), 6px/16px padding; the icon column carries the channel token
+// (22px glyphs at 90% opacity, 12px right margin, 7px vertical padding),
+// the message 8px vertical padding. The glyphs are lucide's stroked icons.
 export function Alert({
   severity,
   children,
@@ -34,12 +31,9 @@ export function Alert({
     <div role="alert" className={cn('flex rounded-sm px-4 py-1.5 text-sm', rootClass)}>
       <div
         aria-hidden="true"
-        className={cn(
-          'mr-3 flex py-[7px] text-[22px] leading-none opacity-90',
-          iconClass,
-        )}
+        className={cn('mr-3 flex py-1.75 text-[22px] leading-none opacity-90', iconClass)}
       >
-        <Icon className="size-[22px]" />
+        <Icon className="size-5.5" />
       </div>
       <div className="min-w-0 overflow-auto py-2">{children}</div>
     </div>

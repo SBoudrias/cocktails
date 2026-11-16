@@ -30,8 +30,8 @@ export default function OfflinePage() {
           This page is not available without a connection, and you have not visited it
           before. Pages you have opened recently still work offline.
         </p>
-        {/* The base layer's anchors stay undecorated; MUI's Typography
-            carried the primary color (probed on the baseline). */}
+        {/* The base layer's anchors stay undecorated; this one carries the
+            primary color. */}
         <Link href={getRecipeListUrl()} className="text-base text-primary">
           Go to all recipes
         </Link>
