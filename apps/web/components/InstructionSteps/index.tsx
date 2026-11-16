@@ -1,5 +1,3 @@
-import { cn } from 'cn';
-
 // MUI's Typography variant=h6 with gutterBottom (20px/500/32px, the 0.35em
 // = 7px bottom margin) above the instructions <ol>. The base layer strips
 // list markers (probed on the baseline: MUI's CssBaseline never restored
