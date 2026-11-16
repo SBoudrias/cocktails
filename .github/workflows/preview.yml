@@ -5,7 +5,7 @@ name: PR Preview
 # against that build — on every PR, inside GitHub Actions. The live preview
 # itself is Netlify's Deploy Preview, built by their own Git integration
 # from the same netlify.toml: PR N lives at
-#   https://deploy-preview-N--indexotica-previews.netlify.app/
+#   https://deploy-preview-N--indexotica.netlify.app/
 # and Netlify's GitHub app posts the link on the PR. Nothing here talks to
 # Netlify — no deploy, no token secret; the two builds are the same export
 # from the same config.
@@ -54,7 +54,7 @@ env:
   # without the /cocktails repo segment — the preview site is a dedicated
   # Netlify project rooted at /.
   PREVIEW_BASE_PATH: /pr-preview/pr-${{ github.event.number }}
-  PREVIEW_ORIGIN: https://deploy-preview-${{ github.event.number }}--indexotica-previews.netlify.app
+  PREVIEW_ORIGIN: https://deploy-preview-${{ github.event.number }}--indexotica.netlify.app
 
 jobs:
   preview-gate:
