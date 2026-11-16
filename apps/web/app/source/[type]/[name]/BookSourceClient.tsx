@@ -125,17 +125,7 @@ function GroupModeToggle({
   onChange: (value: GroupMode) => void;
 }) {
   return (
-    // A radio group: the pressed value is the new mode; pressing the active
-    // one keeps it, so onValueChange never fires with null from a press.
-    <SegmentedControl
-      value={value}
-      onValueChange={(newValue) => {
-        if (newValue === 'chapter' || newValue === 'alphabetical') {
-          onChange(newValue);
-        }
-      }}
-      aria-label="Recipe grouping"
-    >
+    <SegmentedControl value={value} onValueChange={onChange} aria-label="Recipe grouping">
       <SegmentedControlItem value="chapter">By Chapter</SegmentedControlItem>
       <SegmentedControlItem value="alphabetical">A-Z</SegmentedControlItem>
     </SegmentedControl>

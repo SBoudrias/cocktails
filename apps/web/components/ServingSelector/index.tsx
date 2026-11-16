@@ -98,6 +98,18 @@ export default function ServingSelector({
           value={inputValue ?? servings}
           onChange={handleChange}
           onBlur={handleBlur}
+          onKeyDown={(event) => {
+            // The native step attribute is a flat 0.5, but the grid steps by
+            // halves only up to 1: route arrows through the same handlers as
+            // the buttons so the keyboard never lands off the grid.
+            if (event.key === 'ArrowUp') {
+              event.preventDefault();
+              handleIncrement();
+            } else if (event.key === 'ArrowDown') {
+              event.preventDefault();
+              handleDecrement();
+            }
+          }}
           min={MIN_SERVINGS}
           max={MAX_SERVINGS}
           step={MIN_SERVINGS}

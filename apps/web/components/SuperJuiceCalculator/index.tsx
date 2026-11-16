@@ -46,13 +46,9 @@ function CitrusSelector({
   onChange: (citrus: SuperJuiceCitrus) => void;
 }) {
   return (
-    // A radio group: pressing the active citrus again keeps it, so
-    // onValueChange never fires with null from a press.
     <SegmentedControl
       value={citrus}
-      onValueChange={(newVal) => {
-        if (newVal != null) onChange(newVal);
-      }}
+      onValueChange={onChange}
       aria-label="Citrus type"
       fullWidth
     >

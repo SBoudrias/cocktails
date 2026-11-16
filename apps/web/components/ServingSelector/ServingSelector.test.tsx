@@ -177,4 +177,21 @@ describe('ServingSelector', () => {
 
     expect(input).toHaveValue(3);
   });
+
+  it('steps by the grid with ArrowUp/ArrowDown, matching the buttons', async () => {
+    const onChange = vi.fn();
+    const user = userEvent.setup();
+    const { rerender } = render(<ServingSelector servings={2} onChange={onChange} />);
+    const input = screen.getByLabelText('Number of servings');
+
+    // Whole step above 1, not the native input's flat 0.5 step.
+    await user.type(input, '{ArrowUp}');
+    expect(onChange).toHaveBeenCalledWith(3);
+
+    rerender(<ServingSelector servings={3} onChange={onChange} />);
+    onChange.mockClear();
+
+    await user.type(input, '{ArrowDown}');
+    expect(onChange).toHaveBeenCalledWith(2);
+  });
 });

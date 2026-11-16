@@ -15,13 +15,9 @@ export default function UnitSelector({
   onChange: (unit: Unit) => void;
 }) {
   return (
-    // A radio group: pressing the active unit again keeps it, so onValueChange
-    // never fires with null from a press.
     <SegmentedControl
       value={value}
-      onValueChange={(next) => {
-        if (next != null) onChange(next);
-      }}
+      onValueChange={onChange}
       aria-label="Preferred measurement unit"
     >
       <SegmentedControlItem value="oz">oz</SegmentedControlItem>

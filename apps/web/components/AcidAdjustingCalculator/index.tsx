@@ -39,13 +39,9 @@ function AcidProfileSelector({
   onChange: (profile: AcidProfile) => void;
 }) {
   return (
-    // A radio group: pressing the active profile again keeps it, so
-    // onValueChange never fires with null from a press.
     <SegmentedControl
       value={profile}
-      onValueChange={(next) => {
-        if (next != null) onChange(next);
-      }}
+      onValueChange={onChange}
       aria-label="Target acid profile"
       fullWidth
     >
@@ -455,9 +451,7 @@ export default function AcidAdjustingCalculator({
         <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">
           <SegmentedControl
             value={type}
-            onValueChange={(next) => {
-              if (next != null) setType(next);
-            }}
+            onValueChange={setType}
             aria-label="Preferred acid-adjusting technique"
           >
             <SegmentedControlItem value="solution">Solution</SegmentedControlItem>

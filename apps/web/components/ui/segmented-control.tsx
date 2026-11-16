@@ -4,6 +4,7 @@ import type { PartProps } from '@ui-sdk/react/primitive';
 import {
   SegmentedControl as SegmentedControlRoot,
   SegmentedControlItem as SegmentedControlItemRoot,
+  type SegmentedControlItemProps,
   type SegmentedControlItemState,
   type SegmentedControlOptions,
   type SegmentedControlState,
@@ -18,33 +19,37 @@ import { cn } from 'cn';
 function SegmentedControl<Value extends string>({
   className,
   fullWidth = false,
-  children,
+  onValueChange,
   ...props
-}: SegmentedControlOptions<Value> &
+}: Omit<SegmentedControlOptions<Value>, 'onValueChange'> &
   Omit<
     PartProps<'div', SegmentedControlState>,
     'defaultValue' | 'onChange' | 'onSelect'
   > & {
+    // Null only comes from ui-sdk's form-reset and imperative reasons; no
+    // consumer here uses a form or a controller, so the wrapper drops it.
+    onValueChange?: (value: Value) => void;
     /** Full width: the group spans its row, each item sharing it by
      * content (width:100% with shrink allowed). */
     fullWidth?: boolean;
   }) {
   return (
     <SegmentedControlRoot<Value>
+      onValueChange={(next) => {
+        if (next != null) onValueChange?.(next);
+      }}
       className={cn(
         // web.css gives every segmented control a 1px border, 2px padding
         // and a 2px gap; this app's pill look is carried by the items
         // alone, so the group neutralizes its defaults.
-        'flex w-fit flex-row items-center gap-0 rounded-lg border-0 bg-transparent p-0',
+        'flex w-fit flex-row items-center gap-0 border-0 bg-transparent p-0',
         // The bang: the items carry flex-none themselves, and the parent's
         // [&>*] selector can't beat it on order alone.
         fullWidth && 'w-full [&>*]:w-full [&>*]:shrink!',
         className,
       )}
       {...props}
-    >
-      {children}
-    </SegmentedControlRoot>
+    />
   );
 }
 
@@ -54,11 +59,9 @@ function SegmentedControl<Value extends string>({
 // button, so the buttons are not adjacent children of the group.
 function SegmentedControlItem({
   className,
-  children,
   ...props
-}: Omit<PartProps<'button', SegmentedControlItemState>, 'value' | 'onSelect'> & {
-  value: string;
-}) {
+}: Omit<PartProps<'button', SegmentedControlItemState>, 'value' | 'onSelect'> &
+  SegmentedControlItemProps) {
   return (
     <SegmentedControlItemRoot
       className={cn(
@@ -72,9 +75,7 @@ function SegmentedControlItem({
         className,
       )}
       {...props}
-    >
-      {children}
-    </SegmentedControlItemRoot>
+    />
   );
 }
 
