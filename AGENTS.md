@@ -244,6 +244,10 @@ import { getAllSources, getSource } from '@cocktails/data/sources';
 - Use `parents` for genuine subtypes, never for synonyms; a generic parent grouping substitution-friendly variants (e.g. `Falernum` → `Falernum liqueur`, `Falernum syrup`) is the sanctioned pattern — declare it with `parents` so `yarn check-data` doesn't flag it as a duplicate
 - `yarn check-data` warns about redundant category names and auto-fixes category references to canonical names, but cannot detect translation duplicates — always search the categories directory first
 
+# ui-sdk
+
+Before using ui-sdk, follow the ui-sdk skill if it's installed, and read `node_modules/@ui-sdk/react/docs/llms.txt`. To build a new component, also search `node_modules/@ui-sdk/react/docs/core.md` by heading, and read `rendering.md` next to it.
+
 ## Approved Overlaps Registry
 
 `yarn check-data` warns about similar author, bar, and ingredient names that might be misspellings. When two names are genuinely different (e.g. two different people with similar names, or two distinct products like `Zacapa 23` and `Zacapa XO`), register them as reviewed so the check passes.
