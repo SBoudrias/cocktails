@@ -41,7 +41,7 @@ export function OutlinedField({
       <span
         id={labelId}
         className={cn(
-          'absolute top-0 left-0 origin-top-left text-[16px] leading-[23px] whitespace-nowrap',
+          'absolute top-0 left-0 origin-top-left text-base leading-5.75 whitespace-nowrap',
           notched
             ? '[transform:matrix(0.75,0,0,0.75,14,-9)]'
             : // Un-shrunk: the label rides at the input's own text
@@ -57,7 +57,7 @@ export function OutlinedField({
       <fieldset
         aria-hidden="true"
         className={cn(
-          'pointer-events-none absolute inset-x-0 bottom-0 -top-[5px] m-0 overflow-hidden rounded-sm border border-input px-2',
+          'pointer-events-none absolute inset-x-0 bottom-0 -top-1.25 m-0 overflow-hidden rounded-sm border border-input px-2',
           'group-focus-within:border-2 group-focus-within:border-primary',
           error && 'border-destructive group-focus-within:border-destructive',
         )}
@@ -66,11 +66,11 @@ export function OutlinedField({
             wider than the text on each side; when the label un-shrinks it
             collapses to nearly nothing, closing the border. */}
         <legend
-          className={cn('block h-[11px] max-w-full p-0', !notched && 'max-w-[0.01px]')}
+          className={cn('block h-2.75 max-w-full p-0', !notched && 'max-w-[0.01px]')}
         >
           <span
             aria-hidden="true"
-            className="block px-[5px] text-xs leading-[23px] whitespace-nowrap opacity-0"
+            className="block px-1.25 text-xs leading-5.75 whitespace-nowrap opacity-0"
           >
             {label}
           </span>
@@ -124,7 +124,7 @@ export function LabeledField({
               aria-describedby={helperText ? describedBy : undefined}
               aria-invalid={error || undefined}
               className={cn(
-                'peer h-14 w-full rounded-sm bg-transparent px-[14px] text-base leading-[23px] outline-none',
+                'peer h-14 w-full rounded-sm bg-transparent px-3.5 text-base leading-5.75 outline-none',
                 unit && 'pr-14',
               )}
               {...props}
@@ -132,7 +132,7 @@ export function LabeledField({
             {unit && (
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute top-1/2 right-[14px] -translate-y-1/2 text-base text-muted-foreground"
+                className="pointer-events-none absolute top-1/2 right-3.5 -translate-y-1/2 text-base text-muted-foreground"
               >
                 {unit}
               </span>
@@ -147,7 +147,7 @@ export function LabeledField({
             // The helper line: 14px in from both edges of the field — the
             // right inset narrows the wrap box (without it the helper
             // un-wraps a line early).
-            'mt-[3px] block px-3.5 text-xs leading-[1.66]',
+            'mt-0.75 block px-3.5 text-xs leading-[1.66]',
             error ? 'text-destructive' : 'text-muted-foreground',
           )}
         >

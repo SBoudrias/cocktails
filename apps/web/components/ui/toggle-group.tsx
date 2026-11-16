@@ -44,7 +44,7 @@ function ToggleGroupItem({ className, children, ...props }: TogglePrimitive.Prop
         // Joined pill: no radius between items, the divider border kept
         // only on the first item's left edge. shrink-0 keeps each item
         // its content width — the fullWidth groups override it to shrink.
-        'shrink-0 rounded-none border border-border bg-transparent text-[13px] leading-[1.75] font-medium whitespace-nowrap uppercase outline-none transition-all',
+        'shrink-0 rounded-none border bg-transparent text-[13px] leading-[1.75] font-medium whitespace-nowrap uppercase outline-none transition-all',
         'first:rounded-s-lg last:rounded-e-lg first:border-l-0',
         'p-1.75 text-white hover:text-foreground aria-pressed:bg-foreground/16 aria-pressed:text-foreground',
         'focus-visible:z-10 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50',

@@ -4,7 +4,7 @@ import { Search } from 'lucide-react';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import AppBar from '#/components/AppBar';
-import { iconButton } from '#/components/ui/icon-button';
+import { iconButton } from '#/components/AppBar/icon-button';
 import { getRecipeListUrl } from '#/modules/url';
 
 // The titled app bar: the page's name centered in the toolbar row, the

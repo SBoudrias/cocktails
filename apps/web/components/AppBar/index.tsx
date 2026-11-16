@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
 import TikiMark from '#/components/TikiMark';
-import { iconButton } from '#/components/ui/icon-button';
+import { iconButton } from './icon-button';
 
 // The fixed app bar shared by both headers: the glass fill, 8px blur,
 // white overlay and elevation-4 shadow around a toolbar row — the mark at
@@ -20,7 +20,7 @@ export default function AppBar({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[1100] bg-header text-foreground bg-[image:linear-gradient(rgba(255,255,255,0.092),rgba(255,255,255,0.092))] shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.2),0px_4px_5px_0px_rgba(0,0,0,0.14),0px_1px_10px_0px_rgba(0,0,0,0.12)] backdrop-blur-[8px]">
+      <header className="fixed inset-x-0 top-0 z-[1100] bg-header text-foreground bg-[image:linear-gradient(rgba(255,255,255,0.092),rgba(255,255,255,0.092))] shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.2),0px_4px_5px_0px_rgba(0,0,0,0.14),0px_1px_10px_0px_rgba(0,0,0,0.12)] backdrop-blur-sm">
         <div className="flex min-h-[var(--app-bar-height)] items-center px-4 min-[600px]:px-6">
           {isHome ? (
             <button

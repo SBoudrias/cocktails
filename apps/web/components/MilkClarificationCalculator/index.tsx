@@ -179,7 +179,7 @@ function MilkSelect({
         >
           <SelectPrimitive.Trigger
             aria-labelledby={labelId}
-            className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-[14px] text-base text-left outline-none"
+            className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-3.5 text-base text-left outline-none"
           >
             <SelectPrimitive.Value />
             <SelectPrimitive.Icon className="absolute top-1/2 right-1.75 -translate-y-1/2 text-white">

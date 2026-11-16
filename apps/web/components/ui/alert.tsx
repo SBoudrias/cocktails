@@ -33,7 +33,7 @@ export function Alert({
         aria-hidden="true"
         className={cn('mr-3 flex py-1.75 text-[22px] leading-none opacity-90', iconClass)}
       >
-        <Icon className="size-[22px]" />
+        <Icon className="size-5.5" />
       </div>
       <div className="min-w-0 overflow-auto py-2">{children}</div>
     </div>

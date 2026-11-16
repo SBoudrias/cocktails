@@ -29,7 +29,7 @@ export function LinkListItem<RouteType>({
 }) {
   // A row: 12px vertical padding, 16px sides, the bottom divider (its color
   // from the base reset). The chevron sits absolutely at the right, the row
-  // reserving its 56px so text wraps clear of it.
+  // reserving its 48px so text wraps clear of it.
   const rowClass = cn(
     'relative flex w-full items-center border-b px-4 py-3 text-base outline-none transition-colors duration-100 [a]:hover:bg-muted focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50',
     href && 'pr-12',

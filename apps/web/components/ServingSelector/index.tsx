@@ -74,29 +74,27 @@ export default function ServingSelector({
 
   return (
     // An outlined field with its label notched into the border: the
-    // fieldset is the outline, its legend the notch. The widths are the
-    // intrinsic ones: the number input's default width grows with the
-    // viewport (47/62px), so the field is 151px on phones and 166px from
-    // 600px up.
+    // fieldset is the outline, its legend the notch. Fixed widths: 151px
+    // on phones, 166px from 600px up.
     <div className="group relative w-[151px] min-[600px]:w-[166px]">
       <fieldset
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -top-[5px] rounded-sm border border-input px-[9px] group-focus-within:border-2 group-focus-within:border-primary"
+        className="pointer-events-none absolute inset-0 -top-1.25 rounded-sm border border-input px-2.25 group-focus-within:border-2 group-focus-within:border-primary"
       >
         <legend
           id={labelId}
-          className="px-[5px] text-xs leading-[1.4375] text-muted-foreground group-focus-within:text-primary"
+          className="px-1.25 text-xs leading-[1.4375] text-muted-foreground group-focus-within:text-primary"
         >
           Servings
         </legend>
       </fieldset>
       <InputGroup
         aria-labelledby={labelId}
-        className="h-10 border-0 px-[14px] has-[[data-slot=input-group-control]:focus-visible]:ring-0"
+        className="h-10 border-0 px-3.5 has-[[data-slot=input-group-control]:focus-visible]:ring-0"
       >
         <InputGroupAddon className="mr-2">
           <InputGroupButton
-            className="size-[30px]"
+            className="size-7.5"
             onClick={handleDecrement}
             disabled={servings <= MIN_SERVINGS}
             aria-label="Decrement"
@@ -106,7 +104,7 @@ export default function ServingSelector({
         </InputGroupAddon>
         <InputGroupInput
           type="number"
-          className="h-auto w-[47px] flex-none self-stretch py-2.125 pl-0 leading-[23px] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+          className="h-auto w-11.75 flex-none self-stretch pl-0 leading-5.75 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
           value={inputValue ?? servings}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -117,7 +115,7 @@ export default function ServingSelector({
         />
         <InputGroupAddon align="inline-end" className="ml-2">
           <InputGroupButton
-            className="size-[30px]"
+            className="size-7.5"
             onClick={handleIncrement}
             disabled={servings >= MAX_SERVINGS}
             aria-label="Increment"

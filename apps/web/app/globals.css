@@ -66,9 +66,9 @@
      orientation and breakpoint — the sticky headers offset from it. */
   --header: rgb(10 20 32 / 0.9);
   --app-bar-height: 56px;
-  /* Icon-art palette (TikiMark, RecipeBadges): the shade steps the theme
-     derives for its icon art. --paper is the solid surface color; --card
-     carries the glass surface alpha. */
+  /* Icon-art palette (TikiMark, RecipeBadges): fixed shade steps for the
+     icon art. --paper is the solid surface color; --card carries the glass
+     surface alpha. */
   --paper: #152535;
   --primary-light: #5dbdbd;
   --secondary-light: #ffd580;

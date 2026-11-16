@@ -35,9 +35,8 @@ export default function BrixCalculator() {
           <CardTitle>Sugar Adjusting</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          {/* An unconditional row here (unlike the other calculators'
-              column layout) — cramped on phones, but that is what it
-              drew. */}
+          {/* An unconditional row (the other calculators stack below
+              600px). Cramped on phones, kept as-is. */}
           <div className="flex flex-row gap-2">
             <LabeledField
               label="Juice weight"

@@ -20,10 +20,7 @@ export function ListSubheader({ className, ...props }: React.ComponentProps<'div
 export function ListRow({ className, ...props }: React.ComponentProps<'li'>) {
   return (
     <li
-      className={cn(
-        'flex w-full items-center border-b border-border py-2 px-4 text-base',
-        className,
-      )}
+      className={cn('flex w-full items-center border-b py-2 px-4 text-base', className)}
       {...props}
     />
   );

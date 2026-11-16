@@ -10,7 +10,7 @@ import { match } from 'ts-pattern';
 import Quantity from '#/components/Quantity';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import ServingSelector from '#/components/ServingSelector';
-import { ListSubheader } from '#/components/ui/list';
+import { ListRow, ListSubheader } from '#/components/ui/list';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { getMilkClarificationContext } from '#/modules/milkClarification';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
@@ -33,7 +33,7 @@ function IngredientRow<RouteType>({
     <li>
       <Link
         href={href}
-        className="flex w-full items-center border-b border-border py-2 pr-12 pl-4 text-base capitalize outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+        className="flex w-full items-center border-b py-2 pr-12 pl-4 text-base capitalize outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
       >
         <span className="my-1 flex-1 text-left">{children}</span>
         <ChevronRight className="size-6 shrink-0 text-foreground" aria-hidden="true" />
@@ -42,13 +42,13 @@ function IngredientRow<RouteType>({
   );
 }
 
-// The technique row: the same row metrics without the link, chevron or
+// The technique row: the plain ListRow without the link, chevron or
 // trailing zone.
 function TechniqueRow({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex w-full items-center border-b border-border py-2 pl-4 text-base capitalize outline-none">
+    <ListRow className="pr-0 capitalize">
       <span className="my-1 flex-1 text-left">{children}</span>
-    </li>
+    </ListRow>
   );
 }
 
