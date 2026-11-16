@@ -12,7 +12,7 @@ export default function MilkClarificationCalculatorPage() {
     <>
       <AppHeader title="Milk Clarification" />
       <Suspense>
-        <MilkClarificationCalculator sx={{ m: 1 }} />
+        <MilkClarificationCalculator />
       </Suspense>
     </>
   );

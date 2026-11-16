@@ -1,30 +1,15 @@
 'use client';
 
+import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { tryConvertVolume } from '@cocktails/conversion';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import type { SxProps } from '@mui/material';
-import {
-  Alert,
-  Box,
-  Card,
-  CardContent,
-  InputAdornment,
-  Link as MuiLink,
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  MenuItem,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useReducer } from 'react';
+import { useId, useReducer } from 'react';
 import { match } from 'ts-pattern';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
+import { Card, CardContent } from '#/components/ui/card';
+import { LabeledField } from '#/components/ui/labeled-field';
+import { ListSubheader } from '#/components/ui/list';
 import { formatAmount } from '#/modules/formatAmount';
 import { getMilkClarifiedRecipeListUrl } from '#/modules/url';
 
@@ -168,7 +153,123 @@ function calculatorReducer(
     .exhaustive();
 }
 
-export default function MilkClarificationCalculator({ sx }: { sx?: SxProps }) {
+// MUI's Alert severity=warning, standard variant (probed on the baseline):
+// body2 metrics on a 4px-radius block of darken(warning.light, 0.9) with
+// 6px/16px padding, its text lighten(warning.light, 0.6); the icon is
+// MUI's ReportProblemOutlined — warning.main, 22px, 90% opacity, a 12px
+// right margin and 7px vertical padding, the message 8px vertical padding.
+function WarningAlert({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      role="alert"
+      className="flex rounded-sm px-4 py-1.5 text-sm leading-[1.43] text-[#F7DDC3] bg-[#17110A]"
+    >
+      <div
+        aria-hidden="true"
+        className="mr-3 flex py-[7px] text-[22px] leading-none text-[#D4883D] opacity-90"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-[22px] fill-current">
+          <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+        </svg>
+      </div>
+      <div className="min-w-0 overflow-auto py-2">{children}</div>
+    </div>
+  );
+}
+
+// MUI's TextField select: the same outlined shell as LabeledField (the
+// fieldset with its notched legend sizer and the floating label span), the
+// trigger styled like the input row, and the arrow MUI drew (its
+// ArrowDropDown triangle, 24px, white) at the row's end.
+function MilkSelect({
+  milkType,
+  customMilkType,
+  onChange,
+}: {
+  milkType: string;
+  customMilkType: string | undefined;
+  onChange: (milkType: string) => void;
+}) {
+  const labelId = useId();
+  const options = customMilkType ? [...MILK_TYPES, customMilkType] : MILK_TYPES;
+
+  return (
+    <div className="group relative h-14">
+      <fieldset
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 -top-[5px] m-0 overflow-hidden rounded-sm border border-input px-2 group-focus-within:border-2 group-focus-within:border-primary"
+      >
+        <legend className="block h-[11px] max-w-full p-0">
+          <span
+            aria-hidden="true"
+            className="block px-[5px] text-xs leading-[23px] whitespace-nowrap opacity-0"
+          >
+            Milk
+          </span>
+        </legend>
+      </fieldset>
+      <span
+        id={labelId}
+        className="absolute top-[-9px] left-[14px] max-w-full truncate text-xs leading-[17.25px] text-muted-foreground group-focus-within:text-primary"
+      >
+        Milk
+      </span>
+      <SelectPrimitive.Root
+        value={milkType}
+        onValueChange={(value) => {
+          onChange(String(value));
+        }}
+      >
+        <SelectPrimitive.Trigger
+          aria-labelledby={labelId}
+          className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-[14px] text-base text-left outline-none"
+        >
+          <SelectPrimitive.Value />
+          <SelectPrimitive.Icon className="absolute top-1/2 right-[7px] -translate-y-1/2 text-white">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 fill-current">
+              <path d="M7 10l5 5 5-5z" />
+            </svg>
+          </SelectPrimitive.Icon>
+        </SelectPrimitive.Trigger>
+        <SelectPrimitive.Portal>
+          <SelectPrimitive.Positioner
+            align="start"
+            sideOffset={0}
+            // MUI's menu surface: the Paper glass without radius, the
+            // trigger's width, 8px vertical padding (probed on the baseline).
+            className="surface z-50 overflow-y-auto py-2 rounded-none min-w-[var(--anchor-width)]"
+          >
+            <SelectPrimitive.Popup>
+              {options.map((type) => (
+                <SelectPrimitive.Item
+                  key={type}
+                  value={type}
+                  // MUI's MenuItem: auto rows 36px tall, 16px left padding,
+                  // the selected item on primary/16 (probed on the baseline).
+                  className="flex h-9 items-center px-4 text-base text-foreground outline-none data-selected:bg-primary/16 data-highlighted:bg-white/8"
+                >
+                  <SelectPrimitive.ItemText>{type}</SelectPrimitive.ItemText>
+                </SelectPrimitive.Item>
+              ))}
+            </SelectPrimitive.Popup>
+          </SelectPrimitive.Positioner>
+        </SelectPrimitive.Portal>
+      </SelectPrimitive.Root>
+    </div>
+  );
+}
+
+// MUI's ListItem: 8px vertical padding, 16px left, the bottom divider and
+// ListItemText's 4px inner margins — the row the recipe pages' lists share.
+function InstructionRow({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex w-full items-center border-x-0 border-t-0 border-b border-border py-2 pr-4 pl-4 text-base">
+      <span className="my-1 flex-1 text-left">{children}</span>
+    </li>
+  );
+}
+
+export default function MilkClarificationCalculator() {
   const searchParams = useSearchParams();
   const [state, dispatch] = useReducer(calculatorReducer, searchParams, getInitialState);
   const {
@@ -202,15 +303,16 @@ export default function MilkClarificationCalculator({ sx }: { sx?: SxProps }) {
 
   return (
     <>
-      <Card sx={sx}>
-        <CardContent component="section" aria-label="Milk quantity">
-          <Stack spacing={2}>
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-              <TextField
+      <Card m={1}>
+        <CardContent>
+          <section aria-label="Milk quantity" className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 min-[600px]:flex-row">
+              <LabeledField
                 label="Cocktail batch volume"
+                unit={unit}
                 value={batchVolumeValue}
                 type="number"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                onChange={(event) => {
                   dispatch({ type: 'change-batch-volume', value: event.target.value });
                 }}
                 error={!isBatchVolumeValid}
@@ -219,115 +321,107 @@ export default function MilkClarificationCalculator({ sx }: { sx?: SxProps }) {
                     ? 'Cocktail mixture before adding milk.'
                     : 'Must be greater than 0'
                 }
-                fullWidth
-                slotProps={{
-                  htmlInput: { min: 0, step: 'any' },
-                  input: {
-                    endAdornment: <InputAdornment position="end">{unit}</InputAdornment>,
-                  },
-                }}
+                min={0}
+                step="any"
+                className="min-w-0 flex-1"
               />
-              <TextField
+              <LabeledField
                 label={
                   hasRecipeMilkRatio
                     ? 'Recipe milk-to-batch ratio'
                     : 'Milk-to-batch ratio'
                 }
+                unit="%"
                 value={formatMilkRatioPercent(milkRatio)}
-                fullWidth
-                slotProps={{
-                  input: {
-                    readOnly: true,
-                    endAdornment: <InputAdornment position="end">%</InputAdornment>,
-                  },
-                }}
+                readOnly
+                className="min-w-0 flex-1"
               />
-            </Stack>
-            <TextField
-              select
-              label="Milk"
-              value={milkType}
-              onChange={(event) => {
-                dispatch({ type: 'change-milk-type', value: event.target.value });
+            </div>
+            <MilkSelect
+              milkType={milkType}
+              customMilkType={customMilkType}
+              onChange={(value) => {
+                dispatch({ type: 'change-milk-type', value });
               }}
-              fullWidth
-            >
-              {MILK_TYPES.map((type) => (
-                <MenuItem key={type} value={type}>
-                  {type}
-                </MenuItem>
-              ))}
-              {customMilkType && (
-                <MenuItem value={customMilkType}>{customMilkType}</MenuItem>
-              )}
-            </TextField>
+            />
             <UnitSelector
               value={unit}
               onChange={(nextUnit) => {
                 dispatch({ type: 'change-unit', value: nextUnit });
               }}
             />
-            <Box role="status" aria-live="polite">
+            <div role="status" aria-live="polite">
               {isBatchVolumeValid ? (
-                <Typography variant="h5">
+                <p className="text-2xl leading-8 font-normal">
                   Add {formatAmount(milkVolume)} {unit} of {milkType.toLowerCase()}
-                </Typography>
+                </p>
               ) : (
-                <Typography color="text.secondary">
+                <p className="text-base">
                   Enter a valid batch volume to calculate the milk to add.
-                </Typography>
+                </p>
               )}
-              {milkGuidance && (
-                <Typography variant="body2" color="text.secondary">
-                  {milkGuidance}
-                </Typography>
-              )}
-            </Box>
+              {milkGuidance && <p className="text-sm">{milkGuidance}</p>}
+            </div>
             {!hasRecipeMilkRatio && (
-              <Typography variant="body2" color="text.secondary">
+              <p className="text-sm leading-[1.43]">
                 This uses a {formatMilkRatioPercent(milkRatio)}% milk-to-batch starting
                 point from the{' '}
-                <MuiLink
+                <a
                   href="https://www.campariacademy.com/en-us/training/tools-techniques/milk-punch-guide-and-recipes/"
                   target="_blank"
                   rel="noopener nofollow"
+                  className="text-primary underline"
                 >
                   Campari Academy milk punch guide
-                </MuiLink>
+                </a>
                 . If following a recipe, use its specified milk quantity instead of this
                 general starting point.
-              </Typography>
+              </p>
             )}
-            <Alert severity="warning">
+            <WarningAlert>
               Clarified dairy milk punch still contains dairy allergens. Check alternative
               milks for nut or soy allergens.
-            </Alert>
-          </Stack>
+            </WarningAlert>
+          </section>
         </CardContent>
       </Card>
-      <Box component="section" aria-label="Instructions">
-        <List>
-          <ListSubheader>Instructions</ListSubheader>
-          <Paper square>
-            {instructions.map((instruction, index) => (
-              <ListItem divider key={instruction}>
-                <ListItemText>
+      <section aria-label="Instructions">
+        {/* MUI's List + ListSubheader + Paper(square): the subheader is
+            itself a list item above the surface block of divider rows (the
+            recipe pages' list pattern, probed: py-8 outer, 16px subheader
+            padding). */}
+        <ul className="py-2">
+          <li>
+            <ListSubheader>Instructions</ListSubheader>
+            <div className="surface">
+              {instructions.map((instruction, index) => (
+                <InstructionRow key={instruction}>
                   {index + 1}. {instruction}
-                </ListItemText>
-              </ListItem>
-            ))}
-          </Paper>
-        </List>
-      </Box>
-      <List>
-        <Paper square>
-          <Link href={getMilkClarifiedRecipeListUrl()}>
-            <ListItem divider secondaryAction={<ChevronRightIcon />}>
-              <ListItemText primary="Browse milk-clarified recipes" />
-            </ListItem>
-          </Link>
-        </Paper>
-      </List>
+                </InstructionRow>
+              ))}
+            </div>
+          </li>
+        </ul>
+      </section>
+      <ul className="py-2">
+        <li>
+          <div className="surface">
+            <Link
+              href={getMilkClarifiedRecipeListUrl()}
+              className="relative flex w-full items-center border-x-0 border-t-0 border-b border-border py-2 pr-12 pl-4 text-base transition-colors duration-100 hover:bg-muted"
+            >
+              <span className="my-1 flex-1 text-left">Browse milk-clarified recipes</span>
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="absolute top-1/2 right-4 size-6 -translate-y-1/2 fill-current text-foreground"
+              >
+                <path d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+              </svg>
+            </Link>
+          </div>
+        </li>
+      </ul>
     </>
   );
 }

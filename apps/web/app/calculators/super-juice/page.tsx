@@ -12,7 +12,7 @@ export default function SuperJuiceCalculatorPage() {
     <>
       <AppHeader title="Super Juice" />
       <Suspense>
-        <SuperJuiceCalculator sx={{ m: 1 }} />
+        <SuperJuiceCalculator />
       </Suspense>
     </>
   );

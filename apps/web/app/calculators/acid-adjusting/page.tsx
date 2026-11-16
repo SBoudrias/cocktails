@@ -12,7 +12,7 @@ export default async function CalculatorsPage() {
     <>
       <AppHeader title="Acid Adjusting" />
       <Suspense>
-        <AcidAdjustingCalculator defaultAcidity={1} sx={{ m: 1 }} />
+        <AcidAdjustingCalculator defaultAcidity={1} />
       </Suspense>
     </>
   );

@@ -1,22 +1,18 @@
 'use client';
 
-import type { SxProps } from '@mui/material';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  InputAdornment,
-  Stack,
-  TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from '@mui/material';
 import { parseAsString, useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
+import { Button } from '#/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardSubheader,
+  CardTitle,
+} from '#/components/ui/card';
+import { LabeledField } from '#/components/ui/labeled-field';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import Video from '#/components/Video';
 import { formatAmount } from '#/modules/formatAmount';
 import { type SuperJuiceCitrus, calculateSuperJuice } from '#/modules/superJuice';
@@ -46,52 +42,43 @@ function CitrusSelector({
   onChange: (citrus: SuperJuiceCitrus) => void;
 }) {
   return (
-    <ToggleButtonGroup
-      value={citrus}
-      onChange={(_, value: unknown) =>
-        match(value)
-          .with('lemon', () => onChange('lemon'))
-          .with('lime', () => onChange('lime'))
-          .with('orange', () => onChange('orange'))
-          .with('grapefruit', () => onChange('grapefruit'))
-          .with('kumquat', () => onChange('kumquat'))
-          .otherwise(() => undefined)
-      }
-      size="small"
+    <ToggleGroup
+      value={[citrus]}
+      // A single-choice group: pressing the active citrus again keeps it.
+      onValueChange={([newVal]) => {
+        if (newVal != null) {
+          match(newVal)
+            .with('lemon', 'lime', 'orange', 'grapefruit', 'kumquat', (value) =>
+              onChange(value),
+            )
+            .otherwise(() => undefined);
+        }
+      }}
       aria-label="Citrus type"
-      exclusive
-      fullWidth
+      // MUI's fullWidth: the group stretches across the row and each button
+      // takes width:100% with flex-shrink allowed, so they share the row by
+      // content (probed: the 5 buttons fill the 552px row without overflow).
+      // The bang drops the primitive's shrink-0, which would overflow.
+      className="w-full [&>*]:w-full [&>*]:shrink!"
     >
-      <ToggleButton value="lemon">Lemon</ToggleButton>
-      <ToggleButton value="lime">Lime</ToggleButton>
-      <ToggleButton value="orange">Orange</ToggleButton>
-      <ToggleButton value="grapefruit">Grapefruit</ToggleButton>
-      <ToggleButton value="kumquat">Kumquat</ToggleButton>
-    </ToggleButtonGroup>
+      <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
+      <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
+      <ToggleGroupItem value="orange">Orange</ToggleGroupItem>
+      <ToggleGroupItem value="grapefruit">Grapefruit</ToggleGroupItem>
+      <ToggleGroupItem value="kumquat">Kumquat</ToggleGroupItem>
+    </ToggleGroup>
   );
 }
 
 function ResultField({ label, value }: { label: string; value: string }) {
-  return (
-    <TextField
-      label={label}
-      value={value}
-      fullWidth
-      slotProps={{
-        input: {
-          readOnly: true,
-          endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-        },
-      }}
-    />
-  );
+  return <LabeledField label={label} unit="grams" value={value} readOnly />;
 }
 
 function formatGrams(value: number, fractionDigits = 2) {
   return Number.isFinite(value) ? formatAmount(value, fractionDigits) : '';
 }
 
-export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
+export default function SuperJuiceCalculator() {
   const [citrusParam, setCitrus] = useQueryState('citrus', parseAsString);
   const citrus = isSuperJuiceCitrus(citrusParam) ? citrusParam : DEFAULT_CITRUS;
   const [inputWeightValue, setInputWeight] = useState<string | number>(
@@ -126,75 +113,72 @@ export default function SuperJuiceCalculator({ sx }: { sx?: SxProps }) {
     ]);
 
   return (
-    <Card sx={sx}>
-      <CardHeader
-        title="Super Juice"
-        subheader={
-          <Typography variant="body2" color="text.secondary">
-            Acid-adjusted, peel-oleated citrus juice. Technique by Nickle Morris; ratios
-            after Kevin Kos’s published recipes.
-          </Typography>
-        }
-      />
-      <CardContent>
-        <Stack spacing={2}>
-          <CitrusSelector citrus={citrus} onChange={setCitrus} />
-          <TextField
-            label={CITRUS_INPUT_LABELS[citrus]}
-            value={inputWeightValue}
-            type="number"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setInputWeight(event.target.value);
+    <Card m={1}>
+      <CardHeader>
+        <CardTitle>Super Juice</CardTitle>
+        {/* CardHeader subheader: body2 metrics, inheriting the foreground
+            (probed: this MUI build's Typography never resolved the subheader
+            slot's text.secondary color). */}
+        <CardSubheader className="text-sm leading-[1.43] text-foreground">
+          Acid-adjusted, peel-oleated citrus juice. Technique by Nickle Morris; ratios
+          after Kevin Kos’s published recipes.
+        </CardSubheader>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4">
+        <CitrusSelector citrus={citrus} onChange={setCitrus} />
+        <LabeledField
+          label={CITRUS_INPUT_LABELS[citrus]}
+          unit="grams"
+          value={inputWeightValue}
+          type="number"
+          onChange={(event) => {
+            setInputWeight(event.target.value);
+          }}
+          error={!isInputWeightValid}
+          helperText={!isInputWeightValid ? 'Must be greater than 0' : undefined}
+          min={0}
+          step="any"
+        />
+        <ResultField label="Citric acid" value={formatGrams(superJuice.citricAcid)} />
+        {showsMalic && (
+          <ResultField label="Malic acid" value={formatGrams(superJuice.malicAcid)} />
+        )}
+        {showsMsg && <ResultField label="MSG" value={formatGrams(superJuice.msg)} />}
+        <ResultField label="Water" value={formatGrams(superJuice.water)} />
+        <div
+          className="flex justify-end"
+          role="group"
+          aria-label="Super juice calculator actions"
+        >
+          <Button
+            variant="text-secondary"
+            onClick={() => {
+              setInputWeight(DEFAULT_PEEL_WEIGHT);
             }}
-            error={!isInputWeightValid}
-            helperText={!isInputWeightValid ? 'Must be greater than 0' : ''}
-            fullWidth
-            slotProps={{
-              htmlInput: { min: 0, step: 'any' },
-              input: {
-                endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-              },
-            }}
-          />
-          <ResultField label="Citric acid" value={formatGrams(superJuice.citricAcid)} />
-          {showsMalic && (
-            <ResultField label="Malic acid" value={formatGrams(superJuice.malicAcid)} />
-          )}
-          {showsMsg && <ResultField label="MSG" value={formatGrams(superJuice.msg)} />}
-          <ResultField label="Water" value={formatGrams(superJuice.water)} />
-          <Stack
-            direction="row"
-            role="group"
-            aria-label="Super juice calculator actions"
-            spacing={1}
-            sx={{ justifyContent: 'flex-end' }}
           >
-            <Button
-              color="secondary"
-              onClick={() => {
-                setInputWeight(DEFAULT_PEEL_WEIGHT);
-              }}
-            >
-              Reset to defaults
-            </Button>
-          </Stack>
-        </Stack>
+            Reset to defaults
+          </Button>
+        </div>
       </CardContent>
       <CardContent>
-        <Typography id="super-juice-instructions" variant="h6" gutterBottom>
-          Instructions
-        </Typography>
-        <Box
-          component="ol"
-          aria-labelledby="super-juice-instructions"
-          sx={{ mt: 0, mb: 0, pl: 3 }}
+        {/* MUI's Typography variant=h6 with gutterBottom: 20px/500/32px and
+            the 0.35em (7px) bottom margin. */}
+        <div
+          id="super-juice-instructions"
+          className="mb-[7px] text-xl leading-8 font-medium"
         >
+          Instructions
+        </div>
+        {/* The app's base layer strips list markers (probed on the baseline:
+            MUI's CssBaseline never restored them, so no step numbers show).
+            Metrics are MUI's Box pl: 3 (24px indent) with body1 rows. */}
+        <ol aria-labelledby="super-juice-instructions" className="pl-6">
           {instructions.map((step) => (
-            <li key={step}>
-              <Typography>{step}</Typography>
+            <li key={step} className="text-base">
+              {step}
             </li>
           ))}
-        </Box>
+        </ol>
       </CardContent>
       <CardContent>
         <Video id="2RA3AaCO7A8" start={313} />
