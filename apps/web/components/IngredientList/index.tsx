@@ -179,7 +179,7 @@ export default function IngredientList({
                 <span id={headingId}>{formatRecipeTechniqueName(recipeTechnique)}</span>
                 <Link
                   href={calculatorUrl}
-                  className="inline-flex items-center gap-1 no-underline text-white"
+                  className="inline-flex items-center gap-1 no-underline text-foreground"
                 >
                   {/* The Calculate glyph sits low in its viewBox; lift it into
                       the text cap band */}

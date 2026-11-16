@@ -79,13 +79,13 @@ export default async function HomePage() {
         <div className="surface">
           <LinkListItem
             href={getRecipeListUrl()}
-            leading={<Search className="size-6 text-white" />}
+            leading={<Search className="size-6 text-foreground" />}
             primary="All Recipes"
           />
           {recentlyAddedRecipes.length > 0 && (
             <LinkListItem
               href={getRecentlyAddedUrl()}
-              leading={<History className="size-6 text-white" />}
+              leading={<History className="size-6 text-foreground" />}
               primary="Recently Added"
             />
           )}

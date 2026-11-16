@@ -182,7 +182,7 @@ function MilkSelect({
             className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-3.5 text-base text-left outline-none"
           >
             <SelectPrimitive.Value />
-            <SelectPrimitive.Icon className="absolute top-1/2 right-1.75 -translate-y-1/2 text-white">
+            <SelectPrimitive.Icon className="absolute top-1/2 right-1.75 -translate-y-1/2 text-foreground">
               <ChevronDown className="size-6" />
             </SelectPrimitive.Icon>
           </SelectPrimitive.Trigger>
@@ -201,7 +201,7 @@ function MilkSelect({
                     value={type}
                     // A menu row: auto rows 36px tall, 16px left padding,
                     // the selected item on primary/16.
-                    className="flex h-9 items-center px-4 text-base text-foreground outline-none data-selected:bg-primary/16 data-highlighted:bg-white/8"
+                    className="flex h-9 items-center px-4 text-base text-foreground outline-none data-selected:bg-primary/16 data-highlighted:bg-muted"
                   >
                     <SelectPrimitive.ItemText>{type}</SelectPrimitive.ItemText>
                   </SelectPrimitive.Item>

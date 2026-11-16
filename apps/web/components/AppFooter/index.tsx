@@ -7,14 +7,14 @@ import TikiMark from '#/components/TikiMark';
 export default function AppFooter() {
   return (
     <div className="flex min-h-[350px] items-end justify-between p-4">
-      <Link href="/" className="flex items-center gap-1 text-white">
+      <Link href="/" className="flex items-center gap-1 text-foreground">
         <TikiMark /> Indexotica
       </Link>
       <a
         href="https://github.com/SBoudrias/cocktails/"
         target="_blank"
         rel="noopener"
-        className="flex items-center gap-1 text-white"
+        className="flex items-center gap-1 text-foreground"
       >
         <GitHubIcon /> Contribute on GitHub
       </a>
