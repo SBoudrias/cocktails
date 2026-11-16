@@ -30,9 +30,10 @@ const description =
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
 
 // The origin metadata URLs resolve against: the production Pages site by
-// default, or the Netlify preview host on PR builds (preview.yml sets it
-// alongside NEXT_PUBLIC_BASE_PATH, so canonical/OG URLs point at the URL
-// the preview is actually served from).
+// default, or the Netlify deploy-preview host on PR builds (netlify.toml
+// sets it alongside NEXT_PUBLIC_BASE_PATH, mirrored by preview.yml, so
+// canonical/OG URLs point at the URL the preview is actually served
+// from).
 const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || 'https://sboudrias.github.io';
 
 // PR preview builds are transient (deleted when their PR closes) and live on
