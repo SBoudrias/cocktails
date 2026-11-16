@@ -219,6 +219,8 @@ __metadata:
     "@testing-library/user-event": "npm:^14.6.9"
     "@types/react": "npm:19.3.0"
     "@types/react-dom": "npm:19.3.0"
+    "@ui-sdk/core": "npm:^0.1.0-beta.2"
+    "@ui-sdk/react": "npm:^0.1.0-beta.2"
     class-variance-authority: "npm:0.7.1"
     cn: "npm:0.5.2"
     core-js: "npm:^3.51.0"
@@ -1859,6 +1861,28 @@ __metadata:
   version: 7.0.2
   resolution: "@typescript/typescript-win32-x64@npm:7.0.2"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@ui-sdk/core@npm:^0.1.0-beta.2":
+  version: 0.1.0-beta.2
+  resolution: "@ui-sdk/core@npm:0.1.0-beta.2"
+  checksum: 10c0/02f5194d7c8ae33e72cef80147ed42920577179905c0997c350537f3dbbc2a4ad582b8dfe16c71dea2c18f23fcb7b8f93ff91dae3ac1aec788381f9b32609be3
+  languageName: node
+  linkType: hard
+
+"@ui-sdk/react@npm:^0.1.0-beta.2":
+  version: 0.1.0-beta.2
+  resolution: "@ui-sdk/react@npm:0.1.0-beta.2"
+  peerDependencies:
+    "@types/react": ">=19.2.10"
+    "@ui-sdk/core": ^0.1.0-beta.2
+    react: ">=19"
+    react-dom: ">=19"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/420c217b3516b11850cf191593d13cc69f63c93fdfa962451afa0f8d433c14be300ae5f0ab8dde9d293b9310712dd1952eaff48a94460600b9aedc8bf44cb75c
   languageName: node
   linkType: hard
 

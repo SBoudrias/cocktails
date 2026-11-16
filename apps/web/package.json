@@ -20,6 +20,8 @@
     "@next/third-parties": "^16.4.6",
     "@sindresorhus/transliterate": "^3.0.0",
     "@tailwindcss/postcss": "4.3.5",
+    "@ui-sdk/core": "^0.1.0-beta.2",
+    "@ui-sdk/react": "^0.1.0-beta.2",
     "class-variance-authority": "0.7.1",
     "cn": "0.5.2",
     "core-js": "^3.51.0",
