@@ -10,7 +10,7 @@ import { match } from 'ts-pattern';
 import Quantity from '#/components/Quantity';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import ServingSelector from '#/components/ServingSelector';
-import { List, ListSubheader } from '#/components/ui/list';
+import { ListSubheader } from '#/components/ui/list';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { getMilkClarificationContext } from '#/modules/milkClarification';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
@@ -19,13 +19,6 @@ import { getMilkClarificationCalculatorUrl, getRecipeIngredientUrl } from '#/mod
 import styles from './style.module.css';
 
 const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
-
-// The MUI Paper(square) block that held the rows: the shared `surface`
-// utility (the Paper glass + overlay + elevation-1 shadow) without the
-// radius or clipping.
-function ListSurface({ children }: { children: React.ReactNode }) {
-  return <div className="surface">{children}</div>;
-}
 
 // MUI's ingredient row: ListItem with the divider, 8px vertical padding,
 // 16px left, the 48px secondaryAction zone for the chevron, and
@@ -150,9 +143,9 @@ export default function IngredientList({
 
   return (
     <>
-      <List aria-label="Ingredients" className="bg-transparent px-0 py-2">
+      <ul aria-label="Ingredients" className="bg-transparent px-0 py-2">
         <ListSubheader>Ingredients</ListSubheader>
-        <ListSurface>
+        <div className="surface">
           {scaledIngredients.toSorted(compareIngredients).map((ingredient) => {
             return (
               <IngredientRow
@@ -163,8 +156,8 @@ export default function IngredientList({
               </IngredientRow>
             );
           })}
-        </ListSurface>
-      </List>
+        </div>
+      </ul>
       {scaledTechniques.map((recipeTechnique) => {
         const headingId = `recipe-technique-${recipeTechnique.technique}-heading`;
         const calculatorUrl = match(recipeTechnique)
@@ -199,16 +192,16 @@ export default function IngredientList({
                 </Link>
               </div>
             </ListSubheader>
-            <List aria-labelledby={headingId} className="bg-transparent px-0 py-2">
-              <ListSurface>
+            <ul aria-labelledby={headingId} className="bg-transparent px-0 py-2">
+              <div className="surface">
                 <TechniqueRow>
                   <TechniqueDetails
                     technique={recipeTechnique}
                     preferredUnit={preferredUnit}
                   />
                 </TechniqueRow>
-              </ListSurface>
-            </List>
+              </div>
+            </ul>
           </Fragment>
         );
       })}
