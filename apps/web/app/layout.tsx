@@ -1,4 +1,7 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
+// ui-sdk default styles: must load before globals.css so the app's own
+// CSS can override them.
+import '@ui-sdk/core/web.css';
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Roboto } from 'next/font/google';
