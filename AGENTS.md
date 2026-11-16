@@ -252,7 +252,7 @@ Before using ui-sdk, follow the ui-sdk skill if it's installed, and read `node_m
 
 Skills under `.agents/skills/` come in two kinds:
 
-- **Tool-managed** (ui-sdk, web-design-guidelines, writing-guidelines, vercel-*): installed via `npx skills add` and tracked in `skills-lock.json` at the repo root. Do not hand-edit them — a weekly workflow (`skills-update.yml`) refreshes them from upstream and would overwrite local edits. Refresh them deliberately with `npx skills update -p -y`.
+- **Tool-managed** (ui-sdk, web-design-guidelines, writing-guidelines, vercel-*): installed via `yarn skills add` (the `skills` CLI is a repo devDependency) and tracked in `skills-lock.json` at the repo root. Do not hand-edit them — a weekly workflow (`skills-update.yml`) refreshes them from upstream and would overwrite local edits. Refresh them deliberately with `yarn skills update -p -y`.
 - **Hand-maintained** (create-recipes, ingredient-validator, youtube): written for this repo, not in the lock. Edit them like any other source file.
 
 Markdown in `.agents/skills/` is formatted by the repo's oxfmt config, same as the rest of the codebase.

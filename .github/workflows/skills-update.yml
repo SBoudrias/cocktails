@@ -1,6 +1,6 @@
 name: Skills update
 
-# Keeps the agent skills installed by the `skills` CLI (npx skills) in sync
+# Keeps the agent skills installed by the `skills` CLI in sync
 # with their upstream sources. These skills are tracked in skills-lock.json
 # at the repo root, which pins each skill's source repo, the commit it was
 # installed from and a content hash — that in-repo lock is what makes the
@@ -22,8 +22,9 @@ name: Skills update
 #      one is already open). Skill content is reviewed like any other code
 #      change: skills run with full agent permissions.
 #
-# `skills@1` pins the CLI's major version so a breaking CLI release cannot
-# change how this job behaves overnight; bump the pin deliberately.
+# `yarn skills` runs the CLI from the repo's devDependencies (pinned
+# exactly), so dependabot bumps it like any other dependency and a breaking
+# CLI release can't change how this job behaves overnight.
 #
 # next.js skills are deliberately NOT installed: next@16 ships its version-
 # matched docs in node_modules/next/dist/docs/ and rewrites the AGENTS.md
@@ -56,7 +57,7 @@ jobs:
         uses: ./.github/workflows/setup-node
 
       - name: Update skills managed by skills-lock.json ⬆️
-        run: npx -y skills@1 update --project --yes
+        run: yarn skills update --project --yes
 
       # The repo lints every markdown file with oxfmt (yarn lint runs
       # `oxfmt . --check`), and upstream skill files don't follow that style.
@@ -81,7 +82,7 @@ jobs:
         run: |
           {
             echo 'BODY<<EOF'
-            echo 'Weekly refresh of the skills installed via `npx skills add`.'
+            echo 'Weekly refresh of the skills installed via `yarn skills add`.'
             echo ''
             echo 'Updated by the [skills-update workflow](https://github.com/${{ github.repository }}/blob/main/.github/workflows/skills-update.yml). Review the skill diffs before merging — skills run with full agent permissions.'
             echo ''

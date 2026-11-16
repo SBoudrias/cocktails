@@ -2213,6 +2213,7 @@ __metadata:
     nano-staged: "npm:^1.0.2"
     oxfmt: "npm:^0.78.0"
     oxlint: "npm:^1.93.0"
+    skills: "npm:1.9.0"
     turbo: "npm:^2.11.10"
     typescript: "npm:7.0.2"
     vite: "npm:^8.3.8"
@@ -3076,6 +3077,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nostics@npm:^1.3.0":
+  version: 1.4.0
+  resolution: "nostics@npm:1.4.0"
+  checksum: 10c0/a1498d6e15d61c6d212f501eddbbdf2e72ebfe44a6b6d3823fefb13f365e8319b9756ecfb7a022da978766d65646e3a70fc8c05f60b312ef5981e482b4d73cc4
+  languageName: node
+  linkType: hard
+
 "nuqs@npm:^2.10.3":
   version: 2.10.3
   resolution: "nuqs@npm:2.10.3"
@@ -3643,6 +3651,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"skills@npm:1.9.0":
+  version: 1.9.0
+  resolution: "skills@npm:1.9.0"
+  dependencies:
+    nostics: "npm:^1.3.0"
+    tar: "npm:^7.5.22"
+    yaml: "npm:^2.9.1"
+  bin:
+    add-skill: bin/cli.mjs
+    skills: bin/cli.mjs
+  checksum: 10c0/305f251c0a06ca51a1a5f31745d5f0f860f88fe401dc2fd1bf94b487d684fa93995b5c0daee2bbb6f72873ae8bbe8f825eaeb92ece66525975d6c25008ab6100
+  languageName: node
+  linkType: hard
+
 "source-map-js@npm:^1.2.1":
   version: 1.2.1
   resolution: "source-map-js@npm:1.2.1"
@@ -3737,6 +3759,19 @@ __metadata:
   version: 2.3.4
   resolution: "tapable@npm:2.3.4"
   checksum: 10c0/63be31c49fabdcf51bba1ba9b5864ec2b60e50b67b23b510f664e3df3e337899e66797198a722bf03240ab96732f327619672ce3c5402439fd9fa3079be2db06
+  languageName: node
+  linkType: hard
+
+"tar@npm:^7.5.22":
+  version: 7.5.23
+  resolution: "tar@npm:7.5.23"
+  dependencies:
+    "@isaacs/fs-minipass": "npm:^4.0.0"
+    chownr: "npm:^3.0.0"
+    minipass: "npm:^7.1.2"
+    minizlib: "npm:^3.1.0"
+    yallist: "npm:^5.0.0"
+  checksum: 10c0/41324dc475f655e6a322729dacac14e3114ed4b18cba350be5d1eb52b1aa2794a1c78c2a5b7f49d3d15f53c058158168121eaf6c5d2f75a0a9565b344bf3a18a
   languageName: node
   linkType: hard
 
@@ -4276,6 +4311,15 @@ __metadata:
   version: 5.0.0
   resolution: "yallist@npm:5.0.0"
   checksum: 10c0/a499c81ce6d4a1d260d4ea0f6d49ab4da09681e32c3f0472dee16667ed69d01dae63a3b81745a24bd78476ec4fcf856114cb4896ace738e01da34b2c42235416
+  languageName: node
+  linkType: hard
+
+"yaml@npm:^2.9.1":
+  version: 2.9.1
+  resolution: "yaml@npm:2.9.1"
+  bin:
+    yaml: bin.mjs
+  checksum: 10c0/9d06676ef02b89559a8b10a71882bd2cdae81e8393dc8dbc871615c3259475d9609ad973d19cb3c9e71e72d6206e3d1e7aa241c7e55f3d16fd2e77db305827d6
   languageName: node
   linkType: hard
 
