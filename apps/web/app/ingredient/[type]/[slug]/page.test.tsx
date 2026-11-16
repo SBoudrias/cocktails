@@ -603,13 +603,17 @@ describe('IngredientPage', () => {
         .find((group) => !sheet.contains(group));
       expect(inlineList).toBeDefined();
 
-      // The two copies' group headers never collide on their ids.
-      expect(
-        document.getElementById('group-header-Some-substitution-option'),
-      ).not.toBeNull();
-      expect(
-        document.getElementById('drawer-header-Some-substitution-option'),
-      ).not.toBeNull();
+      // The two copies' group headers never collide on their ids: each
+      // list's header id is unique per instance (LinkList's useId).
+      const inlineHeaderId = inlineList?.getAttribute('aria-labelledby');
+      expect(inlineHeaderId).toBeDefined();
+      const sheetHeaderIds = [...sheet.querySelectorAll('[role="group"]')]
+        .map((group) => group.getAttribute('aria-labelledby'))
+        .filter((id): id is string => id != null);
+      expect(sheetHeaderIds.length).toBeGreaterThan(0);
+      for (const id of sheetHeaderIds) {
+        expect(id).not.toBe(inlineHeaderId);
+      }
     });
 
     it('is modal: traps focus in the sheet while open', async () => {
@@ -622,11 +626,15 @@ describe('IngredientPage', () => {
 
       // The sheet opens with focus on its content (initialFocus="content"),
       // never on the page behind it.
-      expect(sheet.contains(document.activeElement)).toBe(true);
+      expect(sheet).toHaveFocus();
 
       // Tab cycles inside the sheet only: the page's searchbox and links
-      // stay out of reach while the modal is open.
-      for (let tab = 0; tab < 12; tab++) await user.tab();
+      // stay out of reach while the modal is open. Tabbing past every
+      // focusable in the sheet plus one proves the wrap.
+      const focusables =
+        within(sheet).getAllByRole('link').length +
+        within(sheet).getAllByRole('button').length;
+      for (let tab = 0; tab < focusables + 1; tab++) await user.tab();
       expect(sheet.contains(document.activeElement)).toBe(true);
     });
 
@@ -667,11 +675,12 @@ describe('IngredientPage', () => {
         .closest('div');
       expect(triggerWrapper).toHaveClass('min-[600px]:hidden');
 
-      const sheet = screen.getAllByRole('group', {
+      // With the sheet closed only the inline copy exists, and it hides
+      // below 600px (hidden min-[600px]:block).
+      const inlineList = screen.getByRole('group', {
         name: 'Some substitution option',
       });
-      expect(sheet.length).toBeGreaterThan(0);
-      const inlineWrapper = sheet[0]!.closest('div.hidden');
+      const inlineWrapper = inlineList.closest('div.hidden');
       expect(inlineWrapper).toHaveClass('min-[600px]:block');
     });
   });

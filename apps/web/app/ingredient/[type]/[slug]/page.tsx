@@ -68,6 +68,18 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   ]);
 
   const topCategory = ingredient.categories[0];
+  // Both substitution copies (the drawer's sheet and the inline lists) render
+  // from one props object, so the two cannot drift.
+  const substitutionListsProps = substitution && {
+    primaryHeader: 'Some substitution option' as const,
+    substitutes: substitution.substitutes,
+    recipeCounts,
+    seeAll: {
+      href: getCategoryUrl(substitution.category),
+      label: substitution.category.name,
+    },
+    relatedCategories: substitution.relatedCategories,
+  };
   const [firstVideo, ...additionalVideos] = uniqBy(
     [...ingredient.refs, ...ingredient.categories.flatMap((c) => c.refs ?? [])].filter(
       (ref) => ref.type === 'youtube',
@@ -88,20 +100,9 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       underTitle={
         <>
           <CategoryChips categories={ingredient.categories} />
-          {substitution && (
+          {substitutionListsProps && (
             <SubstitutionDrawer ingredientName={ingredient.name}>
-              <SubstitutionLists
-                primaryHeader="Some substitution option"
-                substitutes={substitution.substitutes}
-                recipeCounts={recipeCounts}
-                seeAll={{
-                  href: getCategoryUrl(substitution.category),
-                  label: substitution.category.name,
-                }}
-                relatedCategories={substitution.relatedCategories}
-                sticky={false}
-                idPrefix="drawer"
-              />
+              <SubstitutionLists {...substitutionListsProps} sticky={false} />
             </SubstitutionDrawer>
           )}
         </>
@@ -149,18 +150,9 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <InstructionList instructions={ingredient.instructions} />
       )}
       <IngredientCalculators ingredient={ingredient} />
-      {substitution && (
+      {substitutionListsProps && (
         <div className="hidden min-[600px]:block">
-          <SubstitutionLists
-            primaryHeader="Some substitution option"
-            substitutes={substitution.substitutes}
-            recipeCounts={recipeCounts}
-            seeAll={{
-              href: getCategoryUrl(substitution.category),
-              label: substitution.category.name,
-            }}
-            relatedCategories={substitution.relatedCategories}
-          />
+          <SubstitutionLists {...substitutionListsProps} />
         </div>
       )}
       {additionalVideos.length > 0 && (

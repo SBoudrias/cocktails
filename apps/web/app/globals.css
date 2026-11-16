@@ -77,6 +77,10 @@
   --warning: #d4883d;
   --warning-dark: #a66628;
   --error-light: #c98aa3;
+  /* The fixed app bar's z-index: the drawer's sheet and backdrop sit one
+     above it, so an open sheet covers the chrome (see the drawer rule
+     below). */
+  --z-app-bar: 1100;
 }
 
 /* The app bar's height per orientation and breakpoint: landscape phones
@@ -176,9 +180,9 @@
 }
 
 /* The substitution drawer's sheet and backdrop sit above the fixed app
-   bar (z-[1100]), not below it like ui-sdk's default z-50: an open sheet
-   must cover the chrome. Unlayered rules here win over the ui-sdk layer. */
+   bar, not below it like ui-sdk's default z-50: an open sheet must cover
+   the chrome. Unlayered rules here win over the ui-sdk layer. */
 [data-slot='drawer-viewport'],
 [data-slot='drawer-backdrop'] {
-  z-index: 1200;
+  z-index: calc(var(--z-app-bar) + 1);
 }

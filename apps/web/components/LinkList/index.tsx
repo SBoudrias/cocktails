@@ -2,7 +2,7 @@ import { cn } from 'cn';
 import { ChevronRight } from 'lucide-react';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useId, useMemo } from 'react';
 import StickyGroupHeader from '#/components/StickyGroupHeader';
 import { ListSubheader } from '#/components/ui/list';
 import type { ListConfig } from '#/modules/lists/type';
@@ -71,7 +71,6 @@ export function LinkList<const T>({
   header = '',
   footer,
   sticky = true,
-  idPrefix = 'group',
 }: {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
@@ -82,10 +81,11 @@ export function LinkList<const T>({
   /** Sticky group headers pin under the app bar; false renders them in
    * flow, for lists that sit inside their own scroll container. */
   sticky?: boolean;
-  /** Disambiguates the header ids when two copies of a list render on the
-   * same page, one of them hidden per breakpoint. */
-  idPrefix?: string;
 }) {
+  // Unique per list instance, so two copies of a list on one page (one
+  // hidden per breakpoint) never collide on their header ids.
+  const listId = useId();
+
   const groups = useMemo(() => {
     const {
       groupBy = () => header,
@@ -112,7 +112,7 @@ export function LinkList<const T>({
       {groups.map(([header, groupItems], groupIndex) => {
         // Spaces would split aria-labelledby into dead id references, so the
         // header's id keeps them out.
-        const headerId = `${idPrefix}-header-${header.replace(/\s+/g, '-')}`;
+        const headerId = `${listId}-header-${header.replace(/\s+/g, '-')}`;
 
         return (
           <li key={header}>
@@ -125,7 +125,9 @@ export function LinkList<const T>({
                 (sticky ? (
                   <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>
                 ) : (
-                  <ListSubheader id={headerId}>{header}</ListSubheader>
+                  <li id={headerId}>
+                    <ListSubheader>{header}</ListSubheader>
+                  </li>
                 ))}
               <div className="surface">
                 {groupItems.map((item) => renderItem(item))}
