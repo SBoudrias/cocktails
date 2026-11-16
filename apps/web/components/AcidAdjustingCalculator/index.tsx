@@ -10,10 +10,7 @@ import { Button } from '#/components/ui/button';
 import { buttonVariants } from '#/components/ui/button-variants';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { LabeledField } from '#/components/ui/labeled-field';
-import {
-  SegmentedControl,
-  SegmentedControlItem,
-} from '#/components/ui/segmented-control';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import Video from '#/components/Video';
 
 const DEFAULT_TARGET_ACIDITY = 6;
@@ -39,15 +36,15 @@ function AcidProfileSelector({
   onChange: (profile: AcidProfile) => void;
 }) {
   return (
-    <SegmentedControl
+    <ToggleGroup
       value={profile}
       onValueChange={onChange}
       aria-label="Target acid profile"
       fullWidth
     >
-      <SegmentedControlItem value="lime">Lime</SegmentedControlItem>
-      <SegmentedControlItem value="lemon">Lemon</SegmentedControlItem>
-    </SegmentedControl>
+      <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
+      <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
+    </ToggleGroup>
   );
 }
 
@@ -449,14 +446,14 @@ export default function AcidAdjustingCalculator({
       <CardHeader className="flex-row items-center pb-6">
         <CardTitle className="min-w-0 flex-1">Acid Adjusting</CardTitle>
         <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">
-          <SegmentedControl
+          <ToggleGroup
             value={type}
             onValueChange={setType}
             aria-label="Preferred acid-adjusting technique"
           >
-            <SegmentedControlItem value="solution">Solution</SegmentedControlItem>
-            <SegmentedControlItem value="powder">Powder</SegmentedControlItem>
-          </SegmentedControl>
+            <ToggleGroupItem value="solution">Solution</ToggleGroupItem>
+            <ToggleGroupItem value="powder">Powder</ToggleGroupItem>
+          </ToggleGroup>
         </div>
       </CardHeader>
       {match(type)

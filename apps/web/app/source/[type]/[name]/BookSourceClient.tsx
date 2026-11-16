@@ -10,10 +10,7 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
-import {
-  SegmentedControl,
-  SegmentedControlItem,
-} from '#/components/ui/segmented-control';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { createByChapterListConfig } from '#/modules/lists/by-chapter';
 import { byNameListConfig } from '#/modules/lists/by-name';
@@ -125,9 +122,9 @@ function GroupModeToggle({
   onChange: (value: GroupMode) => void;
 }) {
   return (
-    <SegmentedControl value={value} onValueChange={onChange} aria-label="Recipe grouping">
-      <SegmentedControlItem value="chapter">By Chapter</SegmentedControlItem>
-      <SegmentedControlItem value="alphabetical">A-Z</SegmentedControlItem>
-    </SegmentedControl>
+    <ToggleGroup value={value} onValueChange={onChange} aria-label="Recipe grouping">
+      <ToggleGroupItem value="chapter">By Chapter</ToggleGroupItem>
+      <ToggleGroupItem value="alphabetical">A-Z</ToggleGroupItem>
+    </ToggleGroup>
   );
 }

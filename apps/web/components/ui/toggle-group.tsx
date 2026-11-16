@@ -16,7 +16,7 @@ import { cn } from 'cn';
 // citrus and acid-profile pickers) wants the same thing: a small outlined
 // group. 7px padding, 13px uppercase label, the theme's 1px divider border,
 // white unselected and foreground/16 selected.
-function SegmentedControl<Value extends string>({
+function ToggleGroup<Value extends string>({
   className,
   fullWidth = false,
   onValueChange,
@@ -57,7 +57,7 @@ function SegmentedControl<Value extends string>({
 // first item's left edge. Items are first-of-type/last-of-type — not
 // first/last — because each item renders a hidden native radio after its
 // button, so the buttons are not adjacent children of the group.
-function SegmentedControlItem({
+function ToggleGroupItem({
   className,
   ...props
 }: Omit<PartProps<'button', SegmentedControlItemState>, 'value' | 'onSelect'> &
@@ -65,7 +65,7 @@ function SegmentedControlItem({
   return (
     <SegmentedControlItemRoot
       className={cn(
-        'h-auto flex-none rounded-none border bg-transparent text-[13px] leading-[1.75] font-medium whitespace-nowrap uppercase outline-none transition',
+        'h-auto flex-none rounded-none border bg-transparent text-[13px] leading-[1.75] font-medium whitespace-nowrap uppercase outline-none transition duration-100 ease-out',
         '[&:first-of-type]:rounded-s-lg [&:last-of-type]:rounded-e-lg [&:first-of-type]:border-l-0',
         // Unselected labels sit deliberately pure white — brighter than the
         // foreground's cyan cast — so the picked item reads at a glance.
@@ -79,4 +79,4 @@ function SegmentedControlItem({
   );
 }
 
-export { SegmentedControl, SegmentedControlItem };
+export { ToggleGroup, ToggleGroupItem };

@@ -13,10 +13,7 @@ import {
   CardTitle,
 } from '#/components/ui/card';
 import { LabeledField } from '#/components/ui/labeled-field';
-import {
-  SegmentedControl,
-  SegmentedControlItem,
-} from '#/components/ui/segmented-control';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import Video from '#/components/Video';
 import { formatAmount } from '#/modules/formatAmount';
 import { type SuperJuiceCitrus, calculateSuperJuice } from '#/modules/superJuice';
@@ -46,18 +43,18 @@ function CitrusSelector({
   onChange: (citrus: SuperJuiceCitrus) => void;
 }) {
   return (
-    <SegmentedControl
+    <ToggleGroup
       value={citrus}
       onValueChange={onChange}
       aria-label="Citrus type"
       fullWidth
     >
-      <SegmentedControlItem value="lemon">Lemon</SegmentedControlItem>
-      <SegmentedControlItem value="lime">Lime</SegmentedControlItem>
-      <SegmentedControlItem value="orange">Orange</SegmentedControlItem>
-      <SegmentedControlItem value="grapefruit">Grapefruit</SegmentedControlItem>
-      <SegmentedControlItem value="kumquat">Kumquat</SegmentedControlItem>
-    </SegmentedControl>
+      <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
+      <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
+      <ToggleGroupItem value="orange">Orange</ToggleGroupItem>
+      <ToggleGroupItem value="grapefruit">Grapefruit</ToggleGroupItem>
+      <ToggleGroupItem value="kumquat">Kumquat</ToggleGroupItem>
+    </ToggleGroup>
   );
 }
 

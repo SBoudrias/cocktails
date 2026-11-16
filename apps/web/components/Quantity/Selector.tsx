@@ -1,9 +1,6 @@
 'use client';
 
-import {
-  SegmentedControl,
-  SegmentedControlItem,
-} from '#/components/ui/segmented-control';
+import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 
 export type Unit = 'oz' | 'ml';
 
@@ -15,13 +12,13 @@ export default function UnitSelector({
   onChange: (unit: Unit) => void;
 }) {
   return (
-    <SegmentedControl
+    <ToggleGroup
       value={value}
       onValueChange={onChange}
       aria-label="Preferred measurement unit"
     >
-      <SegmentedControlItem value="oz">oz</SegmentedControlItem>
-      <SegmentedControlItem value="ml">ml</SegmentedControlItem>
-    </SegmentedControl>
+      <ToggleGroupItem value="oz">oz</ToggleGroupItem>
+      <ToggleGroupItem value="ml">ml</ToggleGroupItem>
+    </ToggleGroup>
   );
 }
