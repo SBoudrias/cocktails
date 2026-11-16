@@ -73,7 +73,9 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
   return (
     <>
       <AppHeader title={recipe.name} />
-      <main>
+      {/* The root layout carries the one <main> landmark; per-page mains
+          would nest (Lighthouse landmark-one-main). */}
+      <div>
         <RecipeBadges recipe={recipe} />
         <IngredientList
           ingredients={recipe.ingredients}
@@ -95,7 +97,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
         {videos.length > 0 && <VideoListCard refs={videos} m={1} />}
         {websites.length > 0 && <WebsiteListCard refs={websites} m={1} />}
         <FixBugCard fixUrl={getRecipeEditUrl(recipe)} m={1} />
-      </main>
+      </div>
     </>
   );
 }
