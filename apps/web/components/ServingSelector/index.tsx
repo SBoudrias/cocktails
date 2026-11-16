@@ -10,8 +10,17 @@ import {
   InputGroupInput,
 } from '#/components/ui/input-group';
 
-const MIN_SERVINGS = 0.25;
+const MIN_SERVINGS = 0.5;
 const MAX_SERVINGS = 50;
+
+// The step grid: half servings up to 1, whole servings above it. Values
+// off the grid (typed, like 1.5 or 0.75) render as entered and snap onto
+// it when a step button next moves them.
+const nextStepUp = (servings: number) =>
+  servings < 1 ? Math.floor(servings * 2) / 2 + 0.5 : Math.floor(servings) + 1;
+
+const nextStepDown = (servings: number) =>
+  servings <= 1 ? Math.ceil(servings * 2) / 2 - 0.5 : Math.ceil(servings) - 1;
 
 export default function ServingSelector({
   servings,
@@ -41,31 +50,12 @@ export default function ServingSelector({
 
   const handleIncrement = () => {
     setDraft(undefined);
-
-    if (servings < MAX_SERVINGS) {
-      if (servings < 1) {
-        // From fractional values, go to 1
-        onChange(1);
-      } else {
-        // From 1 or above, increment by 1
-        onChange(servings + 1);
-      }
-    }
+    onChange(Math.min(nextStepUp(servings), MAX_SERVINGS));
   };
 
   const handleDecrement = () => {
     setDraft(undefined);
-
-    // At 0.25, button will be disabled
-    if (servings > MIN_SERVINGS) {
-      if (servings > 1) {
-        onChange(servings - 1);
-      } else if (servings > 0.5) {
-        onChange(0.5);
-      } else {
-        onChange(MIN_SERVINGS);
-      }
-    }
+    onChange(Math.max(nextStepDown(servings), MIN_SERVINGS));
   };
 
   const handleBlur = () => {

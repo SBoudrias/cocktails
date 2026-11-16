@@ -50,9 +50,9 @@ describe('ServingSelector', () => {
     render(<ServingSelector servings={2} onChange={onChange} />);
 
     const input = screen.getByLabelText('Number of servings');
-    expect(input).toHaveAttribute('min', '0.25');
+    expect(input).toHaveAttribute('min', '0.5');
     expect(input).toHaveAttribute('max', '50');
-    expect(input).toHaveAttribute('step', '0.25');
+    expect(input).toHaveAttribute('step', '0.5');
     expect(input).toHaveAttribute('type', 'number');
   });
 
@@ -68,8 +68,9 @@ describe('ServingSelector', () => {
     });
 
     it.each([
-      { servings: 0.5, expected: 1, label: 'fractional values' },
-      { servings: 0.25, expected: 1, label: '0.25' },
+      { servings: 0.5, expected: 1, label: 'half servings' },
+      { servings: 0.75, expected: 1, label: 'off-grid values' },
+      { servings: 1.5, expected: 2, label: 'off-grid values above 1' },
     ])(
       'should jump to $expected when incrementing from $label',
       ({ servings, expected }) => {
@@ -108,7 +109,8 @@ describe('ServingSelector', () => {
 
     it.each([
       { servings: 1, expected: 0.5 },
-      { servings: 0.5, expected: 0.25 },
+      { servings: 1.5, expected: 1, label: 'off-grid values snap to the grid' },
+      { servings: 0.75, expected: 0.5 },
     ])('should go from $servings to $expected', ({ servings, expected }) => {
       const onChange = vi.fn();
       render(<ServingSelector servings={servings} onChange={onChange} />);
@@ -118,9 +120,9 @@ describe('ServingSelector', () => {
       expect(onChange).toHaveBeenCalledWith(expected);
     });
 
-    it('should be disabled when servings is at minimum (0.25)', () => {
+    it('should be disabled when servings is at minimum (0.5)', () => {
       const onChange = vi.fn();
-      render(<ServingSelector servings={0.25} onChange={onChange} />);
+      render(<ServingSelector servings={0.5} onChange={onChange} />);
 
       const decrementButton = screen.getByLabelText('Decrement');
       expect(decrementButton).toBeDisabled();
