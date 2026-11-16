@@ -3,6 +3,7 @@
 import { parseAsString, useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
+import { InstructionSteps } from '#/components/InstructionSteps';
 import { Button } from '#/components/ui/button';
 import {
   Card,
@@ -46,20 +47,10 @@ function CitrusSelector({
       value={[citrus]}
       // A single-choice group: pressing the active citrus again keeps it.
       onValueChange={([newVal]) => {
-        if (newVal != null) {
-          match(newVal)
-            .with('lemon', 'lime', 'orange', 'grapefruit', 'kumquat', (value) =>
-              onChange(value),
-            )
-            .otherwise(() => undefined);
-        }
+        if (newVal != null) onChange(newVal);
       }}
       aria-label="Citrus type"
-      // MUI's fullWidth: the group stretches across the row and each button
-      // takes width:100% with flex-shrink allowed, so they share the row by
-      // content (probed: the 5 buttons fill the 552px row without overflow).
-      // The bang drops the primitive's shrink-0, which would overflow.
-      className="w-full [&>*]:w-full [&>*]:shrink!"
+      fullWidth
     >
       <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
       <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
@@ -117,9 +108,9 @@ export default function SuperJuiceCalculator() {
       <CardHeader>
         <CardTitle>Super Juice</CardTitle>
         {/* CardHeader subheader: body2 metrics, inheriting the foreground
-            (probed: this MUI build's Typography never resolved the subheader
-            slot's text.secondary color). */}
-        <CardSubheader className="text-sm leading-[1.43] text-foreground">
+            (probed on the baseline: this MUI build's Typography never
+            resolved the subheader slot's text.secondary color prop). */}
+        <CardSubheader className="text-sm text-foreground">
           Acid-adjusted, peel-oleated citrus juice. Technique by Nickle Morris; ratios
           after Kevin Kos’s published recipes.
         </CardSubheader>
@@ -161,24 +152,7 @@ export default function SuperJuiceCalculator() {
         </div>
       </CardContent>
       <CardContent>
-        {/* MUI's Typography variant=h6 with gutterBottom: 20px/500/32px and
-            the 0.35em (7px) bottom margin. */}
-        <div
-          id="super-juice-instructions"
-          className="mb-[7px] text-xl leading-8 font-medium"
-        >
-          Instructions
-        </div>
-        {/* The app's base layer strips list markers (probed on the baseline:
-            MUI's CssBaseline never restored them, so no step numbers show).
-            Metrics are MUI's Box pl: 3 (24px indent) with body1 rows. */}
-        <ol aria-labelledby="super-juice-instructions" className="pl-6">
-          {instructions.map((step) => (
-            <li key={step} className="text-base">
-              {step}
-            </li>
-          ))}
-        </ol>
+        <InstructionSteps id="super-juice-instructions" steps={instructions} />
       </CardContent>
       <CardContent>
         <Video id="2RA3AaCO7A8" start={313} />

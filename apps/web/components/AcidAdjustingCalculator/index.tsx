@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
+import { Alert } from '#/components/ui/alert';
 import { Button } from '#/components/ui/button';
 import { buttonVariants } from '#/components/ui/button-variants';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
@@ -38,52 +39,16 @@ function AcidProfileSelector({
     <ToggleGroup
       value={[profile]}
       // A single-choice group: pressing the active profile again keeps it.
-      onValueChange={([newVal]) => {
-        if (newVal != null) {
-          match(newVal)
-            .with('lime', 'lemon', (value) => onChange(value))
-            .otherwise(() => undefined);
-        }
+      onValueChange={([next]) => {
+        if (next != null) onChange(next);
       }}
       aria-label="Target acid profile"
-      // MUI's fullWidth: the group stretches across the row and each button
-      // takes width:100% with flex-shrink allowed, so they share the row
-      // by content (probed: 2 buttons at 183px each). The bang drops the
-      // primitive's shrink-0, which would let each keep the full row.
-      className="w-full [&>*]:w-full [&>*]:shrink!"
+      fullWidth
     >
       <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
       <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
     </ToggleGroup>
   );
-}
-
-// MUI's Alert severity=error, standard variant, dark mode: the same shape
-// as the warning one (probed) with the error channel's computed colors —
-// lighten/darken of the theme's error.light — and the ErrorOutline icon.
-function ErrorAlert({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      role="alert"
-      className="flex rounded-sm px-4 py-1.5 text-sm leading-[1.43] text-[#E9D0DA] bg-[#140D10]"
-    >
-      <div
-        aria-hidden="true"
-        className="mr-3 flex py-[7px] text-[22px] leading-none text-[#A85B7A] opacity-90"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-[22px] fill-current">
-          <path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-        </svg>
-      </div>
-      <div className="min-w-0 overflow-auto py-2">{children}</div>
-    </div>
-  );
-}
-
-// MUI's CardHeader action slot (probed): flex 0 0 auto, aligned to the
-// start, pulled into the header's 16px padding by its -4/-8/-4 margins.
-function CardHeaderAction({ children }: { children: React.ReactNode }) {
-  return <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">{children}</div>;
 }
 
 function PowderCalculator({
@@ -176,10 +141,10 @@ function PowderCalculator({
         />
       </div>
       {!isProfilePossible && (
-        <ErrorAlert>
+        <Alert severity="error">
           The juice already contains too much citric acid to reach the selected Lime
           profile by adding acid.
-        </ErrorAlert>
+        </Alert>
       )}
       <p className="text-base">Mix and dilute into the juice:</p>
       <LabeledField
@@ -260,7 +225,7 @@ function SolutionRecipe({
         Make the solution
       </h3>
       <AcidProfileSelector profile={profile} onChange={onProfileChange} />
-      <p className="text-sm leading-[1.43]">
+      <p className="text-sm">
         The “1%” name describes its dosing: 1 ml added to 1 oz of juice raises acidity by
         1 percentage point.
       </p>
@@ -480,26 +445,23 @@ export default function AcidAdjustingCalculator({
   return (
     <Card m={1}>
       {/* MUI's CardHeader with its action slot and the app's sx pb: 3
-          (24px bottom padding, probed on the baseline). */}
+          (24px bottom padding, probed on the baseline): the slot is flex
+          0 0 auto, aligned to the start, pulled into the header's 16px
+          padding by its -4/-8/-4 margins. */}
       <CardHeader className="flex-row items-center pb-6">
         <CardTitle className="min-w-0 flex-1">Acid Adjusting</CardTitle>
-        <CardHeaderAction>
+        <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">
           <ToggleGroup
             value={[type]}
-            onValueChange={([newVal]) => {
-              if (newVal != null) {
-                match(newVal)
-                  .with('powder', () => setType('powder'))
-                  .with('solution', () => setType('solution'))
-                  .otherwise(() => undefined);
-              }
+            onValueChange={([next]) => {
+              if (next != null) setType(next);
             }}
             aria-label="Preferred acid-adjusting technique"
           >
             <ToggleGroupItem value="solution">Solution</ToggleGroupItem>
             <ToggleGroupItem value="powder">Powder</ToggleGroupItem>
           </ToggleGroup>
-        </CardHeaderAction>
+        </div>
       </CardHeader>
       {match(type)
         .with('powder', () => (

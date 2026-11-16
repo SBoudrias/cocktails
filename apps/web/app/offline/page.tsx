@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import AppHeader from '#/components/AppHeader';
 import TikiMark from '#/components/TikiMark';
+import { getRecipeListUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
   title: 'Offline | Indexotica',
@@ -27,10 +28,10 @@ export default function OfflinePage() {
           This page is not available without a connection, and you have not visited it
           before. Pages you have opened recently still work offline.
         </p>
-        <Link href={{ pathname: '/list/recipes' }}>
-          {/* The base layer's anchors stay undecorated; MUI's Typography
-              carried the primary color (probed on the baseline). */}
-          <p className="text-base text-primary">Go to all recipes</p>
+        {/* The base layer's anchors stay undecorated; MUI's Typography
+            carried the primary color (probed on the baseline). */}
+        <Link href={getRecipeListUrl()} className="text-base text-primary">
+          Go to all recipes
         </Link>
       </main>
     </>

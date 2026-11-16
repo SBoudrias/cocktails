@@ -17,3 +17,19 @@ export function ListSubheader({ className, ...props }: React.ComponentProps<'div
 export function List({ className, ...props }: React.ComponentProps<'ul'>) {
   return <ul className={cn(className)} {...props} />;
 }
+
+// MUI's plain ListItem row (no link, no chevron): 8px vertical padding,
+// 16px sides, the bottom divider — the rows the instruction and technique
+// lists draw. The 4px inner margin belongs to the caller's content span
+// (MUI's ListItemText).
+export function ListRow({ className, ...props }: React.ComponentProps<'li'>) {
+  return (
+    <li
+      className={cn(
+        'flex w-full items-center border-x-0 border-t-0 border-b border-border py-2 pr-4 pl-4 text-base',
+        className,
+      )}
+      {...props}
+    />
+  );
+}

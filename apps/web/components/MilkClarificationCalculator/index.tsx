@@ -2,14 +2,16 @@
 
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { tryConvertVolume } from '@cocktails/conversion';
-import Link from 'next/link';
+import { ChevronDown } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
-import { useId, useReducer } from 'react';
+import { useReducer } from 'react';
 import { match } from 'ts-pattern';
+import { LinkListItem } from '#/components/LinkList';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
+import { Alert } from '#/components/ui/alert';
 import { Card, CardContent } from '#/components/ui/card';
-import { LabeledField } from '#/components/ui/labeled-field';
-import { ListSubheader } from '#/components/ui/list';
+import { LabeledField, OutlinedField } from '#/components/ui/labeled-field';
+import { ListSubheader, ListRow } from '#/components/ui/list';
 import { formatAmount } from '#/modules/formatAmount';
 import { getMilkClarifiedRecipeListUrl } from '#/modules/url';
 
@@ -153,34 +155,9 @@ function calculatorReducer(
     .exhaustive();
 }
 
-// MUI's Alert severity=warning, standard variant (probed on the baseline):
-// body2 metrics on a 4px-radius block of darken(warning.light, 0.9) with
-// 6px/16px padding, its text lighten(warning.light, 0.6); the icon is
-// MUI's ReportProblemOutlined — warning.main, 22px, 90% opacity, a 12px
-// right margin and 7px vertical padding, the message 8px vertical padding.
-function WarningAlert({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      role="alert"
-      className="flex rounded-sm px-4 py-1.5 text-sm leading-[1.43] text-[#F7DDC3] bg-[#17110A]"
-    >
-      <div
-        aria-hidden="true"
-        className="mr-3 flex py-[7px] text-[22px] leading-none text-[#D4883D] opacity-90"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-[22px] fill-current">
-          <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
-        </svg>
-      </div>
-      <div className="min-w-0 overflow-auto py-2">{children}</div>
-    </div>
-  );
-}
-
-// MUI's TextField select: the same outlined shell as LabeledField (the
-// fieldset with its notched legend sizer and the floating label span), the
-// trigger styled like the input row, and the arrow MUI drew (its
-// ArrowDropDown triangle, 24px, white) at the row's end.
+// MUI's TextField select on the shared OutlinedField shell: the trigger
+// styled like the input row, the arrow lucide's ChevronDown (icon rule;
+// MUI drew its filled ArrowDropDown triangle) at the row's end.
 function MilkSelect({
   milkType,
   customMilkType,
@@ -190,82 +167,52 @@ function MilkSelect({
   customMilkType: string | undefined;
   onChange: (milkType: string) => void;
 }) {
-  const labelId = useId();
   const options = customMilkType ? [...MILK_TYPES, customMilkType] : MILK_TYPES;
 
   return (
-    <div className="group relative h-14">
-      <fieldset
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 -top-[5px] m-0 overflow-hidden rounded-sm border border-input px-2 group-focus-within:border-2 group-focus-within:border-primary"
-      >
-        <legend className="block h-[11px] max-w-full p-0">
-          <span
-            aria-hidden="true"
-            className="block px-[5px] text-xs leading-[23px] whitespace-nowrap opacity-0"
-          >
-            Milk
-          </span>
-        </legend>
-      </fieldset>
-      <span
-        id={labelId}
-        className="absolute top-[-9px] left-[14px] max-w-full truncate text-xs leading-[17.25px] text-muted-foreground group-focus-within:text-primary"
-      >
-        Milk
-      </span>
-      <SelectPrimitive.Root
-        value={milkType}
-        onValueChange={(value) => {
-          onChange(String(value));
-        }}
-      >
-        <SelectPrimitive.Trigger
-          aria-labelledby={labelId}
-          className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-[14px] text-base text-left outline-none"
+    <OutlinedField label="Milk">
+      {(labelId) => (
+        <SelectPrimitive.Root<string>
+          value={milkType}
+          onValueChange={(value) => {
+            if (value != null) onChange(value);
+          }}
         >
-          <SelectPrimitive.Value />
-          <SelectPrimitive.Icon className="absolute top-1/2 right-[7px] -translate-y-1/2 text-white">
-            <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 fill-current">
-              <path d="M7 10l5 5 5-5z" />
-            </svg>
-          </SelectPrimitive.Icon>
-        </SelectPrimitive.Trigger>
-        <SelectPrimitive.Portal>
-          <SelectPrimitive.Positioner
-            align="start"
-            sideOffset={0}
-            // MUI's menu surface: the Paper glass without radius, the
-            // trigger's width, 8px vertical padding (probed on the baseline).
-            className="surface z-50 overflow-y-auto py-2 rounded-none min-w-[var(--anchor-width)]"
+          <SelectPrimitive.Trigger
+            aria-labelledby={labelId}
+            className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-[14px] text-base text-left outline-none"
           >
-            <SelectPrimitive.Popup>
-              {options.map((type) => (
-                <SelectPrimitive.Item
-                  key={type}
-                  value={type}
-                  // MUI's MenuItem: auto rows 36px tall, 16px left padding,
-                  // the selected item on primary/16 (probed on the baseline).
-                  className="flex h-9 items-center px-4 text-base text-foreground outline-none data-selected:bg-primary/16 data-highlighted:bg-white/8"
-                >
-                  <SelectPrimitive.ItemText>{type}</SelectPrimitive.ItemText>
-                </SelectPrimitive.Item>
-              ))}
-            </SelectPrimitive.Popup>
-          </SelectPrimitive.Positioner>
-        </SelectPrimitive.Portal>
-      </SelectPrimitive.Root>
-    </div>
-  );
-}
-
-// MUI's ListItem: 8px vertical padding, 16px left, the bottom divider and
-// ListItemText's 4px inner margins — the row the recipe pages' lists share.
-function InstructionRow({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex w-full items-center border-x-0 border-t-0 border-b border-border py-2 pr-4 pl-4 text-base">
-      <span className="my-1 flex-1 text-left">{children}</span>
-    </li>
+            <SelectPrimitive.Value />
+            <SelectPrimitive.Icon className="absolute top-1/2 right-[7px] -translate-y-1/2 text-white">
+              <ChevronDown className="size-6" />
+            </SelectPrimitive.Icon>
+          </SelectPrimitive.Trigger>
+          <SelectPrimitive.Portal>
+            <SelectPrimitive.Positioner
+              align="start"
+              sideOffset={0}
+              // MUI's menu surface: the Paper glass without radius, the
+              // trigger's width, 8px vertical padding (probed on the baseline).
+              className="surface z-50 overflow-y-auto py-2 rounded-none min-w-[var(--anchor-width)]"
+            >
+              <SelectPrimitive.Popup>
+                {options.map((type) => (
+                  <SelectPrimitive.Item
+                    key={type}
+                    value={type}
+                    // MUI's MenuItem: auto rows 36px tall, 16px left padding,
+                    // the selected item on primary/16 (probed on the baseline).
+                    className="flex h-9 items-center px-4 text-base text-foreground outline-none data-selected:bg-primary/16 data-highlighted:bg-white/8"
+                  >
+                    <SelectPrimitive.ItemText>{type}</SelectPrimitive.ItemText>
+                  </SelectPrimitive.Item>
+                ))}
+              </SelectPrimitive.Popup>
+            </SelectPrimitive.Positioner>
+          </SelectPrimitive.Portal>
+        </SelectPrimitive.Root>
+      )}
+    </OutlinedField>
   );
 }
 
@@ -363,7 +310,7 @@ export default function MilkClarificationCalculator() {
               {milkGuidance && <p className="text-sm">{milkGuidance}</p>}
             </div>
             {!hasRecipeMilkRatio && (
-              <p className="text-sm leading-[1.43]">
+              <p className="text-sm">
                 This uses a {formatMilkRatioPercent(milkRatio)}% milk-to-batch starting
                 point from the{' '}
                 <a
@@ -378,49 +325,40 @@ export default function MilkClarificationCalculator() {
                 general starting point.
               </p>
             )}
-            <WarningAlert>
+            <Alert severity="warning">
               Clarified dairy milk punch still contains dairy allergens. Check alternative
               milks for nut or soy allergens.
-            </WarningAlert>
+            </Alert>
           </section>
         </CardContent>
       </Card>
       <section aria-label="Instructions">
-        {/* MUI's List + ListSubheader + Paper(square): the subheader is
-            itself a list item above the surface block of divider rows (the
-            recipe pages' list pattern, probed: py-8 outer, 16px subheader
-            padding). */}
+        {/* MUI's List + ListSubheader + Paper(square): the recipe pages'
+            list pattern — the subheader itself a list item (MUI's was an
+            <li>) above the surface block of divider rows, probed: py-8
+            outer, 16px subheader padding. */}
         <ul className="py-2">
           <li>
             <ListSubheader>Instructions</ListSubheader>
             <div className="surface">
               {instructions.map((instruction, index) => (
-                <InstructionRow key={instruction}>
-                  {index + 1}. {instruction}
-                </InstructionRow>
+                <ListRow key={instruction}>
+                  <span className="my-1 flex-1 text-left">
+                    {index + 1}. {instruction}
+                  </span>
+                </ListRow>
               ))}
             </div>
           </li>
         </ul>
       </section>
       <ul className="py-2">
-        <li>
-          <div className="surface">
-            <Link
-              href={getMilkClarifiedRecipeListUrl()}
-              className="relative flex w-full items-center border-x-0 border-t-0 border-b border-border py-2 pr-12 pl-4 text-base transition-colors duration-100 hover:bg-muted"
-            >
-              <span className="my-1 flex-1 text-left">Browse milk-clarified recipes</span>
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                className="absolute top-1/2 right-4 size-6 -translate-y-1/2 fill-current text-foreground"
-              >
-                <path d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-              </svg>
-            </Link>
-          </div>
-        </li>
+        <div className="surface">
+          <LinkListItem
+            href={getMilkClarifiedRecipeListUrl()}
+            primary="Browse milk-clarified recipes"
+          />
+        </div>
       </ul>
     </>
   );

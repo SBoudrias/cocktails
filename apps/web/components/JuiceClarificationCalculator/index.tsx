@@ -5,6 +5,7 @@ import type { RecipeIngredient } from '@cocktails/data';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
+import { InstructionSteps } from '#/components/InstructionSteps';
 import { Button } from '#/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { LabeledField } from '#/components/ui/labeled-field';
@@ -99,41 +100,18 @@ export default function JuiceClarificationCalculator() {
         </div>
       </CardContent>
       <CardContent>
-        {/* MUI's Typography variant=h6 with gutterBottom: 20px/500/32px and
-            the 0.35em (7px) bottom margin. A div like MUI rendered (no
-            heading semantics were added). */}
-        <div
+        <InstructionSteps
           id="juice-clarification-instructions"
-          className="mb-[7px] text-xl leading-8 font-medium"
-        >
-          Instructions
-        </div>
-        {/* The app's base layer strips list markers (probed on the baseline:
-            MUI's CssBaseline never restored them, so no step numbers show).
-            Metrics are MUI's Box pl: 3 (24px indent) with body1 rows. */}
-        <ol aria-labelledby="juice-clarification-instructions" className="pl-6">
-          <li className="text-base">
-            Stir the agar agar into the water and let it bloom for a couple of minutes.
-          </li>
-          <li className="text-base">
-            Heat the mixture gently until it boils to activate the agar agar.
-          </li>
-          <li className="text-base">
-            Transfer it to a heatproof container and let it cool to room temperature until
-            fully set.
-          </li>
-          <li className="text-base">Break the agar gel into smaller pieces.</li>
-          <li className="text-base">
-            Blend the gel while slowly pouring in the raw juice.
-          </li>
-          <li className="text-base">
-            Pour the mixture into a drip filter lined with two coffee filters.
-          </li>
-          <li className="text-base">
-            Let the juice filter without disturbing the gel raft. The first liquid may be
-            cloudy while the raft forms.
-          </li>
-        </ol>
+          steps={[
+            'Stir the agar agar into the water and let it bloom for a couple of minutes.',
+            'Heat the mixture gently until it boils to activate the agar agar.',
+            'Transfer it to a heatproof container and let it cool to room temperature until fully set.',
+            'Break the agar gel into smaller pieces.',
+            'Blend the gel while slowly pouring in the raw juice.',
+            'Pour the mixture into a drip filter lined with two coffee filters.',
+            'Let the juice filter without disturbing the gel raft. The first liquid may be cloudy while the raft forms.',
+          ]}
+        />
       </CardContent>
       <CardContent>
         <p className="mb-4 text-sm">Juice clarification technique by Kate McGraw.</p>
