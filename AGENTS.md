@@ -248,6 +248,15 @@ import { getAllSources, getSource } from '@cocktails/data/sources';
 
 Before using ui-sdk, follow the ui-sdk skill if it's installed, and read `node_modules/@ui-sdk/react/docs/llms.txt`. To build a new component, also search `node_modules/@ui-sdk/react/docs/core.md` by heading, and read `rendering.md` next to it.
 
+## Agent skills
+
+Skills under `.agents/skills/` come in two kinds:
+
+- **Tool-managed** (ui-sdk, web-design-guidelines, writing-guidelines, vercel-*): installed via `yarn skills add` (the `skills` CLI is a repo devDependency) and tracked in `skills-lock.json` at the repo root. Do not hand-edit them — a weekly workflow (`skills-update.yml`) refreshes them from upstream and would overwrite local edits. Refresh them deliberately with `yarn skills update -p -y`.
+- **Hand-maintained** (create-recipes, ingredient-validator, youtube): written for this repo, not in the lock. Edit them like any other source file.
+
+Markdown in `.agents/skills/` is formatted by the repo's oxfmt config, same as the rest of the codebase.
+
 ## Approved Overlaps Registry
 
 `yarn check-data` warns about similar author, bar, and ingredient names that might be misspellings. When two names are genuinely different (e.g. two different people with similar names, or two distinct products like `Zacapa 23` and `Zacapa XO`), register them as reviewed so the check passes.

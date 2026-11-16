@@ -1,0 +1,121 @@
+name: Skills update
+
+# Keeps the agent skills installed by the `skills` CLI in sync
+# with their upstream sources. These skills are tracked in skills-lock.json
+# at the repo root, which pins each skill's source repo, the commit it was
+# installed from and a content hash — that in-repo lock is what makes the
+# update checkable and reviewable here.
+#
+# Scope: ONLY lock-tracked skills (.agents/skills/ui-sdk, web-design-
+# guidelines, writing-guidelines, vercel-*). The hand-maintained repo skills
+# (create-recipes, ingredient-validator, youtube) are NOT in the lock — the
+# tool lists them as "untracked" and never touches them; they update only
+# through normal PRs.
+#
+# What a run does:
+#   1. `skills update` clones each lock source, compares the upstream skill
+#      hash with the lock, and rewrites .agents/skills/<name>/ + the lock
+#      when upstream changed. No change upstream -> exit 0, no PR.
+#   2. If anything under .agents/skills/ or skills-lock.json changed, the
+#      diff is committed to the persistent chore/update-skills branch and a
+#      PR "chore: update agent skills" is opened (or its body refreshed if
+#      one is already open). Skill content is reviewed like any other code
+#      change: skills run with full agent permissions.
+#
+# `yarn skills` runs the CLI from the repo's devDependencies (pinned
+# exactly), so dependabot bumps it like any other dependency and a breaking
+# CLI release can't change how this job behaves overnight.
+#
+# next.js skills are deliberately NOT installed: next@16 ships its version-
+# matched docs in node_modules/next/dist/docs/ and rewrites the AGENTS.md
+# rules itself, which is the upstream-recommended replacement for the
+# archived vercel-labs/next-skills repo.
+
+on:
+  schedule:
+    # Every Monday 10:00 UTC (offset from the Sunday 09:00 YouTube sync)
+    - cron: '0 10 * * 1'
+  workflow_dispatch:
+    # Allow manual triggering for testing
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: skills-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/setup-node
+
+      - name: Update skills managed by skills-lock.json ⬆️
+        run: yarn skills update --project --yes
+
+      # The repo lints every markdown file with oxfmt (yarn lint runs
+      # `oxfmt . --check`), and upstream skill files don't follow that style.
+      # Format what the update touched so the PR this opens passes lint.
+      # skills-lock.json is written by the skills CLI and already conforms.
+      - name: Format updated skill files 🧹
+        run: yarn oxfmt .agents/skills
+
+      - name: Check for changes 🔍
+        id: changes
+        run: |
+          if [[ -z "$(git status --porcelain -- .agents/skills skills-lock.json)" ]]; then
+            echo 'All skills are up to date.'
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            git status --porcelain -- .agents/skills skills-lock.json
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Collect diff summary 🧾
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          {
+            echo 'BODY<<EOF'
+            echo 'Weekly refresh of the skills installed via `yarn skills add`.'
+            echo ''
+            echo 'Updated by the [skills-update workflow](https://github.com/${{ github.repository }}/blob/main/.github/workflows/skills-update.yml). Review the skill diffs before merging — skills run with full agent permissions.'
+            echo ''
+            echo '```'
+            git diff --stat -- .agents/skills skills-lock.json
+            echo '```'
+            echo ''
+            echo 'Lock changes (source commits each skill now pins):'
+            echo ''
+            echo '```diff'
+            git diff -- skills-lock.json
+            echo '```'
+            echo 'EOF'
+          } >> "$GITHUB_ENV"
+
+      - name: Open or refresh the update PR 🔀
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH=chore/update-skills
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout -b "$BRANCH"
+          git add .agents/skills skills-lock.json
+          git commit -m "chore: update agent skills"
+          git push --force origin "$BRANCH"
+          # Reuse an open PR on the branch; create one if none exists yet.
+          if gh pr view "$BRANCH" >/dev/null 2>&1; then
+            gh pr edit "$BRANCH" --body "$BODY"
+          else
+            gh pr create \
+              --head "$BRANCH" \
+              --title 'chore: update agent skills' \
+              --body "$BODY"
+          fi
