@@ -46,6 +46,8 @@ function ToggleGroupItem({ className, children, ...props }: TogglePrimitive.Prop
         // its content width — the fullWidth groups override it to shrink.
         'shrink-0 rounded-none border bg-transparent text-[13px] leading-[1.75] font-medium whitespace-nowrap uppercase outline-none transition-all',
         'first:rounded-s-lg last:rounded-e-lg first:border-l-0',
+        // Unselected labels sit deliberately pure white — brighter than the
+        // foreground's cyan cast — so the picked item reads at a glance.
         'p-1.75 text-white hover:text-foreground aria-pressed:bg-foreground/16 aria-pressed:text-foreground',
         'focus-visible:z-10 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50',
         'disabled:pointer-events-none disabled:opacity-50',
