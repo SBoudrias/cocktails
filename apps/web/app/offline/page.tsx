@@ -21,7 +21,9 @@ export default function OfflinePage() {
   return (
     <>
       <AppHeader title="Indexotica" />
-      <main className="flex flex-col items-center gap-4 px-4 pt-16 text-center">
+      {/* The root layout carries the one <main> landmark; per-page mains
+          would nest (Lighthouse landmark-one-main). */}
+      <div className="flex flex-col items-center gap-4 px-4 pt-16 text-center">
         <TikiMark variant="detailed" size={64} opacity={0.5} />
         <h1 className="text-2xl leading-8 font-normal">You are offline</h1>
         <p className="max-w-[420px] text-base">
@@ -33,7 +35,7 @@ export default function OfflinePage() {
         <Link href={getRecipeListUrl()} className="text-base text-primary">
           Go to all recipes
         </Link>
-      </main>
+      </div>
     </>
   );
 }

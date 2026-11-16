@@ -104,7 +104,9 @@ export default function RootLayout({
               backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
             }}
           >
-            <div className="grow">{children}</div>
+            {/* The one <main> landmark for every page (Lighthouse
+                landmark-one-main; from the PWA audit's unmerged fix). */}
+            <main className="grow">{children}</main>
             <AppFooter />
           </div>
         </NuqsAdapter>

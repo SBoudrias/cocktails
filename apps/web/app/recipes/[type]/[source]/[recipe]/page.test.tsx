@@ -126,8 +126,10 @@ describe('RecipePage', () => {
       }),
     );
 
-    const recipeContent = screen.getByRole('main');
-    expect(recipeContent).toHaveTextContent('stirred');
+    // The <main> landmark lives in the root layout now; the preparation
+    // badge ('stirred') carries the same signal from the page itself.
+    const badges = screen.getByRole('list', { name: 'Preparation, ice and glassware' });
+    expect(badges).toHaveTextContent('stirred');
     expect(screen.queryByText('Whole milk clarified')).not.toBeInTheDocument();
 
     const technique = screen.getByRole('list', { name: 'Milk clarification' });
