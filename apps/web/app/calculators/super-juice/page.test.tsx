@@ -43,7 +43,7 @@ describe('SuperJuiceCalculatorPage', () => {
   it('switches to lemon and drops the malic acid field', async () => {
     const { user } = await setupApp(<SuperJuiceCalculatorPage />);
 
-    await user.click(screen.getByRole('button', { name: 'Lemon' }));
+    await user.click(screen.getByRole('radio', { name: 'Lemon' }));
 
     expect(screen.getByRole('spinbutton', { name: 'Lemon peel weight' })).toHaveValue(
       100,
@@ -58,7 +58,7 @@ describe('SuperJuiceCalculatorPage', () => {
       nuqsOptions: { onUrlUpdate },
     });
 
-    await user.click(screen.getByRole('button', { name: 'Grapefruit' }));
+    await user.click(screen.getByRole('radio', { name: 'Grapefruit' }));
 
     expect(onUrlUpdate).toHaveBeenLastCalledWith(
       expect.objectContaining({ queryString: '?citrus=grapefruit' }),
@@ -86,7 +86,7 @@ describe('SuperJuiceCalculatorPage', () => {
   it('adds rounded MSG to the grapefruit batch', async () => {
     const { user } = await setupApp(<SuperJuiceCalculatorPage />);
 
-    await user.click(screen.getByRole('button', { name: 'Grapefruit' }));
+    await user.click(screen.getByRole('radio', { name: 'Grapefruit' }));
 
     expect(screen.getByRole('textbox', { name: 'Citric acid' })).toHaveValue('80');
     expect(screen.getByRole('textbox', { name: 'Malic acid' })).toHaveValue('20');
@@ -96,7 +96,7 @@ describe('SuperJuiceCalculatorPage', () => {
   it('uses whole kumquats', async () => {
     const { user } = await setupApp(<SuperJuiceCalculatorPage />);
 
-    await user.click(screen.getByRole('button', { name: 'Kumquat' }));
+    await user.click(screen.getByRole('radio', { name: 'Kumquat' }));
 
     expect(screen.getByRole('spinbutton', { name: 'Kumquat weight' })).toHaveValue(100);
     expect(screen.getByRole('textbox', { name: 'Citric acid' })).toHaveValue('25');
@@ -130,7 +130,7 @@ describe('SuperJuiceCalculatorPage', () => {
   it('adapts the instructions to whole-fruit kumquats', async () => {
     const { user } = await setupApp(<SuperJuiceCalculatorPage />);
 
-    await user.click(screen.getByRole('button', { name: 'Kumquat' }));
+    await user.click(screen.getByRole('radio', { name: 'Kumquat' }));
 
     const instructions = screen.getByRole('list', { name: 'Instructions' });
     expect(within(instructions).getAllByRole('listitem')).toHaveLength(5);

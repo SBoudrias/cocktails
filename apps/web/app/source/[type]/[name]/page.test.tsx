@@ -246,9 +246,11 @@ describe('SourcePage - Book sources', () => {
         }),
       );
 
-      expect(screen.getByRole('group', { name: /recipe grouping/i })).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /by chapter/i })).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /a-z/i })).toBeInTheDocument();
+      expect(
+        screen.getByRole('radiogroup', { name: /recipe grouping/i }),
+      ).toBeInTheDocument();
+      expect(screen.getByRole('radio', { name: /by chapter/i })).toBeInTheDocument();
+      expect(screen.getByRole('radio', { name: /a-z/i })).toBeInTheDocument();
     });
 
     it('defaults to chapter grouping view', async () => {
@@ -262,8 +264,8 @@ describe('SourcePage - Book sources', () => {
       );
 
       // Check that chapter toggle shows chapter is selected
-      expect(screen.getByRole('button', { name: /by chapter/i })).toHaveAttribute(
-        'aria-pressed',
+      expect(screen.getByRole('radio', { name: /by chapter/i })).toHaveAttribute(
+        'aria-checked',
         'true',
       );
       // Chapter names should appear as group headers
@@ -281,11 +283,11 @@ describe('SourcePage - Book sources', () => {
         }),
       );
 
-      const azButton = screen.getByRole('button', { name: /a-z/i });
+      const azButton = screen.getByRole('radio', { name: /a-z/i });
       await user.click(azButton);
 
       // Should now show alphabetical groups
-      expect(azButton).toHaveAttribute('aria-pressed', 'true');
+      expect(azButton).toHaveAttribute('aria-checked', 'true');
       // Alphabetical header should appear
       expect(screen.getByRole('group', { name: 'A' })).toBeInTheDocument();
     });
@@ -301,7 +303,7 @@ describe('SourcePage - Book sources', () => {
       );
 
       // Switch to A-Z
-      await user.click(screen.getByRole('button', { name: /a-z/i }));
+      await user.click(screen.getByRole('radio', { name: /a-z/i }));
 
       expect(localStorage.getItem('book-grouping')).toBe('"alphabetical"');
     });
@@ -318,8 +320,8 @@ describe('SourcePage - Book sources', () => {
         }),
       );
 
-      expect(screen.getByRole('button', { name: /a-z/i })).toHaveAttribute(
-        'aria-pressed',
+      expect(screen.getByRole('radio', { name: /a-z/i })).toHaveAttribute(
+        'aria-checked',
         'true',
       );
     });
@@ -335,7 +337,9 @@ describe('SourcePage - Book sources', () => {
       );
 
       // Toggle visible initially
-      expect(screen.getByRole('group', { name: /recipe grouping/i })).toBeInTheDocument();
+      expect(
+        screen.getByRole('radiogroup', { name: /recipe grouping/i }),
+      ).toBeInTheDocument();
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'zombie');
@@ -384,7 +388,7 @@ describe('SourcePage - Book sources', () => {
         }),
       );
 
-      await user.click(screen.getByRole('button', { name: /a-z/i }));
+      await user.click(screen.getByRole('radio', { name: /a-z/i }));
 
       expect(screen.getByRole('link', { name: /pupule/i })).toHaveTextContent(
         "Smuggler's Cove · The Birth of Tiki",

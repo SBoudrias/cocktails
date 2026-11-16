@@ -5,7 +5,10 @@ import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
 import { Card, CardHeader, CardTitle } from '#/components/ui/card';
-import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
+import {
+  SegmentedControl,
+  SegmentedControlItem,
+} from '#/components/ui/segmented-control';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { byLocationListConfig } from '#/modules/lists/by-location';
 import { byNameListConfig } from '#/modules/lists/by-name';
@@ -59,18 +62,18 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
       />
       {hasLocations && !isSearching && (
         <div className="mx-4 flex justify-end">
-          <ToggleGroup
-            value={[groupMode]}
-            onValueChange={([newValue]) => {
+          <SegmentedControl
+            value={groupMode}
+            onValueChange={(newValue) => {
               if (newValue === 'alpha' || newValue === 'city') {
                 setGroupMode(newValue);
               }
             }}
             aria-label="Bar grouping"
           >
-            <ToggleGroupItem value="alpha">A-Z</ToggleGroupItem>
-            <ToggleGroupItem value="city">By City</ToggleGroupItem>
-          </ToggleGroup>
+            <SegmentedControlItem value="alpha">A-Z</SegmentedControlItem>
+            <SegmentedControlItem value="city">By City</SegmentedControlItem>
+          </SegmentedControl>
         </div>
       )}
       <SearchableList

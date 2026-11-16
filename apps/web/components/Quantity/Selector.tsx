@@ -1,6 +1,9 @@
 'use client';
 
-import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
+import {
+  SegmentedControl,
+  SegmentedControlItem,
+} from '#/components/ui/segmented-control';
 
 export type Unit = 'oz' | 'ml';
 
@@ -12,16 +15,17 @@ export default function UnitSelector({
   onChange: (unit: Unit) => void;
 }) {
   return (
-    <ToggleGroup
-      value={[value]}
-      // A single-choice group: pressing the active unit again keeps it.
-      onValueChange={([newVal]) => {
-        if (newVal != null) onChange(newVal === 'oz' ? 'oz' : 'ml');
+    // A radio group: pressing the active unit again keeps it, so onValueChange
+    // never fires with null from a press.
+    <SegmentedControl
+      value={value}
+      onValueChange={(next) => {
+        if (next != null) onChange(next);
       }}
       aria-label="Preferred measurement unit"
     >
-      <ToggleGroupItem value="oz">oz</ToggleGroupItem>
-      <ToggleGroupItem value="ml">ml</ToggleGroupItem>
-    </ToggleGroup>
+      <SegmentedControlItem value="oz">oz</SegmentedControlItem>
+      <SegmentedControlItem value="ml">ml</SegmentedControlItem>
+    </SegmentedControl>
   );
 }

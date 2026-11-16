@@ -10,7 +10,10 @@ import { Button } from '#/components/ui/button';
 import { buttonVariants } from '#/components/ui/button-variants';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { LabeledField } from '#/components/ui/labeled-field';
-import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
+import {
+  SegmentedControl,
+  SegmentedControlItem,
+} from '#/components/ui/segmented-control';
 import Video from '#/components/Video';
 
 const DEFAULT_TARGET_ACIDITY = 6;
@@ -36,18 +39,19 @@ function AcidProfileSelector({
   onChange: (profile: AcidProfile) => void;
 }) {
   return (
-    <ToggleGroup
-      value={[profile]}
-      // A single-choice group: pressing the active profile again keeps it.
-      onValueChange={([next]) => {
+    // A radio group: pressing the active profile again keeps it, so
+    // onValueChange never fires with null from a press.
+    <SegmentedControl
+      value={profile}
+      onValueChange={(next) => {
         if (next != null) onChange(next);
       }}
       aria-label="Target acid profile"
       fullWidth
     >
-      <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
-      <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
-    </ToggleGroup>
+      <SegmentedControlItem value="lime">Lime</SegmentedControlItem>
+      <SegmentedControlItem value="lemon">Lemon</SegmentedControlItem>
+    </SegmentedControl>
   );
 }
 
@@ -449,16 +453,16 @@ export default function AcidAdjustingCalculator({
       <CardHeader className="flex-row items-center pb-6">
         <CardTitle className="min-w-0 flex-1">Acid Adjusting</CardTitle>
         <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">
-          <ToggleGroup
-            value={[type]}
-            onValueChange={([next]) => {
+          <SegmentedControl
+            value={type}
+            onValueChange={(next) => {
               if (next != null) setType(next);
             }}
             aria-label="Preferred acid-adjusting technique"
           >
-            <ToggleGroupItem value="solution">Solution</ToggleGroupItem>
-            <ToggleGroupItem value="powder">Powder</ToggleGroupItem>
-          </ToggleGroup>
+            <SegmentedControlItem value="solution">Solution</SegmentedControlItem>
+            <SegmentedControlItem value="powder">Powder</SegmentedControlItem>
+          </SegmentedControl>
         </div>
       </CardHeader>
       {match(type)

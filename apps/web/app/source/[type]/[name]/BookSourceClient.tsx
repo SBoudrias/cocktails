@@ -10,7 +10,10 @@ import SearchAllLink from '#/components/SearchAllLink';
 import SearchHeader from '#/components/SearchHeader';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
-import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
+import {
+  SegmentedControl,
+  SegmentedControlItem,
+} from '#/components/ui/segmented-control';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { createByChapterListConfig } from '#/modules/lists/by-chapter';
 import { byNameListConfig } from '#/modules/lists/by-name';
@@ -122,18 +125,19 @@ function GroupModeToggle({
   onChange: (value: GroupMode) => void;
 }) {
   return (
-    <ToggleGroup
-      value={[value]}
-      onValueChange={([newValue]) => {
-        // A single-choice group: the pressed value is the new mode.
+    // A radio group: the pressed value is the new mode; pressing the active
+    // one keeps it, so onValueChange never fires with null from a press.
+    <SegmentedControl
+      value={value}
+      onValueChange={(newValue) => {
         if (newValue === 'chapter' || newValue === 'alphabetical') {
           onChange(newValue);
         }
       }}
       aria-label="Recipe grouping"
     >
-      <ToggleGroupItem value="chapter">By Chapter</ToggleGroupItem>
-      <ToggleGroupItem value="alphabetical">A-Z</ToggleGroupItem>
-    </ToggleGroup>
+      <SegmentedControlItem value="chapter">By Chapter</SegmentedControlItem>
+      <SegmentedControlItem value="alphabetical">A-Z</SegmentedControlItem>
+    </SegmentedControl>
   );
 }

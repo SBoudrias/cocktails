@@ -13,7 +13,10 @@ import {
   CardTitle,
 } from '#/components/ui/card';
 import { LabeledField } from '#/components/ui/labeled-field';
-import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
+import {
+  SegmentedControl,
+  SegmentedControlItem,
+} from '#/components/ui/segmented-control';
 import Video from '#/components/Video';
 import { formatAmount } from '#/modules/formatAmount';
 import { type SuperJuiceCitrus, calculateSuperJuice } from '#/modules/superJuice';
@@ -43,21 +46,22 @@ function CitrusSelector({
   onChange: (citrus: SuperJuiceCitrus) => void;
 }) {
   return (
-    <ToggleGroup
-      value={[citrus]}
-      // A single-choice group: pressing the active citrus again keeps it.
-      onValueChange={([newVal]) => {
+    // A radio group: pressing the active citrus again keeps it, so
+    // onValueChange never fires with null from a press.
+    <SegmentedControl
+      value={citrus}
+      onValueChange={(newVal) => {
         if (newVal != null) onChange(newVal);
       }}
       aria-label="Citrus type"
       fullWidth
     >
-      <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
-      <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
-      <ToggleGroupItem value="orange">Orange</ToggleGroupItem>
-      <ToggleGroupItem value="grapefruit">Grapefruit</ToggleGroupItem>
-      <ToggleGroupItem value="kumquat">Kumquat</ToggleGroupItem>
-    </ToggleGroup>
+      <SegmentedControlItem value="lemon">Lemon</SegmentedControlItem>
+      <SegmentedControlItem value="lime">Lime</SegmentedControlItem>
+      <SegmentedControlItem value="orange">Orange</SegmentedControlItem>
+      <SegmentedControlItem value="grapefruit">Grapefruit</SegmentedControlItem>
+      <SegmentedControlItem value="kumquat">Kumquat</SegmentedControlItem>
+    </SegmentedControl>
   );
 }
 

@@ -160,13 +160,13 @@ describe('BarListPage', () => {
   it('shows grouping toggle with A-Z selected by default', async () => {
     await setupApp(await BarListPage());
 
-    expect(screen.getByRole('group', { name: /bar grouping/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /a-z/i })).toHaveAttribute(
-      'aria-pressed',
+    expect(screen.getByRole('radiogroup', { name: /bar grouping/i })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: /a-z/i })).toHaveAttribute(
+      'aria-checked',
       'true',
     );
-    expect(screen.getByRole('button', { name: /by city/i })).toHaveAttribute(
-      'aria-pressed',
+    expect(screen.getByRole('radio', { name: /by city/i })).toHaveAttribute(
+      'aria-checked',
       'false',
     );
   });
@@ -175,8 +175,8 @@ describe('BarListPage', () => {
     localStorage.setItem('bars-grouping', '"city"');
     await setupApp(await BarListPage());
 
-    expect(screen.getByRole('button', { name: /by city/i })).toHaveAttribute(
-      'aria-pressed',
+    expect(screen.getByRole('radio', { name: /by city/i })).toHaveAttribute(
+      'aria-checked',
       'true',
     );
   });
@@ -184,7 +184,7 @@ describe('BarListPage', () => {
   it('persists grouping preference in localStorage', async () => {
     const { user } = await setupApp(await BarListPage());
 
-    await user.click(screen.getByRole('button', { name: /by city/i }));
+    await user.click(screen.getByRole('radio', { name: /by city/i }));
 
     expect(localStorage.getItem('bars-grouping')).toBe('"city"');
   });
@@ -192,12 +192,12 @@ describe('BarListPage', () => {
   it('hides grouping toggle when searching', async () => {
     const { user } = await setupApp(await BarListPage());
 
-    expect(screen.getByRole('group', { name: /bar grouping/i })).toBeInTheDocument();
+    expect(screen.getByRole('radiogroup', { name: /bar grouping/i })).toBeInTheDocument();
 
     await user.type(screen.getByRole('searchbox'), 'sunken');
 
     expect(
-      screen.queryByRole('group', { name: /bar grouping/i }),
+      screen.queryByRole('radiogroup', { name: /bar grouping/i }),
     ).not.toBeInTheDocument();
   });
 });
@@ -230,7 +230,7 @@ describe('BarListPage city grouping', () => {
   it('switches to city grouping when By City is clicked', async () => {
     const { user } = await setupApp(await BarListPage());
 
-    await user.click(screen.getByRole('button', { name: /by city/i }));
+    await user.click(screen.getByRole('radio', { name: /by city/i }));
 
     const brooklynGroup = screen.getByRole('group', { name: 'Brooklyn, NY' });
     expect(brooklynGroup).toHaveTextContent(TEST_BAR.name);
@@ -242,7 +242,7 @@ describe('BarListPage city grouping', () => {
   it('hides the location sub-label in city mode: the header already carries it', async () => {
     const { user } = await setupApp(await BarListPage());
 
-    await user.click(screen.getByRole('button', { name: /by city/i }));
+    await user.click(screen.getByRole('radio', { name: /by city/i }));
 
     const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
     expect(link).not.toHaveTextContent(TEST_BAR.location!);
@@ -259,7 +259,7 @@ describe('BarListPage city grouping', () => {
     localStorage.setItem('bars-grouping', '"city"');
     const { user } = await setupApp(await BarListPage());
 
-    await user.click(screen.getByRole('button', { name: /a-z/i }));
+    await user.click(screen.getByRole('radio', { name: /a-z/i }));
 
     expect(localStorage.getItem('bars-grouping')).toBe('"alpha"');
   });
