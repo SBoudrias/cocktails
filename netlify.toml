@@ -1,0 +1,54 @@
+# Netlify project config for PR previews of the web app.
+#
+# Production deploys live on GitHub Pages (.github/workflows/deploy.yml);
+# this Netlify project exists only to build deploy previews for pull
+# requests, via Netlify's own Git integration. No deploy machinery in the
+# repo and no token secret: Netlify's GitHub app authenticates itself.
+#
+# One-time setup (Netlify UI, no repo changes): connect this repository as
+# a site named `indexotica-previews`, keep the production branch as `main`,
+# leave additional branch deploys off. Every PR then gets a preview at
+#   https://deploy-preview-<PR>--indexotica-previews.netlify.app/
+# (the root redirects to the app) and Netlify's GitHub app posts the link
+# on the PR. The repo's own gate (.github/workflows/preview.yml) builds
+# the same export and runs the offline + smoke checks on every PR.
+#
+# The export is staged under /pr-preview/pr-<PR>/ rather than served at
+# the preview root: every derived path (the noindex heuristic in
+# apps/web/app/layout.tsx, the service-worker scope, the manifest, the
+# smoke suite's path parsing) keys off that basePath shape, so the app
+# code has no preview-specific behavior beyond reading its origin from
+# NEXT_PUBLIC_SITE_ORIGIN.
+
+[build]
+base = "/"
+# Build with the PR's preview basePath, then stage the export under it:
+# Netlify serves the publish directory at the deploy-preview URL root.
+# The root index.html redirects to the staged app so the link Netlify
+# posts on the PR (the deploy root) opens the preview home page.
+# REVIEW_ID is the PR number; SITE_NAME is the Netlify site subdomain.
+command = 'NEXT_PUBLIC_BASE_PATH=/pr-preview/pr-$REVIEW_ID NEXT_PUBLIC_SITE_ORIGIN=https://deploy-preview-$REVIEW_ID--$SITE_NAME.netlify.app yarn workspace @cocktails/web build && find apps/web/out -name "__next._full.txt" -type f -delete && rm -rf apps/web/deploy && mkdir -p apps/web/deploy/pr-preview/pr-$REVIEW_ID && mv apps/web/out/* apps/web/deploy/pr-preview/pr-$REVIEW_ID/ && mv apps/web/deploy/pr-preview/pr-$REVIEW_ID/404.html apps/web/deploy/404.html && echo "<!doctype html><title>Preview</title><meta http-equiv=\"refresh\" content=\"0; url=/pr-preview/pr-$REVIEW_ID/\"><a href=\"/pr-preview/pr-$REVIEW_ID/\">Open the preview</a>" > apps/web/deploy/index.html'
+publish = "apps/web/deploy"
+# Only build deploy previews: production stays on GitHub Pages and
+# branch deploys are off. REVIEW_ID is set only for pull request builds;
+# the BRANCH check covers the production branch regardless. For a PR,
+# the default change detection applies, restricted to the paths that can
+# affect the site (the same list .github/workflows/preview.yml filters
+# on) so recipe-data and docs-only churn elsewhere does not burn build
+# minutes. Exit 0 skips the build; exit 1 proceeds. The same-ref guard
+# covers the first build of a site or branch, where netlify sets
+# CACHED_COMMIT_REF equal to COMMIT_REF and the diff would be empty.
+ignore = 'if [ -z "$REVIEW_ID" ] || [ "$BRANCH" = "main" ]; then exit 0; fi; if [ "$CACHED_COMMIT_REF" = "$COMMIT_REF" ]; then exit 1; fi; git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF apps/web packages/data packages/conversion packages/ingredient-sorting public package.json yarn.lock .yarnrc.yml netlify.toml tsconfig.json'
+
+[build.environment]
+NODE_VERSION = "24"
+
+# Previews must never be indexed: the page-level robots meta (layout.tsx's
+# isPreview, keyed on the /pr-preview/ basePath) covers crawlers that
+# execute pages; this header covers everything else, on every response.
+# It applies to every deploy of this site — and every deploy of this site
+# is a preview.
+[[headers]]
+for = "/*"
+[headers.elements]
+X-Robots-Tag = "noindex, nofollow"

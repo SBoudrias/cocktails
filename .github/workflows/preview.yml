@@ -1,15 +1,29 @@
 name: PR Preview
 
+# The repo-side preview gate: build the site the way Netlify's preview
+# project builds it (netlify.toml), then run the offline and smoke checks
+# against that build — on every PR, inside GitHub Actions. The live preview
+# itself is Netlify's Deploy Preview, built by their own Git integration
+# from the same netlify.toml: PR N lives at
+#   https://deploy-preview-N--indexotica-previews.netlify.app/
+# and Netlify's GitHub app posts the link on the PR. Nothing here talks to
+# Netlify — no deploy, no token secret; the two builds are the same export
+# from the same config.
+#
+# What this gate adds that the Netlify build cannot: the offline PWA
+# verification (headless Chrome against the export) and the smoke suite
+# (a page of each type fetched and marker-checked). They run against a
+# local `serve` of the staged export with cleanUrls, which mirrors the
+# Netlify runtime (pretty URLs on by default): /recipes/x resolves
+# recipes/x.html, exactly like production Pages does.
 on:
   pull_request:
-    types: [opened, reopened, synchronize, closed]
-    # Only build a preview when the site itself can change: the web app, the
-    # workspace packages it imports (data, conversion, ingredient-sorting),
-    # static assets, dependency manifests, and this workflow. The filter is
+    types: [opened, reopened, synchronize]
+    # Only gate when the site itself can change: the web app, the workspace
+    # packages it imports (data, conversion, ingredient-sorting), static
+    # assets, dependency manifests, and this workflow. The filter is
     # evaluated against the whole PR diff, so a PR that ever touched these
-    # keeps getting previews and its `closed` run still removes the directory.
-    # A PR that never matched has no preview dir to remove; the hourly
-    # cleanup-previews.yml also sweeps any leftover for closed PRs.
+    # keeps getting preview gates on every push.
     paths:
       - apps/web/**
       - packages/data/**
@@ -20,26 +34,32 @@ on:
       - yarn.lock
       - .yarnrc.yml
       - tsconfig.json
+      - netlify.toml
       - .github/workflows/preview.yml
       - .github/workflows/setup-node/**
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
-# Never cancel a running preview job: it may be mid-push to gh-pages. A
-# cancelled job's push can still land after the next run fetched the branch,
-# and when that next run is the PR-closed removal, the rebase conflicts
-# (modify/delete in pr-preview/pr-N) and the job fails (PR #540's merge run).
-# Queued runs still collapse to the newest one.
+# A newer push to the same PR cancels a gate run testing a commit nobody
+# waits on.
 concurrency:
   group: preview-${{ github.event.pull_request.number }}
-  cancel-in-progress: false
+  cancel-in-progress: true
+
+env:
+  # Same basePath and origin the Netlify build uses for this PR
+  # (netlify.toml): REVIEW_ID is the PR number there, github.event.number
+  # here. Same shape as the old gh-pages previews (/pr-preview/pr-N),
+  # without the /cocktails repo segment — the preview site is a dedicated
+  # Netlify project rooted at /.
+  PREVIEW_BASE_PATH: /pr-preview/pr-${{ github.event.number }}
+  PREVIEW_ORIGIN: https://deploy-preview-${{ github.event.number }}--indexotica-previews.netlify.app
 
 jobs:
-  preview:
+  preview-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
@@ -48,14 +68,14 @@ jobs:
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
-        if: github.event.action != 'closed'
 
       - name: Build with preview basePath 🏗️
-        if: github.event.action != 'closed'
         run: yarn workspace @cocktails/web build
         env:
-          GITHUB_TOKEN: ${{ github.token }}
-          NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
+          NEXT_PUBLIC_BASE_PATH: ${{ env.PREVIEW_BASE_PATH }}
+          # Canonical/OG URLs derive from the actual preview host, not the
+          # production Pages origin (layout.tsx).
+          NEXT_PUBLIC_SITE_ORIGIN: ${{ env.PREVIEW_ORIGIN }}
 
       # Prune the __next._full.txt payloads: static export emits each route
       # as a .html plus several .txt RSC payload variants. Browser-session
@@ -67,7 +87,6 @@ jobs:
       # (every click would fall back to a full page load and 404 the
       # router's prefetches).
       - name: Prune payload twins 🧹
-        if: github.event.action != 'closed'
         run: find apps/web/out -name '__next._full.txt' -type f -delete
 
       # The offline gate: drives headless Chrome (installed on the runner)
@@ -75,27 +94,39 @@ jobs:
       # story breaks — precache contents, offline browsing, fallbacks, and
       # survival of a simulated redeploy (apps/web/tools/verify-offline.ts).
       - name: Verify offline PWA 📴
-        if: github.event.action != 'closed'
         timeout-minutes: 10
         run: node apps/web/tools/verify-offline.ts
         env:
-          NEXT_PUBLIC_BASE_PATH: /cocktails/pr-preview/pr-${{ github.event.number }}
+          NEXT_PUBLIC_BASE_PATH: ${{ env.PREVIEW_BASE_PATH }}
 
-      - name: Deploy PR Preview 🚀
-        id: preview
-        uses: rossjrw/pr-preview-action@v1
-        with:
-          source-dir: ./apps/web/out/
-          preview-branch: gh-pages
-          umbrella-dir: pr-preview
-          action: auto
+      # Stage the export under its basePath, mirroring netlify.toml's build
+      # command: the preview URL root serves the staged tree, so the built
+      # URLs (sw.js scope, manifest, canonicals) resolve as-is. The serve
+      # config turns on cleanUrls so /recipes/x finds recipes/x.html —
+      # Netlify's pretty URLs do the same in production previews, and Pages
+      # has always served the app this way.
+      - name: Stage export under its basePath 🗂️
+        run: |
+          mkdir -p "apps/web/deploy${PREVIEW_BASE_PATH}"
+          mv apps/web/out/* "apps/web/deploy${PREVIEW_BASE_PATH}/"
+          echo '{"cleanUrls": true}' > apps/web/deploy/serve.json
 
-      # Waits for GitHub Pages to serve this build, then fetches the home
-      # page and a page of each type and fails on any non-200 or missing
-      # marker (packages/smoke).
+      # The smoke gate: serve the staged export locally and fetch the home
+      # page and a page of each type, failing on any non-200 or missing
+      # marker (packages/smoke) — the same suite that runs against the
+      # production deploy. serve (Vercel) is the cleanUrls reference
+      # implementation; Netlify's pretty URLs match its semantics.
       - name: Smoke test the preview 🔥
-        if: github.event.action != 'closed'
-        timeout-minutes: 14
-        run: yarn workspace @cocktails/smoke smoke "${{ steps.preview.outputs.preview-url }}" "$GITHUB_WORKSPACE/apps/web/out"
-        env:
-          SMOKE_LIVE_TIMEOUT_S: '720'
+        timeout-minutes: 5
+        run: |
+          npx --yes serve@14 --no-clipboard --listen 4170 apps/web/deploy > serve.log 2>&1 &
+          SERVER_PID=$!
+          for i in $(seq 1 30); do
+            curl -sf -o /dev/null "http://localhost:4170" && break
+            sleep 1
+          done
+          yarn workspace @cocktails/smoke smoke \
+            "http://localhost:4170${PREVIEW_BASE_PATH}/" \
+            "$GITHUB_WORKSPACE/apps/web/deploy${PREVIEW_BASE_PATH}" \
+            || { kill $SERVER_PID; cat serve.log; exit 1; }
+          kill $SERVER_PID

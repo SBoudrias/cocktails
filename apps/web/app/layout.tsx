@@ -32,8 +32,15 @@ const description =
 // production site (broken icons, manifest, sitemap, canonicals).
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/cocktails';
 
-// PR preview builds are transient (swept when their PR closes) and live on
-// the production origin; they must not be indexed. Sitemaps cannot express
+// The origin metadata URLs resolve against: the production Pages site by
+// default, or the Netlify deploy-preview host on PR builds (netlify.toml
+// sets it alongside NEXT_PUBLIC_BASE_PATH, mirrored by preview.yml, so
+// canonical/OG URLs point at the URL the preview is actually served
+// from).
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || 'https://sboudrias.github.io';
+
+// PR preview builds are transient (deleted when their PR closes) and live on
+// the preview origin; they must not be indexed. Sitemaps cannot express
 // that — next-sitemap's siteUrl is the production URL in every build, so
 // preview sitemaps list production URLs only, and excluding pr-preview paths
 // there would be a no-op. noindex on the page level is the mechanism that
@@ -45,7 +52,7 @@ export const metadata: Metadata = {
   // building a URL object from the env-derived basePath reads as a runtime
   // URL to static analysis (react-doctor's no-unguarded-throwing-parse-call),
   // though it is evaluated at build time and cannot actually throw.
-  metadataBase: `https://sboudrias.github.io${basePath}/`,
+  metadataBase: `${siteOrigin}${basePath}/`,
   ...(isPreview ? { robots: { index: false } } : {}),
   manifest: `${basePath}/manifest.webmanifest`,
   title: 'Indexotica: Tiki & Cocktails',
