@@ -5,8 +5,14 @@ on:
     branches: ['main']
   workflow_dispatch:
 
+# The official Pages deploy: the site builds into an artifact that
+# deploy-pages publishes atomically. No gh-pages branch — the artifact is
+# the deploy, so the 57 GB branch history is gone (hosting-migration's
+# decision: keep Pages, switch to the artifact deploy, kill the branch).
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages-deploy
@@ -16,6 +22,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
@@ -49,13 +58,14 @@ jobs:
         timeout-minutes: 10
         run: node apps/web/tools/verify-offline.ts
 
-      - name: Deploy to gh-pages 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Pages artifact 📦
+        uses: actions/upload-pages-artifact@v3
         with:
-          folder: ./apps/web/out
-          branch: gh-pages
-          clean-exclude: pr-preview/
-          force: false
+          path: ./apps/web/out
+
+      - name: Deploy to GitHub Pages 🚀
+        id: deploy
+        uses: actions/deploy-pages@v4
 
       # Waits for GitHub Pages to serve this build, then fetches the home
       # page and a page of each type and fails on any non-200 or missing
