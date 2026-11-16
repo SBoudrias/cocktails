@@ -37,13 +37,14 @@ publish = "apps/web/deploy"
 # deploy for its commits, and Netlify then deduplicates every later
 # deploy of the same commits against that empty record ("All files
 # already uploaded") — the exact mechanism that gave PRs #604 and #605
-# empty previews: the ignore command's exit-0 branches skipped builds
-# (the first version gated on BRANCH, which for a deploy preview is the
-# PR's base branch, i.e. main; the second on REVIEW_ID, which skipped
-# the branch-deploy runs that fire on every push to a PR head branch),
-# and each skip poisoned those commits. The context overrides below make
-# non-preview contexts publish a real (tiny) directory instead of
-# skipping, so no empty deploy records are ever created.
+# empty previews. The ignore command's exit-0 branches skipped the
+# branch-deploy runs that fire on every push to a PR head branch
+# (REVIEW_ID is unset there), and each skip poisoned those commits, so
+# the deploy previews that followed deduplicated against the empty
+# records. (diag.txt in the deploy root confirms the deploy-preview
+# environment: BRANCH=pull/N/head, REVIEW_ID=N.) The context overrides
+# below make non-preview contexts publish a real (tiny) directory
+# instead of skipping, so no empty deploy records are ever created.
 
 [build.environment]
 NODE_VERSION = "24"
