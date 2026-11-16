@@ -7,7 +7,7 @@ This app has a heavy Tiki bias, and is a hobby project built for my own needs - 
 A few features:
 
 - Rich recipe collection, focused on quality (e.g. all recipes are part of this project, no low quality recipe data from 3rd parties)
-- Recipes tries to list specific bottles used at bars whenever the information is available. Rum bottles in particular are then classified loosely following the Smuggler's Cove rum classification system. Category pages are listing substitution options.
+- Recipes try to list specific bottles used at bars whenever the information is available. Rum bottles in particular are then classified loosely following the Smuggler's Cove rum classification system. Category pages are listing substitution options.
 - Ingredients also have recipes when available; this includes known rum blends.
 - Some useful calculators around acid adjusting, sugar adjusting, saline solution, etc.
 - As an index, it is meant to be searchable by ingredients, bars, bartender, etc.
@@ -32,9 +32,9 @@ Open [http://localhost:3000/cocktails](http://localhost:3000/cocktails) with you
 
 Recipes are stored in `.json` files under `packages/data/data/recipes/[type]/[source]/[slug].json`, and are nested under their source (book, youtube channel, etc.) The file name should be a url safe slug of the recipe name.
 
-Before adding a new recipe, please check if it already exists in the database. If it does, update the existing recipe instead of creating a new one. With youtube channel in particular, we often see the same recipes uploaded by multiple channels or videos. When the recipe exists, just add the video to the `refs` array of the existing recipe — youtube refs carry the slug of the channel that published the video (`"channel": "anders-erickson"`), which makes the recipe appear on every listed channel's page. If the recipe differs somewhat, create a new recipe with a different slug.
+Before adding a new recipe, please check if it already exists in the database. If it does, update the existing recipe instead of creating a new one. With youtube channel in particular, we often see the same recipes uploaded by multiple channels or videos. When the recipe exists, add the video to the `refs` array of the existing recipe — youtube refs carry the slug of the channel that published the video (`"channel": "anders-erickson"`), which makes the recipe appear on every listed channel's page. If the recipe differs somewhat, create a new recipe with a different slug.
 
-Each recipe file should start by defining it's schema:
+Each recipe file should start by defining its schema:
 
 ```json
 {
@@ -47,7 +47,7 @@ The format of recipes is defined in `packages/data/schemas/recipe.schema.json`, 
 
 You can validate the new files are valid by running `yarn check-data`.
 
-Here's a few common conventions:
+Here are a few common conventions:
 
 1. Use `tsp` when a recipe call for a barspoon.
 2. When an ingredient listed is generic use "category" as its type. Only use spirit, liqueur, wine, etc when a specific bottle/brand is called for.

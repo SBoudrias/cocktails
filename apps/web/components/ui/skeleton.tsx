@@ -10,7 +10,9 @@ export function Skeleton({ className, ...props }: React.ComponentProps<'span'>) 
     <span
       aria-hidden="true"
       className={cn(
-        'animate-skeleton bg-foreground/13 block scale-y-60 origin-[0 55%] rounded-[4px/6.7px]',
+        // motion-reduce: the pulse stops under prefers-reduced-motion, the
+        // static block remaining.
+        'animate-skeleton bg-foreground/13 block scale-y-60 origin-[0 55%] rounded-[4px/6.7px] motion-reduce:animate-none',
         className,
       )}
       {...props}

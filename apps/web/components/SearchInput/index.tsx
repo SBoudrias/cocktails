@@ -28,7 +28,9 @@ export default function SearchInput({
 
   return (
     <div className="flex grow items-stretch">
-      <div className="relative w-full rounded-lg bg-foreground/15 hover:bg-foreground/25">
+      {/* The field box carries the keyboard focus ring (focus-within): the
+          input itself is outline-none, so the ring is the visible focus. */}
+      <div className="relative w-full rounded-lg bg-foreground/15 hover:bg-foreground/25 focus-within:ring-3 focus-within:ring-ring/50">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center px-4">
           <Search aria-hidden="true" className="size-6" />
         </div>
@@ -36,6 +38,7 @@ export default function SearchInput({
           ref={inputRef}
           type="search"
           aria-label="search"
+          autoComplete="off"
           placeholder={placeholder}
           value={value}
           autoFocus={autoFocus}
