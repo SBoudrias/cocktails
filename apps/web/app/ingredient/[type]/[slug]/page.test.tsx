@@ -559,4 +559,120 @@ describe('IngredientPage', () => {
       expect(screen.getByText(`Recipes using ${TEST_SPIRIT.name}`)).toBeInTheDocument();
     });
   });
+
+  describe('substitution drawer', () => {
+    it('offers a Substitutions trigger under the category chips', async () => {
+      await setupApp(spiritPageJSX);
+
+      const trigger = screen.getByRole('button', { name: 'Substitutions' });
+      const chipsGroup = screen.getByRole('group', { name: 'Categories' });
+      expect(
+        chipsGroup.compareDocumentPosition(trigger) & Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+    });
+
+    it('renders no trigger for an ingredient without substitutions', async () => {
+      await setupApp(ingredientPageJSX);
+
+      expect(
+        screen.queryByRole('button', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
+    });
+
+    it('opens the substitution lists in the sheet, reusing the page lists', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      const sheet = screen.getByRole('dialog', { name: 'Substitutions' });
+      const sheetList = within(sheet).getByRole('group', {
+        name: 'Some substitution option',
+      });
+      expect(sheetList).toHaveTextContent('Appleton 21');
+      expect(
+        within(sheet).getByRole('group', { name: 'Substitution-friendly categories' }),
+      ).toHaveTextContent('Blended aged rum');
+
+      // The sheet describes what it substitutes.
+      expect(sheet).toHaveTextContent(`in place of ${TEST_JAMAICAN_RUM.name}.`);
+
+      // The inline desktop copy stays in the page: the mobile split is CSS
+      // only, both lists render from the same SubstitutionLists.
+      const inlineList = screen
+        .getAllByRole('group', { name: 'Some substitution option' })
+        .find((group) => !sheet.contains(group));
+      expect(inlineList).toBeDefined();
+
+      // The two copies' group headers never collide on their ids.
+      expect(
+        document.getElementById('group-header-Some-substitution-option'),
+      ).not.toBeNull();
+      expect(
+        document.getElementById('drawer-header-Some-substitution-option'),
+      ).not.toBeNull();
+    });
+
+    it('is modal: traps focus in the sheet while open', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      const sheet = screen.getByRole('dialog', { name: 'Substitutions' });
+      expect(sheet).toHaveAttribute('aria-modal', 'true');
+
+      // The sheet opens with focus on its content (initialFocus="content"),
+      // never on the page behind it.
+      expect(sheet.contains(document.activeElement)).toBe(true);
+
+      // Tab cycles inside the sheet only: the page's searchbox and links
+      // stay out of reach while the modal is open.
+      for (let tab = 0; tab < 12; tab++) await user.tab();
+      expect(sheet.contains(document.activeElement)).toBe(true);
+    });
+
+    it('closes on Escape and returns focus to the trigger', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      const trigger = screen.getByRole('button', { name: 'Substitutions' });
+      await user.click(trigger);
+      expect(screen.getByRole('dialog', { name: 'Substitutions' })).toBeInTheDocument();
+
+      await user.keyboard('{Escape}');
+
+      expect(
+        screen.queryByRole('dialog', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
+      expect(trigger).toHaveFocus();
+    });
+
+    it('closes from the sheet close button', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+      await user.click(screen.getByRole('button', { name: 'Close substitutions' }));
+
+      expect(
+        screen.queryByRole('dialog', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
+    });
+
+    it('splits by breakpoint: the trigger hides at 600px, the inline lists below it', async () => {
+      await setupApp(jamaicanRumPageJSX);
+
+      // happy-dom applies no CSS: the split lives in the classes — the
+      // trigger hidden at or above 600px (the app chrome's own breakpoint,
+      // --app-bar-height), the inline lists hidden below it.
+      const triggerWrapper = screen
+        .getByRole('button', { name: 'Substitutions' })
+        .closest('div');
+      expect(triggerWrapper).toHaveClass('min-[600px]:hidden');
+
+      const sheet = screen.getAllByRole('group', {
+        name: 'Some substitution option',
+      });
+      expect(sheet.length).toBeGreaterThan(0);
+      const inlineWrapper = sheet[0]!.closest('div.hidden');
+      expect(inlineWrapper).toHaveClass('min-[600px]:block');
+    });
+  });
 });

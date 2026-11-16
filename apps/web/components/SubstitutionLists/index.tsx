@@ -38,13 +38,24 @@ function SeeAllLink({
  * categories, each linking to its category page. Also rendered on its own
  * by the category pages, whose full member list is uncapped.
  */
-export function RelatedCategoriesList({ categories }: { categories: Category[] }) {
+export function RelatedCategoriesList({
+  categories,
+  sticky = true,
+  idPrefix = 'group',
+}: {
+  categories: Category[];
+  /** Passed to the LinkList: false inside the substitution drawer's sheet. */
+  sticky?: boolean;
+  idPrefix?: string;
+}) {
   if (categories.length === 0) return null;
 
   return (
     <LinkList
       header="Substitution-friendly categories"
       items={categories}
+      sticky={sticky}
+      idPrefix={idPrefix}
       renderItem={(relatedCategory) => (
         <LinkListItem
           key={relatedCategory.slug}
@@ -76,6 +87,8 @@ export default function SubstitutionLists({
   recipeCounts,
   seeAll,
   relatedCategories,
+  sticky = true,
+  idPrefix = 'group',
 }: {
   /** Header of the primary list, e.g. "Some substitution option". */
   primaryHeader: string;
@@ -90,6 +103,9 @@ export default function SubstitutionLists({
   };
   /** Related categories, listed after the primary list. */
   relatedCategories: Category[];
+  /** Passed to the LinkLists: false inside the substitution drawer's sheet. */
+  sticky?: boolean;
+  idPrefix?: string;
 }) {
   if (substitutes.length === 0 && relatedCategories.length === 0) return null;
 
@@ -101,6 +117,8 @@ export default function SubstitutionLists({
         <LinkList
           header={primaryHeader}
           items={substitutes.slice(0, MAX_SUBSTITUTION_LINKS - 1)}
+          sticky={sticky}
+          idPrefix={idPrefix}
           renderItem={(substitute) => (
             <LinkListItem
               key={substitute.slug}
@@ -114,7 +132,11 @@ export default function SubstitutionLists({
           footer={isCapped && <SeeAllLink href={seeAll.href} label={seeAll.label} />}
         />
       )}
-      <RelatedCategoriesList categories={relatedCategories} />
+      <RelatedCategoriesList
+        categories={relatedCategories}
+        sticky={sticky}
+        idPrefix={idPrefix}
+      />
     </>
   );
 }
