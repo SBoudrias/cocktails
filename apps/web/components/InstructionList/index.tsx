@@ -10,7 +10,7 @@ export default function InstructionList({ instructions }: { instructions: string
       <ListSubheader>Instructions</ListSubheader>
       <div className="surface">
         {instructions.map((instruction, index) => (
-          <LinkListItem key={index} primary={`${index + 1}. ${instruction}`} />
+          <LinkListItem key={instruction} primary={`${index + 1}. ${instruction}`} />
         ))}
       </div>
     </ul>
