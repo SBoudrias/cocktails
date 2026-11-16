@@ -1,7 +1,6 @@
 import type { Source, WebsiteRef, YoutubeRef } from '@cocktails/data';
 import { getRecipePageParams } from '@cocktails/data/params';
 import { getRecipe } from '@cocktails/data/recipes';
-import { Box } from '@mui/material';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import { match, P } from 'ts-pattern';
 import AppHeader from '#/components/AppHeader';
@@ -75,7 +74,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
   return (
     <>
       <AppHeader title={recipe.name} />
-      <Box component="main">
+      <main>
         <RecipeBadges recipe={recipe} />
         <IngredientList
           ingredients={recipe.ingredients}
@@ -107,7 +106,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
         {videos.length > 0 && <VideoListCard refs={videos} m={1} />}
         {websites.length > 0 && <WebsiteListCard refs={websites} m={1} />}
         <FixBugCard fixUrl={getRecipeEditUrl(recipe)} m={1} />
-      </Box>
+      </main>
     </>
   );
 }

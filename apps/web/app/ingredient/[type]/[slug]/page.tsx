@@ -5,7 +5,6 @@ import {
   getSubstitutesForIngredient,
 } from '@cocktails/data/ingredients';
 import { getIngredientPageParams } from '@cocktails/data/params';
-import { List, ListItem, ListItemText, ListSubheader, Paper } from '@mui/material';
 import uniqBy from 'lodash/uniqBy';
 import { Tag } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -13,6 +12,7 @@ import { notFound, unstable_rethrow } from 'next/navigation';
 import CategoryChips from '#/components/CategoryChips';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
+import { LinkListItem } from '#/components/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import SubstitutionLists from '#/components/SubstitutionLists';
 import { buttonVariants } from '#/components/ui/button-variants';
@@ -23,6 +23,7 @@ import {
   CardHeader,
   CardTitle,
 } from '#/components/ui/card';
+import { ListSubheader } from '#/components/ui/list';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { getCategoryUrl } from '#/modules/url';
@@ -125,18 +126,14 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <IngredientList ingredients={ingredient.ingredients} />
       )}
       {Array.isArray(ingredient.instructions) && ingredient.instructions.length > 0 && (
-        <List>
+        <ul className="py-2">
           <ListSubheader>Instructions</ListSubheader>
-          <Paper square>
+          <div className="surface">
             {ingredient.instructions.map((instruction, index) => (
-              <ListItem divider key={index}>
-                <ListItemText>
-                  {index + 1}. {instruction}
-                </ListItemText>
-              </ListItem>
+              <LinkListItem key={index} primary={`${index + 1}. ${instruction}`} />
             ))}
-          </Paper>
-        </List>
+          </div>
+        </ul>
       )}
       <IngredientCalculators ingredient={ingredient} />
       {substitution && (
