@@ -47,6 +47,14 @@ publish = "apps/web/deploy"
 
 [build.environment]
 NODE_VERSION = "24"
+# The site was imported as a Next.js project, so Netlify installs its
+# Next.js runtime — which provisions serverless functions for SSR and
+# takes over the publish, shipping zero files for this repo (the app is
+# `output: 'export'` static; there is nothing to serve through functions,
+# and the deploy ends up empty with only the runtime's redirect rules).
+# This documented variable skips the runtime for next-export-style sites,
+# so the [build] command and publish directory are ours alone.
+NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 # Non-preview contexts never run the app build: production stays on
 # GitHub Pages (.github/workflows/deploy.yml) — this Netlify site exists
