@@ -125,11 +125,7 @@ function renderIngredient(ingredient: RootIngredient, recipeCounts: Map<string, 
       key={ingredient.slug}
       href={ingredientHasData(ingredient) ? getIngredientUrl(ingredient) : undefined}
       primary={ingredient.name}
-      tertiary={
-        <span className="text-muted-foreground">
-          {recipeCounts.get(ingredient.slug) ?? 0}
-        </span>
-      }
+      count={recipeCounts.get(ingredient.slug) ?? 0}
     />
   );
 }

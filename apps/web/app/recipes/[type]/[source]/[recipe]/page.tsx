@@ -6,11 +6,10 @@ import { match, P } from 'ts-pattern';
 import AppHeader from '#/components/AppHeader';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
-import { LinkListItem } from '#/components/LinkList';
+import InstructionList from '#/components/InstructionList';
 import RecipeAttributionList from '#/components/RecipeAttributionList';
 import RecipeBadges from '#/components/RecipeBadges';
 import SourceAboutCard from '#/components/SourceAboutCard';
-import { ListSubheader } from '#/components/ui/list';
 import VideoListCard from '#/components/VideoListCard';
 import WebsiteListCard from '#/components/WebsiteListCard';
 import { getRecipeEditUrl } from '#/modules/url';
@@ -82,17 +81,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           defaultServings={recipe.servings}
         />
         {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
-          <ul className="py-2">
-            <ListSubheader>Instructions</ListSubheader>
-            <div className="bg-card">
-              {recipe.instructions.map((instruction, index) => (
-                <LinkListItem
-                  key={instruction}
-                  primary={`${index + 1}. ${instruction}`}
-                />
-              ))}
-            </div>
-          </ul>
+          <InstructionList instructions={recipe.instructions} />
         )}
         {recipe.attributions.length > 0 && (
           <RecipeAttributionList attributions={recipe.attributions} />

@@ -27,18 +27,13 @@ export default function RecipeBadges({
   ];
 
   return (
-    <ul
-      aria-label="Preparation, ice and glassware"
-      className={`${styles.badges} my-2 grid grid-cols-3`}
-    >
+    <ul aria-label="Preparation, ice and glassware" className={styles.badges}>
       {badges.map(({ field, value, shape }) => (
         <li key={field} className={styles.badge}>
           <div className={styles.bubble}>
             <RecipeIcon shape={shape} id={`recipe-icon-${field}`} />
           </div>
-          {/* MUI's caption variant: 12px/1.66 — the theme never applied the
-              text.secondary prop, so the baseline renders it foreground. */}
-          <span className={`${styles.caption} text-xs leading-[1.66]`}>{value}</span>
+          <span className={styles.caption}>{value}</span>
         </li>
       ))}
     </ul>

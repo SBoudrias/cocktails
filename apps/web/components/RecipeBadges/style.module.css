@@ -1,6 +1,9 @@
 .badges {
   list-style: none;
   text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-block: 8px;
 }
 
 .badge {
@@ -23,6 +26,8 @@
 
 .caption {
   text-transform: capitalize;
+  font-size: 12px;
+  line-height: 1.66;
 }
 
 .icon {

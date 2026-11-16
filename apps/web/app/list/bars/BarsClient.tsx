@@ -23,7 +23,7 @@ function renderBar(bar: Bar, showLocation: boolean) {
       href={getBarRecipesUrl(bar)}
       primary={bar.name}
       secondary={showLocation ? bar.location : undefined}
-      tertiary={<span className="text-muted-foreground">{bar.recipeCount}</span>}
+      count={bar.recipeCount}
     />
   );
 }

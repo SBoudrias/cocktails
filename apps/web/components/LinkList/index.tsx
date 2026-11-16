@@ -16,6 +16,7 @@ export function LinkListItem<RouteType>({
   primary,
   secondary,
   tertiary,
+  count,
 }: {
   href?: LinkProps<RouteType>['href'];
   /** Leading icon, MUI's ListItemIcon slot (sized by the caller). */
@@ -23,6 +24,8 @@ export function LinkListItem<RouteType>({
   primary: React.ReactNode;
   secondary?: React.ReactNode;
   tertiary?: React.ReactNode;
+  /** Muted trailing count — the recipe-count tertiary every list draws. */
+  count?: number;
 }) {
   // MUI ListItem metrics: 8px padding + ListItemText's 4px margins, with
   // the chevron MUI's secondaryAction drew.
@@ -42,6 +45,7 @@ export function LinkListItem<RouteType>({
         {secondary && <span className={secondaryClass}>{secondary}</span>}
       </span>
       {tertiary && <span className="shrink-0">{tertiary}</span>}
+      {count != null && <span className="shrink-0 text-muted-foreground">{count}</span>}
       {href && (
         <ChevronRight className="absolute top-1/2 right-4 size-6 -translate-y-1/2 text-foreground" />
       )}
