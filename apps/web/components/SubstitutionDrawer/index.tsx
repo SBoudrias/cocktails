@@ -9,16 +9,17 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@ui-sdk/react/drawer';
-import { ArrowLeftRight, X } from 'lucide-react';
+import { ArrowLeftRight, ChevronDown, X } from 'lucide-react';
 import type { ReactNode } from 'react';
+import './drawer.css';
 
-// The mobile substitution entry point: a chip row right under the page
-// title (after the category chips) opening a bottom sheet that holds the
-// page's substitution lists, so they stop pushing the recipe list down the
-// page. The 600px split is the app chrome's own breakpoint (AppBar padding,
-// --app-bar-height): below it this trigger shows and the page hides its
-// inline lists; at or above it the trigger is hidden and the inline lists
-// stay exactly as they were.
+// The substitution entry point: a prominent filled action button on its own
+// row right under the page title (below the category chips), opening a
+// bottom sheet that holds the page's substitution lists. Substitutions are a
+// primary piece of ingredient information, so the trigger reads as a button
+// — solid fill, uppercase, full row width — clearly set apart from the
+// translucent category pills beside it, and it shows in every mode: the
+// sheet is the single substitution UI on mobile and desktop alike.
 export default function SubstitutionDrawer({
   ingredientName,
   children,
@@ -29,10 +30,11 @@ export default function SubstitutionDrawer({
 }) {
   return (
     <Drawer side="bottom">
-      <div className="mx-4 -mt-1 mb-2 min-[600px]:hidden">
-        <DrawerTrigger className="inline-flex h-auto items-center gap-1.5 rounded-full border-0 bg-primary/16 px-3 py-1 text-[0.8125rem] leading-[1.5] text-foreground outline-none hover:bg-primary/30 focus-visible:ring-3 focus-visible:ring-ring/50">
-          <ArrowLeftRight className="size-3.5 text-muted-foreground" aria-hidden="true" />
+      <div className="mx-4 mb-2">
+        <DrawerTrigger className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-medium tracking-wide text-primary-foreground uppercase outline-none transition-colors hover:bg-primary/85 focus-visible:ring-3 focus-visible:ring-ring/50">
+          <ArrowLeftRight className="size-5" aria-hidden="true" />
           Substitutions
+          <ChevronDown className="size-4 opacity-80" aria-hidden="true" />
         </DrawerTrigger>
       </div>
       <DrawerBackdrop className="bg-black/50" />

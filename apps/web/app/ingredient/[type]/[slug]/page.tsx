@@ -68,8 +68,8 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   ]);
 
   const topCategory = ingredient.categories[0];
-  // Both substitution copies (the drawer's sheet and the inline lists) render
-  // from one props object, so the two cannot drift.
+  // The drawer's sheet renders the page's substitution lists from this one
+  // props object.
   const substitutionListsProps = substitution && {
     primaryHeader: 'Some substitution option' as const,
     substitutes: substitution.substitutes,
@@ -150,11 +150,6 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <InstructionList instructions={ingredient.instructions} />
       )}
       <IngredientCalculators ingredient={ingredient} />
-      {substitutionListsProps && (
-        <div className="hidden min-[600px]:block">
-          <SubstitutionLists {...substitutionListsProps} />
-        </div>
-      )}
       {additionalVideos.length > 0 && (
         <VideoListCard title="Other videos" refs={additionalVideos} m={1} />
       )}

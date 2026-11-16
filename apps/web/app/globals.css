@@ -178,11 +178,3 @@
     0px 1px 1px 0px rgb(0 0 0 / 0.14),
     0px 1px 3px 0px rgb(0 0 0 / 0.12);
 }
-
-/* The substitution drawer's sheet and backdrop sit above the fixed app
-   bar, not below it like ui-sdk's default z-50: an open sheet must cover
-   the chrome. Unlayered rules here win over the ui-sdk layer. */
-[data-slot='drawer-viewport'],
-[data-slot='drawer-backdrop'] {
-  z-index: calc(var(--z-app-bar) + 1);
-}
