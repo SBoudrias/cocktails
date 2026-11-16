@@ -17,19 +17,21 @@ export const buttonVariants = cva(
       variant: {
         ghost: 'h-9 gap-1.5 px-2 hover:bg-muted hover:text-foreground',
         // MUI's variant=text: the transparent text button the app's card
-        // actions use. No fixed height — MUI's text button is 6px padding
-        // over the 24.5px line box = 36.5px (probed). No gap and no border —
-        // icon spacing comes from the icon's own margins, like MUI's
-        // startIcon/endIcon slots.
-        text: 'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 text-primary hover:bg-primary/8',
+        // actions use. h-9 + gap-1.5 (not MUI's natural 36.5px) — the
+        // surfaces family landed these metrics in #587 and the pages family
+        // gated against them; they are the merged standard. No border, and
+        // icon spacing comes from the icon's own margins.
+        text: 'h-9 gap-1.5 min-w-16 border-0 bg-transparent px-2 py-1.5 text-primary hover:bg-primary/8',
         // MUI's variant=text color=secondary: the moonlight-yellow text
-        // button the calculators' "Reset to defaults" actions use. Same
-        // natural height as `text` — 36.5px, half a pixel taller than h-9.
+        // button the calculators' "Reset to defaults" actions use. Natural
+        // height — MUI's text button is 6px padding over the 24.5px line
+        // box = 36.5px (probed; the brix/saline gate is 0.00 at this size).
         'text-secondary':
           'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 text-secondary hover:bg-secondary/8',
-        // MUI's variant=text color=inherit: the card-action link buttons.
+        // MUI's variant=text color=inherit: the card-action link buttons,
+        // on the family's h-9 metrics.
         'text-inherit':
-          'gap-0 min-w-16 border-0 bg-transparent px-2 py-1.5 hover:bg-foreground/8',
+          'h-9 gap-1.5 min-w-16 border-0 bg-transparent px-2 py-1.5 hover:bg-foreground/8',
       },
       // twMerge resolves conflicts by composition order (base, variant, size,
       // className), so the size axis only carries what no variant sets:
