@@ -108,11 +108,7 @@ export default function SubstitutionLists({
                 ingredientHasData(substitute) ? getIngredientUrl(substitute) : undefined
               }
               primary={substitute.name}
-              tertiary={
-                <span className="text-muted-foreground">
-                  {recipeCounts.get(substitute.slug) ?? 0}
-                </span>
-              }
+              count={recipeCounts.get(substitute.slug) ?? 0}
             />
           )}
           footer={isCapped && <SeeAllLink href={seeAll.href} label={seeAll.label} />}

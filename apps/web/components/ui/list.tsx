@@ -1,5 +1,6 @@
 // The app's grouped lists: a muted header above a card-colored block of
-// rows split by dividers (what MUI's List + ListSubheader + Paper drew).
+// rows split by dividers (what MUI's ListSubheader drew; the rows sit in
+// plain <ul>s at the call sites).
 import { cn } from 'cn';
 
 export function ListSubheader({ className, ...props }: React.ComponentProps<'div'>) {
@@ -12,8 +13,4 @@ export function ListSubheader({ className, ...props }: React.ComponentProps<'div
       {...props}
     />
   );
-}
-
-export function List({ className, ...props }: React.ComponentProps<'ul'>) {
-  return <ul className={cn(className)} {...props} />;
 }

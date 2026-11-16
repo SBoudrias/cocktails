@@ -17,7 +17,7 @@ function renderAuthor(author: Author) {
       key={author.name}
       href={getAuthorRecipesUrl(author.name)}
       primary={author.name}
-      tertiary={<span className="text-muted-foreground">{author.recipeCount}</span>}
+      count={author.recipeCount}
     />
   );
 }

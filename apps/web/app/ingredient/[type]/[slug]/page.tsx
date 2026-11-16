@@ -12,7 +12,7 @@ import { notFound, unstable_rethrow } from 'next/navigation';
 import CategoryChips from '#/components/CategoryChips';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
-import { LinkListItem } from '#/components/LinkList';
+import InstructionList from '#/components/InstructionList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import SubstitutionLists from '#/components/SubstitutionLists';
 import { buttonVariants } from '#/components/ui/button-variants';
@@ -23,7 +23,6 @@ import {
   CardHeader,
   CardTitle,
 } from '#/components/ui/card';
-import { ListSubheader } from '#/components/ui/list';
 import Video from '#/components/Video';
 import VideoListCard from '#/components/VideoListCard';
 import { getCategoryUrl } from '#/modules/url';
@@ -126,14 +125,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <IngredientList ingredients={ingredient.ingredients} />
       )}
       {Array.isArray(ingredient.instructions) && ingredient.instructions.length > 0 && (
-        <ul className="py-2">
-          <ListSubheader>Instructions</ListSubheader>
-          <div className="surface">
-            {ingredient.instructions.map((instruction, index) => (
-              <LinkListItem key={index} primary={`${index + 1}. ${instruction}`} />
-            ))}
-          </div>
-        </ul>
+        <InstructionList instructions={ingredient.instructions} />
       )}
       <IngredientCalculators ingredient={ingredient} />
       {substitution && (
