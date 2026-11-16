@@ -4,20 +4,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
 import TikiMark from '#/components/TikiMark';
+import { iconButton } from '#/components/ui/icon-button';
 
-// The fixed app bar shared by both headers: MUI's AppBar (glass fill, 8px
-// blur, Paper overlay and elevation-4 shadow) around a toolbar row — the
-// mark at the left edge, the header's own content (a centered title, or
-// the searchbox) filling the rest of the row. The spacer div below reserves
+// The fixed app bar shared by both headers: the glass fill, 8px blur,
+// white overlay and elevation-4 shadow around a toolbar row — the mark at
+// the left edge, the header's own content (a centered title, or the
+// searchbox) filling the rest of the row. The spacer div below reserves
 // the toolbar's height so page content starts under the bar, never behind
 // it. On the home page the mark's slot holds a disabled placeholder instead
 // of a link: nothing to go back to, and the title stays centered.
-
-// MUI's IconButton size="large" edge="start": a 56px circle (12px padding
-// around the 32px mark), nudged to the row's left edge by the -12px
-// negative margin of the `edge` prop.
-const markButton =
-  'flex shrink-0 items-center justify-center self-center rounded-full transition-colors outline-none hover:bg-white/8 focus-visible:bg-white/12';
 
 export default function AppBar({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -32,7 +27,7 @@ export default function AppBar({ children }: { children: ReactNode }) {
               type="button"
               aria-disabled="true"
               tabIndex={-1}
-              className={`${markButton} pointer-events-none -ml-3 size-14`}
+              className={`${iconButton} pointer-events-none -ml-3 size-14`}
             >
               <TikiMark size={32} />
             </button>
@@ -40,7 +35,7 @@ export default function AppBar({ children }: { children: ReactNode }) {
             <Link
               href="/"
               aria-label="Go to home"
-              className={`${markButton} -ml-3 size-14`}
+              className={`${iconButton} -ml-3 size-14`}
             >
               <TikiMark size={32} />
             </Link>

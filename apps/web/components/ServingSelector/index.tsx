@@ -73,11 +73,11 @@ export default function ServingSelector({
   };
 
   return (
-    // An outlined field with its label notched into the border, the way the
-    // MUI TextField drew it: the fieldset is the outline, its legend the
-    // notch. The widths are MUI's measured intrinsic ones: the number
-    // input's default width grows with the viewport (47/62px), so the field
-    // is 151px on phones and 166px from 600px up.
+    // An outlined field with its label notched into the border: the
+    // fieldset is the outline, its legend the notch. The widths are the
+    // intrinsic ones: the number input's default width grows with the
+    // viewport (47/62px), so the field is 151px on phones and 166px from
+    // 600px up.
     <div className="group relative w-[151px] min-[600px]:w-[166px]">
       <fieldset
         aria-hidden="true"
@@ -106,7 +106,7 @@ export default function ServingSelector({
         </InputGroupAddon>
         <InputGroupInput
           type="number"
-          className="h-auto w-[47px] flex-none self-stretch py-[8.5px] pl-0 leading-[23px] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+          className="h-auto w-[47px] flex-none self-stretch py-2.125 pl-0 leading-[23px] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
           value={inputValue ?? servings}
           onChange={handleChange}
           onBlur={handleBlur}

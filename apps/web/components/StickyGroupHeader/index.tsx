@@ -10,9 +10,9 @@ import { stuckGlass } from '#/modules/stuckGlass';
  * scrolls in flow, and moonlit glass — the app bar's own — once pinned, so
  * the rows sliding underneath stop bleeding through it.
  *
- * The metrics come from the app's MUI theme, verbatim: 16px vertical
- * padding, 1.4rem line height, and the sticky `top` at the app bar's height
- * per orientation and breakpoint (--app-bar-height).
+ * The metrics: 16px vertical padding, 1.4rem line height, and the sticky
+ * `top` at the app bar's height per orientation and breakpoint
+ * (--app-bar-height).
  */
 export default function StickyGroupHeader({
   id,

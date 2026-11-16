@@ -28,9 +28,8 @@ export default function SalineCalculator() {
           <CardTitle>Saline Solution Calculator</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          {/* MUI's Stack was an unconditional row here (spacing 1 = 8px),
-              the two fields stretching to equal height — alignItems:'top' in
-              the sx was invalid CSS the browser ignored. */}
+          {/* An unconditional row here (8px gap), the two fields
+              stretching to equal height. */}
           <div className="flex flex-row gap-2">
             <LabeledField
               label="Water weight"

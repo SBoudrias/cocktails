@@ -20,9 +20,8 @@ import styles from './style.module.css';
 
 const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
 
-// MUI's ingredient row: ListItem with the divider, 8px vertical padding,
-// 16px left, the 48px secondaryAction zone for the chevron, and
-// ListItemText's 4px inner margins (8+24+8+1 = 49px per row).
+// The ingredient row: a divider-bottomed row (8px vertical padding, 16px
+// left, the 48px trailing zone for the chevron).
 function IngredientRow<RouteType>({
   href,
   children,
@@ -31,10 +30,10 @@ function IngredientRow<RouteType>({
   children: React.ReactNode;
 }) {
   return (
-    <li className="list-none">
+    <li>
       <Link
         href={href}
-        className="flex w-full items-center border-x-0 border-t-0 border-b border-border py-2 pr-12 pl-4 text-base capitalize outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+        className="flex w-full items-center border-b border-border py-2 pr-12 pl-4 text-base capitalize outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
       >
         <span className="my-1 flex-1 text-left">{children}</span>
         <ChevronRight className="size-6 shrink-0 text-foreground" aria-hidden="true" />
@@ -43,11 +42,11 @@ function IngredientRow<RouteType>({
   );
 }
 
-// MUI's technique row: the same ListItem metrics without the link, chevron
-// or trailing zone.
+// The technique row: the same row metrics without the link, chevron or
+// trailing zone.
 function TechniqueRow({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex w-full list-none items-center border-x-0 border-t-0 border-b border-border py-2 pl-4 text-base capitalize outline-none">
+    <li className="flex w-full items-center border-b border-border py-2 pl-4 text-base capitalize outline-none">
       <span className="my-1 flex-1 text-left">{children}</span>
     </li>
   );
@@ -205,8 +204,8 @@ export default function IngredientList({
           </Fragment>
         );
       })}
-      {/* MUI Toolbar's responsive metrics: 8px padding and 56px min-height,
-          doubling to 24px/64px from 600px up (MUI's breakpoint, not sm). */}
+      {/* The toolbar row's responsive metrics: 8px padding and 56px
+          min-height, doubling to 24px/64px from 600px up. */}
       <div className="flex min-h-14 items-center justify-between px-2 min-[600px]:min-h-16 min-[600px]:px-6">
         <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
         <ServingSelector servings={servings} onChange={setServings} />

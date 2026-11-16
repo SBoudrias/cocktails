@@ -35,9 +35,9 @@ export default function BrixCalculator() {
           <CardTitle>Sugar Adjusting</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          {/* MUI's Stack was an unconditional row here (unlike the other
-              calculators' xs:column responsive rows) — cramped on phones,
-              but that is what it drew. */}
+          {/* An unconditional row here (unlike the other calculators'
+              column layout) — cramped on phones, but that is what it
+              drew. */}
           <div className="flex flex-row gap-2">
             <LabeledField
               label="Juice weight"
@@ -102,11 +102,9 @@ export default function BrixCalculator() {
               Reset to defaults
             </Button>
           </div>
-          {/* MUI's Stack spacing put 16px between every child; the sx mt:2
-              on these notes overrode it (not added to it), so the gap is
-              the parent's, with no extra margin. body2 metrics: 14px on a
-              1.43 line box; the color stayed the foreground — MUI v9's
-              Typography ignored the color="text.secondary" prop here. */}
+          {/* 16px between every child; these notes carry no extra top
+              margin (the parent's gap is the whole spacing). body2
+              metrics: 14px on a 1.43 line box, foreground color. */}
           <p className="text-sm leading-[1.43]">
             Note: Use a refractometer to measure the current Brix level of your juice.
             Place a few drops of juice on the refractometer&apos;s prism, close the cover,

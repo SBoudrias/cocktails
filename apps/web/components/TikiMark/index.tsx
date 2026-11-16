@@ -16,7 +16,7 @@ export default function TikiMark({
   ...props
 }: Omit<React.ComponentProps<'svg'>, 'children'> & {
   variant?: 'mark' | 'detailed';
-  /** Rendered size in px; MUI's SvgIcon defaulted to 24. */
+  /** Rendered size in px; defaults to 24. */
   size?: number;
 }) {
   return (

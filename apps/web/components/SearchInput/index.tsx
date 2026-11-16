@@ -3,14 +3,14 @@
 import { Search } from 'lucide-react';
 import { useRef } from 'react';
 
-// The searchbox as MUI styled it: a relative rounded field with the glassy
-// white/15 fill (white/25 hovered), the magnifier absolutely parked on the
-// left (pointer-events off), and the input padded 8px with its 48px left pad
-// spanning the icon, its line box 1.4375em like MUI's InputBase (23px at
-// 16px — taller than the text, so the field and the button beside it share
-// the row's height). The Clear button is MUI's text button: uppercase 14px
-// 500, 6px 8px padding in a 64px-min row, primary colored with a primary/8
-// hover fill, stretched to the row's height like MUI's Stack default.
+// The searchbox: a relative rounded field with the glassy white/15 fill
+// (white/25 hovered), the magnifier absolutely parked on the left
+// (pointer-events off), and the input padded 8px with its 48px left pad
+// spanning the icon, its 23px line box (taller than the text, so the field
+// and the button beside it share the row's height). The Clear button is a
+// text button: uppercase 14px 500, 6px/8px padding in a 64px-min row,
+// primary colored with a primary/8 hover fill, stretched to the row's
+// height.
 export default function SearchInput({
   value,
   onChangeAction,

@@ -155,9 +155,8 @@ function calculatorReducer(
     .exhaustive();
 }
 
-// MUI's TextField select on the shared OutlinedField shell: the trigger
-// styled like the input row, the arrow lucide's ChevronDown (icon rule;
-// MUI drew its filled ArrowDropDown triangle) at the row's end.
+// A select on the shared OutlinedField shell: the trigger styled like the
+// input row, the arrow lucide's ChevronDown (icon rule) at the row's end.
 function MilkSelect({
   milkType,
   customMilkType,
@@ -183,7 +182,7 @@ function MilkSelect({
             className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-[14px] text-base text-left outline-none"
           >
             <SelectPrimitive.Value />
-            <SelectPrimitive.Icon className="absolute top-1/2 right-[7px] -translate-y-1/2 text-white">
+            <SelectPrimitive.Icon className="absolute top-1/2 right-1.75 -translate-y-1/2 text-white">
               <ChevronDown className="size-6" />
             </SelectPrimitive.Icon>
           </SelectPrimitive.Trigger>
@@ -191,8 +190,8 @@ function MilkSelect({
             <SelectPrimitive.Positioner
               align="start"
               sideOffset={0}
-              // MUI's menu surface: the Paper glass without radius, the
-              // trigger's width, 8px vertical padding (probed on the baseline).
+              // The menu surface: the paper glass without radius, the
+              // trigger's width, 8px vertical padding.
               className="surface z-50 overflow-y-auto py-2 rounded-none min-w-[var(--anchor-width)]"
             >
               <SelectPrimitive.Popup>
@@ -200,8 +199,8 @@ function MilkSelect({
                   <SelectPrimitive.Item
                     key={type}
                     value={type}
-                    // MUI's MenuItem: auto rows 36px tall, 16px left padding,
-                    // the selected item on primary/16 (probed on the baseline).
+                    // A menu row: auto rows 36px tall, 16px left padding,
+                    // the selected item on primary/16.
                     className="flex h-9 items-center px-4 text-base text-foreground outline-none data-selected:bg-primary/16 data-highlighted:bg-white/8"
                   >
                     <SelectPrimitive.ItemText>{type}</SelectPrimitive.ItemText>
@@ -333,10 +332,9 @@ export default function MilkClarificationCalculator() {
         </CardContent>
       </Card>
       <section aria-label="Instructions">
-        {/* MUI's List + ListSubheader + Paper(square): the recipe pages'
-            list pattern — the subheader itself a list item (MUI's was an
-            <li>) above the surface block of divider rows, probed: py-8
-            outer, 16px subheader padding. */}
+        {/* The recipe pages' list pattern — the subheader itself a list
+            item above the surface block of divider rows: py-8 outer,
+            16px subheader padding. */}
         <ul className="py-2">
           <li>
             <ListSubheader>Instructions</ListSubheader>

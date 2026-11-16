@@ -95,9 +95,9 @@ export default function RootLayout({
       </head>
       <body className={roboto.variable}>
         <NuqsAdapter>
-          {/* The app shell MUI's root Box drew: a 600px column with the
-              tiki art as two fixed background layers (sized to the assets'
-              own width, both 750px today — probed from the MUI build). */}
+          {/* The app shell: a 600px column with the tiki art as two fixed
+              background layers, sized to the assets' own width (both 750px
+              today). */}
           <div
             className="mx-auto flex min-h-screen max-w-[600px] flex-col bg-no-repeat [background-position:center_40px,bottom_center] [background-size:min(100%,750px)_auto,min(100%,750px)_auto]"
             style={{
