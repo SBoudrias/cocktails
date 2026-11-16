@@ -11,7 +11,7 @@ export default function SalineCalculatorPage() {
   return (
     <Suspense>
       <AppHeader title="Saline Solution Calculator" />
-      <SalineCalculator sx={{ m: 1 }} />
+      <SalineCalculator />
     </Suspense>
   );
 }

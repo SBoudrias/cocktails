@@ -1,23 +1,16 @@
 'use client';
 
-import type { SxProps } from '@mui/material';
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  InputAdornment,
-  Stack,
-  TextField,
-} from '@mui/material';
 import { Suspense, useState } from 'react';
+import { Button } from '#/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
+import { LabeledField } from '#/components/ui/labeled-field';
 
-export default function SalineCalculator({ sx }: { sx?: SxProps }) {
+export default function SalineCalculator() {
   const [waterWeightValue, setWaterWeight] = useState<string | number>(80);
   const [salinityValue, setSalinity] = useState<string | number>(20);
 
-  const waterWeight = parseFloat(waterWeightValue as string);
-  const salinity = parseFloat(salinityValue as string);
+  const waterWeight = Number(waterWeightValue);
+  const salinity = Number(salinityValue);
 
   const isSalinityValid = !isNaN(salinity) && salinity > 0 && salinity < 100;
   const isWaterWeightValid = !isNaN(waterWeight) && waterWeight > 0;
@@ -30,69 +23,59 @@ export default function SalineCalculator({ sx }: { sx?: SxProps }) {
 
   return (
     <Suspense>
-      <Card sx={sx}>
-        <CardHeader title="Saline Solution Calculator" />
-        <CardContent>
-          <Stack spacing={2}>
-            <Stack direction="row" spacing={1} sx={{ alignItems: 'top' }}>
-              <TextField
-                label="Water weight"
-                value={waterWeightValue}
-                type="number"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setWaterWeight(event.target.value);
-                }}
-                fullWidth
-                slotProps={{
-                  input: {
-                    endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-                  },
-                }}
-              />
-              <TextField
-                label="Target Salinity %"
-                value={salinityValue}
-                type="number"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setSalinity(event.target.value);
-                }}
-                error={!isSalinityValid}
-                helperText={!isSalinityValid ? 'Must be between 0 and 100' : ''}
-                fullWidth
-                slotProps={{
-                  input: {
-                    endAdornment: <InputAdornment position="end">%</InputAdornment>,
-                  },
-                }}
-              />
-            </Stack>
-            <TextField
-              label="Salt to add"
-              value={
-                isNaN(saltWeight)
-                  ? ''
-                  : `${saltWeight.toLocaleString('en', { maximumFractionDigits: 2 })}`
-              }
-              fullWidth
-              slotProps={{
-                input: {
-                  readOnly: true,
-                  endAdornment: <InputAdornment position="end">grams</InputAdornment>,
-                },
+      <Card m={1}>
+        <CardHeader>
+          <CardTitle>Saline Solution Calculator</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4">
+          {/* MUI's Stack was an unconditional row here (spacing 1 = 8px),
+              the two fields stretching to equal height — alignItems:'top' in
+              the sx was invalid CSS the browser ignored. */}
+          <div className="flex flex-row gap-2">
+            <LabeledField
+              label="Water weight"
+              unit="grams"
+              value={waterWeightValue}
+              type="number"
+              onChange={(event) => {
+                setWaterWeight(event.target.value);
               }}
+              className="min-w-0 flex-1"
             />
-            <Stack direction="row" spacing={1} sx={{ justifyContent: 'flex-end' }}>
-              <Button
-                color="secondary"
-                onClick={() => {
-                  setWaterWeight('');
-                  setSalinity(20);
-                }}
-              >
-                Reset to defaults
-              </Button>
-            </Stack>
-          </Stack>
+            <LabeledField
+              label="Target Salinity %"
+              unit="%"
+              value={salinityValue}
+              type="number"
+              onChange={(event) => {
+                setSalinity(event.target.value);
+              }}
+              error={!isSalinityValid}
+              helperText={!isSalinityValid ? 'Must be between 0 and 100' : undefined}
+              className="min-w-0 flex-1"
+            />
+          </div>
+          <LabeledField
+            label="Salt to add"
+            unit="grams"
+            value={
+              isNaN(saltWeight)
+                ? ''
+                : `${saltWeight.toLocaleString('en', { maximumFractionDigits: 2 })}`
+            }
+            readOnly
+          />
+          <div className="flex justify-end">
+            <Button
+              variant="text-secondary"
+              onClick={() => {
+                setWaterWeight('');
+                setSalinity(20);
+              }}
+            >
+              Reset to defaults
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </Suspense>

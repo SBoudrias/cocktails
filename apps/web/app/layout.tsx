@@ -1,7 +1,3 @@
-import { Box } from '@mui/material';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
@@ -17,7 +13,6 @@ import AppFooter from '#/components/AppFooter';
 import FullscreenHelper from '#/components/FullscreenHelper';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';
 import tikiLeavesTop from '../../../public/tiki-leaves-top.webp';
-import theme from './theme';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -99,29 +94,20 @@ export default function RootLayout({
         />
       </head>
       <body className={roboto.variable}>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme} defaultMode="dark" storageManager={null}>
-            <CssBaseline />
-            <NuqsAdapter>
-              <Box
-                sx={{
-                  maxWidth: 600,
-                  mx: 'auto',
-                  minHeight: '100vh',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
-                  backgroundSize: `min(100%, ${tikiLeavesTop.width}px) auto, min(100%, ${tikiBeachDivider.width}px) auto`,
-                  backgroundPosition: 'center 40px, bottom center',
-                  backgroundRepeat: 'no-repeat, no-repeat',
-                }}
-              >
-                <Box sx={{ flexGrow: 1 }}>{children}</Box>
-                <AppFooter />
-              </Box>
-            </NuqsAdapter>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <NuqsAdapter>
+          {/* The app shell MUI's root Box drew: a 600px column with the
+              tiki art as two fixed background layers (sized to the assets'
+              own width, both 750px today — probed from the MUI build). */}
+          <div
+            className="mx-auto flex min-h-screen max-w-[600px] flex-col bg-no-repeat [background-position:center_40px,bottom_center] [background-size:min(100%,750px)_auto,min(100%,750px)_auto]"
+            style={{
+              backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
+            }}
+          >
+            <div className="grow">{children}</div>
+            <AppFooter />
+          </div>
+        </NuqsAdapter>
         <FullscreenHelper />
         <GoogleAnalytics gaId="G-XSDN5REM9F" />
       </body>

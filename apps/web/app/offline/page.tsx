@@ -1,8 +1,8 @@
-import { Box, Typography } from '@mui/material';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import AppHeader from '#/components/AppHeader';
 import TikiMark from '#/components/TikiMark';
+import { getRecipeListUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
   title: 'Offline | Indexotica',
@@ -21,32 +21,19 @@ export default function OfflinePage() {
   return (
     <>
       <AppHeader title="Indexotica" />
-      <Box
-        component="main"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 2,
-          pt: 8,
-          px: 2,
-          textAlign: 'center',
-        }}
-      >
+      <main className="flex flex-col items-center gap-4 px-4 pt-16 text-center">
         <TikiMark variant="detailed" size={64} opacity={0.5} />
-        <Typography variant="h5" component="h1">
-          You are offline
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 420 }}>
+        <h1 className="text-2xl leading-8 font-normal">You are offline</h1>
+        <p className="max-w-[420px] text-base">
           This page is not available without a connection, and you have not visited it
           before. Pages you have opened recently still work offline.
-        </Typography>
-        <Link href="/list/recipes" style={{ textDecoration: 'none' }}>
-          <Typography variant="body1" color="primary">
-            Go to all recipes
-          </Typography>
+        </p>
+        {/* The base layer's anchors stay undecorated; MUI's Typography
+            carried the primary color (probed on the baseline). */}
+        <Link href={getRecipeListUrl()} className="text-base text-primary">
+          Go to all recipes
         </Link>
-      </Box>
+      </main>
     </>
   );
 }

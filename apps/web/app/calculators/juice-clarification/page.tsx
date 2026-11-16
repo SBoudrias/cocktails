@@ -12,7 +12,7 @@ export default function JuiceClarificationCalculatorPage() {
     <>
       <AppHeader title="Juice Clarification" />
       <Suspense>
-        <JuiceClarificationCalculator sx={{ m: 1 }} />
+        <JuiceClarificationCalculator />
       </Suspense>
     </>
   );
