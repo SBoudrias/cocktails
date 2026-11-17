@@ -8,6 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "yarn workspace @cocktails/web dev",
+    "knip": "knip",
     "lint": "yarn workspaces foreach -A run lint && oxlint . && oxfmt . --check",
     "test": "vitest --run --coverage",
     "check-data": "turbo run check-data --filter=@cocktails/data",
@@ -22,6 +23,7 @@
     "@vitejs/plugin-react": "^6.3.0",
     "@vitest/browser": "^5.1.0",
     "@vitest/coverage-v8": "^5.1.0",
+    "knip": "^6.45.1",
     "msw": "^3.0.5",
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.78.0",
