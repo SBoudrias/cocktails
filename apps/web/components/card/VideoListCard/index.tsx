@@ -79,9 +79,10 @@ export default function VideoListCard({
                     key={refKey(ref)}
                     page={index + 1}
                     aria-label={`Video ${index + 1}`}
-                    // scale, not size: the selected dot's growth never
-                    // reflows the row, so sibling dots stay put.
-                    className="size-2.5 rounded-full border-0 bg-foreground/30 p-0 transition-transform motion-reduce:transition-none hover:bg-foreground/50 data-selected:scale-120 data-selected:bg-primary data-selected:hover:bg-primary"
+                    // Same box for every dot: a border colored like the
+                    // fill when selected, transparent otherwise — no
+                    // resize on status change.
+                    className="size-3 rounded-full border-2 border-transparent bg-foreground/30 p-0 hover:bg-foreground/50 data-selected:border-primary data-selected:bg-primary data-selected:hover:bg-primary"
                   />
                 ))}
               </CarouselIndicatorGroup>
