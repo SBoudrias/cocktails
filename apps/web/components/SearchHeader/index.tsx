@@ -9,24 +9,31 @@ import { preloadSearchIndex } from '#/modules/searchIndex';
 // The search variant of the app header: the searchbox where the title sat,
 // with the page's h1 below the bar while no search is running.
 //
-// `searchTerm`/`onSearchChange` are omitted by server pages: the header then
-// owns the ?search URL parameter itself — the one parameter every list page
-// searches. Client islands that manage the term themselves pass it down.
-export default function SearchHeader({
-  title,
-  searchTerm,
-  onSearchChange,
-  underTitle,
-}: {
-  title?: string;
-  /** Omitted: the header reads and writes the ?search URL parameter itself. */
-  searchTerm?: string | null;
-  onSearchChange?: (value: string | null) => void;
-  /** Rendered directly under the page title, hidden while a search is active. */
-  underTitle?: ReactNode;
-}) {
+// Either the page passes its own controlled term and change handler
+// together, or it passes neither and the header owns the ?search URL
+// parameter itself — the one parameter every list page searches. A term
+// without a handler (or the reverse) is a type error.
+export default function SearchHeader(
+  props:
+    | {
+        title?: string;
+        /** The page's controlled term, paired with onSearchChange. */
+        searchTerm: string | null;
+        onSearchChange: (value: string | null) => void;
+        /** Rendered directly under the page title, hidden while a search is active. */
+        underTitle?: ReactNode;
+      }
+    | {
+        title?: string;
+        /** Omitted: the header reads and writes the ?search URL parameter itself. */
+        underTitle?: ReactNode;
+      },
+) {
   const [urlSearchTerm, setUrlSearchTerm] = useQueryState('search');
-  const term = searchTerm !== undefined ? searchTerm : urlSearchTerm;
+  const controlled = 'searchTerm' in props;
+  const searchTerm = controlled ? props.searchTerm : urlSearchTerm;
+  const onSearchChange = controlled ? props.onSearchChange : setUrlSearchTerm;
+  const { title, underTitle } = props;
 
   return (
     <>
@@ -34,15 +41,15 @@ export default function SearchHeader({
         {/* Searches beyond names need the shared index: start loading it as
             soon as the user reaches for the search box. */}
         <SearchInput
-          value={term ?? ''}
-          onChangeAction={onSearchChange ?? setUrlSearchTerm}
+          value={searchTerm ?? ''}
+          onChangeAction={onSearchChange}
           onFocusAction={preloadSearchIndex}
         />
       </AppBar>
-      {!term && title && (
+      {!searchTerm && title && (
         <h1 className="mx-4 my-2 text-2xl font-normal leading-[1.334]">{title}</h1>
       )}
-      {!term && underTitle}
+      {!searchTerm && underTitle}
     </>
   );
 }
