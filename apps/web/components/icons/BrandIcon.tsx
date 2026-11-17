@@ -6,18 +6,19 @@
 // Size-only API: no className — spacing and alignment belong to the caller's
 // own wrapper. No size default: unsized, the parent's own svg sizing takes
 // over (a button's `[&_svg:not([class*='size-'])]` rule, which also matches
-// the attribute-less class). The literal union keeps the classes static.
+// the attribute-less class). The semantic tokens follow ui-sdk's own
+// data-size naming; the literal union keeps the classes static.
 import type { SimpleIcon } from 'simple-icons';
 
-const sizeClasses = { 4: 'size-4', 5: 'size-5', 6: 'size-6' } as const;
+const sizeClasses = { sm: 'size-4', md: 'size-5', lg: 'size-6' } as const;
 
 export default function BrandIcon({
   icon,
   size,
 }: {
   icon: SimpleIcon;
-  /** Tailwind size step: 4 → size-4 (16px), 5 → 20px, 6 → 24px. */
-  size?: 4 | 5 | 6;
+  /** Semantic size: sm → 16px, md → 20px, lg → 24px. */
+  size?: keyof typeof sizeClasses;
 }) {
   return (
     <svg

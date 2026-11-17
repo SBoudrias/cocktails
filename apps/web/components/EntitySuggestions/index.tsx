@@ -33,7 +33,7 @@ function getEntityView(kind: EntitySuggestion['kind']) {
       // label rides on this span instead, like every other kind.
       icon: (
         <span role="img" aria-label="YouTube channel" className="inline-flex">
-          <BrandIcon icon={siYoutube} size={6} />
+          <BrandIcon icon={siYoutube} size="lg" />
         </span>
       ),
     }))
