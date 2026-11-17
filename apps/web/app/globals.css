@@ -18,8 +18,8 @@
     }
   }
 
-  --font-sans: var(--font-roboto);
-  --font-heading: var(--font-roboto);
+  --font-sans: var(--font-app);
+  --font-heading: var(--font-app);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -49,19 +49,25 @@
   --foreground: #e8f4f4; /* Pale cyan-tinted white */
   --card: rgb(10 20 32 / 0.78); /* Glass card: translucent, star texture seeps through */
   --card-foreground: #e8f4f4;
-  --primary: #2a8a8a; /* Turquoise ocean water */
+  --primary: #2f8a5e; /* Jade ocean water */
   --primary-foreground: #ffffff;
   --secondary: #e8b84d; /* Warm moonlight glow */
   --secondary-foreground: #000000;
   --muted: rgb(255 255 255 / 0.08);
-  --muted-foreground: #9dc4c4; /* Muted teal */
+  --muted-foreground: #a8cfaa; /* Muted jade */
   --accent: rgb(255 255 255 / 0.08);
   --accent-foreground: #e8f4f4;
   --destructive: #a85b7a; /* Magenta purple from palm silhouettes */
-  --border: rgb(93 184 216 / 0.12); /* Subtle turquoise divider */
+  --border: rgb(127 199 152 / 0.14); /* Subtle jade divider */
   --input: rgb(255 255 255 / 0.23);
-  --ring: #5dbdbd;
+  --ring: #6fcf9a;
   --radius: 0.25rem; /* The theme's corner radius */
+  /* The retro-future card frame (the fun-refinements C pick): unequal
+     corner radii and a subtle tilt — cards only, the lists keep today's
+     uniform radius and axis. One token each, so the tilt dials back to 0
+     without touching components. */
+  --card-radius: 1.375rem 0.375rem 1.5rem 0.5rem; /* 22px 6px 24px 8px */
+  --card-tilt: -0.6deg;
   /* The fixed app bar: its glass fill (--header) and its height per
      orientation and breakpoint — the sticky headers offset from it. */
   --header: rgb(10 20 32 / 0.85);
@@ -70,7 +76,7 @@
      icon art. --paper is the solid surface color; --card carries the glass
      surface alpha. */
   --paper: #152535;
-  --primary-light: #5dbdbd;
+  --primary-light: #6fcf9a;
   --secondary-light: #ffd580;
   --secondary-dark: #c89a2f;
   --info-light: #8dd4ed;
@@ -115,10 +121,10 @@
   }
 
   body {
-    /* The base text: Roboto from next/font's variable, 16px/24px, the
-       theme's text and background colors. Without the smoothing rules
+    /* The base text: Space Grotesk from next/font's variable, 16px/24px,
+       the theme's text and background colors. Without the smoothing rules
        every glyph rasterizes differently (subpixel vs grayscale AA). */
-    font-family: var(--font-roboto);
+    font-family: var(--font-app);
     font-size: 1rem;
     line-height: 1.5;
     color: var(--foreground);
@@ -177,4 +183,14 @@
     0px 2px 1px -1px rgb(0 0 0 / 0.2),
     0px 1px 1px 0px rgb(0 0 0 / 0.14),
     0px 1px 3px 0px rgb(0 0 0 / 0.12);
+}
+
+/* The retro-future card frame: the unequal radii and subtle tilt of the
+   fun-refinements C pick, drawn from the --card-radius/--card-tilt tokens.
+   Cards only — the lists' surface blocks keep today's uniform frame. The
+   tilt stays a transform on the card itself; the layout box is untouched,
+   so sticky headers and the app-bar offsets never see it. */
+@utility card-frame {
+  border-radius: var(--card-radius);
+  transform: rotate(var(--card-tilt));
 }
