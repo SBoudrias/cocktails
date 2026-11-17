@@ -2,8 +2,10 @@ import { cn } from 'cn';
 import { ChevronRight } from 'lucide-react';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useId, useMemo } from 'react';
+import { match } from 'ts-pattern';
 import StickyGroupHeader from '#/components/StickyGroupHeader';
+import { ListSubheader } from '#/components/ui/list';
 import type { ListConfig } from '#/modules/lists/type';
 
 // The secondary line's metrics: 12px caption, muted teal, 1.35 line
@@ -63,12 +65,60 @@ export function LinkListItem<RouteType>({
   );
 }
 
+/** How a list renders its group headers: pinned under the app bar, or in
+ * flow for lists that sit inside their own scroll container. */
+export type HeaderMode = 'sticky' | 'flow';
+
+/**
+ * One group: its header and its rows on the surface block. A component so
+ * each group's header id is its own useId.
+ */
+function LinkListGroup<const T>({
+  header,
+  headerMode,
+  items,
+  renderItem,
+  footer,
+}: {
+  header: string;
+  headerMode: HeaderMode;
+  items: T[];
+  renderItem: (item: T) => React.ReactNode;
+  /** Rendered after the group's rows, inside its paper. */
+  footer?: React.ReactNode;
+}) {
+  const headerId = useId();
+
+  return (
+    <li>
+      <ul role="group" aria-labelledby={header ? headerId : undefined} className="py-2">
+        {header &&
+          match(headerMode)
+            .with('sticky', () => (
+              <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>
+            ))
+            .with('flow', () => (
+              <li id={headerId}>
+                <ListSubheader>{header}</ListSubheader>
+              </li>
+            ))
+            .exhaustive()}
+        <div className="surface">
+          {items.map((item) => renderItem(item))}
+          {footer}
+        </div>
+      </ul>
+    </li>
+  );
+}
+
 export function LinkList<const T>({
   items,
   renderItem,
   config,
   header = '',
   footer,
+  headerMode = 'sticky',
 }: {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
@@ -76,6 +126,8 @@ export function LinkList<const T>({
   header?: string;
   /** Rendered after the last group's items, inside its paper. */
   footer?: React.ReactNode;
+  /** How the group headers render; sticky pins them under the app bar. */
+  headerMode?: HeaderMode;
 }) {
   const groups = useMemo(() => {
     const {
@@ -100,27 +152,16 @@ export function LinkList<const T>({
 
   return (
     <ul className="py-2">
-      {groups.map(([header, groupItems], groupIndex) => {
-        // Spaces would split aria-labelledby into dead id references, so the
-        // header's id keeps them out.
-        const headerId = `group-header-${header.replace(/\s+/g, '-')}`;
-
-        return (
-          <li key={header}>
-            <ul
-              role="group"
-              aria-labelledby={header ? headerId : undefined}
-              className="py-2"
-            >
-              {header && <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>}
-              <div className="surface">
-                {groupItems.map((item) => renderItem(item))}
-                {footer && groupIndex === groups.length - 1 && footer}
-              </div>
-            </ul>
-          </li>
-        );
-      })}
+      {groups.map(([header, groupItems], groupIndex) => (
+        <LinkListGroup
+          key={header}
+          header={header}
+          headerMode={headerMode}
+          items={groupItems}
+          renderItem={renderItem}
+          footer={groupIndex === groups.length - 1 ? footer : undefined}
+        />
+      ))}
     </ul>
   );
 }

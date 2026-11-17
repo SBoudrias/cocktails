@@ -1,7 +1,7 @@
 import type { Category, RootIngredient } from '@cocktails/data';
 import { Tag } from 'lucide-react';
 import type { Route } from 'next';
-import { LinkList, LinkListItem } from '#/components/LinkList';
+import { type HeaderMode, LinkList, LinkListItem } from '#/components/LinkList';
 import { ingredientHasData } from '#/modules/hasData';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 
@@ -38,13 +38,21 @@ function SeeAllLink({
  * categories, each linking to its category page. Also rendered on its own
  * by the category pages, whose full member list is uncapped.
  */
-export function RelatedCategoriesList({ categories }: { categories: Category[] }) {
+export function RelatedCategoriesList({
+  categories,
+  headerMode = 'sticky',
+}: {
+  categories: Category[];
+  /** Passed to the LinkList: 'flow' inside the substitution drawer's sheet. */
+  headerMode?: HeaderMode;
+}) {
   if (categories.length === 0) return null;
 
   return (
     <LinkList
       header="Substitution-friendly categories"
       items={categories}
+      headerMode={headerMode}
       renderItem={(relatedCategory) => (
         <LinkListItem
           key={relatedCategory.slug}
@@ -76,6 +84,7 @@ export default function SubstitutionLists({
   recipeCounts,
   seeAll,
   relatedCategories,
+  headerMode = 'sticky',
 }: {
   /** Header of the primary list, e.g. "Some substitution option". */
   primaryHeader: string;
@@ -90,6 +99,8 @@ export default function SubstitutionLists({
   };
   /** Related categories, listed after the primary list. */
   relatedCategories: Category[];
+  /** Passed to the LinkLists: 'flow' inside the substitution drawer's sheet. */
+  headerMode?: HeaderMode;
 }) {
   if (substitutes.length === 0 && relatedCategories.length === 0) return null;
 
@@ -101,6 +112,7 @@ export default function SubstitutionLists({
         <LinkList
           header={primaryHeader}
           items={substitutes.slice(0, MAX_SUBSTITUTION_LINKS - 1)}
+          headerMode={headerMode}
           renderItem={(substitute) => (
             <LinkListItem
               key={substitute.slug}
@@ -114,7 +126,7 @@ export default function SubstitutionLists({
           footer={isCapped && <SeeAllLink href={seeAll.href} label={seeAll.label} />}
         />
       )}
-      <RelatedCategoriesList categories={relatedCategories} />
+      <RelatedCategoriesList categories={relatedCategories} headerMode={headerMode} />
     </>
   );
 }

@@ -77,6 +77,10 @@
   --warning: #d4883d;
   --warning-dark: #a66628;
   --error-light: #c98aa3;
+  /* The fixed app bar's z-index: the drawer's sheet and backdrop sit one
+     above it, so an open sheet covers the chrome (see the drawer rule
+     below). */
+  --z-app-bar: 1100;
 }
 
 /* The app bar's height per orientation and breakpoint: landscape phones

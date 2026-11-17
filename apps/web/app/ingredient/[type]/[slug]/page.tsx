@@ -14,6 +14,7 @@ import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
 import InstructionList from '#/components/InstructionList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
+import SubstitutionDrawer from '#/components/SubstitutionDrawer';
 import SubstitutionLists from '#/components/SubstitutionLists';
 import { buttonVariants } from '#/components/ui/button-variants';
 import {
@@ -84,7 +85,26 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       }
       recipeCount={relatedRecipes.length}
       listHeader={`Recipes using ${ingredient.name}`}
-      underTitle={<CategoryChips categories={ingredient.categories} />}
+      underTitle={
+        <>
+          <CategoryChips categories={ingredient.categories} />
+          {substitution && (
+            <SubstitutionDrawer ingredientName={ingredient.name}>
+              <SubstitutionLists
+                primaryHeader="Some substitution option"
+                substitutes={substitution.substitutes}
+                recipeCounts={recipeCounts}
+                seeAll={{
+                  href: getCategoryUrl(substitution.category),
+                  label: substitution.category.name,
+                }}
+                relatedCategories={substitution.relatedCategories}
+                headerMode="flow"
+              />
+            </SubstitutionDrawer>
+          )}
+        </>
+      }
       footer={
         <FixBugCard
           fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
@@ -128,18 +148,6 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <InstructionList instructions={ingredient.instructions} />
       )}
       <IngredientCalculators ingredient={ingredient} />
-      {substitution && (
-        <SubstitutionLists
-          primaryHeader="Some substitution option"
-          substitutes={substitution.substitutes}
-          recipeCounts={recipeCounts}
-          seeAll={{
-            href: getCategoryUrl(substitution.category),
-            label: substitution.category.name,
-          }}
-          relatedCategories={substitution.relatedCategories}
-        />
-      )}
       {additionalVideos.length > 0 && (
         <VideoListCard title="Other videos" refs={additionalVideos} m={1} />
       )}

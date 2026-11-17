@@ -149,7 +149,7 @@ describe('IngredientPage', () => {
         within(chipsGroup).getByRole('link', { name: 'London dry gin' }),
       ).toHaveAttribute('href', '/category/london-dry-gin');
 
-      // The chips sit between the title and the rest of the page content.
+      // The chips sit between the title and the substitution trigger.
       const title = screen.getByRole('heading', {
         level: 1,
         name: TEST_SPIRIT.name,
@@ -158,15 +158,16 @@ describe('IngredientPage', () => {
         title.compareDocumentPosition(chipsGroup) & Node.DOCUMENT_POSITION_FOLLOWING,
       ).toBeTruthy();
       expect(
-        chipsGroup.compareDocumentPosition(screen.getByText('Some substitution option')) &
-          Node.DOCUMENT_POSITION_FOLLOWING,
+        chipsGroup.compareDocumentPosition(
+          screen.getByRole('button', { name: 'Substitutions' }),
+        ) & Node.DOCUMENT_POSITION_FOLLOWING,
       ).toBeTruthy();
     });
 
-    it('renders substitutes section for spirits', async () => {
+    it('offers a substitution trigger for spirits', async () => {
       await setupApp(spiritPageJSX);
 
-      expect(screen.getByText('Some substitution option')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Substitutions' })).toBeInTheDocument();
     });
 
     it('does not render acid adjusting without acid-adjustment context', async () => {
@@ -269,7 +270,8 @@ describe('IngredientPage', () => {
 
   describe('substitution lists', () => {
     it('only lists bottles from the same category in the primary list', async () => {
-      await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(jamaicanRumPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
 
       // Appleton 12's most specific category is Blended aged rum (Jamaica):
       // only the 6 other bottles from that category appear.
@@ -290,7 +292,8 @@ describe('IngredientPage', () => {
     });
 
     it('orders the primary list by recipe count and shows the count', async () => {
-      await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(jamaicanRumPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
 
       const substitutionGroup = screen.getByRole('group', {
         name: 'Some substitution option',
@@ -318,7 +321,8 @@ describe('IngredientPage', () => {
     });
 
     it('lists related categories, not bottles, in the secondary list', async () => {
-      await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(jamaicanRumPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
 
       const relatedGroup = screen.getByRole('group', {
         name: 'Substitution-friendly categories',
@@ -351,7 +355,8 @@ describe('IngredientPage', () => {
     });
 
     it('caps the primary list at 10 links with a see-all link last when capped', async () => {
-      await setupApp(cappedSpiritPageJSX);
+      const { user } = await setupApp(cappedSpiritPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
 
       // Bulleit Bourbon's category holds 32 other bottles: the list shows 9
       // of them, plus the see-all link to the category page.
@@ -383,7 +388,8 @@ describe('IngredientPage', () => {
     });
 
     it('renders no see-all link when the category fits under the cap', async () => {
-      await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(jamaicanRumPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
 
       const substitutionGroup = screen.getByRole('group', {
         name: 'Some substitution option',
@@ -509,16 +515,18 @@ describe('IngredientPage', () => {
     it('hides non-recipe content when searching', async () => {
       const { user } = await setupApp(spiritPageJSX);
 
-      // Category chips are visible initially
+      // Category chips and the substitution trigger are visible initially
       expect(screen.getByRole('group', { name: 'Categories' })).toBeInTheDocument();
-      expect(screen.getByText('Some substitution option')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Substitutions' })).toBeInTheDocument();
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'cloister');
 
       // Non-recipe content should be hidden when searching
       expect(screen.queryByRole('group', { name: 'Categories' })).not.toBeInTheDocument();
-      expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
     });
 
     it('hides contextual calculators when searching', async () => {
@@ -547,7 +555,9 @@ describe('IngredientPage', () => {
 
       // Initially filtered and content hidden
       expect(screen.queryByRole('group', { name: 'Categories' })).not.toBeInTheDocument();
-      expect(screen.queryByText('Some substitution option')).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
 
       // Clear the search
       const clearButton = screen.getByRole('button', { name: /clear/i });
@@ -555,8 +565,122 @@ describe('IngredientPage', () => {
 
       // Content should be restored
       expect(screen.getByRole('group', { name: 'Categories' })).toBeInTheDocument();
-      expect(screen.getByText('Some substitution option')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Substitutions' })).toBeInTheDocument();
       expect(screen.getByText(`Recipes using ${TEST_SPIRIT.name}`)).toBeInTheDocument();
+    });
+  });
+
+  describe('substitution drawer', () => {
+    it('offers a Substitutions trigger under the category chips', async () => {
+      await setupApp(spiritPageJSX);
+
+      const trigger = screen.getByRole('button', { name: 'Substitutions' });
+      const chipsGroup = screen.getByRole('group', { name: 'Categories' });
+      expect(
+        chipsGroup.compareDocumentPosition(trigger) & Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+    });
+
+    it('renders no trigger for an ingredient without substitutions', async () => {
+      await setupApp(ingredientPageJSX);
+
+      expect(
+        screen.queryByRole('button', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
+    });
+
+    it('opens the substitution lists in the sheet, reusing the page lists', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      const sheet = screen.getByRole('dialog', { name: 'Substitutions' });
+      const sheetList = within(sheet).getByRole('group', {
+        name: 'Some substitution option',
+      });
+      expect(sheetList).toHaveTextContent('Appleton 21');
+      expect(
+        within(sheet).getByRole('group', { name: 'Substitution-friendly categories' }),
+      ).toHaveTextContent('Blended aged rum');
+
+      // The sheet describes what it substitutes.
+      expect(sheet).toHaveTextContent(`in place of ${TEST_JAMAICAN_RUM.name}.`);
+
+      // The sheet holds the only substitution copy: with it open, no second
+      // list renders in the page behind.
+      const allGroups = screen.getAllByRole('group', {
+        name: 'Some substitution option',
+      });
+      expect(allGroups).toHaveLength(1);
+      expect(sheet.contains(allGroups[0]!)).toBe(true);
+    });
+
+    it('is modal: traps focus in the sheet while open', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      const sheet = screen.getByRole('dialog', { name: 'Substitutions' });
+      expect(sheet).toHaveAttribute('aria-modal', 'true');
+
+      // The sheet opens with focus on its content (initialFocus="content"),
+      // never on the page behind it.
+      expect(sheet).toHaveFocus();
+
+      // Tab cycles inside the sheet only: the page's searchbox and links
+      // stay out of reach while the modal is open. Tabbing past every
+      // focusable in the sheet plus one proves the wrap.
+      const focusables =
+        within(sheet).getAllByRole('link').length +
+        within(sheet).getAllByRole('button').length;
+      for (let tab = 0; tab < focusables + 1; tab++) await user.tab();
+      expect(sheet.contains(document.activeElement)).toBe(true);
+    });
+
+    it('closes on Escape and returns focus to the trigger', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      const trigger = screen.getByRole('button', { name: 'Substitutions' });
+      await user.click(trigger);
+      expect(screen.getByRole('dialog', { name: 'Substitutions' })).toBeInTheDocument();
+
+      await user.keyboard('{Escape}');
+
+      expect(
+        screen.queryByRole('dialog', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
+      expect(trigger).toHaveFocus();
+    });
+
+    it('closes from the sheet close button', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+      await user.click(screen.getByRole('button', { name: 'Close substitutions' }));
+
+      expect(
+        screen.queryByRole('dialog', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
+    });
+
+    it('shows the trigger in every mode, styled apart from the category chips', async () => {
+      await setupApp(jamaicanRumPageJSX);
+
+      // No breakpoint classes on the trigger's wrapper: the drawer is the
+      // substitution UI on mobile and desktop alike.
+      const triggerWrapper = screen
+        .getByRole('button', { name: 'Substitutions' })
+        .closest('div');
+      expect(triggerWrapper?.className).not.toMatch(/hidden|min-\[|max-\[/);
+
+      // The trigger reads as a prominent action button, not another chip:
+      // solid primary fill, uppercase, its own full-width row.
+      const trigger = screen.getByRole('button', { name: 'Substitutions' });
+      expect(trigger).toHaveClass('bg-primary', 'uppercase', 'w-full', 'h-11');
+
+      // The category chips stay the translucent pills they were.
+      const chip = screen.getByRole('group', { name: 'Categories' }).firstElementChild;
+      expect(chip).not.toHaveClass('bg-primary', 'uppercase', 'w-full');
     });
   });
 });
