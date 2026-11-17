@@ -166,12 +166,7 @@ describe('SearchableList rows mode', () => {
   }));
 
   it('renders pre-rendered rows grouped by name when no term is passed', async () => {
-    await setupApp(
-      <SearchableList
-        rows={testRows}
-        emptyState={emptyState}
-      />,
-    );
+    await setupApp(<SearchableList rows={testRows} emptyState={emptyState} />);
 
     const mGroup = screen.getByRole('group', { name: 'M' });
     expect(mGroup).toHaveTextContent('Mojito');
@@ -181,12 +176,7 @@ describe('SearchableList rows mode', () => {
 
   it('filters pre-rendered rows from the ?search URL parameter', async () => {
     mockRouter.setCurrentUrl('/?search=moj');
-    await setupApp(
-      <SearchableList
-        rows={testRows}
-        emptyState={emptyState}
-      />,
-    );
+    await setupApp(<SearchableList rows={testRows} emptyState={emptyState} />);
 
     expect(screen.getByText('Mojito')).toBeInTheDocument();
     expect(screen.queryByText('Mai Tai')).not.toBeInTheDocument();
@@ -194,12 +184,7 @@ describe('SearchableList rows mode', () => {
 
   it('shows the empty state when no row matches the URL parameter', async () => {
     mockRouter.setCurrentUrl('/?search=nonexistent');
-    await setupApp(
-      <SearchableList
-        rows={testRows}
-        emptyState={emptyState}
-      />,
-    );
+    await setupApp(<SearchableList rows={testRows} emptyState={emptyState} />);
 
     expect(screen.getByRole('status')).toBeInTheDocument();
   });
