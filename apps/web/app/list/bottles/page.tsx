@@ -5,7 +5,6 @@ import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
 import { Card, CardHeader, CardTitle } from '#/components/ui/card';
 import { toIngredientListItems } from '#/modules/ingredientListItem';
-import { byNameListConfig } from '#/modules/lists/by-name';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Bottle list',
@@ -31,7 +30,6 @@ export default async function BottlesPage() {
           node: <LinkListItem href={href} primary={name} />,
           searchText,
         }))}
-        config={byNameListConfig}
         emptyState={
           <Card m={2}>
             <CardHeader>

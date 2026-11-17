@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { useCallback, useMemo } from 'react';
 import { P, match } from 'ts-pattern';
 import { fuzzySearch } from '#/modules/fuzzySearch';
+import { byNameListConfig } from '#/modules/lists/by-name';
 import type { ListConfig } from '#/modules/lists/type';
 import { LinkList } from '../LinkList';
 
@@ -27,7 +28,6 @@ export default function SearchableList<const T>(
         rows: SearchableRow[];
         /** Omitted: the list reads the ?search URL parameter itself. */
         searchTerm?: string | null;
-        config?: ListConfig<SearchableRow>;
         emptyState: ReactNode;
       }
     | {
@@ -44,13 +44,8 @@ export default function SearchableList<const T>(
   const searchTerm = props.searchTerm !== undefined ? props.searchTerm : urlSearchTerm;
 
   return match(props)
-    .with({ rows: P.array(P.any) }, ({ rows, config, emptyState }) => (
-      <RowsList
-        rows={rows}
-        searchTerm={searchTerm}
-        config={config}
-        emptyState={emptyState}
-      />
+    .with({ rows: P.array(P.any) }, ({ rows, emptyState }) => (
+      <RowsList rows={rows} searchTerm={searchTerm} emptyState={emptyState} />
     ))
     .otherwise(({ items, getSearchText, renderItem, config, emptyState }) => (
       <ItemsList
@@ -64,17 +59,15 @@ export default function SearchableList<const T>(
     ));
 }
 
-/** The rows mode: server-rendered nodes searched and grouped by the data
- * that travels with each row. */
+/** The rows mode: server-rendered nodes searched by their search text and
+ * grouped by their name's first letter (skipping articles, numbers under #). */
 function RowsList({
   rows,
   searchTerm,
-  config,
   emptyState,
 }: {
   rows: SearchableRow[];
   searchTerm: string | null;
-  config?: ListConfig<SearchableRow>;
   emptyState: ReactNode;
 }) {
   const haystack = useMemo(() => rows.map((row) => row.searchText), [rows]);
@@ -93,7 +86,7 @@ function RowsList({
 
   if (!searchTerm || searchTerm.trim().length === 0) {
     // When not searching, show grouped list
-    return <LinkList items={rows} config={config} renderItem={renderRow} />;
+    return <LinkList items={rows} config={byNameListConfig} renderItem={renderRow} />;
   }
 
   return emptyState;

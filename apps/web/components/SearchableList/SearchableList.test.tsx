@@ -169,7 +169,6 @@ describe('SearchableList rows mode', () => {
     await setupApp(
       <SearchableList
         rows={testRows}
-        config={byNameListConfig}
         emptyState={emptyState}
       />,
     );
@@ -185,7 +184,6 @@ describe('SearchableList rows mode', () => {
     await setupApp(
       <SearchableList
         rows={testRows}
-        config={byNameListConfig}
         emptyState={emptyState}
       />,
     );
@@ -199,7 +197,6 @@ describe('SearchableList rows mode', () => {
     await setupApp(
       <SearchableList
         rows={testRows}
-        config={byNameListConfig}
         emptyState={emptyState}
       />,
     );

@@ -4,7 +4,6 @@ import { LinkListItem } from '#/components/LinkList';
 import SearchableList from '#/components/SearchableList';
 import SearchHeader from '#/components/SearchHeader';
 import { Card, CardHeader, CardTitle } from '#/components/ui/card';
-import { byNameListConfig } from '#/modules/lists/by-name';
 import { getAuthorSearchText } from '#/modules/searchText';
 import { getAuthorRecipesUrl } from '#/modules/url';
 
@@ -51,7 +50,6 @@ export default async function AuthorListPage() {
           ),
           searchText: getAuthorSearchText(author),
         }))}
-        config={byNameListConfig}
         emptyState={
           <Card m={2}>
             <CardHeader>
