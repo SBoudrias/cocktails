@@ -15,7 +15,7 @@ function Card({
     <div
       data-slot="card"
       className={cn(
-        'card-frame overflow-hidden surface text-base text-card-foreground',
+        'card-frame text-base text-card-foreground',
         m === undefined ? undefined : m === 1 ? 'm-2' : 'm-4',
         className,
       )}

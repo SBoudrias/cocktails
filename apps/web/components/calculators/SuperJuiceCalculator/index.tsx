@@ -96,58 +96,67 @@ export default function SuperJuiceCalculator() {
     ]);
 
   return (
-    <Card m={1}>
-      <CardHeader>
-        <CardTitle>Super Juice</CardTitle>
-        {/* CardHeader subheader: body2 metrics, inheriting the
+    <>
+      <Card m={1}>
+        <CardHeader>
+          <CardTitle>Super Juice</CardTitle>
+          {/* CardHeader subheader: body2 metrics, inheriting the
             foreground. */}
-        <CardSubheader className="text-sm text-foreground">
-          Acid-adjusted, peel-oleated citrus juice. Technique by Nickle Morris; ratios
-          after Kevin Kos’s published recipes.
-        </CardSubheader>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
-        <CitrusSelector citrus={citrus} onChange={setCitrus} />
-        <LabeledField
-          label={CITRUS_INPUT_LABELS[citrus]}
-          unit="grams"
-          value={inputWeightValue}
-          type="number"
-          onChange={(event) => {
-            setInputWeight(event.target.value);
-          }}
-          error={!isInputWeightValid}
-          helperText={!isInputWeightValid ? 'Must be greater than 0' : undefined}
-          min={0}
-          step="any"
-        />
-        <ResultField label="Citric acid" value={formatGrams(superJuice.citricAcid)} />
-        {showsMalic && (
-          <ResultField label="Malic acid" value={formatGrams(superJuice.malicAcid)} />
-        )}
-        {showsMsg && <ResultField label="MSG" value={formatGrams(superJuice.msg)} />}
-        <ResultField label="Water" value={formatGrams(superJuice.water)} />
-        <div
-          className="flex justify-end"
-          role="group"
-          aria-label="Super juice calculator actions"
-        >
-          <Button
-            variant="text-secondary"
-            onClick={() => {
-              setInputWeight(DEFAULT_PEEL_WEIGHT);
+          <CardSubheader className="text-sm text-foreground">
+            Acid-adjusted, peel-oleated citrus juice. Technique by Nickle Morris; ratios
+            after Kevin Kos’s published recipes.
+          </CardSubheader>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4">
+          <CitrusSelector citrus={citrus} onChange={setCitrus} />
+          <LabeledField
+            label={CITRUS_INPUT_LABELS[citrus]}
+            unit="grams"
+            value={inputWeightValue}
+            type="number"
+            onChange={(event) => {
+              setInputWeight(event.target.value);
             }}
+            error={!isInputWeightValid}
+            helperText={!isInputWeightValid ? 'Must be greater than 0' : undefined}
+            min={0}
+            step="any"
+          />
+          <ResultField label="Citric acid" value={formatGrams(superJuice.citricAcid)} />
+          {showsMalic && (
+            <ResultField label="Malic acid" value={formatGrams(superJuice.malicAcid)} />
+          )}
+          {showsMsg && <ResultField label="MSG" value={formatGrams(superJuice.msg)} />}
+          <ResultField label="Water" value={formatGrams(superJuice.water)} />
+          <div
+            className="flex justify-end"
+            role="group"
+            aria-label="Super juice calculator actions"
           >
-            Reset to defaults
-          </Button>
-        </div>
-      </CardContent>
-      <CardContent>
-        <InstructionSteps id="super-juice-instructions" steps={instructions} />
-      </CardContent>
-      <CardContent>
-        <Video id="2RA3AaCO7A8" start={313} />
-      </CardContent>
-    </Card>
+            <Button
+              variant="text-secondary"
+              onClick={() => {
+                setInputWeight(DEFAULT_PEEL_WEIGHT);
+              }}
+            >
+              Reset to defaults
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+      {/* The instructions depend on the citrus selection, so they stay in
+        this client component — but as their own card, like the calculator
+        pages' other cards. */}
+      <Card m={1}>
+        <CardContent>
+          <InstructionSteps id="super-juice-instructions" steps={instructions} />
+        </CardContent>
+      </Card>
+      <Card m={1}>
+        <CardContent>
+          <Video id="2RA3AaCO7A8" start={313} />
+        </CardContent>
+      </Card>
+    </>
   );
 }
