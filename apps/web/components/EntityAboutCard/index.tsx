@@ -1,6 +1,7 @@
 import type { Author, Bar } from '@cocktails/data';
 import { cn } from 'cn';
 import { Globe, Map as MapIcon, Martini, User } from 'lucide-react';
+import type { SimpleIcon } from 'simple-icons';
 import { siFacebook, siInstagram, siX, siYoutube } from 'simple-icons';
 import { match, P } from 'ts-pattern';
 import BrandIcon from '#/components/icons/BrandIcon';
@@ -24,33 +25,47 @@ function getHostname(url: string): string {
 // (@erynreece reads better than instagram.com); every other link shows a
 // globe and its domain. The button's aria-label carries the full url. The
 // marks render at 20px, the start-icon glyph size.
+
+// BrandIcon takes no className — this span carries the spacing the button's
+// text label needs, and the unsized svg falls to the button's own 20px
+// `[&_svg:not([class*='size-'])]` rule. Inline flex, like the suggestions
+// row's brand icons: it keeps the svg centered on its own box instead of
+// sitting it on the text baseline a bare svg would ride.
+function BrandLinkIcon({ icon }: { icon: SimpleIcon }) {
+  return (
+    <span className="-ml-1 mr-2 inline-flex">
+      <BrandIcon icon={icon} />
+    </span>
+  );
+}
+
 function getLinkView(url: string) {
   return match(getHostname(url))
     .returnType<{ icon: React.ReactNode; label: string }>()
     .with('instagram.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siInstagram} className="mr-2 -ml-1" />,
+        icon: <BrandLinkIcon icon={siInstagram} />,
         label: handle ? handle : host,
       };
     })
     .with('youtube.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return handle
-        ? { icon: <BrandIcon icon={siYoutube} className="mr-2 -ml-1" />, label: handle }
-        : { icon: <BrandIcon icon={siYoutube} className="mr-2 -ml-1" />, label: host };
+        ? { icon: <BrandLinkIcon icon={siYoutube} />, label: handle }
+        : { icon: <BrandLinkIcon icon={siYoutube} />, label: host };
     })
     .with(P.union('x.com', 'twitter.com'), (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siX} className="mr-2 -ml-1" />,
+        icon: <BrandLinkIcon icon={siX} />,
         label: handle ? handle : host,
       };
     })
     .with('facebook.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siFacebook} className="mr-2 -ml-1" />,
+        icon: <BrandLinkIcon icon={siFacebook} />,
         label: handle ? handle : host,
       };
     })
