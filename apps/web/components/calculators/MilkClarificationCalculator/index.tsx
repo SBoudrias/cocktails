@@ -11,7 +11,7 @@ import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import { Alert } from '#/components/ui/alert';
 import { Card, CardContent } from '#/components/ui/card';
 import { LabeledField, OutlinedField } from '#/components/ui/labeled-field';
-import { ListSubheader, ListRow } from '#/components/ui/list';
+import { List, ListSubheader, ListRow } from '#/components/ui/list';
 import { formatAmount } from '#/modules/formatAmount';
 import { getMilkClarifiedRecipeListUrl } from '#/modules/url';
 
@@ -335,7 +335,7 @@ export default function MilkClarificationCalculator() {
         {/* The recipe pages' list pattern — the subheader itself a list
             item above the surface block of divider rows: py-8 outer,
             16px subheader padding. */}
-        <ul className="py-2">
+        <List>
           <li>
             <ListSubheader>Instructions</ListSubheader>
             <div className="surface">
@@ -348,16 +348,16 @@ export default function MilkClarificationCalculator() {
               ))}
             </div>
           </li>
-        </ul>
+        </List>
       </section>
-      <ul className="py-2">
+      <List>
         <div className="surface">
           <LinkListItem
             href={getMilkClarifiedRecipeListUrl()}
             primary="Browse milk-clarified recipes"
           />
         </div>
-      </ul>
+      </List>
     </>
   );
 }

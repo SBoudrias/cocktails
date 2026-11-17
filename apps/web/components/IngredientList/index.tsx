@@ -9,7 +9,7 @@ import { Fragment, useMemo, useState } from 'react';
 import { match } from 'ts-pattern';
 import Quantity from '#/components/Quantity';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
-import { ListRow, ListSubheader } from '#/components/ui/list';
+import { List, ListRow, ListSubheader } from '#/components/ui/list';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { getMilkClarificationContext } from '#/modules/milkClarification';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
@@ -142,7 +142,7 @@ export default function IngredientList({
 
   return (
     <>
-      <ul aria-label="Ingredients" className="bg-transparent px-0 py-2">
+      <List aria-label="Ingredients" className="bg-transparent px-0">
         <ListSubheader>Ingredients</ListSubheader>
         <div className="surface">
           {scaledIngredients.toSorted(compareIngredients).map((ingredient) => {
@@ -156,7 +156,7 @@ export default function IngredientList({
             );
           })}
         </div>
-      </ul>
+      </List>
       {scaledTechniques.map((recipeTechnique) => {
         const headingId = `recipe-technique-${recipeTechnique.technique}-heading`;
         const calculatorUrl = match(recipeTechnique)
@@ -191,7 +191,7 @@ export default function IngredientList({
                 </Link>
               </div>
             </ListSubheader>
-            <ul aria-labelledby={headingId} className="bg-transparent px-0 py-2">
+            <List aria-labelledby={headingId} className="bg-transparent px-0">
               <div className="surface">
                 <TechniqueRow>
                   <TechniqueDetails
@@ -200,7 +200,7 @@ export default function IngredientList({
                   />
                 </TechniqueRow>
               </div>
-            </ul>
+            </List>
           </Fragment>
         );
       })}

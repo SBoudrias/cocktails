@@ -2,7 +2,7 @@ import type { Attribution } from '@cocktails/data';
 import { ArrowUpRight } from 'lucide-react';
 import { P, match } from 'ts-pattern';
 import { LinkListItem } from '#/components/list/LinkList';
-import { ListSubheader } from '#/components/ui/list';
+import { List, ListSubheader } from '#/components/ui/list';
 import { getAuthorRecipesUrl, getBarRecipesUrl } from '#/modules/url';
 
 const attributionRelationLabels = {
@@ -51,7 +51,7 @@ export default function RecipeAttributionList({
   attributions: Attribution[];
 }) {
   return (
-    <ul aria-labelledby="attributions-subheader" className="py-2">
+    <List aria-labelledby="attributions-subheader">
       <ListSubheader id="attributions-subheader">Attributions</ListSubheader>
       {/* The card block holds LinkListItem rows (li's), so it is a ul to
           keep the list content model valid. */}
@@ -91,6 +91,6 @@ export default function RecipeAttributionList({
           );
         })}
       </ul>
-    </ul>
+    </List>
   );
 }

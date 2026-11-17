@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useId, useMemo } from 'react';
 import { match } from 'ts-pattern';
 import StickyGroupHeader from '#/components/list/StickyGroupHeader';
-import { ListSubheader } from '#/components/ui/list';
+import { List, ListSubheader } from '#/components/ui/list';
 import type { ListConfig } from '#/modules/lists/type';
 
 // The secondary line's metrics: 12px caption, muted teal, 1.35 line
@@ -91,7 +91,7 @@ function LinkListGroup<const T>({
 
   return (
     <li>
-      <ul role="group" aria-labelledby={header ? headerId : undefined} className="py-2">
+      <List role="group" aria-labelledby={header ? headerId : undefined}>
         {header &&
           match(headerMode)
             .with('sticky', () => (
@@ -107,7 +107,7 @@ function LinkListGroup<const T>({
           {items.map((item) => renderItem(item))}
           {footer}
         </div>
-      </ul>
+      </List>
     </li>
   );
 }
@@ -151,7 +151,7 @@ export function LinkList<const T>({
   }, [items, config, header]);
 
   return (
-    <ul className="py-2">
+    <List>
       {groups.map(([header, groupItems], groupIndex) => (
         <LinkListGroup
           key={header}
@@ -162,6 +162,6 @@ export function LinkList<const T>({
           footer={groupIndex === groups.length - 1 ? footer : undefined}
         />
       ))}
-    </ul>
+    </List>
   );
 }

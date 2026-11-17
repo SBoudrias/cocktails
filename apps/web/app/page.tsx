@@ -7,7 +7,7 @@ import { siYoutube } from 'simple-icons';
 import AppHeader from '#/components/AppHeader';
 import BrandIcon from '#/components/icons/BrandIcon';
 import { LinkListItem } from '#/components/list/LinkList';
-import { ListSubheader } from '#/components/ui/list';
+import { List, ListSubheader } from '#/components/ui/list';
 import {
   getAuthorListUrl,
   getBarListUrl,
@@ -75,7 +75,7 @@ export default async function HomePage() {
   return (
     <>
       <AppHeader title="Indexotica" />
-      <ul className="mt-4 py-2">
+      <List className="mt-4 py-2">
         <div className="surface">
           <LinkListItem
             href={getRecipeListUrl()}
@@ -135,7 +135,7 @@ export default async function HomePage() {
           />
           <LinkListItem href={getBottleListUrl()} primary="All Bottles" />
         </HomeSection>
-      </ul>
+      </List>
     </>
   );
 }
