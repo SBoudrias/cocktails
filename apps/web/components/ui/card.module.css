@@ -1,0 +1,38 @@
+/* The retro-future card frame: the glass tips on a ::before plate while
+   the text and controls stay level. Nothing clips — no clip-path, no
+   overflow crop — so the header's action slot (the top-right toggles)
+   always clears the frame and the plate's rounded bottom corners show
+   (the card's own box paints nothing). The plate carries the surface
+   recipe (the --surface-overlay/--surface-shadow tokens, the same ones the
+   lists' surface blocks use) with unequal corner radii, rotated by
+   --card-tilt; the negative inset bleeds it past the card's box so the
+   skewed silhouette reads against the night sky. Cards only — the lists'
+   surface blocks keep today's frame. */
+
+.frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--card);
+  background-image: var(--surface-overlay);
+  box-shadow: var(--surface-shadow);
+  border-radius: var(--card-radius-a) var(--card-radius-b) var(--card-radius-a)
+    var(--card-radius-b);
+  transform: rotate(var(--card-tilt));
+}
+
+/* Consecutive cards mirror the plate (the level-4 :nth-child(of) selector
+   counts cards among their siblings, skipping the app-bar spacer div and
+   any other divs), so stacks don't repeat one shape; a lone card — most
+   pages — keeps the base frame. */
+.frame:nth-child(2n of [data-slot='card'])::before {
+  border-radius: var(--card-radius-b) var(--card-radius-a) var(--card-radius-b)
+    var(--card-radius-a);
+  transform: rotate(calc(-1 * var(--card-tilt)));
+}

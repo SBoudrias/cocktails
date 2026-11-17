@@ -1,5 +1,6 @@
 import { cn } from 'cn';
 import * as React from 'react';
+import styles from './card.module.css';
 
 // The card's margin step in the page flow, in 8px units.
 export type CardMargin = 1 | 2;
@@ -15,7 +16,8 @@ function Card({
     <div
       data-slot="card"
       className={cn(
-        'card-frame text-base text-card-foreground',
+        'text-base text-card-foreground',
+        styles.frame,
         m === undefined ? undefined : m === 1 ? 'm-2' : 'm-4',
         className,
       )}
