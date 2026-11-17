@@ -122,16 +122,7 @@ function GroupModeToggle({
   onChange: (value: GroupMode) => void;
 }) {
   return (
-    <ToggleGroup
-      value={[value]}
-      onValueChange={([newValue]) => {
-        // A single-choice group: the pressed value is the new mode.
-        if (newValue === 'chapter' || newValue === 'alphabetical') {
-          onChange(newValue);
-        }
-      }}
-      aria-label="Recipe grouping"
-    >
+    <ToggleGroup value={value} onChange={onChange} aria-label="Recipe grouping">
       <ToggleGroupItem value="chapter">By Chapter</ToggleGroupItem>
       <ToggleGroupItem value="alphabetical">A-Z</ToggleGroupItem>
     </ToggleGroup>

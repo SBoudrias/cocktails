@@ -37,11 +37,8 @@ function AcidProfileSelector({
 }) {
   return (
     <ToggleGroup
-      value={[profile]}
-      // A single-choice group: pressing the active profile again keeps it.
-      onValueChange={([next]) => {
-        if (next != null) onChange(next);
-      }}
+      value={profile}
+      onChange={onChange}
       aria-label="Target acid profile"
       fullWidth
     >
@@ -450,10 +447,8 @@ export default function AcidAdjustingCalculator({
         <CardTitle className="min-w-0 flex-1">Acid Adjusting</CardTitle>
         <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">
           <ToggleGroup
-            value={[type]}
-            onValueChange={([next]) => {
-              if (next != null) setType(next);
-            }}
+            value={type}
+            onChange={setType}
             aria-label="Preferred acid-adjusting technique"
           >
             <ToggleGroupItem value="solution">Solution</ToggleGroupItem>

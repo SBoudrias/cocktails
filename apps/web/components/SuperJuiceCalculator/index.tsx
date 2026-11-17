@@ -43,15 +43,7 @@ function CitrusSelector({
   onChange: (citrus: SuperJuiceCitrus) => void;
 }) {
   return (
-    <ToggleGroup
-      value={[citrus]}
-      // A single-choice group: pressing the active citrus again keeps it.
-      onValueChange={([newVal]) => {
-        if (newVal != null) onChange(newVal);
-      }}
-      aria-label="Citrus type"
-      fullWidth
-    >
+    <ToggleGroup value={citrus} onChange={onChange} aria-label="Citrus type" fullWidth>
       <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
       <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
       <ToggleGroupItem value="orange">Orange</ToggleGroupItem>

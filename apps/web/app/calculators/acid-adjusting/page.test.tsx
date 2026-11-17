@@ -55,7 +55,7 @@ describe('AcidAdjustingPage', () => {
     const { user } = await setupApp(await AcidAdjustingPage());
     const solutionRecipe = screen.getByRole('region', { name: 'Make the solution' });
 
-    await user.click(within(solutionRecipe).getByRole('button', { name: 'Lemon' }));
+    await user.click(within(solutionRecipe).getByRole('radio', { name: 'Lemon' }));
 
     expect(screen.getByRole('textbox', { name: 'Citric acid for solution' })).toHaveValue(
       '35',
@@ -71,12 +71,12 @@ describe('AcidAdjustingPage', () => {
   it('calculates direct powder adjustments for Lime and Lemon profiles', async () => {
     const { user } = await setupApp(await AcidAdjustingPage());
 
-    await user.click(screen.getByRole('button', { name: 'Powder' }));
+    await user.click(screen.getByRole('radio', { name: 'Powder' }));
 
     expect(screen.getByRole('textbox', { name: 'Citric acid' })).toHaveValue('3');
     expect(screen.getByRole('textbox', { name: 'Malic acid' })).toHaveValue('2');
 
-    await user.click(screen.getByRole('button', { name: 'Lemon' }));
+    await user.click(screen.getByRole('radio', { name: 'Lemon' }));
 
     expect(screen.getByRole('textbox', { name: 'Citric acid' })).toHaveValue('5');
     expect(screen.queryByRole('textbox', { name: 'Malic acid' })).not.toBeInTheDocument();
@@ -85,8 +85,8 @@ describe('AcidAdjustingPage', () => {
       screen.getByRole('button', { name: 'Reset powder adjustment to defaults' }),
     );
 
-    expect(screen.getByRole('button', { name: 'Lemon' })).toHaveAttribute(
-      'aria-pressed',
+    expect(screen.getByRole('radio', { name: 'Lemon' })).toHaveAttribute(
+      'aria-checked',
       'true',
     );
   });
@@ -111,15 +111,15 @@ describe('AcidAdjustingPage', () => {
     await user.type(juiceAmount, '2');
     await user.clear(bottleSize);
     await user.type(bottleSize, '250');
-    await user.click(screen.getByRole('button', { name: 'Lemon' }));
+    await user.click(screen.getByRole('radio', { name: 'Lemon' }));
     await user.click(
       screen.getByRole('button', { name: 'Reset juice adjustment to defaults' }),
     );
 
     expect(juiceAmount).toHaveValue(1);
     expect(bottleSize).toHaveValue(250);
-    expect(screen.getByRole('button', { name: 'Lemon' })).toHaveAttribute(
-      'aria-pressed',
+    expect(screen.getByRole('radio', { name: 'Lemon' })).toHaveAttribute(
+      'aria-checked',
       'true',
     );
 
@@ -128,8 +128,8 @@ describe('AcidAdjustingPage', () => {
     );
 
     expect(bottleSize).toHaveValue(100);
-    expect(screen.getByRole('button', { name: 'Lemon' })).toHaveAttribute(
-      'aria-pressed',
+    expect(screen.getByRole('radio', { name: 'Lemon' })).toHaveAttribute(
+      'aria-checked',
       'true',
     );
   });

@@ -13,11 +13,8 @@ export default function UnitSelector({
 }) {
   return (
     <ToggleGroup
-      value={[value]}
-      // A single-choice group: pressing the active unit again keeps it.
-      onValueChange={([newVal]) => {
-        if (newVal != null) onChange(newVal === 'oz' ? 'oz' : 'ml');
-      }}
+      value={value}
+      onChange={onChange}
       aria-label="Preferred measurement unit"
     >
       <ToggleGroupItem value="oz">oz</ToggleGroupItem>
