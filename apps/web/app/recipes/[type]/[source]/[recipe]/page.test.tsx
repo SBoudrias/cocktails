@@ -208,11 +208,14 @@ describe('RecipePage', () => {
       );
     });
 
-    // The controls are named, and Previous sits disabled on the first page.
+    // The controls are named buttons; with loop, neither end ever disables
+    // (Next on the last wraps to the first). happy-dom's flat layout
+    // measures a single page, so the wrap itself is probed on the built
+    // export instead of asserted here.
     const previous = within(carousel).getByRole('button', {
       name: 'Previous video',
     });
-    expect(previous).toHaveAttribute('aria-disabled', 'true');
+    expect(previous).toHaveAttribute('type', 'button');
     expect(within(carousel).getByRole('button', { name: 'Next video' })).toHaveAttribute(
       'type',
       'button',

@@ -48,12 +48,16 @@ export default function VideoListCard({
             <Video key={refKey(ref)} id={ref.videoId} start={ref.start} />
           ))
         ) : (
-          // items-stretch: web.css centers the grid's tracks
-          // (align-items: center), which in this column flex would
-          // shrink the viewport to its content — the video must span
-          // the card's full width.
           <Carousel
             aria-label={title}
+            // loop: Next on the last video wraps to the first, and a
+            // swipe back from the first reaches the last — native
+            // scrolling either way, slides keep their DOM order.
+            loop
+            // items-stretch: web.css centers the grid's tracks
+            // (align-items: center), which in this column flex would
+            // shrink the viewport to its content — the video must span
+            // the card's full width.
             className="flex w-full max-w-none flex-col items-stretch gap-2"
           >
             <CarouselViewport>
@@ -69,7 +73,13 @@ export default function VideoListCard({
               <CarouselPrevious aria-label="Previous video" className={controlClass}>
                 <ChevronLeft />
               </CarouselPrevious>
-              <CarouselIndicatorGroup aria-label="Choose a video" className="gap-2">
+              <CarouselIndicatorGroup
+                aria-label="Choose a video"
+                // items-center: web.css starts its flex rows at the top
+                // (align-items: flex-start), so the selected dot's larger
+                // size grew downward; centering keeps the dots on one axis.
+                className="items-center gap-2"
+              >
                 {refs.map((ref, index) => (
                   <CarouselIndicator
                     key={refKey(ref)}
