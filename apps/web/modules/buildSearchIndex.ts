@@ -78,10 +78,8 @@ export function buildSearchIndex(
  */
 export async function getSerializedSearchIndex(): Promise<string> {
   const recipes = await getAllRecipes();
-  const [recipeItems, entityItems] = await Promise.all([
-    toSearchIndexItems(recipes),
-    toSearchIndexEntityItems(recipes),
-  ]);
+  const recipeItems = toSearchIndexItems(recipes);
+  const entityItems = await toSearchIndexEntityItems(recipes);
 
   return JSON.stringify(buildSearchIndex([...recipeItems, ...entityItems]));
 }

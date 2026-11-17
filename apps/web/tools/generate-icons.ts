@@ -83,7 +83,7 @@ for (const { file, size, scale } of targets) {
     await writeFile(target, await sharp(svg).resize(size, size).png().toBuffer());
   } catch (error) {
     throw new Error(
-      `failed to generate ${target}: ${error instanceof Error ? error.message : error}`,
+      `failed to generate ${target}: ${error instanceof Error ? error.message : String(error)}`,
       { cause: error },
     );
   }

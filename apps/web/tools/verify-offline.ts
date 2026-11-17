@@ -398,7 +398,7 @@ class Cdp {
     const promise = new Promise<unknown>((resolve, reject) => {
       this.pending.set(id, { resolve, reject });
     });
-    void this.ws.send(JSON.stringify({ id, method, params }));
+    this.ws.send(JSON.stringify({ id, method, params }));
     return promise;
   }
 

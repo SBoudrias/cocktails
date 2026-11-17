@@ -71,8 +71,8 @@ export const getIngredient = memo(
 export const getAllIngredients = memo(async (): Promise<RootIngredient[]> => {
   const ingredients: RootIngredient[] = [];
 
-  for await (const type of await fs.readdir(INGREDIENT_ROOT)) {
-    for await (const file of await fs.readdir(path.join(INGREDIENT_ROOT, type))) {
+  for (const type of await fs.readdir(INGREDIENT_ROOT)) {
+    for (const file of await fs.readdir(path.join(INGREDIENT_ROOT, type))) {
       const ingredient = await getIngredient(type, path.basename(file, '.json'));
       ingredients.push(ingredient);
     }

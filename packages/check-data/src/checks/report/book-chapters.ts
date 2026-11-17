@@ -16,7 +16,7 @@ function isChapterFolder(folder: string): boolean {
 export async function reportBookChapters(): Promise<void> {
   logger.header('📚 Validating book chapter structure...');
   const bookRoot = path.join(PACKAGE_ROOT, 'data/recipes/book');
-  for await (const bookSlug of await fs.readdir(bookRoot)) {
+  for (const bookSlug of await fs.readdir(bookRoot)) {
     const bookPath = path.join(bookRoot, bookSlug);
     const entries = await fs.readdir(bookPath);
 

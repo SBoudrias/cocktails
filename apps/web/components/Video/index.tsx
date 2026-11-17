@@ -6,7 +6,7 @@ import style from './style.module.css';
 
 export default function Video({ id, start }: { id: string; start?: number }) {
   useEffect(() => {
-    import('lite-youtube-embed');
+    void import('lite-youtube-embed');
   }, []);
 
   const searchParams = new URLSearchParams();
