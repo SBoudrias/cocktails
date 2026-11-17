@@ -61,7 +61,8 @@
     },
     {
       "relation": "bar",
-      "source": "Senor Pico"
+      "source": "Senor Pico",
+      "location": "San Francisco, CA"
     }
   ],
   "refs": [

@@ -37,7 +37,8 @@
     },
     {
       "relation": "bar",
-      "source": "Tommy's Mexican Restaurant"
+      "source": "Tommy's Mexican Restaurant",
+      "location": "San Francisco, CA"
     }
   ],
   "refs": [

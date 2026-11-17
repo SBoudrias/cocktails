@@ -59,7 +59,8 @@
     },
     {
       "relation": "bar",
-      "source": "The S.O.S. Tiki Bar"
+      "source": "The S.O.S. Tiki Bar",
+      "location": "Decatur, GA"
     }
   ],
   "refs": [

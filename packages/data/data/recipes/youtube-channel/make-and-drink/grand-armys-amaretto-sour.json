@@ -47,7 +47,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Grand Army Bar"
+      "source": "Grand Army Bar",
+      "location": "Brooklyn, NY"
     }
   ],
   "refs": [

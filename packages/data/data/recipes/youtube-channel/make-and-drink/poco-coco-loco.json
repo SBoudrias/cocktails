@@ -57,7 +57,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Trader Vic's"
+      "source": "Trader Vic's",
+      "location": "Oakland, CA"
     }
   ],
   "refs": [

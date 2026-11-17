@@ -58,7 +58,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Clyde Common"
+      "source": "Clyde Common",
+      "location": "Portland, OR"
     }
   ],
   "refs": [

@@ -45,7 +45,8 @@
     },
     {
       "relation": "bar",
-      "source": "Tail O' Clock"
+      "source": "Tail O' Clock",
+      "location": "Los Angeles, CA"
     }
   ],
   "refs": [

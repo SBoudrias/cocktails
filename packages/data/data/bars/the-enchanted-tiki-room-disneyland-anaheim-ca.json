@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "The Enchanted Tiki Room",
+  "location": "Disneyland, Anaheim, CA"
+}

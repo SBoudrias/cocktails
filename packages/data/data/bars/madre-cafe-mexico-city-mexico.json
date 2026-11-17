@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Madre Cafe",
+  "location": "Mexico City, Mexico"
+}

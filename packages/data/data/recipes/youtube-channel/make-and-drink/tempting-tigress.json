@@ -41,7 +41,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Nomad Lounge at Disney's Animal Kingdom Park"
+      "source": "Nomad Lounge at Disney's Animal Kingdom Park",
+      "location": "Orlando, FL"
     }
   ],
   "refs": [
