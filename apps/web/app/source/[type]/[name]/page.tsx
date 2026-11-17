@@ -3,10 +3,10 @@ import { getSourcePageParams } from '@cocktails/data/params';
 import { getRecipesFromSource } from '@cocktails/data/recipes';
 import { getSource } from '@cocktails/data/sources';
 import { notFound, unstable_rethrow } from 'next/navigation';
-import BookSourceList from '#/components/BookSourceList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import { toRecipeListItems } from '#/modules/recipeListItem';
+import BookSourceList from './BookSourceList';
 
 type Params = { type: Source['type']; name: string };
 

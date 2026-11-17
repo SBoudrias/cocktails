@@ -7,12 +7,12 @@ import AppHeader from '#/components/AppHeader';
 import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
 import InstructionList from '#/components/InstructionList';
-import RecipeAttributionList from '#/components/RecipeAttributionList';
-import RecipeBadges from '#/components/RecipeBadges';
 import SourceAboutCard from '#/components/SourceAboutCard';
 import VideoListCard from '#/components/VideoListCard';
-import WebsiteListCard from '#/components/WebsiteListCard';
 import { getRecipeEditUrl } from '#/modules/url';
+import RecipeAttributionList from './RecipeAttributionList';
+import RecipeBadges from './RecipeBadges';
+import WebsiteListCard from './WebsiteListCard';
 
 type Params = { type: Source['type']; source: string; recipe: string };
 
