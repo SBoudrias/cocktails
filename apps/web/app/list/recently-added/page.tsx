@@ -1,8 +1,8 @@
 import { getRecentlyAddedRecipeEntries } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import AppHeader from '#/components/AppHeader';
-import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import StickyGroupHeader from '#/components/StickyGroupHeader';
+import RecipeLinkListItem from '#/components/list/RecipeLinkListItem';
+import StickyGroupHeader from '#/components/list/StickyGroupHeader';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { groupByAddedDay } from '#/modules/groupByAddedDay';
 import { getRecipeUrl } from '#/modules/url';

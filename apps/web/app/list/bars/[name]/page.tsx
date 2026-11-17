@@ -3,7 +3,7 @@ import { getAllRecipes, getRecipesByBar } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { BarAboutCard } from '#/components/EntityAboutCard';
+import { BarAboutCard } from '#/components/card/EntityAboutCard';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 
 function formatBarName(bar: { name: string; location?: string }) {

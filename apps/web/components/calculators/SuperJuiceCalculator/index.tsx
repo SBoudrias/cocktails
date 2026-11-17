@@ -3,7 +3,7 @@
 import { parseAsString, useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
-import { InstructionSteps } from '#/components/InstructionSteps';
+import { InstructionSteps } from '#/components/calculators/InstructionSteps';
 import { Button } from '#/components/ui/button';
 import {
   Card,

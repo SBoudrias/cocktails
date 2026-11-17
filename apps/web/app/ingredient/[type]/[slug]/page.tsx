@@ -9,8 +9,9 @@ import uniqBy from 'lodash/uniqBy';
 import { Tag } from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
+import FixBugCard from '#/components/card/FixBugCard';
+import VideoListCard from '#/components/card/VideoListCard';
 import CategoryChips from '#/components/CategoryChips';
-import FixBugCard from '#/components/FixBugCard';
 import IngredientList from '#/components/IngredientList';
 import InstructionList from '#/components/InstructionList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
@@ -25,7 +26,6 @@ import {
   CardTitle,
 } from '#/components/ui/card';
 import Video from '#/components/Video';
-import VideoListCard from '#/components/VideoListCard';
 import { getCategoryUrl } from '#/modules/url';
 import IngredientCalculators from './IngredientCalculators';
 

@@ -2,9 +2,9 @@
 
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
-import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import RecipeSearchableList from '#/components/RecipeSearchableList';
-import SearchHeader from '#/components/SearchHeader';
+import RecipeLinkListItem from '#/components/list/RecipeLinkListItem';
+import RecipeSearchableList from '#/components/search/RecipeSearchableList';
+import SearchHeader from '#/components/search/SearchHeader';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { useSearchIndex } from '#/hooks/useSearchIndex';
 import { getEntitySuggestions } from '#/modules/entitySuggestions';

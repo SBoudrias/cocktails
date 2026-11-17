@@ -1,7 +1,7 @@
 import type { Category, RootIngredient } from '@cocktails/data';
 import { Tag } from 'lucide-react';
 import type { Route } from 'next';
-import { type HeaderMode, LinkList, LinkListItem } from '#/components/LinkList';
+import { type HeaderMode, LinkList, LinkListItem } from '#/components/list/LinkList';
 import { ingredientHasData } from '#/modules/hasData';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 

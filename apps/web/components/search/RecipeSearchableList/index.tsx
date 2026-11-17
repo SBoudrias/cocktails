@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { useCallback } from 'react';
-import SearchableList from '#/components/SearchableList';
+import SearchableList from '#/components/search/SearchableList';
 import { useSearchIndex } from '#/hooks/useSearchIndex';
 import type { ListConfig } from '#/modules/lists/type';
 import { getIndexedSearchText } from '#/modules/searchIndex';

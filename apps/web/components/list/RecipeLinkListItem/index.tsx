@@ -1,5 +1,5 @@
 import type { LinkProps } from 'next/link';
-import { LinkListItem } from '#/components/LinkList';
+import { LinkListItem } from '#/components/list/LinkList';
 
 export default function RecipeLinkListItem<RouteType>({
   name,

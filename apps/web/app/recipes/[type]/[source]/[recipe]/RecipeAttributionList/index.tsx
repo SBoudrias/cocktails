@@ -1,7 +1,7 @@
 import type { Attribution } from '@cocktails/data';
 import { ArrowUpRight } from 'lucide-react';
 import { P, match } from 'ts-pattern';
-import { LinkListItem } from '#/components/LinkList';
+import { LinkListItem } from '#/components/list/LinkList';
 import { ListSubheader } from '#/components/ui/list';
 import { getAuthorRecipesUrl, getBarRecipesUrl } from '#/modules/url';
 

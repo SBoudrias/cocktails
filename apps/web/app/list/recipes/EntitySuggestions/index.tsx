@@ -2,7 +2,7 @@ import { BookOpen, Martini, Mic, Tag, User, Wine } from 'lucide-react';
 import { siYoutube } from 'simple-icons';
 import { match } from 'ts-pattern';
 import BrandIcon from '#/components/icons/BrandIcon';
-import { LinkListItem } from '#/components/LinkList';
+import { LinkListItem } from '#/components/list/LinkList';
 import type { EntitySuggestion } from '#/modules/entitySuggestions';
 import { isEntityUrl } from '#/modules/url';
 import styles from './style.module.css';

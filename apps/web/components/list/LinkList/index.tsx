@@ -4,7 +4,7 @@ import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import { useId, useMemo } from 'react';
 import { match } from 'ts-pattern';
-import StickyGroupHeader from '#/components/StickyGroupHeader';
+import StickyGroupHeader from '#/components/list/StickyGroupHeader';
 import { ListSubheader } from '#/components/ui/list';
 import type { ListConfig } from '#/modules/lists/type';
 

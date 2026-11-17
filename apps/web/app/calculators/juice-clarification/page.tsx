@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';
-import JuiceClarificationCalculator from '#/components/JuiceClarificationCalculator';
+import JuiceClarificationCalculator from '#/components/calculators/JuiceClarificationCalculator';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Juice Clarification Calculator',

@@ -1,4 +1,4 @@
-import { LinkListItem } from '#/components/LinkList';
+import { LinkListItem } from '#/components/list/LinkList';
 import { ListSubheader } from '#/components/ui/list';
 
 // The instructions block the recipe and ingredient pages share: a subheader

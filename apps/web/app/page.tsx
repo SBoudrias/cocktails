@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 import { siYoutube } from 'simple-icons';
 import AppHeader from '#/components/AppHeader';
 import BrandIcon from '#/components/icons/BrandIcon';
-import { LinkListItem } from '#/components/LinkList';
+import { LinkListItem } from '#/components/list/LinkList';
 import { ListSubheader } from '#/components/ui/list';
 import {
   getAuthorListUrl,
