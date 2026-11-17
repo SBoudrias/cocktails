@@ -415,22 +415,24 @@ export default function AcidAdjustingCalculator({
   return (
     <>
       <Card m={1}>
-        {/* The header's action slot (24px bottom padding): the slot is flex
-            0 0 auto, aligned to the start, pulled into the header's 16px
-            padding by its -4/-8/-4 margins. */}
-        <CardHeader className="flex-row items-center pb-6">
-          <CardTitle className="min-w-0 flex-1">Acid Adjusting</CardTitle>
-          <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">
-            <ToggleGroup
-              value={type}
-              onChange={setType}
-              aria-label="Preferred acid-adjusting technique"
-            >
-              <ToggleGroupItem value="solution">Solution</ToggleGroupItem>
-              <ToggleGroupItem value="powder">Powder</ToggleGroupItem>
-            </ToggleGroup>
-          </div>
+        <CardHeader>
+          <CardTitle>Acid Adjusting</CardTitle>
         </CardHeader>
+        {/* The technique switch on its own full-width line under the title
+            — it used to sit in the header's corner, too close to the
+            frame's top edge; this is the same form-line pattern as the acid
+            profile selectors in the calculators below. */}
+        <CardContent>
+          <ToggleGroup
+            value={type}
+            onChange={setType}
+            aria-label="Preferred acid-adjusting technique"
+            fullWidth
+          >
+            <ToggleGroupItem value="solution">Solution</ToggleGroupItem>
+            <ToggleGroupItem value="powder">Powder</ToggleGroupItem>
+          </ToggleGroup>
+        </CardContent>
         {match(type)
           .with('powder', () => (
             <PowderCalculator

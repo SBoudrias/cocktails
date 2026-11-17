@@ -1,7 +1,7 @@
-/* The retro-future card frame: the glass is a sheared plate on a ::before
-   layer — a parallelogram, top and bottom edges sloping at the same
-   angle, the left side standing taller than the right — while the text
-   and controls stay level. The 7px vertical inset is the shear's travel
+/* The retro-future card frame: the glass is a wedge on a ::before layer
+   — sheared (top and bottom edges sloping at the same angle, the left
+   side standing taller than the right) and tapered (sides converging
+   toward the top) — while the text and controls stay level. The 7px vertical inset is the shear's travel
    budget: the plate's tips (half its width times tan of the shear, ~6px
    on the 600px column) point inward from the card's box, so neighboring
    plates never touch and no halo opens at the sides (the plate keeps the
@@ -26,7 +26,10 @@
   background-image: var(--surface-overlay);
   box-shadow: var(--surface-shadow);
   border-radius: var(--card-radius-lean);
-  transform: skewY(var(--card-shear));
+  /* perspective + rotateX converge the sides (the taper); skewY leans
+     them. All paint on the plate — including its box-shadow — transforms
+     together, so the shadow follows the wedge. */
+  transform: perspective(900px) rotateX(var(--card-taper)) skewY(var(--card-shear));
 }
 
 /* Consecutive cards mirror the lean (the level-4 :nth-child(of) selector
@@ -35,5 +38,6 @@
    A lone card — most pages — keeps the left-leaning base frame. */
 .frame:nth-child(2n of [data-slot='card'])::before {
   border-radius: var(--card-radius-lean-mirrored);
-  transform: skewY(calc(-1 * var(--card-shear)));
+  transform: perspective(900px) rotateX(var(--card-taper))
+    skewY(calc(-1 * var(--card-shear)));
 }

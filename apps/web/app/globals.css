@@ -80,6 +80,11 @@
      width times tan(shear) (~6px at the 600px column), so the sheared
      tips stay at the card box and never touch a neighbor. */
   --card-shear: 1.2deg;
+  /* The taper: a gentle rotateX under perspective converges the plate's
+     sides toward its top — the triangular lean, on top of the shear's
+     tall-left parallelogram. It also shortens the plate's painted height,
+     so it can never push into the margin between cards. */
+  --card-taper: 2deg;
   --card-radius-lean: 26px 8px 26px 8px;
   --card-radius-lean-mirrored: 8px 26px 8px 26px;
   /* The fixed app bar: its glass fill (--header) and its height per
