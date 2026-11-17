@@ -1,3 +1,4 @@
+import type { YoutubeRef } from '@cocktails/data';
 import { getRecipe } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
@@ -169,6 +170,90 @@ describe('RecipePage', () => {
     // One more serving on top of the author's 10-serving batch
     expect(techniqueDetails).toHaveTextContent('165 ml Whole milk');
     expect(calculatorLink).toHaveTextContent(/^Calculate milk for a batch$/);
+  });
+
+  it('renders the extra videos as a named carousel, one video per slide', async () => {
+    // shrunken-skull: five youtube refs, the first shown in the source
+    // card, so the carousel holds the remaining four. Paging — buttons,
+    // arrows, indicators — is ui-sdk's carousel behavior, tested there;
+    // this checks the wiring: the region, its slides, and their videos.
+    const recipe = await getRecipe(
+      { type: 'youtube-channel', slug: 'anders-erickson' },
+      'shrunken-skull',
+    );
+    const videos = recipe.refs.filter((ref): ref is YoutubeRef => ref.type === 'youtube');
+
+    await setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: recipe.source.type,
+          source: recipe.source.slug,
+          recipe: recipe.slug,
+        }),
+      }),
+    );
+
+    const carousel = screen.getByRole('region', { name: 'Video' });
+    expect(carousel).toHaveAttribute('aria-roledescription', 'carousel');
+
+    const slides = within(carousel).getAllByRole('group');
+    expect(slides).toHaveLength(videos.length - 1);
+    // Slides name their position and keep the embedded players, in the
+    // refs' order — the same videos the old stack showed.
+    slides.forEach((slide, index) => {
+      expect(slide).toHaveAccessibleName(`${index + 1} of ${videos.length - 1}`);
+      expect(slide.querySelector('lite-youtube')).toHaveAttribute(
+        'videoid',
+        videos[index + 1]!.videoId,
+      );
+    });
+
+    // The controls are named, and Previous sits disabled on the first page.
+    const previous = within(carousel).getByRole('button', {
+      name: 'Previous video',
+    });
+    expect(previous).toHaveAttribute('aria-disabled', 'true');
+    expect(within(carousel).getByRole('button', { name: 'Next video' })).toHaveAttribute(
+      'type',
+      'button',
+    );
+
+    // One indicator per extra video, the first standing for the shown page.
+    const indicators = within(carousel).getAllByRole('tab', { hidden: true });
+    expect(indicators).toHaveLength(videos.length - 1);
+    indicators.forEach((indicator, index) => {
+      // aria-label, not the accessible name: slides beyond the measured
+      // page (all of them under happy-dom's flat layout) carry hidden,
+      // and a hidden element has no accessible name to compute.
+      expect(indicator).toHaveAttribute('aria-label', `Video ${index + 1}`);
+    });
+    expect(indicators[0]).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('keeps a single extra video as a plain embed, no carousel', async () => {
+    // penicillin: two youtube refs, the first in the source card, so the
+    // video card holds one player and never pages.
+    const recipe = await getRecipe(
+      { type: 'youtube-channel', slug: 'truffles-on-the-rocks' },
+      'penicillin',
+    );
+
+    await setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: recipe.source.type,
+          source: recipe.source.slug,
+          recipe: recipe.slug,
+        }),
+      }),
+    );
+
+    const cardTitle = screen.getByText('Video');
+    expect(cardTitle).toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Video' })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('tablist', { name: 'Choose a video' }),
+    ).not.toBeInTheDocument();
   });
 
   it('renders the attribution list before the source card, keeping lists and cards apart', async () => {
