@@ -82,6 +82,22 @@ describe('the PWA toasts', () => {
 
     const region = await screen.findByRole('region', { name: 'Notifications' });
     expect(region).toHaveTextContent(/you are offline/i);
+    // Dismissible before the connection returns: someone who got the
+    // point can clear it early.
+    expect(screen.getByRole('button', { name: /dismiss/i })).toBeInTheDocument();
+  });
+
+  it('clears the offline note by hand when Dismiss is chosen', async () => {
+    const { user } = await mountPwa();
+    window.dispatchEvent(new Event('offline'));
+    await screen.findByRole('region', { name: 'Notifications' });
+
+    await user.click(screen.getByRole('button', { name: /dismiss/i }));
+    await waitFor(() =>
+      expect(
+        screen.queryByRole('region', { name: 'Notifications' }),
+      ).not.toBeInTheDocument(),
+    );
   });
 
   it('clears the offline note when back online', async () => {

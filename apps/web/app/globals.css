@@ -18,6 +18,21 @@
     }
   }
 
+  /* The row's pending-navigation shine: a soft diagonal highlight band
+     sweeps across the tapped row while its navigation is in flight (a
+     first visit whose prefetch has not landed). The band is a third of
+     the row wide, so the sweep travels -100% → 300% of its own width. */
+  --animate-row-shine: row-shine 1.1s ease-in-out infinite;
+
+  @keyframes row-shine {
+    from {
+      translate: -100% 0;
+    }
+    to {
+      translate: 300% 0;
+    }
+  }
+
   --font-sans: var(--font-app);
   --font-heading: var(--font-app);
   --color-background: var(--background);

@@ -59,15 +59,16 @@ export function showInstallToast(event: Event): void {
   });
 }
 
-/** The quiet offline note: persistent while offline (visited pages and the
- * precached catalog still work — it explains a state, blocks nothing),
- * dismissed by returning online. */
+/** The quiet offline note: it stays while offline (visited pages and the
+ * precached catalog still work — it explains a state, blocks nothing) and
+ * leaves by itself when the connection returns; a dismiss affordance
+ * lets someone who got the point clear it early. */
 export function showOfflineToast(): void {
   toast('You are offline', {
     id: OFFLINE_ID,
     description: 'Visited pages and lists still work.',
     duration: Infinity,
-    dismissible: false,
+    cancel: { label: 'Dismiss' },
   });
 }
 

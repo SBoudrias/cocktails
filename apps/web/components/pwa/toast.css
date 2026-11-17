@@ -20,25 +20,38 @@
   margin-top: calc(1rem + var(--safe-area-top));
 }
 
-/* The toast card: moonlit glass — the app bar's translucent navy fill and
-   the surface overlay/shadow recipe, the 8px blur of the drawer sheet, the
-   jade divider border. */
+/* The toast card: moonlit glass on the app's sheared card silhouette —
+   the plate leans on a ::before layer exactly like the cards
+   (ui/card.module.css: the same --card-shear token and the same
+   big-corner radii), while the text and controls stay level. Transient
+   UI, so no taper and a tighter inset; the plate stays inside the box,
+   clear of the safe areas. */
 [data-slot='toast'] {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem 0.75rem;
   padding: 0.625rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: calc(var(--radius-lg) + 2px);
-  background-color: var(--header);
-  background-image: var(--surface-overlay);
-  box-shadow: var(--surface-shadow);
   color: var(--foreground);
   font-size: 0.875rem;
   line-height: 1.4;
-  backdrop-filter: blur(8px);
   user-select: none;
+}
+
+[data-slot='toast']::before {
+  content: '';
+  position: absolute;
+  inset: 4px 0;
+  z-index: -1;
+  border: 1px solid var(--border);
+  border-radius: 10px 4px 10px 4px;
+  background-color: var(--header);
+  background-image: var(--surface-overlay);
+  box-shadow: var(--surface-shadow);
+  transform: skewY(var(--card-shear));
+  backdrop-filter: blur(8px);
 }
 
 [data-slot='toast-title'] {
