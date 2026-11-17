@@ -23,6 +23,12 @@ jobs:
       - name: Lint ✅
         run: yarn lint
 
+      # Blocking on purpose: knip.json is at 0 findings, so any failure here
+      # is genuine dead code or an unused export introduced by the PR. Fix the
+      # code, or — for a false positive — adjust knip.json, not this workflow.
+      - name: Knip 🧹
+        run: yarn knip
+
   schema:
     runs-on: ubuntu-latest
     timeout-minutes: 10
