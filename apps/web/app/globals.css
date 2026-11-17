@@ -72,12 +72,16 @@
   /* The retro-future card frame (the fun-refinements picks): a tilted
      glass plate with unequal corner radii, mirrored on consecutive cards.
      Tokens only — dial the tilt to 0 and the cards sit square again. */
-  /* One radius value per corner, TL TR BR BL: the left-large frame and
-     its right-large mirror — consecutive cards alternate between them, so
-     a stack reads big-left, big-right, big-left. No rotation anywhere:
-     the asymmetric masses do the retro-future lean. */
-  --card-radius-left: 44px 6px 6px 28px;
-  --card-radius-right: 6px 44px 28px 6px;
+  /* The retro-future card shape: the glass sheared into a parallelogram —
+     top and bottom edges at the same angle, the left side standing taller
+     than the right — with big rounded corners on the tall diagonal.
+     Consecutive cards mirror the lean. The shear value and the plate's
+     vertical inset travel together: the inset must cover half the plate
+     width times tan(shear) (~6px at the 600px column), so the sheared
+     tips stay at the card box and never touch a neighbor. */
+  --card-shear: 1.2deg;
+  --card-radius-lean: 26px 8px 26px 8px;
+  --card-radius-lean-mirrored: 8px 26px 8px 26px;
   /* The fixed app bar: its glass fill (--header) and its height per
      orientation and breakpoint — the sticky headers offset from it. */
   --header: rgb(10 20 32 / 0.85);
