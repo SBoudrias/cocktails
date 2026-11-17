@@ -4,7 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import '@ui-sdk/core/web.css';
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Roboto } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 import 'core-js/modules/es.object.group-by.js';
 // Not nuqs/adapters/next/app: it reads useSearchParams(), which makes every
 // page that reads a query param render client-only under `output: 'export'`.
@@ -18,10 +18,14 @@ import nightSkyStrip from '../../../public/night-sky-strip.webp';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';
 import tikiLeavesTop from '../../../public/tiki-leaves-top.webp';
 
-const roboto = Roboto({
+// Space Grotesk: the app's face, picked from the fun-refinements page.
+// One latin-only variable file (300–700 covers every weight the app uses —
+// 400 body plus a few font-medium; nothing bolds), so the PWA precache
+// carries ~22 kb instead of Roboto's 9-subset ~204 kb.
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-roboto',
+  variable: '--font-app',
 });
 
 const description =
@@ -104,7 +108,7 @@ export default function RootLayout({
           href={`${basePath}/sitemap.xml`}
         />
       </head>
-      <body className={roboto.variable}>
+      <body className={spaceGrotesk.variable}>
         <NuqsAdapter>
           {/* The app shell: a 600px column carrying the night sky as fixed
               background layers, painted here topmost first: the tiki leaves

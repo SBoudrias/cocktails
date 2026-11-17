@@ -18,8 +18,8 @@
     }
   }
 
-  --font-sans: var(--font-roboto);
-  --font-heading: var(--font-roboto);
+  --font-sans: var(--font-app);
+  --font-heading: var(--font-app);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -49,19 +49,44 @@
   --foreground: #e8f4f4; /* Pale cyan-tinted white */
   --card: rgb(10 20 32 / 0.78); /* Glass card: translucent, star texture seeps through */
   --card-foreground: #e8f4f4;
-  --primary: #2a8a8a; /* Turquoise ocean water */
+  --primary: #2f8a5e; /* Jade ocean water */
   --primary-foreground: #ffffff;
   --secondary: #e8b84d; /* Warm moonlight glow */
   --secondary-foreground: #000000;
   --muted: rgb(255 255 255 / 0.08);
-  --muted-foreground: #9dc4c4; /* Muted teal */
+  --muted-foreground: #a8cfaa; /* Muted jade */
   --accent: rgb(255 255 255 / 0.08);
   --accent-foreground: #e8f4f4;
   --destructive: #a85b7a; /* Magenta purple from palm silhouettes */
-  --border: rgb(93 184 216 / 0.12); /* Subtle turquoise divider */
+  --border: rgb(127 199 152 / 0.14); /* Subtle jade divider */
   --input: rgb(255 255 255 / 0.23);
-  --ring: #5dbdbd;
+  --ring: #6fcf9a;
   --radius: 0.25rem; /* The theme's corner radius */
+  /* The surface paint recipe, once: the fill token and this overlay/shadow
+     pair are the single source for the lists' surface blocks and the
+     cards' tilted glass plate (components/ui/card.module.css). */
+  --surface-overlay: linear-gradient(rgb(255 255 255 / 0.05), rgb(255 255 255 / 0.05));
+  --surface-shadow:
+    0px 2px 1px -1px rgb(0 0 0 / 0.2), 0px 1px 1px 0px rgb(0 0 0 / 0.14),
+    0px 1px 3px 0px rgb(0 0 0 / 0.12);
+  /* The retro-future card frame (the fun-refinements picks): a tilted
+     glass plate with unequal corner radii, mirrored on consecutive cards.
+     Tokens only — dial the tilt to 0 and the cards sit square again. */
+  /* The retro-future card shape: the glass sheared into a parallelogram —
+     top and bottom edges at the same angle, the left side standing taller
+     than the right — with big rounded corners on the tall diagonal.
+     Consecutive cards mirror the lean. The shear value and the plate's
+     vertical inset travel together: the inset must cover half the plate
+     width times tan(shear) (~6px at the 600px column), so the sheared
+     tips stay at the card box and never touch a neighbor. */
+  --card-shear: 1.2deg;
+  /* The taper: a gentle rotateX under perspective converges the plate's
+     sides toward its top — the triangular lean, on top of the shear's
+     tall-left parallelogram. It also shortens the plate's painted height,
+     so it can never push into the margin between cards. */
+  --card-taper: 2deg;
+  --card-radius-lean: 26px 8px 26px 8px;
+  --card-radius-lean-mirrored: 8px 26px 8px 26px;
   /* The fixed app bar: its glass fill (--header) and its height per
      orientation and breakpoint — the sticky headers offset from it. */
   --header: rgb(10 20 32 / 0.85);
@@ -70,7 +95,7 @@
      icon art. --paper is the solid surface color; --card carries the glass
      surface alpha. */
   --paper: #152535;
-  --primary-light: #5dbdbd;
+  --primary-light: #6fcf9a;
   --secondary-light: #ffd580;
   --secondary-dark: #c89a2f;
   --info-light: #8dd4ed;
@@ -115,10 +140,10 @@
   }
 
   body {
-    /* The base text: Roboto from next/font's variable, 16px/24px, the
-       theme's text and background colors. Without the smoothing rules
+    /* The base text: Space Grotesk from next/font's variable, 16px/24px,
+       the theme's text and background colors. Without the smoothing rules
        every glyph rasterizes differently (subpixel vs grayscale AA). */
-    font-family: var(--font-roboto);
+    font-family: var(--font-app);
     font-size: 1rem;
     line-height: 1.5;
     color: var(--foreground);
@@ -172,9 +197,6 @@
    elevation-1 shadow. One source for cards and the list blocks. */
 @utility surface {
   background-color: var(--card);
-  background-image: linear-gradient(rgb(255 255 255 / 0.05), rgb(255 255 255 / 0.05));
-  box-shadow:
-    0px 2px 1px -1px rgb(0 0 0 / 0.2),
-    0px 1px 1px 0px rgb(0 0 0 / 0.14),
-    0px 1px 3px 0px rgb(0 0 0 / 0.12);
+  background-image: var(--surface-overlay);
+  box-shadow: var(--surface-shadow);
 }

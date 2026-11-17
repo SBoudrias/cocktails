@@ -11,7 +11,6 @@ import { buttonVariants } from '#/components/ui/button-variants';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { LabeledField } from '#/components/ui/labeled-field';
 import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
-import Video from '#/components/Video';
 
 const DEFAULT_TARGET_ACIDITY = 6;
 const DEFAULT_SOLUTION_VOLUME = 100;
@@ -189,14 +188,13 @@ function PowderCalculator({
 function SolutionRecipe({
   profile,
   onProfileChange,
-  solutionVolumeValue,
-  onSolutionVolumeChange,
 }: {
   profile: AcidProfile;
   onProfileChange: (profile: AcidProfile) => void;
-  solutionVolumeValue: string;
-  onSolutionVolumeChange: (value: string) => void;
 }) {
+  const [solutionVolumeValue, setSolutionVolume] = useState(() =>
+    DEFAULT_SOLUTION_VOLUME.toString(),
+  );
   const solutionVolume = parseNumber(solutionVolumeValue);
   const isSolutionVolumeValid = Number.isFinite(solutionVolume) && solutionVolume > 0;
   const scale = isSolutionVolumeValid
@@ -232,7 +230,7 @@ function SolutionRecipe({
         value={solutionVolumeValue}
         type="number"
         onChange={(event) => {
-          onSolutionVolumeChange(event.target.value);
+          setSolutionVolume(event.target.value);
         }}
         error={!isSolutionVolumeValid}
         helperText={!isSolutionVolumeValid ? 'Must be greater than zero' : undefined}
@@ -273,7 +271,7 @@ function SolutionRecipe({
         <Button
           variant="text-secondary"
           onClick={() => {
-            onSolutionVolumeChange(DEFAULT_SOLUTION_VOLUME.toString());
+            setSolutionVolume(DEFAULT_SOLUTION_VOLUME.toString());
           }}
           aria-label="Reset solution recipe to defaults"
         >
@@ -286,15 +284,9 @@ function SolutionRecipe({
 
 function SolutionCalculator({
   defaultAcidity,
-  profile,
-  onProfileChange,
-  showDetails,
   showFullCalculatorLink,
 }: {
   defaultAcidity: number;
-  profile: AcidProfile;
-  onProfileChange: (profile: AcidProfile) => void;
-  showDetails: boolean;
   showFullCalculatorLink: boolean;
 }) {
   const [juiceAmountValue, setJuiceAmount] = useQueryState('juiceAmount', {
@@ -305,9 +297,6 @@ function SolutionCalculator({
     DEFAULT_TARGET_ACIDITY.toString(),
   );
   const [acidAmountValue, setAcidAmount] = useState(() => defaultAcidity.toString());
-  const [solutionVolumeValue, setSolutionVolume] = useState(() =>
-    DEFAULT_SOLUTION_VOLUME.toString(),
-  );
 
   const juiceAmount = parseNumber(juiceAmountValue);
   const targetAcidity = parseNumber(targetAcidityValue);
@@ -392,21 +381,6 @@ function SolutionCalculator({
           </Button>
         </div>
       </CardContent>
-      {showDetails && (
-        <>
-          <CardContent>
-            <SolutionRecipe
-              profile={profile}
-              onProfileChange={onProfileChange}
-              solutionVolumeValue={solutionVolumeValue}
-              onSolutionVolumeChange={setSolutionVolume}
-            />
-          </CardContent>
-          <CardContent>
-            <Video id="dcw6IJSice4" />
-          </CardContent>
-        </>
-      )}
     </>
   );
 }
@@ -439,42 +413,53 @@ export default function AcidAdjustingCalculator({
   const [profile, setProfile] = useState<AcidProfile>('lime');
 
   return (
-    <Card m={1}>
-      {/* The header's action slot (24px bottom padding): the slot is flex
-          0 0 auto, aligned to the start, pulled into the header's 16px
-          padding by its -4/-8/-4 margins. */}
-      <CardHeader className="flex-row items-center pb-6">
-        <CardTitle className="min-w-0 flex-1">Acid Adjusting</CardTitle>
-        <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">
+    <>
+      <Card m={1}>
+        <CardHeader>
+          <CardTitle>Acid Adjusting</CardTitle>
+        </CardHeader>
+        {/* The technique switch on its own full-width line under the title
+            — it used to sit in the header's corner, too close to the
+            frame's top edge; this is the same form-line pattern as the acid
+            profile selectors in the calculators below. */}
+        <CardContent>
           <ToggleGroup
             value={type}
             onChange={setType}
             aria-label="Preferred acid-adjusting technique"
+            fullWidth
           >
             <ToggleGroupItem value="solution">Solution</ToggleGroupItem>
             <ToggleGroupItem value="powder">Powder</ToggleGroupItem>
           </ToggleGroup>
-        </div>
-      </CardHeader>
-      {match(type)
-        .with('powder', () => (
-          <PowderCalculator
-            defaultAcidity={defaultAcidity}
-            profile={profile}
-            onProfileChange={setProfile}
-            showFullCalculatorLink={compact}
-          />
-        ))
-        .with('solution', () => (
-          <SolutionCalculator
-            defaultAcidity={defaultAcidity}
-            profile={profile}
-            onProfileChange={setProfile}
-            showDetails={!compact}
-            showFullCalculatorLink={compact}
-          />
-        ))
-        .exhaustive()}
-    </Card>
+        </CardContent>
+        {match(type)
+          .with('powder', () => (
+            <PowderCalculator
+              defaultAcidity={defaultAcidity}
+              profile={profile}
+              onProfileChange={setProfile}
+              showFullCalculatorLink={compact}
+            />
+          ))
+          .with('solution', () => (
+            <SolutionCalculator
+              defaultAcidity={defaultAcidity}
+              showFullCalculatorLink={compact}
+            />
+          ))
+          .exhaustive()}
+      </Card>
+      {/* The solution recipe as its own card — only on the full calculator
+          page, and only for the solution technique (the powder card carries
+          its own acid profile selector). */}
+      {!compact && type === 'solution' && (
+        <Card m={1}>
+          <CardContent>
+            <SolutionRecipe profile={profile} onProfileChange={setProfile} />
+          </CardContent>
+        </Card>
+      )}
+    </>
   );
 }

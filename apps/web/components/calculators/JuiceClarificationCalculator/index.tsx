@@ -5,11 +5,9 @@ import type { RecipeIngredient } from '@cocktails/data';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
-import { InstructionSteps } from '#/components/calculators/InstructionSteps';
 import { Button } from '#/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { LabeledField } from '#/components/ui/labeled-field';
-import Video from '#/components/Video';
 import { formatAmount } from '#/modules/formatAmount';
 
 const DEFAULT_JUICE_WEIGHT = 250;
@@ -98,24 +96,6 @@ export default function JuiceClarificationCalculator() {
             Reset to defaults
           </Button>
         </div>
-      </CardContent>
-      <CardContent>
-        <InstructionSteps
-          id="juice-clarification-instructions"
-          steps={[
-            'Stir the agar agar into the water and let it bloom for a couple of minutes.',
-            'Heat the mixture gently until it boils to activate the agar agar.',
-            'Transfer it to a heatproof container and let it cool to room temperature until fully set.',
-            'Break the agar gel into smaller pieces.',
-            'Blend the gel while slowly pouring in the raw juice.',
-            'Pour the mixture into a drip filter lined with two coffee filters.',
-            'Let the juice filter without disturbing the gel raft. The first liquid may be cloudy while the raft forms.',
-          ]}
-        />
-      </CardContent>
-      <CardContent>
-        <p className="mb-4 text-sm">Juice clarification technique by Kate McGraw.</p>
-        <Video id="_5iicQymdTU" start={193} />
       </CardContent>
     </Card>
   );

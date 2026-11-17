@@ -1,4 +1,15 @@
+import { match } from 'ts-pattern';
+
 export type SuperJuiceCitrus = 'lemon' | 'lime' | 'orange' | 'grapefruit' | 'kumquat';
+
+export const DEFAULT_CITRUS: SuperJuiceCitrus = 'lime';
+
+/** The URL param is a free string; this narrows it to a known citrus. */
+export const isSuperJuiceCitrus = (value: string | null): value is SuperJuiceCitrus =>
+  value != null &&
+  match(value)
+    .with('lemon', 'lime', 'orange', 'grapefruit', 'kumquat', () => true)
+    .otherwise(() => false);
 
 /**
  * Acid, MSG and water additions per gram of input weight, from the published

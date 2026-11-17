@@ -1,0 +1,43 @@
+/* The retro-future card frame: the glass is a wedge on a ::before layer
+   — sheared (top and bottom edges sloping at the same angle, the left
+   side standing taller than the right) and tapered (sides converging
+   toward the top) — while the text and controls stay level. The 7px vertical inset is the shear's travel
+   budget: the plate's tips (half its width times tan of the shear, ~6px
+   on the 600px column) point inward from the card's box, so neighboring
+   plates never touch and no halo opens at the sides (the plate keeps the
+   box's full width). The big corners sit on the tall diagonal, mirroring
+   the lean. The plate carries the surface recipe
+   (--surface-overlay/--surface-shadow, the same tokens the lists' surface
+   blocks use). Cards only — the lists' surface blocks keep today's
+   frame. */
+
+.frame {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Leaning left: top-left and bottom-right corners carry the big radii. */
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: 7px 0;
+  z-index: -1;
+  background-color: var(--card);
+  background-image: var(--surface-overlay);
+  box-shadow: var(--surface-shadow);
+  border-radius: var(--card-radius-lean);
+  /* perspective + rotateX converge the sides (the taper); skewY leans
+     them. All paint on the plate — including its box-shadow — transforms
+     together, so the shadow follows the wedge. */
+  transform: perspective(900px) rotateX(var(--card-taper)) skewY(var(--card-shear));
+}
+
+/* Consecutive cards mirror the lean (the level-4 :nth-child(of) selector
+   counts cards among their siblings, skipping the app-bar spacer div and
+   any other divs): right side taller, big corners on the other diagonal.
+   A lone card — most pages — keeps the left-leaning base frame. */
+.frame:nth-child(2n of [data-slot='card'])::before {
+  border-radius: var(--card-radius-lean-mirrored);
+  transform: perspective(900px) rotateX(var(--card-taper))
+    skewY(calc(-1 * var(--card-shear)));
+}
