@@ -137,9 +137,8 @@ export default function SearchableEntityList({
       {variant === 'bar' && hasLocations && !isSearching && (
         <div className="mx-4 flex justify-end">
           <ToggleGroup
-            value={[barGroupMode]}
-            onValueChange={([newValue]) => {
-              // A single-choice group: the pressed value is the new mode.
+            value={barGroupMode}
+            onChange={(newValue) => {
               if (newValue === 'alpha' || newValue === 'city') {
                 setBarGroupMode(newValue);
               }
