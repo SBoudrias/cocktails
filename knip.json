@@ -2,7 +2,8 @@
   "$schema": "https://unpkg.com/knip@6.45.1/schema.json",
   // jest-dom is declared for types in the root tsconfig "types" array, not
   // imported directly. nano-staged is run by the .gitconfig pre-commit hook.
-  "ignoreDependencies": ["@testing-library/jest-dom", "nano-staged"],
+  // tsrs is the type-aware backend binary oxlint discovers at runtime.
+  "ignoreDependencies": ["@testing-library/jest-dom", "nano-staged", "tsrs"],
   // yt-dlp: external binary shelled out to by youtube-sync.
   "ignoreBinaries": ["yt-dlp"],
   "workspaces": {
