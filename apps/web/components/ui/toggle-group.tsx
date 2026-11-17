@@ -69,7 +69,7 @@ function ToggleGroupItem({
         // the re-render the press causes, or the button visibly trails the
         // page content.
         'h-auto flex-none rounded-none border bg-transparent text-[13px] leading-[1.75] font-medium whitespace-nowrap uppercase outline-none',
-        '[&:first-of-type]:rounded-s-lg [&:last-of-type]:rounded-e-lg [&:first-of-type]:border-l-0',
+        'first-of-type:rounded-s-lg first-of-type:border-l-0 last-of-type:rounded-e-lg',
         // Unselected labels sit deliberately pure white — brighter than the
         // foreground's cyan cast — so the picked item reads at a glance.
         'p-1.75 text-white hover:text-foreground data-checked:bg-foreground/16 data-checked:text-foreground',

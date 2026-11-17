@@ -15,7 +15,7 @@ function Card({
     <div
       data-slot="card"
       className={cn(
-        'overflow-hidden rounded-lg text-base text-card-foreground surface',
+        'overflow-hidden rounded-lg surface text-base text-card-foreground',
         m === undefined ? undefined : m === 1 ? 'm-2' : 'm-4',
         className,
       )}
@@ -65,7 +65,7 @@ function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
       className={cn(
         // A content block that follows the header or another content block
         // loses its top padding, so stacked blocks read as one section.
-        'p-4 text-sm [[data-slot=card-header]+&]:pt-0 [[data-slot=card-content]+&]:pt-0',
+        'p-4 text-sm [[data-slot=card-content]+&]:pt-0 [[data-slot=card-header]+&]:pt-0',
         className,
       )}
       {...props}

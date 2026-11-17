@@ -31,7 +31,7 @@ export default function SubstitutionDrawer({
   return (
     <Drawer side="bottom">
       <div className="mx-4 mb-2">
-        <DrawerTrigger className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-medium tracking-wide text-primary-foreground uppercase outline-none transition-colors hover:bg-primary/85 focus-visible:ring-3 focus-visible:ring-ring/50">
+        <DrawerTrigger className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-medium tracking-wide text-primary-foreground uppercase transition-colors outline-none hover:bg-primary/85 focus-visible:ring-3 focus-visible:ring-ring/50">
           <ArrowLeftRight className="size-5" aria-hidden="true" />
           Substitutions
           <ChevronDown className="size-4 opacity-80" aria-hidden="true" />
@@ -40,7 +40,7 @@ export default function SubstitutionDrawer({
       <DrawerBackdrop className="bg-black/50" />
       <DrawerContent
         initialFocus="content"
-        className="surface gap-0 rounded-t-xl p-0 pb-2 text-foreground backdrop-blur-[8px]"
+        className="gap-0 rounded-t-xl surface p-0 pb-2 text-foreground backdrop-blur-[8px]"
       >
         <div
           aria-hidden="true"
@@ -53,7 +53,7 @@ export default function SubstitutionDrawer({
           </DrawerTitle>
           <DrawerClose
             aria-label="Close substitutions"
-            className="flex size-9 items-center justify-center rounded-full border-0 bg-transparent p-0 outline-none transition-colors hover:bg-foreground/8 focus-visible:bg-foreground/16"
+            className="flex size-9 items-center justify-center rounded-full border-0 bg-transparent p-0 transition-colors outline-none hover:bg-foreground/8 focus-visible:bg-foreground/16"
           >
             <X className="size-5" aria-hidden="true" />
           </DrawerClose>

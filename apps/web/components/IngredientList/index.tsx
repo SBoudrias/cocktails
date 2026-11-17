@@ -33,7 +33,7 @@ function IngredientRow<RouteType>({
     <li>
       <Link
         href={href}
-        className="flex w-full items-center border-b py-2 pr-12 pl-4 text-base capitalize outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+        className="flex w-full items-center border-b py-2 pr-12 pl-4 text-base capitalize transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
       >
         <span className="my-1 flex-1 text-left">{children}</span>
         <ChevronRight className="size-6 shrink-0 text-foreground" aria-hidden="true" />
@@ -179,12 +179,12 @@ export default function IngredientList({
                 <span id={headingId}>{formatRecipeTechniqueName(recipeTechnique)}</span>
                 <Link
                   href={calculatorUrl}
-                  className="inline-flex items-center gap-1 no-underline text-foreground"
+                  className="inline-flex items-center gap-1 text-foreground no-underline"
                 >
                   {/* The Calculate glyph sits low in its viewBox; lift it into
                       the text cap band */}
                   <Calculator
-                    className="size-[13px] -translate-y-[1.5px]"
+                    className="size-[13px] translate-y-[-1.5px]"
                     aria-hidden="true"
                   />
                   Calculate milk for a batch

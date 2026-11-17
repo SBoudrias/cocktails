@@ -22,7 +22,7 @@ export default function CategoryChips({
     <div
       role="group"
       aria-label={label}
-      className="mx-4 -mt-1 mb-2 flex flex-wrap items-center gap-x-1.5 gap-y-1.5"
+      className="mx-4 -mt-1 mb-2 flex flex-wrap items-center gap-1.5"
     >
       {categories.map((category) => (
         <Link

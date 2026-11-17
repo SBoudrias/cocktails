@@ -94,7 +94,7 @@ export default function ServingSelector({
         </InputGroupAddon>
         <InputGroupInput
           type="number"
-          className="h-auto w-11.75 flex-none self-stretch pl-0 leading-5.75 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+          className="h-auto w-11.75 flex-none [appearance:textfield] self-stretch pl-0 leading-5.75 [&::-webkit-inner-spin-button]:appearance-none"
           value={inputValue ?? servings}
           onChange={handleChange}
           onBlur={handleBlur}

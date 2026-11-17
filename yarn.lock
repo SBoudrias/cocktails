@@ -1323,7 +1323,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/node@npm:4.3.5":
+"@tailwindcss/node@npm:4.3.5, @tailwindcss/node@npm:^4.3.5":
   version: 4.3.5
   resolution: "@tailwindcss/node@npm:4.3.5"
   dependencies:
@@ -2213,6 +2213,7 @@ __metadata:
     nano-staged: "npm:^1.0.2"
     oxfmt: "npm:^0.78.0"
     oxlint: "npm:^1.93.0"
+    oxlint-tailwindcss: "npm:1.17.2"
     skills: "npm:1.9.0"
     turbo: "npm:^2.11.10"
     typescript: "npm:7.0.2"
@@ -3205,6 +3206,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"oxlint-tailwindcss@npm:1.17.2":
+  version: 1.17.2
+  resolution: "oxlint-tailwindcss@npm:1.17.2"
+  dependencies:
+    "@tailwindcss/node": "npm:^4.3.5"
+    tailwindcss: "npm:^4.3.5"
+  checksum: 10c0/784dc5ffe581844df4277c46b630817c62f7f2cc8fbcbc04a76d003fc4a47086b6e099334960537b72b03c5d4c53948cc49c64654937e5579881a45f30ca5b42
+  languageName: node
+  linkType: hard
+
 "oxlint@npm:^1.93.0":
   version: 1.93.0
   resolution: "oxlint@npm:1.93.0"
@@ -3748,7 +3759,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.3.5":
+"tailwindcss@npm:4.3.5, tailwindcss@npm:^4.3.5":
   version: 4.3.5
   resolution: "tailwindcss@npm:4.3.5"
   checksum: 10c0/a02a1759cc3aaad5d9b5da7919bc2d5570432960e0f933be752185ced814fc8a193885effd9628bc3067c81552c13293e469b8e46e5a43b148dbfc97f00b5994

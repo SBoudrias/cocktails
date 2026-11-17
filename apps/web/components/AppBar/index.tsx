@@ -20,8 +20,8 @@ export default function AppBar({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-(--z-app-bar) bg-header text-foreground bg-[image:linear-gradient(rgba(255,255,255,0.092),rgba(255,255,255,0.092))] shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.2),0px_4px_5px_0px_rgba(0,0,0,0.14),0px_1px_10px_0px_rgba(0,0,0,0.12)] backdrop-blur-sm">
-        <div className="flex min-h-[var(--app-bar-height)] items-center px-4 min-[600px]:px-6">
+      <header className="fixed inset-x-0 top-0 z-(--z-app-bar) bg-header bg-[linear-gradient(rgba(255,255,255,0.092),rgba(255,255,255,0.092))] text-foreground shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.2),0px_4px_5px_0px_rgba(0,0,0,0.14),0px_1px_10px_0px_rgba(0,0,0,0.12)] backdrop-blur-sm">
+        <div className="flex min-h-(--app-bar-height) items-center px-4 min-[600px]:px-6">
           {isHome ? (
             <button
               type="button"
@@ -44,7 +44,7 @@ export default function AppBar({ children }: { children: ReactNode }) {
         </div>
       </header>
       {/* the toolbar's height, so content starts below the fixed bar */}
-      <div className="min-h-[var(--app-bar-height)]" />
+      <div className="min-h-(--app-bar-height)" />
     </>
   );
 }

@@ -32,7 +32,7 @@ function StickyTopItemList({ children, style }: TopItemListProps) {
   return (
     <div
       ref={ref}
-      className="sticky z-[1]"
+      className="sticky z-1"
       style={{ ...style, top: 'var(--app-bar-height)', ...(stuck ? stuckGlass : null) }}
     >
       {children}

@@ -179,7 +179,7 @@ function MilkSelect({
         >
           <SelectPrimitive.Trigger
             aria-labelledby={labelId}
-            className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-3.5 text-base text-left outline-none"
+            className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-3.5 text-left text-base outline-none"
           >
             <SelectPrimitive.Value />
             <SelectPrimitive.Icon className="absolute top-1/2 right-1.75 -translate-y-1/2 text-foreground">
@@ -192,7 +192,7 @@ function MilkSelect({
               sideOffset={0}
               // The menu surface: the paper glass without radius, the
               // trigger's width, 8px vertical padding.
-              className="surface z-50 overflow-y-auto py-2 rounded-none min-w-[var(--anchor-width)]"
+              className="z-50 min-w-(--anchor-width) overflow-y-auto rounded-none surface py-2"
             >
               <SelectPrimitive.Popup>
                 {options.map((type) => (
@@ -201,7 +201,7 @@ function MilkSelect({
                     value={type}
                     // A menu row: auto rows 36px tall, 16px left padding,
                     // the selected item on primary/16.
-                    className="flex h-9 items-center px-4 text-base text-foreground outline-none data-selected:bg-primary/16 data-highlighted:bg-muted"
+                    className="flex h-9 items-center px-4 text-base text-foreground outline-none data-highlighted:bg-muted data-selected:bg-primary/16"
                   >
                     <SelectPrimitive.ItemText>{type}</SelectPrimitive.ItemText>
                   </SelectPrimitive.Item>
