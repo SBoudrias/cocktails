@@ -72,9 +72,12 @@
   /* The retro-future card frame (the fun-refinements picks): a tilted
      glass plate with unequal corner radii, mirrored on consecutive cards.
      Tokens only — dial the tilt to 0 and the cards sit square again. */
-  --card-tilt: -1deg;
-  --card-radius-a: 20px;
-  --card-radius-b: 4px;
+  /* One radius value per corner, TL TR BR BL: the left-large frame and
+     its right-large mirror — consecutive cards alternate between them, so
+     a stack reads big-left, big-right, big-left. No rotation anywhere:
+     the asymmetric masses do the retro-future lean. */
+  --card-radius-left: 44px 6px 6px 28px;
+  --card-radius-right: 6px 44px 28px 6px;
   /* The fixed app bar: its glass fill (--header) and its height per
      orientation and breakpoint — the sticky headers offset from it. */
   --header: rgb(10 20 32 / 0.85);

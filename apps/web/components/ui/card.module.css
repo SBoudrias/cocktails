@@ -1,12 +1,11 @@
-/* The retro-future card frame: the glass tips on a ::before plate while
-   the text and controls stay level. Nothing clips — no clip-path, no
-   overflow crop — so the header's action slot (the top-right toggles)
-   always clears the frame and the plate's rounded bottom corners show
-   (the card's own box paints nothing). The plate carries the surface
-   recipe (the --surface-overlay/--surface-shadow tokens, the same ones the
-   lists' surface blocks use) with unequal corner radii, rotated by
-   --card-tilt; the negative inset bleeds it past the card's box so the
-   skewed silhouette reads against the night sky. Cards only — the lists'
+/* The retro-future card frame: the glass is a plate on a ::before layer
+   while the text and controls stay level. The plate sits exactly on the
+   card's box (inset 0) and is never rotated, so it can never poke into
+   the margin between cards — the alternation comes from asymmetric corner
+   radii instead: one card carries a tall sweeping left side (its top edge
+   curves down toward the right), the next the mirrored right side. The
+   plate carries the surface recipe (--surface-overlay/--surface-shadow,
+   the same tokens the lists' surface blocks use). Cards only — the lists'
    surface blocks keep today's frame. */
 
 .frame {
@@ -14,32 +13,21 @@
   isolation: isolate;
 }
 
+/* Left side large: TL 44 / BL 28 sweep, small right corners. */
 .frame::before {
   content: '';
   position: absolute;
-  /* The plate sits 4px inside the card's box: the rotation's corner tips
-     (width·sin(tilt) at the 1deg tilt — up to ~10px on the 600px desktop
-     column) point inward from the box instead of poking into the 8px
-     margin between cards, so neighboring plates are always clearly
-     separated (≥6px tip-to-tip at the widest column, more on phones).
-     The card box paints nothing, so the inset just reads as the card's
-     own size; content padding is 16px, well clear of the plate's edge. */
-  inset: 4px;
+  inset: 0;
   z-index: -1;
   background-color: var(--card);
   background-image: var(--surface-overlay);
   box-shadow: var(--surface-shadow);
-  border-radius: var(--card-radius-a) var(--card-radius-b) var(--card-radius-a)
-    var(--card-radius-b);
-  transform: rotate(var(--card-tilt));
+  border-radius: var(--card-radius-left);
 }
 
 /* Consecutive cards mirror the plate (the level-4 :nth-child(of) selector
    counts cards among their siblings, skipping the app-bar spacer div and
-   any other divs), so stacks don't repeat one shape; a lone card — most
-   pages — keeps the base frame. */
+   any other divs); a lone card — most pages — keeps the left-large frame. */
 .frame:nth-child(2n of [data-slot='card'])::before {
-  border-radius: var(--card-radius-b) var(--card-radius-a) var(--card-radius-b)
-    var(--card-radius-a);
-  transform: rotate(calc(-1 * var(--card-tilt)));
+  border-radius: var(--card-radius-right);
 }
