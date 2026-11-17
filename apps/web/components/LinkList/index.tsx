@@ -113,7 +113,7 @@ export function LinkList<const T>({
               className="py-2"
             >
               {header && <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>}
-              <div className="bg-card">
+              <div className="surface">
                 {groupItems.map((item) => renderItem(item))}
                 {footer && groupIndex === groups.length - 1 && footer}
               </div>

@@ -133,7 +133,7 @@ export default function VirtualGroupedList<const T extends { href: string }>({
         )}
         itemContent={(index) => {
           const item = items[index];
-          return <div className="bg-card">{item ? renderItem(item) : placeholder}</div>;
+          return <div className="surface">{item ? renderItem(item) : placeholder}</div>;
         }}
       />
     </ul>

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 // A home section: an icon- and title-bearing subheader over a surface block
 // of rows. LinkList can't draw this — its header is a plain string and its
-// rows sit in bg-card — so the scaffold gets a page-local helper.
+// rows sit in a surface block — so the scaffold gets a page-local helper.
 function HomeSection({
   icon,
   title,

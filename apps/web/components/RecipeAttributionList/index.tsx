@@ -55,7 +55,7 @@ export default function RecipeAttributionList({
       <ListSubheader id="attributions-subheader">Attributions</ListSubheader>
       {/* The card block holds LinkListItem rows (li's), so it is a ul to
           keep the list content model valid. */}
-      <ul className="bg-card">
+      <ul className="surface">
         {attributions.map((attribution) => {
           const { key, href, label, location, externalUrl } =
             getAttributionView(attribution);
