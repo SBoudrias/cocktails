@@ -78,14 +78,11 @@ function LinkListGroup<const T>({
   headerMode,
   items,
   renderItem,
-  footer,
 }: {
   header: string;
   headerMode: HeaderMode;
   items: T[];
   renderItem: (item: T) => React.ReactNode;
-  /** Rendered after the group's rows, inside its paper. */
-  footer?: React.ReactNode;
 }) {
   const headerId = useId();
 
@@ -103,10 +100,7 @@ function LinkListGroup<const T>({
               </li>
             ))
             .exhaustive()}
-        <div className="surface">
-          {items.map((item) => renderItem(item))}
-          {footer}
-        </div>
+        <div className="surface">{items.map((item) => renderItem(item))}</div>
       </List>
     </li>
   );
@@ -117,15 +111,12 @@ export function LinkList<const T>({
   renderItem,
   config,
   header = '',
-  footer,
   headerMode = 'sticky',
 }: {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
   config?: ListConfig<T>;
   header?: string;
-  /** Rendered after the last group's items, inside its paper. */
-  footer?: React.ReactNode;
   /** How the group headers render; sticky pins them under the app bar. */
   headerMode?: HeaderMode;
 }) {
@@ -152,14 +143,13 @@ export function LinkList<const T>({
 
   return (
     <List>
-      {groups.map(([header, groupItems], groupIndex) => (
+      {groups.map(([header, groupItems]) => (
         <LinkListGroup
           key={header}
           header={header}
           headerMode={headerMode}
           items={groupItems}
           renderItem={renderItem}
-          footer={groupIndex === groups.length - 1 ? footer : undefined}
         />
       ))}
     </List>

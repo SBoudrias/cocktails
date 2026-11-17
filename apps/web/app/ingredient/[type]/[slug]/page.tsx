@@ -94,10 +94,6 @@ export default async function IngredientPage({ params }: { params: Promise<Param
                 primaryHeader="Some substitution option"
                 substitutes={substitution.substitutes}
                 recipeCounts={recipeCounts}
-                seeAll={{
-                  href: getCategoryUrl(substitution.category),
-                  label: substitution.category.name,
-                }}
                 relatedCategories={substitution.relatedCategories}
                 headerMode="flow"
               />
