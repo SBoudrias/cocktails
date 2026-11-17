@@ -1,0 +1,37 @@
+/* The app's toast paint: ui-sdk's default recolored to the moonlit-glass
+   chrome (the app bar and drawer's translucent navy + blur), on the app's
+   own tokens. Unlayered rules here win over the ui-sdk layer, the same as
+   the drawer's drawer.css. */
+
+/* Above the app bar and the drawer's backdrop (both +1 of --z-app-bar):
+   a toast must cover the chrome. */
+[data-slot='toast-region'] {
+  z-index: calc(var(--z-app-bar) + 2);
+
+  --ui-background: var(--header);
+  --ui-foreground: var(--foreground);
+  --ui-border: var(--border);
+  --ui-muted-foreground: var(--muted-foreground);
+  --ui-input: var(--input);
+  --ui-primary: var(--primary);
+  --ui-primary-foreground: var(--primary-foreground);
+  /* The action button's radius matches the app's buttons (--radius-lg);
+     the toast's own corners take radius × 1.5 from the same token. */
+  --ui-radius: var(--radius-lg);
+  --ui-font-size: 0.875rem;
+  --ui-font-sans: var(--font-app, ui-sans-serif, system-ui, sans-serif);
+  --ui-shadow: var(--surface-shadow);
+
+  /* Clear the home indicator on notched phones; the other margins keep
+     ui-sdk's 1rem. */
+  margin-block: 1rem;
+  margin-bottom: calc(1rem + var(--safe-area-bottom));
+}
+
+[data-slot='toast-region'][data-side='top'] {
+  margin-top: calc(1rem + var(--safe-area-top));
+}
+
+[data-slot='toast'] {
+  backdrop-filter: blur(8px);
+}

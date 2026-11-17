@@ -88,9 +88,14 @@
   --card-radius-lean: 26px 8px 26px 8px;
   --card-radius-lean-mirrored: 8px 26px 8px 26px;
   /* The fixed app bar: its glass fill (--header) and its height per
-     orientation and breakpoint — the sticky headers offset from it. */
+     orientation and breakpoint — the sticky headers offset from it. The
+     height includes the top safe-area inset (viewport-fit=cover lets the
+     page paint under the status bar on notched phones), so the bar's own
+     row and everything pinned below it clear the notch together. */
   --header: rgb(10 20 32 / 0.85);
-  --app-bar-height: 56px;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --app-bar-height: calc(56px + var(--safe-area-top));
   /* Icon-art palette (TikiMark, RecipeBadges): fixed shade steps for the
      icon art. --paper is the solid surface color; --card carries the glass
      surface alpha. */
@@ -113,13 +118,13 @@
    grows to 64px. The sticky group headers sit at this top. */
 @media (orientation: landscape) and (max-width: 599.95px) {
   :root {
-    --app-bar-height: 48px;
+    --app-bar-height: calc(48px + var(--safe-area-top));
   }
 }
 
 @media (min-width: 600px) {
   :root {
-    --app-bar-height: 64px;
+    --app-bar-height: calc(64px + var(--safe-area-top));
   }
 }
 

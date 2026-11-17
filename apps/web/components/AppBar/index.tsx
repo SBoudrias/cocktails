@@ -28,6 +28,7 @@ export default function AppBar({ children }: { children: ReactNode }) {
             <button
               type="button"
               aria-disabled="true"
+              aria-label="Indexotica"
               tabIndex={-1}
               className={`${iconButton} pointer-events-none -ml-3 size-14`}
             >

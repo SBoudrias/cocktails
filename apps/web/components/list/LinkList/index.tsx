@@ -1,5 +1,4 @@
 import { cn } from 'cn';
-import { ChevronRight } from 'lucide-react';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import { useId, useMemo } from 'react';
@@ -7,6 +6,7 @@ import { match } from 'ts-pattern';
 import StickyGroupHeader from '#/components/list/StickyGroupHeader';
 import { List, ListSubheader } from '#/components/ui/list';
 import type { ListConfig } from '#/modules/lists/type';
+import LinkRowAction from './LinkRowAction';
 
 // The secondary line's metrics: 12px caption, muted teal, 1.35 line
 // height.
@@ -46,9 +46,7 @@ export function LinkListItem<RouteType>({
       </span>
       {tertiary && <span className="shrink-0">{tertiary}</span>}
       {count != null && <span className="shrink-0 text-muted-foreground">{count}</span>}
-      {href && (
-        <ChevronRight className="absolute top-1/2 right-4 size-6 -translate-y-1/2 text-foreground" />
-      )}
+      {href && <LinkRowAction />}
     </>
   );
 
