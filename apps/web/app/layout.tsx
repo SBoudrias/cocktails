@@ -108,21 +108,23 @@ export default function RootLayout({
       <body className={roboto.variable}>
         <NuqsAdapter>
           {/* The app shell: a 600px column carrying the night sky as fixed
-              background layers, painted top to bottom: the tiki leaves at the
-              top (alpha-faded asset), the star and cloud strips repeating
-              down the middle, and the beach scene anchored to the bottom —
-              its sky fades in over ~190px (alpha baked into the webp), so
-              tall pages never hit a hard edge where the art begins. The
-              strips are 750px wide, wider than the column, so their
-              left/right tile seams stay clipped out of view. */}
+              background layers, painted here topmost first: the tiki leaves
+              at the top, the beach scene anchored to the bottom (its sky
+              fades in over ~190px via alpha baked into the webp), then the
+              cloud and star strips beneath both — transparent webps holding
+              only wisps and stars, so they show over the body color above
+              the art and blend with the beach's fade zone, never covering
+              the scene itself. The strips are 750px wide, wider than the
+              column, so their left/right tile seams stay clipped out of
+              view. */}
           <div
             className="mx-auto flex min-h-screen max-w-[600px] flex-col"
             style={{
-              backgroundImage: `url(${tikiLeavesTop.src}), url(${starStrip.src}), url(${cloudStrip.src}), url(${tikiBeachDivider.src})`,
+              backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src}), url(${cloudStrip.src}), url(${starStrip.src})`,
               backgroundSize:
-                'min(100%,750px) auto, 750px auto, 750px auto, min(100%,750px) auto',
-              backgroundPosition: 'center 40px, center top, center top, bottom center',
-              backgroundRepeat: 'no-repeat, repeat-y, repeat-y, no-repeat',
+                'min(100%,750px) auto, min(100%,750px) auto, 750px auto, 750px auto',
+              backgroundPosition: 'center 40px, bottom center, center top, center top',
+              backgroundRepeat: 'no-repeat, no-repeat, repeat-y, repeat-y',
             }}
           >
             {/* The one <main> landmark for every page (Lighthouse

@@ -47,7 +47,7 @@
 :root {
   --background: #0a1420; /* Dark starry night sky */
   --foreground: #e8f4f4; /* Pale cyan-tinted white */
-  --card: rgb(10 20 32 / 0.9); /* The glass card surface: night sky at 90% */
+  --card: rgb(10 20 32 / 0.78); /* Glass card: translucent, star texture seeps through */
   --card-foreground: #e8f4f4;
   --primary: #2a8a8a; /* Turquoise ocean water */
   --primary-foreground: #ffffff;
@@ -64,7 +64,7 @@
   --radius: 0.25rem; /* The theme's corner radius */
   /* The fixed app bar: its glass fill (--header) and its height per
      orientation and breakpoint — the sticky headers offset from it. */
-  --header: rgb(10 20 32 / 0.9);
+  --header: rgb(10 20 32 / 0.85);
   --app-bar-height: 56px;
   /* Icon-art palette (TikiMark, RecipeBadges): fixed shade steps for the
      icon art. --paper is the solid surface color; --card carries the glass
