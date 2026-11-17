@@ -16,19 +16,12 @@ type Bar = { name: string; location?: string; recipeCount: number };
 
 type GroupMode = 'alpha' | 'city';
 
-function renderBar(bar: Bar, showLocation: boolean) {
-  return (
-    <LinkListItem
-      key={bar.name + (bar.location ?? '')}
-      href={getBarRecipesUrl(bar)}
-      primary={bar.name}
-      secondary={showLocation ? bar.location : undefined}
-      count={bar.recipeCount}
-    />
-  );
-}
-
-export default function BarsClient({ bars }: { bars: Bar[] }) {
+/**
+ * The bars list: the one entity list that is a client island, because its
+ * grouping toggle (localStorage) and the rows' location sub-label react to
+ * client state the server page cannot render.
+ */
+export default function BarList({ bars }: { bars: Bar[] }) {
   const [searchTerm, setSearchTerm] = useQueryState('search');
   const [groupMode, setGroupMode] = useLocalStorage<GroupMode>('bars-grouping', 'alpha');
 
@@ -41,14 +34,6 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
   // City-mode groups carry the full location in their header, so the item
   // sub-label would only repeat it. Keep it anywhere the list is flat.
   const showLocation = !isCityMode || isSearching;
-
-  const emptyState = (
-    <Card m={2}>
-      <CardHeader>
-        <CardTitle>No results found</CardTitle>
-      </CardHeader>
-    </Card>
-  );
 
   return (
     <>
@@ -77,9 +62,23 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         items={bars}
         getSearchText={getBarSearchText}
         config={listConfig}
-        renderItem={(bar) => renderBar(bar, showLocation)}
+        renderItem={(bar) => (
+          <LinkListItem
+            key={bar.name + (bar.location ?? '')}
+            href={getBarRecipesUrl(bar)}
+            primary={bar.name}
+            secondary={showLocation ? bar.location : undefined}
+            count={bar.recipeCount}
+          />
+        )}
         searchTerm={searchTerm}
-        emptyState={emptyState}
+        emptyState={
+          <Card m={2}>
+            <CardHeader>
+              <CardTitle>No results found</CardTitle>
+            </CardHeader>
+          </Card>
+        }
       />
     </>
   );

@@ -1,9 +1,9 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
+import AllRecipesList from '#/components/AllRecipesList';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { groupByName } from '#/modules/lists/groupByName';
 import { getRecipeUrl } from '#/modules/url';
-import RecipesClient from './RecipesClient';
 
 export const metadata: Metadata = {
   title: 'Indexotica | All Recipes',
@@ -31,7 +31,7 @@ export default async function RecipesPage() {
   );
 
   return (
-    <RecipesClient
+    <AllRecipesList
       groups={groups.map((group) => ({ label: group.label, count: group.items.length }))}
       initialRecipes={prerenderedGroups.flatMap((group) => group.items)}
     />

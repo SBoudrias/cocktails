@@ -18,7 +18,7 @@ import type { RecipeListItem } from '#/modules/recipeListItem';
 
 type GroupMode = 'chapter' | 'alphabetical';
 
-export default function BookSourceClient({
+export default function BookSourceList({
   source,
   recipes,
 }: {

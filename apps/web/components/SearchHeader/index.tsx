@@ -1,5 +1,6 @@
 'use client';
 
+import { useQueryState } from 'nuqs';
 import type { ReactNode } from 'react';
 import AppBar from '#/components/AppBar';
 import SearchInput from '#/components/SearchInput';
@@ -7,18 +8,33 @@ import { preloadSearchIndex } from '#/modules/searchIndex';
 
 // The search variant of the app header: the searchbox where the title sat,
 // with the page's h1 below the bar while no search is running.
-export default function SearchHeader({
-  title,
-  searchTerm,
-  onSearchChange,
-  underTitle,
-}: {
-  title?: string;
-  searchTerm: string | null;
-  onSearchChange: (value: string | null) => void;
-  /** Rendered directly under the page title, hidden while a search is active. */
-  underTitle?: ReactNode;
-}) {
+//
+// Either the page passes its own controlled term and change handler
+// together, or it passes neither and the header owns the ?search URL
+// parameter itself — the one parameter every list page searches. A term
+// without a handler (or the reverse) is a type error.
+export default function SearchHeader(
+  props:
+    | {
+        title?: string;
+        /** The page's controlled term, paired with onSearchChange. */
+        searchTerm: string | null;
+        onSearchChange: (value: string | null) => void;
+        /** Rendered directly under the page title, hidden while a search is active. */
+        underTitle?: ReactNode;
+      }
+    | {
+        title?: string;
+        /** Omitted: the header reads and writes the ?search URL parameter itself. */
+        underTitle?: ReactNode;
+      },
+) {
+  const [urlSearchTerm, setUrlSearchTerm] = useQueryState('search');
+  const controlled = 'searchTerm' in props;
+  const searchTerm = controlled ? props.searchTerm : urlSearchTerm;
+  const onSearchChange = controlled ? props.onSearchChange : setUrlSearchTerm;
+  const { title, underTitle } = props;
+
   return (
     <>
       <AppBar>

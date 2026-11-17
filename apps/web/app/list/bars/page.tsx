@@ -1,6 +1,6 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import BarsClient from './BarsClient';
+import BarList from './BarList';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Bars list',
@@ -35,5 +35,5 @@ export default async function BarListPage() {
     a.name.localeCompare(b.name),
   );
 
-  return <BarsClient bars={bars} />;
+  return <BarList bars={bars} />;
 }
