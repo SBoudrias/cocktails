@@ -14,6 +14,7 @@ import 'core-js/modules/es.object.group-by.js';
 import { NuqsAdapter } from 'nuqs/adapters/react';
 import AppFooter from '#/components/layout/AppFooter';
 import FullscreenHelper from '#/components/layout/FullscreenHelper';
+import nightSkyStrip from '../../../public/night-sky-strip.webp';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';
 import tikiLeavesTop from '../../../public/tiki-leaves-top.webp';
 
@@ -105,13 +106,23 @@ export default function RootLayout({
       </head>
       <body className={roboto.variable}>
         <NuqsAdapter>
-          {/* The app shell: a 600px column with the tiki art as two fixed
-              background layers, sized to the assets' own width (both 750px
-              today). */}
+          {/* The app shell: a 600px column carrying the night sky as fixed
+              background layers, painted here topmost first: the tiki leaves
+              at the top, the beach scene anchored to the bottom (its sky
+              fades in over ~190px via alpha baked into the webp), and one
+              night-sky strip beneath both — an opaque webp holding the sky
+              color, the beach-style glowing stars and the amplified cloud
+              wisps, with wisps faded to nothing at the column's crop lines
+              (75/675) so nothing is sliced against the flat body on
+              desktop. The strip is 750px wide, wider than the column, so its
+              left/right tile seams stay clipped out of view. */}
           <div
-            className="mx-auto flex min-h-screen max-w-[600px] flex-col bg-size-[min(100%,750px)_auto,min(100%,750px)_auto] bg-position-[center_40px,bottom_center] bg-no-repeat"
+            className="mx-auto flex min-h-screen max-w-[600px] flex-col"
             style={{
-              backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
+              backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src}), url(${nightSkyStrip.src})`,
+              backgroundSize: 'min(100%,750px) auto, min(100%,750px) auto, 750px auto',
+              backgroundPosition: 'center 40px, bottom center, center top',
+              backgroundRepeat: 'no-repeat, no-repeat, repeat-y',
             }}
           >
             {/* The one <main> landmark for every page (Lighthouse
