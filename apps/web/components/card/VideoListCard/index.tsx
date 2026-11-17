@@ -85,7 +85,10 @@ export default function VideoListCard({
                     key={refKey(ref)}
                     page={index + 1}
                     aria-label={`Video ${index + 1}`}
-                    className="size-2.5 rounded-full border-0 bg-foreground/30 p-0 hover:bg-foreground/50 data-selected:size-3 data-selected:bg-primary data-selected:hover:bg-primary"
+                    // scale, not size: every dot keeps a fixed 10px box,
+                    // so the selected one's growth never reflows the row
+                    // — sibling dots stay put wherever the page lands.
+                    className="size-2.5 rounded-full border-0 bg-foreground/30 p-0 transition-transform motion-reduce:transition-none hover:bg-foreground/50 data-selected:scale-120 data-selected:bg-primary data-selected:hover:bg-primary"
                   />
                 ))}
               </CarouselIndicatorGroup>
