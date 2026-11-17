@@ -17,7 +17,14 @@
 .frame::before {
   content: '';
   position: absolute;
-  inset: 0;
+  /* The plate sits 4px inside the card's box: the rotation's corner tips
+     (width·sin(tilt) at the 1deg tilt — up to ~10px on the 600px desktop
+     column) point inward from the box instead of poking into the 8px
+     margin between cards, so neighboring plates are always clearly
+     separated (≥6px tip-to-tip at the widest column, more on phones).
+     The card box paints nothing, so the inset just reads as the card's
+     own size; content padding is 16px, well clear of the plate's edge. */
+  inset: 4px;
   z-index: -1;
   background-color: var(--card);
   background-image: var(--surface-overlay);
