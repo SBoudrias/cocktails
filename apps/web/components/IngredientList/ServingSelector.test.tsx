@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
-import ServingSelector from './index';
+import ServingSelector from './ServingSelector';
 
 function StatefulServingSelector({ initialServings = 2 }: { initialServings?: number }) {
   const [servings, setServings] = useState(initialServings);

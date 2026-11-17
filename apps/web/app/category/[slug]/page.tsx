@@ -12,14 +12,14 @@ import { getCategoryPageParams } from '@cocktails/data/params';
 import { getRecipeByCategory } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import { notFound, unstable_rethrow } from 'next/navigation';
+import FixBugCard from '#/components/card/FixBugCard';
+import VideoListCard from '#/components/card/VideoListCard';
 import CategoryChips from '#/components/CategoryChips';
-import FixBugCard from '#/components/FixBugCard';
-import { LinkList, LinkListItem } from '#/components/LinkList';
+import { LinkList, LinkListItem } from '#/components/list/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { RelatedCategoriesList } from '#/components/SubstitutionLists';
 import { Card, CardContent } from '#/components/ui/card';
 import Video from '#/components/Video';
-import VideoListCard from '#/components/VideoListCard';
 import { ingredientHasData } from '#/modules/hasData';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 

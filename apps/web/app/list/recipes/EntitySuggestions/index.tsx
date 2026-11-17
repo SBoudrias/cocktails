@@ -2,7 +2,8 @@ import { BookOpen, Martini, Mic, Tag, User, Wine } from 'lucide-react';
 import { siYoutube } from 'simple-icons';
 import { match } from 'ts-pattern';
 import BrandIcon from '#/components/icons/BrandIcon';
-import { LinkListItem } from '#/components/LinkList';
+import { LinkListItem } from '#/components/list/LinkList';
+import { List } from '#/components/ui/list';
 import type { EntitySuggestion } from '#/modules/entitySuggestions';
 import { isEntityUrl } from '#/modules/url';
 import styles from './style.module.css';
@@ -63,7 +64,7 @@ export default function EntitySuggestions({
   if (links.length === 0) return null;
 
   return (
-    <ul aria-label="Matching entities" className="pt-2 pb-4">
+    <List aria-label="Matching entities" className="pt-2 pb-4">
       <div className="surface">
         {links.map((suggestion) => {
           const { icon } = getEntityView(suggestion.kind);
@@ -84,6 +85,6 @@ export default function EntitySuggestions({
           );
         })}
       </div>
-    </ul>
+    </List>
   );
 }

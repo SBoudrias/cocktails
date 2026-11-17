@@ -2,18 +2,18 @@
 
 import { useQueryState } from 'nuqs';
 import { useCallback, useMemo } from 'react';
-import EntitySuggestions from '#/components/EntitySuggestions';
-import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import RecipeSearchableList from '#/components/RecipeSearchableList';
-import SearchHeader from '#/components/SearchHeader';
+import RecipeLinkListItem from '#/components/list/RecipeLinkListItem';
+import RecipeSearchableList from '#/components/search/RecipeSearchableList';
+import SearchHeader from '#/components/search/SearchHeader';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
-import VirtualGroupedList from '#/components/VirtualGroupedList';
 import { useSearchIndex } from '#/hooks/useSearchIndex';
 import { getEntitySuggestions } from '#/modules/entitySuggestions';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import { groupByName } from '#/modules/lists/groupByName';
 import type { getRecipeUrl } from '#/modules/url';
 import { isRecipeUrl } from '#/modules/url';
+import EntitySuggestions from '../EntitySuggestions';
+import VirtualGroupedList from '../VirtualGroupedList';
 
 type Row = { href: ReturnType<typeof getRecipeUrl>; name: string; source: string };
 

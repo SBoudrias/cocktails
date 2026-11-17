@@ -1,9 +1,9 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import AllRecipesList from '#/components/AllRecipesList';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { groupByName } from '#/modules/lists/groupByName';
 import { getRecipeUrl } from '#/modules/url';
+import AllRecipesList from './AllRecipesList';
 
 export const metadata: Metadata = {
   title: 'Indexotica | All Recipes',

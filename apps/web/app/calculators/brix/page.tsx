@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';
-import BrixCalculator from '#/components/BrixCalculator';
+import BrixCalculator from '#/components/calculators/BrixCalculator';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Sugar Adjusting Calculator',

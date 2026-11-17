@@ -3,8 +3,8 @@
 import { useQueryState } from 'nuqs';
 import type { ReactNode } from 'react';
 import AppBar from '#/components/AppBar';
-import SearchInput from '#/components/SearchInput';
 import { preloadSearchIndex } from '#/modules/searchIndex';
+import SearchInput from './SearchInput';
 
 // The search variant of the app header: the searchbox where the title sat,
 // with the page's h1 below the bar while no search is running.

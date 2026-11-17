@@ -3,7 +3,7 @@ import { getAllRecipes, getRecipesByAuthor } from '@cocktails/data/recipes';
 import slugify from '@sindresorhus/slugify';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { AuthorAboutCard } from '#/components/EntityAboutCard';
+import { AuthorAboutCard } from '#/components/card/EntityAboutCard';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 
 type Props = {

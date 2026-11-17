@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import AppHeader from '#/components/AppHeader';
-import SalineCalculator from '#/components/SalineCalculator';
+import SalineCalculator from '#/components/calculators/SalineCalculator';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Saline Solution Calculator',

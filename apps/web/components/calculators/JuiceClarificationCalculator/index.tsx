@@ -5,7 +5,7 @@ import type { RecipeIngredient } from '@cocktails/data';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
-import { InstructionSteps } from '#/components/InstructionSteps';
+import { InstructionSteps } from '#/components/calculators/InstructionSteps';
 import { Button } from '#/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { LabeledField } from '#/components/ui/labeled-field';

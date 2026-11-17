@@ -4,10 +4,10 @@ import { useQueryState } from 'nuqs';
 import type { ReactNode } from 'react';
 import { useCallback, useMemo } from 'react';
 import { P, match } from 'ts-pattern';
+import { LinkList } from '#/components/list/LinkList';
 import { fuzzySearch } from '#/modules/fuzzySearch';
 import { byNameListConfig } from '#/modules/lists/by-name';
 import type { ListConfig } from '#/modules/lists/type';
-import { LinkList } from '../LinkList';
 
 /** A row whose node a server page rendered; its data (name for grouping,
  * search text) travels with it so this list can search and group it. */

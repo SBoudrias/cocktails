@@ -1,8 +1,9 @@
 import { getRecentlyAddedRecipeEntries } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
 import AppHeader from '#/components/AppHeader';
-import RecipeLinkListItem from '#/components/RecipeLinkListItem';
-import StickyGroupHeader from '#/components/StickyGroupHeader';
+import RecipeLinkListItem from '#/components/list/RecipeLinkListItem';
+import StickyGroupHeader from '#/components/list/StickyGroupHeader';
+import { List } from '#/components/ui/list';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { groupByAddedDay } from '#/modules/groupByAddedDay';
 import { getRecipeUrl } from '#/modules/url';
@@ -20,13 +21,13 @@ export default async function RecentlyAddedPage() {
   return (
     <>
       <AppHeader title="Recently Added" />
-      <ul className="mt-4 py-2">
+      <List className="mt-4 py-2">
         {groups.map(({ day, label, items }) => {
           const headerId = `group-header-${day}`;
 
           return (
             <li key={day}>
-              <ul role="group" aria-labelledby={headerId} className="py-2">
+              <List role="group" aria-labelledby={headerId}>
                 <StickyGroupHeader id={headerId}>{label}</StickyGroupHeader>
                 <div className="surface">
                   {items.map((recipe) => (
@@ -38,11 +39,11 @@ export default async function RecentlyAddedPage() {
                     />
                   ))}
                 </div>
-              </ul>
+              </List>
             </li>
           );
         })}
-      </ul>
+      </List>
     </>
   );
 }

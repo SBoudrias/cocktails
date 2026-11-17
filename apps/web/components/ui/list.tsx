@@ -2,6 +2,13 @@
 // rows split by dividers (the rows sit in plain <ul>s at the call sites).
 import { cn } from 'cn';
 
+// The ul the app's grouped lists render: vertical padding around the
+// surface block of rows. Extra classes (mt-4, pt-2 pb-4) and aria
+// attributes pass through to the underlying element.
+export function List({ className, ...props }: React.ComponentProps<'ul'>) {
+  return <ul className={cn('py-2', className)} {...props} />;
+}
+
 export function ListSubheader({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div

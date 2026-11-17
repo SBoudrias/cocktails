@@ -1,8 +1,8 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import { LinkListItem } from '#/components/LinkList';
-import SearchableList from '#/components/SearchableList';
-import SearchHeader from '#/components/SearchHeader';
+import { LinkListItem } from '#/components/list/LinkList';
+import SearchableList from '#/components/search/SearchableList';
+import SearchHeader from '#/components/search/SearchHeader';
 import { Card, CardHeader, CardTitle } from '#/components/ui/card';
 import { getAuthorSearchText } from '#/modules/searchText';
 import { getAuthorRecipesUrl } from '#/modules/url';

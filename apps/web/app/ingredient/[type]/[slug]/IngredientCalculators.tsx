@@ -2,8 +2,8 @@
 
 import type { RootIngredient } from '@cocktails/data';
 import { parseAsNativeArrayOf, parseAsString, useQueryState } from 'nuqs';
-import AcidAdjustingCalculator from '#/components/AcidAdjustingCalculator';
-import JuiceClarificationCalculator from '#/components/JuiceClarificationCalculator';
+import AcidAdjustingCalculator from '#/components/calculators/AcidAdjustingCalculator';
+import JuiceClarificationCalculator from '#/components/calculators/JuiceClarificationCalculator';
 
 const AGAR_CLARIFICATION_TECHNIQUES = [
   'clarification',
