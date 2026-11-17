@@ -19,3 +19,23 @@
   max-width: 600px;
   margin-inline: auto;
 }
+
+/* The sheet rests on two snap points (half screen, then near full): the
+   fixed height is the larger one and leaves the app bar reachable above
+   the open sheet. It also un-clamps ui-sdk's own 85dvh max-height, which
+   would otherwise cut the larger snap point short, and keeps the points
+   distinct on short screens so the resize handle always has somewhere
+   to go. */
+[data-slot='drawer-content'] {
+  height: calc(100dvh - var(--app-bar-height));
+  max-height: none;
+}
+
+/* ui-sdk sets touch-action: none on the handle as an inline style so its
+   press always registers, but on a touch screen the sheet moves by native
+   scrolling — that inline style makes the grip the one spot a finger drag
+   cannot move the sheet from. Allow vertical panning (an author !important
+   beats the inline value); taps still press the button. */
+[data-slot='drawer-handle'] {
+  touch-action: pan-y !important;
+}

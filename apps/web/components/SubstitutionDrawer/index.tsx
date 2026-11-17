@@ -6,6 +6,7 @@ import {
   DrawerClose,
   DrawerContent,
   DrawerDescription,
+  DrawerHandle,
   DrawerTitle,
   DrawerTrigger,
 } from '@ui-sdk/react/drawer';
@@ -29,7 +30,7 @@ export default function SubstitutionDrawer({
   children: ReactNode;
 }) {
   return (
-    <Drawer side="bottom">
+    <Drawer side="bottom" snapPoints={[0.5, 1]}>
       <div className="mx-4 mb-2">
         <DrawerTrigger className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-medium tracking-wide text-primary-foreground uppercase transition-colors outline-none hover:bg-primary/85 focus-visible:ring-3 focus-visible:ring-ring/50">
           <ArrowLeftRight className="size-5" aria-hidden="true" />
@@ -42,11 +43,16 @@ export default function SubstitutionDrawer({
         initialFocus="content"
         className="gap-0 rounded-t-xl surface p-0 pb-2 text-foreground backdrop-blur-[8px]"
       >
-        <div
-          aria-hidden="true"
-          data-slot="grip"
-          className="mx-auto mt-2 h-1 w-10 rounded-full bg-foreground/25"
-        />
+        <DrawerHandle
+          aria-label="Resize sheet"
+          className="flex w-full items-center justify-center border-0 bg-transparent py-2 outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+        >
+          <span
+            aria-hidden="true"
+            data-slot="grip"
+            className="h-1 w-10 rounded-full bg-foreground/25"
+          />
+        </DrawerHandle>
         <div className="flex items-center justify-between gap-2 px-4 pt-3">
           <DrawerTitle className="text-xl leading-8 font-normal">
             Substitutions

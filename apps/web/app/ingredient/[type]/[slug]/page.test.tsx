@@ -1,7 +1,7 @@
 import { getIngredient, getRecipesForIngredient } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { getRecipe } from '@cocktails/data/recipes';
-import { screen, within } from '@testing-library/react';
+import { screen, waitFor, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
@@ -120,6 +120,82 @@ const [ingredientPageJSX, spiritPageJSX, jamaicanRumPageJSX, cappedSpiritPageJSX
       }),
     }),
   ]);
+
+// happy-dom creates an animation's finished promise eagerly, where a
+// browser only creates it when read: cancelling the drawer's settle
+// animation at teardown rejects a promise nobody holds. Attach a handler
+// at cancel time so the rejection is always handled. The method can sit
+// on any prototype in the chain, so walk to its owner.
+{
+  let owner: object | null = window.Animation?.prototype ?? null;
+  while (owner && !Object.getOwnPropertyDescriptor(owner, 'cancel')) {
+    owner = Object.getPrototypeOf(owner);
+  }
+  const animationCancel = owner && Object.getOwnPropertyDescriptor(owner, 'cancel');
+  if (animationCancel) {
+    Object.defineProperty(window.Animation.prototype, 'cancel', {
+      configurable: true,
+      value(this: Animation) {
+        this.finished?.catch(() => {});
+        return animationCancel.value?.call(this);
+      },
+    });
+  }
+}
+
+// happy-dom lays nothing out, so the drawer's sheet measures zero height
+// and both snap points merge into one. Give the drawer's viewport and sheet
+// real vertical sizes for the duration of a test, so the snap points
+// resolve the way a browser would: 0.5 and 1 of an 800px viewport.
+function stubSheetLayout() {
+  const originalClientHeight = Object.getOwnPropertyDescriptor(
+    HTMLElement.prototype,
+    'clientHeight',
+  );
+  const originalOffsetHeight = Object.getOwnPropertyDescriptor(
+    HTMLElement.prototype,
+    'offsetHeight',
+  );
+  const originalMatchMedia = window.matchMedia;
+
+  // Reduced motion is the test environment's own setting: happy-dom's
+  // clock cancels the settle animation mid-flight (the spring never comes
+  // to rest), so the expanded marker lands only with motion off.
+  window.matchMedia = (query: string) => {
+    const mql = originalMatchMedia(query);
+    if (query.includes('prefers-reduced-motion')) {
+      Object.defineProperty(mql, 'matches', { value: true });
+    }
+    return mql;
+  };
+
+  const sized = (el: HTMLElement, slot: string) => el.getAttribute('data-slot') === slot;
+
+  Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
+    configurable: true,
+    get(this: HTMLElement) {
+      return sized(this, 'drawer-viewport')
+        ? 800
+        : (originalClientHeight?.get?.call(this) ?? 0);
+    },
+  });
+  Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+    configurable: true,
+    get(this: HTMLElement) {
+      return sized(this, 'drawer-content')
+        ? 800
+        : (originalOffsetHeight?.get?.call(this) ?? 0);
+    },
+  });
+
+  return () => {
+    window.matchMedia = originalMatchMedia;
+    if (originalClientHeight)
+      Object.defineProperty(HTMLElement.prototype, 'clientHeight', originalClientHeight);
+    if (originalOffsetHeight)
+      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight);
+  };
+}
 
 describe('IngredientPage', () => {
   beforeEach(() => {
@@ -661,6 +737,53 @@ describe('IngredientPage', () => {
       expect(
         screen.queryByRole('dialog', { name: 'Substitutions' }),
       ).not.toBeInTheDocument();
+    });
+
+    it('opens at the half-screen snap point with a handle to resize it', async () => {
+      const restoreLayout = stubSheetLayout();
+      try {
+        const { user } = await setupApp(jamaicanRumPageJSX);
+
+        await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+        // The handle is the sheet's resize control: a named button the
+        // keyboard can reach, not a decorative grip.
+        const sheet = screen.getByRole('dialog', { name: 'Substitutions' });
+        expect(
+          within(sheet).getByRole('button', { name: 'Resize sheet' }),
+        ).toBeInTheDocument();
+        expect(sheet).toHaveAttribute('data-snap-point', '0.5');
+      } finally {
+        restoreLayout();
+      }
+    });
+
+    it('the handle steps the sheet to its full snap point from the keyboard', async () => {
+      const restoreLayout = stubSheetLayout();
+      try {
+        const { user } = await setupApp(jamaicanRumPageJSX);
+
+        await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+        // The sheet holds focus on open; the resize handle is the first
+        // control Tab reaches inside it. A press steps to the next snap
+        // point — jsdom has no pointer coordinates, so the handle's
+        // keyboard path is the one under test here.
+        await user.tab();
+        expect(screen.getByRole('button', { name: 'Resize sheet' })).toHaveFocus();
+        await user.keyboard('{Enter}');
+
+        const sheet = screen.getByRole('dialog', { name: 'Substitutions' });
+        // The sheet commits the point it is moving to at once; the
+        // expanded marker lands when the settle animation rests, which
+        // happy-dom's clock drives at its own pace.
+        await waitFor(() => expect(sheet).toHaveAttribute('data-snap-point', '1'));
+        await waitFor(() => expect(sheet).toHaveAttribute('data-expanded'), {
+          timeout: 1500,
+        });
+      } finally {
+        restoreLayout();
+      }
     });
 
     it('shows the trigger in every mode, styled apart from the category chips', async () => {
