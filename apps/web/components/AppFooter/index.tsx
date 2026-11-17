@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import GitHubIcon from '#/components/icons/GitHubIcon';
+import { siGithub } from 'simple-icons';
+import BrandIcon from '#/components/icons/BrandIcon';
 import TikiMark from '#/components/TikiMark';
 
 // The footer: the two brand links pulled to the bottom edge of a tall flex
@@ -16,7 +17,7 @@ export default function AppFooter() {
         rel="noopener"
         className="flex items-center gap-1 text-foreground"
       >
-        <GitHubIcon /> Contribute on GitHub
+        <BrandIcon icon={siGithub} className="size-6" /> Contribute on GitHub
       </a>
     </div>
   );
