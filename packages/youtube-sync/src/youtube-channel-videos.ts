@@ -171,7 +171,7 @@ export function fetchChannelVideosFlatYtDlp(
 /**
  * Fetch recent videos from a YouTube channel using yt-dlp's full extractor.
  */
-export function fetchChannelVideosYtDlp(channelUrl: string, maxResults = 100): Video[] {
+function fetchChannelVideosYtDlp(channelUrl: string, maxResults = 100): Video[] {
   const args = appendPlaylistLimit(
     ['--ignore-errors', '--no-warnings', '--skip-download', '--dump-single-json'],
     maxResults,

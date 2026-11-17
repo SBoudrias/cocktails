@@ -6,7 +6,7 @@ export interface BarLocationUsage {
   filepath: string;
 }
 
-export interface BarLocationVariant {
+interface BarLocationVariant {
   /**
    * The location as first credited, or null when the bar has no location.
    * Names and locations are compared case-insensitively, so casing drift

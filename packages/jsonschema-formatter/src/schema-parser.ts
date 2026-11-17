@@ -66,7 +66,7 @@ function findDiscriminator(variants: JSONSchema7[]): string | undefined {
 /**
  * Extract keys from a schema, handling oneOf/anyOf by merging keys.
  */
-export function extractKeysFromSchema(schema: JSONSchema7): string[] {
+function extractKeysFromSchema(schema: JSONSchema7): string[] {
   if (schema.properties) {
     return Object.keys(schema.properties);
   }

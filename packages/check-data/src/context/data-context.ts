@@ -35,14 +35,14 @@ interface BarEntity {
   location?: string;
 }
 
-export interface CollectedCategory {
+interface CollectedCategory {
   name: string;
   categoryType: string;
   parents?: string[];
   filepath: string;
 }
 
-export interface IngredientRef {
+interface IngredientRef {
   name: string;
   type: string;
   slug: string;

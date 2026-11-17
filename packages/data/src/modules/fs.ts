@@ -3,7 +3,7 @@ import path from 'node:path';
 import { getJSONLoader } from '../../globs';
 import { PACKAGE_ROOT } from './constants';
 
-export async function fileExists(filepath: string): Promise<boolean> {
+async function fileExists(filepath: string): Promise<boolean> {
   return fs.access(filepath).then(
     () => true,
     () => false,

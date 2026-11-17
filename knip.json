@@ -1,0 +1,25 @@
+{
+  "$schema": "https://unpkg.com/knip@6.45.1/schema.json",
+  // jest-dom is declared for types in the root tsconfig "types" array, not
+  // imported directly. nano-staged is run by the .gitconfig pre-commit hook.
+  "ignoreDependencies": ["@testing-library/jest-dom", "nano-staged"],
+  // yt-dlp: external binary shelled out to by youtube-sync.
+  "ignoreBinaries": ["yt-dlp"],
+  "workspaces": {
+    "apps/web": {
+      "entry": [
+        "app/**/page.tsx",
+        "app/**/layout.tsx",
+        "app/**/route.ts",
+        "app/globals.css",
+        "app/favicon.ico",
+        "next-sitemap.config.js",
+        "tools/generate-icons.ts",
+        "public/**"
+      ]
+    },
+    "packages/data": {
+      "entry": ["globs.stub.ts"]
+    }
+  }
+}

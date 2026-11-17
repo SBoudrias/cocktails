@@ -26,6 +26,7 @@
     "ts-pattern": "^5.9.2"
   },
   "devDependencies": {
-    "@cocktails/check-data": "workspace:*"
+    "@cocktails/check-data": "workspace:*",
+    "ajv": "^8.20.0"
   }
 }
