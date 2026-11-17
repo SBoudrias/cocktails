@@ -33,6 +33,20 @@
     }
   }
 
+  /* The same sweep, once, as the row's press feedback (the active
+     state): the band crosses while the row is under the finger and is
+     gone when it lifts. */
+  --animate-row-shine-once: row-shine 0.6s ease-out 1;
+
+  @keyframes row-shine-once {
+    from {
+      translate: -100% 0;
+    }
+    to {
+      translate: 300% 0;
+    }
+  }
+
   --font-sans: var(--font-app);
   --font-heading: var(--font-app);
   --color-background: var(--background);
@@ -84,6 +98,12 @@
   --surface-shadow:
     0px 2px 1px -1px rgb(0 0 0 / 0.2), 0px 1px 1px 0px rgb(0 0 0 / 0.14),
     0px 1px 3px 0px rgb(0 0 0 / 0.12);
+  /* The fixed app bar's own overlay and elevation: brighter than the
+     surface recipe (chrome reads above content) and a deeper shadow. */
+  --app-bar-overlay: linear-gradient(rgb(255 255 255 / 0.092), rgb(255 255 255 / 0.092));
+  --app-bar-shadow:
+    0px 2px 4px -1px rgb(0 0 0 / 0.2), 0px 4px 5px 0px rgb(0 0 0 / 0.14),
+    0px 1px 10px 0px rgb(0 0 0 / 0.12);
   /* The retro-future card frame (the fun-refinements picks): a tilted
      glass plate with unequal corner radii, mirrored on consecutive cards.
      Tokens only — dial the tilt to 0 and the cards sit square again. */

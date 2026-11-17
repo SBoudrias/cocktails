@@ -31,9 +31,11 @@ export function LinkListItem<RouteType>({
 }) {
   // A row: 12px vertical padding, 16px sides, the bottom divider (its color
   // from the base reset). The chevron sits absolutely at the right, the row
-  // reserving its 48px so text wraps clear of it.
+  // reserving its 48px so text wraps clear of it. group/row carries the
+  // press feedback (LinkRowAction's shine sweeps on :active); overflow-clip
+  // keeps the band's travel inside the row.
   const rowClass = cn(
-    'relative flex w-full items-center border-b px-4 py-3 text-base transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [a]:hover:bg-muted',
+    'group/row relative flex w-full items-center overflow-clip border-b px-4 py-3 text-base transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [a]:hover:bg-muted',
     href && 'pr-12',
   );
 

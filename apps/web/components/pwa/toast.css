@@ -34,6 +34,13 @@
   align-items: center;
   gap: 0.5rem 0.75rem;
   padding: 0.625rem 1rem;
+  /* The element itself paints nothing — the sheared plate below is the
+     whole surface. Explicit overrides: the sdk's own near-black toast
+     fill and shadow live in the ui-sdk layer and would otherwise show
+     through wherever the plate's inset and shear leave the box bare. */
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
   color: var(--foreground);
   font-size: 0.875rem;
   line-height: 1.4;
