@@ -23,38 +23,39 @@ function getHostname(url: string): string {
 // Social links show their brand mark plus the handle from the url path
 // (@erynreece reads better than instagram.com); every other link shows a
 // globe and its domain. The button's aria-label carries the full url. The
-// marks render at 20px, the start-icon glyph size.
+// marks render bare — the text button's own svg rules size them at 20px and
+// space them off the label.
 function getLinkView(url: string) {
   return match(getHostname(url))
     .returnType<{ icon: React.ReactNode; label: string }>()
     .with('instagram.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siInstagram} className="mr-2 -ml-1" />,
+        icon: <BrandIcon icon={siInstagram} />,
         label: handle ? handle : host,
       };
     })
     .with('youtube.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return handle
-        ? { icon: <BrandIcon icon={siYoutube} className="mr-2 -ml-1" />, label: handle }
-        : { icon: <BrandIcon icon={siYoutube} className="mr-2 -ml-1" />, label: host };
+        ? { icon: <BrandIcon icon={siYoutube} />, label: handle }
+        : { icon: <BrandIcon icon={siYoutube} />, label: host };
     })
     .with(P.union('x.com', 'twitter.com'), (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siX} className="mr-2 -ml-1" />,
+        icon: <BrandIcon icon={siX} />,
         label: handle ? handle : host,
       };
     })
     .with('facebook.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siFacebook} className="mr-2 -ml-1" />,
+        icon: <BrandIcon icon={siFacebook} />,
         label: handle ? handle : host,
       };
     })
-    .otherwise((host) => ({ icon: <Globe className="mr-2 -ml-1" />, label: host }));
+    .otherwise((host) => ({ icon: <Globe aria-hidden="true" />, label: host }));
 }
 
 function LinkButtons({ links }: { links?: [string, ...string[]] }) {
@@ -100,10 +101,7 @@ export function AuthorAboutCard({
     <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <User
-            className="mr-1.5 inline-block size-6 align-text-top"
-            aria-hidden="true"
-          />
+          <User aria-hidden="true" />
           {author.name}
         </CardTitle>
       </CardHeader>
@@ -172,10 +170,7 @@ export function BarAboutCard({ bar, m }: { bar: Bar | undefined; m?: CardMargin 
     <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <Martini
-            className="mr-1.5 inline-block size-6 align-text-top"
-            aria-hidden="true"
-          />
+          <Martini aria-hidden="true" />
           {bar.name}
         </CardTitle>
         {bar.location && <CardSubheader>{bar.location}</CardSubheader>}

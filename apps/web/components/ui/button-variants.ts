@@ -23,8 +23,13 @@ export const buttonVariants = cva(
         'text-secondary':
           'min-w-16 gap-0 border-0 bg-transparent px-2 py-1.5 text-secondary hover:bg-secondary/8',
         // The card-action link buttons, on the same h-9 metrics as `text`.
+        // A classless leading svg is the start-glyph recipe (the negative
+        // margin pulls it into the button's own left padding, an optical
+        // nudge for glyphs with empty viewBox edges) — the buttons don't
+        // repeat it at every icon; an svg with size-* classes (the trailing
+        // arrows) opts out, and the base's 20px rule sizes what's left.
         'text-inherit':
-          'h-9 min-w-16 gap-1.5 border-0 bg-transparent px-2 py-1.5 hover:bg-foreground/8',
+          "h-9 min-w-16 gap-1.5 border-0 bg-transparent px-2 py-1.5 hover:bg-foreground/8 [&_svg:not([class*='size-'])]:mr-2 [&_svg:not([class*='size-'])]:-ml-1",
       },
       // twMerge resolves conflicts by composition order (base, variant, size,
       // className), so the size axis only carries what no variant sets:

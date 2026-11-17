@@ -113,7 +113,7 @@ export default async function HomePage() {
           ))}
         </HomeSection>
         <HomeSection
-          icon={<BrandIcon icon={siYoutube} className="size-6" />}
+          icon={<BrandIcon icon={siYoutube} size="lg" />}
           title="By Youtube Channels"
         >
           {ytChannels.map((source) => (

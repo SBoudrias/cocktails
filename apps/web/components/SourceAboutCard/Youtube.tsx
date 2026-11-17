@@ -26,10 +26,7 @@ export default function YoutubeAboutCard({
     <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <BrandIcon
-            icon={siYoutube}
-            className="mr-1.5 inline-block size-6 align-text-top"
-          />
+          <BrandIcon icon={siYoutube} />
           {source.name}
         </CardTitle>
       </CardHeader>

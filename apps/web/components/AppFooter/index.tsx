@@ -17,7 +17,7 @@ export default function AppFooter() {
         rel="noopener"
         className="flex items-center gap-1 text-foreground"
       >
-        <BrandIcon icon={siGithub} className="size-6" /> Contribute on GitHub
+        <BrandIcon icon={siGithub} size="lg" /> Contribute on GitHub
       </a>
     </div>
   );
