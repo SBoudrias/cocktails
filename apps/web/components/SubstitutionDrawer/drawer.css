@@ -5,3 +5,17 @@
 [data-slot='drawer-backdrop'] {
   z-index: calc(var(--z-app-bar) + 1);
 }
+
+/* The sheet is chrome like the fixed app bar (inset-x-0 mx-auto
+   max-w-[600px], AppBar): on wide screens it caps at the app column's
+   600px and centers over it instead of docking against the left edge.
+   The app's base-layer reset (`* { margin: 0 }`) loads after the ui-sdk
+   layer, so it strips ui-sdk's own `margin-inline: auto` sheet centering
+   regardless of specificity; this unlayered rule restores the centering
+   and widens the cap from ui-sdk's 32rem to the column's 600px. On
+   phones the cap never binds and the auto margins have no free space, so
+   the full-width bottom sheet is unchanged. */
+[data-slot='drawer-content'] {
+  max-width: 600px;
+  margin-inline: auto;
+}
