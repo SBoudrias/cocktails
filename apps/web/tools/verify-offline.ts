@@ -264,7 +264,7 @@ if (referencedChunks.length < 2) {
 }
 const droppedChunks = referencedChunks.slice(0, 2);
 const deployBPrecache = precacheUrls.filter((url) => !droppedChunks.includes(url));
-const deployBVersion = `b${deployAVersion.slice(1)}`;
+const deployBVersion = `b${deployAVersion}`;
 await writeFile(
   path.join(overlayDir, 'sw.js'),
   swSource
