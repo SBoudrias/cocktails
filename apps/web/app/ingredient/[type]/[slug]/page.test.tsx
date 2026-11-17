@@ -41,8 +41,8 @@ const TEST_JAMAICAN_RUM = {
   name: 'Appleton 12',
 };
 
-// A bourbon bottle: its Whiskey (Bourbon) category holds 33 bottles, past
-// the substitution-list cap, so its page exercises the capped list.
+// A bourbon bottle: its Whiskey (Bourbon) category holds 32 other bottles,
+// so its page exercises the uncapped full substitution list in the drawer.
 const TEST_CAPPED_SPIRIT = {
   type: 'spirit',
   slug: 'bulleit-bourbon',
@@ -217,9 +217,9 @@ describe('IngredientPage', () => {
       await setupApp(spiritPageJSX);
 
       // Beefeater's categories sit in the chips group right under the page
-      // title. The exact name keeps this distinct from the see-all row,
-      // whose accessible name also starts with the category ("London dry gin
-      // See all options").
+      // title. The exact name keeps this distinct from the substitution
+      // lists' rows, whose accessible names also start with the category
+      // ("London dry gin" leads the related-categories list).
       const chipsGroup = screen.getByRole('group', { name: 'Categories' });
       expect(
         within(chipsGroup).getByRole('link', { name: 'London dry gin' }),
@@ -430,52 +430,50 @@ describe('IngredientPage', () => {
       ).not.toBeInTheDocument();
     });
 
-    it('caps the primary list at 10 links with a see-all link last when capped', async () => {
+    it('lists the substitution-friendly categories before the bottles', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      // The category options — the always-shorter list — come first in the
+      // drawer, the bottles follow.
+      const sheet = screen.getByRole('dialog', { name: 'Substitutions' });
+      const relatedGroup = within(sheet).getByRole('group', {
+        name: 'Substitution-friendly categories',
+      });
+      const substitutionGroup = within(sheet).getByRole('group', {
+        name: 'Some substitution option',
+      });
+      expect(
+        relatedGroup.compareDocumentPosition(substitutionGroup) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+    });
+
+    it('lists every bottle of a large category, uncapped', async () => {
       const { user } = await setupApp(cappedSpiritPageJSX);
       await user.click(screen.getByRole('button', { name: 'Substitutions' }));
 
-      // Bulleit Bourbon's category holds 32 other bottles: the list shows 9
-      // of them, plus the see-all link to the category page.
+      // Bulleit Bourbon's category holds 32 other bottles: the drawer
+      // scrolls, so the list shows all of them — no cap, no see-all link.
       const substitutionGroup = screen.getByRole('group', {
         name: 'Some substitution option',
       });
 
       const links = within(substitutionGroup).getAllByRole('link');
-      expect(links).toHaveLength(10);
+      expect(links).toHaveLength(32);
 
       // Popularity ordering: the most-used bourbons lead — Elijah Craig
       // (27), Old Grand-Dad Bonded (19), Buffalo Trace (17)...
       expect(substitutionGroup).toHaveTextContent('Elijah Craig bourbon');
       expect(substitutionGroup).toHaveTextContent('Old Grand-Dad Bonded Bourbon');
       expect(substitutionGroup).toHaveTextContent('Buffalo Trace Bourbon');
-      // The 10th most-used bourbon onward is cut off.
-      expect(substitutionGroup).not.toHaveTextContent('Evan Williams Black Label');
+      // Past the old 10-link cap, the lesser-used bourbons are listed too.
+      expect(substitutionGroup).toHaveTextContent('Evan Williams Black Label');
 
-      // The see-all link closes the list and points at the category page.
-      const seeAllLink = within(substitutionGroup).getByRole('link', {
-        name: /see all/i,
-      });
-      expect(seeAllLink).toHaveAttribute(
-        'href',
-        getCategoryUrl({ slug: 'whiskey-bourbon' }),
-      );
-      // It is the last row of the list.
-      expect(seeAllLink).toBe(links.at(-1));
-    });
-
-    it('renders no see-all link when the category fits under the cap', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
-      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
-
-      const substitutionGroup = screen.getByRole('group', {
-        name: 'Some substitution option',
-      });
-
+      // The see-all link is gone: the full list lives in the drawer.
       expect(
         within(substitutionGroup).queryByRole('link', { name: /see all/i }),
       ).not.toBeInTheDocument();
-      // All 6 same-category bottles fit under the cap.
-      expect(within(substitutionGroup).getAllByRole('link')).toHaveLength(6);
     });
 
     it('renders no substitution section for an ingredient without categories', async () => {
