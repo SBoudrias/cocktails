@@ -152,10 +152,8 @@ describe('getSerializedSearchIndex', () => {
     { timeout: 60_000 },
     async () => {
       const recipes = await getAllRecipes();
-      const [recipeItems, entityItems] = await Promise.all([
-        toSearchIndexItems(recipes),
-        toSearchIndexEntityItems(recipes),
-      ]);
+      const recipeItems = toSearchIndexItems(recipes);
+      const entityItems = await toSearchIndexEntityItems(recipes);
       const allItems = [...recipeItems, ...entityItems];
       const serialized = await getSerializedSearchIndex();
 

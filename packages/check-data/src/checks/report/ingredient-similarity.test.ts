@@ -36,7 +36,10 @@ describe('findSimilarIngredientPairs', () => {
       'coconut oil',
       'coconut mix',
     ]);
-    const normalized = pairs.map(({ a, b }) => [a, b].toSorted()).toSorted();
+    const byCodeUnit = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
+    const normalized = pairs
+      .map(({ a, b }) => [a, b].toSorted(byCodeUnit))
+      .toSorted((a, b) => byCodeUnit(a.join(','), b.join(',')));
     expect(normalized).toEqual([
       ['Coconut milk', 'coconut mix'],
       ['Coconut milk', 'coconut oil'],

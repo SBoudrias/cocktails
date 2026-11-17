@@ -152,8 +152,8 @@ export const getSource = async (type: Source['type'], slug: string): Promise<Sou
 export const getAllSources = memo(async () => {
   const sourcePromises: Promise<Source>[] = [];
 
-  for await (const sourceType of await fs.readdir(RECIPE_ROOT)) {
-    for await (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, sourceType))) {
+  for (const sourceType of await fs.readdir(RECIPE_ROOT)) {
+    for (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, sourceType))) {
       sourcePromises.push(getSource(sourceType as Source['type'], sourceSlug));
     }
   }

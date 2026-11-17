@@ -29,7 +29,7 @@ export const getCategory = memo(async (category: string): Promise<Category> => {
 export const getAllCategories = memo(async (): Promise<Category[]> => {
   const categories: Category[] = [];
 
-  for await (const file of await fs.readdir(CATEGORY_ROOT)) {
+  for (const file of await fs.readdir(CATEGORY_ROOT)) {
     const ingredient = await getCategory(path.basename(file, '.json'));
     categories.push(ingredient);
   }

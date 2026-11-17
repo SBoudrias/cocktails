@@ -69,7 +69,7 @@ async function waitUntilLive() {
           ? `home page returned ${status}`
           : `home page still serves a previous deploy (missing ${stale.length} of ${expected?.size} assets, e.g. ${stale[0]})`;
     } catch (error) {
-      last = `home page fetch failed: ${error instanceof Error ? error.message : error}`;
+      last = `home page fetch failed: ${error instanceof Error ? error.message : String(error)}`;
     }
     console.log(`waiting for deploy to go live: ${last}`);
     await new Promise((resolve) => setTimeout(resolve, LIVE_POLL_MS));
@@ -103,7 +103,7 @@ async function checkPage(path: string, markers: (string | RegExp)[]) {
     }
     console.log(`ok  ${label}`);
   } catch (error) {
-    failures.push(`${label}: ${error instanceof Error ? error.message : error}`);
+    failures.push(`${label}: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 
@@ -141,7 +141,7 @@ async function main() {
     console.log(`ok  /data/search-index.json (${entries.length} recipes)`);
   } catch (error) {
     failures.push(
-      `/data/search-index.json: ${error instanceof Error ? error.message : error}`,
+      `/data/search-index.json: ${error instanceof Error ? error.message : String(error)}`,
     );
   }
 
@@ -156,7 +156,9 @@ async function main() {
     if (sitemapUrls.length === 0) throw new Error('no <loc> entries');
     console.log(`ok  /sitemap-0.xml (${sitemapUrls.length} urls)`);
   } catch (error) {
-    failures.push(`/sitemap-0.xml: ${error instanceof Error ? error.message : error}`);
+    failures.push(
+      `/sitemap-0.xml: ${error instanceof Error ? error.message : String(error)}`,
+    );
   }
   // Sitemap URLs carry the production host and base path: keep the route only.
   const firstOf = (type: string) =>

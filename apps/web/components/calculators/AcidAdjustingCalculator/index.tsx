@@ -331,7 +331,7 @@ function SolutionCalculator({
             value={juiceAmountValue}
             type="number"
             onChange={(event) => {
-              setJuiceAmount(event.target.value);
+              void setJuiceAmount(event.target.value);
             }}
             error={!isJuiceAmountValid}
             helperText={!isJuiceAmountValid ? 'Must be greater than zero' : undefined}
@@ -382,7 +382,7 @@ function SolutionCalculator({
           <Button
             variant="text-secondary"
             onClick={() => {
-              setJuiceAmount(initialJuiceAmount);
+              void setJuiceAmount(initialJuiceAmount);
               setTargetAcidity(DEFAULT_TARGET_ACIDITY.toString());
               setAcidAmount(defaultAcidity.toString());
             }}

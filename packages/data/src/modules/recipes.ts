@@ -347,7 +347,7 @@ export const getRecipe = memo(
       if (!data) {
         // Search in chapter directories using glob
         const sourcePath = path.join(RECIPE_ROOT, source.type, source.slug);
-        const matches = await fs.glob(`*/${recipe}.json`, { cwd: sourcePath });
+        const matches = fs.glob(`*/${recipe}.json`, { cwd: sourcePath });
         const matchArray = await Array.fromAsync(matches);
 
         const matchedPath = matchArray[0];

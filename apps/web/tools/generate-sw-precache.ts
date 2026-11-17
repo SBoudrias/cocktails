@@ -230,7 +230,7 @@ try {
   await main();
 } catch (error) {
   console.error(
-    `generate-sw-precache failed: ${error instanceof Error ? error.message : error}`,
+    `generate-sw-precache failed: ${error instanceof Error ? error.message : String(error)}`,
   );
   process.exit(1);
 }
