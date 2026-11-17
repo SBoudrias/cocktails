@@ -48,7 +48,14 @@ export default function VideoListCard({
             <Video key={refKey(ref)} id={ref.videoId} start={ref.start} />
           ))
         ) : (
-          <Carousel aria-label={title} className="flex w-full max-w-none flex-col gap-2">
+          // items-stretch: web.css centers the grid's tracks
+          // (align-items: center), which in this column flex would
+          // shrink the viewport to its content — the video must span
+          // the card's full width.
+          <Carousel
+            aria-label={title}
+            className="flex w-full max-w-none flex-col items-stretch gap-2"
+          >
             <CarouselViewport>
               <CarouselContent>
                 {refs.map((ref) => (
