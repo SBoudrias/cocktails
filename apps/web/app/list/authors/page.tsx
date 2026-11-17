@@ -1,6 +1,8 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import AuthorsClient from './AuthorsClient';
+import SearchableEntityList from '#/components/SearchableEntityList';
+import { getAuthorSearchText } from '#/modules/searchText';
+import { getAuthorRecipesUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Authors list',
@@ -30,8 +32,18 @@ export default async function AuthorListPage() {
     }
   }
 
-  // Convert to array
   const authors = Array.from(authorsMap.values());
 
-  return <AuthorsClient authors={authors} />;
+  return (
+    <SearchableEntityList
+      variant="author"
+      title="All Authors"
+      rows={authors.map((author) => ({
+        name: author.name,
+        href: getAuthorRecipesUrl(author.name),
+        searchText: getAuthorSearchText(author),
+        count: author.recipeCount,
+      }))}
+    />
+  );
 }

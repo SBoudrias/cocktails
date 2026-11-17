@@ -1,8 +1,8 @@
 import { getAllCategories } from '@cocktails/data/categories';
 import { getAllIngredients } from '@cocktails/data/ingredients';
 import type { Metadata } from 'next';
+import SearchableEntityList from '#/components/SearchableEntityList';
 import { toIngredientListItems } from '#/modules/ingredientListItem';
-import IngredientsClient from './IngredientsClient';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Ingredient list',
@@ -22,8 +22,10 @@ export default async function IngredientListPage() {
   });
 
   return (
-    <IngredientsClient
-      ingredients={toIngredientListItems([...ingredients, ...allCategories])}
+    <SearchableEntityList
+      variant="ingredient"
+      title="All Ingredients"
+      rows={toIngredientListItems([...ingredients, ...allCategories])}
     />
   );
 }

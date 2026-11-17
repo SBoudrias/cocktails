@@ -20,9 +20,9 @@ type Row = { href: ReturnType<typeof getRecipeUrl>; name: string; source: string
 /**
  * The whole A–Z list of recipes, as one virtualized list. The static HTML
  * carries the first letters; every other row comes from the shared search
- * index, which this page loads right away.
+ * index, which the all-recipes page loads right away.
  */
-export default function RecipesClient({
+export default function AllRecipesList({
   groups: initialGroups,
   initialRecipes,
 }: {

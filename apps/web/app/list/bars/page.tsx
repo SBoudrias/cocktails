@@ -1,6 +1,8 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import BarsClient from './BarsClient';
+import SearchableEntityList from '#/components/SearchableEntityList';
+import { getBarSearchText } from '#/modules/searchText';
+import { getBarRecipesUrl } from '#/modules/url';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Bars list',
@@ -35,5 +37,17 @@ export default async function BarListPage() {
     a.name.localeCompare(b.name),
   );
 
-  return <BarsClient bars={bars} />;
+  return (
+    <SearchableEntityList
+      variant="bar"
+      title="All Bars"
+      rows={bars.map((bar) => ({
+        name: bar.name,
+        href: getBarRecipesUrl(bar),
+        searchText: getBarSearchText(bar),
+        location: bar.location,
+        count: bar.recipeCount,
+      }))}
+    />
+  );
 }
