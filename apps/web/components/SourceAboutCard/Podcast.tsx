@@ -26,10 +26,7 @@ export default function PodcastAboutCard({
     <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <PodcastIcon
-            className="mr-1.5 inline-block size-6 align-text-top"
-            aria-hidden="true"
-          />
+          <PodcastIcon aria-hidden="true" />
           {source.name}
         </CardTitle>
         {episodeTitle && <CardSubheader>Episode: {episodeTitle}</CardSubheader>}

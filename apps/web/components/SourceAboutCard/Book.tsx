@@ -30,10 +30,7 @@ export default function BookAboutCard({
     <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <BookOpen
-            className="mr-1.5 inline-block size-6 align-text-top"
-            aria-hidden="true"
-          />
+          <BookOpen aria-hidden="true" />
           {source.name}
         </CardTitle>
         {subheader && <CardSubheader>{subheader}</CardSubheader>}

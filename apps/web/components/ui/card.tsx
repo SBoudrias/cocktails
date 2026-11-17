@@ -36,12 +36,20 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-// The header title: 24px/400 on a 32px line-height.
+// The header title: 24px/400 on a 32px line-height. A classless leading svg
+// (an icon without its own size classes) is the title-glyph recipe —
+// 24px, inline-block, 6px to its label — so titles don't repeat it at every
+// icon; an svg that carries size-* classes opts out (globals.css already
+// sits every svg on text-top).
 function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-title"
-      className={cn('text-2xl leading-8 font-normal', className)}
+      className={cn(
+        'text-2xl leading-8 font-normal',
+        "[&>svg:not([class*='size-'])]:mr-1.5 [&>svg:not([class*='size-'])]:inline-block [&>svg:not([class*='size-'])]:size-6",
+        className,
+      )}
       {...props}
     />
   );

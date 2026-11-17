@@ -3,14 +3,16 @@
 // aria-hidden — the surrounding control carries the accessible name; the
 // glyph itself is the library's, not our own.
 //
-// Size-only API: no className — spacing and alignment belong to the caller's
-// own wrapper. No size default: unsized, the parent's own svg sizing takes
-// over (a button's `[&_svg:not([class*='size-'])]` rule, which also matches
-// the attribute-less class). The semantic tokens follow ui-sdk's own
-// data-size naming; the literal union keeps the classes static.
+// Size-only API: no className — spacing and alignment belong to the shared
+// containers (CardTitle, the text buttons), which rule classless svgs via
+// their `[&>svg:not([class*='size-'])]` selectors; a classless svg is how
+// BrandIcon opts into them. Size lands as width/height attributes, the
+// TikiMark convention: CSS container rules (a button's 20px default)
+// override them, so where a container owns sizing, unsized is the right
+// call. The semantic tokens follow ui-sdk's data-size naming.
 import type { SimpleIcon } from 'simple-icons';
 
-const sizeClasses = { sm: 'size-4', md: 'size-5', lg: 'size-6' } as const;
+const sizes = { sm: 16, md: 20, lg: 24 } as const;
 
 export default function BrandIcon({
   icon,
@@ -18,14 +20,15 @@ export default function BrandIcon({
 }: {
   icon: SimpleIcon;
   /** Semantic size: sm → 16px, md → 20px, lg → 24px. */
-  size?: keyof typeof sizeClasses;
+  size?: keyof typeof sizes;
 }) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden="true"
-      className={size ? sizeClasses[size] : undefined}
+      width={size ? sizes[size] : undefined}
+      height={size ? sizes[size] : undefined}
     >
       <path d={icon.path} />
     </svg>

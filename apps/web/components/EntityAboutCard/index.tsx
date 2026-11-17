@@ -1,7 +1,6 @@
 import type { Author, Bar } from '@cocktails/data';
 import { cn } from 'cn';
 import { Globe, Map as MapIcon, Martini, User } from 'lucide-react';
-import type { SimpleIcon } from 'simple-icons';
 import { siFacebook, siInstagram, siX, siYoutube } from 'simple-icons';
 import { match, P } from 'ts-pattern';
 import BrandIcon from '#/components/icons/BrandIcon';
@@ -24,52 +23,39 @@ function getHostname(url: string): string {
 // Social links show their brand mark plus the handle from the url path
 // (@erynreece reads better than instagram.com); every other link shows a
 // globe and its domain. The button's aria-label carries the full url. The
-// marks render at 20px, the start-icon glyph size.
-
-// BrandIcon takes no className — this span carries the spacing the button's
-// text label needs, and the unsized svg falls to the button's own 20px
-// `[&_svg:not([class*='size-'])]` rule. Inline flex, like the suggestions
-// row's brand icons: it keeps the svg centered on its own box instead of
-// sitting it on the text baseline a bare svg would ride.
-function BrandLinkIcon({ icon }: { icon: SimpleIcon }) {
-  return (
-    <span className="-ml-1 mr-2 inline-flex">
-      <BrandIcon icon={icon} />
-    </span>
-  );
-}
-
+// marks render bare — the text button's own svg rules size them at 20px and
+// space them off the label.
 function getLinkView(url: string) {
   return match(getHostname(url))
     .returnType<{ icon: React.ReactNode; label: string }>()
     .with('instagram.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandLinkIcon icon={siInstagram} />,
+        icon: <BrandIcon icon={siInstagram} />,
         label: handle ? handle : host,
       };
     })
     .with('youtube.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return handle
-        ? { icon: <BrandLinkIcon icon={siYoutube} />, label: handle }
-        : { icon: <BrandLinkIcon icon={siYoutube} />, label: host };
+        ? { icon: <BrandIcon icon={siYoutube} />, label: handle }
+        : { icon: <BrandIcon icon={siYoutube} />, label: host };
     })
     .with(P.union('x.com', 'twitter.com'), (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandLinkIcon icon={siX} />,
+        icon: <BrandIcon icon={siX} />,
         label: handle ? handle : host,
       };
     })
     .with('facebook.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandLinkIcon icon={siFacebook} />,
+        icon: <BrandIcon icon={siFacebook} />,
         label: handle ? handle : host,
       };
     })
-    .otherwise((host) => ({ icon: <Globe className="mr-2 -ml-1" />, label: host }));
+    .otherwise((host) => ({ icon: <Globe aria-hidden="true" />, label: host }));
 }
 
 function LinkButtons({ links }: { links?: [string, ...string[]] }) {
@@ -115,10 +101,7 @@ export function AuthorAboutCard({
     <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <User
-            className="mr-1.5 inline-block size-6 align-text-top"
-            aria-hidden="true"
-          />
+          <User aria-hidden="true" />
           {author.name}
         </CardTitle>
       </CardHeader>
@@ -187,10 +170,7 @@ export function BarAboutCard({ bar, m }: { bar: Bar | undefined; m?: CardMargin 
     <Card m={m}>
       <CardHeader>
         <CardTitle>
-          <Martini
-            className="mr-1.5 inline-block size-6 align-text-top"
-            aria-hidden="true"
-          />
+          <Martini aria-hidden="true" />
           {bar.name}
         </CardTitle>
         {bar.location && <CardSubheader>{bar.location}</CardSubheader>}
