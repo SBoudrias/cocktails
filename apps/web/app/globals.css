@@ -62,12 +62,12 @@
   --input: rgb(255 255 255 / 0.23);
   --ring: #6fcf9a;
   --radius: 0.25rem; /* The theme's corner radius */
-  /* The retro-future card frame (the fun-refinements C pick): unequal
-     corner radii and a subtle tilt — cards only, the lists keep today's
-     uniform radius and axis. One token each, so the tilt dials back to 0
-     without touching components. */
-  --card-radius: 1.375rem 0.375rem 1.5rem 0.5rem; /* 22px 6px 24px 8px */
-  --card-tilt: -0.6deg;
+  /* The retro-future card frame (the fun-refinements picks): a skewed
+     silhouette — the top edge slopes down toward the right, the left side
+     stands taller than the right — that consecutive cards mirror. Tokens
+     only, so the shape dials back without touching components. */
+  --card-skew-top: 14px;
+  --card-skew-bottom: 6px;
   /* The fixed app bar: its glass fill (--header) and its height per
      orientation and breakpoint — the sticky headers offset from it. */
   --header: rgb(10 20 32 / 0.85);
@@ -185,12 +185,33 @@
     0px 1px 3px 0px rgb(0 0 0 / 0.12);
 }
 
-/* The retro-future card frame: the unequal radii and subtle tilt of the
-   fun-refinements C pick, drawn from the --card-radius/--card-tilt tokens.
-   Cards only — the lists' surface blocks keep today's uniform frame. The
-   tilt stays a transform on the card itself; the layout box is untouched,
-   so sticky headers and the app-bar offsets never see it. */
+/* The retro-future card frame: a skewed silhouette — the paint tips while
+   the text stays level, the left side standing taller than the right —
+   sheared with clip-path. Cards only; the lists' surface blocks keep
+   today's frame. clip-path shears the surface's box-shadow away with the
+   corners, so the elevation is a drop-shadow: it follows the skewed
+   silhouette instead. The card already clips its content
+   (overflow-hidden), so the shear eats into padding only, never text. */
 @utility card-frame {
-  border-radius: var(--card-radius);
-  transform: rotate(var(--card-tilt));
+  clip-path: polygon(
+    0 0,
+    100% var(--card-skew-top),
+    100% calc(100% - var(--card-skew-bottom)),
+    0 100%
+  );
+  border-radius: var(--radius);
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.3));
+}
+
+/* Consecutive cards mirror the silhouette (the level-4 :nth-child(of)
+   selector counts cards among their siblings, skipping the app-bar spacer
+   div and any other divs), so stacks don't repeat one shape; a lone card —
+   most pages — keeps the base frame. */
+[data-slot='card']:nth-child(2n of [data-slot='card']) {
+  clip-path: polygon(
+    0 var(--card-skew-top),
+    100% 0,
+    100% 100%,
+    0 calc(100% - var(--card-skew-bottom))
+  );
 }
