@@ -43,12 +43,7 @@ function CitrusSelector({
   onChange: (citrus: SuperJuiceCitrus) => void;
 }) {
   return (
-    <ToggleGroup
-      value={citrus}
-      onValueChange={onChange}
-      aria-label="Citrus type"
-      fullWidth
-    >
+    <ToggleGroup value={citrus} onChange={onChange} aria-label="Citrus type" fullWidth>
       <ToggleGroupItem value="lemon">Lemon</ToggleGroupItem>
       <ToggleGroupItem value="lime">Lime</ToggleGroupItem>
       <ToggleGroupItem value="orange">Orange</ToggleGroupItem>

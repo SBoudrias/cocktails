@@ -122,7 +122,7 @@ function GroupModeToggle({
   onChange: (value: GroupMode) => void;
 }) {
   return (
-    <ToggleGroup value={value} onValueChange={onChange} aria-label="Recipe grouping">
+    <ToggleGroup value={value} onChange={onChange} aria-label="Recipe grouping">
       <ToggleGroupItem value="chapter">By Chapter</ToggleGroupItem>
       <ToggleGroupItem value="alphabetical">A-Z</ToggleGroupItem>
     </ToggleGroup>

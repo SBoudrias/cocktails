@@ -61,7 +61,7 @@ export default function BarsClient({ bars }: { bars: Bar[] }) {
         <div className="mx-4 flex justify-end">
           <ToggleGroup
             value={groupMode}
-            onValueChange={(newValue) => {
+            onChange={(newValue) => {
               if (newValue === 'alpha' || newValue === 'city') {
                 setGroupMode(newValue);
               }

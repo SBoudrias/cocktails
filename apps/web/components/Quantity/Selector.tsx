@@ -14,7 +14,7 @@ export default function UnitSelector({
   return (
     <ToggleGroup
       value={value}
-      onValueChange={onChange}
+      onChange={onChange}
       aria-label="Preferred measurement unit"
     >
       <ToggleGroupItem value="oz">oz</ToggleGroupItem>

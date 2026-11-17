@@ -19,7 +19,7 @@ import { cn } from 'cn';
 function ToggleGroup<Value extends string>({
   className,
   fullWidth = false,
-  onValueChange,
+  onChange,
   ...props
 }: Omit<SegmentedControlOptions<Value>, 'onValueChange'> &
   Omit<
@@ -28,7 +28,7 @@ function ToggleGroup<Value extends string>({
   > & {
     // Null only comes from ui-sdk's form-reset and imperative reasons; no
     // consumer here uses a form or a controller, so the wrapper drops it.
-    onValueChange?: (value: Value) => void;
+    onChange?: (value: Value) => void;
     /** Full width: the group spans its row, each item sharing it by
      * content (width:100% with shrink allowed). */
     fullWidth?: boolean;
@@ -36,7 +36,7 @@ function ToggleGroup<Value extends string>({
   return (
     <SegmentedControlRoot<Value>
       onValueChange={(next) => {
-        if (next != null) onValueChange?.(next);
+        if (next != null) onChange?.(next);
       }}
       className={cn(
         // web.css gives every segmented control a 1px border, 2px padding

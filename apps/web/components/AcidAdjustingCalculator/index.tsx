@@ -38,7 +38,7 @@ function AcidProfileSelector({
   return (
     <ToggleGroup
       value={profile}
-      onValueChange={onChange}
+      onChange={onChange}
       aria-label="Target acid profile"
       fullWidth
     >
@@ -448,7 +448,7 @@ export default function AcidAdjustingCalculator({
         <div className="-mt-1 -mr-2 -mb-1 shrink-0 self-start">
           <ToggleGroup
             value={type}
-            onValueChange={setType}
+            onChange={setType}
             aria-label="Preferred acid-adjusting technique"
           >
             <ToggleGroupItem value="solution">Solution</ToggleGroupItem>
