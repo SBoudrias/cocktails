@@ -30,3 +30,12 @@
   height: calc(100dvh - var(--app-bar-height));
   max-height: none;
 }
+
+/* ui-sdk sets touch-action: none on the handle as an inline style so its
+   press always registers, but on a touch screen the sheet moves by native
+   scrolling — that inline style makes the grip the one spot a finger drag
+   cannot move the sheet from. Allow vertical panning (an author !important
+   beats the inline value); taps still press the button. */
+[data-slot='drawer-handle'] {
+  touch-action: pan-y !important;
+}
