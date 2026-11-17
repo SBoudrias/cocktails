@@ -12,8 +12,8 @@ import 'core-js/modules/es.object.group-by.js';
 // "no params" state on the server, so pages prerender their full content.
 // instrumentation-client.ts makes it follow Next router navigations.
 import { NuqsAdapter } from 'nuqs/adapters/react';
-import AppFooter from '#/components/AppFooter';
-import FullscreenHelper from '#/components/FullscreenHelper';
+import AppFooter from '#/components/layout/AppFooter';
+import FullscreenHelper from '#/components/layout/FullscreenHelper';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';
 import tikiLeavesTop from '../../../public/tiki-leaves-top.webp';
 
