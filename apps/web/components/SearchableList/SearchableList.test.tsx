@@ -1,5 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { byNameListConfig } from '#/modules/lists/by-name';
+import { setupApp } from '#/vitest.setup';
 import SearchableList from './index';
 
 type TestItem = { name: string };
@@ -28,8 +30,8 @@ describe('SearchableList', () => {
     { searchTerm: null, reason: 'null' },
   ])(
     'renders all items grouped by first letter when searchTerm is $reason',
-    ({ searchTerm }) => {
-      render(
+    async ({ searchTerm }) => {
+      await setupApp(
         <SearchableList
           items={testItems}
           getSearchText={getSearchText}
@@ -47,8 +49,8 @@ describe('SearchableList', () => {
     },
   );
 
-  it('strips articles (the/an/a) when grouping by first letter', () => {
-    render(
+  it('strips articles (the/an/a) when grouping by first letter', async () => {
+    await setupApp(
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
@@ -65,8 +67,8 @@ describe('SearchableList', () => {
     expect(screen.queryByRole('group', { name: 'T' })).not.toBeInTheDocument();
   });
 
-  it('filters items with fuzzy search when searchTerm is provided', () => {
-    render(
+  it('filters items with fuzzy search when searchTerm is provided', async () => {
+    await setupApp(
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
@@ -82,8 +84,8 @@ describe('SearchableList', () => {
     expect(screen.queryByText('Margarita')).not.toBeInTheDocument();
   });
 
-  it('shows empty state when search has no matches', () => {
-    render(
+  it('shows empty state when search has no matches', async () => {
+    await setupApp(
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
@@ -98,8 +100,8 @@ describe('SearchableList', () => {
     expect(screen.getByText('No results found')).toBeInTheDocument();
   });
 
-  it('calls renderItem for each group when displaying grouped items', () => {
-    render(
+  it('renders each group with its items', async () => {
+    await setupApp(
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
@@ -110,7 +112,6 @@ describe('SearchableList', () => {
       />,
     );
 
-    // Each group should have its items
     const dGroup = screen.getByRole('group', { name: 'D' });
     const lGroup = screen.getByRole('group', { name: 'L' });
     const mGroup = screen.getByRole('group', { name: 'M' });
@@ -122,8 +123,8 @@ describe('SearchableList', () => {
     expect(mGroup).toHaveTextContent('Mai Tai');
   });
 
-  it('calls renderItem with filtered items when searching', () => {
-    render(
+  it('renders only matching items when searching', async () => {
+    await setupApp(
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
@@ -138,8 +139,8 @@ describe('SearchableList', () => {
     expect(screen.queryByText('Mojito')).not.toBeInTheDocument();
   });
 
-  it('handles whitespace-only searchTerm as empty', () => {
-    render(
+  it('handles whitespace-only searchTerm as empty', async () => {
+    await setupApp(
       <SearchableList
         items={testItems}
         getSearchText={getSearchText}
@@ -153,5 +154,56 @@ describe('SearchableList', () => {
     // Should show grouped items, not empty state
     expect(screen.getByRole('group', { name: 'D' })).toBeInTheDocument();
     expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  });
+});
+
+describe('SearchableList rows mode', () => {
+  // Rows a server page rendered: node + the data to search and group by.
+  const testRows = testItems.map((item) => ({
+    name: item.name,
+    node: <li key={item.name}>{item.name}</li>,
+    searchText: item.name.toLowerCase(),
+  }));
+
+  it('renders pre-rendered rows grouped by name when no term is passed', async () => {
+    await setupApp(
+      <SearchableList
+        rows={testRows}
+        config={byNameListConfig}
+        emptyState={emptyState}
+      />,
+    );
+
+    const mGroup = screen.getByRole('group', { name: 'M' });
+    expect(mGroup).toHaveTextContent('Mojito');
+    expect(mGroup).toHaveTextContent('Margarita');
+    expect(mGroup).toHaveTextContent('Mai Tai');
+  });
+
+  it('filters pre-rendered rows from the ?search URL parameter', async () => {
+    mockRouter.setCurrentUrl('/?search=moj');
+    await setupApp(
+      <SearchableList
+        rows={testRows}
+        config={byNameListConfig}
+        emptyState={emptyState}
+      />,
+    );
+
+    expect(screen.getByText('Mojito')).toBeInTheDocument();
+    expect(screen.queryByText('Mai Tai')).not.toBeInTheDocument();
+  });
+
+  it('shows the empty state when no row matches the URL parameter', async () => {
+    mockRouter.setCurrentUrl('/?search=nonexistent');
+    await setupApp(
+      <SearchableList
+        rows={testRows}
+        config={byNameListConfig}
+        emptyState={emptyState}
+      />,
+    );
+
+    expect(screen.getByRole('status')).toBeInTheDocument();
   });
 });

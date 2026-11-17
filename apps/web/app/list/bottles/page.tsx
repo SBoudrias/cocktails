@@ -1,7 +1,11 @@
 import { getAllIngredients } from '@cocktails/data/ingredients';
 import type { Metadata } from 'next';
-import SearchableEntityList from '#/components/SearchableEntityList';
+import { LinkListItem } from '#/components/LinkList';
+import SearchableList from '#/components/SearchableList';
+import SearchHeader from '#/components/SearchHeader';
+import { Card, CardHeader, CardTitle } from '#/components/ui/card';
 import { toIngredientListItems } from '#/modules/ingredientListItem';
+import { byNameListConfig } from '#/modules/lists/by-name';
 
 export const metadata: Metadata = {
   title: 'Indexotica | Bottle list',
@@ -19,10 +23,23 @@ export default async function BottlesPage() {
   });
 
   return (
-    <SearchableEntityList
-      variant="bottle"
-      title="All Bottles"
-      rows={toIngredientListItems(bottles)}
-    />
+    <>
+      <SearchHeader title="All Bottles" />
+      <SearchableList
+        rows={toIngredientListItems(bottles).map(({ name, href, searchText }) => ({
+          name,
+          node: <LinkListItem href={href} primary={name} />,
+          searchText,
+        }))}
+        config={byNameListConfig}
+        emptyState={
+          <Card m={2}>
+            <CardHeader>
+              <CardTitle>No results found</CardTitle>
+            </CardHeader>
+          </Card>
+        }
+      />
+    </>
   );
 }

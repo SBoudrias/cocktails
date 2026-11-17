@@ -1,6 +1,10 @@
 import { getAllRecipes } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import SearchableEntityList from '#/components/SearchableEntityList';
+import { LinkListItem } from '#/components/LinkList';
+import SearchableList from '#/components/SearchableList';
+import SearchHeader from '#/components/SearchHeader';
+import { Card, CardHeader, CardTitle } from '#/components/ui/card';
+import { byNameListConfig } from '#/modules/lists/by-name';
 import { getAuthorSearchText } from '#/modules/searchText';
 import { getAuthorRecipesUrl } from '#/modules/url';
 
@@ -32,18 +36,30 @@ export default async function AuthorListPage() {
     }
   }
 
-  const authors = Array.from(authorsMap.values());
-
   return (
-    <SearchableEntityList
-      variant="author"
-      title="All Authors"
-      rows={authors.map((author) => ({
-        name: author.name,
-        href: getAuthorRecipesUrl(author.name),
-        searchText: getAuthorSearchText(author),
-        count: author.recipeCount,
-      }))}
-    />
+    <>
+      <SearchHeader title="All Authors" />
+      <SearchableList
+        rows={Array.from(authorsMap.values()).map((author) => ({
+          name: author.name,
+          node: (
+            <LinkListItem
+              href={getAuthorRecipesUrl(author.name)}
+              primary={author.name}
+              count={author.recipeCount}
+            />
+          ),
+          searchText: getAuthorSearchText(author),
+        }))}
+        config={byNameListConfig}
+        emptyState={
+          <Card m={2}>
+            <CardHeader>
+              <CardTitle>No results found</CardTitle>
+            </CardHeader>
+          </Card>
+        }
+      />
+    </>
   );
 }
