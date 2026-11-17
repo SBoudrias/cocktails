@@ -27,7 +27,7 @@ export default function AppHeader({
         <Link
           href={getRecipeListUrl()}
           aria-label="Search"
-          className={`${iconButton} size-12 -mr-3`}
+          className={`${iconButton} -mr-3 size-12`}
         >
           <Search className="size-6" />
         </Link>

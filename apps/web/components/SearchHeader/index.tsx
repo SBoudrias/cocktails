@@ -31,7 +31,7 @@ export default function SearchHeader({
         />
       </AppBar>
       {!searchTerm && title && (
-        <h1 className="mx-4 my-2 text-2xl font-normal leading-[1.334]">{title}</h1>
+        <h1 className="mx-4 my-2 text-2xl leading-[1.334] font-normal">{title}</h1>
       )}
       {!searchTerm && underTitle}
     </>

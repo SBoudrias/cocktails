@@ -31,7 +31,7 @@ export default function StickyGroupHeader({
       // position: sticky inside the group; the rows scroll under it. The
       // background comes separately (useStuck): the header stays
       // see-through in flow and only wears glass once pinned.
-      className="sticky z-[1]"
+      className="sticky z-1"
       style={{ top: 'var(--app-bar-height)', ...(stuck ? stuckGlass : null) }}
     >
       <ListSubheader>{children}</ListSubheader>

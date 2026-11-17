@@ -30,7 +30,7 @@ export default function SearchInput({
     <div className="flex grow items-stretch">
       {/* The field box carries the keyboard focus ring (focus-within): the
           input itself is outline-none, so the ring is the visible focus. */}
-      <div className="relative w-full rounded-lg bg-foreground/15 hover:bg-foreground/25 focus-within:ring-3 focus-within:ring-ring/50">
+      <div className="relative w-full rounded-lg bg-foreground/15 focus-within:ring-3 focus-within:ring-ring/50 hover:bg-foreground/25">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center px-4">
           <Search aria-hidden="true" className="size-6" />
         </div>
@@ -49,7 +49,7 @@ export default function SearchInput({
               e.currentTarget.blur();
             }
           }}
-          className="w-full py-2 pl-[calc(1em+2rem)] pr-2 font-sans text-base leading-[1.4375em] outline-none placeholder:text-foreground/50 [&::-webkit-search-decoration]:appearance-none"
+          className="w-full py-2 pr-2 pl-[calc(1em+2rem)] font-sans text-base leading-[1.4375em] outline-none placeholder:text-foreground/50 [&::-webkit-search-decoration]:appearance-none"
         />
       </div>
       <button
@@ -58,7 +58,7 @@ export default function SearchInput({
           onChangeAction(null);
           inputRef.current?.focus();
         }}
-        className="min-w-16 shrink-0 rounded-lg px-2 py-1.5 text-sm font-medium uppercase leading-[1.75] text-primary outline-none hover:bg-primary/8 focus-visible:bg-primary/12"
+        className="min-w-16 shrink-0 rounded-lg px-2 py-1.5 text-sm leading-[1.75] font-medium text-primary uppercase outline-none hover:bg-primary/8 focus-visible:bg-primary/12"
       >
         Clear
       </button>

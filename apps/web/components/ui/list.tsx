@@ -6,7 +6,7 @@ export function ListSubheader({ className, ...props }: React.ComponentProps<'div
   return (
     <div
       className={cn(
-        'px-4 py-4 text-sm leading-[1.4rem] font-medium text-muted-foreground',
+        'p-4 text-sm leading-[1.4rem] font-medium text-muted-foreground',
         className,
       )}
       {...props}
@@ -20,7 +20,7 @@ export function ListSubheader({ className, ...props }: React.ComponentProps<'div
 export function ListRow({ className, ...props }: React.ComponentProps<'li'>) {
   return (
     <li
-      className={cn('flex w-full items-center border-b py-2 px-4 text-base', className)}
+      className={cn('flex w-full items-center border-b px-4 py-2 text-base', className)}
       {...props}
     />
   );

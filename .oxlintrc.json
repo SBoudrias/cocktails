@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["typescript", "nextjs", "react"],
+  "jsPlugins": ["oxlint-tailwindcss"],
   "categories": {
     "correctness": "error"
   },
@@ -13,6 +14,9 @@
   "settings": {
     "next": {
       "rootDir": "apps/web/"
+    },
+    "tailwindcss": {
+      "entryPoint": "apps/web/app/globals.css"
     }
   },
   "ignorePatterns": [
@@ -40,7 +44,23 @@
     "no-unexpected-multiline": "error",
     "preserve-caught-error": "error",
     "react/exhaustive-deps": "error",
-    "react/rules-of-hooks": "error"
+    "react/rules-of-hooks": "error",
+    "tailwindcss/no-conflicting-classes": "error",
+    "tailwindcss/no-unknown-classes": "error",
+    "tailwindcss/no-dynamic-classes": "error",
+    "tailwindcss/no-contradicting-variants": "warn",
+    "tailwindcss/no-dark-without-light": "warn",
+    "tailwindcss/no-duplicate-classes": "warn",
+    "tailwindcss/no-deprecated-classes": "warn",
+    "tailwindcss/enforce-canonical": "warn",
+    "tailwindcss/enforce-negative-arbitrary-values": "warn",
+    "tailwindcss/enforce-sort-order": "warn",
+    "tailwindcss/consistent-variant-order": "warn",
+    "tailwindcss/enforce-consistent-important-position": "warn",
+    "tailwindcss/enforce-consistent-variable-syntax": "warn",
+    "tailwindcss/enforce-shorthand": "warn",
+    "tailwindcss/no-unnecessary-whitespace": "warn",
+    "tailwindcss/no-hardcoded-colors": "warn"
   },
   "overrides": [
     {

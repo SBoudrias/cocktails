@@ -26,6 +26,7 @@
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.78.0",
     "oxlint": "^1.93.0",
+    "oxlint-tailwindcss": "1.17.2",
     "skills": "1.9.0",
     "turbo": "^2.11.10",
     "typescript": "7.0.2",

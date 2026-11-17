@@ -109,7 +109,7 @@ export default function RootLayout({
               background layers, sized to the assets' own width (both 750px
               today). */}
           <div
-            className="mx-auto flex min-h-screen max-w-[600px] flex-col bg-no-repeat [background-position:center_40px,bottom_center] [background-size:min(100%,750px)_auto,min(100%,750px)_auto]"
+            className="mx-auto flex min-h-screen max-w-[600px] flex-col bg-size-[min(100%,750px)_auto,min(100%,750px)_auto] bg-position-[center_40px,bottom_center] bg-no-repeat"
             style={{
               backgroundImage: `url(${tikiLeavesTop.src}), url(${tikiBeachDivider.src})`,
             }}

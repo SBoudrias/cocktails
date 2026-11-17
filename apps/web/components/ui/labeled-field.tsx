@@ -57,7 +57,7 @@ export function OutlinedField({
       <fieldset
         aria-hidden="true"
         className={cn(
-          'pointer-events-none absolute inset-x-0 bottom-0 -top-1.25 m-0 overflow-hidden rounded-sm border border-input px-2',
+          'pointer-events-none absolute inset-x-0 -top-1.25 bottom-0 m-0 overflow-hidden rounded-sm border border-input px-2',
           'group-focus-within:border-2 group-focus-within:border-primary',
           error && 'border-destructive group-focus-within:border-destructive',
         )}

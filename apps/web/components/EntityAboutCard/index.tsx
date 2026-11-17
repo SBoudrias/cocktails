@@ -30,31 +30,31 @@ function getLinkView(url: string) {
     .with('instagram.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siInstagram} className="-ml-1 mr-2" />,
+        icon: <BrandIcon icon={siInstagram} className="mr-2 -ml-1" />,
         label: handle ? handle : host,
       };
     })
     .with('youtube.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return handle
-        ? { icon: <BrandIcon icon={siYoutube} className="-ml-1 mr-2" />, label: handle }
-        : { icon: <BrandIcon icon={siYoutube} className="-ml-1 mr-2" />, label: host };
+        ? { icon: <BrandIcon icon={siYoutube} className="mr-2 -ml-1" />, label: handle }
+        : { icon: <BrandIcon icon={siYoutube} className="mr-2 -ml-1" />, label: host };
     })
     .with(P.union('x.com', 'twitter.com'), (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siX} className="-ml-1 mr-2" />,
+        icon: <BrandIcon icon={siX} className="mr-2 -ml-1" />,
         label: handle ? handle : host,
       };
     })
     .with('facebook.com', (host) => {
       const handle = new URL(url).pathname.replace('/', '').split('/')[0];
       return {
-        icon: <BrandIcon icon={siFacebook} className="-ml-1 mr-2" />,
+        icon: <BrandIcon icon={siFacebook} className="mr-2 -ml-1" />,
         label: handle ? handle : host,
       };
     })
-    .otherwise((host) => ({ icon: <Globe className="-ml-1 mr-2" />, label: host }));
+    .otherwise((host) => ({ icon: <Globe className="mr-2 -ml-1" />, label: host }));
 }
 
 function LinkButtons({ links }: { links?: [string, ...string[]] }) {
