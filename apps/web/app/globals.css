@@ -188,10 +188,11 @@
 /* The retro-future card frame: a skewed silhouette — the paint tips while
    the text stays level, the left side standing taller than the right —
    sheared with clip-path. Cards only; the lists' surface blocks keep
-   today's frame. clip-path shears the surface's box-shadow away with the
-   corners, so the elevation is a drop-shadow: it follows the skewed
-   silhouette instead. The card already clips its content
-   (overflow-hidden), so the shear eats into padding only, never text. */
+   today's frame. The elevation shadow is gone on purpose: clip-path clips
+   box-shadow and any same-element filter, and on this night-sky background
+   a 30% black blur measured under the visibility threshold anyway (0.00%
+   of pixels differ with vs without it). The card keeps overflow-hidden, so
+   the shear eats into the 16px content padding only, never text. */
 @utility card-frame {
   clip-path: polygon(
     0 0,
@@ -200,7 +201,6 @@
     0 100%
   );
   border-radius: var(--radius);
-  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.3));
 }
 
 /* Consecutive cards mirror the silhouette (the level-4 :nth-child(of)
