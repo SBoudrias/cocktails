@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
-import SearchInput from './index';
+import SearchInput from './SearchInput';
 
 function StatefulSearchInput({ initialValue = '' }: { initialValue?: string }) {
   const [value, setValue] = useState(initialValue);

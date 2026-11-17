@@ -9,13 +9,13 @@ import { Fragment, useMemo, useState } from 'react';
 import { match } from 'ts-pattern';
 import Quantity from '#/components/Quantity';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
-import ServingSelector from '#/components/ServingSelector';
 import { ListRow, ListSubheader } from '#/components/ui/list';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { getMilkClarificationContext } from '#/modules/milkClarification';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
 import { formatIngredientName, formatRecipeTechniqueName } from '#/modules/technique';
 import { getMilkClarificationCalculatorUrl, getRecipeIngredientUrl } from '#/modules/url';
+import ServingSelector from './ServingSelector';
 import styles from './style.module.css';
 
 const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
