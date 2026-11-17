@@ -65,7 +65,10 @@ function ToggleGroupItem({
   return (
     <SegmentedControlItemRoot
       className={cn(
-        'h-auto flex-none rounded-none border bg-transparent text-[13px] leading-[1.75] font-medium whitespace-nowrap uppercase outline-none transition duration-100 ease-out',
+        // No transition: the checked fill must paint in the same frame as
+        // the re-render the press causes, or the button visibly trails the
+        // page content.
+        'h-auto flex-none rounded-none border bg-transparent text-[13px] leading-[1.75] font-medium whitespace-nowrap uppercase outline-none',
         '[&:first-of-type]:rounded-s-lg [&:last-of-type]:rounded-e-lg [&:first-of-type]:border-l-0',
         // Unselected labels sit deliberately pure white — brighter than the
         // foreground's cyan cast — so the picked item reads at a glance.
