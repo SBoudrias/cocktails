@@ -1,30 +1,18 @@
-/* The app's toast paint: ui-sdk's default recolored to the moonlit-glass
-   chrome (the app bar and drawer's translucent navy + blur), on the app's
-   own tokens. Unlayered rules here win over the ui-sdk layer, the same as
-   the drawer's drawer.css. */
+/* The app's toast paint. Unlayered rules here beat both the ui-sdk layer
+   and the app's base reset (the reset strips padding/margin/border and
+   flattens button backgrounds in @layer base, which outranks ui-sdk — so
+   the sdk's own paint arrives dead). The same unlayered technique as the
+   drawer's drawer.css. Chrome: the moonlit glass of the app bar and the
+   drawer sheet, jade for the action. */
 
 /* Above the app bar and the drawer's backdrop (both +1 of --z-app-bar):
    a toast must cover the chrome. */
 [data-slot='toast-region'] {
   z-index: calc(var(--z-app-bar) + 2);
 
-  --ui-background: var(--header);
-  --ui-foreground: var(--foreground);
-  --ui-border: var(--border);
-  --ui-muted-foreground: var(--muted-foreground);
-  --ui-input: var(--input);
-  --ui-primary: var(--primary);
-  --ui-primary-foreground: var(--primary-foreground);
-  /* The action button's radius matches the app's buttons (--radius-lg);
-     the toast's own corners take radius × 1.5 from the same token. */
-  --ui-radius: var(--radius-lg);
-  --ui-font-size: 0.875rem;
-  --ui-font-sans: var(--font-app, ui-sans-serif, system-ui, sans-serif);
-  --ui-shadow: var(--surface-shadow);
-
-  /* Clear the home indicator on notched phones; the other margins keep
-     ui-sdk's 1rem. */
-  margin-block: 1rem;
+  /* The reset strips ui-sdk's 1rem inset, so it is re-set here along with
+     the safe-area clear for the home indicator on notched phones. */
+  margin: 1rem;
   margin-bottom: calc(1rem + var(--safe-area-bottom));
 }
 
@@ -32,6 +20,98 @@
   margin-top: calc(1rem + var(--safe-area-top));
 }
 
+/* The toast card: moonlit glass — the app bar's translucent navy fill and
+   the surface overlay/shadow recipe, the 8px blur of the drawer sheet, the
+   jade divider border. */
 [data-slot='toast'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-lg) + 2px);
+  background-color: var(--header);
+  background-image: var(--surface-overlay);
+  box-shadow: var(--surface-shadow);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  line-height: 1.4;
   backdrop-filter: blur(8px);
+  user-select: none;
+}
+
+[data-slot='toast-title'] {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+[data-slot='toast-description'] {
+  flex: 1 1 100%;
+  order: 1;
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+}
+
+/* The action: the solid jade of the drawer's trigger button, uppercase
+   like every button in the app. */
+[data-slot='toast-action'] {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding-inline: 0.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.75;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color-mix(in oklab, var(--primary) 85%, var(--header));
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+}
+
+/* The cancel button: a quiet text button, like the card actions. The sdk
+   paints a masked X glyph on parts without an svg child — suppressed
+   here because this button carries its own label ("Not now"). */
+[data-slot='toast-close'] {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  min-height: 2.25rem;
+  padding-inline: 0.5rem;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.75;
+  cursor: pointer;
+
+  &::before {
+    content: none;
+  }
+
+  &:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in oklab, var(--ring) 50%, transparent);
+  }
 }
