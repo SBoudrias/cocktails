@@ -20,7 +20,7 @@ import {
 import Video from '#/components/Video';
 
 // The same video can appear twice at different timestamps, so the key
-// carries the start; the pair is what makes a slide distinct.
+// carries the start.
 const refKey = (ref: YoutubeRef) => `${ref.videoId}-${ref.start ?? 0}`;
 
 // The app's control look over web.css's neutral button defaults (its
@@ -50,14 +50,9 @@ export default function VideoListCard({
         ) : (
           <Carousel
             aria-label={title}
-            // loop: Next on the last video wraps to the first, and a
-            // swipe back from the first reaches the last — native
-            // scrolling either way, slides keep their DOM order.
             loop
-            // items-stretch: web.css centers the grid's tracks
-            // (align-items: center), which in this column flex would
-            // shrink the viewport to its content — the video must span
-            // the card's full width.
+            // items-stretch: web.css's centered grid tracks would shrink
+            // the viewport in this column flex — the video spans the card.
             className="flex w-full max-w-none flex-col items-stretch gap-2"
           >
             <CarouselViewport>
@@ -75,9 +70,8 @@ export default function VideoListCard({
               </CarouselPrevious>
               <CarouselIndicatorGroup
                 aria-label="Choose a video"
-                // items-center: web.css starts its flex rows at the top
-                // (align-items: flex-start), so the selected dot's larger
-                // size grew downward; centering keeps the dots on one axis.
+                // items-center: web.css aligns flex rows to the start, so
+                // the dots would grow downward instead of sharing one axis.
                 className="items-center gap-2"
               >
                 {refs.map((ref, index) => (
@@ -85,9 +79,8 @@ export default function VideoListCard({
                     key={refKey(ref)}
                     page={index + 1}
                     aria-label={`Video ${index + 1}`}
-                    // scale, not size: every dot keeps a fixed 10px box,
-                    // so the selected one's growth never reflows the row
-                    // — sibling dots stay put wherever the page lands.
+                    // scale, not size: the selected dot's growth never
+                    // reflows the row, so sibling dots stay put.
                     className="size-2.5 rounded-full border-0 bg-foreground/30 p-0 transition-transform motion-reduce:transition-none hover:bg-foreground/50 data-selected:scale-120 data-selected:bg-primary data-selected:hover:bg-primary"
                   />
                 ))}
