@@ -126,6 +126,49 @@ const isSweetenedBeyondLiqueur = (recipe: Recipe) =>
   hasIngredientOfType(recipe, 'syrup') ||
   hasIngredientNamed(recipe, /syrup|sugar|honey|cordial/);
 
+const ingredientVolumeOz = (ingredient: RecipeIngredient) =>
+  tryConvertVolume(ingredient.quantity, 'oz')?.amount ?? 0;
+
+/** Concrete ingredient lines and category lines (a category carries its
+ * member type, e.g. 'Vodka' used as a spirit category) all count. */
+const isIngredientOfType = (ingredient: RecipeIngredient, type: IngredientType) =>
+  ingredient.type === type ||
+  (ingredient.type === 'category' && ingredient.categoryType === type);
+
+const volumeOf = (recipe: Recipe, predicate: (ingredient: RecipeIngredient) => boolean) =>
+  recipe.ingredients
+    .filter(predicate)
+    .reduce((sum, ingredient) => sum + ingredientVolumeOz(ingredient), 0);
+
+/** The liqueurs' total pour: when it outweighs the plain sweetener, the
+ * sour belongs to the sidecar family — the liqueur is the sweetener. */
+const liqueurVolume = (recipe: Recipe) =>
+  volumeOf(recipe, (ingredient) => isIngredientOfType(ingredient, 'liqueur'));
+
+/** The non-liqueur sweetener pour: syrups, sugar, honey. */
+const sweetenerVolume = (recipe: Recipe) =>
+  volumeOf(
+    recipe,
+    (ingredient) =>
+      isIngredientOfType(ingredient, 'syrup') ||
+      /syrup|sugar|honey|cordial/.test(ingredient.name.toLowerCase()),
+  );
+
+/** Total juice and puree pour. */
+const juiceVolume = (recipe: Recipe) =>
+  volumeOf(
+    recipe,
+    (ingredient) =>
+      isIngredientOfType(ingredient, 'juice') || isIngredientOfType(ingredient, 'puree'),
+  );
+
+/**
+ * The most juice a sour family drink carries: a classic sour runs
+ * three-quarters to an ounce and a half of citrus; much past that the
+ * drink is a long drink or a punch, not a daiquiri or sidecar.
+ */
+const maxJuiceOunces = 2.5;
+
 /** Vermouth, sherry, port, madeira and the other fortified aromatized wines. */
 const isAromatized = (recipe: Recipe) =>
   hasIngredientNamed(
@@ -186,13 +229,16 @@ const isTikiServe = (recipe: Recipe) =>
 
 /**
  * The sugar-sour root of the family tree: spirit, citrus and a
- * non-liqueur sweetener — a sour sweetened only by a liqueur is a
- * sidecar, not a daiquiri.
+ * non-liqueur sweetener — a sour sweetened mainly by a liqueur is a
+ * sidecar, not a daiquiri, and the juice pour stays sour-sized
+ * (a long drink or a punch carries more).
  */
 const isDaiquiriFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
   isTart(recipe) &&
   isSweetenedBeyondLiqueur(recipe) &&
+  liqueurVolume(recipe) <= sweetenerVolume(recipe) &&
+  juiceVolume(recipe) <= maxJuiceOunces &&
   !isAromatized(recipe) &&
   !isCarbonated(recipe) &&
   !hasEggYolk(recipe) &&
@@ -200,10 +246,16 @@ const isDaiquiriFamily = (recipe: Recipe) =>
   !isTikiServe(recipe) &&
   recipe.preparation !== 'flash blended';
 
+/**
+ * The liqueur-sour root: spirit, liqueur and citrus — the liqueur can be
+ * the whole sweetener, or just balance a sugar-bumped sour. The juice pour
+ * stays sour-sized, as with the daiquiri family.
+ */
 const isSidecarFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
   hasIngredientOfType(recipe, 'liqueur') &&
   isTart(recipe) &&
+  juiceVolume(recipe) <= maxJuiceOunces &&
   !hasEggYolk(recipe) &&
   !isCarbonated(recipe) &&
   !isCreamy(recipe) &&
