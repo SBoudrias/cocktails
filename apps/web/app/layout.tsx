@@ -15,6 +15,7 @@ import { NuqsAdapter } from 'nuqs/adapters/react';
 import AppFooter from '#/components/layout/AppFooter';
 import FullscreenHelper from '#/components/layout/FullscreenHelper';
 import AppToasts from '#/components/pwa/AppToasts';
+import PullToUpdate from '#/components/pwa/PullToUpdate';
 import PwaStatus from '#/components/pwa/PwaStatus';
 import nightSkyStrip from '../../../public/night-sky-strip.webp';
 import tikiBeachDivider from '../../../public/tiki-beach-divider.webp';
@@ -138,9 +139,11 @@ export default function RootLayout({
           </div>
         </NuqsAdapter>
         <FullscreenHelper />
-        {/* The PWA surfaces: the listeners that fire toasts on install
-            availability, offline, and service-worker updates, and the one
-            host that paints them. */}
+        {/* The PWA surfaces: the pull-to-update gesture (standalone apps
+            only), the listeners that fire toasts on install availability,
+            offline, and service-worker updates, and the one host that
+            paints them. */}
+        <PullToUpdate />
         <PwaStatus />
         <AppToasts />
         <GoogleAnalytics gaId="G-XSDN5REM9F" />

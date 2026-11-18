@@ -1,0 +1,40 @@
+/* The pull-to-update chip's ride, unlayered so the app's base-layer
+   reset (which flattens borders) never touches it — the same technique
+   as toast.css and drawer.css.
+   At rest the chip sits fully behind the fixed app bar: the wrapper is
+   pinned at the bar's bottom edge and the chip translates up out of
+   sight, one z-layer under the bar so its glass covers it. The pull
+   drags it out by --pull (set on the chip while the finger is down);
+   the phases take it from there. */
+
+[data-slot='ptr-chip'] {
+  /* Hidden: a half-row above the wrapper's top edge, behind the bar. */
+  translate: 0 calc(-100% - 0.5rem);
+  transition: translate 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* The finger drives the ride; no transition can lag it. */
+[data-slot='ptr-chip'][data-phase='pull'] {
+  translate: 0 calc(-100% - 0.5rem + var(--pull, 0px));
+  transition: none;
+}
+
+/* The check and its verdicts rest just below the bar's edge — the
+   transition above eases the trip from wherever the release left it. */
+[data-slot='ptr-chip']:where(
+  [data-phase='checking'],
+  [data-phase='fresh'],
+  [data-phase='offline']
+) {
+  translate: 0 0;
+}
+
+/* The arrow flips down→up as the pull arms; it eases behind the finger,
+   except while the finger is driving it. */
+[data-slot='ptr-arrow'] {
+  transition: rotate 150ms ease-out;
+}
+
+[data-slot='ptr-chip'][data-phase='pull'] [data-slot='ptr-arrow'] {
+  transition: none;
+}

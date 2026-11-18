@@ -240,3 +240,13 @@
   background-image: var(--surface-overlay);
   box-shadow: var(--surface-shadow);
 }
+
+/* The installed app's overscroll: contain, never glow or rubber-band the
+   document — the pull-to-update chip (components/pwa) is the top-edge
+   gesture there, and a contained top edge is also what lets it claim the
+   pull. Browser tabs keep every native behavior, this rule never runs. */
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  html {
+    overscroll-behavior-y: contain;
+  }
+}
