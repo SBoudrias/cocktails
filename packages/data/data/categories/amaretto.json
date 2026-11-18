@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Amaretto",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "description": "An Italian liqueur flavored with almonds or apricot kernels (the name means 'a little bitter'), sweet and marzipan-rich. Disaronno is the archetype. The base of an Amaretto Sour and half of a Godfather."
 }

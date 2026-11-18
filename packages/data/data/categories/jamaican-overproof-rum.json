@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Jamaican overproof rum",
   "categoryType": "spirit",
+  "description": "Jamaican rum bottled well above the standard 40% ABV \u2014 typically 63% or more \u2014 with the island's funk concentrated by the proof. Worthy Park and Rum-Bar's overproof whites are modern standards. Used in small doses to lift a tall drink, or in Zombie builds where intensity must survive dilution.",
   "parents": ["Overproof rum", "Jamaican rum"]
 }

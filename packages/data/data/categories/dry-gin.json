@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Dry gin",
   "categoryType": "spirit",
+  "description": "Unsweetened, juniper-led gin outside the London dry family \u2014 typically modern botanical showcase styles like The Botanist Islay or Japan's Roku, built around regional botanicals rather than the classic juniper-citrus spine.",
   "parents": ["Gin"]
 }

@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Blended lightly-aged rum (Barbados)",
   "categoryType": "spirit",
+  "description": "Lightly-aged blended rum from Barbados, rum's historic birthplace: a balanced style with mild funk and light oak, sitting between Jamaican intensity and Trinidadian cleanness. The Real McCoy shows the style. The Royal Bermuda Yacht Club \u2014 which the drink of the same name calls for \u2014 is its flagship use.",
   "parents": ["Blended lightly-aged rum", "Barbados rum"]
 }

@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Elderflower liqueur",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "description": "A floral liqueur made from elderflower blossoms: pear, lychee and honeysuckle in a pour. St-Germain created the modern category. A small measure turns gin and sparkling wine into a Hugo Spritz; with cucumber and lime it is an Irish Maid."
 }

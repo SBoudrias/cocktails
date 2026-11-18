@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "London dry gin",
   "categoryType": "spirit",
+  "description": "The benchmark gin style: unsweetened, juniper-forward and built on a charge of citrus peel and coriander, produced anywhere in the world despite the name. Beefeater and Tanqueray are the archetypes. The gin of a classic Martini, Negroni, Gimlet and Tom Collins.",
   "parents": ["Dry gin"],
   "refs": [
     {

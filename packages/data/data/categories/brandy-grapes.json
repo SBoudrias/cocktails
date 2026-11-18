@@ -1,5 +1,13 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Brandy (grapes)",
-  "categoryType": "spirit"
+  "categoryType": "spirit",
+  "description": "The umbrella for grape brandies: Cognac and Armagnac from France, pisco, Spanish brandy and unbranded grape brandy — distilled wine, in short. Backbone for stirred drinks and punches from the Sidecar to the Wisconsin Old Fashioned.",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "Am15pGrhuiM",
+      "channel": "anders-erickson"
+    }
+  ]
 }

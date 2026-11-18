@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Jamaican rum",
   "categoryType": "spirit",
+  "description": "Rum from Jamaica, traditionally pot-distilled from molasses and famous for its high ester count: the funky, fruity notes bartenders describe as overripe banana, pineapple and dunder. Appleton Estate and Hampden are the benchmark producers. That assertive character is why Jamaican rum anchors so many tiki classics, from the Mai Tai to the Zombie.",
   "parents": ["Rum"]
 }

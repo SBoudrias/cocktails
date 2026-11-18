@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Whiskey (rye)",
   "categoryType": "spirit",
+  "description": "American whiskey made from a mash of at least 51% rye grain: drier and spicier than bourbon, with black pepper, clove and rye-bread notes against less corn sweetness. It was the whiskey of the pre-prohibition era, which is why the Sazerac, Manhattan and Brooklyn taste most period-correct with it.",
   "parents": ["Whiskey"]
 }

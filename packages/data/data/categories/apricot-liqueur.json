@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Apricot liqueur",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "description": "A stone-fruit liqueur built on apricots \u2014 French cr\u00e8me d'abricot styles use the kernels or juice, others macerate the fruit. Rothman & Winter and Giffard's abricot du Roussillon are common bottles. The apricot note in the Angel Face and the Hotel Nacional Special."
 }

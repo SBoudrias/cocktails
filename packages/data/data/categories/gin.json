@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Gin",
   "categoryType": "spirit",
+  "description": "A juniper-forward spirit redistilled with a mix of botanicals — citrus peel, coriander, angelica, orris and more. London dry is the dominant style, but genever, old tom, Plymouth and modern botanical-led gins all fall under the umbrella. The backbone of the Martini, Negroni and Tom Collins, and a player in tiki from the 20th Century to the Singapore Sling.",
   "refs": [
     {
       "type": "youtube",

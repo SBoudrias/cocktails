@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Coffee liqueur",
   "categoryType": "liqueur",
+  "description": "A dark, bittersweet coffee liqueur — Kahlúa, Tia Maria and the drier, more coffee-forward Mr. Black show the range from sweet to intense. Half of a White Russian, and what makes an Espresso Martini taste of espresso rather than just vodka.",
   "refs": [
     {
       "type": "youtube",

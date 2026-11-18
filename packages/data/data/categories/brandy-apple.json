@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Brandy (apple)",
-  "categoryType": "spirit"
+  "categoryType": "spirit",
+  "description": "Brandy distilled from fermented apples: American applejack (Laird's, the oldest licensed distillery in the US) and straight apple brandies like Clear Creek show the range. Drier and more tannic than grape brandy, with baked-apple depth. The Jack Rose and Applejack Rabbit were built on it."
 }

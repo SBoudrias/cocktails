@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Whiskey (Irish)",
   "categoryType": "spirit",
+  "description": "Whiskey from Ireland, typically triple-distilled and unpeated: smooth, light and gently sweet, with green apple and vanilla over the grain. Bushmills and Powers are classic bottles. The spirit of an Irish Coffee and the softer half of a Cameron's Kick.",
   "parents": ["Whiskey"]
 }

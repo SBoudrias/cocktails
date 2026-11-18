@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Champagne",
-  "categoryType": "wine"
+  "categoryType": "wine",
+  "description": "Sparkling wine from the Champagne region of France, made by traditional method \u2014 a second fermentation in the bottle \u2014 from Pinot Noir, Chardonnay and Pinot Meunier. The lift in a Champagne Cocktail, French 75 and Death in the Afternoon; any dry sparkling wine substitutes in mixed drinks."
 }

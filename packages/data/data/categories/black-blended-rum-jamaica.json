@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Black blended rum (Jamaica)",
   "categoryType": "spirit",
+  "description": "Dark blended rum from Jamaica: as dark as the Demerara side of the category, but with Jamaica's funky, fruity pot-still signature instead of smoky weight. Coruba and Hamilton's Jamaican Pot Still Black are the benchmarks \u2014 a Coruba Mai Tai is practically a style of its own \u2014 and a float of it deepens Jet Pilot-style drinks.",
   "parents": ["Black blended rum"]
 }

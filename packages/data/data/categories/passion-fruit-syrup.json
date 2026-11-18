@@ -1,5 +1,19 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Passion fruit syrup",
-  "categoryType": "syrup"
+  "categoryType": "syrup",
+  "description": "A tart, tropical syrup made from passion fruit juice or purée and sugar — the acidity engine of tiki. It drives the Saturn and the Hurricane family and stands in for fresh passion fruit when the fruit is out of season. BG Reynolds and Small Hand Foods are common bottles.",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "vGBMrJgjZB4",
+      "channel": "anders-erickson",
+      "start": 39
+    },
+    {
+      "type": "youtube",
+      "videoId": "M-xIzvMycSg",
+      "channel": "make-and-drink"
+    }
+  ]
 }

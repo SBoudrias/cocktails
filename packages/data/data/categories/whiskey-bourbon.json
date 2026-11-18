@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Whiskey (Bourbon)",
   "categoryType": "spirit",
+  "description": "American whiskey distilled from a mash of at least 51% corn and aged in new charred oak, which gives it caramel, vanilla and baking-spice sweetness. It goes into the barrel at no more than 62.5% ABV and is bottled at 40% or higher. The default pour for an Old Fashioned, Mint Julep or Whiskey Sour.",
   "parents": ["Whiskey"],
   "refs": [
     {
