@@ -78,7 +78,7 @@ const LIST_HUBS = [
   'list/recently-added',
   'list/authors',
   'list/bars',
-  'list/non-alcoholic',
+  'list/style/non-alcoholic',
   'list/milk-clarification',
   'list/style',
   'list/style/tiki',
@@ -111,9 +111,9 @@ const VISITED_CATEGORY = 'category/rum';
 const UNVISITED_CATEGORY = 'category/absinthe';
 const VISITED_INGREDIENT = 'ingredient/juice/lime-juice';
 // The author/bar pages became catalog-rendered (#554); the non-alcoholic
-// list (#553) bakes no rows at all, so it can only render through the
+// style list (#553) bakes no rows at all, so it can only render through the
 // precached catalog — the strongest fresh-install offline check there is.
-const NON_ALCOHOLIC_HUB = 'list/non-alcoholic';
+const NON_ALCOHOLIC_HUB = 'list/style/non-alcoholic';
 const VISITED_AUTHOR = 'list/authors/anders-erickson';
 const VISITED_BAR = 'list/bars/death-and-co-new-york-ny';
 const rumList = catalog.lists[VISITED_CATEGORY];

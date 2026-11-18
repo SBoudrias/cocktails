@@ -4,13 +4,11 @@ import path from 'node:path';
 import { promisify } from 'node:util';
 
 const execFile = promisify(execFileCb);
-import { tryConvertVolume } from '@cocktails/conversion';
 import slugify from '@sindresorhus/slugify';
 import uniqBy from 'lodash/uniqBy';
 import { match } from 'ts-pattern';
 import type { Category } from '../types/Category.ts';
 import type { Author, Bar } from '../types/Entity.ts';
-import type { IngredientType, RecipeIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import type { Source } from '../types/Source.ts';
 import { getCategory, getChildCategories } from './categories';
@@ -23,43 +21,6 @@ import { getSource } from './sources';
 
 function toAlphaSort<I extends { name: string }>(arr: I[]) {
   return arr.toSorted((a, b) => a.name.localeCompare(b.name));
-}
-
-const maxNonAlcoholicFlavoringOunces = 0.25;
-
-function isSmallAlcoholicFlavoringPour(ingredient: RecipeIngredient) {
-  const ounces = tryConvertVolume(ingredient.quantity, 'oz')?.amount;
-  return ounces != null && ounces <= maxNonAlcoholicFlavoringOunces;
-}
-
-function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined) {
-  return match(type)
-    .with('non-alcoholic', () => false)
-    .with('beer', 'liqueur', 'spirit', 'wine', () => true)
-    .otherwise(() => false);
-}
-
-function isAlcoholicIngredient(ingredient: RecipeIngredient) {
-  return match(ingredient)
-    .when(
-      ({ type }) => isAlcoholicIngredientType(type),
-      () => true,
-    )
-    .with({ type: 'bitter' }, (bitter) => !isSmallAlcoholicFlavoringPour(bitter))
-    .with({ type: 'tincture' }, (tincture) => {
-      return !isSmallAlcoholicFlavoringPour(tincture);
-    })
-    .with({ type: 'category' }, (category) => {
-      return match(category.categoryType)
-        .with('bitter', 'tincture', () => !isSmallAlcoholicFlavoringPour(category))
-        .when(isAlcoholicIngredientType, () => true)
-        .otherwise(() => false);
-    })
-    .otherwise(() => false);
-}
-
-export function isNonAlcoholicRecipe(recipe: Recipe) {
-  return !recipe.ingredients.some(isAlcoholicIngredient);
 }
 
 type RecipeData = Omit<Recipe, 'chapter' | 'slug' | 'source'>;
@@ -559,11 +520,6 @@ export const getRecentlyAddedRecipeEntries = memo(
 export const getRecentlyAddedRecipes = memo(async (): Promise<Recipe[]> => {
   const entries = await getRecentlyAddedRecipeEntries();
   return entries.map(({ recipe }) => recipe);
-});
-
-export const getNonAlcoholicRecipes = memo(async (): Promise<Recipe[]> => {
-  const recipes = await getAllRecipes();
-  return toAlphaSort(recipes.filter(isNonAlcoholicRecipe));
 });
 
 export const getMilkClarifiedRecipes = memo(async (): Promise<Recipe[]> => {

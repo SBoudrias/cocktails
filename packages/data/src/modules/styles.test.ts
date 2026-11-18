@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import type { IngredientType, RecipeIngredient } from '../types/Ingredient.ts';
+import type { Recipe } from '../types/Recipe.ts';
 import { getRecipe } from './recipes';
 import { getRecipeStyle, getRecipeStyles, getRecipesByStyle } from './styles';
 
@@ -16,6 +18,7 @@ const [
   acapulcoGold,
   tequilaSunrise,
   vieuxCarreRocks,
+  ninthWonder,
 ] = await Promise.all([
   getRecipe(
     { type: 'book', slug: 'tropical-standard' },
@@ -50,6 +53,7 @@ const [
     'vieux-carre',
     '01_Classic and Vintage',
   ),
+  getRecipe({ type: 'youtube-channel', slug: 'educated-barfly' }, '9th-wonder'),
 ]);
 
 describe('getRecipeStyles', () => {
@@ -127,6 +131,12 @@ describe('getRecipesByStyle', () => {
     expect(namesOf(oldFashionedFamily)).toContain(
       `${vieuxCarreRocks.name} (death-and-co)`,
     );
+
+    // A sour sweetened only by a liqueur is a sidecar, not a daiquiri.
+    expect(namesOf(daiquiriFamily)).not.toContain(
+      `${ninthWonder.name} (educated-barfly)`,
+    );
+    expect(namesOf(sidecarFamily)).toContain(`${ninthWonder.name} (educated-barfly)`);
   });
 
   it('returns only matching recipes, alphabetically sorted', async () => {
@@ -142,5 +152,219 @@ describe('getRecipesByStyle', () => {
 
   it('throws on an unknown slug', async () => {
     await expect(getRecipesByStyle('sour')).rejects.toThrow('Recipe style not found');
+  });
+});
+function mockRecipe(ingredients: RecipeIngredient[]): Recipe {
+  return {
+    name: 'Test Recipe',
+    slug: 'test-recipe',
+    preparation: 'shaken',
+    served_on: 'up',
+    glassware: 'coupe',
+    source: {
+      type: 'book',
+      name: 'Test Source',
+      slug: 'test-source',
+      link: 'https://example.com',
+      description: 'Test description',
+      recipeAmount: 1,
+    },
+    attributions: [],
+    refs: [],
+    ingredients,
+  };
+}
+
+function ingredient({
+  name,
+  type,
+  quantity,
+}: {
+  name: string;
+  type: IngredientType;
+  quantity: RecipeIngredient['quantity'];
+}): RecipeIngredient {
+  return {
+    name,
+    slug: name.toLowerCase().replaceAll(' ', '-'),
+    type,
+    categories: [],
+    refs: [],
+    ingredients: [],
+    quantity,
+  };
+}
+
+function categoryIngredient({
+  name,
+  categoryType,
+  quantity,
+}: {
+  name: string;
+  categoryType: IngredientType;
+  quantity: RecipeIngredient['quantity'];
+}): RecipeIngredient {
+  return {
+    name,
+    slug: name.toLowerCase().replaceAll(' ', '-'),
+    type: 'category',
+    categoryType,
+    parents: [],
+    refs: [],
+    quantity,
+  };
+}
+
+describe('isNonAlcoholicRecipe', () => {
+  it('allows recipes with only non-alcoholic ingredients', async () => {
+    const { isNonAlcoholicRecipe } = await import('./styles');
+
+    expect(
+      isNonAlcoholicRecipe(
+        mockRecipe([
+          ingredient({
+            name: 'Lime juice',
+            type: 'juice',
+            quantity: { amount: 1, unit: 'oz' },
+          }),
+          ingredient({
+            name: 'Ginger beer',
+            type: 'soda',
+            quantity: { amount: 3, unit: 'oz' },
+          }),
+        ]),
+      ),
+    ).toBe(true);
+  });
+
+  it('allows non-alcoholic spirits and liqueurs as a base', async () => {
+    const { isNonAlcoholicRecipe } = await import('./styles');
+
+    expect(
+      isNonAlcoholicRecipe(
+        mockRecipe([
+          ingredient({
+            name: 'Wilderton Bittersweet',
+            type: 'non-alcoholic',
+            quantity: { amount: 2, unit: 'oz' },
+          }),
+          ingredient({
+            name: 'Pineapple juice',
+            type: 'juice',
+            quantity: { amount: 1.5, unit: 'oz' },
+          }),
+          ingredient({
+            name: 'Lime juice',
+            type: 'juice',
+            quantity: { amount: 0.5, unit: 'oz' },
+          }),
+        ]),
+      ),
+    ).toBe(true);
+  });
+
+  it('allows bitters and tinctures when used as seasoning', async () => {
+    const { isNonAlcoholicRecipe } = await import('./styles');
+
+    expect(
+      isNonAlcoholicRecipe(
+        mockRecipe([
+          ingredient({
+            name: 'Angostura bitters',
+            type: 'bitter',
+            quantity: { amount: 4, unit: 'dash' },
+          }),
+          categoryIngredient({
+            name: 'Orange bitters',
+            categoryType: 'bitter',
+            quantity: { amount: 3, unit: 'drop' },
+          }),
+          ingredient({
+            name: 'Spicy tincture',
+            type: 'tincture',
+            quantity: { amount: 2, unit: 'dash' },
+          }),
+          categoryIngredient({
+            name: 'Coffee tincture',
+            categoryType: 'tincture',
+            quantity: { amount: 2, unit: 'drop' },
+          }),
+          ingredient({
+            name: 'Lime juice',
+            type: 'juice',
+            quantity: { amount: 1, unit: 'oz' },
+          }),
+        ]),
+      ),
+    ).toBe(true);
+  });
+
+  it('rejects recipes that use bitters as a base', async () => {
+    const { isNonAlcoholicRecipe } = await import('./styles');
+
+    expect(
+      isNonAlcoholicRecipe(
+        mockRecipe([
+          ingredient({
+            name: 'Angostura bitters',
+            type: 'bitter',
+            quantity: { amount: 1, unit: 'oz' },
+          }),
+          ingredient({
+            name: 'Lemon juice',
+            type: 'juice',
+            quantity: { amount: 0.75, unit: 'oz' },
+          }),
+        ]),
+      ),
+    ).toBe(false);
+  });
+
+  it('rejects recipes that use tincture as a base', async () => {
+    const { isNonAlcoholicRecipe } = await import('./styles');
+
+    expect(
+      isNonAlcoholicRecipe(
+        mockRecipe([
+          ingredient({
+            name: 'Hellfire tincture',
+            type: 'tincture',
+            quantity: { amount: 1, unit: 'oz' },
+          }),
+          ingredient({
+            name: 'Lime juice',
+            type: 'juice',
+            quantity: { amount: 0.75, unit: 'oz' },
+          }),
+        ]),
+      ),
+    ).toBe(false);
+  });
+
+  it('rejects recipes with alcoholic ingredients or categories', async () => {
+    const { isNonAlcoholicRecipe } = await import('./styles');
+
+    expect(
+      isNonAlcoholicRecipe(
+        mockRecipe([
+          ingredient({
+            name: 'Gin',
+            type: 'spirit',
+            quantity: { amount: 2, unit: 'oz' },
+          }),
+        ]),
+      ),
+    ).toBe(false);
+    expect(
+      isNonAlcoholicRecipe(
+        mockRecipe([
+          categoryIngredient({
+            name: 'London Dry Gin',
+            categoryType: 'spirit',
+            quantity: { amount: 2, unit: 'oz' },
+          }),
+        ]),
+      ),
+    ).toBe(false);
   });
 });

@@ -84,9 +84,9 @@ describe('getSerializedCatalog', () => {
       (catalog.lists['list/bars/death-and-co-new-york-ny'] ?? []).length,
     ).toBeGreaterThan(500);
 
-    // The curated non-alcoholic list is in too, with no per-recipe quantity.
-    expect((catalog.lists['list/non-alcoholic'] ?? []).length).toBeGreaterThan(10);
-    for (const [, quantity] of catalog.lists['list/non-alcoholic'] ?? []) {
+    // The non-alcoholic style list is in too, with no per-recipe quantity.
+    expect((catalog.lists['list/style/non-alcoholic'] ?? []).length).toBeGreaterThan(10);
+    for (const [, quantity] of catalog.lists['list/style/non-alcoholic'] ?? []) {
       expect(quantity).toBeNull();
     }
 

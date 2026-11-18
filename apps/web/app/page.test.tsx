@@ -87,22 +87,16 @@ describe('HomePage', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('links to the non-alcoholic recipe list', async () => {
+  it('links to the style hub, not each style or the non-alcoholic list', async () => {
     await setupApp(await HomePage());
 
-    expect(screen.getByRole('link', { name: 'Non-Alcoholic Recipes' })).toHaveAttribute(
-      'href',
-      '/list/non-alcoholic',
-    );
-  });
-
-  it('links to the style list hub, not each style', async () => {
-    await setupApp(await HomePage());
-
-    expect(screen.getByRole('link', { name: 'Cocktails by Style' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'By Style' })).toHaveAttribute(
       'href',
       '/list/style',
     );
+    expect(
+      screen.queryByRole('link', { name: /non-alcoholic/i }),
+    ).not.toBeInTheDocument();
     expect(screen.queryByText('By style')).not.toBeInTheDocument();
   });
 });
