@@ -2,7 +2,12 @@ import { describe, expect, it } from 'vitest';
 import type { IngredientType, RecipeIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import { getRecipe } from './recipes';
-import { getRecipeStyle, getRecipeStyles, getRecipesByStyle } from './styles';
+import {
+  getRecipeStyle,
+  getRecipeStyles,
+  getRecipesByStyle,
+  isNonAlcoholicRecipe,
+} from './styles';
 
 // Real recipes: the derivations walk the ingredient tree the loader enriches
 // (categories resolved onto ingredient lines), so fixtures would have to
@@ -158,6 +163,56 @@ describe('getRecipesByStyle', () => {
     );
   });
 
+  it('reads tartness, serving and wine the way the families mean them', async () => {
+    const [daiquiriFamily, sidecarFamily, martiniFamily, oldFashionedFamily, flipStyle] =
+      await Promise.all([
+        getRecipesByStyle('daiquiri-family'),
+        getRecipesByStyle('sidecar-family'),
+        getRecipesByStyle('martini-family'),
+        getRecipesByStyle('old-fashioned-family'),
+        getRecipesByStyle('flip'),
+      ]);
+
+    const keysOf = (recipes: Recipe[]) =>
+      new Set(recipes.map((recipe) => `${recipe.source.slug}/${recipe.slug}`));
+    const daiquiris = keysOf(daiquiriFamily);
+    const sidecars = keysOf(sidecarFamily);
+    const martinis = keysOf(martiniFamily);
+    const oldFashioneds = keysOf(oldFashionedFamily);
+    const flips = keysOf(flipStyle);
+
+    // A citrus cordial is the Gimlet's acid as well as its sweetener...
+    expect(daiquiris).toContain('make-and-drink/gimlet');
+    // ...but a quarter ounce seasoning a stirred rum drink is no sour.
+    expect(daiquiris).not.toContain('tropical-standard/bay-of-pigs');
+    expect(oldFashioneds).toContain('tropical-standard/bay-of-pigs');
+
+    // Crushed ice alone is not a tiki serve: these stay sours.
+    expect(daiquiris).toContain('death-and-co/gimlet');
+    expect(daiquiris).toContain('make-and-drink/tommys-margarita');
+    // At equal syrup and liqueur pours, a Bramble is in both sour families.
+    expect(daiquiris).toContain('anders-erickson/bramble');
+    expect(sidecars).toContain('anders-erickson/bramble');
+
+    // Muddled lime wedges are citrus; a lemon twist, even muddled, is not.
+    expect(daiquiris).toContain('death-and-co/caipirinha');
+    expect(oldFashioneds).toContain('death-and-co/sazerac');
+    expect(oldFashioneds).toContain('death-and-co/howlin-at-the-moon');
+    expect(sidecars).not.toContain('death-and-co/howlin-at-the-moon');
+
+    // A splash of vermouth does not take a sour out of the daiquiri family.
+    expect(daiquiris).toContain('anders-erickson/clover-club');
+
+    // On a big rock but with no bitters, a Negroni stays a martini family
+    // member — the old-fashioned family needs its bitters.
+    expect(martinis).toContain('anders-erickson/negroni');
+    expect(martinis).toContain('death-and-co/negroni');
+    expect(oldFashioneds).not.toContain('anders-erickson/negroni');
+
+    // Cream in a liqueur-only drink is still a flip.
+    expect(flips).toContain('death-and-co/grasshopper');
+  });
+
   it('returns only matching recipes, alphabetically sorted', async () => {
     const punch = await getRecipesByStyle('punch');
 
@@ -236,8 +291,6 @@ function categoryIngredient({
 
 describe('isNonAlcoholicRecipe', () => {
   it('allows recipes with only non-alcoholic ingredients', async () => {
-    const { isNonAlcoholicRecipe } = await import('./styles');
-
     expect(
       isNonAlcoholicRecipe(
         mockRecipe([
@@ -257,8 +310,6 @@ describe('isNonAlcoholicRecipe', () => {
   });
 
   it('allows non-alcoholic spirits and liqueurs as a base', async () => {
-    const { isNonAlcoholicRecipe } = await import('./styles');
-
     expect(
       isNonAlcoholicRecipe(
         mockRecipe([
@@ -283,8 +334,6 @@ describe('isNonAlcoholicRecipe', () => {
   });
 
   it('allows bitters and tinctures when used as seasoning', async () => {
-    const { isNonAlcoholicRecipe } = await import('./styles');
-
     expect(
       isNonAlcoholicRecipe(
         mockRecipe([
@@ -319,8 +368,6 @@ describe('isNonAlcoholicRecipe', () => {
   });
 
   it('rejects recipes that use bitters as a base', async () => {
-    const { isNonAlcoholicRecipe } = await import('./styles');
-
     expect(
       isNonAlcoholicRecipe(
         mockRecipe([
@@ -340,8 +387,6 @@ describe('isNonAlcoholicRecipe', () => {
   });
 
   it('rejects recipes that use tincture as a base', async () => {
-    const { isNonAlcoholicRecipe } = await import('./styles');
-
     expect(
       isNonAlcoholicRecipe(
         mockRecipe([
@@ -361,8 +406,6 @@ describe('isNonAlcoholicRecipe', () => {
   });
 
   it('rejects recipes with alcoholic ingredients or categories', async () => {
-    const { isNonAlcoholicRecipe } = await import('./styles');
-
     expect(
       isNonAlcoholicRecipe(
         mockRecipe([

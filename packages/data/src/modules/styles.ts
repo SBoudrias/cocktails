@@ -23,12 +23,14 @@ type StyleDefinition = RecipeStyle & {
   matches: (recipe: Recipe) => boolean;
 };
 
+/** Concrete ingredient lines and category lines (a category carries its
+ * member type, e.g. 'Vodka' used as a spirit category) all count. */
+const isIngredientOfType = (ingredient: RecipeIngredient, type: IngredientType) =>
+  ingredient.type === type ||
+  (ingredient.type === 'category' && ingredient.categoryType === type);
+
 const hasIngredientOfType = (recipe: Recipe, type: IngredientType) =>
-  recipe.ingredients.some(
-    (ingredient) =>
-      ingredient.type === type ||
-      (ingredient.type === 'category' && ingredient.categoryType === type),
-  );
+  recipe.ingredients.some((ingredient) => isIngredientOfType(ingredient, type));
 
 const hasIngredientNamed = (recipe: Recipe, pattern: RegExp) =>
   recipe.ingredients.some((ingredient) => pattern.test(ingredient.name.toLowerCase()));
@@ -72,29 +74,77 @@ export function isNonAlcoholicRecipe(recipe: Recipe) {
 
 const isSpirited = (recipe: Recipe) => hasIngredientOfType(recipe, 'spirit');
 
+const techniquesOf = (ingredient: RecipeIngredient) =>
+  Array.isArray(ingredient.technique)
+    ? ingredient.technique
+    : ingredient.technique
+      ? [ingredient.technique]
+      : [];
+
 /**
- * A juice or puree that actually carries tartness: citrus (lime, lemon,
- * verjus, passion fruit...), a juice whose acidity is known to bite
- * (grapefruit), or any juice acid-adjusted on the line. Mild fruit juice
- * alone — orange, pineapple — does not make a sour.
+ * Lime or lemon fruit whose juice ends up in the drink: cut in wedges or
+ * sections, or muddled flesh (a Caipirinha). A peel or zest is aromatics
+ * even muddled — a Sazerac's twist or an old-fashioned's muddled peel is
+ * not tartness — and so is an unmuddled slice or disc.
+ */
+const isSqueezedCitrus = (ingredient: RecipeIngredient) => {
+  if (!/\b(lime|lemon|yuzu|calamansi)s?\b/.test(ingredient.name.toLowerCase())) {
+    return false;
+  }
+
+  const techniques = techniquesOf(ingredient);
+  const isPeel = techniques.some((technique) =>
+    match(technique)
+      .with({ technique: 'cut', type: 'peeled' }, () => true)
+      .with({ technique: 'cut', type: 'zested' }, () => true)
+      .otherwise(() => false),
+  );
+
+  return (
+    !isPeel &&
+    techniques.some((technique) =>
+      match(technique)
+        .with({ technique: 'muddled' }, () => true)
+        .with({ technique: 'cut', type: 'wedged' }, () => true)
+        .with({ technique: 'cut', type: 'sectioned' }, () => true)
+        .otherwise(() => false),
+    )
+  );
+};
+
+/** Below this pour a citrus cordial seasons a stirred drink (a Bay of
+ * Pigs' quarter ounce) rather than souring it (a Gimlet's ounce and more). */
+const minTartCordialOunces = 0.5;
+
+const tartJuicePattern = /lime|lemon|verjus|passion ?fruit|yuzu|calamansi|tamarind/;
+
+/**
+ * A line that actually carries tartness: citrus juice (lime, lemon, verjus,
+ * passion fruit...), a juice whose acidity is known to bite (grapefruit),
+ * any juice acid-adjusted on the line, muddled lime or lemon (a
+ * Caipirinha's wedges), or a citrus cordial (a Gimlet's lime cordial is
+ * its sweetener and its acid at once). Mild fruit juice alone — orange,
+ * pineapple — does not make a sour.
  */
 const isTartIngredient = (ingredient: RecipeIngredient) => {
-  const isJuice = match(ingredient)
-    .with({ type: 'juice' }, () => true)
-    .with({ type: 'puree' }, () => true)
-    .with({ type: 'category', categoryType: 'juice' }, () => true)
-    .with({ type: 'category', categoryType: 'puree' }, () => true)
-    .otherwise(() => false);
+  const name = ingredient.name.toLowerCase();
+  const kind = match(ingredient)
+    .with({ type: 'juice' }, { type: 'puree' }, () => 'juice' as const)
+    .with({ type: 'category', categoryType: 'juice' }, () => 'juice' as const)
+    .with({ type: 'category', categoryType: 'puree' }, () => 'juice' as const)
+    .with({ type: 'fruit' }, () => 'fruit' as const)
+    .otherwise(() => 'other' as const);
 
-  if (!isJuice) return false;
-
-  if (
-    /lime|lemon|verjus|passion fruit|yuzu|calamansi|tamarind/.test(
-      ingredient.name.toLowerCase(),
-    )
-  ) {
-    return true;
+  if (kind === 'fruit') return isSqueezedCitrus(ingredient);
+  if (kind === 'other') {
+    return (
+      /cordial/.test(name) &&
+      /lime|lemon|grapefruit|citrus|sour/.test(name) &&
+      ingredientVolumeOz(ingredient) >= minTartCordialOunces
+    );
   }
+
+  if (tartJuicePattern.test(name)) return true;
 
   // Grapefruit and other biting juices carry their acidity on the line.
   if (
@@ -105,35 +155,27 @@ const isTartIngredient = (ingredient: RecipeIngredient) => {
     return true;
   }
 
-  const techniques = Array.isArray(ingredient.technique)
-    ? ingredient.technique
-    : ingredient.technique
-      ? [ingredient.technique]
-      : [];
-
-  return techniques.some(({ technique }) => technique === 'acid-adjustment');
+  return techniquesOf(ingredient).some(
+    ({ technique }) => technique === 'acid-adjustment',
+  );
 };
 
 const isTart = (recipe: Recipe) => recipe.ingredients.some(isTartIngredient);
 
+/** A sweetener that isn't a liqueur: a syrup line, sugar, honey, a cordial. */
+const isPlainSweetener = (ingredient: RecipeIngredient) =>
+  isIngredientOfType(ingredient, 'syrup') ||
+  /syrup|sugar|honey|cordial/.test(ingredient.name.toLowerCase());
+
 const isSweetened = (recipe: Recipe) =>
-  hasIngredientOfType(recipe, 'syrup') ||
-  hasIngredientOfType(recipe, 'liqueur') ||
-  hasIngredientNamed(recipe, /syrup|sugar|honey|cordial/);
+  hasIngredientOfType(recipe, 'liqueur') || recipe.ingredients.some(isPlainSweetener);
 
 /** Sweetened by something that isn't a liqueur: syrup, sugar, honey. */
 const isSweetenedBeyondLiqueur = (recipe: Recipe) =>
-  hasIngredientOfType(recipe, 'syrup') ||
-  hasIngredientNamed(recipe, /syrup|sugar|honey|cordial/);
+  recipe.ingredients.some(isPlainSweetener);
 
 const ingredientVolumeOz = (ingredient: RecipeIngredient) =>
   tryConvertVolume(ingredient.quantity, 'oz')?.amount ?? 0;
-
-/** Concrete ingredient lines and category lines (a category carries its
- * member type, e.g. 'Vodka' used as a spirit category) all count. */
-const isIngredientOfType = (ingredient: RecipeIngredient, type: IngredientType) =>
-  ingredient.type === type ||
-  (ingredient.type === 'category' && ingredient.categoryType === type);
 
 const volumeOf = (recipe: Recipe, predicate: (ingredient: RecipeIngredient) => boolean) =>
   recipe.ingredients
@@ -146,13 +188,7 @@ const liqueurVolume = (recipe: Recipe) =>
   volumeOf(recipe, (ingredient) => isIngredientOfType(ingredient, 'liqueur'));
 
 /** The non-liqueur sweetener pour: syrups, sugar, honey. */
-const sweetenerVolume = (recipe: Recipe) =>
-  volumeOf(
-    recipe,
-    (ingredient) =>
-      isIngredientOfType(ingredient, 'syrup') ||
-      /syrup|sugar|honey|cordial/.test(ingredient.name.toLowerCase()),
-  );
+const sweetenerVolume = (recipe: Recipe) => volumeOf(recipe, isPlainSweetener);
 
 /** Total juice and puree pour. */
 const juiceVolume = (recipe: Recipe) =>
@@ -169,11 +205,22 @@ const juiceVolume = (recipe: Recipe) =>
  */
 const maxJuiceOunces = 2.5;
 
-/** Vermouth, sherry, port, madeira and the other fortified aromatized wines. */
+const aromatizedWinePattern =
+  /vermouth|sherry|madeira|lillet|quinquina|americano|aperitif|chinato|marsala|pineau|sauternes|punt e mes|byrrh|dubonnet|\bport\b(?!\s+charlotte)|\bporto\b/;
+
+/**
+ * Vermouth, sherry, port, madeira and the other fortified aromatized wines,
+ * by the bottle's name or its categories: a González Byass Pedro Ximénez
+ * names no "sherry", its `Sherry` category does.
+ */
 const isAromatized = (recipe: Recipe) =>
-  hasIngredientNamed(
-    recipe,
-    /vermouth|sherry|madeira|lillet|quinquina|americano|aperitif|chinato|marsala|pineau|sauternes|\bport\b(?!\s+charlotte)|\bporto\b/,
+  recipe.ingredients.some((ingredient) =>
+    [
+      ingredient.name,
+      ...(ingredient.type === 'category'
+        ? []
+        : ingredient.categories.map(({ name }) => name)),
+    ].some((name) => aromatizedWinePattern.test(name.toLowerCase())),
   );
 
 /** Anything fizzy lengthening the drink: soda, beer, sparkling wine. */
@@ -212,26 +259,40 @@ const tikiSourceSlugs = new Set([
   'mixing-up-tiki',
 ]);
 
+const isTiki = (recipe: Recipe) =>
+  tikiSourceSlugs.has(recipe.source.slug) ||
+  hasIngredientNamed(
+    recipe,
+    /orgeat|falernum|passion ?fruit|cream of coconut|allspice|fassionola/,
+  );
+
 /**
+ * A tiki serve — a tiki or hurricane glass, or a tiki drink on crushed ice
+ * that isn't a frozen blend — files the drink under tiki instead: a
+ * Hurricane or a grog is not a daiquiri family member however tart it is.
+ * Crushed ice alone is not tiki: a Bramble, a Death & Co Gimlet or a
+ * Tommy's Margarita on crushed ice stay sours.
+ */
+const isTikiServe = (recipe: Recipe) =>
+  ['tiki', 'hurricane'].includes(recipe.glassware) ||
+  (recipe.served_on === 'crushed ice' &&
+    recipe.preparation !== 'blended' &&
+    isTiki(recipe));
+
+/*
  * The six root families of the Cocktail Codex (the chapter structure of
  * Death & Co Welcome Home): every drink is a variation of one of them.
  * The families overlap by design — a shaken sour with a liqueur is both a
  * daiquiri and a sidecar — the way the book's own chapters overlap.
  */
-/**
- * A tiki serve — a tiki glass, or crushed ice that isn't a frozen blend —
- * files the drink under tiki instead: a Hurricane or a grog is not a
- * daiquiri family member however tart it is.
- */
-const isTikiServe = (recipe: Recipe) =>
-  ['tiki', 'hurricane', 'goblet'].includes(recipe.glassware) ||
-  (recipe.served_on === 'crushed ice' && recipe.preparation !== 'blended');
 
 /**
  * The sugar-sour root of the family tree: spirit, citrus and a
  * non-liqueur sweetener — a sour sweetened mainly by a liqueur is a
  * sidecar, not a daiquiri, and the juice pour stays sour-sized
- * (a long drink or a punch carries more).
+ * (a long drink or a punch carries more). A splash of vermouth or sherry
+ * does not take a sour out of the family (a Clover Club), as it doesn't
+ * for the sidecar's Corpse Reviver #2.
  */
 const isDaiquiriFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
@@ -239,7 +300,6 @@ const isDaiquiriFamily = (recipe: Recipe) =>
   isSweetenedBeyondLiqueur(recipe) &&
   liqueurVolume(recipe) <= sweetenerVolume(recipe) &&
   juiceVolume(recipe) <= maxJuiceOunces &&
-  !isAromatized(recipe) &&
   !isCarbonated(recipe) &&
   !hasEggYolk(recipe) &&
   !isCreamy(recipe) &&
@@ -262,6 +322,12 @@ const isSidecarFamily = (recipe: Recipe) =>
   !isTikiServe(recipe) &&
   recipe.preparation !== 'flash blended';
 
+/** Served over a big rock or crushed ice, the old-fashioned way. */
+const isServedOnRocks = (recipe: Recipe) =>
+  recipe.served_on === 'big rock' ||
+  recipe.served_on === 'crushed ice' ||
+  ['old fashioned', 'tiki', 'hurricane', 'goblet', 'julep'].includes(recipe.glassware);
+
 /**
  * A rocks-served old-fashioned profile, with or without aromatized wine:
  * Death & Co files vermouth-and-bitters drinks served on a big rock under
@@ -276,12 +342,11 @@ const isOldFashionedFamily = (recipe: Recipe) =>
   !isCreamy(recipe) &&
   (isServedOnRocks(recipe) || !isAromatized(recipe));
 
-/** Served over a big rock or crushed ice, the old-fashioned way. */
-const isServedOnRocks = (recipe: Recipe) =>
-  recipe.served_on === 'big rock' ||
-  recipe.served_on === 'crushed ice' ||
-  ['old fashioned', 'tiki', 'hurricane', 'goblet', 'julep'].includes(recipe.glassware);
-
+/**
+ * Spirit and aromatized wine, stirred: every such drink the old-fashioned
+ * family doesn't claim. A rocks-served drink without bitters stays here —
+ * a Negroni on a big rock is still a martini family member.
+ */
 const isMartiniFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
   isAromatized(recipe) &&
@@ -289,13 +354,16 @@ const isMartiniFamily = (recipe: Recipe) =>
   !hasEggYolk(recipe) &&
   !isCreamy(recipe) &&
   !isCarbonated(recipe) &&
-  !isServedOnRocks(recipe);
+  !isOldFashionedFamily(recipe);
 
 const isHighballFamily = (recipe: Recipe) =>
   isSpirited(recipe) && isCarbonated(recipe) && !hasEggYolk(recipe);
 
+/** Egg yolk, or cream in a boozy drink — spirit- or liqueur-based alike
+ * (a Grasshopper has no spirit at all). */
 const isFlip = (recipe: Recipe) =>
-  hasEggYolk(recipe) || (isSpirited(recipe) && isCreamy(recipe) && !isCarbonated(recipe));
+  hasEggYolk(recipe) ||
+  (!isNonAlcoholicRecipe(recipe) && isCreamy(recipe) && !isCarbonated(recipe));
 
 const styleDefinitions: StyleDefinition[] = [
   {
@@ -310,12 +378,7 @@ const styleDefinitions: StyleDefinition[] = [
     name: 'Tiki',
     description:
       'Tropical drinks in the tiki tradition — bold rums, exotic syrups, spices and crushed ice.',
-    matches: (recipe) =>
-      tikiSourceSlugs.has(recipe.source.slug) ||
-      hasIngredientNamed(
-        recipe,
-        /orgeat|falernum|passion fruit|cream of coconut|allspice|fassionola/,
-      ),
+    matches: isTiki,
   },
   {
     slug: 'daiquiri-family',
