@@ -44,20 +44,32 @@ type PageLinks = { route: string; hrefs: string[] };
 async function collectPageLinks(dir: string, pagePath: string): Promise<PageLinks[]> {
   const pages: PageLinks[] = [];
 
-  for (const entry of await readdir(dir, { withFileTypes: true })) {
-    if (entry.isDirectory()) {
-      pages.push(
-        ...(await collectPageLinks(
+  const entries = await readdir(dir, { withFileTypes: true });
+
+  // One pass per branch, all reads in parallel: the export is thousands of
+  // files, and sequencing them was the tool's slowest part.
+  const nestedPages = await Promise.all(
+    entries
+      .filter((entry) => entry.isDirectory())
+      .map((entry) =>
+        collectPageLinks(
           path.join(dir, entry.name),
           pagePath === '' ? entry.name : `${pagePath}/${entry.name}`,
-        )),
-      );
-    } else if (entry.name.endsWith('.html')) {
-      const file = pagePath === '' ? entry.name : `${pagePath}/${entry.name}`;
-      const html = await readFile(path.join(dir, entry.name), 'utf8');
-      pages.push({ route: routeOf(file), hrefs: extractInternalHrefs(html) });
-    }
-  }
+        ),
+      ),
+  );
+  pages.push(...nestedPages.flat());
+
+  const htmlPages = await Promise.all(
+    entries
+      .filter((entry) => entry.name.endsWith('.html'))
+      .map(async (entry) => {
+        const file = pagePath === '' ? entry.name : `${pagePath}/${entry.name}`;
+        const html = await readFile(path.join(dir, entry.name), 'utf8');
+        return { route: routeOf(file), hrefs: extractInternalHrefs(html) };
+      }),
+  );
+  pages.push(...htmlPages);
 
   return pages;
 }
