@@ -2,9 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hamilton 86 Demerara Rum",
   "type": "spirit",
-  "categories": [
-    "Blended lightly aged rum (Demerara)",
-    "Blended lightly-aged rum (Demerara)",
-    "Aged Demerara rum"
-  ]
+  "categories": ["Blended lightly aged rum (Demerara)", "Aged Demerara rum"]
 }

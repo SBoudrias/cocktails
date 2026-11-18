@@ -2,9 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hamilton White Stache",
   "type": "spirit",
-  "categories": [
-    "Blended lightly aged rum",
-    "Blended lightly-aged rum",
-    "Lightly aged/filtered rum"
-  ]
+  "categories": ["Blended lightly aged rum", "Lightly aged/filtered rum"]
 }

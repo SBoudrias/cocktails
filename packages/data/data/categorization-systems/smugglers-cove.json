@@ -7,7 +7,7 @@
     "Black Blended Overproof": "Black blended overproof rum",
     "Black Pot Still": "Black pot still rum",
     "Blended Aged": "Blended aged rum",
-    "Blended Lightly Aged": "Blended lightly-aged rum",
+    "Blended Lightly Aged": "Blended lightly aged rum",
     "Blended Long Aged": "Blended long aged rum",
     "Cane AOC Martinique Rhum Agricole Blanc": "Rhum agricole blanc",
     "Cane AOC Martinique Rhum Agricole Long Aged": "Rhum agricole long aged",
@@ -30,7 +30,7 @@
     {
       "name": "Aged cachaça",
       "categoryType": "spirit",
-      "parents": ["Rhum agricole vieux"]
+      "parents": ["Cachaça"]
     },
     {
       "name": "Aged rum",
@@ -106,28 +106,28 @@
       "parents": ["Blended aged rum", "Jamaican rum"]
     },
     {
-      "name": "Blended lightly-aged rum",
+      "name": "Blended lightly aged rum",
       "categoryType": "spirit",
       "description": "A blended rum given only a short rest in oak — long enough to soften the spirit and pick up a pale gold tint, not long enough to take on heavy wood. Usually filtered light so it mixes like a white rum with more body. The workhorse base of mid-weight tiki drinks like the Test Pilot and Fog Cutter; Banks 5 Island and Denizen Aged White are go-to bottles.",
       "parents": ["Rum"]
     },
     {
-      "name": "Blended lightly-aged rum (Barbados)",
+      "name": "Blended lightly aged rum (Barbados)",
       "categoryType": "spirit",
       "description": "Lightly-aged blended rum from Barbados, rum's historic birthplace: a balanced style with mild funk and light oak, sitting between Jamaican intensity and Trinidadian cleanness. The Real McCoy shows the style. The Royal Bermuda Yacht Club — which the drink of the same name calls for — is its flagship use.",
-      "parents": ["Blended lightly-aged rum", "Barbados rum"]
+      "parents": ["Blended lightly aged rum", "Barbados rum"]
     },
     {
-      "name": "Blended lightly-aged rum (Demerara)",
+      "name": "Blended lightly aged rum (Demerara)",
       "categoryType": "spirit",
       "description": "A young, pale blended rum from Guyana — Demerara's dark-molasses character in a light, mixable package. Hamilton's 86 proof is the benchmark bottle. Classic in a Navy Grog, where it carries body without adding dark color.",
-      "parents": ["Blended lightly-aged rum"]
+      "parents": ["Blended lightly aged rum"]
     },
     {
-      "name": "Blended lightly-aged rum (Jamaica)",
+      "name": "Blended lightly aged rum (Jamaica)",
       "categoryType": "spirit",
       "description": "Lightly-aged blended rum from Jamaica — pot-still funk in a pale, versatile package, aged just long enough to smooth the edges. Rum-Bar Gold and Appleton Signature are typical bottles. It brings genuine Jamaican character to recipes that want funk without dark color or heavy oak.",
-      "parents": ["Blended lightly-aged rum", "Jamaican rum"]
+      "parents": ["Blended lightly aged rum", "Jamaican rum"]
     },
     {
       "name": "Blended long aged rum",
@@ -135,9 +135,21 @@
       "parents": ["Aged rum"]
     },
     {
+      "name": "Cachaça",
+      "categoryType": "spirit",
+      "description": "Brazilian fresh-cane-juice spirit, legally distinct from rum — the Smuggler's Cove book groups it with the cane families.",
+      "parents": ["Cane juice spirit"]
+    },
+    {
       "name": "Cane coffey still aged rum",
       "categoryType": "spirit",
-      "parents": ["Rhum agricole vieux"]
+      "parents": ["Cane juice spirit"]
+    },
+    {
+      "name": "Cane juice spirit",
+      "categoryType": "spirit",
+      "description": "Rum distilled from fresh sugarcane juice rather than molasses — rhum agricole and cachaça both, the Smuggler's Cove book's 'Cane' families.",
+      "parents": ["Rum"]
     },
     {
       "name": "Cane pot still aged rum",
@@ -171,7 +183,7 @@
       "name": "Column still lightly aged rum",
       "categoryType": "spirit",
       "description": "Cuban-style white rum: column-distilled, given only a brief oak rest, then filtered to a pale color with faint sweetness and almost no funk. Bacardi Superior, Caña Brava and Havana Club 3 are the archetypes — the Daiquiri and Mojito were built on this style.",
-      "parents": ["Blended lightly-aged rum"]
+      "parents": ["Blended lightly aged rum"]
     },
     {
       "name": "Column still long aged rum",
@@ -272,7 +284,7 @@
       "name": "Rhum agricole blanc",
       "categoryType": "spirit",
       "description": "Rhum agricole is the French term for sugarcane juice rum, a style of rum originally distilled in the French Caribbean islands from freshly squeezed sugarcane juice rather than molasses. Rhum is the term that typically distinguishes it in French-speaking locales from the rum made with molasses in other parts of the West Indies (Rum, Ron).",
-      "parents": ["Rum"],
+      "parents": ["Cane juice spirit"],
       "refs": [
         {
           "type": "youtube",
@@ -290,7 +302,7 @@
       "name": "Rhum agricole vieux",
       "categoryType": "spirit",
       "description": "Aged rhum agricole: rum distilled from fresh-pressed sugarcane juice rather than molasses, then aged in oak. Martinique's AOC rules govern the age tiers (VO, VSOP, XO), and the style is grassy, vegetal and complex — Clément and Neisson are reference producers. It brings an earthy brightness to tiki drinks like the Donga Punch.",
-      "parents": ["Rum"]
+      "parents": ["Cane juice spirit"]
     },
     {
       "name": "Rum",
@@ -319,7 +331,7 @@
     {
       "name": "Unaged cachaça",
       "categoryType": "spirit",
-      "parents": ["Rhum agricole blanc"]
+      "parents": ["Cachaça"]
     }
   ],
   "exemptions": [
