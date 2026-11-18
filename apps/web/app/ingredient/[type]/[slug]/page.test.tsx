@@ -881,6 +881,19 @@ describe('IngredientPage', () => {
       }
     });
 
+    it('sizes the sheet to clear the safe area at its bottom', async () => {
+      const { user } = await setupApp(jamaicanRumPageJSX);
+
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      // The full snap point must clear the home indicator: the list's
+      // floor rides on the sheet's bottom padding, which has to grow
+      // with the safe-area inset or the last row rests under it with no
+      // way to scroll past (a fixed padding is what the bug shipped).
+      const sheet = screen.getByRole('dialog', { name: 'Substitutions' });
+      expect(sheet.className).toContain('pb-[calc(var(--safe-area-bottom)');
+    });
+
     it('shows the trigger in every mode, styled apart from the category chips', async () => {
       await setupApp(jamaicanRumPageJSX);
 

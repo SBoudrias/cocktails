@@ -23,12 +23,26 @@
 /* The sheet rests on two snap points (half screen, then near full): the
    fixed height is the larger one and leaves the app bar reachable above
    the open sheet. It also un-clamps ui-sdk's own 85dvh max-height, which
-   would otherwise cut the larger snap point short, and keeps the points
-   distinct on short screens so the resize handle always has somewhere
-   to go. */
+   would otherwise cut the larger snap point short.
+   Under the scroll-snap driver (touch screens; the sheet carries
+   data-driver="scroll-snap") the sheet is pinned to the drawer viewport's
+   bottom edge, and that viewport is the fixed viewport plus 120px of
+   toolbar bleed below the screen (the driver's closed-position room, its
+   toolbarBleed constant in @ui-sdk/core's sheet-scroll-snap.js). Sizing
+   the sheet from 100dvh reads a second box: wherever the dynamic and
+   fixed viewports disagree — Safari around toolbar transitions, dvh
+   updating late — the sheet outgrows its scroll container, the largest
+   snap point stops short of the app bar, and the list's last rows rest
+   in the strip behind the browser chrome with no way to scroll them
+   clear. The same 100% that pins the sheet sizes it, so the largest snap
+   point lands exactly at the app bar by construction. */
 [data-slot='drawer-content'] {
   height: calc(100dvh - var(--app-bar-height));
   max-height: none;
+}
+
+[data-slot='drawer-content'][data-driver='scroll-snap'] {
+  height: calc(100% - 120px - var(--app-bar-height));
 }
 
 /* ui-sdk sets touch-action: none on the handle as an inline style so its
