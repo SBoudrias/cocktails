@@ -1,7 +1,7 @@
 import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { afterAll, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { verifyInternalLinks } from './verify-internal-links.ts';
 
 // The export gate behind the fix for the About-card bar links (#627): a
@@ -17,7 +17,7 @@ beforeEach(async () => {
   exportDir = await mkdtemp(path.join(tmpdir(), 'export-'));
 });
 
-afterAll(async () => {
+afterEach(async () => {
   await rm(exportDir, { recursive: true, force: true });
 });
 

@@ -240,6 +240,23 @@ describe('IngredientPage', () => {
       ).toBeTruthy();
     });
 
+    it("navigates in-app to the top category from its card's Learn more", async () => {
+      // Bols Orange Curaçao has no description of its own, so the page
+      // shows its top category's description card instead.
+      const { user } = await setupApp(
+        await IngredientPage({
+          params: Promise.resolve({ type: 'liqueur', slug: 'bols-orange-curacao' }),
+        }),
+      );
+
+      // An in-app Link, not a plain anchor: a plain anchor skips the router
+      // and the site's basePath (#627).
+      await user.click(
+        screen.getByRole('link', { name: 'Learn more about this category' }),
+      );
+      expect(mockRouter.asPath).toBe(getCategoryUrl({ slug: 'orange-curacao' }));
+    });
+
     it('offers a substitution trigger for spirits', async () => {
       await setupApp(spiritPageJSX);
 

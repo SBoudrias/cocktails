@@ -133,6 +133,18 @@ describe('AuthorRecipesPage', () => {
     expect(mockRouter.asPath).toBe('/list/bars/death-and-co-new-york-ny');
   });
 
+  it("navigates in-app to the author's source page from the About card", async () => {
+    const { user } = await setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'anders-erickson' }),
+      }),
+    );
+
+    // Same contract as the bar link: an in-app Link, not a plain anchor.
+    await user.click(screen.getByRole('link', { name: 'Anders Erickson' }));
+    expect(mockRouter.asPath).toBe('/source/youtube-channel/anders-erickson');
+  });
+
   it('renders social links as brand icons with @handle labels', async () => {
     await setupApp(
       await AuthorRecipesPage({
