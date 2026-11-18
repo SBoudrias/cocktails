@@ -102,7 +102,9 @@ export interface DataContext {
 
 interface SystemNode {
   name: string;
+  categoryType?: string;
   parents?: string[];
+  substitutable?: boolean;
 }
 
 interface SystemDefinition {
@@ -307,13 +309,44 @@ export async function loadContext(): Promise<void> {
     report.fail(`Could not read approved overlaps registry: ${(error as Error).message}`);
   }
 
-  // Categorization system files: category nodes declared per taxonomy.
+  // Categorization system files: category nodes declared per taxonomy. The
+  // nodes register into the same indexes as loose category files, so a
+  // category may live in either place — a system file replaces its loose
+  // file without any check noticing.
+  let systemsModified = false;
   for await (const systemFile of fs.glob(
     path.join(PACKAGE_ROOT, 'data/categorization-systems/*.json'),
   )) {
     const data = JSON.parse(await fs.readFile(systemFile, 'utf-8')) as SystemDefinition;
     data.slug = path.basename(systemFile, '.json');
     ctx.categorizationSystems.push(data);
+
+    for (const node of data.nodes) {
+      const normalizedCasing = normalizeCategoryCasing(node.name);
+      if (normalizedCasing !== node.name) {
+        logger.change(
+          `Fixing category name casing "${node.name}" → "${normalizedCasing}" in ${path.basename(systemFile)}`,
+        );
+        node.name = normalizedCasing;
+        systemsModified = true;
+      }
+
+      const nodeSlug = slugify(node.name);
+      ctx.categorySlugs.add(nodeSlug);
+      ctx.canonicalNames.set(nodeSlug, node.name);
+      ctx.categoryCanonicalNames.set(nodeSlug, node.name);
+      if (node.categoryType) {
+        ctx.categoryTypes.set(nodeSlug, node.categoryType);
+        ctx.allCategories.push({
+          name: node.name,
+          categoryType: node.categoryType,
+          parents: node.parents,
+          filepath: systemFile,
+        });
+      }
+    }
+
+    if (systemsModified) await writeJSON(systemFile, data);
   }
   logger.item(`Found ${ctx.categorizationSystems.length} categorization systems`);
 

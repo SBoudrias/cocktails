@@ -181,8 +181,8 @@
     {
       "name": "Flavored rum",
       "categoryType": "spirit",
-      "substitutable": false,
-      "parents": ["Rum"]
+      "parents": ["Rum"],
+      "substitutable": false
     },
     {
       "name": "Jamaican overproof rum",
@@ -313,14 +313,14 @@
     {
       "name": "Spiced rum",
       "categoryType": "spirit",
+      "parents": ["Flavored rum"],
       "refs": [
         {
           "type": "youtube",
           "videoId": "VSeO0v1Wa2E",
           "channel": "the-rum-revival"
         }
-      ],
-      "parents": ["Flavored rum"]
+      ]
     },
     {
       "name": "Unaged cachaça",
