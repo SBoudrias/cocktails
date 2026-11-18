@@ -56,7 +56,7 @@ const LIST_ENTRIES = [
   'list/recently-added',
   'list/authors',
   'list/bars',
-  'list/non-alcoholic',
+  'list/style/non-alcoholic',
   'list/milk-clarification',
   'list/style',
   'list/style/tiki',

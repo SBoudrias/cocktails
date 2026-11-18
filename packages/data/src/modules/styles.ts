@@ -1,3 +1,4 @@
+import { tryConvertVolume } from '@cocktails/conversion';
 import { match } from 'ts-pattern';
 import type { IngredientType, RecipeIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
@@ -31,6 +32,43 @@ const hasIngredientOfType = (recipe: Recipe, type: IngredientType) =>
 
 const hasIngredientNamed = (recipe: Recipe, pattern: RegExp) =>
   recipe.ingredients.some((ingredient) => pattern.test(ingredient.name.toLowerCase()));
+
+/** Bitters and tinctures poured as seasoning, not as the drink's base. */
+const isSmallAlcoholicFlavoringPour = (ingredient: RecipeIngredient) => {
+  const ounces = tryConvertVolume(ingredient.quantity, 'oz')?.amount;
+  return ounces != null && ounces <= 0.25;
+};
+
+function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined) {
+  return match(type)
+    .with('non-alcoholic', () => false)
+    .with('beer', 'liqueur', 'spirit', 'wine', () => true)
+    .otherwise(() => false);
+}
+
+function isAlcoholicIngredient(ingredient: RecipeIngredient) {
+  return match(ingredient)
+    .when(
+      ({ type }) => isAlcoholicIngredientType(type),
+      () => true,
+    )
+    .with({ type: 'bitter' }, (bitter) => !isSmallAlcoholicFlavoringPour(bitter))
+    .with({ type: 'tincture' }, (tincture) => {
+      return !isSmallAlcoholicFlavoringPour(tincture);
+    })
+    .with({ type: 'category' }, (category) => {
+      return match(category.categoryType)
+        .with('bitter', 'tincture', () => !isSmallAlcoholicFlavoringPour(category))
+        .when(isAlcoholicIngredientType, () => true)
+        .otherwise(() => false);
+    })
+    .otherwise(() => false);
+}
+
+/** A recipe whose alcohol, if any, is only seasoning: dashes of bitters. */
+export function isNonAlcoholicRecipe(recipe: Recipe) {
+  return !recipe.ingredients.some(isAlcoholicIngredient);
+}
 
 const isSpirited = (recipe: Recipe) => hasIngredientOfType(recipe, 'spirit');
 
@@ -81,6 +119,11 @@ const isTart = (recipe: Recipe) => recipe.ingredients.some(isTartIngredient);
 const isSweetened = (recipe: Recipe) =>
   hasIngredientOfType(recipe, 'syrup') ||
   hasIngredientOfType(recipe, 'liqueur') ||
+  hasIngredientNamed(recipe, /syrup|sugar|honey|cordial/);
+
+/** Sweetened by something that isn't a liqueur: syrup, sugar, honey. */
+const isSweetenedBeyondLiqueur = (recipe: Recipe) =>
+  hasIngredientOfType(recipe, 'syrup') ||
   hasIngredientNamed(recipe, /syrup|sugar|honey|cordial/);
 
 /** Vermouth, sherry, port, madeira and the other fortified aromatized wines. */
@@ -141,10 +184,15 @@ const isTikiServe = (recipe: Recipe) =>
   ['tiki', 'hurricane', 'goblet'].includes(recipe.glassware) ||
   (recipe.served_on === 'crushed ice' && recipe.preparation !== 'blended');
 
+/**
+ * The sugar-sour root of the family tree: spirit, citrus and a
+ * non-liqueur sweetener — a sour sweetened only by a liqueur is a
+ * sidecar, not a daiquiri.
+ */
 const isDaiquiriFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
   isTart(recipe) &&
-  isSweetened(recipe) &&
+  isSweetenedBeyondLiqueur(recipe) &&
   !isAromatized(recipe) &&
   !isCarbonated(recipe) &&
   !hasEggYolk(recipe) &&
@@ -198,6 +246,13 @@ const isFlip = (recipe: Recipe) =>
   hasEggYolk(recipe) || (isSpirited(recipe) && isCreamy(recipe) && !isCarbonated(recipe));
 
 const styleDefinitions: StyleDefinition[] = [
+  {
+    slug: 'non-alcoholic',
+    name: 'Non-Alcoholic',
+    description:
+      'Alcohol-free drinks — bitters and tinctures allowed as seasoning, not as a base.',
+    matches: isNonAlcoholicRecipe,
+  },
   {
     slug: 'tiki',
     name: 'Tiki',
