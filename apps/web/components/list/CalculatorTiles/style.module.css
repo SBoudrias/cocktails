@@ -1,0 +1,173 @@
+/* The calculators' tile grid: square buttons carrying the app's glass
+   language. Each tile's plate is the card frame's recipe (the sheared,
+   tapered glass of components/ui/card.module.css) scaled to a ~110px
+   tile: same shear and taper tokens, tighter radii, a 5px inset for the
+   shear's travel. Consecutive tiles mirror the lean like the cards do. */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 4px 16px 12px;
+}
+
+.tile {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  aspect-ratio: 1;
+  padding: 10px 6px 12px;
+  outline: none;
+}
+
+/* Leaning left: the big corners on the tall diagonal. */
+.tile::before {
+  content: '';
+  position: absolute;
+  inset: 5px 0;
+  z-index: -1;
+  background-color: var(--card);
+  background-image: var(--surface-overlay);
+  box-shadow: var(--surface-shadow);
+  border-radius: var(--tile-radius-lean);
+  transform: perspective(900px) rotateX(var(--card-taper)) skewY(var(--card-shear));
+  transition: transform 180ms ease;
+}
+
+/* Consecutive tiles mirror the lean, as consecutive cards do. */
+.tile:nth-child(2n)::before {
+  border-radius: var(--tile-radius-lean-mirrored);
+  transform: perspective(900px) rotateX(var(--card-taper))
+    skewY(calc(-1 * var(--card-shear)));
+}
+
+/* The press into a tile deepens its lean (pointer devices only — a touch
+   tap leaves immediately, and the transition would read as a flicker). */
+@media (hover: hover) {
+  .tile:hover::before {
+    transform: perspective(900px) rotateX(var(--card-taper)) skewY(2.6deg);
+  }
+  .tile:nth-child(2n):hover::before {
+    transform: perspective(900px) rotateX(var(--card-taper)) skewY(-2.6deg);
+  }
+}
+
+.tile:focus-visible::before {
+  box-shadow:
+    var(--surface-shadow),
+    0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent);
+}
+
+.label {
+  font-size: 12.5px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* The icon paint: the recipe-badges' "moonlit glass" recipe — glass
+   outlines, gold liquids, pale-turquoise water and motion, opaque vessels
+   in their material — so the tiles read as the same family as the recipe
+   pages' badge art. */
+
+.icon {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.glass {
+  fill: var(--foreground);
+  fill-opacity: 0.08;
+}
+
+.silver {
+  fill: var(--muted-foreground);
+  fill-opacity: 0.55;
+}
+
+.milk {
+  fill: var(--foreground);
+  fill-opacity: 0.45;
+}
+
+.lime {
+  fill: var(--lime);
+  fill-opacity: 0.55;
+}
+
+.salt {
+  fill: var(--foreground);
+  fill-opacity: 0.4;
+}
+
+.hole {
+  fill: var(--background);
+}
+
+.clear {
+  fill: var(--info-light);
+  fill-opacity: 0.3;
+}
+
+.drinkTop {
+  stop-color: var(--secondary-light);
+}
+
+.drinkBottom {
+  stop-color: var(--secondary-dark);
+}
+
+.drink {
+  opacity: 0.92;
+}
+
+.drinkSurface {
+  fill: none;
+  stroke: var(--secondary-light);
+  stroke-width: 1;
+}
+
+.clearSurface {
+  fill: none;
+  stroke: var(--info-light);
+  stroke-width: 1;
+}
+
+.outline {
+  fill: none;
+  stroke: var(--foreground);
+  stroke-width: 1.5;
+}
+
+.facet {
+  fill: none;
+  stroke: var(--foreground);
+  stroke-width: 1.1;
+  stroke-opacity: 0.85;
+}
+
+.motion {
+  fill: none;
+  stroke: var(--info-light);
+  stroke-width: 1.4;
+}
+
+.solid {
+  fill: var(--secondary);
+}
+
+.carved {
+  fill: none;
+  stroke: var(--background);
+  stroke-width: 1.1;
+}
+
+.saltWave {
+  fill: none;
+  stroke: var(--foreground);
+  stroke-width: 1.1;
+  stroke-opacity: 0.6;
+}

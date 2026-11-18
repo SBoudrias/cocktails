@@ -44,10 +44,7 @@ describe('HomePage', () => {
   it('lists calculators alphabetically', async () => {
     await setupApp(await HomePage());
 
-    const calculators = screen.getByText('Calculators').closest('ul');
-    if (calculators == null) {
-      throw new Error('Expected the calculators section to be rendered');
-    }
+    const calculators = screen.getByRole('list', { name: 'Calculators' });
 
     expect(
       within(calculators)
@@ -55,10 +52,10 @@ describe('HomePage', () => {
         .map((link) => link.textContent),
     ).toEqual([
       'Acid Adjusting',
+      'Brix',
       'Juice Clarification',
       'Milk Clarification',
-      'Saline Solution Calculator',
-      'Sugar Adjusting (Brix calculator)',
+      'Saline',
       'Super Juice',
     ]);
     expect(
