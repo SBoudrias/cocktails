@@ -13,7 +13,8 @@
     "./bars": "./src/modules/bars.ts",
     "./constants": "./src/modules/constants.ts",
     "./params": "./src/modules/params.ts",
-    "./schemas/*": "./schemas/*"
+    "./schemas/*": "./schemas/*",
+    "./categorization-systems": "./src/modules/categorization-systems.ts"
   },
   "scripts": {
     "check-data": "check-data",
