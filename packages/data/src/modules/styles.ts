@@ -245,30 +245,30 @@ const isCreamy = (recipe: Recipe) =>
   );
 
 /**
- * The books and channels whose whole catalog is tiki: every recipe they
- * published counts, whatever its ingredients.
+ * The ingredients a customer reads as tiki: the classic syrups (orgeat,
+ * falernum, fassionola) and flavors (passion fruit, cream of coconut,
+ * allspice), plus the tiki houses' own mixes — Donn's and gardenia mixes,
+ * zombie mixes — which are tiki markers even when their contents are
+ * house secrets. A fruit punch syrup is not one (citrus and sugar — a
+ * Hemingway Daiquiri on grapefruit punch syrup reads as a daiquiri), and
+ * neither is an orange-rum shrubb, a craft-liqueur pour (a Knickerbocker
+ * or a shrubb-vermouth old-fashioned reads as itself, not as tiki).
  */
-const tikiSourceSlugs = new Set([
-  'smugglers-cove',
-  'minimalist-tiki',
-  'easy-tiki',
-  'sippin-safari',
-  'tropical-standard',
-  'tiki-modern-tropical-cocktails',
-  'coconuts-and-carnage',
-  'mixing-up-tiki',
-]);
-
-const isTiki = (recipe: Recipe) =>
-  tikiSourceSlugs.has(recipe.source.slug) ||
-  hasIngredientNamed(
-    recipe,
-    /orgeat|falernum|passion ?fruit|cream of coconut|allspice|fassionola/,
-  );
+const tikiMarkerPattern =
+  /orgeat|falernum|passion ?fruit|cream of coconut|allspice|fassionola|donn'?s|gardenia mix|zombie mix/;
 
 /**
- * A tiki serve — a tiki or hurricane glass, or a tiki drink on crushed ice
- * that isn't a frozen blend — files the drink under tiki instead: a
+ * A tiki drink reads as one: it carries the marker ingredients, or it is
+ * served tiki (a tiki glass, or a marker drink on crushed ice). A recipe's
+ * source book being tiki does not make the recipe tiki — a plain daiquiri
+ * in a tiki book is a plain daiquiri.
+ */
+const isTiki = (recipe: Recipe) =>
+  hasIngredientNamed(recipe, tikiMarkerPattern) || isTikiServe(recipe);
+
+/**
+ * A tiki serve — a tiki or hurricane glass, or a marker drink on crushed
+ * ice that isn't a frozen blend — files the drink under tiki instead: a
  * Hurricane or a grog is not a daiquiri family member however tart it is.
  * Crushed ice alone is not tiki: a Bramble, a Death & Co Gimlet or a
  * Tommy's Margarita on crushed ice stay sours.
@@ -277,7 +277,7 @@ const isTikiServe = (recipe: Recipe) =>
   ['tiki', 'hurricane'].includes(recipe.glassware) ||
   (recipe.served_on === 'crushed ice' &&
     recipe.preparation !== 'blended' &&
-    isTiki(recipe));
+    hasIngredientNamed(recipe, tikiMarkerPattern));
 
 /*
  * The six root families of the Cocktail Codex (the chapter structure of
