@@ -5,10 +5,10 @@ import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
 
 /**
  * The secondary substitution list: the substitution-friendly related
- * categories, each linking to its category page. Also rendered on its own
- * by the category pages, whose full member list is uncapped.
+ * categories, each linking to its category page. Rendered inside the
+ * substitution drawer's sheet on the ingredient pages.
  */
-export function RelatedCategoriesList({
+function RelatedCategoriesList({
   categories,
   headerMode = 'sticky',
 }: {

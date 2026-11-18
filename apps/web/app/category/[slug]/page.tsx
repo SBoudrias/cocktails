@@ -1,8 +1,4 @@
-import {
-  getCategory,
-  getChildCategories,
-  getRelatedCategories,
-} from '@cocktails/data/categories';
+import { getCategory, getChildCategories } from '@cocktails/data/categories';
 import {
   getIngredientRecipeCounts,
   getIngredientsForCategory,
@@ -17,7 +13,6 @@ import CategoryChips from '#/components/CategoryChips';
 import CategoryMembers from '#/components/CategoryMembers';
 import { LinkList, LinkListItem } from '#/components/list/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
-import { RelatedCategoriesList } from '#/components/SubstitutionLists';
 import { Card, CardContent } from '#/components/ui/card';
 import Video from '#/components/Video';
 import { getCategoryUrl } from '#/modules/url';
@@ -54,14 +49,12 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   const { slug } = await params;
 
   const category = await getCategory(slug);
-  const [members, relatedRecipes, childCategories, relatedCategories, recipeCounts] =
-    await Promise.all([
-      getIngredientsForCategory(category),
-      getRecipeByCategory(category),
-      getChildCategories(category),
-      getRelatedCategories(category),
-      getIngredientRecipeCounts(),
-    ]);
+  const [members, relatedRecipes, childCategories, recipeCounts] = await Promise.all([
+    getIngredientsForCategory(category),
+    getRecipeByCategory(category),
+    getChildCategories(category),
+    getIngredientRecipeCounts(),
+  ]);
 
   const videos = category.refs.filter((ref) => ref.type === 'youtube');
   const [firstVideo, ...additionalVideos] = videos;
@@ -108,7 +101,6 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
         members={members}
         recipeCounts={recipeCounts}
       />
-      <RelatedCategoriesList categories={relatedCategories} />
       {additionalVideos.length > 0 && (
         <VideoListCard title="Other videos" refs={additionalVideos} m={1} />
       )}

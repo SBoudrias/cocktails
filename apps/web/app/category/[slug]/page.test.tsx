@@ -68,8 +68,8 @@ beforeEach(() => {
 });
 
 describe('CategoryPage', () => {
-  describe('substitution lists', () => {
-    // These tests need the real member lists (rum: 98 bottles), not the
+  describe('member bottles', () => {
+    // These tests need the real member lists (rum: 95 bottles), not the
     // file-wide single-member mock.
     beforeEach(() => {
       vi.mocked(getIngredientsForCategory).mockImplementation(
@@ -125,51 +125,6 @@ describe('CategoryPage', () => {
         expectedMembers.length,
       );
     });
-
-    it('lists related categories, not bottles, as secondary substitutions', async () => {
-      await setupApp(
-        await CategoryPage({
-          params: Promise.resolve({ slug: 'blended-aged-rum-jamaica' }),
-        }),
-      );
-
-      const relatedGroup = screen.getByRole('group', {
-        name: 'Substitution-friendly categories',
-      });
-
-      // Blended aged rum (Jamaica) sits under two parents: Blended aged rum
-      // and Jamaican rum — so its neighbors are those parents and their other
-      // children, the other aged-rum and Jamaican-rum cuts.
-      for (const name of [
-        'Blended aged rum',
-        'Jamaican rum',
-        'Blended aged rum (Barbados)',
-        'Blended lightly-aged rum (Jamaica)',
-        'Navy strength Jamaican rum',
-      ]) {
-        expect(within(relatedGroup).getByRole('link', { name })).toBeInTheDocument();
-      }
-
-      // Category links, not bottle rows.
-      expect(relatedGroup).not.toHaveTextContent(/appleton|hampden|worthy park/i);
-    });
-
-    it('renders no substitution lists for a category without members or neighbors', async () => {
-      // Coffee bitters is an empty leaf category: no bottles of its own, no
-      // children, no parents — nothing to list.
-      await setupApp(
-        await CategoryPage({
-          params: Promise.resolve({ slug: 'coffee-bitters' }),
-        }),
-      );
-
-      expect(
-        screen.queryByRole('group', { name: /Examples of Coffee bitters/ }),
-      ).not.toBeInTheDocument();
-      expect(
-        screen.queryByRole('group', { name: 'Substitution-friendly categories' }),
-      ).not.toBeInTheDocument();
-    });
   });
 
   describe('basic rendering', () => {
@@ -191,8 +146,7 @@ describe('CategoryPage', () => {
         title.compareDocumentPosition(chipsGroup) & Node.DOCUMENT_POSITION_FOLLOWING,
       ).toBeTruthy();
 
-      // The parent links from both the chips and the related-categories
-      // list, always to its category page.
+      // The parent link from the chips always goes to its category page.
       const dryGinLinks = screen.getAllByRole('link', { name: /^Dry gin/ });
       expect(dryGinLinks.length).toBeGreaterThan(0);
       for (const link of dryGinLinks) {
