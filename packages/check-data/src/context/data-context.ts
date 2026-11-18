@@ -29,6 +29,7 @@ interface CategoryData {
 interface IngredientData {
   name: string;
   type: string;
+  categories?: string[];
 }
 
 interface BarEntity {
@@ -93,6 +94,23 @@ export interface DataContext {
   untrackedRefChannels: Map<string, number>;
   /** ingredient slugs referenced by at least one recipe. */
   referencedIngredientSlugs: Set<string>;
+  /** Categorization system files, for cross-system membership checks. */
+  categorizationSystems: SystemDefinition[];
+  /** ingredient name -> declared categories. */
+  ingredientCategories: Map<string, string[]>;
+}
+
+interface SystemNode {
+  name: string;
+  parents?: string[];
+}
+
+interface SystemDefinition {
+  name: string;
+  slug: string;
+  covers?: string[];
+  nodes: SystemNode[];
+  exemptions?: Array<{ ingredient: string; reason: string }>;
 }
 
 /** The single shared context; every check imports this object. */
@@ -117,6 +135,8 @@ export const ctx: DataContext = {
   authorNameUsages: new Map<string, string[]>(),
   untrackedRefChannels: new Map<string, number>(),
   referencedIngredientSlugs: new Set<string>(),
+  categorizationSystems: [],
+  ingredientCategories: new Map<string, string[]>(),
 };
 
 /**
@@ -268,6 +288,7 @@ export async function loadContext(): Promise<void> {
     canonicalNames.set(ingredientSlug, data.name);
     ingredientFolders.set(ingredientSlug, folderType);
     ingredientFiles.set(ingredientSlug, ingredientFile);
+    ctx.ingredientCategories.set(data.name, data.categories ?? []);
     ingredients.push({
       name: data.name,
       type: data.type,
@@ -285,6 +306,16 @@ export async function loadContext(): Promise<void> {
   } catch (error) {
     report.fail(`Could not read approved overlaps registry: ${(error as Error).message}`);
   }
+
+  // Categorization system files: category nodes declared per taxonomy.
+  for await (const systemFile of fs.glob(
+    path.join(PACKAGE_ROOT, 'data/categorization-systems/*.json'),
+  )) {
+    const data = JSON.parse(await fs.readFile(systemFile, 'utf-8')) as SystemDefinition;
+    data.slug = path.basename(systemFile, '.json');
+    ctx.categorizationSystems.push(data);
+  }
+  logger.item(`Found ${ctx.categorizationSystems.length} categorization systems`);
 
   ctx.ingredientNames = ingredients.map((ingredient) => ingredient.name);
   ctx.ingredientFilesByName = new Map(

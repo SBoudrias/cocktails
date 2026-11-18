@@ -2,5 +2,9 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Mount Gay Eclipse",
   "type": "spirit",
-  "categories": ["Blended lightly aged rum"]
+  "categories": [
+    "Blended lightly aged rum",
+    "Blended lightly-aged rum",
+    "Lightly aged/filtered rum"
+  ]
 }

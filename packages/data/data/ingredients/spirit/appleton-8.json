@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Appleton 8",
   "type": "spirit",
-  "categories": ["Blended aged rum (Jamaica)", "Jamaican rum"]
+  "categories": ["Blended aged rum (Jamaica)", "Jamaican rum", "Aged Jamaican rum"]
 }

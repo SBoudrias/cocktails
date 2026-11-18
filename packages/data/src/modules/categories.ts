@@ -3,6 +3,7 @@ import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import type { Category } from '../types/Category.ts';
 import type { Ref } from '../types/Ref.ts';
+import { getSystemCategoryNodes } from './categorization-systems.ts';
 import { CATEGORY_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import memo from './memo';
@@ -13,7 +14,25 @@ export const getCategory = memo(async (category: string): Promise<Category> => {
     Omit<Category, 'slug' | 'parents' | 'category'> & { refs?: Ref[]; parents?: string[] }
   >(filepath);
 
-  if (!data) throw new Error(`Category not found: ${filepath}`);
+  if (!data) {
+    // A categorization system node with this slug: the fallback for
+    // categories whose loose file has been migrated into a system file.
+    const systemNode = (await getSystemCategoryNodes()).get(category)?.data;
+
+    if (!systemNode) throw new Error(`Category not found: ${filepath}`);
+
+    return {
+      name: systemNode.name,
+      categoryType: systemNode.categoryType,
+      description: systemNode.description,
+      refs: systemNode.refs ?? [],
+      parents: await Promise.all(
+        (systemNode.parents ?? []).map((name) => getCategory(slugify(name))),
+      ),
+      slug: category,
+      type: 'category' as const,
+    };
+  }
 
   return {
     ...data,
@@ -22,16 +41,23 @@ export const getCategory = memo(async (category: string): Promise<Category> => {
       (data.parents ?? []).map((name) => getCategory(slugify(name))),
     ),
     slug: category,
-    type: 'category',
+    type: 'category' as const,
   };
 });
 
 export const getAllCategories = memo(async (): Promise<Category[]> => {
   const categories: Category[] = [];
+  const systemNodes = await getSystemCategoryNodes();
 
   for (const file of await fs.readdir(CATEGORY_ROOT)) {
     const ingredient = await getCategory(path.basename(file, '.json'));
     categories.push(ingredient);
+    systemNodes.delete(ingredient.slug);
+  }
+
+  // System nodes whose loose file is gone: standalone categories.
+  for (const slug of systemNodes.keys()) {
+    categories.push(await getCategory(slug));
   }
 
   return categories;

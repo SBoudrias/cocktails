@@ -2,5 +2,10 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Appleton Signature",
   "type": "spirit",
-  "categories": ["Blended lightly aged rum (Jamaica)", "Jamaican rum"]
+  "categories": [
+    "Blended lightly aged rum (Jamaica)",
+    "Jamaican rum",
+    "Blended lightly-aged rum (Jamaica)",
+    "Lightly aged/filtered rum"
+  ]
 }

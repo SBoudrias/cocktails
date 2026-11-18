@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Caña Brava Rum",
   "type": "spirit",
-  "categories": ["Column still lightly aged rum"]
+  "categories": ["Column still lightly aged rum", "Lightly aged/filtered rum"]
 }

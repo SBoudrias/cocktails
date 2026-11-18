@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "English Harbour 5 Year Old Rum",
   "type": "spirit",
-  "categories": ["Column still aged rum"]
+  "categories": ["Column still aged rum", "Moderately aged rum"]
 }

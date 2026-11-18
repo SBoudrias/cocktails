@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { Source } from '../types/Source.ts';
+import { getSystemCategoryNodes } from './categorization-systems';
 import { isChapterFolder } from './chapters';
 import { CATEGORY_ROOT, INGREDIENT_ROOT, RECIPE_ROOT } from './constants';
 
@@ -87,10 +88,20 @@ export async function getSourcePageParams(): Promise<
 
 export async function getCategoryPageParams(): Promise<{ slug: string }[]> {
   const params = [];
+  const seenSlugs = new Set<string>();
 
   for (const dataFilePath of await fs.readdir(CATEGORY_ROOT)) {
     const categorySlug = path.basename(dataFilePath, '.json');
     params.push({ slug: categorySlug });
+    seenSlugs.add(categorySlug);
+  }
+
+  // Categorization system nodes whose loose file is gone still get a page.
+  for (const slug of (await getSystemCategoryNodes()).keys()) {
+    if (!seenSlugs.has(slug)) {
+      params.push({ slug });
+      seenSlugs.add(slug);
+    }
   }
 
   return params;

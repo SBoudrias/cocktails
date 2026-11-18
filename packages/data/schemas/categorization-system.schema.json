@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./categorization-system.schema.json",
+  "title": "Categorization system",
+  "description": "A categorization system definition: the category nodes of one taxonomy (e.g. Smuggler's Cove, Minimalist Tiki) in a single file",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "type": "string" },
+    "description": {
+      "description": "One line on what the system classifies and how",
+      "type": "string"
+    },
+    "canonicalNames": {
+      "description": "The system's canonical names, as written in its source (e.g. the book), mapped to this catalog's node names",
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "covers": {
+      "description": "Top-level categories whose members this system classifies, e.g. Rum",
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "categoryType": {
+            "enum": [
+              "beer",
+              "bitter",
+              "emulsifier",
+              "fruit",
+              "juice",
+              "liqueur",
+              "puree",
+              "soda",
+              "spice",
+              "spirit",
+              "syrup",
+              "tincture",
+              "wine",
+              "other"
+            ]
+          },
+          "description": { "description": "One-line description", "type": "string" },
+          "parents": {
+            "description": "Parent categories within the same system",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "substitutable": {
+            "description": "When false, the category's children are not offered as substitutes for each other",
+            "type": "boolean"
+          },
+          "refs": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": { "const": "youtube" },
+                    "videoId": { "type": "string" },
+                    "channel": {
+                      "description": "Slug of the youtube-channel source that published the video",
+                      "type": "string"
+                    },
+                    "start": { "type": "number" }
+                  },
+                  "required": ["type", "videoId", "channel"],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        },
+        "required": ["name", "categoryType"],
+        "additionalProperties": false
+      }
+    },
+    "exemptions": {
+      "description": "Bottles deliberately outside this system, with the reason",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ingredient": { "type": "string" },
+          "reason": { "type": "string" }
+        },
+        "required": ["ingredient", "reason"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["name", "nodes"],
+  "additionalProperties": false
+}

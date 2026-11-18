@@ -2,5 +2,9 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "The Real McCoy 3 Year",
   "type": "spirit",
-  "categories": ["Blended lightly aged rum (Barbados)"]
+  "categories": [
+    "Blended lightly aged rum (Barbados)",
+    "Blended lightly-aged rum (Barbados)",
+    "Lightly aged/filtered rum"
+  ]
 }
