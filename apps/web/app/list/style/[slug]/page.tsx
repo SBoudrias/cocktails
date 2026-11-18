@@ -4,24 +4,21 @@ import {
   getRecipesByStyle,
 } from '@cocktails/data/styles';
 import type { Metadata } from 'next';
-import { notFound, unstable_rethrow } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { Card, CardContent } from '#/components/ui/card';
 
 type Params = { slug: string };
 
 async function getStylePageData(slug: string) {
-  try {
-    // getRecipeStyle throws on an unknown slug; getRecipesByStyle loads.
-    const style = getRecipeStyle(slug);
-    const recipes = await getRecipesByStyle(slug);
+  // An unknown slug renders notFound; any other loader failure fails the
+  // build loudly instead of turning into a missing page.
+  if (!getRecipeStyles().some((style) => style.slug === slug)) return null;
 
-    return { style, recipes };
-  } catch (error) {
-    // The loaders throw only on an unknown slug: that renders notFound.
-    unstable_rethrow(error);
-    return null;
-  }
+  const style = getRecipeStyle(slug);
+  const recipes = await getRecipesByStyle(slug);
+
+  return { style, recipes };
 }
 
 export async function generateStaticParams(): Promise<Params[]> {

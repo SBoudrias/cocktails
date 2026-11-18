@@ -12,6 +12,14 @@ import { hangJson, serveJson, sharedJsonServer } from '#/testing/sharedJsonServe
 import { setupApp } from '#/vitest.setup';
 import StyleRecipesPage from './page';
 
+// next-router-mock (the app-wide navigation mock) ships no notFound.
+vi.mock('next/navigation', async () => ({
+  ...(await import('next-router-mock/navigation')),
+  notFound: vi.fn(() => {
+    throw new Error('NEXT_HTTP_ERROR_FALLBACK;404');
+  }),
+}));
+
 vi.mock('@cocktails/data/styles', () => ({
   getRecipeStyles: vi.fn(),
   getRecipeStyle: vi.fn(),
@@ -79,6 +87,13 @@ describe('StyleRecipesPage', () => {
       'href',
       getRecipeUrl(zombie),
     );
+  });
+
+  it('renders not found for an unknown style', async () => {
+    await expect(
+      StyleRecipesPage({ params: Promise.resolve({ slug: 'spritz' }) }),
+    ).rejects.toThrow('NEXT_HTTP_ERROR_FALLBACK;404');
+    expect(getRecipesByStyle).not.toHaveBeenCalledWith('spritz');
   });
 
   it('renders no recipe rows when the catalog lacks the page key', async () => {
