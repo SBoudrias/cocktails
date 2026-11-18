@@ -80,6 +80,7 @@ const LIST_HUBS = [
   'list/bars',
   'list/non-alcoholic',
   'list/milk-clarification',
+  'list/style',
   'list/style/tiki',
 ] as const;
 for (const hub of LIST_HUBS) await assertFile(`${hub}.html`);

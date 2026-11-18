@@ -148,6 +148,10 @@ export function getStyleRecipesUrl(style: {
   return `/list/style/${style.slug}`;
 }
 
+export function getStyleListUrl(): Route {
+  return '/list/style';
+}
+
 export function getBottleListUrl(): Route {
   return '/list/bottles';
 }
