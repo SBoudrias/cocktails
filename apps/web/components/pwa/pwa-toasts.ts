@@ -50,8 +50,11 @@ export function showInstallToast(event: Event): void {
   // otherwise nag on every visit.
   event.preventDefault();
 
-  toast('Install Indexotica on this device?', {
+  // The title stays short enough to share its row with the buttons; the
+  // rest of the sentence rides below as the description.
+  toast('Install Indexotica?', {
     id: INSTALL_ID,
+    description: 'On this device, works offline.',
     duration: 12_000,
     action: {
       label: 'Install',

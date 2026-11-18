@@ -39,7 +39,8 @@ describe('the PWA toasts', () => {
     fireInstallPrompt();
 
     const region = await screen.findByRole('region', { name: 'Notifications' });
-    expect(region).toHaveTextContent(/install indexotica on this device\?/i);
+    expect(region).toHaveTextContent(/install indexotica\?/i);
+    expect(region).toHaveTextContent(/on this device, works offline\./i);
     expect(screen.getByRole('button', { name: /^install$/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /not now/i })).toBeInTheDocument();
   });
@@ -54,7 +55,7 @@ describe('the PWA toasts', () => {
     fireInstallPrompt();
     await new Promise((resolve) => setTimeout(resolve, 50));
 
-    const titles = screen.getAllByText(/install indexotica on this device\?/i);
+    const titles = screen.getAllByText(/install indexotica\?/i);
     expect(titles).toHaveLength(1);
   });
 

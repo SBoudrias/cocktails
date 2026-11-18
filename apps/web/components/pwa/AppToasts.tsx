@@ -21,12 +21,23 @@ export default function AppToasts() {
       toast={{
         children: (toast) => (
           <Toast>
-            <ToastTitle />
-            <ToastDescription />
-            {toast.cancel && (
-              <ToastClose action={toast.cancel.onCancel}>{toast.cancel.label}</ToastClose>
-            )}
-            <ToastAction data-variant="solid" />
+            {/* The text block and the buttons share one row, vertically
+                centered against each other (a single line of content
+                carries its buttons beside it, not underneath). The
+                buttons are one group so a narrow row wraps them below
+                together, right-aligned, never one per line. */}
+            <div data-slot="stack">
+              <ToastTitle />
+              <ToastDescription />
+            </div>
+            <div data-slot="actions">
+              {toast.cancel && (
+                <ToastClose action={toast.cancel.onCancel}>
+                  {toast.cancel.label}
+                </ToastClose>
+              )}
+              <ToastAction data-variant="solid" />
+            </div>
           </Toast>
         ),
       }}
