@@ -1,5 +1,4 @@
 import { cn } from 'cn';
-import { ChevronRight } from 'lucide-react';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import { useId, useMemo } from 'react';
@@ -7,6 +6,7 @@ import { match } from 'ts-pattern';
 import StickyGroupHeader from '#/components/list/StickyGroupHeader';
 import { List, ListSubheader } from '#/components/ui/list';
 import type { ListConfig } from '#/modules/lists/type';
+import LinkRowAction from './LinkRowAction';
 
 // The secondary line's metrics: 12px caption, muted teal, 1.35 line
 // height.
@@ -31,9 +31,11 @@ export function LinkListItem<RouteType>({
 }) {
   // A row: 12px vertical padding, 16px sides, the bottom divider (its color
   // from the base reset). The chevron sits absolutely at the right, the row
-  // reserving its 48px so text wraps clear of it.
+  // reserving its 48px so text wraps clear of it. group/row carries the
+  // press feedback (LinkRowAction's shine sweeps on :active); overflow-clip
+  // keeps the band's travel inside the row.
   const rowClass = cn(
-    'relative flex w-full items-center border-b px-4 py-3 text-base transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [a]:hover:bg-muted',
+    'group/row relative flex w-full items-center overflow-clip border-b px-4 py-3 text-base transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [a]:hover:bg-muted',
     href && 'pr-12',
   );
 
@@ -46,9 +48,7 @@ export function LinkListItem<RouteType>({
       </span>
       {tertiary && <span className="shrink-0">{tertiary}</span>}
       {count != null && <span className="shrink-0 text-muted-foreground">{count}</span>}
-      {href && (
-        <ChevronRight className="absolute top-1/2 right-4 size-6 -translate-y-1/2 text-foreground" />
-      )}
+      {href && <LinkRowAction />}
     </>
   );
 

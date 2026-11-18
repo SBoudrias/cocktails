@@ -18,6 +18,35 @@
     }
   }
 
+  /* The row's pending-navigation shine: a soft diagonal highlight band
+     sweeps across the tapped row while its navigation is in flight (a
+     first visit whose prefetch has not landed). The band is a third of
+     the row wide, so the sweep travels -100% → 300% of its own width. */
+  --animate-row-shine: row-shine 1.1s ease-in-out infinite;
+
+  @keyframes row-shine {
+    from {
+      translate: -100% 0;
+    }
+    to {
+      translate: 300% 0;
+    }
+  }
+
+  /* The same sweep, once, as the row's press feedback (the active
+     state): the band crosses while the row is under the finger and is
+     gone when it lifts. */
+  --animate-row-shine-once: row-shine 0.6s ease-out 1;
+
+  @keyframes row-shine-once {
+    from {
+      translate: -100% 0;
+    }
+    to {
+      translate: 300% 0;
+    }
+  }
+
   --font-sans: var(--font-app);
   --font-heading: var(--font-app);
   --color-background: var(--background);
@@ -69,6 +98,12 @@
   --surface-shadow:
     0px 2px 1px -1px rgb(0 0 0 / 0.2), 0px 1px 1px 0px rgb(0 0 0 / 0.14),
     0px 1px 3px 0px rgb(0 0 0 / 0.12);
+  /* The fixed app bar's own overlay and elevation: brighter than the
+     surface recipe (chrome reads above content) and a deeper shadow. */
+  --app-bar-overlay: linear-gradient(rgb(255 255 255 / 0.092), rgb(255 255 255 / 0.092));
+  --app-bar-shadow:
+    0px 2px 4px -1px rgb(0 0 0 / 0.2), 0px 4px 5px 0px rgb(0 0 0 / 0.14),
+    0px 1px 10px 0px rgb(0 0 0 / 0.12);
   /* The retro-future card frame (the fun-refinements picks): a tilted
      glass plate with unequal corner radii, mirrored on consecutive cards.
      Tokens only — dial the tilt to 0 and the cards sit square again. */
@@ -88,9 +123,14 @@
   --card-radius-lean: 26px 8px 26px 8px;
   --card-radius-lean-mirrored: 8px 26px 8px 26px;
   /* The fixed app bar: its glass fill (--header) and its height per
-     orientation and breakpoint — the sticky headers offset from it. */
+     orientation and breakpoint — the sticky headers offset from it. The
+     height includes the top safe-area inset (viewport-fit=cover lets the
+     page paint under the status bar on notched phones), so the bar's own
+     row and everything pinned below it clear the notch together. */
   --header: rgb(10 20 32 / 0.85);
-  --app-bar-height: 56px;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --app-bar-height: calc(56px + var(--safe-area-top));
   /* Icon-art palette (TikiMark, RecipeBadges): fixed shade steps for the
      icon art. --paper is the solid surface color; --card carries the glass
      surface alpha. */
@@ -113,13 +153,13 @@
    grows to 64px. The sticky group headers sit at this top. */
 @media (orientation: landscape) and (max-width: 599.95px) {
   :root {
-    --app-bar-height: 48px;
+    --app-bar-height: calc(48px + var(--safe-area-top));
   }
 }
 
 @media (min-width: 600px) {
   :root {
-    --app-bar-height: 64px;
+    --app-bar-height: calc(64px + var(--safe-area-top));
   }
 }
 

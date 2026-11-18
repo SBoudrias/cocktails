@@ -22,12 +22,13 @@ export default function AppBar({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-(--z-app-bar) mx-auto max-w-[600px] bg-header bg-[linear-gradient(rgba(255,255,255,0.092),rgba(255,255,255,0.092))] text-foreground shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.2),0px_4px_5px_0px_rgba(0,0,0,0.14),0px_1px_10px_0px_rgba(0,0,0,0.12)] backdrop-blur-sm">
+      <header className="fixed inset-x-0 top-0 z-(--z-app-bar) mx-auto max-w-[600px] bg-header [background-image:var(--app-bar-overlay)] text-foreground shadow-(--app-bar-shadow) backdrop-blur-sm">
         <div className="flex min-h-(--app-bar-height) items-center px-4 min-[600px]:px-6">
           {isHome ? (
             <button
               type="button"
               aria-disabled="true"
+              aria-label="Indexotica"
               tabIndex={-1}
               className={`${iconButton} pointer-events-none -ml-3 size-14`}
             >

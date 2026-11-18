@@ -1,0 +1,170 @@
+/* The app's toast paint. Unlayered rules here beat both the ui-sdk layer
+   and the app's base reset (the reset strips padding/margin/border and
+   flattens button backgrounds in @layer base, which outranks ui-sdk — so
+   the sdk's own paint arrives dead). The same unlayered technique as the
+   drawer's drawer.css. Chrome: the moonlit glass of the app bar and the
+   drawer sheet, jade for the action. */
+
+/* Above the app bar and the drawer's backdrop (both +1 of --z-app-bar):
+   a toast must cover the chrome. */
+/* Centered in the app's 600px column with equal 1rem gutters, instead of
+   ui-sdk's fixed 22rem docked to the right edge (which left uneven
+   gutters on phones and floated off the column on desktop). */
+[data-slot='toast-region'] {
+  z-index: calc(var(--z-app-bar) + 2);
+  inset-inline: 0;
+  width: auto;
+  max-width: calc(600px - 2rem);
+  translate: none;
+  margin-inline: max(1rem, (100vw - 600px) / 2 + 1rem);
+  margin-block: 1rem;
+  margin-bottom: calc(1rem + var(--safe-area-bottom));
+}
+
+[data-slot='toast-region'][data-side='top'] {
+  margin-top: calc(1rem + var(--safe-area-top));
+}
+
+/* The toast card: moonlit glass on a gentler lean of the app's sheared
+   card silhouette (ui/card.module.css) — the plate tilts on a ::before
+   layer at half the cards' shear, since a toast is one or two lines
+   tall and the full 1.2deg tilt reads far more slanted on a short box
+   than on a tall card. Text and controls stay level; the plate stays
+   inside the box, clear of the safe areas.
+   The layout: the text block and the button group share one row,
+   vertically centered against each other (a single-line toast carries
+   its buttons beside it, not underneath). A row too narrow for both
+   wraps the whole button group below the text, right-aligned — the
+   buttons never split one per line. */
+[data-slot='toast'] {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.625rem 1rem;
+  /* The element itself paints nothing — the sheared plate below is the
+     whole surface. Explicit overrides: the sdk's own near-black toast
+     fill and shadow live in the ui-sdk layer and would otherwise show
+     through wherever the plate's inset and shear leave the box bare. */
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  color: var(--foreground);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  user-select: none;
+}
+
+[data-slot='toast']::before {
+  content: '';
+  position: absolute;
+  inset: 4px 0;
+  z-index: -1;
+  border: 1px solid var(--border);
+  border-radius: 10px 4px 10px 4px;
+  /* Solid, not glass: a toast floats over arbitrary content (list rows
+     read straight through an 85% fill), and backdrop-filter has no
+     backdrop to blur on a ::before inside the isolated toast. */
+  background-color: var(--paper);
+  background-image: var(--surface-overlay);
+  box-shadow: var(--app-bar-shadow);
+  transform: skewY(calc(var(--card-shear) * 0.5));
+}
+
+/* The text block grows; the button group never shrinks. */
+[data-slot='toast'] [data-slot='stack'] {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+[data-slot='toast'] [data-slot='actions'] {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.375rem;
+  /* Last on the row, pushed to the right edge; when the row is too
+     narrow the whole group wraps below together. */
+  margin-left: auto;
+}
+
+[data-slot='toast-title'] {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+[data-slot='toast-description'] {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+}
+
+/* The action: the solid jade of the drawer's trigger button, uppercase
+   like every button in the app. */
+[data-slot='toast-action'] {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding-inline: 0.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.75;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color-mix(in oklab, var(--primary) 85%, var(--header));
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+}
+
+/* The cancel button: a quiet text button, like the card actions. The sdk
+   styles toast-close as a 1.75rem square icon button (fixed width and
+   height, masked X glyph) — reset all of it, since this one carries a
+   text label ("Not now", "Dismiss") that would otherwise overflow. */
+[data-slot='toast-close'] {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: auto;
+  height: auto;
+  min-height: 2.25rem;
+  padding-inline: 0.5rem;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.75;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &::before {
+    content: none;
+  }
+
+  &:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+}
