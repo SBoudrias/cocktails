@@ -4,6 +4,10 @@ import { toast } from '@ui-sdk/react/toast';
 const OFFLINE_ID = 'pwa-offline';
 /** The update note's id: replaced if a new worker waits again. */
 const UPDATE_ID = 'pwa-update';
+/** The install hint's id: Chrome re-fires beforeinstallprompt (e.g. after
+ * a prevented prompt), and each firing must replace the hint, not stack
+ * another one. */
+const INSTALL_ID = 'pwa-install';
 /** sessionStorage key: a dismissal hides the install hint for the session. */
 const INSTALL_DISMISSED = 'pwa:install-hint-dismissed';
 
@@ -47,6 +51,7 @@ export function showInstallToast(event: Event): void {
   event.preventDefault();
 
   toast('Install Indexotica on this device?', {
+    id: INSTALL_ID,
     duration: 12_000,
     action: {
       label: 'Install',

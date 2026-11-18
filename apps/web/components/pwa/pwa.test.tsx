@@ -44,6 +44,20 @@ describe('the PWA toasts', () => {
     expect(screen.getByRole('button', { name: /not now/i })).toBeInTheDocument();
   });
 
+  it('replaces, not stacks, when Chrome re-fires beforeinstallprompt', async () => {
+    await mountPwa();
+    fireInstallPrompt();
+    await screen.findByRole('region', { name: 'Notifications' });
+
+    // Chrome re-fires the event (e.g. after a prevented prompt); the hint
+    // must dedupe to one toast, not stack a second.
+    fireInstallPrompt();
+    await new Promise((resolve) => setTimeout(resolve, 50));
+
+    const titles = screen.getAllByText(/install indexotica on this device\?/i);
+    expect(titles).toHaveLength(1);
+  });
+
   it('calls the captured prompt when Install is chosen', async () => {
     const { user } = await mountPwa();
     const event = fireInstallPrompt();
