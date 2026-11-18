@@ -49,6 +49,22 @@ const TEST_CAPPED_SPIRIT = {
   name: 'Bulleit Bourbon',
 };
 
+// A chocolate vodka: its category sits under the non-substituting Vodka
+// family, where each flavor is its own island.
+const TEST_FLAVORED_VODKA = {
+  type: 'spirit',
+  slug: 'alchemia-chocolate-vodka',
+  name: 'Alchemia Chocolate Vodka',
+};
+
+// An armagnac: its category sits under Grape brandy (aged), inside the
+// non-substituting Brandy (grapes) family.
+const TEST_ARMAGNAC = {
+  type: 'spirit',
+  slug: 'delord-napoleon-armagnac',
+  name: 'Delord Napoléon Armagnac',
+};
+
 const [pineappleRecipes, spiritRecipes, appleton21] = await Promise.all([
   Promise.all([
     getRecipe(
@@ -96,30 +112,48 @@ const testCatalog = buildCatalog([
 ]);
 
 // Cache page JSX once for the entire file to avoid repeated async data loading
-const [ingredientPageJSX, spiritPageJSX, jamaicanRumPageJSX, cappedSpiritPageJSX] =
-  await Promise.all([
-    IngredientPage({
-      params: Promise.resolve({
-        type: TEST_INGREDIENT.type,
-        slug: TEST_INGREDIENT.slug,
-      }),
+const [
+  ingredientPageJSX,
+  spiritPageJSX,
+  jamaicanRumPageJSX,
+  cappedSpiritPageJSX,
+  flavoredVodkaPageJSX,
+  armagnacPageJSX,
+] = await Promise.all([
+  IngredientPage({
+    params: Promise.resolve({
+      type: TEST_INGREDIENT.type,
+      slug: TEST_INGREDIENT.slug,
     }),
-    IngredientPage({
-      params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
+  }),
+  IngredientPage({
+    params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
+  }),
+  IngredientPage({
+    params: Promise.resolve({
+      type: TEST_JAMAICAN_RUM.type,
+      slug: TEST_JAMAICAN_RUM.slug,
     }),
-    IngredientPage({
-      params: Promise.resolve({
-        type: TEST_JAMAICAN_RUM.type,
-        slug: TEST_JAMAICAN_RUM.slug,
-      }),
+  }),
+  IngredientPage({
+    params: Promise.resolve({
+      type: TEST_CAPPED_SPIRIT.type,
+      slug: TEST_CAPPED_SPIRIT.slug,
     }),
-    IngredientPage({
-      params: Promise.resolve({
-        type: TEST_CAPPED_SPIRIT.type,
-        slug: TEST_CAPPED_SPIRIT.slug,
-      }),
+  }),
+  IngredientPage({
+    params: Promise.resolve({
+      type: TEST_FLAVORED_VODKA.type,
+      slug: TEST_FLAVORED_VODKA.slug,
     }),
-  ]);
+  }),
+  IngredientPage({
+    params: Promise.resolve({
+      type: TEST_ARMAGNAC.type,
+      slug: TEST_ARMAGNAC.slug,
+    }),
+  }),
+]);
 
 // happy-dom creates an animation's finished promise eagerly, where a
 // browser only creates it when read: cancelling the drawer's settle
@@ -345,12 +379,13 @@ describe('IngredientPage', () => {
   });
 
   describe('substitution lists', () => {
-    it('only lists bottles from the same category in the primary list', async () => {
+    it("lists every bottle sharing any of the ingredient's categories", async () => {
       const { user } = await setupApp(jamaicanRumPageJSX);
       await user.click(screen.getByRole('button', { name: 'Substitutions' }));
 
-      // Appleton 12's most specific category is Blended aged rum (Jamaica):
-      // only the 6 other bottles from that category appear.
+      // Appleton 12 declares Blended aged rum (Jamaica) and Jamaican rum:
+      // substitution is bottle-level, so the drawer holds the other members
+      // of both — the aged blends and the lighter cuts alike.
       const substitutionGroup = screen.getByRole('group', {
         name: 'Some substitution option',
       });
@@ -358,9 +393,12 @@ describe('IngredientPage', () => {
       expect(substitutionGroup).toHaveTextContent('Appleton 21');
       expect(substitutionGroup).toHaveTextContent('Hampden Estate 46');
       expect(substitutionGroup).toHaveTextContent('Worthy Park Single Estate');
-      // Jamaican rums from other categories stay out.
-      expect(substitutionGroup).not.toHaveTextContent('Rum-Bar Silver');
-      expect(substitutionGroup).not.toHaveTextContent('Smith & Cross');
+      // Lighter-aged Jamaican rums share only the broader category.
+      expect(substitutionGroup).toHaveTextContent('Rum-Bar Silver');
+      expect(substitutionGroup).toHaveTextContent('Smith & Cross');
+
+      // Rums sharing no category with the bottle stay out entirely.
+      expect(substitutionGroup).not.toHaveTextContent('Barbancourt White');
 
       expect(
         within(substitutionGroup).getByRole('link', { name: /^Appleton 21/ }),
@@ -474,6 +512,48 @@ describe('IngredientPage', () => {
       expect(
         within(substitutionGroup).queryByRole('link', { name: /see all/i }),
       ).not.toBeInTheDocument();
+    });
+
+    it('drops flavor siblings of a non-substituting family from the drawer', async () => {
+      const { user } = await setupApp(flavoredVodkaPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      // Chocolate vodka sits under the non-substituting Vodka family: the
+      // other flavors can't stand in for it, so only the plain Vodka
+      // category remains as a loose substitution option.
+      const relatedGroup = screen.getByRole('group', {
+        name: 'Substitution-friendly categories',
+      });
+
+      expect(within(relatedGroup).getByRole('link', { name: 'Vodka' })).toHaveAttribute(
+        'href',
+        getCategoryUrl({ slug: 'vodka' }),
+      );
+      expect(relatedGroup).not.toHaveTextContent('Chili pepper-flavored vodka');
+      expect(relatedGroup).not.toHaveTextContent('Citrus vodka');
+    });
+
+    it('keeps same-group siblings and drops other groups in a split family', async () => {
+      const { user } = await setupApp(armagnacPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      // Armagnac sits under Grape brandy (aged) inside the non-substituting
+      // Brandy (grapes) family: Cognac substitutes (same aged group), the
+      // unaged Grappa and Pisco groups don't.
+      const relatedGroup = screen.getByRole('group', {
+        name: 'Substitution-friendly categories',
+      });
+
+      expect(within(relatedGroup).getByRole('link', { name: 'Cognac' })).toHaveAttribute(
+        'href',
+        getCategoryUrl({ slug: 'cognac' }),
+      );
+      expect(
+        within(relatedGroup).getByRole('link', { name: 'Grape brandy (aged)' }),
+      ).toHaveAttribute('href', getCategoryUrl({ slug: 'grape-brandy-aged' }));
+      expect(relatedGroup).not.toHaveTextContent('Grappa');
+      expect(relatedGroup).not.toHaveTextContent('Pisco');
+      expect(relatedGroup).not.toHaveTextContent('Brandy (birch)');
     });
 
     it('renders no substitution section for an ingredient without categories', async () => {

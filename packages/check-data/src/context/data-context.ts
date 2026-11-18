@@ -22,6 +22,7 @@ interface Attribution {
 interface CategoryData {
   name: string;
   categoryType?: string;
+  substitutable?: boolean;
   parents?: string[];
 }
 
@@ -38,6 +39,7 @@ interface BarEntity {
 interface CollectedCategory {
   name: string;
   categoryType: string;
+  substitutable?: boolean;
   parents?: string[];
   filepath: string;
 }
@@ -240,6 +242,7 @@ export async function loadContext(): Promise<void> {
       allCategories.push({
         name: data.name,
         categoryType: data.categoryType,
+        substitutable: data.substitutable,
         parents: data.parents,
         filepath: categoryFile,
       });

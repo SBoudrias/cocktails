@@ -83,14 +83,24 @@ export const getChildCategories = memo(
  * its direct parents and its siblings (the other children of those parents),
  * e.g. for a Jamaican aged rum category, the other aged-rum categories.
  * The category itself is never included.
+ *
+ * Siblings under a non-substituting parent stay out: when a category is
+ * declared `"substitutable": false`, its children are flavor or appellation
+ * islands (e.g. the flavored vodkas under Vodka) that cannot stand in for
+ * one another. The parent itself is still a neighbor — a plain version of
+ * the base spirit is a loose substitute for a flavored one.
  */
 export const getRelatedCategories = memo(
   async (category: Category): Promise<Category[]> => {
     const categoriesByParent = await getCategoriesPerParent();
 
+    const substitutableParents = category.parents.filter(
+      ({ substitutable }) => substitutable !== false,
+    );
+
     const relatedCategories = [
       ...category.parents,
-      ...category.parents.flatMap(({ slug }) => categoriesByParent[slug] ?? []),
+      ...substitutableParents.flatMap(({ slug }) => categoriesByParent[slug] ?? []),
     ].filter(({ slug }) => slug !== category.slug);
 
     const seen = new Set<string>();

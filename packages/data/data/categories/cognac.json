@@ -3,5 +3,5 @@
   "name": "Cognac",
   "categoryType": "spirit",
   "description": "Grape brandy from the Cognac region of France, double-distilled in copper pot stills (mostly from Ugni Blanc) and aged in French oak, then blended across vintages. Age statements follow the VS / VSOP / XO ladder. The base of the Sidecar and Between the Sheets, and the historic spirit of punch-making.",
-  "parents": ["Brandy (grapes)"]
+  "parents": ["Grape brandy (aged)"]
 }
