@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Maggie's Farm White Rum",
   "type": "spirit",
-  "categories": ["Pot still unaged rum", "Moderately aged rum"]
+  "categories": ["Pot still unaged rum"]
 }

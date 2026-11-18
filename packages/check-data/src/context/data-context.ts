@@ -313,14 +313,17 @@ export async function loadContext(): Promise<void> {
   // nodes register into the same indexes as loose category files, so a
   // category may live in either place — a system file replaces its loose
   // file without any check noticing.
-  let systemsModified = false;
   for await (const systemFile of fs.glob(
     path.join(PACKAGE_ROOT, 'data/categorization-systems/*.json'),
   )) {
-    const data = JSON.parse(await fs.readFile(systemFile, 'utf-8')) as SystemDefinition;
-    data.slug = path.basename(systemFile, '.json');
-    ctx.categorizationSystems.push(data);
+    // The slug comes from the filename and stays off the data object, so a
+    // casing fix never writes it back into the file.
+    const data: Omit<SystemDefinition, 'slug'> = JSON.parse(
+      await fs.readFile(systemFile, 'utf-8'),
+    );
+    ctx.categorizationSystems.push({ ...data, slug: path.basename(systemFile, '.json') });
 
+    let systemsModified = false;
     for (const node of data.nodes) {
       const normalizedCasing = normalizeCategoryCasing(node.name);
       if (normalizedCasing !== node.name) {
@@ -340,6 +343,7 @@ export async function loadContext(): Promise<void> {
         ctx.allCategories.push({
           name: node.name,
           categoryType: node.categoryType,
+          substitutable: node.substitutable,
           parents: node.parents,
           filepath: systemFile,
         });

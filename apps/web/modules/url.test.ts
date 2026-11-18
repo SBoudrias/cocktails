@@ -1,6 +1,7 @@
 import type { Recipe, RecipeIngredient } from '@cocktails/data';
 import { describe, expect, it } from 'vitest';
 import {
+  getCategoryEditUrl,
   getMilkClarificationCalculatorUrl,
   getRecipeEditUrl,
   getRecipeIngredientUrl,
@@ -236,5 +237,21 @@ describe('isEntityUrl', () => {
     expect(isEntityUrl('/list/recipes')).toBe(false);
     expect(isEntityUrl('/category/gin/extra')).toBe(false);
     expect(isEntityUrl('https://example.com/category/gin')).toBe(false);
+  });
+});
+
+describe('getCategoryEditUrl', () => {
+  it('points a loose category at its own file', () => {
+    expect(getCategoryEditUrl({ slug: 'gin' })).toMatchInlineSnapshot(
+      `"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/categories/gin.json"`,
+    );
+  });
+
+  it('points a system node at the system file declaring it', () => {
+    expect(
+      getCategoryEditUrl({ slug: 'aged-jamaican-rum' }, { slug: 'minimalist-tiki' }),
+    ).toMatchInlineSnapshot(
+      `"https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/categorization-systems/minimalist-tiki.json"`,
+    );
   });
 });

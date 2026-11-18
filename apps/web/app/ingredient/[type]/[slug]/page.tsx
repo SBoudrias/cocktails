@@ -111,7 +111,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       }
       footer={
         <FixBugCard
-          fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
+          fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
           m={1}
         />
       }

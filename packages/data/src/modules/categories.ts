@@ -11,29 +11,19 @@ import memo from './memo';
 
 export const getCategory = memo(async (category: string): Promise<Category> => {
   const filepath = path.join(CATEGORY_ROOT, `${category}.json`);
-  const data = await readJSONFile<
-    Omit<Category, 'slug' | 'parents' | 'category'> & { refs?: Ref[]; parents?: string[] }
-  >(filepath);
+  // A categorization system node with this slug is the fallback for
+  // categories whose loose file has been migrated into a system file. Both
+  // shapes go through the same mapping, so no field (e.g. `substitutable`)
+  // is lost on the way.
+  const data =
+    (await readJSONFile<
+      Omit<Category, 'slug' | 'parents' | 'refs' | 'type'> & {
+        refs?: Ref[];
+        parents?: string[];
+      }
+    >(filepath)) ?? (await getSystemCategoryNodes()).get(category)?.data;
 
-  if (!data) {
-    // A categorization system node with this slug: the fallback for
-    // categories whose loose file has been migrated into a system file.
-    const systemNode = (await getSystemCategoryNodes()).get(category)?.data;
-
-    if (!systemNode) throw new Error(`Category not found: ${filepath}`);
-
-    return {
-      name: systemNode.name,
-      categoryType: systemNode.categoryType,
-      description: systemNode.description,
-      refs: systemNode.refs ?? [],
-      parents: await Promise.all(
-        (systemNode.parents ?? []).map((name) => getCategory(slugify(name))),
-      ),
-      slug: category,
-      type: 'category' as const,
-    };
-  }
+  if (!data) throw new Error(`Category not found: ${filepath}`);
 
   return {
     ...data,
@@ -48,7 +38,8 @@ export const getCategory = memo(async (category: string): Promise<Category> => {
 
 export const getAllCategories = memo(async (): Promise<Category[]> => {
   const categories: Category[] = [];
-  const systemNodes = await getSystemCategoryNodes();
+  // A copy: the memoized map is shared with getCategory's fallback.
+  const systemNodes = new Map(await getSystemCategoryNodes());
 
   for (const file of await fs.readdir(CATEGORY_ROOT)) {
     const ingredient = await getCategory(path.basename(file, '.json'));
@@ -158,13 +149,19 @@ export async function groupCategoriesBySystem(
     { system?: CategorizationSystem; categories: Category[] }
   >();
 
+  const house: Category[] = [];
+
   for (const category of categories) {
     const system = await getSystemOfCategory(category.slug);
-    const key = system?.slug ?? '_house';
-    const group = groups.get(key) ?? { system, categories: [] };
+    if (!system) {
+      house.push(category);
+      continue;
+    }
+
+    const group = groups.get(system.slug) ?? { system, categories: [] };
     group.categories.push(category);
-    groups.set(key, group);
+    groups.set(system.slug, group);
   }
 
-  return [...groups.values()];
+  return [...(house.length > 0 ? [{ categories: house }] : []), ...groups.values()];
 }

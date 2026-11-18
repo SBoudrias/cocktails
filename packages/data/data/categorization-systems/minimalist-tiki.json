@@ -205,6 +205,10 @@
       "reason": "overproof pot still; no MT style"
     },
     {
+      "ingredient": "Maggie's Farm White Rum",
+      "reason": "unaged pot still; no MT style"
+    },
+    {
       "ingredient": "Malibu",
       "reason": "flavored rum; no MT style"
     },
@@ -304,10 +308,7 @@
       "ingredient": "Wood's Old Navy rum",
       "reason": "navy style; no MT bucket"
     },
-    {
-      "ingredient": "Worthy Park Estate 109 Dark Rum",
-      "reason": "aged overproof; no MT style"
-    },
+
     {
       "ingredient": "Worthy Park Overproof",
       "reason": "unaged overproof; no MT style"

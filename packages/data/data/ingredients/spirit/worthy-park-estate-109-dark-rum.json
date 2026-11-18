@@ -2,5 +2,9 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Worthy Park Estate 109 Dark Rum",
   "type": "spirit",
-  "categories": ["Black blended overproof rum", "Jamaican overproof rum"]
+  "categories": [
+    "Black blended overproof rum",
+    "Jamaican overproof rum",
+    "Aged Jamaican rum"
+  ]
 }

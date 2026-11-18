@@ -214,12 +214,6 @@
       "parents": ["Rum"]
     },
     {
-      "name": "Overproof rum",
-      "categoryType": "spirit",
-      "description": "Rum bottled above the standard 40% ABV, typically 50–75.5%. The extra proof means the flavor survives ice, juice and a crowd of other ingredients, which is why overproof is the tiki bartender's float of choice — most famously the 151 float on a Zombie.",
-      "parents": ["Rum"]
-    },
-    {
       "name": "Pineapple rum",
       "categoryType": "spirit",
       "parents": ["Flavored rum"]
@@ -326,6 +320,20 @@
       "name": "Unaged cachaça",
       "categoryType": "spirit",
       "parents": ["Rhum agricole blanc"]
+    }
+  ],
+  "exemptions": [
+    {
+      "ingredient": "Dakabend Oaxacan Pot Still Rum",
+      "reason": "Mexican aguardiente de caña filed under the house Charanda category; no Smuggler's Cove class verified yet"
+    },
+    {
+      "ingredient": "Paranubes Oaxaca Aguardiente de Caña",
+      "reason": "Mexican aguardiente de caña filed under the house Charanda category; no Smuggler's Cove class verified yet"
+    },
+    {
+      "ingredient": "Uruapan Charanda Blanco Rum",
+      "reason": "Charanda, a Mexican cane spirit filed under the house Charanda category; no Smuggler's Cove class verified yet"
     }
   ]
 }

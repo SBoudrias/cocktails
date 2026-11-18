@@ -1,4 +1,5 @@
 import { getCategory, getChildCategories } from '@cocktails/data/categories';
+import { getSystemOfCategory } from '@cocktails/data/categorization-systems';
 import {
   getIngredientRecipeCounts,
   getIngredientsForCategory,
@@ -15,7 +16,7 @@ import { LinkList, LinkListItem } from '#/components/list/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { Card, CardContent } from '#/components/ui/card';
 import Video from '#/components/Video';
-import { getCategoryUrl } from '#/modules/url';
+import { getCategoryEditUrl, getCategoryUrl } from '#/modules/url';
 
 type Params = { slug: string };
 
@@ -49,12 +50,14 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
   const { slug } = await params;
 
   const category = await getCategory(slug);
-  const [members, relatedRecipes, childCategories, recipeCounts] = await Promise.all([
-    getIngredientsForCategory(category),
-    getRecipeByCategory(category),
-    getChildCategories(category),
-    getIngredientRecipeCounts(),
-  ]);
+  const [members, relatedRecipes, childCategories, recipeCounts, system] =
+    await Promise.all([
+      getIngredientsForCategory(category),
+      getRecipeByCategory(category),
+      getChildCategories(category),
+      getIngredientRecipeCounts(),
+      getSystemOfCategory(category.slug),
+    ]);
 
   const videos = category.refs.filter((ref) => ref.type === 'youtube');
   const [firstVideo, ...additionalVideos] = videos;
@@ -68,12 +71,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       underTitle={
         <CategoryChips categories={category.parents} label="Parent categories" />
       }
-      footer={
-        <FixBugCard
-          fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${category.slug}.json`}
-          m={1}
-        />
-      }
+      footer={<FixBugCard fixUrl={getCategoryEditUrl(category, system)} m={1} />}
     >
       {firstVideo && <Video id={firstVideo.videoId} start={firstVideo.start} />}
       {category.description && (

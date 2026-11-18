@@ -1,4 +1,5 @@
 import type { RootIngredient } from '@cocktails/data';
+import type * as CategorizationSystemsModule from '@cocktails/data/categorization-systems';
 import { getIngredientsForCategory } from '@cocktails/data/ingredients';
 import type * as IngredientsModule from '@cocktails/data/ingredients';
 import { screen, within } from '@testing-library/react';
@@ -6,7 +7,10 @@ import { describe, expect, it, vi } from 'vitest';
 import { setupApp } from '#/vitest.setup';
 import CategorizationSystemPage from './page';
 
-vi.mock('@cocktails/data/categorization-systems', () => ({
+// Only the system list is faked: getCategory still resolves the real system
+// nodes through the module's own loaders.
+vi.mock('@cocktails/data/categorization-systems', async (importOriginal) => ({
+  ...(await importOriginal<typeof CategorizationSystemsModule>()),
   getCategorizationSystems: vi.fn().mockResolvedValue([
     {
       name: 'Minimalist Tiki',
