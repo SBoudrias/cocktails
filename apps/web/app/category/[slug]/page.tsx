@@ -1,4 +1,3 @@
-import type { RootIngredient } from '@cocktails/data';
 import {
   getCategory,
   getChildCategories,
@@ -15,13 +14,13 @@ import { notFound, unstable_rethrow } from 'next/navigation';
 import FixBugCard from '#/components/card/FixBugCard';
 import VideoListCard from '#/components/card/VideoListCard';
 import CategoryChips from '#/components/CategoryChips';
+import CategoryMembers from '#/components/CategoryMembers';
 import { LinkList, LinkListItem } from '#/components/list/LinkList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
 import { RelatedCategoriesList } from '#/components/SubstitutionLists';
 import { Card, CardContent } from '#/components/ui/card';
 import Video from '#/components/Video';
-import { ingredientHasData } from '#/modules/hasData';
-import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
+import { getCategoryUrl } from '#/modules/url';
 
 type Params = { slug: string };
 
@@ -104,28 +103,15 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
           )}
         />
       )}
-      {members.length > 0 && (
-        <LinkList
-          header={`Examples of ${category.name}`}
-          items={members}
-          renderItem={(member) => renderIngredient(member, recipeCounts)}
-        />
-      )}
+      <CategoryMembers
+        category={category}
+        members={members}
+        recipeCounts={recipeCounts}
+      />
       <RelatedCategoriesList categories={relatedCategories} />
       {additionalVideos.length > 0 && (
         <VideoListCard title="Other videos" refs={additionalVideos} m={1} />
       )}
     </SearchableRecipePage>
-  );
-}
-
-function renderIngredient(ingredient: RootIngredient, recipeCounts: Map<string, number>) {
-  return (
-    <LinkListItem
-      key={ingredient.slug}
-      href={ingredientHasData(ingredient) ? getIngredientUrl(ingredient) : undefined}
-      primary={ingredient.name}
-      count={recipeCounts.get(ingredient.slug) ?? 0}
-    />
   );
 }

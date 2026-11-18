@@ -77,10 +77,10 @@ describe('CategoryPage', () => {
       );
     });
 
-    it('lists every member bottle, uncapped, as the primary list', async () => {
-      // Rum's category page: 98 member bottles across its child categories —
-      // a long list of direct members is fine and expected, so unlike the
-      // ingredient page there is no cap and no see-all link.
+    it('previews the most-used members, with a see-all row opening the drawer', async () => {
+      // Rum's category page: 95 member bottles across its child categories —
+      // too many for the page, so three preview rows show and the see-all
+      // row opens the drawer holding the full list.
       const rumCategory = await getCategory('rum');
       const expectedMembers = await getActualIngredientsForCategory(rumCategory);
 
@@ -94,12 +94,36 @@ describe('CategoryPage', () => {
         name: 'Examples of Rum',
       });
 
-      expect(within(membersGroup).getAllByRole('link')).toHaveLength(
+      // The preview: the three most-used bottles, as plain links.
+      expect(within(membersGroup).getAllByRole('link')).toHaveLength(3);
+
+      // The see-all row names the full count.
+      expect(
+        within(membersGroup).getByRole('button', {
+          name: `See all ${expectedMembers.length} bottles`,
+        }),
+      ).toBeInTheDocument();
+    });
+
+    it('keeps the full member list in the closed sheet, crawlable', async () => {
+      // keepMounted: the drawer's content renders while closed, so every
+      // bottle link ships in the static export's HTML.
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'rum' }),
+        }),
+      );
+
+      // The closed sheet is hidden, so its accessible name doesn't
+      // compute — query by role and match the title text.
+      const sheet = screen.getAllByRole('dialog', { hidden: true })[0]!;
+      expect(sheet).toHaveTextContent('Rum bottles');
+
+      const rumCategory = await getCategory('rum');
+      const expectedMembers = await getActualIngredientsForCategory(rumCategory);
+      expect(within(sheet).getAllByRole('link', { hidden: true })).toHaveLength(
         expectedMembers.length,
       );
-      expect(
-        within(membersGroup).queryByRole('link', { name: /see all/i }),
-      ).not.toBeInTheDocument();
     });
 
     it('lists related categories, not bottles, as secondary substitutions', async () => {
@@ -193,7 +217,7 @@ describe('CategoryPage', () => {
       ).toBeInTheDocument();
     });
 
-    it('orders members by recipe count and shows the count', async () => {
+    it('orders the preview by recipe count and shows the count', async () => {
       // These tests need the real member lists, not the file-wide mock.
       vi.mocked(getIngredientsForCategory).mockImplementation(
         getActualIngredientsForCategory,
@@ -210,7 +234,7 @@ describe('CategoryPage', () => {
       });
 
       // Recipe counts in the London dry gin shelf: Beefeater (56) leads,
-      // Tanqueray (26), Fords (13), Tanqueray No. Ten (12)...
+      // Tanqueray (26), Fords (13) — the three most-used bottles preview.
       const hrefs = within(membersGroup)
         .getAllByRole('link')
         .map((link) => link.getAttribute('href'));
@@ -222,12 +246,31 @@ describe('CategoryPage', () => {
       expect(order('beefeater-london-dry-gin')).toBe(0);
       expect(order('tanqueray-london-dry-gin')).toBe(1);
       expect(order('fords-gin')).toBe(2);
-      expect(order('tanqueray-no-ten')).toBe(3);
 
-      // Every member row carries its recipe count next to the name.
+      // Every preview row carries its recipe count next to the name.
       expect(membersGroup).toHaveTextContent('56');
       expect(membersGroup).toHaveTextContent('26');
       expect(membersGroup).toHaveTextContent('13');
+    });
+
+    it('keeps every member link in the closed sheet (SEO)', async () => {
+      vi.mocked(getIngredientsForCategory).mockImplementation(
+        getActualIngredientsForCategory,
+      );
+
+      await setupApp(
+        await CategoryPage({
+          params: Promise.resolve({ slug: 'london-dry-gin' }),
+        }),
+      );
+
+      // keepMounted: the sheet renders while closed, so the static export
+      // carries all 13 London dry gin bottle links, not only the preview.
+      // The closed sheet is hidden, so its accessible name doesn't
+      // compute — query by role.
+      const sheet = screen.getAllByRole('dialog', { hidden: true })[0]!;
+      expect(sheet).toHaveTextContent('London dry gin bottles');
+      expect(within(sheet).getAllByRole('link', { hidden: true })).toHaveLength(13);
     });
 
     it('renders links to nested child categories', async () => {
