@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack && next-sitemap && node tools/generate-sw-precache.ts",
+    "build": "next build --turbopack && next-sitemap && node tools/generate-sw-precache.ts && node tools/verify-internal-links.ts",
     "lint": "next typegen && tsc --noEmit"
   },
   "dependencies": {

@@ -42,6 +42,7 @@ const authorRecipes: Record<string, (typeof byTheToe)[]> = {
   'anders-erickson': [bikiniKill],
   'sam-ross': [bikiniKill],
   'garret-richard': [bikiniKill],
+  'alex-day': [bikiniKill],
 };
 
 /** The catalog as the author pages read it: the tested authors' lists. */
@@ -112,6 +113,36 @@ describe('AuthorRecipesPage', () => {
           element?.tagName === 'P' && element?.textContent === 'Behind Anders Erickson',
       ),
     ).toBeInTheDocument();
+  });
+
+  it("navigates in-app to the author's bar page from the About card", async () => {
+    const { user } = await setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'alex-day' }),
+      }),
+    );
+
+    // The bar link must resolve to the real /list/bars/[name] route — the
+    // slug Death & Co's entity file carries — and be an in-app Link: a
+    // plain anchor skips the router and the site's basePath, which 404s
+    // on GitHub Pages.
+    const barLink = screen.getByRole('link', { name: 'Death & Co' });
+    expect(barLink).toHaveAttribute('href', '/list/bars/death-and-co-new-york-ny');
+
+    await user.click(barLink);
+    expect(mockRouter.asPath).toBe('/list/bars/death-and-co-new-york-ny');
+  });
+
+  it("navigates in-app to the author's source page from the About card", async () => {
+    const { user } = await setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'anders-erickson' }),
+      }),
+    );
+
+    // Same contract as the bar link: an in-app Link, not a plain anchor.
+    await user.click(screen.getByRole('link', { name: 'Anders Erickson' }));
+    expect(mockRouter.asPath).toBe('/source/youtube-channel/anders-erickson');
   });
 
   it('renders social links as brand icons with @handle labels', async () => {
