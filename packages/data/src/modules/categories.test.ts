@@ -30,19 +30,19 @@ describe('getRelatedCategories', () => {
   });
 
   it('lists the aged grape-brandies as siblings, not the unaged ones', async () => {
-    // Armagnac sits under Grape brandy (aged) inside the non-substituting
+    // Armagnac sits under Aged brandy (grapes) inside the non-substituting
     // Brandy (grapes) family: Cognac substitutes (same aged group), Grappa
     // and Pisco don't (unaged group).
     const related = await getRelatedCategories(await getCategory('armagnac'));
 
-    expect(related.map(({ name }) => name)).toEqual(['Cognac', 'Grape brandy (aged)']);
+    expect(related.map(({ name }) => name)).toEqual(['Aged brandy (grapes)', 'Cognac']);
   });
 
   it('lists the unaged grape-brandies as siblings, not the aged ones', async () => {
-    // Pisco sits under Grape brandy (unaged): Grappa substitutes (same
+    // Pisco sits under Unaged brandy (grapes): Grappa substitutes (same
     // unaged group), Armagnac and Cognac don't (aged group).
     const related = await getRelatedCategories(await getCategory('pisco'));
 
-    expect(related.map(({ name }) => name)).toEqual(['Grape brandy (unaged)', 'Grappa']);
+    expect(related.map(({ name }) => name)).toEqual(['Grappa', 'Unaged brandy (grapes)']);
   });
 });

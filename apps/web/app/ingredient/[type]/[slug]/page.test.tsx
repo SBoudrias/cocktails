@@ -57,7 +57,7 @@ const TEST_FLAVORED_VODKA = {
   name: 'Alchemia Chocolate Vodka',
 };
 
-// An armagnac: its category sits under Grape brandy (aged), inside the
+// An armagnac: its category sits under Aged brandy (grapes), inside the
 // non-substituting Brandy (grapes) family.
 const TEST_ARMAGNAC = {
   type: 'spirit',
@@ -537,7 +537,7 @@ describe('IngredientPage', () => {
       const { user } = await setupApp(armagnacPageJSX);
       await user.click(screen.getByRole('button', { name: 'Substitutions' }));
 
-      // Armagnac sits under Grape brandy (aged) inside the non-substituting
+      // Armagnac sits under Aged brandy (grapes) inside the non-substituting
       // Brandy (grapes) family: Cognac substitutes (same aged group), the
       // unaged Grappa and Pisco groups don't.
       const relatedGroup = screen.getByRole('group', {
@@ -549,8 +549,8 @@ describe('IngredientPage', () => {
         getCategoryUrl({ slug: 'cognac' }),
       );
       expect(
-        within(relatedGroup).getByRole('link', { name: 'Grape brandy (aged)' }),
-      ).toHaveAttribute('href', getCategoryUrl({ slug: 'grape-brandy-aged' }));
+        within(relatedGroup).getByRole('link', { name: 'Aged brandy (grapes)' }),
+      ).toHaveAttribute('href', getCategoryUrl({ slug: 'aged-brandy-grapes' }));
       expect(relatedGroup).not.toHaveTextContent('Grappa');
       expect(relatedGroup).not.toHaveTextContent('Pisco');
       expect(relatedGroup).not.toHaveTextContent('Brandy (birch)');
