@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Tequila (blanco)",
   "categoryType": "spirit",
+  "description": "Tequila bottled young and unaged, showing pure agave: vegetal sweetness, black pepper and citrus. Look for '100% agave' on the label \u2014 the mixing standard for Margaritas and Palomas.",
   "parents": ["Tequila"]
 }

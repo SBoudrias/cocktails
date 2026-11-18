@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Sweet vermouth",
-  "categoryType": "wine"
+  "categoryType": "wine",
+  "description": "Fortified wine sweetened and aromatized with botanicals \u2014 also called red, rosso or Italian vermouth. The other half of a Manhattan, a third of a Negroni, and the difference between a Martini that tastes round and one that tastes thin."
 }

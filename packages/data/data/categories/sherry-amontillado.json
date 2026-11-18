@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Sherry (Amontillado)",
   "categoryType": "wine",
+  "description": "A sherry aged first under flor (like a fino), then oxidatively: nutty and amber, with more body than a fino and none of the syrupy weight of an oloroso. Lustau's Los Arcos is the bartender's standard. The sherry of the Adonis and the Fog Cutter, and strong enough to stand up to gin.",
   "parents": ["Sherry"]
 }

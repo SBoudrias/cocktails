@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Blended lightly-aged rum (Jamaica)",
   "categoryType": "spirit",
+  "description": "Lightly-aged blended rum from Jamaica \u2014 pot-still funk in a pale, versatile package, aged just long enough to smooth the edges. Rum-Bar Gold and Appleton Signature are typical bottles. It brings genuine Jamaican character to recipes that want funk without dark color or heavy oak.",
   "parents": ["Blended lightly-aged rum", "Jamaican rum"]
 }

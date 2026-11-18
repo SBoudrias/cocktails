@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Orange liqueur",
   "categoryType": "liqueur",
+  "description": "The umbrella for orange peel-based liqueurs: triple sec, dry curaçao, Cointreau and Grand Marnier. The category is interchangeable within reason — it is the sweet-orange third of a Margarita and Sidecar.",
   "refs": [
     {
       "type": "youtube",

@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Aromatic bitters",
-  "categoryType": "bitter"
+  "categoryType": "bitter",
+  "description": "Concentrated bitters built on botanicals like gentian root, cassia bark, clove and other baking spices macerated in high-proof spirit. A few dashes season a drink rather than build it \u2014 Angostura is the archetype, and it is what completes an Old Fashioned or a Champagne Cocktail. Tiki recipes push further: Don's Own Grog calls for a full ounce of it."
 }

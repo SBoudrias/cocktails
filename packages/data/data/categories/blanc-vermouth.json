@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Blanc vermouth",
-  "categoryType": "wine"
+  "categoryType": "wine",
+  "description": "A pale, gently off-dry French vermouth style that sits between dry and sweet: more body and botanical sweetness than a dry, far less than a rosso. Dolin's blanc is the common bottle. It plays the vermouth role in riffs like the 20th Century and rounds the Clover Club's acidity."
 }

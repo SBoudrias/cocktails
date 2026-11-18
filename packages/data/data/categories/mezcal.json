@@ -1,5 +1,13 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Mezcal",
-  "categoryType": "spirit"
+  "categoryType": "spirit",
+  "description": "A Mexican agave spirit, most famously from Oaxaca: the agave piñas are roasted in earthen pits before fermentation and distillation, which gives the smoke mezcal is known for. Espadín is the workhorse agave. A split base with gin or a straight swap for tequila; the Naked & Famous made it a cocktail-bar staple.",
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "kAbzLXgBRpI",
+      "channel": "anders-erickson"
+    }
+  ]
 }

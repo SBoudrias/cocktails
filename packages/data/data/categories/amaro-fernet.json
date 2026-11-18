@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Amaro (Fernet)",
   "categoryType": "liqueur",
+  "description": "The bracing branch of amaro: intensely bitter and herbaceous, with a cooling mint-eucalyptus finish. Fernet-Branca defines the style, and bartenders treat it as both a rite of passage and a digestif. A rinse or a bar spoon adds grip to a drink; a full ounce makes a Toronto.",
   "parents": ["Amaro"]
 }

@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Black blended overproof rum",
   "categoryType": "spirit",
+  "description": "High-proof dark blended rum \u2014 typically 109 to 151 proof \u2014 with deep molasses, licorice and burnt-sugar notes and the intensity to stand out among many ingredients. Lemon Hart 151, Gosling's 151 and Planteray OFTD are the classic bottles. The engine of tiki giants like the Jet Pilot and the Zombie.",
   "parents": ["Overproof rum"]
 }

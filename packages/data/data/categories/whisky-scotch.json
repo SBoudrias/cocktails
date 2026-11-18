@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Whisky (Scotch)",
   "categoryType": "spirit",
+  "description": "Whisky distilled and aged at least three years in Scotland, from peaty, medicinal Islay malts to honeyed Speyside. The Rob Roy and Rusty Nail are its classics, and a peaty Islay split is what puts the smoke in a Penicillin.",
   "parents": ["Whiskey"],
   "refs": [
     {

@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Tequila reposado",
   "categoryType": "spirit",
+  "description": "'Rested' tequila: aged between two months and a year in oak, which rounds the agave with soft vanilla and spice while keeping its pepper edge. El Tesoro and Fortaleza show the artisanal end. It adds warmth to Margaritas and is a natural upgrade in an El Diablo.",
   "parents": ["Tequila"]
 }

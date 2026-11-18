@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Orange bitters",
-  "categoryType": "bitter"
+  "categoryType": "bitter",
+  "description": "Bitters built on dried orange peel with a supporting cast of spices. Classic Martini seasoning \u2014 a dash lifts gin's botanicals \u2014 and essential in the Bamboo and Adonis, where it works with sherry instead of vermouth."
 }

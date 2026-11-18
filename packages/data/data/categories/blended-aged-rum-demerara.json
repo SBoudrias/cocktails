@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Blended aged rum (Demerara)",
   "categoryType": "spirit",
+  "description": "Aged blended rum from Guyana's Demerara region: heavy, dark-molasses character with notes of tar, smoke and burnt sugar, shaped by the country's famous wooden stills. El Dorado's aged blends and Lemon Hart are the standards. The historic backbone of the Pearl Diver family and navy-style drinks.",
   "parents": ["Blended aged rum"]
 }

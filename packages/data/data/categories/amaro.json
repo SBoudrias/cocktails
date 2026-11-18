@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Amaro",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "description": "The Italian family of bittersweet herbal liqueurs, drunk neat as digestifs and increasingly used in cocktails. They run from light and citrusy (Nonino) through medium and grapey (Montenegro) to dark and bracing (Fernet-Branca). A bar spoon rounds out a drink; a full ounce builds a Black Manhattan."
 }

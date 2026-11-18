@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Falernum liqueur",
   "categoryType": "liqueur",
+  "description": "The alcoholic form of falernum: lime, almond, ginger and clove steeped in rum and sweetened, at roughly 8–15% ABV depending on the producer. Barbadian in origin, it brings spice and citrus in a single pour to the Pearl Diver and Jet Pilot.",
   "parents": ["Falernum"],
   "refs": [
     {

@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Whisky (blended Scotch)",
   "categoryType": "spirit",
+  "description": "A blend of single malt and grain Scotch whiskies: lighter, softer and more consistent than any single malt, which is exactly what a cocktail calls for. The Blood and Sand and Penicillin are its territory.",
   "parents": ["Whisky (Scotch)"],
   "refs": [
     {

@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Banana liqueur",
   "categoryType": "liqueur",
+  "description": "A banana-flavored liqueur, from dry crème de banane styles to richer, candy-forward ones. Giffard's banane du Brésil is the bartender's standard. It adds tropical sweetness to scorpion bowls and tiki drinks, and it is the whole point of a Banana Daiquiri.",
   "refs": [
     {
       "type": "youtube",

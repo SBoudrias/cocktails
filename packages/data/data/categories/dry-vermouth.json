@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Dry vermouth",
-  "categoryType": "wine"
+  "categoryType": "wine",
+  "description": "A pale, dry fortified wine aromatized with botanicals \u2014 chamomile, wormwood and alpine herbs. The other ingredient in a Martini and the softener in a Gibson. Unlike spirits it oxidizes, so an open bottle belongs in the fridge."
 }

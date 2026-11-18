@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Allspice dram",
   "categoryType": "liqueur",
+  "description": "A Jamaican liqueur made by macerating allspice berries — locally called pimento — with sugar and rum. Warm and baking-spiced, a little goes far: it is the clove-cinnamon depth in the Nui Nui and Three Dots and a Dash. St. Elizabeth is the standard bottle.",
   "refs": [
     {
       "type": "youtube",

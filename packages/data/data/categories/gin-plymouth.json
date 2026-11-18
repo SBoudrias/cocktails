@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Gin (Plymouth)",
   "categoryType": "spirit",
+  "description": "A style of gin historically made only in Plymouth, England — softer and slightly sweeter than London dry, with less juniper bite and an earthy, rooty background. One distillery still holds the name. The original spec of many Victorian classics, and a distinctly smooth Martini.",
   "parents": ["Gin"],
   "refs": [
     {

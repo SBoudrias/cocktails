@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Orgeat",
   "categoryType": "syrup",
+  "description": "A milky, opaque syrup of almonds (sometimes apricot kernels), sugar and a touch of orange flower water, with roots in the Mediterranean before tiki bars adopted it. It gives the Mai Tai its signature nutty depth and carries drinks like the Saturn and Fog Cutter.",
   "refs": [
     {
       "type": "youtube",

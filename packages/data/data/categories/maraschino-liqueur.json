@@ -1,5 +1,6 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Maraschino liqueur",
-  "categoryType": "liqueur"
+  "categoryType": "liqueur",
+  "description": "A dry, slightly nutty liqueur made from Marasca cherries \u2014 including their crushed pits, which give an almond note \u2014 and distilled rather than simply infused. Luxardo and Maraska are the benchmark houses. The bridging note in the Aviation, Hemingway Daiquiri, Brooklyn and the Last Word."
 }

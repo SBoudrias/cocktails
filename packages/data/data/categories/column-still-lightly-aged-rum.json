@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Column still lightly aged rum",
   "categoryType": "spirit",
+  "description": "Cuban-style white rum: column-distilled, given only a brief oak rest, then filtered to a pale color with faint sweetness and almost no funk. Bacardi Superior, Ca\u00f1a Brava and Havana Club 3 are the archetypes \u2014 the Daiquiri and Mojito were built on this style.",
   "parents": ["Blended lightly-aged rum"]
 }
