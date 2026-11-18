@@ -19,6 +19,8 @@ const [
   tequilaSunrise,
   vieuxCarreRocks,
   ninthWonder,
+  bermudaTriangle,
+  hemingwayDaiquiri,
 ] = await Promise.all([
   getRecipe(
     { type: 'book', slug: 'tropical-standard' },
@@ -54,6 +56,8 @@ const [
     '01_Classic and Vintage',
   ),
   getRecipe({ type: 'youtube-channel', slug: 'educated-barfly' }, '9th-wonder'),
+  getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'bermuda-triangle'),
+  getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'hemingway-daiquiri'),
 ]);
 
 describe('getRecipeStyles', () => {
@@ -137,6 +141,21 @@ describe('getRecipesByStyle', () => {
       `${ninthWonder.name} (educated-barfly)`,
     );
     expect(namesOf(sidecarFamily)).toContain(`${ninthWonder.name} (educated-barfly)`);
+
+    // A sugar-bumped liqueur sour stays a daiquiri when the syrup pour
+    // outweighs the liqueur: the Hemingway Daiquiri's maraschino is a
+    // seasoning, not the sweetener.
+    expect(namesOf(daiquiriFamily)).toContain(
+      `${hemingwayDaiquiri.name} (anders-erickson)`,
+    );
+
+    // Three ounces of juice is a long drink or a punch, not a sour.
+    expect(namesOf(daiquiriFamily)).not.toContain(
+      `${bermudaTriangle.name} (make-and-drink)`,
+    );
+    expect(namesOf(sidecarFamily)).not.toContain(
+      `${bermudaTriangle.name} (make-and-drink)`,
+    );
   });
 
   it('returns only matching recipes, alphabetically sorted', async () => {
