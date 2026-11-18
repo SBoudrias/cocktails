@@ -23,11 +23,16 @@ const positions = new Map<string, { state: StateSnapshot; href: string; top: num
 
 // The fixed app bar covers the top of the window: this wrapper is the sticky
 // element — it carries the app bar's height as its top offset (per
-// orientation and breakpoint) and, once pinned, the moonlit glass that keeps
-// the rows scrolling beneath it from bleeding through.
+// orientation and breakpoint) and, once rows slide beneath it, the moonlit
+// glass that keeps them from bleeding through.
 function StickyTopItemList({ children, style }: TopItemListProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const stuck = useStuck(ref);
+  // The scroller that follows spans empty space above its first row (its
+  // box carries the full list height), so resolve to the rows it has
+  // actually rendered: they say where painted content is.
+  const stuck = useStuck(ref, (el) => [
+    ...(el.nextElementSibling?.querySelectorAll('[data-item-index]') ?? []),
+  ]);
 
   return (
     <div
