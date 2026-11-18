@@ -7,12 +7,17 @@
 
 /* Above the app bar and the drawer's backdrop (both +1 of --z-app-bar):
    a toast must cover the chrome. */
+/* Centered in the app's 600px column with equal 1rem gutters, instead of
+   ui-sdk's fixed 22rem docked to the right edge (which left uneven
+   gutters on phones and floated off the column on desktop). */
 [data-slot='toast-region'] {
   z-index: calc(var(--z-app-bar) + 2);
-
-  /* The reset strips ui-sdk's 1rem inset, so it is re-set here along with
-     the safe-area clear for the home indicator on notched phones. */
-  margin: 1rem;
+  inset-inline: 0;
+  width: auto;
+  max-width: calc(600px - 2rem);
+  translate: none;
+  margin-inline: max(1rem, (100vw - 600px) / 2 + 1rem);
+  margin-block: 1rem;
   margin-bottom: calc(1rem + var(--safe-area-bottom));
 }
 
@@ -59,11 +64,13 @@
   z-index: -1;
   border: 1px solid var(--border);
   border-radius: 10px 4px 10px 4px;
-  background-color: var(--header);
+  /* Solid, not glass: a toast floats over arbitrary content (list rows
+     read straight through an 85% fill), and backdrop-filter has no
+     backdrop to blur on a ::before inside the isolated toast. */
+  background-color: var(--paper);
   background-image: var(--surface-overlay);
-  box-shadow: var(--surface-shadow);
+  box-shadow: var(--app-bar-shadow);
   transform: skewY(calc(var(--card-shear) * 0.5));
-  backdrop-filter: blur(8px);
 }
 
 /* The text block grows; the button group never shrinks. */
@@ -114,6 +121,7 @@
   font-weight: 500;
   line-height: 1.75;
   text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
 
   &:hover {
@@ -126,12 +134,15 @@
 }
 
 /* The cancel button: a quiet text button, like the card actions. The sdk
-   paints a masked X glyph on parts without an svg child — suppressed
-   here because this button carries its own label ("Not now"). */
+   styles toast-close as a 1.75rem square icon button (fixed width and
+   height, masked X glyph) — reset all of it, since this one carries a
+   text label ("Not now", "Dismiss") that would otherwise overflow. */
 [data-slot='toast-close'] {
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
+  width: auto;
+  height: auto;
   min-height: 2.25rem;
   padding-inline: 0.5rem;
   border: 0;
@@ -141,6 +152,7 @@
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.75;
+  white-space: nowrap;
   cursor: pointer;
 
   &::before {
