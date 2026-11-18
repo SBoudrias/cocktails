@@ -63,13 +63,12 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const { type, slug } = await params;
 
   const ingredient = await getIngredient(type, slug);
-  const [substitution, relatedRecipes, recipeCounts] = await Promise.all([
+  const [substitution, relatedRecipes, recipeCounts, categoryGroups] = await Promise.all([
     getSubstitutesForIngredient(ingredient),
     getRecipesForIngredient(ingredient),
     getIngredientRecipeCounts(),
+    groupCategoriesBySystem(ingredient.categories),
   ]);
-
-  const categoryGroups = await groupCategoriesBySystem(ingredient.categories);
   const topCategory = ingredient.categories[0];
   const [firstVideo, ...additionalVideos] = uniqBy(
     [...ingredient.refs, ...ingredient.categories.flatMap((c) => c.refs ?? [])].filter(
