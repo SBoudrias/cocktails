@@ -27,7 +27,7 @@ import './drawer.css';
 export default function ListDrawer({
   title,
   description,
-  closeLabel = `Close ${title.toLowerCase()}`,
+  closeLabel,
   trigger,
   triggerClassName,
   keepContentMounted = false,
@@ -50,6 +50,7 @@ export default function ListDrawer({
   /** The list content, rendered inside the sheet's scrolling body. */
   children: ReactNode;
 }) {
+  const closeButtonLabel = closeLabel ?? `Close ${title.toLowerCase()}`;
   return (
     <Drawer side="bottom" snapPoints={[0.5, 1]}>
       <DrawerTrigger className={triggerClassName}>
@@ -75,7 +76,7 @@ export default function ListDrawer({
         <div className="flex items-center justify-between gap-2 px-4 pt-3">
           <DrawerTitle className="text-xl leading-8 font-normal">{title}</DrawerTitle>
           <DrawerClose
-            aria-label={closeLabel}
+            aria-label={closeButtonLabel}
             className="flex size-9 items-center justify-center rounded-full border-0 bg-transparent p-0 transition-colors outline-none hover:bg-foreground/8 focus-visible:bg-foreground/16"
           >
             <X className="size-5" aria-hidden="true" />

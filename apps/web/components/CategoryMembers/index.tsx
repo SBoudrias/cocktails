@@ -12,14 +12,14 @@ import { getIngredientUrl } from '#/modules/url';
  * render the plain list, no trigger, no drawer. (The median category holds
  * 3 members; only 21 of 251 carry more than 15.)
  */
-export const INLINE_MEMBER_LIMIT = 5;
+const INLINE_MEMBER_LIMIT = 5;
 
 /**
  * How many member bottles the category page previews above the see-all
  * row: the most-used bottles — the preview doubles as a recommendation,
  * the same ordering the full list shows.
  */
-export const PREVIEW_COUNT = 3;
+const PREVIEW_COUNT = 3;
 
 function renderMember(member: RootIngredient, recipeCounts: Map<string, number>) {
   return (
