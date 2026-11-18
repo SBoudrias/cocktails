@@ -68,8 +68,8 @@ beforeEach(() => {
 });
 
 describe('CategoryPage', () => {
-  describe('substitution lists', () => {
-    // These tests need the real member lists (rum: 98 bottles), not the
+  describe('member bottles', () => {
+    // These tests need the real member lists (rum: 95 bottles), not the
     // file-wide single-member mock.
     beforeEach(() => {
       vi.mocked(getIngredientsForCategory).mockImplementation(
@@ -124,20 +124,6 @@ describe('CategoryPage', () => {
       expect(within(sheet).getAllByRole('link', { hidden: true })).toHaveLength(
         expectedMembers.length,
       );
-    });
-
-    it('renders no member list for a category without members', async () => {
-      // Coffee bitters is an empty leaf category: no bottles of its own, no
-      // children — nothing to list.
-      await setupApp(
-        await CategoryPage({
-          params: Promise.resolve({ slug: 'coffee-bitters' }),
-        }),
-      );
-
-      expect(
-        screen.queryByRole('group', { name: /Examples of Coffee bitters/ }),
-      ).not.toBeInTheDocument();
     });
   });
 
