@@ -242,6 +242,7 @@ import { getAllSources, getSource } from '@cocktails/data/sources';
 - One category per product class — before creating one, search for the same product under other names, especially French/English equivalents (e.g. `Crème de Mûre` IS blackberry liqueur; French `Crème de X` appellations are canonical). See the ingredient-validator skill for the equivalence table
 - Category names use sentence case — first word and proper nouns capitalized, generic words lowercase (`Peach liqueur`, `Blended aged rum (Jamaica)`); `yarn check-data` auto-fixes casing and cascades it to all references
 - Use `parents` for genuine subtypes, never for synonyms; a generic parent grouping substitution-friendly variants (e.g. `Falernum` → `Falernum liqueur`, `Falernum syrup`) is the sanctioned pattern — declare it with `parents` so `yarn check-data` doesn't flag it as a duplicate
+- When a category's children are flavor or appellation islands that cannot substitute with one another (e.g. `Vodka`'s flavored children), declare `"substitutable": false` on the parent: the substitution lists then keep the parent itself but drop the siblings. If only some children substitute as a group, split them under an intermediate category (e.g. `Aged brandy (grapes)` / `Unaged brandy (grapes)`) and flag the family root
 - `yarn check-data` warns about redundant category names and auto-fixes category references to canonical names, but cannot detect translation duplicates — always search the categories directory first
 
 # ui-sdk

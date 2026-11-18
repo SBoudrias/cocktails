@@ -99,23 +99,32 @@ describe('getRecipesForIngredient', () => {
 });
 
 describe('getSubstitutesForIngredient', () => {
-  it('lists only bottles from the most specific category of the ingredient', async () => {
-    // Appleton 12 declares Blended aged rum (Jamaica) (depth 3) and Jamaican
-    // rum (depth 2): the deeper category wins, so lighter-aged or navy
-    // strength Jamaican rums stay out of the primary list.
+  it("lists every bottle sharing any of the ingredient's categories", async () => {
+    // Appleton 12 declares Blended aged rum (Jamaica) and Jamaican rum:
+    // substitution is bottle-level, so the primary list holds the other
+    // members of both — the aged blends and the lighter cuts alike.
     const substitution = await getSubstitutesForIngredient(
       await getIngredient('spirit', 'appleton-12'),
     );
 
-    expect(substitution?.category.slug).toBe('blended-aged-rum-jamaica');
-    expect(substitution?.substitutes.map(({ slug }) => slug)).toEqual([
-      'appleton-21',
-      'appleton-8',
-      'hamilton-jamaican-pot-still-gold',
-      'hampden-estate-46',
-      'planteray-2000-jamaican-rum',
-      'worthy-park-single-estate',
-    ]);
+    const substituteSlugs = substitution?.substitutes.map(({ slug }) => slug);
+
+    expect(substituteSlugs).toEqual(
+      expect.arrayContaining([
+        'appleton-21',
+        'appleton-8',
+        'hamilton-jamaican-pot-still-gold',
+        'hampden-estate-46',
+        'planteray-2000-jamaican-rum',
+        'worthy-park-single-estate',
+        // Lighter-aged Jamaican rums share only the broader category.
+        'rum-bar-silver',
+        'smith-and-cross',
+      ]),
+    );
+    // Each bottle appears once, and the bottle itself never does.
+    expect(new Set(substituteSlugs).size).toBe(substituteSlugs?.length);
+    expect(substituteSlugs).not.toContain('appleton-12');
   });
 
   it('lists substitution-friendly sibling categories for the secondary list', async () => {
@@ -147,15 +156,14 @@ describe('getSubstitutesForIngredient', () => {
     expect(relatedSlugs).not.toContain('black-blended-rum');
   });
 
-  it('falls back to a broader declared category when the deepest holds no other bottle', async () => {
+  it('unions across a sparse category and a populated one', async () => {
     // Wray & Nephew white overproof declares Pot still unaged overproof rum
-    // (no other member) and Jamaican rum (12 other members): the populated
-    // category supplies the primary list.
+    // (no other member) and Jamaican rum (12 other members): every member
+    // of both supplies the primary list, so the populated shelf shows up.
     const substitution = await getSubstitutesForIngredient(
       await getIngredient('spirit', 'wray-and-nephew-white-overproof'),
     );
 
-    expect(substitution?.category.slug).toBe('jamaican-rum');
     expect(substitution?.substitutes.map(({ slug }) => slug)).toContain('rum-bar-silver');
     // The whole populated Jamaican rum shelf shows up, 12 bottles.
     expect(substitution?.substitutes).toHaveLength(12);

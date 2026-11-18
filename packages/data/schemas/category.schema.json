@@ -26,6 +26,10 @@
       ]
     },
     "description": { "type": "string" },
+    "substitutable": {
+      "description": "Whether the children of this category substitute with each other. False for flavor or appellation islands — e.g. Vodka, whose chili pepper, chocolate and citrus children each keep their own flavor. The category's own bottles still substitute with each other; only the sibling expansion is dropped. Omit for the default, true.",
+      "type": "boolean"
+    },
     "parents": {
       "type": "array",
       "items": { "type": "string" }

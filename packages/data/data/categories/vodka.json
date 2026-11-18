@@ -2,5 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Vodka",
   "categoryType": "spirit",
-  "description": "A neutral spirit distilled to high proof and filtered, known for contributing texture and strength while letting the other ingredients lead. Classic in the Moscow Mule, Cosmopolitan, Espresso Martini and White Russian."
+  "description": "A neutral spirit distilled to high proof and filtered, known for contributing texture and strength while letting the other ingredients lead. Classic in the Moscow Mule, Cosmopolitan, Espresso Martini and White Russian.",
+  "substitutable": false
 }

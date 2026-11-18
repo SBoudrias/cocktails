@@ -7,6 +7,7 @@ import { reportBookChapters } from './checks/report/book-chapters.ts';
 import { findFloatingIngredients } from './checks/report/floating-ingredients.ts';
 import { reportRedundantCategories } from './checks/report/redundant-categories.ts';
 import { reportSimilarNames } from './checks/report/similar-names.ts';
+import { reportSubstitutableCategories } from './checks/report/substitutable-categories.ts';
 import { reportUntrackedChannels } from './checks/report/untracked-channels.ts';
 import { logger } from './cli-util.ts';
 import { ctx, loadContext } from './context/data-context.ts';
@@ -33,6 +34,7 @@ reportBarCasing();
 reportBarLocations();
 reportSimilarNames();
 reportRedundantCategories();
+reportSubstitutableCategories();
 await reportBookChapters();
 
 const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
