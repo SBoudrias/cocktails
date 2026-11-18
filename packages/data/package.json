@@ -9,6 +9,7 @@
     "./categories": "./src/modules/categories.ts",
     "./ingredients": "./src/modules/ingredients.ts",
     "./sources": "./src/modules/sources.ts",
+    "./styles": "./src/modules/styles.ts",
     "./authors": "./src/modules/authors.ts",
     "./bars": "./src/modules/bars.ts",
     "./constants": "./src/modules/constants.ts",

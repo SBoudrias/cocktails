@@ -9,6 +9,7 @@ import {
   getRecipesByAuthor,
   getRecipesByBar,
 } from '@cocktails/data/recipes';
+import { getRecipeStyles, getRecipesByStyle } from '@cocktails/data/styles';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeUrl } from '#/modules/url';
 
@@ -125,65 +126,81 @@ export async function getSerializedCatalog(): Promise<string> {
     getAllBars(),
   ]);
 
-  const [categoryLists, ingredientLists, curatedLists, authorLists, barLists] =
-    await Promise.all([
-      Promise.all(
-        categories.map(async (category) => {
-          const [recipes, childCategories] = await Promise.all([
-            getRecipeByCategory(category),
-            getChildCategories(category),
-          ]);
+  const [
+    categoryLists,
+    ingredientLists,
+    curatedLists,
+    styleLists,
+    authorLists,
+    barLists,
+  ] = await Promise.all([
+    Promise.all(
+      categories.map(async (category) => {
+        const [recipes, childCategories] = await Promise.all([
+          getRecipeByCategory(category),
+          getChildCategories(category),
+        ]);
 
-          return {
-            key: `category/${category.slug}`,
-            recipes,
-            pickQuantity: getCategoryQuantityPicker(category, childCategories),
-          };
-        }),
-      ),
-      Promise.all(
-        ingredients.map(async (ingredient) => {
-          const recipes = await getRecipesForIngredient(ingredient);
-
-          return {
-            key: `ingredient/${ingredient.type}/${ingredient.slug}`,
-            recipes,
-            pickQuantity: getIngredientQuantityPicker(ingredient),
-          };
-        }),
-      ),
-      Promise.all([
-        getNonAlcoholicRecipes().then((recipes) => ({
-          key: 'list/non-alcoholic',
+        return {
+          key: `category/${category.slug}`,
           recipes,
-          // The curated list pages show no per-recipe quantity.
-          pickQuantity: () => undefined,
-        })),
-      ]),
-      // Entity files cover the author and bar pages that list recipes —
-      // check-data fails on a credit with no entity file. Author and bar cards
-      // show no per-recipe quantity, so their lists carry none.
-      Promise.all(
-        authors.map(async (author) => ({
-          key: `list/authors/${author.slug}`,
-          recipes: await getRecipesByAuthor(author),
-          pickQuantity: () => undefined,
-        })),
-      ),
-      Promise.all(
-        bars.map(async (bar) => ({
-          key: `list/bars/${bar.slug}`,
-          recipes: await getRecipesByBar(bar),
-          pickQuantity: () => undefined,
-        })),
-      ),
-    ]);
+          pickQuantity: getCategoryQuantityPicker(category, childCategories),
+        };
+      }),
+    ),
+    Promise.all(
+      ingredients.map(async (ingredient) => {
+        const recipes = await getRecipesForIngredient(ingredient);
+
+        return {
+          key: `ingredient/${ingredient.type}/${ingredient.slug}`,
+          recipes,
+          pickQuantity: getIngredientQuantityPicker(ingredient),
+        };
+      }),
+    ),
+    Promise.all([
+      getNonAlcoholicRecipes().then((recipes) => ({
+        key: 'list/non-alcoholic',
+        recipes,
+        // The curated list pages show no per-recipe quantity.
+        pickQuantity: () => undefined,
+      })),
+    ]),
+    // The style pages mirror the curated list pages: catalog-rendered, no
+    // per-recipe quantity. A style nothing matches carries no list.
+    Promise.all(
+      getRecipeStyles().map(async (style) => ({
+        key: `list/style/${style.slug}`,
+        recipes: await getRecipesByStyle(style.slug),
+        pickQuantity: () => undefined,
+      })),
+    ),
+    // Entity files cover the author and bar pages that list recipes —
+    // check-data fails on a credit with no entity file. Author and bar cards
+    // show no per-recipe quantity, so their lists carry none.
+    Promise.all(
+      authors.map(async (author) => ({
+        key: `list/authors/${author.slug}`,
+        recipes: await getRecipesByAuthor(author),
+        pickQuantity: () => undefined,
+      })),
+    ),
+    Promise.all(
+      bars.map(async (bar) => ({
+        key: `list/bars/${bar.slug}`,
+        recipes: await getRecipesByBar(bar),
+        pickQuantity: () => undefined,
+      })),
+    ),
+  ]);
 
   const catalog = buildCatalog(
     [
       ...categoryLists,
       ...ingredientLists,
       ...curatedLists,
+      ...styleLists,
       ...authorLists,
       ...barLists,
     ].filter((list) => list.recipes.length > 0),

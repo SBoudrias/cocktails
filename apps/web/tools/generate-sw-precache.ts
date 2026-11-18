@@ -58,6 +58,7 @@ const LIST_ENTRIES = [
   'list/bars',
   'list/non-alcoholic',
   'list/milk-clarification',
+  'list/style/tiki',
 ] as const;
 
 const PAGE_ENTRIES = ['index.html', 'offline.html', ...LIST_ENTRIES.map(toHtmlFile)];

@@ -1,6 +1,7 @@
 import type { Source } from '@cocktails/data';
 import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import { getAllSources } from '@cocktails/data/sources';
+import { getRecipeStyles, getRecipesByStyle } from '@cocktails/data/styles';
 import { Book, Calculator, History, Podcast, Search } from 'lucide-react';
 import type { Metadata } from 'next';
 import { siYoutube } from 'simple-icons';
@@ -18,6 +19,7 @@ import {
   getRecentlyAddedUrl,
   getRecipeListUrl,
   getSourceUrl,
+  getStyleRecipesUrl,
 } from '#/modules/url';
 
 export const metadata: Metadata = {
@@ -62,9 +64,16 @@ function SourceListItem({ source }: { source: Source }) {
 }
 
 export default async function HomePage() {
-  const [sources, recentlyAddedRecipes] = await Promise.all([
+  const [sources, recentlyAddedRecipes, stylePages] = await Promise.all([
     getAllSources(),
     getRecentlyAddedRecipes(),
+    Promise.all(
+      getRecipeStyles().map(async (style) => ({
+        style,
+        // A style nothing in the corpus matches links nowhere.
+        recipeCount: (await getRecipesByStyle(style.slug)).length,
+      })),
+    ),
   ]);
 
   const {
@@ -105,6 +114,24 @@ export default async function HomePage() {
           </ul>
           <CalculatorTiles />
         </li>
+||||||| parent of 3793a60a1c086 (feat(web): style lists — tiki, prep families and the six Codex templates)
+        <HomeSection icon={<Calculator className="size-6" />} title="Calculators">
+          <LinkListItem href="/calculators/acid-adjusting" primary="Acid Adjusting" />
+          <LinkListItem
+            href="/calculators/juice-clarification"
+            primary="Juice Clarification"
+          />
+          <LinkListItem
+            href="/calculators/milk-clarification"
+            primary="Milk Clarification"
+          />
+          <LinkListItem href="/calculators/saline" primary="Saline Solution Calculator" />
+          <LinkListItem
+            href="/calculators/brix"
+            primary="Sugar Adjusting (Brix calculator)"
+          />
+          <LinkListItem href="/calculators/super-juice" primary="Super Juice" />
+        </HomeSection>
         <HomeSection icon={<Book className="size-6" />} title="By Books">
           {books.map((source) => (
             <SourceListItem source={source} key={source.name} />

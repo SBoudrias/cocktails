@@ -142,6 +142,12 @@ export function getMilkClarifiedRecipeListUrl(): Route {
   return '/list/milk-clarification';
 }
 
+export function getStyleRecipesUrl(style: {
+  slug: string;
+}): Route<`/list/style/${string}`> {
+  return `/list/style/${style.slug}`;
+}
+
 export function getBottleListUrl(): Route {
   return '/list/bottles';
 }
