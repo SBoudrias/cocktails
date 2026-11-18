@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import { siYoutube } from 'simple-icons';
 import AppHeader from '#/components/AppHeader';
 import BrandIcon from '#/components/icons/BrandIcon';
+import CalculatorTiles from '#/components/list/CalculatorTiles';
 import { LinkListItem } from '#/components/list/LinkList';
 import { List, ListSubheader } from '#/components/ui/list';
 import {
@@ -90,23 +91,20 @@ export default async function HomePage() {
             />
           )}
         </div>
-        <HomeSection icon={<Calculator className="size-6" />} title="Calculators">
-          <LinkListItem href="/calculators/acid-adjusting" primary="Acid Adjusting" />
-          <LinkListItem
-            href="/calculators/juice-clarification"
-            primary="Juice Clarification"
-          />
-          <LinkListItem
-            href="/calculators/milk-clarification"
-            primary="Milk Clarification"
-          />
-          <LinkListItem href="/calculators/saline" primary="Saline Solution Calculator" />
-          <LinkListItem
-            href="/calculators/brix"
-            primary="Sugar Adjusting (Brix calculator)"
-          />
-          <LinkListItem href="/calculators/super-juice" primary="Super Juice" />
-        </HomeSection>
+        {/* The calculators break the row-of-lists rhythm: their subheader
+            sits above a grid of square icon tiles (CalculatorTiles) instead
+            of a surface block of rows. */}
+        <li>
+          <ul>
+            <ListSubheader>
+              <span className="flex items-center gap-2">
+                <Calculator className="size-6" />
+                Calculators
+              </span>
+            </ListSubheader>
+          </ul>
+          <CalculatorTiles />
+        </li>
         <HomeSection icon={<Book className="size-6" />} title="By Books">
           {books.map((source) => (
             <SourceListItem source={source} key={source.name} />

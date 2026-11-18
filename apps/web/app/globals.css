@@ -122,6 +122,10 @@
   --card-taper: 2deg;
   --card-radius-lean: 26px 8px 26px 8px;
   --card-radius-lean-mirrored: 8px 26px 8px 26px;
+  /* The tile frame: the card plate's recipe scaled to a ~110px tile —
+     the same shear and taper, tighter radii, mirrored per tile. */
+  --tile-radius-lean: 20px 7px 20px 7px;
+  --tile-radius-lean-mirrored: 7px 20px 7px 20px;
   /* The fixed app bar: its glass fill (--header) and its height per
      orientation and breakpoint — the sticky headers offset from it. The
      height includes the top safe-area inset (viewport-fit=cover lets the
@@ -138,6 +142,10 @@
   --primary-light: #6fcf9a;
   --secondary-light: #ffd580;
   --secondary-dark: #c89a2f;
+  /* The lime green of the Super Juice citrus art: a citronnier step
+     between --primary-light (jade) and the liqueur greens, fixed like the
+     other icon-art shades. */
+  --lime: #b6e37e;
   --info-light: #8dd4ed;
   --warning: #d4883d;
   --warning-dark: #a66628;
