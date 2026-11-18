@@ -15,7 +15,7 @@ export default defineConfig({
         inline: ['@mui/material'],
       },
     },
-    exclude: ['node_modules', '.worktrees'],
+    exclude: ['**/node_modules', '**/.worktrees'],
     testTimeout: 10000,
     coverage: {
       provider: 'v8',
@@ -43,7 +43,7 @@ export default defineConfig({
           name: 'dom',
           include: ['apps/web/**/*.test.{ts,tsx}'],
           // Node-environment tests of the web app belong to the unit project.
-          exclude: ['node_modules', '.worktrees', 'apps/web/modules/**'],
+          exclude: ['**/node_modules', '**/.worktrees', 'apps/web/modules/**'],
           environment: 'happy-dom',
           environmentOptions: {
             happyDOM: { settings: { disableIframePageLoading: true } },
