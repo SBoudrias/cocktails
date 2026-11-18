@@ -1,7 +1,6 @@
 import type { Source } from '@cocktails/data';
 import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import { getAllSources } from '@cocktails/data/sources';
-import { getRecipeStyles, getRecipesByStyle } from '@cocktails/data/styles';
 import { Book, Calculator, History, Podcast, Search } from 'lucide-react';
 import type { Metadata } from 'next';
 import { siYoutube } from 'simple-icons';
@@ -19,7 +18,7 @@ import {
   getRecentlyAddedUrl,
   getRecipeListUrl,
   getSourceUrl,
-  getStyleRecipesUrl,
+  getStyleListUrl,
 } from '#/modules/url';
 
 export const metadata: Metadata = {
@@ -64,16 +63,9 @@ function SourceListItem({ source }: { source: Source }) {
 }
 
 export default async function HomePage() {
-  const [sources, recentlyAddedRecipes, stylePages] = await Promise.all([
+  const [sources, recentlyAddedRecipes] = await Promise.all([
     getAllSources(),
     getRecentlyAddedRecipes(),
-    Promise.all(
-      getRecipeStyles().map(async (style) => ({
-        style,
-        // A style nothing in the corpus matches links nowhere.
-        recipeCount: (await getRecipesByStyle(style.slug)).length,
-      })),
-    ),
   ]);
 
   const {
@@ -151,6 +143,7 @@ export default async function HomePage() {
           ))}
         </HomeSection>
         <HomeSection title="Other lists">
+          <LinkListItem href={getStyleListUrl()} primary="Cocktails by Style" />
           <LinkListItem href={getAuthorListUrl()} primary="By Authors" />
           <LinkListItem href={getBarListUrl()} primary="By Bars" />
           <LinkListItem href={getIngredientListUrl()} primary="All Ingredients" />

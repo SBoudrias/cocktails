@@ -1,4 +1,5 @@
-import type { IngredientType } from '../types/Ingredient.ts';
+import { match } from 'ts-pattern';
+import type { IngredientType, RecipeIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import memo from './memo';
 import { getAllRecipes } from './recipes';
@@ -33,9 +34,49 @@ const hasIngredientNamed = (recipe: Recipe, pattern: RegExp) =>
 
 const isSpirited = (recipe: Recipe) => hasIngredientOfType(recipe, 'spirit');
 
-/** Citrus or other fruit juice carrying the drink's tartness. */
-const isTart = (recipe: Recipe) =>
-  hasIngredientOfType(recipe, 'juice') || hasIngredientOfType(recipe, 'puree');
+/**
+ * A juice or puree that actually carries tartness: citrus (lime, lemon,
+ * verjus, passion fruit...), a juice whose acidity is known to bite
+ * (grapefruit), or any juice acid-adjusted on the line. Mild fruit juice
+ * alone — orange, pineapple — does not make a sour.
+ */
+const isTartIngredient = (ingredient: RecipeIngredient) => {
+  const isJuice = match(ingredient)
+    .with({ type: 'juice' }, () => true)
+    .with({ type: 'puree' }, () => true)
+    .with({ type: 'category', categoryType: 'juice' }, () => true)
+    .with({ type: 'category', categoryType: 'puree' }, () => true)
+    .otherwise(() => false);
+
+  if (!isJuice) return false;
+
+  if (
+    /lime|lemon|verjus|passion fruit|yuzu|calamansi|tamarind/.test(
+      ingredient.name.toLowerCase(),
+    )
+  ) {
+    return true;
+  }
+
+  // Grapefruit and other biting juices carry their acidity on the line.
+  if (
+    'acidity' in ingredient &&
+    ingredient.acidity != null &&
+    ingredient.acidity >= 1.5
+  ) {
+    return true;
+  }
+
+  const techniques = Array.isArray(ingredient.technique)
+    ? ingredient.technique
+    : ingredient.technique
+      ? [ingredient.technique]
+      : [];
+
+  return techniques.some(({ technique }) => technique === 'acid-adjustment');
+};
+
+const isTart = (recipe: Recipe) => recipe.ingredients.some(isTartIngredient);
 
 const isSweetened = (recipe: Recipe) =>
   hasIngredientOfType(recipe, 'syrup') ||
@@ -63,11 +104,11 @@ const isBittered = (recipe: Recipe) =>
 
 const hasEggYolk = (recipe: Recipe) => hasIngredientNamed(recipe, /whole egg|egg yolk/);
 
-/** Dairy or coconut body: cream, milk, yogurt, cream of coconut. */
+/** Dairy or coconut body: cream, milk, yogurt, cream of coconut, coconut mix. */
 const isCreamy = (recipe: Recipe) =>
   hasIngredientNamed(
     recipe,
-    /\bcream\b(?! soda)|condensed milk|\bmilk\b|yogurt|ice cream/,
+    /\bcream\b(?! soda)|condensed milk|\bmilk\b|yogurt|ice cream|coconut mix/,
   );
 
 /**
@@ -91,13 +132,25 @@ const tikiSourceSlugs = new Set([
  * The families overlap by design — a shaken sour with a liqueur is both a
  * daiquiri and a sidecar — the way the book's own chapters overlap.
  */
+/**
+ * A tiki serve — a tiki glass, or crushed ice that isn't a frozen blend —
+ * files the drink under tiki instead: a Hurricane or a grog is not a
+ * daiquiri family member however tart it is.
+ */
+const isTikiServe = (recipe: Recipe) =>
+  ['tiki', 'hurricane', 'goblet'].includes(recipe.glassware) ||
+  (recipe.served_on === 'crushed ice' && recipe.preparation !== 'blended');
+
 const isDaiquiriFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
   isTart(recipe) &&
   isSweetened(recipe) &&
   !isAromatized(recipe) &&
   !isCarbonated(recipe) &&
-  !hasEggYolk(recipe);
+  !hasEggYolk(recipe) &&
+  !isCreamy(recipe) &&
+  !isTikiServe(recipe) &&
+  recipe.preparation !== 'flash blended';
 
 const isSidecarFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
@@ -105,30 +158,44 @@ const isSidecarFamily = (recipe: Recipe) =>
   isTart(recipe) &&
   !hasEggYolk(recipe) &&
   !isCarbonated(recipe) &&
-  !isCreamy(recipe);
+  !isCreamy(recipe) &&
+  !isTikiServe(recipe) &&
+  recipe.preparation !== 'flash blended';
+
+/**
+ * A rocks-served old-fashioned profile, with or without aromatized wine:
+ * Death & Co files vermouth-and-bitters drinks served on a big rock under
+ * the old-fashioned, so serving decides between the two families.
+ */
+const isOldFashionedFamily = (recipe: Recipe) =>
+  isSpirited(recipe) &&
+  isBittered(recipe) &&
+  isSweetened(recipe) &&
+  !isTart(recipe) &&
+  !hasEggYolk(recipe) &&
+  !isCreamy(recipe) &&
+  (isServedOnRocks(recipe) || !isAromatized(recipe));
+
+/** Served over a big rock or crushed ice, the old-fashioned way. */
+const isServedOnRocks = (recipe: Recipe) =>
+  recipe.served_on === 'big rock' ||
+  recipe.served_on === 'crushed ice' ||
+  ['old fashioned', 'tiki', 'hurricane', 'goblet', 'julep'].includes(recipe.glassware);
 
 const isMartiniFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
   isAromatized(recipe) &&
   !isTart(recipe) &&
   !hasEggYolk(recipe) &&
+  !isCreamy(recipe) &&
   !isCarbonated(recipe) &&
-  !isCreamy(recipe);
-
-const isOldFashionedFamily = (recipe: Recipe) =>
-  isSpirited(recipe) &&
-  isBittered(recipe) &&
-  isSweetened(recipe) &&
-  !isTart(recipe) &&
-  !isAromatized(recipe) &&
-  !hasEggYolk(recipe);
+  !isServedOnRocks(recipe);
 
 const isHighballFamily = (recipe: Recipe) =>
   isSpirited(recipe) && isCarbonated(recipe) && !hasEggYolk(recipe);
 
 const isFlip = (recipe: Recipe) =>
-  hasEggYolk(recipe) ||
-  (isSpirited(recipe) && isCreamy(recipe) && !isTart(recipe) && !isCarbonated(recipe));
+  hasEggYolk(recipe) || (isSpirited(recipe) && isCreamy(recipe) && !isCarbonated(recipe));
 
 const styleDefinitions: StyleDefinition[] = [
   {

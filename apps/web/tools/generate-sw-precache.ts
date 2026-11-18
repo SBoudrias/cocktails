@@ -58,6 +58,7 @@ const LIST_ENTRIES = [
   'list/bars',
   'list/non-alcoholic',
   'list/milk-clarification',
+  'list/style',
   'list/style/tiki',
 ] as const;
 
