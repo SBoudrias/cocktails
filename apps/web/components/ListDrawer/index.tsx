@@ -61,7 +61,7 @@ export default function ListDrawer({
       <DrawerContent
         keepMounted={keepContentMounted}
         initialFocus="content"
-        className="gap-0 rounded-t-xl surface p-0 pb-2 text-foreground backdrop-blur-[8px]"
+        className="gap-0 rounded-t-xl surface p-0 pb-[calc(var(--safe-area-bottom)+0.5rem)] text-foreground backdrop-blur-[8px]"
       >
         <DrawerHandle
           aria-label="Resize sheet"
