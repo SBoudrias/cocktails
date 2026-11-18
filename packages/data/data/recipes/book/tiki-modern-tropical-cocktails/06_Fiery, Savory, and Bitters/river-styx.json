@@ -78,7 +78,8 @@
     },
     {
       "relation": "bar",
-      "source": "The Studio at the Freehand New York"
+      "source": "The Studio at the Freehand New York",
+      "location": "New York, NY"
     }
   ],
   "refs": [

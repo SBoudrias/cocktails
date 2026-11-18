@@ -49,7 +49,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Madre Cafe"
+      "source": "Madre Cafe",
+      "location": "Mexico City, Mexico"
     }
   ],
   "refs": [

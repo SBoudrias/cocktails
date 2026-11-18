@@ -41,7 +41,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "The Enchanted Tiki Room"
+      "source": "The Enchanted Tiki Room",
+      "location": "Disneyland, Anaheim, CA"
     }
   ],
   "refs": [

@@ -61,7 +61,8 @@
     },
     {
       "relation": "bar",
-      "source": "Paradise Lost"
+      "source": "Paradise Lost",
+      "location": "New York, NY"
     }
   ],
   "refs": [

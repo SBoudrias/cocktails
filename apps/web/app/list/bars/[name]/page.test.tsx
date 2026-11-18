@@ -1,3 +1,5 @@
+import { getBar } from '@cocktails/data/bars';
+import type * as BarsModule from '@cocktails/data/bars';
 import { getRecipe, getRecipesByBar } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
@@ -12,6 +14,14 @@ vi.mock('@cocktails/data/recipes', async (importOriginal) => ({
   ...(await importOriginal<typeof RecipesModule>()),
   getRecipesByBar: vi.fn(),
 }));
+
+// The real data has no name-only bar left (every entity carries a location),
+// so the name-only rendering case below overrides getBar for itself; every
+// other test reads the real entity files through the default implementation.
+vi.mock('@cocktails/data/bars', async (importOriginal) => {
+  const actual = await importOriginal<typeof BarsModule>();
+  return { ...actual, getBar: vi.fn(actual.getBar) };
+});
 
 // Real recipes: the list rows render their name and source label, so the
 // fixtures double as the content the assertions below look for.
@@ -68,6 +78,14 @@ describe('BarRecipesPage', () => {
   });
 
   it('renders the card header for a name-only bar, without extra links', async () => {
+    // No name-only bar is left in the real data (every entity carries a
+    // location), so this case pins the page's no-location rendering with a
+    // synthetic name-only bar.
+    vi.mocked(getBar).mockImplementationOnce(async () => ({
+      name: "Trader Vic's",
+      slug: 'trader-vics',
+    }));
+
     await setupApp(
       await BarRecipesPage({
         params: Promise.resolve({ name: 'trader-vics' }),

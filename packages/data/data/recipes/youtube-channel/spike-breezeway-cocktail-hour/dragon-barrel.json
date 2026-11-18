@@ -75,7 +75,8 @@
     },
     {
       "relation": "bar",
-      "source": "The Lucky Tiki"
+      "source": "The Lucky Tiki",
+      "location": "West Hollywood, CA"
     }
   ],
   "refs": [

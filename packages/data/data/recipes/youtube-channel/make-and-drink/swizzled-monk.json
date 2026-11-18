@@ -53,7 +53,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Disneyland Resort"
+      "source": "Disneyland Resort",
+      "location": "Anaheim, CA"
     }
   ],
   "refs": [

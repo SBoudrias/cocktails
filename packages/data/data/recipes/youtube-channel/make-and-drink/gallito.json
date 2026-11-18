@@ -73,7 +73,8 @@
   "attributions": [
     {
       "relation": "bar",
-      "source": "Rayo Cocktail Bar"
+      "source": "Rayo Cocktail Bar",
+      "location": "Mexico City, Mexico"
     }
   ],
   "refs": [

@@ -63,7 +63,8 @@
     },
     {
       "relation": "bar",
-      "source": "Maison Premiere"
+      "source": "Maison Premiere",
+      "location": "Brooklyn, NY"
     }
   ],
   "refs": [

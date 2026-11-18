@@ -51,7 +51,8 @@
     },
     {
       "relation": "bar",
-      "source": "Saint Theo's"
+      "source": "Saint Theo's",
+      "location": "New York, NY"
     }
   ],
   "refs": [

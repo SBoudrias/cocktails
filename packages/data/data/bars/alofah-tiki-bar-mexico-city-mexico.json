@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "Alofah Tiki Bar",
+  "location": "Mexico City, Mexico"
+}
