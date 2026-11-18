@@ -18,6 +18,7 @@ const [
   jonsMartini,
   justAnotherJulep,
   grog,
+  maiTai,
   littleCoconut,
   hurricane,
   acapulcoGold,
@@ -44,6 +45,11 @@ const [
   ),
   getRecipe({ type: 'book', slug: 'death-and-co' }, 'just-another-julep', '15_Juleps'),
   getRecipe({ type: 'book', slug: 'smugglers-cove' }, 'grog', '06_Rum Through the Ages'),
+  getRecipe(
+    { type: 'book', slug: 'smugglers-cove' },
+    'mai-tai',
+    '09_Eight Essential Exotic Elixirs',
+  ),
   getRecipe(
     { type: 'book', slug: 'death-co-welcome-home' },
     'little-coconut',
@@ -102,8 +108,10 @@ describe('getRecipesByStyle', () => {
     expect(daiquiriFamily.map((recipe) => recipe.name)).toContain(frozenDaiquiri.name);
     expect(martiniFamily.map((recipe) => recipe.name)).toContain(jonsMartini.name);
     expect(julepStyle.map((recipe) => recipe.name)).toContain(justAnotherJulep.name);
-    // Whole-catalog tiki books make every recipe they published tiki.
-    expect(tikiStyle.map((recipe) => recipe.name)).toContain(grog.name);
+    // A marker drink is tiki whatever its source; a plain drink from a
+    // tiki book (a grog is rum, lime and demerara) is not.
+    expect(tikiStyle.map((recipe) => recipe.name)).toContain(maiTai.name);
+    expect(tikiStyle.map((recipe) => recipe.name)).not.toContain(grog.name);
     expect(flipStyle.map((recipe) => recipe.name)).toContain(littleCoconut.name);
   });
 
