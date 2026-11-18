@@ -2,6 +2,7 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Coconut rum",
   "categoryType": "spirit",
+  "parents": ["Rum"],
   "refs": [
     {
       "type": "youtube",
