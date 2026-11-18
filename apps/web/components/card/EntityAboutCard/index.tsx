@@ -1,6 +1,7 @@
 import type { Author, Bar } from '@cocktails/data';
 import { cn } from 'cn';
 import { Globe, Map as MapIcon, Martini, User } from 'lucide-react';
+import Link from 'next/link';
 import { siFacebook, siInstagram, siX, siYoutube } from 'simple-icons';
 import { match, P } from 'ts-pattern';
 import BrandIcon from '#/components/icons/BrandIcon';
@@ -118,12 +119,12 @@ export function AuthorAboutCard({
               {bars.map((bar, index) => (
                 <span key={bar.slug}>
                   {index > 0 && ' · '}
-                  <a
+                  <Link
                     className="text-primary underline decoration-primary/40"
                     href={getBarRecipesUrl(bar)}
                   >
                     {bar.name}
-                  </a>
+                  </Link>
                 </span>
               ))}
             </p>
@@ -134,12 +135,12 @@ export function AuthorAboutCard({
               {sources.map((source, index) => (
                 <span key={`${source.type}:${source.slug}`}>
                   {index > 0 && ' · '}
-                  <a
+                  <Link
                     className="text-primary underline decoration-primary/40"
                     href={getSourceUrl(source)}
                   >
                     {source.name}
-                  </a>
+                  </Link>
                 </span>
               ))}
             </p>

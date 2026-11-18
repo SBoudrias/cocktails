@@ -8,6 +8,7 @@ import { getIngredientPageParams } from '@cocktails/data/params';
 import uniqBy from 'lodash/uniqBy';
 import { Tag } from 'lucide-react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound, unstable_rethrow } from 'next/navigation';
 import FixBugCard from '#/components/card/FixBugCard';
 import VideoListCard from '#/components/card/VideoListCard';
@@ -119,13 +120,13 @@ export default async function IngredientPage({ params }: { params: Promise<Param
           </CardHeader>
           <CardContent>{topCategory.description}</CardContent>
           <CardActions>
-            <a
+            <Link
               href={getCategoryUrl(topCategory)}
               aria-label="Learn more about this category"
               className={buttonVariants({ variant: 'text' })}
             >
               Learn more
-            </a>
+            </Link>
           </CardActions>
         </Card>
       ) : (
