@@ -1,9 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
+import type { CategorizationSystem } from '../types/CategorizationSystem.ts';
 import type { Category } from '../types/Category.ts';
 import type { Ref } from '../types/Ref.ts';
-import { getSystemCategoryNodes } from './categorization-systems.ts';
+import { getSystemCategoryNodes, getSystemOfCategory } from './categorization-systems.ts';
 import { CATEGORY_ROOT } from './constants';
 import { readJSONFile } from './fs';
 import memo from './memo';
@@ -141,3 +142,29 @@ export const getRelatedCategories = memo(
   },
   (category) => category.slug,
 );
+
+/**
+ * An ingredient's categories grouped by the categorization system each
+ * belongs to: the unclaimed house categories first, then each system's
+ * categories, groups ordered by first appearance in the ingredient's own
+ * list — e.g. a rum bottle whose Smuggler's Cove categories come first, its
+ * Minimalist Tiki style in tow.
+ */
+export async function groupCategoriesBySystem(
+  categories: readonly Category[],
+): Promise<Array<{ system?: CategorizationSystem; categories: Category[] }>> {
+  const groups = new Map<
+    string,
+    { system?: CategorizationSystem; categories: Category[] }
+  >();
+
+  for (const category of categories) {
+    const system = await getSystemOfCategory(category.slug);
+    const key = system?.slug ?? '_house';
+    const group = groups.get(key) ?? { system, categories: [] };
+    group.categories.push(category);
+    groups.set(key, group);
+  }
+
+  return [...groups.values()];
+}

@@ -1,3 +1,4 @@
+import { groupCategoriesBySystem } from '@cocktails/data/categories';
 import {
   getIngredient,
   getIngredientRecipeCounts,
@@ -68,6 +69,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
     getIngredientRecipeCounts(),
   ]);
 
+  const categoryGroups = await groupCategoriesBySystem(ingredient.categories);
   const topCategory = ingredient.categories[0];
   const [firstVideo, ...additionalVideos] = uniqBy(
     [...ingredient.refs, ...ingredient.categories.flatMap((c) => c.refs ?? [])].filter(
@@ -88,7 +90,13 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       listHeader={`Recipes using ${ingredient.name}`}
       underTitle={
         <>
-          <CategoryChips categories={ingredient.categories} />
+          {categoryGroups.map((group) => (
+            <CategoryChips
+              key={group.system?.slug ?? 'house'}
+              categories={group.categories}
+              label={group.system ? `${group.system.name} categories` : 'Categories'}
+            />
+          ))}
           {substitution && (
             <SubstitutionDrawer ingredientName={ingredient.name}>
               <SubstitutionLists
