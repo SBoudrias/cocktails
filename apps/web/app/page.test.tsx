@@ -1,6 +1,7 @@
 import type { Recipe, Source } from '@cocktails/data';
 import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import { getAllSources } from '@cocktails/data/sources';
+import { getRecipeStyles, getRecipesByStyle } from '@cocktails/data/styles';
 import { screen, within } from '@testing-library/react';
 import { beforeEach, vi } from 'vitest';
 import { setupApp } from '#/vitest.setup';
@@ -12,6 +13,11 @@ vi.mock('@cocktails/data/recipes', () => ({
 
 vi.mock('@cocktails/data/sources', () => ({
   getAllSources: vi.fn(),
+}));
+
+vi.mock('@cocktails/data/styles', () => ({
+  getRecipeStyles: vi.fn(),
+  getRecipesByStyle: vi.fn(),
 }));
 
 const testRecipe: Recipe = {
@@ -35,9 +41,18 @@ const testRecipe: Recipe = {
 
 const testSources: Source[] = [];
 
+const testStyles = [
+  { slug: 'tiki', name: 'Tiki', description: 'Tropical drinks.' },
+  { slug: 'julep', name: 'Julep', description: 'Mint and crushed ice.' },
+];
+
 beforeEach(() => {
   vi.mocked(getAllSources).mockResolvedValue(testSources);
   vi.mocked(getRecentlyAddedRecipes).mockResolvedValue([testRecipe]);
+  vi.mocked(getRecipeStyles).mockReturnValue(testStyles);
+  vi.mocked(getRecipesByStyle).mockImplementation(async (slug: string) =>
+    slug === 'tiki' ? [testRecipe] : [],
+  );
 });
 
 describe('HomePage', () => {
@@ -94,5 +109,29 @@ describe('HomePage', () => {
       'href',
       '/list/non-alcoholic',
     );
+  });
+
+  it('lists the styles that carry recipes', async () => {
+    await setupApp(await HomePage());
+
+    const styleSection = screen.getByText('By style').closest('ul');
+    if (styleSection == null) {
+      throw new Error('Expected the style section to be rendered');
+    }
+
+    const styleLinks = within(styleSection).getAllByRole('link');
+
+    // Tiki carries a recipe, julep does not: only tiki links.
+    expect(styleLinks).toHaveLength(1);
+    expect(styleLinks[0]).toHaveAttribute('href', '/list/style/tiki');
+    expect(styleLinks[0]).toHaveTextContent('Tiki');
+  });
+
+  it('hides the style section when no style carries recipes', async () => {
+    vi.mocked(getRecipesByStyle).mockResolvedValue([]);
+
+    await setupApp(await HomePage());
+
+    expect(screen.queryByText('By style')).not.toBeInTheDocument();
   });
 });

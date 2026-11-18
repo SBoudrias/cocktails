@@ -1,6 +1,7 @@
 import type { Source } from '@cocktails/data';
 import { getRecentlyAddedRecipes } from '@cocktails/data/recipes';
 import { getAllSources } from '@cocktails/data/sources';
+import { getRecipeStyles, getRecipesByStyle } from '@cocktails/data/styles';
 import { Book, Calculator, History, Podcast, Search } from 'lucide-react';
 import type { Metadata } from 'next';
 import { siYoutube } from 'simple-icons';
@@ -17,6 +18,7 @@ import {
   getRecentlyAddedUrl,
   getRecipeListUrl,
   getSourceUrl,
+  getStyleRecipesUrl,
 } from '#/modules/url';
 
 export const metadata: Metadata = {
@@ -61,9 +63,16 @@ function SourceListItem({ source }: { source: Source }) {
 }
 
 export default async function HomePage() {
-  const [sources, recentlyAddedRecipes] = await Promise.all([
+  const [sources, recentlyAddedRecipes, stylePages] = await Promise.all([
     getAllSources(),
     getRecentlyAddedRecipes(),
+    Promise.all(
+      getRecipeStyles().map(async (style) => ({
+        style,
+        // A style nothing in the corpus matches links nowhere.
+        recipeCount: (await getRecipesByStyle(style.slug)).length,
+      })),
+    ),
   ]);
 
   const {
@@ -107,6 +116,20 @@ export default async function HomePage() {
           />
           <LinkListItem href="/calculators/super-juice" primary="Super Juice" />
         </HomeSection>
+        {stylePages.some(({ recipeCount }) => recipeCount > 0) && (
+          <HomeSection title="By style">
+            {stylePages
+              .filter(({ recipeCount }) => recipeCount > 0)
+              .map(({ style, recipeCount }) => (
+                <LinkListItem
+                  key={style.slug}
+                  href={getStyleRecipesUrl(style)}
+                  primary={style.name}
+                  count={recipeCount}
+                />
+              ))}
+          </HomeSection>
+        )}
         <HomeSection icon={<Book className="size-6" />} title="By Books">
           {books.map((source) => (
             <SourceListItem source={source} key={source.name} />
