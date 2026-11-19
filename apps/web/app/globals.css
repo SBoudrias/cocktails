@@ -123,9 +123,14 @@
   --card-radius-lean: 26px 8px 26px 8px;
   --card-radius-lean-mirrored: 8px 26px 8px 26px;
   /* The tile frame: the card plate's recipe scaled to a ~110px tile —
-     the same shear and taper, tighter radii, mirrored per tile. */
+     the same shear and taper, tighter radii. The grid's tiles lean in
+     a woven cycle of three gestures: left, mirrored right, and a soft
+     left (rounder corners, deeper shear), offset per row so adjacent
+     tiles never lean alike. */
   --tile-radius-lean: 20px 7px 20px 7px;
   --tile-radius-lean-mirrored: 7px 20px 7px 20px;
+  --tile-radius-soft: 15px 9px 15px 9px;
+  --tile-shear-soft: 2.2deg;
   /* The fixed app bar: its glass fill (--header) and its height per
      orientation and breakpoint — the sticky headers offset from it. The
      height includes the top safe-area inset (viewport-fit=cover lets the
