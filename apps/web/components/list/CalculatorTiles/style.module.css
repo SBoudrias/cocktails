@@ -2,7 +2,8 @@
    language. Each tile's plate is the card frame's recipe (the sheared,
    tapered glass of components/ui/card.module.css) scaled to a ~110px
    tile: same shear and taper tokens, tighter radii, a 5px inset for the
-   shear's travel. Consecutive tiles mirror the lean like the cards do. */
+   shear's travel. The lean varies per column — strong left, mirrored
+   right, soft left — instead of shearing every tile one way. */
 
 .grid {
   display: grid;
@@ -38,11 +39,23 @@
   transition: transform 180ms ease;
 }
 
-/* Consecutive tiles mirror the lean, as consecutive cards do. */
-.tile:nth-child(2n)::before {
+/* The tiles lean in a woven cycle, not all one way: three gestures —
+   the strong left lean (the base card recipe), its mirrored right, and a
+   soft left (rounder corners, deeper shear) — walk across the grid with
+   the second row offset, so no two adjacent tiles lean alike. The count
+   runs on the grid's li children (the tile links are each an only child
+   of their li). */
+.grid > li:nth-child(6n + 2) .tile::before,
+.grid > li:nth-child(6n + 4) .tile::before {
   border-radius: var(--tile-radius-lean-mirrored);
   transform: perspective(900px) rotateX(var(--card-taper))
     skewY(calc(-1 * var(--card-shear)));
+}
+
+.grid > li:nth-child(6n + 3) .tile::before,
+.grid > li:nth-child(6n + 5) .tile::before {
+  border-radius: var(--tile-radius-soft);
+  transform: perspective(900px) rotateX(var(--card-taper)) skewY(var(--tile-shear-soft));
 }
 
 /* The press into a tile deepens its lean (pointer devices only — a touch
@@ -51,8 +64,13 @@
   .tile:hover::before {
     transform: perspective(900px) rotateX(var(--card-taper)) skewY(2.6deg);
   }
-  .tile:nth-child(2n):hover::before {
+  .grid > li:nth-child(6n + 2) .tile:hover::before,
+  .grid > li:nth-child(6n + 4) .tile:hover::before {
     transform: perspective(900px) rotateX(var(--card-taper)) skewY(-2.6deg);
+  }
+  .grid > li:nth-child(6n + 3) .tile:hover::before,
+  .grid > li:nth-child(6n + 5) .tile:hover::before {
+    transform: perspective(900px) rotateX(var(--card-taper)) skewY(3.6deg);
   }
 }
 
