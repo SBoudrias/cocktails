@@ -29,7 +29,21 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(PRECACHE_NAME);
-      await cache.addAll(PRECACHE);
+      // 'reload' on every precache fetch: the install must see the
+      // origin's bytes, never the HTTP cache — GitHub Pages serves
+      // everything with max-age=600, so a fresh window would bake the
+      // previous deploy's page or data file into this version's precache.
+      // Fetched in place of cache.addAll, which reads the HTTP cache.
+      await Promise.all(
+        PRECACHE.map(async (url) => {
+          const request = new URL(url, self.registration.scope);
+          const response = await fetch(request, { cache: 'reload' });
+          if (!response.ok) {
+            throw new Error(`precache fetch failed: ${url} -> ${response.status}`);
+          }
+          await cache.put(request, response);
+        }),
+      );
       await self.skipWaiting();
     })(),
   );
@@ -88,7 +102,12 @@ async function cachePut(cacheName, request, response) {
 // entries.
 async function networkFirst(request, matchOptions) {
   try {
-    const response = await fetch(request);
+    // 'no-cache' revalidates with the origin every time: GitHub Pages
+    // sends max-age=600 on these files (the search index, data files,
+    // navigated documents), and a plain fetch() honors it — a page
+    // loaded minutes after a deploy would otherwise serve yesterday's
+    // bytes from the HTTP cache even though the network was reachable.
+    const response = await fetch(request, { cache: 'no-cache' });
     if (response.ok) {
       await cachePut(RUNTIME_NAME, request, response.clone());
     }

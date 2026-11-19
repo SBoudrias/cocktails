@@ -222,7 +222,14 @@ const server = http.createServer((req, res) => {
         res
           .writeHead(200, {
             'Content-Type': MIME[path.extname(candidate)] ?? 'application/octet-stream',
-            'Cache-Control': 'no-store',
+            // GitHub Pages' real header (curl-verified: max-age=600 on
+            // every file, sw.js included). The harness must run inside
+            // that window, not around it: a no-store server can't tell a
+            // service worker that honors the HTTP cache from one that
+            // fetches past it, and the pull-to-update refresh is only
+            // correct if the worker's fetches never land on the CDN's
+            // stale window.
+            'Cache-Control': 'max-age=600',
           })
           .end(await readFile(path.join(root, candidate)));
         return;
@@ -820,6 +827,32 @@ await check('the runtime cache kept the pages visited before the redeploy', asyn
   );
   if (kept !== true)
     throw new Error('the visited recipe page HTML is gone from the runtime cache');
+});
+
+// The pull-to-update refresh, exactly as PullToUpdate runs it: the
+// worker's update(), a waiting worker told to skip waiting, then
+// window.location.reload(). The page was served from deploy A minutes
+// ago and Chrome's HTTP cache still holds deploy A's index.html well
+// inside the max-age=600 window the server sends (GitHub Pages' real
+// header) — so this reload lands on deploy B's bytes only if the
+// worker's navigation fetches revalidate with the origin instead of
+// reading the HTTP cache.
+await check('a pull-to-update refresh reloads onto the new deploy', async () => {
+  await evaluateValue(
+    `(async () => {
+      const r = await navigator.serviceWorker.ready;
+      await r.update();
+      if (navigator.serviceWorker.controller && r.waiting) {
+        r.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
+      window.location.reload();
+      return true;
+    })()`,
+  );
+  await untilTrue(
+    'the reloaded home page to serve deploy B',
+    'document.documentElement.innerHTML.includes("deploy-b")',
+  );
 });
 
 // ---------------------------------------------------------------------------
