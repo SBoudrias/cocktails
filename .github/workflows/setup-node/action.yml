@@ -15,4 +15,10 @@ runs:
 
     - name: Install dependencies 🔧
       shell: bash
+      # CI-only registry switch to the vlt public npm mirror
+      # (https://registry.vlt.io/upstream/npm/). Not set in .yarnrc.yml so
+      # local installs keep using registry.npmjs.org. yarn.lock stores
+      # checksums, not registry URLs, so this needs no lockfile change.
+      env:
+        YARN_NPM_REGISTRY_SERVER: https://registry.vlt.io/upstream/npm/
       run: yarn install --immutable
