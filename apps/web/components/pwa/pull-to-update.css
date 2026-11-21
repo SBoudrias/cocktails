@@ -24,6 +24,7 @@
 [data-slot='ptr-chip']:where(
   [data-phase='checking'],
   [data-phase='fresh'],
+  [data-phase='refresh'],
   [data-phase='offline']
 ) {
   translate: 0 0;

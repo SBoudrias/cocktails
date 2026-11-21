@@ -2,7 +2,6 @@ import { screen, waitFor } from '@testing-library/react';
 import { toast } from '@ui-sdk/react/toast';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { setupApp } from '#/vitest.setup';
-import AppToasts from './AppToasts';
 import PullToUpdate from './PullToUpdate';
 
 /**
@@ -11,6 +10,13 @@ import PullToUpdate from './PullToUpdate';
  * computed by the same formula the component uses against
  * window.innerHeight (768 in this environment): a 200px drag shows ~96px
  * (past the 56px threshold), a 30px one ~16px (under it).
+ *
+ * The pull's verdict is conditional: the release probes the origin's
+ * current copy of the page (fetch stubbed to serve the probe HTML) and
+ * compares deploy stamps — an unchanged deploy says "Up to date" without
+ * reloading; a changed, unstamped or unreadable one reloads.
+ * window.location.reload() is stubbed: happy-dom's own would tear the
+ * document down mid-test.
  */
 
 const stubbedRegistration = { update: vi.fn() };
@@ -67,22 +73,19 @@ async function mountInstalled() {
   });
 }
 
-/** Stubs the service worker layer the check talks to. */
+/** Stubs the service worker layer the refresh talks to. */
 function stubServiceWorker({
   waiting,
-  installing,
   controlled = true,
 }: {
   waiting?: ServiceWorker;
-  installing?: ServiceWorker;
   controlled?: boolean;
 } = {}) {
   stubbedRegistration.update.mockResolvedValue(undefined);
   const registration = {
     update: stubbedRegistration.update,
     waiting: waiting ?? null,
-    installing: installing ?? null,
-    // The check reads only these three fields.
+    // The refresh reads only these two fields.
   } as unknown as ServiceWorkerRegistration;
   const controller = controlled ? ({} as ServiceWorker) : undefined;
   Object.defineProperty(navigator, 'serviceWorker', {
@@ -90,6 +93,34 @@ function stubServiceWorker({
     configurable: true,
   });
 }
+
+// happy-dom's reload would tear the document down mid-test; stub it and
+// assert on it — the reload is the pull's whole outcome.
+const reload = vi.fn();
+Object.defineProperty(window.location, 'reload', {
+  value: reload,
+  configurable: true,
+});
+
+/** What the origin currently serves for this page, as the probe sees it. */
+const serveProbe = (html: string) =>
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async () => ({ ok: true, text: () => Promise.resolve(html) })),
+  );
+
+/** Stamps the page on screen with a deploy version. */
+function stampCurrentPage(version: string) {
+  const meta = document.createElement('meta');
+  meta.name = 'deploy-version';
+  meta.content = version;
+  document.head.appendChild(meta);
+  return meta;
+}
+
+/** The stamp a deployed page carries in its head. */
+const stampedHtml = (version: string) =>
+  `<!doctype html><html><head><meta name="deploy-version" content="${version}"/></head><body></body></html>`;
 
 const realScrollY = Object.getOwnPropertyDescriptor(window, 'scrollY');
 const withScrollY = (y: number) => {
@@ -130,6 +161,11 @@ describe('pull to update', () => {
     toast.dismiss();
     Reflect.deleteProperty(navigator, 'serviceWorker');
     stubbedRegistration.update.mockReset();
+    reload.mockClear();
+    // The stamp a test planted on the page and its fetch spy: neither
+    // may leak into the next test's document or window.
+    document.querySelector('meta[name="deploy-version"]')?.remove();
+    vi.restoreAllMocks();
     resetScrollY();
     resetOnLine();
   });
@@ -160,9 +196,12 @@ describe('pull to update', () => {
     expect(stubbedRegistration.update).not.toHaveBeenCalled();
   });
 
-  it('checks for an update on release past the threshold', async () => {
+  it('refreshes the app on release past the threshold', async () => {
     standalone = true;
     stubServiceWorker();
+    // The origin now serves a newer deploy than the page on screen.
+    stampCurrentPage('old-deploy');
+    serveProbe(stampedHtml('new-deploy'));
     const chip = await mountInstalled();
 
     pullTo(shell(), 200);
@@ -170,47 +209,63 @@ describe('pull to update', () => {
 
     release(shell(), 200);
     await waitFor(() => expect(chip).toHaveAttribute('data-phase', 'checking'));
-    await waitFor(() => expect(chip).toHaveTextContent('Up to date'));
-    expect(chip).toHaveAttribute('data-phase', 'fresh');
-    expect(stubbedRegistration.update).toHaveBeenCalledTimes(1);
+    // The worker check kicks first, then the changed page reloads.
+    await waitFor(() => expect(stubbedRegistration.update).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(reload).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(chip).toHaveTextContent('Refreshing…'));
+    expect(chip).toHaveAttribute('data-phase', 'refresh');
   });
 
-  it('offers the update toast when a worker is already waiting', async () => {
+  it('tells a waiting worker to skip waiting, then reloads', async () => {
     standalone = true;
-    const waiting = { postMessage: vi.fn() } as unknown as ServiceWorker;
+    const postMessage = vi.fn();
+    const waiting = { postMessage } as unknown as ServiceWorker;
     stubServiceWorker({ waiting });
-    await setupApp(
-      <>
-        <PullToUpdate />
-        <AppToasts />
-      </>,
-    );
-    const chip = await waitFor(() => {
-      const mounted = document.querySelector<HTMLElement>('[data-slot="ptr-chip"]');
-      if (mounted == null) throw new Error('chip did not mount');
-      return mounted;
-    });
-
-    pullAndRelease(shell(), 200);
-
-    const region = await screen.findByRole('region', { name: 'Notifications' });
-    expect(region).toHaveTextContent(/a new version is available/i);
-    // The chip steps aside for the toast.
-    await waitFor(() => expect(chip).toHaveAttribute('data-phase', 'settle'));
-  });
-
-  it('says the app is up to date when the update found nothing', async () => {
-    standalone = true;
-    stubServiceWorker();
+    stampCurrentPage('old-deploy');
+    serveProbe(stampedHtml('new-deploy'));
     const chip = await mountInstalled();
 
     pullAndRelease(shell(), 200);
 
+    await waitFor(() =>
+      expect(postMessage).toHaveBeenCalledWith({ type: 'SKIP_WAITING' }),
+    );
+    await waitFor(() => expect(reload).toHaveBeenCalledTimes(1));
+    // The chip steps aside for the refresh.
+    await waitFor(() => expect(chip).toHaveAttribute('data-phase', 'refresh'));
+  });
+
+  it('says up to date, without reloading, when the deploy did not change', async () => {
+    standalone = true;
+    stubServiceWorker();
+    // The origin serves the same deploy the page on screen came from.
+    stampCurrentPage('same-deploy');
+    serveProbe(stampedHtml('same-deploy'));
+    const chip = await mountInstalled();
+
+    pullAndRelease(shell(), 200);
+
+    await waitFor(() => expect(stubbedRegistration.update).toHaveBeenCalledTimes(1));
     await waitFor(() => expect(chip).toHaveTextContent('Up to date'));
-    // No toast: nothing needs action.
+    expect(chip).toHaveAttribute('data-phase', 'fresh');
+    expect(reload).not.toHaveBeenCalled();
     expect(
       screen.queryByRole('region', { name: 'Notifications' }),
     ).not.toBeInTheDocument();
+  });
+
+  it('reloads when the page cannot prove it is current', async () => {
+    standalone = true;
+    stubServiceWorker();
+    // A page from before stamps shipped (no stamp on screen) must read
+    // as changed — the pull is a refresh unless proven otherwise.
+    serveProbe(stampedHtml('v1'));
+    const chip = await mountInstalled();
+
+    pullAndRelease(shell(), 200);
+
+    await waitFor(() => expect(reload).toHaveBeenCalledTimes(1));
+    expect(chip).toHaveAttribute('data-phase', 'refresh');
   });
 
   it('stays quiet offline, without asking the worker', async () => {

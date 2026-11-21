@@ -4,17 +4,20 @@ import { rubberBand } from '@ui-sdk/core/gesture';
 import { Check, ChevronDown, LoaderCircle, WifiOff } from 'lucide-react';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { match } from 'ts-pattern';
-import { showUpdateToast } from './pwa-toasts';
 import './pull-to-update.css';
 
 /**
  * Pull-to-update: in the installed app, a downward pull at the very top
  * slides a glass chip out from behind the app bar; releasing past its
- * threshold asks the service worker to check for a new deploy. A found
- * update rides the existing update toast (the SKIP_WAITING flow PwaStatus
- * drives, or the one fired here for a worker already waiting); when
- * nothing is new the chip itself says "Up to date" — toasts stay for
- * things that need action.
+ * threshold refreshes the app — but only if the deploy moved under it.
+ * Every exported page carries a deploy stamp in its head (the build's
+ * content hash, baked by generate-sw-precache.ts), so the pull fetches
+ * its own page past every cache and compares stamps: a page built by the
+ * deploy the origin still serves is up to date — no reload, the chip
+ * says so — while any difference (the page predates stamps, the probe
+ * failed, the deploy changed anything the page loads) reloads onto the
+ * origin's current bytes. The worker's own update check runs first,
+ * keeping the precache warm whatever the verdict.
  *
  * Browser tabs keep the browser's own pull-to-refresh: the gesture is
  * display-mode standalone/fullscreen only (installed apps have no native
@@ -32,48 +35,71 @@ const SLOP = 8;
 const CHECK_MS = 450;
 const VERDICT_MS = 1_600;
 
-type Phase = 'idle' | 'pull' | 'settle' | 'checking' | 'fresh' | 'offline';
+type Phase = 'idle' | 'pull' | 'settle' | 'checking' | 'fresh' | 'refresh' | 'offline';
 
 const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
-/** One check's outcome: a toast is on its way, nothing new, or no network. */
-async function checkForUpdate(): Promise<'updating' | 'fresh' | 'offline'> {
+/** The deploy stamp a page's HTML carries in its head, or none. */
+const stampOf = (html: string) =>
+  html.match(/<meta name="deploy-version" content="([^"]*)"/)?.[1];
+
+/** One pull's outcome: nothing new, a reload on its way, or no network. */
+async function refreshApp(): Promise<'fresh' | 'refresh' | 'offline'> {
   const started = Date.now();
   // The spin never blinks past: whatever the network does, the checking
   // state holds at least CHECK_MS.
   const hold = () => sleep(Math.max(0, CHECK_MS - (Date.now() - started)));
-  if (!('serviceWorker' in navigator)) {
-    await hold();
-    return 'fresh';
-  }
   // Nothing can arrive without a connection; don't make the worker try.
   if (!navigator.onLine) {
     await hold();
     return 'offline';
   }
+  // Unknown until the origin's own page proves otherwise: the default is
+  // to refresh, exactly what a pull asks for.
+  let changed = true;
+  let registration: ServiceWorkerRegistration | undefined;
   try {
-    const registration = await navigator.serviceWorker.ready;
-    await registration.update();
-    // update() resolves once the new script is fetched and installing has
-    // begun — give updatefound a beat to land before reading the workers.
-    await hold();
-    const controlled = navigator.serviceWorker.controller != null;
-    if (registration.waiting && controlled) {
-      // This worker installed before the pull, so no updatefound fires
-      // for it — offer it here (same toast id as PwaStatus's, so it
-      // replaces rather than stacks).
-      showUpdateToast(registration.waiting);
-      return 'updating';
+    if ('serviceWorker' in navigator) {
+      registration = await navigator.serviceWorker.ready;
+      // The worker's own update check first: sw.js is fetched past the
+      // HTTP cache (updateViaCache: 'none' at registration), so a pull
+      // minutes after a deploy sees the new worker, not Pages'
+      // max-age=600 window on it. Whatever the page's verdict, this
+      // keeps the precaches warm for the next offline visit.
+      await registration.update();
     }
-    // An installing worker toasts through PwaStatus once it lands; step
-    // aside and let it.
-    return registration.installing && controlled ? 'updating' : 'fresh';
+    // The verdict probe: fetch this very page past every cache — the
+    // worker serves it network-first with cache: 'no-cache' — and compare
+    // deploy stamps. Equal stamps mean the page on screen was built by
+    // the deploy the origin still serves: nothing to reload. A stamp
+    // missing on either side (a page from before stamps shipped, a
+    // non-page response) reads as changed.
+    const response = await fetch(window.location.href, { cache: 'no-cache' });
+    if (response.ok) {
+      const served = stampOf(await response.text());
+      const current = document.querySelector<HTMLMetaElement>(
+        'meta[name="deploy-version"]',
+      )?.content;
+      if (served != null && served === current) changed = false;
+    }
   } catch {
-    await hold();
-    // Safari rejects the update fetch while offline; only call it that
-    // when the browser agrees.
-    return navigator.onLine ? 'fresh' : 'offline';
+    // Safari rejects the fetches while offline; only call it that when
+    // the browser agrees — otherwise fall through to the refresh.
+    if (!navigator.onLine) {
+      await hold();
+      return 'offline';
+    }
   }
+  await hold();
+  if (!changed) return 'fresh';
+  const waiting = registration?.waiting;
+  if (waiting && navigator.serviceWorker.controller) {
+    // A worker still waiting takes over now, so the reload lands on the
+    // new deploy's worker (its own install already skipWaiting'd anyway).
+    waiting.postMessage({ type: 'SKIP_WAITING' });
+  }
+  window.location.reload();
+  return 'refresh';
 }
 
 /** The installed app's display modes, as a store for useSyncExternalStore. */
@@ -159,14 +185,10 @@ export default function PullToUpdate() {
     const runCheck = () => {
       drop();
       setPhase('checking');
-      void checkForUpdate().then((verdict) => {
-        match(verdict)
-          .with('updating', () => settle())
-          .otherwise((state) => {
-            setPhase(state);
-            clearTimer();
-            timer = window.setTimeout(() => setPhase('idle'), VERDICT_MS);
-          });
+      void refreshApp().then((verdict) => {
+        setPhase(verdict);
+        clearTimer();
+        timer = window.setTimeout(() => setPhase('idle'), VERDICT_MS);
       });
     };
 
@@ -325,6 +347,7 @@ export default function PullToUpdate() {
             />
           ))
           .with('fresh', () => <Check className="size-4 text-ring" aria-hidden />)
+          .with('refresh', () => <Check className="size-4 text-ring" aria-hidden />)
           .with('offline', () => <WifiOff className="size-4 text-ring" aria-hidden />)
           .otherwise(() => (
             <ChevronDown
@@ -337,6 +360,7 @@ export default function PullToUpdate() {
         {match(phase)
           .with('checking', () => <span>Checking for updates…</span>)
           .with('fresh', () => <span>Up to date</span>)
+          .with('refresh', () => <span>Refreshing…</span>)
           .with('offline', () => <span>You’re offline</span>)
           .otherwise(() => null)}
       </div>
