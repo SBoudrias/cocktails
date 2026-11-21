@@ -50,15 +50,16 @@ function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined
 
 function isAlcoholicIngredient(ingredient: RecipeIngredient) {
   return match(ingredient)
-    .with({ type: 'bitter' }, (bitter) => !isSmallAlcoholicFlavoringPour(bitter))
-    .with({ type: 'tincture' }, (tincture) => {
-      return !isSmallAlcoholicFlavoringPour(tincture);
-    })
-    .with({ type: 'category' }, (category) => {
-      return match(category.categoryType)
+    .with(
+      { type: 'bitter' },
+      { type: 'tincture' },
+      (pour) => !isSmallAlcoholicFlavoringPour(pour),
+    )
+    .with({ type: 'category' }, (category) =>
+      match(category.categoryType)
         .with('bitter', 'tincture', () => !isSmallAlcoholicFlavoringPour(category))
-        .otherwise((categoryType) => isAlcoholicIngredientType(categoryType));
-    })
+        .otherwise((categoryType) => isAlcoholicIngredientType(categoryType)),
+    )
     .otherwise(({ type }) => isAlcoholicIngredientType(type));
 }
 
