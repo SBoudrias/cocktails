@@ -23,11 +23,18 @@ type StyleDefinition = RecipeStyle & {
   matches: (recipe: Recipe) => boolean;
 };
 
-/** Concrete ingredient lines and category lines (a category carries its
- * member type, e.g. 'Vodka' used as a spirit category) all count. */
+/**
+ * The ingredient type a line effectively carries: a category line stands
+ * for its member type (e.g. 'Vodka' used as a spirit category), so checks
+ * on a category's type resolve through its categoryType.
+ */
+const effectiveIngredientType = (ingredient: RecipeIngredient) =>
+  match(ingredient)
+    .with({ type: 'category' }, ({ categoryType }) => categoryType)
+    .otherwise(({ type }) => type);
+
 const isIngredientOfType = (ingredient: RecipeIngredient, type: IngredientType) =>
-  ingredient.type === type ||
-  (ingredient.type === 'category' && ingredient.categoryType === type);
+  effectiveIngredientType(ingredient) === type;
 
 const hasIngredientOfType = (recipe: Recipe, type: IngredientType) =>
   recipe.ingredients.some((ingredient) => isIngredientOfType(ingredient, type));
@@ -42,8 +49,9 @@ const isSmallAlcoholicFlavoringPour = (ingredient: RecipeIngredient) => {
 };
 
 /** Every ingredient type, so a new type in the schema fails typecheck here
- * rather than silently reading as non-alcoholic. */
-function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined) {
+ * rather than silently reading as non-alcoholic. Categories resolve
+ * through their categoryType before this runs. */
+function isAlcoholicIngredientType(type: IngredientType | undefined) {
   return match(type)
     .with('non-alcoholic', () => false)
     .with('beer', 'liqueur', 'spirit', 'wine', () => true)
@@ -58,7 +66,6 @@ function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined
       'spice',
       'syrup',
       'other',
-      'category',
       undefined,
       () => false,
     )
@@ -66,18 +73,9 @@ function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined
 }
 
 function isAlcoholicIngredient(ingredient: RecipeIngredient) {
-  return match(ingredient)
-    .with(
-      { type: 'bitter' },
-      { type: 'tincture' },
-      (pour) => !isSmallAlcoholicFlavoringPour(pour),
-    )
-    .with({ type: 'category' }, (category) =>
-      match(category.categoryType)
-        .with('bitter', 'tincture', () => !isSmallAlcoholicFlavoringPour(category))
-        .otherwise((categoryType) => isAlcoholicIngredientType(categoryType)),
-    )
-    .otherwise(({ type }) => isAlcoholicIngredientType(type));
+  return match(effectiveIngredientType(ingredient))
+    .with('bitter', 'tincture', () => !isSmallAlcoholicFlavoringPour(ingredient))
+    .otherwise(isAlcoholicIngredientType);
 }
 
 /** A recipe whose alcohol, if any, is only seasoning: dashes of bitters. */
@@ -141,11 +139,9 @@ const tartJuicePattern = /lime|lemon|verjus|passion ?fruit|yuzu|calamansi|tamari
  */
 const isTartIngredient = (ingredient: RecipeIngredient) => {
   const name = ingredient.name.toLowerCase();
-  const kind = match(ingredient)
-    .with({ type: 'juice' }, { type: 'puree' }, () => 'juice' as const)
-    .with({ type: 'category', categoryType: 'juice' }, () => 'juice' as const)
-    .with({ type: 'category', categoryType: 'puree' }, () => 'juice' as const)
-    .with({ type: 'fruit' }, () => 'fruit' as const)
+  const kind = match(effectiveIngredientType(ingredient))
+    .with('juice', 'puree', () => 'juice' as const)
+    .with('fruit', () => 'fruit' as const)
     .otherwise(() => 'other' as const);
 
   if (kind === 'fruit') return isSqueezedCitrus(ingredient);
