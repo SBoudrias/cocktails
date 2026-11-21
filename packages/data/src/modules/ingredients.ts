@@ -180,7 +180,11 @@ function getCategoryDepth(category: Category, ancestors = new Set<string>()): nu
  *   categories for a Jamaican aged rum — minus the categories the bottle
  *   declares itself.
  *
- * Returns undefined when the bottle declares no category at all.
+ * Returns undefined when the bottle declares no category at all, and
+ * when neither list holds anything — a solitary bottle whose categories
+ * have no other members and sit nowhere in the category tree (e.g. the
+ * only bottle of a parentless category). An empty drawer is worse than
+ * no drawer, so the page gets nothing to render.
  */
 export const getSubstitutesForIngredient = memo(
   async (ingredient: RootIngredient): Promise<IngredientSubstitutions | undefined> => {
@@ -213,12 +217,12 @@ export const getSubstitutesForIngredient = memo(
       ({ slug }) => !declaredSlugs.has(slug),
     );
 
-    return {
-      substitutes: [...substitutesBySlug.values()].toSorted(
-        byRecipeCountThenName(await getIngredientRecipeCounts()),
-      ),
-      relatedCategories,
-    };
+    const substitutes = [...substitutesBySlug.values()].toSorted(
+      byRecipeCountThenName(await getIngredientRecipeCounts()),
+    );
+    if (substitutes.length === 0 && relatedCategories.length === 0) return undefined;
+
+    return { substitutes, relatedCategories };
   },
   (ingredient) => ingredient.slug,
 );

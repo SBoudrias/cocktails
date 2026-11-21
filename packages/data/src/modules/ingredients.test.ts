@@ -241,6 +241,36 @@ describe('getSubstitutesForIngredient', () => {
     }
     vi.mocked(getAllRecipes).mockResolvedValue(recipes);
   });
+
+  it('returns undefined for a solitary bottle of a parentless category', async () => {
+    // Baileys is the only Irish cream and the category sits nowhere in
+    // the tree: no sibling bottles, no related categories. An empty
+    // drawer is worse than no drawer, so the page gets nothing to
+    // render — not a truthy pair of empty lists.
+    const substitution = await getSubstitutesForIngredient(
+      await getIngredient('liqueur', 'baileys'),
+    );
+
+    expect(substitution).toBeUndefined();
+  });
+
+  it('lists the other umeshu bottles for every umeshu bottle', async () => {
+    // All umeshu bottles share the single Umeshu category — the unified
+    // canonical home for Japanese plum liqueur — so each one's primary
+    // list holds the other three, whatever its own bottle name says.
+    const substitution = await getSubstitutesForIngredient(
+      await getIngredient('liqueur', 'umenoyado-umeshu'),
+    );
+
+    expect(substitution?.substitutes.map(({ slug }) => slug)).toEqual(
+      expect.arrayContaining([
+        'kamiozumi-umeshu',
+        'choya-kokuto-umeshu',
+        'tozai-blossom-of-peace',
+      ]),
+    );
+    expect(substitution?.substitutes).toHaveLength(3);
+  });
 });
 
 describe('getIngredientRecipeCounts', () => {

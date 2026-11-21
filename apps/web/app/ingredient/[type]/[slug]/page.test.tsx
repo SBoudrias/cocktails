@@ -65,6 +65,23 @@ const TEST_ARMAGNAC = {
   name: 'Delord Napoléon Armagnac',
 };
 
+// The solitary bottle of a parentless category: Baileys is the only Irish
+// cream and the category sits nowhere in the tree, so it has no
+// substitution content at all — no sibling bottles, no related categories.
+const TEST_SOLITARY_BOTTLE = {
+  type: 'liqueur',
+  slug: 'baileys',
+  name: 'Baileys',
+};
+
+// An umeshu bottle: every umeshu shares the single Umeshu category, so its
+// drawer holds the other three bottles.
+const TEST_UMESHU = {
+  type: 'liqueur',
+  slug: 'umenoyado-umeshu',
+  name: 'Umenoyado Umeshu',
+};
+
 const [pineappleRecipes, spiritRecipes, appleton21] = await Promise.all([
   Promise.all([
     getRecipe(
@@ -119,6 +136,8 @@ const [
   cappedSpiritPageJSX,
   flavoredVodkaPageJSX,
   armagnacPageJSX,
+  solitaryBottlePageJSX,
+  umeshuPageJSX,
 ] = await Promise.all([
   IngredientPage({
     params: Promise.resolve({
@@ -151,6 +170,18 @@ const [
     params: Promise.resolve({
       type: TEST_ARMAGNAC.type,
       slug: TEST_ARMAGNAC.slug,
+    }),
+  }),
+  IngredientPage({
+    params: Promise.resolve({
+      type: TEST_SOLITARY_BOTTLE.type,
+      slug: TEST_SOLITARY_BOTTLE.slug,
+    }),
+  }),
+  IngredientPage({
+    params: Promise.resolve({
+      type: TEST_UMESHU.type,
+      slug: TEST_UMESHU.slug,
     }),
   }),
 ]);
@@ -582,6 +613,34 @@ describe('IngredientPage', () => {
       expect(
         screen.queryByRole('group', { name: 'Substitution-friendly categories' }),
       ).not.toBeInTheDocument();
+    });
+
+    it('renders no substitution section for a solitary bottle of a parentless category', async () => {
+      // Baileys declares Irish cream — the only bottle of it — and the
+      // category has no parents, so no sibling bottles and no related
+      // categories either: no substitution content, hence no drawer at
+      // all, rather than a trigger opening an empty sheet.
+      await setupApp(solitaryBottlePageJSX);
+
+      expect(
+        screen.queryByRole('button', { name: 'Substitutions' }),
+      ).not.toBeInTheDocument();
+    });
+
+    it('lists the other umeshu bottles in the drawer', async () => {
+      const { user } = await setupApp(umeshuPageJSX);
+      await user.click(screen.getByRole('button', { name: 'Substitutions' }));
+
+      // Every umeshu bottle — including Umenoyado, once categorized apart
+      // under Plum liqueur — shares the single Umeshu category, so the
+      // primary list holds the other three.
+      const substitutionGroup = screen.getByRole('group', {
+        name: 'Some substitution option',
+      });
+
+      expect(substitutionGroup).toHaveTextContent('Kamiozumi Umeshu');
+      expect(substitutionGroup).toHaveTextContent('Choya Kokuto Umeshu');
+      expect(substitutionGroup).toHaveTextContent('Tozai Blossom of Peace');
     });
   });
 
