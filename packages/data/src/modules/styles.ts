@@ -316,6 +316,13 @@ const isTikiServe = (recipe: Recipe) =>
  * does not take a sour out of the family (a Clover Club), as it doesn't
  * for the sidecar's Corpse Reviver #2.
  */
+/**
+ * How a sour is made: shaken, built in the glass (a Caipirinha's muddled
+ * wedges) or blended. A stirred tart drink is not a sour family member —
+ * a stirred vermouth-and-citrus drink is closer to a martini variation.
+ */
+const sourPreparations = new Set(['shaken', 'built', 'blended', 'swizzled']);
+
 const isDaiquiriFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
   isTart(recipe) &&
@@ -326,7 +333,7 @@ const isDaiquiriFamily = (recipe: Recipe) =>
   !hasEggYolk(recipe) &&
   !isCreamy(recipe) &&
   !isTikiServe(recipe) &&
-  recipe.preparation !== 'flash blended';
+  sourPreparations.has(recipe.preparation);
 
 /**
  * The liqueur-sour root: spirit, liqueur and citrus — the liqueur can be
@@ -342,7 +349,7 @@ const isSidecarFamily = (recipe: Recipe) =>
   !isCarbonated(recipe) &&
   !isCreamy(recipe) &&
   !isTikiServe(recipe) &&
-  recipe.preparation !== 'flash blended';
+  sourPreparations.has(recipe.preparation);
 
 /** Served over a big rock or crushed ice, the old-fashioned way. */
 const isServedOnRocks = (recipe: Recipe) =>
