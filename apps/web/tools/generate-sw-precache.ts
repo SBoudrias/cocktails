@@ -212,6 +212,33 @@ async function main(): Promise<void> {
 
   await writeFile(swPath, baked);
 
+  // Stamp every exported page with the deploy version: the pull-to-update
+  // gesture (components/pwa/PullToUpdate.tsx) fetches the origin's current
+  // copy of the page and compares this stamp to decide whether anything
+  // changed — an unchanged page says "Up to date" without reloading. The
+  // stamp rides as a meta right before </head>; a page without one (dev,
+  // or a cached page from before this shipped) reads as changed, the safe
+  // default for a pull that asks for a refresh.
+  const STAMP = `<meta name="deploy-version" content="${version}"/>`;
+  let stamped = 0;
+  for (const file of outFiles) {
+    if (!file.endsWith('.html')) continue;
+    const html = await readFile(file, 'utf8');
+    const relFile = path.relative(outDir, file);
+    if (html.includes('name="deploy-version"')) {
+      throw new Error(
+        `${relFile} already carries a deploy-version stamp — the export is not a fresh build; rebuild before running this pass again`,
+      );
+    }
+    const headEnd = html.indexOf('</head>');
+    if (headEnd === -1) {
+      throw new Error(`${relFile} has no </head> to stamp — the export is malformed`);
+    }
+    await writeFile(file, `${html.slice(0, headEnd)}${STAMP}${html.slice(headEnd)}`);
+    stamped++;
+  }
+  console.log(`stamped ${stamped} pages with deploy version ${version}`);
+
   // Verify what actually landed on disk matches the bake, byte for byte.
   const written = await readFile(swPath, 'utf8');
   if (written !== baked) {

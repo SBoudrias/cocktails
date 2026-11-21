@@ -22,7 +22,14 @@
  * - a simulated redeploy (new sw.js version, precache pruned of chunks the
  *   old deploy's pages reference), then offline again: pages visited before
  *   the update must still work — the runtime cache survival and the activate
- *   migration are what make that hold.
+ *   migration are what make that hold;
+ * - the pull-to-update gesture end to end, the real component driven by
+ *   raw touch events (the installed display-mode emulated through
+ *   matchMedia): a pull on a page the redeploy made stale reloads onto the
+ *   new deploy's bytes; a pull on the current deploy says "Up to date" and
+ *   reloads nothing. The origin serves GitHub Pages' real max-age=600 the
+ *   whole run, so the verdicts prove the worker fetches revalidate past
+ *   the HTTP cache, not around it.
  *
  * This script FAILS LOUDLY: every failed check is named and the exit code is
  * non-zero, and a missing export, an unbaked sw.js or a missing Chrome
@@ -92,6 +99,18 @@ if (swSource.includes('__SW_VERSION__') || swSource.includes('const PRECACHE = [
 const versionMatch = swSource.match(/const VERSION = '([^']+)';/);
 if (!versionMatch) throw new Error('out/sw.js carries no baked VERSION constant');
 const deployAVersion = versionMatch[1]!;
+
+// The deploy stamp every exported page must carry in its head: the
+// pull-to-update gesture compares it against the origin's current page
+// to decide whether anything changed. An unstamped export means the
+// build never ran the stamping pass (generate-sw-precache.ts), and the
+// pull's verdicts would be meaningless.
+const homeSource = await readFile(path.join(outDir, 'index.html'), 'utf8');
+if (!homeSource.includes(`name="deploy-version" content="${deployAVersion}"`)) {
+  throw new Error(
+    `out/index.html carries no deploy-version stamp matching sw.js's VERSION ${deployAVersion} — the build must run apps/web/tools/generate-sw-precache.ts, which stamps every exported page`,
+  );
+}
 
 const precacheMatch = swSource.match(/const PRECACHE = (\[[\s\S]*?\n\]);/);
 if (!precacheMatch) throw new Error('out/sw.js carries no baked PRECACHE array');
@@ -286,10 +305,12 @@ await writeFile(
 );
 await writeFile(
   path.join(overlayDir, 'index.html'),
-  (await readFile(path.join(outDir, 'index.html'), 'utf8')).replace(
-    '</head>',
-    '<!--deploy-b--></head>',
-  ),
+  (await readFile(path.join(outDir, 'index.html'), 'utf8'))
+    .replace(
+      `<meta name="deploy-version" content="${deployAVersion}"/>`,
+      `<meta name="deploy-version" content="${deployBVersion}"/>`,
+    )
+    .replace('</head>', '<!--deploy-b--></head>'),
 );
 
 // ---------------------------------------------------------------------------
@@ -426,6 +447,30 @@ await page.send('Page.enable');
 await page.send('Runtime.enable');
 await page.send('Network.enable');
 
+// Standalone display-mode, emulated for the whole run: the pull-to-update
+// gesture (and its chip) exists only in the installed app, which headless
+// Chrome is not. The patch runs in every document before its scripts, so
+// every page — the chip included — sees the installed app's media state.
+await page.send('Page.addScriptToEvaluateOnNewDocument', {
+  source: `
+    const realMatchMedia = window.matchMedia.bind(window);
+    window.matchMedia = (query) => {
+      if (query.includes('display-mode')) {
+        return {
+          matches: true,
+          media: query,
+          addEventListener() {},
+          removeEventListener() {},
+          addListener() {},
+          removeListener() {},
+          dispatchEvent() { return false; },
+        };
+      }
+      return realMatchMedia(query);
+    };
+  `,
+});
+
 // Same-origin request failures, by type: what a broken offline page looks
 // like (a chunk or document that no cache holds). Cross-origin requests
 // (fonts, embeds) are none of the service worker's business.
@@ -518,6 +563,31 @@ async function evaluateStrings(expression: string): Promise<string[]> {
 
 function navigateTo(route: string): Promise<unknown> {
   return page.send('Page.navigate', { url: new URL(`.${route}`, scopeUrl).href });
+}
+
+/** One raw touch point, as CDP's touch dispatch wants it. */
+const touch = (x: number, y: number) => ({ x, y, id: 1 });
+
+/** A pull-to-update gesture: touchstart at the top, drag down in steps,
+ * release — the exact finger path the component listens for. The drag
+ * moves in small steps so every touchmove lands under the browser's
+ * move threshold, and far enough down (~250px) that the rubber-banded
+ * travel passes the release threshold. */
+async function pullDown() {
+  await page.send('Input.dispatchTouchEvent', {
+    type: 'touchStart',
+    touchPoints: [touch(300, 60)],
+  });
+  for (let y = 90; y <= 310; y += 20) {
+    await page.send('Input.dispatchTouchEvent', {
+      type: 'touchMove',
+      touchPoints: [touch(300, y)],
+    });
+  }
+  await page.send('Input.dispatchTouchEvent', {
+    type: 'touchEnd',
+    touchPoints: [],
+  });
 }
 
 /** Poll a numeric page expression until it satisfies the predicate. */
@@ -772,11 +842,43 @@ await check('a recipe page opens online', async () => {
 await navigateTo(`/${UNVISITED_CATEGORY}`);
 await untilCount('category rows', recipeRowsExpr, (count) => count > 0);
 
+// Home, loaded from deploy A while deploy A still serves: the pull below
+// runs on this page after the redeploy flips — the exact state a
+// suspended installed app is in when its user pulls.
+await navigateTo('/');
+await untilTrue('the home page to render', 'document.title.includes("Indexotica")');
+
 // ---------------------------------------------------------------------------
 // Phase 3 — redeploy: serve deploy B and let its service worker take over.
 // ---------------------------------------------------------------------------
 
 servingRoots = [overlayDir, outDir];
+
+// The pull-to-update gesture, the real component driven by raw touches
+// (pullDown): the page on screen was loaded from deploy A and the origin
+// now serves deploy B — and Chrome's HTTP cache still holds deploy A's
+// index.html well inside the max-age=600 window the server sends (GitHub
+// Pages' real header). The pull must reload this stale page onto deploy
+// B's bytes, which proves its verdict probe revalidates past the HTTP
+// cache instead of reading it.
+await check(
+  'a pull on a page the redeploy made stale reloads onto the new deploy',
+  async () => {
+    await evaluateValue('window.__prePull = "deploy A was here"; true');
+    await pullDown();
+    await untilTrue(
+      'the reloaded home page to serve deploy B',
+      'document.documentElement.innerHTML.includes("deploy-b")',
+    );
+    // A reload, not a swap: the old document's context is gone.
+    const gone = await evaluateValue('window.__prePull === undefined');
+    if (gone !== true) {
+      throw new Error(
+        'deploy B is on screen but the old JS context survived — no reload ran',
+      );
+    }
+  },
+);
 
 await check('the redeployed home page is served', async () => {
   await navigateTo('/');
@@ -829,31 +931,28 @@ await check('the runtime cache kept the pages visited before the redeploy', asyn
     throw new Error('the visited recipe page HTML is gone from the runtime cache');
 });
 
-// The pull-to-update refresh, exactly as PullToUpdate runs it: the
-// worker's update(), a waiting worker told to skip waiting, then
-// window.location.reload(). The page was served from deploy A minutes
-// ago and Chrome's HTTP cache still holds deploy A's index.html well
-// inside the max-age=600 window the server sends (GitHub Pages' real
-// header) — so this reload lands on deploy B's bytes only if the
-// worker's navigation fetches revalidate with the origin instead of
-// reading the HTTP cache.
-await check('a pull-to-update refresh reloads onto the new deploy', async () => {
-  await evaluateValue(
-    `(async () => {
-      const r = await navigator.serviceWorker.ready;
-      await r.update();
-      if (navigator.serviceWorker.controller && r.waiting) {
-        r.waiting.postMessage({ type: 'SKIP_WAITING' });
-      }
-      window.location.reload();
-      return true;
-    })()`,
-  );
-  await untilTrue(
-    'the reloaded home page to serve deploy B',
-    'document.documentElement.innerHTML.includes("deploy-b")',
-  );
-});
+// The unchanged verdict: the page on screen is deploy B's, the origin
+// serves deploy B, so a pull must say "Up to date" and reload nothing —
+// the user asked for the reload to be conditional on a real change.
+await check(
+  'a pull on the current deploy says up to date, without reloading',
+  async () => {
+    await navigateTo('/');
+    await untilTrue('the home page to render', 'document.title.includes("Indexotica")');
+    await evaluateValue('window.__stayed = "still here"; true');
+    await pullDown();
+    await untilTrue(
+      'the chip to give its verdict',
+      `document.querySelector('[data-slot="ptr-chip"]')?.textContent.includes('Up to date')`,
+    );
+    const stayed = await evaluateValue('window.__stayed === "still here"');
+    if (stayed !== true) {
+      throw new Error(
+        'the JS context was torn down — the pull reloaded an unchanged page',
+      );
+    }
+  },
+);
 
 // ---------------------------------------------------------------------------
 // Phase 4 — offline again, after the redeploy.
