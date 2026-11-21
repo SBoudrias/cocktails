@@ -36,7 +36,7 @@
     "react-dom": "19.3.1",
     "react-virtuoso": "^4.18.23",
     "sharp": "^0.35.5",
-    "simple-icons": "15.10.0",
+    "simple-icons": "16.38.0",
     "tailwindcss": "4.3.5",
     "ts-pattern": "^5.9.2"
   },
