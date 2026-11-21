@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Maggie's Farm Queen's Share Rum",
   "type": "spirit",
-  "categories": ["Pot still lightly aged rum", "Overproof rum"]
+  "categories": ["Pot still lightly aged rum", "Overproof rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "overproof pot still; no MT style"
+    }
+  ]
 }

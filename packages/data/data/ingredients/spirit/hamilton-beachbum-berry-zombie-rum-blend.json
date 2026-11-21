@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hamilton Beachbum Berry Zombie Rum Blend",
   "type": "spirit",
-  "categories": ["Rum"]
+  "categories": ["Rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "house blend spanning several styles"
+    }
+  ]
 }

@@ -17,10 +17,8 @@ import memo from './memo';
 interface SystemFile {
   name: string;
   description?: string;
-  canonicalNames?: Record<string, string>;
   covers?: string[];
   nodes: CategorizationSystemNode[];
-  exemptions?: Array<{ ingredient: string; reason: string }>;
 }
 
 export const getCategorizationSystems = memo(

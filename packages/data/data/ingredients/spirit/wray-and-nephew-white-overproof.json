@@ -2,5 +2,9 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Wray & Nephew white overproof",
   "type": "spirit",
-  "categories": ["Pot still unaged overproof rum", "Jamaican rum"]
+  "categories": [
+    "Pot still unaged overproof rum",
+    "Jamaican rum",
+    "Unaged Jamaican overproof rum"
+  ]
 }

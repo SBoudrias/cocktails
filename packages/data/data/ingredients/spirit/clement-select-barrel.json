@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Clément Select Barrel",
   "type": "spirit",
-  "categories": ["Rhum agricole vieux", "Aged agricole rum"]
+  "categories": ["Rhum agricole vieux", "Aged cane juice rum"]
 }

@@ -1,21 +1,23 @@
 {
   "$schema": "../../schemas/categorization-system.schema.json",
   "name": "Minimalist Tiki",
-  "description": "Matt Pietrek's Minimalist Tiki (2019) rum styles: the six styles that recur in Golden Era tiki drinks of the 1930s-1960s, picked by flavor profile rather than production. The book deliberately does not cover every rum.",
-  "canonicalNames": {
-    "Aged Agricole Rum": "Aged agricole rum",
-    "Aged Demerara Rum": "Aged Demerara rum",
-    "Aged Jamaican Rum": "Aged Jamaican rum",
-    "Lightly Age/Filtered Rum": "Lightly aged/filtered rum",
-    "Moderately Aged Rum": "Moderately aged rum",
-    "Overproof Demerara Rum": "Overproof Demerara rum"
-  },
+  "description": "Matt Pietrek's rum styles by flavor profile rather than production: the six Golden Era styles from Minimalist Tiki (2019) plus the two unaged styles from his nine-essential-styles update — unaged cane juice (agricole, cachaça, clairin) and unaged Jamaican overproof.",
   "covers": ["Rum"],
   "nodes": [
+    {
+      "name": "Aged Demerara rum",
+      "categoryType": "spirit",
+      "description": "Rich, molasses-dark aged rum in the Guyana Demerara style that anchors classics like the Planter's Punch and Queen's Park Swizzle."
+    },
     {
       "name": "Aged Jamaican rum",
       "categoryType": "spirit",
       "description": "Funky, ester-forward aged rum in the Golden Era Jamaican style — the Mai Tai and Zombie backbone. Named for Jamaica because 'funky' and 'hogo' rarely appear on labels."
+    },
+    {
+      "name": "Aged cane juice rum",
+      "categoryType": "spirit",
+      "description": "Aged cane-juice rum: rhum agricole vieux and aged cachaça, the grassy-then-oaky cane-juice style. Pietrek's caveat: Golden Era 'Martinique rum' was molasses rum, so the style is a modern reading."
     },
     {
       "name": "Lightly aged/filtered rum",
@@ -28,306 +30,19 @@
       "description": "A mid-aged gold rum in the Spanish-heritage style — rounded, low funk, the everyday aged mixing rum."
     },
     {
-      "name": "Aged Demerara rum",
-      "categoryType": "spirit",
-      "description": "Rich, molasses-dark aged rum in the Guyana Demerara style that anchors classics like the Planter's Punch and Queen's Park Swizzle."
-    },
-    {
       "name": "Overproof Demerara rum",
       "categoryType": "spirit",
       "description": "High-proof Demerara rum — Lemon Hart 151 and its kin, the float-and-flame rum of the Zombie family."
     },
     {
-      "name": "Aged agricole rum",
+      "name": "Unaged Jamaican overproof rum",
       "categoryType": "spirit",
-      "description": "Aged cane-juice rum in the Martinique rhum agricole vieux style. Pietrek's own caveat: Golden Era 'Martinique rum' was molasses rum closer to Jamaican, so this style is a modern reading."
-    }
-  ],
-  "exemptions": [
-    {
-      "ingredient": "Alamea spiced rum",
-      "reason": "spiced rum; no MT style"
-    },
-    {
-      "ingredient": "Avua Amburana",
-      "reason": "cachaça; no MT style"
-    },
-    {
-      "ingredient": "Avuá Oak Cachaça",
-      "reason": "cachaça; no MT style"
-    },
-    {
-      "ingredient": "Avua Prata",
-      "reason": "cachaça; no MT style"
-    },
-    {
-      "ingredient": "Bacardi 151",
-      "reason": "overproof column still; MT covers only Demerara overproof"
-    },
-    {
-      "ingredient": "Barbancourt 110 Haitian Proof",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Barbancourt White",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Blue Chair Bay Coconut Rum",
-      "reason": "flavored rum; no MT style"
-    },
-    {
-      "ingredient": "CANE pineapple-infused rum",
-      "reason": "flavored rum; no MT style"
-    },
-    {
-      "ingredient": "Clairin Communal",
-      "reason": "Haitian clairin; no MT style"
-    },
-    {
-      "ingredient": "Clairin Sajous",
-      "reason": "Haitian clairin; no MT style"
-    },
-    {
-      "ingredient": "Clairin Vaval",
-      "reason": "Haitian clairin; no MT style"
-    },
-    {
-      "ingredient": "Clément Canne Bleue",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Clément Première Canne",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Copalli White",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Cruzan Black Strap",
-      "reason": "blackstrap molasses rum; no MT style"
-    },
-    {
-      "ingredient": "Cutwater Bali Hai Tiki Gold Pineapple Rum",
-      "reason": "flavored rum; no MT style"
-    },
-    {
-      "ingredient": "Dakabend Oaxacan Pot Still Rum",
-      "reason": "Mexican aguardiente de caña; no MT style"
-    },
-    {
-      "ingredient": "Damoiseau Blanc",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Damoiseau Pure Cane 110 Proof",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Don Q 151",
-      "reason": "overproof column still; MT covers only Demerara overproof"
-    },
-    {
-      "ingredient": "Gosling's Black Seal 151",
-      "reason": "Bermuda overproof; no MT style"
-    },
-    {
-      "ingredient": "Goslings Black Seal Rum",
-      "reason": "Bermuda black rum; no MT style"
-    },
-    {
-      "ingredient": "Hamilton Beachbum Berry Zombie Rum Blend",
-      "reason": "house overproof blend; no single MT style"
-    },
-    {
-      "ingredient": "Hamilton Beachbum Berry's Navy Grog Blend",
-      "reason": "house navy grog blend; no MT style"
-    },
-    {
-      "ingredient": "Hampden Estate Rum Fire",
-      "reason": "unaged overproof; no MT style"
-    },
-    {
-      "ingredient": "Holmes Cay Reunion Island Grand Arome Rum",
-      "reason": "grande arôme style; no MT bucket"
-    },
-    {
-      "ingredient": "HSE Blanc",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "KoHana Hawaiian Agricole Rum",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Kōloa Kauaʻi Coconut Rum",
-      "reason": "flavored rum; no MT style"
-    },
-    {
-      "ingredient": "Kōloa Kauaʻi Dark Rum",
-      "reason": "craft dark rum; needs book verification"
-    },
-    {
-      "ingredient": "Kōloa Kauaʻi Spice Rum",
-      "reason": "spiced rum; no MT style"
-    },
-    {
-      "ingredient": "Kuleana Hawaiian Rum Agricole",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Kuleana Huihui Rum",
-      "reason": "Hawaiian pot still; no clear MT style"
-    },
-    {
-      "ingredient": "Kuleana Nanea Rum",
-      "reason": "Hawaiian pot still; no clear MT style"
-    },
-    {
-      "ingredient": "La Favorite Coeur de Canne",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "La Favorite Rhum Agricole Blanc",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "La Mauny 50%",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Lost Spirits Navy Style",
-      "reason": "navy style; no MT bucket"
-    },
-    {
-      "ingredient": "Maggie's Farm Queen's Share Rum",
-      "reason": "overproof pot still; no MT style"
-    },
-    {
-      "ingredient": "Maggie's Farm White Rum",
-      "reason": "unaged pot still; no MT style"
-    },
-    {
-      "ingredient": "Malibu",
-      "reason": "flavored rum; no MT style"
-    },
-    {
-      "ingredient": "Monymusk Overproof White Rum",
-      "reason": "unaged overproof; no MT style"
-    },
-    {
-      "ingredient": "Neisson Rhum Agricole Blanc",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Novo Fogo Gold",
-      "reason": "cachaça; no MT style"
-    },
-    {
-      "ingredient": "Novo Fogo Silver",
-      "reason": "cachaça; no MT style"
-    },
-    {
-      "ingredient": "Novo Fogo Silver Bar Strength",
-      "reason": "cachaça; no MT style"
-    },
-    {
-      "ingredient": "Paranubes Oaxaca Aguardiente de Caña",
-      "reason": "Mexican aguardiente de caña; no MT style"
-    },
-    {
-      "ingredient": "Planteray Cut & Dry",
-      "reason": "flavored rum; no MT style"
-    },
-    {
-      "ingredient": "Planteray Mister Fogg Navy Rum",
-      "reason": "navy style; no MT bucket"
-    },
-    {
-      "ingredient": "Planteray OFTD",
-      "reason": "overproof French Caribbean blend; no MT style"
-    },
-    {
-      "ingredient": "Planteray Original Dark",
-      "reason": "blend across styles; needs book verification"
-    },
-    {
-      "ingredient": "Planteray Stiggins' Fancy pineapple rum",
-      "reason": "flavored rum; no MT style"
-    },
-    {
-      "ingredient": "Pusser's Gunpowder Proof British Navy Rum",
-      "reason": "navy style; no MT bucket"
-    },
-    {
-      "ingredient": "Rhum J.M Blanc",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Rhum J.M Blanc 100",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Rum-Bar Overproof",
-      "reason": "unaged overproof; no MT style"
-    },
-    {
-      "ingredient": "Sailor Jerry Spiced Rum",
-      "reason": "spiced rum; no MT style"
-    },
-    {
-      "ingredient": "Saint James blanc",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Saison Sherry Cask Rum",
-      "reason": "sherry-cask finish; no MT style"
-    },
-    {
-      "ingredient": "Shannon Mustipher's Navy Rum Blend",
-      "reason": "navy style; no MT bucket"
-    },
-    {
-      "ingredient": "Trois Rivières Blanc 50%",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Trois Rivières Cuvée de L'Océan",
-      "reason": "unaged cane-juice blanc; MT has only aged agricole"
-    },
-    {
-      "ingredient": "Ultimate Mai Tai Rum Blend",
-      "reason": "house mai tai blend; no single MT style"
-    },
-    {
-      "ingredient": "Uruapan Charanda Blanco Rum",
-      "reason": "charanda; no MT style"
-    },
-    {
-      "ingredient": "Wood's Old Navy rum",
-      "reason": "navy style; no MT bucket"
-    },
-
-    {
-      "ingredient": "Worthy Park Overproof",
-      "reason": "unaged overproof; no MT style"
-    },
-    {
-      "ingredient": "Wray & Nephew white overproof",
-      "reason": "unaged overproof; no MT style"
-    },
-    {
-      "ingredient": "Yaguara Cachaça Branca",
-      "reason": "cachaça; no MT style"
-    },
-    {
-      "ingredient": "Yaguara Cachaça Ouro",
-      "reason": "cachaça; no MT style"
+      "description": "High-ester, unaged Jamaican overproof — Wray & Nephew and its kin: as subtle as an air-raid siren, used in half-ounce dashes."
     },
     {
-      "ingredient": "Yaguara Cachaça Prata",
-      "reason": "cachaça; no MT style"
+      "name": "Unaged cane juice rum",
+      "categoryType": "spirit",
+      "description": "Unaged cane-juice rum — blanc rhum agricole, unaged cachaça, Haitian clairin: grassy and vegetal, the Ti Punch pour. Pietrek's article lists cachaça and blanc agricoles together in this style."
     }
   ]
 }

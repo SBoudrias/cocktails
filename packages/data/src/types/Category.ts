@@ -7,6 +7,8 @@ export type Category = {
   description?: string;
   /** False when this category's children don't substitute with each other. */
   substitutable?: boolean;
+  /** Categorization systems this category and its subtree are outside of. */
+  outsideOf?: string[];
   parents: Category[];
   refs: Ref[];
   categoryType?: IngredientType;

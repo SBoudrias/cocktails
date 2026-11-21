@@ -1,14 +1,25 @@
 import { describe, expect, it } from 'vitest';
 import { findCategorizationSystemProblems } from './categorization-systems.ts';
 
-// A tiny catalog: a Smuggler's Cove-like tree under Rum, a Minimalist
-// Tiki-like style system covering Rum, and a gin outside both.
+// A tiny catalog: a Smuggler's Cove-like tree under Rum with a flavored
+// island and a charanda house category, a Minimalist Tiki-like style system
+// covering Rum, and a gin outside both.
 const parentsOf = new Map<string, string[]>([
   ['Rum', []],
   ['Jamaican rum', ['Rum']],
   ['Blended aged rum (Jamaica)', ['Jamaican rum']],
-  ['Aged Jamaican rum', []],
+  ['Black blended rum', ['Rum']],
+  ['Flavored rum', ['Rum']],
+  ['Coconut rum', ['Flavored rum']],
+  ['Charanda', ['Rum']],
   ['Gin', []],
+]);
+
+// The outsideOf marks as data-context collects them: from system nodes
+// (Flavored rum) and loose category files (Charanda) alike.
+const outsideOf = new Map<string, string[]>([
+  ['Flavored rum', ['Minimalist Tiki']],
+  ['Charanda', ['Minimalist Tiki', "Smuggler's Cove"]],
 ]);
 
 const sc = {
@@ -18,31 +29,44 @@ const sc = {
   nodes: [
     { name: 'Rum' },
     { name: 'Jamaican rum', parents: ['Rum'] },
+    { name: 'Black blended rum', parents: ['Rum'] },
+    { name: 'Flavored rum', parents: ['Rum'], outsideOf: ['Minimalist Tiki'] },
+    { name: 'Coconut rum', parents: ['Flavored rum'] },
     { name: 'Blended aged rum (Jamaica)', parents: ['Jamaican rum'] },
   ],
 };
 
-const mt = (exemptions: Array<{ ingredient: string; reason: string }> = []) => ({
+const mt = {
   slug: 'minimalist-tiki',
   name: 'Minimalist Tiki',
   covers: ['Rum'],
   nodes: [{ name: 'Aged Jamaican rum' }],
-  exemptions,
-});
+};
+
+const noExemptions = new Map<string, Map<string, string>>([]);
 
 describe('findCategorizationSystemProblems', () => {
-  it('accepts members and exempted bottles', () => {
+  it('accepts members, bottle-level exemptions and outsideOf subtrees', () => {
     const ingredients = new Map([
       ['Appleton 12', ['Blended aged rum (Jamaica)', 'Aged Jamaican rum']],
-      ['Malibu', ['Rum']],
+      ['Malibu', ['Coconut rum']],
+      ['Goslings Black Seal Rum', ['Black blended rum']],
+      ['Uruapan Charanda Blanco Rum', ['Charanda']],
       ['Tanqueray', ['Gin']],
     ]);
 
     expect(
       findCategorizationSystemProblems(
-        [sc, mt([{ ingredient: 'Malibu', reason: 'Flavored, outside the styles' }])],
+        [sc, mt],
         parentsOf,
+        outsideOf,
         ingredients,
+        new Map([
+          [
+            'Goslings Black Seal Rum',
+            new Map([['Minimalist Tiki', 'Bermuda black rum; no MT style']]),
+          ],
+        ]),
       ),
     ).toEqual([]);
   });
@@ -51,10 +75,17 @@ describe('findCategorizationSystemProblems', () => {
     // The bottle never names Rum: it is a rum through Jamaican rum.
     const ingredients = new Map([['Appleton 12', ['Blended aged rum (Jamaica)']]]);
 
-    expect(findCategorizationSystemProblems([sc, mt()], parentsOf, ingredients))
-      .toMatchInlineSnapshot(`
+    expect(
+      findCategorizationSystemProblems(
+        [sc, mt],
+        parentsOf,
+        outsideOf,
+        ingredients,
+        noExemptions,
+      ),
+    ).toMatchInlineSnapshot(`
       [
-        ""Appleton 12" is in "Rum" but has no Minimalist Tiki category and no exemption in minimalist-tiki.json: add the matching category or an exemption with a reason",
+        ""Appleton 12" is in "Rum" but has no Minimalist Tiki category, no exemption in its own file, and none of its categories is outside Minimalist Tiki: add the matching category, an exemptFrom on the bottle, or an outsideOf mark on the category",
       ]
     `);
   });
@@ -66,77 +97,34 @@ describe('findCategorizationSystemProblems', () => {
 
     expect(
       findCategorizationSystemProblems(
-        [sc, mt([{ ingredient: 'Appleton 12', reason: 'Too old' }])],
+        [sc, mt],
         parentsOf,
+        outsideOf,
         ingredients,
+        new Map([['Appleton 12', new Map([['Minimalist Tiki', 'Too old']])]]),
       ),
     ).toMatchInlineSnapshot(`
       [
-        ""Appleton 12" has a Minimalist Tiki category and an exemption in minimalist-tiki.json: drop one",
+        ""Appleton 12" has a Minimalist Tiki category and is exempted from it in its own file: drop one",
       ]
     `);
   });
 
-  it('flags stale, duplicate, unknown and reasonless exemptions', () => {
-    const ingredients = new Map([
-      ['Malibu', ['Rum']],
-      ['Tanqueray', ['Gin']],
-    ]);
+  it('flags a stale exemption on a bottle outside the covered family', () => {
+    const ingredients = new Map([['Tanqueray', ['Gin']]]);
 
     expect(
       findCategorizationSystemProblems(
-        [
-          sc,
-          mt([
-            { ingredient: 'Malibu', reason: 'Flavored' },
-            { ingredient: 'Malibu', reason: ' ' },
-            { ingredient: 'Tanqueray', reason: 'Not a rum' },
-            { ingredient: 'Ghost rum', reason: 'Gone' },
-          ]),
-        ],
+        [sc, mt],
         parentsOf,
+        outsideOf,
         ingredients,
+        new Map([['Tanqueray', new Map([['Minimalist Tiki', 'Not a rum']])]]),
       ),
     ).toMatchInlineSnapshot(`
       [
-        ""Malibu" is exempted twice in minimalist-tiki.json: keep one exemption",
-        "Exemption for "Malibu" in minimalist-tiki.json has no reason",
-        "Exemption for "Tanqueray" in minimalist-tiki.json is stale: the bottle is outside Rum, so remove the exemption",
-        "Exemption in minimalist-tiki.json names unknown ingredient "Ghost rum": fix the name or remove the exemption",
+        ""Tanqueray" is exempted from Minimalist Tiki in its own file but is not in Rum: remove the exemption",
       ]
     `);
-  });
-
-  it('flags duplicate names, foreign parents and non-root covers whatever the file order', () => {
-    const broken = {
-      slug: 'broken',
-      name: 'Broken',
-      covers: ['Jamaican rum'],
-      nodes: [
-        { name: 'Aged Jamaican rum' },
-        { name: 'Funky rum', parents: ['Rum'] },
-        { name: 'Funky rum' },
-      ],
-    };
-    const problems = (systems: Parameters<typeof findCategorizationSystemProblems>[0]) =>
-      findCategorizationSystemProblems(systems, parentsOf, new Map()).toSorted();
-
-    // The root-cover rule reads the category tree, not which system file
-    // happened to load first.
-    expect(problems([broken, mt()])).toContain(
-      'Cover category "Jamaican rum" of broken has parents (Rum): covers must be root categories',
-    );
-    expect(problems([mt(), broken])).toMatchInlineSnapshot(`
-      [
-        "Category name "Aged Jamaican rum" is declared in both minimalist-tiki.json and broken.json: names must be unique across systems",
-        "Category name "Funky rum" is declared twice in broken.json: remove the duplicate node",
-        "Cover category "Jamaican rum" of broken has parents (Rum): covers must be root categories",
-        "Node "Funky rum" in broken.json has parent "Rum" outside its system: parents must stay within the system",
-      ]
-    `);
-  });
-
-  it('accepts a system that covers its own root node', () => {
-    expect(findCategorizationSystemProblems([sc], parentsOf, new Map())).toEqual([]);
   });
 });

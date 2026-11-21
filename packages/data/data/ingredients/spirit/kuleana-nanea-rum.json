@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Kuleana Nanea Rum",
   "type": "spirit",
-  "categories": ["Rum"]
+  "categories": ["Rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "Hawaiian pot still; needs verification"
+    }
+  ]
 }

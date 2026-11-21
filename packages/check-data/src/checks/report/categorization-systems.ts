@@ -5,34 +5,46 @@ interface SystemLike {
   slug: string;
   name: string;
   covers?: readonly string[];
-  nodes: ReadonlyArray<{ name: string; parents?: readonly string[] }>;
-  exemptions?: ReadonlyArray<{ ingredient: string; reason: string }>;
+  nodes: ReadonlyArray<{
+    name: string;
+    parents?: readonly string[];
+    outsideOf?: readonly string[];
+  }>;
 }
 
 /**
  * Every problem in the categorization system files, as messages.
  *
  * Each system declares its category nodes and the root categories it covers.
- * Every ingredient of a covered family — a bottle whose categories reach a
- * cover through their parents, not only one naming it — must be a member of
- * one of the system's nodes, or appear in its exemptions with a reason, and
- * never both. So a rum bottle cannot ship without its Minimalist Tiki style
- * (or a written reason why it has none).
+ * Every bottle of a covered family — a bottle whose categories reach a cover
+ * through their parents, not only one naming it — must be a member of one of
+ * the system's nodes, be exempted on the bottle itself (exemptFrom, with a
+ * reason), or sit in a subtree marked outside the system (outsideOf on the
+ * category). So a rum bottle cannot ship without its Minimalist Tiki style,
+ * a written reason why it has none, or a category the system itself excludes.
  *
  * Category names are globally unique across systems: the flat `categories`
  * array on ingredients cannot say which system a name came from, so two
  * systems sharing a name would be ambiguous. Parents stay within the system.
  *
  * `parentsOf` maps every known category name (loose files and system nodes)
- * to its declared parents.
+ * to its declared parents; `outsideOfByCategory` maps category names to the
+ * systems their subtree is outside of.
  */
 export function findCategorizationSystemProblems(
   systems: readonly SystemLike[],
   parentsOf: ReadonlyMap<string, readonly string[]>,
+  outsideOfByCategory: ReadonlyMap<string, readonly string[]>,
   ingredientCategories: ReadonlyMap<string, readonly string[]>,
+  ingredientExemptions: ReadonlyMap<string, ReadonlyMap<string, string>>,
 ): string[] {
   const problems: string[] = [];
   const systemOfNode = new Map<string, string>();
+  const knownSystems = new Map<string, SystemLike>();
+  for (const system of systems) {
+    knownSystems.set(system.slug, system);
+    knownSystems.set(system.name, system);
+  }
 
   for (const system of systems) {
     const nodeNames = new Set<string>();
@@ -51,6 +63,18 @@ export function findCategorizationSystemProblems(
         );
       }
       systemOfNode.set(node.name, system.slug);
+
+      for (const outsideSystem of node.outsideOf ?? []) {
+        if (outsideSystem === system.name || outsideSystem === system.slug) {
+          problems.push(
+            `Node "${node.name}" in ${system.slug}.json is marked outside its own system: remove the mark`,
+          );
+        } else if (!knownSystems.has(outsideSystem)) {
+          problems.push(
+            `Node "${node.name}" in ${system.slug}.json is marked outside unknown system "${outsideSystem}": fix the name`,
+          );
+        }
+      }
     }
 
     for (const node of system.nodes) {
@@ -83,63 +107,64 @@ export function findCategorizationSystemProblems(
     }
   }
 
-  const ancestorsOf = (categories: readonly string[]): Set<string> => {
-    const seen = new Set<string>();
+  const isOutsideSubtree = (
+    system: SystemLike,
+    categories: readonly string[],
+  ): boolean => {
+    // Walk each category's lineage: a mark anywhere between the bottle's
+    // category and the cover excludes the whole subtree.
     const stack = [...categories];
+    const seen = new Set<string>();
     for (let name = stack.pop(); name !== undefined; name = stack.pop()) {
       if (seen.has(name)) continue;
       seen.add(name);
+      const marks = outsideOfByCategory.get(name) ?? [];
+      if (marks.includes(system.name) || marks.includes(system.slug)) return true;
       stack.push(...(parentsOf.get(name) ?? []));
     }
-    return seen;
+    return false;
   };
 
   for (const system of systems) {
     const covers = system.covers ?? [];
     const nodeNames = new Set(system.nodes.map((node) => node.name));
-    const isCovered = (categories: readonly string[]) => {
-      const lineage = ancestorsOf(categories);
-      return covers.find((cover) => lineage.has(cover));
+    const coveredBy = (categories: readonly string[]) => {
+      // A bottle is of the covered family when any lineage reaches a cover.
+      const stack = [...categories];
+      const seen = new Set<string>();
+      for (let name = stack.pop(); name !== undefined; name = stack.pop()) {
+        if (seen.has(name)) continue;
+        seen.add(name);
+        if (covers.includes(name)) return name;
+        stack.push(...(parentsOf.get(name) ?? []));
+      }
+      return undefined;
     };
 
-    const exempted = new Set<string>();
-    for (const { ingredient, reason } of system.exemptions ?? []) {
-      if (exempted.has(ingredient)) {
-        problems.push(
-          `"${ingredient}" is exempted twice in ${system.slug}.json: keep one exemption`,
-        );
-      }
-      exempted.add(ingredient);
-
-      const categories = ingredientCategories.get(ingredient);
-      if (!categories) {
-        problems.push(
-          `Exemption in ${system.slug}.json names unknown ingredient "${ingredient}": fix the name or remove the exemption`,
-        );
-      } else if (!isCovered(categories)) {
-        problems.push(
-          `Exemption for "${ingredient}" in ${system.slug}.json is stale: the bottle is outside ${covers.join(', ')}, so remove the exemption`,
-        );
-      }
-      if (!reason.trim()) {
-        problems.push(
-          `Exemption for "${ingredient}" in ${system.slug}.json has no reason`,
-        );
-      }
-    }
-
     for (const [ingredientName, categories] of ingredientCategories) {
-      const covered = isCovered(categories);
-      if (!covered) continue;
+      const covered = coveredBy(categories);
+      const exemption = ingredientExemptions.get(ingredientName);
+
+      if (!covered) {
+        // Outside the family: any exemption for this system is stale.
+        if (exemption?.has(system.name) || exemption?.has(system.slug)) {
+          problems.push(
+            `"${ingredientName}" is exempted from ${system.name} in its own file but is not in ${covers.join(', ')}: remove the exemption`,
+          );
+        }
+        continue;
+      }
 
       const isMember = categories.some((category) => nodeNames.has(category));
-      if (isMember && exempted.has(ingredientName)) {
+      const exempted = exemption?.has(system.name) || exemption?.has(system.slug);
+
+      if (isMember && exempted) {
         problems.push(
-          `"${ingredientName}" has a ${system.name} category and an exemption in ${system.slug}.json: drop one`,
+          `"${ingredientName}" has a ${system.name} category and is exempted from it in its own file: drop one`,
         );
-      } else if (!isMember && !exempted.has(ingredientName)) {
+      } else if (!isMember && !exempted && !isOutsideSubtree(system, categories)) {
         problems.push(
-          `"${ingredientName}" is in "${covered}" but has no ${system.name} category and no exemption in ${system.slug}.json: add the matching category or an exemption with a reason`,
+          `"${ingredientName}" is in "${covered}" but has no ${system.name} category, no exemption in its own file, and none of its categories is outside ${system.name}: add the matching category, an exemptFrom on the bottle, or an outsideOf mark on the category`,
         );
       }
     }
@@ -160,7 +185,9 @@ export function reportCategorizationSystems(): void {
   for (const problem of findCategorizationSystemProblems(
     ctx.categorizationSystems,
     parentsOf,
+    ctx.categoryOutsideOf,
     ctx.ingredientCategories,
+    ctx.ingredientExemptions,
   )) {
     report.fail(problem);
   }

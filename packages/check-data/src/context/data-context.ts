@@ -23,6 +23,7 @@ interface CategoryData {
   name: string;
   categoryType?: string;
   substitutable?: boolean;
+  outsideOf?: string[];
   parents?: string[];
 }
 
@@ -30,6 +31,7 @@ interface IngredientData {
   name: string;
   type: string;
   categories?: string[];
+  exemptFrom?: Array<{ system: string; reason: string }>;
 }
 
 interface BarEntity {
@@ -41,6 +43,7 @@ interface CollectedCategory {
   name: string;
   categoryType: string;
   substitutable?: boolean;
+  outsideOf?: string[];
   parents?: string[];
   filepath: string;
 }
@@ -98,6 +101,10 @@ export interface DataContext {
   categorizationSystems: SystemDefinition[];
   /** ingredient name -> declared categories. */
   ingredientCategories: Map<string, string[]>;
+  /** ingredient name -> system -> exemption reason. */
+  ingredientExemptions: Map<string, Map<string, string>>;
+  /** category name -> systems its subtree is outside of. */
+  categoryOutsideOf: Map<string, string[]>;
 }
 
 interface SystemNode {
@@ -105,6 +112,7 @@ interface SystemNode {
   categoryType?: string;
   parents?: string[];
   substitutable?: boolean;
+  outsideOf?: string[];
 }
 
 interface SystemDefinition {
@@ -112,7 +120,6 @@ interface SystemDefinition {
   slug: string;
   covers?: string[];
   nodes: SystemNode[];
-  exemptions?: Array<{ ingredient: string; reason: string }>;
 }
 
 /** The single shared context; every check imports this object. */
@@ -139,6 +146,8 @@ export const ctx: DataContext = {
   referencedIngredientSlugs: new Set<string>(),
   categorizationSystems: [],
   ingredientCategories: new Map<string, string[]>(),
+  ingredientExemptions: new Map<string, Map<string, string>>(),
+  categoryOutsideOf: new Map<string, string[]>(),
 };
 
 /**
@@ -265,9 +274,11 @@ export async function loadContext(): Promise<void> {
         name: data.name,
         categoryType: data.categoryType,
         substitutable: data.substitutable,
+        outsideOf: data.outsideOf,
         parents: data.parents,
         filepath: categoryFile,
       });
+      if (data.outsideOf) ctx.categoryOutsideOf.set(data.name, data.outsideOf);
     }
   }
   logger.item(`Found ${categorySlugs.size} categories`);
@@ -291,6 +302,12 @@ export async function loadContext(): Promise<void> {
     ingredientFolders.set(ingredientSlug, folderType);
     ingredientFiles.set(ingredientSlug, ingredientFile);
     ctx.ingredientCategories.set(data.name, data.categories ?? []);
+    for (const { system, reason } of data.exemptFrom ?? []) {
+      const perBottle =
+        ctx.ingredientExemptions.get(data.name) ?? new Map<string, string>();
+      perBottle.set(system, reason);
+      ctx.ingredientExemptions.set(data.name, perBottle);
+    }
     ingredients.push({
       name: data.name,
       type: data.type,
@@ -344,9 +361,11 @@ export async function loadContext(): Promise<void> {
           name: node.name,
           categoryType: node.categoryType,
           substitutable: node.substitutable,
+          outsideOf: node.outsideOf,
           parents: node.parents,
           filepath: systemFile,
         });
+        if (node.outsideOf) ctx.categoryOutsideOf.set(node.name, node.outsideOf);
       }
     }
 

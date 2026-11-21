@@ -2,29 +2,6 @@
   "$schema": "../../schemas/categorization-system.schema.json",
   "name": "Smuggler's Cove",
   "description": "Martin and Rebecca Cate's rum classification: pot/column/blended stills crossed with unaged/lightly aged/aged maturation, plus black rums, overproofs, cachaça and Martinique rhum agricole. The island variants (Jamaica, Barbados, Demerara) and the age umbrellas are this catalog's extensions of the book's 21 categories.",
-  "canonicalNames": {
-    "Black Blended": "Black blended rum",
-    "Black Blended Overproof": "Black blended overproof rum",
-    "Black Pot Still": "Black pot still rum",
-    "Blended Aged": "Blended aged rum",
-    "Blended Lightly Aged": "Blended lightly aged rum",
-    "Blended Long Aged": "Blended long aged rum",
-    "Cane AOC Martinique Rhum Agricole Blanc": "Rhum agricole blanc",
-    "Cane AOC Martinique Rhum Agricole Long Aged": "Rhum agricole long aged",
-    "Cane AOC Martinique Rhum Agricole Vieux": "Rhum agricole vieux",
-    "Cane Coffey Still Aged": "Cane coffey still aged rum",
-    "Cane Pot Still Aged": "Cane pot still aged rum",
-    "Cane Pot Still Unaged": "Cane pot still unaged rum",
-    "Column Still Aged": "Column still aged rum",
-    "Column Still Lightly Aged": "Column still lightly aged rum",
-    "Column Still Long Aged": "Column still long aged rum",
-    "Pot Still Aged": "Pot still aged rum",
-    "Pot Still Cachaça Aged": "Aged cachaça",
-    "Pot Still Cachaça Unaged": "Unaged cachaça",
-    "Pot Still Lightly Aged": "Pot still lightly aged rum",
-    "Pot Still Long Aged": "Pot still long aged rum",
-    "Pot Still Unaged": "Pot still unaged rum"
-  },
   "covers": ["Rum"],
   "nodes": [
     {
@@ -46,7 +23,8 @@
       "name": "Black blended overproof rum",
       "categoryType": "spirit",
       "description": "High-proof dark blended rum — typically 109 to 151 proof — with deep molasses, licorice and burnt-sugar notes and the intensity to stand out among many ingredients. Lemon Hart 151, Gosling's 151 and Planteray OFTD are the classic bottles. The engine of tiki giants like the Jet Pilot and the Zombie.",
-      "parents": ["Overproof rum"]
+      "parents": ["Overproof rum"],
+      "outsideOf": ["Minimalist Tiki"]
     },
     {
       "name": "Black blended rum",
@@ -194,7 +172,8 @@
       "name": "Flavored rum",
       "categoryType": "spirit",
       "parents": ["Rum"],
-      "substitutable": false
+      "substitutable": false,
+      "outsideOf": ["Minimalist Tiki"]
     },
     {
       "name": "Jamaican overproof rum",
@@ -217,13 +196,15 @@
     {
       "name": "Navy style rum",
       "categoryType": "spirit",
-      "parents": ["Overproof rum"]
+      "parents": ["Overproof rum"],
+      "outsideOf": ["Minimalist Tiki"]
     },
     {
       "name": "Overproof rum",
       "categoryType": "spirit",
       "description": "Rum bottled above the standard 40% ABV, typically 50–75.5%. The extra proof means the flavor survives ice, juice and a crowd of other ingredients, which is why overproof is the tiki bartender's float of choice — most famously the 151 float on a Zombie.",
-      "parents": ["Rum"]
+      "parents": ["Rum"],
+      "outsideOf": ["Minimalist Tiki"]
     },
     {
       "name": "Pineapple rum",
@@ -332,20 +313,6 @@
       "name": "Unaged cachaça",
       "categoryType": "spirit",
       "parents": ["Cachaça"]
-    }
-  ],
-  "exemptions": [
-    {
-      "ingredient": "Dakabend Oaxacan Pot Still Rum",
-      "reason": "Mexican aguardiente de caña filed under the house Charanda category; no Smuggler's Cove class verified yet"
-    },
-    {
-      "ingredient": "Paranubes Oaxaca Aguardiente de Caña",
-      "reason": "Mexican aguardiente de caña filed under the house Charanda category; no Smuggler's Cove class verified yet"
-    },
-    {
-      "ingredient": "Uruapan Charanda Blanco Rum",
-      "reason": "Charanda, a Mexican cane spirit filed under the house Charanda category; no Smuggler's Cove class verified yet"
     }
   ]
 }
