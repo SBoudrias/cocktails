@@ -1,18 +1,68 @@
 import { format } from 'node:url';
+import type { Recipe } from '@cocktails/data';
+import { getMilkClarifiedRecipes } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
-import { beforeEach, describe, expect, it } from 'vitest';
-import { getMilkClarificationCalculatorUrl } from '#/modules/url';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { getMilkClarificationCalculatorUrl, getRecipeUrl } from '#/modules/url';
 import { setupApp } from '#/vitest.setup';
 import MilkClarificationCalculatorPage from './page';
+
+vi.mock('@cocktails/data/recipes', async () => {
+  const actual = await vi.importActual('@cocktails/data/recipes');
+  return {
+    ...actual,
+    getMilkClarifiedRecipes: vi.fn(),
+  };
+});
+
+let recipeCounter = 0;
+
+const mockRecipe = (name: string): Recipe => ({
+  name,
+  slug: `recipe-${++recipeCounter}`,
+  source: {
+    type: 'book',
+    name: 'Test Source',
+    slug: 'test-source',
+    link: 'https://example.com',
+    description: 'Test description',
+    recipeAmount: 1,
+  },
+  attributions: [],
+  ingredients: [],
+  preparation: 'shaken',
+  served_on: 'up',
+  glassware: 'coupe',
+  refs: [],
+  techniques: [
+    {
+      technique: 'clarification',
+      method: 'milk',
+      milk_type: 'Whole milk',
+      quantity: { amount: 5, unit: 'oz' },
+    },
+  ],
+});
+
+// The real set holds three recipes today: the short-list shape.
+const testRecipes: Recipe[] = [
+  mockRecipe('After Eight'),
+  mockRecipe('Clarified New York Sour'),
+  mockRecipe('Rios Del Miel'),
+];
 
 describe('MilkClarificationCalculatorPage', () => {
   beforeEach(() => {
     mockRouter.setCurrentUrl('/calculators/milk-clarification');
+    recipeCounter = 0;
+    vi.mocked(getMilkClarifiedRecipes).mockResolvedValue(
+      testRecipes.map((recipe) => ({ ...recipe })),
+    );
   });
 
   it('calculates the milk to add from the cocktail batch volume', async () => {
-    await setupApp(<MilkClarificationCalculatorPage />);
+    await setupApp(await MilkClarificationCalculatorPage());
 
     const batchVolume = screen.getByRole('spinbutton', {
       name: 'Cocktail batch volume',
@@ -50,7 +100,7 @@ describe('MilkClarificationCalculatorPage', () => {
         }),
       ),
     );
-    await setupApp(<MilkClarificationCalculatorPage />);
+    await setupApp(await MilkClarificationCalculatorPage());
 
     const batchVolume = screen.getByRole('spinbutton', {
       name: 'Cocktail batch volume',
@@ -82,7 +132,7 @@ describe('MilkClarificationCalculatorPage', () => {
         }),
       ),
     );
-    await setupApp(<MilkClarificationCalculatorPage />);
+    await setupApp(await MilkClarificationCalculatorPage());
 
     expect(screen.getByRole('spinbutton', { name: 'Cocktail batch volume' })).toHaveValue(
       1000,
@@ -94,7 +144,7 @@ describe('MilkClarificationCalculatorPage', () => {
   });
 
   it('recalculates when the cocktail batch volume changes', async () => {
-    const { user } = await setupApp(<MilkClarificationCalculatorPage />);
+    const { user } = await setupApp(await MilkClarificationCalculatorPage());
     const batchVolume = screen.getByRole('spinbutton', {
       name: 'Cocktail batch volume',
     });
@@ -106,7 +156,7 @@ describe('MilkClarificationCalculatorPage', () => {
   });
 
   it('rounds converted volumes to friendly measurements when switching units', async () => {
-    const { user } = await setupApp(<MilkClarificationCalculatorPage />);
+    const { user } = await setupApp(await MilkClarificationCalculatorPage());
     const batchVolume = screen.getByRole('spinbutton', {
       name: 'Cocktail batch volume',
     });
@@ -126,7 +176,7 @@ describe('MilkClarificationCalculatorPage', () => {
     mockRouter.setCurrentUrl(
       format(getMilkClarificationCalculatorUrl({ milkType: 'Coconut milk' })),
     );
-    await setupApp(<MilkClarificationCalculatorPage />);
+    await setupApp(await MilkClarificationCalculatorPage());
 
     expect(screen.getByRole('combobox', { name: 'Milk' })).toHaveTextContent(
       'Coconut milk',
@@ -141,7 +191,7 @@ describe('MilkClarificationCalculatorPage', () => {
     mockRouter.setCurrentUrl(
       format(getMilkClarificationCalculatorUrl({ milkType: 'Almond milk' })),
     );
-    const { user } = await setupApp(<MilkClarificationCalculatorPage />);
+    const { user } = await setupApp(await MilkClarificationCalculatorPage());
     const milkType = screen.getByRole('combobox', { name: 'Milk' });
 
     expect(milkType).toHaveTextContent('Almond milk');
@@ -160,7 +210,7 @@ describe('MilkClarificationCalculatorPage', () => {
   });
 
   it('round-trips an edited ounce volume without changing the batch', async () => {
-    const { user } = await setupApp(<MilkClarificationCalculatorPage />);
+    const { user } = await setupApp(await MilkClarificationCalculatorPage());
     const batchVolume = screen.getByRole('spinbutton', {
       name: 'Cocktail batch volume',
     });
@@ -182,7 +232,7 @@ describe('MilkClarificationCalculatorPage', () => {
   it.each(['', '0', '-10'])(
     'preserves invalid input %j when changing units and recovers on a valid edit',
     async (value) => {
-      const { user } = await setupApp(<MilkClarificationCalculatorPage />);
+      const { user } = await setupApp(await MilkClarificationCalculatorPage());
       const batchVolume = screen.getByRole('spinbutton', {
         name: 'Cocktail batch volume',
       });
@@ -215,7 +265,7 @@ describe('MilkClarificationCalculatorPage', () => {
       mockRouter.setCurrentUrl(
         format(getMilkClarificationCalculatorUrl({ milkType: value })),
       );
-      const { user } = await setupApp(<MilkClarificationCalculatorPage />);
+      const { user } = await setupApp(await MilkClarificationCalculatorPage());
       const milkType = screen.getByRole('combobox', { name: 'Milk' });
 
       expect(milkType).toHaveTextContent('Whole milk');
@@ -232,7 +282,7 @@ describe('MilkClarificationCalculatorPage', () => {
       mockRouter.setCurrentUrl(
         format(getMilkClarificationCalculatorUrl({ milkType: milk })),
       );
-      await setupApp(<MilkClarificationCalculatorPage />);
+      await setupApp(await MilkClarificationCalculatorPage());
 
       const milkType = screen.getByRole('combobox', { name: 'Milk' });
       expect(milkType).toHaveTextContent(milk);
@@ -248,7 +298,7 @@ describe('MilkClarificationCalculatorPage', () => {
     mockRouter.setCurrentUrl(
       format(getMilkClarificationCalculatorUrl({ milkType: '  cOcOnUt   MILK ' })),
     );
-    await setupApp(<MilkClarificationCalculatorPage />);
+    await setupApp(await MilkClarificationCalculatorPage());
 
     const milkType = screen.getByRole('combobox', { name: 'Milk' });
     expect(milkType).toHaveTextContent('Coconut milk');
@@ -256,7 +306,7 @@ describe('MilkClarificationCalculatorPage', () => {
   });
 
   it('reports an invalid batch volume', async () => {
-    const { user } = await setupApp(<MilkClarificationCalculatorPage />);
+    const { user } = await setupApp(await MilkClarificationCalculatorPage());
     const batchVolume = screen.getByRole('spinbutton', {
       name: 'Cocktail batch volume',
     });
@@ -270,7 +320,7 @@ describe('MilkClarificationCalculatorPage', () => {
   });
 
   it('renders the numbered instructions like a recipe', async () => {
-    await setupApp(<MilkClarificationCalculatorPage />);
+    await setupApp(await MilkClarificationCalculatorPage());
 
     const instructions = screen.getByRole('region', { name: 'Instructions' });
     // The "Instructions" subheader is itself an <li>, like on recipe pages
@@ -288,7 +338,7 @@ describe('MilkClarificationCalculatorPage', () => {
   });
 
   it('warns about retained allergens inside the calculator card', async () => {
-    await setupApp(<MilkClarificationCalculatorPage />);
+    await setupApp(await MilkClarificationCalculatorPage());
 
     const alert = screen.getByRole('alert');
     expect(alert).toHaveTextContent(/still contains dairy allergens/i);
@@ -300,7 +350,7 @@ describe('MilkClarificationCalculatorPage', () => {
     mockRouter.setCurrentUrl(
       format(getMilkClarificationCalculatorUrl({ milkType: 'Coconut milk' })),
     );
-    await setupApp(<MilkClarificationCalculatorPage />);
+    await setupApp(await MilkClarificationCalculatorPage());
 
     const instructions = screen.getByRole('region', { name: 'Instructions' });
     // Coconut milk prepends the warming step; the subheader is also an <li>
@@ -309,11 +359,18 @@ describe('MilkClarificationCalculatorPage', () => {
     expect(instructions).toHaveTextContent('2. Make sure the cocktail batch');
   });
 
-  it('links to all milk-clarified recipes', async () => {
-    await setupApp(<MilkClarificationCalculatorPage />);
+  it('lists the milk-clarified recipes below the calculator', async () => {
+    await setupApp(await MilkClarificationCalculatorPage());
 
+    // Three recipes: the plain inline list, no drawer trigger.
+    const group = screen.getByRole('group', { name: 'Milk-clarified recipes' });
     expect(
-      screen.getByRole('link', { name: 'Browse milk-clarified recipes' }),
-    ).toHaveAttribute('href', '/list/milk-clarification');
+      within(group).getByRole('link', { name: /clarified new york sour/i }),
+    ).toHaveAttribute('href', getRecipeUrl(testRecipes[1]!));
+    expect(within(group).getByRole('link', { name: /after eight/i })).toHaveAttribute(
+      'href',
+      getRecipeUrl(testRecipes[0]!),
+    );
+    expect(screen.queryByRole('button', { name: /^See all/ })).not.toBeInTheDocument();
   });
 });
