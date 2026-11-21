@@ -244,6 +244,15 @@ const isCreamy = (recipe: Recipe) =>
     /\bcream\b(?! soda)|condensed milk|\bmilk\b|yogurt|ice cream|coconut mix/,
   );
 
+/** Coconut body — cream of coconut, coconut cream, coconut milk, coconut
+ * mix: a colada's richness. Reads tropical, not creamy like dairy. */
+const isCoconutCreamy = (recipe: Recipe) =>
+  hasIngredientNamed(recipe, /cream of coconut|coconut (?:cream|milk|mix)/);
+
+/** Dairy body: cream, milk, yogurt, ice cream — a traditional flip's
+ * richness, egg aside. */
+const isDairyCreamy = (recipe: Recipe) => isCreamy(recipe) && !isCoconutCreamy(recipe);
+
 /**
  * The ingredients a customer reads as tiki: the classic syrups (orgeat,
  * falernum, fassionola) and flavors (passion fruit, cream of coconut,
@@ -255,7 +264,7 @@ const isCreamy = (recipe: Recipe) =>
  * or a shrubb-vermouth old-fashioned reads as itself, not as tiki).
  */
 const tikiMarkerPattern =
-  /orgeat|falernum|passion ?fruit|cream of coconut|allspice|fassionola|donn'?s|gardenia mix|zombie mix/;
+  /orgeat|falernum|passion ?fruit|cream of coconut|coconut (?:cream|milk|mix)|allspice|fassionola|donn'?s|gardenia mix|zombie mix/;
 
 /**
  * A tiki drink reads as one: it carries the marker ingredients, or it is
@@ -359,11 +368,13 @@ const isMartiniFamily = (recipe: Recipe) =>
 const isHighballFamily = (recipe: Recipe) =>
   isSpirited(recipe) && isCarbonated(recipe) && !hasEggYolk(recipe);
 
-/** Egg yolk, or cream in a boozy drink — spirit- or liqueur-based alike
- * (a Grasshopper has no spirit at all). */
+/** Egg yolk, or dairy cream in a boozy drink — spirit- or liqueur-based
+ * alike (a Grasshopper has no spirit at all). A coconut body is not a
+ * flip's richness: it reads tropical, and those drinks belong to tiki
+ * (piña coladas and their kin). */
 const isFlip = (recipe: Recipe) =>
   hasEggYolk(recipe) ||
-  (!isNonAlcoholicRecipe(recipe) && isCreamy(recipe) && !isCarbonated(recipe));
+  (!isNonAlcoholicRecipe(recipe) && isDairyCreamy(recipe) && !isCarbonated(recipe));
 
 const styleDefinitions: StyleDefinition[] = [
   {
@@ -429,9 +440,11 @@ const styleDefinitions: StyleDefinition[] = [
   {
     slug: 'swizzle',
     name: 'Swizzle',
-    description: 'Built in the glass and spun through crushed ice with a swizzle stick.',
+    description:
+      'Spun through crushed ice with a swizzle stick — a tart, rum-forward cooler, not a mint julep.',
     matches: (recipe) =>
-      recipe.preparation === 'swizzled' || /swizzle/i.test(recipe.name),
+      isTart(recipe) &&
+      (recipe.preparation === 'swizzled' || /swizzle/i.test(recipe.name)),
   },
   {
     slug: 'julep',

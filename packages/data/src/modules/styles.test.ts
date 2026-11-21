@@ -116,14 +116,21 @@ describe('getRecipesByStyle', () => {
   });
 
   it('keeps serving, tartness and creaminess out of the wrong families', async () => {
-    const [daiquiriFamily, sidecarFamily, martiniFamily, oldFashionedFamily, flipStyle] =
-      await Promise.all([
-        getRecipesByStyle('daiquiri-family'),
-        getRecipesByStyle('sidecar-family'),
-        getRecipesByStyle('martini-family'),
-        getRecipesByStyle('old-fashioned-family'),
-        getRecipesByStyle('flip'),
-      ]);
+    const [
+      daiquiriFamily,
+      sidecarFamily,
+      martiniFamily,
+      oldFashionedFamily,
+      flipStyle,
+      tikiStyle,
+    ] = await Promise.all([
+      getRecipesByStyle('daiquiri-family'),
+      getRecipesByStyle('sidecar-family'),
+      getRecipesByStyle('martini-family'),
+      getRecipesByStyle('old-fashioned-family'),
+      getRecipesByStyle('flip'),
+      getRecipesByStyle('tiki'),
+    ]);
 
     const namesOf = (recipes: typeof daiquiriFamily) =>
       recipes.map((recipe) => `${recipe.name} (${recipe.source.slug})`);
@@ -135,11 +142,13 @@ describe('getRecipesByStyle', () => {
     expect(namesOf(daiquiriFamily)).not.toContain(
       `${tequilaSunrise.name} (anders-erickson)`,
     );
-    // Creamy drinks belong to the flip, not the daiquiri family.
+    // Creamy drinks leave the daiquiri family: dairy bodies are flips,
+    // coconut bodies are tiki (a colada's richness reads tropical).
     expect(namesOf(daiquiriFamily)).not.toContain(
       `${acapulcoGold.name} (make-and-drink)`,
     );
-    expect(namesOf(flipStyle)).toContain(`${acapulcoGold.name} (make-and-drink)`);
+    expect(namesOf(flipStyle)).not.toContain(`${acapulcoGold.name} (make-and-drink)`);
+    expect(namesOf(tikiStyle)).toContain(`${acapulcoGold.name} (make-and-drink)`);
 
     // Rocks-served vermouth-and-bitters drinks are old-fashioneds.
     expect(namesOf(martiniFamily)).not.toContain(

@@ -105,7 +105,8 @@ export default async function HomePage() {
           </ul>
           <CalculatorTiles />
         </li>
-||||||| parent of 3793a60a1c086 (feat(web): style lists — tiki, prep families and the six Codex templates)
+        ||||||| parent of 3793a60a1c086 (feat(web): style lists — tiki, prep families and
+        the six Codex templates)
         <HomeSection icon={<Calculator className="size-6" />} title="Calculators">
           <LinkListItem href="/calculators/acid-adjusting" primary="Acid Adjusting" />
           <LinkListItem
