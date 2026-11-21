@@ -198,12 +198,23 @@ jobs:
       # The API field the UI's "Build status" toggle writes is
       # repo.stop_builds; PATCH it back on when it has drifted true.
       # Stopped builds never block the manual deploy below.
+      # Raw API paths need the site's ID (the name-in-path form is a
+      # CLI convenience): resolve it once here from the documented
+      # ?name= filter and export it for every later API step.
       - name: Ensure Netlify builds are stopped 🛑
         if: ${{ env.NETLIFY_AUTH_TOKEN != '' }}
         run: |
           set -eu
+          site_id="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            "https://api.netlify.com/api/v1/sites?name=indexotica" \
+            | jq -r '[.[] | select(.name == "indexotica")] | .[0].id // empty')"
+          if [ -z "$site_id" ]; then
+            echo "::error::could not resolve the indexotica site's Netlify ID"
+            exit 1
+          fi
+          echo "SITE_ID=$site_id" >> "$GITHUB_ENV"
           site="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
-            "https://api.netlify.com/api/v1/sites/indexotica")"
+            "https://api.netlify.com/api/v1/sites/$site_id")"
           repo="$(printf '%s' "$site" | jq -c '.repo // empty')"
           if [ -z "$repo" ]; then
             echo "site has no linked repository — nothing to guard"
@@ -216,7 +227,7 @@ jobs:
               -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
               -H "Content-Type: application/json" \
               -d "$body" \
-              "https://api.netlify.com/api/v1/sites/indexotica" > /dev/null
+              "https://api.netlify.com/api/v1/sites/$site_id" > /dev/null
           fi
 
       # The deploy: an alias upload of the staged export, PR-scoped and
@@ -245,7 +256,7 @@ jobs:
           page=1
           while :; do
             deploys="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
-              "https://api.netlify.com/api/v1/sites/indexotica/deploys?per_page=100&page=$page")"
+              "https://api.netlify.com/api/v1/sites/$SITE_ID/deploys?per_page=100&page=$page")"
             count="$(printf '%s' "$deploys" | jq 'length')"
             [ "$count" -eq 0 ] && break
             printf '%s' "$deploys" | jq -r --argjson pr "$pr" \
@@ -359,11 +370,18 @@ jobs:
         if: ${{ env.NETLIFY_AUTH_TOKEN != '' }}
         run: |
           set -u
+          site_id="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            "https://api.netlify.com/api/v1/sites?name=indexotica" \
+            | jq -r '[.[] | select(.name == "indexotica")] | .[0].id // empty')"
+          if [ -z "$site_id" ]; then
+            echo "could not resolve the indexotica site's Netlify ID — nothing to clean up"
+            exit 0
+          fi
           alias="deploy-preview-${{ github.event.pull_request.number }}"
           page=1
           while :; do
             deploys="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
-              "https://api.netlify.com/api/v1/sites/indexotica/deploys?per_page=100&page=$page")"
+              "https://api.netlify.com/api/v1/sites/$site_id/deploys?per_page=100&page=$page")"
             count="$(printf '%s' "$deploys" | jq 'length')"
             [ "$count" -eq 0 ] && break
             printf '%s' "$deploys" | jq -r --arg alias "$alias" \
