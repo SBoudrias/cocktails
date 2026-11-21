@@ -229,7 +229,7 @@ __metadata:
     happy-dom: "npm:^21.0.4"
     lite-youtube-embed: "npm:^0.4.0"
     lodash: "npm:^4.18.1"
-    lucide-react: "npm:1.71.0"
+    lucide-react: "npm:1.75.0"
     next: "npm:16.4.6"
     next-router-mock: "npm:^1.0.5"
     next-sitemap: "npm:^4.2.3"
@@ -3200,16 +3200,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:1.71.0":
-  version: 1.71.0
-  resolution: "lucide-react@npm:1.71.0"
+"lucide-react@npm:1.75.0":
+  version: 1.75.0
+  resolution: "lucide-react@npm:1.75.0"
   peerDependencies:
     "@types/react": "*"
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/5c7b5e8ddad36e23fe2e3d59abea791f7da1b5392c4f34d0e8f07872c59f6e1ae91829148f1ec7e2a22b4a942a475d6ffbc94d4ff24bcc29caee8dec1b02584d
+  checksum: 10c0/05b78e961ebf87e6a03901655148c629465165e341ca5d2288dc7e4d1feeeb12a4cc26cfa09cbe94eb14d79189c52de97fde6880c7e5ead46763d2a7bf3b77b8
   languageName: node
   linkType: hard
 
