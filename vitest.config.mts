@@ -67,6 +67,26 @@ export default defineConfig({
         find: '../../globs',
         replacement: path.join(__dirname, 'packages/data/globs.stub.ts'),
       },
+      // In a git worktree, node_modules is a symlink into the shared
+      // checkout, so @cocktails/data would resolve to the shared copy and
+      // tests would exercise stale data. Pointing every subpath at this
+      // checkout's source keeps one module id per package either way (a
+      // node_modules shadow symlink instead creates two ids and breaks
+      // vi.mock); in the shared checkout itself this is a no-op.
+      ...[
+        ['', 'src/index.ts'],
+        ['recipes', 'src/modules/recipes.ts'],
+        ['categories', 'src/modules/categories.ts'],
+        ['ingredients', 'src/modules/ingredients.ts'],
+        ['sources', 'src/modules/sources.ts'],
+        ['authors', 'src/modules/authors.ts'],
+        ['bars', 'src/modules/bars.ts'],
+        ['constants', 'src/modules/constants.ts'],
+        ['params', 'src/modules/params.ts'],
+      ].map(([subpath, target]) => ({
+        find: new RegExp(`^@cocktails/data${subpath ? `/${subpath}` : ''}$`),
+        replacement: path.join(__dirname, 'packages/data', target),
+      })),
     ],
   },
   plugins: [react()],
