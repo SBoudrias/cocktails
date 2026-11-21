@@ -250,7 +250,8 @@ describe('the PWA toasts', () => {
     // the same decision — both stay, each alone meaningful.
     window.dispatchEvent(new Event('offline'));
     const region = await screen.findByRole('region', { name: 'Notifications' });
+    // The offline note lands a commit after the event; wait for it.
+    await waitFor(() => expect(region).toHaveTextContent(/you are offline/i));
     expect(region).toHaveTextContent(/a new version is available/i);
-    expect(region).toHaveTextContent(/you are offline/i);
   });
 });
