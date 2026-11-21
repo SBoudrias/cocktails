@@ -1,9 +1,63 @@
+import type { Recipe } from '@cocktails/data';
+import { getAcidAdjustedRecipes } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
+import { beforeEach, vi } from 'vitest';
 import { setupApp } from '#/vitest.setup';
 import AcidAdjustingPage from './page';
 
+vi.mock('@cocktails/data/recipes', async () => {
+  const actual = await vi.importActual('@cocktails/data/recipes');
+  return {
+    ...actual,
+    getAcidAdjustedRecipes: vi.fn(),
+  };
+});
+
+let recipeCounter = 0;
+
+const mockRecipe = (name: string): Recipe => ({
+  name,
+  slug: `recipe-${++recipeCounter}`,
+  source: {
+    type: 'book',
+    name: 'Test Source',
+    slug: 'test-source',
+    link: 'https://example.com',
+    description: 'Test description',
+    recipeAmount: 1,
+  },
+  attributions: [],
+  ingredients: [
+    {
+      name: 'Lime juice',
+      slug: 'lime-juice',
+      type: 'juice',
+      technique: { technique: 'acid-adjustment' },
+      quantity: { amount: 1, unit: 'oz' },
+      categories: [],
+      refs: [],
+      ingredients: [],
+    },
+  ],
+  preparation: 'shaken',
+  served_on: 'up',
+  glassware: 'coupe',
+  refs: [],
+});
+
+// The real set holds 29 recipes: the long-list shape, drawer behind a
+// see-all row.
+const testRecipes: Recipe[] = Array.from({ length: 29 }, (_, index) =>
+  mockRecipe(`Acid Recipe ${String(index + 1).padStart(2, '0')}`),
+);
+
 describe('AcidAdjustingPage', () => {
+  beforeEach(() => {
+    mockRouter.setCurrentUrl('/calculators/acid-adjusting');
+    recipeCounter = 0;
+    vi.mocked(getAcidAdjustedRecipes).mockResolvedValue(testRecipes);
+  });
   it('reads and updates the juice amount URL parameter', async () => {
     mockRouter.setCurrentUrl('?juiceAmount=2');
     const onUrlUpdate = vi.fn();
@@ -131,6 +185,32 @@ describe('AcidAdjustingPage', () => {
     expect(screen.getByRole('radio', { name: 'Lemon' })).toHaveAttribute(
       'aria-checked',
       'true',
+    );
+  });
+
+  it('previews the acid-adjusted recipes with a see-all row opening the drawer', async () => {
+    await setupApp(await AcidAdjustingPage());
+
+    const group = screen.getByRole('group', { name: 'Acid-adjusted recipes' });
+
+    // The preview: the first three recipes, as plain links.
+    expect(within(group).getAllByRole('link')).toHaveLength(3);
+
+    // The see-all row names the full count.
+    expect(
+      screen.getByRole('button', { name: `See all ${testRecipes.length} recipes` }),
+    ).toBeInTheDocument();
+  });
+
+  it('keeps the full acid-adjusted list in the closed sheet, crawlable', async () => {
+    // keepMounted: the drawer's content renders while closed, so every
+    // recipe link ships in the static export's HTML.
+    await setupApp(await AcidAdjustingPage());
+
+    const sheet = screen.getAllByRole('dialog', { hidden: true })[0]!;
+    expect(sheet).toHaveTextContent('Acid-adjusted recipes');
+    expect(within(sheet).getAllByRole('link', { hidden: true })).toHaveLength(
+      testRecipes.length,
     );
   });
 });

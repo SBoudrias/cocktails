@@ -86,7 +86,6 @@ const LIST_HUBS = [
   'list/authors',
   'list/bars',
   'list/style/non-alcoholic',
-  'list/milk-clarification',
   'list/style',
   'list/style/tiki',
 ] as const;
