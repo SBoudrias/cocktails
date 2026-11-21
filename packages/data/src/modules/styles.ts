@@ -50,10 +50,6 @@ function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined
 
 function isAlcoholicIngredient(ingredient: RecipeIngredient) {
   return match(ingredient)
-    .when(
-      ({ type }) => isAlcoholicIngredientType(type),
-      () => true,
-    )
     .with({ type: 'bitter' }, (bitter) => !isSmallAlcoholicFlavoringPour(bitter))
     .with({ type: 'tincture' }, (tincture) => {
       return !isSmallAlcoholicFlavoringPour(tincture);
@@ -61,10 +57,9 @@ function isAlcoholicIngredient(ingredient: RecipeIngredient) {
     .with({ type: 'category' }, (category) => {
       return match(category.categoryType)
         .with('bitter', 'tincture', () => !isSmallAlcoholicFlavoringPour(category))
-        .when(isAlcoholicIngredientType, () => true)
-        .otherwise(() => false);
+        .otherwise((categoryType) => isAlcoholicIngredientType(categoryType));
     })
-    .otherwise(() => false);
+    .otherwise(({ type }) => isAlcoholicIngredientType(type));
 }
 
 /** A recipe whose alcohol, if any, is only seasoning: dashes of bitters. */
