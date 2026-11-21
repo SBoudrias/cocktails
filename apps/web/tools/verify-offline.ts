@@ -572,18 +572,27 @@ const touch = (x: number, y: number) => ({ x, y, id: 1 });
  * release — the exact finger path the component listens for. The drag
  * moves in small steps so every touchmove lands under the browser's
  * move threshold, and far enough down (~250px) that the rubber-banded
- * travel passes the release threshold. */
+ * travel passes the release threshold.
+ *
+ * The moves are dispatched without awaiting each one: they serialize
+ * onto the DevTools WebSocket in call order, which is exactly the order
+ * of the steps — awaiting per step would only gate the round trip, not
+ * change the wire order. One Promise.all at the end holds the release
+ * until every move landed. */
 async function pullDown() {
   await page.send('Input.dispatchTouchEvent', {
     type: 'touchStart',
     touchPoints: [touch(300, 60)],
   });
-  for (let y = 90; y <= 310; y += 20) {
-    await page.send('Input.dispatchTouchEvent', {
-      type: 'touchMove',
-      touchPoints: [touch(300, y)],
-    });
-  }
+  const moves = Array.from({ length: 11 }, (_, i) => 90 + i * 20);
+  await Promise.all(
+    moves.map((y) =>
+      page.send('Input.dispatchTouchEvent', {
+        type: 'touchMove',
+        touchPoints: [touch(300, y)],
+      }),
+    ),
+  );
   await page.send('Input.dispatchTouchEvent', {
     type: 'touchEnd',
     touchPoints: [],
