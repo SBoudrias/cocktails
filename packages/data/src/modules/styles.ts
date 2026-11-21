@@ -41,11 +41,28 @@ const isSmallAlcoholicFlavoringPour = (ingredient: RecipeIngredient) => {
   return ounces != null && ounces <= 0.25;
 };
 
+/** Every ingredient type, so a new type in the schema fails typecheck here
+ * rather than silently reading as non-alcoholic. */
 function isAlcoholicIngredientType(type: IngredientType | 'category' | undefined) {
   return match(type)
     .with('non-alcoholic', () => false)
     .with('beer', 'liqueur', 'spirit', 'wine', () => true)
-    .otherwise(() => false);
+    .with(
+      'bitter',
+      'tincture',
+      'emulsifier',
+      'fruit',
+      'juice',
+      'puree',
+      'soda',
+      'spice',
+      'syrup',
+      'other',
+      'category',
+      undefined,
+      () => false,
+    )
+    .exhaustive();
 }
 
 function isAlcoholicIngredient(ingredient: RecipeIngredient) {
