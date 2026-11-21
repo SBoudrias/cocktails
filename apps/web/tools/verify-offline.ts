@@ -568,37 +568,130 @@ function navigateTo(route: string): Promise<unknown> {
 /** One raw touch point, as CDP's touch dispatch wants it. */
 const touch = (x: number, y: number) => ({ x, y, id: 1 });
 
-/** A pull-to-update gesture: touchstart at the top, drag down in steps,
- * release — the exact finger path the component listens for. The drag
- * moves in small steps so every touchmove lands under the browser's
- * move threshold, and far enough down (~250px) that the rubber-banded
- * travel passes the release threshold.
+/** The pull-to-update component's live state, read from its own DOM: the
+ * chip's data-phase, and whether the release threshold is crossed
+ * (data-armed) — '<phase>/<armed>|unarmed', or 'absent/unarmed' between
+ * documents. This is the component's real observable surface; polling it
+ * is what lets the harness gate and diagnose the gesture instead of
+ * waiting out a timeout when a pull never armed. */
+async function chipState(): Promise<string> {
+  return evaluateString(
+    `(() => {
+      const chip = document.querySelector('[data-slot="ptr-chip"]');
+      if (!chip) return 'absent/unarmed';
+      return (chip.dataset.phase ?? 'idle') + '/' + ('armed' in chip.dataset ? 'armed' : 'unarmed');
+    })()`,
+  );
+}
+
+/** Poll the chip state until it starts with one of the wanted prefixes, or
+ * for timeoutMs. Returns the state that satisfied a prefix, or the last
+ * one seen — the caller decides what a non-match means. */
+async function chipStateUntil(wanted: string[], timeoutMs: number): Promise<string> {
+  const deadline = Date.now() + timeoutMs;
+  let state = 'unknown';
+  while (Date.now() < deadline) {
+    state = await chipState().catch(() => 'absent/unarmed');
+    if (wanted.some((prefix) => state.startsWith(prefix))) return state;
+    await sleep(50);
+  }
+  return state;
+}
+
+/** A pull-to-update gesture through the real touch pipeline: touchstart at
+ * the top, drag down in small steps (every move lands under the browser's
+ * move threshold), release. Hardened after this gesture timed out on CI
+ * three times in one day (2026-11-21, three unrelated branches — always
+ * "the chip never gave its verdict", i.e. the release never armed):
  *
- * The steps are dispatched strictly in sequence, one command round trip
- * apart: a burst of concurrent dispatches reaches Chrome's input
- * pipeline as one batch, and the gesture's listeners can see a jump
- * instead of a drag — seen on CI as a release that never armed (the
- * chip never checked). Promise chaining keeps the order while keeping
- * each await out of the loop body (react-doctor's async-await-in-loop). */
-async function pullDown() {
+ * - each move is paced one compositor frame (~16ms) after the previous
+ *   one. Sequencing the dispatches alone (one round trip apart, the
+ *   pre-hardening fix for the batch-jump) orders them but adds no time:
+ *   under CI's input-pipeline pressure a tight burst can still reach the
+ *   renderer coalesced, or with the compositor claiming the gesture —
+ *   its moves arrive non-cancelable and the component stands down, by
+ *   design. Measured on this harness: a paced drag keeps every move
+ *   cancelable.
+ * - every step is gated on the component's own DOM state (chipState):
+ *   the drag continues only while the chip says data-phase 'pull', the
+ *   release waits for data-armed, and the check's start is confirmed
+ *   (data-phase 'checking') before pullDown returns. A gesture that
+ *   stalls is named where it stalled, not discovered as a verdict
+ *   timeout.
+ * - a pull that never armed is retried a bounded three times, each miss
+ *   logged with its diagnosis, before the check fails.
+ *
+ * Input.synthesizeScrollGesture (the gesture-level alternative) was
+ * evaluated and rejected: with a touch source it drives the compositor's
+ * scroll path — its moves arrive non-cancelable (measured: 27 of 28), so
+ * the component's native-claim guard stands down and the pull path is
+ * never exercised. Raw trusted dispatch is the only path that drives the
+ * real pull gesture; the harness keeps it and hardens around it. */
+async function pullDown(): Promise<void> {
+  // Start from rest: a pull begun while the chip is busy (checking, or
+  // showing a verdict) is one the component cancels — it would masquerade
+  // as a gesture that never armed.
+  const restPrefixes = ['idle/', 'settle/', 'absent/'];
+  const atRest = await chipStateUntil(restPrefixes, 10_000);
+  if (!restPrefixes.some((prefix) => atRest.startsWith(prefix))) {
+    throw new Error(`the chip never came to rest before the pull (state ${atRest})`);
+  }
+  let attempt = 0;
+  let diagnosis = '';
+  while (attempt < 3) {
+    attempt++;
+    diagnosis = await pullDownOnce();
+    if (diagnosis === 'armed') return;
+    console.log(`    pull gesture attempt ${attempt} did not arm: ${diagnosis}`);
+    await sleep(300);
+    await chipStateUntil(restPrefixes, 10_000);
+  }
+  throw new Error(
+    `the pull gesture never completed after ${attempt} attempts: ${diagnosis}`,
+  );
+}
+
+/** One pull attempt: returns 'armed' when the release started the check,
+ * or a one-word diagnosis of where the gesture stalled for the retry
+ * log. Dispatches the same touchStart/move/end stream the component
+ * listens for, paced and gated as pullDown documents. */
+async function pullDownOnce(): Promise<string> {
   await page.send('Input.dispatchTouchEvent', {
     type: 'touchStart',
     touchPoints: [touch(300, 60)],
   });
-  let step: Promise<unknown> = Promise.resolve();
-  for (let y = 90; y <= 310; y += 20) {
-    step = step.then(() =>
-      page.send('Input.dispatchTouchEvent', {
-        type: 'touchMove',
-        touchPoints: [touch(300, y)],
-      }),
-    );
+  let y = 90;
+  while (y <= 310) {
+    await page.send('Input.dispatchTouchEvent', {
+      type: 'touchMove',
+      touchPoints: [touch(300, y)],
+    });
+    await sleep(16);
+    const dragging = await chipStateUntil(['pull/'], 500);
+    if (!dragging.startsWith('pull/')) {
+      await page.send('Input.dispatchTouchEvent', {
+        type: 'touchEnd',
+        touchPoints: [],
+      });
+      return `drag stalled at y=${y} (chip ${dragging})`;
+    }
+    y += 20;
   }
-  await step;
+  // The full drag ran; the release threshold must be crossed before the
+  // finger lifts, or the chip settles without checking.
+  const armed = await chipStateUntil(['pull/armed'], 500);
   await page.send('Input.dispatchTouchEvent', {
     type: 'touchEnd',
     touchPoints: [],
   });
+  if (!armed.startsWith('pull/armed')) {
+    return `drag finished below the release threshold (chip ${armed})`;
+  }
+  const checking = await chipStateUntil(['checking/'], 1_500);
+  if (!checking.startsWith('checking/')) {
+    return `armed release did not start a check (chip ${checking})`;
+  }
+  return 'armed';
 }
 
 /** Poll a numeric page expression until it satisfies the predicate. */
