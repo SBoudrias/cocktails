@@ -514,9 +514,8 @@ const styleDefinitions: StyleDefinition[] = [
   {
     slug: 'blended',
     name: 'Blended',
-    description: 'Whirred with ice — frozen drinks and flash blends.',
-    matches: (recipe) =>
-      recipe.preparation === 'blended' || recipe.preparation === 'flash blended',
+    description: 'Whirred with ice until smooth — frozen drinks.',
+    matches: (recipe) => recipe.preparation === 'blended',
   },
 ];
 
