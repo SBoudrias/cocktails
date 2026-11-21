@@ -1,24 +1,45 @@
 name: PR Preview
 
-# The repo-side preview gate: build the site the way Netlify's preview
-# project builds it (netlify.toml), then run the offline and smoke checks
-# against that build — on every PR, inside GitHub Actions. The live preview
-# itself is Netlify's Deploy Preview, built by their own Git integration
-# from the same netlify.toml: PR N lives at
-#   https://deploy-preview-N--indexotica.netlify.app/
-# and Netlify's GitHub app posts the link on the PR. Nothing here talks to
-# Netlify — no deploy, no token secret; the two builds are the same export
-# from the same config.
+# The repo-side preview pipeline: build the site export on GitHub Actions,
+# run the offline and smoke gates against it, then upload it to the Netlify
+# site as a PR-scoped alias deploy. Netlify's own runners are out of the
+# loop — the site's Git integration has builds stopped, so no Netlify
+# build minutes are spent: Netlify only serves what this workflow uploads.
+# PR N's preview lives at
+#   https://pr-N--indexotica.netlify.app/
+# (the root redirects to the app under /pr-preview/pr-N/) and the
+# preview-link step posts it on the PR.
 #
-# What this gate adds that the Netlify build cannot: the offline PWA
-# verification (headless Chrome against the export) and the smoke suite
-# (a page of each type fetched and marker-checked). They run against a
-# local `serve` of the staged export with cleanUrls, which mirrors the
-# Netlify runtime (pretty URLs on by default): /recipes/x resolves
-# recipes/x.html, exactly like production Pages does.
+# Auth: the NETLIFY_AUTH_TOKEN repo secret (a Netlify personal access
+# token, app.netlify.com > user settings > applications), created once by
+# hand. Runs without it (missing secret, fork PRs) still run the gates
+# but skip the deploy. A guard step re-asserts via the API that the
+# site's builds are stopped before every upload: relinking the site's
+# repository silently reactivates its builds, and the guard re-stops
+# them — keeping Netlify out of the build business for good. (Manual
+# CLI/API deploys are unaffected by stopped builds; that is exactly the
+# setup we want.)
+#
+# The upload is netlify-cli's `deploy --alias pr-N` — an alias deploy,
+# never published to the site's main URL, and every push to the PR
+# replaces the previous one at the same URL. There is deliberately no
+# skip path anywhere (see netlify.toml for the #605 empty-deploy trap
+# this avoids): every deploy is a real upload of the export this run
+# built. The CLI reads the repo's netlify.toml and bundles its
+# [[headers]] with every upload, so the X-Robots-Tag keeps applying to
+# the previews Netlify serves.
+#
+# What the gates check: the offline PWA verification (headless Chrome
+# against the export) and the smoke suite (a page of each type fetched
+# and marker-checked). They run against a local `serve` of the staged
+# export with cleanUrls, which mirrors the Netlify runtime (pretty URLs
+# on by default): /recipes/x resolves recipes/x.html, exactly like
+# production Pages does. When the PR closes, the cleanup job deletes
+# its alias deploys via the API (alias deploys, unlike Netlify's own
+# deploy previews, are not removed on close by themselves).
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, reopened, synchronize, closed]
     # Only gate when the site itself can change: the web app, the workspace
     # packages it imports (data, conversion, ingredient-sorting), static
     # assets, dependency manifests, and this workflow. The filter is
@@ -39,25 +60,39 @@ on:
       - .github/workflows/setup-node/**
 
 permissions:
+  # The preview-link step comments on the PR with the workflow's token.
+  pull-requests: write
   contents: read
 
-# A newer push to the same PR cancels a gate run testing a commit nobody
-# waits on.
+# A newer push to the same PR cancels a run testing a commit nobody waits
+# on — including one mid-upload; the next push's deploy replaces the alias.
 concurrency:
   group: preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 env:
-  # Same basePath and origin the Netlify build uses for this PR
-  # (netlify.toml): REVIEW_ID is the PR number there, github.event.number
-  # here. Same shape as the old gh-pages previews (/pr-preview/pr-N),
-  # without the /cocktails repo segment — the preview site is a dedicated
-  # Netlify project rooted at /.
+  # Same basePath the staging step builds the export under. Same shape as
+  # the old gh-pages previews (/pr-preview/pr-N), without the /cocktails
+  # repo segment — the preview site is a dedicated Netlify project rooted
+  # at /.
   PREVIEW_BASE_PATH: /pr-preview/pr-${{ github.event.number }}
-  PREVIEW_ORIGIN: https://deploy-preview-${{ github.event.number }}--indexotica.netlify.app
+  # The alias URL netlify-cli's `deploy --alias pr-N` serves: a stable,
+  # PR-scoped preview on the indexotica site, replaced on every push.
+  # (The older deploy-preview-N shape belongs to Netlify's own git
+  # integration, which this workflow replaces.)
+  PREVIEW_ORIGIN: https://pr-${{ github.event.number }}--indexotica.netlify.app
+  # A Netlify personal access token (app.netlify.com > user settings >
+  # applications), created once by hand as a repo secret. Missing (not
+  # created yet, or a fork PR): the gates still run, the deploy is
+  # skipped with a warning.
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
 jobs:
   preview-gate:
+    # `closed` runs skip this build job entirely — the cleanup job handles
+    # them. The build is ~10 minutes of runner time; no one looks at a
+    # preview of a PR that just closed.
+    if: ${{ github.event.action != 'closed' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -99,12 +134,13 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ env.PREVIEW_BASE_PATH }}
 
-      # Stage the export under its basePath, mirroring netlify.toml's build
-      # command: the preview URL root serves the staged tree, so the built
-      # URLs (sw.js scope, manifest, canonicals) resolve as-is. The serve
-      # config turns on cleanUrls so /recipes/x finds recipes/x.html —
-      # Netlify's pretty URLs do the same in production previews, and Pages
-      # has always served the app this way.
+      # Stage the export under its basePath: the preview URL root serves
+      # the staged tree, so the built URLs (sw.js scope, manifest,
+      # canonicals) resolve as-is. The serve config turns on cleanUrls so
+      # /recipes/x finds recipes/x.html — Netlify's pretty URLs do the
+      # same in production previews, and Pages has always served the app
+      # this way. The serve.json is for the local smoke server below only;
+      # the deploy tree step removes it before the upload.
       - name: Stage export under its basePath 🗂️
         run: |
           mkdir -p "apps/web/deploy${PREVIEW_BASE_PATH}"
@@ -130,3 +166,176 @@ jobs:
             "$GITHUB_WORKSPACE/apps/web/deploy${PREVIEW_BASE_PATH}" \
             || { kill $SERVER_PID; cat serve.log; exit 1; }
           kill $SERVER_PID
+
+      # The gates passed: turn the staged tree into the deploy the site
+      # serves. diag.txt drops this run's build metadata into the deploy
+      # root (what the live preview ran with, if anything goes wrong
+      # again), the meta-refresh index lands the preview root on the app,
+      # and the 404 lands at the alias root so the export's own error
+      # page handles unknown paths there too. The serve.json was for the
+      # local smoke server only; the upload must not carry it.
+      - name: Finish the deploy tree 🌳
+        run: |
+          rm apps/web/deploy/serve.json
+          mv "apps/web/deploy${PREVIEW_BASE_PATH}/404.html" apps/web/deploy/404.html
+          {
+            echo "GITHUB_RUN: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo "COMMIT_REF: $GITHUB_SHA"
+            echo "PR: ${{ github.event.pull_request.html_url }}"
+            echo "PREVIEW_ALIAS_URL: $PREVIEW_ORIGIN"
+            find apps/web/deploy | wc -l
+          } > apps/web/deploy/diag.txt
+          cat > apps/web/deploy/index.html <<EOF
+          <!doctype html><title>Preview</title><meta http-equiv="refresh" content="0; url=${PREVIEW_BASE_PATH}/"><a href="${PREVIEW_BASE_PATH}/">Open the preview</a>
+          EOF
+
+      # Belt and suspenders: the site's Git integration must stay with
+      # builds stopped, or every push re-spends Netlify build minutes —
+      # and relinking the site's repository silently reactivates them.
+      # The API field the UI's "Build status" toggle writes is
+      # repo.stop_builds; PATCH it back on when it has drifted true.
+      # Stopped builds never block the manual deploy below.
+      - name: Ensure Netlify builds are stopped 🛑
+        if: ${{ env.NETLIFY_AUTH_TOKEN != '' }}
+        run: |
+          set -eu
+          site="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            "https://api.netlify.com/api/v1/sites/indexotica")"
+          repo="$(printf '%s' "$site" | jq -c '.repo // empty')"
+          if [ -z "$repo" ]; then
+            echo "site has no linked repository — nothing to guard"
+          elif [ "$(printf '%s' "$repo" | jq -r '.stop_builds // false')" != "true" ]; then
+            echo "::warning::indexotica's Netlify builds were active — re-stopping them (a reactivated git integration would spend Netlify build minutes on every push)"
+            # PATCH with the full repo object, stop_builds flipped: sending
+            # only the one field could clobber the link's other settings.
+            body="$(printf '%s' "$repo" | jq -c '{repo: (.stop_builds = true)}')"
+            curl -fsS -X PATCH \
+              -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "$body" \
+              "https://api.netlify.com/api/v1/sites/indexotica" > /dev/null
+          fi
+
+      # The deploy: an alias upload of the staged export, PR-scoped and
+      # never published — `netlify deploy --alias pr-N` replaces the
+      # previous deploy at the same URL on every push. --no-build: the
+      # export is already built and staged above; the CLI only uploads.
+      # The CLI parses netlify.toml and bundles its [[headers]] with the
+      # upload, so the X-Robots-Tag keeps applying. Skipped without a
+      # token (secret missing, fork PR): the gates already ran.
+      - name: Deploy preview to Netlify 🚀
+        id: netlify
+        if: ${{ env.NETLIFY_AUTH_TOKEN != '' }}
+        timeout-minutes: 15
+        run: |
+          set -eu
+          npx --yes netlify-cli@27 deploy \
+            --no-build \
+            --dir apps/web/deploy \
+            --site indexotica \
+            --auth "$NETLIFY_AUTH_TOKEN" \
+            --alias "pr-${{ github.event.pull_request.number }}" \
+            --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}" \
+            --json > deploy.json
+          # The CLI prints its JSON block last; anything before it is log
+          # noise on the same stream, so read the last line only.
+          url="$(tail -n 1 deploy.json | jq -r '.deploy_url // empty')"
+          if [ -z "$url" ] || [ "$url" != "$PREVIEW_ORIGIN" ]; then
+            cat deploy.json
+            echo "expected deploy URL $PREVIEW_ORIGIN, got '${url:-none}'"
+            exit 1
+          fi
+          echo "deployed: $url"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      # Verify what Netlify actually serves: the full smoke suite against
+      # the live alias URL — with the local build as the freshness
+      # reference, it waits until the URL serves this run's hashed assets
+      # (the CDN can lag the upload by a bit) and then checks every page
+      # type — plus the serving-layer specifics it cannot see: the
+      # noindex header, the root redirect, and diag.txt.
+      - name: Verify the live preview 🛰️
+        if: ${{ steps.netlify.outputs.url != '' }}
+        timeout-minutes: 10
+        env:
+          SMOKE_LIVE_TIMEOUT_S: '300'
+        run: |
+          set -eu
+          # Wait for the upload to go live (the smoke suite below waits for
+          # this run's hashed assets, but the header checks run first).
+          for i in $(seq 1 60); do
+            curl -sf -o /dev/null "$PREVIEW_ORIGIN${PREVIEW_BASE_PATH}/" && break
+            sleep 5
+          done
+          # The app page, with the noindex header netlify.toml sends.
+          headers="$(curl -fsSI "$PREVIEW_ORIGIN${PREVIEW_BASE_PATH}/")"
+          printf '%s' "$headers" | grep -qi 'x-robots-tag:.*noindex' \
+            || { echo "no X-Robots-Tag on the live preview"; exit 1; }
+          # The deploy root: meta-refresh into the app.
+          root="$(curl -fsS "$PREVIEW_ORIGIN/")"
+          printf '%s' "$root" | grep -q "${PREVIEW_BASE_PATH}/" \
+            || { echo "preview root does not redirect to the app"; exit 1; }
+          # The build's own record of itself.
+          curl -fsS "$PREVIEW_ORIGIN/diag.txt" | grep -q "$GITHUB_SHA" \
+            || { echo "diag.txt missing or stale on the live preview"; exit 1; }
+          # Every page type, against the live deploy.
+          yarn workspace @cocktails/smoke smoke \
+            "$PREVIEW_ORIGIN${PREVIEW_BASE_PATH}/" \
+            "$GITHUB_WORKSPACE/apps/web/deploy${PREVIEW_BASE_PATH}"
+          echo "live preview verified: $PREVIEW_ORIGIN"
+
+      # Post the preview link on the PR, in the repo's convention
+      # ('netlify preview: <link>'). One comment per PR, edited in place
+      # on later pushes so the link never goes stale: this finds this
+      # workflow's own comment (by author + marker) rather than whatever
+      # comment happens to be last on the thread.
+      - name: Post preview link on the PR 🔗
+        if: ${{ steps.netlify.outputs.url != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -eu
+          body="netlify preview: ${{ steps.netlify.outputs.url }}"
+          comment_id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
+            --jq 'map(select(.user.login == "github-actions[bot]" and (.body | startswith("netlify preview:")))) | last | .id // empty')"
+          if [ -n "$comment_id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$comment_id" \
+              -f body="$body" > /dev/null
+          else
+            gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
+              -f body="$body" > /dev/null
+          fi
+
+  # When the PR closes, its alias deploys are deleted: unlike Netlify's
+  # own deploy previews, alias deploys would otherwise sit on the site
+  # forever. No checkout or build — list the site's deploys via the API
+  # and delete the ones whose branch is this PR's alias (netlify-cli
+  # records `--alias pr-N` as branch pr-N). Best-effort: a failed
+  # deletion must not paint a merged PR red.
+  cleanup:
+    if: ${{ github.event.action == 'closed' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Delete the PR's alias deploys 🧹
+        if: ${{ env.NETLIFY_AUTH_TOKEN != '' }}
+        run: |
+          set -u
+          alias="pr-${{ github.event.pull_request.number }}"
+          page=1
+          while :; do
+            deploys="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+              "https://api.netlify.com/api/v1/sites/indexotica/deploys?per_page=100&page=$page")"
+            count="$(printf '%s' "$deploys" | jq 'length')"
+            [ "$count" -eq 0 ] && break
+            printf '%s' "$deploys" | jq -r --arg alias "$alias" \
+              '.[] | select(.branch == $alias) | .id' | while read -r id; do
+              [ -n "$id" ] || continue
+              echo "deleting deploy $id ($alias)"
+              curl -fsS -X DELETE -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+                "https://api.netlify.com/api/v1/deploys/$id" || true
+            done
+            [ "$count" -lt 100 ] && break
+            page=$((page + 1))
+          done
