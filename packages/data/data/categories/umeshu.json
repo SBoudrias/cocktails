@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
   "name": "Umeshu",
-  "categoryType": "wine",
+  "categoryType": "liqueur",
   "refs": [
     {
       "type": "youtube",

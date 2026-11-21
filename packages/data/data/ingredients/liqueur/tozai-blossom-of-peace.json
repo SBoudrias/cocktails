@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/ingredient.schema.json",
-  "name": "Kamiozumi Umeshu",
-  "type": "wine",
+  "name": "Tozai Blossom of Peace",
+  "type": "liqueur",
   "categories": ["Umeshu"]
 }
