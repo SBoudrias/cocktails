@@ -236,7 +236,7 @@ __metadata:
     nuqs: "npm:^2.10.3"
     react: "npm:19.3.1"
     react-dom: "npm:19.3.1"
-    react-virtuoso: "npm:^4.18.20"
+    react-virtuoso: "npm:^4.18.23"
     sharp: "npm:^0.35.5"
     simple-icons: "npm:15.10.0"
     tailwindcss: "npm:4.3.5"
@@ -3951,13 +3951,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-virtuoso@npm:^4.18.20":
-  version: 4.18.20
-  resolution: "react-virtuoso@npm:4.18.20"
+"react-virtuoso@npm:^4.18.23":
+  version: 4.18.23
+  resolution: "react-virtuoso@npm:4.18.23"
   peerDependencies:
     react: ">=16 || >=17 || >= 18 || >= 19"
     react-dom: ">=16 || >=17 || >= 18 || >=19"
-  checksum: 10c0/b85199075a158cba77a6a3ad99cc6d76b9e12fa7aadfc2cbffd69aaa519fbc08f0847b156a389a132e934c23fbbb3f3ebb636b464caed36cf5eb53bc27b9edb6
+  checksum: 10c0/54404eebd3c9ad2decd2056a1f64966c8f35bbf096f2b4d40df513f2c85004ed788c878ea3f69f58ee4883200964b25fd7e147ebd91cdd1bfd49ecc0b7fca250
   languageName: node
   linkType: hard
 
