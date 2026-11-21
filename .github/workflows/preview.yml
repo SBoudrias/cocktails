@@ -5,10 +5,11 @@ name: PR Preview
 # site as a PR-scoped alias deploy. Netlify's own runners are out of the
 # loop — the site's Git integration has builds stopped, so no Netlify
 # build minutes are spent: Netlify only serves what this workflow uploads.
-# PR N's preview lives at
-#   https://pr-N--indexotica.netlify.app/
+# PR N's preview lives at the same URL Netlify's own previews always used,
+#   https://deploy-preview-N--indexotica.netlify.app/
 # (the root redirects to the app under /pr-preview/pr-N/) and the
-# preview-link step posts it on the PR.
+# preview-link step posts it on the PR. Old links and bookmarks keep
+# working — only the builder behind the URL changed.
 #
 # Auth: the NETLIFY_AUTH_TOKEN repo secret (a Netlify personal access
 # token, app.netlify.com > user settings > applications), created once by
@@ -20,9 +21,12 @@ name: PR Preview
 # CLI/API deploys are unaffected by stopped builds; that is exactly the
 # setup we want.)
 #
-# The upload is netlify-cli's `deploy --alias pr-N` — an alias deploy,
-# never published to the site's main URL, and every push to the PR
-# replaces the previous one at the same URL. There is deliberately no
+# The upload is netlify-cli's `deploy --alias deploy-preview-N` — an
+# alias deploy, never published to the site's main URL, and every push
+# to the PR replaces the previous one at the same URL. The alias reuses
+# the classic deploy-preview-N subdomain, so the URL Netlify's GitHub
+# app has always posted stays valid — only the builder behind it
+# changed. There is deliberately no
 # skip path anywhere (see netlify.toml for the #605 empty-deploy trap
 # this avoids): every deploy is a real upload of the export this run
 # built. The CLI reads the repo's netlify.toml and bundles its
@@ -76,11 +80,10 @@ env:
   # repo segment — the preview site is a dedicated Netlify project rooted
   # at /.
   PREVIEW_BASE_PATH: /pr-preview/pr-${{ github.event.number }}
-  # The alias URL netlify-cli's `deploy --alias pr-N` serves: a stable,
-  # PR-scoped preview on the indexotica site, replaced on every push.
-  # (The older deploy-preview-N shape belongs to Netlify's own git
-  # integration, which this workflow replaces.)
-  PREVIEW_ORIGIN: https://pr-${{ github.event.number }}--indexotica.netlify.app
+  # The alias URL netlify-cli's `deploy --alias deploy-preview-N` serves:
+  # the same URL Netlify's own previews always used — old links and
+  # bookmarks keep working, only the builder behind the URL changed.
+  PREVIEW_ORIGIN: https://deploy-preview-${{ github.event.number }}--indexotica.netlify.app
   # A Netlify personal access token (app.netlify.com > user settings >
   # applications), created once by hand as a repo secret. Missing (not
   # created yet, or a fork PR): the gates still run, the deploy is
@@ -217,12 +220,46 @@ jobs:
           fi
 
       # The deploy: an alias upload of the staged export, PR-scoped and
-      # never published — `netlify deploy --alias pr-N` replaces the
-      # previous deploy at the same URL on every push. --no-build: the
-      # export is already built and staged above; the CLI only uploads.
-      # The CLI parses netlify.toml and bundles its [[headers]] with the
-      # upload, so the X-Robots-Tag keeps applying. Skipped without a
-      # token (secret missing, fork PR): the gates already ran.
+      # never published — `netlify deploy --alias deploy-preview-N`
+      # replaces the previous deploy at the same URL on every push. The
+      # alias reuses the classic deploy-preview-N subdomain, so the URL
+      # Netlify's own previews always served keeps working. --no-build:
+      # the export is already built and staged above; the CLI only
+      # uploads. The CLI parses netlify.toml and bundles its [[headers]]
+      # with the upload, so the X-Robots-Tag keeps applying. Skipped
+      # without a token (secret missing, fork PR): the gates already ran.
+      # First, free the subdomain: any deploy-preview object Netlify's
+      # git integration built for this PR still claims the URL — this
+      # run's guard stopped those builds, and deleting the stale object
+      # lets the alias take over the subdomain.
+      # Free the classic subdomain: a deploy-preview object Netlify's git
+      # integration built for this PR may still claim
+      # deploy-preview-N--indexotica.netlify.app (the guard just stopped
+      # future ones; this deletes the stale object). Deleting is safe —
+      # the alias deploy below immediately claims the subdomain.
+      - name: Free the legacy deploy-preview subdomain 🧹
+        if: ${{ env.NETLIFY_AUTH_TOKEN != '' }}
+        run: |
+          set -eu
+          pr="${{ github.event.pull_request.number }}"
+          page=1
+          while :; do
+            deploys="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+              "https://api.netlify.com/api/v1/sites/indexotica/deploys?per_page=100&page=$page")"
+            count="$(printf '%s' "$deploys" | jq 'length')"
+            [ "$count" -eq 0 ] && break
+            printf '%s' "$deploys" | jq -r --argjson pr "$pr" \
+              '.[] | select(.review_id == $pr and .branch != "deploy-preview-\($pr|tostring)") | .id' \
+              | while read -r id; do
+              [ -n "$id" ] || continue
+              echo "deleting stale git-integration deploy $id"
+              curl -fsS -X DELETE -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+                "https://api.netlify.com/api/v1/deploys/$id" || true
+            done
+            [ "$count" -lt 100 ] && break
+            page=$((page + 1))
+          done
+
       - name: Deploy preview to Netlify 🚀
         id: netlify
         if: ${{ env.NETLIFY_AUTH_TOKEN != '' }}
@@ -234,7 +271,7 @@ jobs:
             --dir apps/web/deploy \
             --site indexotica \
             --auth "$NETLIFY_AUTH_TOKEN" \
-            --alias "pr-${{ github.event.pull_request.number }}" \
+            --alias "deploy-preview-${{ github.event.pull_request.number }}" \
             --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}" \
             --json > deploy.json
           # The CLI prints its JSON block last; anything before it is log
@@ -311,8 +348,8 @@ jobs:
   # own deploy previews, alias deploys would otherwise sit on the site
   # forever. No checkout or build — list the site's deploys via the API
   # and delete the ones whose branch is this PR's alias (netlify-cli
-  # records `--alias pr-N` as branch pr-N). Best-effort: a failed
-  # deletion must not paint a merged PR red.
+  # records `--alias deploy-preview-N` as branch deploy-preview-N).
+  # Best-effort: a failed deletion must not paint a merged PR red.
   cleanup:
     if: ${{ github.event.action == 'closed' }}
     runs-on: ubuntu-latest
@@ -322,7 +359,7 @@ jobs:
         if: ${{ env.NETLIFY_AUTH_TOKEN != '' }}
         run: |
           set -u
-          alias="pr-${{ github.event.pull_request.number }}"
+          alias="deploy-preview-${{ github.event.pull_request.number }}"
           page=1
           while :; do
             deploys="$(curl -fsS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \

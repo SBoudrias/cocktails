@@ -4,12 +4,14 @@
 # This Netlify site exists only to SERVE deploy previews for pull requests:
 # the previews are built and uploaded by GitHub Actions
 # (.github/workflows/preview.yml), which deploys the export with
-# netlify-cli (`netlify deploy --alias pr-<PR>`). PR N's preview lives at
-#   https://pr-<PR>--indexotica.netlify.app/
+# netlify-cli (`netlify deploy --alias deploy-preview-<PR>`). PR N's preview
+# lives at the same URL Netlify's own previews always used,
+#   https://deploy-preview-<PR>--indexotica.netlify.app/
 # (the root redirects to the app) and the workflow posts the link on the
-# PR. Netlify's own runners are out of the loop entirely — that is the
-# point: they were capped by the free build-minutes allowance, while
-# GitHub Actions builds are not.
+# PR. Old links and bookmarks keep working — only the builder behind the
+# URL changed. Netlify's own runners are out of the loop entirely — that
+# is the point: they were capped by the free build-minutes allowance,
+# while GitHub Actions builds are not.
 #
 # The site's Git integration must have builds STOPPED (Netlify UI:
 # Project configuration > Developer settings > Continuous deployment >
@@ -30,7 +32,7 @@
 # fully inert (stopped sites never build) — remove it once the guard has
 # confirmed builds are stopped for good.
 [build]
-command = "printf '%s' '<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Preview moved</title><style>body{font:16px/1.6 system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem}a{color:#0366d6}code{background:#f3f3f3;padding:0 4px;border-radius:4px}</style></head><body><h1>Previews moved to GitHub Actions</h1><p>This page is a placeholder that keeps the Netlify Git-integration runner green until its builds are stopped. PR previews are now built and uploaded by the PR Preview workflow on GitHub Actions.</p><p>The live preview for this PR serves at <a href=\"https://pr-'${REVIEW_ID:-0}'--indexotica.netlify.app/\">pr-'${REVIEW_ID:-0}'--indexotica.netlify.app</a> once that workflow has deployed it (it needs the <code>NETLIFY_AUTH_TOKEN</code> repo secret).</p></body></html>' > public/index.html"
+command = "printf '%s' '<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Preview</title><meta http-equiv=\"refresh\" content=\"10\"><style>body{font:16px/1.6 system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem}</style></head><body><h1>Preview deploying…</h1><p>This PR preview is built and uploaded by GitHub Actions (the PR Preview workflow) and will serve at this URL once its run finishes. This page reloads every 10 seconds.</p></body></html>' > public/index.html"
 publish = "public"
 
 [build.environment]
