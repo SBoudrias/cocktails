@@ -17,13 +17,35 @@
 # via the API on every preview deploy). Manual CLI/API deploys still work
 # with builds stopped: Netlify only serves, GitHub Actions builds.
 #
-# No [build] section on purpose — and never an ignore command. This file
-# used to drive Netlify's own builds, and a skipped build recorded an
-# EMPTY deploy for its commits, which Netlify then deduplicated every
-# later deploy of the same commits against ("All files already uploaded")
-# — the mechanism that gave PRs #604 and #605 empty previews. With all
-# deploys arriving as real uploads from GitHub Actions there is no skip
-# path at all; keep it that way.
+# Transitional [build] for as long as the site's Git integration is still
+# ACTIVE (until the NETLIFY_AUTH_TOKEN secret exists and a preview run's
+# stop-builds guard has stopped them, or they are stopped in the Netlify
+# UI): their runners still build this repo's PRs from this file, and with
+# no [build] section those builds fail and paint the PR red. The
+# placeholder keeps them green with a real publish — public/ is a real,
+# tiny directory (a couple of webp images) — never a skip: no ignore
+# command, no empty deploy records, per the #605 trap below. It burns a
+# few Netlify build minutes per push in the interim, then goes fully
+# inert (stopped sites never build) — remove it once the guard has
+# confirmed builds are stopped for good.
+[build]
+command = "echo 'Previews deploy from GitHub Actions now; this placeholder publish only keeps the legacy git-integration runner green until its builds are stopped.'"
+publish = "public"
+
+[build.environment]
+NODE_VERSION = "24"
+# The site was imported as a Next.js project, so without this Netlify's
+# Next.js runtime takes over the publish and ships zero files of ours;
+# this documented variable skips the runtime for static-export sites.
+NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+# Never an ignore command here, in any form. This file used to drive
+# Netlify's own builds, and a skipped build recorded an EMPTY deploy for
+# its commits, which Netlify then deduplicated every later deploy of the
+# same commits against ("All files already uploaded") — the mechanism
+# that gave PRs #604 and #605 empty previews. With all real deploys
+# arriving as uploads from GitHub Actions there is no skip path at all;
+# keep it that way.
 #
 # What stays in this file is the serving layer's config: `netlify deploy`
 # parses netlify.toml and bundles headers/redirects with every upload.
