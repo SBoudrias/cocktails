@@ -105,25 +105,6 @@ export default async function HomePage() {
           </ul>
           <CalculatorTiles />
         </li>
-        ||||||| parent of 3793a60a1c086 (feat(web): style lists — tiki, prep families and
-        the six Codex templates)
-        <HomeSection icon={<Calculator className="size-6" />} title="Calculators">
-          <LinkListItem href="/calculators/acid-adjusting" primary="Acid Adjusting" />
-          <LinkListItem
-            href="/calculators/juice-clarification"
-            primary="Juice Clarification"
-          />
-          <LinkListItem
-            href="/calculators/milk-clarification"
-            primary="Milk Clarification"
-          />
-          <LinkListItem href="/calculators/saline" primary="Saline Solution Calculator" />
-          <LinkListItem
-            href="/calculators/brix"
-            primary="Sugar Adjusting (Brix calculator)"
-          />
-          <LinkListItem href="/calculators/super-juice" primary="Super Juice" />
-        </HomeSection>
         <HomeSection icon={<Book className="size-6" />} title="By Books">
           {books.map((source) => (
             <SourceListItem source={source} key={source.name} />

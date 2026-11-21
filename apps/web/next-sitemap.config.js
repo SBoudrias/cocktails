@@ -5,8 +5,7 @@ const config = {
   outDir: 'out',
   // The offline fallback is an internal service-worker page, not site
   // content (also noindex in app/offline/page.tsx).
-  // The old non-alcoholic list URL only forwards to its style page.
-  exclude: ['/offline', '/list/non-alcoholic'],
+  exclude: ['/offline'],
 };
 
 export default config;
