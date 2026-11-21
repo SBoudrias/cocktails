@@ -22,14 +22,15 @@
 # stop-builds guard has stopped them, or they are stopped in the Netlify
 # UI): their runners still build this repo's PRs from this file, and with
 # no [build] section those builds fail and paint the PR red. The
-# placeholder keeps them green with a real publish — public/ is a real,
-# tiny directory (a couple of webp images) — never a skip: no ignore
-# command, no empty deploy records, per the #605 trap below. It burns a
-# few Netlify build minutes per push in the interim, then goes fully
-# inert (stopped sites never build) — remove it once the guard has
+# placeholder keeps them green with a real publish — public/ plus a small
+# landing page written at build time, so the legacy deploy-preview URL
+# explains where the real preview lives instead of 404ing — never a skip:
+# no ignore command, no empty deploy records, per the #605 trap below. It
+# burns a few Netlify build minutes per push in the interim, then goes
+# fully inert (stopped sites never build) — remove it once the guard has
 # confirmed builds are stopped for good.
 [build]
-command = "echo 'Previews deploy from GitHub Actions now; this placeholder publish only keeps the legacy git-integration runner green until its builds are stopped.'"
+command = "printf '%s' '<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Preview moved</title><style>body{font:16px/1.6 system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem}a{color:#0366d6}code{background:#f3f3f3;padding:0 4px;border-radius:4px}</style></head><body><h1>Previews moved to GitHub Actions</h1><p>This page is a placeholder that keeps the Netlify Git-integration runner green until its builds are stopped. PR previews are now built and uploaded by the PR Preview workflow on GitHub Actions.</p><p>The live preview for this PR serves at <a href=\"https://pr-'${REVIEW_ID:-0}'--indexotica.netlify.app/\">pr-'${REVIEW_ID:-0}'--indexotica.netlify.app</a> once that workflow has deployed it (it needs the <code>NETLIFY_AUTH_TOKEN</code> repo secret).</p></body></html>' > public/index.html"
 publish = "public"
 
 [build.environment]
