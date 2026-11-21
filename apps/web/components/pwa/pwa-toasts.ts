@@ -21,6 +21,11 @@ function isInstallPrompt(event: Event): event is BeforeInstallPromptEvent {
   return 'prompt' in event && typeof event.prompt === 'function';
 }
 
+/** Whether the update toast is up right now. The live queue is the truth,
+ * so an update that timed out, was swiped away or was acted on stops
+ * holding the install hint back the moment it is gone. */
+const updateToastShowing = () => toast.toasts().some((item) => item.id === UPDATE_ID);
+
 function installDismissed(): boolean {
   try {
     return sessionStorage.getItem(INSTALL_DISMISSED) === 'true';
@@ -40,7 +45,10 @@ function rememberInstallDismissal(): void {
 /** The opt-in install hint: the browser's own install UI, offered once per
  * session when it fires beforeinstallprompt (never on iOS, which has no
  * programmatic install — its path is the Share menu), never in standalone,
- * gone for the session after any dismissal. */
+ * gone for the session after any dismissal, and deferred while an update
+ * toast is up — the update is about correctness, the hint is a nicety, and
+ * Chrome re-fires the event later (and after the update's reload), so the
+ * hint waits for a beat when it has the stage alone. */
 export function showInstallToast(event: Event): void {
   if (!isInstallPrompt(event)) return;
   if (window.matchMedia?.('(display-mode: standalone)').matches) return;
@@ -49,6 +57,8 @@ export function showInstallToast(event: Event): void {
   // Hold the browser's own mini-infobar back until the user asks; it would
   // otherwise nag on every visit.
   event.preventDefault();
+
+  if (updateToastShowing()) return;
 
   // The title stays short enough to share its row with the buttons; the
   // rest of the sentence rides below as the description.
@@ -86,8 +96,14 @@ export function hideOfflineToast(): void {
 
 /** The update note: a new deploy's service worker has installed and is
  * waiting; one tap picks it up now instead of at the next launch. Skipped
- * while offline (nothing new can arrive) and in dev (no SW registered). */
+ * while offline (nothing new can arrive) and in dev (no SW registered).
+ * It outranks the install hint — a deploy is about correctness, a hint
+ * about nicety — so any standing hint steps down (Chrome re-fires
+ * beforeinstallprompt after the update's reload, so it returns on its
+ * own). The offline note may share the stack: it is environmental
+ * state, not an offer competing for the same decision. */
 export function showUpdateToast(worker: ServiceWorker): void {
+  toast.dismiss(INSTALL_ID);
   toast('A new version is available', {
     id: UPDATE_ID,
     duration: 20_000,

@@ -26,12 +26,63 @@ async function mountPwa() {
   return view;
 }
 
+/** A worker already waiting at launch, as a visit right after a real deploy
+ * sees it: PwaStatus offers the update toast as soon as its ready promise
+ * resolves (the same shape pull-to-update.test stubs). */
+function stubWaitingWorker() {
+  Object.defineProperty(navigator, 'serviceWorker', {
+    configurable: true,
+    value: {
+      controller: {} as ServiceWorker,
+      ready: Promise.resolve({
+        waiting: { postMessage: vi.fn() },
+        installing: null,
+        addEventListener: () => {},
+        removeEventListener: () => {},
+      }),
+    },
+  });
+}
+
+/** The live-deploy machinery: a registration whose updatefound fires, an
+ * installing worker that then lands 'installed' — the updatefound →
+ * statechange → waiting path PwaStatus wires, driven by hand. Returns the
+ * trigger; PwaStatus has registered its listeners by the time a toast has
+ * rendered. */
+function stubDeployArriving() {
+  const statechange: Array<() => void> = [];
+  const updatefound: Array<() => void> = [];
+  const worker = {
+    state: 'installing',
+    postMessage: vi.fn(),
+    addEventListener: (_: string, listener: () => void) => statechange.push(listener),
+  };
+  Object.defineProperty(navigator, 'serviceWorker', {
+    configurable: true,
+    value: {
+      controller: {} as ServiceWorker,
+      ready: Promise.resolve({
+        installing: worker,
+        waiting: null,
+        addEventListener: (_: string, listener: () => void) => updatefound.push(listener),
+        removeEventListener: () => {},
+      }),
+    },
+  });
+  return () => {
+    for (const listener of updatefound) listener();
+    worker.state = 'installed';
+    for (const listener of statechange) listener();
+  };
+}
+
 describe('the PWA toasts', () => {
   afterEach(() => {
     // The shared toast() queue is module-global: clear it between tests,
     // or one test's toasts leak into the next mount's region.
     toast.dismiss();
     sessionStorage.clear();
+    Reflect.deleteProperty(navigator, 'serviceWorker');
   });
 
   it('offers the native install when the browser fires beforeinstallprompt', async () => {
@@ -126,5 +177,81 @@ describe('the PWA toasts', () => {
         screen.queryByRole('region', { name: 'Notifications' }),
       ).not.toBeInTheDocument(),
     );
+  });
+
+  it('offers the update when a worker is already waiting at launch', async () => {
+    stubWaitingWorker();
+    await mountPwa();
+
+    const region = await screen.findByRole('region', { name: 'Notifications' });
+    expect(region).toHaveTextContent(/a new version is available/i);
+    expect(screen.getByRole('button', { name: /^update$/i })).toBeInTheDocument();
+  });
+
+  it('never shows the install hint while the update toast is up (update first)', async () => {
+    stubWaitingWorker();
+    await mountPwa();
+    await screen.findByRole('region', { name: 'Notifications' });
+
+    // The launch race, one direction: a fresh deploy's worker waits while
+    // Chrome fires beforeinstallprompt on the same visit. The update is
+    // about correctness; the hint waits for a stage of its own.
+    fireInstallPrompt();
+    await new Promise((resolve) => setTimeout(resolve, 50));
+
+    const region = screen.getByRole('region', { name: 'Notifications' });
+    expect(region).toHaveTextContent(/a new version is available/i);
+    expect(region).not.toHaveTextContent(/install indexotica\?/i);
+  });
+
+  it('dismisses the standing install hint when the update toast arrives (install first)', async () => {
+    const arriveDeploy = stubDeployArriving();
+    await mountPwa();
+
+    fireInstallPrompt();
+    await screen.findByRole('region', { name: 'Notifications' });
+
+    // The other direction: the hint lands, then the update is detected
+    // mid-session (updatefound after a pull-to-update check, or the
+    // launch race resolving late). The update takes the stage.
+    arriveDeploy();
+    const region = await screen.findByRole('region', { name: 'Notifications' });
+    expect(region).toHaveTextContent(/a new version is available/i);
+    expect(region).not.toHaveTextContent(/install indexotica\?/i);
+  });
+
+  it('lets the install hint return once the update toast is gone', async () => {
+    stubWaitingWorker();
+    await mountPwa();
+    await screen.findByRole('region', { name: 'Notifications' });
+
+    // The update toast times out; Chrome re-fires beforeinstallprompt (as
+    // it does after a prevented prompt). The hint gets its turn now —
+    // the deferral never becomes a session-long suppression.
+    toast.dismiss();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole('region', { name: 'Notifications' }),
+      ).not.toBeInTheDocument(),
+    );
+
+    fireInstallPrompt();
+    const region = await screen.findByRole('region', { name: 'Notifications' });
+    expect(region).toHaveTextContent(/install indexotica\?/i);
+    expect(region).not.toHaveTextContent(/a new version is available/i);
+  });
+
+  it('lets the offline note share the stack with the update toast', async () => {
+    stubWaitingWorker();
+    await mountPwa();
+    await screen.findByRole('region', { name: 'Notifications' });
+
+    // The offline note is environmental state, not an offer competing for
+    // the same decision — both stay, each alone meaningful.
+    window.dispatchEvent(new Event('offline'));
+    const region = await screen.findByRole('region', { name: 'Notifications' });
+    // The offline note lands a commit after the event; wait for it.
+    await waitFor(() => expect(region).toHaveTextContent(/you are offline/i));
+    expect(region).toHaveTextContent(/a new version is available/i);
   });
 });
