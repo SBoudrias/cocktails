@@ -1,79 +1,72 @@
 # Netlify project config for PR previews of the web app.
 #
-# Production deploys live on GitHub Pages (.github/workflows/deploy.yml);
-# this Netlify project exists only to build deploy previews for pull
-# requests, via Netlify's own Git integration. No deploy machinery in the
-# repo and no token secret: Netlify's GitHub app authenticates itself.
+# Production deploys live on GitHub Pages (.github/workflows/deploy.yml).
+# This Netlify site exists only to SERVE deploy previews for pull requests:
+# the previews are built and uploaded by GitHub Actions
+# (.github/workflows/preview.yml), which deploys the export with
+# netlify-cli (`netlify deploy --alias deploy-preview-<PR>`). PR N's preview
+# lives at the same URL Netlify's own previews always used,
+#   https://deploy-preview-<PR>--indexotica.netlify.app/
+# (the root redirects to the app) and the workflow posts the link on the
+# PR. Old links and bookmarks keep working — only the builder behind the
+# URL changed. Netlify's own runners are out of the loop entirely — that
+# is the point: they were capped by the free build-minutes allowance,
+# while GitHub Actions builds are not.
 #
-# One-time setup (Netlify UI, no repo changes): connect this repository as
-# a site (the connected site is `indexotica`), keep the production branch
-# as `main`, leave additional branch deploys off. Every PR then gets a
-# preview at
-#   https://deploy-preview-<PR>--<site>.netlify.app/
-# (the root redirects to the app) and Netlify's GitHub app posts the link
-# on the PR. The repo's own gate (.github/workflows/preview.yml) builds
-# the same export and runs the offline + smoke checks on every PR. The
-# build command resolves the site subdomain dynamically ($SITE_NAME); the
-# only hardcoded copy of it is preview.yml's PREVIEW_ORIGIN, which must
-# match the connected site.
+# The site's Git integration must have builds STOPPED (Netlify UI:
+# Project configuration > Developer settings > Continuous deployment >
+# Build status — or the workflow's stop-builds guard, which re-stops it
+# via the API on every preview deploy). Manual CLI/API deploys still work
+# with builds stopped: Netlify only serves, GitHub Actions builds.
+#
+# Transitional [build] for as long as the site's Git integration is still
+# ACTIVE (until the NETLIFY_AUTH_TOKEN secret exists and a preview run's
+# stop-builds guard has stopped them, or they are stopped in the Netlify
+# UI): their runners still build this repo's PRs from this file, and with
+# no [build] section those builds fail and paint the PR red. The
+# placeholder keeps them green with a real publish — public/ plus a small
+# landing page written at build time, so the legacy deploy-preview URL
+# explains where the real preview lives instead of 404ing — never a skip:
+# no ignore command, no empty deploy records, per the #605 trap below. It
+# burns a few Netlify build minutes per push in the interim, then goes
+# fully inert (stopped sites never build) — remove it once the guard has
+# confirmed builds are stopped for good.
+[build]
+command = "printf '%s' '<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Preview</title><meta http-equiv=\"refresh\" content=\"10\"><style>body{font:16px/1.6 system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem}</style></head><body><h1>Preview deploying…</h1><p>This PR preview is built and uploaded by GitHub Actions (the PR Preview workflow) and will serve at this URL once its run finishes. This page reloads every 10 seconds.</p></body></html>' > public/index.html"
+publish = "public"
+
+[build.environment]
+NODE_VERSION = "24"
+# The site was imported as a Next.js project, so without this Netlify's
+# Next.js runtime takes over the publish and ships zero files of ours;
+# this documented variable skips the runtime for static-export sites.
+NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+# Never an ignore command here, in any form. This file used to drive
+# Netlify's own builds, and a skipped build recorded an EMPTY deploy for
+# its commits, which Netlify then deduplicated every later deploy of the
+# same commits against ("All files already uploaded") — the mechanism
+# that gave PRs #604 and #605 empty previews. With all real deploys
+# arriving as uploads from GitHub Actions there is no skip path at all;
+# keep it that way.
+#
+# What stays in this file is the serving layer's config: `netlify deploy`
+# parses netlify.toml and bundles headers/redirects with every upload.
 #
 # The export is staged under /pr-preview/pr-<PR>/ rather than served at
 # the preview root: every derived path (the noindex heuristic in
 # apps/web/app/layout.tsx, the service-worker scope, the manifest, the
 # smoke suite's path parsing) keys off that basePath shape, so the app
 # code has no preview-specific behavior beyond reading its origin from
-# NEXT_PUBLIC_SITE_ORIGIN.
-
-[build]
-# The deploy-preview build (the default context). REVIEW_ID is the PR
-# number at build time; SITE_NAME is the Netlify site subdomain. Both
-# default safely: a build without a REVIEW_ID gets pr-0 URLs rather than
-# broken ones. The diag.txt file drops the build-time git metadata into
-# the deploy root, so the live preview itself shows what the build ran
-# with if anything goes wrong again.
-command = 'NEXT_PUBLIC_BASE_PATH=/pr-preview/pr-${REVIEW_ID:-0} NEXT_PUBLIC_SITE_ORIGIN=https://deploy-preview-${REVIEW_ID:-0}--$SITE_NAME.netlify.app yarn workspace @cocktails/web build && find apps/web/out -name "__next._full.txt" -type f -delete && rm -rf apps/web/deploy && mkdir -p apps/web/deploy/pr-preview/pr-${REVIEW_ID:-0} && mv apps/web/out/* apps/web/deploy/pr-preview/pr-${REVIEW_ID:-0}/ && mv apps/web/deploy/pr-preview/pr-${REVIEW_ID:-0}/404.html apps/web/deploy/404.html && env | grep -E "^(REVIEW_ID|CONTEXT|BRANCH|HEAD|COMMIT_REF|CACHED_COMMIT_REF|SITE_NAME|PULL_REQUEST|NETLIFY)=" > apps/web/deploy/diag.txt || true; find apps/web/deploy | wc -l >> apps/web/deploy/diag.txt && echo "<!doctype html><title>Preview</title><meta http-equiv=\"refresh\" content=\"0; url=/pr-preview/pr-${REVIEW_ID:-0}/\"><a href=\"/pr-preview/pr-${REVIEW_ID:-0}/\">Open the preview</a>" > apps/web/deploy/index.html'
-publish = "apps/web/deploy"
-# NO ignore command, deliberately. A skipped build records an EMPTY
-# deploy for its commits, and Netlify then deduplicates every later
-# deploy of the same commits against that empty record ("All files
-# already uploaded") — the exact mechanism that gave PRs #604 and #605
-# empty previews. The ignore command's exit-0 branches skipped the
-# branch-deploy runs that fire on every push to a PR head branch
-# (REVIEW_ID is unset there), and each skip poisoned those commits, so
-# the deploy previews that followed deduplicated against the empty
-# records. (diag.txt in the deploy root confirms the deploy-preview
-# environment: BRANCH=pull/N/head, REVIEW_ID=N.) The context overrides
-# below make non-preview contexts publish a real (tiny) directory
-# instead of skipping, so no empty deploy records are ever created.
-
-[build.environment]
-NODE_VERSION = "24"
-# The site was imported as a Next.js project, so Netlify installs its
-# Next.js runtime — which provisions serverless functions for SSR and
-# takes over the publish, shipping zero files for this repo (the app is
-# `output: 'export'` static; there is nothing to serve through functions,
-# and the deploy ends up empty with only the runtime's redirect rules).
-# This documented variable skips the runtime for next-export-style sites,
-# so the [build] command and publish directory are ours alone.
-NETLIFY_NEXT_PLUGIN_SKIP = "true"
-
-# Non-preview contexts never run the app build: production stays on
-# GitHub Pages (.github/workflows/deploy.yml) — this Netlify site exists
-# for deploy previews only. They publish the repo's static public/ assets
-# (a real, tiny directory — a couple of webp images) rather than being
-# skipped, so no empty deploy records are ever created for them.
-[context.production]
-command = "echo 'Production deploys stay on GitHub Pages (deploy.yml); this Netlify site is deploy previews only.'"
-publish = "public"
-
-[context.branch-deploy]
-command = "echo 'Branch deploys are unused; previews build on pull requests.'"
-publish = "public"
+# NEXT_PUBLIC_SITE_ORIGIN. The staging, the diag.txt build log, and the
+# root redirect are built in the workflow, next to the build it stages.
 
 # Previews must never be indexed: the page-level robots meta (layout.tsx's
 # isPreview, keyed on the /pr-preview/ basePath) covers crawlers that
-# execute pages; this header covers everything else, on every response —
-# a second layer over netlify's automatic deploy-preview X-Robots-Tag.
+# execute pages; this header covers everything else, on every response.
+# Unlike Netlify's own deploy previews, alias deploys uploaded by the CLI
+# do NOT get an automatic X-Robots-Tag — this header is the only layer,
+# and `netlify deploy` sends it with every upload.
 # It applies to every deploy of this site — and every deploy of this site
 # is a preview.
 [[headers]]
