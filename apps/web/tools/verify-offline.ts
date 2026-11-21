@@ -574,25 +574,27 @@ const touch = (x: number, y: number) => ({ x, y, id: 1 });
  * move threshold, and far enough down (~250px) that the rubber-banded
  * travel passes the release threshold.
  *
- * The moves are dispatched without awaiting each one: they serialize
- * onto the DevTools WebSocket in call order, which is exactly the order
- * of the steps — awaiting per step would only gate the round trip, not
- * change the wire order. One Promise.all at the end holds the release
- * until every move landed. */
+ * The steps are dispatched strictly in sequence, one command round trip
+ * apart: a burst of concurrent dispatches reaches Chrome's input
+ * pipeline as one batch, and the gesture's listeners can see a jump
+ * instead of a drag — seen on CI as a release that never armed (the
+ * chip never checked). Promise chaining keeps the order while keeping
+ * each await out of the loop body (react-doctor's async-await-in-loop). */
 async function pullDown() {
   await page.send('Input.dispatchTouchEvent', {
     type: 'touchStart',
     touchPoints: [touch(300, 60)],
   });
-  const moves = Array.from({ length: 11 }, (_, i) => 90 + i * 20);
-  await Promise.all(
-    moves.map((y) =>
+  let step: Promise<unknown> = Promise.resolve();
+  for (let y = 90; y <= 310; y += 20) {
+    step = step.then(() =>
       page.send('Input.dispatchTouchEvent', {
         type: 'touchMove',
         touchPoints: [touch(300, y)],
       }),
-    ),
-  );
+    );
+  }
+  await step;
   await page.send('Input.dispatchTouchEvent', {
     type: 'touchEnd',
     touchPoints: [],
