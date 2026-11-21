@@ -65,7 +65,7 @@ jobs:
 
       - name: Deploy to GitHub Pages 🚀
         id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       # Waits for GitHub Pages to serve this build, then fetches the home
       # page and a page of each type and fails on any non-200 or missing
