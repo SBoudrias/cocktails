@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hamilton Breezeway Blend",
   "type": "spirit",
-  "categories": ["Blended lightly-aged rum"]
+  "categories": ["Blended lightly aged rum"]
 }

@@ -53,8 +53,8 @@ describe('normalizeCategoryCasing', () => {
     expect(normalizeCategoryCasing('Chili pepper-flavored vodka')).toBe(
       'Chili pepper-flavored vodka',
     );
-    expect(normalizeCategoryCasing('Blended Lightly-aged Rum')).toBe(
-      'Blended lightly-aged rum',
+    expect(normalizeCategoryCasing('Blended Lightly Aged Rum')).toBe(
+      'Blended lightly aged rum',
     );
   });
 
