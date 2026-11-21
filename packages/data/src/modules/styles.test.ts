@@ -27,6 +27,10 @@ const [
   ninthWonder,
   bermudaTriangle,
   hemingwayDaiquiri,
+  americano,
+  espressoMartini,
+  carajillo,
+  artfulDodger,
 ] = await Promise.all([
   getRecipe(
     { type: 'book', slug: 'tropical-standard' },
@@ -69,6 +73,14 @@ const [
   getRecipe({ type: 'youtube-channel', slug: 'educated-barfly' }, '9th-wonder'),
   getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'bermuda-triangle'),
   getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'hemingway-daiquiri'),
+  getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'americano'),
+  getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'espresso-martini'),
+  getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'carajillo'),
+  getRecipe(
+    { type: 'book', slug: 'death-co-welcome-home' },
+    'artful-dodger',
+    '04_Boozy & Honest (Old-Fashioned)',
+  ),
 ]);
 
 describe('getRecipeStyles', () => {
@@ -177,6 +189,32 @@ describe('getRecipesByStyle', () => {
     );
     expect(namesOf(sidecarFamily)).not.toContain(
       `${bermudaTriangle.name} (make-and-drink)`,
+    );
+  });
+
+  it('carries the amaro-forward, coffee and blended styles', async () => {
+    const [amaroForward, coffee, blended, oldFashionedFamily] = await Promise.all([
+      getRecipesByStyle('amaro-forward'),
+      getRecipesByStyle('coffee'),
+      getRecipesByStyle('blended'),
+      getRecipesByStyle('old-fashioned-family'),
+    ]);
+
+    const keysOf = (recipes: typeof amaroForward) =>
+      recipes.map((recipe) => `${recipe.name} (${recipe.source.slug})`);
+
+    // An americano is campari and vermouth as the whole pour.
+    expect(keysOf(amaroForward)).toContain(`${americano.name} (anders-erickson)`);
+    expect(keysOf(coffee)).toContain(`${espressoMartini.name} (anders-erickson)`);
+    expect(keysOf(coffee)).toContain(`${carajillo.name} (make-and-drink)`);
+    // A frozen blend is a blended member, whatever its family.
+    expect(keysOf(blended)).toContain(`${frozenDaiquiri.name} (tropical-standard)`);
+
+    // The bitterless stirred old-fashioned gap is closed: an Artful Dodger
+    // (armagnac and banana liqueur, no bitters, no wine) files under the
+    // old-fashioned family, as Death & Co files it.
+    expect(keysOf(oldFashionedFamily)).toContain(
+      `${artfulDodger.name} (death-co-welcome-home)`,
     );
   });
 

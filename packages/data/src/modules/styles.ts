@@ -340,11 +340,15 @@ const isServedOnRocks = (recipe: Recipe) =>
 /**
  * A rocks-served old-fashioned profile, with or without aromatized wine:
  * Death & Co files vermouth-and-bitters drinks served on a big rock under
- * the old-fashioned, so serving decides between the two families.
+ * the old-fashioned, so serving decides between the two families. Bitters
+ * are not required when there is no aromatized wine in the glass: the
+ * book also files stirred spirit-and-sweetener drinks here (an Artful
+ * Dodger is armagnac and banana liqueur, nothing else). A rocks vermouth
+ * drink without bitters still belongs to the martini family (a Negroni).
  */
 const isOldFashionedFamily = (recipe: Recipe) =>
   isSpirited(recipe) &&
-  isBittered(recipe) &&
+  (isBittered(recipe) || (recipe.preparation === 'stirred' && !isAromatized(recipe))) &&
   isSweetened(recipe) &&
   !isTart(recipe) &&
   !hasEggYolk(recipe) &&
@@ -372,6 +376,28 @@ const isHighballFamily = (recipe: Recipe) =>
  * alike (a Grasshopper has no spirit at all). A coconut body is not a
  * flip's richness: it reads tropical, and those drinks belong to tiki
  * (piña coladas and their kin). */
+/** Amari and bitter aperitifs as a named pour: campari, aperol, cynar,
+ * fernet, and the amari by name. */
+const amaroPattern =
+  /amaro|amari|fernet|campari|aperol|cynar|braulio|montenegro|nonino|lucano|\bchina\b|amedeo|ciocor|rabarbaro|sfumato/;
+
+/** The amaro or bitter aperitif is a main pour, not seasoning. */
+const isAmaroForward = (recipe: Recipe) => {
+  if (!hasIngredientNamed(recipe, amaroPattern)) return false;
+
+  const liqueurPour = recipe.ingredients
+    .filter((ingredient) => amaroPattern.test(ingredient.name.toLowerCase()))
+    .reduce((sum, ingredient) => sum + ingredientVolumeOz(ingredient), 0);
+
+  // Below a seasoning pour (a dash or two of fernet on top of a stirred
+  // drink) the amaro does not carry the drink.
+  return liqueurPour > 0.5;
+};
+
+/** Coffee, espresso or a coffee liqueur carrying the drink. */
+const isCoffee = (recipe: Recipe) =>
+  hasIngredientNamed(recipe, /espresso|cold brew|\bcoffee\b|caffeine/);
+
 const isFlip = (recipe: Recipe) =>
   hasEggYolk(recipe) ||
   (!isNonAlcoholicRecipe(recipe) && isDairyCreamy(recipe) && !isCarbonated(recipe));
@@ -451,6 +477,26 @@ const styleDefinitions: StyleDefinition[] = [
     name: 'Julep',
     description: 'Spirit packed in crushed ice with fresh mint.',
     matches: (recipe) => recipe.glassware === 'julep' || /julep/i.test(recipe.name),
+  },
+  {
+    slug: 'amaro-forward',
+    name: 'Amaro-forward',
+    description:
+      'Amaro or bitter aperitif as a main pour — americano, spritz and amaro-driven drinks.',
+    matches: isAmaroForward,
+  },
+  {
+    slug: 'coffee',
+    name: 'Coffee',
+    description: 'Espresso, cold brew or coffee liqueur carrying the drink.',
+    matches: isCoffee,
+  },
+  {
+    slug: 'blended',
+    name: 'Blended',
+    description: 'Whirred with ice — frozen drinks and flash blends.',
+    matches: (recipe) =>
+      recipe.preparation === 'blended' || recipe.preparation === 'flash blended',
   },
 ];
 
