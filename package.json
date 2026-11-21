@@ -21,8 +21,8 @@
     "@types/lodash": "^4.17.27",
     "@types/node": "^26.6.6",
     "@vitejs/plugin-react": "^6.3.0",
-    "@vitest/browser": "^5.1.0",
-    "@vitest/coverage-v8": "^5.1.0",
+    "@vitest/browser": "^5.1.1",
+    "@vitest/coverage-v8": "^5.1.1",
     "knip": "^6.45.1",
     "msw": "^3.0.5",
     "nano-staged": "^1.0.2",
@@ -34,7 +34,7 @@
     "turbo": "^2.11.10",
     "typescript": "7.0.2",
     "vite": "^8.3.8",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.1"
   },
   "dependenciesMeta": {
     "core-js": {
