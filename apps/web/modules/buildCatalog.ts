@@ -4,11 +4,11 @@ import { getAllBars } from '@cocktails/data/bars';
 import { getAllCategories, getChildCategories } from '@cocktails/data/categories';
 import { getAllIngredients, getRecipesForIngredient } from '@cocktails/data/ingredients';
 import {
-  getNonAlcoholicRecipes,
   getRecipeByCategory,
   getRecipesByAuthor,
   getRecipesByBar,
 } from '@cocktails/data/recipes';
+import { getRecipeStyles, getRecipesByStyle } from '@cocktails/data/styles';
 import { getRecipeSource } from '#/modules/getRecipeSource';
 import { getRecipeUrl } from '#/modules/url';
 
@@ -125,7 +125,7 @@ export async function getSerializedCatalog(): Promise<string> {
     getAllBars(),
   ]);
 
-  const [categoryLists, ingredientLists, curatedLists, authorLists, barLists] =
+  const [categoryLists, ingredientLists, styleLists, authorLists, barLists] =
     await Promise.all([
       Promise.all(
         categories.map(async (category) => {
@@ -152,14 +152,16 @@ export async function getSerializedCatalog(): Promise<string> {
           };
         }),
       ),
-      Promise.all([
-        getNonAlcoholicRecipes().then((recipes) => ({
-          key: 'list/non-alcoholic',
-          recipes,
-          // The curated list pages show no per-recipe quantity.
+      // The style pages mirror the curated list pages: catalog-rendered, no
+      // per-recipe quantity. A style nothing matches carries no list. The
+      // non-alcoholic list lives here too, as the style it always was.
+      Promise.all(
+        getRecipeStyles().map(async (style) => ({
+          key: `list/style/${style.slug}`,
+          recipes: await getRecipesByStyle(style.slug),
           pickQuantity: () => undefined,
         })),
-      ]),
+      ),
       // Entity files cover the author and bar pages that list recipes —
       // check-data fails on a credit with no entity file. Author and bar cards
       // show no per-recipe quantity, so their lists carry none.
@@ -183,7 +185,7 @@ export async function getSerializedCatalog(): Promise<string> {
     [
       ...categoryLists,
       ...ingredientLists,
-      ...curatedLists,
+      ...styleLists,
       ...authorLists,
       ...barLists,
     ].filter((list) => list.recipes.length > 0),

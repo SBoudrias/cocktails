@@ -14,10 +14,10 @@ import {
   getBarListUrl,
   getBottleListUrl,
   getIngredientListUrl,
-  getNonAlcoholicRecipeListUrl,
   getRecentlyAddedUrl,
   getRecipeListUrl,
   getSourceUrl,
+  getStyleListUrl,
 } from '#/modules/url';
 
 export const metadata: Metadata = {
@@ -124,14 +124,11 @@ export default async function HomePage() {
           ))}
         </HomeSection>
         <HomeSection title="Other lists">
-          <LinkListItem href={getAuthorListUrl()} primary="By Authors" />
-          <LinkListItem href={getBarListUrl()} primary="By Bars" />
-          <LinkListItem href={getIngredientListUrl()} primary="All Ingredients" />
-          <LinkListItem
-            href={getNonAlcoholicRecipeListUrl()}
-            primary="Non-Alcoholic Recipes"
-          />
+          <LinkListItem href={getStyleListUrl()} primary="By Style" />
+          <LinkListItem href={getAuthorListUrl()} primary="By Author" />
+          <LinkListItem href={getBarListUrl()} primary="By Bar" />
           <LinkListItem href={getBottleListUrl()} primary="All Bottles" />
+          <LinkListItem href={getIngredientListUrl()} primary="All Ingredients" />
         </HomeSection>
       </List>
     </>

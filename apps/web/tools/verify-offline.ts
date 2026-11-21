@@ -85,10 +85,12 @@ const LIST_HUBS = [
   'list/recently-added',
   'list/authors',
   'list/bars',
-  'list/non-alcoholic',
+  'list/style/non-alcoholic',
   'list/milk-clarification',
+  'list/style',
+  'list/style/tiki',
 ] as const;
-for (const hub of LIST_HUBS) await assertFile(`${hub}.html`);
+await Promise.all(LIST_HUBS.map((hub) => assertFile(`${hub}.html`)));
 
 const swSource = await readFile(path.join(outDir, 'sw.js'), 'utf8');
 if (swSource.includes('__SW_VERSION__') || swSource.includes('const PRECACHE = [];')) {
@@ -128,9 +130,9 @@ const VISITED_CATEGORY = 'category/rum';
 const UNVISITED_CATEGORY = 'category/absinthe';
 const VISITED_INGREDIENT = 'ingredient/juice/lime-juice';
 // The author/bar pages became catalog-rendered (#554); the non-alcoholic
-// list (#553) bakes no rows at all, so it can only render through the
+// style list (#553) bakes no rows at all, so it can only render through the
 // precached catalog — the strongest fresh-install offline check there is.
-const NON_ALCOHOLIC_HUB = 'list/non-alcoholic';
+const NON_ALCOHOLIC_HUB = 'list/style/non-alcoholic';
 const VISITED_AUTHOR = 'list/authors/anders-erickson';
 const VISITED_BAR = 'list/bars/death-and-co-new-york-ny';
 const rumList = catalog.lists[VISITED_CATEGORY];
@@ -288,8 +290,8 @@ const referencedChunks = precacheUrls.filter(
 if (referencedChunks.length < 2) {
   throw new Error('the visited recipe page references fewer than two precached chunks');
 }
-const droppedChunks = referencedChunks.slice(0, 2);
-const deployBPrecache = precacheUrls.filter((url) => !droppedChunks.includes(url));
+const droppedChunks = new Set(referencedChunks.slice(0, 2));
+const deployBPrecache = precacheUrls.filter((url) => !droppedChunks.has(url));
 const deployBVersion = `b${deployAVersion}`;
 await writeFile(
   path.join(overlayDir, 'sw.js'),
@@ -359,7 +361,11 @@ const browserWsUrl = await new Promise<string>((resolve, reject) => {
 // The DevTools HTTP endpoints live next to the browser WebSocket: same host
 // and port, http scheme instead of ws.
 const devtoolsOrigin = new URL(browserWsUrl).origin.replace(/^ws:/, 'http:');
-const targets = (await (await fetch(`${devtoolsOrigin}/json/list`)).json()) as {
+const targetsResponse = await fetch(`${devtoolsOrigin}/json/list`);
+if (!targetsResponse.ok) {
+  throw new Error(`Chrome's /json/list responded ${targetsResponse.status}`);
+}
+const targets = (await targetsResponse.json()) as {
   type: string;
   url: string;
   webSocketDebuggerUrl?: string;
@@ -776,13 +782,14 @@ await check(
         `precache has ${precacheEntries.length} entries, the manifest bakes ${precacheUrls.length}`,
       );
     }
+    const precacheEntryPaths = new Set(precacheEntries);
     for (const required of [
       `${BASE_PATH}/data/catalog.json`,
       `${BASE_PATH}/data/search-index.json`,
       `${BASE_PATH}/offline.html`,
       ...LIST_HUBS.map((hub) => `${BASE_PATH}/${hub}.html`),
     ]) {
-      if (!precacheEntries.includes(required)) {
+      if (!precacheEntryPaths.has(required)) {
         throw new Error(`precache is missing ${required}`);
       }
     }
@@ -1003,11 +1010,13 @@ await check(
       .catch(() => undefined);
     const deadline = Date.now() + INSTALL_TIMEOUT_MS;
     let names: string[] = [];
+    let cacheNames: Set<string> = new Set();
     while (Date.now() < deadline) {
       names = await evaluateStrings(cacheNamesExpr);
-      const hasB = names.includes(`${cachePrefix}precache-${deployBVersion}`);
-      const goneA = !names.includes(`${cachePrefix}precache-${deployAVersion}`);
-      if (hasB && goneA && names.includes(`${cachePrefix}runtime`)) break;
+      cacheNames = new Set(names);
+      const hasB = cacheNames.has(`${cachePrefix}precache-${deployBVersion}`);
+      const goneA = !cacheNames.has(`${cachePrefix}precache-${deployAVersion}`);
+      if (hasB && goneA && cacheNames.has(`${cachePrefix}runtime`)) break;
       await sleep(250);
     }
     const expected = [
@@ -1015,13 +1024,13 @@ await check(
       `${cachePrefix}runtime`,
     ];
     for (const name of expected) {
-      if (!names.includes(name)) {
+      if (!cacheNames.has(name)) {
         throw new Error(
           `expected cache ${name} after the redeploy; caches: ${names.join(', ')}`,
         );
       }
     }
-    if (names.includes(`${cachePrefix}precache-${deployAVersion}`)) {
+    if (cacheNames.has(`${cachePrefix}precache-${deployAVersion}`)) {
       throw new Error(`the old precache was never retired: ${names.join(', ')}`);
     }
   },

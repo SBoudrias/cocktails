@@ -110,8 +110,8 @@ export function getRecentlyAddedUrl(): Route {
   return '/list/recently-added';
 }
 
-export function getNonAlcoholicRecipeListUrl(): Route {
-  return '/list/non-alcoholic';
+export function getStyleListUrl(): Route {
+  return '/list/style';
 }
 
 export function getMilkClarificationCalculatorUrl({
@@ -140,6 +140,12 @@ export function getMilkClarificationCalculatorUrl({
 
 export function getMilkClarifiedRecipeListUrl(): Route {
   return '/list/milk-clarification';
+}
+
+export function getStyleRecipesUrl(style: {
+  slug: string;
+}): Route<`/list/style/${string}`> {
+  return `/list/style/${style.slug}`;
 }
 
 export function getBottleListUrl(): Route {
