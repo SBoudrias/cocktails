@@ -1,0 +1,106 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "SC Hot buttered rum batter",
+  "type": "other",
+  "description": "Smuggler's Cove's make-ahead spiced butter base for Hot Buttered Rum. Makes about 4 cups of batter, about 48 servings.",
+  "ingredients": [
+    {
+      "name": "Cinnamon",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Nutmeg",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Black pepper",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Cloves",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Allspice",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "Anise seed",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "name": "butter",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Brown sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 4,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Molasses",
+      "type": "other",
+      "quantity": {
+        "amount": 2,
+        "unit": "tbsp"
+      }
+    },
+    {
+      "name": "Vanilla extract",
+      "type": "other",
+      "quantity": {
+        "amount": 1,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    "Use freshly ground cinnamon, nutmeg, and black pepper; ground cloves, allspice, and anise seed; salted butter; packed golden brown sugar; and Brer Rabbit Mild Molasses.",
+    "Combine the cinnamon, nutmeg, black pepper, cloves, allspice, and anise seed in a small bowl and set aside.",
+    "Melt the butter in a saucepan over low heat.",
+    "Add the sugar and stir. Add the molasses and vanilla extract and stir.",
+    "Finally, stir in the spice mixture. At first, as you stir to combine, the butter will form a separate layer. Continue to stir over low heat until all the ingredients combine, including the butter, about 15 minutes.",
+    "Remove from the heat. Let cool slightly.",
+    "While still warm and malleable, pour the batter into a storage container.",
+    "Let cool completely, then seal airtight, and store in the refrigerator where it will keep until the expiration date of the butter used to make it; note that date before you start the recipe.",
+    "When possible, it is always best to use fresh spices, but if you don't have a small pepper mill to grind the anise seeds, allspice, and black pepper, buy ground versions."
+  ],
+  "refs": [
+    {
+      "type": "book",
+      "title": "smugglers-cove",
+      "page": 202
+    }
+  ]
+}
