@@ -165,8 +165,9 @@ describe('getSubstitutesForIngredient', () => {
     );
 
     expect(substitution?.substitutes.map(({ slug }) => slug)).toContain('rum-bar-silver');
-    // The whole populated Jamaican rum shelf shows up, 12 bottles.
-    expect(substitution?.substitutes).toHaveLength(12);
+    // The whole populated Jamaican rum shelf shows up, plus the four
+    // unaged overproofs sharing the Minimalist Tiki style node.
+    expect(substitution?.substitutes).toHaveLength(16);
   });
 
   it('returns undefined for an ingredient without categories', async () => {

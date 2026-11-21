@@ -305,6 +305,30 @@ describe('IngredientPage', () => {
       ).toBeTruthy();
     });
 
+    it("groups a rum bottle's chips per categorization system", async () => {
+      await setupApp(jamaicanRumPageJSX);
+
+      // Appleton 12 carries Smuggler's Cove categories and its Minimalist
+      // Tiki style: two chip groups, the house-less SC group first because
+      // the bottle has no uncategorized (house) categories.
+      const scChips = screen.getByRole('group', {
+        name: "Smuggler's Cove categories",
+      });
+      const mtChips = screen.getByRole('group', {
+        name: 'Minimalist Tiki categories',
+      });
+
+      expect(
+        within(scChips).getByRole('link', { name: 'Blended aged rum (Jamaica)' }),
+      ).toHaveAttribute('href', '/category/blended-aged-rum-jamaica');
+      expect(
+        within(mtChips).getByRole('link', { name: 'Aged Jamaican rum' }),
+      ).toHaveAttribute('href', '/category/aged-jamaican-rum');
+      expect(
+        scChips.compareDocumentPosition(mtChips) & Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+    });
+
     it("navigates in-app to the top category from its card's Learn more", async () => {
       // Bols Orange Curaçao has no description of its own, so the page
       // shows its top category's description card instead.
@@ -968,8 +992,12 @@ describe('IngredientPage', () => {
       const trigger = screen.getByRole('button', { name: 'Substitutions' });
       expect(trigger).toHaveClass('bg-primary', 'uppercase', 'w-full', 'h-11');
 
-      // The category chips stay the translucent pills they were.
-      const chip = screen.getByRole('group', { name: 'Categories' }).firstElementChild;
+      // The category chips stay the translucent pills they were. Appleton
+      // 12's categories all belong to the Smuggler's Cove system, so its
+      // chips group carries the system's name.
+      const chip = screen.getByRole('group', {
+        name: "Smuggler's Cove categories",
+      }).firstElementChild;
       expect(chip).not.toHaveClass('bg-primary', 'uppercase', 'w-full');
     });
   });

@@ -1,3 +1,4 @@
+import { groupCategoriesBySystem } from '@cocktails/data/categories';
 import {
   getIngredient,
   getIngredientRecipeCounts,
@@ -62,12 +63,12 @@ export default async function IngredientPage({ params }: { params: Promise<Param
   const { type, slug } = await params;
 
   const ingredient = await getIngredient(type, slug);
-  const [substitution, relatedRecipes, recipeCounts] = await Promise.all([
+  const [substitution, relatedRecipes, recipeCounts, categoryGroups] = await Promise.all([
     getSubstitutesForIngredient(ingredient),
     getRecipesForIngredient(ingredient),
     getIngredientRecipeCounts(),
+    groupCategoriesBySystem(ingredient.categories),
   ]);
-
   const topCategory = ingredient.categories[0];
   const [firstVideo, ...additionalVideos] = uniqBy(
     [...ingredient.refs, ...ingredient.categories.flatMap((c) => c.refs ?? [])].filter(
@@ -88,7 +89,13 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       listHeader={`Recipes using ${ingredient.name}`}
       underTitle={
         <>
-          <CategoryChips categories={ingredient.categories} />
+          {categoryGroups.map((group) => (
+            <CategoryChips
+              key={group.system?.slug ?? 'house'}
+              categories={group.categories}
+              label={group.system ? `${group.system.name} categories` : 'Categories'}
+            />
+          ))}
           {substitution && (
             <SubstitutionDrawer ingredientName={ingredient.name}>
               <SubstitutionLists
@@ -104,7 +111,7 @@ export default async function IngredientPage({ params }: { params: Promise<Param
       }
       footer={
         <FixBugCard
-          fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
+          fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/ingredients/${ingredient.type}/${ingredient.slug}.json`}
           m={1}
         />
       }

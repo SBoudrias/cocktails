@@ -23,12 +23,15 @@ interface CategoryData {
   name: string;
   categoryType?: string;
   substitutable?: boolean;
+  outsideOf?: string[];
   parents?: string[];
 }
 
 interface IngredientData {
   name: string;
   type: string;
+  categories?: string[];
+  exemptFrom?: Array<{ system: string; reason: string }>;
 }
 
 interface BarEntity {
@@ -40,6 +43,7 @@ interface CollectedCategory {
   name: string;
   categoryType: string;
   substitutable?: boolean;
+  outsideOf?: string[];
   parents?: string[];
   filepath: string;
 }
@@ -93,6 +97,29 @@ export interface DataContext {
   untrackedRefChannels: Map<string, number>;
   /** ingredient slugs referenced by at least one recipe. */
   referencedIngredientSlugs: Set<string>;
+  /** Categorization system files, for cross-system membership checks. */
+  categorizationSystems: SystemDefinition[];
+  /** ingredient name -> declared categories. */
+  ingredientCategories: Map<string, string[]>;
+  /** ingredient name -> system -> exemption reason. */
+  ingredientExemptions: Map<string, Map<string, string>>;
+  /** category name -> systems its subtree is outside of. */
+  categoryOutsideOf: Map<string, string[]>;
+}
+
+interface SystemNode {
+  name: string;
+  categoryType?: string;
+  parents?: string[];
+  substitutable?: boolean;
+  outsideOf?: string[];
+}
+
+interface SystemDefinition {
+  name: string;
+  slug: string;
+  covers?: string[];
+  nodes: SystemNode[];
 }
 
 /** The single shared context; every check imports this object. */
@@ -117,6 +144,10 @@ export const ctx: DataContext = {
   authorNameUsages: new Map<string, string[]>(),
   untrackedRefChannels: new Map<string, number>(),
   referencedIngredientSlugs: new Set<string>(),
+  categorizationSystems: [],
+  ingredientCategories: new Map<string, string[]>(),
+  ingredientExemptions: new Map<string, Map<string, string>>(),
+  categoryOutsideOf: new Map<string, string[]>(),
 };
 
 /**
@@ -243,9 +274,11 @@ export async function loadContext(): Promise<void> {
         name: data.name,
         categoryType: data.categoryType,
         substitutable: data.substitutable,
+        outsideOf: data.outsideOf,
         parents: data.parents,
         filepath: categoryFile,
       });
+      if (data.outsideOf) ctx.categoryOutsideOf.set(data.name, data.outsideOf);
     }
   }
   logger.item(`Found ${categorySlugs.size} categories`);
@@ -268,6 +301,13 @@ export async function loadContext(): Promise<void> {
     canonicalNames.set(ingredientSlug, data.name);
     ingredientFolders.set(ingredientSlug, folderType);
     ingredientFiles.set(ingredientSlug, ingredientFile);
+    ctx.ingredientCategories.set(data.name, data.categories ?? []);
+    for (const { system, reason } of data.exemptFrom ?? []) {
+      const perBottle =
+        ctx.ingredientExemptions.get(data.name) ?? new Map<string, string>();
+      perBottle.set(system, reason);
+      ctx.ingredientExemptions.set(data.name, perBottle);
+    }
     ingredients.push({
       name: data.name,
       type: data.type,
@@ -285,6 +325,53 @@ export async function loadContext(): Promise<void> {
   } catch (error) {
     report.fail(`Could not read approved overlaps registry: ${(error as Error).message}`);
   }
+
+  // Categorization system files: category nodes declared per taxonomy. The
+  // nodes register into the same indexes as loose category files, so a
+  // category may live in either place — a system file replaces its loose
+  // file without any check noticing.
+  for await (const systemFile of fs.glob(
+    path.join(PACKAGE_ROOT, 'data/categorization-systems/*.json'),
+  )) {
+    // The slug comes from the filename and stays off the data object, so a
+    // casing fix never writes it back into the file.
+    const data: Omit<SystemDefinition, 'slug'> = JSON.parse(
+      await fs.readFile(systemFile, 'utf-8'),
+    );
+    ctx.categorizationSystems.push({ ...data, slug: path.basename(systemFile, '.json') });
+
+    let systemsModified = false;
+    for (const node of data.nodes) {
+      const normalizedCasing = normalizeCategoryCasing(node.name);
+      if (normalizedCasing !== node.name) {
+        logger.change(
+          `Fixing category name casing "${node.name}" → "${normalizedCasing}" in ${path.basename(systemFile)}`,
+        );
+        node.name = normalizedCasing;
+        systemsModified = true;
+      }
+
+      const nodeSlug = slugify(node.name);
+      ctx.categorySlugs.add(nodeSlug);
+      ctx.canonicalNames.set(nodeSlug, node.name);
+      ctx.categoryCanonicalNames.set(nodeSlug, node.name);
+      if (node.categoryType) {
+        ctx.categoryTypes.set(nodeSlug, node.categoryType);
+        ctx.allCategories.push({
+          name: node.name,
+          categoryType: node.categoryType,
+          substitutable: node.substitutable,
+          outsideOf: node.outsideOf,
+          parents: node.parents,
+          filepath: systemFile,
+        });
+        if (node.outsideOf) ctx.categoryOutsideOf.set(node.name, node.outsideOf);
+      }
+    }
+
+    if (systemsModified) await writeJSON(systemFile, data);
+  }
+  logger.item(`Found ${ctx.categorizationSystems.length} categorization systems`);
 
   ctx.ingredientNames = ingredients.map((ingredient) => ingredient.name);
   ctx.ingredientFilesByName = new Map(

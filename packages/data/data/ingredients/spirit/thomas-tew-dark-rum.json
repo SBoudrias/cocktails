@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Thomas Tew dark rum",
   "type": "spirit",
-  "categories": ["Black blended rum"]
+  "categories": ["Black blended rum", "Aged Demerara rum"]
 }

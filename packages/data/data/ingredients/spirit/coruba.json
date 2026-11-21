@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Coruba",
   "type": "spirit",
-  "categories": ["Black blended rum (Jamaica)", "Black blended rum"]
+  "categories": ["Black blended rum (Jamaica)", "Black blended rum", "Aged Jamaican rum"]
 }

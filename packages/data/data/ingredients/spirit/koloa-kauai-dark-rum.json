@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Kōloa Kauaʻi Dark Rum",
   "type": "spirit",
-  "categories": ["Black blended rum"]
+  "categories": ["Black blended rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "craft dark rum; no verified MT style"
+    }
+  ]
 }

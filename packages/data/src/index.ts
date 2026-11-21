@@ -13,6 +13,10 @@
 // Types
 export type { Category } from './types/Category.ts';
 export type {
+  CategorizationSystem,
+  CategorizationSystemNode,
+} from './types/CategorizationSystem.ts';
+export type {
   BaseIngredient,
   IngredientType,
   RecipeIngredient,

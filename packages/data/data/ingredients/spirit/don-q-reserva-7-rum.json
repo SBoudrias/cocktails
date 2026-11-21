@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Don Q Reserva 7 Rum",
   "type": "spirit",
-  "categories": ["Column still aged rum"]
+  "categories": ["Column still aged rum", "Moderately aged rum"]
 }

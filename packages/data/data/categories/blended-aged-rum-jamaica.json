@@ -1,7 +1,0 @@
-{
-  "$schema": "../../schemas/category.schema.json",
-  "name": "Blended aged rum (Jamaica)",
-  "categoryType": "spirit",
-  "description": "Aged rum blends from Jamaica that keep some of the island's pot-still funk while gaining oak polish. Appleton's aged blends are the reference point \u2014 and a blended aged Jamaican rum is what Trader Vic built the original Mai Tai on. A natural fit whenever a classic tiki recipe calls for aged Jamaican rum.",
-  "parents": ["Blended aged rum", "Jamaican rum"]
-}

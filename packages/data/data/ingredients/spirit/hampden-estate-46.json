@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hampden Estate 46",
   "type": "spirit",
-  "categories": ["Blended aged rum (Jamaica)"]
+  "categories": ["Blended aged rum (Jamaica)", "Aged Jamaican rum"]
 }

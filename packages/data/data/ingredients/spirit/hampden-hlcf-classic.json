@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hampden HLCF Classic",
   "type": "spirit",
-  "categories": ["Navy strength Jamaican rum"]
+  "categories": ["Navy strength Jamaican rum", "Aged Jamaican rum"]
 }

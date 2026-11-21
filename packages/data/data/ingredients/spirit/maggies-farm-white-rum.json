@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Maggie's Farm White Rum",
   "type": "spirit",
-  "categories": ["Pot still unaged rum"]
+  "categories": ["Pot still unaged rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "unaged pot still white rum; no MT style"
+    }
+  ]
 }

@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schemas/categorization-system.schema.json",
+  "name": "Minimalist Tiki",
+  "description": "Matt Pietrek's rum styles by flavor profile rather than production: the six Golden Era styles from Minimalist Tiki (2019) plus the two unaged styles from his nine-essential-styles update — unaged cane juice (agricole, cachaça, clairin) and unaged Jamaican overproof.",
+  "covers": ["Rum"],
+  "nodes": [
+    {
+      "name": "Aged Demerara rum",
+      "categoryType": "spirit",
+      "description": "Rich, molasses-dark aged rum in the Guyana Demerara style that anchors classics like the Planter's Punch and Queen's Park Swizzle."
+    },
+    {
+      "name": "Aged Jamaican rum",
+      "categoryType": "spirit",
+      "description": "Funky, ester-forward aged rum in the Golden Era Jamaican style — the Mai Tai and Zombie backbone. Named for Jamaica because 'funky' and 'hogo' rarely appear on labels."
+    },
+    {
+      "name": "Aged cane juice rum",
+      "categoryType": "spirit",
+      "description": "Aged cane-juice rum: rhum agricole vieux and aged cachaça, the grassy-then-oaky cane-juice style. Pietrek's caveat: Golden Era 'Martinique rum' was molasses rum, so the style is a modern reading."
+    },
+    {
+      "name": "Lightly aged/filtered rum",
+      "categoryType": "spirit",
+      "description": "A white or lightly colored mixing rum aged briefly then filtered to clarity — the workhorse of Golden Era swizzles and punches."
+    },
+    {
+      "name": "Moderately aged rum",
+      "categoryType": "spirit",
+      "description": "A mid-aged gold rum in the Spanish-heritage style — rounded, low funk, the everyday aged mixing rum."
+    },
+    {
+      "name": "Overproof Demerara rum",
+      "categoryType": "spirit",
+      "description": "High-proof Demerara rum — Lemon Hart 151 and its kin, the float-and-flame rum of the Zombie family."
+    },
+    {
+      "name": "Unaged Jamaican overproof rum",
+      "categoryType": "spirit",
+      "description": "High-ester, unaged Jamaican overproof — Wray & Nephew and its kin: as subtle as an air-raid siren, used in half-ounce dashes."
+    },
+    {
+      "name": "Unaged cane juice rum",
+      "categoryType": "spirit",
+      "description": "Unaged cane-juice rum — blanc rhum agricole, unaged cachaça, Haitian clairin: grassy and vegetal, the Ti Punch pour. Pietrek's article lists cachaça and blanc agricoles together in this style."
+    }
+  ]
+}

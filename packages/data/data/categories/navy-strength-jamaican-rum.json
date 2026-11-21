@@ -1,7 +1,0 @@
-{
-  "$schema": "../../schemas/category.schema.json",
-  "name": "Navy strength Jamaican rum",
-  "categoryType": "spirit",
-  "description": "Jamaican rum bottled at navy strength \u2014 57% ABV or more, the proof at which rum-soaked gunpowder would still ignite. Hampden's HLCF Classic and Smith & Cross are the go-tos: big funk and heat that carry through a Hurricane or a Zombie build.",
-  "parents": ["Overproof rum", "Jamaican rum", "Navy style rum"]
-}
