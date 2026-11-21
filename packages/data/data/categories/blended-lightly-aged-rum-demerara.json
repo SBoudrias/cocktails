@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Blended lightly-aged rum (Demerara)",
+  "name": "Blended lightly aged rum (Demerara)",
   "categoryType": "spirit",
-  "description": "A young, pale blended rum from Guyana \u2014 Demerara's dark-molasses character in a light, mixable package. Hamilton's 86 proof is the benchmark bottle. Classic in a Navy Grog, where it carries body without adding dark color.",
-  "parents": ["Blended lightly-aged rum"]
+  "description": "A young, pale blended rum from Guyana — Demerara's dark-molasses character in a light, mixable package. Hamilton's 86 proof is the benchmark bottle. Classic in a Navy Grog, where it carries body without adding dark color.",
+  "parents": ["Blended lightly aged rum"]
 }

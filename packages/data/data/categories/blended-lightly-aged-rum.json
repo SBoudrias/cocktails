@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/category.schema.json",
-  "name": "Blended lightly-aged rum",
+  "name": "Blended lightly aged rum",
   "categoryType": "spirit",
-  "description": "A blended rum given only a short rest in oak \u2014 long enough to soften the spirit and pick up a pale gold tint, not long enough to take on heavy wood. Usually filtered light so it mixes like a white rum with more body. The workhorse base of mid-weight tiki drinks like the Test Pilot and Fog Cutter; Banks 5 Island and Denizen Aged White are go-to bottles.",
+  "description": "A blended rum given only a short rest in oak — long enough to soften the spirit and pick up a pale gold tint, not long enough to take on heavy wood. Usually filtered light so it mixes like a white rum with more body. The workhorse base of mid-weight tiki drinks like the Test Pilot and Fog Cutter; Banks 5 Island and Denizen Aged White are go-to bottles.",
   "parents": ["Rum"]
 }

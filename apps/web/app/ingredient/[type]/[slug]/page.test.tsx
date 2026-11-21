@@ -496,7 +496,7 @@ describe('IngredientPage', () => {
         ['Blended aged rum', 'blended-aged-rum'],
         ['Blended aged rum (Barbados)', 'blended-aged-rum-barbados'],
         ['Blended aged rum (Demerara)', 'blended-aged-rum-demerara'],
-        ['Blended lightly-aged rum (Jamaica)', 'blended-lightly-aged-rum-jamaica'],
+        ['Blended lightly aged rum (Jamaica)', 'blended-lightly-aged-rum-jamaica'],
         ['Jamaican overproof rum', 'jamaican-overproof-rum'],
         ['Navy strength Jamaican rum', 'navy-strength-jamaican-rum'],
       ] as const;

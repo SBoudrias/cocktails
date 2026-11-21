@@ -2,6 +2,6 @@
   "$schema": "../../schemas/category.schema.json",
   "name": "Blended aged rum",
   "categoryType": "spirit",
-  "description": "Aged rum blends \u2014 rums from different stills or origins married together, with a few years of oak behind them. Richer and rounder than lightly-aged rum but more versatile than the black or overproof styles, it is the default golden rum of tiki and punch-making.",
+  "description": "Aged rum blends \u2014 rums from different stills or origins married together, with a few years of oak behind them. Richer and rounder than lightly aged rum but more versatile than the black or overproof styles, it is the default golden rum of tiki and punch-making.",
   "parents": ["Aged rum"]
 }
