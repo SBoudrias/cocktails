@@ -213,7 +213,7 @@ __metadata:
     "@leeoniya/ufuzzy": "npm:^1.0.19"
     "@next/third-parties": "npm:^16.4.6"
     "@sindresorhus/slugify": "npm:^4.0.0"
-    "@sindresorhus/transliterate": "npm:^3.0.0"
+    "@sindresorhus/transliterate": "npm:^3.1.0"
     "@tailwindcss/postcss": "npm:4.3.5"
     "@testing-library/dom": "npm:^10.4.2"
     "@testing-library/jest-dom": "npm:^7.0.1"
@@ -1606,6 +1606,13 @@ __metadata:
   version: 3.0.0
   resolution: "@sindresorhus/transliterate@npm:3.0.0"
   checksum: 10c0/87df28c55559469535465503a83e00533dd5476149d808747bf4cd60bbea479c9f1b6c174e449c09b858787be2cb6e025253b46cf2c07c90c69467d241d14ed7
+  languageName: node
+  linkType: hard
+
+"@sindresorhus/transliterate@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@sindresorhus/transliterate@npm:3.1.0"
+  checksum: 10c0/7fd0f8689813617e3e7b6385029a44f5eda203c4d54d9d656134c17bd52fe488a797a55e49e00f9e5602e4073cc7f24396c738742fe40e81174cdeffd4958330
   languageName: node
   linkType: hard
 
