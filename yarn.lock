@@ -194,6 +194,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@cocktails/oxlint-plugin@workspace:packages/oxlint-plugin":
+  version: 0.0.0-use.local
+  resolution: "@cocktails/oxlint-plugin@workspace:packages/oxlint-plugin"
+  languageName: unknown
+  linkType: soft
+
 "@cocktails/smoke@workspace:packages/smoke":
   version: 0.0.0-use.local
   resolution: "@cocktails/smoke@workspace:packages/smoke"

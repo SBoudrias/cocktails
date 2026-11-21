@@ -1,7 +1,16 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["typescript", "nextjs", "react"],
-  "jsPlugins": ["oxlint-tailwindcss"],
+  // jsPlugins: the tailwindcss design-system rules, plus this repo's own
+  // plugin (packages/oxlint-plugin/src/plugin.ts). Its rules are configured
+  // below under the "repo/" prefix — currently `repo/no-conflict-markers`,
+  // which fails on left-behind merge-conflict marker lines (`<<<<<<<`,
+  // diff3 `|||||||` base sections, `=======`, `>>>>>>>`): a stray diff3 base
+  // once compiled as JSX text and rendered raw on the homepage (#632).
+  // Non-JS files (JSON, CSS, Markdown, ...) are covered by the
+  // scan-conflicts step of the root `yarn lint` script, which shares the
+  // same detection logic (packages/oxlint-plugin/src/detect.ts).
+  "jsPlugins": ["oxlint-tailwindcss", "./packages/oxlint-plugin/src/plugin.ts"],
   "categories": {
     "correctness": "error"
   },
@@ -66,6 +75,7 @@
     "nextjs/no-unwanted-polyfillio": "error",
     "react/exhaustive-deps": "error",
     "react/rules-of-hooks": "error",
+    "repo/no-conflict-markers": "error",
     "tailwindcss/no-conflicting-classes": "error",
     "tailwindcss/no-unknown-classes": "error",
     "tailwindcss/no-dynamic-classes": "error",
