@@ -236,9 +236,12 @@ jobs:
       # alias reuses the classic deploy-preview-N subdomain, so the URL
       # Netlify's own previews always served keeps working. --no-build:
       # the export is already built and staged above; the CLI only
-      # uploads. The CLI parses netlify.toml and bundles its [[headers]]
-      # with the upload, so the X-Robots-Tag keeps applying. Skipped
-      # without a token (secret missing, fork PR): the gates already ran.
+      # uploads. --filter picks the web workspace package: the repo is a
+      # monorepo, and the CLI refuses to choose a project by itself in
+      # CI (the --dir path stays repo-root relative, and the root
+      # netlify.toml — the [[headers]] the CLI bundles with the upload —
+      # is still found). Skipped without a token (secret missing, fork
+      # PR): the gates already ran.
       # First, free the subdomain: any deploy-preview object Netlify's
       # git integration built for this PR still claims the URL — this
       # run's guard stopped those builds, and deleting the stale object
@@ -279,15 +282,17 @@ jobs:
           set -eu
           npx --yes netlify-cli@27 deploy \
             --no-build \
+            --filter @cocktails/web \
             --dir apps/web/deploy \
             --site indexotica \
             --auth "$NETLIFY_AUTH_TOKEN" \
             --alias "deploy-preview-${{ github.event.pull_request.number }}" \
             --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}" \
             --json > deploy.json
-          # The CLI prints its JSON block last; anything before it is log
-          # noise on the same stream, so read the last line only.
-          url="$(tail -n 1 deploy.json | jq -r '.deploy_url // empty')"
+          # The CLI writes pretty-printed JSON (multi-line); any log noise
+          # lands before the opening brace, so parse from the first line
+          # that starts a JSON object.
+          url="$(sed -n '/^{/,$p' deploy.json | jq -r '.deploy_url // empty')"
           if [ -z "$url" ] || [ "$url" != "$PREVIEW_ORIGIN" ]; then
             cat deploy.json
             echo "expected deploy URL $PREVIEW_ORIGIN, got '${url:-none}'"
