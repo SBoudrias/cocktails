@@ -15,10 +15,10 @@ vi.mock('@cocktails/data/recipes', async (importOriginal) => ({
 }));
 
 // Real recipes: the list rows render their name and secondary line, so the
-// fixtures double as the content the assertions below look for. Anders'
-// channel carries his originals and his adaptations — the origin named by
-// its creator (Aviation) or by a book (Pago Pago).
-const [byTheToe, theDeathStar, bikiniKill, aLittleThymeOff, aviation, pagoPago] =
+// fixtures double as the content the assertions below look for. Derek
+// Cole's channel carries his originals and his adaptations — the origin
+// named by its creator (Uahi Uahi) or by a book (Pineapple Milk).
+const [byTheToe, theDeathStar, bikiniKill, boatDays, uahiUahi, pineappleMilk] =
   await Promise.all([
     getRecipe(
       { type: 'book', slug: 'minimalist-tiki' },
@@ -35,16 +35,16 @@ const [byTheToe, theDeathStar, bikiniKill, aLittleThymeOff, aviation, pagoPago] 
       'bikini-kill',
       '05_Elegant & Graceful (Martini)',
     ),
-    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'a-little-thyme-off'),
-    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'aviation'),
-    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'pago-pago'),
+    getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'boat-days'),
+    getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'uahi-uahi'),
+    getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'pineapple-milk'),
   ]);
 
 /** The recipes the tested authors' pages list, keyed by author slug. */
 const authorRecipes: Record<string, (typeof byTheToe)[]> = {
   'brian-maxwell': [byTheToe, theDeathStar],
   'aj-stocak': [bikiniKill],
-  'anders-erickson': [aLittleThymeOff, aviation, pagoPago],
+  'derek-cole': [boatDays, uahiUahi, pineappleMilk],
   // The About-card authors below assert no rows; any recipe keeps their
   // page past the notFound() guard.
   'sam-ross': [bikiniKill],
@@ -111,22 +111,19 @@ describe('AuthorRecipesPage', () => {
   it("links the author's known-for bars and the sources behind them", async () => {
     await setupApp(
       await AuthorRecipesPage({
-        params: Promise.resolve({ name: 'anders-erickson' }),
+        params: Promise.resolve({ name: 'derek-cole' }),
       }),
     );
 
-    const channelLink = screen.getByRole('link', { name: 'Anders Erickson' });
-    expect(channelLink).toHaveAttribute(
-      'href',
-      '/source/youtube-channel/anders-erickson',
-    );
+    const channelLink = screen.getByRole('link', { name: 'Make and Drink' });
+    expect(channelLink).toHaveAttribute('href', '/source/youtube-channel/make-and-drink');
 
     // The bars/sources lines interleave text and links, so match on the
     // typography element that carries exactly the full line.
     expect(
       screen.getByText(
         (_, element) =>
-          element?.tagName === 'P' && element?.textContent === 'Behind Anders Erickson',
+          element?.tagName === 'P' && element?.textContent === 'Behind Make and Drink',
       ),
     ).toBeInTheDocument();
   });
@@ -152,13 +149,13 @@ describe('AuthorRecipesPage', () => {
   it("navigates in-app to the author's source page from the About card", async () => {
     const { user } = await setupApp(
       await AuthorRecipesPage({
-        params: Promise.resolve({ name: 'anders-erickson' }),
+        params: Promise.resolve({ name: 'derek-cole' }),
       }),
     );
 
     // Same contract as the bar link: an in-app Link, not a plain anchor.
-    await user.click(screen.getByRole('link', { name: 'Anders Erickson' }));
-    expect(mockRouter.asPath).toBe('/source/youtube-channel/anders-erickson');
+    await user.click(screen.getByRole('link', { name: 'Make and Drink' }));
+    expect(mockRouter.asPath).toBe('/source/youtube-channel/make-and-drink');
   });
 
   it('renders social links as brand icons with @handle labels', async () => {
@@ -304,49 +301,49 @@ describe('AuthorRecipesPage secondary line', () => {
   it('keeps an original on the author own channel to the relationship alone', async () => {
     await setupApp(
       await AuthorRecipesPage({
-        params: Promise.resolve({ name: 'anders-erickson' }),
+        params: Promise.resolve({ name: 'derek-cole' }),
       }),
     );
 
-    // A Little Thyme Off is Anders' original on his own channel — the page
+    // Boat Days is Derek's original on his own channel — the page
     // already implies the channel, so no source follows the relationship.
-    const list = getAuthorList('Anders Erickson');
-    expect(list).toHaveTextContent('A Little Thyme Off');
-    expect(list).not.toHaveTextContent('Original · Anders Erickson');
+    const list = getAuthorList('Derek Cole');
+    expect(list).toHaveTextContent('Boat Days');
+    expect(list).not.toHaveTextContent('Original · Make and Drink');
     expect(list).toHaveTextContent('Original');
   });
 
   it('names the origin of an adaptation — its creator or its documenting book', async () => {
     await setupApp(
       await AuthorRecipesPage({
-        params: Promise.resolve({ name: 'anders-erickson' }),
+        params: Promise.resolve({ name: 'derek-cole' }),
       }),
     );
 
-    // Two adaptations on Anders' page: the Aviation names its original
-    // creator, the Pago Pago the book it was documented in.
-    const list = getAuthorList('Anders Erickson');
-    expect(list).toHaveTextContent('Adaptation · Hugo Ensslin');
-    expect(list).toHaveTextContent('Adaptation · The How and When');
+    // Two adaptations on Derek's page: the Uahi Uahi names its original
+    // creator, the Pineapple Milk the book it was documented in.
+    const list = getAuthorList('Derek Cole');
+    expect(list).toHaveTextContent('Adaptation · Don the Beachcomber');
+    expect(list).toHaveTextContent("Adaptation · The Gentleman's Companion");
   });
 
   it('renders every secondary line as the relationship, not the raw source', async () => {
     await setupApp(
       await AuthorRecipesPage({
-        params: Promise.resolve({ name: 'anders-erickson' }),
+        params: Promise.resolve({ name: 'derek-cole' }),
       }),
     );
 
     // Every row's text is its name then a relationship-led secondary line —
-    // never the raw source ('Anders Erickson') the list used to show.
+    // never the raw source ('Make and Drink') the list used to show.
     const recipeRows = screen
       .getAllByRole('link')
       .filter((link) => link.getAttribute('href')?.startsWith('/recipes/'));
-    expect(recipeRows).toHaveLength([aLittleThymeOff, aviation, pagoPago].length);
+    expect(recipeRows).toHaveLength([boatDays, uahiUahi, pineappleMilk].length);
 
     for (const row of recipeRows) {
       expect(row.textContent).toMatch(/(Original|Adaptation)( · .+)?$/);
-      expect(row.textContent).not.toContain('Anders Erickson');
+      expect(row.textContent).not.toContain('Make and Drink');
     }
   });
 });

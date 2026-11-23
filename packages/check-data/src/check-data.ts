@@ -5,6 +5,7 @@ import { reportBarCasing } from './checks/report/bar-casing.ts';
 import { reportBarLocations } from './checks/report/bar-locations-check.ts';
 import { reportBookChapters } from './checks/report/book-chapters.ts';
 import { reportDuplicateRecipes } from './checks/report/duplicate-recipes.ts';
+import { reportDuplicateSourceAttributions } from './checks/report/duplicate-source-attribution.ts';
 import { findFloatingIngredients } from './checks/report/floating-ingredients.ts';
 import { reportRedundantCategories } from './checks/report/redundant-categories.ts';
 import { reportSimilarNames } from './checks/report/similar-names.ts';
@@ -38,6 +39,7 @@ reportRedundantCategories();
 reportSubstitutableCategories();
 await reportBookChapters();
 await reportDuplicateRecipes();
+await reportDuplicateSourceAttributions();
 
 const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
 const exitCode = report.getExitCode();

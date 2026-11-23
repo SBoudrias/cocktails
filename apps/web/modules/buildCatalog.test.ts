@@ -19,15 +19,15 @@ const [zombie, fogCutter] = await Promise.all([
   getRecipe({ type: 'book', slug: 'easy-tiki' }, 'fog-cutter', '01_Classic Recipes'),
 ]);
 
-// Real recipes for the author pages' secondary line: Anders' channel
+// Real recipes for the author pages' secondary line: Derek Cole's channel
 // carries his originals and his adaptations (with the origin named by its
 // creator, by a book, or not at all), and other books carry originals of
 // their own authors and bare adaptations in sources their author is behind.
-const [aLittleThymeOff, aviation, pagoPago, byTheToe, hotTigersMilk, fogCutterRemix] =
+const [boatDays, uahiUahi, pineappleMilk, byTheToe, hotTigersMilk, fogCutterRemix] =
   await Promise.all([
-    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'a-little-thyme-off'),
-    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'aviation'),
-    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'pago-pago'),
+    getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'boat-days'),
+    getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'uahi-uahi'),
+    getRecipe({ type: 'youtube-channel', slug: 'make-and-drink' }, 'pineapple-milk'),
     getRecipe(
       { type: 'book', slug: 'minimalist-tiki' },
       'by-the-toe',
@@ -41,13 +41,13 @@ const [aLittleThymeOff, aviation, pagoPago, byTheToe, hotTigersMilk, fogCutterRe
     ),
   ]);
 
-const [anders, brianMaxwell, beachbumBerry, brotherCleve] = await Promise.all([
-  getAuthor('anders-erickson'),
+const [derekCole, brianMaxwell, beachbumBerry, brotherCleve] = await Promise.all([
+  getAuthor('derek-cole'),
   getAuthor('brian-maxwell'),
   getAuthor('jeff-beachbum-berry'),
   getAuthor('brother-cleve'),
 ]);
-if (!anders || !brianMaxwell || !beachbumBerry || !brotherCleve) {
+if (!derekCole || !brianMaxwell || !beachbumBerry || !brotherCleve) {
   throw new Error('an author fixture entity is missing');
 }
 
@@ -140,27 +140,27 @@ describe('getSerializedCatalog', () => {
 
 describe('getAuthorSourcePicker', () => {
   it('labels an original of the author as such, with its source only when not their own', () => {
-    const pick = getAuthorSourcePicker(anders);
+    const pick = getAuthorSourcePicker(derekCole);
 
     // An original on the author's own channel: the page already implies
     // the channel, so the line carries the relationship alone.
-    expect(pick(aLittleThymeOff)).toBe('Original');
+    expect(pick(boatDays)).toBe('Original');
   });
 
   it('labels an adaptation with its origin — the original creator first', () => {
-    const pick = getAuthorSourcePicker(anders);
+    const pick = getAuthorSourcePicker(derekCole);
 
-    // The Aviation's original creator is credited alongside Anders'
+    // The Uahi Uahi's original creator is credited alongside Derek's
     // adaptation, so the line names him, not the channel.
-    expect(pick(aviation)).toBe('Adaptation · Hugo Ensslin');
+    expect(pick(uahiUahi)).toBe('Adaptation · Don the Beachcomber');
   });
 
   it('falls back to the documenting book when the creator is not credited', () => {
-    const pick = getAuthorSourcePicker(anders);
+    const pick = getAuthorSourcePicker(derekCole);
 
-    // The Pago Pago adaptation carries no creator credit, only the book
-    // attribution of the recipe it adapts.
-    expect(pick(pagoPago)).toBe('Adaptation · The How and When');
+    // The Pineapple Milk adaptation carries no creator credit, only the
+    // book attribution of the recipe it adapts.
+    expect(pick(pineappleMilk)).toBe("Adaptation · The Gentleman's Companion");
   });
 
   it('drops the source of a bare adaptation living in the author own source', () => {
@@ -194,19 +194,19 @@ describe('buildCatalog with a per-list source', () => {
     const pick = () => undefined;
     const catalog = buildCatalog([
       {
-        key: 'list/authors/anders-erickson',
-        recipes: [aLittleThymeOff, aviation],
+        key: 'list/authors/derek-cole',
+        recipes: [boatDays, uahiUahi],
         pickQuantity: pick,
-        pickSource: getAuthorSourcePicker(anders),
+        pickSource: getAuthorSourcePicker(derekCole),
       },
       { key: 'list/bars/lost-lake', recipes: [fogCutter], pickQuantity: pick },
     ]);
 
     // The author entries carry their page's secondary line; the bar
     // entries stay two-element, as every list without a picker does.
-    expect(catalog.lists['list/authors/anders-erickson']).toEqual([
-      [getRecipeUrl(aLittleThymeOff), null, 'Original'],
-      [getRecipeUrl(aviation), null, 'Adaptation · Hugo Ensslin'],
+    expect(catalog.lists['list/authors/derek-cole']).toEqual([
+      [getRecipeUrl(boatDays), null, 'Original'],
+      [getRecipeUrl(uahiUahi), null, 'Adaptation · Don the Beachcomber'],
     ]);
     expect(catalog.lists['list/bars/lost-lake']).toEqual([
       [getRecipeUrl(fogCutter), null],
@@ -214,9 +214,9 @@ describe('buildCatalog with a per-list source', () => {
 
     // The cards still carry the plain source — the override is per-list,
     // never folded into the shared card.
-    expect(catalog.cards[getRecipeUrl(aviation)]).toEqual([
-      'Aviation',
-      'Anders Erickson',
+    expect(catalog.cards[getRecipeUrl(uahiUahi)]).toEqual([
+      'Uahi Uahi',
+      'Make and Drink',
     ]);
   });
 });

@@ -63,10 +63,6 @@
     {
       "relation": "recipe author",
       "source": "Jeff 'Beachbum' Berry"
-    },
-    {
-      "relation": "adapted by",
-      "source": "Mixing Up Tiki"
     }
   ],
   "refs": [

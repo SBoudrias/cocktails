@@ -53,10 +53,6 @@
       "relation": "bar",
       "source": "Caribe Hilton Hotel",
       "location": "San Juan, Puerto Rico"
-    },
-    {
-      "relation": "adapted by",
-      "source": "Anders Erickson"
     }
   ],
   "refs": [

@@ -48,12 +48,6 @@
     }
   ],
   "instructions": ["Garnish with cocktail cherry"],
-  "attributions": [
-    {
-      "relation": "recipe author",
-      "source": "Anders Erickson"
-    }
-  ],
   "refs": [
     {
       "type": "youtube",

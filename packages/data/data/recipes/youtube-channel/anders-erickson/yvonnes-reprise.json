@@ -56,12 +56,6 @@
     }
   ],
   "instructions": ["Garnish with pineapple fronds"],
-  "attributions": [
-    {
-      "relation": "recipe author",
-      "source": "Anders Erickson"
-    }
-  ],
   "refs": [
     {
       "type": "youtube",

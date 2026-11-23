@@ -31,12 +31,6 @@
     }
   ],
   "instructions": ["Express orange oil over the drink and garnish with the peel."],
-  "attributions": [
-    {
-      "relation": "recipe author",
-      "source": "Anders Erickson"
-    }
-  ],
   "refs": [
     {
       "type": "youtube",

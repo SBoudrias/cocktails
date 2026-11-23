@@ -48,10 +48,6 @@
     {
       "relation": "recipe author",
       "source": "Don the Beachcomber"
-    },
-    {
-      "relation": "adapted by",
-      "source": "Anders Erickson"
     }
   ],
   "refs": [

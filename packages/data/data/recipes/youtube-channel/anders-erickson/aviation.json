@@ -47,10 +47,6 @@
     {
       "relation": "recipe author",
       "source": "Hugo Ensslin"
-    },
-    {
-      "relation": "adapted by",
-      "source": "Anders Erickson"
     }
   ],
   "refs": [

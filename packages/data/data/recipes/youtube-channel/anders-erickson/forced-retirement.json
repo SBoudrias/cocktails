@@ -55,12 +55,6 @@
     }
   ],
   "instructions": ["Garnish with pineapple fronds and a cocktail umbrella."],
-  "attributions": [
-    {
-      "relation": "recipe author",
-      "source": "Anders Erickson"
-    }
-  ],
   "refs": [
     {
       "type": "youtube",
