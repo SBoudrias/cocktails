@@ -1,4 +1,11 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Ray Sakover"
+  "name": "Ray Sakover",
+  "description": "Co-owner of Paradise Lost, New York",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "paradise-lost-new-york-ny"
+    }
+  ]
 }

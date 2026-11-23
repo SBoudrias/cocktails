@@ -1,4 +1,11 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Neal Bodenheimer"
+  "name": "Neal Bodenheimer",
+  "description": "New Orleans bartender, co-owner of Cane & Table",
+  "sources": [
+    {
+      "type": "bar",
+      "slug": "cane-and-table-new-orleans-la"
+    }
+  ]
 }

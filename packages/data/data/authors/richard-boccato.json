@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Richard Boccato"
+  "name": "Richard Boccato",
+  "description": "Co-owner of Dutch Kills, New York"
 }

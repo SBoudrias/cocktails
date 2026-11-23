@@ -1,4 +1,5 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Anton Kinloch"
+  "name": "Anton Kinloch",
+  "description": "Owner of Fuchsia Tiki Bar, New Paltz, NY"
 }
