@@ -9,6 +9,13 @@ export default defineConfig({
     root: __dirname,
     globals: true,
     clearMocks: true,
+    // vitest doctor's recommendation, measured on this suite: worker threads
+    // beat the forks default by ~15% (happy-dom setup and the data-package
+    // imports all happen in-process instead of over IPC to child processes).
+    // All four pools pass after the vmGlobals.ts fix; vmThreads is ~1.5s
+    // faster still but evaluates modules in a vm realm that misses Node
+    // globals (see apps/web/testing/vmGlobals.ts), so threads is the default.
+    pool: 'threads',
     server: {
       deps: {
         // Work around https://github.com/mui/material-ui/issues/48636.
@@ -49,6 +56,9 @@ export default defineConfig({
             happyDOM: { settings: { disableIframePageLoading: true } },
           },
           setupFiles: [
+            // Before mswSetup.ts: msw needs BroadcastChannel at import time,
+            // which the vm pools' happy-dom realm doesn't expose (vmGlobals.ts).
+            path.join(__dirname, 'apps/web/testing/vmGlobals.ts'),
             path.join(__dirname, 'apps/web/testing/mswSetup.ts'),
             path.join(__dirname, 'apps/web/vitest.setup.ts'),
           ],
