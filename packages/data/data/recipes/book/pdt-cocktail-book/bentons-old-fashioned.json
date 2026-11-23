@@ -57,10 +57,6 @@
       "relation": "bar",
       "source": "PDT",
       "location": "New York, NY"
-    },
-    {
-      "relation": "book",
-      "source": "The PDT Cocktail Book"
     }
   ],
   "refs": [
