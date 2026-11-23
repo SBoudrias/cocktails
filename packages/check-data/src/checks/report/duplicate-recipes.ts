@@ -38,28 +38,54 @@ function normalizeIngredientName(name: string, index: CategoryIndex): string {
   return index.ingredientFirstCategory.get(lower) ?? lower;
 }
 
-function specKey(recipe: RecipeEntry, index: CategoryIndex): string {
-  return recipe.ingredients
-    .map((ingredient) => {
-      const quantity = ingredient.quantity ?? {};
-      return [
-        normalizeIngredientName(ingredient.name, index),
-        String(quantity.amount ?? ''),
-        quantity.unit ?? '',
-        String(quantity.maximum ?? ''),
-        quantity.modifier ?? '',
-      ].join(':');
-    })
-    .toSorted((a, b) => a.localeCompare(b))
-    .join('|');
+function quantityTokens(recipe: RecipeEntry): string[] {
+  return recipe.ingredients.map((ingredient) => {
+    const quantity = ingredient.quantity ?? {};
+    return [
+      String(quantity.amount ?? ''),
+      quantity.unit ?? '',
+      String(quantity.maximum ?? ''),
+      quantity.modifier ?? '',
+    ].join(':');
+  });
+}
+
+function normalizedNames(recipe: RecipeEntry, index: CategoryIndex): string[] {
+  return recipe.ingredients.map((ingredient) =>
+    normalizeIngredientName(ingredient.name, index),
+  );
+}
+
+/**
+ * How many items appear in only one of the two multisets, counting
+ * multiplicity: 0 for identical multisets, 1 per unmatched item on each side.
+ */
+function multisetDistance(a: string[], b: string[]): number {
+  const counts = new Map<string, number>();
+  for (const item of a) counts.set(item, (counts.get(item) ?? 0) + 1);
+
+  let distance = 0;
+  for (const item of b) {
+    const remaining = counts.get(item);
+    if (remaining) counts.set(item, remaining - 1);
+    else distance += 1;
+  }
+  for (const remaining of counts.values()) distance += remaining;
+  return distance;
 }
 
 /**
  * Find recipes transcribed twice across sources: same display name, at least
- * one shared attribution (same author or bar), and the same ingredient spec
- * once specific bottles are collapsed to their category. Two channels each
- * covering the same classic, or a book recipe a channel later presents, keep
- * separate files and differ in spec or attributions — those are not flagged.
+ * one shared attribution (same author or bar), the exact same quantity
+ * multiset, and ingredient names within one rename or one swapped bottle
+ * once specific bottles are collapsed to their category. A transcription
+ * keeps the quantities but may rename a bottle (brandless vs branded) or
+ * swap one for another of the same role; a different take on the same drink
+ * changes amounts and is not flagged. This is a warning-level check: two
+ * books legitimately reprinting the same spec, or a channel covering a
+ * book's drink verbatim, all surface for review rather than fail the run.
+ * Two channels each covering the same classic keep separate files too —
+ * they rarely share an attribution, and never the exact quantities.
  */
 export function findDuplicateRecipePairs(
   recipes: ReadonlyArray<RecipeEntry>,
@@ -75,22 +101,33 @@ export function findDuplicateRecipePairs(
 
   const pairs: DuplicateRecipePair[] = [];
   for (const group of byName.values()) {
-    const specs = group.map((recipe) => specKey(recipe, index));
     for (let i = 0; i < group.length; i++) {
       for (let j = i + 1; j < group.length; j++) {
-        if (specs[i] !== specs[j]) continue;
-        const shared = group[i]!.attributions.filter((a) =>
-          group[j]!.attributions.some(
-            (b) =>
-              a.relation.toLowerCase() === b.relation.toLowerCase() &&
-              a.source.toLowerCase() === b.source.toLowerCase(),
+        const first = group[i]!;
+        const second = group[j]!;
+        if (multisetDistance(quantityTokens(first), quantityTokens(second)) > 0) {
+          continue;
+        }
+        if (
+          multisetDistance(
+            normalizedNames(first, index),
+            normalizedNames(second, index),
+          ) > 2
+        ) {
+          continue;
+        }
+        const shared = first.attributions.filter((attribution) =>
+          second.attributions.some(
+            (other) =>
+              attribution.relation.toLowerCase() === other.relation.toLowerCase() &&
+              attribution.source.toLowerCase() === other.source.toLowerCase(),
           ),
         );
         if (shared.length === 0) continue;
         pairs.push({
-          name: group[i]!.name,
-          fileA: group[i]!.file,
-          fileB: group[j]!.file,
+          name: first.name,
+          fileA: first.file,
+          fileB: second.file,
           sharedAttributions: shared.map((a) => `${a.relation}: ${a.source}`),
         });
       }
@@ -127,7 +164,8 @@ async function loadCategoryIndex(): Promise<CategoryIndex> {
 /**
  * Warns about recipes transcribed twice across sources (e.g. a book recipe
  * re-entered as a youtube-channel file): two files that share a name, an
- * attribution, and an identical normalized ingredient spec.
+ * attribution, the exact same quantities, and near-identical ingredient
+ * names once bottles are collapsed to their categories.
  */
 export async function reportDuplicateRecipes(): Promise<void> {
   logger.header('👯 Checking for duplicate recipes...');

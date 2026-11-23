@@ -6,10 +6,11 @@ import {
 } from './duplicate-recipes.ts';
 
 const index: CategoryIndex = {
-  categoryNamesLower: new Set(['amaretto', 'tequila reposado']),
+  categoryNamesLower: new Set(['amaretto', 'tequila reposado', 'aromatic bitters']),
   ingredientFirstCategory: new Map([
     ['lazzaroni amaretto', 'amaretto'],
     ['siete leguas reposado tequila', 'tequila reposado'],
+    ['fee brothers whiskey barrel-aged bitters', 'aromatic bitters'],
   ]),
 };
 
@@ -67,6 +68,82 @@ describe('findDuplicateRecipePairs', () => {
     expect(findDuplicateRecipePairs([a, b], index)).toEqual([]);
   });
 
+  it('flags a transcription that renames a bottle (brandless vs branded)', () => {
+    // Old Ironsides case: the video names the bitters brandlessly, the book
+    // names the Fee Brothers product — same quantities, same drink.
+    const book = recipe(
+      'data/recipes/book/death-and-co/05_Rum Stirred/old-ironsides.json',
+      {
+        ingredients: [
+          {
+            name: 'Fee Brothers Whiskey Barrel-Aged Bitters',
+            quantity: { amount: 1, unit: 'dash' },
+          },
+          { name: 'Lazzaroni Amaretto', quantity: { amount: 1, unit: 'tsp' } },
+        ],
+      },
+    );
+    const channel = recipe(
+      'data/recipes/youtube-channel/make-and-drink/old-ironsides.json',
+      {
+        ingredients: [
+          { name: 'Whiskey Barrel-Aged Bitters', quantity: { amount: 1, unit: 'dash' } },
+          { name: 'Lazzaroni Amaretto', quantity: { amount: 1, unit: 'tsp' } },
+        ],
+      },
+    );
+
+    expect(findDuplicateRecipePairs([book, channel], index)).toHaveLength(1);
+  });
+
+  it('flags one swapped bottle within the same category when quantities match', () => {
+    const a = recipe('data/recipes/book/a/recipe.json', {
+      ingredients: [
+        { name: 'Orgeat', quantity: { amount: 0.25, unit: 'oz' } },
+        { name: 'Lazzaroni Amaretto', quantity: { amount: 0.25, unit: 'oz' } },
+      ],
+    });
+    const b = recipe('data/recipes/youtube-channel/b/recipe.json', {
+      ingredients: [
+        { name: 'Orgeat', quantity: { amount: 0.25, unit: 'oz' } },
+        { name: 'Disaronno Amaretto', quantity: { amount: 0.25, unit: 'oz' } },
+      ],
+    });
+    const bothBottlesMapped: CategoryIndex = {
+      ...index,
+      ingredientFirstCategory: new Map(index.ingredientFirstCategory).set(
+        'disaronno amaretto',
+        'amaretto',
+      ),
+    };
+
+    expect(findDuplicateRecipePairs([a, b], bothBottlesMapped)).toHaveLength(1);
+  });
+
+  it('also surfaces one swapped bottle when every quantity matches', () => {
+    // At the same quantities, a bottle swap (two unmatched names) can be a
+    // transcription using the house bottle or a substitution — the check is
+    // warning-level, so it surfaces the pair for review rather than staying
+    // quiet and missing a rename like the Old Ironsides brandless bitters.
+    const a = recipe('data/recipes/book/a/recipe.json', {
+      ingredients: [
+        { name: 'Orgeat', quantity: { amount: 0.25, unit: 'oz' } },
+        { name: 'Lazzaroni Amaretto', quantity: { amount: 0.25, unit: 'oz' } },
+      ],
+    });
+    const b = recipe('data/recipes/youtube-channel/b/recipe.json', {
+      ingredients: [
+        { name: 'Orgeat', quantity: { amount: 0.25, unit: 'oz' } },
+        {
+          name: 'Siete Leguas Reposado Tequila',
+          quantity: { amount: 0.25, unit: 'oz' },
+        },
+      ],
+    });
+
+    expect(findDuplicateRecipePairs([a, b], index)).toHaveLength(1);
+  });
+
   it('ignores a different take on the same drink (quantities differ)', () => {
     const a = recipe('data/recipes/book/a/recipe.json');
     const b = recipe('data/recipes/youtube-channel/b/recipe.json', {
@@ -88,11 +165,16 @@ describe('findDuplicateRecipePairs', () => {
     expect(findDuplicateRecipePairs([a, b], index)).toEqual([]);
   });
 
-  it('keeps bottles from different categories distinct', () => {
-    const a = recipe('data/recipes/book/a/recipe.json');
-    const b = recipe('data/recipes/youtube-channel/b/recipe.json', {
+  it('ignores two bottles swapped for two others, even at equal quantities', () => {
+    const a = recipe('data/recipes/book/a/recipe.json', {
       ingredients: [
         { name: 'Orgeat', quantity: { amount: 0.25, unit: 'oz' } },
+        { name: 'Lazzaroni Amaretto', quantity: { amount: 0.25, unit: 'oz' } },
+      ],
+    });
+    const b = recipe('data/recipes/youtube-channel/b/recipe.json', {
+      ingredients: [
+        { name: 'Honey syrup', quantity: { amount: 0.25, unit: 'oz' } },
         {
           name: 'Siete Leguas Reposado Tequila',
           quantity: { amount: 0.25, unit: 'oz' },
@@ -100,8 +182,7 @@ describe('findDuplicateRecipePairs', () => {
       ],
     });
 
-    // Lazzaroni Amaretto vs Siete Leguas Reposado Tequila are different
-    // categories (amaretto vs tequila reposado), so these are different drinks.
+    // Four unmatched names — a different drink, not a transcription.
     expect(findDuplicateRecipePairs([a, b], index)).toEqual([]);
   });
 
