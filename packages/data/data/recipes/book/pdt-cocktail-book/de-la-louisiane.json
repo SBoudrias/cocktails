@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "De La Louisiane",
+  "preparation": "stirred",
+  "served_on": "up",
+  "glassware": "coupe",
+  "ingredients": [
+    {
+      "name": "Peychaud's bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Absinthe",
+      "type": "category",
+      "quantity": {
+        "amount": 3,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sweet vermouth",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (rye)",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients with ice until chilled.",
+    "Strain into a chilled coupe.",
+    "Garnish with three brandied cherries on a pick."
+  ],
+  "refs": [
+    {
+      "type": "website",
+      "name": "Punch",
+      "url": "https://punchdrink.com/recipes/de-la-louisiane/"
+    }
+  ]
+}

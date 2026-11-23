@@ -1,0 +1,7 @@
+{
+  "$schema": "../../schemas/bar.schema.json",
+  "name": "PDT",
+  "location": "New York, NY",
+  "links": ["https://www.pdtnyc.com/"],
+  "description": "Please Don't Tell, the cocktail bar entered through the phone booth of Crif Dogs in the East Village."
+}
