@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Modern Tiki",
+  "links": ["https://www.moderntiki.com"]
+}
