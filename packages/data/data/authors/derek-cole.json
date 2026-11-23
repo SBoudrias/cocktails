@@ -1,8 +1,8 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Make and Drink",
+  "name": "Derek Cole",
   "links": ["https://www.youtube.com/@makeanddrink"],
-  "description": "Tropical, tiki and rum cocktails, their history and stories",
+  "description": "Host of the Make and Drink YouTube channel. Tropical, tiki and rum cocktails, their history and stories",
   "sources": [
     {
       "type": "youtube-channel",
