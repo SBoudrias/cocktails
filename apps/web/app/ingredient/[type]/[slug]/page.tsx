@@ -16,8 +16,7 @@ import CategoryChips from '#/components/CategoryChips';
 import IngredientList from '#/components/IngredientList';
 import InstructionList from '#/components/InstructionList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
-import SubstitutionDrawer from '#/components/SubstitutionDrawer';
-import SubstitutionLists from '#/components/SubstitutionLists';
+import SubstitutionSection from '#/components/SubstitutionSection';
 import { buttonVariants } from '#/components/ui/button-variants';
 import {
   Card,
@@ -90,15 +89,12 @@ export default async function IngredientPage({ params }: { params: Promise<Param
         <>
           <CategoryChips categories={ingredient.categories} />
           {substitution && (
-            <SubstitutionDrawer ingredientName={ingredient.name}>
-              <SubstitutionLists
-                primaryHeader="Some substitution option"
-                substitutes={substitution.substitutes}
-                recipeCounts={recipeCounts}
-                relatedCategories={substitution.relatedCategories}
-                headerMode="flow"
-              />
-            </SubstitutionDrawer>
+            <SubstitutionSection
+              ingredientName={ingredient.name}
+              substitutes={substitution.substitutes}
+              relatedCategories={substitution.relatedCategories}
+              recipeCounts={recipeCounts}
+            />
           )}
         </>
       }
