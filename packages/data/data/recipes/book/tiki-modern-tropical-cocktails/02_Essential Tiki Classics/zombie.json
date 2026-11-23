@@ -96,6 +96,11 @@
       "type": "book",
       "title": "Tiki: Modern Tropical Cocktails",
       "page": 25
+    },
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: How to Make the Perfect Zombie",
+      "episodeLink": "https://vinepair.com/cocktail-college/cocktail-college-zombie/"
     }
   ]
 }

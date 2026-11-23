@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Hurricane",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Fassionola",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 12",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Don Q Cristal Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add all ingredients to a shaker with ice",
+    "Shake until well chilled",
+    "Strain into a chilled Hurricane glass filled with crushed ice",
+    "Garnish with a cocktail umbrella"
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Neal Bodenheimer"
+    }
+  ],
+  "refs": [
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: How to Make the Perfect Hurricane",
+      "episodeLink": "https://vinepair.com/cocktail-college/hurricane/"
+    }
+  ]
+}

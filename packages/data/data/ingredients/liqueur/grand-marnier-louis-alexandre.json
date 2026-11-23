@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Grand Marnier Louis Alexandre",
+  "type": "liqueur",
+  "categories": ["Orange liqueur"]
+}

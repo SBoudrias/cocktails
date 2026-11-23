@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Jungle Bird",
+  "preparation": "shaken",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "modifier": "scant",
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Pineapple juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 12 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Campari",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cruzan Black Strap",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Smoked salt",
+      "type": "spice",
+      "quantity": {
+        "amount": 1,
+        "unit": "pinch"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a shaker with one cube of ice (roughly 1.75 x 2 inches in size)",
+    "Shake until cold and strain into a double old fashioned glass over one large cube of ice",
+    "Garnish with your choice of pineapple wedge, orange, cocktail cherry, and/or pineapple fronds"
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Richard Boccato"
+    }
+  ],
+  "refs": [
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: How to Make the Perfect Jungle Bird",
+      "episodeLink": "https://vinepair.com/cocktail-college/cocktail-college-jungle-bird/"
+    }
+  ]
+}

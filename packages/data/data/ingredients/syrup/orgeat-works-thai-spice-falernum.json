@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Orgeat Works Thai Spice Falernum",
+  "type": "syrup",
+  "categories": ["Falernum syrup"]
+}

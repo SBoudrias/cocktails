@@ -70,6 +70,11 @@
       "type": "youtube",
       "videoId": "jEHxVunOS1o",
       "channel": "make-and-drink"
+    },
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: How to Make the Perfect Missionary's Downfall",
+      "episodeLink": "https://vinepair.com/cocktail-college/missionarys-downfall/"
     }
   ]
 }

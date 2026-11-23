@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Plantation Jamaica 2005",
+  "type": "spirit",
+  "categories": ["Blended aged rum (Jamaica)", "Jamaican rum"]
+}
