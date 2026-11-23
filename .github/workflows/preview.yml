@@ -50,7 +50,11 @@ on:
     # evaluated against the whole PR diff, so a PR that ever touched these
     # keeps getting preview gates on every push.
     paths:
+      # Test-only utilities cannot change the built app: skip the
+      # preview build and deploy for them (e.g. a PR that only touches
+      # apps/web/testing/).
       - apps/web/**
+      - '!apps/web/testing/**'
       - packages/data/**
       - packages/conversion/**
       - packages/ingredient-sorting/**
