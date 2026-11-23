@@ -132,7 +132,7 @@ const VISITED_INGREDIENT = 'ingredient/juice/lime-juice';
 // style list (#553) bakes no rows at all, so it can only render through the
 // precached catalog — the strongest fresh-install offline check there is.
 const NON_ALCOHOLIC_HUB = 'list/style/non-alcoholic';
-const VISITED_AUTHOR = 'list/authors/anders-erickson';
+const VISITED_AUTHOR = 'list/authors/tyson-buhler';
 const VISITED_BAR = 'list/bars/death-and-co-new-york-ny';
 const rumList = catalog.lists[VISITED_CATEGORY];
 const absintheList = catalog.lists[UNVISITED_CATEGORY];
