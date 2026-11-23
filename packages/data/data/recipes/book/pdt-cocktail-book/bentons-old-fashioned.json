@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Benton's Old Fashioned",
+  "preparation": "stirred",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Maple syrup",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Four Roses Bourbon",
+      "type": "spirit",
+      "technique": {
+        "technique": "fat-wash",
+        "fat": "Benton's bacon fat",
+        "fat_quantity": {
+          "amount": 1.5,
+          "unit": "oz"
+        },
+        "spirit_quantity": {
+          "amount": 750,
+          "unit": "ml"
+        },
+        "duration": "4 hours at room temperature, then 2 hours in the freezer"
+      },
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Stir all the ingredients with ice until chilled.",
+    "Strain into a rocks glass over a large ice cube.",
+    "Garnish with an orange peel."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Don Lee"
+    },
+    {
+      "relation": "bar",
+      "source": "PDT",
+      "location": "New York, NY"
+    },
+    {
+      "relation": "book",
+      "source": "The PDT Cocktail Book"
+    }
+  ],
+  "refs": [
+    {
+      "type": "website",
+      "name": "Punch",
+      "url": "https://punchdrink.com/recipes/bentons-old-fashioned/"
+    }
+  ]
+}

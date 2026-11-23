@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mezcal Mule",
+  "preparation": "shaken",
+  "served_on": "ice cubes",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Cucumber",
+      "type": "fruit",
+      "technique": [
+        {
+          "technique": "cut",
+          "type": "sliced"
+        },
+        {
+          "technique": "muddled"
+        }
+      ],
+      "quantity": {
+        "amount": 3,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Agave nectar",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Sombra Mezcal",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "PDT house ginger beer",
+      "type": "soda",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Muddle the cucumber slices with the agave nectar in a shaker.",
+    "Add the remaining ingredients and ice, and shake until chilled.",
+    "Strain over fresh ice into a rocks glass.",
+    "Garnish with a cucumber slice, candied ginger and a light dusting of chili powder."
+  ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Jim Meehan"
+    },
+    {
+      "relation": "bar",
+      "source": "PDT",
+      "location": "New York, NY"
+    },
+    {
+      "relation": "book",
+      "source": "The PDT Cocktail Book"
+    }
+  ],
+  "refs": [
+    {
+      "type": "website",
+      "name": "Punch",
+      "url": "https://punchdrink.com/recipes/mezcal-mule/"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "PDT house ginger beer",
+  "type": "soda",
+  "description": "PDT's house ginger beer from The PDT Cocktail Book. Makes about 20 ounces.",
+  "ingredients": [
+    {
+      "name": "Water",
+      "type": "other",
+      "quantity": {
+        "amount": 20,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Ginger",
+      "type": "spice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "cup"
+      }
+    },
+    {
+      "name": "Brown sugar",
+      "type": "other",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Mince the ginger.",
+    "Boil the water, then turn off the heat. Add the minced ginger, cover and infuse for one hour.",
+    "Strain through a chinois, pressing on the ginger to extract as much liquid as possible.",
+    "Stir in the brown sugar and lime juice.",
+    "Bottle and store in the refrigerator."
+  ],
+  "refs": [
+    {
+      "type": "website",
+      "name": "Punch",
+      "url": "https://punchdrink.com/recipes/pdts-house-ginger-beer/"
+    }
+  ]
+}
