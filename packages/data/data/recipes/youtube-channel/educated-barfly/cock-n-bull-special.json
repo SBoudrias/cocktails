@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Cock 'n Bull Special",
+  "preparation": "built",
+  "served_on": "big rock",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Orange curaçao",
+      "type": "category",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Cognac",
+      "type": "category",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Whiskey (Bourbon)",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bénédictine",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Build all ingredients in a rocks glass over a big chunk of ice.",
+    "Stir down in the glass to chill.",
+    "Express an orange twist over the drink and garnish with the twist."
+  ],
+  "attributions": [
+    {
+      "relation": "bar",
+      "source": "Cock 'n Bull Pub",
+      "location": "Los Angeles, CA"
+    },
+    {
+      "relation": "book",
+      "source": "Bottoms Up"
+    }
+  ],
+  "refs": [
+    {
+      "type": "youtube",
+      "videoId": "hkEFkawvKg0",
+      "channel": "educated-barfly",
+      "start": 134
+    }
+  ]
+}
