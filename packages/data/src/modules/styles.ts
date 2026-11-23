@@ -393,9 +393,11 @@ const isHighballFamily = (recipe: Recipe) =>
  * flip's richness: it reads tropical, and those drinks belong to tiki
  * (piña coladas and their kin). */
 /** Amari and bitter aperitifs as a named pour: campari, aperol, cynar,
- * fernet, and the amari by name. */
+ * fernet, and the amari by name. "Amari" is anchored so it cannot bite
+ * inside "tamarind" — a falernum-and-tamarind cooler is not amaro-forward
+ * (#665) — while "amaro" stays free to catch Cardamaro. */
 const amaroPattern =
-  /amaro|amari|fernet|campari|aperol|cynar|braulio|montenegro|nonino|lucano|\bchina\b|amedeo|ciocor|rabarbaro|sfumato/;
+  /amaro|\bamari\b|fernet|campari|aperol|cynar|braulio|montenegro|nonino|lucano|\bchina\b|amedeo|ciocor|rabarbaro|sfumato/;
 
 /** The amaro or bitter aperitif is a main pour, not seasoning. */
 const isAmaroForward = (recipe: Recipe) => {
