@@ -31,6 +31,9 @@ const [
   espressoMartini,
   carajillo,
   artfulDodger,
+  tangaroaCooler,
+  wingman,
+  aFarewellToArms,
 ] = await Promise.all([
   getRecipe(
     { type: 'book', slug: 'tropical-standard' },
@@ -81,6 +84,13 @@ const [
     'artful-dodger',
     '04_Boozy & Honest (Old-Fashioned)',
   ),
+  getRecipe({ type: 'youtube-channel', slug: 'jason-miller' }, 'tangaroa-cooler'),
+  getRecipe(
+    { type: 'book', slug: 'tiki-modern-tropical-cocktails' },
+    'wingman',
+    '04_Long Drinks and Coolers',
+  ),
+  getRecipe({ type: 'youtube-channel', slug: 'educated-barfly' }, 'a-farewell-to-arms'),
 ]);
 
 describe('getRecipeStyles', () => {
@@ -205,6 +215,17 @@ describe('getRecipesByStyle', () => {
 
     // An americano is campari and vermouth as the whole pour.
     expect(keysOf(amaroForward)).toContain(`${americano.name} (anders-erickson)`);
+    // "Amari" must not bite inside "tamarind": a falernum-and-tamarind
+    // cooler is not amaro-forward (#665). Falernum itself never files a
+    // drink here — only its campari or fernet pour can (a Wingman, a
+    // Farewell to Arms).
+    expect(keysOf(amaroForward)).not.toContain(
+      `${tangaroaCooler.name} (${tangaroaCooler.source.slug})`,
+    );
+    expect(keysOf(amaroForward)).toContain(`${wingman.name} (${wingman.source.slug})`);
+    expect(keysOf(amaroForward)).toContain(
+      `${aFarewellToArms.name} (${aFarewellToArms.source.slug})`,
+    );
     expect(keysOf(coffee)).toContain(`${espressoMartini.name} (anders-erickson)`);
     expect(keysOf(coffee)).toContain(`${carajillo.name} (make-and-drink)`);
     // A frozen blend is a blended member, whatever its family.
