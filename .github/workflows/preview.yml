@@ -49,12 +49,24 @@ on:
     # assets, dependency manifests, and this workflow. The filter is
     # evaluated against the whole PR diff, so a PR that ever touched these
     # keeps getting preview gates on every push.
+    #
+    # The negations below carve out everything that cannot reach the built
+    # export (`yarn workspace @cocktails/web build` output). Every entry was
+    # proven the same way: with all of them poisoned at once (test files
+    # given a valid new export, configs deleted or corrupted) and the build
+    # parallelism pinned, the export is byte-identical to the clean
+    # baseline modulo per-build randomness (build ID, SW version, sitemap
+    # lastmod) — 28,885 files, 0 differing. What the preview's own build
+    # and gates still consume stays INCLUDED: the web app; the build-
+    # invoked tools (generate-sw-precache.ts, verify-internal-links.ts run
+    # inside the build script — see tools below for the ones that do not);
+    # packages/data's data JSON, globs.ts and src/** (imported at build
+    # time); packages/conversion + ingredient-sorting src; root public/
+    # (imported by app/layout.tsx); package.json/yarn.lock (yarn install);
+    # tsconfig.json (next build's typecheck); netlify.toml (bundled with
+    # the upload); this workflow and setup-node (the pipeline itself).
     paths:
-      # Test-only utilities cannot change the built app: skip the
-      # preview build and deploy for them (e.g. a PR that only touches
-      # apps/web/testing/).
       - apps/web/**
-      - '!apps/web/testing/**'
       - packages/data/**
       - packages/conversion/**
       - packages/ingredient-sorting/**
@@ -66,6 +78,51 @@ on:
       - netlify.toml
       - .github/workflows/preview.yml
       - .github/workflows/setup-node/**
+      # --- Exclusions: files that cannot affect the built export ---
+      #
+      # Test files and test utilities, everywhere in the filtered subtrees.
+      # Vitest reads them; `next build` never bundles a module that only a
+      # *.test.ts imports. The repo's CI workflow runs lint (which
+      # typechecks the test files) and vitest on every PR with no path
+      # filter, so test-only PRs stay gated there.
+      - '!apps/web/**/*.test.ts'
+      - '!apps/web/**/*.test.tsx'
+      - '!apps/web/testing/**'
+      - '!apps/web/vitest.setup.ts'
+      - '!packages/**/*.test.ts'
+      # apps/web/tools: only generate-sw-precache.ts and
+      # verify-internal-links.ts run inside `yarn workspace @cocktails/web
+      # build` — they stay matched by apps/web/** above. The rest never runs
+      # in the build: generate-icons.ts writes the committed PNGs by hand
+      # (its output, apps/web/public/icons/*, IS served),
+      # css-module-sync.test.ts is a vitest-only contract test (covered by
+      # the *.test.ts negation above), and verify-offline.ts is the preview
+      # gate itself (the workflow runs it against the build; the build does
+      # not run it).
+      - '!apps/web/tools/generate-icons.ts'
+      - '!apps/web/tools/verify-offline.ts'
+      # Type-only and editor/config files: never emitted (Turbopack strips
+      # types), and components.json is the shadcn CLI's config — nothing
+      # imports it.
+      - '!apps/web/types/**'
+      - '!apps/web/components.json'
+      # Agent docs.
+      - '!apps/web/AGENTS.md'
+      - '!apps/web/CLAUDE.md'
+      # packages/data: the app imports data JSON (through packages/data's
+      # import.meta.glob), globs.ts (the loader map) and src/** — all
+      # matched by packages/data/** above. Everything else is tooling:
+      # globs.stub.ts is a vitest-only alias (vitest.config.mts), the
+      # schemas and the approved-overlaps registry are read only by
+      # `yarn check-data` (CI's schema job), and tsconfig.json only
+      # configures that package's `tsc --noEmit` lint.
+      - '!packages/data/globs.stub.ts'
+      - '!packages/data/schemas/**'
+      - '!packages/data/approved-overlaps.json'
+      - '!packages/data/tsconfig.json'
+      # Each package's tsconfig only configures its `tsc --noEmit` lint.
+      - '!packages/conversion/tsconfig.json'
+      - '!packages/ingredient-sorting/tsconfig.json'
 
 permissions:
   # The preview-link step comments on the PR with the workflow's token.
