@@ -933,7 +933,7 @@ describe('IngredientPage', () => {
       const { user } = await setupApp(jamaicanRumPageJSX);
 
       const trigger = screen.getByRole('button', {
-        name: 'See all 20 substitutions',
+        name: 'See all 21 substitutions',
       });
       await user.click(trigger);
       expect(screen.getByRole('dialog', { name: 'Substitutions' })).toBeInTheDocument();
@@ -1027,7 +1027,7 @@ describe('IngredientPage', () => {
       // No breakpoint classes on the section's rows or wrapper: the
       // preview list is the substitution UI on mobile and desktop alike.
       const seeAllRow = screen.getByRole('button', {
-        name: 'See all 20 substitutions',
+        name: 'See all 21 substitutions',
       });
       const section = seeAllRow.closest('[role="group"]');
       expect(section?.className).not.toMatch(/hidden|min-\[|max-\[/);
