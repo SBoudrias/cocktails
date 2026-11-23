@@ -264,3 +264,29 @@ describe('getRecipe', () => {
     ]);
   });
 });
+
+describe('getMilkClarifiedRecipes', () => {
+  it('lists the recipes that mark milk clarification, alphabetically', async () => {
+    const { getMilkClarifiedRecipes } = await import('./recipes');
+
+    const recipes = await getMilkClarifiedRecipes();
+    const names = recipes.map(({ name }) => name);
+
+    expect(names).toContain('Clarified New York Sour');
+    expect(names).toEqual(names.toSorted((a, b) => a.localeCompare(b)));
+  });
+});
+
+describe('getAcidAdjustedRecipes', () => {
+  it('lists recipes that acid-adjust an ingredient, not every tart recipe', async () => {
+    const { getAcidAdjustedRecipes } = await import('./recipes');
+
+    const recipes = await getAcidAdjustedRecipes();
+    const slugs = recipes.map(({ slug }) => slug);
+
+    // Fu Manjito acid-adjusts its lime juice on the line.
+    expect(slugs).toContain('fu-manjito');
+    // The plain Daiquiri is lime and sugar, but never acid-adjusted.
+    expect(slugs).not.toContain('daiquiri');
+  });
+});

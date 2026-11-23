@@ -9,6 +9,7 @@ import uniqBy from 'lodash/uniqBy';
 import { match } from 'ts-pattern';
 import type { Category } from '../types/Category.ts';
 import type { Author, Bar } from '../types/Entity.ts';
+import type { RecipeIngredient } from '../types/Ingredient.ts';
 import type { Recipe } from '../types/Recipe.ts';
 import type { Source } from '../types/Source.ts';
 import { getCategory, getChildCategories } from './categories';
@@ -529,6 +530,34 @@ export const getMilkClarifiedRecipes = memo(async (): Promise<Recipe[]> => {
       recipe.techniques?.some(
         (technique) =>
           technique.technique === 'clarification' && technique.method === 'milk',
+      ),
+    ),
+  );
+});
+
+/**
+ * A technique's lines on an ingredient: the data allows one (`technique`) or
+ * many (`technique`), and both spellings carry the same markers.
+ */
+const techniquesOf = (ingredient: RecipeIngredient) =>
+  Array.isArray(ingredient.technique)
+    ? ingredient.technique
+    : ingredient.technique
+      ? [ingredient.technique]
+      : [];
+
+/** A recipe that acid-adjusts one of its juices on the line — the technique
+ * the acid-adjusting and super-juice calculators exist for. The marker is
+ * authored on the ingredient (`acid-adjustment`), so the list stays true as
+ * recipes are added. */
+export const getAcidAdjustedRecipes = memo(async (): Promise<Recipe[]> => {
+  const recipes = await getAllRecipes();
+  return toAlphaSort(
+    recipes.filter((recipe) =>
+      recipe.ingredients.some((ingredient) =>
+        techniquesOf(ingredient).some(
+          (technique) => technique.technique === 'acid-adjustment',
+        ),
       ),
     ),
   );

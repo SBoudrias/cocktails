@@ -6,14 +6,12 @@ import { ChevronDown } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useReducer } from 'react';
 import { match } from 'ts-pattern';
-import { LinkListItem } from '#/components/list/LinkList';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import { Alert } from '#/components/ui/alert';
 import { Card, CardContent } from '#/components/ui/card';
 import { LabeledField, OutlinedField } from '#/components/ui/labeled-field';
 import { List, ListSubheader, ListRow } from '#/components/ui/list';
 import { formatAmount } from '#/modules/formatAmount';
-import { getMilkClarifiedRecipeListUrl } from '#/modules/url';
 
 const DEFAULT_BATCH_VOLUME = 1000;
 const DEFAULT_MILK_RATIO = 0.25;
@@ -350,14 +348,6 @@ export default function MilkClarificationCalculator() {
           </li>
         </List>
       </section>
-      <List>
-        <div className="surface">
-          <LinkListItem
-            href={getMilkClarifiedRecipeListUrl()}
-            primary="Browse milk-clarified recipes"
-          />
-        </div>
-      </List>
     </>
   );
 }
