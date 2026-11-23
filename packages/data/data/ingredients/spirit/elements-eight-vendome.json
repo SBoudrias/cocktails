@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Elements Eight Vendôme",
   "type": "spirit",
-  "categories": ["Blended aged rum"]
+  "categories": ["Blended aged rum", "Moderately aged rum"]
 }

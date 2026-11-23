@@ -175,6 +175,21 @@ export function getBarRecipesUrl(bar: {
   return `/list/bars/${slugify(`${bar.name} ${bar.location ?? ''}`)}`;
 }
 
+/**
+ * The GitHub edit link for a category's data: its loose file, or the
+ * categorization system file that declares it.
+ */
+export function getCategoryEditUrl(
+  category: { slug: string },
+  system?: { slug: string },
+) {
+  const basePath = 'https://github.com/SBoudrias/cocktails/edit/main/packages/data/data';
+
+  return system
+    ? `${basePath}/categorization-systems/${system.slug}.json`
+    : `${basePath}/categories/${category.slug}.json`;
+}
+
 export function getRecipeEditUrl(recipe: Recipe) {
   const basePath = `https://github.com/SBoudrias/cocktails/edit/main/packages/data/data/recipes/${recipe.source.type}/${recipe.source.slug}`;
 

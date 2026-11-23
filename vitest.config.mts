@@ -83,6 +83,7 @@ export default defineConfig({
         ['bars', 'src/modules/bars.ts'],
         ['constants', 'src/modules/constants.ts'],
         ['params', 'src/modules/params.ts'],
+        ['categorization-systems', 'src/modules/categorization-systems.ts'],
       ].map(([subpath, target]) => ({
         find: new RegExp(`^@cocktails/data${subpath ? `/${subpath}` : ''}$`),
         replacement: path.join(__dirname, 'packages/data', target),

@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Planteray Original Dark",
   "type": "spirit",
-  "categories": ["Black blended rum"]
+  "categories": ["Black blended rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "blend across styles; needs book verification"
+    }
+  ]
 }

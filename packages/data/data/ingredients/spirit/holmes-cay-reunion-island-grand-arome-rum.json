@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Holmes Cay Reunion Island Grand Arome Rum",
   "type": "spirit",
-  "categories": ["Rum"]
+  "categories": ["Rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "grande arôme style; no MT bucket"
+    }
+  ]
 }

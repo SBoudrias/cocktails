@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Saison Sherry Cask Rum",
   "type": "spirit",
-  "categories": ["Rum"]
+  "categories": ["Rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "sherry-cask finish; no MT style"
+    }
+  ]
 }

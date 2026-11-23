@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Barbancourt 5 Star",
   "type": "spirit",
-  "categories": ["Rhum agricole vieux"]
+  "categories": ["Rhum agricole vieux", "Aged cane juice rum"]
 }

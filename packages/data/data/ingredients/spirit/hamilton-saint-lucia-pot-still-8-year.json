@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Hamilton Saint Lucia Pot Still 8 Year",
   "type": "spirit",
-  "categories": ["Blended aged rum"]
+  "categories": ["Blended aged rum", "Moderately aged rum"]
 }

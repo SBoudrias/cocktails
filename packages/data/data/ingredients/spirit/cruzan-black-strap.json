@@ -2,5 +2,11 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Cruzan Black Strap",
   "type": "spirit",
-  "categories": ["Black blended rum"]
+  "categories": ["Black blended rum"],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "blackstrap molasses rum; no MT style"
+    }
+  ]
 }

@@ -1,7 +1,0 @@
-{
-  "$schema": "../../schemas/category.schema.json",
-  "name": "Column still aged rum",
-  "categoryType": "spirit",
-  "description": "Rum from continuous column stills, aged a few years in oak. Lighter-bodied and cleaner than pot-still rum, with soft caramel and oak rather than funk. Angostura 1919, Bacardi 8 and Diplom\u00e1tico Reserva Exclusiva show the range from crisp to lush; it is the golden rum of lighter tiki drinks and punches.",
-  "parents": ["Aged rum"]
-}

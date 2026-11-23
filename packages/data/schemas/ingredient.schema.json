@@ -7,14 +7,26 @@
     {
       "type": "object",
       "properties": {
-        "$schema": { "type": "string" },
-        "name": { "type": "string" },
-        "type": { "const": "juice" },
-        "description": { "type": "string" },
-        "acidity": { "type": "number" },
+        "$schema": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "const": "juice"
+        },
+        "description": {
+          "type": "string"
+        },
+        "acidity": {
+          "type": "number"
+        },
         "categories": {
           "type": "array",
-          "items": { "type": "string" }
+          "items": {
+            "type": "string"
+          }
         },
         "ingredients": {
           "$ref": "./recipe.schema.json#/properties/ingredients"
@@ -27,6 +39,23 @@
         },
         "refs": {
           "$ref": "./recipe.schema.json#/properties/refs"
+        },
+        "exemptFrom": {
+          "description": "Categorization systems this bottle is deliberately outside of, with the reason",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "system": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": ["system", "reason"],
+            "additionalProperties": false
+          }
         }
       },
       "required": ["name", "type"],
@@ -35,8 +64,12 @@
     {
       "type": "object",
       "properties": {
-        "$schema": { "type": "string" },
-        "name": { "type": "string" },
+        "$schema": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
         "type": {
           "enum": [
             "beer",
@@ -56,10 +89,14 @@
             "other"
           ]
         },
-        "description": { "type": "string" },
+        "description": {
+          "type": "string"
+        },
         "categories": {
           "type": "array",
-          "items": { "type": "string" }
+          "items": {
+            "type": "string"
+          }
         },
         "ingredients": {
           "$ref": "./recipe.schema.json#/properties/ingredients"
@@ -72,6 +109,23 @@
         },
         "refs": {
           "$ref": "./recipe.schema.json#/properties/refs"
+        },
+        "exemptFrom": {
+          "description": "Categorization systems this bottle is deliberately outside of, with the reason",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "system": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": ["system", "reason"],
+            "additionalProperties": false
+          }
         }
       },
       "required": ["name", "type"],

@@ -1,5 +1,60 @@
 import { describe, expect, it } from 'vitest';
-import { getCategory, getChildCategories, getRelatedCategories } from './categories';
+import {
+  getAllCategories,
+  getCategory,
+  getChildCategories,
+  getRelatedCategories,
+  groupCategoriesBySystem,
+} from './categories';
+
+describe('getCategory', () => {
+  it('falls back to the system node once the loose file is gone', async () => {
+    // Aged Jamaican rum only lives in minimalist-tiki.json: the node's
+    // description reaches the category, nothing shadows it.
+    const category = await getCategory('aged-jamaican-rum');
+
+    expect(category).toMatchObject({
+      name: 'Aged Jamaican rum',
+      slug: 'aged-jamaican-rum',
+      categoryType: 'spirit',
+      description: expect.stringContaining('Mai Tai'),
+      parents: [],
+      type: 'category',
+    });
+  });
+});
+
+describe('getAllCategories', () => {
+  it('lists each system node once, with the loose categories', async () => {
+    const slugs = (await getAllCategories()).map(({ slug }) => slug);
+
+    expect(slugs).toEqual(expect.arrayContaining(['gin', 'rum', 'aged-jamaican-rum']));
+    expect(new Set(slugs).size).toBe(slugs.length);
+  });
+});
+
+describe('groupCategoriesBySystem', () => {
+  it('puts the house categories first, then systems by first appearance', async () => {
+    const groups = await groupCategoriesBySystem(
+      await Promise.all(
+        ['aged-jamaican-rum', 'blended-aged-rum-jamaica', 'charanda'].map((slug) =>
+          getCategory(slug),
+        ),
+      ),
+    );
+
+    expect(
+      groups.map(({ system, categories }) => [
+        system?.slug ?? 'house',
+        categories.map(({ slug }) => slug),
+      ]),
+    ).toEqual([
+      ['house', ['charanda']],
+      ['minimalist-tiki', ['aged-jamaican-rum']],
+      ['smugglers-cove', ['blended-aged-rum-jamaica']],
+    ]);
+  });
+});
 
 describe('getChildCategories', () => {
   it('returns nested child categories once', async () => {
@@ -36,6 +91,15 @@ describe('getRelatedCategories', () => {
     const related = await getRelatedCategories(await getCategory('armagnac'));
 
     expect(related.map(({ name }) => name)).toEqual(['Aged brandy (grapes)', 'Cognac']);
+  });
+
+  it('keeps a system node flavor island non-substituting', async () => {
+    // Flavored rum lives only in the Smuggler's Cove system file: its
+    // `"substitutable": false` must survive the system-node fallback, so
+    // Coconut rum is not offered Spiced or Pineapple rum.
+    const related = await getRelatedCategories(await getCategory('coconut-rum'));
+
+    expect(related.map(({ name }) => name)).toEqual(['Flavored rum']);
   });
 
   it('lists the unaged grape-brandies as siblings, not the aged ones', async () => {

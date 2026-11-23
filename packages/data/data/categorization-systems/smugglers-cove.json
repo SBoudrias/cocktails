@@ -1,0 +1,318 @@
+{
+  "$schema": "../../schemas/categorization-system.schema.json",
+  "name": "Smuggler's Cove",
+  "description": "Martin and Rebecca Cate's rum classification: pot/column/blended stills crossed with unaged/lightly aged/aged maturation, plus black rums, overproofs, cachaça and Martinique rhum agricole. The island variants (Jamaica, Barbados, Demerara) and the age umbrellas are this catalog's extensions of the book's 21 categories.",
+  "covers": ["Rum"],
+  "nodes": [
+    {
+      "name": "Aged cachaça",
+      "categoryType": "spirit",
+      "parents": ["Cachaça"]
+    },
+    {
+      "name": "Aged rum",
+      "categoryType": "spirit",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Barbados rum",
+      "categoryType": "spirit",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Black blended overproof rum",
+      "categoryType": "spirit",
+      "description": "High-proof dark blended rum — typically 109 to 151 proof — with deep molasses, licorice and burnt-sugar notes and the intensity to stand out among many ingredients. Lemon Hart 151, Gosling's 151 and Planteray OFTD are the classic bottles. The engine of tiki giants like the Jet Pilot and the Zombie.",
+      "parents": ["Overproof rum"],
+      "outsideOf": ["Minimalist Tiki"]
+    },
+    {
+      "name": "Black blended rum",
+      "categoryType": "spirit",
+      "description": "Dark blended rum — aged rums blended and often colored with caramel for a deep brown-black tint and richer, sweeter body. Gosling's Black Seal owns the Dark 'n' Stormy trademark; Myers's and Coruba are the classic tiki bottles, and the category gives the Jungle Bird its brooding weight.",
+      "parents": ["Rum"],
+      "refs": [
+        {
+          "type": "youtube",
+          "videoId": "sTM6xzUOxOM",
+          "channel": "make-and-drink"
+        }
+      ]
+    },
+    {
+      "name": "Black blended rum (Demerara)",
+      "categoryType": "spirit",
+      "parents": ["Black blended rum"]
+    },
+    {
+      "name": "Black blended rum (Jamaica)",
+      "categoryType": "spirit",
+      "description": "Dark blended rum from Jamaica: as dark as the Demerara side of the category, but with Jamaica's funky, fruity pot-still signature instead of smoky weight. Coruba and Hamilton's Jamaican Pot Still Black are the benchmarks — a Coruba Mai Tai is practically a style of its own — and a float of it deepens Jet Pilot-style drinks.",
+      "parents": ["Black blended rum"]
+    },
+    {
+      "name": "Black pot still rum",
+      "categoryType": "spirit",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Black pot still unaged rum",
+      "categoryType": "spirit",
+      "parents": ["Black pot still rum"]
+    },
+    {
+      "name": "Blended aged rum",
+      "categoryType": "spirit",
+      "description": "Aged rum blends — rums from different stills or origins married together, with a few years of oak behind them. Richer and rounder than lightly-aged rum but more versatile than the black or overproof styles, it is the default golden rum of tiki and punch-making.",
+      "parents": ["Aged rum"]
+    },
+    {
+      "name": "Blended aged rum (Barbados)",
+      "categoryType": "spirit",
+      "parents": ["Blended aged rum", "Barbados rum"]
+    },
+    {
+      "name": "Blended aged rum (Demerara)",
+      "categoryType": "spirit",
+      "description": "Aged blended rum from Guyana's Demerara region: heavy, dark-molasses character with notes of tar, smoke and burnt sugar, shaped by the country's famous wooden stills. El Dorado's aged blends and Lemon Hart are the standards. The historic backbone of the Pearl Diver family and navy-style drinks.",
+      "parents": ["Blended aged rum"]
+    },
+    {
+      "name": "Blended aged rum (Jamaica)",
+      "categoryType": "spirit",
+      "description": "Aged rum blends from Jamaica that keep some of the island's pot-still funk while gaining oak polish. Appleton's aged blends are the reference point — and a blended aged Jamaican rum is what Trader Vic built the original Mai Tai on. A natural fit whenever a classic tiki recipe calls for aged Jamaican rum.",
+      "parents": ["Blended aged rum", "Jamaican rum"]
+    },
+    {
+      "name": "Blended lightly aged rum",
+      "categoryType": "spirit",
+      "description": "A blended rum given only a short rest in oak — long enough to soften the spirit and pick up a pale gold tint, not long enough to take on heavy wood. Usually filtered light so it mixes like a white rum with more body. The workhorse base of mid-weight tiki drinks like the Test Pilot and Fog Cutter; Banks 5 Island and Denizen Aged White are go-to bottles.",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Blended lightly aged rum (Barbados)",
+      "categoryType": "spirit",
+      "description": "Lightly-aged blended rum from Barbados, rum's historic birthplace: a balanced style with mild funk and light oak, sitting between Jamaican intensity and Trinidadian cleanness. The Real McCoy shows the style. The Royal Bermuda Yacht Club — which the drink of the same name calls for — is its flagship use.",
+      "parents": ["Blended lightly aged rum", "Barbados rum"]
+    },
+    {
+      "name": "Blended lightly aged rum (Demerara)",
+      "categoryType": "spirit",
+      "description": "A young, pale blended rum from Guyana — Demerara's dark-molasses character in a light, mixable package. Hamilton's 86 proof is the benchmark bottle. Classic in a Navy Grog, where it carries body without adding dark color.",
+      "parents": ["Blended lightly aged rum"]
+    },
+    {
+      "name": "Blended lightly aged rum (Jamaica)",
+      "categoryType": "spirit",
+      "description": "Lightly-aged blended rum from Jamaica — pot-still funk in a pale, versatile package, aged just long enough to smooth the edges. Rum-Bar Gold and Appleton Signature are typical bottles. It brings genuine Jamaican character to recipes that want funk without dark color or heavy oak.",
+      "parents": ["Blended lightly aged rum", "Jamaican rum"]
+    },
+    {
+      "name": "Blended long aged rum",
+      "categoryType": "spirit",
+      "parents": ["Aged rum"]
+    },
+    {
+      "name": "Cachaça",
+      "categoryType": "spirit",
+      "description": "Brazilian fresh-cane-juice spirit, legally distinct from rum — the Smuggler's Cove book groups it with the cane families.",
+      "parents": ["Cane juice spirit"]
+    },
+    {
+      "name": "Cane coffey still aged rum",
+      "categoryType": "spirit",
+      "parents": ["Cane juice spirit"]
+    },
+    {
+      "name": "Cane juice spirit",
+      "categoryType": "spirit",
+      "description": "Rum distilled from fresh sugarcane juice rather than molasses — rhum agricole and cachaça both, the Smuggler's Cove book's 'Cane' families.",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Cane pot still aged rum",
+      "categoryType": "spirit",
+      "parents": ["Aged rum"]
+    },
+    {
+      "name": "Cane pot still unaged rum",
+      "categoryType": "spirit",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Coconut rum",
+      "categoryType": "spirit",
+      "parents": ["Flavored rum"],
+      "refs": [
+        {
+          "type": "youtube",
+          "videoId": "6Rhp6G1bYdo",
+          "channel": "make-and-drink"
+        }
+      ]
+    },
+    {
+      "name": "Column still aged rum",
+      "categoryType": "spirit",
+      "description": "Rum from continuous column stills, aged a few years in oak. Lighter-bodied and cleaner than pot-still rum, with soft caramel and oak rather than funk. Angostura 1919, Bacardi 8 and Diplomático Reserva Exclusiva show the range from crisp to lush; it is the golden rum of lighter tiki drinks and punches.",
+      "parents": ["Aged rum"]
+    },
+    {
+      "name": "Column still lightly aged rum",
+      "categoryType": "spirit",
+      "description": "Cuban-style white rum: column-distilled, given only a brief oak rest, then filtered to a pale color with faint sweetness and almost no funk. Bacardi Superior, Caña Brava and Havana Club 3 are the archetypes — the Daiquiri and Mojito were built on this style.",
+      "parents": ["Blended lightly aged rum"]
+    },
+    {
+      "name": "Column still long aged rum",
+      "categoryType": "spirit",
+      "parents": ["Aged rum"]
+    },
+    {
+      "name": "Flavored rum",
+      "categoryType": "spirit",
+      "parents": ["Rum"],
+      "substitutable": false,
+      "outsideOf": ["Minimalist Tiki"]
+    },
+    {
+      "name": "Jamaican overproof rum",
+      "categoryType": "spirit",
+      "description": "Jamaican rum bottled well above the standard 40% ABV — typically 63% or more — with the island's funk concentrated by the proof. Worthy Park and Rum-Bar's overproof whites are modern standards. Used in small doses to lift a tall drink, or in Zombie builds where intensity must survive dilution.",
+      "parents": ["Overproof rum", "Jamaican rum"]
+    },
+    {
+      "name": "Jamaican rum",
+      "categoryType": "spirit",
+      "description": "Rum from Jamaica, traditionally pot-distilled from molasses and famous for its high ester count: the funky, fruity notes bartenders describe as overripe banana, pineapple and dunder. Appleton Estate and Hampden are the benchmark producers. That assertive character is why Jamaican rum anchors so many tiki classics, from the Mai Tai to the Zombie.",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Navy strength Jamaican rum",
+      "categoryType": "spirit",
+      "description": "Jamaican rum bottled at navy strength — 57% ABV or more, the proof at which rum-soaked gunpowder would still ignite. Hampden's HLCF Classic and Smith & Cross are the go-tos: big funk and heat that carry through a Hurricane or a Zombie build.",
+      "parents": ["Overproof rum", "Jamaican rum", "Navy style rum"]
+    },
+    {
+      "name": "Navy style rum",
+      "categoryType": "spirit",
+      "parents": ["Overproof rum"],
+      "outsideOf": ["Minimalist Tiki"]
+    },
+    {
+      "name": "Overproof rum",
+      "categoryType": "spirit",
+      "description": "Rum bottled above the standard 40% ABV, typically 50–75.5%. The extra proof means the flavor survives ice, juice and a crowd of other ingredients, which is why overproof is the tiki bartender's float of choice — most famously the 151 float on a Zombie.",
+      "parents": ["Rum"],
+      "outsideOf": ["Minimalist Tiki"]
+    },
+    {
+      "name": "Pineapple rum",
+      "categoryType": "spirit",
+      "parents": ["Flavored rum"]
+    },
+    {
+      "name": "Pot still aged rum",
+      "categoryType": "spirit",
+      "parents": ["Aged rum"]
+    },
+    {
+      "name": "Pot still lightly aged overproof rum",
+      "categoryType": "spirit",
+      "description": "Young, high-proof pot-still Jamaican rum: all the funk of the island's style, barely tamed by oak, with the heat to punch through a tall drink. Rum Fire and Smith & Cross are the standards — a natural backbone where a Zombie-style build wants intensity without dark color.",
+      "parents": ["Pot still lightly aged rum", "Overproof rum"],
+      "refs": [
+        {
+          "type": "youtube",
+          "videoId": "cIKQlUuSjPY",
+          "channel": "the-rum-revival"
+        }
+      ]
+    },
+    {
+      "name": "Pot still lightly aged rum",
+      "categoryType": "spirit",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Pot still lightly aged rum (New England)",
+      "categoryType": "spirit",
+      "parents": ["Pot still lightly aged rum"]
+    },
+    {
+      "name": "Pot still long aged rum",
+      "categoryType": "spirit",
+      "parents": ["Aged rum"]
+    },
+    {
+      "name": "Pot still unaged overproof rum",
+      "categoryType": "spirit",
+      "parents": ["Pot still unaged rum", "Overproof rum"],
+      "refs": [
+        {
+          "type": "youtube",
+          "videoId": "cIKQlUuSjPY",
+          "channel": "the-rum-revival"
+        }
+      ]
+    },
+    {
+      "name": "Pot still unaged rum",
+      "categoryType": "spirit",
+      "parents": ["Rum"]
+    },
+    {
+      "name": "Rhum agricole blanc",
+      "categoryType": "spirit",
+      "description": "Rhum agricole is the French term for sugarcane juice rum, a style of rum originally distilled in the French Caribbean islands from freshly squeezed sugarcane juice rather than molasses. Rhum is the term that typically distinguishes it in French-speaking locales from the rum made with molasses in other parts of the West Indies (Rum, Ron).",
+      "parents": ["Cane juice spirit"],
+      "refs": [
+        {
+          "type": "youtube",
+          "videoId": "JpFUiuDauR0",
+          "channel": "the-rum-revival"
+        }
+      ]
+    },
+    {
+      "name": "Rhum agricole long aged",
+      "categoryType": "spirit",
+      "parents": ["Rhum agricole vieux"]
+    },
+    {
+      "name": "Rhum agricole vieux",
+      "categoryType": "spirit",
+      "description": "Aged rhum agricole: rum distilled from fresh-pressed sugarcane juice rather than molasses, then aged in oak. Martinique's AOC rules govern the age tiers (VO, VSOP, XO), and the style is grassy, vegetal and complex — Clément and Neisson are reference producers. It brings an earthy brightness to tiki drinks like the Donga Punch.",
+      "parents": ["Cane juice spirit"]
+    },
+    {
+      "name": "Rum",
+      "categoryType": "spirit",
+      "description": "A spirit distilled from sugarcane — molasses, cane syrup or fresh-pressed juice — and the defining base of tiki and tropical drinks. Styles range from light white mixing rum to long-aged blends, overproof Jamaican pot stills and grassy rhum agricole; the subcategories here loosely follow the Smuggler's Cove rum classification.",
+      "refs": [
+        {
+          "type": "youtube",
+          "videoId": "F4BFb5sknGY",
+          "channel": "anders-erickson"
+        }
+      ]
+    },
+    {
+      "name": "Spiced rum",
+      "categoryType": "spirit",
+      "parents": ["Flavored rum"],
+      "refs": [
+        {
+          "type": "youtube",
+          "videoId": "VSeO0v1Wa2E",
+          "channel": "the-rum-revival"
+        }
+      ]
+    },
+    {
+      "name": "Unaged cachaça",
+      "categoryType": "spirit",
+      "parents": ["Cachaça"]
+    }
+  ]
+}

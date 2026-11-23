@@ -43,5 +43,11 @@
       "videoId": "JAyQ9P_w4a8",
       "channel": "make-and-drink"
     }
+  ],
+  "exemptFrom": [
+    {
+      "system": "Minimalist Tiki",
+      "reason": "house blend; no single style"
+    }
   ]
 }

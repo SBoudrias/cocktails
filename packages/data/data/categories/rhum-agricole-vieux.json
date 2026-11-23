@@ -1,7 +1,0 @@
-{
-  "$schema": "../../schemas/category.schema.json",
-  "name": "Rhum agricole vieux",
-  "categoryType": "spirit",
-  "description": "Aged rhum agricole: rum distilled from fresh-pressed sugarcane juice rather than molasses, then aged in oak. Martinique's AOC rules govern the age tiers (VO, VSOP, XO), and the style is grassy, vegetal and complex \u2014 Cl\u00e9ment and Neisson are reference producers. It brings an earthy brightness to tiki drinks like the Donga Punch.",
-  "parents": ["Rum"]
-}

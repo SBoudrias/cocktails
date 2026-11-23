@@ -7,6 +7,7 @@ export const PACKAGE_ROOT = path.resolve(__dirname, '../..');
 export const DATA_ROOT = path.join(PACKAGE_ROOT, 'data');
 export const INGREDIENT_ROOT = path.join(DATA_ROOT, 'ingredients');
 export const CATEGORY_ROOT = path.join(DATA_ROOT, 'categories');
+export const CATEGORIZATION_SYSTEM_ROOT = path.join(DATA_ROOT, 'categorization-systems');
 export const AUTHOR_ROOT = path.join(DATA_ROOT, 'authors');
 export const BAR_ROOT = path.join(DATA_ROOT, 'bars');
 export const RECIPE_ROOT = path.join(DATA_ROOT, 'recipes');

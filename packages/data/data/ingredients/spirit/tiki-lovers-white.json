@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Tiki Lovers White",
   "type": "spirit",
-  "categories": ["Blended lightly aged rum"]
+  "categories": ["Blended lightly aged rum", "Lightly aged/filtered rum"]
 }

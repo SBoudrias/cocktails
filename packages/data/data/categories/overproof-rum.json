@@ -1,7 +1,0 @@
-{
-  "$schema": "../../schemas/category.schema.json",
-  "name": "Overproof rum",
-  "categoryType": "spirit",
-  "description": "Rum bottled above the standard 40% ABV, typically 50\u201375.5%. The extra proof means the flavor survives ice, juice and a crowd of other ingredients, which is why overproof is the tiki bartender's float of choice \u2014 most famously the 151 float on a Zombie.",
-  "parents": ["Rum"]
-}

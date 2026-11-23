@@ -2,5 +2,5 @@
   "$schema": "../../../schemas/ingredient.schema.json",
   "name": "Worthy Park Single Estate",
   "type": "spirit",
-  "categories": ["Blended aged rum (Jamaica)"]
+  "categories": ["Blended aged rum (Jamaica)", "Aged Jamaican rum"]
 }
