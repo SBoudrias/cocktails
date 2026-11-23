@@ -77,6 +77,33 @@ describe('getCatalogList', () => {
     expect(getCatalogList(undefined, 'category/rum')).toEqual([]);
   });
 
+  it('prefers an entry own secondary line over the card source', () => {
+    // The author pages carry their rows' original-vs-adaptation line on
+    // the entry itself; the card keeps the plain source for every other
+    // page the recipe appears on.
+    const withSource: Catalog = {
+      cards: catalog.cards,
+      lists: {
+        'list/authors/anders-erickson': [
+          ['/recipes/book/a/daiquiri', null, 'Adaptation · The How and When'],
+        ],
+      },
+    };
+
+    expect(getCatalogList(withSource, 'list/authors/anders-erickson')).toEqual([
+      {
+        href: '/recipes/book/a/daiquiri',
+        name: 'Daiquiri',
+        source: 'Adaptation · The How and When',
+        quantity: undefined,
+      },
+    ]);
+
+    // An entry without the third element falls back to the card, as every
+    // list the page does not re-label does.
+    expect(getCatalogList(catalog, 'category/rum')[0]?.source).toBe('Book A');
+  });
+
   it('skips entries whose card the catalog does not know, never mislabels one', () => {
     const stale: Catalog = {
       cards: { '/recipes/book/a/daiquiri': ['Daiquiri', 'Book A'] },

@@ -11,6 +11,10 @@ export const { load: loadCatalog, getLoaded: getLoadedCatalog } =
  * cards. Entries whose href the catalog does not know are skipped, never
  * mislabeled; a list the catalog does not carry renders no rows (the caller
  * shows its loading state while the catalog itself has not loaded).
+ *
+ * An entry may carry its page's own secondary line in place of the card's
+ * source (the author pages' original-vs-adaptation line); without one the
+ * row falls back to the card, as every other page does.
  */
 export function getCatalogList(
   catalog: Catalog | undefined,
@@ -21,7 +25,7 @@ export function getCatalogList(
   const list = catalog.lists[key];
   if (list == null) return [];
 
-  return list.flatMap(([href, quantity]) => {
+  return list.flatMap(([href, quantity, source]) => {
     const card = catalog.cards[href];
     if (card == null || !isRecipeUrl(href)) return [];
 
@@ -29,7 +33,7 @@ export function getCatalogList(
       {
         href,
         name: card[0],
-        source: card[1],
+        source: source ?? card[1],
         quantity: quantity ?? undefined,
       },
     ];

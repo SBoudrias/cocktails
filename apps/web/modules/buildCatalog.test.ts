@@ -1,8 +1,11 @@
+import { getAuthor } from '@cocktails/data/authors';
 import { getCategory } from '@cocktails/data/categories';
 import { getRecipe } from '@cocktails/data/recipes';
 import { describe, expect, it } from 'vitest';
+import { getRecipeUrl } from '#/modules/url';
 import {
   buildCatalog,
+  getAuthorSourcePicker,
   getCategoryQuantityPicker,
   getIngredientQuantityPicker,
   getSerializedCatalog,
@@ -15,6 +18,38 @@ const [zombie, fogCutter] = await Promise.all([
   getRecipe({ type: 'book', slug: 'easy-tiki' }, 'zombie', '01_Classic Recipes'),
   getRecipe({ type: 'book', slug: 'easy-tiki' }, 'fog-cutter', '01_Classic Recipes'),
 ]);
+
+// Real recipes for the author pages' secondary line: Anders' channel
+// carries his originals and his adaptations (with the origin named by its
+// creator, by a book, or not at all), and other books carry originals of
+// their own authors and bare adaptations in sources their author is behind.
+const [aLittleThymeOff, aviation, pagoPago, byTheToe, hotTigersMilk, fogCutterRemix] =
+  await Promise.all([
+    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'a-little-thyme-off'),
+    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'aviation'),
+    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'pago-pago'),
+    getRecipe(
+      { type: 'book', slug: 'minimalist-tiki' },
+      'by-the-toe',
+      '04_Minimalist Tiki Classic Thirty... Modern Take',
+    ),
+    getRecipe({ type: 'book', slug: 'sippin-safari' }, 'hot-tigers-milk'),
+    getRecipe(
+      { type: 'book', slug: 'tiki-modern-tropical-cocktails' },
+      'fog-cutter-the-brother-cleve-remix',
+      '09_Bonus',
+    ),
+  ]);
+
+const [anders, brianMaxwell, beachbumBerry, brotherCleve] = await Promise.all([
+  getAuthor('anders-erickson'),
+  getAuthor('brian-maxwell'),
+  getAuthor('jeff-beachbum-berry'),
+  getAuthor('brother-cleve'),
+]);
+if (!anders || !brianMaxwell || !beachbumBerry || !brotherCleve) {
+  throw new Error('an author fixture entity is missing');
+}
 
 describe('buildCatalog', () => {
   it('keys lists by page and cards by href, with quantities per list', async () => {
@@ -100,5 +135,88 @@ describe('getSerializedCatalog', () => {
         expect(catalog.cards[href]).toBeDefined();
       }
     }
+  });
+});
+
+describe('getAuthorSourcePicker', () => {
+  it('labels an original of the author as such, with its source only when not their own', () => {
+    const pick = getAuthorSourcePicker(anders);
+
+    // An original on the author's own channel: the page already implies
+    // the channel, so the line carries the relationship alone.
+    expect(pick(aLittleThymeOff)).toBe('Original');
+  });
+
+  it('labels an adaptation with its origin — the original creator first', () => {
+    const pick = getAuthorSourcePicker(anders);
+
+    // The Aviation's original creator is credited alongside Anders'
+    // adaptation, so the line names him, not the channel.
+    expect(pick(aviation)).toBe('Adaptation · Hugo Ensslin');
+  });
+
+  it('falls back to the documenting book when the creator is not credited', () => {
+    const pick = getAuthorSourcePicker(anders);
+
+    // The Pago Pago adaptation carries no creator credit, only the book
+    // attribution of the recipe it adapts.
+    expect(pick(pagoPago)).toBe('Adaptation · The How and When');
+  });
+
+  it('drops the source of a bare adaptation living in the author own source', () => {
+    const pick = getAuthorSourcePicker(beachbumBerry);
+
+    // Hot Tiger's Milk sits in Sippin' Safari — Beachbum's own book, from
+    // his entity's sources refs — and names no origin, so nothing else
+    // can be said beyond the relationship.
+    expect(pick(hotTigersMilk)).toBe('Adaptation');
+  });
+
+  it('names the source when the relationship alone would not place the recipe', () => {
+    const pick = getAuthorSourcePicker(brotherCleve);
+
+    // The remix lives in a book Brother Cleve is not behind and names no
+    // origin, so the line falls back to the source's title.
+    expect(pick(fogCutterRemix)).toBe('Adaptation · Tiki: Modern Tropical Cocktails');
+  });
+
+  it('names the source of an original published in another book', () => {
+    const pick = getAuthorSourcePicker(brianMaxwell);
+
+    // By the Toe is Brian Maxwell's original, but Minimalist Tiki is not
+    // his own source (no refs on his entity), so the line carries it.
+    expect(pick(byTheToe)).toBe('Original · Minimalist Tiki');
+  });
+});
+
+describe('buildCatalog with a per-list source', () => {
+  it('carries the picked line as a third element, only on lists that pick one', () => {
+    const pick = () => undefined;
+    const catalog = buildCatalog([
+      {
+        key: 'list/authors/anders-erickson',
+        recipes: [aLittleThymeOff, aviation],
+        pickQuantity: pick,
+        pickSource: getAuthorSourcePicker(anders),
+      },
+      { key: 'list/bars/lost-lake', recipes: [fogCutter], pickQuantity: pick },
+    ]);
+
+    // The author entries carry their page's secondary line; the bar
+    // entries stay two-element, as every list without a picker does.
+    expect(catalog.lists['list/authors/anders-erickson']).toEqual([
+      [getRecipeUrl(aLittleThymeOff), null, 'Original'],
+      [getRecipeUrl(aviation), null, 'Adaptation · Hugo Ensslin'],
+    ]);
+    expect(catalog.lists['list/bars/lost-lake']).toEqual([
+      [getRecipeUrl(fogCutter), null],
+    ]);
+
+    // The cards still carry the plain source — the override is per-list,
+    // never folded into the shared card.
+    expect(catalog.cards[getRecipeUrl(aviation)]).toEqual([
+      'Aviation',
+      'Anders Erickson',
+    ]);
   });
 });

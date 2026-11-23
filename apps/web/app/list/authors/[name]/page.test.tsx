@@ -1,9 +1,10 @@
+import { getAuthor } from '@cocktails/data/authors';
 import { getRecipe, getRecipesByAuthor } from '@cocktails/data/recipes';
 import type * as RecipesModule from '@cocktails/data/recipes';
 import { screen } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { buildCatalog } from '#/modules/buildCatalog';
+import { buildCatalog, getAuthorSourcePicker } from '#/modules/buildCatalog';
 import { hangJson, serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import AuthorRecipesPage from './page';
@@ -13,44 +14,59 @@ vi.mock('@cocktails/data/recipes', async (importOriginal) => ({
   getRecipesByAuthor: vi.fn(),
 }));
 
-// Real recipes: the list rows render their name and source label, so the
-// fixtures double as the content the assertions below look for.
-const [byTheToe, theDeathStar, bikiniKill] = await Promise.all([
-  getRecipe(
-    { type: 'book', slug: 'minimalist-tiki' },
-    'by-the-toe',
-    '04_Minimalist Tiki Classic Thirty... Modern Take',
-  ),
-  getRecipe(
-    { type: 'book', slug: 'minimalist-tiki' },
-    'the-death-star',
-    '04_Minimalist Tiki Classic Thirty... Modern Take',
-  ),
-  getRecipe(
-    { type: 'book', slug: 'death-co-welcome-home' },
-    'bikini-kill',
-    '05_Elegant & Graceful (Martini)',
-  ),
-]);
+// Real recipes: the list rows render their name and secondary line, so the
+// fixtures double as the content the assertions below look for. Anders'
+// channel carries his originals and his adaptations — the origin named by
+// its creator (Aviation) or by a book (Pago Pago).
+const [byTheToe, theDeathStar, bikiniKill, aLittleThymeOff, aviation, pagoPago] =
+  await Promise.all([
+    getRecipe(
+      { type: 'book', slug: 'minimalist-tiki' },
+      'by-the-toe',
+      '04_Minimalist Tiki Classic Thirty... Modern Take',
+    ),
+    getRecipe(
+      { type: 'book', slug: 'minimalist-tiki' },
+      'the-death-star',
+      '04_Minimalist Tiki Classic Thirty... Modern Take',
+    ),
+    getRecipe(
+      { type: 'book', slug: 'death-co-welcome-home' },
+      'bikini-kill',
+      '05_Elegant & Graceful (Martini)',
+    ),
+    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'a-little-thyme-off'),
+    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'aviation'),
+    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'pago-pago'),
+  ]);
 
 /** The recipes the tested authors' pages list, keyed by author slug. */
 const authorRecipes: Record<string, (typeof byTheToe)[]> = {
   'brian-maxwell': [byTheToe, theDeathStar],
   'aj-stocak': [bikiniKill],
+  'anders-erickson': [aLittleThymeOff, aviation, pagoPago],
   // The About-card authors below assert no rows; any recipe keeps their
   // page past the notFound() guard.
-  'anders-erickson': [bikiniKill],
   'sam-ross': [bikiniKill],
   'garret-richard': [bikiniKill],
   'alex-day': [bikiniKill],
 };
 
-/** The catalog as the author pages read it: the tested authors' lists. */
+/** The catalog as the author pages read it: the tested authors' lists, their
+ * rows carrying the secondary line the author pages render. */
+const authorSourcePickers = await Promise.all(
+  Object.keys(authorRecipes).map(async (slug) => {
+    const author = await getAuthor(slug);
+    if (!author) throw new Error(`test fixture author missing: ${slug}`);
+    return getAuthorSourcePicker(author);
+  }),
+);
 const testCatalog = buildCatalog(
-  Object.entries(authorRecipes).map(([slug, recipes]) => ({
+  Object.entries(authorRecipes).map(([slug, recipes], index) => ({
     key: `list/authors/${slug}`,
     recipes,
     pickQuantity: () => undefined,
+    pickSource: authorSourcePickers[index],
   })),
 );
 
@@ -240,4 +256,79 @@ describe('AuthorRecipesPage catalog-driven recipe list', () => {
   // The catalog list's other states — loading while a search is active, the
   // reload affordance after a failed fetch — are shared SearchableRecipePage
   // behavior, covered once on the category page.
+});
+
+describe('AuthorRecipesPage secondary line', () => {
+  /** The row list of the given author's page, walked up from its subheader
+   * (the header id contains spaces, which break the accessible name). */
+  function getAuthorList(authorName: string): HTMLElement {
+    const subheader = screen.getByText(`Recipes by ${authorName}`);
+    const list = subheader.closest('[role="group"]');
+    if (!(list instanceof HTMLElement)) {
+      throw new Error('recipe list group not found');
+    }
+    return list;
+  }
+
+  it('leads an original in another book with the relationship, then the source', async () => {
+    await setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'brian-maxwell' }),
+      }),
+    );
+
+    // Brian Maxwell's originals live in Minimalist Tiki, a book he is not
+    // behind, so his rows name it after the relationship.
+    const list = getAuthorList('Brian Maxwell');
+    expect(list).toHaveTextContent('Original · Minimalist Tiki');
+  });
+
+  it('keeps an original on the author own channel to the relationship alone', async () => {
+    await setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'anders-erickson' }),
+      }),
+    );
+
+    // A Little Thyme Off is Anders' original on his own channel — the page
+    // already implies the channel, so no source follows the relationship.
+    const list = getAuthorList('Anders Erickson');
+    expect(list).toHaveTextContent('A Little Thyme Off');
+    expect(list).not.toHaveTextContent('Original · Anders Erickson');
+    expect(list).toHaveTextContent('Original');
+  });
+
+  it('names the origin of an adaptation — its creator or its documenting book', async () => {
+    await setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'anders-erickson' }),
+      }),
+    );
+
+    // Two adaptations on Anders' page: the Aviation names its original
+    // creator, the Pago Pago the book it was documented in.
+    const list = getAuthorList('Anders Erickson');
+    expect(list).toHaveTextContent('Adaptation · Hugo Ensslin');
+    expect(list).toHaveTextContent('Adaptation · The How and When');
+  });
+
+  it('renders every secondary line as the relationship, not the raw source', async () => {
+    await setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'anders-erickson' }),
+      }),
+    );
+
+    // Every row's text is its name then a relationship-led secondary line —
+    // never the raw source ('Anders Erickson') the list used to show.
+    const recipeRows = screen
+      .getAllByRole('link')
+      .filter((link) => link.getAttribute('href')?.startsWith('/recipes/'));
+    expect(recipeRows).toHaveLength([aLittleThymeOff, aviation, pagoPago].length);
+
+    for (const row of recipeRows) {
+      expect(row.textContent).toMatch(/(Original|Adaptation)( · .+)?$/);
+      expect(row.textContent).not.toContain('Anders Erickson');
+    }
+  });
 });
