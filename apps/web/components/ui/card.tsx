@@ -84,13 +84,16 @@ function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 // The actions row: 8px padding, children spaced 8px apart, pushed to the
-// row's end. It loses its top padding when it follows a content block.
+// row's end. It loses its top padding when it follows a content block. The
+// buttons never shrink (whitespace-nowrap) and must not spill out of the
+// plate, so a row whose labels run wider than the card wraps to a second
+// line instead of overflowing — inert while the row fits.
 function CardActions({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-actions"
       className={cn(
-        'flex items-center justify-end gap-2 p-2 [[data-slot=card-content]+&]:pt-0',
+        'flex flex-wrap items-center justify-end gap-2 p-2 [[data-slot=card-content]+&]:pt-0',
         className,
       )}
       {...props}

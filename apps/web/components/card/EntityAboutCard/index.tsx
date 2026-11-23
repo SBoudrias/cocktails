@@ -108,13 +108,13 @@ export function AuthorAboutCard({
       </CardHeader>
       {author.description && (
         <CardContent>
-          <p className="text-muted-foreground">{author.description}</p>
+          <p className="wrap-break-word text-muted-foreground">{author.description}</p>
         </CardContent>
       )}
       {(bars.length > 0 || sources.length > 0) && (
         <CardContent>
           {bars.length > 0 && (
-            <p className="text-muted-foreground">
+            <p className="wrap-break-word text-muted-foreground">
               Known for their work at{' '}
               {bars.map((bar, index) => (
                 <span key={bar.slug}>
@@ -130,7 +130,12 @@ export function AuthorAboutCard({
             </p>
           )}
           {sources.length > 0 && (
-            <p className={cn('text-muted-foreground', bars.length > 0 && 'mt-0.5')}>
+            <p
+              className={cn(
+                'wrap-break-word text-muted-foreground',
+                bars.length > 0 && 'mt-0.5',
+              )}
+            >
               Behind{' '}
               {sources.map((source, index) => (
                 <span key={`${source.type}:${source.slug}`}>
@@ -178,7 +183,7 @@ export function BarAboutCard({ bar, m }: { bar: Bar | undefined; m?: CardMargin 
       </CardHeader>
       {bar.description && (
         <CardContent>
-          <p className="text-muted-foreground">{bar.description}</p>
+          <p className="wrap-break-word text-muted-foreground">{bar.description}</p>
         </CardContent>
       )}
       <CardActions>

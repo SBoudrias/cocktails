@@ -177,6 +177,24 @@ describe('AuthorRecipesPage', () => {
     });
     expect(websiteLink).toHaveTextContent('tropicalstandard.com');
   });
+
+  it('lets the action links wrap when they run wider than the card', async () => {
+    await setupApp(
+      await AuthorRecipesPage({
+        params: Promise.resolve({ name: 'garret-richard' }),
+      }),
+    );
+
+    // The action buttons never shrink (whitespace-nowrap), and on a phone
+    // their labels run wider than the card — Garret Richard's two links
+    // were 384px natural against ~342px of card at 390px. The row wraps
+    // instead of spilling past the plate.
+    const websiteLink = screen.getByRole('link', {
+      name: 'https://www.tropicalstandard.com/',
+    });
+    const actionsRow = websiteLink.closest('[data-slot="card-actions"]');
+    expect(actionsRow).toHaveClass('flex-wrap');
+  });
 });
 
 describe('AuthorRecipesPage catalog-driven recipe list', () => {
