@@ -53,6 +53,12 @@
     "Top with seltzer.",
     "Garnish with expressed orange oil."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

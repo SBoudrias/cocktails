@@ -47,6 +47,12 @@
     "Top with sparkling wine.",
     "Express lemon oil over the drink."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

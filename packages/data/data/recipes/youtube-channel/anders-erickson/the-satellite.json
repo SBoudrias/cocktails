@@ -64,6 +64,12 @@
     "Top with seltzer.",
     "Garnish with a lemon wheel and cherry."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

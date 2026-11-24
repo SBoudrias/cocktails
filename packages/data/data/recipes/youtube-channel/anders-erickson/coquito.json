@@ -102,6 +102,12 @@
     "Chill before serving.",
     "Garnish with grated nutmeg."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

@@ -53,6 +53,12 @@
     "Float Angostura bitters on top.",
     "Garnish with grated nutmeg and a mint sprig."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

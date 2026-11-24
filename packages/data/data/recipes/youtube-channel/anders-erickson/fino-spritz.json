@@ -44,6 +44,12 @@
     "Stir gently.",
     "Garnish with lemon wheels."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

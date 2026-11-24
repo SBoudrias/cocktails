@@ -61,6 +61,12 @@
     "Build all ingredients in the warmed glass.",
     "Garnish with grated cinnamon and holiday cookies."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

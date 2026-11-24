@@ -69,6 +69,12 @@
     "Strain into a chilled martini glass.",
     "Express lemon oil over the drink and garnish with a lemon peel and cherry."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

@@ -52,6 +52,12 @@
     "Pour into a pineapple-shaped glass.",
     "Garnish with grated nutmeg, pineapple fronds, and a tiki umbrella."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

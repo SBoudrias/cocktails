@@ -64,6 +64,12 @@
     "Strain into a chilled coupe.",
     "Garnish with basil."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

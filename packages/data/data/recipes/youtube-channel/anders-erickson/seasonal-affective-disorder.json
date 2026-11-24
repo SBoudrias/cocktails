@@ -59,6 +59,12 @@
     "Strain into a coupe glass.",
     "Garnish with grated nutmeg."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

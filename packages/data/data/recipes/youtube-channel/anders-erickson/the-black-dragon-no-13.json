@@ -52,6 +52,12 @@
     "Shake the remaining ingredients with ice.",
     "Gently strain the cocktail over the stout."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

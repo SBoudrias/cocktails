@@ -55,6 +55,12 @@
     }
   ],
   "instructions": ["Garnish with orange wheel, grated cinnamon, and cocktail cherry"],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

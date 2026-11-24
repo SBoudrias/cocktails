@@ -60,6 +60,12 @@
     "Strain into a snifter over crushed ice.",
     "Garnish with 2 cocktail cherries, an orange wedge, 2 pineapple fronds, and a cocktail umbrella."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

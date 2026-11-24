@@ -91,6 +91,10 @@
       "source": "Charles Dickens"
     },
     {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    },
+    {
       "relation": "book",
       "source": "Punch: The Delights (and Dangers) of the Flowing Bowl",
       "url": "https://amzn.to/3DxfhzY"

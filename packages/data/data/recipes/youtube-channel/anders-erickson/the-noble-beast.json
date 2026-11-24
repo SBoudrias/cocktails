@@ -47,6 +47,12 @@
     "Double strain into a chilled coupe.",
     "Garnish with grated coffee bean."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

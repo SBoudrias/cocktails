@@ -35,6 +35,12 @@
     "Strain into an old fashioned glass over a large ice cube.",
     "Garnish with an expressed orange peel."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

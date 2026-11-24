@@ -56,6 +56,12 @@
     "Top with more crushed ice.",
     "Garnish with a mint sprig."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

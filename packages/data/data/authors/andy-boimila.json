@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Andy Boimila",
+  "links": ["https://www.youtube.com/@MixingUpTiki"],
+  "description": "Home bartender behind the Mixing Up Tiki channel, mixing classic and modern tiki drinks",
+  "sources": [
+    {
+      "type": "youtube-channel",
+      "slug": "mixing-up-tiki"
+    }
+  ]
+}

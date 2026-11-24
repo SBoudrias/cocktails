@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schemas/author.schema.json",
+  "name": "Anders Erickson",
+  "links": ["https://www.youtube.com/@AndersErickson"],
+  "description": "20 years behind bars, now teaching drinks and tiki on YouTube",
+  "sources": [
+    {
+      "type": "youtube-channel",
+      "slug": "anders-erickson"
+    }
+  ]
+}

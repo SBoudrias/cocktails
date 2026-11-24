@@ -63,6 +63,10 @@
     {
       "relation": "recipe author",
       "source": "Jeff 'Beachbum' Berry"
+    },
+    {
+      "relation": "adapted by",
+      "source": "Andy Boimila"
     }
   ],
   "refs": [

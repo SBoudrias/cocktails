@@ -40,6 +40,12 @@
     "Top with beer.",
     "Garnish with a lemon wheel."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

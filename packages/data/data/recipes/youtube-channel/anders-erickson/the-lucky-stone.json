@@ -44,6 +44,12 @@
     "Strain the drink over the cherry.",
     "Express lemon oil over the drink."
   ],
+  "attributions": [
+    {
+      "relation": "recipe author",
+      "source": "Anders Erickson"
+    }
+  ],
   "refs": [
     {
       "type": "youtube",

@@ -77,6 +77,10 @@
   ],
   "attributions": [
     {
+      "relation": "adapted by",
+      "source": "Anders Erickson"
+    },
+    {
       "relation": "bar",
       "source": "Raffles Hotel",
       "location": "Singapore"

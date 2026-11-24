@@ -6,8 +6,8 @@ import { PACKAGE_ROOT } from '../../infra/paths.ts';
 import { report } from '../../infra/report.ts';
 import { writeJSON } from '../../infra/write-json.ts';
 
-/** One recipe file, as the duplicate-attribution check reads it. */
-export interface SourceAttributionEntry {
+/** One recipe file, as the duplicate book-credit check reads it. */
+export interface BookCreditEntry {
   /** Path relative to the data package root, for messages. */
   file: string;
   /** The source the recipe lives under, from the file's path. */
@@ -17,38 +17,37 @@ export interface SourceAttributionEntry {
   refs: ReadonlyArray<{ type: string; title?: string }>;
 }
 
-/** A source-attribution pair naming the same book, for the warning pass. */
-export interface DuplicateBookCredit {
+/** A redundant book attribution: one naming the recipe's own book. */
+export interface RedundantBookAttribution {
   file: string;
-  /** The book's name, as the attribution credits it. */
+  /** The book's name, as the source's own file declares it. */
   name: string;
 }
 
 /**
- * Find attributions that credit the recipe's own source — the entity the
- * recipe page's source card already renders, and for authors the very list
- * the source's own page is. A host credited by name (Derek Cole on the Make
- * and Drink channel) is a different entity and stays. Bar attributions stay
- * too: a book about a bar credits the bar itself, and the bar's page is a
- * different entity from the book's.
+ * Find book attributions that credit the recipe's own source: the recipe
+ * already lives under that book, whose card the recipe page renders. A book
+ * attribution to another book stays — that credits where the recipe was
+ * documented before this source carried it. Author and bar attributions stay
+ * untouched: a channel host credited by name (Derek Cole, Anders Erickson)
+ * is a person, not the channel, and their author page is distinct from the
+ * source's; a bar sharing the book source's name is likewise another entity.
  */
-export function findRedundantSourceAttributions(
-  recipes: ReadonlyArray<SourceAttributionEntry>,
+export function findRedundantBookAttributions(
+  recipes: ReadonlyArray<BookCreditEntry>,
   /** `${type}/${slug}` -> the source's display name, from its _source.json. */
   sourceNames: ReadonlyMap<string, string>,
-): SourceAttributionEntry[] {
-  const redundant: SourceAttributionEntry[] = [];
+): RedundantBookAttribution[] {
+  const redundant: RedundantBookAttribution[] = [];
 
   for (const recipe of recipes) {
     const sourceName = sourceNames.get(`${recipe.sourceType}/${recipe.sourceSlug}`);
     if (!sourceName) continue;
 
-    const ownSlug = slugify(sourceName);
     for (const attribution of recipe.attributions) {
-      if (attribution.relation === 'bar') continue;
-      if (slugify(attribution.source) === ownSlug) {
-        redundant.push(recipe);
-        break;
+      if (attribution.relation !== 'book') continue;
+      if (slugify(attribution.source) === slugify(sourceName)) {
+        redundant.push({ file: recipe.file, name: sourceName });
       }
     }
   }
@@ -56,37 +55,36 @@ export function findRedundantSourceAttributions(
   return redundant;
 }
 
+/** A book credited in two shapes on the same recipe, for the warning pass. */
+export interface DuplicateBookCredit {
+  file: string;
+  /** The book's name, as the attribution credits it. */
+  name: string;
+}
+
 /**
- * Find recipes that credit the same other book both as a ref and as a book
+ * Find recipes crediting the same other book both as a ref and as a book
  * attribution — the same credit carried in two shapes. The book ref to the
  * recipe's own source is the designed pattern (it carries the page number
- * into the source card) and is never reported here; that shape's duplication
- * is the redundant own-source attribution above.
+ * into the source card) and never counts; that shape's duplication is the
+ * redundant own-source attribution above.
  */
 export function findDuplicateBookCredits(
-  recipes: ReadonlyArray<SourceAttributionEntry>,
+  recipes: ReadonlyArray<BookCreditEntry>,
 ): DuplicateBookCredit[] {
   const duplicates: DuplicateBookCredit[] = [];
 
   for (const recipe of recipes) {
-    const ownSourceRefTitles = new Set(
-      recipe.refs
-        .map((ref) => ref.title)
-        .filter(
-          (title): title is string =>
-            title != null && slugify(title) === recipe.sourceSlug,
-        ),
-    );
-    const creditedElsewhere = new Set(
+    const creditedAsRefs = new Set(
       recipe.refs
         .filter((ref) => ref.type === 'book' && ref.title != null)
-        .map((ref) => ref.title!)
-        .filter((title) => !ownSourceRefTitles.has(title)),
+        .map((ref) => ref.title!),
     );
 
     for (const attribution of recipe.attributions) {
       if (attribution.relation !== 'book') continue;
-      if (creditedElsewhere.has(attribution.source)) {
+      if (slugify(attribution.source) === recipe.sourceSlug) continue;
+      if (creditedAsRefs.has(attribution.source)) {
         duplicates.push({ file: recipe.file, name: attribution.source });
       }
     }
@@ -117,18 +115,19 @@ async function loadSourceNames(): Promise<Map<string, string>> {
 }
 
 /**
- * Fails on attributions crediting the recipe's own source and rewrites the
- * files without them — the duplication doubles the entity's card on the
- * recipe page (the source card plus the attribution row) and, for authors,
- * mirrors the source's own page. The rewritten run still fails: the diff
- * carries a removed credit, so it lands in a commit by review, like the
- * metadata-stub creation autofixes.
+ * Fails on book attributions crediting the recipe's own book and rewrites
+ * the files without them — the recipe page's source card already credits
+ * it. The rewritten run still fails: the diff carries a removed credit, so
+ * it lands in a commit by review, like the metadata-stub creation autofixes.
+ * Also warns when another book is credited both as a ref and as an
+ * attribution: the ref carries the page number, the attribution the
+ * documented-by card — one representation should stay.
  */
-export async function reportDuplicateSourceAttributions(): Promise<void> {
-  logger.header('📇 Checking for duplicate source attributions...');
+export async function reportDuplicateBookAttributions(): Promise<void> {
+  logger.header('📇 Checking for duplicate book attributions...');
 
   const sourceNames = await loadSourceNames();
-  const recipes: SourceAttributionEntry[] = [];
+  const recipes: BookCreditEntry[] = [];
   for (const sourceType of sourceTypes) {
     const typeRoot = path.join(PACKAGE_ROOT, 'data/recipes', sourceType);
     for await (const recipeFile of fs.glob(path.join(typeRoot, '*', '**/*.json'))) {
@@ -145,22 +144,21 @@ export async function reportDuplicateSourceAttributions(): Promise<void> {
     }
   }
 
-  for (const recipe of findRedundantSourceAttributions(recipes, sourceNames)) {
-    const sourceName = sourceNames.get(`${recipe.sourceType}/${recipe.sourceSlug}`)!;
-    const fullFile = path.join(PACKAGE_ROOT, recipe.file);
+  for (const redundant of findRedundantBookAttributions(recipes, sourceNames)) {
+    const fullFile = path.join(PACKAGE_ROOT, redundant.file);
     const recipeData = JSON.parse(await fs.readFile(fullFile, 'utf-8'));
 
     recipeData.attributions = recipeData.attributions.filter(
       (attribution: { relation: string; source: string }) =>
-        attribution.relation === 'bar' ||
-        slugify(attribution.source) !== slugify(sourceName),
+        attribution.relation !== 'book' ||
+        slugify(attribution.source) !== slugify(redundant.name),
     );
     if (recipeData.attributions.length === 0) delete recipeData.attributions;
     await writeJSON(fullFile, recipeData);
 
     report.fail(
-      `Removed the "${sourceName}" attribution from ${recipe.file} ` +
-        `— the recipe's source card already credits it. Review the diff.`,
+      `Removed the "${redundant.name}" book attribution from ${redundant.file} ` +
+        `— the recipe already lives under that book's source. Review the diff.`,
     );
   }
 
