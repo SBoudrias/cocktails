@@ -1,0 +1,110 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Three Dots and a Dash",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "footed pilsner",
+  "ingredients": [
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 2,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Honey syrup",
+      "type": "syrup",
+      "brix": 50,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orange juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 1,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "St-Elizabeth Allspice Dram",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "John D. Taylor's Velvet Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Maggie's Farm Falernum",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hamilton 86 Demerara Rum",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Appleton 8",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Rhum J.M Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add Angostura bitters and honey syrup to a shaker tin",
+    "Add allspice dram, falernum, lime juice, orange juice, and all three rums, in that order, to the tin",
+    "Add pebble ice and shake until cold",
+    "Dirty dump the contents into a chilled pilsner glass, ice and all",
+    "Garnish with a pineapple frond, three maraschino cherries, and a straw"
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Anton Kinloch"
+    }
+  ],
+  "refs": [
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: How to Make the Perfect Three Dots and a Dash",
+      "episodeLink": "https://vinepair.com/cocktail-college/three-dots-and-a-dash/"
+    }
+  ]
+}

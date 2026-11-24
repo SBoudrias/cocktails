@@ -94,6 +94,11 @@
       "type": "youtube",
       "videoId": "jEHxVunOS1o",
       "channel": "make-and-drink"
+    },
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: The (Re)Missionary's Downfall",
+      "episodeLink": "https://vinepair.com/cocktail-college/re-missionarys-downfall/"
     }
   ]
 }

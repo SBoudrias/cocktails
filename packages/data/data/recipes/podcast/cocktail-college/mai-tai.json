@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Mai Tai",
+  "preparation": "shaken",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat",
+      "type": "category",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Grand Marnier Louis Alexandre",
+      "type": "liqueur",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "El Dorado 15 Year",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Neisson Rhum Agricole Blanc",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hampden Estate 46",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Planteray Jamaica 2005",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Drop lime shell in shaker without pinching",
+    "Add all ingredients and four Kold Draft cubes",
+    "Shake until cold",
+    "Dump into a Roly Poly (or double old fashioned) glass",
+    "Top with crushed ice",
+    "Garnish with mint sprigs, an orchid, and a skull swizzle stick"
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Brian Miller"
+    }
+  ],
+  "refs": [
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: How to Make the Perfect Mai Tai",
+      "episodeLink": "https://vinepair.com/cocktail-college/complete-guide-mai-tai-recipe/"
+    }
+  ]
+}

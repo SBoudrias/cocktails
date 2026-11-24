@@ -1,0 +1,108 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Saturn",
+  "preparation": "flash blended",
+  "served_on": "crushed ice",
+  "glassware": "old fashioned",
+  "ingredients": [
+    {
+      "name": "Saline",
+      "type": "other",
+      "quantity": {
+        "amount": 5,
+        "unit": "drop"
+      }
+    },
+    {
+      "name": "Passion fruit purée",
+      "type": "puree",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Latitude 29 Orgeat",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat Works Thai Spice Falernum",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.25,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lemon juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Orgeat Works Toasted Orgeat",
+      "type": "syrup",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Hayman's Old Tom Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Bimini Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Perry's Tot Navy Strength Gin",
+      "type": "spirit",
+      "quantity": {
+        "amount": 1.25,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Combine all ingredients in a shaker tin",
+    "Flash-blend with 8 ounces (1 cup) pebble ice for 5 seconds or until the tin is frosty",
+    "Dump into a double rocks glass with 4 ounces of pebble ice",
+    "Garnish with a lemon wheel, lime wheel, round rosette paper cocktail fan, and alien toys"
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Ray Sakover"
+    }
+  ],
+  "refs": [
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: The Saturn",
+      "episodeLink": "https://vinepair.com/cocktail-college/the-cocktail-college-podcast-the-saturn/"
+    }
+  ]
+}

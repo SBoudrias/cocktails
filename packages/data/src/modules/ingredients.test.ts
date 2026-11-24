@@ -158,15 +158,15 @@ describe('getSubstitutesForIngredient', () => {
 
   it('unions across a sparse category and a populated one', async () => {
     // Wray & Nephew white overproof declares Pot still unaged overproof rum
-    // (no other member) and Jamaican rum (12 other members): every member
+    // (no other member) and Jamaican rum (13 other members): every member
     // of both supplies the primary list, so the populated shelf shows up.
     const substitution = await getSubstitutesForIngredient(
       await getIngredient('spirit', 'wray-and-nephew-white-overproof'),
     );
 
     expect(substitution?.substitutes.map(({ slug }) => slug)).toContain('rum-bar-silver');
-    // The whole populated Jamaican rum shelf shows up, 12 bottles.
-    expect(substitution?.substitutes).toHaveLength(12);
+    // The whole populated Jamaican rum shelf shows up, 13 bottles.
+    expect(substitution?.substitutes).toHaveLength(13);
   });
 
   it('returns undefined for an ingredient without categories', async () => {

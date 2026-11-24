@@ -74,14 +74,16 @@ describe('toSearchIndexEntityItems', () => {
       const kinds = Object.groupBy(entities, (entity) => entity.kind);
 
       // The catalog has all of these — the assertions also pin the href shape
-      // per kind to the page routes they link to. Podcasts are absent: the
-      // one podcast source carries fewer recipes than the reference bar.
+      // per kind to the page routes they link to. Podcasts made the cut once
+      // the Cocktail College backfill pushed the source past the entity
+      // reference threshold.
       expect(Object.keys(kinds).toSorted()).toEqual([
         'author',
         'bar',
         'book',
         'category',
         'ingredient',
+        'podcast',
         'youtube-channel',
       ]);
       expect(entities.map((entity) => entity.href)).toSatisfy((hrefs: string[]) =>

@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../../schemas/recipe.schema.json",
+  "name": "Queen's Park Swizzle",
+  "preparation": "swizzled",
+  "served_on": "crushed ice",
+  "glassware": "hurricane",
+  "ingredients": [
+    {
+      "name": "Mint leaves",
+      "type": "other",
+      "quantity": {
+        "amount": 10,
+        "unit": "unit"
+      }
+    },
+    {
+      "name": "Angostura bitters",
+      "type": "bitter",
+      "quantity": {
+        "amount": 4,
+        "unit": "dash"
+      }
+    },
+    {
+      "name": "Demerara syrup",
+      "type": "syrup",
+      "brix": 66,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Lime juice",
+      "type": "juice",
+      "quantity": {
+        "amount": 0.75,
+        "unit": "oz"
+      }
+    },
+    {
+      "name": "Aged rum",
+      "type": "category",
+      "quantity": {
+        "amount": 2,
+        "unit": "oz"
+      }
+    }
+  ],
+  "instructions": [
+    "Add mint to a chilled Hurricane glass and top with liquid ingredients",
+    "Swizzle with a swizzle stick while slowly adding pellet ice to chill and dilute, keeping the mint at the bottom of the glass",
+    "Once fully chilled, top with more pellet ice",
+    "Garnish with a mint bouquet"
+  ],
+  "attributions": [
+    {
+      "relation": "adapted by",
+      "source": "Julie Reiner"
+    }
+  ],
+  "refs": [
+    {
+      "type": "podcast",
+      "episodeTitle": "The Cocktail College Podcast: Queen's Park Swizzle",
+      "episodeLink": "https://vinepair.com/cocktail-college/the-cocktail-college-podcast-queens-park-swizzle/"
+    }
+  ]
+}

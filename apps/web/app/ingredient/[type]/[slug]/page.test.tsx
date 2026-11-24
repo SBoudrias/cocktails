@@ -467,8 +467,8 @@ describe('IngredientPage', () => {
       });
 
       // Recipe counts on the Blended aged rum (Jamaica) shelf: Appleton 8
-      // leads with 17 recipes, then Hamilton's gold (5), Hampden Estate 46
-      // (3); Appleton 21 (1) trails with the other single-recipe bottles.
+      // leads with 18 recipes, then Hamilton's gold (5), Hampden Estate 46
+      // (4); Appleton 21 (1) trails with the other single-recipe bottles.
       const hrefs = within(substitutionGroup)
         .getAllByRole('link')
         .map((link) => link.getAttribute('href'));
@@ -481,9 +481,9 @@ describe('IngredientPage', () => {
       expect(order('hampden-estate-46')).toBeLessThan(order('appleton-21'));
 
       // Every bottle row carries its recipe count next to the name.
-      expect(substitutionGroup).toHaveTextContent('17');
+      expect(substitutionGroup).toHaveTextContent('18');
       expect(substitutionGroup).toHaveTextContent('5');
-      expect(substitutionGroup).toHaveTextContent('3');
+      expect(substitutionGroup).toHaveTextContent('4');
       expect(substitutionGroup).toHaveTextContent('1');
     });
 
@@ -933,7 +933,7 @@ describe('IngredientPage', () => {
       const { user } = await setupApp(jamaicanRumPageJSX);
 
       const trigger = screen.getByRole('button', {
-        name: 'See all 20 substitutions',
+        name: 'See all 21 substitutions',
       });
       await user.click(trigger);
       expect(screen.getByRole('dialog', { name: 'Substitutions' })).toBeInTheDocument();
@@ -1027,7 +1027,7 @@ describe('IngredientPage', () => {
       // No breakpoint classes on the section's rows or wrapper: the
       // preview list is the substitution UI on mobile and desktop alike.
       const seeAllRow = screen.getByRole('button', {
-        name: 'See all 20 substitutions',
+        name: 'See all 21 substitutions',
       });
       const section = seeAllRow.closest('[role="group"]');
       expect(section?.className).not.toMatch(/hidden|min-\[|max-\[/);

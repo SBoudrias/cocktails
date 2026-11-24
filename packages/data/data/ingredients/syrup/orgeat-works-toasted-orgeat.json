@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../schemas/ingredient.schema.json",
+  "name": "Orgeat Works Toasted Orgeat",
+  "type": "syrup",
+  "categories": ["Orgeat"]
+}
