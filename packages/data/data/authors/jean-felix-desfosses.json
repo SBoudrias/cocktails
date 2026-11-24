@@ -1,7 +1,8 @@
 {
   "$schema": "../../schemas/author.schema.json",
-  "name": "Truffles On The Rocks",
+  "name": "Jean-Félix Desfosses",
   "links": ["https://www.youtube.com/@TrufflesOnTheRocks"],
+  "description": "Host of the Truffles On The Rocks channel, a decade in hospitality sharing cocktails and their stories",
   "sources": [
     {
       "type": "youtube-channel",
