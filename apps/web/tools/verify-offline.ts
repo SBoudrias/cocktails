@@ -515,13 +515,18 @@ let checkCount = 0;
 
 async function check(label: string, run: () => Promise<void>): Promise<void> {
   checkCount++;
+  const startedAt = performance.now();
   try {
     await run();
-    console.log(`ok  ${checkCount} - ${label}`);
+    console.log(
+      `ok  ${checkCount} - ${label} (${((performance.now() - startedAt) / 1000).toFixed(1)}s)`,
+    );
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     failures.push(`${label}: ${message}`);
-    console.error(`not ok  ${checkCount} - ${label}\n      ${message}`);
+    console.error(
+      `not ok  ${checkCount} - ${label} (${((performance.now() - startedAt) / 1000).toFixed(1)}s)\n      ${message}`,
+    );
   }
 }
 
@@ -1001,12 +1006,29 @@ await check('the redeployed home page is served', async () => {
 await check(
   'the updated service worker installs, retires the old precache and keeps the runtime cache',
   async () => {
-    await page
-      .send('Runtime.evaluate', {
-        expression: `navigator.serviceWorker.register('${scopeUrl}sw.js')`,
-        awaitPromise: true,
-      })
-      .catch(() => undefined);
+    // The pull already ran the worker's update check (check 16), and the
+    // reloaded page registered it again on load — re-registering here
+    // would only fetch sw.js once more. What the check actually waits
+    // for is deploy B's takeover. The install finishes by itself
+    // (skipWaiting is in its install handler), but the takeover needs
+    // the waiting worker to actually take over — left alone, that waits
+    // for Chrome to terminate the old active worker at its ~30s idle
+    // timeout, which is the 36s stall this used to be. The app's own
+    // takeover path (PullToUpdate's refreshApp) tells the waiting
+    // worker to skip waiting through the same SKIP_WAITING message
+    // pwa-toasts sends; do exactly that, then wait for convergence.
+    await evaluateValue(
+      `(async () => {
+        const reg = await navigator.serviceWorker.getRegistration('${scopeUrl}');
+        if (reg) {
+          const w = reg.waiting || reg.installing;
+          if (w && navigator.serviceWorker.controller) {
+            w.postMessage({ type: 'SKIP_WAITING' });
+          }
+        }
+        return true;
+      })()`,
+    );
     const deadline = Date.now() + INSTALL_TIMEOUT_MS;
     let names: string[] = [];
     let cacheNames: Set<string> = new Set();
