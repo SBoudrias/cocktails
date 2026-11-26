@@ -49,7 +49,9 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # Slowest observed run: ~30 s (clones lock sources, diffs hashes).
+    # 10 min keeps generous headroom for a slow skills-source clone.
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
 

@@ -14,7 +14,10 @@ concurrency:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # Slowest observed across ~25 recent runs: ~2 min cold-cache (incl.
+    # install). 5 min leaves ~3x headroom for a cold runner + queue while
+    # capping a stuck job at half its old 10-min burn.
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
@@ -31,7 +34,7 @@ jobs:
 
   schema:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
@@ -64,7 +67,7 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧

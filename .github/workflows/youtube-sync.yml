@@ -14,7 +14,10 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Slowest observed run: ~2.5 min (weekly data fetch). 15 min covers
+    # a slow YouTube API day at ~6x headroom; the old 30 min was a stuck
+    # job burning twice that.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
 
