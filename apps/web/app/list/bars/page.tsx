@@ -19,7 +19,7 @@ export default async function BarListPage() {
     for (const attribution of recipe.attributions) {
       if (attribution.relation === 'bar') {
         const mapKey = `${attribution.source}${attribution.location ?? ''}`;
-        const bar = barsMap.get(mapKey) || {
+        const bar = barsMap.get(mapKey) ?? {
           name: attribution.source,
           location: attribution.location,
           recipeCount: 0,

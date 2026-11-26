@@ -83,7 +83,7 @@ function getDistinctiveNameTokens(name: string): Set<string> {
   return new Set(
     name
       .toLowerCase()
-      .replace(/\d+/g, '')
+      .replaceAll(/\d+/g, '')
       .split(/[^a-z0-9']+/)
       .filter((word) => word.length > 0 && !GENERIC_NAME_WORDS.has(word)),
   );

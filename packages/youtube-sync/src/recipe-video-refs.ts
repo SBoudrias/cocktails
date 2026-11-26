@@ -58,7 +58,7 @@ export async function collectRecipeVideoReferences(): Promise<
       }
 
       try {
-        const recipe: unknown = JSON.parse(await fs.readFile(fullPath, 'utf-8'));
+        const recipe: unknown = JSON.parse(await fs.readFile(fullPath, 'utf8'));
         const recipePath = path.relative(PROJECT_ROOT, fullPath);
 
         for (const ref of getYoutubeRefs(recipe)) {

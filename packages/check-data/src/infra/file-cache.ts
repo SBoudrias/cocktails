@@ -14,7 +14,7 @@ const rawFileCache = new Map<string, string>();
 export async function readDataFile(filepath: string): Promise<string> {
   const cached = rawFileCache.get(filepath);
   if (cached !== undefined) return cached;
-  const content = await fs.readFile(filepath, 'utf-8');
+  const content = await fs.readFile(filepath, 'utf8');
   rawFileCache.set(filepath, content);
   return content;
 }

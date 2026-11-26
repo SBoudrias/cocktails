@@ -165,14 +165,13 @@ describe('IngredientsPage', () => {
     const allIngredients = await getAllIngredients();
     const allCategories = await getAllCategories();
 
-    const filteredIngredients = allIngredients.filter(
+    const sampleIngredient = allIngredients.find(
       (i) => i.type !== 'liqueur' && i.type !== 'spirit',
-    );
+    )!;
 
     const list = screen.getByRole('list');
 
     // Verify at least one ingredient and one category are shown
-    const sampleIngredient = filteredIngredients[0]!;
     const sampleCategory = allCategories[0]!;
 
     expect(list).toHaveTextContent(sampleIngredient.name);

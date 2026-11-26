@@ -51,9 +51,9 @@ export function isShortFormVideo(video: VideoLike): boolean {
 
 function toTitleTokens(title: string): string[] {
   return title
-    .replace(/#\S+/g, ' ')
+    .replaceAll(/#\S+/g, ' ')
     .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, ' ')
+    .replaceAll(/[^a-z0-9\s]/g, ' ')
     .split(/\s+/)
     .filter((token) => token.length >= 3 && !TITLE_STOP_WORDS.has(token));
 }

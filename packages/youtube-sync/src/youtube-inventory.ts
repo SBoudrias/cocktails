@@ -147,7 +147,7 @@ async function readReviewedVideos(
   if (!reviewedFile) return [];
 
   const data: unknown = JSON.parse(
-    await fs.readFile(resolveProjectPath(reviewedFile), 'utf-8'),
+    await fs.readFile(resolveProjectPath(reviewedFile), 'utf8'),
   );
   return parseReviewedVideos(data);
 }
@@ -295,11 +295,13 @@ function formatBatchMarkdown(channel: ChannelSource, batch: InventoryBatch): str
   ];
 
   for (const video of batch.videos) {
-    lines.push(`- [${video.title}](${video.url})`);
-    lines.push(`  - videoId: ${video.videoId}`);
-    lines.push(`  - source: ${video.source}`);
-    lines.push(`  - playlistIndex: ${video.playlistIndex}`);
-    lines.push(`  - uploadDate: ${video.uploadDate ?? 'unknown'}`);
+    lines.push(
+      `- [${video.title}](${video.url})`,
+      `  - videoId: ${video.videoId}`,
+      `  - source: ${video.source}`,
+      `  - playlistIndex: ${video.playlistIndex}`,
+      `  - uploadDate: ${video.uploadDate ?? 'unknown'}`,
+    );
     if (video.durationSeconds != null) {
       lines.push(`  - durationSeconds: ${video.durationSeconds}`);
     }

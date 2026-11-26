@@ -25,18 +25,16 @@ const TEST_YOUTUBE_ALT = {
   name: 'The Educated Barfly',
 };
 
-const [andersRecipes, educatedBarflyRecipes, smugglersCoveRecipes, sippinSafariRecipes] =
+const [andersRecipes, educatedBarflyRecipe, smugglersCoveRecipes, sippinSafariRecipe] =
   await Promise.all([
     Promise.all([
       getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'mezcal-margarita'),
       getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'daiquiri'),
     ]),
-    Promise.all([
-      getRecipe(
-        { type: 'youtube-channel', slug: 'educated-barfly' },
-        'hot-diggity-daiquiri',
-      ),
-    ]),
+    getRecipe(
+      { type: 'youtube-channel', slug: 'educated-barfly' },
+      'hot-diggity-daiquiri',
+    ),
     Promise.all([
       getRecipe(
         { type: 'book', slug: 'smugglers-cove' },
@@ -64,8 +62,10 @@ const [andersRecipes, educatedBarflyRecipes, smugglersCoveRecipes, sippinSafariR
         '09_Eight Essential Exotic Elixirs',
       ),
     ]),
-    Promise.all([getRecipe({ type: 'book', slug: 'sippin-safari' }, 'caribbean-punch')]),
+    getRecipe({ type: 'book', slug: 'sippin-safari' }, 'caribbean-punch'),
   ]);
+const educatedBarflyRecipes = [educatedBarflyRecipe];
+const sippinSafariRecipes = [sippinSafariRecipe];
 
 beforeEach(() => {
   vi.mocked(getRecipesFromSource).mockImplementation(async (source) => {

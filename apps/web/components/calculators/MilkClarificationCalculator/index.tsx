@@ -34,7 +34,7 @@ function getMilliliters(amount: number, unit: Unit) {
 }
 
 function normalizeMilkType(milkType: string | null) {
-  const normalizedMilkType = milkType?.trim().replace(/\s+/g, ' ');
+  const normalizedMilkType = milkType?.trim().replaceAll(/\s+/g, ' ');
 
   if (!normalizedMilkType) {
     return 'Whole milk';
@@ -227,7 +227,7 @@ export default function MilkClarificationCalculator() {
   const isBatchVolumeValid = isValidBatchVolume(batchVolumeValue);
   const milkVolume = isBatchVolumeValid
     ? roundToFriendlyVolume(Number(batchVolumeValue) * milkRatio, unit)
-    : NaN;
+    : Number.NaN;
   const milkQuantityText = isBatchVolumeValid
     ? `${formatAmount(milkVolume)} ${unit} of ${milkType.toLowerCase()}`
     : 'the milk';
@@ -313,7 +313,7 @@ export default function MilkClarificationCalculator() {
                 <a
                   href="https://www.campariacademy.com/en-us/training/tools-techniques/milk-punch-guide-and-recipes/"
                   target="_blank"
-                  rel="noopener nofollow"
+                  rel="noopener noreferrer nofollow"
                   className="text-primary underline"
                 >
                   Campari Academy milk punch guide

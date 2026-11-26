@@ -164,7 +164,7 @@ export async function loadContext(): Promise<void> {
     Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'))),
     Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/categories/*.json'))),
     Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json'))),
-    fs.readFile(APPROVED_OVERLAPS_PATH, 'utf-8').then(
+    fs.readFile(APPROVED_OVERLAPS_PATH, 'utf8').then(
       (content) => ({ ok: true as const, content }),
       (error: unknown) => ({ ok: false as const, error }),
     ),

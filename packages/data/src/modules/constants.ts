@@ -1,6 +1,9 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// Turbopack bundles this module for Next.js server builds and provides
+// `import.meta.url` but leaves `import.meta.dirname` undefined at runtime.
+// oxlint-disable-next-line unicorn/prefer-import-meta-properties
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const PACKAGE_ROOT = path.resolve(__dirname, '../..');
 

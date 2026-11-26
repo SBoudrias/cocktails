@@ -22,7 +22,7 @@ function stickyWithContent() {
   const el = document.createElement('div');
   const content = document.createElement('div');
   doc.append(el, content);
-  document.body.appendChild(doc);
+  document.body.append(doc);
 
   let headerTop = 400;
   let headerBottom = 454;

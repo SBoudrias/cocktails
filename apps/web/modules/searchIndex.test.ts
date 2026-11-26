@@ -58,7 +58,7 @@ describe('loadSearchIndex', () => {
     sharedJsonServer.use(
       http.get(sharedJsonUrl('/data/search-index.json'), () => HttpResponse.error()),
     );
-    await expect(loadSearchIndex()).rejects.toThrow();
+    await expect(loadSearchIndex()).rejects.toThrow(TypeError);
 
     sharedJsonServer.use(serveJson('/data/search-index.json', index));
     await expect(loadSearchIndex()).resolves.toEqual(index);

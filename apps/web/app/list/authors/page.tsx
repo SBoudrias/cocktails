@@ -24,7 +24,7 @@ export default async function AuthorListPage() {
         attribution.relation === 'adapted by'
       ) {
         const authorName = attribution.source;
-        const author = authorsMap.get(authorName) || {
+        const author = authorsMap.get(authorName) ?? {
           name: authorName,
           recipeCount: 0,
         };

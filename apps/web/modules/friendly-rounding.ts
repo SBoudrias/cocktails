@@ -17,7 +17,7 @@ function snapFraction(fraction: number, targets: number[]): number {
   return closest;
 }
 
-export function roundToFriendlyFraction(amount: number, unit: string = 'oz'): number {
+export function roundToFriendlyFraction(amount: number, unit = 'oz'): number {
   const base = Math.floor(amount);
   const fraction = amount - base;
   const targets = unit === 'oz' ? OZ_TARGETS : QUARTER_TARGETS;

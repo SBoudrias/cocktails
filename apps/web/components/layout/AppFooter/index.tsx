@@ -14,7 +14,7 @@ export default function AppFooter() {
       <a
         href="https://github.com/SBoudrias/cocktails/"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         className="flex items-center gap-1 text-foreground"
       >
         <BrandIcon icon={siGithub} size="lg" /> Contribute on GitHub

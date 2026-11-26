@@ -65,7 +65,7 @@ function IngredientLine({
     'categories' in ingredient &&
     ingredient.categories[0] != null
   ) {
-    const label = ingredient.categories[0]!.name;
+    const label = ingredient.categories[0].name;
     category = <div className={styles.category}>{label}</div>;
   }
 

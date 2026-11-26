@@ -5,8 +5,8 @@ export function parseChapterFolder(
   folder: string,
 ): { order: number; name: string } | null {
   const match = folder.match(/^(\d+)_(.+)$/);
-  if (!match || !match[1] || !match[2]) return null;
-  return { order: parseInt(match[1], 10), name: match[2] };
+  if (!match?.[1] || !match[2]) return null;
+  return { order: Number.parseInt(match[1], 10), name: match[2] };
 }
 
 /**

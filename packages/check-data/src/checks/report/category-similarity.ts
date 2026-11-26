@@ -22,7 +22,7 @@ export interface CategoryLike {
 }
 
 function normalizeName(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, ' ').trim();
+  return name.toLowerCase().replaceAll(/\s+/g, ' ').trim();
 }
 
 function isDeclaredChildOf(parent: CategoryLike, child: CategoryLike): boolean {

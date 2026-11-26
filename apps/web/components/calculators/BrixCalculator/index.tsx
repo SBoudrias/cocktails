@@ -14,19 +14,19 @@ export default function BrixCalculator() {
   const [currentBrixValue, setCurrentBrix] = useState<string | number>(0);
   const [targetBrixValue, setTargetBrix] = useState<string | number>(50);
 
-  const juiceWeight = parseFloat(juiceWeightValue as string);
-  const currentBrix = parseFloat(currentBrixValue as string) || 0;
-  const targetBrix = parseFloat(targetBrixValue as string);
+  const juiceWeight = Number.parseFloat(juiceWeightValue as string);
+  const currentBrix = Number.parseFloat(currentBrixValue as string) || 0;
+  const targetBrix = Number.parseFloat(targetBrixValue as string);
 
-  const isTargetBrixValid = !isNaN(targetBrix) && targetBrix < 100;
+  const isTargetBrixValid = !Number.isNaN(targetBrix) && targetBrix < 100;
   const isCurrentBrixValid =
-    !isNaN(currentBrix) && currentBrix < targetBrix && currentBrix < 100;
+    !Number.isNaN(currentBrix) && currentBrix < targetBrix && currentBrix < 100;
 
   // Formula: sugar_weight = (juice_weight * (target_brix - current_brix)) / (100 - target_brix)
   const sugarWeight =
     isTargetBrixValid && isCurrentBrixValid
       ? (juiceWeight * (targetBrix - currentBrix)) / (100 - targetBrix)
-      : NaN;
+      : Number.NaN;
 
   return (
     <Suspense>
@@ -83,9 +83,9 @@ export default function BrixCalculator() {
             label="Sugar to add"
             unit="grams"
             value={
-              isNaN(sugarWeight)
+              Number.isNaN(sugarWeight)
                 ? ''
-                : `${sugarWeight.toLocaleString('en', { maximumFractionDigits: 2 })}`
+                : sugarWeight.toLocaleString('en', { maximumFractionDigits: 2 })
             }
             readOnly
           />

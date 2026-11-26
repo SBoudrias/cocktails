@@ -66,7 +66,7 @@ export function useSharedJson<T>({
       active = false;
       cancelIdleCallback(handle);
     };
-  }, [load, getLoaded, enabled, urgent]);
+  }, [load, enabled, urgent]);
 
   return { value, failed };
 }

@@ -118,7 +118,7 @@ describe('compareIngredients', () => {
 
       const result = ingredients.toSorted(compareIngredients);
 
-      expect(result[result.length - 1]).toEqual(
+      expect(result.at(-1)).toEqual(
         createTestIngredient({
           type: 'bitter',
           quantity: { amount: 1, unit: 'dash' },
@@ -175,7 +175,7 @@ describe('compareIngredients', () => {
         createTestIngredient({ type: 'juice' }),
       ].toSorted(compareIngredients);
 
-      expect(result[result.length - 1]).toEqual(
+      expect(result.at(-1)).toEqual(
         createTestIngredient({
           type: 'bitter',
           quantity: { amount: 1, unit: 'dash' },

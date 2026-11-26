@@ -53,7 +53,7 @@ export default defineConfig({
           exclude: ['**/node_modules', '**/.worktrees', 'apps/web/modules/**'],
           environment: 'happy-dom',
           environmentOptions: {
-            happyDOM: { settings: { disableIframePageLoading: true } },
+            happyDOM: { settings: { enableIframePageLoading: false } },
           },
           setupFiles: [
             // Before mswSetup.ts: msw needs BroadcastChannel at import time,

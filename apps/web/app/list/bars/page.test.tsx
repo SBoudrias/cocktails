@@ -245,14 +245,14 @@ describe('BarListPage city grouping', () => {
     await user.click(screen.getByRole('radio', { name: /by city/i }));
 
     const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
-    expect(link).not.toHaveTextContent(TEST_BAR.location!);
+    expect(link).not.toHaveTextContent(TEST_BAR.location);
   });
 
   it('keeps the location sub-label in A-Z mode', async () => {
     await setupApp(await BarListPage());
 
     const link = screen.getByRole('link', { name: new RegExp(TEST_BAR.name, 'i') });
-    expect(link).toHaveTextContent(TEST_BAR.location!);
+    expect(link).toHaveTextContent(TEST_BAR.location);
   });
 
   it('switches back to A-Z grouping when the toggle is clicked back', async () => {

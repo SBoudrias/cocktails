@@ -75,7 +75,7 @@ self.addEventListener('activate', (event) => {
               // pages (the shell, the fallback) and data files refresh
               // online first anyway, so keeping them simply widens what
               // works offline — never serving anything stale while online.
-              if (response && response.ok) {
+              if (response?.ok) {
                 await cachePut(RUNTIME_NAME, request, response);
               }
             }),

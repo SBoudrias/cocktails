@@ -8,7 +8,7 @@ async function getRecipeValidator() {
   const schemasGlob = path.join(import.meta.dirname, '*.schema.json');
 
   for await (const schemaFile of fs.glob(schemasGlob)) {
-    const schema = JSON.parse(await fs.readFile(schemaFile, 'utf-8'));
+    const schema = JSON.parse(await fs.readFile(schemaFile, 'utf8'));
     ajv.addSchema(schema, path.basename(schemaFile));
   }
 

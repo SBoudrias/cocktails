@@ -2,8 +2,7 @@
 
 import { useSharedJson } from '#/hooks/useSharedJson';
 import type { SearchIndex } from '#/modules/buildSearchIndex';
-import { loadSearchIndex } from '#/modules/searchIndex';
-import { getLoadedSearchIndex } from '#/modules/searchIndex';
+import { loadSearchIndex, getLoadedSearchIndex } from '#/modules/searchIndex';
 
 /**
  * The search index, or `undefined` until it has loaded. It loads when the

@@ -33,7 +33,7 @@ const createCard = (name: string, chapter?: Chapter, page?: number) =>
     {
       ...recipeFixture,
       name,
-      slug: name.toLowerCase().replace(/\s/g, '-'),
+      slug: name.toLowerCase().replaceAll(/\s/g, '-'),
       chapter,
       refs: page ? [{ type: 'book', title: 'Test Book', page }] : [],
     },

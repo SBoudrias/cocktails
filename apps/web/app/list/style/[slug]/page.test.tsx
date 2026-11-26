@@ -28,7 +28,7 @@ vi.mock('@cocktails/data/styles', () => ({
 
 const mockRecipe = (name: string): Recipe => ({
   name,
-  slug: name.toLowerCase().replace(/\s+/g, '-'),
+  slug: name.toLowerCase().replaceAll(/\s+/g, '-'),
   source: {
     type: 'book',
     name: 'Test Source',

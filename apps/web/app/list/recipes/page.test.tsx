@@ -81,7 +81,7 @@ function getListOutline(): string[] {
     .map((element) =>
       element.tagName === 'A'
         ? `  ${within(element).getAllByText(/.+/)[0]?.textContent}`
-        : `${element.textContent}`,
+        : element.textContent,
     );
 }
 

@@ -19,7 +19,7 @@ function addCategoryType(
       ingredient.type === 'category'
         ? categoryTypes.get(slugify(ingredient.name))
         : undefined,
-    quantity: ingredient.quantity!,
+    quantity: ingredient.quantity,
     technique: ingredient.technique,
   };
 }

@@ -125,7 +125,7 @@ const COUNTRIES = new Set([
 const REGION_CODES = new Set([...Object.values(US_STATES), ...OTHER_REGION_CODES]);
 
 function normalizeRegion(region: string): string {
-  return region.trim().replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase();
+  return region.trim().replace(/\.$/, '').replaceAll(/\s+/g, ' ').toLowerCase();
 }
 
 /**

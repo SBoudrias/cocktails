@@ -147,7 +147,7 @@ const isTartIngredient = (ingredient: RecipeIngredient) => {
   if (kind === 'fruit') return isSqueezedCitrus(ingredient);
   if (kind === 'other') {
     return (
-      /cordial/.test(name) &&
+      name.includes('cordial') &&
       /lime|lemon|grapefruit|citrus|sour/.test(name) &&
       ingredientVolumeOz(ingredient) >= minTartCordialOunces
     );

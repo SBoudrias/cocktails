@@ -119,12 +119,12 @@ describe('getRecentlyAddedRecipes', () => {
 
   it('uses GitHub commit data when local git history is shallow', async () => {
     const repoRoot = process.cwd();
+    const commitRequests: URL[] = [];
     const fetchMock = vi.fn(async (url: URL | string) => {
       const requestUrl = new URL(String(url));
 
       if (requestUrl.pathname === '/repos/SBoudrias/cocktails/commits') {
-        expect(requestUrl.searchParams.get('path')).toBe('packages/data/data/recipes');
-        expect(requestUrl.searchParams.get('sha')).toBe('test-sha');
+        commitRequests.push(requestUrl);
 
         if (requestUrl.searchParams.get('page') === '2') {
           return Response.json([]);
@@ -191,6 +191,12 @@ describe('getRecentlyAddedRecipes', () => {
 
     const { getRecentlyAddedRecipes } = await import('./recipes');
     const recipes = await getRecentlyAddedRecipes();
+
+    expect(commitRequests.length).toBeGreaterThan(0);
+    for (const requestUrl of commitRequests) {
+      expect(requestUrl.searchParams.get('path')).toBe('packages/data/data/recipes');
+      expect(requestUrl.searchParams.get('sha')).toBe('test-sha');
+    }
 
     expect(recipes.map((recipe) => recipe.name)).toEqual([
       'Snake Eyes',
