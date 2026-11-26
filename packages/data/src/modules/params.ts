@@ -11,87 +11,84 @@ export async function getRecipePageParams(): Promise<
     recipe: string;
   }[]
 > {
-  const params = [];
+  const types = await fs.readdir(RECIPE_ROOT);
+  const nested = await Promise.all(
+    types.map(async (type) => {
+      const sourceSlugs = await fs.readdir(path.join(RECIPE_ROOT, type));
+      return Promise.all(
+        sourceSlugs.map(async (sourceSlug) => {
+          const sourcePath = path.join(RECIPE_ROOT, type, sourceSlug);
+          const entries = await fs.readdir(sourcePath, { withFileTypes: true });
+          const perEntry = await Promise.all(
+            entries.map(async (entry) => {
+              if (entry.name === '_source.json') return [];
 
-  for (const type of await fs.readdir(RECIPE_ROOT)) {
-    for (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, type))) {
-      const sourcePath = path.join(RECIPE_ROOT, type, sourceSlug);
+              if (entry.isDirectory() && isChapterFolder(entry.name)) {
+                const chapterFiles = await fs.readdir(path.join(sourcePath, entry.name));
+                return chapterFiles
+                  .filter((filename) => filename.endsWith('.json'))
+                  .map((filename) => ({
+                    type: type as Source['type'],
+                    source: sourceSlug,
+                    recipe: path.basename(filename, '.json'),
+                  }));
+              }
+              if (entry.isFile() && entry.name.endsWith('.json')) {
+                return [
+                  {
+                    type: type as Source['type'],
+                    source: sourceSlug,
+                    recipe: path.basename(entry.name, '.json'),
+                  },
+                ];
+              }
+              return [];
+            }),
+          );
+          return perEntry.flat();
+        }),
+      );
+    }),
+  );
 
-      for (const entry of await fs.readdir(sourcePath)) {
-        if (entry === '_source.json') continue;
-
-        const entryPath = path.join(sourcePath, entry);
-        const stat = await fs.stat(entryPath);
-
-        if (stat.isDirectory() && isChapterFolder(entry)) {
-          // Chapter directory - traverse recipes inside
-          for (const recipeFilename of await fs.readdir(entryPath)) {
-            if (!recipeFilename.endsWith('.json')) continue;
-            const recipeSlug = path.basename(recipeFilename, '.json');
-            params.push({
-              type: type as Source['type'],
-              source: sourceSlug,
-              recipe: recipeSlug,
-            });
-          }
-        } else if (entry.endsWith('.json')) {
-          // Flat recipe file
-          const recipeSlug = path.basename(entry, '.json');
-          params.push({
-            type: type as Source['type'],
-            source: sourceSlug,
-            recipe: recipeSlug,
-          });
-        }
-      }
-    }
-  }
-
-  return params;
+  return nested.flat(2);
 }
 
 export async function getIngredientPageParams(): Promise<
   { type: string; slug: string }[]
 > {
-  const params = [];
-
-  for (const type of await fs.readdir(INGREDIENT_ROOT)) {
-    for (const dataFilePath of await fs.readdir(path.join(INGREDIENT_ROOT, type))) {
-      const ingredientSlug = path.basename(dataFilePath, '.json');
-      params.push({
+  const types = await fs.readdir(INGREDIENT_ROOT);
+  const nested = await Promise.all(
+    types.map(async (type) => {
+      const files = await fs.readdir(path.join(INGREDIENT_ROOT, type));
+      return files.map((file) => ({
         type: type as Source['type'],
-        slug: ingredientSlug,
-      });
-    }
-  }
+        slug: path.basename(file, '.json'),
+      }));
+    }),
+  );
 
-  return params;
+  return nested.flat();
 }
 
 export async function getSourcePageParams(): Promise<
   { type: Source['type']; name: string }[]
 > {
-  const params = [];
-
-  for (const type of await fs.readdir(RECIPE_ROOT)) {
-    for (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, type))) {
-      params.push({
+  const types = await fs.readdir(RECIPE_ROOT);
+  const nested = await Promise.all(
+    types.map(async (type) => {
+      const sourceSlugs = await fs.readdir(path.join(RECIPE_ROOT, type));
+      return sourceSlugs.map((sourceSlug) => ({
         type: type as Source['type'],
         name: sourceSlug,
-      });
-    }
-  }
+      }));
+    }),
+  );
 
-  return params;
+  return nested.flat();
 }
 
 export async function getCategoryPageParams(): Promise<{ slug: string }[]> {
-  const params = [];
-
-  for (const dataFilePath of await fs.readdir(CATEGORY_ROOT)) {
-    const categorySlug = path.basename(dataFilePath, '.json');
-    params.push({ slug: categorySlug });
-  }
-
-  return params;
+  const files = await fs.readdir(CATEGORY_ROOT);
+  return files.map((file) => ({ slug: path.basename(file, '.json') }));
 }

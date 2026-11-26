@@ -13,7 +13,6 @@ vi.mock('node:child_process', () => ({
 }));
 
 beforeEach(() => {
-  vi.resetModules();
   execFileMocks.promise.mockReset();
 });
 
@@ -23,6 +22,9 @@ afterEach(() => {
 });
 
 describe('getRecentlyAddedRecipes', () => {
+  beforeEach(() => {
+    vi.resetModules();
+  });
   it('orders recipes by git file-add date instead of recipe name', async () => {
     const repoRoot = process.cwd();
     const gitLog = [

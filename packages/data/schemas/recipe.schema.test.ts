@@ -20,11 +20,13 @@ async function getRecipeValidator() {
   return validate;
 }
 
+const validatePromise = getRecipeValidator();
+
 describe('recipe schema', () => {
   it.each(['syrup', 'spirit', 'category'])(
     'accepts omitted or boolean optional metadata on %s ingredients',
     async (type) => {
-      const validate = await getRecipeValidator();
+      const validate = await validatePromise;
 
       for (const metadata of [{}, { optional: true }, { optional: false }]) {
         expect(
@@ -50,7 +52,7 @@ describe('recipe schema', () => {
   it.each(['syrup', 'spirit', 'category'])(
     'rejects non-boolean optional metadata on %s ingredients',
     async (type) => {
-      const validate = await getRecipeValidator();
+      const validate = await validatePromise;
 
       for (const optional of ['optional', 1, null]) {
         expect(
@@ -81,7 +83,7 @@ describe('recipe schema', () => {
   );
 
   it('requires whole-recipe techniques to use the plural array field', async () => {
-    const validate = await getRecipeValidator();
+    const validate = await validatePromise;
 
     expect(
       validate({
@@ -114,7 +116,7 @@ describe('recipe schema', () => {
   });
 
   it('rejects duplicate recipe techniques', async () => {
-    const validate = await getRecipeValidator();
+    const validate = await validatePromise;
 
     expect(
       validate({

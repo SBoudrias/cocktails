@@ -302,25 +302,21 @@ export const getRecipe = memo(
 
     let filepath = directPath;
     let resolvedChapter = chapter;
+    let data = await readJSONFile<RecipeData>(directPath);
 
-    // If no chapter provided, try flat path first, then search chapter directories
-    if (!chapter) {
-      const data = await readJSONFile<RecipeData>(directPath);
-      if (!data) {
-        // Search in chapter directories using glob
-        const sourcePath = path.join(RECIPE_ROOT, source.type, source.slug);
-        const matches = fs.glob(`*/${recipe}.json`, { cwd: sourcePath });
-        const matchArray = await Array.fromAsync(matches);
+    // If no chapter provided and flat path missed, search chapter directories
+    if (!chapter && !data) {
+      const sourcePath = path.join(RECIPE_ROOT, source.type, source.slug);
+      const matches = fs.glob(`*/${recipe}.json`, { cwd: sourcePath });
+      const matchArray = await Array.fromAsync(matches);
 
-        const matchedPath = matchArray[0];
-        if (matchedPath) {
-          resolvedChapter = path.dirname(matchedPath);
-          filepath = path.join(sourcePath, matchedPath);
-        }
+      const matchedPath = matchArray[0];
+      if (matchedPath) {
+        resolvedChapter = path.dirname(matchedPath);
+        filepath = path.join(sourcePath, matchedPath);
+        data = await readJSONFile<RecipeData>(filepath);
       }
     }
-
-    const data = await readJSONFile<RecipeData>(filepath);
 
     if (!data) throw new Error(`Recipe not found: ${filepath}`);
 
@@ -368,43 +364,37 @@ export const getAllRecipes = memo(async (): Promise<Recipe[]> => {
   const recipeFiles = await Promise.all(
     sourceDirs.flat().map(async ({ sourceType, sourceSlug }) => {
       const sourcePath = path.join(RECIPE_ROOT, sourceType, sourceSlug);
-      const entries = await fs.readdir(sourcePath);
-      const results: {
-        sourceType: Source['type'];
-        sourceSlug: string;
-        recipeSlug: string;
-        chapter?: string;
-      }[] = [];
+      const entries = await fs.readdir(sourcePath, { withFileTypes: true });
+      const perEntry = await Promise.all(
+        entries.map(async (entry) => {
+          if (entry.name === '_source.json') return [];
 
-      for (const entry of entries) {
-        if (entry === '_source.json') continue;
-
-        const entryPath = path.join(sourcePath, entry);
-        const stat = await fs.stat(entryPath);
-
-        if (stat.isDirectory() && isChapterFolder(entry)) {
-          // Chapter directory - traverse recipes inside
-          const chapterFiles = await fs.readdir(entryPath);
-          for (const recipeFilename of chapterFiles) {
-            if (!recipeFilename.endsWith('.json')) continue;
-            results.push({
-              sourceType: sourceType as Source['type'],
-              sourceSlug,
-              recipeSlug: path.basename(recipeFilename, '.json'),
-              chapter: entry,
-            });
+          if (entry.isDirectory() && isChapterFolder(entry.name)) {
+            const chapterFiles = await fs.readdir(path.join(sourcePath, entry.name));
+            return chapterFiles
+              .filter((recipeFilename) => recipeFilename.endsWith('.json'))
+              .map((recipeFilename) => ({
+                sourceType: sourceType as Source['type'],
+                sourceSlug,
+                recipeSlug: path.basename(recipeFilename, '.json'),
+                chapter: entry.name,
+              }));
           }
-        } else if (entry.endsWith('.json')) {
-          // Flat recipe file
-          results.push({
-            sourceType: sourceType as Source['type'],
-            sourceSlug,
-            recipeSlug: path.basename(entry, '.json'),
-          });
-        }
-      }
+          if (entry.isFile() && entry.name.endsWith('.json')) {
+            return [
+              {
+                sourceType: sourceType as Source['type'],
+                sourceSlug,
+                recipeSlug: path.basename(entry.name, '.json'),
+                chapter: undefined,
+              },
+            ];
+          }
+          return [];
+        }),
+      );
 
-      return results;
+      return perEntry.flat();
     }),
   );
 
@@ -563,58 +553,144 @@ export const getAcidAdjustedRecipes = memo(async (): Promise<Recipe[]> => {
   );
 });
 
+const getRecipeCategoryIndexes = memo(async () => {
+  const recipes = await getAllRecipes();
+  const directByCategory = new Map<string, number[]>();
+  const bottleByCategory = new Map<string, number[]>();
+
+  for (const [index, recipe] of recipes.entries()) {
+    const directSlugs = new Set<string>();
+    const bottleSlugs = new Set<string>();
+
+    for (const ingredient of recipe.ingredients) {
+      if (ingredient.type === 'category') {
+        directSlugs.add(ingredient.slug);
+      } else {
+        for (const category of ingredient.categories) {
+          bottleSlugs.add(category.slug);
+        }
+      }
+    }
+
+    for (const slug of directSlugs) {
+      let list = directByCategory.get(slug);
+      if (!list) {
+        list = [];
+        directByCategory.set(slug, list);
+      }
+      list.push(index);
+    }
+
+    for (const slug of bottleSlugs) {
+      let list = bottleByCategory.get(slug);
+      if (!list) {
+        list = [];
+        bottleByCategory.set(slug, list);
+      }
+      list.push(index);
+    }
+  }
+
+  return { recipes, directByCategory, bottleByCategory };
+});
+
 export const getRecipeByCategory = memo(
   async (category: Category): Promise<Recipe[]> => {
-    const recipes = await getAllRecipes();
-    const childCategories = await getChildCategories(category);
-    const categorySlugs = [category.slug, ...childCategories.map((c) => c.slug)];
+    const [{ recipes, directByCategory, bottleByCategory }, childCategories] =
+      await Promise.all([getRecipeCategoryIndexes(), getChildCategories(category)]);
 
-    const relatedRecipes = recipes.filter((recipe) => {
-      return recipe.ingredients.some((ingredient) => {
-        if (ingredient.type === 'category') {
-          return ingredient.slug === category.slug;
-        }
-        return ingredient.categories.some((c) => categorySlugs.includes(c.slug));
-      });
-    });
+    const matchedIndices = new Set<number>(directByCategory.get(category.slug) ?? []);
+    for (const slug of [category.slug, ...childCategories.map((c) => c.slug)]) {
+      for (const index of bottleByCategory.get(slug) ?? []) {
+        matchedIndices.add(index);
+      }
+    }
+
+    const relatedRecipes = [...matchedIndices]
+      .toSorted((a, b) => a - b)
+      .map((index) => recipes[index]!);
 
     return toAlphaSort(uniqBy(relatedRecipes, 'slug'));
   },
   (category) => category.slug,
 );
 
+const getRecipesByAuthorName = memo(async (): Promise<Map<string, Recipe[]>> => {
+  const recipes = await getAllRecipes();
+  const byAuthor = new Map<string, Recipe[]>();
+
+  for (const recipe of recipes) {
+    const credited = new Set<string>();
+    for (const attribution of recipe.attributions) {
+      if (
+        attribution.relation === 'recipe author' ||
+        attribution.relation === 'adapted by'
+      ) {
+        credited.add(attribution.source);
+      }
+    }
+
+    for (const name of credited) {
+      let list = byAuthor.get(name);
+      if (!list) {
+        list = [];
+        byAuthor.set(name, list);
+      }
+      list.push(recipe);
+    }
+  }
+
+  for (const [name, list] of byAuthor) {
+    byAuthor.set(name, toAlphaSort(list));
+  }
+
+  return byAuthor;
+});
+
 export const getRecipesByAuthor = memo(
   async (author: Author): Promise<Recipe[]> => {
-    const recipes = await getAllRecipes();
-
-    return toAlphaSort(
-      recipes.filter((recipe) =>
-        recipe.attributions.some(
-          (attribution) =>
-            (attribution.relation === 'recipe author' ||
-              attribution.relation === 'adapted by') &&
-            attribution.source === author.name,
-        ),
-      ),
-    );
+    const byAuthor = await getRecipesByAuthorName();
+    return byAuthor.get(author.name) ?? [];
   },
   (author) => author.slug,
 );
 
+const barIndexKey = (name: string, location: string | undefined) =>
+  location === undefined ? `${name}\u0000` : `${name}\u00001:${location}`;
+
+const getRecipesByBarKey = memo(async (): Promise<Map<string, Recipe[]>> => {
+  const recipes = await getAllRecipes();
+  const byBar = new Map<string, Recipe[]>();
+
+  for (const recipe of recipes) {
+    const credited = new Set<string>();
+    for (const attribution of recipe.attributions) {
+      if (attribution.relation === 'bar') {
+        credited.add(barIndexKey(attribution.source, attribution.location));
+      }
+    }
+
+    for (const key of credited) {
+      let list = byBar.get(key);
+      if (!list) {
+        list = [];
+        byBar.set(key, list);
+      }
+      list.push(recipe);
+    }
+  }
+
+  for (const [key, list] of byBar) {
+    byBar.set(key, toAlphaSort(list));
+  }
+
+  return byBar;
+});
+
 export const getRecipesByBar = memo(
   async (bar: Bar): Promise<Recipe[]> => {
-    const recipes = await getAllRecipes();
-
-    return toAlphaSort(
-      recipes.filter((recipe) =>
-        recipe.attributions.some(
-          (attribution) =>
-            attribution.relation === 'bar' &&
-            attribution.source === bar.name &&
-            attribution.location === bar.location,
-        ),
-      ),
-    );
+    const byBar = await getRecipesByBarKey();
+    return byBar.get(barIndexKey(bar.name, bar.location)) ?? [];
   },
   (bar) => bar.slug,
 );

@@ -27,14 +27,8 @@ export const getCategory = memo(async (category: string): Promise<Category> => {
 });
 
 export const getAllCategories = memo(async (): Promise<Category[]> => {
-  const categories: Category[] = [];
-
-  for (const file of await fs.readdir(CATEGORY_ROOT)) {
-    const ingredient = await getCategory(path.basename(file, '.json'));
-    categories.push(ingredient);
-  }
-
-  return categories;
+  const files = await fs.readdir(CATEGORY_ROOT);
+  return Promise.all(files.map((file) => getCategory(path.basename(file, '.json'))));
 });
 
 export const getCategoriesPerParent = memo(
