@@ -32,6 +32,31 @@ function renderMember(member: BottleRow) {
 }
 
 /**
+ * The members' labelled group on the page: the sticky header, then the
+ * rows in one surface block.
+ */
+function MembersGroup({
+  headerId,
+  header,
+  children,
+}: {
+  headerId: string;
+  header: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <List>
+      <li>
+        <List role="group" aria-labelledby={headerId}>
+          <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>
+          <div className="surface">{children}</div>
+        </List>
+      </li>
+    </List>
+  );
+}
+
+/**
  * A category's member bottles on its page, two shapes by size:
  *
  * - Small categories (≤5 members) keep the plain uncapped list — a drawer
@@ -59,14 +84,9 @@ export default function CategoryMembers({
   // The small-category shape: today's plain list, unchanged.
   if (members.length <= INLINE_MEMBER_LIMIT) {
     return (
-      <List>
-        <li>
-          <List role="group" aria-labelledby={headerId}>
-            <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>
-            <div className="surface">{members.map(renderMember)}</div>
-          </List>
-        </li>
-      </List>
+      <MembersGroup headerId={headerId} header={header}>
+        {members.map(renderMember)}
+      </MembersGroup>
     );
   }
 
@@ -75,35 +95,28 @@ export default function CategoryMembers({
   const preview = members.slice(0, PREVIEW_COUNT);
 
   return (
-    <List>
+    <MembersGroup headerId={headerId} header={header}>
+      {preview.map(renderMember)}
       <li>
-        <List role="group" aria-labelledby={headerId}>
-          <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>
-          <div className="surface">
-            {preview.map(renderMember)}
+        <ListDrawer
+          title={`${category.name} bottles`}
+          description={`Every bottle filed under ${category.name}, its child categories included — the most-used first.`}
+          keepContentMounted
+          trigger={`See all ${members.length} bottles`}
+          triggerClassName="flex w-full items-center justify-center gap-1 px-4 py-3 text-sm text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
+        >
+          <List>
             <li>
-              <ListDrawer
-                title={`${category.name} bottles`}
-                description={`Every bottle filed under ${category.name}, its child categories included — the most-used first.`}
-                keepContentMounted
-                trigger={`See all ${members.length} bottles`}
-                triggerClassName="flex w-full items-center justify-center gap-1 px-4 py-3 text-sm text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
-              >
-                <List>
-                  <li>
-                    <List role="group" aria-labelledby={`${headerId}-sheet`}>
-                      <li id={`${headerId}-sheet`}>
-                        <ListSubheader>{header}</ListSubheader>
-                      </li>
-                      <div className="surface">{members.map(renderMember)}</div>
-                    </List>
-                  </li>
-                </List>
-              </ListDrawer>
+              <List role="group" aria-labelledby={`${headerId}-sheet`}>
+                <li id={`${headerId}-sheet`}>
+                  <ListSubheader>{header}</ListSubheader>
+                </li>
+                <div className="surface">{members.map(renderMember)}</div>
+              </List>
             </li>
-          </div>
-        </List>
+          </List>
+        </ListDrawer>
       </li>
-    </List>
+    </MembersGroup>
   );
 }
