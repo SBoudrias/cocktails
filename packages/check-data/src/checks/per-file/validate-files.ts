@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { logger } from '../../cli-util.ts';
+import { readDataFile } from '../../infra/file-cache.ts';
 import { PACKAGE_ROOT } from '../../infra/paths.ts';
 import { report } from '../../infra/report.ts';
 import type { DataWithSchema, Ingredient } from '../../infra/types.ts';
@@ -21,10 +22,22 @@ import { checkRefs } from './refs.ts';
 export async function validateFiles(): Promise<void> {
   logger.header('🔍 Validating data files...');
   const dataGlob = path.join(PACKAGE_ROOT, 'data/**/*.json');
-  for await (const sourceFile of fs.glob(dataGlob)) {
+  const sourceFiles = await Array.fromAsync(fs.glob(dataGlob));
+  const rawContents = await Promise.all(
+    sourceFiles.map((sourceFile) =>
+      readDataFile(sourceFile).then(
+        (content) => ({ ok: true as const, content }),
+        (error: unknown) => ({ ok: false as const, error }),
+      ),
+    ),
+  );
+
+  for (const [i, sourceFile] of sourceFiles.entries()) {
     let data: DataWithSchema;
     try {
-      data = JSON.parse(await fs.readFile(sourceFile, 'utf-8'));
+      const readResult = rawContents[i]!;
+      if (!readResult.ok) throw readResult.error;
+      data = JSON.parse(readResult.content);
     } catch (error) {
       report.fail(`Invalid JSON in ${sourceFile} ${(error as Error).message}`);
       continue;

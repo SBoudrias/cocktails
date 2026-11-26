@@ -16,7 +16,7 @@
  * what CI checks out is exactly what this gate sees locally.
  */
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { findConflictMarkers } from './detect.ts';
 
@@ -43,26 +43,45 @@ function hasBinaryExtension(path: string): boolean {
   return dot !== -1 && BINARY_EXTENSIONS.has(path.slice(dot).toLowerCase());
 }
 
+/**
+ * Every reportable conflict marker requires `<<<<<<<`, `>>>>>>>`, or `|||||||`
+ * (`=======` is only reported inside an open conflict block). Checking for
+ * those three substrings avoids splitting clean files into line arrays.
+ */
+function mayContainConflictMarker(content: string): boolean {
+  return (
+    content.includes('<<<<<<<') ||
+    content.includes('>>>>>>>') ||
+    content.includes('|||||||')
+  );
+}
+
 const gitFiles = execFileSync(
   'git',
   ['ls-files', '--cached', '--others', '--exclude-standard'],
   { cwd: ROOT, encoding: 'utf8' },
 )
   .split('\n')
-  .filter((path) => path !== '');
+  .filter((path) => path !== '' && !hasBinaryExtension(path));
+
+const results = await Promise.all(
+  gitFiles.map(async (path) => {
+    let content: string;
+    try {
+      content = await readFile(join(ROOT, path), 'utf8');
+    } catch {
+      // Unreadable right now (deleted-but-listed, permissions): not a
+      // conflict-marker risk we can judge — git or the build fails on it.
+      return [];
+    }
+    if (!mayContainConflictMarker(content)) return [];
+    return findConflictMarkers(content.split('\n')).map((marker) => ({ path, marker }));
+  }),
+);
 
 let failures = 0;
-for (const path of gitFiles) {
-  if (hasBinaryExtension(path)) continue;
-  let content: string;
-  try {
-    content = readFileSync(join(ROOT, path), 'utf8');
-  } catch {
-    // Unreadable right now (deleted-but-listed, permissions): not a
-    // conflict-marker risk we can judge — git or the build fails on it.
-    continue;
-  }
-  for (const marker of findConflictMarkers(content.split('\n'))) {
+for (const fileMatches of results) {
+  for (const { path, marker } of fileMatches) {
     failures++;
     console.error(
       `::error::${path}:${marker.line}: left-behind merge conflict marker: ${marker.text}`,

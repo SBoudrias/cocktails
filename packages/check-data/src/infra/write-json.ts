@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { format as formatWithOxfmt, type FormatConfig } from 'oxfmt';
+import { cacheWrittenDataFile } from './file-cache.ts';
 import { report } from './report.ts';
 import { formatter } from './schemas.ts';
 
@@ -32,7 +33,9 @@ export async function writeJSON(filepath: string, data: object): Promise<void> {
   if (errors.length > 0) {
     report.fail(`Could not format ${filepath}: ${errors[0]?.message}`);
     await fs.writeFile(filepath, jsonContent);
+    cacheWrittenDataFile(filepath, jsonContent);
     return;
   }
   await fs.writeFile(filepath, code);
+  cacheWrittenDataFile(filepath, code);
 }

@@ -3,6 +3,7 @@ import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import { logger } from '../../cli-util.ts';
 import { ctx } from '../../context/data-context.ts';
+import { renameCachedDataFile } from '../../infra/file-cache.ts';
 import { PACKAGE_ROOT } from '../../infra/paths.ts';
 import { report } from '../../infra/report.ts';
 import { ajv } from '../../infra/schemas.ts';
@@ -64,6 +65,7 @@ export async function checkFileIntegrity(
       const newPath = path.join(path.dirname(sourceFile), `${expectedName}.json`);
       logger.change(`Renaming ${path.basename(sourceFile)} to ${path.basename(newPath)}`);
       await fs.rename(sourceFile, newPath);
+      renameCachedDataFile(sourceFile, newPath);
     }
   }
 
@@ -90,6 +92,7 @@ export async function checkFileIntegrity(
       );
       await fs.mkdir(path.dirname(correctPath), { recursive: true });
       await fs.rename(sourceFile, correctPath);
+      renameCachedDataFile(sourceFile, correctPath);
       // Update ingredientFolders so cross-folder checks use the new location
       ctx.ingredientFolders.set(slugify(data.name), data.type);
     }

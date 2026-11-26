@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "yarn workspace @cocktails/web dev",
     "knip": "knip",
-    "lint": "yarn workspaces foreach -A run lint && oxlint . --type-aware && oxfmt . --check && node packages/oxlint-plugin/src/scan-conflicts.ts",
+    "lint": "yarn workspaces foreach -A --exclude cocktails-monorepo -p --interlaced run lint && oxlint . --type-aware && oxfmt . --check && node packages/oxlint-plugin/src/scan-conflicts.ts",
     "test": "vitest --run --coverage",
     "check-data": "turbo run check-data --filter=@cocktails/data",
     "youtube-inventory": "yarn workspace @cocktails/youtube-sync inventory",

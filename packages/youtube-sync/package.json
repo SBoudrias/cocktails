@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "cd ../.. && yarn tsc --noEmit -p packages/youtube-sync/tsconfig.json",
+    "lint": "tsc --noEmit",
     "inventory": "node src/youtube-inventory.ts",
     "ref-channels": "node src/youtube-ref-channels.ts",
     "youtube-sync": "node src/youtube-sync.ts"
