@@ -54,13 +54,11 @@ export const getBar = memo(async (slug: string): Promise<Bar | undefined> => {
 });
 
 export const getAllBars = memo(async (): Promise<Bar[]> => {
-  const bars: Bar[] = [];
-
-  for await (const file of fs.glob('*.json', { cwd: BAR_ROOT })) {
-    const bar = await readBarFile(path.basename(file, '.json'));
-
-    if (bar) bars.push(bar);
-  }
+  const files = (await fs.readdir(BAR_ROOT)).filter((file) => file.endsWith('.json'));
+  const loaded = await Promise.all(
+    files.map((file) => readBarFile(path.basename(file, '.json'))),
+  );
+  const bars = loaded.filter((bar): bar is Bar => bar !== undefined);
 
   bars.sort((a, b) => a.name.localeCompare(b.name));
 

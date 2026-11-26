@@ -69,14 +69,17 @@ export const getIngredient = memo(
 );
 
 export const getAllIngredients = memo(async (): Promise<RootIngredient[]> => {
-  const ingredients: RootIngredient[] = [];
+  const types = await fs.readdir(INGREDIENT_ROOT);
+  const entries = await Promise.all(
+    types.map(async (type) => {
+      const files = await fs.readdir(path.join(INGREDIENT_ROOT, type));
+      return files.map((file) => ({ type, slug: path.basename(file, '.json') }));
+    }),
+  );
 
-  for (const type of await fs.readdir(INGREDIENT_ROOT)) {
-    for (const file of await fs.readdir(path.join(INGREDIENT_ROOT, type))) {
-      const ingredient = await getIngredient(type, path.basename(file, '.json'));
-      ingredients.push(ingredient);
-    }
-  }
+  const ingredients = await Promise.all(
+    entries.flat().map(({ type, slug }) => getIngredient(type, slug)),
+  );
 
   return toAlphaSort(ingredients);
 });
@@ -227,26 +230,42 @@ export const getSubstitutesForIngredient = memo(
   (ingredient) => ingredient.slug,
 );
 
+const getRecipesByIngredientSlug = memo(async (): Promise<Map<string, Recipe[]>> => {
+  const allRecipes = await getAllRecipes();
+  const bySlug = new Map<string, Recipe[]>();
+
+  for (const recipe of allRecipes) {
+    const citedSlugs = new Set(recipe.ingredients.map(({ slug }) => slug));
+
+    for (const technique of recipe.techniques ?? []) {
+      match(technique)
+        .with({ technique: 'clarification', method: 'milk' }, ({ milk_type: milkType }) =>
+          citedSlugs.add(slugify(milkType)),
+        )
+        .exhaustive();
+    }
+
+    for (const slug of citedSlugs) {
+      let list = bySlug.get(slug);
+      if (!list) {
+        list = [];
+        bySlug.set(slug, list);
+      }
+      list.push(recipe);
+    }
+  }
+
+  for (const [slug, list] of bySlug) {
+    bySlug.set(slug, toAlphaSort(list));
+  }
+
+  return bySlug;
+});
+
 export const getRecipesForIngredient = memo(
   async (ingredient: RootIngredient): Promise<Recipe[]> => {
-    const allRecipes = await getAllRecipes();
-    const relatedRecipes = allRecipes.filter((recipe) => {
-      const isDirectIngredient = recipe.ingredients.some(
-        (recipeIngredient) => recipeIngredient.slug === ingredient.slug,
-      );
-      const isTechniqueMaterial = (recipe.techniques ?? []).some((technique) =>
-        match(technique)
-          .with(
-            { technique: 'clarification', method: 'milk' },
-            ({ milk_type: milkType }) => slugify(milkType) === ingredient.slug,
-          )
-          .exhaustive(),
-      );
-
-      return isDirectIngredient || isTechniqueMaterial;
-    });
-
-    return toAlphaSort(relatedRecipes);
+    const bySlug = await getRecipesByIngredientSlug();
+    return bySlug.get(ingredient.slug) ?? [];
   },
   (ingredient) => ingredient.slug,
 );
@@ -259,24 +278,6 @@ export const getRecipesForIngredient = memo(
  * these counts.
  */
 export const getIngredientRecipeCounts = memo(async (): Promise<Map<string, number>> => {
-  const allRecipes = await getAllRecipes();
-  const counts = new Map<string, number>();
-
-  for (const recipe of allRecipes) {
-    const citedSlugs = new Set(recipe.ingredients.map(({ slug }) => slug));
-
-    for (const technique of recipe.techniques ?? []) {
-      match(technique)
-        .with({ technique: 'clarification', method: 'milk' }, ({ milk_type: milkType }) =>
-          citedSlugs.add(slugify(milkType)),
-        )
-        .otherwise(() => undefined);
-    }
-
-    for (const slug of citedSlugs) {
-      counts.set(slug, (counts.get(slug) ?? 0) + 1);
-    }
-  }
-
-  return counts;
+  const bySlug = await getRecipesByIngredientSlug();
+  return new Map([...bySlug].map(([slug, list]) => [slug, list.length] as const));
 });

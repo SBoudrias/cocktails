@@ -114,13 +114,11 @@ export const getAuthor = memo(async (slug: string): Promise<Author | undefined> 
 });
 
 export const getAllAuthors = memo(async (): Promise<Author[]> => {
-  const authors: Author[] = [];
-
-  for await (const file of fs.glob('*.json', { cwd: AUTHOR_ROOT })) {
-    const author = await readAuthorFile(path.basename(file, '.json'));
-
-    if (author) authors.push(author);
-  }
+  const files = (await fs.readdir(AUTHOR_ROOT)).filter((file) => file.endsWith('.json'));
+  const loaded = await Promise.all(
+    files.map((file) => readAuthorFile(path.basename(file, '.json'))),
+  );
+  const authors = loaded.filter((author): author is Author => author !== undefined);
 
   authors.sort((a, b) => a.name.localeCompare(b.name));
 

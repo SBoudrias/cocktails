@@ -32,42 +32,45 @@ const getYoutubeChannelRecipeAmounts = memo(async (): Promise<Map<string, number
   }
 
   async function scanDirectory(dirPath: string): Promise<void> {
-    for (const entry of await fs.readdir(dirPath, { withFileTypes: true })) {
-      if (entry.name === '_source.json') continue;
+    const entries = await fs.readdir(dirPath, { withFileTypes: true });
+    await Promise.all(
+      entries.map(async (entry) => {
+        if (entry.name === '_source.json') return;
 
-      const entryPath = path.join(dirPath, entry.name);
+        const entryPath = path.join(dirPath, entry.name);
 
-      if (entry.isDirectory()) {
-        await scanDirectory(entryPath);
-        continue;
-      }
-      if (!entry.name.endsWith('.json')) continue;
-
-      const relPath = path.relative(RECIPE_ROOT, entryPath);
-      const parts = relPath.split(path.sep);
-
-      // The folder a recipe file lives in is its owning source.
-      const ownerSlug = parts[0] === 'youtube-channel' ? parts[1] : undefined;
-      if (ownerSlug) {
-        addRecipeToChannel(ownerSlug, relPath);
-      }
-
-      const data = await readJSONFile<{ refs?: unknown[] }>(entryPath);
-      if (!data) continue;
-
-      for (const ref of data.refs ?? []) {
-        if (
-          typeof ref === 'object' &&
-          ref !== null &&
-          'type' in ref &&
-          ref.type === 'youtube' &&
-          'channel' in ref &&
-          typeof ref.channel === 'string'
-        ) {
-          addRecipeToChannel(ref.channel, relPath);
+        if (entry.isDirectory()) {
+          await scanDirectory(entryPath);
+          return;
         }
-      }
-    }
+        if (!entry.name.endsWith('.json')) return;
+
+        const relPath = path.relative(RECIPE_ROOT, entryPath);
+        const parts = relPath.split(path.sep);
+
+        // The folder a recipe file lives in is its owning source.
+        const ownerSlug = parts[0] === 'youtube-channel' ? parts[1] : undefined;
+        if (ownerSlug) {
+          addRecipeToChannel(ownerSlug, relPath);
+        }
+
+        const data = await readJSONFile<{ refs?: unknown[] }>(entryPath);
+        if (!data) return;
+
+        for (const ref of data.refs ?? []) {
+          if (
+            typeof ref === 'object' &&
+            ref !== null &&
+            'type' in ref &&
+            ref.type === 'youtube' &&
+            'channel' in ref &&
+            typeof ref.channel === 'string'
+          ) {
+            addRecipeToChannel(ref.channel, relPath);
+          }
+        }
+      }),
+    );
   }
 
   await scanDirectory(RECIPE_ROOT);
@@ -81,20 +84,24 @@ async function getRecipeAmount(root: string, slug: string): Promise<number> {
   const folderPath = path.join(root, slug);
   const entries = await fs.readdir(folderPath, { withFileTypes: true });
 
-  let count = 0;
-  for (const entry of entries) {
-    if (entry.isDirectory() && isChapterFolder(entry.name)) {
-      const chapterFiles = await fs.readdir(path.join(folderPath, entry.name));
-      count += chapterFiles.filter((f) => f.endsWith('.json')).length;
-    } else if (
-      entry.isFile() &&
-      entry.name.endsWith('.json') &&
-      entry.name !== '_source.json'
-    ) {
-      count++;
-    }
-  }
-  return count;
+  const counts = await Promise.all(
+    entries.map(async (entry) => {
+      if (entry.isDirectory() && isChapterFolder(entry.name)) {
+        const chapterFiles = await fs.readdir(path.join(folderPath, entry.name));
+        return chapterFiles.filter((f) => f.endsWith('.json')).length;
+      }
+      if (
+        entry.isFile() &&
+        entry.name.endsWith('.json') &&
+        entry.name !== '_source.json'
+      ) {
+        return 1;
+      }
+      return 0;
+    }),
+  );
+
+  return counts.reduce((sum, count) => sum + count, 0);
 }
 
 export const getBook = memo(async (book: string): Promise<Book> => {
@@ -150,15 +157,22 @@ export const getSource = async (type: Source['type'], slug: string): Promise<Sou
 };
 
 export const getAllSources = memo(async () => {
-  const sourcePromises: Promise<Source>[] = [];
+  const sourceTypes = await fs.readdir(RECIPE_ROOT);
+  const sourceEntries = await Promise.all(
+    sourceTypes.map(async (sourceType) => {
+      const sourceSlugs = await fs.readdir(path.join(RECIPE_ROOT, sourceType));
+      return sourceSlugs.map((sourceSlug) => ({
+        sourceType: sourceType as Source['type'],
+        sourceSlug,
+      }));
+    }),
+  );
 
-  for (const sourceType of await fs.readdir(RECIPE_ROOT)) {
-    for (const sourceSlug of await fs.readdir(path.join(RECIPE_ROOT, sourceType))) {
-      sourcePromises.push(getSource(sourceType as Source['type'], sourceSlug));
-    }
-  }
-
-  const sources = await Promise.all(sourcePromises);
+  const sources = await Promise.all(
+    sourceEntries
+      .flat()
+      .map(({ sourceType, sourceSlug }) => getSource(sourceType, sourceSlug)),
+  );
   sources.sort((a, b) => a.name.localeCompare(b.name));
 
   return sources;

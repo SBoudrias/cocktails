@@ -24,13 +24,20 @@ describe('author and bar entities', () => {
       }
     }
 
-    for (const name of authorNames) {
-      const author = await getAuthor(slugify(name));
+    const [authors, bars] = await Promise.all([
+      Promise.all(
+        [...authorNames].map(
+          async (name) => [name, await getAuthor(slugify(name))] as const,
+        ),
+      ),
+      Promise.all([...barKeys].map(async (key) => [key, await getBar(key)] as const)),
+    ]);
+
+    for (const [name, author] of authors) {
       expect(author?.name, `missing entity file for "${name}"`).toBe(name);
     }
 
-    for (const key of barKeys) {
-      const bar = await getBar(key);
+    for (const [key, bar] of bars) {
       expect(bar, `missing entity file for "${key}"`).toBeDefined();
     }
   });
