@@ -1,14 +1,38 @@
-import type { YoutubeRef } from '@cocktails/data';
+import type { Source, YoutubeRef } from '@cocktails/data';
 import { getRecipe } from '@cocktails/data/recipes';
 import { screen, within } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { buildRecipePages } from '#/modules/buildRecipePages';
 import {
   getAuthorRecipesUrl,
   getBarRecipesUrl,
   getMilkClarificationCalculatorUrl,
+  getRecipeUrl,
 } from '#/modules/url';
+import { serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import RecipePage from './page';
+
+/**
+ * The recipe page at a recipe's URL: every recipe URL serves the same page,
+ * which renders the entry of its own path out of the recipe data file —
+ * built here by the real builder, from that one recipe.
+ */
+async function pageAt({
+  type,
+  source,
+  recipe: slug,
+}: {
+  type: Source['type'];
+  source: string;
+  recipe: string;
+}) {
+  const recipe = await getRecipe({ type, slug: source }, slug);
+  sharedJsonServer.use(serveJson('/data/recipes.json', buildRecipePages([recipe])));
+  mockRouter.setCurrentUrl(getRecipeUrl(recipe));
+  return <RecipePage />;
+}
 
 describe('RecipePage', () => {
   beforeEach(() => {
@@ -19,12 +43,10 @@ describe('RecipePage', () => {
     const recipe = await getRecipe({ type: 'book', slug: 'sippin-safari' }, 'last-rites');
 
     await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: recipe.source.type,
-          source: recipe.source.slug,
-          recipe: recipe.slug,
-        }),
+      await pageAt({
+        type: recipe.source.type,
+        source: recipe.source.slug,
+        recipe: recipe.slug,
       }),
     );
 
@@ -44,12 +66,10 @@ describe('RecipePage', () => {
     const recipe = await getRecipe({ type: 'book', slug: 'sippin-safari' }, 'last-rites');
 
     await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: recipe.source.type,
-          source: recipe.source.slug,
-          recipe: recipe.slug,
-        }),
+      await pageAt({
+        type: recipe.source.type,
+        source: recipe.source.slug,
+        recipe: recipe.slug,
       }),
     );
 
@@ -70,12 +90,10 @@ describe('RecipePage', () => {
     );
 
     await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: bookRecipe.source.type,
-          source: bookRecipe.source.slug,
-          recipe: bookRecipe.slug,
-        }),
+      await pageAt({
+        type: bookRecipe.source.type,
+        source: bookRecipe.source.slug,
+        recipe: bookRecipe.slug,
       }),
     );
 
@@ -84,12 +102,10 @@ describe('RecipePage', () => {
 
   it('marks optional ingredients and preserves the marker when servings change', async () => {
     const { user } = await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: 'youtube-channel',
-          source: 'anders-erickson',
-          recipe: 'mantini',
-        }),
+      await pageAt({
+        type: 'youtube-channel',
+        source: 'anders-erickson',
+        recipe: 'mantini',
       }),
     );
 
@@ -118,12 +134,10 @@ describe('RecipePage', () => {
     );
 
     const { user } = await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: clarifiedRecipe.source.type,
-          source: clarifiedRecipe.source.slug,
-          recipe: clarifiedRecipe.slug,
-        }),
+      await pageAt({
+        type: clarifiedRecipe.source.type,
+        source: clarifiedRecipe.source.slug,
+        recipe: clarifiedRecipe.slug,
       }),
     );
 
@@ -184,12 +198,10 @@ describe('RecipePage', () => {
     const videos = recipe.refs.filter((ref): ref is YoutubeRef => ref.type === 'youtube');
 
     await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: recipe.source.type,
-          source: recipe.source.slug,
-          recipe: recipe.slug,
-        }),
+      await pageAt({
+        type: recipe.source.type,
+        source: recipe.source.slug,
+        recipe: recipe.slug,
       }),
     );
 
@@ -242,12 +254,10 @@ describe('RecipePage', () => {
     );
 
     await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: recipe.source.type,
-          source: recipe.source.slug,
-          recipe: recipe.slug,
-        }),
+      await pageAt({
+        type: recipe.source.type,
+        source: recipe.source.slug,
+        recipe: recipe.slug,
       }),
     );
 
@@ -261,12 +271,10 @@ describe('RecipePage', () => {
 
   it('renders the attribution list before the source card, keeping lists and cards apart', async () => {
     await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: 'youtube-channel',
-          source: 'educated-barfly',
-          recipe: 'little-tokyo',
-        }),
+      await pageAt({
+        type: 'youtube-channel',
+        source: 'educated-barfly',
+        recipe: 'little-tokyo',
       }),
     );
 
@@ -283,12 +291,10 @@ describe('RecipePage', () => {
 
   it('renders website refs in an also-documented-at card', async () => {
     await setupApp(
-      await RecipePage({
-        params: Promise.resolve({
-          type: 'youtube-channel',
-          source: 'mixing-up-tiki',
-          recipe: 'deep-blue-sea',
-        }),
+      await pageAt({
+        type: 'youtube-channel',
+        source: 'mixing-up-tiki',
+        recipe: 'deep-blue-sea',
       }),
     );
 

@@ -7,8 +7,12 @@ const outDir = path.join(import.meta.dirname, 'out');
 // copies to every page URL (tools/stamp-detail-pages.ts), so the build
 // manifest next-sitemap reads only knows the shell. Each page comes from its
 // type's data file instead: its `pages` keys are the page paths.
-const DETAIL_SHELLS = ['/ingredient/_/_', '/category/_'];
-const DETAIL_DATA_FILES = ['data/ingredients.json', 'data/categories.json'];
+const DETAIL_SHELLS = ['/ingredient/_/_', '/category/_', '/recipes/_/_/_'];
+const DETAIL_DATA_FILES = [
+  'data/ingredients.json',
+  'data/categories.json',
+  'data/recipes.json',
+];
 
 /** @type {import('next-sitemap').IConfig} */
 const config = {

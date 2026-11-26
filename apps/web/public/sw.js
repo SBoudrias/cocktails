@@ -136,6 +136,7 @@ async function cacheFirst(request) {
 const DETAIL_SHELLS = [
   { pattern: /^ingredient\/[^/]+\/[^/]+$/, shell: 'ingredient/_/_' },
   { pattern: /^category\/[^/]+$/, shell: 'category/_' },
+  { pattern: /^recipes\/[^/]+\/[^/]+\/[^/]+$/, shell: 'recipes/_/_/_' },
 ];
 
 function getRoute(url, scope) {

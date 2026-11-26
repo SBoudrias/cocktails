@@ -1,103 +1,31 @@
-import type { Source, WebsiteRef, YoutubeRef } from '@cocktails/data';
 import { getRecipePageParams } from '@cocktails/data/params';
-import { getRecipe } from '@cocktails/data/recipes';
-import { notFound, unstable_rethrow } from 'next/navigation';
-import { match, P } from 'ts-pattern';
-import AppHeader from '#/components/AppHeader';
-import FixBugCard from '#/components/card/FixBugCard';
-import SourceAboutCard from '#/components/card/SourceAboutCard';
-import VideoListCard from '#/components/card/VideoListCard';
-import IngredientList from '#/components/IngredientList';
-import InstructionList from '#/components/InstructionList';
-import { getRecipeEditUrl } from '#/modules/url';
-import RecipeAttributionList from './RecipeAttributionList';
-import RecipeBadges from './RecipeBadges';
-import WebsiteListCard from './WebsiteListCard';
+import type { Metadata } from 'next';
+import { DETAIL_SHELL_PARAM } from '#/modules/detailShell';
+import RecipeDetail from './RecipeDetail';
 
-type Params = { type: Source['type']; source: string; recipe: string };
+type Params = { type: string; source: string; recipe: string };
 
+/**
+ * The export holds one shell for every recipe page: the build copies it to
+ * each recipe's URL (tools/stamp-detail-pages.ts), and the page renders its
+ * own entry of data/recipes.json in the browser. The dev server renders
+ * any real recipe path, so it gets them all.
+ */
 export async function generateStaticParams(): Promise<Params[]> {
-  return getRecipePageParams();
+  if (process.env.NODE_ENV === 'development') return getRecipePageParams();
+
+  return [
+    { type: DETAIL_SHELL_PARAM, source: DETAIL_SHELL_PARAM, recipe: DETAIL_SHELL_PARAM },
+  ];
 }
 
-export async function generateMetadata({ params }: { params: Promise<Params> }) {
-  const { type, source, recipe: recipeSlug } = await params;
+// The shell's head is every recipe page's: no per-page title, and no
+// canonical (the root layout's would name the shell's own URL). The page
+// sets both once its data renders.
+export const metadata: Metadata = {
+  alternates: { canonical: null },
+};
 
-  try {
-    const recipe = await getRecipe({ type, slug: source }, recipeSlug);
-
-    return {
-      title: `Indexotica | ${recipe.name} from ${recipe.source.name}`,
-      description: `${recipe.name} cocktail recipe from ${recipe.source.name}: ${recipe.ingredients
-        .map((ingredient) => ingredient.name)
-        .join(', ')}.`,
-    };
-  } catch (error) {
-    unstable_rethrow(error);
-    notFound();
-  }
-}
-
-export default async function RecipePage({ params }: { params: Promise<Params> }) {
-  const { type, source, recipe: recipeSlug } = await params;
-  const recipe = await getRecipe({ type, slug: source }, recipeSlug);
-
-  // Every ref type is handled explicitly: adding one to the Ref union in
-  // @cocktails/data becomes a compile error here instead of a silently
-  // unrendered ref. Book and podcast refs render in the source card — the book
-  // ref names this recipe's chapter, podcast refs the episode — so neither
-  // gets a dedicated section on the recipe page.
-  const { videos, websites } = recipe.refs.reduce<{
-    videos: YoutubeRef[];
-    websites: WebsiteRef[];
-  }>(
-    (acc, ref) => {
-      match(ref)
-        .with({ type: 'youtube' }, (youtubeRef) => {
-          acc.videos.push(youtubeRef);
-        })
-        .with({ type: 'website' }, (websiteRef) => {
-          acc.websites.push(websiteRef);
-        })
-        .with(P.union({ type: 'book' }, { type: 'podcast' }), () => {})
-        .exhaustive();
-      return acc;
-    },
-    { videos: [], websites: [] },
-  );
-  if (recipe.source.type === 'youtube-channel') {
-    // For youtube channels, the first video is always in the source card.
-    videos.shift();
-  }
-
-  return (
-    <>
-      <AppHeader title={recipe.name} />
-      {/* The root layout carries the one <main> landmark; per-page mains
-          would nest (Lighthouse landmark-one-main). */}
-      <div>
-        <RecipeBadges recipe={recipe} />
-        <IngredientList
-          ingredients={recipe.ingredients}
-          techniques={recipe.techniques}
-          defaultServings={recipe.servings}
-        />
-        {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
-          <InstructionList instructions={recipe.instructions} />
-        )}
-        {recipe.attributions.length > 0 && (
-          <RecipeAttributionList attributions={recipe.attributions} />
-        )}
-        <SourceAboutCard
-          source={recipe.source}
-          chapterName={recipe.chapter?.name}
-          refs={recipe.refs}
-          m={1}
-        />
-        {videos.length > 0 && <VideoListCard refs={videos} m={1} />}
-        {websites.length > 0 && <WebsiteListCard refs={websites} m={1} />}
-        <FixBugCard fixUrl={getRecipeEditUrl(recipe)} m={1} />
-      </div>
-    </>
-  );
+export default function RecipePage() {
+  return <RecipeDetail />;
 }

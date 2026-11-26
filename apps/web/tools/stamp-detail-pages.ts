@@ -40,6 +40,11 @@ const DETAIL_ROUTES = [
     pattern: /^\/ingredient\/[^/]+\/[^/]+$/,
   },
   {
+    dataFile: path.join('data', 'recipes.json'),
+    shell: `recipes/${SHELL_PARAM}/${SHELL_PARAM}/${SHELL_PARAM}`,
+    pattern: /^\/recipes\/[^/]+\/[^/]+\/[^/]+$/,
+  },
+  {
     dataFile: path.join('data', 'categories.json'),
     shell: `category/${SHELL_PARAM}`,
     pattern: /^\/category\/[^/]+$/,
