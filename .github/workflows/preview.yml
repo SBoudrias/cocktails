@@ -94,13 +94,13 @@ on:
       # verify-internal-links.ts run inside `yarn workspace @cocktails/web
       # build` — they stay matched by apps/web/** above. The rest never runs
       # in the build: generate-icons.ts writes the committed PNGs by hand
-      # (its output, apps/web/public/icons/*, IS served),
+      # (its output, apps/web/public/icons/*, IS served) and
       # css-module-sync.test.ts is a vitest-only contract test (covered by
-      # the *.test.ts negation above), and verify-offline.ts is the preview
-      # gate itself (the workflow runs it against the build; the build does
-      # not run it).
+      # the *.test.ts negation above). verify-offline.ts stays matched on
+      # purpose: the workflow runs it against the build, so a change to
+      # the gate itself must re-run the gate — its own verdict could
+      # change even when the built export does not.
       - '!apps/web/tools/generate-icons.ts'
-      - '!apps/web/tools/verify-offline.ts'
       # Type-only and editor/config files: never emitted (Turbopack strips
       # types), and components.json is the shadcn CLI's config — nothing
       # imports it.
