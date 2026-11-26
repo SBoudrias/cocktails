@@ -32,15 +32,34 @@ export default async function globalSetup(): Promise<() => Promise<void>> {
   // directly.
   const files = await Array.fromAsync(fs.glob('data/**/*.json', { cwd: packageRoot }));
 
+  // A silent zero here (a path or glob-semantics change) would quietly
+  // disable the bundle and every read would fall back to per-file fs reads,
+  // so fail loudly instead of degrading invisibly.
+  if (files.length === 0) {
+    throw new Error(
+      `No data JSON files found under ${packageRoot} — the test data bundle is empty.`,
+    );
+  }
+
+  const startedAt = performance.now();
   const contents = await Promise.all(
     files.map((file) => fs.readFile(path.join(packageRoot, file), 'utf8')),
   );
+  const readMs = Math.round(performance.now() - startedAt);
 
   const bundlePath = path.join(
     os.tmpdir(),
     // The pid keeps parallel runs (worktrees, other agents) from sharing a
     // bundle; each run only ever reads its own.
     `cocktails-data-bundle-${process.pid}.json`,
+  );
+
+  // One line per run in the CI log proves the bundle is actually active —
+  // with it missing, tests still pass but silently fall back to per-file
+  // reads (this is exactly how a regression would hide).
+  // oxlint-disable-next-line no-console
+  console.log(
+    `[vitest] data bundle: ${files.length} files read in ${readMs}ms -> ${path.basename(bundlePath)}`,
   );
 
   try {
