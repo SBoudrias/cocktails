@@ -234,7 +234,9 @@ jobs:
       # The gates passed: turn the staged tree into the deploy the site
       # serves. diag.txt drops this run's build metadata into the deploy
       # root (what the live preview ran with, if anything goes wrong
-      # again), the meta-refresh index lands the preview root on the app,
+      # again), _headers tells Netlify to send X-Robots-Tag: noindex on
+      # every response (alias deploys do not get an automatic noindex
+      # header), the meta-refresh index lands the preview root on the app,
       # and the 404 lands at the alias root so the export's own error
       # page handles unknown paths there too. The serve.json was for the
       # local smoke server only; the upload must not carry it.
@@ -249,6 +251,10 @@ jobs:
             echo "PREVIEW_ALIAS_URL: $PREVIEW_ORIGIN"
             find apps/web/deploy | wc -l
           } > apps/web/deploy/diag.txt
+          cat > apps/web/deploy/_headers <<'EOF'
+          /*
+            X-Robots-Tag: noindex, nofollow
+          EOF
           cat > apps/web/deploy/index.html <<EOF
           <!doctype html><title>Preview</title><meta http-equiv="refresh" content="0; url=${PREVIEW_BASE_PATH}/"><a href="${PREVIEW_BASE_PATH}/">Open the preview</a>
           EOF
@@ -341,19 +347,13 @@ jobs:
         timeout-minutes: 15
         run: |
           set -eu
-          npx --yes netlify-cli@27 deploy \
-            --no-build \
-            --filter @cocktails/web \
+          node apps/web/tools/deploy-netlify.ts \
             --dir apps/web/deploy \
-            --site indexotica \
-            --auth "$NETLIFY_AUTH_TOKEN" \
+            --site-id "$SITE_ID" \
             --alias "deploy-preview-${{ github.event.pull_request.number }}" \
             --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}" \
-            --json > deploy.json
-          # The CLI writes pretty-printed JSON (multi-line); any log noise
-          # lands before the opening brace, so parse from the first line
-          # that starts a JSON object.
-          url="$(sed -n '/^{/,$p' deploy.json | jq -r '.deploy_url // empty')"
+            > deploy.json
+          url="$(jq -r '.deploy_url // empty' deploy.json)"
           if [ -z "$url" ] || [ "$url" != "$PREVIEW_ORIGIN" ]; then
             cat deploy.json
             echo "expected deploy URL $PREVIEW_ORIGIN, got '${url:-none}'"
