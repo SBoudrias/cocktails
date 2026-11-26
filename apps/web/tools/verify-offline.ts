@@ -14,10 +14,12 @@
  * genuine network failures, not by emulation quirks. The matrix:
  *
  * - install: scope-namespaced cache names, a precache that holds the app
- *   shell, the catalog, the search index and the list hubs;
+ *   shell, the catalog, the search index, the list hubs and the ingredient
+ *   pages' shell with its data file;
  * - offline on a fresh install (nothing but the home page ever visited):
- *   home, list hubs, search, the precached catalog served to pages, and the
- *   offline fallback for unvisited routes;
+ *   home, list hubs, search, the precached catalog served to pages, the
+ *   offline fallback for unvisited routes, and an unvisited ingredient page
+ *   rendered from its precached shell;
  * - catalog-rendered pages (category/ingredient) visited online, then offline;
  * - a simulated redeploy (new sw.js version, precache pruned of chunks the
  *   old deploy's pages reference), then offline again: pages visited before
@@ -76,6 +78,7 @@ async function assertFile(relative: string): Promise<void> {
 await assertFile('sw.js');
 await assertFile('data/catalog.json');
 await assertFile('data/search-index.json');
+await assertFile('data/ingredients.json');
 await assertFile('index.html');
 await assertFile('offline.html');
 const LIST_HUBS = [
@@ -128,6 +131,8 @@ const catalog = JSON.parse(
 const VISITED_CATEGORY = 'category/rum';
 const UNVISITED_CATEGORY = 'category/absinthe';
 const VISITED_INGREDIENT = 'ingredient/juice/lime-juice';
+// A client-rendered ingredient page nothing visits before going offline.
+const UNVISITED_INGREDIENT = 'ingredient/spirit/appleton-12';
 // The author/bar pages became catalog-rendered (#554); the non-alcoholic
 // style list (#553) bakes no rows at all, so it can only render through the
 // precached catalog — the strongest fresh-install offline check there is.
@@ -162,7 +167,16 @@ await assertFile(`${visitedRecipeHref.replace(/^\//, '')}.html`);
 await assertFile(`${unvisitedRecipeHref.replace(/^\//, '')}.html`);
 await assertFile(`${VISITED_CATEGORY}.html`);
 await assertFile(`${VISITED_INGREDIENT}.html`);
+await assertFile(`${UNVISITED_INGREDIENT}.html`);
 await assertFile(`${UNVISITED_CATEGORY}.html`);
+
+const ingredientPages: { pages: Record<string, { ingredient: { name: string } }> } =
+  JSON.parse(await readFile(path.join(outDir, 'data/ingredients.json'), 'utf8'));
+const unvisitedIngredientName =
+  ingredientPages.pages[`/${UNVISITED_INGREDIENT}`]?.ingredient.name;
+if (!unvisitedIngredientName) {
+  throw new Error(`data/ingredients.json carries no page for ${UNVISITED_INGREDIENT}`);
+}
 await assertFile(`${VISITED_AUTHOR}.html`);
 await assertFile(`${VISITED_BAR}.html`);
 
@@ -793,6 +807,8 @@ await check(
     for (const required of [
       `${BASE_PATH}/data/catalog.json`,
       `${BASE_PATH}/data/search-index.json`,
+      `${BASE_PATH}/data/ingredients.json`,
+      `${BASE_PATH}/ingredient/_/_.html`,
       `${BASE_PATH}/offline.html`,
       ...LIST_HUBS.map((hub) => `${BASE_PATH}/${hub}.html`),
     ]) {
@@ -912,6 +928,21 @@ await check('an unvisited recipe page falls back to the offline page', async () 
     'document.body.innerText.includes("You are offline")',
   );
 });
+
+await check(
+  'an unvisited ingredient page renders offline from the precached shell',
+  async () => {
+    // Every ingredient page is a copy of one shell that renders its entry
+    // of data/ingredients.json: with both precached, a page never visited
+    // renders in full offline on a fresh install, its recipe rows included.
+    await navigateTo(`/${UNVISITED_INGREDIENT}`);
+    await untilTrue(
+      'the ingredient title',
+      `document.querySelector('h1')?.textContent === ${JSON.stringify(unvisitedIngredientName)}`,
+    );
+    await untilCount('ingredient rows', recipeRowsExpr, (count) => count > 0);
+  },
+);
 
 // ---------------------------------------------------------------------------
 // Phase 2 — back online, visit the catalog-rendered pages and a recipe page.

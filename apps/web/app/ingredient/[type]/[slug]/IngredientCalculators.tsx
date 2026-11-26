@@ -14,7 +14,7 @@ const AGAR_CLARIFICATION_TECHNIQUES = [
 export default function IngredientCalculators({
   ingredient,
 }: {
-  ingredient: RootIngredient;
+  ingredient: { type: RootIngredient['type']; acidity?: number };
 }) {
   const [techniques] = useQueryState('technique', parseAsNativeArrayOf(parseAsString));
   if (ingredient.type !== 'juice') {
@@ -23,11 +23,9 @@ export default function IngredientCalculators({
 
   return (
     <>
-      {techniques.includes('acid-adjustment') &&
-        'acidity' in ingredient &&
-        ingredient.acidity != null && (
-          <AcidAdjustingCalculator defaultAcidity={ingredient.acidity} compact />
-        )}
+      {techniques.includes('acid-adjustment') && ingredient.acidity != null && (
+        <AcidAdjustingCalculator defaultAcidity={ingredient.acidity} compact />
+      )}
       {techniques.some((technique) =>
         AGAR_CLARIFICATION_TECHNIQUES.includes(technique),
       ) && <JuiceClarificationCalculator />}

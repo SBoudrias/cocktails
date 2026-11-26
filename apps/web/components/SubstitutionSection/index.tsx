@@ -1,12 +1,13 @@
-import type { Category, RootIngredient } from '@cocktails/data';
 import { useId } from 'react';
 import { LinkListItem } from '#/components/list/LinkList';
 import StickyGroupHeader from '#/components/list/StickyGroupHeader';
 import ListDrawer from '#/components/ListDrawer';
-import SubstitutionLists from '#/components/SubstitutionLists';
+import SubstitutionLists, {
+  type RelatedCategoryRow,
+  type SubstituteRow,
+} from '#/components/SubstitutionLists';
 import { List } from '#/components/ui/list';
-import { ingredientHasData } from '#/modules/hasData';
-import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
+import { getCategoryUrl } from '#/modules/url';
 
 /**
  * How many substitution rows fit on the page as-is: bottles plus
@@ -23,18 +24,18 @@ const INLINE_LIMIT = 5;
  */
 const PREVIEW_COUNT = 3;
 
-function renderSubstitute(substitute: RootIngredient, recipeCounts: Map<string, number>) {
+function renderSubstitute(substitute: SubstituteRow) {
   return (
     <LinkListItem
       key={substitute.slug}
-      href={ingredientHasData(substitute) ? getIngredientUrl(substitute) : undefined}
+      href={substitute.href}
       primary={substitute.name}
-      count={recipeCounts.get(substitute.slug) ?? 0}
+      count={substitute.count}
     />
   );
 }
 
-function renderRelatedCategory(relatedCategory: Category) {
+function renderRelatedCategory(relatedCategory: RelatedCategoryRow) {
   return (
     <LinkListItem
       key={relatedCategory.slug}
@@ -66,17 +67,15 @@ export default function SubstitutionSection({
   ingredientName,
   substitutes,
   relatedCategories,
-  recipeCounts,
 }: {
   /** The bottle whose substitutes the section lists. */
   ingredientName: string;
   /** Every bottle sharing one of the bottle's declared categories,
-   * most-used first (getSubstitutesForIngredient). */
-  substitutes: RootIngredient[];
+   * most-used first (getSubstitutesForIngredient), each with its recipe
+   * count shown next to its name. */
+  substitutes: SubstituteRow[];
   /** Substitution-friendly related categories, listed first. */
-  relatedCategories: Category[];
-  /** Recipe reference counts by ingredient slug, shown next to each name. */
-  recipeCounts: Map<string, number>;
+  relatedCategories: RelatedCategoryRow[];
 }) {
   const headerId = useId();
   const total = substitutes.length + relatedCategories.length;
@@ -89,7 +88,6 @@ export default function SubstitutionSection({
       <SubstitutionLists
         primaryHeader="Some substitution option"
         substitutes={substitutes}
-        recipeCounts={recipeCounts}
         relatedCategories={relatedCategories}
       />
     );
@@ -103,9 +101,7 @@ export default function SubstitutionSection({
   // family can hold categories and no sibling bottles at all).
   const bottleRows = Math.min(substitutes.length, PREVIEW_COUNT);
   const preview = [
-    ...substitutes
-      .slice(0, PREVIEW_COUNT)
-      .map((substitute) => renderSubstitute(substitute, recipeCounts)),
+    ...substitutes.slice(0, PREVIEW_COUNT).map(renderSubstitute),
     ...relatedCategories.slice(0, PREVIEW_COUNT - bottleRows).map(renderRelatedCategory),
   ];
 
@@ -130,7 +126,6 @@ export default function SubstitutionSection({
                 <SubstitutionLists
                   primaryHeader="Some substitution option"
                   substitutes={substitutes}
-                  recipeCounts={recipeCounts}
                   relatedCategories={relatedCategories}
                   headerMode="flow"
                 />

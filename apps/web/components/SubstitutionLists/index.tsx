@@ -1,7 +1,19 @@
-import type { Category, RootIngredient } from '@cocktails/data';
 import { type HeaderMode, LinkList, LinkListItem } from '#/components/list/LinkList';
-import { ingredientHasData } from '#/modules/hasData';
-import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
+import { getCategoryUrl, type getIngredientUrl } from '#/modules/url';
+
+/**
+ * A substitute bottle as its row shows it: its page's URL when it has one
+ * worth linking, and how many recipes use it.
+ */
+export type SubstituteRow = {
+  name: string;
+  slug: string;
+  href: ReturnType<typeof getIngredientUrl> | undefined;
+  count: number;
+};
+
+/** A substitution-friendly category as its row shows it. */
+export type RelatedCategoryRow = { name: string; slug: string };
 
 /**
  * The secondary substitution list: the substitution-friendly related
@@ -12,7 +24,7 @@ function RelatedCategoriesList({
   categories,
   headerMode = 'sticky',
 }: {
-  categories: Category[];
+  categories: RelatedCategoryRow[];
   /** Passed to the LinkList: 'flow' inside the substitution drawer's sheet. */
   headerMode?: HeaderMode;
 }) {
@@ -50,18 +62,16 @@ function RelatedCategoriesList({
 export default function SubstitutionLists({
   primaryHeader,
   substitutes,
-  recipeCounts,
   relatedCategories,
   headerMode = 'sticky',
 }: {
   /** Header of the primary list, e.g. "Some substitution option". */
   primaryHeader: string;
-  /** Bottles to list, expected to come from a single category. */
-  substitutes: RootIngredient[];
-  /** Recipe reference counts by ingredient slug, shown next to each bottle. */
-  recipeCounts: Map<string, number>;
+  /** Bottles to list, expected to come from a single category, each with
+   * its recipe count shown next to its name. */
+  substitutes: SubstituteRow[];
   /** Related categories, listed before the primary list. */
-  relatedCategories: Category[];
+  relatedCategories: RelatedCategoryRow[];
   /** Passed to the LinkLists: 'flow' inside the substitution drawer's sheet. */
   headerMode?: HeaderMode;
 }) {
@@ -78,11 +88,9 @@ export default function SubstitutionLists({
           renderItem={(substitute) => (
             <LinkListItem
               key={substitute.slug}
-              href={
-                ingredientHasData(substitute) ? getIngredientUrl(substitute) : undefined
-              }
+              href={substitute.href}
               primary={substitute.name}
-              count={recipeCounts.get(substitute.slug) ?? 0}
+              count={substitute.count}
             />
           )}
         />

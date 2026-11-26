@@ -107,6 +107,25 @@ async function checkPage(path: string, markers: (string | RegExp)[]) {
   }
 }
 
+/**
+ * A client-rendered detail page's HTML is its route's shell, the same for
+ * every page: what it shows comes from its type's data file, which must
+ * carry an entry for the page's path.
+ */
+async function checkPageData(dataFile: string, route: string) {
+  const label = `/${dataFile}`;
+  try {
+    const { status, body } = await get(dataFile);
+    if (status !== 200) return failures.push(`${label}: HTTP ${status}`);
+    const data: { pages?: Record<string, { title?: string }> } = JSON.parse(body);
+    const entry = data.pages?.[`/${route}`];
+    if (!entry?.title) return failures.push(`${label}: no entry for /${route}`);
+    console.log(`ok  ${label} (/${route}: ${entry.title})`);
+  } catch (error) {
+    failures.push(`${label}: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
 async function main() {
   await waitUntilLive();
 
@@ -175,8 +194,10 @@ async function main() {
   const ingredient = firstOf('ingredient');
   if (category) await checkPage(category, []);
   else failures.push('sitemap lists no /category/ page');
-  if (ingredient) await checkPage(ingredient, []);
-  else failures.push('sitemap lists no /ingredient/ page');
+  if (ingredient) {
+    await checkPage(ingredient, []);
+    await checkPageData('data/ingredients.json', ingredient);
+  } else failures.push('sitemap lists no /ingredient/ page');
   await checkPage('list/ingredients', []);
   await checkPage('list/recipes', []);
 
