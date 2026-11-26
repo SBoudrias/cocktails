@@ -3,6 +3,51 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ['main']
+    # The deploy builds the site export and gates it — a merge that
+    # cannot change the built export (test-only refactors, CI workflow
+    # changes, youtube-sync tooling) produces a byte-identical site and
+    # re-verifies a build nobody changed. Same paths + negations pattern
+    # as preview.yml (proven byte-identical exports in #544); the gates'
+    # own scripts stay INCLUDED here (unlike preview.yml, which only runs
+    # verify-offline.ts) because this workflow IS what runs them in
+    # production: a change to verify-offline.ts or the smoke suite should
+    # exercise itself against a real deploy.
+    paths:
+      - apps/web/**
+      - packages/data/**
+      - packages/conversion/**
+      - packages/ingredient-sorting/**
+      - packages/smoke/**
+      - public/**
+      - package.json
+      - yarn.lock
+      - .yarnrc.yml
+      - tsconfig.json
+      - .github/workflows/deploy.yml
+      - .github/workflows/setup-node/**
+      # --- Exclusions: files that cannot affect the built export ---
+      # Same proven set as preview.yml (each was diffed against a clean
+      # baseline in #544: test files, editor/config files, agent docs,
+      # check-data tooling and per-package tsconfigs never reach the
+      # export). generate-icons.ts writes committed PNGs by hand; its
+      # output (apps/web/public/icons/*) is served, so it stays matched
+      # by apps/web/** above.
+      - '!apps/web/**/*.test.ts'
+      - '!apps/web/**/*.test.tsx'
+      - '!apps/web/testing/**'
+      - '!apps/web/vitest.setup.ts'
+      - '!packages/**/*.test.ts'
+      - '!apps/web/tools/generate-icons.ts'
+      - '!apps/web/types/**'
+      - '!apps/web/components.json'
+      - '!apps/web/AGENTS.md'
+      - '!apps/web/CLAUDE.md'
+      - '!packages/data/globs.stub.ts'
+      - '!packages/data/schemas/**'
+      - '!packages/data/approved-overlaps.json'
+      - '!packages/data/tsconfig.json'
+      - '!packages/conversion/tsconfig.json'
+      - '!packages/ingredient-sorting/tsconfig.json'
   workflow_dispatch:
 
 # The official Pages deploy: the site builds into an artifact that
@@ -16,7 +61,13 @@ permissions:
 
 concurrency:
   group: pages-deploy
-  cancel-in-progress: false
+  # A newer push to main always wins: cancelling a superseded deploy
+  # mid-build is safe (Pages keeps serving the last deployed artifact
+  # until the newer run's own atomic deploy lands) and saves its ~3 min
+  # of runner time — main pushes land in bursts after PR-merge sprees.
+  # Cancellation never kills a deploy-pages step that already started
+  # publishing an artifact: the newer run redeploys over it regardless.
+  cancel-in-progress: true
 
 jobs:
   deploy:
