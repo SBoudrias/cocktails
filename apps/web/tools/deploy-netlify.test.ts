@@ -41,7 +41,7 @@ describe('encodeDeployPath', () => {
 });
 
 describe('parseRateLimitWaitMs', () => {
-  it('prefers X-RateLimit-Reset epoch timestamps and falls back to Retry-After', () => {
+  it('prefers X-RateLimit-Reset epoch timestamps, handles relative seconds, and falls back to Retry-After', () => {
     const now = 1_700_000_000_000;
     expect(
       parseRateLimitWaitMs(
@@ -49,121 +49,15 @@ describe('parseRateLimitWaitMs', () => {
         now,
       ),
     ).toBe(12_250);
+    expect(parseRateLimitWaitMs(new Headers({ 'X-RateLimit-Reset': '8' }), now)).toBe(
+      8_250,
+    );
     expect(parseRateLimitWaitMs(new Headers({ 'Retry-After': '4' }), now)).toBe(4_000);
     expect(parseRateLimitWaitMs(new Headers(), now)).toBeNull();
   });
 });
 
-describe('deployNetlify (zip mode)', () => {
-  it('uploads a single zip with branch + title query params and polls until ready', async () => {
-    await writeFixture('index.html', '<h1>preview</h1>');
-    await writeFixture('_headers', '/*\n  X-Robots-Tag: noindex, nofollow\n');
-
-    const fakeZip = Buffer.from('PK\x03\x04fakezip');
-    let postUrl = '';
-    let postContentType = '';
-    let pollCount = 0;
-
-    const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
-      const url =
-        typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
-      const method = init?.method ?? 'GET';
-
-      if (method === 'POST' && url.includes('/sites/site-123/deploys')) {
-        postUrl = url;
-        postContentType = new Headers(init?.headers).get('content-type') ?? '';
-        return Response.json({
-          id: 'zip-deploy-1',
-          state: 'processing',
-          branch: 'deploy-preview-42',
-          context: 'branch-deploy',
-        });
-      }
-
-      if (method === 'GET' && url.endsWith('/sites/site-123/deploys/zip-deploy-1')) {
-        pollCount++;
-        if (pollCount === 1) {
-          return Response.json({ id: 'zip-deploy-1', state: 'uploading' });
-        }
-        return Response.json({
-          id: 'zip-deploy-1',
-          state: 'ready',
-          branch: 'deploy-preview-42',
-          deploy_ssl_url: 'https://deploy-preview-42--indexotica.netlify.app',
-        });
-      }
-
-      throw new Error(`Unexpected request: ${method} ${url}`);
-    });
-
-    const result = await deployNetlify({
-      dir: deployDir,
-      siteId: 'site-123',
-      token: 'secret-token',
-      alias: 'deploy-preview-42',
-      message: 'PR #42',
-      pollIntervalMs: 1,
-      fetchImpl: fetchMock,
-      sleepImpl: noopSleep,
-      createZipImpl: async () => fakeZip,
-      log: noopLog,
-    });
-
-    expect(postUrl).toContain('branch=deploy-preview-42');
-    expect(postUrl).toContain('title=PR+%2342');
-    expect(postContentType).toBe('application/zip');
-    expect(result).toEqual({
-      deployId: 'zip-deploy-1',
-      deployUrl: 'https://deploy-preview-42--indexotica.netlify.app',
-      method: 'zip',
-      totalFiles: 2,
-      zipBytes: fakeZip.byteLength,
-      retries: 0,
-      rateLimits: 0,
-    });
-  });
-
-  it('cancels and fails if Netlify ignores the requested branch alias', async () => {
-    await writeFixture('index.html', '<h1>preview</h1>');
-    let cancelled = false;
-
-    const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
-      const url =
-        typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
-      const method = init?.method ?? 'GET';
-
-      if (method === 'POST' && url.includes('/sites/site-123/deploys')) {
-        return Response.json({
-          id: 'zip-deploy-bad',
-          state: 'processing',
-          branch: 'main',
-        });
-      }
-      if (method === 'POST' && url.endsWith('/deploys/zip-deploy-bad/cancel')) {
-        cancelled = true;
-        return Response.json({ id: 'zip-deploy-bad', state: 'canceled' });
-      }
-      throw new Error(`Unexpected request: ${method} ${url}`);
-    });
-
-    await expect(
-      deployNetlify({
-        dir: deployDir,
-        siteId: 'site-123',
-        token: 'tok',
-        alias: 'deploy-preview-42',
-        fetchImpl: fetchMock,
-        sleepImpl: noopSleep,
-        createZipImpl: async () => Buffer.from('PK'),
-        log: noopLog,
-      }),
-    ).rejects.toThrow('ignored branch alias');
-
-    expect(cancelled).toBe(true);
-  });
-});
-
-describe('deployNetlify (digest mode)', () => {
+describe('deployNetlify', () => {
   it('hashes files, deduplicates identical SHAs, uploads only required files, and waits for ready', async () => {
     const indexSha = await writeFixture('index.html', '<h1>hello</h1>');
     const dupSha = await writeFixture('nested/copy.html', '<h1>hello</h1>');
@@ -186,6 +80,8 @@ describe('deployNetlify (digest mode)', () => {
         return Response.json({
           id: 'deploy-1',
           state: 'preparing',
+          branch: 'deploy-preview-42',
+          context: 'branch-deploy',
         });
       }
 
@@ -225,7 +121,6 @@ describe('deployNetlify (digest mode)', () => {
       token: 'secret-token',
       alias: 'deploy-preview-42',
       message: 'PR #42',
-      mode: 'digest',
       concurrency: 4,
       pollIntervalMs: 1,
       fetchImpl: fetchMock,
@@ -249,7 +144,6 @@ describe('deployNetlify (digest mode)', () => {
     expect(result).toEqual({
       deployId: 'deploy-1',
       deployUrl: 'https://deploy-preview-42--indexotica.netlify.app',
-      method: 'digest',
       totalFiles: 3,
       uniqueFiles: 2,
       uploadedFiles: 1,
@@ -258,9 +152,48 @@ describe('deployNetlify (digest mode)', () => {
     });
   });
 
-  it('retries HTTP 429 rate limits (honoring X-RateLimit-Reset) and transient 502 errors', async () => {
+  it('cancels and fails if Netlify ignores the requested branch alias', async () => {
+    await writeFixture('index.html', '<h1>preview</h1>');
+    let cancelled = false;
+
+    const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+      const url =
+        typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+      const method = init?.method ?? 'GET';
+
+      if (method === 'POST' && url.includes('/sites/site-123/deploys')) {
+        return Response.json({
+          id: 'deploy-bad-branch',
+          state: 'prepared',
+          branch: 'main',
+        });
+      }
+      if (method === 'POST' && url.endsWith('/deploys/deploy-bad-branch/cancel')) {
+        cancelled = true;
+        return Response.json({ id: 'deploy-bad-branch', state: 'canceled' });
+      }
+      throw new Error(`Unexpected request: ${method} ${url}`);
+    });
+
+    await expect(
+      deployNetlify({
+        dir: deployDir,
+        siteId: 'site-123',
+        token: 'tok',
+        alias: 'deploy-preview-42',
+        fetchImpl: fetchMock,
+        sleepImpl: noopSleep,
+        log: noopLog,
+      }),
+    ).rejects.toThrow('ignored branch alias');
+
+    expect(cancelled).toBe(true);
+  });
+
+  it('retries HTTP 429 rate limits (honoring X-RateLimit-Reset and stepping down concurrency) and transient 502 errors', async () => {
     const fileSha = await writeFixture('index.html', '<html>ok</html>');
     const sleepCalls: number[] = [];
+    const logs: string[] = [];
     let putAttempts = 0;
 
     const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
@@ -282,6 +215,8 @@ describe('deployNetlify (digest mode)', () => {
           return new Response('slow down', {
             status: 429,
             headers: {
+              'X-RateLimit-Limit': '500',
+              'X-RateLimit-Remaining': '0',
               'X-RateLimit-Reset': String(Math.ceil(Date.now() / 1_000) + 5),
             },
           });
@@ -308,19 +243,22 @@ describe('deployNetlify (digest mode)', () => {
       siteId: 'site-1',
       token: 'tok',
       alias: 'deploy-preview-9',
-      mode: 'digest',
+      concurrency: 10,
       pollIntervalMs: 1,
       fetchImpl: fetchMock,
       sleepImpl: async (ms) => {
         sleepCalls.push(ms);
       },
-      log: noopLog,
+      log: (line) => {
+        logs.push(line);
+      },
     });
 
     expect(putAttempts).toBe(3);
     expect(result.retries).toBe(2);
     expect(result.rateLimits).toBe(1);
     expect(sleepCalls[0]).toBeGreaterThanOrEqual(4_000);
+    expect(logs.some((line) => line.includes('concurrency -> 7'))).toBe(true);
   });
 
   it('cancels the deploy when an upload fails with a non-retryable 422', async () => {
@@ -355,7 +293,6 @@ describe('deployNetlify (digest mode)', () => {
         siteId: 'site-1',
         token: 'tok',
         alias: 'deploy-preview-3',
-        mode: 'digest',
         fetchImpl: fetchMock,
         sleepImpl: noopSleep,
         log: noopLog,

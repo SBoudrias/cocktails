@@ -1,17 +1,20 @@
 #!/usr/bin/env -S node --no-warnings
 
 /**
- * Direct Netlify REST API uploader for PR preview deploys.
+ * Direct Netlify File Digest REST API uploader for PR preview deploys.
  *
  * Replaces `npx netlify-cli deploy` in `.github/workflows/preview.yml`:
- * - avoids the ~22s cold `npx netlify-cli` download on every run
- * - uses Netlify's single-request ZIP deploy API when the file count is
- *   under Netlify's 25,000-file ZIP extraction cap (one HTTP POST instead
- *   of ~19,000 individual file PUTs — cutting deploys from ~7–8 min to
- *   under a minute)
- * - automatically falls back to Netlify's File Digest API (concurrent
- *   uploads, SHA-1 deduplication, and `X-RateLimit-Reset` / `Retry-After`
- *   pacing) if the export exceeds the ZIP cap or `--mode digest` is requested
+ * - avoids the ~15–22s cold `npx netlify-cli` download on every run
+ * - deduplicates identical SHA-1 files before uploading (Netlify's File
+ *   Digest API only requires each unique SHA-1 once, skipping ~4,800
+ *   duplicate RSC files that `netlify-cli` uploads redundantly)
+ * - uploads concurrently with adaptive rate-limit pacing (global
+ *   `X-RateLimit-Reset` / `Retry-After` cooldown + AIMD concurrency backoff
+ *   on HTTP 429)
+ *
+ * Note: Netlify's single-request ZIP deploy API stalls server-side on this
+ * ~24k-file / ~147 MB export (near Netlify's 25k-file ZIP limit), so File
+ * Digest is the only reliable API for this site size.
  *
  * Usage:
  *   node apps/web/tools/deploy-netlify.ts \
@@ -21,35 +24,30 @@
  *     --message "PR #123 @ <sha>"
  *
  * Reads NETLIFY_AUTH_TOKEN from the environment (or --token).
- * Prints `{ deploy_id, deploy_url, method, ... }` JSON to stdout.
+ * Prints `{ deploy_id, deploy_url, ... }` JSON to stdout.
  */
-import { execFile as execFileCb } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdtemp, readdir, readFile, rm } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
+import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { parseArgs, promisify } from 'node:util';
+import { parseArgs } from 'node:util';
 import { match, P } from 'ts-pattern';
 
-const execFile = promisify(execFileCb);
-
 const API_BASE = 'https://api.netlify.com/api/v1';
-// Netlify caps ZIP extraction at 25,000 files per deploy; leave headroom
-// before falling back to the File Digest API.
-const MAX_ZIP_FILES = 24_800;
-const DEFAULT_DIGEST_CONCURRENCY = 10;
+const USER_AGENT = 'indexotica-deploy/1.0';
+const DEFAULT_CONCURRENCY = 16;
+const MIN_CONCURRENCY = 5;
+const RECOVERY_STREAK = 1_000;
 const DEFAULT_HASH_CONCURRENCY = 64;
 const DEFAULT_POLL_INTERVAL_MS = 1_500;
 const DEFAULT_TIMEOUT_MS = 12 * 60 * 1_000;
 const REQUEST_TIMEOUT_MS = 60_000;
-const ZIP_UPLOAD_TIMEOUT_MS = 180_000;
+const MAX_RATE_LIMIT_WAIT_MS = 120_000;
 const SYNC_FILE_LIMIT = 100;
+const MAX_API_RETRIES = 6;
 const MAX_UPLOAD_RETRIES = 6;
-const MAX_RATE_LIMIT_RETRIES = 20;
+const MAX_RATE_LIMIT_RETRIES = 40;
 
 const DIFFED_STATES = new Set(['prepared', 'uploading', 'uploaded', 'ready']);
-
-export type DeployMode = 'auto' | 'zip' | 'digest';
 
 export interface DeployNetlifyOptions {
   dir: string;
@@ -57,24 +55,20 @@ export interface DeployNetlifyOptions {
   token: string;
   alias: string;
   message?: string;
-  mode?: DeployMode;
   concurrency?: number;
   pollIntervalMs?: number;
   timeoutMs?: number;
   fetchImpl?: typeof fetch;
   sleepImpl?: (ms: number) => Promise<void>;
-  createZipImpl?: (dir: string) => Promise<Buffer>;
   log?: (line: string) => void;
 }
 
 export interface DeployNetlifyResult {
   deployId: string;
   deployUrl: string;
-  method: 'zip' | 'digest';
   totalFiles: number;
-  uniqueFiles?: number;
-  uploadedFiles?: number;
-  zipBytes?: number;
+  uniqueFiles: number;
+  uploadedFiles: number;
   retries: number;
   rateLimits: number;
 }
@@ -144,23 +138,40 @@ export function parseRateLimitWaitMs(
 ): number | null {
   const resetHeader = headers.get('x-ratelimit-reset');
   if (resetHeader) {
-    const resetEpochSec = Number(resetHeader);
-    if (Number.isFinite(resetEpochSec) && resetEpochSec > 0) {
-      return Math.max(1_000, Math.ceil(resetEpochSec * 1_000 - nowMs) + 250);
+    const resetValue = Number(resetHeader);
+    if (Number.isFinite(resetValue) && resetValue > 0) {
+      const deltaMs =
+        resetValue > 1_000_000_000 ? resetValue * 1_000 - nowMs : resetValue * 1_000;
+      return Math.min(MAX_RATE_LIMIT_WAIT_MS, Math.max(1_000, Math.ceil(deltaMs) + 250));
     }
   }
   const retryAfter = headers.get('retry-after');
   if (retryAfter) {
     const seconds = Number(retryAfter);
     if (Number.isFinite(seconds) && seconds >= 0) {
-      return Math.max(1_000, Math.ceil(seconds * 1_000));
+      return Math.min(
+        MAX_RATE_LIMIT_WAIT_MS,
+        Math.max(1_000, Math.ceil(seconds * 1_000)),
+      );
     }
     const dateMs = Date.parse(retryAfter);
     if (Number.isFinite(dateMs)) {
-      return Math.max(1_000, dateMs - nowMs);
+      return Math.min(MAX_RATE_LIMIT_WAIT_MS, Math.max(1_000, dateMs - nowMs));
     }
   }
   return null;
+}
+
+function formatRateLimitHeaders(headers: Pick<Headers, 'get'>): string {
+  const parts = [
+    ['limit', headers.get('x-ratelimit-limit')],
+    ['remaining', headers.get('x-ratelimit-remaining')],
+    ['reset', headers.get('x-ratelimit-reset')],
+    ['retry-after', headers.get('retry-after')],
+  ]
+    .filter(([, value]) => value !== null)
+    .map(([key, value]) => `${key}=${value}`);
+  return parts.length > 0 ? parts.join(' ') : 'no rate-limit headers';
 }
 
 async function listFilesRecursive(currentDir: string): Promise<string[]> {
@@ -198,24 +209,66 @@ async function mapWithConcurrency<T, R>(
   return results;
 }
 
-async function defaultCreateZip(rootDir: string): Promise<Buffer> {
-  const tempDir = await mkdtemp(path.join(tmpdir(), 'netlify-zip-'));
-  const zipPath = path.join(tempDir, 'deploy.zip');
-  try {
-    // Compression level 1 is fast on ~24k small HTML/RSC files while still
-    // shrinking the ~570 MB export to ~130 MB for a quick single POST.
-    await execFile('zip', ['-1', '-q', '-r', zipPath, '.'], {
-      cwd: rootDir,
-      maxBuffer: 10 * 1024 * 1024,
+/**
+ * Dynamic concurrency gate supporting AIMD (additive increase, multiplicative
+ * decrease) so workers back off smoothly if Netlify throttles uploads.
+ */
+class AdaptiveLimiter {
+  private limit: number;
+  private active = 0;
+  private waiters: (() => void)[] = [];
+
+  constructor(
+    private readonly maxLimit: number,
+    private readonly minLimit: number,
+  ) {
+    this.limit = maxLimit;
+  }
+
+  get currentLimit(): number {
+    return this.limit;
+  }
+
+  async acquire(): Promise<void> {
+    if (this.active < this.limit) {
+      this.active++;
+      return;
+    }
+    await new Promise<void>((resolve) => {
+      this.waiters.push(resolve);
     });
-    return await readFile(zipPath);
-  } finally {
-    await rm(tempDir, { recursive: true, force: true });
+    this.active++;
+  }
+
+  release(): void {
+    this.active--;
+    this.drain();
+  }
+
+  decrease(): number {
+    this.limit = Math.max(this.minLimit, Math.floor(this.limit * 0.7));
+    return this.limit;
+  }
+
+  increase(): number {
+    if (this.limit < this.maxLimit) {
+      this.limit++;
+      this.drain();
+    }
+    return this.limit;
+  }
+
+  private drain(): void {
+    while (this.active < this.limit && this.waiters.length > 0) {
+      const next = this.waiters.shift();
+      next?.();
+    }
   }
 }
 
 async function apiRequest(
   fetchImpl: typeof fetch,
+  sleepImpl: (ms: number) => Promise<void>,
   url: string,
   token: string,
   init: {
@@ -227,23 +280,53 @@ async function apiRequest(
 ): Promise<unknown> {
   const headers: Record<string, string> = {
     Authorization: `Bearer ${token}`,
+    Accept: 'application/json',
+    'User-Agent': USER_AGENT,
   };
   if (init.contentType) {
     headers['Content-Type'] = init.contentType;
   }
-  const response = await fetchImpl(url, {
-    method: init.method,
-    body: init.body,
-    signal: AbortSignal.timeout(init.timeoutMs ?? REQUEST_TIMEOUT_MS),
-    headers,
-  });
-  const text = await response.text();
-  if (!response.ok) {
-    throw new Error(
-      `Netlify API ${init.method} ${url} failed (${response.status}): ${text}`,
-    );
+
+  for (let attempt = 0; ; attempt++) {
+    let status: number | undefined;
+    let rateLimitWaitMs: number | null = null;
+    let lastError: Error;
+
+    try {
+      const response = await fetchImpl(url, {
+        method: init.method,
+        body: init.body,
+        signal: AbortSignal.timeout(init.timeoutMs ?? REQUEST_TIMEOUT_MS),
+        headers,
+      });
+      const text = await response.text();
+      if (response.ok) {
+        return text ? JSON.parse(text) : undefined;
+      }
+      status = response.status;
+      rateLimitWaitMs = parseRateLimitWaitMs(response.headers);
+      lastError = new Error(
+        `Netlify API ${init.method} ${url} failed (${status}): ${text}`,
+      );
+    } catch (error) {
+      lastError =
+        error instanceof Error ? error : new Error(String(error), { cause: error });
+    }
+
+    const retryable = match(status)
+      .with(429, 408, P.number.gte(500), undefined, () => true)
+      .otherwise(() => false);
+
+    if (!retryable || attempt >= MAX_API_RETRIES) {
+      throw lastError;
+    }
+
+    const waitMs =
+      status === 429
+        ? (rateLimitWaitMs ?? Math.min(30_000, 5_000 * (attempt + 1)))
+        : Math.min(30_000, 500 * 2 ** attempt);
+    await sleepImpl(waitMs);
   }
-  return text ? JSON.parse(text) : undefined;
 }
 
 async function pollDeployUntil(
@@ -259,7 +342,7 @@ async function pollDeployUntil(
   const url = `${API_BASE}/sites/${encodeURIComponent(siteId)}/deploys/${encodeURIComponent(deployId)}`;
   while (Date.now() < deadlineMs) {
     const deploy = parseDeployResponse(
-      await apiRequest(fetchImpl, url, token, { method: 'GET' }),
+      await apiRequest(fetchImpl, sleepImpl, url, token, { method: 'GET' }),
     );
     if (deploy.state === 'error') {
       throw new Error(
@@ -284,153 +367,53 @@ async function cancelDeployBestEffort(
   await fetchImpl(`${API_BASE}/deploys/${encodeURIComponent(deployId)}/cancel`, {
     method: 'POST',
     signal: AbortSignal.timeout(15_000),
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'User-Agent': USER_AGENT,
+    },
   }).catch(() => {});
 }
 
-async function deployViaZip(
-  absoluteRoot: string,
-  totalFiles: number,
-  options: Required<
-    Pick<
-      DeployNetlifyOptions,
-      'siteId' | 'token' | 'alias' | 'pollIntervalMs' | 'fetchImpl' | 'sleepImpl' | 'log'
-    >
-  > & {
-    message?: string;
-    createZipImpl: (dir: string) => Promise<Buffer>;
-    startedAt: number;
-    deadlineMs: number;
-  },
+/**
+ * Deploy a static directory to Netlify as a named alias deploy via the
+ * File Digest REST API with SHA-1 deduplication and adaptive concurrency.
+ */
+export async function deployNetlify(
+  options: DeployNetlifyOptions,
 ): Promise<DeployNetlifyResult> {
   const {
+    dir,
     siteId,
     token,
     alias,
     message,
-    pollIntervalMs,
-    fetchImpl,
-    sleepImpl,
-    createZipImpl,
-    log,
-    startedAt,
-    deadlineMs,
+    concurrency = DEFAULT_CONCURRENCY,
+    pollIntervalMs = DEFAULT_POLL_INTERVAL_MS,
+    timeoutMs = DEFAULT_TIMEOUT_MS,
+    fetchImpl = fetch,
+    sleepImpl = defaultSleep,
+    log = (line: string) => console.error(line),
   } = options;
+
+  const startedAt = performance.now();
+  const deadlineMs = Date.now() + timeoutMs;
   const elapsedSec = (since: number) => ((performance.now() - since) / 1_000).toFixed(1);
 
-  const zipStart = performance.now();
-  const zipBuffer = await createZipImpl(absoluteRoot);
-  log(
-    `netlify-deploy: zipped ${totalFiles} files (${(zipBuffer.byteLength / 1024 / 1024).toFixed(1)} MB) in ${elapsedSec(zipStart)}s`,
-  );
+  const absoluteRoot = path.resolve(dir);
+  const fullPaths = await listFilesRecursive(absoluteRoot);
 
-  const createUrl = new URL(`${API_BASE}/sites/${encodeURIComponent(siteId)}/deploys`);
-  createUrl.searchParams.set('branch', alias);
-  if (message) {
-    createUrl.searchParams.set('title', message);
+  if (fullPaths.length === 0) {
+    throw new Error(`Refusing to deploy empty directory: ${dir}`);
   }
 
-  const uploadStart = performance.now();
-  const created = parseDeployResponse(
-    await apiRequest(fetchImpl, createUrl.href, token, {
-      method: 'POST',
-      contentType: 'application/zip',
-      body: new Uint8Array(zipBuffer),
-      timeoutMs: ZIP_UPLOAD_TIMEOUT_MS,
-    }),
-  );
-  const deployId = created.id;
-  log(
-    `netlify-deploy: uploaded zip in ${elapsedSec(uploadStart)}s (deploy=${deployId}, state=${created.state}, branch=${created.branch ?? 'none'}, context=${created.context ?? 'none'})`,
-  );
-
-  try {
-    if (created.branch && created.branch !== alias) {
+  for (const fullPath of fullPaths) {
+    const relPath = path.relative(absoluteRoot, fullPath).split(path.sep).join('/');
+    if (relPath.includes('#') || relPath.includes('?')) {
       throw new Error(
-        `Netlify deploy ${deployId} ignored branch alias "${alias}" (got "${created.branch}")`,
+        `Invalid filename "${relPath}": Netlify deploys cannot contain # or ? characters`,
       );
     }
-    if (created.context === 'production') {
-      throw new Error(
-        `Netlify deploy ${deployId} unexpectedly targeted production context for alias "${alias}"`,
-      );
-    }
-
-    const readyStart = performance.now();
-    const ready =
-      created.state === 'ready'
-        ? created
-        : await pollDeployUntil(
-            fetchImpl,
-            sleepImpl,
-            token,
-            siteId,
-            deployId,
-            new Set(['ready']),
-            pollIntervalMs,
-            deadlineMs,
-          );
-
-    const deployUrl = ready.deploy_ssl_url ?? ready.deploy_url ?? '';
-    if (!deployUrl) {
-      throw new Error(
-        `Netlify deploy ${deployId} reached ready state with no deploy_url`,
-      );
-    }
-    log(
-      `netlify-deploy: ready in ${elapsedSec(readyStart)}s (total ${elapsedSec(startedAt)}s) -> ${deployUrl}`,
-    );
-
-    return {
-      deployId,
-      deployUrl,
-      method: 'zip',
-      totalFiles,
-      zipBytes: zipBuffer.byteLength,
-      retries: 0,
-      rateLimits: 0,
-    };
-  } catch (error) {
-    await cancelDeployBestEffort(fetchImpl, token, deployId);
-    throw error;
   }
-}
-
-async function deployViaDigest(
-  absoluteRoot: string,
-  fullPaths: readonly string[],
-  options: Required<
-    Pick<
-      DeployNetlifyOptions,
-      | 'siteId'
-      | 'token'
-      | 'alias'
-      | 'concurrency'
-      | 'pollIntervalMs'
-      | 'fetchImpl'
-      | 'sleepImpl'
-      | 'log'
-    >
-  > & {
-    message?: string;
-    startedAt: number;
-    deadlineMs: number;
-  },
-): Promise<DeployNetlifyResult> {
-  const {
-    siteId,
-    token,
-    alias,
-    message,
-    concurrency,
-    pollIntervalMs,
-    fetchImpl,
-    sleepImpl,
-    log,
-    startedAt,
-    deadlineMs,
-  } = options;
-  const elapsedSec = (since: number) => ((performance.now() - since) / 1_000).toFixed(1);
 
   const hashStart = performance.now();
   const entries = await mapWithConcurrency(
@@ -463,7 +446,7 @@ async function deployViaDigest(
 
   const diffStart = performance.now();
   const created = parseDeployResponse(
-    await apiRequest(fetchImpl, createUrl.href, token, {
+    await apiRequest(fetchImpl, sleepImpl, createUrl.href, token, {
       method: 'POST',
       contentType: 'application/json',
       body: JSON.stringify({
@@ -477,6 +460,17 @@ async function deployViaDigest(
   const deployId = created.id;
 
   try {
+    if (created.branch && created.branch !== alias) {
+      throw new Error(
+        `Netlify deploy ${deployId} ignored branch alias "${alias}" (got "${created.branch}")`,
+      );
+    }
+    if (created.context === 'production') {
+      throw new Error(
+        `Netlify deploy ${deployId} unexpectedly targeted production context for alias "${alias}"`,
+      );
+    }
+
     const diffed = DIFFED_STATES.has(created.state)
       ? created
       : await pollDeployUntil(
@@ -497,14 +491,18 @@ async function deployViaDigest(
       if (entry) toUpload.push(entry);
     }
     log(
-      `netlify-deploy: diffed in ${elapsedSec(diffStart)}s — ${toUpload.length} files to upload (concurrency=${concurrency})`,
+      `netlify-deploy: diffed in ${elapsedSec(diffStart)}s — ${toUpload.length} unique files to upload (concurrency=${concurrency})`,
     );
 
     const uploadStart = performance.now();
+    const minConcurrency = Math.min(concurrency, MIN_CONCURRENCY);
+    const limiter = new AdaptiveLimiter(concurrency, minConcurrency);
     let uploadedCount = 0;
     let retries = 0;
     let rateLimits = 0;
     let cooldownUntil = 0;
+    let lastBackoffWindowUntil = 0;
+    let successStreak = 0;
 
     await mapWithConcurrency(toUpload, concurrency, async (entry) => {
       const fileUrl = `${API_BASE}/deploys/${encodeURIComponent(deployId)}/files/${encodeDeployPath(entry.relPath)}`;
@@ -512,38 +510,61 @@ async function deployViaDigest(
 
       let transientAttempts = 0;
       let rateLimitAttempts = 0;
+      let sleptCooldownUntil = 0;
 
       while (true) {
-        const waitMs = cooldownUntil - Date.now();
-        if (waitMs > 0) {
-          await sleepImpl(waitMs);
+        const nowBeforeReq = Date.now();
+        if (nowBeforeReq >= deadlineMs) {
+          throw new Error(
+            `Timed out uploading files to Netlify deploy ${deployId} after ${uploadedCount}/${toUpload.length} files`,
+          );
+        }
+
+        if (cooldownUntil > nowBeforeReq && cooldownUntil > sleptCooldownUntil) {
+          const targetCooldown = cooldownUntil;
+          await sleepImpl(targetCooldown - nowBeforeReq);
+          sleptCooldownUntil = targetCooldown;
         }
 
         let status: number | undefined;
         let rateLimitWaitMs: number | null = null;
+        let rateLimitInfo = '';
         let lastError: Error;
 
+        await limiter.acquire();
         try {
           const response = await fetchImpl(fileUrl, {
             method: 'PUT',
             signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
             headers: {
               Authorization: `Bearer ${token}`,
+              Accept: 'application/json',
               'Content-Type': 'application/octet-stream',
+              'User-Agent': USER_AGENT,
             },
             body,
           });
           if (response.ok) {
             uploadedCount++;
+            successStreak++;
+            if (successStreak >= RECOVERY_STREAK) {
+              successStreak = 0;
+              limiter.increase();
+            }
             if (uploadedCount % 2_000 === 0 || uploadedCount === toUpload.length) {
+              const elapsed = Math.max(0.1, (performance.now() - uploadStart) / 1_000);
+              const rate = (uploadedCount / elapsed).toFixed(1);
               log(
-                `netlify-deploy: uploaded ${uploadedCount}/${toUpload.length} (${elapsedSec(uploadStart)}s)`,
+                `netlify-deploy: uploaded ${uploadedCount}/${toUpload.length} (${elapsed.toFixed(1)}s, ${rate} files/s, concurrency=${limiter.currentLimit}, rateLimits=${rateLimits})`,
               );
             }
             return;
           }
           status = response.status;
           rateLimitWaitMs = parseRateLimitWaitMs(response.headers);
+          if (status === 429) {
+            rateLimitInfo = formatRateLimitHeaders(response.headers);
+          }
           const detail = await response.text().catch(() => '');
           lastError = new Error(
             `Upload failed for ${entry.relPath} (HTTP ${status}): ${detail}`,
@@ -551,12 +572,14 @@ async function deployViaDigest(
         } catch (error) {
           lastError =
             error instanceof Error ? error : new Error(String(error), { cause: error });
+        } finally {
+          limiter.release();
         }
 
         const action = match(status)
-          .with(400, 422, () => 'abort' as const)
+          .with(400, 401, 403, 404, 422, () => 'abort' as const)
           .with(429, () => 'rate-limit' as const)
-          .with(undefined, P.number.gt(400), () => 'retry' as const)
+          .with(undefined, 408, P.number.gte(500), () => 'retry' as const)
           .otherwise(() => 'abort' as const);
 
         if (action === 'abort') {
@@ -570,9 +593,20 @@ async function deployViaDigest(
           }
           retries++;
           rateLimits++;
+          const now = Date.now();
           const pauseMs = rateLimitWaitMs ?? Math.min(30_000, 5_000 * rateLimitAttempts);
-          cooldownUntil = Math.max(cooldownUntil, Date.now() + pauseMs);
-          await sleepImpl(pauseMs);
+          const nextCooldownUntil = now + pauseMs;
+          // Multiple in-flight workers can hit 429 in the same burst; only step
+          // down concurrency and log once per cooldown window.
+          if (now >= lastBackoffWindowUntil) {
+            lastBackoffWindowUntil = nextCooldownUntil;
+            successStreak = 0;
+            const nextLimit = limiter.decrease();
+            log(
+              `netlify-deploy: HTTP 429 at ${uploadedCount}/${toUpload.length} (${rateLimitInfo}) — pausing ${(pauseMs / 1_000).toFixed(1)}s, concurrency -> ${nextLimit}`,
+            );
+          }
+          cooldownUntil = Math.max(cooldownUntil, nextCooldownUntil);
           continue;
         }
 
@@ -613,7 +647,6 @@ async function deployViaDigest(
     return {
       deployId,
       deployUrl,
-      method: 'digest',
       totalFiles: entries.length,
       uniqueFiles: bySha.size,
       uploadedFiles: toUpload.length,
@@ -626,90 +659,6 @@ async function deployViaDigest(
   }
 }
 
-/**
- * Deploy a static directory to Netlify as a named alias deploy via the
- * ZIP API (when under Netlify's 25k-file cap) or the File Digest API.
- */
-export async function deployNetlify(
-  options: DeployNetlifyOptions,
-): Promise<DeployNetlifyResult> {
-  const {
-    dir,
-    siteId,
-    token,
-    alias,
-    message,
-    mode = 'auto',
-    concurrency = DEFAULT_DIGEST_CONCURRENCY,
-    pollIntervalMs = DEFAULT_POLL_INTERVAL_MS,
-    timeoutMs = DEFAULT_TIMEOUT_MS,
-    fetchImpl = fetch,
-    sleepImpl = defaultSleep,
-    createZipImpl = defaultCreateZip,
-    log = (line: string) => console.error(line),
-  } = options;
-
-  const startedAt = performance.now();
-  const deadlineMs = Date.now() + timeoutMs;
-  const absoluteRoot = path.resolve(dir);
-  const fullPaths = await listFilesRecursive(absoluteRoot);
-
-  if (fullPaths.length === 0) {
-    throw new Error(`Refusing to deploy empty directory: ${dir}`);
-  }
-
-  for (const fullPath of fullPaths) {
-    const relPath = path.relative(absoluteRoot, fullPath).split(path.sep).join('/');
-    if (relPath.includes('#') || relPath.includes('?')) {
-      throw new Error(
-        `Invalid filename "${relPath}": Netlify deploys cannot contain # or ? characters`,
-      );
-    }
-  }
-
-  const useZip = match(mode)
-    .with('zip', () => true)
-    .with('digest', () => false)
-    .with('auto', () => fullPaths.length <= MAX_ZIP_FILES)
-    .exhaustive();
-
-  if (useZip) {
-    return deployViaZip(absoluteRoot, fullPaths.length, {
-      siteId,
-      token,
-      alias,
-      message,
-      pollIntervalMs,
-      fetchImpl,
-      sleepImpl,
-      createZipImpl,
-      log,
-      startedAt,
-      deadlineMs,
-    });
-  }
-
-  if (mode === 'auto') {
-    log(
-      `netlify-deploy: ${fullPaths.length} files exceeds ZIP cap (${MAX_ZIP_FILES}); using File Digest API`,
-    );
-  }
-
-  return deployViaDigest(absoluteRoot, fullPaths, {
-    siteId,
-    token,
-    alias,
-    message,
-    concurrency,
-    pollIntervalMs,
-    fetchImpl,
-    sleepImpl,
-    log,
-    startedAt,
-    deadlineMs,
-  });
-}
-
 if (process.argv[1] === import.meta.filename) {
   const { values } = parseArgs({
     options: {
@@ -718,7 +667,6 @@ if (process.argv[1] === import.meta.filename) {
       alias: { type: 'string' },
       message: { type: 'string' },
       token: { type: 'string' },
-      mode: { type: 'string' },
       concurrency: { type: 'string' },
     },
   });
@@ -730,14 +678,8 @@ if (process.argv[1] === import.meta.filename) {
 
   if (!dir || !siteId || !alias || !token) {
     console.error(
-      'usage: deploy-netlify.ts --dir <path> --site-id <id> --alias <alias> [--message <msg>] [--mode auto|zip|digest] [--concurrency <n>] (requires NETLIFY_AUTH_TOKEN)',
+      'usage: deploy-netlify.ts --dir <path> --site-id <id> --alias <alias> [--message <msg>] [--concurrency <n>] (requires NETLIFY_AUTH_TOKEN)',
     );
-    process.exit(2);
-  }
-
-  const modeRaw = values.mode ?? 'auto';
-  if (modeRaw !== 'auto' && modeRaw !== 'zip' && modeRaw !== 'digest') {
-    console.error(`invalid mode: ${modeRaw} (expected auto, zip, or digest)`);
     process.exit(2);
   }
 
@@ -755,18 +697,15 @@ if (process.argv[1] === import.meta.filename) {
       token,
       alias,
       message: values.message,
-      mode: modeRaw,
       concurrency,
     });
     console.log(
       JSON.stringify({
         deploy_id: result.deployId,
         deploy_url: result.deployUrl,
-        method: result.method,
         total_files: result.totalFiles,
         unique_files: result.uniqueFiles,
         uploaded_files: result.uploadedFiles,
-        zip_bytes: result.zipBytes,
         retries: result.retries,
         rate_limits: result.rateLimits,
       }),
