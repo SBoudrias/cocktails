@@ -34,9 +34,9 @@ import { match, P } from 'ts-pattern';
 
 const API_BASE = 'https://api.netlify.com/api/v1';
 const USER_AGENT = 'indexotica-deploy/1.0';
-const DEFAULT_CONCURRENCY = 16;
-const MIN_CONCURRENCY = 5;
-const RECOVERY_STREAK = 1_000;
+const DEFAULT_CONCURRENCY = 10;
+const MIN_CONCURRENCY = 4;
+const RECOVERY_STREAK = 1_500;
 const DEFAULT_HASH_CONCURRENCY = 64;
 const DEFAULT_POLL_INTERVAL_MS = 1_500;
 const DEFAULT_TIMEOUT_MS = 12 * 60 * 1_000;
@@ -45,7 +45,7 @@ const MAX_RATE_LIMIT_WAIT_MS = 120_000;
 const SYNC_FILE_LIMIT = 100;
 const MAX_API_RETRIES = 6;
 const MAX_UPLOAD_RETRIES = 6;
-const MAX_RATE_LIMIT_RETRIES = 40;
+const MAX_RATE_LIMIT_RETRIES = 60;
 
 const DIFFED_STATES = new Set(['prepared', 'uploading', 'uploaded', 'ready']);
 
@@ -162,7 +162,10 @@ export function parseRateLimitWaitMs(
   return null;
 }
 
-function formatRateLimitHeaders(headers: Pick<Headers, 'get'>): string {
+function formatRateLimitHeaders(
+  headers: Pick<Headers, 'get' | 'entries'>,
+  includeAll: boolean,
+): string {
   const parts = [
     ['limit', headers.get('x-ratelimit-limit')],
     ['remaining', headers.get('x-ratelimit-remaining')],
@@ -171,7 +174,14 @@ function formatRateLimitHeaders(headers: Pick<Headers, 'get'>): string {
   ]
     .filter(([, value]) => value !== null)
     .map(([key, value]) => `${key}=${value}`);
-  return parts.length > 0 ? parts.join(' ') : 'no rate-limit headers';
+  if (parts.length > 0) return parts.join(' ');
+  if (includeAll) {
+    const all = Array.from(headers.entries())
+      .map(([key, value]) => `${key}=${value}`)
+      .join('; ');
+    return all ? `headers: ${all}` : 'no headers';
+  }
+  return 'no rate-limit headers';
 }
 
 async function listFilesRecursive(currentDir: string): Promise<string[]> {
@@ -190,22 +200,24 @@ async function listFilesRecursive(currentDir: string): Promise<string[]> {
 async function mapWithConcurrency<T, R>(
   items: readonly T[],
   concurrency: number,
-  worker: (item: T, index: number) => Promise<R>,
+  worker: (item: T, index: number, workerId: number) => Promise<R>,
 ): Promise<R[]> {
   const results: R[] = new Array(items.length);
   let nextIndex = 0;
 
-  async function runWorker(): Promise<void> {
+  async function runWorker(workerId: number): Promise<void> {
     while (true) {
       const current = nextIndex;
       if (current >= items.length) return;
       nextIndex++;
-      results[current] = await worker(items[current]!, current);
+      results[current] = await worker(items[current]!, current, workerId);
     }
   }
 
   const workerCount = Math.max(1, Math.min(concurrency, items.length));
-  await Promise.all(Array.from({ length: workerCount }, () => runWorker()));
+  await Promise.all(
+    Array.from({ length: workerCount }, (_, workerId) => runWorker(workerId)),
+  );
   return results;
 }
 
@@ -213,7 +225,7 @@ async function mapWithConcurrency<T, R>(
  * Dynamic concurrency gate supporting AIMD (additive increase, multiplicative
  * decrease) so workers back off smoothly if Netlify throttles uploads.
  */
-class AdaptiveLimiter {
+export class AdaptiveLimiter {
   private readonly maxLimit: number;
   private readonly minLimit: number;
   private limit: number;
@@ -235,10 +247,11 @@ class AdaptiveLimiter {
       this.active++;
       return;
     }
+    // Permit accounting happens in drain() when waking this waiter so
+    // `this.active` never exceeds `this.limit` even with many waiters queued.
     await new Promise<void>((resolve) => {
       this.waiters.push(resolve);
     });
-    this.active++;
   }
 
   release(): void {
@@ -247,7 +260,7 @@ class AdaptiveLimiter {
   }
 
   decrease(): number {
-    this.limit = Math.max(this.minLimit, Math.floor(this.limit * 0.7));
+    this.limit = Math.max(this.minLimit, Math.floor(this.limit * 0.8));
     return this.limit;
   }
 
@@ -262,7 +275,10 @@ class AdaptiveLimiter {
   private drain(): void {
     while (this.active < this.limit && this.waiters.length > 0) {
       const next = this.waiters.shift();
-      next?.();
+      if (next) {
+        this.active++;
+        next();
+      }
     }
   }
 }
@@ -503,9 +519,18 @@ export async function deployNetlify(
     let rateLimits = 0;
     let cooldownUntil = 0;
     let lastBackoffWindowUntil = 0;
+    let consecutiveRateLimitWindows = 0;
+    let loggedFirst429Headers = false;
     let successStreak = 0;
+    const workerStarted = new Set<number>();
 
-    await mapWithConcurrency(toUpload, concurrency, async (entry) => {
+    await mapWithConcurrency(toUpload, concurrency, async (entry, _index, workerId) => {
+      if (!workerStarted.has(workerId)) {
+        workerStarted.add(workerId);
+        if (workerId > 0) {
+          await sleepImpl(workerId * 25);
+        }
+      }
       const fileUrl = `${API_BASE}/deploys/${encodeURIComponent(deployId)}/files/${encodeDeployPath(entry.relPath)}`;
       const body = await readFile(entry.fullPath);
 
@@ -523,7 +548,9 @@ export async function deployNetlify(
 
         if (cooldownUntil > nowBeforeReq && cooldownUntil > sleptCooldownUntil) {
           const targetCooldown = cooldownUntil;
-          await sleepImpl(targetCooldown - nowBeforeReq);
+          // Stagger worker wakeups so they don't hit Netlify in a synchronized burst.
+          const staggerMs = (workerId % limiter.currentLimit) * 60;
+          await sleepImpl(targetCooldown - nowBeforeReq + staggerMs);
           sleptCooldownUntil = targetCooldown;
         }
 
@@ -548,11 +575,14 @@ export async function deployNetlify(
           if (response.ok) {
             uploadedCount++;
             successStreak++;
+            if (successStreak >= 200) {
+              consecutiveRateLimitWindows = 0;
+            }
             if (successStreak >= RECOVERY_STREAK) {
               successStreak = 0;
               limiter.increase();
             }
-            if (uploadedCount % 2_000 === 0 || uploadedCount === toUpload.length) {
+            if (uploadedCount % 1_000 === 0 || uploadedCount === toUpload.length) {
               const elapsed = Math.max(0.1, (performance.now() - uploadStart) / 1_000);
               const rate = (uploadedCount / elapsed).toFixed(1);
               log(
@@ -564,7 +594,11 @@ export async function deployNetlify(
           status = response.status;
           rateLimitWaitMs = parseRateLimitWaitMs(response.headers);
           if (status === 429) {
-            rateLimitInfo = formatRateLimitHeaders(response.headers);
+            rateLimitInfo = formatRateLimitHeaders(
+              response.headers,
+              !loggedFirst429Headers,
+            );
+            loggedFirst429Headers = true;
           }
           const detail = await response.text().catch(() => '');
           lastError = new Error(
@@ -595,19 +629,24 @@ export async function deployNetlify(
           retries++;
           rateLimits++;
           const now = Date.now();
-          const pauseMs = rateLimitWaitMs ?? Math.min(30_000, 5_000 * rateLimitAttempts);
-          const nextCooldownUntil = now + pauseMs;
           // Multiple in-flight workers can hit 429 in the same burst; only step
-          // down concurrency and log once per cooldown window.
+          // down concurrency and advance the backoff window once per cooldown.
           if (now >= lastBackoffWindowUntil) {
+            consecutiveRateLimitWindows++;
+            const pauseMs =
+              rateLimitWaitMs ??
+              Math.min(10_000, 1_000 * Math.min(4, consecutiveRateLimitWindows));
+            const nextCooldownUntil = now + pauseMs;
             lastBackoffWindowUntil = nextCooldownUntil;
+            cooldownUntil = Math.max(cooldownUntil, nextCooldownUntil);
             successStreak = 0;
             const nextLimit = limiter.decrease();
             log(
               `netlify-deploy: HTTP 429 at ${uploadedCount}/${toUpload.length} (${rateLimitInfo}) — pausing ${(pauseMs / 1_000).toFixed(1)}s, concurrency -> ${nextLimit}`,
             );
+          } else if (rateLimitWaitMs !== null) {
+            cooldownUntil = Math.max(cooldownUntil, now + rateLimitWaitMs);
           }
-          cooldownUntil = Math.max(cooldownUntil, nextCooldownUntil);
           continue;
         }
 

@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
+  AdaptiveLimiter,
   deployNetlify,
   encodeDeployPath,
   parseRateLimitWaitMs,
@@ -54,6 +55,31 @@ describe('parseRateLimitWaitMs', () => {
     );
     expect(parseRateLimitWaitMs(new Headers({ 'Retry-After': '4' }), now)).toBe(4_000);
     expect(parseRateLimitWaitMs(new Headers(), now)).toBeNull();
+  });
+});
+
+describe('AdaptiveLimiter', () => {
+  it('never exceeds the reduced limit when many waiters wake up', async () => {
+    const limiter = new AdaptiveLimiter(6, 2);
+    limiter.decrease(); // 6 -> 4
+    limiter.decrease(); // 4 -> 3
+    expect(limiter.currentLimit).toBe(3);
+
+    let inFlight = 0;
+    let maxObserved = 0;
+
+    await Promise.all(
+      Array.from({ length: 12 }, async () => {
+        await limiter.acquire();
+        inFlight++;
+        maxObserved = Math.max(maxObserved, inFlight);
+        await new Promise((resolve) => setTimeout(resolve, 2));
+        inFlight--;
+        limiter.release();
+      }),
+    );
+
+    expect(maxObserved).toBe(3);
   });
 });
 
@@ -258,7 +284,7 @@ describe('deployNetlify', () => {
     expect(result.retries).toBe(2);
     expect(result.rateLimits).toBe(1);
     expect(sleepCalls[0]).toBeGreaterThanOrEqual(4_000);
-    expect(logs.some((line) => line.includes('concurrency -> 7'))).toBe(true);
+    expect(logs.some((line) => line.includes('concurrency -> 8'))).toBe(true);
   });
 
   it('cancels the deploy when an upload fails with a non-retryable 422', async () => {
