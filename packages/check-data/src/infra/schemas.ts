@@ -12,11 +12,16 @@ import { PACKAGE_ROOT } from './paths.ts';
 logger.header('📝 Registering schemas');
 const ajv = new Ajv();
 const formatter = createSchemaFormatter();
-for await (const schemaFile of fs.glob(
-  path.join(PACKAGE_ROOT, 'schemas/*.schema.json'),
-)) {
-  const schema = JSON.parse(await fs.readFile(schemaFile, 'utf-8'));
-  const schemaId = path.basename(schemaFile);
+const schemaFiles = await Array.fromAsync(
+  fs.glob(path.join(PACKAGE_ROOT, 'schemas/*.schema.json')),
+);
+const loadedSchemas = await Promise.all(
+  schemaFiles.map(async (schemaFile) => ({
+    schemaId: path.basename(schemaFile),
+    schema: JSON.parse(await fs.readFile(schemaFile, 'utf-8')),
+  })),
+);
+for (const { schemaId, schema } of loadedSchemas) {
   logger.item(schemaId);
   ajv.addSchema(schema, schemaId);
   formatter.addSchema(schema);

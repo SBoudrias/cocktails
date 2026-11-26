@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import slugify from '@sindresorhus/slugify';
 import { logger } from '../../cli-util.ts';
+import { readDataFile } from '../../infra/file-cache.ts';
 import { PACKAGE_ROOT } from '../../infra/paths.ts';
 import { report } from '../../infra/report.ts';
 import { writeJSON } from '../../infra/write-json.ts';
@@ -96,20 +97,28 @@ export function findDuplicateBookCredits(
 const sourceTypes = ['book', 'youtube-channel', 'podcast'] as const;
 
 async function loadSourceNames(): Promise<Map<string, string>> {
+  const entries = await Promise.all(
+    sourceTypes.map(async (sourceType) => {
+      const typeRoot = path.join(PACKAGE_ROOT, 'data/recipes', sourceType);
+      const slugs = await fs.readdir(typeRoot);
+      return Promise.all(
+        slugs.map(async (sourceSlug) => {
+          const sourceFile = path.join(typeRoot, sourceSlug, '_source.json');
+          try {
+            const source: { name: string } = JSON.parse(await readDataFile(sourceFile));
+            return [`${sourceType}/${sourceSlug}`, source.name] as const;
+          } catch {
+            // Unreadable or missing _source.json: the per-file pass reports it.
+            return null;
+          }
+        }),
+      );
+    }),
+  );
+
   const sourceNames = new Map<string, string>();
-  for (const sourceType of sourceTypes) {
-    const typeRoot = path.join(PACKAGE_ROOT, 'data/recipes', sourceType);
-    for (const sourceSlug of await fs.readdir(typeRoot)) {
-      const sourceFile = path.join(typeRoot, sourceSlug, '_source.json');
-      try {
-        const source: { name: string } = JSON.parse(
-          await fs.readFile(sourceFile, 'utf-8'),
-        );
-        sourceNames.set(`${sourceType}/${sourceSlug}`, source.name);
-      } catch {
-        // Unreadable or missing _source.json: the per-file pass reports it.
-      }
-    }
+  for (const pair of entries.flat()) {
+    if (pair) sourceNames.set(pair[0], pair[1]);
   }
   return sourceNames;
 }
@@ -126,27 +135,42 @@ async function loadSourceNames(): Promise<Map<string, string>> {
 export async function reportDuplicateBookAttributions(): Promise<void> {
   logger.header('📇 Checking for duplicate book attributions...');
 
-  const sourceNames = await loadSourceNames();
-  const recipes: BookCreditEntry[] = [];
-  for (const sourceType of sourceTypes) {
-    const typeRoot = path.join(PACKAGE_ROOT, 'data/recipes', sourceType);
-    for await (const recipeFile of fs.glob(path.join(typeRoot, '*', '**/*.json'))) {
-      if (path.basename(recipeFile) === '_source.json') continue;
-      const recipe = JSON.parse(await fs.readFile(recipeFile, 'utf-8'));
+  const [sourceNames, filesByType] = await Promise.all([
+    loadSourceNames(),
+    Promise.all(
+      sourceTypes.map(async (sourceType) => {
+        const typeRoot = path.join(PACKAGE_ROOT, 'data/recipes', sourceType);
+        const files = await Array.fromAsync(
+          fs.glob(path.join(typeRoot, '*', '**/*.json')),
+        );
+        return files
+          .filter((recipeFile) => path.basename(recipeFile) !== '_source.json')
+          .map((recipeFile) => ({ sourceType, typeRoot, recipeFile }));
+      }),
+    ),
+  ]);
+
+  const recipeItems = filesByType.flat();
+  const recipeRaws = await Promise.all(
+    recipeItems.map(({ recipeFile }) => readDataFile(recipeFile)),
+  );
+  const recipes: BookCreditEntry[] = recipeItems.map(
+    ({ sourceType, typeRoot, recipeFile }, i) => {
+      const recipe = JSON.parse(recipeRaws[i]!);
       const sourceSlug = path.relative(typeRoot, recipeFile).split(path.sep)[0]!;
-      recipes.push({
+      return {
         file: path.relative(PACKAGE_ROOT, recipeFile),
         sourceType,
         sourceSlug,
         attributions: recipe.attributions ?? [],
         refs: recipe.refs ?? [],
-      });
-    }
-  }
+      };
+    },
+  );
 
   for (const redundant of findRedundantBookAttributions(recipes, sourceNames)) {
     const fullFile = path.join(PACKAGE_ROOT, redundant.file);
-    const recipeData = JSON.parse(await fs.readFile(fullFile, 'utf-8'));
+    const recipeData = JSON.parse(await readDataFile(fullFile));
 
     recipeData.attributions = recipeData.attributions.filter(
       (attribution: { relation: string; source: string }) =>

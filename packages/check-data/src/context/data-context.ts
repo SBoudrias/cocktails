@@ -8,6 +8,7 @@ import {
   type RecipeAttributions,
 } from '../checks/report/missing-entities.ts';
 import { logger } from '../cli-util.ts';
+import { readDataFile } from '../infra/file-cache.ts';
 import { APPROVED_OVERLAPS_PATH, PACKAGE_ROOT } from '../infra/paths.ts';
 import { report } from '../infra/report.ts';
 import { writeJSON } from '../infra/write-json.ts';
@@ -142,19 +143,54 @@ export async function loadContext(): Promise<void> {
   } = ctx;
 
   logger.header('📦 Collecting category and ingredient data');
-  const youtubeChannelRoot = path.join(PACKAGE_ROOT, 'data/recipes/youtube-channel');
-  for (const entry of await fs.readdir(youtubeChannelRoot)) {
-    const entryStat = await fs.stat(path.join(youtubeChannelRoot, entry));
-    if (entryStat.isDirectory()) youtubeChannelSlugs.add(entry);
+  const [
+    youtubeEntries,
+    bookEntries,
+    podcastEntries,
+    authorFiles,
+    barFiles,
+    recipeFiles,
+    categoryFiles,
+    ingredientFilesList,
+    approvedOverlapsRaw,
+  ] = await Promise.all([
+    fs.readdir(path.join(PACKAGE_ROOT, 'data/recipes/youtube-channel'), {
+      withFileTypes: true,
+    }),
+    fs.readdir(path.join(PACKAGE_ROOT, 'data/recipes/book'), { withFileTypes: true }),
+    fs.readdir(path.join(PACKAGE_ROOT, 'data/recipes/podcast'), { withFileTypes: true }),
+    Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/authors/*.json'))),
+    Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/bars/*.json'))),
+    Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'))),
+    Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/categories/*.json'))),
+    Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json'))),
+    fs.readFile(APPROVED_OVERLAPS_PATH, 'utf-8').then(
+      (content) => ({ ok: true as const, content }),
+      (error: unknown) => ({ ok: false as const, error }),
+    ),
+  ]);
+
+  const [barRawContents, recipeRawContents, categoryRawContents, ingredientRawContents] =
+    await Promise.all([
+      Promise.all(barFiles.map(readDataFile)),
+      Promise.all(recipeFiles.map(readDataFile)),
+      Promise.all(categoryFiles.map(readDataFile)),
+      Promise.all(ingredientFilesList.map(readDataFile)),
+    ]);
+
+  for (const entry of youtubeEntries) {
+    if (entry.isDirectory()) youtubeChannelSlugs.add(entry.name);
   }
   logger.item(`Found ${youtubeChannelSlugs.size} youtube channels`);
 
   sourceSlugsByType.set('youtube-channel', new Set(youtubeChannelSlugs));
-  for (const sourceType of ['book', 'podcast']) {
+  for (const [sourceType, entries] of [
+    ['book', bookEntries],
+    ['podcast', podcastEntries],
+  ] as const) {
     const slugs = new Set<string>();
-    const sourceRoot = path.join(PACKAGE_ROOT, `data/recipes/${sourceType}`);
-    for (const entry of await fs.readdir(sourceRoot)) {
-      if ((await fs.stat(path.join(sourceRoot, entry))).isDirectory()) slugs.add(entry);
+    for (const entry of entries) {
+      if (entry.isDirectory()) slugs.add(entry.name);
     }
     sourceSlugsByType.set(sourceType, slugs);
   }
@@ -165,34 +201,25 @@ export async function loadContext(): Promise<void> {
   // file to add (name-only is fine; links and descriptions are added only
   // once verified, never generated here).
   logger.header('👥 Collecting author and bar entities');
-  for (const [entityDir, entitySlugs] of [
-    ['authors', authorEntitySlugs],
-    ['bars', barEntitySlugs],
-  ] as const) {
-    for await (const entityFile of fs.glob(
-      path.join(PACKAGE_ROOT, `data/${entityDir}/*.json`),
-    )) {
-      entitySlugs.add(path.basename(entityFile, '.json'));
-    }
+  for (const entityFile of authorFiles) {
+    authorEntitySlugs.add(path.basename(entityFile, '.json'));
+  }
+  for (const entityFile of barFiles) {
+    barEntitySlugs.add(path.basename(entityFile, '.json'));
   }
 
-  for await (const barFile of fs.glob(path.join(PACKAGE_ROOT, 'data/bars/*.json'))) {
-    const bar: BarEntity = JSON.parse(await fs.readFile(barFile, 'utf-8'));
+  for (const [i, barFile] of barFiles.entries()) {
+    const bar: BarEntity = JSON.parse(barRawContents[i]!);
     barLocationUsages.push({ name: bar.name, location: bar.location, filepath: barFile });
   }
 
-  const recipeAttributions: RecipeAttributions[] = [];
-  for await (const recipeFile of fs.glob(
-    path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'),
-  )) {
-    const recipe: { attributions?: Attribution[] } = JSON.parse(
-      await fs.readFile(recipeFile, 'utf-8'),
-    );
-    recipeAttributions.push({
+  const recipeAttributions: RecipeAttributions[] = recipeFiles.map((recipeFile, i) => {
+    const recipe: { attributions?: Attribution[] } = JSON.parse(recipeRawContents[i]!);
+    return {
       filepath: recipeFile,
       attributions: recipe.attributions ?? [],
-    });
-  }
+    };
+  });
 
   // Missing entities fail the run instead of being created silently: writing
   // name-only stubs on every run left generated files lying around on clean
@@ -216,12 +243,10 @@ export async function loadContext(): Promise<void> {
   }
   logger.footer('Done!');
 
-  for await (const categoryFile of fs.glob(
-    path.join(PACKAGE_ROOT, 'data/categories/*.json'),
-  )) {
+  for (const [i, categoryFile] of categoryFiles.entries()) {
     const slug = path.basename(categoryFile, '.json');
     categorySlugs.add(slug);
-    const data: CategoryData = JSON.parse(await fs.readFile(categoryFile, 'utf-8'));
+    const data: CategoryData = JSON.parse(categoryRawContents[i]!);
 
     // Auto-fix category names to the sentence-case convention. Casing changes
     // don't affect the slug, so references resolve and get canonicalized by
@@ -250,10 +275,8 @@ export async function loadContext(): Promise<void> {
   }
   logger.item(`Found ${categorySlugs.size} categories`);
 
-  for await (const ingredientFile of fs.glob(
-    path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json'),
-  )) {
-    const data: IngredientData = JSON.parse(await fs.readFile(ingredientFile, 'utf-8'));
+  for (const [i, ingredientFile] of ingredientFilesList.entries()) {
+    const data: IngredientData = JSON.parse(ingredientRawContents[i]!);
     const folderType = path.basename(path.dirname(ingredientFile));
     const ingredientSlug = slugify(data.name);
 
@@ -281,7 +304,8 @@ export async function loadContext(): Promise<void> {
   // Names of authors and bars known to be valid, so their similar-name
   // overlaps are suppressed. Loaded from packages/data/approved-overlaps.json.
   try {
-    ctx.approvedOverlaps = JSON.parse(await fs.readFile(APPROVED_OVERLAPS_PATH, 'utf-8'));
+    if (!approvedOverlapsRaw.ok) throw approvedOverlapsRaw.error;
+    ctx.approvedOverlaps = JSON.parse(approvedOverlapsRaw.content);
   } catch (error) {
     report.fail(`Could not read approved overlaps registry: ${(error as Error).message}`);
   }

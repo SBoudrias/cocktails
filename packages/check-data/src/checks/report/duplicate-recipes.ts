@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { logger } from '../../cli-util.ts';
+import { readDataFile } from '../../infra/file-cache.ts';
 import { PACKAGE_ROOT } from '../../infra/paths.ts';
 
 /** One recipe file, as the duplicate check reads it. */
@@ -137,21 +138,25 @@ export function findDuplicateRecipePairs(
 }
 
 async function loadCategoryIndex(): Promise<CategoryIndex> {
+  const [categoryFiles, ingredientFiles] = await Promise.all([
+    Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/categories/*.json'))),
+    Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json'))),
+  ]);
+
+  const [categoryRaws, ingredientRaws] = await Promise.all([
+    Promise.all(categoryFiles.map(readDataFile)),
+    Promise.all(ingredientFiles.map(readDataFile)),
+  ]);
+
   const categoryNamesLower = new Set<string>();
-  for await (const categoryFile of fs.glob(
-    path.join(PACKAGE_ROOT, 'data/categories/*.json'),
-  )) {
-    const data: { name: string } = JSON.parse(await fs.readFile(categoryFile, 'utf-8'));
+  for (const raw of categoryRaws) {
+    const data: { name: string } = JSON.parse(raw);
     categoryNamesLower.add(data.name.toLowerCase());
   }
 
   const ingredientFirstCategory = new Map<string, string>();
-  for await (const ingredientFile of fs.glob(
-    path.join(PACKAGE_ROOT, 'data/ingredients/**/*.json'),
-  )) {
-    const data: { name: string; categories?: string[] } = JSON.parse(
-      await fs.readFile(ingredientFile, 'utf-8'),
-    );
+  for (const raw of ingredientRaws) {
+    const data: { name: string; categories?: string[] } = JSON.parse(raw);
     const firstCategory = data.categories?.[0];
     if (firstCategory) {
       ingredientFirstCategory.set(data.name.toLowerCase(), firstCategory.toLowerCase());
@@ -170,20 +175,23 @@ async function loadCategoryIndex(): Promise<CategoryIndex> {
 export async function reportDuplicateRecipes(): Promise<void> {
   logger.header('👯 Checking for duplicate recipes...');
 
-  const index = await loadCategoryIndex();
-  const recipes: RecipeEntry[] = [];
-  for await (const recipeFile of fs.glob(
-    path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'),
-  )) {
-    if (path.basename(recipeFile) === '_source.json') continue;
-    const data: RecipeEntry = JSON.parse(await fs.readFile(recipeFile, 'utf-8'));
-    recipes.push({
+  const [index, allRecipeFiles] = await Promise.all([
+    loadCategoryIndex(),
+    Array.fromAsync(fs.glob(path.join(PACKAGE_ROOT, 'data/recipes/**/*.json'))),
+  ]);
+  const recipeFiles = allRecipeFiles.filter(
+    (recipeFile) => path.basename(recipeFile) !== '_source.json',
+  );
+  const recipeRaws = await Promise.all(recipeFiles.map(readDataFile));
+  const recipes: RecipeEntry[] = recipeFiles.map((recipeFile, i) => {
+    const data: RecipeEntry = JSON.parse(recipeRaws[i]!);
+    return {
       file: path.relative(PACKAGE_ROOT, recipeFile),
       name: data.name,
       attributions: data.attributions ?? [],
       ingredients: data.ingredients ?? [],
-    });
-  }
+    };
+  });
 
   for (const pair of findDuplicateRecipePairs(recipes, index)) {
     logger.warn(
