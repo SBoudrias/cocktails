@@ -59,7 +59,7 @@ export function getOptimalUnit(
     return { amount, unit };
   }
 
-  const conversion = IMPERIAL_CONVERSIONS[unit as keyof typeof IMPERIAL_CONVERSIONS];
+  const conversion = IMPERIAL_CONVERSIONS[unit];
 
   if (conversion && amount >= conversion.threshold) {
     const convertedAmount = amount * conversion.factor;

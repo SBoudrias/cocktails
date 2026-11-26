@@ -18,7 +18,7 @@ const schemaFiles = await Array.fromAsync(
 const loadedSchemas = await Promise.all(
   schemaFiles.map(async (schemaFile) => ({
     schemaId: path.basename(schemaFile),
-    schema: JSON.parse(await fs.readFile(schemaFile, 'utf-8')),
+    schema: JSON.parse(await fs.readFile(schemaFile, 'utf8')),
   })),
 );
 for (const { schemaId, schema } of loadedSchemas) {

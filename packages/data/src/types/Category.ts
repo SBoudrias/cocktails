@@ -1,5 +1,5 @@
-import { type IngredientType } from './Ingredient.ts';
-import { type Ref } from './Ref.ts';
+import type { IngredientType } from './Ingredient.ts';
+import type { Ref } from './Ref.ts';
 
 export type Category = {
   name: string;

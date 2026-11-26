@@ -64,7 +64,7 @@ function getChannelVideosUrl(channelUrl: string): string {
 
 function runYtDlp(args: string[]): string {
   const result = spawnSync('yt-dlp', [...args, '--no-warnings', '--'], {
-    encoding: 'utf-8',
+    encoding: 'utf8',
     maxBuffer: 10 * 1024 * 1024,
   });
 
@@ -116,7 +116,7 @@ function resolveVideoChannel(
 
 async function loadCache(cachePath: string): Promise<Cache> {
   try {
-    const cache = JSON.parse(await fs.readFile(cachePath, 'utf-8'));
+    const cache = JSON.parse(await fs.readFile(cachePath, 'utf8'));
     if (isRecord(cache) && isRecord(cache.videos) && isRecord(cache.channels)) {
       return cache as unknown as Cache;
     }
@@ -145,7 +145,7 @@ async function collectDataFiles(): Promise<DataFile[]> {
       }
       if (!entry.name.endsWith('.json')) continue;
 
-      const data: unknown = JSON.parse(await fs.readFile(entryPath, 'utf-8'));
+      const data: unknown = JSON.parse(await fs.readFile(entryPath, 'utf8'));
       if (!isRecord(data) || !Array.isArray(data.refs)) continue;
 
       files.push({

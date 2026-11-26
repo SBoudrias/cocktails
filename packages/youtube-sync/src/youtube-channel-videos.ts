@@ -61,7 +61,7 @@ export async function getTrackedChannels(): Promise<ChannelSource[]> {
     const sourcePath = path.join(YOUTUBE_CHANNEL_ROOT, entry, '_source.json');
 
     try {
-      const sourceData: unknown = JSON.parse(await fs.readFile(sourcePath, 'utf-8'));
+      const sourceData: unknown = JSON.parse(await fs.readFile(sourcePath, 'utf8'));
       if (!isRecord(sourceData)) continue;
 
       const name = readString(sourceData, 'name');
@@ -110,7 +110,7 @@ function parsePlaylistEntries<TVideo>(
 
 function runYtDlpPlaylist(channelUrl: string, args: string[]): string {
   const result = spawnSync('yt-dlp', [...args, getChannelVideosUrl(channelUrl)], {
-    encoding: 'utf-8',
+    encoding: 'utf8',
     maxBuffer: 100 * 1024 * 1024,
   });
 

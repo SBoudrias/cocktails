@@ -18,8 +18,8 @@ export function normalizeName(name: string): string {
   return name
     .trim()
     .toLowerCase()
-    .replace(/\s+/g, ' ')
-    .replace(/[.,;:!?]+$/g, '');
+    .replaceAll(/\s+/g, ' ')
+    .replaceAll(/[.,;:!?]+$/g, '');
 }
 
 export function isApprovedOverlap(

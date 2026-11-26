@@ -82,7 +82,7 @@ const TEST_UMESHU = {
   name: 'Umenoyado Umeshu',
 };
 
-const [pineappleRecipes, spiritRecipes, appleton21] = await Promise.all([
+const [pineappleRecipes, spiritRecipe, appleton21] = await Promise.all([
   Promise.all([
     getRecipe(
       { type: 'book', slug: 'smugglers-cove' },
@@ -100,11 +100,10 @@ const [pineappleRecipes, spiritRecipes, appleton21] = await Promise.all([
       '04_Creating the Space',
     ),
   ]),
-  Promise.all([
-    getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'cloister'),
-  ]),
+  getRecipe({ type: 'youtube-channel', slug: 'anders-erickson' }, 'cloister'),
   getIngredient('spirit', 'appleton-21'),
 ]);
+const spiritRecipes = [spiritRecipe];
 
 vi.mocked(getRecipesForIngredient).mockImplementation(async (ingredient) => {
   if (ingredient.slug === TEST_INGREDIENT.slug) return pineappleRecipes;
@@ -255,10 +254,12 @@ function stubSheetLayout() {
 
   return () => {
     window.matchMedia = originalMatchMedia;
-    if (originalClientHeight)
+    if (originalClientHeight) {
       Object.defineProperty(HTMLElement.prototype, 'clientHeight', originalClientHeight);
-    if (originalOffsetHeight)
+    }
+    if (originalOffsetHeight) {
       Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight);
+    }
   };
 }
 

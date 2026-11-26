@@ -55,7 +55,7 @@ export function createSchemaFormatter(): SchemaFormatter {
     }
 
     if (current !== null && typeof current === 'object' && !Array.isArray(current)) {
-      return current as JSONSchema7;
+      return current;
     }
 
     return undefined;

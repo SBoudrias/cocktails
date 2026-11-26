@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const { type, source, recipe: recipeSlug } = await params;
 
   try {
-    const recipe = await getRecipe({ type: type, slug: source }, recipeSlug);
+    const recipe = await getRecipe({ type, slug: source }, recipeSlug);
 
     return {
       title: `Indexotica | ${recipe.name} from ${recipe.source.name}`,
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 
 export default async function RecipePage({ params }: { params: Promise<Params> }) {
   const { type, source, recipe: recipeSlug } = await params;
-  const recipe = await getRecipe({ type: type, slug: source }, recipeSlug);
+  const recipe = await getRecipe({ type, slug: source }, recipeSlug);
 
   // Every ref type is handled explicitly: adding one to the Ref union in
   // @cocktails/data becomes a compile error here instead of a silently

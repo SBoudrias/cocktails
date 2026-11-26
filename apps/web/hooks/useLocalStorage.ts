@@ -1,5 +1,11 @@
 import { useState } from 'react';
 
+function isUpdater<Value>(
+  value: Value | ((prev: Value) => Value),
+): value is (prev: Value) => Value {
+  return typeof value === 'function';
+}
+
 export default function useLocalStorage<Value>(key: string, initialValue: Value) {
   const [state, setState] = useState(() => {
     // Initialize the state
@@ -14,7 +20,7 @@ export default function useLocalStorage<Value>(key: string, initialValue: Value)
   });
 
   const setValue = (value: Value | ((prev: Value) => Value)) => {
-    const valueToStore = value instanceof Function ? value(state) : value;
+    const valueToStore = isUpdater(value) ? value(state) : value;
     try {
       // If the passed value is a callback function,
       //  then call it with the existing state.

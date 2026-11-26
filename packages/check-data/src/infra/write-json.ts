@@ -10,7 +10,7 @@ import { formatter } from './schemas.ts';
 // `writeJSON` drift away from `yarn oxfmt` formatting.
 const OXFMT_CONFIG_PATH = path.join(import.meta.dirname, '../../../../.oxfmtrc.json');
 const oxfmtConfig: FormatConfig = JSON.parse(
-  await fs.readFile(OXFMT_CONFIG_PATH, 'utf-8').catch((error: unknown) => {
+  await fs.readFile(OXFMT_CONFIG_PATH, 'utf8').catch((error: unknown) => {
     throw new Error(
       `Could not read the oxfmt config at ${OXFMT_CONFIG_PATH}: ${
         error instanceof Error ? error.message : String(error)

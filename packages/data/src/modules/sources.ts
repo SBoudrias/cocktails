@@ -129,7 +129,7 @@ export const getYoutubeChannel = memo(async (slug: string): Promise<YoutubeChann
   return {
     ...data,
     type: 'youtube-channel',
-    slug: slug,
+    slug,
     recipeAmount: recipeAmounts.get(slug) ?? 0,
   };
 });
@@ -143,7 +143,7 @@ export const getPodcast = memo(async (slug: string): Promise<Podcast> => {
   return {
     ...data,
     type: 'podcast',
-    slug: slug,
+    slug,
     recipeAmount: await getRecipeAmount(PODCAST_ROOT, slug),
   };
 });

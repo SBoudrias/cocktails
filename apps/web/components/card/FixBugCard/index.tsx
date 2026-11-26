@@ -11,7 +11,7 @@ export default function FixBugCard({ fixUrl, m }: { fixUrl: string; m?: CardMarg
         <a
           href={fixUrl}
           target="_blank"
-          rel="noopener nofollow"
+          rel="noopener noreferrer nofollow"
           className={buttonVariants({ variant: 'text' })}
         >
           Fix it over here!

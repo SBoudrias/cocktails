@@ -102,6 +102,8 @@ describe('JuiceClarificationCalculatorPage', () => {
     expect(instructions).toHaveTextContent('lined with two coffee filters');
     expect(instructions).toHaveTextContent('without disturbing the gel raft');
 
-    expect(screen.getByText('Juice clarification technique by Kate McGraw.'));
+    expect(
+      screen.getByText('Juice clarification technique by Kate McGraw.'),
+    ).toBeInTheDocument();
   });
 });

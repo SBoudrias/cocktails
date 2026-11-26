@@ -48,8 +48,8 @@ export default function JuiceClarificationCalculator() {
 
   const juiceWeight = Number(juiceWeightValue);
   const isJuiceWeightValid = Number.isFinite(juiceWeight) && juiceWeight > 0;
-  const waterWeight = isJuiceWeightValid ? juiceWeight * WATER_RATIO : NaN;
-  const agarWeight = isJuiceWeightValid ? juiceWeight * AGAR_RATIO : NaN;
+  const waterWeight = isJuiceWeightValid ? juiceWeight * WATER_RATIO : Number.NaN;
+  const agarWeight = isJuiceWeightValid ? juiceWeight * AGAR_RATIO : Number.NaN;
 
   return (
     <Card m={1}>
@@ -74,14 +74,14 @@ export default function JuiceClarificationCalculator() {
           <LabeledField
             label="Water"
             unit="grams"
-            value={isNaN(waterWeight) ? '' : formatAmount(waterWeight, 2)}
+            value={Number.isNaN(waterWeight) ? '' : formatAmount(waterWeight, 2)}
             readOnly
             className="min-w-0 flex-1"
           />
           <LabeledField
             label="Agar agar"
             unit="grams"
-            value={isNaN(agarWeight) ? '' : formatAmount(agarWeight, 3)}
+            value={Number.isNaN(agarWeight) ? '' : formatAmount(agarWeight, 3)}
             readOnly
             className="min-w-0 flex-1"
           />

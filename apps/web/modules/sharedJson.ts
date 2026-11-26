@@ -78,7 +78,7 @@ export function createSharedJson<T>(path: string): SharedJsonResource<T> {
     getPending: () => (loaded == null ? cached : undefined),
   };
 
-  resources.push(resource as SharedJsonResource<unknown>);
+  resources.push(resource);
 
   return resource;
 }

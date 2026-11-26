@@ -1,5 +1,5 @@
-import { type Category } from './Category.ts';
-import { type Ref } from './Ref.ts';
+import type { Category } from './Category.ts';
+import type { Ref } from './Ref.ts';
 
 // Note: the json-schema allows "category", it's only included in the Recipe type.
 export type IngredientType =

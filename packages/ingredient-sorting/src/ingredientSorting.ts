@@ -86,7 +86,7 @@ export function getApplicationTechniquePriority(
   const techniques = Array.isArray(technique) ? technique : [technique];
   const applicationTechnique = techniques.find((t) => t.technique === 'application');
 
-  if (applicationTechnique && applicationTechnique.method) {
+  if (applicationTechnique?.method) {
     return APPLICATION_PRIORITIES[applicationTechnique.method] ?? 0;
   }
   return 0;

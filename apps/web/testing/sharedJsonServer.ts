@@ -19,7 +19,7 @@ export const sharedJsonServer = setupServer();
  *   http.get(sharedJsonUrl('/data/catalog.json'), handler)
  */
 export function sharedJsonUrl(path: string): RegExp {
-  const escaped = `/cocktails${path}`.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escaped = `/cocktails${path}`.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
   return new RegExp(`${escaped}$`);
 }
 

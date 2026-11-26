@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom/vitest';
 import type { RenderOptions } from '@testing-library/react';
-import { render } from '@testing-library/react';
-import { waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Storage } from 'happy-dom';
 import mockRouter from 'next-router-mock';

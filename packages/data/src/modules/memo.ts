@@ -36,6 +36,7 @@ function watchDataFilesInDev() {
       if (typeof filename !== 'string' || !filename.endsWith('.json')) return;
 
       for (const cache of caches) cache.clear();
+      // oxlint-disable-next-line no-console -- dev-only file watcher notice
       console.log(`[cocktails/data] ${filename} changed, cache cleared`);
     });
   } catch (error) {

@@ -311,77 +311,75 @@ function SolutionCalculator({
       : Number.NaN;
 
   return (
-    <>
-      <CardContent className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2 min-[600px]:flex-row min-[600px]:items-center">
-          <LabeledField
-            label="Juice amount"
-            unit="oz"
-            value={juiceAmountValue}
-            type="number"
-            onChange={(event) => {
-              void setJuiceAmount(event.target.value);
-            }}
-            error={!isJuiceAmountValid}
-            helperText={!isJuiceAmountValid ? 'Must be greater than zero' : undefined}
-            className="min-w-0 flex-1"
-          />
-          <LabeledField
-            label="Juice acidity"
-            unit="%"
-            value={acidAmountValue}
-            type="number"
-            onChange={(event) => {
-              setAcidAmount(event.target.value);
-            }}
-            error={!isAcidAmountValid}
-            helperText={!isAcidAmountValid ? 'Must be zero or greater' : undefined}
-            className="min-w-0 flex-1"
-          />
-          <LabeledField
-            label="Target acidity"
-            unit="%"
-            value={targetAcidityValue}
-            type="number"
-            onChange={(event) => {
-              setTargetAcidity(event.target.value);
-            }}
-            error={!isTargetAcidityValid}
-            helperText={
-              !isTargetAcidityValid ? 'Must be greater than juice acidity' : undefined
-            }
-            className="min-w-0 flex-1"
-          />
-        </div>
+    <CardContent className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2 min-[600px]:flex-row min-[600px]:items-center">
         <LabeledField
-          label="Acid solution to add"
-          unit="ml"
-          value={formatNumber(solutionAmount)}
-          readOnly
+          label="Juice amount"
+          unit="oz"
+          value={juiceAmountValue}
+          type="number"
+          onChange={(event) => {
+            void setJuiceAmount(event.target.value);
+          }}
+          error={!isJuiceAmountValid}
+          helperText={!isJuiceAmountValid ? 'Must be greater than zero' : undefined}
+          className="min-w-0 flex-1"
         />
-        <div
-          className={cn(
-            'flex gap-2',
-            showFullCalculatorLink ? 'justify-between' : 'justify-end',
-          )}
-          role="group"
-          aria-label="Solution adjustment actions"
+        <LabeledField
+          label="Juice acidity"
+          unit="%"
+          value={acidAmountValue}
+          type="number"
+          onChange={(event) => {
+            setAcidAmount(event.target.value);
+          }}
+          error={!isAcidAmountValid}
+          helperText={!isAcidAmountValid ? 'Must be zero or greater' : undefined}
+          className="min-w-0 flex-1"
+        />
+        <LabeledField
+          label="Target acidity"
+          unit="%"
+          value={targetAcidityValue}
+          type="number"
+          onChange={(event) => {
+            setTargetAcidity(event.target.value);
+          }}
+          error={!isTargetAcidityValid}
+          helperText={
+            !isTargetAcidityValid ? 'Must be greater than juice acidity' : undefined
+          }
+          className="min-w-0 flex-1"
+        />
+      </div>
+      <LabeledField
+        label="Acid solution to add"
+        unit="ml"
+        value={formatNumber(solutionAmount)}
+        readOnly
+      />
+      <div
+        className={cn(
+          'flex gap-2',
+          showFullCalculatorLink ? 'justify-between' : 'justify-end',
+        )}
+        role="group"
+        aria-label="Solution adjustment actions"
+      >
+        {showFullCalculatorLink && <FullCalculatorLink />}
+        <Button
+          variant="text-secondary"
+          onClick={() => {
+            void setJuiceAmount(initialJuiceAmount);
+            setTargetAcidity(DEFAULT_TARGET_ACIDITY.toString());
+            setAcidAmount(defaultAcidity.toString());
+          }}
+          aria-label="Reset juice adjustment to defaults"
         >
-          {showFullCalculatorLink && <FullCalculatorLink />}
-          <Button
-            variant="text-secondary"
-            onClick={() => {
-              void setJuiceAmount(initialJuiceAmount);
-              setTargetAcidity(DEFAULT_TARGET_ACIDITY.toString());
-              setAcidAmount(defaultAcidity.toString());
-            }}
-            aria-label="Reset juice adjustment to defaults"
-          >
-            Reset to defaults
-          </Button>
-        </div>
-      </CardContent>
-    </>
+          Reset to defaults
+        </Button>
+      </div>
+    </CardContent>
   );
 }
 

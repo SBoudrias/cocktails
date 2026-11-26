@@ -7,7 +7,7 @@ import { areSimilarNames } from './name-similarity.ts';
  * before comparing.
  */
 function stripDigits(name: string): string {
-  return name.toLowerCase().replace(/\d+/g, '').trim();
+  return name.toLowerCase().replaceAll(/\d+/g, '').trim();
 }
 
 export interface SimilarIngredientPair {

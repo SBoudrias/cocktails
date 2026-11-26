@@ -51,7 +51,7 @@ describe('loadCatalog', () => {
     sharedJsonServer.use(
       http.get(sharedJsonUrl('/data/catalog.json'), () => HttpResponse.error()),
     );
-    await expect(loadCatalog()).rejects.toThrow();
+    await expect(loadCatalog()).rejects.toThrow(TypeError);
 
     sharedJsonServer.use(serveJson('/data/catalog.json', catalog));
     await expect(loadCatalog()).resolves.toEqual(catalog);

@@ -424,17 +424,15 @@ function getRecipeChannelSlugs(recipe: Recipe): Set<string> {
 }
 
 export const getRecipesPerSource = memo(
-  async (): Promise<{
-    [sourceType: string]: { [sourceSlug: string]: Recipe[] | undefined };
-  }> => {
+  async (): Promise<Record<string, Record<string, Recipe[] | undefined>>> => {
     const recipes = await getAllRecipes();
 
     // YouTube channel lists are dynamic: a recipe appears under every channel
     // that owns its file or that one of its youtube refs points to. This lets a
     // recipe presented by multiple channels show up on each channel's list
     // while keeping a single canonical recipe file.
-    const youtubeChannelRecipes: { [sourceSlug: string]: Recipe[] } = {};
-    const bySourceType: { [sourceType: string]: Recipe[] } = {};
+    const youtubeChannelRecipes: Record<string, Recipe[]> = {};
+    const bySourceType: Record<string, Recipe[]> = {};
 
     for (const recipe of recipes) {
       for (const slug of getRecipeChannelSlugs(recipe)) {

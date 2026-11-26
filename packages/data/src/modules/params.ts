@@ -15,7 +15,7 @@ export async function getRecipePageParams(): Promise<
   const nested = await Promise.all(
     types.map(async (type) => {
       const sourceSlugs = await fs.readdir(path.join(RECIPE_ROOT, type));
-      return Promise.all(
+      const perSource = await Promise.all(
         sourceSlugs.map(async (sourceSlug) => {
           const sourcePath = path.join(RECIPE_ROOT, type, sourceSlug);
           const entries = await fs.readdir(sourcePath, { withFileTypes: true });
@@ -48,10 +48,11 @@ export async function getRecipePageParams(): Promise<
           return perEntry.flat();
         }),
       );
+      return perSource.flat();
     }),
   );
 
-  return nested.flat(2);
+  return nested.flat();
 }
 
 export async function getIngredientPageParams(): Promise<

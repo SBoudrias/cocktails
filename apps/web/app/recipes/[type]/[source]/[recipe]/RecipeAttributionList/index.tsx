@@ -76,7 +76,7 @@ export default function RecipeAttributionList({
                   <a
                     href={externalUrl}
                     target="_blank"
-                    rel="noopener nofollow"
+                    rel="noopener noreferrer nofollow"
                     className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
                   >
                     {content}

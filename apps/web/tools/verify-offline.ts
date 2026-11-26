@@ -546,15 +546,17 @@ async function evaluateValue(expression: string): Promise<unknown> {
 
 async function evaluateNumber(expression: string): Promise<number> {
   const value = await evaluateValue(expression);
-  if (typeof value !== 'number')
+  if (typeof value !== 'number') {
     throw new Error(`expected a number, got ${typeof value}`);
+  }
   return value;
 }
 
 async function evaluateString(expression: string): Promise<string> {
   const value = await evaluateValue(expression);
-  if (typeof value !== 'string')
+  if (typeof value !== 'string') {
     throw new Error(`expected a string, got ${typeof value}`);
+  }
   return value;
 }
 
@@ -760,8 +762,9 @@ await check('service worker installed and controlling the page', async () => {
 await check('every cache name is namespaced under the SW scope', async () => {
   const names = await evaluateStrings(cacheNamesExpr);
   const strays = names.filter((name) => !name.startsWith(cachePrefix));
-  if (strays.length > 0)
+  if (strays.length > 0) {
     throw new Error(`caches outside the scope prefix: ${strays.join(', ')}`);
+  }
   if (!names.includes(`${cachePrefix}precache-${deployAVersion}`)) {
     throw new Error(
       `no precache cache for version ${deployAVersion}: ${names.join(', ')}`,
@@ -1039,8 +1042,9 @@ await check('the runtime cache kept the pages visited before the redeploy', asyn
   const kept = await evaluateValue(
     `(async () => { const c = await caches.open('${cachePrefix}runtime'); return (await c.match('${scopeUrl}${visitedRecipeHref.slice(1)}')) !== undefined; })()`,
   );
-  if (kept !== true)
+  if (kept !== true) {
     throw new Error('the visited recipe page HTML is gone from the runtime cache');
+  }
 });
 
 // The unchanged verdict: the page on screen is deploy B's, the origin

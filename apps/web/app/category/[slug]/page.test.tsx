@@ -194,7 +194,7 @@ describe('CategoryPage', () => {
         .map((link) => link.getAttribute('href'));
 
       const order = (slug: string) =>
-        hrefs.indexOf(`/cocktails/ingredient/spirit/${slug}`) >= 0
+        hrefs.includes(`/cocktails/ingredient/spirit/${slug}`)
           ? hrefs.indexOf(`/cocktails/ingredient/spirit/${slug}`)
           : hrefs.indexOf(`/ingredient/spirit/${slug}`);
       expect(order('beefeater-london-dry-gin')).toBe(0);

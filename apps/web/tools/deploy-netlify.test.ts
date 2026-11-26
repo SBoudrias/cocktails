@@ -91,6 +91,9 @@ describe('deployNetlify', () => {
     expect(dupSha).toBe(indexSha);
 
     const uploadedPaths: string[] = [];
+    const uploadHeaders: (HeadersInit | undefined)[] = [];
+    let createUrl: string | undefined;
+    let createBody: BodyInit | null | undefined;
     let createPayload: unknown;
     let pollCount = 0;
 
@@ -100,8 +103,8 @@ describe('deployNetlify', () => {
       const method = init?.method ?? 'GET';
 
       if (method === 'POST' && url.includes('/sites/site-123/deploys')) {
-        expect(url).toContain('title=PR+%2342');
-        expect(typeof init?.body).toBe('string');
+        createUrl = url;
+        createBody = init?.body;
         createPayload = JSON.parse(typeof init?.body === 'string' ? init.body : '');
         return Response.json({
           id: 'deploy-1',
@@ -129,12 +132,7 @@ describe('deployNetlify', () => {
 
       if (method === 'PUT' && url.includes('/deploys/deploy-1/files/')) {
         uploadedPaths.push(url.split('/files/')[1]!);
-        expect(init?.headers).toEqual(
-          expect.objectContaining({
-            Authorization: 'Bearer secret-token',
-            'Content-Type': 'application/octet-stream',
-          }),
-        );
+        uploadHeaders.push(init?.headers);
         return Response.json({ ok: true });
       }
 
@@ -153,6 +151,15 @@ describe('deployNetlify', () => {
       sleepImpl: noopSleep,
       log: noopLog,
     });
+
+    expect(createUrl).toContain('title=PR+%2342');
+    expect(typeof createBody).toBe('string');
+    expect(uploadHeaders).toEqual([
+      expect.objectContaining({
+        Authorization: 'Bearer secret-token',
+        'Content-Type': 'application/octet-stream',
+      }),
+    ]);
 
     expect(createPayload).toEqual({
       files: {

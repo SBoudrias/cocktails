@@ -165,13 +165,9 @@ describe('BottlesPage', () => {
     const list = screen.getByRole('list');
 
     // Verify at least one spirit and one liqueur are shown
-    if (spirits.length > 0) {
-      const sampleSpirit = spirits[0]!;
-      expect(list).toHaveTextContent(sampleSpirit.name);
-    }
-    if (liqueurs.length > 0) {
-      const sampleLiqueur = liqueurs[0]!;
-      expect(list).toHaveTextContent(sampleLiqueur.name);
-    }
+    expect(spirits.length).toBeGreaterThan(0);
+    expect(liqueurs.length).toBeGreaterThan(0);
+    expect(list).toHaveTextContent(spirits[0]!.name);
+    expect(list).toHaveTextContent(liqueurs[0]!.name);
   });
 });

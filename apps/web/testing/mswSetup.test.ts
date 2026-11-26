@@ -9,6 +9,6 @@ describe('msw setup', () => {
   it('rejects a fetch to an endpoint no test mocked', async () => {
     await expect(
       fetch(new URL('/cocktails/data/unmocked.json', location.origin).href),
-    ).rejects.toThrow();
+    ).rejects.toThrow(/Failed to execute "fetch\(\)"/);
   });
 });

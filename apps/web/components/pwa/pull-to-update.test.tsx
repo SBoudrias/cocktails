@@ -114,7 +114,7 @@ function stampCurrentPage(version: string) {
   const meta = document.createElement('meta');
   meta.name = 'deploy-version';
   meta.content = version;
-  document.head.appendChild(meta);
+  document.head.append(meta);
   return meta;
 }
 
@@ -297,7 +297,7 @@ describe('pull to update', () => {
     await mountInstalled();
     const sheet = document.createElement('div');
     sheet.setAttribute('data-slot', 'drawer-content');
-    document.body.appendChild(sheet);
+    document.body.append(sheet);
 
     pullAndRelease(sheet, 200);
 
@@ -311,8 +311,8 @@ describe('pull to update', () => {
     await mountInstalled();
     const scroller = document.createElement('div');
     const row = document.createElement('div');
-    scroller.appendChild(row);
-    document.body.appendChild(scroller);
+    scroller.append(row);
+    document.body.append(scroller);
     scroller.scrollTop = 20;
 
     pullAndRelease(row, 200);

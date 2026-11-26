@@ -96,8 +96,9 @@ export default function VirtualGroupedList<const T extends { href: string }>({
         }))
         .find((link) => link.top > getAppBarHeight());
       ref.current?.getState((state) => {
-        if (anchor?.href)
+        if (anchor?.href) {
           positions.set(pathname, { state, href: anchor.href, top: anchor.top });
+        }
       });
     };
 

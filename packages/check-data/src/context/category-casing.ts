@@ -111,7 +111,7 @@ const LOWERCASE_WORDS = new Set([
 ]);
 
 function normalizeWord(word: string, isFirstWord: boolean): string {
-  const bare = word.replace(/[()]/g, '');
+  const bare = word.replaceAll(/[()]/g, '');
   const parts = bare.split('-').map((part, partIndex) => {
     if (isFirstWord && partIndex === 0) {
       return part.charAt(0).toUpperCase() + part.slice(1);

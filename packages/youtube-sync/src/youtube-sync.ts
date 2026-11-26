@@ -157,7 +157,7 @@ function createGitHubIssue(newVideos: NewVideosForChannel[]): void {
     execSync(`gh issue create --title "${title}" --body-file - ${labelArgs}`, {
       input: body,
       stdio: ['pipe', 'inherit', 'inherit'],
-      encoding: 'utf-8',
+      encoding: 'utf8',
     });
     logger.success('GitHub issue created successfully');
   } catch (error) {

@@ -30,6 +30,9 @@ export async function readJSONFile<T>(filepath: string): Promise<T | undefined> 
   // untyped return carry the T conversion.
   const loader = getJSONLoader(path.relative(PACKAGE_ROOT, filepath));
   if (loader) {
+    // Module namespace objects from import.meta.glob throw DataCloneError in
+    // structuredClone, and JSON.parse also supplies the untyped T return.
+    // oxlint-disable-next-line unicorn/prefer-structured-clone
     return JSON.parse(JSON.stringify(await loader()));
   }
 
@@ -48,7 +51,7 @@ export async function readJSONFile<T>(filepath: string): Promise<T | undefined> 
   // while the dev server is running. Read directly and treat ENOENT as missing
   // instead of issuing a separate fs.access syscall per file.
   try {
-    const content = await fs.readFile(filepath, 'utf-8');
+    const content = await fs.readFile(filepath, 'utf8');
     testCache?.set(filepath, content);
     return JSON.parse(content);
   } catch (error) {

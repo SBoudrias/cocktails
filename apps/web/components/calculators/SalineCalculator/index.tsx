@@ -12,14 +12,14 @@ export default function SalineCalculator() {
   const waterWeight = Number(waterWeightValue);
   const salinity = Number(salinityValue);
 
-  const isSalinityValid = !isNaN(salinity) && salinity > 0 && salinity < 100;
-  const isWaterWeightValid = !isNaN(waterWeight) && waterWeight > 0;
+  const isSalinityValid = !Number.isNaN(salinity) && salinity > 0 && salinity < 100;
+  const isWaterWeightValid = !Number.isNaN(waterWeight) && waterWeight > 0;
 
   // Formula: S = (P/100 * W) / (1 - P/100)
   const saltWeight =
     isSalinityValid && isWaterWeightValid
       ? ((salinity / 100) * waterWeight) / (1 - salinity / 100)
-      : NaN;
+      : Number.NaN;
 
   return (
     <Suspense>
@@ -58,9 +58,9 @@ export default function SalineCalculator() {
             label="Salt to add"
             unit="grams"
             value={
-              isNaN(saltWeight)
+              Number.isNaN(saltWeight)
                 ? ''
-                : `${saltWeight.toLocaleString('en', { maximumFractionDigits: 2 })}`
+                : saltWeight.toLocaleString('en', { maximumFractionDigits: 2 })
             }
             readOnly
           />

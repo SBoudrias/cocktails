@@ -41,10 +41,10 @@ export const MAX_ENTITY_SUGGESTION_MATCHES = 5;
 export function normalizeEntityText(text: string): string {
   return transliterate(text)
     .toLowerCase()
-    .replace(/['’]/g, '')
-    .replace(/[()[\]{}.,;:!?]/g, '')
-    .replace(/[-–—_/]/g, ' ')
-    .replace(/\s+/g, ' ')
+    .replaceAll(/['’]/g, '')
+    .replaceAll(/[()[\]{}.,;:!?]/g, '')
+    .replaceAll(/[-–—_/]/g, ' ')
+    .replaceAll(/\s+/g, ' ')
     .trim();
 }
 
