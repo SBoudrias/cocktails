@@ -214,14 +214,15 @@ async function mapWithConcurrency<T, R>(
  * decrease) so workers back off smoothly if Netlify throttles uploads.
  */
 class AdaptiveLimiter {
+  private readonly maxLimit: number;
+  private readonly minLimit: number;
   private limit: number;
   private active = 0;
   private waiters: (() => void)[] = [];
 
-  constructor(
-    private readonly maxLimit: number,
-    private readonly minLimit: number,
-  ) {
+  constructor(maxLimit: number, minLimit: number) {
+    this.maxLimit = maxLimit;
+    this.minLimit = minLimit;
     this.limit = maxLimit;
   }
 
