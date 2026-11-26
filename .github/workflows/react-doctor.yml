@@ -3,8 +3,53 @@ name: React Doctor
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
+    # React Doctor statically diffs React components — it has nothing to
+    # analyze unless the PR touches React source or the dependency graph
+    # that shapes it. Measured over 10 weeks of merges to main, ~30%
+    # (data backfills, CI changes, non-web dependency bumps) touched none
+    # of these paths: ~20-25s of runner and queue time per wasted run. The
+    # filter is evaluated against the whole PR diff, so a PR that ever
+    # touched one of these paths keeps getting gated on every push.
+    paths:
+      # React source: routes, components, hooks, shared modules
+      # (modules/stuckGlass.ts types against React) and the client
+      # instrumentation entry.
+      - apps/web/app/**
+      - apps/web/components/**
+      - apps/web/hooks/**
+      - apps/web/modules/**
+      - apps/web/instrumentation-client.ts
+      # Dependency and build-config changes can shift what the rules see.
+      - apps/web/package.json
+      - apps/web/next.config.ts
+      - yarn.lock
+      # The workflow itself.
+      - .github/workflows/react-doctor.yml
+      # --- Exclusions: test files inside the filtered trees ---
+      # Vitest-only modules never reach the production bundle; the CI
+      # workflow lints and tests them on every PR with no path filter.
+      - '!apps/web/**/*.test.ts'
+      - '!apps/web/**/*.test.tsx'
+      - '!apps/web/testing/**'
+      - '!apps/web/vitest.setup.ts'
   push:
     branches: [main]
+    # Same filter on merges: a change that never touched React source
+    # cannot produce findings the PR's own run missed.
+    paths:
+      - apps/web/app/**
+      - apps/web/components/**
+      - apps/web/hooks/**
+      - apps/web/modules/**
+      - apps/web/instrumentation-client.ts
+      - apps/web/package.json
+      - apps/web/next.config.ts
+      - yarn.lock
+      - .github/workflows/react-doctor.yml
+      - '!apps/web/**/*.test.ts'
+      - '!apps/web/**/*.test.tsx'
+      - '!apps/web/testing/**'
+      - '!apps/web/vitest.setup.ts'
 
 permissions:
   contents: read
