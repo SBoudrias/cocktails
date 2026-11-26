@@ -16,6 +16,12 @@ export default defineConfig({
     // faster still but evaluates modules in a vm realm that misses Node
     // globals (see apps/web/testing/vmGlobals.ts), so threads is the default.
     pool: 'threads',
+    // Snapshot the data corpus into one temp file before the pool starts, so
+    // the globs stub serves it from a single read per worker instead of
+    // thousands of small fs reads flooding libuv's 4-thread I/O pool (see
+    // apps/web/testing/dataBundle.globalSetup.ts). Runs once per run even
+    // with the projects below.
+    globalSetup: [path.join(__dirname, 'apps/web/testing/dataBundle.globalSetup.ts')],
     server: {
       deps: {
         // Work around https://github.com/mui/material-ui/issues/48636.

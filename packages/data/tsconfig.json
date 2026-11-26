@@ -4,6 +4,6 @@
     "rootDir": ".",
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "globs.stub.ts"],
   "exclude": ["node_modules"]
 }
