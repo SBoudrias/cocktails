@@ -72,7 +72,7 @@ const LIST_ENTRIES = [
 // file render every page of the type offline, visited or not. The shell's
 // RSC payloads ride along for soft navigations offline; the _full payload
 // is pruned from the deploy (never fetched), so it stays out.
-const DETAIL_SHELLS = ['ingredient/_/_'];
+const DETAIL_SHELLS = ['ingredient/_/_', 'category/_'];
 
 const PAGE_ENTRIES = [
   'index.html',
@@ -99,6 +99,7 @@ const DATA_FILES = [
   path.join('data', 'catalog.json'),
   path.join('data', 'search-index.json'),
   path.join('data', 'ingredients.json'),
+  path.join('data', 'categories.json'),
 ];
 
 // Files the offline experience depends on: if any is missing from the

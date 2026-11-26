@@ -1,11 +1,10 @@
-import type { Category, RootIngredient } from '@cocktails/data';
+import type { Category } from '@cocktails/data';
 import { useId } from 'react';
 import { LinkListItem } from '#/components/list/LinkList';
 import StickyGroupHeader from '#/components/list/StickyGroupHeader';
 import ListDrawer from '#/components/ListDrawer';
 import { List, ListSubheader } from '#/components/ui/list';
-import { ingredientHasData } from '#/modules/hasData';
-import { getIngredientUrl } from '#/modules/url';
+import type { BottleRow } from '#/modules/bottleRows';
 
 /**
  * Categories whose member list fits on the page as-is: 5 bottles or fewer
@@ -21,13 +20,13 @@ const INLINE_MEMBER_LIMIT = 5;
  */
 const PREVIEW_COUNT = 3;
 
-function renderMember(member: RootIngredient, recipeCounts: Map<string, number>) {
+function renderMember(member: BottleRow) {
   return (
     <LinkListItem
       key={member.slug}
-      href={ingredientHasData(member) ? getIngredientUrl(member) : undefined}
+      href={member.href}
       primary={member.name}
-      count={recipeCounts.get(member.slug) ?? 0}
+      count={member.count}
     />
   );
 }
@@ -46,13 +45,11 @@ function renderMember(member: RootIngredient, recipeCounts: Map<string, number>)
 export default function CategoryMembers({
   category,
   members,
-  recipeCounts,
 }: {
-  category: Category;
-  /** Every member bottle, most-used first (getIngredientsForCategory). */
-  members: RootIngredient[];
-  /** Recipe reference counts by ingredient slug, shown next to each name. */
-  recipeCounts: Map<string, number>;
+  category: Pick<Category, 'name'>;
+  /** Every member bottle, most-used first (getIngredientsForCategory),
+   * each with its recipe count shown next to its name. */
+  members: BottleRow[];
 }) {
   const headerId = useId();
   const header = `Examples of ${category.name}`;
@@ -66,9 +63,7 @@ export default function CategoryMembers({
         <li>
           <List role="group" aria-labelledby={headerId}>
             <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>
-            <div className="surface">
-              {members.map((member) => renderMember(member, recipeCounts))}
-            </div>
+            <div className="surface">{members.map(renderMember)}</div>
           </List>
         </li>
       </List>
@@ -85,7 +80,7 @@ export default function CategoryMembers({
         <List role="group" aria-labelledby={headerId}>
           <StickyGroupHeader id={headerId}>{header}</StickyGroupHeader>
           <div className="surface">
-            {preview.map((member) => renderMember(member, recipeCounts))}
+            {preview.map(renderMember)}
             <li>
               <ListDrawer
                 title={`${category.name} bottles`}
@@ -100,9 +95,7 @@ export default function CategoryMembers({
                       <li id={`${headerId}-sheet`}>
                         <ListSubheader>{header}</ListSubheader>
                       </li>
-                      <div className="surface">
-                        {members.map((member) => renderMember(member, recipeCounts))}
-                      </div>
+                      <div className="surface">{members.map(renderMember)}</div>
                     </List>
                   </li>
                 </List>

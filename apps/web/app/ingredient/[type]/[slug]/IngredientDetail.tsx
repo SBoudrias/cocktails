@@ -11,7 +11,6 @@ import DetailPageState from '#/components/DetailPageState';
 import IngredientList from '#/components/IngredientList';
 import InstructionList from '#/components/InstructionList';
 import SearchableRecipePage from '#/components/SearchableRecipePage';
-import type { SubstituteRow } from '#/components/SubstitutionLists';
 import SubstitutionSection from '#/components/SubstitutionSection';
 import { buttonVariants } from '#/components/ui/button-variants';
 import {
@@ -23,9 +22,10 @@ import {
 } from '#/components/ui/card';
 import Video from '#/components/Video';
 import { usePageData } from '#/hooks/usePageData';
+import { resolveBottleRows } from '#/modules/bottleRows';
 import type { IngredientPagesFile } from '#/modules/buildIngredientPages';
 import { getLoadedIngredientPages, loadIngredientPages } from '#/modules/ingredientPages';
-import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
+import { getCategoryUrl } from '#/modules/url';
 import IngredientCalculators from './IngredientCalculators';
 
 type PageEntry = IngredientPagesFile['pages'][string];
@@ -41,14 +41,7 @@ function IngredientContent({
     const category = file.categories[slug];
     return category ? [{ ...category, slug }] : [];
   });
-  const substitutes: SubstituteRow[] = page.substitutes.flatMap((slug) => {
-    const bottle = file.bottles[slug];
-    if (bottle == null) return [];
-    const [name, type, hasPage, count] = bottle;
-    return [
-      { name, slug, count, href: hasPage ? getIngredientUrl({ type, slug }) : undefined },
-    ];
-  });
+  const substitutes = resolveBottleRows(page.substitutes, file.bottles);
   const relatedCategories = page.relatedCategories.flatMap((slug) => {
     const category = file.categories[slug];
     return category ? [{ name: category.name, slug }] : [];

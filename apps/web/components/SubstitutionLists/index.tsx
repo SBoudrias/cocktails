@@ -1,16 +1,6 @@
 import { type HeaderMode, LinkList, LinkListItem } from '#/components/list/LinkList';
-import { getCategoryUrl, type getIngredientUrl } from '#/modules/url';
-
-/**
- * A substitute bottle as its row shows it: its page's URL when it has one
- * worth linking, and how many recipes use it.
- */
-export type SubstituteRow = {
-  name: string;
-  slug: string;
-  href: ReturnType<typeof getIngredientUrl> | undefined;
-  count: number;
-};
+import type { BottleRow } from '#/modules/bottleRows';
+import { getCategoryUrl } from '#/modules/url';
 
 /** A substitution-friendly category as its row shows it. */
 export type RelatedCategoryRow = { name: string; slug: string };
@@ -69,7 +59,7 @@ export default function SubstitutionLists({
   primaryHeader: string;
   /** Bottles to list, expected to come from a single category, each with
    * its recipe count shown next to its name. */
-  substitutes: SubstituteRow[];
+  substitutes: BottleRow[];
   /** Related categories, listed before the primary list. */
   relatedCategories: RelatedCategoryRow[];
   /** Passed to the LinkLists: 'flow' inside the substitution drawer's sheet. */

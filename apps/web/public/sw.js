@@ -135,6 +135,7 @@ async function cacheFirst(request) {
 // (precached too), so the shell answers every page of the type offline.
 const DETAIL_SHELLS = [
   { pattern: /^ingredient\/[^/]+\/[^/]+$/, shell: 'ingredient/_/_' },
+  { pattern: /^category\/[^/]+$/, shell: 'category/_' },
 ];
 
 function getRoute(url, scope) {

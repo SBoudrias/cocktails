@@ -15,11 +15,11 @@
  *
  * - install: scope-namespaced cache names, a precache that holds the app
  *   shell, the catalog, the search index, the list hubs and the ingredient
- *   pages' shell with its data file;
+ *   and category pages' shells with their data files;
  * - offline on a fresh install (nothing but the home page ever visited):
  *   home, list hubs, search, the precached catalog served to pages, the
- *   offline fallback for unvisited routes, and an unvisited ingredient page
- *   rendered from its precached shell;
+ *   offline fallback for unvisited routes, and unvisited ingredient and
+ *   category pages rendered from their precached shells;
  * - catalog-rendered pages (category/ingredient) visited online, then offline;
  * - a simulated redeploy (new sw.js version, precache pruned of chunks the
  *   old deploy's pages reference), then offline again: pages visited before
@@ -79,6 +79,7 @@ await assertFile('sw.js');
 await assertFile('data/catalog.json');
 await assertFile('data/search-index.json');
 await assertFile('data/ingredients.json');
+await assertFile('data/categories.json');
 await assertFile('index.html');
 await assertFile('offline.html');
 const LIST_HUBS = [
@@ -176,6 +177,13 @@ const unvisitedIngredientName =
   ingredientPages.pages[`/${UNVISITED_INGREDIENT}`]?.ingredient.name;
 if (!unvisitedIngredientName) {
   throw new Error(`data/ingredients.json carries no page for ${UNVISITED_INGREDIENT}`);
+}
+const categoryPages: { pages: Record<string, { category: { name: string } }> } =
+  JSON.parse(await readFile(path.join(outDir, 'data/categories.json'), 'utf8'));
+const unvisitedCategoryName =
+  categoryPages.pages[`/${UNVISITED_CATEGORY}`]?.category.name;
+if (!unvisitedCategoryName) {
+  throw new Error(`data/categories.json carries no page for ${UNVISITED_CATEGORY}`);
 }
 await assertFile(`${VISITED_AUTHOR}.html`);
 await assertFile(`${VISITED_BAR}.html`);
@@ -809,6 +817,8 @@ await check(
       `${BASE_PATH}/data/search-index.json`,
       `${BASE_PATH}/data/ingredients.json`,
       `${BASE_PATH}/ingredient/_/_.html`,
+      `${BASE_PATH}/data/categories.json`,
+      `${BASE_PATH}/category/_.html`,
       `${BASE_PATH}/offline.html`,
       ...LIST_HUBS.map((hub) => `${BASE_PATH}/${hub}.html`),
     ]) {
@@ -913,13 +923,19 @@ await check('the precached catalog serves pages offline', async () => {
   if (listCount < 50) throw new Error(`catalog carries only ${listCount} lists`);
 });
 
-await check('an unvisited category page falls back to the offline page', async () => {
-  await navigateTo(`/${UNVISITED_CATEGORY}`);
-  await untilTrue(
-    'the offline fallback',
-    'document.body.innerText.includes("You are offline")',
-  );
-});
+await check(
+  'an unvisited category page renders offline from the precached shell',
+  async () => {
+    // Every category page is a copy of one shell that renders its entry of
+    // data/categories.json, so a page never visited renders offline too.
+    await navigateTo(`/${UNVISITED_CATEGORY}`);
+    await untilTrue(
+      'the category title',
+      `document.querySelector('h1')?.textContent === ${JSON.stringify(unvisitedCategoryName)}`,
+    );
+    await untilCount('category rows', recipeRowsExpr, (count) => count > 0);
+  },
+);
 
 await check('an unvisited recipe page falls back to the offline page', async () => {
   await navigateTo(unvisitedRecipeHref);

@@ -1,11 +1,12 @@
-import type { Category, IngredientType, RootIngredient } from '@cocktails/data';
+import type { Category, RootIngredient } from '@cocktails/data';
 import {
   getAllIngredients,
   getIngredientRecipeCounts,
   getRecipesForIngredient,
   getSubstitutesForIngredient,
 } from '@cocktails/data/ingredients';
-import { ingredientHasData } from '#/modules/hasData';
+import { type StoredBottle, toStoredBottle } from '#/modules/bottleRows';
+import { serializePageData, toSortedRecord } from '#/modules/pageDataFile';
 import { getIngredientUrl } from '#/modules/url';
 
 /**
@@ -27,12 +28,6 @@ type IngredientPageEntry = {
 };
 
 /**
- * A bottle as a substitution row shows it: its name, its type (for its
- * URL), whether it has a page worth linking, and its recipe count.
- */
-type BottleRow = [name: string, type: IngredientType, hasPage: boolean, count: number];
-
-/**
  * A category as an ingredient page shows it: its chip, its description
  * (the fallback card of a bottle without one), its videos.
  */
@@ -47,18 +42,9 @@ type CategoryRow = Pick<Category, 'name' | 'description' | 'refs'>;
  */
 export type IngredientPagesFile = {
   pages: Record<string, IngredientPageEntry>;
-  bottles: Record<string, BottleRow>;
+  bottles: Record<string, StoredBottle>;
   categories: Record<string, CategoryRow>;
 };
-
-function toSortedRecord<T>(entries: Iterable<readonly [string, T]>): Record<string, T> {
-  return Object.fromEntries(
-    [...entries].toSorted(([a], [b]) => {
-      if (a === b) return 0;
-      return a < b ? -1 : 1;
-    }),
-  );
-}
 
 function toCategoryRow({ name, description, refs }: Category): CategoryRow {
   return description == null ? { name, refs } : { name, description, refs };
@@ -72,7 +58,7 @@ export async function buildIngredientPages(
   ingredients: RootIngredient[],
 ): Promise<IngredientPagesFile> {
   const recipeCounts = await getIngredientRecipeCounts();
-  const bottles = new Map<string, BottleRow>();
+  const bottles = new Map<string, StoredBottle>();
   const categories = new Map<string, CategoryRow>();
 
   const pages = await Promise.all(
@@ -89,12 +75,7 @@ export async function buildIngredientPages(
         categories.set(category.slug, toCategoryRow(category));
       }
       for (const substitute of substitution?.substitutes ?? []) {
-        bottles.set(substitute.slug, [
-          substitute.name,
-          substitute.type,
-          Boolean(ingredientHasData(substitute)),
-          recipeCounts.get(substitute.slug) ?? 0,
-        ]);
+        bottles.set(substitute.slug, toStoredBottle(substitute, recipeCounts));
       }
 
       const entry: IngredientPageEntry = {
@@ -122,16 +103,6 @@ export async function buildIngredientPages(
     bottles: toSortedRecord(bottles),
     categories: toSortedRecord(categories),
   };
-}
-
-/**
- * Data files carry the `$schema` pointer of their JSON source; it is never
- * rendered, so the serialized pages drop it.
- */
-function serializePageData(value: unknown): string {
-  return JSON.stringify(value, (key, field: unknown) =>
-    key === '$schema' ? undefined : field,
-  );
 }
 
 /** Every ingredient page's data, serialized minified for `fetch`. */

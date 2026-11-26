@@ -4,9 +4,9 @@ import StickyGroupHeader from '#/components/list/StickyGroupHeader';
 import ListDrawer from '#/components/ListDrawer';
 import SubstitutionLists, {
   type RelatedCategoryRow,
-  type SubstituteRow,
 } from '#/components/SubstitutionLists';
 import { List } from '#/components/ui/list';
+import type { BottleRow } from '#/modules/bottleRows';
 import { getCategoryUrl } from '#/modules/url';
 
 /**
@@ -24,7 +24,7 @@ const INLINE_LIMIT = 5;
  */
 const PREVIEW_COUNT = 3;
 
-function renderSubstitute(substitute: SubstituteRow) {
+function renderSubstitute(substitute: BottleRow) {
   return (
     <LinkListItem
       key={substitute.slug}
@@ -73,7 +73,7 @@ export default function SubstitutionSection({
   /** Every bottle sharing one of the bottle's declared categories,
    * most-used first (getSubstitutesForIngredient), each with its recipe
    * count shown next to its name. */
-  substitutes: SubstituteRow[];
+  substitutes: BottleRow[];
   /** Substitution-friendly related categories, listed first. */
   relatedCategories: RelatedCategoryRow[];
 }) {

@@ -39,6 +39,11 @@ const DETAIL_ROUTES = [
     shell: `ingredient/${SHELL_PARAM}/${SHELL_PARAM}`,
     pattern: /^\/ingredient\/[^/]+\/[^/]+$/,
   },
+  {
+    dataFile: path.join('data', 'categories.json'),
+    shell: `category/${SHELL_PARAM}`,
+    pattern: /^\/category\/[^/]+$/,
+  },
 ];
 
 async function exists(file: string): Promise<boolean> {
@@ -72,12 +77,13 @@ async function stampRoute({
   const shellHtml = path.join(outDir, `${shell}.html`);
   const shellTxt = path.join(outDir, `${shell}.txt`);
   const shellDir = path.join(outDir, shell);
-  for (const file of [shellHtml, shellTxt, shellDir]) {
-    if (!(await exists(file))) {
-      throw new Error(
-        `shell output missing: ${path.relative(outDir, file)} — the route must export its shell param`,
-      );
-    }
+  const shellFiles = [shellHtml, shellTxt, shellDir];
+  const present = await Promise.all(shellFiles.map(exists));
+  const missing = shellFiles.filter((_, index) => !present[index]);
+  if (missing.length > 0) {
+    throw new Error(
+      `shell output missing: ${missing.map((file) => path.relative(outDir, file)).join(', ')} — the route must export its shell param`,
+    );
   }
   const payloads = (await readdir(shellDir)).filter((name) => name.endsWith('.txt'));
 
@@ -105,9 +111,9 @@ async function stampRoute({
 }
 
 try {
-  for (const route of DETAIL_ROUTES) {
-    const count = await stampRoute(route);
-    console.log(`stamped ${count} pages from ${route.shell}`);
+  const counts = await Promise.all(DETAIL_ROUTES.map(stampRoute));
+  for (const [index, route] of DETAIL_ROUTES.entries()) {
+    console.log(`stamped ${counts[index]} pages from ${route.shell}`);
   }
 } catch (error) {
   console.error(
