@@ -257,7 +257,7 @@ describe('IngredientList', () => {
     expect(getCalculatorParams().get('ratio')).toBe('0.25');
   });
 
-  it('renders technique spec sub-lines and keeps fat-washed rows linked to the bottle', () => {
+  it('keeps fat-washed rows linked to the bottle without a percentage sub-line', () => {
     render(
       <IngredientList
         ingredients={[
@@ -284,7 +284,7 @@ describe('IngredientList', () => {
     const bourbonLink = screen.getByRole('link', {
       name: /bacon fat–washed Four Roses Bourbon/i,
     });
-    expect(bourbonLink).toHaveTextContent('6% fat');
+    expect(bourbonLink).not.toHaveTextContent('6% fat');
     const url = new URL(
       bourbonLink.getAttribute('href') ?? '',
       'https://cocktail-index.test',

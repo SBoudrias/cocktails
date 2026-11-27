@@ -106,13 +106,10 @@ function formatSpecQuantity(
 }
 
 /** The preparation details a technique carries beyond its name marker —
- * the wash percentage or infusion batch ratio — as one muted line per
- * technique. The full process stays in the Fat wash section and calculator. */
+ * infusion batch ratios — as one muted line per technique. Fat-wash specs live
+ * in the Fat wash prep section and calculator instead. */
 function formatSingleTechniqueSpec(technique: Technique): string | undefined {
   const spec = match(technique)
-    .with({ technique: 'fat-wash' }, (t) =>
-      t.percentage != null ? `${t.percentage}% fat` : undefined,
-    )
     .with({ technique: 'infusion' }, (t) => {
       const agent = t.agent_quantity
         ? formatSpecQuantity(t.agent_quantity, t.agent)
@@ -128,10 +125,10 @@ function formatSingleTechniqueSpec(technique: Technique): string | undefined {
 }
 
 /**
- * The technique specs an ingredient carries — fat-wash percentages and
- * infusion batch ratios — as one string per technique, for the muted
- * sub-lines under the ingredient name on a recipe page. Techniques that only
- * rename the ingredient (cuts, temperatures, applications…) carry no spec.
+ * The technique specs an ingredient carries — infusion batch ratios — as one
+ * string per technique, for the muted sub-lines under the ingredient name on a
+ * recipe page. Techniques that only rename the ingredient or have their own
+ * prep section (fat-wash, cuts, temperatures, applications…) carry no spec.
  */
 export function formatIngredientSpecs(ingredient: RecipeIngredient): string[] {
   if (ingredient.technique == null) return [];

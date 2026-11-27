@@ -392,20 +392,7 @@ describe('formatIngredientSpecs', () => {
     ).toEqual([]);
   });
 
-  it('formats the fat-wash percentage', () => {
-    expect(
-      formatIngredientSpecs(
-        createIngredient({
-          technique: {
-            technique: 'fat-wash',
-            fat: 'sesame oil',
-            method: 'room-temp',
-            percentage: 1,
-          },
-        }),
-      ),
-    ).toEqual(['1% fat']);
-
+  it('omits fat-wash specs because the Fat wash section renders them', () => {
     expect(
       formatIngredientSpecs(
         createIngredient({
@@ -419,20 +406,10 @@ describe('formatIngredientSpecs', () => {
           },
         }),
       ),
-    ).toEqual(['6% fat']);
-  });
-
-  it('returns no spec for a fat-wash marker without a percentage', () => {
-    expect(
-      formatIngredientSpecs(
-        createIngredient({
-          technique: { technique: 'fat-wash', fat: 'coconut oil', method: 'room-temp' },
-        }),
-      ),
     ).toEqual([]);
   });
 
-  it('formats each spec of a stacked technique separately', () => {
+  it('keeps infusion specs when stacked with a fat-wash technique', () => {
     expect(
       formatIngredientSpecs(
         createIngredient({
@@ -452,7 +429,7 @@ describe('formatIngredientSpecs', () => {
           ],
         }),
       ),
-    ).toEqual(['15% fat', '1 vanilla pod per 200 ml']);
+    ).toEqual(['1 vanilla pod per 200 ml']);
   });
 
   it('formats infusion batch ratios without durations', () => {

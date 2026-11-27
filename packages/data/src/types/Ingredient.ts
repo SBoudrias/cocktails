@@ -71,8 +71,6 @@ type TechniqueInfusion = {
   method?: 'cold' | 'hot' | 'sous-vide';
 };
 
-export type FatWashMethod = 'room-temp' | 'sous-vide';
-
 type TechniqueFatWashBase = {
   technique: 'fat-wash';
   fat: string;
@@ -88,6 +86,8 @@ export type TechniqueFatWash =
       method: 'sous-vide';
       temperature_c?: number;
     });
+
+export type FatWashMethod = TechniqueFatWash['method'];
 
 type TechniqueMilkWash = {
   technique: 'milk-wash';

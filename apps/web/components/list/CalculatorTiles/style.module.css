@@ -8,6 +8,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-content: start;
   gap: 10px;
   padding: 4px 16px 12px;
 }
@@ -109,6 +110,11 @@
 .milk {
   fill: var(--foreground);
   fill-opacity: 0.45;
+}
+
+.fatCap {
+  fill: var(--foreground);
+  fill-opacity: 0.72;
 }
 
 .lime {

@@ -45,7 +45,7 @@ export default async function FatWashCalculatorPage() {
       </Suspense>
       <TechniqueRecipes
         title="Fat-washed recipes"
-        description="Every recipe whose data marks a fat-washed ingredient, alphabetically."
+        description="Every recipe with a fat-washed ingredient, alphabetically."
         recipes={recipes}
       />
     </>

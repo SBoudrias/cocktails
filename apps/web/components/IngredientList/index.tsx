@@ -25,14 +25,24 @@ import styles from './style.module.css';
 const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
 
 // The ingredient row: a divider-bottomed row (8px vertical padding, 16px
-// left, the 48px trailing zone for the chevron).
+// left, the 48px trailing zone for the chevron). When no href is given
+// (e.g. generic "spirit" on a calculator), renders a plain non-link row with
+// the same typography.
 function IngredientRow<RouteType>({
   href,
   children,
 }: {
-  href: LinkProps<RouteType>['href'];
+  href?: LinkProps<RouteType>['href'];
   children: React.ReactNode;
 }) {
+  if (href == null) {
+    return (
+      <ListRow className="capitalize">
+        <span className="my-1 flex-1 text-left">{children}</span>
+      </ListRow>
+    );
+  }
+
   return (
     <li>
       <Link
@@ -121,12 +131,21 @@ export default function IngredientList({
   ingredients,
   techniques = EMPTY_TECHNIQUES,
   defaultServings = 1,
+  preferredUnit: controlledUnit,
+  hideControls = false,
+  getIngredientHref = getRecipeIngredientUrl,
 }: {
   ingredients: Recipe['ingredients'];
   techniques?: RecipeTechnique[];
   defaultServings?: number;
+  preferredUnit?: Unit;
+  hideControls?: boolean;
+  getIngredientHref?: (
+    ingredient: Recipe['ingredients'][number],
+  ) => ReturnType<typeof getRecipeIngredientUrl> | undefined;
 }) {
-  const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
+  const [storedUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
+  const preferredUnit = controlledUnit ?? storedUnit;
   const [servings, setServings] = useState(defaultServings);
   const scaleFactor = calculateScaleFactor(defaultServings, servings);
 
@@ -158,10 +177,7 @@ export default function IngredientList({
         <div className="surface">
           {scaledIngredients.toSorted(compareIngredients).map((ingredient) => {
             return (
-              <IngredientRow
-                key={ingredient.slug}
-                href={getRecipeIngredientUrl(ingredient)}
-              >
+              <IngredientRow key={ingredient.slug} href={getIngredientHref(ingredient)}>
                 <IngredientLine ingredient={ingredient} preferredUnit={preferredUnit} />
               </IngredientRow>
             );
@@ -217,10 +233,12 @@ export default function IngredientList({
       })}
       {/* The toolbar row's responsive metrics: 8px padding and 56px
           min-height, doubling to 24px/64px from 600px up. */}
-      <div className="flex min-h-14 items-center justify-between px-2 min-[600px]:min-h-16 min-[600px]:px-6">
-        <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
-        <ServingSelector servings={servings} onChange={setServings} />
-      </div>
+      {!hideControls && (
+        <div className="flex min-h-14 items-center justify-between px-2 min-[600px]:min-h-16 min-[600px]:px-6">
+          <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
+          <ServingSelector servings={servings} onChange={setServings} />
+        </div>
+      )}
     </>
   );
 }

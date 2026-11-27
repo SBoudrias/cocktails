@@ -168,7 +168,7 @@ describe('getFatWashIngredients', () => {
 });
 
 describe('buildFatWashSteps', () => {
-  it('builds room-temp steps with fat prep, separation, freezing, and straining', () => {
+  it('builds room-temp steps with fat prep, stirring guidance, separation, freezing, and straining', () => {
     expect(
       buildFatWashSteps({
         fatType: 'Butter',
@@ -178,13 +178,13 @@ describe('buildFatWashSteps', () => {
     ).toEqual([
       'Melt the butter gently.',
       'Combine 115 ml of butter with the spirit in a sealed container.',
-      'Infuse at room temperature for 4 hours.',
+      'Infuse at room temperature for 4 hours. Stir the mixture from time to time or use a magnetic stirrer.',
       'Let sit undisturbed until the fat separates, then freeze until solid.',
       'Remove the solid fat cap and strain through a coffee filter.',
     ]);
   });
 
-  it('builds sous-vide steps with water bath temperature and duration', () => {
+  it('builds sous-vide steps with water bath temperature and duration or recommended default', () => {
     expect(
       buildFatWashSteps({
         fatType: 'cacao butter',
@@ -201,6 +201,14 @@ describe('buildFatWashSteps', () => {
       'Let sit undisturbed until the fat separates, then freeze until solid.',
       'Remove the solid fat cap and strain through a coffee filter.',
     ]);
+
+    expect(
+      buildFatWashSteps({
+        fatType: 'Butter',
+        fatAmount: '115 ml of butter',
+        method: 'sous-vide',
+      })[2],
+    ).toBe('Cook sous-vide at 65°C (149°F), or as instructed, for 1 to 2 hours.');
   });
 
   it('omits melting step for liquid oils and warms solid fats like bacon fat', () => {
@@ -220,6 +228,8 @@ describe('buildFatWashSteps', () => {
       durationMinutes: 240,
     });
     expect(baconSteps[0]).toBe('Warm the bacon fat until liquid.');
-    expect(baconSteps[2]).toBe('Infuse at room temperature for 4 hours.');
+    expect(baconSteps[2]).toBe(
+      'Infuse at room temperature for 4 hours. Stir the mixture from time to time or use a magnetic stirrer.',
+    );
   });
 });

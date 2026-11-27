@@ -36,8 +36,6 @@ const DEFAULT_PERCENTAGE_BY_FAT: Record<string, number> = {
 const MELTABLE_FATS = new Set(['butter', 'brown butter', 'cacao butter']);
 const WARMABLE_FATS = new Set(['coconut oil', 'bacon fat']);
 
-export const DEFAULT_SOUS_VIDE_TEMP_C = 65;
-
 export function parseFatWashPercentage(
   raw: string | null | undefined,
 ): number | undefined {
@@ -214,14 +212,14 @@ export function buildFatWashSteps({
         return `Cook sous-vide at ${formatTemperatureC(temperatureC)} for 1 to 2 hours.`;
       }
       if (durationMinutes != null) {
-        return `Cook sous-vide at 60–65°C (140–149°F) for ${formatDurationMinutes(durationMinutes)}.`;
+        return `Cook sous-vide at 65°C (149°F), or as instructed, for ${formatDurationMinutes(durationMinutes)}.`;
       }
-      return 'Cook sous-vide at 60–65°C (140–149°F) for 1 to 2 hours.';
+      return 'Cook sous-vide at 65°C (149°F), or as instructed, for 1 to 2 hours.';
     })
     .with('room-temp', () =>
       durationMinutes != null
-        ? `Infuse at room temperature for ${formatDurationMinutes(durationMinutes)}.`
-        : 'Infuse at room temperature for 4 hours.',
+        ? `Infuse at room temperature for ${formatDurationMinutes(durationMinutes)}. Stir the mixture from time to time or use a magnetic stirrer.`
+        : 'Infuse at room temperature for 4 hours. Stir the mixture from time to time or use a magnetic stirrer.',
     )
     .exhaustive();
 

@@ -87,15 +87,15 @@ describe('FatWashCalculatorPage', () => {
       fatSelect.compareDocumentPosition(percentage) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
 
-    // Ingredient list lives outside the calculator card and uses generic "spirit"
+    // Ingredient list uses the standard IngredientList outside the calculator card
     const ingredientsSection = screen.getByRole('region', { name: 'Ingredients' });
     expect(calculatorSection).not.toContainElement(ingredientsSection);
     const wash = within(ingredientsSection).getByRole('list', {
-      name: 'Wash ingredients',
+      name: 'Ingredients',
     });
     expect(wash).toHaveTextContent('115 ml butter');
     expect(wash).toHaveTextContent('750 ml spirit');
-    expect(within(wash).getByRole('link', { name: 'butter' })).toHaveAttribute(
+    expect(within(wash).getByRole('link', { name: /butter/i })).toHaveAttribute(
       'href',
       '/ingredient/other/butter',
     );
@@ -127,14 +127,14 @@ describe('FatWashCalculatorPage', () => {
     const spiritVolume = screen.getByRole('spinbutton', { name: 'Spirit volume' });
     await user.clear(spiritVolume);
     await user.type(spiritVolume, '500');
-    expect(screen.getByRole('list', { name: 'Wash ingredients' })).toHaveTextContent(
+    expect(screen.getByRole('list', { name: 'Ingredients' })).toHaveTextContent(
       '75 ml butter',
     );
 
     const percentage = screen.getByRole('spinbutton', { name: 'Fat percentage' });
     await user.clear(percentage);
     await user.type(percentage, '20');
-    expect(screen.getByRole('list', { name: 'Wash ingredients' })).toHaveTextContent(
+    expect(screen.getByRole('list', { name: 'Ingredients' })).toHaveTextContent(
       '100 ml butter',
     );
   });
@@ -147,7 +147,7 @@ describe('FatWashCalculatorPage', () => {
     await user.click(screen.getByRole('option', { name: 'Coconut oil' }));
 
     expect(percentage).toHaveValue(25);
-    expect(screen.getByRole('list', { name: 'Wash ingredients' })).toHaveTextContent(
+    expect(screen.getByRole('list', { name: 'Ingredients' })).toHaveTextContent(
       '190 ml coconut oil',
     );
 
@@ -159,7 +159,7 @@ describe('FatWashCalculatorPage', () => {
     await user.click(screen.getByRole('option', { name: 'Sesame oil' }));
 
     expect(percentage).toHaveValue(10);
-    expect(screen.getByRole('list', { name: 'Wash ingredients' })).toHaveTextContent(
+    expect(screen.getByRole('list', { name: 'Ingredients' })).toHaveTextContent(
       '75 ml sesame oil',
     );
   });
@@ -171,7 +171,7 @@ describe('FatWashCalculatorPage', () => {
     await setupApp(await FatWashCalculatorPage());
 
     expect(screen.getByRole('spinbutton', { name: 'Fat percentage' })).toHaveValue(6);
-    const wash = screen.getByRole('list', { name: 'Wash ingredients' });
+    const wash = screen.getByRole('list', { name: 'Ingredients' });
     expect(wash).toHaveTextContent('45 ml bacon fat');
     expect(wash).toHaveTextContent('750 ml spirit');
 
@@ -180,7 +180,9 @@ describe('FatWashCalculatorPage', () => {
     expect(instructions).toHaveTextContent(
       '2. Combine 45 ml of bacon fat with the spirit in a sealed container.',
     );
-    expect(instructions).toHaveTextContent('3. Infuse at room temperature for 4 hours.');
+    expect(instructions).toHaveTextContent(
+      '3. Infuse at room temperature for 4 hours. Stir the mixture from time to time or use a magnetic stirrer.',
+    );
     expect(instructions).toHaveTextContent(
       '4. Let sit undisturbed until the fat separates, then freeze until solid.',
     );
@@ -193,7 +195,7 @@ describe('FatWashCalculatorPage', () => {
     mockRouter.setCurrentUrl('/calculators/fat-wash?fat=Baileys&percentage=25');
     const { user } = await setupApp(await FatWashCalculatorPage());
 
-    expect(screen.getByRole('link', { name: 'Baileys' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /Baileys/i })).toHaveAttribute(
       'href',
       '/ingredient/liqueur/baileys',
     );
@@ -207,7 +209,7 @@ describe('FatWashCalculatorPage', () => {
     expect(options.at(-1)).toBe('Other fat');
   });
 
-  it('places the Room temp / Sous-vide toggle on top of Instructions and adapts steps live', async () => {
+  it('places the Room temp / Sous-vide toggle on top of Instructions without a temperature input', async () => {
     mockRouter.setCurrentUrl(
       '/calculators/fat-wash?fat=cacao%20butter&method=sous-vide&percentage=10&duration=60&temp=65',
     );
@@ -216,7 +218,7 @@ describe('FatWashCalculatorPage', () => {
     const calculatorSection = screen.getByRole('region', { name: 'Fat quantity' });
     const instructions = screen.getByRole('region', { name: 'Instructions' });
 
-    // Method toggle and sous-vide temperature sit in Instructions, not in the calculator card
+    // Method toggle sits in Instructions, not in the calculator card; no temperature input
     const methodGroup = within(instructions).getByRole('radiogroup', {
       name: 'Wash method',
     });
@@ -226,12 +228,10 @@ describe('FatWashCalculatorPage', () => {
         .getAllByRole('radio')
         .map((radio) => radio.textContent),
     ).toEqual(['Room temp', 'Sous-vide']);
+    expect(
+      within(instructions).queryByRole('spinbutton', { name: /temperature/i }),
+    ).not.toBeInTheDocument();
 
-    const tempField = within(instructions).getByRole('spinbutton', {
-      name: 'Sous-vide temperature',
-    });
-    expect(tempField).toHaveValue(65);
-    expect(tempField).not.toHaveAttribute('aria-describedby');
     expect(instructions).toHaveTextContent('1. Melt the cacao butter gently.');
     expect(instructions).toHaveTextContent(
       '2. Seal 75 ml of cacao butter with the spirit in a sous-vide bag.',
@@ -240,17 +240,15 @@ describe('FatWashCalculatorPage', () => {
       '3. Cook sous-vide at 65°C (149°F) for 1 hour.',
     );
 
-    await user.clear(tempField);
-    await user.type(tempField, '60');
+    await user.click(within(methodGroup).getByRole('radio', { name: 'Room temp' }));
     expect(instructions).toHaveTextContent(
-      '3. Cook sous-vide at 60°C (140°F) for 1 hour.',
+      '3. Infuse at room temperature for 4 hours. Stir the mixture from time to time or use a magnetic stirrer.',
     );
 
-    await user.click(within(methodGroup).getByRole('radio', { name: 'Room temp' }));
-    expect(
-      within(instructions).queryByRole('spinbutton', { name: 'Sous-vide temperature' }),
-    ).not.toBeInTheDocument();
-    expect(instructions).toHaveTextContent('3. Infuse at room temperature for 4 hours.');
+    await user.click(within(methodGroup).getByRole('radio', { name: 'Sous-vide' }));
+    expect(instructions).toHaveTextContent(
+      '3. Cook sous-vide at 65°C (149°F), or as instructed, for 1 to 2 hours.',
+    );
   });
 
   it('rounds converted volumes to friendly measurements when switching units', async () => {
@@ -260,14 +258,14 @@ describe('FatWashCalculatorPage', () => {
     await user.click(screen.getByRole('radio', { name: 'oz' }));
 
     expect(spiritVolume).toHaveValue(25);
-    expect(screen.getByRole('list', { name: 'Wash ingredients' })).toHaveTextContent(
-      '3.75 oz butter',
+    expect(screen.getByRole('list', { name: 'Ingredients' })).toHaveTextContent(
+      '3 ¾ oz butter',
     );
 
     await user.click(screen.getByRole('radio', { name: 'ml' }));
 
     expect(spiritVolume).toHaveValue(750);
-    expect(screen.getByRole('list', { name: 'Wash ingredients' })).toHaveTextContent(
+    expect(screen.getByRole('list', { name: 'Ingredients' })).toHaveTextContent(
       '115 ml butter',
     );
   });

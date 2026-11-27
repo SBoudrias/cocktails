@@ -192,7 +192,7 @@ describe('RecipePage', () => {
       name: /bacon fat–washed Four Roses Bourbon/i,
     });
     expect(bourbon).toHaveTextContent('2 oz');
-    expect(bourbon).toHaveTextContent('6% fat');
+    expect(bourbon).not.toHaveTextContent('6% fat');
     const bourbonUrl = new URL(
       bourbon.getAttribute('href') ?? '',
       'https://cocktail-index.test',
@@ -204,7 +204,7 @@ describe('RecipePage', () => {
     expect(steps.map((step) => step.textContent)).toEqual([
       '1. Warm the bacon fat until liquid.',
       '2. Combine Four Roses Bourbon with 6% bacon fat in a sealed container.',
-      '3. Infuse at room temperature for 4 hours.',
+      '3. Infuse at room temperature for 4 hours. Stir the mixture from time to time or use a magnetic stirrer.',
       '4. Let sit undisturbed until the fat separates, then freeze until solid.',
       '5. Remove the solid fat cap and strain through a coffee filter.',
     ]);

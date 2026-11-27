@@ -2,23 +2,22 @@
 
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { tryConvertVolume } from '@cocktails/conversion';
-import type { FatWashMethod } from '@cocktails/data';
+import type { FatWashMethod, RecipeIngredient } from '@cocktails/data';
 import slugify from '@sindresorhus/slugify';
 import { ChevronDown } from 'lucide-react';
 import type { Route } from 'next';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useReducer } from 'react';
 import { match } from 'ts-pattern';
 import { CalculatorInstructions } from '#/components/calculators/CalculatorInstructions';
+import IngredientList from '#/components/IngredientList';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
 import { LabeledField, OutlinedField } from '#/components/ui/labeled-field';
-import { List, ListRow, ListSubheader } from '#/components/ui/list';
+import { ListSubheader } from '#/components/ui/list';
 import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import {
   buildFatWashSteps,
-  DEFAULT_SOUS_VIDE_TEMP_C,
   FAT_TYPES,
   getDefaultFatWashPercentage,
   getFatTypeOptions,
@@ -27,6 +26,7 @@ import {
   parseFatWashPercentage,
 } from '#/modules/fatWash';
 import { formatAmount } from '#/modules/formatAmount';
+import { roundToFriendlyFraction, roundToFriendlyMl } from '#/modules/friendly-rounding';
 
 // A full 750 ml bottle as the starting point.
 const DEFAULT_SPIRIT_VOLUME = 750;
@@ -43,14 +43,14 @@ function isValidPercentage(percentage: number) {
   return Number.isFinite(percentage) && percentage > 0 && percentage < 100;
 }
 
-function isValidTemperatureC(value: string | number) {
-  const temp = Number(value);
-  return (
-    value !== '' &&
-    Number.isFinite(temp) &&
+function parseTemperatureC(raw: string | null): number | undefined {
+  if (!raw) return undefined;
+  const temp = Number(raw);
+  return Number.isFinite(temp) &&
     temp >= MIN_SOUS_VIDE_TEMP_C &&
     temp <= MAX_SOUS_VIDE_TEMP_C
-  );
+    ? temp
+    : undefined;
 }
 
 function parsePositiveMinutes(raw: string | null): number | undefined {
@@ -62,6 +62,12 @@ function parsePositiveMinutes(raw: string | null): number | undefined {
 function roundToFriendlyVolume(amount: number, unit: Unit) {
   const step = FRIENDLY_VOLUME_STEPS[unit];
   const rounded = Math.round(amount / step) * step;
+  return rounded > 0 ? rounded : amount;
+}
+
+function roundDisplayVolume(amount: number, unit: Unit) {
+  const rounded =
+    unit === 'ml' ? roundToFriendlyMl(amount) : roundToFriendlyFraction(amount, unit);
   return rounded > 0 ? rounded : amount;
 }
 
@@ -83,7 +89,7 @@ type CalculatorState = {
   /** Preserves a custom URL fat's prose name if the user switches away and back. */
   customFat: { label: string; displayName: string } | undefined;
   method: FatWashMethod;
-  temperatureCValue: string | number;
+  temperatureC: number | undefined;
   durationMinutes: number | undefined;
 };
 
@@ -91,11 +97,6 @@ function getInitialState(searchParams: Pick<URLSearchParams, 'get'>): Calculator
   const { fatType, displayName } = normalizeFatType(searchParams.get('fat'));
   const urlPercentage = parseFatWashPercentage(searchParams.get('percentage'));
   const method = parseFatWashMethod(searchParams.get('method')) ?? 'room-temp';
-  const rawTemp = searchParams.get('temp');
-  const temperatureCValue =
-    rawTemp != null && isValidTemperatureC(rawTemp)
-      ? Number(rawTemp)
-      : DEFAULT_SOUS_VIDE_TEMP_C;
   const isCanonicalFat = FAT_TYPES.some((type) => type === fatType);
 
   return {
@@ -108,7 +109,7 @@ function getInitialState(searchParams: Pick<URLSearchParams, 'get'>): Calculator
     fatDisplayName: displayName,
     customFat: isCanonicalFat ? undefined : { label: fatType, displayName },
     method,
-    temperatureCValue,
+    temperatureC: parseTemperatureC(searchParams.get('temp')),
     durationMinutes: parsePositiveMinutes(searchParams.get('duration')),
   };
 }
@@ -118,8 +119,7 @@ type CalculatorAction =
   | { type: 'change-unit'; value: Unit }
   | { type: 'change-percentage'; value: string }
   | { type: 'change-fat-type'; value: string }
-  | { type: 'change-method'; value: FatWashMethod }
-  | { type: 'change-temperature'; value: string };
+  | { type: 'change-method'; value: FatWashMethod };
 
 function calculatorReducer(
   state: CalculatorState,
@@ -182,15 +182,12 @@ function calculatorReducer(
       return {
         ...state,
         method: value,
-        // Recipe-specific duration belongs to the recipe's own method;
-        // switching methods resets to the new method's default guidance.
+        // Recipe-specific duration and temperature belong to the recipe's own
+        // method; switching methods resets to the new method's default guidance.
         durationMinutes: undefined,
+        temperatureC: undefined,
       };
     })
-    .with({ type: 'change-temperature' }, ({ value }) => ({
-      ...state,
-      temperatureCValue: value,
-    }))
     .exhaustive();
 }
 
@@ -263,6 +260,7 @@ function WashIngredients({
   spiritVolume,
   unit,
   fatDisplayName,
+  fatSlug,
   fatUrl,
 }: {
   isValid: boolean;
@@ -270,36 +268,51 @@ function WashIngredients({
   spiritVolume: number;
   unit: Unit;
   fatDisplayName: string;
+  fatSlug: string;
   fatUrl: Route<`/ingredient/${string}/${string}`> | undefined;
 }) {
+  const ingredients: RecipeIngredient[] = isValid
+    ? [
+        {
+          name: fatDisplayName,
+          slug: fatSlug,
+          type: 'other',
+          quantity: { amount: fatVolume, unit },
+          categories: [],
+          refs: [],
+          ingredients: [],
+        },
+        {
+          name: 'spirit',
+          slug: 'spirit',
+          type: 'spirit',
+          quantity: { amount: spiritVolume, unit },
+          categories: [],
+          refs: [],
+          ingredients: [],
+        },
+      ]
+    : [];
+
   return (
-    <section aria-label="Ingredients" className="py-2">
-      <ListSubheader>Ingredients</ListSubheader>
+    <section aria-label="Ingredients">
       <div role="status" aria-live="polite">
         {isValid ? (
-          <List aria-label="Wash ingredients" className="surface py-0">
-            <ListRow>
-              <span className="my-1 flex-1 text-left">
-                {formatAmount(fatVolume)} {unit}{' '}
-                {fatUrl ? (
-                  <Link href={fatUrl} className="text-primary underline">
-                    {fatDisplayName}
-                  </Link>
-                ) : (
-                  fatDisplayName
-                )}
-              </span>
-            </ListRow>
-            <ListRow>
-              <span className="my-1 flex-1 text-left">
-                {formatAmount(spiritVolume)} {unit} spirit
-              </span>
-            </ListRow>
-          </List>
+          <IngredientList
+            ingredients={ingredients}
+            preferredUnit={unit}
+            hideControls
+            getIngredientHref={(ingredient) =>
+              ingredient.slug === fatSlug ? fatUrl : undefined
+            }
+          />
         ) : (
-          <p className="surface px-4 py-3 text-base">
-            Enter a valid spirit volume and percentage to calculate the fat to add.
-          </p>
+          <div className="py-2">
+            <ListSubheader>Ingredients</ListSubheader>
+            <p className="surface px-4 py-3 text-base">
+              Enter a valid spirit volume and percentage to calculate the fat to add.
+            </p>
+          </div>
         )}
       </div>
     </section>
@@ -324,7 +337,7 @@ export default function FatWashCalculator({
     fatDisplayName,
     customFat,
     method,
-    temperatureCValue,
+    temperatureC,
     durationMinutes,
   } = state;
 
@@ -332,62 +345,37 @@ export default function FatWashCalculator({
   const fatPercentage = Number(fatPercentageValue);
   const isPercentageValid = isValidPercentage(fatPercentage);
   const isWashValid = isSpiritVolumeValid && isPercentageValid;
-  const isTemperatureValid = isValidTemperatureC(temperatureCValue);
 
   const spiritVolume = Number(spiritVolumeValue);
   const fatVolume = isWashValid
-    ? roundToFriendlyVolume((spiritVolume * fatPercentage) / 100, unit)
+    ? roundDisplayVolume((spiritVolume * fatPercentage) / 100, unit)
     : Number.NaN;
   const fatAmount = isWashValid
     ? `${formatAmount(fatVolume)} ${unit} of ${fatDisplayName}`
     : 'the fat';
-  const fatUrl = fatType === 'Other fat' ? undefined : fatUrls[slugify(fatType)];
+  const fatSlug = slugify(fatType);
+  const fatUrl = fatType === 'Other fat' ? undefined : fatUrls[fatSlug];
 
   const instructions = buildFatWashSteps({
     fatType,
     fatAmount,
     method,
     durationMinutes,
-    temperatureC:
-      method === 'sous-vide' && isTemperatureValid
-        ? Number(temperatureCValue)
-        : undefined,
+    temperatureC: method === 'sous-vide' ? temperatureC : undefined,
   });
 
   const instructionControls = (
-    <>
-      <ToggleGroup
-        value={method}
-        onChange={(nextMethod) => {
-          dispatch({ type: 'change-method', value: nextMethod });
-        }}
-        aria-label="Wash method"
-        fullWidth
-      >
-        <ToggleGroupItem value="room-temp">Room temp</ToggleGroupItem>
-        <ToggleGroupItem value="sous-vide">Sous-vide</ToggleGroupItem>
-      </ToggleGroup>
-      {method === 'sous-vide' && (
-        <LabeledField
-          label="Sous-vide temperature"
-          unit="°C"
-          value={temperatureCValue}
-          type="number"
-          onChange={(event) => {
-            dispatch({ type: 'change-temperature', value: event.target.value });
-          }}
-          error={!isTemperatureValid}
-          helperText={
-            isTemperatureValid
-              ? undefined
-              : `Must be between ${MIN_SOUS_VIDE_TEMP_C} and ${MAX_SOUS_VIDE_TEMP_C}°C`
-          }
-          min={MIN_SOUS_VIDE_TEMP_C}
-          max={MAX_SOUS_VIDE_TEMP_C}
-          step="any"
-        />
-      )}
-    </>
+    <ToggleGroup
+      value={method}
+      onChange={(nextMethod) => {
+        dispatch({ type: 'change-method', value: nextMethod });
+      }}
+      aria-label="Wash method"
+      fullWidth
+    >
+      <ToggleGroupItem value="room-temp">Room temp</ToggleGroupItem>
+      <ToggleGroupItem value="sous-vide">Sous-vide</ToggleGroupItem>
+    </ToggleGroup>
   );
 
   return (
@@ -451,6 +439,7 @@ export default function FatWashCalculator({
         spiritVolume={spiritVolume}
         unit={unit}
         fatDisplayName={fatDisplayName}
+        fatSlug={fatSlug}
         fatUrl={fatUrl}
       />
       <CalculatorInstructions steps={instructions} controls={instructionControls} />

@@ -52,12 +52,9 @@ export default function FatWashInstructions({
                 <span id={headingId}>{title}</span>
                 <Link
                   href={getFatWashCalculatorUrl(fatWash)}
-                  className="inline-flex shrink-0 items-center gap-1 text-foreground no-underline"
+                  className="inline-flex shrink-0 items-center gap-1.5 text-foreground no-underline"
                 >
-                  <Calculator
-                    className="size-[13px] translate-y-[-1.5px]"
-                    aria-hidden="true"
-                  />
+                  <Calculator className="size-3.5 shrink-0" aria-hidden="true" />
                   Calculator
                 </Link>
               </div>
