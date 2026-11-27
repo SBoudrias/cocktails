@@ -27,7 +27,11 @@ function formatSingleTechnique(
     .with({ technique: 'infusion' }, (t) =>
       [t.method, `${t.agent}–infused`, name].filter(Boolean).join(' '),
     )
-    .with({ technique: 'fat-wash' }, (t) => `${t.fat}–washed ${name}`)
+    .with({ technique: 'fat-wash' }, (t) =>
+      [t.method === 'sous-vide' ? 'sous-vide' : undefined, `${t.fat}–washed`, name]
+        .filter(Boolean)
+        .join(' '),
+    )
     .with({ technique: 'milk-wash' }, (t) => `${t.milk_type} milk-washed ${name}`)
     .with({ technique: 'clarification', method: 'milk' }, (t) =>
       t.milk_type ? `${t.milk_type} milk-clarified ${name}` : `milk-clarified ${name}`,
@@ -78,6 +82,67 @@ export function formatIngredientName(ingredient: RecipeIngredient): string {
 
   // Handle single technique (backward compatibility)
   return formatSingleTechnique(ingredient.technique, name, ingredient);
+}
+
+const specUnitNames: Partial<Record<RecipeIngredient['quantity']['unit'], string>> = {
+  gram: 'g',
+};
+
+/** A spec quantity as a terse string — "1.5 oz", "40 g", "2 tbsp" — with an
+ * optional noun naming what the amount is ("1 vanilla pod"). */
+function formatSpecQuantity(
+  quantity: RecipeIngredient['quantity'],
+  noun?: string,
+): string {
+  const amount = Number.isInteger(quantity.amount)
+    ? quantity.amount
+    : Math.round(quantity.amount * 100) / 100;
+  const unit =
+    quantity.unit === 'unit'
+      ? undefined
+      : (specUnitNames[quantity.unit] ?? quantity.unit);
+
+  return [amount, unit, noun].filter(Boolean).join(' ');
+}
+
+/** The preparation details a technique carries beyond its name marker —
+ * the wash percentage or infusion batch ratio — as one muted line per
+ * technique. The full process stays in the Fat wash section and calculator. */
+function formatSingleTechniqueSpec(technique: Technique): string | undefined {
+  const spec = match(technique)
+    .with({ technique: 'fat-wash' }, (t) =>
+      t.percentage != null ? `${t.percentage}% fat` : undefined,
+    )
+    .with({ technique: 'infusion' }, (t) => {
+      const agent = t.agent_quantity
+        ? formatSpecQuantity(t.agent_quantity, t.agent)
+        : undefined;
+
+      return agent && t.spirit_quantity
+        ? `${agent} per ${formatSpecQuantity(t.spirit_quantity)}`
+        : undefined;
+    })
+    .otherwise(() => '');
+
+  return spec === '' ? undefined : spec;
+}
+
+/**
+ * The technique specs an ingredient carries — fat-wash percentages and
+ * infusion batch ratios — as one string per technique, for the muted
+ * sub-lines under the ingredient name on a recipe page. Techniques that only
+ * rename the ingredient (cuts, temperatures, applications…) carry no spec.
+ */
+export function formatIngredientSpecs(ingredient: RecipeIngredient): string[] {
+  if (ingredient.technique == null) return [];
+
+  const techniques = Array.isArray(ingredient.technique)
+    ? ingredient.technique
+    : [ingredient.technique];
+
+  return techniques
+    .map(formatSingleTechniqueSpec)
+    .filter((spec): spec is string => spec != null);
 }
 
 export function formatRecipeTechnique(technique: RecipeTechnique): string {

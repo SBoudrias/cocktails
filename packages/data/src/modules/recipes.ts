@@ -551,6 +551,20 @@ export const getAcidAdjustedRecipes = memo(async (): Promise<Recipe[]> => {
   );
 });
 
+/** A recipe that fat-washes one of its ingredients on the line — the
+ * technique the fat-wash calculator exists for. The marker is authored on
+ * the ingredient (`fat-wash`), so the list stays true as recipes are added. */
+export const getFatWashedRecipes = memo(async (): Promise<Recipe[]> => {
+  const recipes = await getAllRecipes();
+  return toAlphaSort(
+    recipes.filter((recipe) =>
+      recipe.ingredients.some((ingredient) =>
+        techniquesOf(ingredient).some((technique) => technique.technique === 'fat-wash'),
+      ),
+    ),
+  );
+});
+
 const getRecipeCategoryIndexes = memo(async () => {
   const recipes = await getAllRecipes();
   const directByCategory = new Map<string, number[]>();

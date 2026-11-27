@@ -1,6 +1,10 @@
 import type { RecipeIngredient } from '@cocktails/data';
 import { describe, it, expect } from 'vitest';
-import { formatIngredientName, formatRecipeTechniqueName } from './technique';
+import {
+  formatIngredientName,
+  formatIngredientSpecs,
+  formatRecipeTechniqueName,
+} from './technique';
 
 // Helper to create a basic ingredient for testing
 function createIngredient(overrides: Partial<RecipeIngredient> = {}): RecipeIngredient {
@@ -67,6 +71,14 @@ describe('formatIngredientName', () => {
         technique: { technique: 'fat-wash', fat: 'bacon', method: 'room-temp' },
       });
       expect(formatIngredientName(ingredient)).toBe('bacon–washed bourbon');
+    });
+
+    it('should prefix sous-vide fat-washes', () => {
+      const ingredient = createIngredient({
+        name: 'gin',
+        technique: { technique: 'fat-wash', fat: 'cacao butter', method: 'sous-vide' },
+      });
+      expect(formatIngredientName(ingredient)).toBe('sous-vide cacao butter–washed gin');
     });
   });
 
@@ -363,6 +375,100 @@ describe('formatIngredientName', () => {
       });
       expect(formatIngredientName(ingredient)).toBe('cucumber slice');
     });
+  });
+});
+
+describe('formatIngredientSpecs', () => {
+  it('returns no spec for techniques that only rename the ingredient', () => {
+    expect(
+      formatIngredientSpecs(
+        createIngredient({
+          technique: [
+            { technique: 'temperature', method: 'frozen' },
+            { technique: 'acid-adjustment' },
+          ],
+        }),
+      ),
+    ).toEqual([]);
+  });
+
+  it('formats the fat-wash percentage', () => {
+    expect(
+      formatIngredientSpecs(
+        createIngredient({
+          technique: {
+            technique: 'fat-wash',
+            fat: 'sesame oil',
+            method: 'room-temp',
+            percentage: 1,
+          },
+        }),
+      ),
+    ).toEqual(['1% fat']);
+
+    expect(
+      formatIngredientSpecs(
+        createIngredient({
+          name: 'bourbon',
+          technique: {
+            technique: 'fat-wash',
+            fat: 'bacon fat',
+            method: 'room-temp',
+            percentage: 6,
+            duration_minutes: 240,
+          },
+        }),
+      ),
+    ).toEqual(['6% fat']);
+  });
+
+  it('returns no spec for a fat-wash marker without a percentage', () => {
+    expect(
+      formatIngredientSpecs(
+        createIngredient({
+          technique: { technique: 'fat-wash', fat: 'coconut oil', method: 'room-temp' },
+        }),
+      ),
+    ).toEqual([]);
+  });
+
+  it('formats each spec of a stacked technique separately', () => {
+    expect(
+      formatIngredientSpecs(
+        createIngredient({
+          technique: [
+            {
+              technique: 'fat-wash',
+              fat: 'brown butter',
+              method: 'room-temp',
+              percentage: 15,
+            },
+            {
+              technique: 'infusion',
+              agent: 'vanilla pod',
+              agent_quantity: { amount: 1, unit: 'unit' },
+              spirit_quantity: { amount: 200, unit: 'ml' },
+            },
+          ],
+        }),
+      ),
+    ).toEqual(['15% fat', '1 vanilla pod per 200 ml']);
+  });
+
+  it('formats infusion batch ratios without durations', () => {
+    expect(
+      formatIngredientSpecs(
+        createIngredient({
+          technique: {
+            technique: 'infusion',
+            agent: 'English breakfast tea',
+            agent_quantity: { amount: 7, unit: 'gram' },
+            spirit_quantity: { amount: 200, unit: 'ml' },
+            duration: '30 minutes',
+          },
+        }),
+      ),
+    ).toEqual(['7 g English breakfast tea per 200 ml']);
   });
 });
 

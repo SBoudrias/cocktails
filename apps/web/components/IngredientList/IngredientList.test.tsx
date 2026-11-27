@@ -256,4 +256,39 @@ describe('IngredientList', () => {
     expect(getCalculatorParams().get('amount')).toBe('6');
     expect(getCalculatorParams().get('ratio')).toBe('0.25');
   });
+
+  it('renders technique spec sub-lines and keeps fat-washed rows linked to the bottle', () => {
+    render(
+      <IngredientList
+        ingredients={[
+          {
+            name: 'Four Roses Bourbon',
+            slug: 'four-roses-bourbon',
+            type: 'spirit',
+            technique: {
+              technique: 'fat-wash',
+              fat: 'bacon fat',
+              method: 'room-temp',
+              percentage: 6,
+              duration_minutes: 240,
+            },
+            quantity: { amount: 2, unit: 'oz' },
+            categories: [],
+            refs: [],
+            ingredients: [],
+          },
+        ]}
+      />,
+    );
+
+    const bourbonLink = screen.getByRole('link', {
+      name: /bacon fat–washed Four Roses Bourbon/i,
+    });
+    expect(bourbonLink).toHaveTextContent('6% fat');
+    const url = new URL(
+      bourbonLink.getAttribute('href') ?? '',
+      'https://cocktail-index.test',
+    );
+    expect(url.pathname).toBe('/ingredient/spirit/four-roses-bourbon');
+  });
 });
