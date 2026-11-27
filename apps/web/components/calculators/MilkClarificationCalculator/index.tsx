@@ -1,8 +1,6 @@
 'use client';
 
-import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { tryConvertVolume } from '@cocktails/conversion';
-import { ChevronDown } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useReducer } from 'react';
 import { match } from 'ts-pattern';
@@ -10,7 +8,8 @@ import { CalculatorInstructions } from '#/components/calculators/CalculatorInstr
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import { Alert } from '#/components/ui/alert';
 import { Card, CardContent } from '#/components/ui/card';
-import { LabeledField, OutlinedField } from '#/components/ui/labeled-field';
+import { LabeledField } from '#/components/ui/labeled-field';
+import { Select } from '#/components/ui/select';
 import { formatAmount } from '#/modules/formatAmount';
 
 const DEFAULT_BATCH_VOLUME = 1000;
@@ -153,66 +152,6 @@ function calculatorReducer(
     .exhaustive();
 }
 
-// A select on the shared OutlinedField shell: the trigger styled like the
-// input row, the arrow lucide's ChevronDown (icon rule) at the row's end.
-function MilkSelect({
-  milkType,
-  customMilkType,
-  onChange,
-}: {
-  milkType: string;
-  customMilkType: string | undefined;
-  onChange: (milkType: string) => void;
-}) {
-  const options = customMilkType ? [...MILK_TYPES, customMilkType] : MILK_TYPES;
-
-  return (
-    <OutlinedField label="Milk">
-      {(labelId) => (
-        <SelectPrimitive.Root<string>
-          value={milkType}
-          onValueChange={(value) => {
-            if (value != null) onChange(value);
-          }}
-        >
-          <SelectPrimitive.Trigger
-            aria-labelledby={labelId}
-            className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-3.5 text-left text-base outline-none"
-          >
-            <SelectPrimitive.Value />
-            <SelectPrimitive.Icon className="absolute top-1/2 right-1.75 -translate-y-1/2 text-foreground">
-              <ChevronDown className="size-6" />
-            </SelectPrimitive.Icon>
-          </SelectPrimitive.Trigger>
-          <SelectPrimitive.Portal>
-            <SelectPrimitive.Positioner
-              align="start"
-              sideOffset={0}
-              // The menu surface: the paper glass without radius, the
-              // trigger's width, 8px vertical padding.
-              className="z-50 min-w-(--anchor-width) overflow-y-auto rounded-none surface py-2"
-            >
-              <SelectPrimitive.Popup>
-                {options.map((type) => (
-                  <SelectPrimitive.Item
-                    key={type}
-                    value={type}
-                    // A menu row: auto rows 36px tall, 16px left padding,
-                    // the selected item on primary/16.
-                    className="flex h-9 items-center px-4 text-base text-foreground outline-none data-highlighted:bg-muted data-selected:bg-primary/16"
-                  >
-                    <SelectPrimitive.ItemText>{type}</SelectPrimitive.ItemText>
-                  </SelectPrimitive.Item>
-                ))}
-              </SelectPrimitive.Popup>
-            </SelectPrimitive.Positioner>
-          </SelectPrimitive.Portal>
-        </SelectPrimitive.Root>
-      )}
-    </OutlinedField>
-  );
-}
-
 export default function MilkClarificationCalculator() {
   const searchParams = useSearchParams();
   const [state, dispatch] = useReducer(calculatorReducer, searchParams, getInitialState);
@@ -224,6 +163,7 @@ export default function MilkClarificationCalculator() {
     customMilkType,
     unit,
   } = state;
+  const milkOptions = customMilkType ? [...MILK_TYPES, customMilkType] : MILK_TYPES;
   const isBatchVolumeValid = isValidBatchVolume(batchVolumeValue);
   const milkVolume = isBatchVolumeValid
     ? roundToFriendlyVolume(Number(batchVolumeValue) * milkRatio, unit)
@@ -281,9 +221,10 @@ export default function MilkClarificationCalculator() {
                 className="min-w-0 flex-1"
               />
             </div>
-            <MilkSelect
-              milkType={milkType}
-              customMilkType={customMilkType}
+            <Select
+              label="Milk"
+              value={milkType}
+              options={milkOptions}
               onChange={(value) => {
                 dispatch({ type: 'change-milk-type', value });
               }}

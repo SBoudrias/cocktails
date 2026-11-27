@@ -27,11 +27,7 @@ function formatSingleTechnique(
     .with({ technique: 'infusion' }, (t) =>
       [t.method, `${t.agent}–infused`, name].filter(Boolean).join(' '),
     )
-    .with({ technique: 'fat-wash' }, (t) =>
-      [t.method === 'sous-vide' ? 'sous-vide' : undefined, `${t.fat}–washed`, name]
-        .filter(Boolean)
-        .join(' '),
-    )
+    .with({ technique: 'fat-wash' }, (t) => `${t.fat}–washed ${name}`)
     .with({ technique: 'milk-wash' }, (t) => `${t.milk_type} milk-washed ${name}`)
     .with({ technique: 'clarification', method: 'milk' }, (t) =>
       t.milk_type ? `${t.milk_type} milk-clarified ${name}` : `milk-clarified ${name}`,

@@ -87,9 +87,23 @@ describe('FatWashCalculatorPage', () => {
       fatSelect.compareDocumentPosition(percentage) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
 
-    // Ingredient list uses the standard IngredientList outside the calculator card
+    // Ingredient list uses the standard IngredientList outside the calculator card,
+    // carrying the unit selector (not the servings selector) below the rows.
     const ingredientsSection = screen.getByRole('region', { name: 'Ingredients' });
     expect(calculatorSection).not.toContainElement(ingredientsSection);
+    expect(
+      within(calculatorSection).queryByRole('radiogroup', {
+        name: 'Preferred measurement unit',
+      }),
+    ).not.toBeInTheDocument();
+    expect(
+      within(ingredientsSection).getByRole('radiogroup', {
+        name: 'Preferred measurement unit',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      within(ingredientsSection).queryByLabelText('Number of servings'),
+    ).not.toBeInTheDocument();
     const wash = within(ingredientsSection).getByRole('list', {
       name: 'Ingredients',
     });

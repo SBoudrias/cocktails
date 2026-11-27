@@ -2,6 +2,7 @@
 
 import type { Recipe, RecipeTechnique } from '@cocktails/data';
 import { compareIngredients } from '@cocktails/ingredient-sorting';
+import { cn } from 'cn';
 import { Calculator, ChevronRight } from 'lucide-react';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
@@ -31,23 +32,31 @@ function IngredientRow<RouteType>({
   href?: LinkProps<RouteType>['href'];
   children: React.ReactNode;
 }) {
-  if (href == null) {
-    return (
-      <ListRow className="capitalize">
-        <span className="my-1 flex-1 text-left">{children}</span>
-      </ListRow>
-    );
-  }
+  const rowClass = 'flex w-full items-center border-b py-2 pl-4 text-base capitalize';
+  const content = (
+    <>
+      <span className="my-1 flex-1 text-left">{children}</span>
+      {href != null && (
+        <ChevronRight className="size-6 shrink-0 text-foreground" aria-hidden="true" />
+      )}
+    </>
+  );
 
   return (
     <li>
-      <Link
-        href={href}
-        className="flex w-full items-center border-b py-2 pr-12 pl-4 text-base capitalize transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
-      >
-        <span className="my-1 flex-1 text-left">{children}</span>
-        <ChevronRight className="size-6 shrink-0 text-foreground" aria-hidden="true" />
-      </Link>
+      {href != null ? (
+        <Link
+          href={href}
+          className={cn(
+            rowClass,
+            'pr-12 transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50',
+          )}
+        >
+          {content}
+        </Link>
+      ) : (
+        <div className={cn(rowClass, 'pr-4')}>{content}</div>
+      )}
     </li>
   );
 }
@@ -121,22 +130,27 @@ export default function IngredientList({
   techniques = EMPTY_TECHNIQUES,
   defaultServings = 1,
   preferredUnit: controlledUnit,
-  hideControls = false,
+  onUnitChange,
+  controls = 'all',
   getIngredientHref = getRecipeIngredientUrl,
 }: {
   ingredients: Recipe['ingredients'];
   techniques?: RecipeTechnique[];
   defaultServings?: number;
   preferredUnit?: Unit;
-  hideControls?: boolean;
+  onUnitChange?: (unit: Unit) => void;
+  controls?: 'all' | 'unit' | 'serving' | false;
   getIngredientHref?: (
     ingredient: Recipe['ingredients'][number],
   ) => ReturnType<typeof getRecipeIngredientUrl> | undefined;
 }) {
-  const [storedUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
+  const [storedUnit, setStoredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
   const preferredUnit = controlledUnit ?? storedUnit;
+  const handleUnitChange = onUnitChange ?? setStoredUnit;
   const [servings, setServings] = useState(defaultServings);
   const scaleFactor = calculateScaleFactor(defaultServings, servings);
+  const showUnitControl = controls === 'all' || controls === 'unit';
+  const showServingControl = controls === 'all' || controls === 'serving';
 
   const scaledIngredients = useMemo(
     () =>
@@ -222,10 +236,14 @@ export default function IngredientList({
       })}
       {/* The toolbar row's responsive metrics: 8px padding and 56px
           min-height, doubling to 24px/64px from 600px up. */}
-      {!hideControls && (
+      {(showUnitControl || showServingControl) && (
         <div className="flex min-h-14 items-center justify-between px-2 min-[600px]:min-h-16 min-[600px]:px-6">
-          <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
-          <ServingSelector servings={servings} onChange={setServings} />
+          {showUnitControl && (
+            <UnitSelector value={preferredUnit} onChange={handleUnitChange} />
+          )}
+          {showServingControl && (
+            <ServingSelector servings={servings} onChange={setServings} />
+          )}
         </div>
       )}
     </>

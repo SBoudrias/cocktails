@@ -1,28 +1,18 @@
 import type { FatWashMethod, RecipeIngredient, TechniqueFatWash } from '@cocktails/data';
+import {
+  createLoader,
+  createParser,
+  parseAsString,
+  parseAsStringLiteral,
+} from 'nuqs/server';
 import { match } from 'ts-pattern';
 
-/**
- * Canonical fats offered in the fat-wash calculator dropdown, sorted
- * alphabetically with the catch-all "Other fat" last.
- */
-export const FAT_TYPES = [
-  'Avocado oil',
-  'Bacon fat',
-  'Brown butter',
-  'Butter',
-  'Cacao butter',
-  'Coconut oil',
-  'Sesame oil',
-  'Other fat',
-] as const;
-
-export const DEFAULT_FAT_TYPE = 'Butter';
-
-/** Published starting percentages (fat volume as % of spirit volume):
+/** Published starting percentages (fat volume as % of spirit volume), sorted
+ * alphabetically with the catch-all "Other fat" last:
  * avocado oil 32% (Tiki: Modern Tropical Cocktails), bacon fat 6% (PDT),
  * butter/brown butter 15% (Educated Barfly), cacao butter 10% and sesame
  * oil 1% (Truffles on the Rocks), coconut oil 25% (Tropical Standard). */
-const DEFAULT_PERCENTAGE_BY_FAT: Record<string, number> = {
+const DEFAULT_PERCENTAGE_BY_FAT = {
   'Avocado oil': 32,
   'Bacon fat': 6,
   'Brown butter': 15,
@@ -31,28 +21,80 @@ const DEFAULT_PERCENTAGE_BY_FAT: Record<string, number> = {
   'Coconut oil': 25,
   'Sesame oil': 1,
   'Other fat': 10,
-};
+} as const;
 
+export const FAT_TYPES: readonly string[] = Object.keys(DEFAULT_PERCENTAGE_BY_FAT);
+
+const DEFAULT_FAT_TYPE = 'Butter';
+
+const FAT_WASH_METHODS: readonly FatWashMethod[] = ['room-temp', 'sous-vide'];
 const MELTABLE_FATS = new Set(['butter', 'brown butter', 'cacao butter']);
 const WARMABLE_FATS = new Set(['coconut oil', 'bacon fat']);
 
-export function parseFatWashPercentage(
-  raw: string | null | undefined,
-): number | undefined {
-  if (!raw) return undefined;
+const DEFAULT_ROOM_TEMP_DURATION_MINUTES = 240;
+const DEFAULT_SOUS_VIDE_TEMP = '65°C (149°F), or as instructed,';
+const DEFAULT_SOUS_VIDE_DURATION = '1 to 2 hours';
 
-  const value = Number(raw.trim());
-  if (!Number.isFinite(value) || value <= 0 || value >= 100) {
-    return undefined;
-  }
+function parseAsNumberInRange(
+  min: number,
+  max: number,
+  { inclusive = false, integer = false } = {},
+) {
+  return createParser<number>({
+    parse: (raw) => {
+      const value = Number(raw.trim());
+      if (!Number.isFinite(value)) return null;
+      if (integer && !Number.isInteger(value)) return null;
+      const inRange = inclusive
+        ? value >= min && value <= max
+        : value > min && value < max;
+      return inRange ? value : null;
+    },
+    serialize: String,
+  });
+}
 
-  return value;
+const loadFatWashSearchParams = createLoader({
+  fat: parseAsString,
+  method: parseAsStringLiteral(FAT_WASH_METHODS).withDefault('room-temp'),
+  percentage: parseAsNumberInRange(0, 100),
+  duration: parseAsNumberInRange(1, Number.POSITIVE_INFINITY, {
+    inclusive: true,
+    integer: true,
+  }),
+  temp: parseAsNumberInRange(30, 100, { inclusive: true }),
+});
+
+/** Validates and normalizes the fat-wash calculator's URL query parameters
+ * against one schema, falling back to safe defaults for missing or invalid values. */
+export function parseFatWashSearchParams(searchParams: { toString(): string } | string) {
+  const parsed = loadFatWashSearchParams(
+    typeof searchParams === 'string' ? searchParams : searchParams.toString(),
+  );
+  const { fatType, displayName } = normalizeFatType(parsed.fat);
+
+  return {
+    fatType,
+    displayName,
+    method: parsed.method,
+    percentage: parsed.percentage ?? undefined,
+    durationMinutes: parsed.duration ?? undefined,
+    temperatureC: parsed.temp ?? undefined,
+  };
+}
+
+function isKnownFatType(
+  fatType: string,
+): fatType is keyof typeof DEFAULT_PERCENTAGE_BY_FAT {
+  return Object.hasOwn(DEFAULT_PERCENTAGE_BY_FAT, fatType);
 }
 
 /** The default fat percentage for a fat, falling back to Other fat's 10%
  * for unlisted fats (coffee oil, szechuan oil, etc.). */
 export function getDefaultFatWashPercentage(fatType: string): number {
-  return DEFAULT_PERCENTAGE_BY_FAT[fatType] ?? DEFAULT_PERCENTAGE_BY_FAT['Other fat']!;
+  return isKnownFatType(fatType)
+    ? DEFAULT_PERCENTAGE_BY_FAT[fatType]
+    : DEFAULT_PERCENTAGE_BY_FAT['Other fat'];
 }
 
 /** Dropdown options sorted alphabetically, keeping "Other fat" last even when
@@ -91,14 +133,6 @@ export function normalizeFatType(rawFat: string | null | undefined): {
       : cleaned,
     displayName: cleaned,
   };
-}
-
-export function parseFatWashMethod(
-  rawMethod: string | null | undefined,
-): FatWashMethod | undefined {
-  return match(rawMethod)
-    .with('room-temp', 'sous-vide', (method) => method)
-    .otherwise(() => undefined);
 }
 
 export function formatDurationMinutes(minutes: number): string {
@@ -159,7 +193,7 @@ export function buildFatWashSteps({
   fatType,
   fatAmount,
   fatPercentage,
-  spiritName,
+  spiritName = 'the spirit',
   method,
   durationMinutes,
   temperatureC,
@@ -169,7 +203,7 @@ export function buildFatWashSteps({
   fatAmount?: string;
   /** Fat percentage for recipe pages where no batch volume is selected. */
   fatPercentage?: number;
-  /** Specific ingredient name on a recipe page; omitted on the calculator. */
+  /** Specific ingredient name on a recipe page; defaults to "the spirit" on the calculator. */
   spiritName?: string;
   method: FatWashMethod;
   durationMinutes?: number;
@@ -184,42 +218,31 @@ export function buildFatWashSteps({
       ? [`Warm the ${fatLower} until liquid.`]
       : [];
 
+  const fatSpec =
+    fatPercentage != null ? `${fatPercentage}% ${fatDisplayName}` : fatDisplayName;
+  const mixture = fatAmount
+    ? `${fatAmount} with ${spiritName}`
+    : `${spiritName} with ${fatSpec}`;
+
   const combineStep = match(method)
-    .with('sous-vide', () => {
-      if (fatAmount) {
-        return `Seal ${fatAmount} with the spirit in a sous-vide bag.`;
-      }
-      const fatSpec =
-        fatPercentage != null ? `${fatPercentage}% ${fatDisplayName}` : fatDisplayName;
-      return `Seal ${spiritName ?? 'the spirit'} with ${fatSpec} in a sous-vide bag.`;
-    })
-    .with('room-temp', () => {
-      if (fatAmount) {
-        return `Combine ${fatAmount} with the spirit in a sealed container.`;
-      }
-      const fatSpec =
-        fatPercentage != null ? `${fatPercentage}% ${fatDisplayName}` : fatDisplayName;
-      return `Combine ${spiritName ?? 'the spirit'} with ${fatSpec} in a sealed container.`;
-    })
+    .with('sous-vide', () => `Seal ${mixture} in a sous-vide bag.`)
+    .with('room-temp', () => `Combine ${mixture} in a sealed container.`)
     .exhaustive();
 
+  const duration =
+    durationMinutes != null ? formatDurationMinutes(durationMinutes) : undefined;
+  const temperature = temperatureC != null ? formatTemperatureC(temperatureC) : undefined;
+
   const infuseStep = match(method)
-    .with('sous-vide', () => {
-      if (temperatureC != null && durationMinutes != null) {
-        return `Cook sous-vide at ${formatTemperatureC(temperatureC)} for ${formatDurationMinutes(durationMinutes)}.`;
-      }
-      if (temperatureC != null) {
-        return `Cook sous-vide at ${formatTemperatureC(temperatureC)} for 1 to 2 hours.`;
-      }
-      if (durationMinutes != null) {
-        return `Cook sous-vide at 65°C (149°F), or as instructed, for ${formatDurationMinutes(durationMinutes)}.`;
-      }
-      return 'Cook sous-vide at 65°C (149°F), or as instructed, for 1 to 2 hours.';
-    })
-    .with('room-temp', () =>
-      durationMinutes != null
-        ? `Infuse at room temperature for ${formatDurationMinutes(durationMinutes)}. Stir the mixture from time to time or use a magnetic stirrer.`
-        : 'Infuse at room temperature for 4 hours. Stir the mixture from time to time or use a magnetic stirrer.',
+    .with(
+      'sous-vide',
+      () =>
+        `Cook sous-vide at ${temperature ?? DEFAULT_SOUS_VIDE_TEMP} for ${duration ?? DEFAULT_SOUS_VIDE_DURATION}.`,
+    )
+    .with(
+      'room-temp',
+      () =>
+        `Infuse at room temperature for ${duration ?? formatDurationMinutes(DEFAULT_ROOM_TEMP_DURATION_MINUTES)}. Stir the mixture from time to time or use a magnetic stirrer.`,
     )
     .exhaustive();
 

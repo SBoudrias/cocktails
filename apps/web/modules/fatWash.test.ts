@@ -9,8 +9,7 @@ import {
   getFatTypeOptions,
   getFatWashIngredients,
   normalizeFatType,
-  parseFatWashMethod,
-  parseFatWashPercentage,
+  parseFatWashSearchParams,
 } from './fatWash';
 
 describe('FAT_TYPES & getFatTypeOptions', () => {
@@ -28,20 +27,53 @@ describe('FAT_TYPES & getFatTypeOptions', () => {
   });
 });
 
-describe('parseFatWashPercentage', () => {
-  it('parses valid percentages between 0 and 100', () => {
-    expect(parseFatWashPercentage('6')).toBe(6);
-    expect(parseFatWashPercentage(' 12.5 ')).toBe(12.5);
-    expect(parseFatWashPercentage('25')).toBe(25);
+describe('parseFatWashSearchParams', () => {
+  it('validates and parses valid query parameters', () => {
+    expect(
+      parseFatWashSearchParams(
+        '?fat=cacao%20butter&method=sous-vide&percentage=10.5&duration=60&temp=65',
+      ),
+    ).toEqual({
+      fatType: 'Cacao butter',
+      displayName: 'cacao butter',
+      method: 'sous-vide',
+      percentage: 10.5,
+      durationMinutes: 60,
+      temperatureC: 65,
+    });
   });
 
-  it('rejects empty, malformed, or out-of-range percentages', () => {
-    expect(parseFatWashPercentage(undefined)).toBeUndefined();
-    expect(parseFatWashPercentage('')).toBeUndefined();
-    expect(parseFatWashPercentage('0')).toBeUndefined();
-    expect(parseFatWashPercentage('-5')).toBeUndefined();
-    expect(parseFatWashPercentage('100')).toBeUndefined();
-    expect(parseFatWashPercentage('1:10')).toBeUndefined();
+  it('falls back to safe defaults for missing, malformed, or out-of-range values', () => {
+    expect(parseFatWashSearchParams('')).toEqual({
+      fatType: 'Butter',
+      displayName: 'butter',
+      method: 'room-temp',
+      percentage: undefined,
+      durationMinutes: undefined,
+      temperatureC: undefined,
+    });
+
+    expect(
+      parseFatWashSearchParams(
+        '?fat=coffee%20oil&method=freezer&percentage=100&duration=1.5&temp=200',
+      ),
+    ).toEqual({
+      fatType: 'Coffee oil',
+      displayName: 'coffee oil',
+      method: 'room-temp',
+      percentage: undefined,
+      durationMinutes: undefined,
+      temperatureC: undefined,
+    });
+
+    expect(parseFatWashSearchParams('?percentage=0&duration=0&temp=20')).toEqual({
+      fatType: 'Butter',
+      displayName: 'butter',
+      method: 'room-temp',
+      percentage: undefined,
+      durationMinutes: undefined,
+      temperatureC: undefined,
+    });
   });
 });
 
@@ -79,16 +111,6 @@ describe('normalizeFatType', () => {
       fatType: 'Baileys',
       displayName: 'Baileys',
     });
-  });
-});
-
-describe('parseFatWashMethod', () => {
-  it('accepts room-temp and sous-vide and ignores unknown strings', () => {
-    expect(parseFatWashMethod('room-temp')).toBe('room-temp');
-    expect(parseFatWashMethod('sous-vide')).toBe('sous-vide');
-    expect(parseFatWashMethod('freezer')).toBeUndefined();
-    expect(parseFatWashMethod('cold')).toBeUndefined();
-    expect(parseFatWashMethod(null)).toBeUndefined();
   });
 });
 

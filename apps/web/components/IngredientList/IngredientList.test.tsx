@@ -291,4 +291,26 @@ describe('IngredientList', () => {
     );
     expect(url.pathname).toBe('/ingredient/spirit/four-roses-bourbon');
   });
+
+  it('shows only the requested toolbar controls', () => {
+    const { rerender } = render(
+      <IngredientList ingredients={mockIngredients} controls="unit" />,
+    );
+    expect(
+      screen.getByRole('radiogroup', { name: 'Preferred measurement unit' }),
+    ).toBeInTheDocument();
+    expect(screen.queryByLabelText('Number of servings')).not.toBeInTheDocument();
+
+    rerender(<IngredientList ingredients={mockIngredients} controls="serving" />);
+    expect(
+      screen.queryByRole('radiogroup', { name: 'Preferred measurement unit' }),
+    ).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Number of servings')).toBeInTheDocument();
+
+    rerender(<IngredientList ingredients={mockIngredients} controls={false} />);
+    expect(
+      screen.queryByRole('radiogroup', { name: 'Preferred measurement unit' }),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Number of servings')).not.toBeInTheDocument();
+  });
 });

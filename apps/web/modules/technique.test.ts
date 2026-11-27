@@ -68,14 +68,6 @@ describe('formatIngredientName', () => {
       });
       expect(formatIngredientName(ingredient)).toBe('bacon–washed bourbon');
     });
-
-    it('should prefix sous-vide fat-washes', () => {
-      const ingredient = createIngredient({
-        name: 'gin',
-        technique: { technique: 'fat-wash', fat: 'cacao butter', method: 'sous-vide' },
-      });
-      expect(formatIngredientName(ingredient)).toBe('sous-vide cacao butter–washed gin');
-    });
   });
 
   describe('milk-wash technique', () => {

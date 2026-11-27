@@ -1,10 +1,8 @@
 'use client';
 
-import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { tryConvertVolume } from '@cocktails/conversion';
 import type { FatWashMethod, RecipeIngredient } from '@cocktails/data';
 import slugify from '@sindresorhus/slugify';
-import { ChevronDown } from 'lucide-react';
 import type { Route } from 'next';
 import { useSearchParams } from 'next/navigation';
 import { useReducer } from 'react';
@@ -13,17 +11,16 @@ import { CalculatorInstructions } from '#/components/calculators/CalculatorInstr
 import IngredientList from '#/components/IngredientList';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card';
-import { LabeledField, OutlinedField } from '#/components/ui/labeled-field';
+import { LabeledField } from '#/components/ui/labeled-field';
 import { ListSubheader } from '#/components/ui/list';
+import { Select } from '#/components/ui/select';
 import { ToggleGroup, ToggleGroupItem } from '#/components/ui/toggle-group';
 import {
   buildFatWashSteps,
   FAT_TYPES,
   getDefaultFatWashPercentage,
   getFatTypeOptions,
-  normalizeFatType,
-  parseFatWashMethod,
-  parseFatWashPercentage,
+  parseFatWashSearchParams,
 } from '#/modules/fatWash';
 import { formatAmount } from '#/modules/formatAmount';
 import { roundToFriendlyFraction, roundToFriendlyMl } from '#/modules/friendly-rounding';
@@ -31,8 +28,6 @@ import { roundToFriendlyFraction, roundToFriendlyMl } from '#/modules/friendly-r
 // A full 750 ml bottle as the starting point.
 const DEFAULT_SPIRIT_VOLUME = 750;
 const FRIENDLY_VOLUME_STEPS: Record<Unit, number> = { ml: 5, oz: 0.25 };
-const MIN_SOUS_VIDE_TEMP_C = 30;
-const MAX_SOUS_VIDE_TEMP_C = 100;
 
 function isValidSpiritVolume(value: string | number) {
   const amount = Number(value);
@@ -41,22 +36,6 @@ function isValidSpiritVolume(value: string | number) {
 
 function isValidPercentage(percentage: number) {
   return Number.isFinite(percentage) && percentage > 0 && percentage < 100;
-}
-
-function parseTemperatureC(raw: string | null): number | undefined {
-  if (!raw) return undefined;
-  const temp = Number(raw);
-  return Number.isFinite(temp) &&
-    temp >= MIN_SOUS_VIDE_TEMP_C &&
-    temp <= MAX_SOUS_VIDE_TEMP_C
-    ? temp
-    : undefined;
-}
-
-function parsePositiveMinutes(raw: string | null): number | undefined {
-  if (!raw) return undefined;
-  const value = Number(raw);
-  return Number.isInteger(value) && value > 0 ? value : undefined;
 }
 
 function roundToFriendlyVolume(amount: number, unit: Unit) {
@@ -93,24 +72,23 @@ type CalculatorState = {
   durationMinutes: number | undefined;
 };
 
-function getInitialState(searchParams: Pick<URLSearchParams, 'get'>): CalculatorState {
-  const { fatType, displayName } = normalizeFatType(searchParams.get('fat'));
-  const urlPercentage = parseFatWashPercentage(searchParams.get('percentage'));
-  const method = parseFatWashMethod(searchParams.get('method')) ?? 'room-temp';
-  const isCanonicalFat = FAT_TYPES.some((type) => type === fatType);
+function getInitialState(searchParams: { toString(): string }): CalculatorState {
+  const { fatType, displayName, method, percentage, durationMinutes, temperatureC } =
+    parseFatWashSearchParams(searchParams);
+  const isCanonicalFat = FAT_TYPES.includes(fatType);
 
   return {
     spiritVolumeValue: DEFAULT_SPIRIT_VOLUME,
     spiritVolumeMilliliters: DEFAULT_SPIRIT_VOLUME,
     unit: 'ml',
-    fatPercentageValue: urlPercentage ?? getDefaultFatWashPercentage(fatType),
-    percentageLocked: urlPercentage != null,
+    fatPercentageValue: percentage ?? getDefaultFatWashPercentage(fatType),
+    percentageLocked: percentage != null,
     fatType,
     fatDisplayName: displayName,
     customFat: isCanonicalFat ? undefined : { label: fatType, displayName },
     method,
-    temperatureC: parseTemperatureC(searchParams.get('temp')),
-    durationMinutes: parsePositiveMinutes(searchParams.get('duration')),
+    temperatureC,
+    durationMinutes,
   };
 }
 
@@ -191,67 +169,6 @@ function calculatorReducer(
     .exhaustive();
 }
 
-// A select on the shared OutlinedField shell, the trigger styled like the
-// input row, lucide's ChevronDown at its end — the milk select's shape.
-function FatSelect({
-  fatType,
-  customFatLabel,
-  onChange,
-  className,
-}: {
-  fatType: string;
-  customFatLabel: string | undefined;
-  onChange: (fatType: string) => void;
-  className?: string;
-}) {
-  const options = getFatTypeOptions(customFatLabel);
-
-  return (
-    <OutlinedField label="Fat" className={className}>
-      {(labelId) => (
-        <SelectPrimitive.Root<string>
-          value={fatType}
-          onValueChange={(value) => {
-            if (value != null) onChange(value);
-          }}
-        >
-          <SelectPrimitive.Trigger
-            aria-labelledby={labelId}
-            className="relative h-14 w-full rounded-sm bg-transparent pr-11 pl-3.5 text-left text-base outline-none"
-          >
-            <SelectPrimitive.Value />
-            <SelectPrimitive.Icon className="absolute top-1/2 right-1.75 -translate-y-1/2 text-foreground">
-              <ChevronDown className="size-6" aria-hidden="true" />
-            </SelectPrimitive.Icon>
-          </SelectPrimitive.Trigger>
-          <SelectPrimitive.Portal>
-            <SelectPrimitive.Positioner
-              align="start"
-              sideOffset={0}
-              // The menu surface: the opaque paper (the same solid the app
-              // bar and toasts use) — the translucent glass recipe lets the
-              // page bleed through a floating menu that nothing anchors.
-              className="z-50 min-w-(--anchor-width) overflow-y-auto rounded-none bg-(--paper) py-2 shadow-(--surface-shadow)"
-            >
-              <SelectPrimitive.Popup>
-                {options.map((type) => (
-                  <SelectPrimitive.Item
-                    key={type}
-                    value={type}
-                    className="flex h-9 items-center px-4 text-base text-foreground outline-none data-highlighted:bg-muted data-selected:bg-primary/16"
-                  >
-                    <SelectPrimitive.ItemText>{type}</SelectPrimitive.ItemText>
-                  </SelectPrimitive.Item>
-                ))}
-              </SelectPrimitive.Popup>
-            </SelectPrimitive.Positioner>
-          </SelectPrimitive.Portal>
-        </SelectPrimitive.Root>
-      )}
-    </OutlinedField>
-  );
-}
-
 const EMPTY_FAT_URLS: Record<string, Route<`/ingredient/${string}/${string}`>> = {};
 
 function WashIngredients({
@@ -259,6 +176,7 @@ function WashIngredients({
   fatVolume,
   spiritVolume,
   unit,
+  onUnitChange,
   fatDisplayName,
   fatSlug,
   fatUrl,
@@ -267,6 +185,7 @@ function WashIngredients({
   fatVolume: number;
   spiritVolume: number;
   unit: Unit;
+  onUnitChange: (unit: Unit) => void;
   fatDisplayName: string;
   fatSlug: string;
   fatUrl: Route<`/ingredient/${string}/${string}`> | undefined;
@@ -301,7 +220,8 @@ function WashIngredients({
           <IngredientList
             ingredients={ingredients}
             preferredUnit={unit}
-            hideControls
+            onUnitChange={onUnitChange}
+            controls="unit"
             getIngredientHref={(ingredient) =>
               ingredient.slug === fatSlug ? fatUrl : undefined
             }
@@ -312,6 +232,9 @@ function WashIngredients({
             <p className="surface px-4 py-3 text-base">
               Enter a valid spirit volume and percentage to calculate the fat to add.
             </p>
+            <div className="flex min-h-14 items-center justify-between px-2 min-[600px]:min-h-16 min-[600px]:px-6">
+              <UnitSelector value={unit} onChange={onUnitChange} />
+            </div>
           </div>
         )}
       </div>
@@ -400,9 +323,10 @@ export default function FatWashCalculator({
               step="any"
             />
             <div className="flex flex-col gap-4 min-[600px]:flex-row">
-              <FatSelect
-                fatType={fatType}
-                customFatLabel={customFat?.label}
+              <Select
+                label="Fat"
+                value={fatType}
+                options={getFatTypeOptions(customFat?.label)}
                 onChange={(value) => {
                   dispatch({ type: 'change-fat-type', value });
                 }}
@@ -424,12 +348,6 @@ export default function FatWashCalculator({
                 className="min-w-0 flex-1"
               />
             </div>
-            <UnitSelector
-              value={unit}
-              onChange={(nextUnit) => {
-                dispatch({ type: 'change-unit', value: nextUnit });
-              }}
-            />
           </section>
         </CardContent>
       </Card>
@@ -438,6 +356,9 @@ export default function FatWashCalculator({
         fatVolume={fatVolume}
         spiritVolume={spiritVolume}
         unit={unit}
+        onUnitChange={(nextUnit) => {
+          dispatch({ type: 'change-unit', value: nextUnit });
+        }}
         fatDisplayName={fatDisplayName}
         fatSlug={fatSlug}
         fatUrl={fatUrl}
