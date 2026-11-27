@@ -1,109 +1,29 @@
-import { getCategory, getChildCategories } from '@cocktails/data/categories';
-import {
-  getIngredientRecipeCounts,
-  getIngredientsForCategory,
-} from '@cocktails/data/ingredients';
 import { getCategoryPageParams } from '@cocktails/data/params';
-import { getRecipeByCategory } from '@cocktails/data/recipes';
 import type { Metadata } from 'next';
-import { notFound, unstable_rethrow } from 'next/navigation';
-import FixBugCard from '#/components/card/FixBugCard';
-import VideoListCard from '#/components/card/VideoListCard';
-import CategoryChips from '#/components/CategoryChips';
-import CategoryMembers from '#/components/CategoryMembers';
-import { LinkList, LinkListItem } from '#/components/list/LinkList';
-import SearchableRecipePage from '#/components/SearchableRecipePage';
-import { Card, CardContent } from '#/components/ui/card';
-import Video from '#/components/Video';
-import { getCategoryUrl } from '#/modules/url';
+import { DETAIL_SHELL_PARAM } from '#/modules/detailShell';
+import CategoryDetail from './CategoryDetail';
 
 type Params = { slug: string };
 
+/**
+ * The export holds one shell for every category page: the build copies it
+ * to each category's URL (tools/stamp-detail-pages.ts), and the page
+ * renders its own entry of data/categories.json in the browser. The dev
+ * server renders any real category path, so it gets them all.
+ */
 export async function generateStaticParams(): Promise<Params[]> {
-  return getCategoryPageParams();
+  if (process.env.NODE_ENV === 'development') return getCategoryPageParams();
+
+  return [{ slug: DETAIL_SHELL_PARAM }];
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Params>;
-}): Promise<Metadata> {
-  const { slug } = await params;
+// The shell's head is every category page's: no per-page title, and no
+// canonical (the root layout's would name the shell's own URL). The page
+// sets both once its data renders.
+export const metadata: Metadata = {
+  alternates: { canonical: null },
+};
 
-  try {
-    const category = await getCategory(slug);
-
-    return {
-      title: `Indexotica | Learn about ${category.name}`,
-      description:
-        category.description ??
-        `Learn about ${category.name}, its bottles and the cocktail recipes that use it.`,
-    };
-  } catch (error) {
-    unstable_rethrow(error);
-    notFound();
-  }
-}
-
-export default async function CategoryPage({ params }: { params: Promise<Params> }) {
-  const { slug } = await params;
-
-  const category = await getCategory(slug);
-  const [members, relatedRecipes, childCategories, recipeCounts] = await Promise.all([
-    getIngredientsForCategory(category),
-    getRecipeByCategory(category),
-    getChildCategories(category),
-    getIngredientRecipeCounts(),
-  ]);
-
-  const videos = category.refs.filter((ref) => ref.type === 'youtube');
-  const [firstVideo, ...additionalVideos] = videos;
-
-  return (
-    <SearchableRecipePage
-      title={category.name}
-      catalogKey={relatedRecipes.length > 0 ? `category/${category.slug}` : undefined}
-      recipeCount={relatedRecipes.length}
-      listHeader={`Recipes using ${category.name}`}
-      underTitle={
-        <CategoryChips categories={category.parents} label="Parent categories" />
-      }
-      footer={
-        <FixBugCard
-          fixUrl={`https://github.com/SBoudrias/cocktails/edit/main/src/data/categories/${category.slug}.json`}
-          m={1}
-        />
-      }
-    >
-      {firstVideo && <Video id={firstVideo.videoId} start={firstVideo.start} />}
-      {category.description && (
-        <Card m={1}>
-          <CardContent>
-            <p>{category.description}</p>
-          </CardContent>
-        </Card>
-      )}
-      {childCategories.length > 0 && (
-        <LinkList
-          header={`Subcategories of ${category.name}`}
-          items={childCategories}
-          renderItem={(childCategory) => (
-            <LinkListItem
-              key={childCategory.slug}
-              href={getCategoryUrl(childCategory)}
-              primary={childCategory.name}
-            />
-          )}
-        />
-      )}
-      <CategoryMembers
-        category={category}
-        members={members}
-        recipeCounts={recipeCounts}
-      />
-      {additionalVideos.length > 0 && (
-        <VideoListCard title="Other videos" refs={additionalVideos} m={1} />
-      )}
-    </SearchableRecipePage>
-  );
+export default function CategoryPage() {
+  return <CategoryDetail />;
 }

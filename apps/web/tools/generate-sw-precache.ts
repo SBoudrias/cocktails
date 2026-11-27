@@ -24,10 +24,16 @@ import { Script } from 'node:vm';
  *   does not depend on having visited them online first
  * - the PWA icons
  *
- * Per-recipe/per-ingredient pages (~4,700) are NEVER precached. Navigations
- * are network-first with a cached fallback at runtime, so visited pages work
- * offline without being precached (offline = everything ever visited, across
- * deploys — the runtime cache is kept from one version to the next).
+ * - the detail routes' shells (one per type, with their data file): every
+ *   page of the type is a byte-identical copy of its shell, so the service
+ *   worker answers any of them offline from the precached shell
+ *
+ * The per-page copies of a shell are NEVER precached, nor are the other
+ * statically rendered pages (recipes, sources, author and bar lists).
+ * Navigations are network-first with a cached fallback at runtime, so
+ * visited pages work offline without being precached (offline = everything
+ * ever visited, across deploys — the runtime cache is kept from one version
+ * to the next).
  *
  * This script FAILS LOUDLY: a missing build output, a missing required
  * file, an unbaked or already-baked sw.js, or a baked result that does not
@@ -61,15 +67,40 @@ const LIST_ENTRIES = [
   'list/style/tiki',
 ] as const;
 
-const PAGE_ENTRIES = ['index.html', 'offline.html', ...LIST_ENTRIES.map(toHtmlFile)];
+// The detail routes' shells (tools/stamp-detail-pages.ts): every page of a
+// type is a copy of its shell, so the precached shell and its type's data
+// file render every page of the type offline, visited or not. The shell's
+// RSC payloads ride along for soft navigations offline; the _full payload
+// is pruned from the deploy (never fetched), so it stays out.
+const DETAIL_SHELLS = ['ingredient/_/_', 'category/_', 'recipes/_/_/_'];
 
-// Shared data files served from /data/: precached in full so the lists that
-// render from them work offline on a fresh install. catalog.json is ~3 MB
-// raw (~280 KB gz over the wire) — the cost of the install-time cache.addAll
-// is accepted for a real offline catalog.
+const PAGE_ENTRIES = [
+  'index.html',
+  'offline.html',
+  ...LIST_ENTRIES.map(toHtmlFile),
+  ...DETAIL_SHELLS.map(toHtmlFile),
+];
+
+const isShellPayload = (file: string) =>
+  DETAIL_SHELLS.some(
+    (shell) =>
+      file === `${shell}.txt` ||
+      (path.dirname(file) === shell &&
+        file.endsWith('.txt') &&
+        path.basename(file) !== '__next._full.txt'),
+  );
+
+// Shared data files served from /data/: precached in full so the lists and
+// detail pages that render from them work offline on a fresh install.
+// catalog.json is ~3 MB raw (~280 KB gz over the wire) and ingredients.json
+// ~1.3 MB (~160 KB gz) — the cost of the install-time fetches is accepted
+// for a real offline catalog.
 const DATA_FILES = [
   path.join('data', 'catalog.json'),
   path.join('data', 'search-index.json'),
+  path.join('data', 'ingredients.json'),
+  path.join('data', 'categories.json'),
+  path.join('data', 'recipes.json'),
 ];
 
 // Files the offline experience depends on: if any is missing from the
@@ -142,6 +173,7 @@ async function main(): Promise<void> {
   const precache = relative
     .filter((file) => {
       if (PAGE_ENTRIES.includes(file)) return true;
+      if (isShellPayload(file)) return true;
       // Hashed build assets: JS chunks, extracted CSS, fonts, bundled media.
       if (file.startsWith(`_next${path.sep}`)) return true;
       // Shared data already served as static files.

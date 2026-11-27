@@ -5,8 +5,9 @@ import { screen, waitFor, within } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildCatalog } from '#/modules/buildCatalog';
+import { buildIngredientPages } from '#/modules/buildIngredientPages';
 import { getCategoryUrl, getIngredientUrl } from '#/modules/url';
-import { serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
+import { failJson, serveJson, sharedJsonServer } from '#/testing/sharedJsonServer';
 import { setupApp } from '#/vitest.setup';
 import IngredientPage from './page';
 
@@ -30,7 +31,7 @@ const TEST_SPIRIT = {
   type: 'spirit',
   slug: 'beefeater-london-dry-gin',
   name: 'Beefeater London Dry Gin',
-};
+} as const;
 
 // A Jamaican aged rum: its most specific category (Blended aged rum
 // (Jamaica)) holds 6 other bottles, and its tree has substitution-friendly
@@ -127,63 +128,42 @@ const testCatalog = buildCatalog([
   },
 ]);
 
-// Cache page JSX once for the entire file to avoid repeated async data loading
-const [
-  ingredientPageJSX,
-  spiritPageJSX,
-  jamaicanRumPageJSX,
-  cappedSpiritPageJSX,
-  flavoredVodkaPageJSX,
-  armagnacPageJSX,
-  solitaryBottlePageJSX,
-  umeshuPageJSX,
-] = await Promise.all([
-  IngredientPage({
-    params: Promise.resolve({
-      type: TEST_INGREDIENT.type,
-      slug: TEST_INGREDIENT.slug,
-    }),
-  }),
-  IngredientPage({
-    params: Promise.resolve({ type: TEST_SPIRIT.type, slug: TEST_SPIRIT.slug }),
-  }),
-  IngredientPage({
-    params: Promise.resolve({
-      type: TEST_JAMAICAN_RUM.type,
-      slug: TEST_JAMAICAN_RUM.slug,
-    }),
-  }),
-  IngredientPage({
-    params: Promise.resolve({
-      type: TEST_CAPPED_SPIRIT.type,
-      slug: TEST_CAPPED_SPIRIT.slug,
-    }),
-  }),
-  IngredientPage({
-    params: Promise.resolve({
-      type: TEST_FLAVORED_VODKA.type,
-      slug: TEST_FLAVORED_VODKA.slug,
-    }),
-  }),
-  IngredientPage({
-    params: Promise.resolve({
-      type: TEST_ARMAGNAC.type,
-      slug: TEST_ARMAGNAC.slug,
-    }),
-  }),
-  IngredientPage({
-    params: Promise.resolve({
-      type: TEST_SOLITARY_BOTTLE.type,
-      slug: TEST_SOLITARY_BOTTLE.slug,
-    }),
-  }),
-  IngredientPage({
-    params: Promise.resolve({
-      type: TEST_UMESHU.type,
-      slug: TEST_UMESHU.slug,
-    }),
-  }),
-]);
+// A bottle without a description of its own: its page shows its top
+// category's description card instead.
+const TEST_UNDESCRIBED_BOTTLE = {
+  type: 'liqueur',
+  slug: 'bols-orange-curacao',
+};
+
+/** The ingredient data file as the pages read it, built once for the file. */
+const testIngredientPages = await buildIngredientPages(
+  await Promise.all(
+    [
+      TEST_INGREDIENT,
+      TEST_SPIRIT,
+      TEST_JAMAICAN_RUM,
+      TEST_CAPPED_SPIRIT,
+      TEST_FLAVORED_VODKA,
+      TEST_ARMAGNAC,
+      TEST_SOLITARY_BOTTLE,
+      TEST_UMESHU,
+      TEST_UNDESCRIBED_BOTTLE,
+    ].map(({ type, slug }) => getIngredient(type, slug)),
+  ),
+);
+
+/**
+ * The ingredient page at an ingredient's URL: every ingredient URL serves
+ * the same page, which renders the entry of its own path. The query a test
+ * set beforehand stays.
+ */
+function pageAt(ingredient: { type: string; slug: string }) {
+  mockRouter.setCurrentUrl({
+    pathname: `/ingredient/${ingredient.type}/${ingredient.slug}`,
+    query: mockRouter.query,
+  });
+  return <IngredientPage />;
+}
 
 // happy-dom creates an animation's finished promise eagerly, where a
 // browser only creates it when read: cancelling the drawer's settle
@@ -266,12 +246,45 @@ function stubSheetLayout() {
 describe('IngredientPage', () => {
   beforeEach(() => {
     mockRouter.setCurrentUrl('/');
-    sharedJsonServer.use(serveJson('/data/catalog.json', testCatalog));
+    sharedJsonServer.use(
+      serveJson('/data/catalog.json', testCatalog),
+      serveJson('/data/ingredients.json', testIngredientPages),
+    );
+  });
+
+  describe('client rendering', () => {
+    it("points the document head at the page's own entry", async () => {
+      await setupApp(pageAt(TEST_SPIRIT));
+
+      const entry = testIngredientPages.pages[getIngredientUrl(TEST_SPIRIT)];
+      expect(document.title).toBe(entry?.title);
+      expect(
+        document.head.querySelector('link[rel="canonical"]')?.getAttribute('href'),
+      ).toMatch(new RegExp(`${getIngredientUrl(TEST_SPIRIT)}$`));
+    });
+
+    it('shows a not-found state for a path the data file does not carry', async () => {
+      await setupApp(pageAt({ type: 'spirit', slug: 'not-a-bottle' }));
+
+      expect(
+        screen.getByRole('heading', { level: 1, name: 'This page does not exist' }),
+      ).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Go to all recipes' })).toBeInTheDocument();
+    });
+
+    it('offers a reload when the data file fails to load', async () => {
+      sharedJsonServer.use(failJson('/data/ingredients.json', 500));
+      await setupApp(pageAt(TEST_SPIRIT));
+
+      expect(
+        await screen.findByRole('button', { name: 'Reload the page' }),
+      ).toBeInTheDocument();
+    });
   });
 
   describe('basic rendering', () => {
     it('renders SearchHeader showing ingredient name as title', async () => {
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       expect(
         screen.getByRole('heading', { level: 1, name: TEST_INGREDIENT.name }),
@@ -280,7 +293,7 @@ describe('IngredientPage', () => {
     });
 
     it('renders category chips under the title for spirits', async () => {
-      await setupApp(spiritPageJSX);
+      await setupApp(pageAt(TEST_SPIRIT));
 
       // Beefeater's categories sit in the chips group right under the page
       // title. The exact name keeps this distinct from the substitution
@@ -307,13 +320,7 @@ describe('IngredientPage', () => {
     });
 
     it("navigates in-app to the top category from its card's Learn more", async () => {
-      // Bols Orange Curaçao has no description of its own, so the page
-      // shows its top category's description card instead.
-      const { user } = await setupApp(
-        await IngredientPage({
-          params: Promise.resolve({ type: 'liqueur', slug: 'bols-orange-curacao' }),
-        }),
-      );
+      const { user } = await setupApp(pageAt(TEST_UNDESCRIBED_BOTTLE));
 
       // An in-app Link, not a plain anchor: a plain anchor skips the router
       // and the site's basePath (#627).
@@ -324,7 +331,7 @@ describe('IngredientPage', () => {
     });
 
     it('previews the top substitutes with a see-all row for spirits', async () => {
-      await setupApp(spiritPageJSX);
+      await setupApp(pageAt(TEST_SPIRIT));
 
       // The section leads with the three most-used substitutes as real
       // rows, and the see-all row names the full substitution count
@@ -335,14 +342,14 @@ describe('IngredientPage', () => {
     });
 
     it('does not render acid adjusting without acid-adjustment context', async () => {
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       expect(screen.queryByText('Acid Adjusting')).not.toBeInTheDocument();
     });
 
     it('renders acid adjusting for acid-adjusted juice with acidity', async () => {
       mockRouter.setCurrentUrl('?technique=acid-adjustment');
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       expect(screen.getByText('Acid Adjusting')).toBeInTheDocument();
       expect(screen.getByRole('spinbutton', { name: 'Juice amount' })).toHaveValue(1);
@@ -350,7 +357,7 @@ describe('IngredientPage', () => {
 
     it('renders applicable calculators in alphabetical order', async () => {
       mockRouter.setCurrentUrl('?technique=clarification&technique=acid-adjustment');
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       const acidAdjusting = screen.getByText('Acid Adjusting');
       const juiceClarification = screen.getByText('Juice Clarification');
@@ -367,7 +374,7 @@ describe('IngredientPage', () => {
       'renders clarification for %s context',
       async (technique) => {
         mockRouter.setCurrentUrl(`?technique=${technique}`);
-        await setupApp(ingredientPageJSX);
+        await setupApp(pageAt(TEST_INGREDIENT));
 
         expect(screen.getByText('Juice Clarification')).toBeInTheDocument();
       },
@@ -375,7 +382,7 @@ describe('IngredientPage', () => {
 
     it('prefills clarification from a recipe quantity above the contextual minimum', async () => {
       mockRouter.setCurrentUrl('?technique=clarification&amount=500&unit=gram');
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       expect(screen.getByRole('spinbutton', { name: 'Raw juice weight' })).toHaveValue(
         500,
@@ -386,7 +393,7 @@ describe('IngredientPage', () => {
       'does not render clarification for %s context',
       async (technique) => {
         mockRouter.setCurrentUrl(`?technique=${technique}`);
-        await setupApp(ingredientPageJSX);
+        await setupApp(pageAt(TEST_INGREDIENT));
 
         expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
       },
@@ -394,14 +401,14 @@ describe('IngredientPage', () => {
 
     it('does not render clarification for non-juice ingredients', async () => {
       mockRouter.setCurrentUrl('?technique=clarification');
-      await setupApp(spiritPageJSX);
+      await setupApp(pageAt(TEST_SPIRIT));
 
       expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
     });
 
     it('prefills and resets acid adjustment from the juice amount URL', async () => {
       mockRouter.setCurrentUrl('?technique=acid-adjustment&juiceAmount=0.5');
-      const { user } = await setupApp(ingredientPageJSX);
+      const { user } = await setupApp(pageAt(TEST_INGREDIENT));
 
       const juiceAmount = screen.getByRole('spinbutton', { name: 'Juice amount' });
       expect(juiceAmount).toHaveValue(0.5);
@@ -434,7 +441,7 @@ describe('IngredientPage', () => {
 
   describe('substitution lists', () => {
     it("lists every bottle sharing any of the ingredient's categories", async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
       // Appleton 12 declares Blended aged rum (Jamaica) and Jamaican rum:
@@ -460,7 +467,7 @@ describe('IngredientPage', () => {
     });
 
     it('orders the primary list by recipe count and shows the count', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
       const substitutionGroup = screen.getByRole('group', {
@@ -489,7 +496,7 @@ describe('IngredientPage', () => {
     });
 
     it('lists related categories, not bottles, in the secondary list', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
       const relatedGroup = screen.getByRole('group', {
@@ -523,7 +530,7 @@ describe('IngredientPage', () => {
     });
 
     it('lists the substitution-friendly categories before the bottles', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
       // The category options — the always-shorter list — come first in the
@@ -542,7 +549,7 @@ describe('IngredientPage', () => {
     });
 
     it('lists every bottle of a large category, uncapped', async () => {
-      const { user } = await setupApp(cappedSpiritPageJSX);
+      const { user } = await setupApp(pageAt(TEST_CAPPED_SPIRIT));
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
       // Bulleit Bourbon's category holds 32 other bottles: the drawer
@@ -572,7 +579,7 @@ describe('IngredientPage', () => {
       // Chocolate vodka sits under the non-substituting Vodka family: the
       // other flavors can't stand in for it, so only the plain Vodka
       // category remains — one row, rendered inline, no drawer over it.
-      await setupApp(flavoredVodkaPageJSX);
+      await setupApp(pageAt(TEST_FLAVORED_VODKA));
 
       const relatedGroup = screen.getByRole('group', {
         name: 'Substitution-friendly categories',
@@ -592,7 +599,7 @@ describe('IngredientPage', () => {
     });
 
     it('keeps same-group siblings and drops other groups in a split family', async () => {
-      const { user } = await setupApp(armagnacPageJSX);
+      const { user } = await setupApp(pageAt(TEST_ARMAGNAC));
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
       // Armagnac sits under Aged brandy (grapes) inside the non-substituting
@@ -615,7 +622,7 @@ describe('IngredientPage', () => {
     });
 
     it('renders no substitution section for an ingredient without categories', async () => {
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       expect(
         screen.queryByRole('group', { name: 'Some substitution option' }),
@@ -630,7 +637,7 @@ describe('IngredientPage', () => {
       // category has no parents, so no sibling bottles and no related
       // categories either: no substitution content, hence no drawer at
       // all, rather than a trigger opening an empty sheet.
-      await setupApp(solitaryBottlePageJSX);
+      await setupApp(pageAt(TEST_SOLITARY_BOTTLE));
 
       expect(
         screen.queryByRole('button', { name: 'Substitutions' }),
@@ -641,7 +648,7 @@ describe('IngredientPage', () => {
       // Every umeshu bottle — including Umenoyado, once categorized apart
       // under Plum liqueur — shares the single Umeshu category, so the
       // other three fit on the page as the plain list.
-      await setupApp(umeshuPageJSX);
+      await setupApp(pageAt(TEST_UMESHU));
 
       const substitutionGroup = screen.getByRole('group', {
         name: 'Some substitution option',
@@ -661,7 +668,7 @@ describe('IngredientPage', () => {
 
   describe('recipe list', () => {
     it('renders recipes using the ingredient with header', async () => {
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       // setupApp flushes the catalog load: the rows and header are already there.
       // Use getByText instead of getByRole to avoid expensive accessible name computation
@@ -674,7 +681,7 @@ describe('IngredientPage', () => {
 
   describe('recipe list quantity display', () => {
     it('displays ingredient quantity for each recipe', async () => {
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       const allListItems = screen.getAllByRole('listitem');
 
@@ -695,7 +702,7 @@ describe('IngredientPage', () => {
     });
 
     it('displays quantity with sources for duplicate recipe names', async () => {
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       const allListItems = screen.getAllByRole('listitem');
 
@@ -721,7 +728,7 @@ describe('IngredientPage', () => {
 
   describe('search functionality', () => {
     it('search filters recipes within ingredient', async () => {
-      const { user } = await setupApp(ingredientPageJSX);
+      const { user } = await setupApp(pageAt(TEST_INGREDIENT));
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'chartreuse swizzle');
@@ -733,7 +740,7 @@ describe('IngredientPage', () => {
 
     it('URL updates with search param', async () => {
       const onUrlUpdate = vi.fn();
-      const { user } = await setupApp(ingredientPageJSX, {
+      const { user } = await setupApp(pageAt(TEST_INGREDIENT), {
         nuqsOptions: { onUrlUpdate },
       });
 
@@ -746,7 +753,7 @@ describe('IngredientPage', () => {
     });
 
     it('shows SearchAllLink in no results state', async () => {
-      const { user } = await setupApp(ingredientPageJSX);
+      const { user } = await setupApp(pageAt(TEST_INGREDIENT));
 
       const input = screen.getByRole('searchbox');
       await user.type(input, 'xyznonexistent');
@@ -758,7 +765,7 @@ describe('IngredientPage', () => {
     });
 
     it('hides non-recipe content when searching', async () => {
-      const { user } = await setupApp(spiritPageJSX);
+      const { user } = await setupApp(pageAt(TEST_SPIRIT));
 
       // Category chips and the substitution preview are visible initially
       expect(screen.getByRole('group', { name: 'Categories' })).toBeInTheDocument();
@@ -778,7 +785,7 @@ describe('IngredientPage', () => {
 
     it('hides contextual calculators when searching', async () => {
       mockRouter.setCurrentUrl('?search=chartreuse&technique=clarification');
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       expect(screen.queryByText('Acid Adjusting')).not.toBeInTheDocument();
       expect(screen.queryByText('Juice Clarification')).not.toBeInTheDocument();
@@ -786,7 +793,7 @@ describe('IngredientPage', () => {
 
     it('loads with search term from URL', async () => {
       mockRouter.setCurrentUrl('?search=chartreuse');
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       const input = screen.getByRole('searchbox');
       expect(input).toHaveValue('chartreuse');
@@ -798,7 +805,7 @@ describe('IngredientPage', () => {
 
     it('clearing search restores full page content', async () => {
       mockRouter.setCurrentUrl('?search=cloister');
-      const { user } = await setupApp(spiritPageJSX);
+      const { user } = await setupApp(pageAt(TEST_SPIRIT));
 
       // Initially filtered and content hidden
       expect(screen.queryByRole('group', { name: 'Categories' })).not.toBeInTheDocument();
@@ -821,7 +828,7 @@ describe('IngredientPage', () => {
 
   describe('substitution drawer', () => {
     it('offers the see-all row under the category chips', async () => {
-      await setupApp(spiritPageJSX);
+      await setupApp(pageAt(TEST_SPIRIT));
 
       const trigger = screen.getByRole('button', {
         name: 'See all 13 substitutions',
@@ -833,7 +840,7 @@ describe('IngredientPage', () => {
     });
 
     it('renders no trigger for an ingredient without substitutions', async () => {
-      await setupApp(ingredientPageJSX);
+      await setupApp(pageAt(TEST_INGREDIENT));
 
       expect(
         screen.queryByRole('button', { name: 'Substitutions' }),
@@ -841,7 +848,7 @@ describe('IngredientPage', () => {
     });
 
     it('previews the three most-used substitutes with their counts', async () => {
-      await setupApp(spiritPageJSX);
+      await setupApp(pageAt(TEST_SPIRIT));
 
       const previewGroup = screen.getByRole('group', {
         name: `Substitutes for ${TEST_SPIRIT.name}`,
@@ -870,7 +877,7 @@ describe('IngredientPage', () => {
     });
 
     it('keeps every substitution link in the closed sheet (SEO)', async () => {
-      await setupApp(cappedSpiritPageJSX);
+      await setupApp(pageAt(TEST_CAPPED_SPIRIT));
 
       // keepMounted: the sheet renders while closed, so the static export
       // ships all 37 substitution links (32 bourbon bottles + the 5
@@ -883,7 +890,7 @@ describe('IngredientPage', () => {
     });
 
     it('opens the substitution lists in the sheet, reusing the page lists', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
 
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
@@ -909,7 +916,7 @@ describe('IngredientPage', () => {
     });
 
     it('is modal: traps focus in the sheet while open', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
 
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
@@ -931,7 +938,7 @@ describe('IngredientPage', () => {
     });
 
     it('closes on Escape and returns focus to the trigger', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
 
       const trigger = screen.getByRole('button', {
         name: 'See all 21 substitutions',
@@ -948,7 +955,7 @@ describe('IngredientPage', () => {
     });
 
     it('closes from the sheet close button', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
 
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
       await user.click(screen.getByRole('button', { name: 'Close substitutions' }));
@@ -961,7 +968,7 @@ describe('IngredientPage', () => {
     it('opens at the half-screen snap point with a handle to resize it', async () => {
       const restoreLayout = stubSheetLayout();
       try {
-        const { user } = await setupApp(jamaicanRumPageJSX);
+        const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
 
         await user.click(
           screen.getByRole('button', { name: /See all \d+ substitutions/ }),
@@ -982,7 +989,7 @@ describe('IngredientPage', () => {
     it('the handle steps the sheet to its full snap point from the keyboard', async () => {
       const restoreLayout = stubSheetLayout();
       try {
-        const { user } = await setupApp(jamaicanRumPageJSX);
+        const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
 
         await user.click(
           screen.getByRole('button', { name: /See all \d+ substitutions/ }),
@@ -1010,7 +1017,7 @@ describe('IngredientPage', () => {
     });
 
     it('sizes the sheet to clear the safe area at its bottom', async () => {
-      const { user } = await setupApp(jamaicanRumPageJSX);
+      const { user } = await setupApp(pageAt(TEST_JAMAICAN_RUM));
 
       await user.click(screen.getByRole('button', { name: /See all \d+ substitutions/ }));
 
@@ -1023,7 +1030,7 @@ describe('IngredientPage', () => {
     });
 
     it('shows the preview list in every mode, styled like the category pages', async () => {
-      await setupApp(jamaicanRumPageJSX);
+      await setupApp(pageAt(TEST_JAMAICAN_RUM));
 
       // No breakpoint classes on the section's rows or wrapper: the
       // preview list is the substitution UI on mobile and desktop alike.

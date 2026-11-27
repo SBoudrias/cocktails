@@ -107,6 +107,28 @@ async function checkPage(path: string, markers: (string | RegExp)[]) {
   }
 }
 
+/**
+ * A client-rendered detail page's HTML is its route's shell, the same for
+ * every page: what it shows comes from its type's data file, which must
+ * carry an entry for the page's path.
+ */
+async function checkPageData(dataFile: string, route: string, titleMarker?: string) {
+  const label = `/${dataFile}`;
+  try {
+    const { status, body } = await get(dataFile);
+    if (status !== 200) return failures.push(`${label}: HTTP ${status}`);
+    const data: { pages?: Record<string, { title?: string }> } = JSON.parse(body);
+    const entry = data.pages?.[`/${route}`];
+    if (!entry?.title) return failures.push(`${label}: no entry for /${route}`);
+    if (titleMarker && !entry.title.includes(titleMarker)) {
+      return failures.push(`${label}: /${route} is titled "${entry.title}"`);
+    }
+    console.log(`ok  ${label} (/${route}: ${entry.title})`);
+  } catch (error) {
+    failures.push(`${label}: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
 async function main() {
   await waitUntilLive();
 
@@ -166,17 +188,24 @@ async function main() {
       .map((url) => url.replace(/^.*?\/cocktails\//, ''))
       .find((route) => route.startsWith(`${type}/`));
 
+  // Detail pages are their route's shell, the same HTML for every page: the
+  // page itself must serve, and its type's data file must carry its entry.
   if (recipePath && recipeName) {
-    await checkPage(recipePath, [recipeName]);
+    await checkPage(recipePath, []);
+    await checkPageData('data/recipes.json', recipePath, recipeName);
   } else if (failures.length === 0) {
     failures.push('search index has no recipe to open');
   }
   const category = firstOf('category');
   const ingredient = firstOf('ingredient');
-  if (category) await checkPage(category, []);
-  else failures.push('sitemap lists no /category/ page');
-  if (ingredient) await checkPage(ingredient, []);
-  else failures.push('sitemap lists no /ingredient/ page');
+  if (category) {
+    await checkPage(category, []);
+    await checkPageData('data/categories.json', category);
+  } else failures.push('sitemap lists no /category/ page');
+  if (ingredient) {
+    await checkPage(ingredient, []);
+    await checkPageData('data/ingredients.json', ingredient);
+  } else failures.push('sitemap lists no /ingredient/ page');
   await checkPage('list/ingredients', []);
   await checkPage('list/recipes', []);
 

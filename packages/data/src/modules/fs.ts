@@ -30,10 +30,19 @@ export async function readJSONFile<T>(filepath: string): Promise<T | undefined> 
   // untyped return carry the T conversion.
   const loader = getJSONLoader(path.relative(PACKAGE_ROOT, filepath));
   if (loader) {
+    // A JSON module's namespace holds the parsed file as its default export
+    // (next to the file's top-level keys as named exports): only the default
+    // export is the file, or every object would carry a `default` copy of
+    // itself.
+    const jsonModule = await loader();
+    const file =
+      typeof jsonModule === 'object' && jsonModule !== null && 'default' in jsonModule
+        ? jsonModule.default
+        : jsonModule;
     // Module namespace objects from import.meta.glob throw DataCloneError in
     // structuredClone, and JSON.parse also supplies the untyped T return.
     // oxlint-disable-next-line unicorn/prefer-structured-clone
-    return JSON.parse(JSON.stringify(await loader()));
+    return JSON.parse(JSON.stringify(file));
   }
 
   // Under Vitest, the data corpus (~4,800 JSON files, ~3.9 MB total) is

@@ -16,7 +16,7 @@ export function getCategoryUrl(category: { slug: string }): Route<`/category/${s
 }
 
 export function getIngredientUrl(
-  ingredient: Omit<RecipeIngredient, 'quantity'>,
+  ingredient: Pick<RecipeIngredient, 'type' | 'slug'>,
 ): Route<`/category/${string}`> | Route<`/ingredient/${string}/${string}`> {
   if (ingredient.type === 'category') return getCategoryUrl(ingredient);
 

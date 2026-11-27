@@ -12,7 +12,7 @@ export default function CategoryChips({
   categories,
   label = 'Categories',
 }: {
-  categories: Category[];
+  categories: Pick<Category, 'name' | 'slug'>[];
   /** Accessible name of the chips group. */
   label?: string;
 }) {

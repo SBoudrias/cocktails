@@ -129,6 +129,43 @@ async function cacheFirst(request) {
   return response;
 }
 
+// The detail routes whose pages are all copies of one exported shell
+// (apps/web/tools/stamp-detail-pages.ts): a page path under the scope, and
+// its shell's path. The page renders its own entry of its type's data file
+// (precached too), so the shell answers every page of the type offline.
+const DETAIL_SHELLS = [
+  { pattern: /^ingredient\/[^/]+\/[^/]+$/, shell: 'ingredient/_/_' },
+  { pattern: /^category\/[^/]+$/, shell: 'category/_' },
+  { pattern: /^recipes\/[^/]+\/[^/]+\/[^/]+$/, shell: 'recipes/_/_/_' },
+];
+
+function getRoute(url, scope) {
+  return url.pathname.slice(scope.pathname.length).replace(/\/+$/, '');
+}
+
+// The shell of a detail page navigation, or undefined.
+function getDetailShell(url, scope) {
+  const route = getRoute(url, scope);
+  return DETAIL_SHELLS.find(({ pattern }) => pattern.test(route))?.shell;
+}
+
+// The shell's copy of a detail page's RSC payload — `<page>.txt` or
+// `<page>/__next.*.txt` — as a precache URL, or undefined.
+function getDetailShellPayload(url, scope) {
+  const route = getRoute(url, scope);
+  for (const { pattern, shell } of DETAIL_SHELLS) {
+    if (route.endsWith('.txt') && pattern.test(route.slice(0, -'.txt'.length))) {
+      return new URL(`${shell}.txt`, scope).href;
+    }
+    const slash = route.lastIndexOf('/');
+    const name = route.slice(slash + 1);
+    if (name.startsWith('__next.') && pattern.test(route.slice(0, slash))) {
+      return new URL(`${shell}/${name}`, scope).href;
+    }
+  }
+  return undefined;
+}
+
 // The update toast (components/pwa/pwa-toasts) sends this when the user
 // picks "Update": the waiting worker stops waiting and starts controlling
 // the page on the reload that follows.
@@ -164,17 +201,33 @@ self.addEventListener('fetch', (event) => {
       cleanPath === scopePath
         ? new URL('./', scope).href
         : new URL(`${cleanPath}.html`, scope).href;
+    const shell = getDetailShell(url, scope);
     event.respondWith(
-      networkFirst(request, { ignoreSearch: true }).then((response) => {
+      networkFirst(request, { ignoreSearch: true }).then(async (response) => {
         if (response) return response;
-        return caches
-          .match(page)
-          .then(
-            (cached) =>
-              cached ??
-              caches.match(offline).then((fallback) => fallback ?? Response.error()),
-          );
+        return (
+          (await caches.match(page)) ??
+          (shell && (await caches.match(new URL(`${shell}.html`, scope).href))) ??
+          (await caches.match(offline)) ??
+          Response.error()
+        );
       }),
+    );
+    return;
+  }
+
+  // A detail page's RSC payloads (a soft navigation or a prefetch): offline,
+  // the precached shell's payload of the same name stands in, since every
+  // page's payloads are copies of the shell's.
+  const shellPayload = getDetailShellPayload(url, scope);
+  if (shellPayload) {
+    event.respondWith(
+      networkFirst(request, { ignoreSearch: true }).then(
+        async (response) =>
+          response ??
+          (await caches.match(shellPayload, { ignoreSearch: true })) ??
+          Response.error(),
+      ),
     );
     return;
   }
