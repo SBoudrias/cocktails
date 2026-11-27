@@ -20,11 +20,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
-      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
-        with:
-          # Every job here invokes yarn scripts after setup; without this a
-          # corepack-less exact cache hit leaves the runner on global yarn 1.
-          enable-package-manager: 'true'
+      - uses: SBoudrias/fast-setup-node@95d68654de46bf028db39ab4106675eb11017e98 # v1
 
       - name: Lint ✅
         run: yarn lint
@@ -40,11 +36,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
-      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
-        with:
-          # Every job here invokes yarn scripts after setup; without this a
-          # corepack-less exact cache hit leaves the runner on global yarn 1.
-          enable-package-manager: 'true'
+      - uses: SBoudrias/fast-setup-node@95d68654de46bf028db39ab4106675eb11017e98 # v1
 
       - name: Cache Turborepo artifacts ⚡
         uses: actions/cache@v6
@@ -76,11 +68,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
-      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
-        with:
-          # Every job here invokes yarn scripts after setup; without this a
-          # corepack-less exact cache hit leaves the runner on global yarn 1.
-          enable-package-manager: 'true'
+      - uses: SBoudrias/fast-setup-node@95d68654de46bf028db39ab4106675eb11017e98 # v1
 
       - name: Vitest 🧪
         run: yarn test
