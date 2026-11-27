@@ -34,6 +34,19 @@ export async function createMissingMetadata(
     for (const ingredient of ingredients) {
       const ingredientSlug = slugify(ingredient.name);
 
+      // A fat-wash technique names its fat as an ingredient reference, so the
+      // fat counts as referenced by this recipe whatever the base ingredient's
+      // own type.
+      for (const technique of ingredient.technique == null
+        ? []
+        : Array.isArray(ingredient.technique)
+          ? ingredient.technique
+          : [ingredient.technique]) {
+        if (technique.technique === 'fat-wash' && technique.fat != null) {
+          ctx.referencedIngredientSlugs.add(slugify(technique.fat));
+        }
+      }
+
       if (ingredient.type === 'category') {
         if (ctx.categorySlugs.has(ingredientSlug)) continue;
 

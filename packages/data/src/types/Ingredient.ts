@@ -71,14 +71,21 @@ type TechniqueInfusion = {
   method?: 'cold' | 'hot' | 'sous-vide';
 };
 
-type TechniqueFatWash = {
+type TechniqueFatWashBase = {
   technique: 'fat-wash';
   fat: string;
-  fat_quantity?: QuantityDetails;
-  spirit_quantity?: QuantityDetails;
-  duration?: string;
-  temperature?: string;
+  percentage?: number;
+  duration_minutes?: number;
 };
+
+type TechniqueFatWash =
+  | (TechniqueFatWashBase & {
+      method: 'room-temp';
+    })
+  | (TechniqueFatWashBase & {
+      method: 'sous-vide';
+      temperature_c?: number;
+    });
 
 type TechniqueMilkWash = {
   technique: 'milk-wash';

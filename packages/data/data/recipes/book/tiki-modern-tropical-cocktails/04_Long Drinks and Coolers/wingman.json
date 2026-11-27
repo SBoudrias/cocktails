@@ -30,7 +30,8 @@
       "type": "spirit",
       "technique": {
         "technique": "fat-wash",
-        "fat": "brown butter"
+        "fat": "brown butter",
+        "method": "room-temp"
       },
       "quantity": {
         "amount": 2,

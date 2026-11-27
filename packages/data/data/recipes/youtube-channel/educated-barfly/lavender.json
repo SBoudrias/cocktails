@@ -35,15 +35,9 @@
       "technique": [
         {
           "technique": "fat-wash",
-          "fat": "browned butter",
-          "fat_quantity": {
-            "amount": 2,
-            "unit": "tbsp"
-          },
-          "spirit_quantity": {
-            "amount": 200,
-            "unit": "ml"
-          }
+          "fat": "brown butter",
+          "percentage": 15,
+          "method": "room-temp"
         },
         {
           "technique": "infusion",

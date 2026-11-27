@@ -52,15 +52,9 @@
       "type": "spirit",
       "technique": {
         "technique": "fat-wash",
-        "fat": "browned butter",
-        "fat_quantity": {
-          "amount": 40,
-          "unit": "gram"
-        },
-        "spirit_quantity": {
-          "amount": 250,
-          "unit": "ml"
-        }
+        "fat": "brown butter",
+        "percentage": 16,
+        "method": "room-temp"
       },
       "quantity": {
         "amount": 1.5,
@@ -69,7 +63,6 @@
     }
   ],
   "instructions": [
-    "Fat-wash the rum: combine 250 ml rum with 40 grams of browned butter, freeze, strain off the fat cap.",
     "Shake all ingredients with crushed ice.",
     "Open pour into a glass with crushed ice.",
     "Garnish with a mint sprig, and a small waffle if you have one.",

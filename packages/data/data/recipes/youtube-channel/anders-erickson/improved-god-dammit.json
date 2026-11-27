@@ -35,7 +35,9 @@
       "technique": {
         "technique": "fat-wash",
         "fat": "Baileys",
-        "duration": "a few minutes"
+        "percentage": 25,
+        "method": "room-temp",
+        "duration_minutes": 5
       },
       "quantity": {
         "amount": 1,
@@ -52,7 +54,6 @@
     }
   ],
   "instructions": [
-    "To make the Chilailey's, combine 4 parts Ancho Reyes Ancho Chile Liqueur with 1 part Baileys, let curdle for a few minutes, then strain through a coffee filter.",
     "Stir all ingredients with ice.",
     "Strain into a chilled old fashioned glass.",
     "Garnish with a dried chili pepper."

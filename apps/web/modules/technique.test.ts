@@ -64,7 +64,7 @@ describe('formatIngredientName', () => {
     it('should format fat-wash with fat type', () => {
       const ingredient = createIngredient({
         name: 'bourbon',
-        technique: { technique: 'fat-wash', fat: 'bacon' },
+        technique: { technique: 'fat-wash', fat: 'bacon', method: 'room-temp' },
       });
       expect(formatIngredientName(ingredient)).toBe('bacon–washed bourbon');
     });

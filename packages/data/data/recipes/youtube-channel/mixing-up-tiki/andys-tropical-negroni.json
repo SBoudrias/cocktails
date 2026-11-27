@@ -38,7 +38,8 @@
       "type": "spirit",
       "technique": {
         "technique": "fat-wash",
-        "fat": "coconut oil"
+        "fat": "coconut oil",
+        "method": "room-temp"
       },
       "quantity": {
         "amount": 1,

@@ -50,7 +50,8 @@
       "type": "spirit",
       "technique": {
         "technique": "fat-wash",
-        "fat": "sesame oil"
+        "fat": "sesame oil",
+        "method": "room-temp"
       },
       "quantity": {
         "amount": 1.5,

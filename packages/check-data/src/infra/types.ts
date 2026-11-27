@@ -4,6 +4,16 @@ export interface Ingredient extends SortableIngredient {
   type: string;
   name: string;
   brix?: number;
+  /** Widened from the sorting shape: the fat-wash technique names its fat,
+   * which counts as an ingredient reference. */
+  technique?: CheckTechnique | CheckTechnique[];
+}
+
+/** The technique shapes the per-file checks read off recipe ingredients. */
+interface CheckTechnique {
+  technique: string;
+  method?: string;
+  fat?: string;
 }
 
 export interface DataWithSchema {
