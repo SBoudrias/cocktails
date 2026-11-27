@@ -1,6 +1,7 @@
 import type { Recipe, RecipeIngredient } from '@cocktails/data';
 import { describe, expect, it } from 'vitest';
 import {
+  getFatWashCalculatorUrl,
   getMilkClarificationCalculatorUrl,
   getRecipeEditUrl,
   getRecipeIngredientUrl,
@@ -47,6 +48,57 @@ describe('getMilkClarificationCalculatorUrl', () => {
     });
 
     expect(url.query).toMatchObject({ ratio: '0.2857' });
+  });
+});
+
+describe('getFatWashCalculatorUrl', () => {
+  it('returns an empty query when no fat-wash context is given', () => {
+    expect(getFatWashCalculatorUrl()).toEqual({
+      pathname: '/calculators/fat-wash',
+      query: {},
+    });
+  });
+
+  it('carries structured room-temp wash parameters without bottle identity', () => {
+    expect(
+      getFatWashCalculatorUrl({
+        technique: 'fat-wash',
+        fat: 'bacon fat',
+        method: 'room-temp',
+        percentage: 6,
+        duration_minutes: 240,
+      }),
+    ).toEqual({
+      pathname: '/calculators/fat-wash',
+      query: {
+        fat: 'bacon fat',
+        method: 'room-temp',
+        percentage: '6',
+        duration: '240',
+      },
+    });
+  });
+
+  it('includes temperature for sous-vide washes', () => {
+    expect(
+      getFatWashCalculatorUrl({
+        technique: 'fat-wash',
+        fat: 'cacao butter',
+        method: 'sous-vide',
+        percentage: 10,
+        duration_minutes: 60,
+        temperature_c: 65,
+      }),
+    ).toEqual({
+      pathname: '/calculators/fat-wash',
+      query: {
+        fat: 'cacao butter',
+        method: 'sous-vide',
+        percentage: '10',
+        duration: '60',
+        temp: '65',
+      },
+    });
   });
 });
 
@@ -217,6 +269,29 @@ describe('getRecipeIngredientUrl', () => {
         technique: ['acid-adjustment'],
         amount: '100',
         unit: 'gram',
+      },
+    });
+  });
+
+  it('keeps fat-washed ingredient rows linked to the bottle page', () => {
+    expect(
+      getRecipeIngredientUrl(
+        createIngredient(
+          {
+            technique: 'fat-wash',
+            fat: 'bacon fat',
+            method: 'room-temp',
+            percentage: 6,
+          },
+          { amount: 2, unit: 'oz' },
+        ),
+      ),
+    ).toEqual({
+      pathname: '/ingredient/juice/lime-juice',
+      query: {
+        technique: ['fat-wash'],
+        amount: '2',
+        unit: 'oz',
       },
     });
   });

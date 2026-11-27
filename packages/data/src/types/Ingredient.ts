@@ -78,7 +78,7 @@ type TechniqueFatWashBase = {
   duration_minutes?: number;
 };
 
-type TechniqueFatWash =
+export type TechniqueFatWash =
   | (TechniqueFatWashBase & {
       method: 'room-temp';
     })
@@ -86,6 +86,8 @@ type TechniqueFatWash =
       method: 'sous-vide';
       temperature_c?: number;
     });
+
+export type FatWashMethod = TechniqueFatWash['method'];
 
 type TechniqueMilkWash = {
   technique: 'milk-wash';

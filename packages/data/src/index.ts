@@ -14,10 +14,12 @@
 export type { Category } from './types/Category.ts';
 export type {
   BaseIngredient,
+  FatWashMethod,
   IngredientType,
   RecipeIngredient,
   RootIngredient,
   Technique,
+  TechniqueFatWash,
 } from './types/Ingredient.ts';
 export type { Attribution, Chapter, Recipe, RecipeTechnique } from './types/Recipe.ts';
 export type { BookRef, PodcastRef, Ref, WebsiteRef, YoutubeRef } from './types/Ref.ts';

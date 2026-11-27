@@ -172,6 +172,108 @@ describe('RecipePage', () => {
     expect(calculatorLink).toHaveTextContent(/^Calculate milk for a batch$/);
   });
 
+  it('links fat-washed ingredients to the bottle and renders a multi-step Fat wash section before instructions', async () => {
+    const recipe = await getRecipe(
+      { type: 'book', slug: 'pdt-cocktail-book' },
+      'bentons-old-fashioned',
+    );
+
+    await setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: recipe.source.type,
+          source: recipe.source.slug,
+          recipe: recipe.slug,
+        }),
+      }),
+    );
+
+    const bourbon = screen.getByRole('link', {
+      name: /bacon fat–washed Four Roses Bourbon/i,
+    });
+    expect(bourbon).toHaveTextContent('2 oz');
+    expect(bourbon).not.toHaveTextContent('6% fat');
+    const bourbonUrl = new URL(
+      bourbon.getAttribute('href') ?? '',
+      'https://cocktail-index.test',
+    );
+    expect(bourbonUrl.pathname).toBe('/ingredient/spirit/four-roses-bourbon');
+
+    const fatWashSection = screen.getByRole('region', { name: 'Fat wash' });
+    const steps = within(fatWashSection).getAllByRole('listitem');
+    expect(steps.map((step) => step.textContent)).toEqual([
+      '1. Warm the bacon fat until liquid.',
+      '2. Combine Four Roses Bourbon with 6% bacon fat in a sealed container.',
+      '3. Infuse at room temperature for 4 hours. Stir the mixture from time to time or use a magnetic stirrer.',
+      '4. Let sit undisturbed until the fat separates, then freeze until solid.',
+      '5. Remove the solid fat cap and strain through a coffee filter.',
+    ]);
+
+    const calculatorLink = within(fatWashSection).getByRole('link', {
+      name: 'Calculator',
+    });
+    const calculatorUrl = new URL(
+      calculatorLink.getAttribute('href') ?? '',
+      'https://cocktail-index.test',
+    );
+    expect(calculatorUrl.pathname).toBe('/calculators/fat-wash');
+    expect([...calculatorUrl.searchParams.entries()]).toEqual([
+      ['fat', 'bacon fat'],
+      ['method', 'room-temp'],
+      ['percentage', '6'],
+      ['duration', '240'],
+    ]);
+
+    // The Fat wash prep section sits before the cocktail's own instructions.
+    const instructionsHeader = screen.getByText('Instructions');
+    expect(
+      fatWashSection.compareDocumentPosition(instructionsHeader) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it('renders sous-vide fat-wash steps and calculator params on sous-vide recipes', async () => {
+    const recipe = await getRecipe(
+      { type: 'youtube-channel', slug: 'truffles-on-the-rocks' },
+      'coco-chaos-negroni',
+    );
+
+    await setupApp(
+      await RecipePage({
+        params: Promise.resolve({
+          type: recipe.source.type,
+          source: recipe.source.slug,
+          recipe: recipe.slug,
+        }),
+      }),
+    );
+
+    const fatWashSection = screen.getByRole('region', { name: 'Fat wash' });
+    const steps = within(fatWashSection).getAllByRole('listitem');
+    expect(steps.map((step) => step.textContent)).toEqual([
+      '1. Melt the cacao butter gently.',
+      '2. Seal Plymouth Gin with 10% cacao butter in a sous-vide bag.',
+      '3. Cook sous-vide at 65°C (149°F) for 1 hour.',
+      '4. Let sit undisturbed until the fat separates, then freeze until solid.',
+      '5. Remove the solid fat cap and strain through a coffee filter.',
+    ]);
+
+    const calculatorLink = within(fatWashSection).getByRole('link', {
+      name: 'Calculator',
+    });
+    const calculatorUrl = new URL(
+      calculatorLink.getAttribute('href') ?? '',
+      'https://cocktail-index.test',
+    );
+    expect([...calculatorUrl.searchParams.entries()]).toEqual([
+      ['fat', 'cacao butter'],
+      ['method', 'sous-vide'],
+      ['percentage', '10'],
+      ['duration', '60'],
+      ['temp', '65'],
+    ]);
+  });
+
   it('renders the extra videos as a named carousel, one video per slide', async () => {
     // shrunken-skull: five youtube refs, the first shown in the source
     // card, so the carousel holds the remaining four. Paging — buttons,

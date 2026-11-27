@@ -15,6 +15,7 @@ export default function CalculatorIcon({
   calculator:
     | 'acid-adjusting'
     | 'brix'
+    | 'fat-wash'
     | 'juice-clarification'
     | 'milk-clarification'
     | 'saline'
@@ -81,6 +82,41 @@ export default function CalculatorIcon({
             <circle cx="9" cy="2.4" r="0.7" className={styles.solid} />
           </>
         ))
+        .with('fat-wash', () => {
+          // A mason jar of golden spirit capped by a chilled solid fat layer,
+          // with a pale-blue frost glint for the freeze-and-strain step.
+          const jar =
+            'M8.8 5.5h6.4l1.8 2.2a1.6 1.6 0 0 1 .4 1.1v10.2a2.2 2.2 0 0 1-2.2 2.2H8.8a2.2 2.2 0 0 1-2.2-2.2V8.8a1.6 1.6 0 0 1 .4-1.1Z';
+          return (
+            <>
+              <defs>
+                <linearGradient id="calc-fat-wash-drink" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" className={styles.drinkTop} />
+                  <stop offset="1" className={styles.drinkBottom} />
+                </linearGradient>
+                <clipPath id="calc-fat-wash-jar">
+                  <path d={jar} />
+                </clipPath>
+              </defs>
+              <path d="M8.5 3.2h7v2.3h-7Z" className={styles.silver} />
+              <path d="M8.5 3.2h7v2.3h-7Z" className={styles.outline} />
+              <path d={jar} className={styles.glass} />
+              <g clipPath="url(#calc-fat-wash-jar)">
+                <g className={styles.drink}>
+                  <rect y="12" width="24" height="12" fill="url(#calc-fat-wash-drink)" />
+                </g>
+                <path d="M6 9.6h12v3.2q-3-0.9-6 0t-6 0Z" className={styles.fatCap} />
+                <path d="M6.4 9.6h11.2" className={styles.facet} />
+                <path d="M6 12.8q3 0.9 6 0t6 0" className={styles.drinkSurface} />
+              </g>
+              <path d={jar} className={styles.outline} />
+              <path
+                d="M20.2 3.8v3.6M18.6 4.7l3.2 1.8M21.8 4.7l-3.2 1.8"
+                className={styles.motion}
+              />
+            </>
+          );
+        })
         .with('juice-clarification', () => {
           // A lab funnel of cloudy gold juice dripping into a squat rocks
           // glass of clarified, near-clear juice: cloudy in, clear out.

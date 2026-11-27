@@ -1,18 +1,34 @@
+import { type ReactNode, useId } from 'react';
 import { LinkListItem } from '#/components/list/LinkList';
-import { List, ListSubheader } from '#/components/ui/list';
+import { ListSubheader } from '#/components/ui/list';
 
 // The instructions block the recipe and ingredient pages share: a subheader
-// above a surface block of numbered rows (the glass overlay and elevation
-// shadow included).
-export default function InstructionList({ instructions }: { instructions: string[] }) {
+// (with an optional trailing action like a calculator link) above a surface
+// block of numbered rows.
+export default function InstructionList({
+  instructions,
+  title = 'Instructions',
+  action,
+}: {
+  instructions: readonly string[];
+  title?: string;
+  action?: ReactNode;
+}) {
+  const headingId = useId();
+
   return (
-    <List>
-      <ListSubheader>Instructions</ListSubheader>
-      <div className="surface">
+    <section aria-labelledby={headingId} className="py-2">
+      <ListSubheader>
+        <div className="flex items-center justify-between gap-2">
+          <span id={headingId}>{title}</span>
+          {action}
+        </div>
+      </ListSubheader>
+      <ul aria-labelledby={headingId} className="surface">
         {instructions.map((instruction, index) => (
           <LinkListItem key={instruction} primary={`${index + 1}. ${instruction}`} />
         ))}
-      </div>
-    </List>
+      </ul>
+    </section>
   );
 }

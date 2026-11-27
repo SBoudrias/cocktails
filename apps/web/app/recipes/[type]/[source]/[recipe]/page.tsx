@@ -7,6 +7,7 @@ import AppHeader from '#/components/AppHeader';
 import FixBugCard from '#/components/card/FixBugCard';
 import SourceAboutCard from '#/components/card/SourceAboutCard';
 import VideoListCard from '#/components/card/VideoListCard';
+import FatWashInstructions from '#/components/FatWashInstructions';
 import IngredientList from '#/components/IngredientList';
 import InstructionList from '#/components/InstructionList';
 import { getRecipeEditUrl } from '#/modules/url';
@@ -82,6 +83,7 @@ export default async function RecipePage({ params }: { params: Promise<Params> }
           techniques={recipe.techniques}
           defaultServings={recipe.servings}
         />
+        <FatWashInstructions ingredients={recipe.ingredients} />
         {Array.isArray(recipe.instructions) && recipe.instructions.length > 0 && (
           <InstructionList instructions={recipe.instructions} />
         )}

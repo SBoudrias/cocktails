@@ -285,6 +285,21 @@ describe('getMilkClarifiedRecipes', () => {
   });
 });
 
+describe('getFatWashedRecipes', () => {
+  it('lists recipes that fat-wash an ingredient, alphabetically', async () => {
+    const { getFatWashedRecipes } = await import('./recipes');
+
+    const recipes = await getFatWashedRecipes();
+    const names = recipes.map(({ name }) => name);
+
+    // Benton's Old Fashioned fat-washes its bourbon with bacon fat.
+    expect(names).toContain("Benton's Old Fashioned");
+    // The plain Old Fashioned is spirit, sugar and bitters, never washed.
+    expect(names).not.toContain('Old Fashioned');
+    expect(names).toEqual(names.toSorted((a, b) => a.localeCompare(b)));
+  });
+});
+
 describe('getAcidAdjustedRecipes', () => {
   it('lists recipes that acid-adjust an ingredient, not every tart recipe', async () => {
     const { getAcidAdjustedRecipes } = await import('./recipes');

@@ -2,6 +2,7 @@
 
 import type { Recipe, RecipeTechnique } from '@cocktails/data';
 import { compareIngredients } from '@cocktails/ingredient-sorting';
+import { cn } from 'cn';
 import { Calculator, ChevronRight } from 'lucide-react';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
@@ -21,23 +22,41 @@ import styles from './style.module.css';
 const EMPTY_TECHNIQUES: RecipeTechnique[] = [];
 
 // The ingredient row: a divider-bottomed row (8px vertical padding, 16px
-// left, the 48px trailing zone for the chevron).
+// left, the 48px trailing zone for the chevron). When no href is given
+// (e.g. generic "spirit" on a calculator), renders a plain non-link row with
+// the same typography.
 function IngredientRow<RouteType>({
   href,
   children,
 }: {
-  href: LinkProps<RouteType>['href'];
+  href?: LinkProps<RouteType>['href'];
   children: React.ReactNode;
 }) {
+  const rowClass = 'flex w-full items-center border-b py-2 pl-4 text-base capitalize';
+  const content = (
+    <>
+      <span className="my-1 flex-1 text-left">{children}</span>
+      {href != null && (
+        <ChevronRight className="size-6 shrink-0 text-foreground" aria-hidden="true" />
+      )}
+    </>
+  );
+
   return (
     <li>
-      <Link
-        href={href}
-        className="flex w-full items-center border-b py-2 pr-12 pl-4 text-base capitalize transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
-      >
-        <span className="my-1 flex-1 text-left">{children}</span>
-        <ChevronRight className="size-6 shrink-0 text-foreground" aria-hidden="true" />
-      </Link>
+      {href != null ? (
+        <Link
+          href={href}
+          className={cn(
+            rowClass,
+            'pr-12 transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50',
+          )}
+        >
+          {content}
+        </Link>
+      ) : (
+        <div className={cn(rowClass, 'pr-4')}>{content}</div>
+      )}
     </li>
   );
 }
@@ -110,14 +129,28 @@ export default function IngredientList({
   ingredients,
   techniques = EMPTY_TECHNIQUES,
   defaultServings = 1,
+  preferredUnit: controlledUnit,
+  onUnitChange,
+  controls = 'all',
+  getIngredientHref = getRecipeIngredientUrl,
 }: {
   ingredients: Recipe['ingredients'];
   techniques?: RecipeTechnique[];
   defaultServings?: number;
+  preferredUnit?: Unit;
+  onUnitChange?: (unit: Unit) => void;
+  controls?: 'all' | 'unit' | 'serving' | false;
+  getIngredientHref?: (
+    ingredient: Recipe['ingredients'][number],
+  ) => ReturnType<typeof getRecipeIngredientUrl> | undefined;
 }) {
-  const [preferredUnit, setPreferredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
+  const [storedUnit, setStoredUnit] = useLocalStorage<Unit>('preferred_unit', 'oz');
+  const preferredUnit = controlledUnit ?? storedUnit;
+  const handleUnitChange = onUnitChange ?? setStoredUnit;
   const [servings, setServings] = useState(defaultServings);
   const scaleFactor = calculateScaleFactor(defaultServings, servings);
+  const showUnitControl = controls === 'all' || controls === 'unit';
+  const showServingControl = controls === 'all' || controls === 'serving';
 
   const scaledIngredients = useMemo(
     () =>
@@ -147,10 +180,7 @@ export default function IngredientList({
         <div className="surface">
           {scaledIngredients.toSorted(compareIngredients).map((ingredient) => {
             return (
-              <IngredientRow
-                key={ingredient.slug}
-                href={getRecipeIngredientUrl(ingredient)}
-              >
+              <IngredientRow key={ingredient.slug} href={getIngredientHref(ingredient)}>
                 <IngredientLine ingredient={ingredient} preferredUnit={preferredUnit} />
               </IngredientRow>
             );
@@ -206,10 +236,16 @@ export default function IngredientList({
       })}
       {/* The toolbar row's responsive metrics: 8px padding and 56px
           min-height, doubling to 24px/64px from 600px up. */}
-      <div className="flex min-h-14 items-center justify-between px-2 min-[600px]:min-h-16 min-[600px]:px-6">
-        <UnitSelector value={preferredUnit} onChange={setPreferredUnit} />
-        <ServingSelector servings={servings} onChange={setServings} />
-      </div>
+      {(showUnitControl || showServingControl) && (
+        <div className="flex min-h-14 items-center justify-between px-2 min-[600px]:min-h-16 min-[600px]:px-6">
+          {showUnitControl && (
+            <UnitSelector value={preferredUnit} onChange={handleUnitChange} />
+          )}
+          {showServingControl && (
+            <ServingSelector servings={servings} onChange={setServings} />
+          )}
+        </div>
+      )}
     </>
   );
 }

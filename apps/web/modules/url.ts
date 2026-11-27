@@ -1,6 +1,12 @@
 import type { UrlObject } from 'node:url';
 import { tryConvertVolume } from '@cocktails/conversion';
-import type { Recipe, RecipeIngredient, Source, Technique } from '@cocktails/data';
+import type {
+  Recipe,
+  RecipeIngredient,
+  Source,
+  Technique,
+  TechniqueFatWash,
+} from '@cocktails/data';
 import slugify from '@sindresorhus/slugify';
 import type { Route } from 'next';
 import { P, match } from 'ts-pattern';
@@ -135,6 +141,32 @@ export function getMilkClarificationCalculatorUrl({
         ratio: String(Math.round(ratio * 10_000) / 10_000),
       }),
     },
+  };
+}
+
+/** The calculator context a recipe's fat-wash prep section carries: the fat
+ * and any structured wash metadata (percentage, method, duration, sous-vide
+ * temperature). */
+export function getFatWashCalculatorUrl(fatWash?: TechniqueFatWash): UrlObject {
+  const query: Record<string, string> = {};
+
+  if (fatWash) {
+    query.fat = fatWash.fat;
+    query.method = fatWash.method;
+    if (fatWash.percentage != null) {
+      query.percentage = String(fatWash.percentage);
+    }
+    if (fatWash.duration_minutes != null) {
+      query.duration = String(fatWash.duration_minutes);
+    }
+    if (fatWash.method === 'sous-vide' && fatWash.temperature_c != null) {
+      query.temp = String(fatWash.temperature_c);
+    }
+  }
+
+  return {
+    pathname: '/calculators/fat-wash',
+    query,
   };
 }
 
