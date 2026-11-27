@@ -9,12 +9,6 @@
   text-transform: capitalize;
 }
 
-.spec {
-  font-size: 0.8em;
-  color: var(--muted-foreground);
-  text-transform: none;
-}
-
 .optional {
   font-size: 0.8em;
   color: var(--muted-foreground);

@@ -1,24 +1,20 @@
 import type { RecipeIngredient } from '@cocktails/data';
 import { Calculator } from 'lucide-react';
 import Link from 'next/link';
-import { useId } from 'react';
-import { List, ListRow, ListSubheader } from '#/components/ui/list';
+import InstructionList from '#/components/InstructionList';
 import { buildFatWashSteps, getFatWashIngredients } from '#/modules/fatWash';
 import { getFatWashCalculatorUrl } from '#/modules/url';
 
 /**
  * Prep instructions for any fat-washed ingredient in a recipe, placed before
- * the cocktail's own instructions. Styled like the milk-clarification block:
- * the Calculator link sits right next to the section title, and the wash
- * technique is split into concise numbered steps that stay scannable on
- * mobile.
+ * the cocktail's own instructions. Reuses `InstructionList` with a trailing
+ * Calculator link on the subheader.
  */
 export default function FatWashInstructions({
   ingredients,
 }: {
   ingredients: readonly RecipeIngredient[];
 }) {
-  const baseId = useId();
   const fatWashes = getFatWashIngredients(ingredients);
 
   if (fatWashes.length === 0) {
@@ -27,8 +23,7 @@ export default function FatWashInstructions({
 
   return (
     <>
-      {fatWashes.map(({ ingredient, fatWash }, index) => {
-        const headingId = `${baseId}-${index}`;
+      {fatWashes.map(({ ingredient, fatWash }) => {
         const title =
           fatWashes.length === 1 ? 'Fat wash' : `Fat wash (${ingredient.name})`;
         const steps = buildFatWashSteps({
@@ -42,33 +37,20 @@ export default function FatWashInstructions({
         });
 
         return (
-          <section
+          <InstructionList
             key={`${ingredient.slug}:${fatWash.fat}`}
-            aria-labelledby={headingId}
-            className="py-2"
-          >
-            <ListSubheader>
-              <div className="flex items-center justify-between gap-2">
-                <span id={headingId}>{title}</span>
-                <Link
-                  href={getFatWashCalculatorUrl(fatWash)}
-                  className="inline-flex shrink-0 items-center gap-1.5 text-foreground no-underline"
-                >
-                  <Calculator className="size-3.5 shrink-0" aria-hidden="true" />
-                  Calculator
-                </Link>
-              </div>
-            </ListSubheader>
-            <List aria-labelledby={headingId} className="surface py-0">
-              {steps.map((step, stepIndex) => (
-                <ListRow key={step}>
-                  <span className="my-1 flex-1 text-left">
-                    {stepIndex + 1}. {step}
-                  </span>
-                </ListRow>
-              ))}
-            </List>
-          </section>
+            title={title}
+            instructions={steps}
+            action={
+              <Link
+                href={getFatWashCalculatorUrl(fatWash)}
+                className="inline-flex shrink-0 items-center gap-1.5 text-foreground no-underline"
+              >
+                <Calculator className="size-3.5 shrink-0" aria-hidden="true" />
+                Calculator
+              </Link>
+            }
+          />
         );
       })}
     </>

@@ -84,64 +84,6 @@ export function formatIngredientName(ingredient: RecipeIngredient): string {
   return formatSingleTechnique(ingredient.technique, name, ingredient);
 }
 
-const specUnitNames: Partial<Record<RecipeIngredient['quantity']['unit'], string>> = {
-  gram: 'g',
-};
-
-/** A spec quantity as a terse string — "1.5 oz", "40 g", "2 tbsp" — with an
- * optional noun naming what the amount is ("1 vanilla pod"). */
-function formatSpecQuantity(
-  quantity: RecipeIngredient['quantity'],
-  noun?: string,
-): string {
-  const amount = Number.isInteger(quantity.amount)
-    ? quantity.amount
-    : Math.round(quantity.amount * 100) / 100;
-  const unit =
-    quantity.unit === 'unit'
-      ? undefined
-      : (specUnitNames[quantity.unit] ?? quantity.unit);
-
-  return [amount, unit, noun].filter(Boolean).join(' ');
-}
-
-/** The preparation details a technique carries beyond its name marker —
- * infusion batch ratios — as one muted line per technique. Fat-wash specs live
- * in the Fat wash prep section and calculator instead. */
-function formatSingleTechniqueSpec(technique: Technique): string | undefined {
-  const spec = match(technique)
-    .with({ technique: 'infusion' }, (t) => {
-      const agent = t.agent_quantity
-        ? formatSpecQuantity(t.agent_quantity, t.agent)
-        : undefined;
-
-      return agent && t.spirit_quantity
-        ? `${agent} per ${formatSpecQuantity(t.spirit_quantity)}`
-        : undefined;
-    })
-    .otherwise(() => '');
-
-  return spec === '' ? undefined : spec;
-}
-
-/**
- * The technique specs an ingredient carries — infusion batch ratios — as one
- * string per technique, for the muted sub-lines under the ingredient name on a
- * recipe page. Techniques that only rename the ingredient or have their own
- * prep section (fat-wash, cuts, temperatures, applications…) carry no spec.
- */
-export function formatIngredientSpecs(ingredient: RecipeIngredient): string[] {
-  if (ingredient.technique == null) return [];
-
-  const techniques = Array.isArray(ingredient.technique)
-    ? ingredient.technique
-    : [ingredient.technique];
-
-  return techniques
-    .map(formatSingleTechniqueSpec)
-    .filter((spec): spec is string => spec != null);
-}
-
 export function formatRecipeTechnique(technique: RecipeTechnique): string {
   return match(technique)
     .with(

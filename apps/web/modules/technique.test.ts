@@ -1,10 +1,6 @@
 import type { RecipeIngredient } from '@cocktails/data';
 import { describe, it, expect } from 'vitest';
-import {
-  formatIngredientName,
-  formatIngredientSpecs,
-  formatRecipeTechniqueName,
-} from './technique';
+import { formatIngredientName, formatRecipeTechniqueName } from './technique';
 
 // Helper to create a basic ingredient for testing
 function createIngredient(overrides: Partial<RecipeIngredient> = {}): RecipeIngredient {
@@ -375,77 +371,6 @@ describe('formatIngredientName', () => {
       });
       expect(formatIngredientName(ingredient)).toBe('cucumber slice');
     });
-  });
-});
-
-describe('formatIngredientSpecs', () => {
-  it('returns no spec for techniques that only rename the ingredient', () => {
-    expect(
-      formatIngredientSpecs(
-        createIngredient({
-          technique: [
-            { technique: 'temperature', method: 'frozen' },
-            { technique: 'acid-adjustment' },
-          ],
-        }),
-      ),
-    ).toEqual([]);
-  });
-
-  it('omits fat-wash specs because the Fat wash section renders them', () => {
-    expect(
-      formatIngredientSpecs(
-        createIngredient({
-          name: 'bourbon',
-          technique: {
-            technique: 'fat-wash',
-            fat: 'bacon fat',
-            method: 'room-temp',
-            percentage: 6,
-            duration_minutes: 240,
-          },
-        }),
-      ),
-    ).toEqual([]);
-  });
-
-  it('keeps infusion specs when stacked with a fat-wash technique', () => {
-    expect(
-      formatIngredientSpecs(
-        createIngredient({
-          technique: [
-            {
-              technique: 'fat-wash',
-              fat: 'brown butter',
-              method: 'room-temp',
-              percentage: 15,
-            },
-            {
-              technique: 'infusion',
-              agent: 'vanilla pod',
-              agent_quantity: { amount: 1, unit: 'unit' },
-              spirit_quantity: { amount: 200, unit: 'ml' },
-            },
-          ],
-        }),
-      ),
-    ).toEqual(['1 vanilla pod per 200 ml']);
-  });
-
-  it('formats infusion batch ratios without durations', () => {
-    expect(
-      formatIngredientSpecs(
-        createIngredient({
-          technique: {
-            technique: 'infusion',
-            agent: 'English breakfast tea',
-            agent_quantity: { amount: 7, unit: 'gram' },
-            spirit_quantity: { amount: 200, unit: 'ml' },
-            duration: '30 minutes',
-          },
-        }),
-      ),
-    ).toEqual(['7 g English breakfast tea per 200 ml']);
   });
 });
 

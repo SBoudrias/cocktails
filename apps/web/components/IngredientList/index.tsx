@@ -13,11 +13,7 @@ import { List, ListRow, ListSubheader } from '#/components/ui/list';
 import useLocalStorage from '#/hooks/useLocalStorage';
 import { getMilkClarificationContext } from '#/modules/milkClarification';
 import { calculateScaleFactor, scaleQuantity } from '#/modules/scaling';
-import {
-  formatIngredientName,
-  formatIngredientSpecs,
-  formatRecipeTechniqueName,
-} from '#/modules/technique';
+import { formatIngredientName, formatRecipeTechniqueName } from '#/modules/technique';
 import { getMilkClarificationCalculatorUrl, getRecipeIngredientUrl } from '#/modules/url';
 import ServingSelector from './ServingSelector';
 import styles from './style.module.css';
@@ -88,8 +84,6 @@ function IngredientLine({
     brix = <div className={styles.category}>{ingredient.brix} Brix</div>;
   }
 
-  const specs = formatIngredientSpecs(ingredient);
-
   return (
     <div className="flex flex-row items-baseline gap-1">
       <Quantity preferredUnit={preferredUnit} quantity={ingredient.quantity} />{' '}
@@ -98,11 +92,6 @@ function IngredientLine({
           {formatIngredientName(ingredient)}
           {ingredient.optional && <span className={styles.optional}> (optional)</span>}
         </div>
-        {specs.map((spec) => (
-          <div key={spec} className={styles.spec}>
-            {spec}
-          </div>
-        ))}
         {category}
         {brix}
       </div>
