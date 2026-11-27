@@ -160,7 +160,7 @@ describe('recipe schema', () => {
     const validate = await validatePromise;
 
     for (const technique of [
-      { technique: 'fat-wash', fat: 'coconut oil' },
+      { technique: 'fat-wash', fat: 'coconut oil', method: 'room-temp' },
       {
         technique: 'fat-wash',
         fat: 'bacon fat',
@@ -172,6 +172,7 @@ describe('recipe schema', () => {
         technique: 'fat-wash',
         fat: 'coffee oil',
         percentage: 30,
+        method: 'room-temp',
       },
       {
         technique: 'fat-wash',
@@ -201,16 +202,21 @@ describe('recipe schema', () => {
     }
   });
 
-  it('rejects invalid fat-wash percentage, freezer method, freeze_minutes, or non-sous-vide temperature', async () => {
+  it('rejects missing method, invalid percentage, freezer method, freeze_minutes, or non-sous-vide temperature', async () => {
     const validate = await validatePromise;
 
     for (const technique of [
-      { technique: 'fat-wash', fat: 'bacon fat', percentage: 0 },
-      { technique: 'fat-wash', fat: 'bacon fat', percentage: 100 },
-      { technique: 'fat-wash', fat: 'bacon fat', percentage: '6%' },
+      { technique: 'fat-wash', fat: 'coconut oil' },
+      { technique: 'fat-wash', fat: 'bacon fat', method: 'room-temp', percentage: 0 },
+      { technique: 'fat-wash', fat: 'bacon fat', method: 'room-temp', percentage: 100 },
+      { technique: 'fat-wash', fat: 'bacon fat', method: 'room-temp', percentage: '6%' },
       { technique: 'fat-wash', fat: 'coffee oil', method: 'freezer' },
-      { technique: 'fat-wash', fat: 'bacon fat', freeze_minutes: 120 },
-      { technique: 'fat-wash', fat: 'bacon fat', temperature_c: 65 },
+      {
+        technique: 'fat-wash',
+        fat: 'bacon fat',
+        method: 'room-temp',
+        freeze_minutes: 120,
+      },
       {
         technique: 'fat-wash',
         fat: 'bacon fat',

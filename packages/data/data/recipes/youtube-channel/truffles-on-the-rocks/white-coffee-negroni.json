@@ -27,7 +27,8 @@
       "technique": {
         "technique": "fat-wash",
         "fat": "coffee oil",
-        "percentage": 30
+        "percentage": 30,
+        "method": "room-temp"
       },
       "quantity": {
         "amount": 1.25,

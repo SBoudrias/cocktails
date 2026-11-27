@@ -76,7 +76,8 @@
       "technique": {
         "technique": "fat-wash",
         "fat": "coconut oil",
-        "percentage": 25
+        "percentage": 25,
+        "method": "room-temp"
       },
       "quantity": {
         "amount": 0.75,

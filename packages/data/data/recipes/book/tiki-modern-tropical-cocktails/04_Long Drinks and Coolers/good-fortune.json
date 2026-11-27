@@ -54,7 +54,8 @@
       "type": "spirit",
       "technique": {
         "technique": "fat-wash",
-        "fat": "szechuan oil"
+        "fat": "szechuan oil",
+        "method": "room-temp"
       },
       "quantity": {
         "amount": 2,

@@ -19,7 +19,8 @@
       "technique": {
         "technique": "fat-wash",
         "fat": "sesame oil",
-        "percentage": 1
+        "percentage": 1,
+        "method": "room-temp"
       },
       "quantity": {
         "amount": 2.5,

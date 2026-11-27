@@ -36,7 +36,8 @@
         {
           "technique": "fat-wash",
           "fat": "brown butter",
-          "percentage": 15
+          "percentage": 15,
+          "method": "room-temp"
         },
         {
           "technique": "infusion",

@@ -48,14 +48,13 @@
           "minimum": 1
         }
       },
-      "required": ["technique", "fat"],
+      "required": ["technique", "fat", "method"],
       "additionalProperties": false,
       "allOf": [
         {
           "if": { "required": ["temperature_c"] },
           "then": {
-            "properties": { "method": { "const": "sous-vide" } },
-            "required": ["method"]
+            "properties": { "method": { "const": "sous-vide" } }
           }
         }
       ]

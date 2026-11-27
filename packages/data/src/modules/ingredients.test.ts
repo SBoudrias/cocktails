@@ -123,7 +123,12 @@ describe('getRecipesForIngredient', () => {
             name: 'Four Roses Bourbon',
             slug: 'four-roses-bourbon',
             type: 'spirit',
-            technique: { technique: 'fat-wash', fat: 'bacon fat', percentage: 6 },
+            technique: {
+              technique: 'fat-wash',
+              fat: 'bacon fat',
+              method: 'room-temp',
+              percentage: 6,
+            },
             quantity: { amount: 2, unit: 'oz' },
           },
         ],

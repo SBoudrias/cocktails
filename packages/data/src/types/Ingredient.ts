@@ -80,7 +80,7 @@ type TechniqueFatWashBase = {
 
 type TechniqueFatWash =
   | (TechniqueFatWashBase & {
-      method?: 'room-temp';
+      method: 'room-temp';
     })
   | (TechniqueFatWashBase & {
       method: 'sous-vide';
