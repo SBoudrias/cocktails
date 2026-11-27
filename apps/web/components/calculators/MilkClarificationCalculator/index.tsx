@@ -6,11 +6,11 @@ import { ChevronDown } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useReducer } from 'react';
 import { match } from 'ts-pattern';
+import { CalculatorInstructions } from '#/components/calculators/CalculatorInstructions';
 import UnitSelector, { type Unit } from '#/components/Quantity/Selector';
 import { Alert } from '#/components/ui/alert';
 import { Card, CardContent } from '#/components/ui/card';
 import { LabeledField, OutlinedField } from '#/components/ui/labeled-field';
-import { List, ListSubheader, ListRow } from '#/components/ui/list';
 import { formatAmount } from '#/modules/formatAmount';
 
 const DEFAULT_BATCH_VOLUME = 1000;
@@ -329,25 +329,7 @@ export default function MilkClarificationCalculator() {
           </section>
         </CardContent>
       </Card>
-      <section aria-label="Instructions">
-        {/* The recipe pages' list pattern — the subheader itself a list
-            item above the surface block of divider rows: py-8 outer,
-            16px subheader padding. */}
-        <List>
-          <li>
-            <ListSubheader>Instructions</ListSubheader>
-            <div className="surface">
-              {instructions.map((instruction, index) => (
-                <ListRow key={instruction}>
-                  <span className="my-1 flex-1 text-left">
-                    {index + 1}. {instruction}
-                  </span>
-                </ListRow>
-              ))}
-            </div>
-          </li>
-        </List>
-      </section>
+      <CalculatorInstructions steps={instructions} />
     </>
   );
 }
