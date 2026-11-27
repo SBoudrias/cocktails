@@ -96,6 +96,56 @@ describe('getRecipesForIngredient', () => {
       'Ordinary Milk Drink',
     ]);
   });
+
+  it('includes recipes that use an ingredient as a fat-wash fat', async () => {
+    const { getRecipesForIngredient } = await import('./ingredients');
+
+    const baconFat = {
+      name: 'bacon fat',
+      slug: 'bacon-fat',
+      type: 'other',
+      categories: [],
+      refs: [],
+      ingredients: [],
+    } satisfies RootIngredient;
+
+    vi.mocked(getAllRecipes).mockResolvedValue([
+      ...recipes,
+      {
+        name: "Benton's Old Fashioned",
+        slug: 'bentons-old-fashioned',
+        preparation: 'stirred',
+        served_on: 'big rock',
+        glassware: 'old fashioned',
+        ingredients: [
+          {
+            ...wholeMilk,
+            name: 'Four Roses Bourbon',
+            slug: 'four-roses-bourbon',
+            type: 'spirit',
+            technique: { technique: 'fat-wash', fat: 'bacon fat', percentage: 6 },
+            quantity: { amount: 2, unit: 'oz' },
+          },
+        ],
+        source,
+        attributions: [],
+        refs: [],
+      },
+    ]);
+
+    for (const cache of globalThis.__cocktailsDataCaches ?? []) {
+      cache.clear();
+    }
+
+    const relatedRecipes = await getRecipesForIngredient(baconFat);
+    expect(relatedRecipes.map((recipe) => recipe.name)).toEqual([
+      "Benton's Old Fashioned",
+    ]);
+
+    for (const cache of globalThis.__cocktailsDataCaches ?? []) {
+      cache.clear();
+    }
+  });
 });
 
 describe('getSubstitutesForIngredient', () => {

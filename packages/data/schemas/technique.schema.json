@@ -26,17 +26,39 @@
       "properties": {
         "technique": { "const": "fat-wash" },
         "fat": { "type": "string" },
-        "fat_quantity": {
-          "$ref": "./quantity.schema.json"
+        "percentage": {
+          "description": "Fat volume as a percentage of spirit volume (e.g. 6 for 6%, 25 for 25%)",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 100
         },
-        "spirit_quantity": {
-          "$ref": "./quantity.schema.json"
+        "method": {
+          "description": "How the fat and spirit infuse before separating and freezing",
+          "enum": ["room-temp", "sous-vide"]
         },
-        "duration": { "type": "string" },
-        "temperature": { "type": "string" }
+        "temperature_c": {
+          "description": "Sous-vide water bath temperature in degrees Celsius",
+          "type": "number",
+          "minimum": 30,
+          "maximum": 100
+        },
+        "duration_minutes": {
+          "description": "Infusion time in minutes (room-temp steep or sous-vide hold)",
+          "type": "integer",
+          "minimum": 1
+        }
       },
       "required": ["technique", "fat"],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "required": ["temperature_c"] },
+          "then": {
+            "properties": { "method": { "const": "sous-vide" } },
+            "required": ["method"]
+          }
+        }
+      ]
     },
     {
       "type": "object",

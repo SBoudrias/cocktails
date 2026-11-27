@@ -235,7 +235,23 @@ const getRecipesByIngredientSlug = memo(async (): Promise<Map<string, Recipe[]>>
   const bySlug = new Map<string, Recipe[]>();
 
   for (const recipe of allRecipes) {
-    const citedSlugs = new Set(recipe.ingredients.map(({ slug }) => slug));
+    const citedSlugs = new Set<string>();
+
+    for (const ingredient of recipe.ingredients) {
+      citedSlugs.add(ingredient.slug);
+
+      const techniques =
+        ingredient.technique == null
+          ? []
+          : Array.isArray(ingredient.technique)
+            ? ingredient.technique
+            : [ingredient.technique];
+      for (const technique of techniques) {
+        if (technique.technique === 'fat-wash') {
+          citedSlugs.add(slugify(technique.fat));
+        }
+      }
+    }
 
     for (const technique of recipe.techniques ?? []) {
       match(technique)

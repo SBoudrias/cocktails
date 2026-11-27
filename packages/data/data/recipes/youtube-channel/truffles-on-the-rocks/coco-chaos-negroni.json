@@ -32,16 +32,35 @@
     {
       "name": "Plymouth Gin",
       "type": "spirit",
+      "technique": [
+        {
+          "technique": "fat-wash",
+          "fat": "cacao butter",
+          "percentage": 10,
+          "method": "sous-vide",
+          "temperature_c": 65,
+          "duration_minutes": 60
+        },
+        {
+          "technique": "infusion",
+          "agent": "toasted coconut chips",
+          "agent_quantity": {
+            "amount": 55,
+            "unit": "gram"
+          },
+          "spirit_quantity": {
+            "amount": 300,
+            "unit": "ml"
+          }
+        }
+      ],
       "quantity": {
         "amount": 1.25,
         "unit": "oz"
       }
     }
   ],
-  "instructions": [
-    "Fat-wash Plymouth Gin with 55g toasted coconut chips and 30ml melted cacao butter in a sous vide bag at 65°C for 1 hour. Chill and freeze to firm up the fat, then strain.",
-    "Garnish with a makrut lime leaf"
-  ],
+  "instructions": ["Garnish with a makrut lime leaf"],
   "refs": [
     {
       "type": "youtube",

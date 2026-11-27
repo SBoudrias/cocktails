@@ -155,4 +155,85 @@ describe('recipe schema', () => {
       }),
     );
   });
+
+  it('accepts structured fat-wash percentage, method, duration, and sous-vide temperature', async () => {
+    const validate = await validatePromise;
+
+    for (const technique of [
+      { technique: 'fat-wash', fat: 'coconut oil' },
+      {
+        technique: 'fat-wash',
+        fat: 'bacon fat',
+        percentage: 6,
+        method: 'room-temp',
+        duration_minutes: 240,
+      },
+      {
+        technique: 'fat-wash',
+        fat: 'coffee oil',
+        percentage: 30,
+      },
+      {
+        technique: 'fat-wash',
+        fat: 'cacao butter',
+        percentage: 10,
+        method: 'sous-vide',
+        temperature_c: 65,
+        duration_minutes: 60,
+      },
+    ]) {
+      expect(
+        validate({
+          name: 'Fat Wash Test',
+          preparation: 'stirred',
+          served_on: 'big rock',
+          glassware: 'old fashioned',
+          ingredients: [
+            {
+              name: 'Plymouth Gin',
+              type: 'spirit',
+              technique,
+              quantity: { amount: 2, unit: 'oz' },
+            },
+          ],
+        }),
+      ).toBe(true);
+    }
+  });
+
+  it('rejects invalid fat-wash percentage, freezer method, freeze_minutes, or non-sous-vide temperature', async () => {
+    const validate = await validatePromise;
+
+    for (const technique of [
+      { technique: 'fat-wash', fat: 'bacon fat', percentage: 0 },
+      { technique: 'fat-wash', fat: 'bacon fat', percentage: 100 },
+      { technique: 'fat-wash', fat: 'bacon fat', percentage: '6%' },
+      { technique: 'fat-wash', fat: 'coffee oil', method: 'freezer' },
+      { technique: 'fat-wash', fat: 'bacon fat', freeze_minutes: 120 },
+      { technique: 'fat-wash', fat: 'bacon fat', temperature_c: 65 },
+      {
+        technique: 'fat-wash',
+        fat: 'bacon fat',
+        method: 'room-temp',
+        temperature_c: 65,
+      },
+    ]) {
+      expect(
+        validate({
+          name: 'Invalid Fat Wash Test',
+          preparation: 'stirred',
+          served_on: 'big rock',
+          glassware: 'old fashioned',
+          ingredients: [
+            {
+              name: 'Plymouth Gin',
+              type: 'spirit',
+              technique,
+              quantity: { amount: 2, unit: 'oz' },
+            },
+          ],
+        }),
+      ).toBe(false);
+    }
+  });
 });

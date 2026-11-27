@@ -75,7 +75,8 @@
       "optional": true,
       "technique": {
         "technique": "fat-wash",
-        "fat": "coconut oil"
+        "fat": "coconut oil",
+        "percentage": 25
       },
       "quantity": {
         "amount": 0.75,

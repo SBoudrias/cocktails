@@ -26,7 +26,8 @@
       "type": "category",
       "technique": {
         "technique": "fat-wash",
-        "fat": "coffee oil"
+        "fat": "coffee oil",
+        "percentage": 30
       },
       "quantity": {
         "amount": 1.25,

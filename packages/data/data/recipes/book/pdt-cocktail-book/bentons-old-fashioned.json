@@ -26,16 +26,10 @@
       "type": "spirit",
       "technique": {
         "technique": "fat-wash",
-        "fat": "Benton's bacon fat",
-        "fat_quantity": {
-          "amount": 1.5,
-          "unit": "oz"
-        },
-        "spirit_quantity": {
-          "amount": 750,
-          "unit": "ml"
-        },
-        "duration": "4 hours at room temperature, then 2 hours in the freezer"
+        "fat": "bacon fat",
+        "percentage": 6,
+        "method": "room-temp",
+        "duration_minutes": 240
       },
       "quantity": {
         "amount": 2,

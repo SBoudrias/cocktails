@@ -19,14 +19,7 @@
       "technique": {
         "technique": "fat-wash",
         "fat": "sesame oil",
-        "fat_quantity": {
-          "amount": 5,
-          "unit": "ml"
-        },
-        "spirit_quantity": {
-          "amount": 500,
-          "unit": "ml"
-        }
+        "percentage": 1
       },
       "quantity": {
         "amount": 2.5,
@@ -35,7 +28,6 @@
     }
   ],
   "instructions": [
-    "For the sesame-washed gin, combine 500 ml Empress 1908 Cucumber Lemon Gin with 5 ml sesame oil and let infuse. Once the oil separates, freeze until solid, then strain through a fine mesh strainer.",
     "For the chili oil garnish, pour 150 ml hot neutral oil over 2 tablespoons chili flakes and let infuse until back to room temperature.",
     "Add the gin and cordial to a shaker with ice and roll until thoroughly chilled.",
     "Strain into a coupe and finish with a generous drizzle of chili oil."
