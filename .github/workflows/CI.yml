@@ -21,6 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
+        with:
+          # Every job here invokes yarn scripts after setup; without this a
+          # corepack-less exact cache hit leaves the runner on global yarn 1.
+          enable-package-manager: 'true'
 
       - name: Lint ✅
         run: yarn lint
@@ -37,6 +41,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
+        with:
+          # Every job here invokes yarn scripts after setup; without this a
+          # corepack-less exact cache hit leaves the runner on global yarn 1.
+          enable-package-manager: 'true'
 
       - name: Cache Turborepo artifacts ⚡
         uses: actions/cache@v6
@@ -69,6 +77,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
+        with:
+          # Every job here invokes yarn scripts after setup; without this a
+          # corepack-less exact cache hit leaves the runner on global yarn 1.
+          enable-package-manager: 'true'
 
       - name: Vitest 🧪
         run: yarn test

@@ -82,6 +82,10 @@ jobs:
           fetch-depth: 1
 
       - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
+        with:
+          # The build invokes yarn workspace scripts after setup; without this
+          # a corepack-less exact cache hit leaves the runner on global yarn 1.
+          enable-package-manager: 'true'
 
       - name: Build with Next.js 🏗️
         run: yarn workspace @cocktails/web build
