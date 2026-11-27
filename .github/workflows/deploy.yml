@@ -24,7 +24,6 @@ on:
       - .yarnrc.yml
       - tsconfig.json
       - .github/workflows/deploy.yml
-      - .github/workflows/setup-node/**
       # --- Exclusions: files that cannot affect the built export ---
       # Same proven set as preview.yml (each was diffed against a clean
       # baseline in #544: test files, editor/config files, agent docs,
@@ -82,8 +81,7 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/setup-node
+      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
 
       - name: Build with Next.js 🏗️
         run: yarn workspace @cocktails/web build

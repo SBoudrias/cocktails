@@ -21,8 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/setup-node
+      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
 
       - name: Install yt-dlp 📦
         run: pip install yt-dlp

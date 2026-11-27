@@ -20,8 +20,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/setup-node
+      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
 
       - name: Lint ✅
         run: yarn lint
@@ -37,8 +36,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/setup-node
+      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
 
       - name: Cache Turborepo artifacts ⚡
         uses: actions/cache@v6
@@ -70,8 +68,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/setup-node
+      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
 
       - name: Vitest 🧪
         run: yarn test
