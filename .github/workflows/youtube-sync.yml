@@ -22,6 +22,10 @@ jobs:
       - uses: actions/checkout@v7
 
       - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
+        with:
+          # The sync step invokes yarn youtube-sync after setup; without this
+          # a corepack-less exact cache hit leaves the runner on global yarn 1.
+          enable-package-manager: 'true'
 
       - name: Install yt-dlp 📦
         run: pip install yt-dlp
