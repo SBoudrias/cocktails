@@ -64,7 +64,7 @@ on:
     # time); packages/conversion + ingredient-sorting src; root public/
     # (imported by app/layout.tsx); package.json/yarn.lock (yarn install);
     # tsconfig.json (next build's typecheck); netlify.toml (bundled with
-    # the upload); this workflow and setup-node (the pipeline itself).
+    # the upload); this workflow (the pipeline itself).
     paths:
       - apps/web/**
       - packages/data/**
@@ -77,7 +77,6 @@ on:
       - tsconfig.json
       - netlify.toml
       - .github/workflows/preview.yml
-      - .github/workflows/setup-node/**
       # --- Exclusions: files that cannot affect the built export ---
       #
       # Test files and test utilities, everywhere in the filtered subtrees.
@@ -165,8 +164,7 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/setup-node
+      - uses: SBoudrias/fast-setup-node@1e8dc0801940897dfc89fae43b755dbe0c57a64e # v1
 
       - name: Build with preview basePath 🏗️
         run: yarn workspace @cocktails/web build
